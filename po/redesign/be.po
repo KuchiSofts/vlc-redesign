@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-10-31 01:37+0000\n"
+"POT-Creation-Date: 2026-11-06 20:50+0000\n"
 "PO-Revision-Date: 2014-03-09 18:41+0000\n"
 "Last-Translator: nesterow <nestserau@me.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/projects/p/vlc-trans/"
@@ -43,7 +43,7 @@ msgid "Media Library Settings"
 msgstr "Настаўленні медыятэкі"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1226
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1247
 msgid "Waveform"
 msgstr "Форма хвалі"
 
@@ -279,8 +279,8 @@ msgstr "Вызначае, як апрацоўваецца паўза па пст
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:181
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -656,7 +656,7 @@ msgstr ""
 "Аўтаматычна пачынаць прайграванне чаргі прайгравання пасля яе загрузкі."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Use the media library"
 msgstr "Выкарыстоўваць медыятэку"
 
@@ -909,21 +909,21 @@ msgstr "Доступ да ўваходу і кодэкі"
 msgid "Startup"
 msgstr "Запуск"
 
-#: src/libvlc-module.c:2860
+#: src/libvlc-module.c:2862
 msgid "print help for VLC (can be combined with --help-verbose)"
 msgstr "паказаць даведку па VLC (можна спалучаць з --help-verbose)"
 
-#: src/libvlc-module.c:2862
+#: src/libvlc-module.c:2864
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
 msgstr ""
 "паказаць даведку па VLC і ўсіх яго модулях (можна спалучаць з --help-verbose)"
 
-#: src/libvlc-module.c:2865
+#: src/libvlc-module.c:2867
 msgid "print complete help (same as --longhelp --help-verbose)"
 msgstr "паказаць поўную даведку (тое ж, што --longhelp --help-verbose)"
 
-#: src/libvlc-module.c:2873
+#: src/libvlc-module.c:2875
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
@@ -1381,66 +1381,66 @@ msgctxt "key"
 msgid "Zoom Out"
 msgstr "Зменшыць"
 
-#: src/player/osd.c:169
+#: src/player/osd.c:177
 #, c-format
 msgid "Volume: %ld%%"
 msgstr "Гучнасць: %ld%%"
 
-#: src/player/osd.c:184
+#: src/player/osd.c:192
 #, c-format
 msgid "Video tracks: %s"
 msgstr "Відэадарожкі: %s"
 
-#: src/player/osd.c:185
+#: src/player/osd.c:193
 #, c-format
 msgid "Video track: %s"
 msgstr "Відэадарожка: %s"
 
-#: src/player/osd.c:188
+#: src/player/osd.c:196
 #, c-format
 msgid "Audio tracks: %s"
 msgstr "Аўдыёдарожкі: %s"
 
-#: src/player/osd.c:192
+#: src/player/osd.c:200
 #, c-format
 msgid "Subtitle tracks: %s"
 msgstr "Дарожкі субтытраў: %s"
 
-#: src/player/osd.c:313
+#: src/player/osd.c:321
 msgid "Original size"
 msgstr "Зыходны памер"
 
-#: src/player/osd.c:320
+#: src/player/osd.c:328
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr "Кадраванне знізу: %d пікс."
 
-#: src/player/osd.c:323
+#: src/player/osd.c:331
 #, c-format
 msgid "Top crop: %d px"
 msgstr "Кадраванне зверху: %d пікс."
 
-#: src/player/osd.c:326
+#: src/player/osd.c:334
 #, c-format
 msgid "Left crop: %d px"
 msgstr "Кадраванне злева: %d пікс."
 
-#: src/player/osd.c:329
+#: src/player/osd.c:337
 #, c-format
 msgid "Right crop: %d px"
 msgstr "Кадраванне справа: %d пікс."
 
-#: src/player/osd.c:339
+#: src/player/osd.c:347
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr "Ліквідаванне празрадковасці: %s (%s)"
 
-#: src/player/osd.c:349
+#: src/player/osd.c:357
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr "Пазіцыя дадатковых субтытраў: %d пікс."
 
-#: src/player/osd.c:363
+#: src/player/osd.c:371
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr "Маштаб: x%.2f"
@@ -1639,7 +1639,7 @@ msgid "Additional fonts directory"
 msgstr "Дадатковая папка шрыфтоў"
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "Найлепшая"
@@ -1724,8 +1724,8 @@ msgstr "Дадаць у медыятэку"
 msgid "Remove from Favorites"
 msgstr "Выдаліць з абранага"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
+#: modules/gui/macosx/library/VLCLibraryTableCellView.m:188
+#: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:57
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:28
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:89
@@ -1754,7 +1754,7 @@ msgstr "Разрывы"
 msgid "Disc Number"
 msgstr "Нумар дыска"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
+#: modules/gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m:99
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
 msgid "Add Folder"
 msgstr "Дадаць папку"
@@ -2031,7 +2031,7 @@ msgid "Videos"
 msgstr "Відэа"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:212
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:210
 msgid "Folders"
 msgstr "Папкі"
 
@@ -2285,7 +2285,7 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr "Не ўдалося захаваць настаўленні аўдыёэфектаў (памылка %1)."
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:529
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:601
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr "Настаўленне «%1» было зменена па-за гэтым акном."
 
@@ -2301,64 +2301,67 @@ msgstr "Асноўная дарожка субтытраў:"
 msgid "Secondary subtitle track:"
 msgstr "Дадатковая дарожка субтытраў:"
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:318
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
 msgid "Open video effects before changing them."
 msgstr "Адкрыйце відэаэфекты, перш чым змяняць іх."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:319
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:325
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:357
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:421
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:435
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:472
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:322
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:332
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:415
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:485
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:499
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:543
 msgid "No active video output is available."
 msgstr "Няма актыўнага вываду відэа."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:320
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:323
 msgid "Video output changed during the preview."
 msgstr "Вывад відэа змяніўся падчас папярэдняга прагляду."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:354
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:389
 msgid "Video effect option is unavailable."
 msgstr "Параметр відэаэфекту недаступны."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:364
-msgid "The video effect value could not be prepared."
-msgstr "Не ўдалося падрыхтаваць значэнне відэаэфекту."
-
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:405
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:392
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:408
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:463
 msgid "The video effect value could not be applied."
 msgstr "Не ўдалося ўжыць значэнне відэаэфекту."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:412
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:422
+msgid "The video effect value could not be prepared."
+msgstr "Не ўдалося падрыхтаваць значэнне відэаэфекту."
+
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:470
 msgid "Video filter is unavailable."
 msgstr "Відэафільтр недаступны."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:425
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:478
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:489
 msgid "The video filter could not be applied."
 msgstr "Не ўдалося ўжыць відэафільтр."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:431
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:495
 msgid "Invalid crop value."
 msgstr "Недапушчальнае значэнне кадравання."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:443
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:507
 msgid "Crop could not be applied to every video output."
 msgstr "Не ўдалося ўжыць кадраванне да ўсіх вывадаў відэа."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:460
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:531
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr "Вывад відэа змяніўся; папярэдні прагляд больш немагчыма аднавіць."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:484
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:555
 msgid "Video preview could not be restored."
 msgstr "Не ўдалося аднавіць папярэдні прагляд відэа."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:497
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:568
 msgid "A video effect value is unavailable."
 msgstr "Значэнне відэаэфекту недаступнае."
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:528
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:600
 msgid "Video effect settings could not be saved (error %1)."
 msgstr "Не ўдалося захаваць настаўленні відэаэфектаў (памылка %1)."
 
@@ -3010,7 +3013,7 @@ msgstr ""
 "версіі, са спасылкай на поўны спіс змен. Нататкі на англійскай мове."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 msgid "Discover cast devices"
 msgstr "Шукаць прылады трансляцыі"
 
@@ -3067,7 +3070,7 @@ msgid "How long the popup of the track changes stays on the screen."
 msgstr "Як доўга выплыўное акно пра змену дарожкі застаецца на экране."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Process priority"
 msgstr "Прыярытэт працэсу"
 
@@ -3078,47 +3081,50 @@ msgid ""
 msgstr ""
 "Колькі працэсарнага часу сістэма дае VLC у параўнанні з іншымі праграмамі."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:270 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 msgid "Volume indicator"
-msgstr ""
+msgstr "Рэгулятар гучнасці"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:271
-msgid "Where the volume shows when it changes (the wheel, the keys, mute). Automatic: on the right side, on the left in a right-to-left language."
+msgid ""
+"Where the volume shows when it changes (the wheel, the keys, mute). "
+"Automatic: on the right side, on the left in a right-to-left language."
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Double click on the video"
 msgstr "Падвойная пстрычка па відэа"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid "What a double click on the video does."
 msgstr "Што робіць падвойная пстрычка па відэа."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid "Nothing|Toggle fullscreen"
 msgstr "Нічога|Пераключыць поўнаэкранны рэжым"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:272
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:250
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Size values"
 msgstr "Значэнні памеру"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr "Выбірайце памер субтытраў па назве (адносна відарыса) або ў пікселях."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 msgid "Relative|Pixels"
 msgstr "Адносны|Пікселі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:276
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:280
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -3126,12 +3132,12 @@ msgstr ""
 "Наколькі непразрыстая падкладка пад субтытрамі, калі яна ёсць (захоўваецца, "
 "пакуль яе няма)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Never remember items matching"
 msgstr "Ніколі не запамінаць элементы, што адпавядаюць"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -3139,12 +3145,12 @@ msgstr ""
 "Рэгулярны выраз: элементы, адрас або назва якіх яму адпавядаюць, не "
 "захоўваюцца ў гісторыі, як і іх пазіцыя прайгравання."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Update the channels and the guide"
 msgstr "Абнаўляць каналы і даведнік"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
 msgid ""
 "How often the playlists and the programme guides are downloaded again, in "
 "the background. Update in the sources does it at once."
@@ -3152,16 +3158,16 @@ msgstr ""
 "Як часта плэйлісты і даведнікі па праграмах зноў спампоўваюцца ў фоне. "
 "Абнаўленне ў крыніцах робіць гэта адразу."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:284
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:288
 msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "Ніколі|Кожныя 6 гадзін|Кожныя 12 гадзін|Кожны дзень|Кожны тыдзень"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 msgid "Days of the guide kept"
 msgstr "Колькі дзён даведніка захоўваць"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
 msgid ""
 "How many days of programmes are kept before and after today. Fewer use less "
 "memory with a large guide; the archives of the channels reach back as far as "
@@ -3170,21 +3176,21 @@ msgstr ""
 "Колькі дзён праграм захоўваецца да і пасля сённяшняга дня. Менш дзён займае "
 "менш памяці пры вялікім даведніку; архівы каналаў сягаюць на столькі ж назад."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:288
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:292
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 msgid "Hours across the guide"
 msgstr "Гадзін па шырыні даведніка"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
 msgid "The time the guide shows across its width."
 msgstr "Час, які даведнік паказвае па сваёй шырыні."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 msgid "Guide languages"
 msgstr "Мовы даведніка"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:291
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:295
 msgid ""
 "Keeps only the programmes in these languages when a guide gives several "
 "(codes such as en, he, fr, separated by commas). Empty: every language."
@@ -3192,36 +3198,36 @@ msgstr ""
 "Пакідае толькі праграмы на гэтых мовах, калі даведнік дае некалькі (коды, "
 "напрыклад en, he, fr, праз коску). Пуста: усе мовы."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 #: modules/gui/qt/qt.cpp:349
 msgid "Channel banner"
 msgstr "Банер канала"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
 msgid "What the banner shows over the video when the channel changes."
 msgstr "Што банер паказвае па-над відэа пры змене канала."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:295
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
 msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "Канал, зараз і далей|Канал і зараз|Толькі канал|Нічога"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:296
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:300
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "Show programme descriptions"
 msgstr "Паказваць апісанні праграм"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
 msgid ""
 "Shows the description of what is on in the channel lists and the banner."
 msgstr "Паказвае апісанне таго, што ідзе зараз, у спісах каналаў і на банеры."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "Show the progress of what is on"
 msgstr "Паказваць ход таго, што ідзе зараз"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
 msgid ""
 "A bar of how much of the programme has played, from its start and end in the "
 "guide."
@@ -3229,240 +3235,240 @@ msgstr ""
 "Паласа, якая паказвае, колькі праграмы ўжо прайшло, паводле яе пачатку і "
 "канца ў даведніку."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:300
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "Show what is next"
 msgstr "Паказваць, што далей"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
 msgid "Shows the next programme in the channel lists and the banner."
 msgstr "Паказвае наступную праграму ў спісах каналаў і на банеры."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:306
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "Start on the last channel"
 msgstr "Пачынаць з апошняга канала"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:307
 msgid "When VLC opens with nothing to play, the channel watched last plays."
 msgstr ""
 "Калі VLC адкрываецца без нічога для прайгравання, уключаецца апошні "
 "прагледжаны канал."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "Show adult channels"
 msgstr "Паказваць каналы для дарослых"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:309
 msgid "Lists the channels whose group or name says they are for adults."
 msgstr ""
 "Паказвае ў спісах каналы, група або назва якіх кажа, што яны для дарослых."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 msgid "System monospace"
 msgstr "Сістэмны монашырынны"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "System, sans-serif"
 msgstr "Сістэмны, без засечак"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:371
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
 msgid "Ultra fast"
 msgstr "Ультрахуткі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:371
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
 msgid "Super fast"
 msgstr "Звышхуткі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:372
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:376
 msgid "Very fast"
 msgstr "Вельмі хуткі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:374
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
 msgid "Very slow"
 msgstr "Вельмі павольны"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:374
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
 msgid "Placebo"
 msgstr "Плацэба"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:376
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:380
 msgid "Film"
 msgstr "Фільм"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:377
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:381
 msgid "Still image"
 msgstr "Нерухомая выява"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Fast decoding"
 msgstr "Хуткае дэкадаванне"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Zero latency"
 msgstr "Нулявая затрымка"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:945
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:966
 msgid "%1: this value can not be used."
 msgstr "%1: гэта значэнне нельга выкарыстаць."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1008
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1037
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1029
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
 msgid "%1 is not available in this VLC installation."
 msgstr "%1: недаступна ў гэтай усталёўцы VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1022
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
 msgid "This setting"
 msgstr "Гэта настаўленне"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1032
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
 msgid "%1: choose a folder of this computer."
 msgstr "%1: абярыце папку на гэтым камп'ютары."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1061
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
 msgid "Select a category to reset."
 msgstr "Абярыце катэгорыю для скіду."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1123
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "Паўтараць бягучы элемент (Адзін) або ўсю чаргу прайгравання (Усе)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1131
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "When playback finishes"
 msgstr "Калі прайграванне скончыцца"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1132
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1153
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "Спыніць або выйсці з VLC у канцы чаргі прайгравання."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1140
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1161
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Use a custom skin"
 msgstr "Выкарыстоўваць уласную абалонку"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1141
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1162
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "Запускае VLC з абранай ніжэй абалонкай замест гэтага інтэрфейсу."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Remember the playback position"
 msgstr "Запамінаць пазіцыю прайгравання"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1158
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid "Lets VLC continue the media where you left off."
 msgstr "Дазваляе VLC працягваць медыя з месца, дзе вы спыніліся."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1172
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Reverse scroll direction"
 msgstr "Адваротны кірунак пракруткі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1173
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1194
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "Колцы, што перамотваюць, перамотваюць назад, калі іх круціць наперад."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1188
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Web remote control"
 msgstr "Вэб-кіраванне"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1189
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1210
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "Дазваляе кіраваць VLC з вэб-браўзера. Пароль задайце ў Пашыраных параметрах."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Video post-processing"
 msgstr "Постапрацоўка відэа"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1208
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "Паляпшае відарыс дрэнна закадаваных відэа за кошт вылічальнай магутнасці."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Visualization size"
 msgstr "Памер візуалізацыі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1279
 msgid "The size the visualizations are drawn at."
 msgstr "Памер, у якім малююцца візуалізацыі."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1259
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1280
 msgid "Match window"
 msgstr "Як акно"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1300
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Seek precisely"
 msgstr "Дакладная перамотка"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1301
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1322
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "Перамотка да дакладна зададзенага часу, павольней за перамотку да бліжэйшага "
 "ключавога кадра."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1402
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1423
 msgid "From the file only"
 msgstr "Толькі з файла"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1404
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1425
 msgid "From the file and the internet"
 msgstr "З файла і з інтэрнэту"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1421
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1442
 msgid "Box"
 msgstr "Падкладка"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1481
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
 msgid "Above normal"
 msgstr "Вышэй за звычайны"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1482
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
 msgid "Below normal"
 msgstr "Ніжэй за звычайны"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1482
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
 msgid "Idle"
 msgstr "Нізкі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1601
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
 msgid "Current screen"
 msgstr "Бягучы экран"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1606
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
 msgid "Screen %1 (%2)"
 msgstr "Экран %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1612
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1632
 msgid "Screen %1"
 msgstr "Экран %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 msgid "Any title"
 msgstr "Любая назва"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 msgid "Contains title"
 msgstr "Змяшчае назву"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1622
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
 msgid "Title with extra characters"
 msgstr "Назва з дадатковымі знакамі"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1622
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
 msgid "Exact title match"
 msgstr "Дакладнае супадзенне назвы"
 
@@ -3917,7 +3923,7 @@ msgstr " дБ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
 msgid "Two-pass"
 msgstr "Два праходы"
 
@@ -3985,21 +3991,21 @@ msgstr "Абярыце ўсталяваны дадатак"
 msgid "Load add-ons on startup"
 msgstr "Загружаць дадаткі пры запуску"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:88
 msgid "Play audio to adjust and preview sound effects."
 msgstr "Прайграйце аўдыё, каб наладзіць і праслухаць гукавыя эфекты."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:89
 msgid "Play video to adjust and preview the picture."
 msgstr "Прайграйце відэа, каб наладзіць і праглядзець відарыс."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Spatial audio"
 msgstr "Прасторавы гук"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 msgid "Stereo widening"
 msgstr "Пашырэнне стэрэа"
 
@@ -4024,7 +4030,7 @@ msgid "The address the played tracks are sent to."
 msgstr "Адрас, на які адпраўляюцца прайграныя дарожкі."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Nothing"
 msgstr "Нічога"
 
@@ -4351,7 +4357,7 @@ msgstr "Дадатак «ТБ у эфіры» (IPTV)"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:774
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:951
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
 msgid "Guide"
@@ -4409,8 +4415,8 @@ msgstr "Прыпыняць, калі іншая праграма выкарыс�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "Дарожкі"
@@ -4513,589 +4519,589 @@ msgstr "Аднаўляць апошні стан прайгравання (да�
 msgid "Start videos in fullscreen"
 msgstr "Запускаць відэа ў поўнаэкранным рэжыме"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:158
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
 msgid "Stop the screensaver during playback"
 msgstr "Адключаць ахоўнік экрана падчас прайгравання"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Play video as desktop wallpaper"
 msgstr "Прайграваць відэа як шпалеры працоўнага стала"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
 msgid "Method"
 msgstr "Метад"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:400
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:403
 msgid "Framing"
 msgstr "Кампаноўка кадра"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 msgid "Scale video to the window"
 msgstr "Маштабаваць відэа пад акно"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Position in the window"
 msgstr "Становішча ў акне"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Snapshots"
 msgstr "Здымкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 msgid "Save to"
 msgstr "Захоўваць у"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 msgid "File name prefix"
 msgstr "Прэфікс назвы файла"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Number files sequentially"
 msgstr "Нумараваць файлы паслядоўна"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "Show a preview after capture"
 msgstr "Паказваць папярэдні прагляд пасля здымка"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 msgid "Custom aspect ratios"
 msgstr "Уласныя стасункі бакоў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 msgid "Custom crop ratios"
 msgstr "Уласныя прапорцыі кадравання"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Вышыня здымка (0: прапарцыйна, -1: арыгінальная)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Deinterlacing filter"
 msgstr "Фільтр ліквідавання празрадковасці"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Speaker setup"
 msgstr "Канфігурацыя дынамікаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Maximum volume"
 msgstr "Максімальная гучнасць"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "Гучнасць пры запуску"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 msgid "Volume step"
 msgstr "Крок гучнасці"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Loudness"
 msgstr "Узровень гучнасці"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 msgid "Normalize loudness"
 msgstr "Нармалізаваць гучнасць"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 msgid "Target level"
 msgstr "Мэтавы ўзровень"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 msgid "Night mode"
 msgstr "Начны рэжым"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Replay gain preamp"
 msgstr "Прэамп выраўнання гучнасці"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Spatial audio mode"
 msgstr "Рэжым прасторавага гуку"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Pitch shift"
 msgstr "Зрух вышыні тону"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Chorus/flanger"
 msgstr "Хорус/фленджэр"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Preferred audio language"
 msgstr "Пажаданая мова аўдыё"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "Затрымка аўдыё"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 msgid "Pass compressed audio to the receiver"
 msgstr "Перадаваць сціснуты гук на рэсівер"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Detect Dolby Surround"
 msgstr "Выяўляць Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Fastest"
 msgstr "Максімальная хуткасць"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Balanced"
 msgstr "Баланс"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 msgid "Output gain"
 msgstr "Узмацненне вываду"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
 msgid "Keep the pitch when changing the speed"
 msgstr "Захоўваць вышыню тону пры змене хуткасці"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
 msgid "Equalizer preamp"
 msgstr "Прэамп эквалайзера"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Compressor ratio"
 msgstr "Каэфіцыент кампрэсара"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Compressor threshold"
 msgstr "Парог кампрэсара"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Compressor makeup gain"
 msgstr "Пад'ём узроўню кампрэсара"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
 msgid "Tracks & Languages"
 msgstr "Дарожкі і мовы"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Preferred language"
 msgstr "Пажаданая мова"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
 msgid "Text encoding"
 msgstr "Знаказбор тэксту"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Loading Subtitles"
 msgstr "Загрузка субтытраў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
 msgid "Load subtitle files automatically"
 msgstr "Аўтаматычна загружаць файлы субтытраў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
 msgid "File name matching"
 msgstr "Супадзенне назваў файлаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Bold"
 msgstr "Тоўсты"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Text color"
 msgstr "Колер тэксту"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
 msgid "Vertical position"
 msgstr "Вертыкальнае становішча"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 msgid "Timing"
 msgstr "Сінхранізацыя"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/qt.cpp:306
 msgid "Show subtitle lines on the seek bar"
 msgstr "Паказваць радкі субтытраў на паласе перамоткі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
 msgid "On-Screen Messages"
 msgstr "Экранныя паведамленні"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
 msgid "Show feedback for shortcuts"
 msgstr "Паказваць водгук на скароты"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Show feedback for"
 msgstr "Паказваць водгук на працягу"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Show filename when a video starts"
 msgstr "Паказваць назву файла пры пачатку відэа"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
 msgid "Show filename for"
 msgstr "Паказваць назву файла на працягу"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Load subtitles from these folders"
 msgstr "Загружаць субтытры з гэтых папак"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 msgid "Monospace font"
 msgstr "Монашырынны шрыфт"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
 msgid "Text alignment"
 msgstr "Выраўноўванне тэксту"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
 msgid "Position of the filename"
 msgstr "Становішча назвы файла"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Skip Amounts"
 msgstr "Даўжыня пераскокаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Very short skip"
 msgstr "Вельмі кароткі пераскок"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Short skip"
 msgstr "Кароткі пераскок"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "Medium skip"
 msgstr "Сярэдні пераскок"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Long skip"
 msgstr "Доўгі пераскок"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Mouse"
 msgstr "Мыш"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Single click on the video"
 msgstr "Адна пстрычка па відэа"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Play / Pause"
 msgstr "Граць / Паўза"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Play / Pause on release"
 msgstr "Граць / Паўза пры адпусканні"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Scroll wheel"
 msgstr "Колца пракруткі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Horizontal scroll"
 msgstr "Гарызантальная пракрутка"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:401
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:404
 msgid "Remotes"
 msgstr "Пульты"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Handle mouse clicks in the video"
 msgstr "Апрацоўваць пстрычкі мышы ў відэа"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Web remote password"
 msgstr "Пароль вэб-кіравання"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
 msgid "Web remote address"
 msgstr "Адрас вэб-кіравання"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Ignore the volume keys of the keyboard"
 msgstr "Ігнараваць клавішы гучнасці на клавіятуры"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Opening Files"
 msgstr "Адкрыццё файлаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Only allow one VLC window"
 msgstr "Дазваляць толькі адно акно VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Apply to files opened from the file manager"
 msgstr "Ужываць да файлаў, адкрытых з файлавага мэнэджара"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Add to the playlist instead of replacing it"
 msgstr "Дадаваць у плэйліст замест яго замены"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "When opening a folder"
 msgstr "Пры адкрыцці папкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Only this folder"
 msgstr "Толькі гэта папка"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Include subfolders"
 msgstr "Уключаючы падпапкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Include and expand subfolders"
 msgstr "Уключаючы разгорнутыя падпапкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Metadata & Artwork"
 msgstr "Метаданыя і вокладкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Fetch titles and artwork"
 msgstr "Атрымліваць назвы і вокладкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Read media information automatically"
 msgstr "Аўтаматычна чытаць звесткі пра медыя"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Ignored file extensions"
 msgstr "Ігнараваныя пашырэнні файлаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Buffering"
 msgstr "Буферызацыя"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Local files"
 msgstr "Лакальныя файлы"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Network streams"
 msgstr "Сеткавыя патокі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Live capture"
 msgstr "Жывое захопліванне"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 msgid "Proxy"
 msgstr "Проксі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 msgid "System proxy"
 msgstr "Сістэмны проксі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Security"
 msgstr "Бяспека"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Verify certificates against the system trust store"
 msgstr "Правяраць сертыфікаты па сістэмным сховішчы давераных"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 msgid "Cipher preference"
 msgstr "Перавага шыфраў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Secure (128-bit)"
 msgstr "Бяспека (128 біт)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Most secure (256-bit)"
 msgstr "Максімальная бяспека (256 біт)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Connections"
 msgstr "Злучэнні"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Connection timeout"
 msgstr "Тайм-аўт злучэння"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "HTTP user agent"
 msgstr "Агент карыстальніка HTTP"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Trusted certificates folder"
 msgstr "Папка давераных сертыфікатаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Post-processing quality"
 msgstr "Якасць постапрацоўкі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Skip the H.264 loop filter"
 msgstr "Прапускаць контурны фільтр H.264"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Non-reference frames"
 msgstr "Неапорныя кадры"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Bidirectional frames"
 msgstr "Двухнакіраваныя кадры"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 msgid "Non-key frames"
 msgstr "Няключавыя кадры"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Decoding threads"
 msgstr "Патокі дэкадавання"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
-msgid "Smooth Playback"
-msgstr "Плаўнае прайграванне"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
-msgid "Drop frames when the system can't keep up"
-msgstr "Прапускаць кадры, калі сістэма не паспявае"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+msgid "Smooth Playback"
+msgstr "Плаўнае прайграванне"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
+msgid "Drop frames when the system can't keep up"
+msgstr "Прапускаць кадры, калі сістэма не паспявае"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Developer"
 msgstr "Для распрацоўшчыкаў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Decoder"
 msgstr "Дэкодар"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Clock reference averaging"
 msgstr "Асерадненне апорнага гадзінніка"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 msgid "Save recordings to"
 msgstr "Захоўваць запісы ў"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 msgid "Record without re-encoding when possible"
 msgstr "Запісваць без перакадавання, калі магчыма"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Casting"
 msgstr "Трансляцыя"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Cast quality"
 msgstr "Якасць трансляцыі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Low CPU"
 msgstr "Нізкая нагрузка на ЦП"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
 msgid "Play locally while streaming"
 msgstr "Прайграваць лакальна падчас трансляцыі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
 msgid "Include audio"
 msgstr "Уключаць аўдыё"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
 msgid "Include video"
 msgstr "Уключаць відэа"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Include subtitles"
 msgstr "Дадаць субтытры"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
 msgid "Encoding preset"
 msgstr "Нарыхтоўка кадавання"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
 msgid "Tuning"
 msgstr "Аптымізацыя"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Send Dolby audio as is"
 msgstr "Адпраўляць аўдыё Dolby як ёсць"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Cast HTTP port"
 msgstr "HTTP-порт трансляцыі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Keep the stream output open between items"
 msgstr "Не закрываць вывад патоку паміж элементамі"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:419
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:422
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "Больш параметраў"
@@ -5143,18 +5149,18 @@ msgstr "Прадукцыйнасць"
 msgid "Remember last volume"
 msgstr "Запамінаць апошнюю гучнасць"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:89
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:91
 msgid "Always starts at:"
 msgstr "Заўсёды пачынаць з:"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:88
 #: modules/gui/qt/widgets/qml/CheckButton.qml:106
 msgid "ON"
 msgstr "УКЛ."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:45
-#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml:88
 #: modules/gui/qt/widgets/qml/CheckButton.qml:106
 msgid "OFF"
 msgstr "АДКЛ."
@@ -5570,8 +5576,8 @@ msgid "Next at %1"
 msgstr "Далей у %1"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:431
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:559
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:433
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:708
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
@@ -5581,7 +5587,7 @@ msgstr[2] "%1 дн"
 msgstr[3] "%1 дн"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:560
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:709
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "Архіў: апошні %1 дзень"
@@ -5603,7 +5609,7 @@ msgid "Series"
 msgstr "Серыялы"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:599
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
 #: modules/gui/qt/iptv/qml/TvToast.qml:75
@@ -5615,6 +5621,7 @@ msgid "Watch from the start"
 msgstr "Глядзець з пачатку"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -5651,51 +5658,51 @@ msgid "Add a Link"
 msgstr "Дадаць спасылку"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:747
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
 #: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "Абранае"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:748
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
 msgid "Recently Watched"
 msgstr "Нядаўна прагледжаныя"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:305
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
 msgstr "Абнаўленне даведніка %1… %2 МБ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:306
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:308
 msgid "Updating the channels of %1…"
 msgstr "Абнаўленне каналаў %1…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:309
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:311
 msgid "%1 could not be loaded: %2"
 msgstr "Не ўдалося загрузіць %1: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:503
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 msgid "No channel matches the search"
 msgstr "Няма каналаў, што адпавядаюць пошуку"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:504
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Яшчэ няма абраных каналаў: пстрыкніце правай кнопкай па канале, каб дадаць "
 "яго"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
 msgid "No channel watched yet"
 msgstr "Яшчэ не прагледжана ніводнага канала"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:508
 msgid "Loading the channels…"
 msgstr "Загрузка каналаў…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:810
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:509
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "Няма каналаў"
 
@@ -5704,16 +5711,18 @@ msgid "Now"
 msgstr "Зараз"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
 msgid "Earlier"
 msgstr "Раней"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:147
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:191
 msgid "Later"
 msgstr "Пазней"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:420
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:448
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
 msgid "No guide for this channel"
 msgstr "Няма даведніка для гэтага канала"
 
@@ -5733,86 +5742,82 @@ msgstr "Тут нічога няма"
 msgid "S%1 E%2"
 msgstr "С%1 Э%2"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:445
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:497
+msgid "Archive"
+msgstr "Архіў"
+
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:45
 msgid "Programme"
 msgstr "Праграма"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:448
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
 msgid "Loading the guide…"
 msgstr "Загрузка даведніка…"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:487
-msgid "%1 left"
-msgstr "засталося %1"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:488
-msgid "in %1"
-msgstr "праз %1"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:489
-msgid "ended %1 ago"
-msgstr "скончылася %1 таму"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:490
-msgid "on now"
-msgstr "ідзе зараз"
-
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:499
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:581
 msgid "From the archive, %1"
 msgstr "З архіва, %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:500
-msgid "Next: %1 · %2"
-msgstr "Далей: %1 · %2"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:582
+msgid "%1 left"
+msgstr "засталося %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:553
-msgid "Archive"
-msgstr "Архіў"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:583
+msgid "in %1"
+msgstr "праз %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:566
-msgid "Programme before"
-msgstr "Папярэдняя праграма"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:584
+msgid "ended %1 ago"
+msgstr "скончылася %1 таму"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:572
-msgid "Programme after"
-msgstr "Наступная праграма"
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:585
+msgid "on now"
+msgstr "ідзе зараз"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:587
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:716
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:53
 msgid "Watch from the Start"
 msgstr "Глядзець з пачатку"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:601
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
 msgid "Reminder Set"
 msgstr "Напамін зададзены"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:601
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:50
 msgid "Remind Me"
 msgstr "Напомніць"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:612
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:739
 msgid "Back to Live"
 msgstr "Вярнуцца ў эфір"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:618 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:783
+msgid "Programme before"
+msgstr "Папярэдняя праграма"
+
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:789
+msgid "Programme after"
+msgstr "Наступная праграма"
+
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "Наступны канал"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:623 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "Папярэдні канал"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:737
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:914
 msgid "Previous group"
 msgstr "Папярэдняя група"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:746
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:923
 msgid "All Channels"
 msgstr "Усе каналы"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:761
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:938
 msgid "Next group"
 msgstr "Наступная група"
 
@@ -5828,12 +5833,12 @@ msgstr "Гэтая праграма скончылася, а канал не з�
 msgid "Channel"
 msgstr "Канал"
 
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:109
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "Catch-up"
 msgstr "Архіў"
 
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:112
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:114
 msgid "The past %1 day"
 msgid_plural "The past %1 days"
 msgstr[0] "Апошні %1 дзень"
@@ -6096,15 +6101,15 @@ msgstr "Прапанаваць сэрвіс"
 msgid "%1 starts now on %2"
 msgstr "%1 пачынаецца зараз на %2"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1289
+#: modules/gui/qt/maininterface/mainctx.cpp:1308
 msgid "Paste from clipboard"
 msgstr "Уставіць з буфера абмену"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1290
+#: modules/gui/qt/maininterface/mainctx.cpp:1309
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Дадаць наступныя URL у чаргу прайгравання?"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1291
+#: modules/gui/qt/maininterface/mainctx.cpp:1310
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -6118,7 +6123,7 @@ msgstr "У чаргу"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1635
+#: modules/gui/qt/maininterface/mainctx.cpp:1673
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -6347,6 +6352,11 @@ msgstr "Перамясціць уніз"
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
 msgstr "Паказаць %1"
+
+#: modules/gui/qt/maininterface/qml/VolumeMeter.qml:188
+#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:62
+msgid "%1 %"
+msgstr "%1 %"
 
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:86
 #: modules/gui/qt/util/csdmenu.cpp:111
@@ -6642,19 +6652,19 @@ msgid "Continue Watching"
 msgstr "Працягнуць прагляд"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:593
 #: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "Новыя відэа"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:310
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:312
 #: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "Праслухаць зноў"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:677
 #: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "Новая музыка"
@@ -6673,7 +6683,7 @@ msgstr "Новая музыка"
 msgid "Alphabetic"
 msgstr "Па алфавіце"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:381
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:383
 #: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "Часта наведваныя папкі"
@@ -6747,7 +6757,7 @@ msgstr "Год выпуску"
 msgid "Album Title"
 msgstr "Назва альбома"
 
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:203
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
@@ -6829,12 +6839,12 @@ msgid "Create a playlist with files or add media from the library"
 msgstr "Стварыце плэйліст з файламі або дадайце медыя з бібліятэкі"
 
 #: modules/gui/qt/medialibrary/qml/UrlListDisplay.qml:58
-#: modules/gui/qt/network/qml/BrowseDeviceView.qml:273
+#: modules/gui/qt/network/qml/BrowseDeviceView.qml:275
 #: modules/gui/qt/network/qml/BrowseDisplay.qml:109
 #: modules/gui/qt/network/qml/BrowseDisplay.qml:148
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:50
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:78
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:264
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
 
@@ -7534,7 +7544,7 @@ msgstr "Дакументы"
 msgid "No network shares found"
 msgstr "Сеткавыя рэсурсы не знойдзены"
 
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:239
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:237
 msgid "Computer"
 msgstr "Камп'ютар"
 
@@ -7552,7 +7562,7 @@ msgstr "Зменены"
 msgid "Unknown Share"
 msgstr "Невядомы рэсурс"
 
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:342
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:344
 msgid "Nothing to see here, go back."
 msgstr "Тут нічога няма, вярніцеся назад."
 
@@ -7882,79 +7892,79 @@ msgstr "4,00"
 msgid "Presets:"
 msgstr "Нарыхтоўкі:"
 
-#: modules/gui/qt/player/qml/Player.qml:129
+#: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Прайгравальнік"
 
-#: modules/gui/qt/player/qml/Player.qml:964
+#: modules/gui/qt/player/qml/PlayerView.qml:965
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "Памер субтытраў %1%"
 
-#: modules/gui/qt/player/qml/Player.qml:1119
+#: modules/gui/qt/player/qml/PlayerView.qml:1120
 msgid "Subtitles on the TV: %1"
 msgstr "Субтытры на тэлевізары: %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1119
+#: modules/gui/qt/player/qml/PlayerView.qml:1120
 msgid "Subtitles off on the TV"
 msgstr "Субтытры на тэлевізары выключаны"
 
-#: modules/gui/qt/player/qml/Player.qml:1230
+#: modules/gui/qt/player/qml/PlayerView.qml:1231
 msgid "Not playing on %1"
 msgstr "Не грае на %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1232
-#: modules/gui/qt/player/qml/Player.qml:1359
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
+#: modules/gui/qt/player/qml/PlayerView.qml:1360
 msgid "Connecting to %1…"
 msgstr "Падключэнне да %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1234
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
 msgid "Playing on %1"
 msgstr "Грае на %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1236
 msgid "The sound plays on %1"
 msgstr "Гук грае на %1"
 
-#: modules/gui/qt/player/qml/Player.qml:1260
+#: modules/gui/qt/player/qml/PlayerView.qml:1261
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Ставіце на паўзу, перамотвайце і змяняйце субтытры тут: тэлевізар паўтарае."
 
-#: modules/gui/qt/player/qml/Player.qml:1277
+#: modules/gui/qt/player/qml/PlayerView.qml:1278
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Брандмаўэр Windows не дазваляе %1 падключыцца да гэтага камп'ютара, каб "
 "чытаць медыя."
 
-#: modules/gui/qt/player/qml/Player.qml:1289
+#: modules/gui/qt/player/qml/PlayerView.qml:1290
 msgid "Waiting for Windows…"
 msgstr "Чаканне Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1291
 msgid "Allow on public networks too"
 msgstr "Дазволіць і ў агульнадаступных сетках"
 
-#: modules/gui/qt/player/qml/Player.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Allow on private networks"
 msgstr "Дазволіць у прыватных сетках"
 
-#: modules/gui/qt/player/qml/Player.qml:1303
+#: modules/gui/qt/player/qml/PlayerView.qml:1304
 msgid "Try again"
 msgstr "Паспрабаваць зноў"
 
-#: modules/gui/qt/player/qml/Player.qml:1308
-#: modules/gui/qt/player/qml/Player.qml:1318
+#: modules/gui/qt/player/qml/PlayerView.qml:1309
+#: modules/gui/qt/player/qml/PlayerView.qml:1319
 msgid "Play here"
 msgstr "Граць тут"
 
-#: modules/gui/qt/player/qml/Player.qml:1318
-#: modules/gui/qt/player/qml/Player.qml:1369
+#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1370
 msgid "Stop casting"
 msgstr "Спыніць трансляцыю"
 
-#: modules/gui/qt/player/qml/Player.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1361
 msgid "Also on %1"
 msgstr "Таксама на %1"
 
@@ -8689,10 +8699,6 @@ msgstr "Наперад на 10 секунд"
 msgid "Forward 15 seconds"
 msgstr "Наперад на 15 секунд"
 
-#: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:62
-msgid "%1 %"
-msgstr "%1 %"
-
 #: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:66
 msgid "Choose a video zoom level"
 msgstr "Абярыце маштаб відэа"
@@ -9066,34 +9072,34 @@ msgstr "Аднавіць"
 msgid "Don't restore"
 msgstr "Не аднаўляць"
 
-#: modules/gui/qt/util/redesign_updater.cpp:221
+#: modules/gui/qt/util/redesign_updater.cpp:233
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 "Абнаўленне не падпісана выдаўцом гэтай копіі (%1), таму яно не было ўжыта."
 
-#: modules/gui/qt/util/redesign_updater.cpp:467
+#: modules/gui/qt/util/redesign_updater.cpp:479
 msgid "%1 (later)"
 msgstr "%1 (пазней)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:469
+#: modules/gui/qt/util/redesign_updater.cpp:481
 msgid "%1 (soon)"
 msgstr "%1 (хутка)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:649
+#: modules/gui/qt/util/redesign_updater.cpp:669
 msgid "This build cannot check for updates."
 msgstr "Гэта зборка не можа правяраць абнаўленні."
 
-#: modules/gui/qt/util/redesign_updater.cpp:663
+#: modules/gui/qt/util/redesign_updater.cpp:683
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Не ўдалося звязацца з GitHub. Праверце злучэнне і паспрабуйце зноў."
 
-#: modules/gui/qt/util/redesign_updater.cpp:680
+#: modules/gui/qt/util/redesign_updater.cpp:700
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub даслаў нечаканы адказ (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:798
+#: modules/gui/qt/util/redesign_updater.cpp:824
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9101,46 +9107,46 @@ msgstr ""
 "Гэта абнаўленне не падпісана VLC Redesign, таму яно не было выкарыстана. "
 "Спампуйце яго са старонкі выпуску."
 
-#: modules/gui/qt/util/redesign_updater.cpp:820
-#: modules/gui/qt/util/redesign_updater.cpp:861
+#: modules/gui/qt/util/redesign_updater.cpp:846
+#: modules/gui/qt/util/redesign_updater.cpp:887
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "Няма кантрольнай сумы абнаўлення; сцягніце яго са старонкі выпуску."
 
-#: modules/gui/qt/util/redesign_updater.cpp:835
-#: modules/gui/qt/util/redesign_updater.cpp:907
+#: modules/gui/qt/util/redesign_updater.cpp:861
+#: modules/gui/qt/util/redesign_updater.cpp:933
 msgid "The download failed. Check your connection and try again."
 msgstr "Збой сцягвання. Праверце злучэнне і паспрабуйце зноў."
 
-#: modules/gui/qt/util/redesign_updater.cpp:920
+#: modules/gui/qt/util/redesign_updater.cpp:946
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Абнаўленне не адпавядае сваёй кантрольнай суме, таму яно не выкарыстана."
 
-#: modules/gui/qt/util/redesign_updater.cpp:951
+#: modules/gui/qt/util/redesign_updater.cpp:977
 msgid "The update isn't in a format this version knows."
 msgstr "Абнаўленне ў фармаце, невядомым гэтай версіі."
 
-#: modules/gui/qt/util/redesign_updater.cpp:954
-#: modules/gui/qt/util/redesign_updater.cpp:978
-#: modules/gui/qt/util/redesign_updater.cpp:989
-#: modules/gui/qt/util/redesign_updater.cpp:995
+#: modules/gui/qt/util/redesign_updater.cpp:980
+#: modules/gui/qt/util/redesign_updater.cpp:1004
+#: modules/gui/qt/util/redesign_updater.cpp:1015
+#: modules/gui/qt/util/redesign_updater.cpp:1021
 msgid "The update is damaged."
 msgstr "Абнаўленне пашкоджана."
 
-#: modules/gui/qt/util/redesign_updater.cpp:959
+#: modules/gui/qt/util/redesign_updater.cpp:985
 msgid "The update isn't for this version."
 msgstr "Абнаўленне не для гэтай версіі."
 
-#: modules/gui/qt/util/redesign_updater.cpp:968
-#: modules/gui/qt/util/redesign_updater.cpp:1005
-#: modules/gui/qt/util/redesign_updater.cpp:1014
-#: modules/gui/qt/util/redesign_updater.cpp:1018
-#: modules/gui/qt/util/redesign_updater.cpp:1022
+#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1031
+#: modules/gui/qt/util/redesign_updater.cpp:1040
+#: modules/gui/qt/util/redesign_updater.cpp:1044
+#: modules/gui/qt/util/redesign_updater.cpp:1048
 msgid "The update can't be written in %1."
 msgstr "Немагчыма запісаць абнаўленне ў %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:970
+#: modules/gui/qt/util/redesign_updater.cpp:996
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9148,30 +9154,33 @@ msgstr ""
 "Пасля ўсталёўкі быў зменены файл VLC Redesign, таму кароткае абнаўленне "
 "выкарыстаць немагчыма: абнавіце праз праграму ўсталёўкі."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1000
+#: modules/gui/qt/util/redesign_updater.cpp:1026
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Абнаўленне пашкоджана: файл не адпавядае сваёй кантрольнай суме."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1125
+#: modules/gui/qt/util/redesign_updater.cpp:1151
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Не ўдалося запусціць абнаўленне. Спроба будзе паўторана ў наступны раз."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1152
+#: modules/gui/qt/util/redesign_updater.cpp:1178
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "Збой сцягвання. Паспрабуйце зноў або сцягніце са старонкі выпуску."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1165
+#: modules/gui/qt/util/redesign_updater.cpp:1191
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Сцягнутая праграма ўсталёўкі не адпавядае сваёй кантрольнай суме, таму яна "
 "не запушчана."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1174
+#: modules/gui/qt/util/redesign_updater.cpp:1203
+#: modules/gui/qt/util/redesign_updater.cpp:1211
+#: modules/gui/qt/util/redesign_updater.cpp:1225
 msgid "The installer couldn't be saved to %1."
 msgstr "Не ўдалося захаваць праграму ўсталёўкі ў %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1208
+#: modules/gui/qt/util/redesign_updater.cpp:1265
+#: modules/gui/qt/util/redesign_updater.cpp:1283
 msgid "The installer couldn't be started."
 msgstr "Не ўдалося запусціць праграму ўсталёўкі."
 
@@ -9397,23 +9406,28 @@ msgstr "Стварыць нанова"
 msgid "Media database corrupted"
 msgstr "База даных медыятэкі пашкоджана"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2750
+#: modules/misc/medialibrary/medialibrary.cpp:2753
 msgid "Folders discovered by the media library"
 msgstr "Папкі, якія праглядае медыятэка"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2751
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "Спіс папак для пошуку медыя праз кропку з коскай"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2754
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "Extra verbose media library logs"
 msgstr "Вельмі падрабязны журнал медыятэкі"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2757
+#: modules/misc/medialibrary/medialibrary.cpp:2758
+#, fuzzy
+msgid "Discover network shares"
+msgstr "Сеткавыя рэсурсы не знойдзены"
+
+#: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
 msgstr "медыятэка"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2758
+#: modules/misc/medialibrary/medialibrary.cpp:2762
 msgid "Organize your media"
 msgstr "Упарадкаванне медыя"
 

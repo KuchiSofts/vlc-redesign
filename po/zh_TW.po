@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-05 09:34+0000\n"
+"POT-Creation-Date: 2026-11-06 20:50+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/yaron/vlc-trans/"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "VLC preferences"
 msgstr "VLC 偏好設定"
 
-#: include/vlc_config_cat.h:38 src/libvlc-module.c:2276
+#: include/vlc_config_cat.h:38 src/libvlc-module.c:2278
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:223
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:20
@@ -88,7 +88,7 @@ msgstr "音訊"
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:1517
 #: modules/gui/macosx/menus/VLCMainMenu.m:432
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:201
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:471
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:447
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:199
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:84
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:154
@@ -500,28 +500,28 @@ msgid "Disable"
 msgstr "停用"
 
 #: src/audio_output/output.c:331
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
 #: modules/visualization/visual/visual.c:140
 msgid "Spectrometer"
 msgstr "頻譜儀"
 
 #: src/audio_output/output.c:333
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1246
 msgid "Scope"
 msgstr "示波器"
 
 #: src/audio_output/output.c:335
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1246
 msgid "Spectrum"
 msgstr "頻譜"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1230
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1247
 msgid "Waveform"
 msgstr "波形"
 
 #: src/audio_output/output.c:339
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1230
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1247
 msgid "VU meter"
 msgstr "音量計"
 
@@ -654,8 +654,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:123
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:144
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:149
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1248
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1567
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1265
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1584
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:419
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
@@ -921,8 +921,8 @@ msgstr "是"
 #: modules/gui/qt/dialogs/open/open_panels.cpp:555
 #: modules/gui/qt/medialibrary/qml/MediaView.qml:249
 #: modules/gui/qt/medialibrary/qml/MediaView.qml:275
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:203
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:218
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:205
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:220
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:927
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:954
@@ -949,7 +949,7 @@ msgid "Codec"
 msgstr "編解碼器"
 
 #: src/input/es_out.c:4711 src/input/meta.c:69 modules/access/imem.c:70
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:411
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:387
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:555 modules/stream_out/setid.c:50
 msgid "Language"
 msgstr "語言"
@@ -1289,7 +1289,7 @@ msgstr "VLC 無法開啟 MRL「%s」。詳細資訊請閱讀記錄檔。"
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:61
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:53
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:59
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:231
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:233
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:67
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:39
 #: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:259
@@ -1574,7 +1574,7 @@ msgstr ""
 "訊無法運作。"
 
 #: src/libvlc-module.c:145
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:368
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:344
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
 #: modules/stream_out/display.c:43
 msgid "Enable audio"
@@ -1704,7 +1704,7 @@ msgstr ""
 #: src/video_output/vout_intf.c:166 modules/audio_output/kai.c:110
 #: modules/codec/subsdec.c:168 modules/codec/x264.c:429
 #: modules/demux/adaptive/adaptive.cpp:121 modules/demux/mpeg/ts.c:134
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:63
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:62
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:87
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:180
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:93
@@ -1726,8 +1726,8 @@ msgstr "開啟"
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1625
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
@@ -1810,7 +1810,7 @@ msgstr "讓音訊在非正常速度播放時保持原來的音高"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:230
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:123
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:373
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1423
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1440
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:201
 #: modules/gui/qt/dialogs/toolbar/qml/PersonalizationActions.qml:41
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:115
@@ -1848,7 +1848,7 @@ msgid ""
 msgstr "VLC 所使用的視訊輸出方式，預設動作為自動選擇最佳的可用方式。"
 
 #: src/libvlc-module.c:278
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:449
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:425
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
 #: modules/stream_out/display.c:45
 msgid "Enable video"
@@ -2073,7 +2073,7 @@ msgstr "X 毫秒後隱藏滑鼠游標和全螢幕控制介面"
 #: src/libvlc-module.c:369 src/video_output/interlacing.c:107
 #: modules/gui/macosx/menus/VLCMainMenu.m:448
 #: modules/gui/macosx/menus/VLCMainMenu.m:449
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:469
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:445
 #: modules/gui/qt/dialogs/sout/convert.cpp:123 modules/hw/vdpau/chroma.c:809
 #: modules/video_filter/deinterlace/deinterlace.c:301
 #: share/lua/http/dialogs/create_stream.html:346
@@ -2083,7 +2083,7 @@ msgstr "去交錯"
 #: src/libvlc-module.c:377 src/video_output/interlacing.c:123
 #: modules/gui/macosx/menus/VLCMainMenu.m:450
 #: modules/gui/macosx/menus/VLCMainMenu.m:451
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:470
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:446
 #: modules/video_filter/deinterlace/deinterlace.c:250
 msgid "Deinterlace mode"
 msgstr "去交錯模式"
@@ -2181,7 +2181,7 @@ msgid "Always"
 msgstr "一律"
 
 #: src/libvlc-module.c:435
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:455
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:431
 msgid "Window decorations"
 msgstr "視窗裝飾"
 
@@ -2422,7 +2422,7 @@ msgstr "控制如何處理以滑鼠點按暫停"
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:181
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
@@ -2552,7 +2552,7 @@ msgstr "單調時鐘"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:354
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:119
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:457
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:736
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:712
 #: modules/gui/macosx/preferences/prefs_widgets.m:1038
 #: modules/gui/macosx/preferences/prefs_widgets.m:1095
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:642
@@ -2810,7 +2810,7 @@ msgid "The stream will run this duration (in seconds)."
 msgstr "串流會撥放的長度(秒)"
 
 #: src/libvlc-module.c:738
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:401
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:377
 msgid "Fast seek"
 msgstr "快速搜尋"
 
@@ -2868,7 +2868,7 @@ msgstr "儲存最近播放過的項目"
 #: src/libvlc-module.c:765
 #: modules/gui/macosx/panels/dialogs/VLCResumeDialogController.m:65
 #: modules/gui/macosx/panels/dialogs/VLCResumeDialogController.m:66
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:414
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:390
 msgid "Continue playback"
 msgstr "繼續播放"
 
@@ -3029,7 +3029,7 @@ msgid "How long the messages of the On Screen Display stay, in milliseconds."
 msgstr "螢幕顯示訊息的停留時間，以毫秒為單位。"
 
 #: src/libvlc-module.c:850 src/libvlc-module.c:1827 src/text/iso-639_def.h:573
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:441
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:417
 msgid "On Screen Display"
 msgstr "螢幕顯示"
 
@@ -3720,7 +3720,7 @@ msgid "Maximum number of threads used to fetch art"
 msgstr "用於擷取封面的最大執行緒數"
 
 #: src/libvlc-module.c:1243
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:424
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:400
 msgid "Allow metadata network access"
 msgstr "允許網路存取詮釋資料"
 
@@ -4113,7 +4113,7 @@ msgstr "選擇用於跳到播放佇列中上一個項目的熱鍵。"
 #: modules/gui/macosx/menus/VLCMainMenu.m:516
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:826
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
@@ -4910,7 +4910,7 @@ msgid "Track settings"
 msgstr "軌道設定"
 
 #: src/libvlc-module.c:1927
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:413
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:389
 msgid "Playback control"
 msgstr "播放控制"
 
@@ -4963,7 +4963,7 @@ msgstr "啟動"
 msgid "Performance options"
 msgstr "效能選項"
 
-#: src/libvlc-module.c:2252 src/libvlc-module.c:2812
+#: src/libvlc-module.c:2254 src/libvlc-module.c:2814
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:96
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:601
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:97
@@ -4974,46 +4974,46 @@ msgstr "效能選項"
 msgid "Bookmarks"
 msgstr "書籤"
 
-#: src/libvlc-module.c:2310
+#: src/libvlc-module.c:2312
 msgid "Hot keys"
 msgstr "熱鍵"
 
-#: src/libvlc-module.c:2802
+#: src/libvlc-module.c:2804
 msgid "Jump sizes"
 msgstr "跳轉長度"
 
-#: src/libvlc-module.c:2857
+#: src/libvlc-module.c:2859
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:271
 #: modules/stream_out/transcode/transcode.c:217
 msgid "Miscellaneous"
 msgstr "雜項"
 
-#: src/libvlc-module.c:2860
+#: src/libvlc-module.c:2862
 msgid "print help for VLC (can be combined with --help-verbose)"
 msgstr "顯示 VLC 說明 (可搭配 --help-verbose 使用)"
 
-#: src/libvlc-module.c:2862
+#: src/libvlc-module.c:2864
 msgid ""
 "print help for VLC and all its modules (can be combined with --help-verbose)"
 msgstr "顯示 VLC 及其所有模組的說明 (可搭配 --help-verbose 使用)"
 
-#: src/libvlc-module.c:2865
+#: src/libvlc-module.c:2867
 msgid "print complete help (same as --longhelp --help-verbose)"
 msgstr "顯示完整說明 (等同 --longhelp --help-verbose)"
 
-#: src/libvlc-module.c:2867
+#: src/libvlc-module.c:2869
 msgid "ask for extra verbosity when displaying help"
 msgstr ""
 
-#: src/libvlc-module.c:2869
+#: src/libvlc-module.c:2871
 msgid "print a list of available modules"
 msgstr "印出可用的模組清單"
 
-#: src/libvlc-module.c:2871
+#: src/libvlc-module.c:2873
 msgid "print a list of available modules with extra detail"
 msgstr "印出可用的模組清單以及額外的詳細資料"
 
-#: src/libvlc-module.c:2873
+#: src/libvlc-module.c:2875
 msgid ""
 "print help on a specific module (can be combined with --help-verbose). "
 "Prefix the module name with = for strict matches."
@@ -5021,23 +5021,23 @@ msgstr ""
 "顯示特定模組的說明 (可搭配 --help-verbose 使用)。在模組名稱前加上 = 可進行完"
 "全比對。"
 
-#: src/libvlc-module.c:2877
+#: src/libvlc-module.c:2879
 msgid "no configuration option will be loaded nor saved to config file"
 msgstr ""
 
-#: src/libvlc-module.c:2879
+#: src/libvlc-module.c:2881
 msgid "reset the current config to the default values"
 msgstr ""
 
-#: src/libvlc-module.c:2881
+#: src/libvlc-module.c:2883
 msgid "use alternate config file"
 msgstr ""
 
-#: src/libvlc-module.c:2883
+#: src/libvlc-module.c:2885
 msgid "resets the current plugins cache"
 msgstr "重置目前外掛的快取"
 
-#: src/libvlc-module.c:2885
+#: src/libvlc-module.c:2887
 msgid "print version information"
 msgstr "印出版本資訊"
 
@@ -5556,10 +5556,10 @@ msgstr "開啟並寫入「%s」失敗"
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:223
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:340
 #: modules/gui/macosx/panels/dialogs/VLCCustomCropArWindowController.m:43
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:380
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:407
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:485
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:911
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:356
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:383
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:461
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:887
 #: modules/gui/macosx/preferences/prefs.m:190
 #: modules/gui/macosx/windows/VLCConnectToServerDialog.m:113
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:200
@@ -9474,7 +9474,7 @@ msgstr ""
 #: modules/access/smb_common.h:21 modules/access/vnc.c:50
 #: modules/access_output/http-put.c:131 modules/access_output/http.c:53
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:217
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:373
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:349
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:869
 #: modules/misc/audioscrobbler.c:117 modules/stream_out/rtp.c:165
 msgid "Username"
@@ -9492,8 +9492,8 @@ msgstr "網址中未設定使用者名稱時，用於連線的使用者名稱。
 #: modules/access/smb_common.h:24 modules/access/vnc.c:51
 #: modules/access_output/http-put.c:132 modules/access_output/http.c:56
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:218
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:372
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:430
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:348
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:406
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:439
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
@@ -10490,7 +10490,7 @@ msgstr "螢幕輸入"
 
 #: modules/access/screen/screen.c:100 modules/access/screen/wayland.c:485
 #: modules/access/screen/xcb.c:70 modules/gui/macosx/menus/VLCMainMenu.m:841
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:741
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:717
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:273
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:275
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:415
@@ -11147,7 +11147,7 @@ msgstr ""
 #: modules/codec/x264.c:424
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:100
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:361
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:77
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:243
@@ -12898,8 +12898,8 @@ msgstr ""
 
 #: modules/codec/aom.c:71
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:138
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1389
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1485
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1406
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:135
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
@@ -13056,7 +13056,7 @@ msgid "FFmpeg audio/video decoder"
 msgstr "FFmpeg 音訊/視訊解碼器"
 
 #: modules/codec/avcodec/avcodec.c:86 modules/codec/gstreamer/gstdecode.c:108
-#: modules/codec/omxil/mediacodec.c:205 modules/codec/omxil/omxil.c:88
+#: modules/codec/omxil/mediacodec.c:206 modules/codec/omxil/omxil.c:88
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
@@ -13135,7 +13135,7 @@ msgid "Internal libavcodec codec name"
 msgstr ""
 
 #: modules/codec/avcodec/avcodec.h:83
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:399
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:375
 msgid "Skip the loop filter for H.264 decoding"
 msgstr "跳過 H.264 解碼的迴路過濾器"
 
@@ -13420,7 +13420,7 @@ msgid "BPG image decoder"
 msgstr "SDL 影像解碼器"
 
 #: modules/codec/cc.c:57 modules/codec/zvbi.c:64
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:443
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:419
 #: modules/spu/common.h:23
 msgid "Opacity"
 msgstr "不透明度"
@@ -14084,8 +14084,8 @@ msgstr "CDG 視訊解碼器"
 msgid "OggSpots video packetizer"
 msgstr "Theora 視訊封包器"
 
-#: modules/codec/omxil/mediacodec.c:189
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:398
+#: modules/codec/omxil/mediacodec.c:190
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:374
 msgid "Enable hardware acceleration"
 msgstr ""
 
@@ -15749,9 +15749,9 @@ msgstr ""
 
 #: modules/codec/x264.c:419 modules/codec/x264.c:424
 #: modules/gui/macosx/menus/VLCMainMenu.m:395
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:776
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1388
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1485
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:752
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1405
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:693
 #: modules/misc/gnutls.c:756 modules/text_renderer/freetype/freetype.c:118
 msgid "Normal"
@@ -17740,7 +17740,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCTimeSelectionPanelController.m:48
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:220
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:270
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:381
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:357
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:339
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:62
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:39
@@ -18001,7 +18001,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MediaView.qml:80
 #: modules/gui/qt/medialibrary/qml/MediaView.qml:262
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:57
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:239
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:241
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:422
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:965
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:997
@@ -18011,7 +18011,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:88
 #: modules/gui/qt/medialibrary/qml/VideoAll.qml:89
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:102
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:274
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:276
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:77
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:85
 #: modules/gui/qt/playlist/qml/QueueColumns.qml:84
@@ -18059,14 +18059,14 @@ msgstr "遞增"
 msgid "Descending"
 msgstr "遞減"
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:144
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:42
+#: modules/gui/macosx/library/VLCLibraryTableCellView.m:185
+#: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:52
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:534
 msgid "Recents"
 msgstr ""
 
-#: modules/gui/macosx/library/VLCLibraryTableCellView.m:147
-#: modules/gui/macosx/library/video-library/VLCLibraryVideoGroupDescriptor.m:47
+#: modules/gui/macosx/library/VLCLibraryTableCellView.m:188
+#: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:57
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:28
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:89
@@ -18092,12 +18092,12 @@ msgstr ""
 msgid "All artists"
 msgstr ""
 
-#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:132
+#: modules/gui/macosx/library/home-library/VLCLibraryHomeViewSectionHeaderView.m:150
 msgid "Open %@ in the library"
 msgstr ""
 
 #: modules/gui/macosx/library/media-source/VLCMediaSource.m:623
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:268
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:266
 msgid "Devices"
 msgstr "裝置"
 
@@ -18131,6 +18131,16 @@ msgstr "串流"
 #, fuzzy
 msgid "Disk"
 msgstr "光碟"
+
+#: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:42
+#, fuzzy
+msgid "Recently added videos"
+msgstr "最近觀看"
+
+#: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:47
+#, fuzzy
+msgid "Recently added music"
+msgstr "最近觀看"
 
 #: modules/gui/macosx/main/VLCApplication.m:120
 msgid "VLC has been moved or renamed"
@@ -18230,7 +18240,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:76
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:416
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:392
 msgid "Display VLC status menu icon"
 msgstr ""
 
@@ -18251,7 +18261,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:82
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:386
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:362
 msgid "Control playback with media keys"
 msgstr ""
 
@@ -18262,7 +18272,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:86
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:460
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:436
 msgid "Use the native fullscreen mode"
 msgstr "使用原生的全螢幕模式"
 
@@ -18274,7 +18284,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:89
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:429
 #: modules/gui/qt/qt.cpp:189
 msgid "Resize interface to the native video size"
 msgstr "縮放介面以符合原生視訊大小"
@@ -18292,7 +18302,7 @@ msgstr ""
 " 預設的情況下，介面將縮放至原生視訊大小。"
 
 #: modules/gui/macosx/main/macosx.m:95
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:428
 #: modules/gui/qt/qt.cpp:279
 msgid "Pause the video playback when minimized"
 msgstr "最小化時暫停視訊播放"
@@ -18330,7 +18340,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:107
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:421
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:397
 msgid "Control external music players"
 msgstr ""
 
@@ -18474,12 +18484,12 @@ msgid "Hide Others"
 msgstr "隱藏其他"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:355
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:484
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:460
 msgid "Show All"
 msgstr "顯示全部"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1137
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
 #: modules/gui/qt/menus/menus.cpp:979
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
@@ -18614,7 +18624,7 @@ msgstr "軌道同步"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:401
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1126
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:920
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
@@ -18708,7 +18718,7 @@ msgid "Fit to Screen"
 msgstr "適應畫面"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:438
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:454
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:430
 msgid "Float on Top"
 msgstr "浮在頂端"
 
@@ -18721,7 +18731,7 @@ msgstr "視訊軌"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:446
 #: modules/gui/macosx/menus/VLCMainMenu.m:447
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:461
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:437
 msgid "Fullscreen Video Device"
 msgstr "全螢幕視訊裝置"
 
@@ -18895,8 +18905,8 @@ msgstr "儲存播放清單"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:552
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:884
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:880
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:406
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:487
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:382
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:463
 #: modules/gui/macosx/preferences/prefs.m:189
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:393
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:503
@@ -18952,12 +18962,12 @@ msgid "Repeat All"
 msgstr "重複全部"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1992
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:770
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:798
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1321
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:746
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:774
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1297
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:1055
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:37
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1389
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1406
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:690
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:66
 msgid "Custom"
@@ -19153,7 +19163,7 @@ msgid "Filter"
 msgstr "過濾器"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:307
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:367
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:343
 #: modules/gui/qt/dialogs/extended/extended.cpp:114
 msgid "Audio Effects"
 msgstr "音訊特效"
@@ -19241,7 +19251,7 @@ msgid "Add"
 msgstr "加入"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:98
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:382
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:358
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:58
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:70
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:80
@@ -19250,7 +19260,7 @@ msgid "Clear"
 msgstr "清除"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:101
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:478
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:454
 #: modules/gui/macosx/windows/addons/VLCAddonsWindowController.m:131
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:72
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:114
@@ -19261,16 +19271,16 @@ msgstr "清除"
 #: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:440
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:179
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:194
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:234
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:247
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:218
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:231
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:352
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:365
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:117
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:110
-#: modules/gui/qt/network/qml/BrowseDeviceView.qml:239
-#: modules/gui/qt/network/qml/BrowseDeviceView.qml:265
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:230
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:256 modules/mux/avi.c:54
+#: modules/gui/qt/network/qml/BrowseDeviceView.qml:241
+#: modules/gui/qt/network/qml/BrowseDeviceView.qml:267
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:232
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:258 modules/mux/avi.c:54
 msgid "Name"
 msgstr "名稱"
 
@@ -19287,7 +19297,7 @@ msgid "Media Information"
 msgstr "媒體資訊"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:163
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:481
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:457
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:62
 msgid "Location"
 msgstr "位置"
@@ -19391,8 +19401,8 @@ msgid "VLC was unable to save the meta data."
 msgstr "VLC 無法儲存中介資料。"
 
 #: modules/gui/macosx/panels/VLCInformationWindowController.m:696
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1229
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1333
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1205
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1309
 msgid "Choose"
 msgstr "選擇"
 
@@ -19800,57 +19810,71 @@ msgstr ""
 msgid "Disc Number"
 msgstr "光碟編號"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:369
+#: modules/gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m:93
+msgid "Unban Folder"
+msgstr ""
+
+#: modules/gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m:93
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:451
+msgid "Ban Folder"
+msgstr ""
+
+#: modules/gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m:99
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
+msgid "Add Folder"
+msgstr "加入資料夾"
+
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:345
 msgid "General Audio"
 msgstr "一般音訊"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:370
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:346
 msgid "Preferred Audio language"
 msgstr "偏好的音訊語言"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:371
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:347
 msgid "Enable Last.fm submissions"
 msgstr "啟用 Last.fm 遞交"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:374
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:350
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Visualization"
 msgstr "視覺效果"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:375
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:351
 msgid "Keep audio level between sessions"
 msgstr "記憶音量"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:376
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:352
 msgid "Always reset audio start level to:"
 msgstr "啟動時重設音量至："
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:379
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:355
 msgid "Change Hotkey"
 msgstr "變更熱鍵"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:383
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:359
 msgid "Double-click an action to change the associated hotkey:"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:384
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:360
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1306
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:74
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:599
 msgid "Action"
 msgstr "動作"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:385
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:361
 msgid "Shortcut"
 msgstr "捷徑"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:389
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:365
 msgid "Record directory or filename"
 msgstr "錄製檔案的存放目錄或者檔案名稱"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:390
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:464
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:366
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:440
 #: modules/gui/macosx/preferences/prefs_widgets.m:948
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:213
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:328
@@ -19863,33 +19887,33 @@ msgstr "錄製檔案的存放目錄或者檔案名稱"
 msgid "Browse..."
 msgstr "瀏覽..."
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:391
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:367
 msgid "Directory or filename where the records will be stored"
 msgstr "錄製檔案的存放目錄或者檔案名稱"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:392
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:368
 msgid "Repair AVI Files"
 msgstr "修復 AVI 檔案"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:393
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:369
 msgid "Default Caching Level"
 msgstr "預設快取等級"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:394
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:370
 msgid "Caching"
 msgstr "快取"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:395
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:371
 msgid ""
 "Use the complete preferences to configure custom caching values for each "
 "access module."
 msgstr "使用完整的偏好設定以自訂每個可用模組的快取值。"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:396
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:372
 msgid "Codecs / Muxers"
 msgstr "解編碼器 / 多工器"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:397
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:373
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:208
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
@@ -19900,249 +19924,244 @@ msgstr "解編碼器 / 多工器"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:31
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:36
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:297
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:295
 #: modules/gui/qt/player/qml/CompactLibrary.qml:81
 #: modules/gui/qt/player/qml/CompactLibrary.qml:295
 msgid "Network"
 msgstr "網路"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:400
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:376
 msgid "Edit default application settings for network protocols"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:404
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:380
 msgid "Open network streams using the following protocols"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:405
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:381
 msgid "Note that these are system-wide settings."
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:410
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:386
 #, fuzzy
 msgid "General settings"
 msgstr "一般音訊設定"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:415
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:391
 msgid "Display end of playback view"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:417
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:393
 msgid "Display album track numbers in play queue"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:419
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:395
 #, fuzzy
 msgid "Playback behaviour"
 msgstr "播放失敗"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:420
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:396
 msgid "Enable notifications on play queue item change"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:423
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:399
 msgid "Privacy / Network Interaction"
 msgstr "隱私 / 網路互動"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:425
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:401
 msgid "Automatically check for updates"
 msgstr "自動檢查更新"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:428
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:404
 #, fuzzy
 msgid "HTTP web interface"
 msgstr "Qt 介面"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:429
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:405
 #, fuzzy
 msgid "Enable HTTP web interface"
 msgstr "可換面板介面"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:433
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:409
 msgid "Default Encoding"
 msgstr "預設編碼"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:434
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:410
 msgid "Display Settings"
 msgstr "顯示設定"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:435
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:411
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:218
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:325
 msgid "Choose..."
 msgstr "選擇..."
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:436
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:412
 msgid "Font color"
 msgstr "字型顏色"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:437
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:413
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 msgid "Font size"
 msgstr "字型大小"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:438
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:414
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
 #: modules/spu/marq.c:139 modules/spu/rss.c:188
 #: modules/text_renderer/freetype/freetype.c:59
 msgid "Font"
 msgstr "字型"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:439
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:415
 msgid "Subtitle languages"
 msgstr "字幕語言"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:440
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:416
 msgid "Preferred subtitle language"
 msgstr "偏好的字幕語言"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:442
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:418
 msgid "Enable OSD"
 msgstr "啟用 OSD"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:444
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:420
 #: modules/text_renderer/freetype/freetype.c:75
 msgid "Force bold"
 msgstr "強制使用粗體"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:445
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:421
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:262
 #: modules/text_renderer/freetype/freetype.c:84
 #: modules/video_filter/sam3.cpp:138
 msgid "Outline color"
 msgstr "輪廓顏色"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:446
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:422
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 #: modules/text_renderer/freetype/freetype.c:85
 #: modules/video_filter/sam3.cpp:136
 msgid "Outline thickness"
 msgstr "輪廓厚度"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:450
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:426
 #: modules/stream_out/display.c:56
 msgid "Display"
 msgstr "顯示"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:451
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:427
 msgid "Show video within the main window"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:457
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:433
 #, fuzzy
 msgid "Fullscreen settings"
 msgstr "全螢幕"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:458
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:434
 #, fuzzy
 msgid "Start in fullscreen"
 msgstr "開始播放視訊時進入全螢幕模式"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:459
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:435
 msgid "Black screens in Fullscreen mode"
 msgstr "全螢幕模式下讓螢幕變黑"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:463
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:439
 msgid "Video snapshots"
 msgstr "視訊抓圖"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:465
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:441
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:25
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:26
 #: modules/meta_engine/folder.c:67
 msgid "Folder"
 msgstr "資料夾"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:466
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:442
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 msgid "Format"
 msgstr "格式"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:467
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:443
 msgid "Prefix"
 msgstr "前置檔名"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:468
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:444
 msgid "Sequential numbering"
 msgstr "循序編號"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:474
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:450
 msgid "Add Folder..."
 msgstr "加入資料夾..."
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:475
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1598
-msgid "Ban Folder"
-msgstr ""
-
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:476
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:452
 msgid "Remove Folder"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:477
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:453
 msgid "Reload Folder"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:479
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:455
 msgid "Present"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:480
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:456
 msgid "Banned"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:486
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:462
 #: modules/gui/macosx/preferences/prefs.m:191
 msgid "Reset All"
 msgstr "全部重設"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:488
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:464
 #: modules/gui/macosx/preferences/prefs.m:188
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:56
 #: modules/gui/qt/dialogs/toolbar/qml/PlayerMenu.qml:42
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:638
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:614
 msgid ""
 "Media files cannot be resumed because keeping recent media items is disabled."
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:660
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:636
 msgid "Last check on: %@"
 msgstr "上次檢查時間："
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:662
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:638
 msgid "No check was performed yet."
 msgstr "尚未檢查。"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:772
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:748
 #, fuzzy
 msgid "Lowest Latency"
 msgstr "最低延遲"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:774
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:750
 #, fuzzy
 msgid "Low Latency"
 msgstr "低延遲"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:778
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:754
 #, fuzzy
 msgid "Higher Latency"
 msgstr "較高延遲"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:780
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:756
 #, fuzzy
 msgid "Highest Latency"
 msgstr "較高延遲"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:904
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:880
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:394
 msgid "Reset Preferences"
 msgstr "重置偏好設定"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:905
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:881
 msgid ""
 "This will reset VLC media player's preferences.\n"
 "\n"
@@ -20155,50 +20174,41 @@ msgid ""
 "Are you sure you want to continue?"
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:912
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:888
 msgid "Continue"
 msgstr "繼續"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1158
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1134
 msgid ""
 "This setting cannot be changed because the native fullscreen mode is enabled."
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1227
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1203
 msgid "Choose the folder to save your video snapshots to."
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1331
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1307
 msgid "Choose the directory or filename where the records will be stored."
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1441
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1417
 msgid ""
 "Press new keys for\n"
 "\"%@\""
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1516
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1492
 msgid "Invalid combination"
 msgstr "無效的組合"
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1517
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1493
 msgid "Regrettably, these keys cannot be assigned as hotkey shortcuts."
 msgstr ""
 
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1527
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1531
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1503
+#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1507
 msgid "This combination is already taken by \"%@\"."
 msgstr ""
-
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1598
-msgid "Unban Folder"
-msgstr ""
-
-#: modules/gui/macosx/preferences/VLCSimplePrefsController.m:1604
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
-msgid "Add Folder"
-msgstr "加入資料夾"
 
 #: modules/gui/macosx/preferences/prefs.m:192
 msgid "Show Basic"
@@ -21609,7 +21619,7 @@ msgid "Videos"
 msgstr "影片"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:212
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:210
 msgid "Folders"
 msgstr "資料夾"
 
@@ -22788,7 +22798,7 @@ msgstr "兩者都保留在「設定」中：更新位於「一般」，字幕位
 #: modules/gui/qt/dialogs/sout/sout.cpp:95
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:200
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:87
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:347
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:349
 #: modules/gui/qt/player/qml/controlbarcontrols/BackButton.qml:30
 msgid "Back"
 msgstr "返回"
@@ -23501,7 +23511,7 @@ msgid "Lowest"
 msgstr "最低"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1388
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1405
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:134
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 #: modules/video_filter/deinterlace/algo_phosphor.h:55
@@ -23873,169 +23883,169 @@ msgstr "快速解碼"
 msgid "Zero latency"
 msgstr "零延遲"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:949
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:966
 msgid "%1: this value can not be used."
 msgstr "%1：無法使用此值。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1012
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1041
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1029
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
 msgid "%1 is not available in this VLC installation."
 msgstr "此 VLC 安裝版本中沒有 %1。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1026
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
 msgid "This setting"
 msgstr "此設定"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1036
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
 msgid "%1: choose a folder of this computer."
 msgstr "%1：請選擇此電腦上的資料夾。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1065
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
 msgid "Select a category to reset."
 msgstr "請選擇要重設的類別。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1127
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "重複目前項目 (單一) 或整個播放佇列 (全部)。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1128
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
 msgid "One"
 msgstr "單一"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1135
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "When playback finishes"
 msgstr "播放結束時"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1136
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1153
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "在播放佇列結束時停止，或結束 VLC。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1161
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Use a custom skin"
 msgstr "使用自訂面板"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1162
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "以下方選擇的面板啟動 VLC，而不使用此介面。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1161
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Remember the playback position"
 msgstr "記住播放位置"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1162
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
 msgid "Lets VLC continue the media where you left off."
 msgstr "讓 VLC 從您上次離開的地方繼續播放媒體。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1176
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Reverse scroll direction"
 msgstr "反轉捲動方向"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1177
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1194
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "用於跳轉的滾輪向前轉時會向後跳轉。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1192
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Web remote control"
 msgstr "網頁遙控"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1210
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr "讓網頁瀏覽器控制 VLC。請在「進階選項」中設定其密碼。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1211
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Video post-processing"
 msgstr "視訊後處理"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1212
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr "改善編碼品質不佳的影片畫面，但會耗用處理效能。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1261
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Visualization size"
 msgstr "視覺效果大小"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1262
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1279
 msgid "The size the visualizations are drawn at."
 msgstr "繪製視覺效果時使用的大小。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1263
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1280
 msgid "Match window"
 msgstr "符合視窗"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1304
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Seek precisely"
 msgstr "精確跳轉"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1322
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr "跳轉到所要求的確切時間，比跳轉到最近的關鍵影格慢。"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1388
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1405
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:691
 msgid "Lowest latency"
 msgstr "最低延遲"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1406
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1423
 msgid "From the file only"
 msgstr "僅來自檔案"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1408
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1425
 msgid "From the file and the internet"
 msgstr "來自檔案與網際網路"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1425
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1442
 msgid "Box"
 msgstr "方框"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1485
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
 msgid "Above normal"
 msgstr "高於標準"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1486
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
 msgid "Below normal"
 msgstr "低於標準"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1486
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
 msgid "Idle"
 msgstr "閒置"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1605
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
 msgid "Current screen"
 msgstr "目前的螢幕"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1610
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
 msgid "Screen %1 (%2)"
 msgstr "螢幕 %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1616
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1632
 msgid "Screen %1"
 msgstr "螢幕 %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1625
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 msgid "Any title"
 msgstr "任何名稱"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1625
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
 msgid "Contains title"
 msgstr "包含片名"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
 msgid "Title with extra characters"
 msgstr "片名加上額外字元"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
 msgid "Exact title match"
 msgstr "完全符合片名"
 
@@ -25565,7 +25575,7 @@ msgid "Audio delay"
 msgstr "音訊延遲"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/player/qml/Player.qml:926
+#: modules/gui/qt/player/qml/PlayerView.qml:926
 #: modules/gui/qt/player/qml/AudioContent.qml:462
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
@@ -26912,7 +26922,7 @@ msgstr "新增連結"
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:244
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:508
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
 #: modules/gui/qt/player/qml/CompactLibrary.qml:404
 msgid "Favorites"
 msgstr "我的最愛"
@@ -27421,7 +27431,7 @@ msgstr "專輯"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:207
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:46
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:258
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:242
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:28
 msgid "Tracks"
 msgstr "曲目"
@@ -27921,19 +27931,19 @@ msgid "Continue Watching"
 msgstr "繼續觀看"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:589
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:593
 #: modules/gui/qt/player/qml/CompactLibrary.qml:405
 msgid "New Videos"
 msgstr "新影片"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:310
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:312
 #: modules/gui/qt/player/qml/CompactLibrary.qml:402
 msgid "Listen Again"
 msgstr "再聽一次"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:671
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:677
 #: modules/gui/qt/player/qml/CompactLibrary.qml:406
 msgid "New Music"
 msgstr "新音樂"
@@ -27952,7 +27962,7 @@ msgstr "新音樂"
 msgid "Alphabetic"
 msgstr "字母順序"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:381
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:383
 #: modules/gui/qt/player/qml/CompactLibrary.qml:403
 msgid "Frequently Visited Folders"
 msgstr "常用資料夾"
@@ -27975,7 +27985,7 @@ msgstr ""
 "找不到媒體\n"
 "請嘗試新增來源"
 
-#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:299
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
 msgid ""
 "No albums found\n"
 "Please try adding sources"
@@ -28036,17 +28046,17 @@ msgstr "專輯名稱"
 msgid "Music view"
 msgstr "音樂檢視"
 
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:196
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "未知的類型"
 
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:203
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "%1 首曲目"
 
-#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:313
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
 msgid ""
 "No genres found\n"
 "Please try adding sources"
@@ -28143,12 +28153,12 @@ msgid "Create a playlist with files or add media from the library"
 msgstr "使用檔案建立播放清單，或從媒體櫃加入媒體"
 
 #: modules/gui/qt/medialibrary/qml/UrlListDisplay.qml:58
-#: modules/gui/qt/network/qml/BrowseDeviceView.qml:273
+#: modules/gui/qt/network/qml/BrowseDeviceView.qml:275
 #: modules/gui/qt/network/qml/BrowseDisplay.qml:109
 #: modules/gui/qt/network/qml/BrowseDisplay.qml:148
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:50
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:78
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:264
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "網址"
 
@@ -28156,7 +28166,7 @@ msgstr "網址"
 msgid "Last played date"
 msgstr "上次播放日期"
 
-#: modules/gui/qt/medialibrary/qml/VideoAll.qml:255
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
 msgid ""
 "No video found\n"
 "Please try adding sources"
@@ -29137,8 +29147,8 @@ msgstr "此附加元件為手動安裝。VLC 無法自行管理。"
 msgid "Documents"
 msgstr "文件"
 
-#: modules/gui/qt/network/qml/BrowseDeviceView.qml:252
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:243
+#: modules/gui/qt/network/qml/BrowseDeviceView.qml:254
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:245
 #: modules/gui/qt/player/qml/AudioContent.qml:241
 #: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:181
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:189
@@ -29154,7 +29164,7 @@ msgstr "瀏覽檢視"
 msgid "No network shares found"
 msgstr "找不到網路共用"
 
-#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:239
+#: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:237
 msgid "Computer"
 msgstr "電腦"
 
@@ -29172,7 +29182,7 @@ msgstr "檔案修改時間"
 msgid "Unknown Share"
 msgstr "未知的共用"
 
-#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:342
+#: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:344
 msgid "Nothing to see here, go back."
 msgstr "這裡沒有內容，請返回。"
 
@@ -29530,76 +29540,76 @@ msgstr "4.00"
 msgid "Presets:"
 msgstr "預置："
 
-#: modules/gui/qt/player/qml/Player.qml:129
+#: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "播放器"
 
-#: modules/gui/qt/player/qml/Player.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:965
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "字幕大小 %1%"
 
-#: modules/gui/qt/player/qml/Player.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1120
 msgid "Subtitles on the TV: %1"
 msgstr "電視字幕：%1"
 
-#: modules/gui/qt/player/qml/Player.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1120
 msgid "Subtitles off on the TV"
 msgstr "電視字幕已關閉"
 
-#: modules/gui/qt/player/qml/Player.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1231
 msgid "Not playing on %1"
 msgstr "未在 %1 上播放"
 
-#: modules/gui/qt/player/qml/Player.qml:1233
-#: modules/gui/qt/player/qml/Player.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
+#: modules/gui/qt/player/qml/PlayerView.qml:1360
 msgid "Connecting to %1…"
 msgstr "正在連線到 %1…"
 
-#: modules/gui/qt/player/qml/Player.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
 msgid "Playing on %1"
 msgstr "正在 %1 上播放"
 
-#: modules/gui/qt/player/qml/Player.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1236
 msgid "The sound plays on %1"
 msgstr "聲音在 %1 上播放"
 
-#: modules/gui/qt/player/qml/Player.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1261
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "在這裡暫停、跳轉及變更字幕：電視會同步跟進。"
 
-#: modules/gui/qt/player/qml/Player.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1278
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr "Windows 防火牆不允許 %1 連線到這部電腦來讀取媒體。"
 
-#: modules/gui/qt/player/qml/Player.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1290
 msgid "Waiting for Windows…"
 msgstr "正在等候 Windows…"
 
-#: modules/gui/qt/player/qml/Player.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1291
 msgid "Allow on public networks too"
 msgstr "也允許在公用網路上"
 
-#: modules/gui/qt/player/qml/Player.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Allow on private networks"
 msgstr "允許在私人網路上"
 
-#: modules/gui/qt/player/qml/Player.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1304
 msgid "Try again"
 msgstr "再試一次"
 
-#: modules/gui/qt/player/qml/Player.qml:1309
-#: modules/gui/qt/player/qml/Player.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1309
+#: modules/gui/qt/player/qml/PlayerView.qml:1319
 msgid "Play here"
 msgstr "在這裡播放"
 
-#: modules/gui/qt/player/qml/Player.qml:1319
-#: modules/gui/qt/player/qml/Player.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1370
 msgid "Stop casting"
 msgstr "停止投放"
 
-#: modules/gui/qt/player/qml/Player.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1361
 msgid "Also on %1"
 msgstr "同時在 %1 上"
 
@@ -32791,23 +32801,28 @@ msgstr "重新建立"
 msgid "Media database corrupted"
 msgstr "媒體資料庫已損毀"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2750
+#: modules/misc/medialibrary/medialibrary.cpp:2753
 msgid "Folders discovered by the media library"
 msgstr "媒體櫃探索的資料夾"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2751
+#: modules/misc/medialibrary/medialibrary.cpp:2754
 msgid "Semicolon separated list of folders to discover media from"
 msgstr "要從中探索媒體的資料夾清單，以分號分隔"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2754
+#: modules/misc/medialibrary/medialibrary.cpp:2757
 msgid "Extra verbose media library logs"
 msgstr "更詳細的媒體櫃記錄"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2757
+#: modules/misc/medialibrary/medialibrary.cpp:2758
+#, fuzzy
+msgid "Discover network shares"
+msgstr "找不到網路共用"
+
+#: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
 msgstr "媒體櫃"
 
-#: modules/misc/medialibrary/medialibrary.cpp:2758
+#: modules/misc/medialibrary/medialibrary.cpp:2762
 msgid "Organize your media"
 msgstr "整理您的媒體"
 

@@ -12,6 +12,8 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-06):
 
+- 🟢 **VideoLAN merged to 2b22905a8a** (2026-11-07): 2 commits, packaging only (the NSIS installer's architecture,
+  a Qt contrib include); nothing of the built code changed.
 - 🟢 **Memory checked** (2026-11-07, toward 0.5.5): soaks on 0.5.4 (20 min mixed, 45 min minimized, seek-only,
   next-only, 25 min fast = 1,500 changes): threads, handles, GDI flat, clean exits; seeking flat; media changes warm
   up ~10 MB in the first ~100, then creep. A heap walk over 600 changes (after 300): ~2 KB/change in the NVIDIA driver

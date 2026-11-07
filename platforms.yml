@@ -9,6 +9,9 @@
 # status: released | beta | in-progress | planned | research | later
 # version, date: the latest published version and its day (none yet: leave out)
 # next: the version being prepared
+# full: the last full release (installers and every package); an update release
+#   (docs/RELEASE-CHECKLIST.md) publishes only the portable copies and what the
+#   apps update from, so a download marked "full_only: yes" links to that one
 # downloads: the files of a release; {version} is replaced, and the link is
 #   https://github.com/<repository>/releases/download/v<version>/<file>
 # os: what the website matches the visitor's system with
@@ -27,6 +30,7 @@ platforms:
     version: 0.5.4
     date: 2026-11-06
     next: 0.5.5
+    full: 0.5.4
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign
@@ -35,6 +39,7 @@ platforms:
     downloads:
       - label: Installer
         file: vlc-redesign-{version}-win64-setup.exe
+        full_only: yes
       - label: Portable
         file: vlc-redesign-{version}-win64.zip
 
@@ -45,6 +50,7 @@ platforms:
     version: 0.5.4
     date: 2026-11-06
     next: 0.5.5
+    full: 0.5.4
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
@@ -55,16 +61,20 @@ platforms:
         file: vlc-redesign-{version}-x86_64.AppImage
       - label: deb
         file: vlc-redesign_{version}_amd64.deb
+        full_only: yes
       - label: rpm
         file: vlc-redesign-{version}-1.x86_64.rpm
+        full_only: yes
       - label: tar.xz
         file: vlc-redesign-{version}-linux-x86_64.tar.xz
       - label: AppImage ARM64
         file: vlc-redesign-{version}-aarch64.AppImage
       - label: deb ARM64
         file: vlc-redesign_{version}_arm64.deb
+        full_only: yes
       - label: rpm ARM64
         file: vlc-redesign-{version}-1.aarch64.rpm
+        full_only: yes
 
   - id: macos
     name: macOS
@@ -73,6 +83,7 @@ platforms:
     version: 0.5.4
     date: 2026-11-06
     next: 0.5.5
+    full: 0.5.4
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
@@ -91,6 +102,7 @@ platforms:
     version: 0.5.4
     date: 2026-11-06
     next: 0.5.5
+    full: 0.5.4
     os: windows-arm64
     requires: Windows 11 on ARM64
     repository: KuchiSofts/vlc-redesign
@@ -99,6 +111,7 @@ platforms:
     downloads:
       - label: Installer
         file: vlc-redesign-{version}-winarm64-setup.exe
+        full_only: yes
       - label: Portable
         file: vlc-redesign-{version}-winarm64.zip
 
@@ -109,6 +122,7 @@ platforms:
     version: 0.5.4
     date: 2026-11-06
     next: 0.5.5
+    full: 0.5.4
     os: android
     requires: Android 8.0 or later
     repository: KuchiSofts/vlc-redesign
@@ -125,6 +139,7 @@ platforms:
     version: 0.5.4
     date: 2026-11-06
     next: 0.5.5
+    full: 0.5.4
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode
     repository: KuchiSofts/vlc-redesign
@@ -133,6 +148,7 @@ platforms:
     downloads:
       - label: Source and guide
         file: Redesign-Player-for-TV-{version}-source.zip
+        full_only: yes
 
   - id: ios
     name: iPhone, iPad, Apple TV

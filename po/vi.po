@@ -29730,6 +29730,14 @@ msgstr "Đang tìm trên OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Tìm trên OpenSubtitles để xem các tập tin phụ đề."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Chưa có khóa? Hoàn toàn miễn phí: đăng ký trên opensubtitles.com, mở \"API consumers\", chọn \"New consumer\", đặt tên cho nó (VLC Redesign) rồi sao chép khóa API của nó vào đây, cùng với tên người dùng và mật khẩu của tài khoản bạn."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Mở \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Đang xử lý track âm thanh…"

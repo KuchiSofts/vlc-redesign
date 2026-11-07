@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/yaron/vlc-"
@@ -7266,6 +7266,14 @@ msgstr "Søker i OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Søk i OpenSubtitles for å se undertekstfilene."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Har du ingen nøkkel ennå? Det er gratis: registrer deg på opensubtitles.com, åpne «API consumers», velg «New consumer», gi den et navn (VLC Redesign) og kopier API-nøkkelen hit, sammen med brukernavnet og passordet til kontoen din."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Åpne «API consumers»"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Behandler lydspor…"
@@ -7865,6 +7873,11 @@ msgstr "DVD-navigasjon"
 msgid "Close navigation"
 msgstr "Lukk navigasjonen"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× hastighet"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4,00"
@@ -7876,10 +7889,6 @@ msgstr "Forhåndsinnstillinger:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Spiller"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× hastighet"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

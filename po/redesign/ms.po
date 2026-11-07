@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7237,6 +7237,14 @@ msgstr "Mencari di OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Cari di OpenSubtitles untuk melihat fail sarikata."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Belum ada kunci? Ia percuma: daftar di opensubtitles.com, buka \"API consumers\", pilih \"New consumer\", berikan nama (VLC Redesign) dan salin kunci API-nya ke sini, bersama nama pengguna dan kata laluan akaun anda."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Buka \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Memproses trek audio…"
@@ -7837,6 +7845,11 @@ msgstr "Navigasi DVD"
 msgid "Close navigation"
 msgstr "Tutup navigasi"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Kelajuan 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7848,10 +7861,6 @@ msgstr "Praset:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Pemain"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Kelajuan 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

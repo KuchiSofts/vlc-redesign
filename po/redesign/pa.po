@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Panjabi (Punjabi) (http://www.transifex.com/yaron/vlc-trans/"
@@ -7142,6 +7142,14 @@ msgstr "OpenSubtitles ਵਿੱਚ ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "ਸਬ-ਟਾਈਟਲ ਫਾਇਲਾਂ ਵੇਖਣ ਲਈ OpenSubtitles ਵਿੱਚ ਖੋਜੋ।"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "ਹਾਲੇ ਕੁੰਜੀ ਨਹੀਂ ਹੈ? ਇਹ ਮੁਫ਼ਤ ਹੈ: opensubtitles.com ਉੱਤੇ ਸਾਈਨ ਅੱਪ ਕਰੋ, \"API consumers\" ਖੋਲ੍ਹੋ, \"New consumer\" ਚੁਣੋ, ਇਸ ਨੂੰ ਨਾਂ ਦਿਓ (VLC Redesign) ਅਤੇ ਇਸ ਦੀ API ਕੁੰਜੀ ਆਪਣੇ ਖਾਤੇ ਦੇ ਵਰਤੋਂਕਾਰ ਨਾਂ ਅਤੇ ਪਾਸਵਰਡ ਸਮੇਤ ਇੱਥੇ ਕਾਪੀ ਕਰੋ।"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" ਖੋਲ੍ਹੋ"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "ਆਡੀਓ ਟਰੈਕਾਂ ਉੱਤੇ ਕੰਮ ਜਾਰੀ ਹੈ…"
@@ -7735,6 +7743,11 @@ msgstr "DVD ਨੈਵੀਗੇਸ਼ਨ"
 msgid "Close navigation"
 msgstr "ਨੈਵੀਗੇਸ਼ਨ ਬੰਦ ਕਰੋ"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× ਗਤੀ"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7746,10 +7759,6 @@ msgstr "ਪ੍ਰੀ-ਸੈੱਟ:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "ਪਲੇਅਰ"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× ਗਤੀ"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

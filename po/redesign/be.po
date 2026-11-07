@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2014-03-09 18:41+0000\n"
 "Last-Translator: nesterow <nestserau@me.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/projects/p/vlc-trans/"
@@ -7287,6 +7287,14 @@ msgstr "Пошук у OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Выканайце пошук у OpenSubtitles, каб убачыць файлы субтытраў."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Яшчэ няма ключа? Гэта бясплатна: зарэгіструйцеся на opensubtitles.com, адкрыйце «API consumers», выберыце «New consumer», дайце яму назву (VLC Redesign) і скапіруйце сюды яго ключ API разам з імем карыстальніка і паролем вашага ўліковага запісу."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Адкрыць «API consumers»"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Апрацоўка аўдыёдарожак…"
@@ -7884,6 +7892,11 @@ msgstr "Навігацыя DVD"
 msgid "Close navigation"
 msgstr "Закрыць навігацыю"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Хуткасць 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4,00"
@@ -7895,10 +7908,6 @@ msgstr "Нарыхтоўкі:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Прайгравальнік"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Хуткасць 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

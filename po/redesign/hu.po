@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-16 02:54+0100\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7301,6 +7301,14 @@ msgstr "Keresés az OpenSubtitles-en…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "A feliratfájlok megtekintéséhez keressen az OpenSubtitles-en."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Még nincs kulcsa? Ingyenes: regisztráljon az opensubtitles.com oldalon, nyissa meg az „API consumers” oldalt, válassza a „New consumer” lehetőséget, adjon neki nevet (VLC Redesign), majd másolja ide a kapott API-kulcsot a fiókja felhasználónevével és jelszavával együtt."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Az „API consumers” oldal megnyitása"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Hangsávok feldolgozása…"
@@ -7901,6 +7909,11 @@ msgstr "DVD-navigáció"
 msgid "Close navigation"
 msgstr "Navigáció bezárása"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× sebesség"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4,00"
@@ -7912,10 +7925,6 @@ msgstr "Előbeállítások:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Lejátszó"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× sebesség"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

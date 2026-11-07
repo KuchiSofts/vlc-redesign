@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2014-11-02 18:53+0000\n"
 "Last-Translator: Gonçalo Cordeiro <gzcordeiro@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/vlc-trans/"
@@ -7291,6 +7291,14 @@ msgstr "Buscando en OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Busque en OpenSubtitles para ver os ficheiros de subtítulos."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Aínda non ten chave? É gratuíta: rexístrese en opensubtitles.com, abra «API consumers», escolla «New consumer», póñalle un nome (VLC Redesign) e copie aquí a súa chave da API, xunto co nome de usuario e o contrasinal da súa conta."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Abrir «API consumers»"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Procesando as pistas de audio…"
@@ -7894,6 +7902,11 @@ msgstr "Navegación do DVD"
 msgid "Close navigation"
 msgstr "Pechar a navegación"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Velocidade 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7905,10 +7918,6 @@ msgstr "Preconfiguracións:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Reprodutor"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Velocidade 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

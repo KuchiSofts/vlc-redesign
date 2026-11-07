@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Sinhala (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7147,6 +7147,14 @@ msgstr "OpenSubtitles සොයමින්…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "උපසිරැසි ගොනු බැලීමට OpenSubtitles සොයන්න."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "තවමත් යතුරක් නැද්ද? එය නොමිලේ: opensubtitles.com හි ලියාපදිංචි වන්න, \"API consumers\" විවෘත කරන්න, \"New consumer\" තෝරන්න, එයට නමක් දෙන්න (VLC Redesign) සහ එහි API යතුර ඔබේ ගිණුමේ පරිශීලක නාමය සහ මුරපදය සමඟ මෙහි පිටපත් කරන්න."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" විවෘත කරන්න"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "ශ්‍රව්‍ය පථ සකසමින්…"
@@ -7743,6 +7751,11 @@ msgstr "DVD සංචාලනය"
 msgid "Close navigation"
 msgstr "සංචාලනය වසන්න"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× වේගය"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7754,10 +7767,6 @@ msgstr "පෙරසැකසුම්:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "ධාවකය"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× වේගය"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

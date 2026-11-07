@@ -22,30 +22,24 @@ Updated as the work moves (last: 2026-11-06).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.4 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.4 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.4 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.5.4 | ██████████ 100 % | — 1:1 with the Figma frames, with a remote; tests on more TV boxes |
-| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.5.5 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.5.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.5.5 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.5 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.5.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.5.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.5.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.5 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.5 and after
+## Next: 0.5.6 and after
 
-**0.5.5** is a release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.5.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 📋 Linux: the first update of the AppImage from the app, checked from 0.5.3 to 0.5.4 on real desktops
+- 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
-- ✅ macOS: the app updates itself (the release's disk image, checked against the signed checksums, swapped in on
-  quit); from 0.5.5
-- ✅ Memory: long soaks and a heap walk; the library no longer rebuilds the time zone per item
-- ✅ Translations: every catalog on the current texts again, Weblate offering the newest ones in every language
-- 📋 Android: an upstream merge before the next Android release (the version code's release counter is at its last
-  step on the current base)
 
 After it:
 
@@ -81,7 +75,8 @@ Android and Swift files made from them and a check on every pull request that th
 **macOS** (Apple Silicon and Intel, since 0.4.0)
 
 - ✅ A disk image for each, built and tested by GitHub's Macs, signed ad hoc (macOS asks once to open it)
-- 📋 Tests on a Mac by hand; signing by Apple (it needs a developer account); an updater in the app
+- ✅ Updates itself from the app (0.5.5)
+- 📋 Tests on a Mac by hand; signing by Apple (it needs a developer account)
 
 **Android** (phones and tablets since 0.5.0, TV since 0.5.3)
 
@@ -106,6 +101,18 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.5.5 (2026-11-07)
+
+**The last full release before update releases**, with macOS updating itself:
+
+- ✅ macOS: the app updates itself (the release's disk image, checked against the signed checksums)
+- ✅ Releases: from 0.5.6 a version of fixes is an update release (the portable copies and what the apps
+  update from); installers and packages come with the big changes
+- ✅ Windows: the library's lists and the programme guide no longer copy the time zone per item
+- ✅ Android TV: lighter (the mini player and the header no longer work in the background); Android on
+  VideoLAN's latest, with a new version code
+- ✅ Translations: every catalog on the current texts; VideoLAN master merged to `ad11e4bec1`
 
 ### 0.5.4 (2026-11-06)
 

@@ -288,11 +288,12 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             m_mainCtx->wheelKeyAction(vlcKey, m_wheelPosition, true);
     });
 
+    m_player = THEMIM;
     m_spaceHoldTimer.setSingleShot(true);
     m_spaceHoldTimer.setInterval(PlayerController::SpeedHoldDelay);
     connect(&m_spaceHoldTimer, &QTimer::timeout, this, [this]() {
         if (m_spaceTapPending && canTakeSpace()
-            && THEMIM->beginSpeedHold(PlayerController::KeyboardSpeedHold))
+            && m_player && m_player->beginSpeedHold(PlayerController::KeyboardSpeedHold))
             m_spaceTapPending = false;
     });
     connect(THEMIM, &PlayerController::inputChanged, this, &InterfaceWindowHandler::cancelSpaceHold);
@@ -819,14 +820,16 @@ bool InterfaceWindowHandler::canTakeSpace() const
         && (m_mainCtx->preferHotkeys() || m_mainCtx->isMinimalView())
         && !focusedItemTakesKeys()
         && !m_mainCtx->keyGoesBeforeHotkeys(Qt::Key_Space, Qt::NoModifier)
-        && THEMIM->canHoldSpeed();
+        && m_player && m_player->canHoldSpeed();
 }
 
 void InterfaceWindowHandler::cancelSpaceHold()
 {
     m_spaceHoldTimer.stop();
     m_spaceTapPending = false;
-    THEMIM->endSpeedHold(PlayerController::KeyboardSpeedHold);
+    // (from the destructor and the window's signals as VLC quits: the player may be gone)
+    if (m_player)
+        m_player->endSpeedHold(PlayerController::KeyboardSpeedHold);
 }
 
 bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const

@@ -753,7 +753,8 @@ bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const
 
     // NOTE: We have to make sure tab and backtab are never used as hotkeys. When browsing the
     //       MediaLibrary, we let the view handle the navigation keys.
-    if (key == Qt::Key_Tab || key == Qt::Key_Backtab || m_mainCtx->preferHotkeys() == false)
+    if (key == Qt::Key_Tab || key == Qt::Key_Backtab
+        || (!m_mainCtx->preferHotkeys() && !m_mainCtx->isMinimalView()))
     {
         return false;
     }

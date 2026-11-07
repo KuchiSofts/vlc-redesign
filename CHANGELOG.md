@@ -19,6 +19,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
 
+### Fixed
+
+- In Hide UI, pressing Space toggles playback once, and double-clicking the video respects the player's double-click setting.
+
 ## [0.5.6] · 2026-11-07
 
 An update release: the apps update themselves to it, and the Windows installers come with it from now on.

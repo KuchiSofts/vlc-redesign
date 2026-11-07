@@ -22,6 +22,7 @@
 #include <QMutex>
 #include <QRunnable>
 #include <QPointer>
+#include <QTimer>
 #include "qt.hpp"
 #include "util/vlchotkeyconverter.hpp"
 
@@ -32,9 +33,11 @@ extern "C" {
 }
 
 Q_MOC_INCLUDE( "maininterface/mainctx.hpp")
+Q_MOC_INCLUDE( "player/player_controller.hpp")
 
 class MainCtx;
 class VideoSurface;
+class PlayerController;
 
 class VideoSurfaceProvider : public QObject
 {
@@ -93,12 +96,16 @@ class VideoSurface : public ViewBlockingRectangle
     // "Double click on the video: Nothing" of the settings: a double click
     // is then a second click
     Q_PROPERTY(bool doubleClickEnabled MEMBER m_doubleClickEnabled NOTIFY doubleClickEnabledChanged FINAL)
+    Q_PROPERTY(PlayerController* holdSpeedPlayer READ holdSpeedPlayer WRITE setHoldSpeedPlayer NOTIFY holdSpeedPlayerChanged FINAL)
 
 public:
     VideoSurface( QQuickItem* parent = nullptr );
+    ~VideoSurface() override;
 
     VideoSurfaceProvider* videoSurfaceProvider() const { return m_provider; };
     void setVideoSurfaceProvider(VideoSurfaceProvider *newVideoSurfaceProvider);
+    PlayerController* holdSpeedPlayer() const;
+    void setHoldSpeedPlayer(PlayerController *player);
 
 protected:
     QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *) override;
@@ -110,6 +117,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void hoverMoveEvent(QHoverEvent *event) override;
     void mouseDoubleClickEvent(QMouseEvent *event) override;
+    void mouseUngrabEvent() override;
     void keyPressEvent(QKeyEvent *event) override;
 #if QT_CONFIG(wheelevent)
     void wheelEvent(QWheelEvent *event) override;
@@ -132,11 +140,19 @@ signals:
 
     void videoSurfaceProviderChanged();
     void doubleClickEnabledChanged();
+    void holdSpeedPlayerChanged();
 
 protected slots:
     void synchronize();
 
 private:
+    void cancelMouseHold();
+    enum class MouseHold { Idle, Pending, Active, Cancelled };
+    MouseHold m_mouseHold = MouseHold::Idle;
+    QPointF m_leftPressPosition;
+    QTimer m_mouseHoldTimer;
+    QPointer<PlayerController> m_holdSpeedPlayer;
+    QMetaObject::Connection m_holdWindowConnection;
     bool m_doubleClickEnabled = true;
     QPointF m_oldHoverPos;
 

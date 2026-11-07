@@ -59,6 +59,7 @@ FocusScope {
 
         videoSurfaceProvider: MainCtx.videoSurfaceProvider
         doubleClickEnabled: MainCtx.doubleClickAction !== 0
+        holdSpeedPlayer: MainCtx.useGlobalShortcuts ? Player : null
 
         visible: MainCtx.hasEmbededVideo
 
@@ -172,6 +173,12 @@ FocusScope {
             // no fullscreen button next to Close (see LocalTopbar)
             onLoaded: if (item.hasOwnProperty("fullscreenHidden")) item.fullscreenHidden = true
         }
+    }
+
+    PlayerToast {
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: VLCStyle.dp(24, VLCStyle.scale)
+        heldText: Player.holdSpeedActive && Player.rate === 2 ? qsTr("2× speed") : ""
     }
 
     Widgets.FloatingNotification {

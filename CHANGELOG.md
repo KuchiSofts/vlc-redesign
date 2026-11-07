@@ -22,6 +22,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- The design check (`design/tools/sync_assets.py`) passes on Windows checkouts with CRLF line endings
+  (by [@SHR1F](https://github.com/SHR1F), [#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)).
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
 
 ## [0.5.6] · 2026-11-07

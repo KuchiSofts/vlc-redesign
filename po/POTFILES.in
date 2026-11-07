@@ -949,6 +949,7 @@ modules/gui/qt/player/subtitle_search.cpp
 modules/gui/qt/player/waveform.cpp
 modules/gui/qt/player/qml/PlayerControlbarControls.qml
 modules/gui/qt/player/qml/NavigationBox.qml
+modules/gui/qt/player/qml/MinimalView.qml
 modules/gui/qt/player/qml/PlaybackSpeed.qml
 modules/gui/qt/player/qml/PlayerView.qml
 modules/gui/qt/player/qml/ResumeDialog.qml

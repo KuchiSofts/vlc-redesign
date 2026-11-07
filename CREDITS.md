@@ -60,10 +60,15 @@ Thank you to everyone who tested, reported and translated:
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up
     ([#50](https://github.com/KuchiSofts/vlc-redesign/pull/50)) and Settings that lists fonts and drives only when
-    asked ([#51](https://github.com/KuchiSofts/vlc-redesign/pull/51)).
+    asked ([#51](https://github.com/KuchiSofts/vlc-redesign/pull/51)), the design check on Windows checkouts
+    ([#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)), the subtitle labels refreshed once a folder scan
+    ([#63](https://github.com/KuchiSofts/vlc-redesign/pull/63)) and holding Space or the video for 2× speed
+    ([#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)).
 - **Ideas:**
   - [@muhammadali-og](https://github.com/muhammadali-og): buttons that show what is open, and Ctrl + wheel for
     the subtitle size ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
+  - [@Elshepl](https://github.com/Elshepl): subtitles from the internet in the Android app
+    ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)), now in every app.
 - **Translations:**
   - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
     ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).

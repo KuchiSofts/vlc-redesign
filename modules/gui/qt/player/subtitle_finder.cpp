@@ -92,6 +92,21 @@ bool isSubtitleFile(const QString &name)
     return extensions.contains(QFileInfo(name).suffix().toLower());
 }
 
+bool recordSource(const QString &mrl, const QString &kind, const QString &name,
+                  const QString &provider = {})
+{
+    const QString key = mrlHash(mrl);
+    // Keep the provider of an online subtitle when it is found locally.
+    const auto it = sources().constFind(key);
+    if (it != sources().constEnd() && it->kind == QLatin1String("online") && kind != QLatin1String("online"))
+        return false;
+    const QUrl url(mrl);
+    const QString local = url.isLocalFile() ? url.toLocalFile() : QString();
+    const QString folder = local.isEmpty() ? QString() : QFileInfo(local).absolutePath();
+    sources().insert(key, { kind, name, provider, folder, local });
+    return true;
+}
+
 } // namespace
 
 SubtitleFinder::SubtitleFinder(qt_intf_t *intf, PlayerController *player,
@@ -159,16 +174,7 @@ QString SubtitleFinder::externalPath(const char *trackId)
 void SubtitleFinder::noteFile(const QString &mrl, const QString &kind, const QString &name,
                               const QString &provider)
 {
-    const QString key = mrlHash(mrl);
-    // one found online stays so when it is added again
-    const auto it = sources().constFind(key);
-    if (it != sources().constEnd() && it->kind == QLatin1String("online") && kind != QLatin1String("online"))
-        return;
-    const QUrl url(mrl);
-    const QString local = url.isLocalFile() ? url.toLocalFile() : QString();
-    const QString folder = local.isEmpty() ? QString() : QFileInfo(local).absolutePath();
-    sources().insert(key, { kind, name, provider, folder, local });
-    if (finderInstance())
+    if (recordSource(mrl, kind, name, provider) && finderInstance())
         emit finderInstance()->sourcesChanged();
 }
 
@@ -205,9 +211,16 @@ void SubtitleFinder::scanFolder()
     });
     // (by the finished signal, as HTTP answers: dropped if the finder is
     // gone, which the worker can't tell)
-    connect(worker, &QThread::finished, this, [found]() {
+    const quint64 revision = m_revision;
+    connect(worker, &QThread::finished, this, [this, found, revision]() {
+        if (revision != m_revision)
+            return;
+        bool changed = false;
         for (const auto &file : *found)
-            noteFile(file.first, QStringLiteral("file"), file.second);
+            changed |= recordSource(file.first, QStringLiteral("file"), file.second);
+        // Each notification refreshes the subtitle-track source labels.
+        if (changed)
+            emit sourcesChanged();
     });
     connect(worker, &QThread::finished, worker, &QObject::deleteLater);
     worker->start(QThread::LowPriority);

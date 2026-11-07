@@ -18,7 +18,10 @@
 # SHA256SUMS.txt lists the files of both architectures of <version> that are
 # in -Dist: make the x64 and the ARM64 ones, then sign the last one written.
 # The version comes from modules/gui/qt/util/redesign_version.hpp unless
-# -Version is given. -Quick only rebuilds what changed; -SkipBuild packages
+# -Version is given. -Update makes an update release (docs/RELEASE-CHECKLIST.md,
+# "An update release"): no installer, and small updates from every release
+# since the last full one (-FullVersion, else platforms.yml's "full:"), so every
+# installed copy updates in place. -Quick only rebuilds what changed; -SkipBuild packages
 # the existing -Package folder as it is; -Signed packages a folder whose
 # binaries are signed already (the signed package of the Windows build
 # workflow, docs/code-signing.md): never built, its binaries never changed.
@@ -33,6 +36,10 @@ param(
     [string]$Package,
     [string]$Dist = "$env:USERPROFILE\source\vlc-redesign-dist",
     [switch]$Quick,
+    # an update release: the portable zip and the small updates, no installer
+    [switch]$Update,
+    # the last full release (with installers); default: platforms.yml "full:"
+    [string]$FullVersion,
     [switch]$SkipBuild,
     [switch]$Signed,
     [switch]$NoSumsSignature,
@@ -186,7 +193,16 @@ try {
     $w.Dispose()
 } finally { $archive.Dispose() }
 
-# Installer
+if ($Update -and -not $FullVersion) {
+    $line = Select-String -Path "$PSScriptRoot\..\..\platforms.yml" -Pattern '^\s+full:\s*(\S+)' | Select-Object -First 1
+    if (-not $line) { throw 'An update release needs the last full release: -FullVersion or platforms.yml "full:"' }
+    $FullVersion = $line.Matches[0].Groups[1].Value
+}
+
+# Installer (a full release only: an update release keeps the last full one's)
+if ($Update) {
+    Write-Host "Update release: no installer (the installers stay those of $FullVersion)"
+} else {
 $iscc = @("${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe", "$env:ProgramFiles\Inno Setup 6\ISCC.exe") |
     Where-Object { Test-Path $_ } | Select-Object -First 1
 if (-not $iscc) { throw 'Inno Setup 6.7+ is needed (choco install innosetup)' }
@@ -194,6 +210,7 @@ $archDefine = @(if ($Arch -eq 'aarch64') { '/DArm64' })
 & $iscc /Q "/DAppVersion=$Version" "/DSourceDir=$((Resolve-Path $Package).Path)" "/DOutputDir=$Dist" `
     @archDefine "$PSScriptRoot\installer\vlc-redesign.iss"
 if ($LASTEXITCODE) { throw "Installer build failed ($LASTEXITCODE)" }
+}
 
 # The release files of one platform of this version in -Dist: zip, installer,
 # small updates (the x64 small updates have no platform in their name)
@@ -206,7 +223,8 @@ function Get-ReleaseFiles([string]$p) {
 
 # Small updates from the latest releases, each checked by applying it to
 # the old release and comparing every file with this package
-& $python "$PSScriptRoot\release\make-delta.py" deltas $Package $Version $Dist --keep 3 --platform $platform
+$since = @(if ($Update) { '--since', $FullVersion })
+& $python "$PSScriptRoot\release\make-delta.py" deltas $Package $Version $Dist --keep 3 --platform $platform @since
 if ($LASTEXITCODE) { throw "make-delta deltas failed ($LASTEXITCODE)" }
 $deltas = @(Get-ChildItem $Dist -Filter "vlc-redesign-$Version$($deltaInfix[$platform])-delta-from-*.vrdelta" | ForEach-Object { $_.Name })
 foreach ($d in $deltas) {
@@ -223,7 +241,7 @@ foreach ($d in $deltas) {
 # One SHA256SUMS.txt for the release: these files and those of the other
 # architecture of the same version already in -Dist
 $files = @(Get-ReleaseFiles 'win64') + @(Get-ReleaseFiles 'winarm64') + @($sourceName)
-foreach ($f in @("$name.zip", "$name-setup.exe")) {
+foreach ($f in @("$name.zip") + @(if (-not $Update) { "$name-setup.exe" })) {
     if ($f -notin $files) { throw "Missing $f in $Dist" }
 }
 $sums = foreach ($f in $files) {

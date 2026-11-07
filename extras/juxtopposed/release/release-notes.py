@@ -35,6 +35,7 @@ if '--signed' in sys.argv:
 elif '--unsigned' in sys.argv:
     signed = False
 else:
+    # (from the installer, else the portable copy's vlc.exe is not checked: an update release has no installer)
     signed = pe_signed(os.path.join(dist, 'vlc-redesign-%s-win64-setup.exe' % version))
 
 changelog = open(os.path.join(ROOT, 'CHANGELOG.md'), encoding='utf-8').read()
@@ -103,13 +104,15 @@ if linux:
                '`vlc-redesign`); the Live TV add-on is its own package, installed with it or left out. For example: '
                '`sudo apt install ./vlc-redesign_%s_amd64.deb ./vlc-redesign-livetv_%s_amd64.deb`. The AppImage: '
                '`chmod +x` it and run it. The Flatpak: `flatpak install --user vlc-redesign-%s-x86_64.flatpak`. To '
-               "update, install the next version's file. Every way, step by step: [Install and update](%s#linux).\n"
+               "update, the AppImage updates itself from the app (from 0.5.2); the other packages: install the next "
+               "version's file. Every way, step by step: [Install and update](%s#linux).\n"
                % (V, V, V, WIKI))
 if macos:
     others += ('\n### macOS\n\n' + HEAD + '\n'.join(macos) +
                '\n\nOpen the disk image and drag VLC Redesign to Applications. It is signed ad hoc, not by Apple: the '
                'first time, macOS refuses to open it; open it once from *System Settings › Privacy & Security › Open '
-               'Anyway*. Step by step: [Install and update](%s#macos).\n' % WIKI)
+               'Anyway*. From 0.5.5 the app updates itself (it offers the next version and puts it in place). '
+               'Step by step: [Install and update](%s#macos).\n' % WIKI)
 if android:
     others += ('\n### Android\n\n' + HEAD + '\n'.join(android) +
                '\n\nOpen the APK on the phone and allow installing from your browser or file manager once. It installs '
@@ -118,9 +121,31 @@ if android:
                'update, and from 0.5.1 the app says when one is out. Source: '
                '[vlc-redesign-android](https://github.com/KuchiSofts/vlc-redesign-android). Step by step: '
                '[Install and update](%s#android).\n' % WIKI)
-covered = ['Windows (x64 and ARM64)'] + [n for n, t in (('Linux', linux), ('macOS', macos), ('Android', android)) if t]
+samsung = table([('Redesign Player for TV: the source and its install guide (Tizen 3.0+, 2017 models and later)',
+                  'Redesign-Player-for-TV-%s-source.zip' % V)])
+if samsung:
+    others += ('\n### Samsung TV\n\n' + HEAD + '\n'.join(samsung) +
+               "\n\nSamsung TVs install apps from the store or from a computer in developer mode: the zip's `README.md` "
+               "(and the wiki's [Samsung TV](%s#samsung-tv) part) goes through it step by step, with a free Samsung "
+               "certificate. The app has none of VLC's code (the TV plays the video), so it has its own name: a player "
+               "of its own, inspired by VLC and with features like VLC's, not VLC. Its mark is the designer's pixel "
+               "cat.\n" % WIKI)
+covered = ['Windows (x64 and ARM64)'] + [n for n, t in (('Linux', linux), ('macOS', macos), ('Android', android),
+                                                        ('Samsung TV', samsung)) if t]
 others += '\n`SHA256SUMS.txt` lists every file above: %s.\n' % (
     ', '.join(covered[:-1]) + ' and ' + covered[-1] if len(covered) > 1 else covered[0])
+# An update release (no installer: docs/RELEASE-CHECKLIST.md): the installers and the distribution packages stay
+# those of the last full release (platforms.yml "full:")
+update_note = ''
+if 'vlc-redesign-%s-win64-setup.exe' % V not in sums:
+    _p = os.path.join(ROOT, 'platforms.yml')
+    _full = re.search(r'^\s+full:\s*(\S+)', open(_p, encoding='utf-8').read(), re.M) if os.path.exists(_p) else None
+    full = _full.group(1) if _full else ''
+    if full and full != V:
+        update_note = ('\n**An update release:** the apps update themselves to it (Windows with the small updates above, '
+                       'the Linux AppImage, macOS and Android with their files below). The installers and the .deb, '
+                       '.rpm and Flatpak packages are those of [%s](https://github.com/KuchiSofts/vlc-redesign/releases/'
+                       'tag/v%s): install from there, then the app updates itself.\n' % (full, full))
 # a paragraph of its own under the header, when written (what the release is about, in two lines)
 intro_path = os.path.join(dist, 'release-intro-%s.md' % version)
 intro = open(intro_path, encoding='utf-8').read().strip() + '\n\n' if os.path.exists(intro_path) else ''
@@ -153,7 +178,7 @@ notes = '''# VLC Media Player Redesign %(v)s
 
 %(signing)s A copy of 0.2.4 or later
 offers the small update by itself.%(sums_signed)s
-%(others)s
+%(update_note)s%(others)s
 %(also_on)s
 
 ## Source code
@@ -165,7 +190,7 @@ for their source: [SOURCE.md](https://github.com/KuchiSofts/vlc-redesign/blob/ma
 ---
 *VLC Redesign is not affiliated with VideoLAN. VLC is a trademark of VideoLAN.*
 ''' % {'v': version, 'section': section, 'source': source, 'rows': '\n'.join(rows), 'also_on': also_on,
-       'intro': intro, 'others': others,
+       'intro': intro, 'others': others, 'update_note': update_note,
        # (the app checks it before any update: docs/code-signing.md, The release key)
        'sums_signed': (' `SHA256SUMS.txt.sig` is the signature of the checksums by the project\'s release\n'
                        'key, which the app checks before it installs an update.')

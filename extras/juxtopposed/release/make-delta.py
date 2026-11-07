@@ -7,7 +7,7 @@
       checksum again): a binary whose code didn't change then stays the same,
       byte for byte, from one release to the next.
 
-  python make-delta.py deltas <package> <version> <dist> [--keep N] [--platform win64|winarm64]
+  python make-delta.py deltas <package> <version> <dist> [--keep N] [--since V] [--platform win64|winarm64]
       For each of the N latest earlier releases whose zip is in <dist>
       (default 3, from 0.2.4 on: the first that applies them), writes <dist>/vlc-redesign-<version>-delta-from-<old>.vrdelta:
       the files that changed (a binary patch when it's much smaller), the
@@ -16,6 +16,9 @@
       --platform winarm64: from the vlc-redesign-<old>-winarm64.zip files, to
       vlc-redesign-<version>-winarm64-delta-from-<old>.vrdelta (win64, the
       default, keeps the name without the platform).
+      --since V: from every earlier release from V on (an update release:
+      V is the last full release, so every copy installed since it updates
+      in place; at least the N latest all the same).
 
 The .vrdelta format (all integers little-endian):
   "VRDELTA1", u32 header length, the header (UTF-8 JSON), then the data.
@@ -185,7 +188,7 @@ def make_delta(package, new_files, old_version, old_files, version, out_path):
           f'{os.path.getsize(out_path) / 2**20:.2f} MB')
 
 
-def deltas(package, version, dist, keep, platform="win64"):
+def deltas(package, version, dist, keep, platform="win64", since=None):
     new_files = package_files(package)
     olds = []
     for n in os.listdir(dist):
@@ -197,7 +200,10 @@ def deltas(package, version, dist, keep, platform="win64"):
     # the x64 deltas keep the name they had before ARM64: the copies already
     # installed look for it (redesign_updater.cpp)
     infix = '' if platform == 'win64' else '-' + platform
-    for old in olds[-keep:]:
+    chosen = olds[-keep:]
+    if since:
+        chosen = sorted(set(chosen) | {o for o in olds if version_key(o) >= version_key(since)}, key=version_key)
+    for old in chosen:
         make_delta(package, new_files, old, zip_files(os.path.join(dist, f'vlc-redesign-{old}-{platform}.zip')),
                    version, os.path.join(dist, f'vlc-redesign-{version}{infix}-delta-from-{old}.vrdelta'))
 
@@ -210,6 +216,7 @@ if __name__ == '__main__':
         platform = sys.argv[sys.argv.index('--platform') + 1] if '--platform' in sys.argv else 'win64'
         if platform not in ('win64', 'winarm64'):
             sys.exit(f'Unknown platform {platform} (win64 or winarm64)')
-        deltas(sys.argv[2], sys.argv[3], sys.argv[4], keep, platform)
+        since = sys.argv[sys.argv.index('--since') + 1] if '--since' in sys.argv else None
+        deltas(sys.argv[2], sys.argv[3], sys.argv[4], keep, platform, since)
     else:
         sys.exit(__doc__)

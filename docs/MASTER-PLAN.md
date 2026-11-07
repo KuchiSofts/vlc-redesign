@@ -17,7 +17,8 @@ What is being worked on, updated as it changes (2026-11-07):
   Android 5 to 10 (SubtitleCharset, Settings' window width, subtitle bidi), minSdk 21, RdCompat; a rotated
   screen no longer held by the last message. The in-app update checked end to end on the published 0.5.4 →
   0.5.5 (775 files, all as the zip but plugins.dat and the portable README, now version-free). VideoLAN at
-  5e2c7454ec. Android 0.5.6 (versionCode 13105060).
+  5e2c7454ec. Android 0.5.6 (versionCode 13105060). After the tag, VideoLAN's 2cb78ca89c (Qt contrib
+  without tablet events, a contrib build flag that changes no 0.5.6 binary) merged to main: in 0.5.7.
 - 🟢 **Release 0.5.5** (2026-11-07, the owner's "upload"): the last full release before update releases: macOS
   updates itself, Android TV lighter (the mini player's tick bound to the lifecycle, the header synced once per
   frame, no menu or dialog on a closing page), the library's lists without a time zone per item, every catalog on

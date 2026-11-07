@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:09+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Panjabi (Punjabi) (http://www.transifex.com/yaron/vlc-trans/"
@@ -2825,7 +2825,7 @@ msgstr ""
 "ਤੋਂ, Qt ਲਈ ਢਾਲਿਆ ਗਿਆ। VideoLAN ਜਾਂ Juxtopposed ਨਾਲ ਜੁੜਿਆ ਨਹੀਂ ਅਤੇ ਨਾ ਹੀ ਉਹਨਾਂ ਵੱਲੋਂ "
 "ਸਮਰਥਿਤ।</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "ਅੱਪਡੇਟ ਲਈ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ..."
@@ -7747,72 +7747,76 @@ msgstr "ਪ੍ਰੀ-ਸੈੱਟ:"
 msgid "Player"
 msgstr "ਪਲੇਅਰ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× ਗਤੀ"
+
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "ਉਪਸਿਰਲੇਖ ਦਾ ਆਕਾਰ %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "ਟੀਵੀ ਉੱਤੇ ਸਬ-ਟਾਈਟਲ: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "ਟੀਵੀ ਉੱਤੇ ਸਬ-ਟਾਈਟਲ ਬੰਦ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "%1 ਉੱਤੇ ਨਹੀਂ ਚੱਲ ਰਿਹਾ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "%1 ਨਾਲ ਜੁੜਿਆ ਜਾ ਰਿਹਾ ਹੈ…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "%1 ਉੱਤੇ ਚੱਲ ਰਿਹਾ ਹੈ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "ਆਵਾਜ਼ %1 ਉੱਤੇ ਚੱਲਦੀ ਹੈ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ਵਿਰਾਮ, ਸੀਕ ਅਤੇ ਸਬ-ਟਾਈਟਲ ਇੱਥੇ ਬਦਲੋ: TV ਵੀ ਨਾਲ ਬਦਲੇਗਾ।"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr "Windows Firewall %1 ਨੂੰ ਮੀਡਿਆ ਪੜ੍ਹਨ ਲਈ ਇਸ ਕੰਪਿਊਟਰ ਨਾਲ ਜੁੜਨ ਨਹੀਂ ਦਿੰਦੀ।"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "Windows ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "ਪਬਲਿਕ ਨੈੱਟਵਰਕਾਂ ਉੱਤੇ ਵੀ ਇਜਾਜ਼ਤ ਦਿਓ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "ਪਰਾਈਵੇਟ ਨੈੱਟਵਰਕਾਂ ਉੱਤੇ ਇਜਾਜ਼ਤ ਦਿਓ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "ਇੱਥੇ ਚਲਾਓ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "ਕਾਸਟਿੰਗ ਰੋਕੋ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "%1 ਉੱਤੇ ਵੀ"
 

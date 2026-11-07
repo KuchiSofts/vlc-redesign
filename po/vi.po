@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:09+0000\n"
 "PO-Revision-Date: 2014-06-27 23:01+0000\n"
 "Last-Translator: Sortale <sortale.zerok@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1336,6 +1336,7 @@ msgid "Track number"
 msgstr "Số thứ tự track"
 
 #: src/input/meta.c:65 modules/demux/mp4/meta.c:529
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:66
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:61
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:94 modules/mux/asf.c:64
 msgid "Rating"
@@ -15679,12 +15680,12 @@ msgstr "Trình giải mã audio dạng Libtwolame"
 msgid "Ulead DV audio decoder"
 msgstr "Trình giải mã audio dạng Ulead DV"
 
-#: modules/codec/videotoolbox/decoder.c:2307
+#: modules/codec/videotoolbox/decoder.c:2524
 #, fuzzy
 msgid "Use Hardware decoders only"
 msgstr "Giải mã phần cứng"
 
-#: modules/codec/videotoolbox/decoder.c:2335
+#: modules/codec/videotoolbox/decoder.c:2552
 #, fuzzy
 msgid "VideoToolbox video decoder"
 msgstr "Trình giải mã video Theora"
@@ -18993,12 +18994,12 @@ msgstr "Tên tập tin"
 msgid "Track Number"
 msgstr "Số thứ tự track"
 
-#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:76
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:77
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:72
 msgid "Ascending"
 msgstr "Giảm Dần"
 
-#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:77
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:78
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:73
 msgid "Descending"
 msgstr "Giảm Dần"
@@ -19019,20 +19020,20 @@ msgstr ""
 msgid "Library"
 msgstr "Thư viện"
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:558
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:562
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:318
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:323
 #: share/lua/http/dialogs/mosaic_window.html:114
 msgid "Columns"
 msgstr "Cột"
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:686
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:903
 msgid "All genres"
 msgstr ""
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:688
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:904
 msgid "All artists"
 msgstr ""
 
@@ -22356,7 +22357,7 @@ msgstr "Trích xuất"
 #: modules/gui/qt/dialogs/epg/epg.cpp:91
 #: modules/gui/qt/dialogs/extended/extended.cpp:148
 #: modules/gui/qt/dialogs/help/help.cpp:70
-#: modules/gui/qt/dialogs/help/help.cpp:394
+#: modules/gui/qt/dialogs/help/help.cpp:412
 #: modules/gui/qt/dialogs/mediainfo/mediainfo.cpp:79
 #: modules/gui/qt/dialogs/messages/messages.cpp:106
 #: modules/gui/qt/dialogs/messages/messages.cpp:471
@@ -24033,37 +24034,37 @@ msgstr ""
 "underline; color:#0057ae;\">CC BY 4.0</span></a>, được chuyển sang Qt. Không "
 "liên kết với hay được VideoLAN hoặc Juxtopposed bảo trợ.</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:396
+#: modules/gui/qt/dialogs/help/help.cpp:414
 msgid "&Recheck version"
 msgstr "&Kiểm tra lại phiên bản"
 
-#: modules/gui/qt/dialogs/help/help.cpp:399
+#: modules/gui/qt/dialogs/help/help.cpp:417
 msgid "&Yes"
 msgstr "&Đồng ý"
 
-#: modules/gui/qt/dialogs/help/help.cpp:401
+#: modules/gui/qt/dialogs/help/help.cpp:419
 msgid "&No"
 msgstr "&Không đồng ý"
 
-#: modules/gui/qt/dialogs/help/help.cpp:404
+#: modules/gui/qt/dialogs/help/help.cpp:422
 msgid "VLC media player updates"
 msgstr "Cập nhật phiên bản mới"
 
-#: modules/gui/qt/dialogs/help/help.cpp:483
+#: modules/gui/qt/dialogs/help/help.cpp:502
 msgid "A new version of VLC (%1.%2.%3%4) is available."
 msgstr "Một phiên bản mới của VLC (%1.%2.%3%4) vừa mới được phát hành."
 
-#: modules/gui/qt/dialogs/help/help.cpp:506
+#: modules/gui/qt/dialogs/help/help.cpp:525
 msgid "You have the latest version of VLC media player."
 msgstr "Bạn đang sử dụng phiên bản mới nhất của VLC."
 
-#: modules/gui/qt/dialogs/help/help.cpp:513
+#: modules/gui/qt/dialogs/help/help.cpp:532
 msgid "An error occurred while checking for updates..."
 msgstr ""
 "Xảy ra lỗi về kết nối khi tiến hành kiểm tra phiên bản cập nhật cho chương "
 "trình VLC..."
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "Đang kiểm tra bản cập nhật..."
@@ -26662,7 +26663,7 @@ msgid "Audio delay"
 msgstr "Độ trễ âm thanh"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/player/qml/PlayerView.qml:926
+#: modules/gui/qt/player/qml/PlayerView.qml:927
 #: modules/gui/qt/player/qml/AudioContent.qml:462
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
@@ -30674,74 +30675,78 @@ msgstr "Mức có sẵn:"
 msgid "Player"
 msgstr "Trình phát"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Tốc độ 2×"
+
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "Cỡ phụ đề %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "Phụ đề trên TV: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "Đã tắt phụ đề trên TV"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "Không phát trên %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "Đang kết nối tới %1…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "Đang phát trên %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "Âm thanh đang phát trên %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "Tạm dừng, tua và đổi phụ đề tại đây: TV sẽ làm theo."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Tường lửa Windows không cho phép %1 kết nối với máy tính này để đọc phương "
 "tiện."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "Đang chờ Windows…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "Cho phép cả trên mạng công cộng"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "Cho phép trên mạng riêng"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "Thử lại"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "Phát tại đây"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "Dừng truyền"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "Cũng trên %1"
 

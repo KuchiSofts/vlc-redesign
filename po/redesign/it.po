@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:09+0000\n"
 "PO-Revision-Date: 2017-11-16 03:00+0100\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -2943,7 +2943,7 @@ msgstr ""
 "underline; color:#0057ae;\">CC BY 4.0</span></a>, adattata a Qt. Non "
 "affiliata né approvata da VideoLAN o Juxtopposed.</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "Ricerca aggiornamenti..."
@@ -7976,75 +7976,79 @@ msgstr "Preimpostazioni:"
 msgid "Player"
 msgstr "Lettore"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Velocità 2×"
+
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "Dimensione dei sottotitoli %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "Sottotitoli sulla TV: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "Sottotitoli disattivati sulla TV"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "Non in riproduzione su %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "Connessione a %1…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "In riproduzione su %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "L'audio viene riprodotto su %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Metti in pausa, spostati e cambia i sottotitoli da qui: la TV si adegua."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows Firewall non consente a %1 di connettersi a questo computer per "
 "leggere il media."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "In attesa di Windows…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "Consenti anche sulle reti pubbliche"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "Consenti sulle reti private"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "Riprova"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "Riproduci qui"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "Interrompi trasmissione"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "Anche su %1"
 

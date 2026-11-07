@@ -12,6 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-07):
 
+- 🟡 **0.5.7** (an update release): SHR1F's pull requests: #62 merged (the design check on CRLF checkouts), #63
+  (the subtitle scan's labels once per folder) after its checks, #64 (hold Space or the video for 2×) rebuilt in the
+  interface only: vlc_player_ChangeRate and the rate from before, the saved rate set back when a media is left during
+  a hold, the hold ending 2 s before the end, the player's own speed message taken off; holdtest.py 15/15 on the
+  hidden desktop; "2× speed" in the 72 languages.
 - 🟢 **Release 0.5.6** (2026-11-07, the owner's "upload"): the first update release, with the Windows installers
   (2026-11-07: an install for every user and an old copy update with them). Android: no crash on
   Android 5 to 10 (SubtitleCharset, Settings' window width, subtitle bidi), minSdk 21, RdCompat; a rotated

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:09+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Potato <sheppaul@naver.com>\n"
 "Language-Team: Korean (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -2842,7 +2842,7 @@ msgstr ""
 "a> Figma 파일을 Qt에 맞게 조정했습니다. VideoLAN 또는 Juxtopposed와 제휴하거"
 "나 그 보증을 받지 않았습니다.</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "업데이트 확인 중..."
@@ -7770,74 +7770,78 @@ msgstr "프리셋:"
 msgid "Player"
 msgstr "플레이어"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2배속"
+
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "자막 크기 %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "TV 자막: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "TV 자막 꺼짐"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "%1에서 재생하고 있지 않음"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "%1에 연결 중…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "%1에서 재생 중"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "소리는 %1에서 재생됩니다"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "여기에서 일시중지, 탐색, 자막 변경을 하면 TV가 그대로 따라갑니다."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows 방화벽 때문에 %1이(가) 미디어를 읽으려고 이 컴퓨터에 연결할 수 없습니"
 "다."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "Windows 대기 중…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "공용 네트워크에서도 허용"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "개인 네트워크에서 허용"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "다시 시도"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "여기서 재생"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "캐스트 중지"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "%1에서도 재생 중"
 

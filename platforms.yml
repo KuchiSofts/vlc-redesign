@@ -27,10 +27,10 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.5.4
-    date: 2026-11-06
-    next: 0.5.5
-    full: 0.5.4
+    version: 0.5.5
+    date: 2026-11-07
+    next: 0.5.6
+    full: 0.5.5
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
     repository: KuchiSofts/vlc-redesign
@@ -47,10 +47,10 @@ platforms:
     name: Linux
     short: Linux
     status: released
-    version: 0.5.4
-    date: 2026-11-06
-    next: 0.5.5
-    full: 0.5.4
+    version: 0.5.5
+    date: 2026-11-07
+    next: 0.5.6
+    full: 0.5.5
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
     repository: KuchiSofts/vlc-redesign
@@ -80,10 +80,10 @@ platforms:
     name: macOS
     short: macOS
     status: released
-    version: 0.5.4
-    date: 2026-11-06
-    next: 0.5.5
-    full: 0.5.4
+    version: 0.5.5
+    date: 2026-11-07
+    next: 0.5.6
+    full: 0.5.5
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
     repository: KuchiSofts/vlc-redesign
@@ -99,10 +99,10 @@ platforms:
     name: Windows on ARM64
     short: Windows ARM64
     status: released
-    version: 0.5.4
-    date: 2026-11-06
-    next: 0.5.5
-    full: 0.5.4
+    version: 0.5.5
+    date: 2026-11-07
+    next: 0.5.6
+    full: 0.5.5
     os: windows-arm64
     requires: Windows 11 on ARM64
     repository: KuchiSofts/vlc-redesign
@@ -119,10 +119,10 @@ platforms:
     name: Android (phones, tablets, TV)
     short: Android
     status: released
-    version: 0.5.4
-    date: 2026-11-06
-    next: 0.5.5
-    full: 0.5.4
+    version: 0.5.5
+    date: 2026-11-07
+    next: 0.5.6
+    full: 0.5.5
     os: android
     requires: Android 8.0 or later
     repository: KuchiSofts/vlc-redesign
@@ -136,10 +136,10 @@ platforms:
     name: Samsung Smart TV (Tizen): Redesign Player for TV
     short: Samsung TV
     status: released
-    version: 0.5.4
-    date: 2026-11-06
-    next: 0.5.5
-    full: 0.5.4
+    version: 0.5.5
+    date: 2026-11-07
+    next: 0.5.6
+    full: 0.5.5
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode
     repository: KuchiSofts/vlc-redesign

@@ -7,13 +7,17 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `ad11e4bec1` (2026-11-07).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [Unreleased]
+## [0.5.5] · 2026-11-07
+
+**macOS updates itself**, Android TV is lighter, and VideoLAN's latest fixes. The last full release (installers and
+every package) before update releases: from 0.5.6 a version of fixes carries the portable copies and what the apps
+update from. Android 0.5.5 (versionCode 13105050) and the Samsung TV app 0.5.5 come with it.
 
 ### Added
 
@@ -41,6 +45,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   refresh (a media change refreshes Home's recent lists). The dates shown are the same (local time). Found with a
   heap walk over 900 media changes; what is left per change is the graphics driver's (about 2 KB, VideoLAN closes
   the video display between media on purpose).
+- Android TV: the mini player no longer checks the player every half second while the app is in the background,
+  and the library's header follows the window's layout once per frame instead of at every layout pass. A menu or a
+  dialog asked for while the page is closing is no longer shown (it could close the app on a slow TV box).
+- Android: VideoLAN's latest Android code merged, with a new version code (13105050 for 0.5.5, from the version
+  itself), so every later version installs over the one before.
 - Translations: every catalog follows the interface's current texts again. 89 languages had been left on an older
   template, so the volume meter's texts and a few newer ones were not offered to translators on Weblate, and the
   Estonian translation of the volume meter ([#53](https://github.com/KuchiSofts/vlc-redesign/pull/53)) did not reach
@@ -2045,7 +2054,7 @@ the ones to watch when merging upstream, and the candidates to propose to VideoL
 | `bin/Makefile.am`, `bin/meson.build` | Build the `vlc-waveform` helper |
 | `extras/package/win32/package.mak` | Credits, changelog and font licenses in the package |
 
-[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.4.1...main
+[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.5.5...main
 [0.4.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1
 [0.4.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0
 [0.3.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1

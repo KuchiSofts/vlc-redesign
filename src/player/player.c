@@ -1433,6 +1433,20 @@ vlc_player_ChangeRate(vlc_player_t *player, float rate)
 
 }
 
+bool
+vlc_player_SetTemporaryRate(vlc_player_t *player, float rate)
+{
+    if (!(rate >= 0.f && rate <= INPUT_RATE_MAX))
+        return false;
+
+    struct vlc_player_input *input = vlc_player_get_input_locked(player);
+    if (!input || (rate != 0.f && !vlc_player_CanChangeRate(player)))
+        return false;
+
+    return input_ControlPushHelper(input->thread, INPUT_CONTROL_SET_TEMPORARY_RATE,
+                                   &(vlc_value_t) { .f_float = rate }) == VLC_SUCCESS;
+}
+
 static void
 vlc_player_ChangeRateOffset(vlc_player_t *player, bool increment)
 {

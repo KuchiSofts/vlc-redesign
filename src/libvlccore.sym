@@ -869,6 +869,7 @@ vlc_player_aout_Mute
 vlc_player_aout_RemoveListener
 vlc_player_aout_SetVolume
 vlc_player_ChangeRate
+vlc_player_SetTemporaryRate
 vlc_player_CondWait
 vlc_player_CycleTrack
 vlc_player_DisplayPosition

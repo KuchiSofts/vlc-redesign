@@ -261,9 +261,9 @@ vlc_player_UpdateMLStates(vlc_player_t *player, struct vlc_player_input* input)
     /* We use .0f to signal an unsaved rate. We want to save it to the ml if it
      * changed, and if it's not the player's default value when the value was
      * never saved in the ML */
-    if (input->rate != input->ml.states.rate &&
-            (input->rate != 1.f || input->ml.states.rate != .0f))
-        input->ml.states.rate = input->rate;
+    if (input->normal_rate != input->ml.states.rate &&
+            (input->normal_rate != 1.f || input->ml.states.rate != .0f))
+        input->ml.states.rate = input->normal_rate;
     else
         input->ml.states.rate = -1.f;
 

@@ -278,6 +278,7 @@ input_thread_t * input_Create( vlc_object_t *p_parent, input_item_t *p_item,
     priv->b_recording = false;
     priv->b_pause_after_buffering = false;
     priv->rate = 1.f;
+    priv->normal_rate = 1.f;
     TAB_INIT( priv->i_attachment, priv->attachment );
     priv->p_sout   = NULL;
     priv->b_out_pace_control = priv->type == INPUT_TYPE_THUMBNAILING;
@@ -1598,6 +1599,7 @@ static size_t ControlGetReducedIndexLocked( input_thread_t *p_input,
     {
         if ( i_ct == INPUT_CONTROL_SET_STATE ||
              i_ct == INPUT_CONTROL_SET_RATE ||
+             i_ct == INPUT_CONTROL_SET_TEMPORARY_RATE ||
              i_ct == INPUT_CONTROL_SET_POSITION ||
              i_ct == INPUT_CONTROL_SET_TIME ||
              i_ct == INPUT_CONTROL_SET_PROGRAM ||
@@ -1642,7 +1644,10 @@ int input_ControlPush( input_thread_t *p_input,
 
     size_t i_next_control_idx = ControlGetReducedIndexLocked( p_input, &c );
 
-    if( sys->is_stopped || i_next_control_idx >= INPUT_CONTROL_FIFO_SIZE )
+    const bool restore_rate = i_type == INPUT_CONTROL_SET_TEMPORARY_RATE
+                           && c.param.val.f_float == 0.f;
+    const size_t control_limit = INPUT_CONTROL_FIFO_SIZE + restore_rate;
+    if( sys->is_stopped || i_next_control_idx >= control_limit )
     {
         if( sys->is_stopped )
             msg_Dbg( p_input, "input control stopped, trashing type=%d",
@@ -2273,10 +2278,14 @@ static bool Control( input_thread_t *p_input,
             break;
 
         case INPUT_CONTROL_SET_RATE:
+        case INPUT_CONTROL_SET_TEMPORARY_RATE:
         {
+            const bool temporary = i_type == INPUT_CONTROL_SET_TEMPORARY_RATE;
+            const float requested = temporary && param.val.f_float == 0.f
+                                  ? priv->normal_rate : param.val.f_float;
             /* Get rate and direction */
-            float rate = fabsf( param.val.f_float );
-            int i_rate_sign = param.val.f_float < 0 ? -1 : 1;
+            float rate = fabsf( requested );
+            int i_rate_sign = requested < 0 ? -1 : 1;
 
             /* Check rate bound */
             if( rate > INPUT_RATE_MAX )
@@ -2296,8 +2305,7 @@ static bool Control( input_thread_t *p_input,
                 if( priv->master->b_rescale_ts )
                 {
                     msg_Dbg( p_input, "cannot set negative rate" );
-                    rate = priv->rate;
-                    assert( rate > 0 );
+                    break;
                 }
                 else
                 {
@@ -2322,15 +2330,18 @@ static bool Control( input_thread_t *p_input,
                                    &rate ) )
                 {
                     msg_Warn( p_input, "ACCESS/DEMUX_SET_RATE failed" );
-                    rate = priv->rate;
+                    break;
                 }
             }
 
-            /* */
+            const bool normal_changed = !temporary && rate != priv->normal_rate;
+            if( !temporary )
+                priv->normal_rate = rate;
+
             if( rate != priv->rate )
             {
                 priv->rate = rate;
-                input_SendEventRate( p_input, rate );
+                input_SendEventRate( p_input, rate, priv->normal_rate );
 
                 if( priv->master->b_rescale_ts )
                 {
@@ -2341,6 +2352,8 @@ static bool Control( input_thread_t *p_input,
 
                 b_force_update = true;
             }
+            else if( normal_changed )
+                input_SendEventRate( p_input, rate, priv->normal_rate );
             break;
         }
 

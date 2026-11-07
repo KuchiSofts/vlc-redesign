@@ -1036,7 +1036,10 @@ input_thread_Events(input_thread_t *input_thread,
                 handled = false;
             break;
         case INPUT_EVENT_RATE:
-            input->rate = event->rate;
+            input->normal_rate = event->rate.normal;
+            if (input->rate == event->rate.effective)
+                break;
+            input->rate = event->rate.effective;
             vlc_player_SignalAtoBLoop(player);
             vlc_player_SendEvent(player, on_rate_changed, input->rate);
             break;
@@ -1267,6 +1270,7 @@ vlc_player_input_New(vlc_player_t *player, input_item_t *item)
     input->state = VLC_PLAYER_STATE_STOPPED;
     input->error = VLC_PLAYER_ERROR_NONE;
     input->rate = 1.f;
+    input->normal_rate = 1.f;
     input->capabilities = 0;
     input->length = input->time = VLC_TICK_INVALID;
     input->live = false;

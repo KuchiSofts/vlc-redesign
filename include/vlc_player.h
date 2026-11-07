@@ -640,6 +640,19 @@ VLC_API void
 vlc_player_ChangeRate(vlc_player_t *player, float rate);
 
 /**
+ * Temporarily change the rate of the current input.
+ *
+ * The normal rate remains available for restoration and for saved playback
+ * state. A normal rate change also replaces the temporary rate.
+ *
+ * @param player locked player instance
+ * @param rate positive playback rate, or zero to restore the normal rate
+ * @return whether the control was queued for the current input
+ */
+VLC_API bool
+vlc_player_SetTemporaryRate(vlc_player_t *player, float rate);
+
+/**
  * Increment the rate of the player (faster)
  *
  * @param player locked player instance

@@ -66,6 +66,7 @@ struct vlc_player_input
     enum vlc_player_state state;
     enum vlc_player_error error;
     float rate;
+    float normal_rate;
     int capabilities;
     vlc_tick_t length;
     bool live;

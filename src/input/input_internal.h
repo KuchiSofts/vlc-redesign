@@ -322,7 +322,10 @@ struct vlc_input_event
         /* INPUT_EVENT_STATE */
         struct vlc_input_event_state state;
         /* INPUT_EVENT_RATE */
-        float rate;
+        struct {
+            float effective;
+            float normal;
+        } rate;
         /* INPUT_EVENT_CAPABILITIES */
         int capabilities; /**< cf. VLC_INPUT_CAPABILITIES_* bitwise flags */
         /* INPUT_EVENT_TIMES */
@@ -519,6 +522,7 @@ typedef struct input_thread_private_t
     bool        b_recording;
     bool        b_pause_after_buffering; /* Defer pause until after buffering */
     float       rate;
+    float       normal_rate;
 
     /* Playtime configuration and state */
     vlc_tick_t  i_start;    /* :start-time,0 by default */
@@ -567,7 +571,8 @@ typedef struct input_thread_private_t
     vlc_mutex_t lock_control;
     vlc_cond_t  wait_control;
     size_t i_control;
-    input_control_t control[INPUT_CONTROL_FIFO_SIZE];
+    /* Leave room to restore the normal rate when the queue is full. */
+    input_control_t control[INPUT_CONTROL_FIFO_SIZE + 1];
 
     vlc_thread_t thread;
     vlc_interrupt_t interrupt;
@@ -594,6 +599,7 @@ enum input_control_e
     INPUT_CONTROL_SET_STATE,
 
     INPUT_CONTROL_SET_RATE,
+    INPUT_CONTROL_SET_TEMPORARY_RATE,
 
     INPUT_CONTROL_SET_POSITION,
 

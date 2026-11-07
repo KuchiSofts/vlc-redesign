@@ -69,28 +69,13 @@
 
 - (void)dealloc
 {
+    [self.heroView removeObserver:self forKeyPath:@"representedItem" context:NULL];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setup
 {
     NSNotificationCenter * const notificationCenter = NSNotificationCenter.defaultCenter;
-    [notificationCenter addObserver:self
-                            selector:@selector(recentsChanged:)
-                                name:VLCLibraryModelRecentsMediaListReset
-                                object:nil];
-    [notificationCenter addObserver:self
-                            selector:@selector(recentsChanged:)
-                                name:VLCLibraryModelAllCachesDropped
-                                object:nil];
-    [notificationCenter addObserver:self
-                            selector:@selector(recentsChanged:)
-                                name:VLCLibraryModelAllCachesDropped
-                                object:nil];
-    [notificationCenter addObserver:self
-                            selector:@selector(recentsChanged:)
-                                name:VLCLibraryModelRecentsMediaItemDeleted
-                                object:nil];
     [notificationCenter addObserver:self
                            selector:@selector(audioRecentsChanged:)
                                name:VLCLibraryModelRecentAudioMediaListReset
@@ -108,14 +93,23 @@
 - (void)generateCustomContainers
 {
     _actionsView = [VLCLibraryHomeViewActionsView fromNibWithOwner:self];
-    _heroView = [VLCLibraryHeroView fromNibWithOwner:self];
-    _leadingViews = @[
-        self.actionsView,
-        self.heroView
-    ];
+    _heroView = [VLCLibraryHeroView fromNibWithOwner:nil];
+    self.heroView.selectionMode = VLCLibraryHeroViewSelectionModeRandomItem;
+    [self.heroView.widthAnchor constraintEqualToAnchor:self.heroView.heightAnchor multiplier:21. / 9.].active = YES;
+    [self.heroView addObserver:self forKeyPath:@"representedItem" options:0 context:NULL];
+    _recentsView = [[VLCLibraryHomeViewVideoCarouselContainerView alloc] init];
+    self.recentsView.videoGroup = VLCMediaLibraryParentGroupTypeRecentVideos;
+    _leadingViews = @[self.actionsView, self.heroView];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(recentVideosChanged:)
+                                               name:VLCLibraryMediaCollectionViewDataSourceDisplayedCollectionChangedNotification
+                                             object:self.recentsView.dataSource];
+    [self.heroView setOptimalRepresentedItem];
+    [self updateHeroVisibility];
 
     [self addCustomContainerViews];
-    [self recentsChanged:nil];
+    [_containers addObject:self.recentsView];
+    [self addContainerView:self.recentsView toStackView:self.collectionsStackView];
     [self audioRecentsChanged:nil];
     _recentlyAddedVideosView = [[VLCLibraryHomeViewRecentlyAddedCarouselContainerView alloc]
         initWithGroup:VLCMediaLibraryParentGroupTypeRecentlyAddedVideos];
@@ -130,18 +124,33 @@
     [self addContainerView:self.browseView toStackView:self.collectionsStackView];
 }
 
+- (void)updateHeroVisibility
+{
+    self.heroView.hidden = self.recentsView.dataSource.numberOfMediaItems > 0 || self.heroView.representedItem == nil;
+}
+
+- (void)recentVideosChanged:(NSNotification *)notification
+{
+    [self updateHeroVisibility];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey, id> *)change
+                       context:(void *)context
+{
+    if (object == self.heroView && [keyPath isEqualToString:@"representedItem"]) {
+        [self updateHeroVisibility];
+        return;
+    }
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
 - (void)addCustomContainerViews
 {
     for (NSView * const view in _leadingViews) {
         [self addView:view toStackView:self.collectionsStackView];
     }
-    [self.heroView setOptimalRepresentedItem];
-}
-
-- (BOOL)recentMediaPresent
-{
-    VLCLibraryModel * const model = VLCMain.sharedInstance.libraryController.libraryModel;
-    return model.numberOfRecentMedia > 0;
 }
 
 - (BOOL)recentAudioMediaPresent
@@ -153,7 +162,7 @@
 - (void)insertRecentItemsContainer:(NSView<VLCLibraryHomeViewContainerView> *)container
                           atIndex:(NSUInteger)index
 {
-    // Actions and Hero precede the ordered video, music, and Browse rows.
+    // Actions and the standalone Hero precede the video, music, and Browse rows.
     [self.collectionsStackView insertArrangedSubview:container atIndex:_leadingViews.count + index];
     [self setupContainerView:container withStackView:_collectionsStackView];
     [_containers insertObject:container atIndex:index];
@@ -168,23 +177,6 @@
     [_containers removeObject:container];
 }
 
-- (void)recentsChanged:(NSNotification *)notification
-{
-    const BOOL shouldShowRecentsContainer = [self recentMediaPresent];
-    const BOOL recentsContainerPresent = self.recentsView != nil;
-
-    if (recentsContainerPresent == shouldShowRecentsContainer) {
-        return;
-    } else if (shouldShowRecentsContainer) {
-        _recentsView = [[VLCLibraryHomeViewVideoCarouselContainerView alloc] init];
-        self.recentsView.videoGroup = VLCMediaLibraryParentGroupTypeRecentVideos;
-        [self insertRecentItemsContainer:self.recentsView atIndex:0];
-    } else {
-        [self removeRecentItemsContainer:_recentsView];
-        _recentsView = nil;
-    }
-}
-
 - (void)audioRecentsChanged:(NSNotification *)notification
 {
     const BOOL shouldShowAudioRecentsContainer = [self recentAudioMediaPresent];
@@ -195,7 +187,7 @@
     } else if (shouldShowAudioRecentsContainer) {
         _audioRecentsView = [[VLCLibraryHomeViewAudioCarouselContainerView alloc] init];
         self.audioRecentsView.audioLibrarySegment = VLCAudioLibraryRecentsSegment;
-        [self insertRecentItemsContainer:self.audioRecentsView atIndex:self.recentsView != nil ? 1 : 0];
+        [self insertRecentItemsContainer:self.audioRecentsView atIndex:1];
     } else {
         [self removeRecentItemsContainer:_audioRecentsView];
         _audioRecentsView = nil;
@@ -217,7 +209,7 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.heroView setOptimalRepresentedItem];
-
+        [self updateHeroVisibility];
         for (NSView<VLCLibraryHomeViewContainerView> * const containerView in self->_containers) {
             if ([containerView isKindOfClass:VLCLibraryHomeViewBaseCarouselContainerView.class]) {
                 VLCLibraryHomeViewBaseCarouselContainerView * const baseContainerView = (VLCLibraryHomeViewBaseCarouselContainerView *)containerView;

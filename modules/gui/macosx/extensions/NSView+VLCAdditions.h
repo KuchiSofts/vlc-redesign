@@ -27,14 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSView (VLCAdditions)
 
-+ (instancetype)fromNibNamed:(NSString *)nibName withClass:(Class)viewClass withOwner:(id)owner;
-+ (instancetype)fromNibWithOwner:(id)owner;
++ (instancetype)fromNibNamed:(NSString *)nibName withClass:(Class)viewClass withOwner:(nullable id)owner;
++ (instancetype)fromNibWithOwner:(nullable id)owner;
 
 @property (readonly) BOOL shouldShowDarkAppearance;
 
 - (void)enableSubviews:(BOOL)enabled;
 - (NSArray<NSLayoutConstraint *> *)constraintsToFillView:(NSView *)view activate:(BOOL)activate;
 - (NSArray<NSLayoutConstraint *> *)applyConstraintsToFillSuperview;
+
+// Returns the mouse-up event for a click, or nil for a drag.
+- (nullable NSEvent *)trackMouseDown:(NSEvent *)event
+                         dragHandler:(void (^ _Nullable)(NSEvent *event, BOOL didDrag))dragHandler;
 
 @end
 

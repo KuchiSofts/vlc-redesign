@@ -18,6 +18,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Changed
 
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
+- Refresh subtitle source labels once per folder scan to keep the player responsive in folders with many subtitle files.
 
 ## [0.5.6] · 2026-11-07
 

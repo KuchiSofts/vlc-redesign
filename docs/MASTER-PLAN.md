@@ -10,8 +10,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-06):
+What is being worked on, updated as it changes (2026-11-07):
 
+- 🟢 **Release 0.5.5** (2026-11-07, the owner's "upload"): the last full release before update releases: macOS
+  updates itself, Android TV lighter (the mini player's tick bound to the lifecycle, the header synced once per
+  frame, no menu or dialog on a closing page), the library's lists without a time zone per item, every catalog on
+  the current texts, VideoLAN at ad11e4bec1. Android on VideoLAN's latest with the version code from the version
+  (13105050; 0.5.4 was 13070290: it installs over it, checked on the TV emulator), signed with the release key.
+  The Samsung app 0.5.5 (unchanged). From 0.5.6: update releases (platforms.yml full: 0.5.5).
 - 🟢 **Update releases** (2026-11-07, the owner's rule): every version is published; fixes and improvements as
   update releases (portable copies + what the apps update from; deltas from every version since the last full
   release), full releases only for big changes (docs/RELEASE-CHECKLIST.md). make-release.ps1 -Update,

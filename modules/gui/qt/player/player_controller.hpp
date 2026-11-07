@@ -329,6 +329,7 @@ public:
 
     enum SpeedHoldSource { KeyboardSpeedHold = 1, MouseSpeedHold = 2 };
     static constexpr int SpeedHoldDelay = 350;
+    static constexpr float HoldSpeedRate = 2.f;
     bool canHoldSpeed() const;
     bool beginSpeedHold(SpeedHoldSource source);
     void endSpeedHold(SpeedHoldSource source);
@@ -575,7 +576,14 @@ signals:
 private:
     Q_DECLARE_PRIVATE(PlayerController)
     void cancelSpeedHolds();
+    // the hold without restoring the rate (another one was asked for)
+    void dropSpeedHolds();
+    void clearSpeedOsd();
+    void restoreSavedRate(const QString &mrl, float rate);
     unsigned m_speedHoldSources = 0;
+    float m_rateBeforeHold = 1.f;
+    bool m_holdRateSeen = false;
+    QString m_holdMrl;
     QScopedPointer<PlayerControllerPrivate> d_ptr;
 };
 

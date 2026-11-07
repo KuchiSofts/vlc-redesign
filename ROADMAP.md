@@ -22,19 +22,19 @@ Updated as the work moves (last: 2026-11-06).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.5 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.5 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.5 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.5.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Redesign Player for TV*) | ✅ released 0.5.5 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.5.6 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.5.6 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.5.6 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.6 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.5.6 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.5.6 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.5.6 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.5.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.6 and after
+## Next: 0.5.7 and after
 
-**0.5.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.5.7** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
@@ -89,7 +89,7 @@ Android and Swift files made from them and a check on every pull request that th
 
 **Samsung TV** (since 0.5.3)
 
-- ✅ *Redesign Player for TV*: a player of its own for Samsung TVs (Tizen 3.0 and later), inspired by VLC, in the design: the library, the player,
+- ✅ *Juxto Media Player*: a player of its own for Samsung TVs (Tizen 3.0 and later), inspired by VLC, in the design: the library, the player,
   Live TV, 17 languages, right to left, the colour keys of the remote; the TV's own player plays the video
 - ✅ Installed from a computer (developer mode, a free Samsung certificate), with a step-by-step guide; not in the store
 - 📋 A USB drive played on a real TV; the Samsung store
@@ -101,6 +101,17 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.5.6 (2026-11-07)
+
+**An update release** (the apps update themselves to it; the Windows installers come with it):
+
+- ✅ Android: no crash on Android 5 to 10 (videos, Settings, subtitles); installs from Android 5.0
+- ✅ Android: a screen closed by a rotation no longer stays in memory
+- ✅ Windows: every update release carries the installers (a copy installed for every user updates
+  with them); the in-app update checked end to end on the published 0.5.4 → 0.5.5
+- ✅ Samsung TV: the app is named *Juxto Media Player* (it was *Redesign Player for TV*), 0.5.6
+- ✅ VideoLAN master merged to `5e2c7454ec` (the video surface's hot path, Dolby Vision, VP9 on macOS)
 
 ### 0.5.5 (2026-11-07)
 
@@ -132,7 +143,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 **Everything together:** Android TV in the design, the first Samsung TV app, and fixes on the desktop:
 
 - ✅ Android TV: every page in the design with the remote (the welcome, Settings, the players, details, search)
-- ✅ Samsung TV: *Redesign Player for TV*, the design's own player, installed from a computer
+- ✅ Samsung TV: *Juxto Media Player*, the design's own player, installed from a computer
 - ✅ The designer's cat lives on the idle screen (its eyes blink, its tail swings, an ear twitches), on every
   version; Live TV's channel banner is an information bar like a cable box's
 - ✅ The volume shows in a meter at the side of the window (Settings > Audio > Volume indicator)

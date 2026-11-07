@@ -12,6 +12,12 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-07):
 
+- 🟢 **Release 0.5.6** (2026-11-07, the owner's "upload"): the first update release, with the Windows installers
+  (2026-11-07: an install for every user and an old copy update with them). Android: no crash on
+  Android 5 to 10 (SubtitleCharset, Settings' window width, subtitle bidi), minSdk 21, RdCompat; a rotated
+  screen no longer held by the last message. The in-app update checked end to end on the published 0.5.4 →
+  0.5.5 (775 files, all as the zip but plugins.dat and the portable README, now version-free). VideoLAN at
+  5e2c7454ec. Android 0.5.6 (versionCode 13105060).
 - 🟢 **Release 0.5.5** (2026-11-07, the owner's "upload"): the last full release before update releases: macOS
   updates itself, Android TV lighter (the mini player's tick bound to the lifecycle, the header synced once per
   frame, no menu or dialog on a closing page), the library's lists without a time zone per item, every catalog on
@@ -64,7 +70,7 @@ What is being worked on, updated as it changes (2026-11-07):
   catalogs (et first), then export. Next: 0.5.5 (fixes).
 - 🟢 **Release 0.5.3** (2026-11-06, everything together, the owner's plan): the desktop on every platform, Android
   with the TV layout in the design (the welcome, Settings, the video and music players, details, search, the folder
-  and playlist pages, About), and the first Samsung TV app, *Redesign Player for TV* (no VLC code, so its own name
+  and playlist pages, About), and the first Samsung TV app, *Juxto Media Player* (then named *Redesign Player for TV*; no VLC code, so its own name
   and the designer's cat as its mark; the source and an install guide on the release). In it: the living cat and
   the TV-style information bar on every version, the volume meter, Settings > Video as the design, and three
   pull requests by @SHR1F (#49 the restored full screen held from the start, fixing #48; #50 video without waiting
@@ -551,7 +557,7 @@ count the 🟢 among the marked lines of their part of section 9.
 | Desktop            | Windows 11 ARM64                           | same                                    | 🔴 built, not in 0.4.0       |
 | Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.4.0                     |
 | Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.4.0                     |
-| Android            | Android 8+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
+| Android            | Android 5+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
 | Casting            | DLNA TVs (Samsung, LG, Sony…), Chromecast  | part of the desktop program             | 🟢 works on a real TV        |
 | TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | ⚪ track                     |
 | iPhone, iPad, TV   | iOS, iPadOS, tvOS                          | fork of VLC for iOS                     | ⚪ track                     |
@@ -1631,7 +1637,7 @@ on the TV. A Samsung Galaxy phone is Android (track above).
 - 🟢 Developer mode is on on the test TV, but bound to 127.0.0.1
 - 🟢 Developer mode set to the PC's address (only at the TV: Apps → 1 2 3 4 5) (decision 5)
 - 🟢 Tizen Studio, a Samsung certificate tied to the TV, the app installed and debugged through its web inspector
-- 🟢 **Redesign Player for TV** (0.5.3): a stand-alone player inspired by VLC (not VLC), in the design, played by the TV's player (AVPlay): the
+- 🟢 **Juxto Media Player** (0.5.3, named *Redesign Player for TV* until 0.5.5): a stand-alone player inspired by VLC (not VLC), in the design, played by the TV's player (AVPlay): the
   library, the player and its panels, Live TV (M3U, Xtream Codes, the guide, catch-up, films and series), 17
   languages, right to left, the colour keys; every screen compared with its Figma frame (32 scenes, 1.16 % mean)
 - 🟢 Its own name and mark (no VLC code: VideoLAN's trademark policy): the designer's pixel cat; About credits

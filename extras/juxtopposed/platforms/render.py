@@ -21,6 +21,7 @@ Python 3.8 or later, standard library only. platforms.yml is read by a small
 reader of its own, for the shape that file keeps (mappings, lists of mappings
 with "- ", one "key: value" per line, full-line comments)."""
 import datetime
+import re
 import html
 import json
 import os
@@ -150,9 +151,14 @@ def load(path=SOURCE):
         if not isinstance(downloads, list):
             raise ValueError('platforms.yml: %s: downloads must be a list' % p['id'])
         for d in downloads:
-            d['file'] = d['file'].replace('{version}', p.get('version', ''))
+            # a file only full releases carry (an installer, deb, rpm: an update release
+            # has the portable copy and the small updates only): from the last full release
+            full_only = str(d.get('full_only', '')).lower() in ('yes', 'true')
+            version = p.get('full', p.get('version', '')) if full_only else p.get('version', '')
+            d['template'] = d['file']
+            d['file'] = d['file'].replace('{version}', version)
             d['url'] = 'https://github.com/%s/releases/download/v%s/%s' % (
-                p.get('repository', repository), p.get('version', ''), d['file'])
+                p.get('repository', repository), version, d['file'])
         p['downloads'] = downloads if p['status'] in AVAILABLE else []
     data['repository'] = repository
     return data
@@ -336,11 +342,33 @@ def site_download_block(data):
 
 # --- writing ---------------------------------------------------------------
 
+def readme_links(text, data):
+    """The README's own download buttons (the table at its top, written by hand) in step with platforms.yml:
+    every link to a release's file named after one of the downloads goes to that download's release, and the line
+    under the table names the version, its day and the next one"""
+    repository = re.escape(data['repository'])
+    version = r'[0-9][0-9A-Za-z.\-]*'
+    for p in data['platforms']:
+        for d in p['downloads']:
+            head, _, tail = d['template'].partition('{version}')
+            if not _:
+                continue
+            pattern = (r'https://github\.com/%s/releases/download/v%s/%s%s%s' %
+                       (repository, version, re.escape(head), version, re.escape(tail)))
+            text = re.sub(pattern, lambda m, url=d['url']: url, text)
+    first = next((p for p in data['platforms'] if p['status'] in AVAILABLE and p.get('version')), None)
+    if first:
+        text = re.sub(r'<sub><b>%s</b> · %s &nbsp;·&nbsp; next: %s' % (version, r'[0-9-]+', version),
+                      lambda m: '<sub><b>%s</b> · %s &nbsp;·&nbsp; next: %s' % (
+                          first['version'], first.get('date', ''), first.get('next', '')), text, count=1)
+    return text
+
+
 def outputs(data):
     """{path: the text it should have}"""
     result = {}
     with open(README, encoding='utf-8', newline='') as f:
-        result[README] = replace_block(f.read(), readme_block(data))
+        result[README] = readme_links(replace_block(f.read(), readme_block(data)), data)
     result[SITE_JSON] = site_json(data)
     if os.path.exists(SITE_INDEX):
         with open(SITE_INDEX, encoding='utf-8', newline='') as f:

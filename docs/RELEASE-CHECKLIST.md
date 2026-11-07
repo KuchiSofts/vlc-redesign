@@ -90,6 +90,36 @@ After the push to the public repository, before the release is published:
 8. Once 1 and 6 have passed: `continue-on-error` off in `build-macos.yml`; the plan, the roadmap and
    `platforms.yml` say macOS and Windows ARM64 run (and which checks were by hand).
 
+## A full release or an update release
+
+The owner's rule (2026-11-07): every version is published, but only a **big** change, or one the apps can't take
+by themselves, is a **full release**. Everything else (fixes, improvements, translations) is an **update release**:
+the files the apps update from and the portable copies, no installers and no distribution packages.
+
+| | Full release | Update release |
+|---|---|---|
+| Windows x64 / ARM64 | installer, portable zip, small updates (3 latest) | portable zip, small updates **from every version since the last full release** |
+| Linux | AppImage (+ .zsync), .deb, .rpm, Flatpak, tar.xz | AppImage (+ .zsync), tar.xz |
+| macOS | disk images | disk images (the app updates itself from them, from 0.5.5) |
+| Android | APK | APK |
+| Samsung TV | the source zip | — (the last full release's) |
+| Always | source tarball, `SHA256SUMS.txt` and its signature | the same |
+
+When the change needs a full release: the installer or the updater itself changed, a new platform or package, a new
+signing key, a new Android version-code scheme, or users who have no updater must get the version (macOS before
+0.5.5, .deb, .rpm, Flatpak).
+
+An update release:
+1. `platforms.yml`: `version` the new one, `full:` stays the last full release (its installers, .deb, .rpm and the
+   Samsung source keep linking there: `full_only: yes`); `render.py` (README's buttons, the table, the website).
+2. `make-release.ps1 -Update` (x64, then `-Arch aarch64`): no installer; small updates from every release since
+   `full:`, each checked by applying it.
+3. The Linux AppImages and the disk images from the pull request's CI artifacts (not the .deb, .rpm, Flatpak);
+   the APK; `SHA256SUMS.txt` of all of them, signed.
+4. `release-notes.py`: under Windows it says it is an update release, with the last full release's link.
+5. Everything else as for a release (below): changelog, roadmap, plan, wiki (its file tables: the installers and
+   packages from the full release), issues.
+
 ## A release X.Y.Z
 
 1. Everything of *Before every upload*.

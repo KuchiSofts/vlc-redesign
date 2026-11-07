@@ -229,7 +229,9 @@ if os.path.exists(private):
     check(target in text, 'The owner\'s detailed roadmap (outside the repository) names %s' % target, private)
 
 if release:
-    todo += ['GitHub release v%s: setup, zip, every .vrdelta, SHA256SUMS.txt and SHA256SUMS.txt.sig' % release,
+    todo += ['GitHub release v%s: a full release: setup, zip, every .vrdelta and every package; an update release: '
+             'the zips, every .vrdelta, the AppImages, the disk images, the APK (docs/RELEASE-CHECKLIST.md); '
+             'always the source, SHA256SUMS.txt and SHA256SUMS.txt.sig' % release,
              'Announce %s in Discussions › Announcements' % release,
              'Weblate: weblate-sync.py export --upstream <merged VideoLAN commit>',
              'Check the website and the README on GitHub show %s' % release]

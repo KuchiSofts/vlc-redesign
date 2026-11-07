@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `da8cf042aa` (2026-11-06).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `2b22905a8a` (2026-11-07).
 
 **Contents:** [Unreleased](#unreleased) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -27,6 +27,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Windows: the library's lists (Home, the media pages, network folders) and the programme guide no longer build the
+  system's time zone again for every item: on Windows each one read the registry and kept its own copy, at every
+  refresh (a media change refreshes Home's recent lists). The dates shown are the same (local time). Found with a
+  heap walk over 900 media changes; what is left per change is the graphics driver's (about 2 KB, VideoLAN closes
+  the video display between media on purpose).
 - Translations: every catalog follows the interface's current texts again. 89 languages had been left on an older
   template, so the volume meter's texts and a few newer ones were not offered to translators on Weblate, and the
   Estonian translation of the volume meter ([#53](https://github.com/KuchiSofts/vlc-redesign/pull/53)) did not reach

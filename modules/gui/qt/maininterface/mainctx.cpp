@@ -1915,6 +1915,9 @@ UpdateModel* MainCtx::getUpdateModel() const
             }
             else
             {
+                if (m_updateModel->updateStatus() == m_updateModel->updateStatusOnAcknowledgment())
+                    return; // already dismissed with the same status
+
                 switch (m_updateModel->updateStatus())
                 {
                 case UpdateModel::UpToDate:

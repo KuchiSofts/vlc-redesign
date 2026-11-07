@@ -94,11 +94,13 @@ After the push to the public repository, before the release is published:
 
 The owner's rule (2026-11-07): every version is published, but only a **big** change, or one the apps can't take
 by themselves, is a **full release**. Everything else (fixes, improvements, translations) is an **update release**:
-the files the apps update from and the portable copies, no installers and no distribution packages.
+the files the apps update from, the portable copies and the Windows installers (a copy installed for every user, in
+Program Files, which the small update can't write, and a copy older than the small updates update with them: owner,
+2026-11-07); no distribution packages.
 
 | | Full release | Update release |
 |---|---|---|
-| Windows x64 / ARM64 | installer, portable zip, small updates (3 latest) | portable zip, small updates **from every version since the last full release** |
+| Windows x64 / ARM64 | installer, portable zip, small updates (3 latest) | installer, portable zip, small updates **from every version since the last full release** |
 | Linux | AppImage (+ .zsync), .deb, .rpm, Flatpak, tar.xz | AppImage (+ .zsync), tar.xz |
 | macOS | disk images | disk images (the app updates itself from them, from 0.5.5) |
 | Android | APK | APK |
@@ -110,15 +112,15 @@ signing key, a new Android version-code scheme, or users who have no updater mus
 0.5.5, .deb, .rpm, Flatpak).
 
 An update release:
-1. `platforms.yml`: `version` the new one, `full:` stays the last full release (its installers, .deb, .rpm and the
+1. `platforms.yml`: `version` the new one, `full:` stays the last full release (its .deb, .rpm, Flatpak and the
    Samsung source keep linking there: `full_only: yes`); `render.py` (README's buttons, the table, the website).
-2. `make-release.ps1 -Update` (x64, then `-Arch aarch64`): no installer; small updates from every release since
-   `full:`, each checked by applying it.
+2. `make-release.ps1 -Update` (x64, then `-Arch aarch64`): the installer and the zip; small updates from every
+   release since `full:`, each checked by applying it.
 3. The Linux AppImages and the disk images from the pull request's CI artifacts (not the .deb, .rpm, Flatpak);
    the APK; `SHA256SUMS.txt` of all of them, signed.
 4. `release-notes.py`: under Windows it says it is an update release, with the last full release's link.
-5. Everything else as for a release (below): changelog, roadmap, plan, wiki (its file tables: the installers and
-   packages from the full release), issues.
+5. Everything else as for a release (below): changelog, roadmap, plan, wiki (its file tables: the Windows
+   installers of this version, the distribution packages from the full release), issues.
 
 ## A release X.Y.Z
 

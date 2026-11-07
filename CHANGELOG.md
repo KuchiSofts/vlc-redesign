@@ -5,13 +5,37 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `ad11e4bec1` (2026-11-07).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `5e2c7454ec` (2026-11-07).
 
-**Contents:** [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
+
+## [0.5.6] · 2026-11-07
+
+An update release: the apps update themselves to it, and the Windows installers come with it from now on.
+Android runs from Android 5.0 without the crashes of Android 5 to 10, and VideoLAN's latest fixes.
+
+### Fixed
+
+- Android 5 to 10: playing any video crashed on Android 5 and 6 (the subtitles' language hints used an Android 7
+  call), Settings crashed on every Android 10 or older (an Android 11 call), and a subtitle line mixing directions
+  with brackets crashed on Android 7 to 9. Every call of a later Android is checked now (lint finds none left),
+  and the app installs from Android 5.0, Android TV's first version (it said 4.2, where it could not run).
+- Windows: the portable copy's README no longer names the version it came with (the in-app updates never touch
+  that folder, so it named the old version's source after an update).
+- Samsung TV: the app is now named **Juxto Media Player** (it was *Redesign Player for TV*), 0.5.6
+  (`Juxto-Media-Player-TV-0.5.6-source.zip`); it installs over the earlier versions, which find the update.
+- Releases: an update release carries the Windows installers too. A copy installed for every user (in Program Files,
+  which the small update can't write) and a copy older than the small updates had only a release page without an
+  installer; the app now updates them with the installer. Checked first: the published 0.5.4 updated itself to 0.5.5
+  from the app (5.6 MB, 475 files, every file as in the 0.5.5 zip).
+- VideoLAN master merged to `5e2c7454ec`: the video surface no longer maps its position in the hot path,
+  the update pane's dismissal, Dolby Vision profiles and VP9 hardware decoding on macOS.
+- Android: a screen closed by a rotation was kept in memory by the playback service's last message (its
+  snackbar held the screen); the message now lets it go.
 
 ## [0.5.5] · 2026-11-07
 
@@ -94,11 +118,11 @@ Estonian translation.
 ## [0.5.3] · 2026-11-06
 
 **Everything together:** the desktop, Android on phones, tablets and **Android TV in the design**, and the first
-**Samsung TV app** (*Redesign Player for TV*).
+**Samsung TV app** (*Juxto Media Player*, then named *Redesign Player for TV*).
 
 ### Added
 
-- **Samsung TV: Redesign Player for TV**, a media player for Samsung TVs (Tizen 3.0 and later) **inspired by VLC**, in
+- **Samsung TV: Juxto Media Player** (named *Redesign Player for TV* until 0.5.5), a media player for Samsung TVs (Tizen 3.0 and later) **inspired by VLC**, in
   Juxtopposed's design, driven by the remote: the library, the player, Live TV (M3U and Xtream Codes, the guide, catch-up, films and
   series), 17 languages, right to left, the colour keys and the designer's cat. The TV's own player plays the video,
   so the app has none of VLC's code: it is a player of its own with features like VLC's, not VLC, and does not carry
@@ -165,7 +189,7 @@ Estonian translation.
   key hints. `IdleScene.qml`: three timers (no animation runs between two steps).
 - `win64-docker.ps1 -Lint`: one changed QML file was splatted letter by letter ("not part of any QML module"); new
   `-LintFiles` (the files to lint) and `-LintBase` (lint what changed since a revision, such as `main`).
-- Android: the app is 0.5.3, its *What's new* card in 62 languages. Samsung TV: Redesign Player for TV 0.5.3
+- Android: the app is 0.5.3, its *What's new* card in 62 languages. Samsung TV: Juxto Media Player (then Redesign Player for TV) 0.5.3
   (`Redesign-Player-for-TV-0.5.3-source.zip`; the app's update check reads this project's releases).
 
 ## [0.5.2] · 2026-11-02
@@ -2054,7 +2078,7 @@ the ones to watch when merging upstream, and the candidates to propose to VideoL
 | `bin/Makefile.am`, `bin/meson.build` | Build the `vlc-waveform` helper |
 | `extras/package/win32/package.mak` | Credits, changelog and font licenses in the package |
 
-[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.5.5...main
+[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.5.6...main
 [0.4.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1
 [0.4.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0
 [0.3.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1

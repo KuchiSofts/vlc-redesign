@@ -19,9 +19,10 @@
 # in -Dist: make the x64 and the ARM64 ones, then sign the last one written.
 # The version comes from modules/gui/qt/util/redesign_version.hpp unless
 # -Version is given. -Update makes an update release (docs/RELEASE-CHECKLIST.md,
-# "An update release"): no installer, and small updates from every release
-# since the last full one (-FullVersion, else platforms.yml's "full:"), so every
-# installed copy updates in place. -Quick only rebuilds what changed; -SkipBuild packages
+# "An update release"): the portable zip, the installer and small updates from
+# every release since the last full one (-FullVersion, else platforms.yml's
+# "full:"), so every copy updates from the app (the installer for a copy in
+# Program Files or older than the small updates). -Quick only rebuilds what changed; -SkipBuild packages
 # the existing -Package folder as it is; -Signed packages a folder whose
 # binaries are signed already (the signed package of the Windows build
 # workflow, docs/code-signing.md): never built, its binaries never changed.
@@ -36,7 +37,7 @@ param(
     [string]$Package,
     [string]$Dist = "$env:USERPROFILE\source\vlc-redesign-dist",
     [switch]$Quick,
-    # an update release: the portable zip and the small updates, no installer
+    # an update release: the portable zip, the installer, the small updates since the last full release
     [switch]$Update,
     # the last full release (with installers); default: platforms.yml "full:"
     [string]$FullVersion,
@@ -187,9 +188,12 @@ try {
              "(its own settings, never passed on), put an empty file named standalone`r`n" +
              "in this folder. To start over, use Reset all settings in the settings.`r`n" +
              "`r`n" +
-             "VLC Redesign is free software (GPL v2 or later). Its source code is`r`n" +
-             "$sourceName on the release page, and the tag v$Version of`r`n" +
-             "https://github.com/KuchiSofts/vlc-redesign (docs/SOURCE.md).`r`n")
+             "VLC Redesign is free software (GPL v2 or later). The source code of`r`n" +
+             "the version you have (Help > About names it) is the file`r`n" +
+             "vlc-redesign-<version>-source.tar.gz on that version's release page,`r`n" +
+             "and the tag v<version> of https://github.com/KuchiSofts/vlc-redesign`r`n" +
+             "(docs/SOURCE.md). (This note isn't changed by the in-app updates, which`r`n" +
+             "never touch this folder: it names no version.)`r`n")
     $w.Dispose()
 } finally { $archive.Dispose() }
 
@@ -199,10 +203,9 @@ if ($Update -and -not $FullVersion) {
     $FullVersion = $line.Matches[0].Groups[1].Value
 }
 
-# Installer (a full release only: an update release keeps the last full one's)
-if ($Update) {
-    Write-Host "Update release: no installer (the installers stay those of $FullVersion)"
-} else {
+# Installer, an update release's too: a copy installed for every user (Program
+# Files, which the small update can't write) and a copy older than the small
+# updates update with it (2026-11-07)
 $iscc = @("${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe", "$env:ProgramFiles\Inno Setup 6\ISCC.exe") |
     Where-Object { Test-Path $_ } | Select-Object -First 1
 if (-not $iscc) { throw 'Inno Setup 6.7+ is needed (choco install innosetup)' }
@@ -210,7 +213,6 @@ $archDefine = @(if ($Arch -eq 'aarch64') { '/DArm64' })
 & $iscc /Q "/DAppVersion=$Version" "/DSourceDir=$((Resolve-Path $Package).Path)" "/DOutputDir=$Dist" `
     @archDefine "$PSScriptRoot\installer\vlc-redesign.iss"
 if ($LASTEXITCODE) { throw "Installer build failed ($LASTEXITCODE)" }
-}
 
 # The release files of one platform of this version in -Dist: zip, installer,
 # small updates (the x64 small updates have no platform in their name)
@@ -241,7 +243,7 @@ foreach ($d in $deltas) {
 # One SHA256SUMS.txt for the release: these files and those of the other
 # architecture of the same version already in -Dist
 $files = @(Get-ReleaseFiles 'win64') + @(Get-ReleaseFiles 'winarm64') + @($sourceName)
-foreach ($f in @("$name.zip") + @(if (-not $Update) { "$name-setup.exe" })) {
+foreach ($f in @("$name.zip", "$name-setup.exe")) {
     if ($f -notin $files) { throw "Missing $f in $Dist" }
 }
 $sums = foreach ($f in $files) {

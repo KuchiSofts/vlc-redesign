@@ -35,7 +35,7 @@ if '--signed' in sys.argv:
 elif '--unsigned' in sys.argv:
     signed = False
 else:
-    # (from the installer, else the portable copy's vlc.exe is not checked: an update release has no installer)
+    # (from the installer: every release has one)
     signed = pe_signed(os.path.join(dist, 'vlc-redesign-%s-win64-setup.exe' % version))
 
 changelog = open(os.path.join(ROOT, 'CHANGELOG.md'), encoding='utf-8').read()
@@ -134,18 +134,18 @@ covered = ['Windows (x64 and ARM64)'] + [n for n, t in (('Linux', linux), ('macO
                                                         ('Samsung TV', samsung)) if t]
 others += '\n`SHA256SUMS.txt` lists every file above: %s.\n' % (
     ', '.join(covered[:-1]) + ' and ' + covered[-1] if len(covered) > 1 else covered[0])
-# An update release (no installer: docs/RELEASE-CHECKLIST.md): the installers and the distribution packages stay
-# those of the last full release (platforms.yml "full:")
+# An update release (docs/RELEASE-CHECKLIST.md: platforms.yml "full:" names an earlier version): the Windows
+# installers are this version's (a copy installed for every user updates with them), the distribution packages
+# stay those of the last full release
 update_note = ''
-if 'vlc-redesign-%s-win64-setup.exe' % V not in sums:
-    _p = os.path.join(ROOT, 'platforms.yml')
-    _full = re.search(r'^\s+full:\s*(\S+)', open(_p, encoding='utf-8').read(), re.M) if os.path.exists(_p) else None
-    full = _full.group(1) if _full else ''
-    if full and full != V:
-        update_note = ('\n**An update release:** the apps update themselves to it (Windows with the small updates above, '
-                       'the Linux AppImage, macOS and Android with their files below). The installers and the .deb, '
-                       '.rpm and Flatpak packages are those of [%s](https://github.com/KuchiSofts/vlc-redesign/releases/'
-                       'tag/v%s): install from there, then the app updates itself.\n' % (full, full))
+_p = os.path.join(ROOT, 'platforms.yml')
+_full = re.search(r'^\s+full:\s*(\S+)', open(_p, encoding='utf-8').read(), re.M) if os.path.exists(_p) else None
+full = _full.group(1) if _full else ''
+if full and full != V:
+    update_note = ('\n**An update release:** the apps update themselves to it (Windows with the small updates above, '
+                   'or the installer for a copy installed for every user; the Linux AppImage, macOS and Android with '
+                   'their files below). The .deb, .rpm and Flatpak packages are those of [%s](https://github.com/'
+                   'KuchiSofts/vlc-redesign/releases/tag/v%s).\n' % (full, full))
 # a paragraph of its own under the header, when written (what the release is about, in two lines)
 intro_path = os.path.join(dist, 'release-intro-%s.md' % version)
 intro = open(intro_path, encoding='utf-8').read().strip() + '\n\n' if os.path.exists(intro_path) else ''

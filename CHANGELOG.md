@@ -23,6 +23,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   and the app installs from Android 5.0, Android TV's first version (it said 4.2, where it could not run).
 - Windows: the portable copy's README no longer names the version it came with (the in-app updates never touch
   that folder, so it named the old version's source after an update).
+- Releases: an update release carries the Windows installers too. A copy installed for every user (in Program Files,
+  which the small update can't write) and a copy older than the small updates had only a release page without an
+  installer; the app now updates them with the installer. Checked first: the published 0.5.4 updated itself to 0.5.5
+  from the app (5.6 MB, 475 files, every file as in the 0.5.5 zip).
 - Android: a screen closed by a rotation was kept in memory by the playback service's last message (its
   snackbar held the screen); the message now lets it go.
 

@@ -230,7 +230,7 @@ if os.path.exists(private):
 
 if release:
     todo += ['GitHub release v%s: a full release: setup, zip, every .vrdelta and every package; an update release: '
-             'the zips, every .vrdelta, the AppImages, the disk images, the APK (docs/RELEASE-CHECKLIST.md); '
+             'the setups, the zips, every .vrdelta, the AppImages, the disk images, the APK (docs/RELEASE-CHECKLIST.md); '
              'always the source, SHA256SUMS.txt and SHA256SUMS.txt.sig' % release,
              'Announce %s in Discussions › Announcements' % release,
              'Weblate: weblate-sync.py export --upstream <merged VideoLAN commit>',

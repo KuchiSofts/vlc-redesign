@@ -226,7 +226,7 @@ public:
                 free(str);
 
                 if (ok)
-                    item->fileModified = QDateTime::fromSecsSinceEpoch(time, QTimeZone::systemTimeZone());
+                    item->fileModified = QDateTime::fromSecsSinceEpoch(time);
             }
 
             item->tree = NetworkTreeItem(treeItem, inputItem );

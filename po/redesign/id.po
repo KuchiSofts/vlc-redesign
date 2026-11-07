@@ -13,15 +13,16 @@ msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-11-06 21:05+0000\n"
-"PO-Revision-Date: 2015-12-04 10:01+0000\n"
-"Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
-"Language-Team: Indonesian (http://www.transifex.com/yaron/vlc-trans/language/"
-"id/)\n"
+"PO-Revision-Date: 2026-11-07 21:57+0000\n"
+"Last-Translator: RonggoW <ranwiesiel@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/vlc-redesign/"
+"interface/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:910
@@ -31,7 +32,7 @@ msgstr ""
 #: modules/gui/qt/playlist/qml/PlaylistDetachedWindow.qml:37
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:81
 msgid "Play Queue"
-msgstr "Antrean Putar"
+msgstr "Putar Antrian"
 
 #: include/vlc_config_cat.h:59
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1036
@@ -3085,10 +3086,14 @@ msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
 msgstr ""
+"Ketika volume berubah, muncul indikatornya (Pada roda gulir, tombol, tombol "
+"mute). Otomatis: pada samping kanan, samping kiri dalam bahasa yang ditulis "
+"dari kanan ke kiri."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
+"Otomatis|Sisi kanan|Sisi kiri|Sisi pojok kanan atas| Sisi pojok kiri atas"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
@@ -9363,9 +9368,8 @@ msgid "Extra verbose media library logs"
 msgstr "Log pustaka media yang sangat rinci"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Berbagi jaringan tidak ditemukan"
+msgstr "Gunakan jaringan bersama"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

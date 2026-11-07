@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2014-05-01 15:57+0000\n"
 "Last-Translator: rohitharikiran <rohithharikiran@gmail.com>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1263,6 +1263,7 @@ msgid "Track number"
 msgstr "ట్రాక్ సంఖ్య"
 
 #: src/input/meta.c:65 modules/demux/mp4/meta.c:529
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:66
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:61
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:94 modules/mux/asf.c:64
 msgid "Rating"
@@ -14844,11 +14845,11 @@ msgstr ""
 msgid "Ulead DV audio decoder"
 msgstr ""
 
-#: modules/codec/videotoolbox/decoder.c:2307
+#: modules/codec/videotoolbox/decoder.c:2524
 msgid "Use Hardware decoders only"
 msgstr ""
 
-#: modules/codec/videotoolbox/decoder.c:2335
+#: modules/codec/videotoolbox/decoder.c:2552
 #, fuzzy
 msgid "VideoToolbox video decoder"
 msgstr "వీడియో ఎన్కోడర్"
@@ -17963,12 +17964,12 @@ msgstr "దస్త్రంపేరు"
 msgid "Track Number"
 msgstr ""
 
-#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:76
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:77
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:72
 msgid "Ascending"
 msgstr "ఆరోహణ"
 
-#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:77
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:78
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:73
 msgid "Descending"
 msgstr "అవరోహణ"
@@ -17989,20 +17990,20 @@ msgstr ""
 msgid "Library"
 msgstr "లైబ్రరీ"
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:558
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:562
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:318
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:323
 #: share/lua/http/dialogs/mosaic_window.html:114
 msgid "Columns"
 msgstr "అడ్డువరుసలు"
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:686
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:903
 msgid "All genres"
 msgstr ""
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:688
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:904
 msgid "All artists"
 msgstr ""
 
@@ -21254,7 +21255,7 @@ msgstr "పొందు"
 #: modules/gui/qt/dialogs/epg/epg.cpp:91
 #: modules/gui/qt/dialogs/extended/extended.cpp:148
 #: modules/gui/qt/dialogs/help/help.cpp:70
-#: modules/gui/qt/dialogs/help/help.cpp:394
+#: modules/gui/qt/dialogs/help/help.cpp:412
 #: modules/gui/qt/dialogs/mediainfo/mediainfo.cpp:79
 #: modules/gui/qt/dialogs/messages/messages.cpp:106
 #: modules/gui/qt/dialogs/messages/messages.cpp:471
@@ -22914,35 +22915,35 @@ msgstr ""
 "నుండి, Qtకి అనుగుణంగా మార్చబడింది. VideoLAN లేదా Juxtopposedతో అనుబంధం గానీ వారి ఆమోదం గానీ "
 "లేదు.</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:396
+#: modules/gui/qt/dialogs/help/help.cpp:414
 msgid "&Recheck version"
 msgstr "రూపాంతరాన్ని పునఃపరిశీలించండి (&R)"
 
-#: modules/gui/qt/dialogs/help/help.cpp:399
+#: modules/gui/qt/dialogs/help/help.cpp:417
 msgid "&Yes"
 msgstr "అవును (&Y)"
 
-#: modules/gui/qt/dialogs/help/help.cpp:401
+#: modules/gui/qt/dialogs/help/help.cpp:419
 msgid "&No"
 msgstr "కాదు (&N)"
 
-#: modules/gui/qt/dialogs/help/help.cpp:404
+#: modules/gui/qt/dialogs/help/help.cpp:422
 msgid "VLC media player updates"
 msgstr "VLC మాధ్యమ ప్రదర్శకం నవీకరణలు"
 
-#: modules/gui/qt/dialogs/help/help.cpp:483
+#: modules/gui/qt/dialogs/help/help.cpp:502
 msgid "A new version of VLC (%1.%2.%3%4) is available."
 msgstr "సరికొత్త రూపాంతరం వియల్సీ (%1.%2.%3%4) అందుబాటులో ఉన్నది."
 
-#: modules/gui/qt/dialogs/help/help.cpp:506
+#: modules/gui/qt/dialogs/help/help.cpp:525
 msgid "You have the latest version of VLC media player."
 msgstr "మీ వద్ద VLC మాధ్యమ ప్రదర్శకం యొక్క సరికొత్త రూపాంతరం ఉంది."
 
-#: modules/gui/qt/dialogs/help/help.cpp:513
+#: modules/gui/qt/dialogs/help/help.cpp:532
 msgid "An error occurred while checking for updates..."
 msgstr "నవీకరణల కోసం పరిశీలిస్తున్నపుడు ఒక దోషం సంభవించింది..."
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "నవీకరణల కోసం తనిఖీ చేస్తోంది..."
@@ -25503,7 +25504,7 @@ msgid "Audio delay"
 msgstr "ఆడియో ఆలస్యం"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/player/qml/PlayerView.qml:926
+#: modules/gui/qt/player/qml/PlayerView.qml:927
 #: modules/gui/qt/player/qml/AudioContent.qml:462
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
@@ -29493,6 +29494,11 @@ msgstr "DVD నావిగేషన్"
 msgid "Close navigation"
 msgstr "నావిగేషన్‌ను మూసివేయి"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× వేగం"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -29505,73 +29511,73 @@ msgstr "ప్రిసెట్‌లు:"
 msgid "Player"
 msgstr "ప్రదర్శకం"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "ఉపశీర్షిక పరిమాణం %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "టీవీలో ఉపశీర్షికలు: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "టీవీలో ఉపశీర్షికలు ఆపివేయబడ్డాయి"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "%1లో ఆడటం లేదు"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "%1కు అనుసంధానిస్తోంది…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "%1లో ఆడుతోంది"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "ధ్వని %1లో వినిపిస్తోంది"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ఇక్కడే నిలిపివేయండి, జరపండి, ఉపశీర్షికలు మార్చండి: TV అనుసరిస్తుంది."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "మాధ్యమాన్ని చదవడానికి %1 ఈ కంప్యూటర్‌కు అనుసంధానం కావడానికి Windows Firewall అనుమతించడం లేదు."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "Windows కోసం వేచి ఉంది…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "పబ్లిక్ నెట్‌వర్క్‌లలో కూడా అనుమతించు"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "ప్రైవేట్ నెట్‌వర్క్‌లలో అనుమతించు"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "మళ్ళీ ప్రయత్నించు"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "ఇక్కడ ఆడించు"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "ప్రసారం ఆపు"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "%1లో కూడా"
 

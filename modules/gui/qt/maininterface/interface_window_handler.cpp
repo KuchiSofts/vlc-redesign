@@ -35,6 +35,7 @@
 #include <vlc_actions.h>
 
 static bool isFullscreenKey(vlc_object_t *obj, int vlcKey);
+static bool matchesHotkey(vlc_object_t *obj, const char *action, int vlcKey);
 
 #ifdef _WIN32
 #include <windows.h>
@@ -287,11 +288,42 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             m_mainCtx->wheelKeyAction(vlcKey, m_wheelPosition, true);
     });
 
+    m_player = THEMIM;
+    m_spaceHoldTimer.setSingleShot(true);
+    m_spaceHoldTimer.setInterval(PlayerController::SpeedHoldDelay);
+    connect(&m_spaceHoldTimer, &QTimer::timeout, this, [this]() {
+        if (m_spaceTapPending && canTakeSpace()
+            && m_player && m_player->beginSpeedHold(PlayerController::KeyboardSpeedHold))
+            m_spaceTapPending = false;
+    });
+    connect(THEMIM, &PlayerController::inputChanged, this, &InterfaceWindowHandler::cancelSpaceHold);
+    connect(THEMIM, &PlayerController::playingStateChanged, this, &InterfaceWindowHandler::cancelSpaceHold);
+    connect(m_mainCtx, &MainCtx::mainInterfaceModesChanged, this, &InterfaceWindowHandler::cancelSpaceHold);
+    connect(m_mainCtx, &MainCtx::useGlobalShortcutsChanged, this, [this](bool enabled) {
+        if (!enabled)
+            cancelSpaceHold();
+    });
+    connect(m_window, &QWindow::focusObjectChanged, this, [this]() {
+        // Only while Space is held: the window also emits this as it is
+        // destroyed (VLC quitting), when the compositor and the focused item
+        // are being destroyed and must not be read (a segfault on Linux)
+        if ((m_spacePressed || m_spaceTapPending) && focusedItemTakesKeys())
+            cancelSpaceHold();
+    });
+    connect(m_window, &QWindow::activeChanged, this, [this]() {
+        if (!m_window->isActive())
+        {
+            cancelSpaceHold();
+            m_spacePressed = false;
+        }
+    });
+
     m_window->installEventFilter(this);
 }
 
 InterfaceWindowHandler::~InterfaceWindowHandler()
 {
+    cancelSpaceHold();
     m_window->removeEventFilter(this);
     /* Save this size */
     if (getSettings()->value("redesign/remember-window-geometry", true).toBool())
@@ -415,6 +447,33 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
     {
         QKeyEvent * keyEvent = static_cast<QKeyEvent *> (event);
 
+        if (keyEvent->key() == Qt::Key_Space)
+        {
+            const bool takeSpace = keyEvent->modifiers() == Qt::NoModifier
+                && canTakeSpace()
+                && matchesHotkey(VLC_OBJECT(p_intf), "play-pause", qtEventToVLCKey(keyEvent));
+            if (keyEvent->isAutoRepeat())
+            {
+                if (m_spacePressed || takeSpace)
+                {
+                    event->accept();
+                    return true;
+                }
+            }
+            else
+            {
+                cancelSpaceHold();
+                m_spacePressed = takeSpace;
+                if (takeSpace)
+                {
+                    m_spaceTapPending = true;
+                    m_spaceHoldTimer.start();
+                    event->accept();
+                    return true;
+                }
+            }
+        }
+
         /* easter eggs sequence handling */
         if ( keyEvent->key() == kc[ i_kc_offset ] )
             i_kc_offset++;
@@ -477,7 +536,21 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
     }
     case QEvent::KeyRelease:
     {
-        return applyKeyEvent(static_cast<QKeyEvent *> (event));
+        auto *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_Space && m_spacePressed)
+        {
+            if (!keyEvent->isAutoRepeat())
+            {
+                const bool tap = m_spaceTapPending && canTakeSpace();
+                m_spacePressed = false;
+                cancelSpaceHold();
+                if (tap)
+                    m_mainCtx->sendHotkey(Qt::Key_Space, Qt::NoModifier);
+            }
+            event->accept();
+            return true;
+        }
+        return applyKeyEvent(keyEvent);
     }
     case QEvent::Wheel:
     {
@@ -728,20 +801,38 @@ void InterfaceWindowHandler::setInterfaceAlwaysOnTop( bool on_top )
 
 // Whether vlcKey is a key of "toggle fullscreen" or "leave fullscreen", as
 // the user set them
+static bool matchesHotkey(vlc_object_t *obj, const char *action, int vlcKey)
+{
+    uint_fast32_t *keycodes = nullptr;
+    const size_t count = vlc_actions_get_keycodes(obj, action, false, &keycodes);
+    const bool bound = count && std::find(keycodes, keycodes + count,
+                                        static_cast<uint_fast32_t>(vlcKey)) != keycodes + count;
+    std::free(keycodes);
+    return bound;
+}
+
 static bool isFullscreenKey(vlc_object_t *obj, int vlcKey)
 {
-    // the names without "key-": vlc_actions_get_keycodes() adds it
-    for (const char *name : { "toggle-fullscreen", "leave-fullscreen" })
-    {
-        uint_fast32_t *keycodes = nullptr;
-        const size_t count = vlc_actions_get_keycodes(obj, name, false, &keycodes);
-        const bool bound = std::find(keycodes, keycodes + count,
-                                     static_cast<uint_fast32_t>(vlcKey)) != keycodes + count;
-        std::free(keycodes);
-        if (bound)
-            return true;
-    }
-    return false;
+    return matchesHotkey(obj, "toggle-fullscreen", vlcKey)
+        || matchesHotkey(obj, "leave-fullscreen", vlcKey);
+}
+
+bool InterfaceWindowHandler::canTakeSpace() const
+{
+    return m_mainCtx->getUseGlobalShortcuts() && m_mainCtx->hasEmbededVideo()
+        && (m_mainCtx->preferHotkeys() || m_mainCtx->isMinimalView())
+        && !focusedItemTakesKeys()
+        && !m_mainCtx->keyGoesBeforeHotkeys(Qt::Key_Space, Qt::NoModifier)
+        && m_player && m_player->canHoldSpeed();
+}
+
+void InterfaceWindowHandler::cancelSpaceHold()
+{
+    m_spaceHoldTimer.stop();
+    m_spaceTapPending = false;
+    // (from the destructor and the window's signals as VLC quits: the player may be gone)
+    if (m_player)
+        m_player->endSpeedHold(PlayerController::KeyboardSpeedHold);
 }
 
 bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const

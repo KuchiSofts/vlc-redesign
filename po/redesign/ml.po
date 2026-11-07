@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:09+0000\n"
 "PO-Revision-Date: 2016-01-14 07:00+0000\n"
 "Last-Translator: Sajeer P <sajeerforyou@gmail.com>\n"
 "Language-Team: Malayalam (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -2851,7 +2851,7 @@ msgstr ""
 "നിന്ന്, Qt-ലേക്ക് അനുരൂപമാക്കിയത്. VideoLAN-ഉമായോ Juxtopposed-ഉമായോ ബന്ധമില്ല, അവർ "
 "അംഗീകരിച്ചതുമല്ല.</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കുന്നു..."
@@ -7814,74 +7814,78 @@ msgstr "പ്രീസെറ്റുകൾ:"
 msgid "Player"
 msgstr "പ്ലേയർ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× വേഗം"
+
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "ഉപശീർഷക വലുപ്പം %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "ടിവിയിലെ ഉപശീർഷകങ്ങൾ: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "ടിവിയിൽ ഉപശീർഷകങ്ങൾ ഓഫ്"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "%1-ൽ പ്ലേ ചെയ്യുന്നില്ല"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "%1-ലേക്ക് കണക്റ്റ് ചെയ്യുന്നു…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "%1-ൽ പ്ലേ ചെയ്യുന്നു"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "ശബ്ദം %1-ൽ പ്ലേ ചെയ്യുന്നു"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ഇവിടെ പോസ് ചെയ്യുക, സീക്ക് ചെയ്യുക, ഉപശീർഷകങ്ങൾ മാറ്റുക: ടിവി അത് പിന്തുടരും."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "മീഡിയ വായിക്കാൻ ഈ കമ്പ്യൂട്ടറിലേക്ക് കണക്റ്റ് ചെയ്യാൻ Windows Firewall %1-നെ "
 "അനുവദിക്കുന്നില്ല."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "Windows-നായി കാത്തിരിക്കുന്നു…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "പൊതു നെറ്റ്വർക്കുകളിലും അനുവദിക്കുക"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "സ്വകാര്യ നെറ്റ്വർക്കുകളിൽ അനുവദിക്കുക"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "വീണ്ടും ശ്രമിക്കുക"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "ഇവിടെ പ്ലേ ചെയ്യുക"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "കാസ്റ്റിംഗ് നിർത്തുക"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "%1-ലും"
 

@@ -12,6 +12,7 @@ Rectangle {
     id: root
 
     property string text
+    property string heldText
     // the shortcut that did it, under the message, dimmer (the designer's
     // OSD: what happened and how to do it again)
     property string shortcut
@@ -25,7 +26,7 @@ Rectangle {
     }
 
     visible: opacity > 0
-    opacity: hideTimer.running ? 1 : 0
+    opacity: hideTimer.running || heldText.length > 0 ? 1 : 0
     Behavior on opacity { NumberAnimation { duration: VLCStyle.duration_short } }
     width: Math.min(Math.max(label.implicitWidth, keysLabel.visible ? keysLabel.implicitWidth : 0) + px(32),
                     parent ? parent.width - px(40) : label.implicitWidth)
@@ -35,7 +36,7 @@ Rectangle {
     color: Qt.rgba(25 / 255, 25 / 255, 25 / 255, 0.95)
 
     Accessible.role: Accessible.AlertMessage
-    Accessible.name: text
+    Accessible.name: label.text
 
     Timer {
         id: hideTimer
@@ -48,7 +49,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: keysLabel.visible ? -root.px(9) : 0
         width: Math.min(implicitWidth, root.parent ? root.parent.width - root.px(72) : implicitWidth)
-        text: root.text
+        text: root.heldText || root.text
         elide: Text.ElideRight
         color: "#C6C6C6"
         font.family: VLCStyle.redesign.fontFamily
@@ -57,7 +58,7 @@ Rectangle {
 
     Text {
         id: keysLabel
-        visible: root.shortcut.length > 0
+        visible: root.heldText.length === 0 && root.shortcut.length > 0
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: label.bottom
         anchors.topMargin: root.px(2)

@@ -24,7 +24,7 @@ What is being worked on, updated as it changes (2026-11-07):
   v0.5.5. Weblate: export run, already current (2,014 texts, no language losing any).
 - 🟢 **Update releases** (2026-11-07, the owner's rule): every version is published; fixes and improvements as
   update releases (portable copies + what the apps update from; deltas from every version since the last full
-  release), full releases only for big changes (docs/RELEASE-CHECKLIST.md). make-release.ps1 -Update,
+  release; the Windows installers too, from 2026-11-07: an install for every user and an old copy update with them), full releases only for big changes (docs/RELEASE-CHECKLIST.md). make-release.ps1 -Update,
   platforms.yml full: / full_only, render.py keeps the README's buttons in step (they named 0.5.3 after 0.5.4),
   release-notes.py says so with the full release's link. Plan: 0.5.5 one last full release (the macOS updater must
   reach Macs, the Android version code needs an upstream merge), then update releases.

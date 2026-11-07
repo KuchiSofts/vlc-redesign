@@ -9,9 +9,10 @@
 # status: released | beta | in-progress | planned | research | later
 # version, date: the latest published version and its day (none yet: leave out)
 # next: the version being prepared
-# full: the last full release (installers and every package); an update release
-#   (docs/RELEASE-CHECKLIST.md) publishes only the portable copies and what the
-#   apps update from, so a download marked "full_only: yes" links to that one
+# full: the last full release (every package); an update release
+#   (docs/RELEASE-CHECKLIST.md) publishes the portable copies, the Windows
+#   installers and what the apps update from, so a download marked
+#   "full_only: yes" (.deb, .rpm, Flatpak) links to that one
 # downloads: the files of a release; {version} is replaced, and the link is
 #   https://github.com/<repository>/releases/download/v<version>/<file>
 # os: what the website matches the visitor's system with
@@ -39,7 +40,6 @@ platforms:
     downloads:
       - label: Installer
         file: vlc-redesign-{version}-win64-setup.exe
-        full_only: yes
       - label: Portable
         file: vlc-redesign-{version}-win64.zip
 
@@ -111,7 +111,6 @@ platforms:
     downloads:
       - label: Installer
         file: vlc-redesign-{version}-winarm64-setup.exe
-        full_only: yes
       - label: Portable
         file: vlc-redesign-{version}-winarm64.zip
 

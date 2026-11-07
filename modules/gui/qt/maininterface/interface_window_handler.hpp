@@ -23,9 +23,11 @@
 #include <QObject>
 #include <QWindow>
 #include <QPointer>
+#include <QTimer>
 #include "util/vlchotkeyconverter.hpp"
 
 class MainCtx;
+class PlayerController;
 class InterfaceWindowHandler : public QObject
 {
     Q_OBJECT
@@ -66,6 +68,13 @@ signals:
 private:
     bool applyKeyEvent(QKeyEvent * event) const;
     bool focusedItemTakesKeys() const;
+    bool canTakeSpace() const;
+    void cancelSpaceHold();
+    // the player, null once it is gone (the window can outlive it as VLC quits)
+    QPointer<PlayerController> m_player;
+    QTimer m_spaceHoldTimer;
+    bool m_spacePressed = false;
+    bool m_spaceTapPending = false;
 
 protected:
     virtual void updateCSDWindowSettings();

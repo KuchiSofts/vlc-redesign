@@ -386,6 +386,7 @@ FocusScope {
                     cursorShape: playerSpecializationLoader.cursorShape
 
                     doubleClickEnabled: MainCtx.doubleClickAction !== 0
+                    holdSpeedPlayer: MainCtx.useGlobalShortcuts ? Player : null
 
                     // A visualization of a music file: the audio output made
                     // its picture, the core gives it no menu: the player's
@@ -954,6 +955,7 @@ FocusScope {
     PlayerToast {
         id: subtitleSizeToast
         objectName: "subtitleSizeToast"
+        heldText: Player.holdSpeedActive && Player.rate === 2 ? qsTr("2× speed") : ""
         anchors.horizontalCenter: parent.horizontalCenter
         y: VLCStyle.dp(24, VLCStyle.scale) + (topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0)
         z: 10

@@ -58,6 +58,7 @@ FocusScope {
         focus: visible
 
         videoSurfaceProvider: MainCtx.videoSurfaceProvider
+        doubleClickEnabled: MainCtx.doubleClickAction !== 0
         holdSpeedPlayer: MainCtx.useGlobalShortcuts ? Player : null
 
         visible: MainCtx.hasEmbededVideo
@@ -86,7 +87,6 @@ FocusScope {
 
             onTriggered: {
                 // Cursor hides when toggleControlBarButton is not visible
-                videoSurface.forceActiveFocus()
                 videoSurface.cursorShape = Qt.BlankCursor
                 root._csdOnVideo = false
             }
@@ -190,9 +190,4 @@ FocusScope {
         }
     }
 
-    Keys.onPressed: (event) => {
-        if (event.accepted)
-            return
-        MainCtx.sendHotkey(event.key, event.modifiers);
-    }
 }

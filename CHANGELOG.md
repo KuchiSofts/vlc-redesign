@@ -17,6 +17,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Android 5 to 10: playing any video crashed on Android 5 and 6 (the subtitles' language hints used an Android 7
+  call), Settings crashed on every Android 10 or older (an Android 11 call), and a subtitle line mixing directions
+  with brackets crashed on Android 7 to 9. Every call of a later Android is checked now (lint finds none left),
+  and the app installs from Android 5.0, Android TV's first version (it said 4.2, where it could not run).
+- Windows: the portable copy's README no longer names the version it came with (the in-app updates never touch
+  that folder, so it named the old version's source after an update).
 - Android: a screen closed by a rotation was kept in memory by the playback service's last message (its
   snackbar held the screen); the message now lets it go.
 

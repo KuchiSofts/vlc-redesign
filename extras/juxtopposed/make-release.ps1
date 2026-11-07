@@ -187,9 +187,12 @@ try {
              "(its own settings, never passed on), put an empty file named standalone`r`n" +
              "in this folder. To start over, use Reset all settings in the settings.`r`n" +
              "`r`n" +
-             "VLC Redesign is free software (GPL v2 or later). Its source code is`r`n" +
-             "$sourceName on the release page, and the tag v$Version of`r`n" +
-             "https://github.com/KuchiSofts/vlc-redesign (docs/SOURCE.md).`r`n")
+             "VLC Redesign is free software (GPL v2 or later). The source code of`r`n" +
+             "the version you have (Help > About names it) is the file`r`n" +
+             "vlc-redesign-<version>-source.tar.gz on that version's release page,`r`n" +
+             "and the tag v<version> of https://github.com/KuchiSofts/vlc-redesign`r`n" +
+             "(docs/SOURCE.md). (This note isn't changed by the in-app updates, which`r`n" +
+             "never touch this folder: it names no version.)`r`n")
     $w.Dispose()
 } finally { $archive.Dispose() }
 

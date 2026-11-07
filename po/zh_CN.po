@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-16 03:18+0100\n"
 "Last-Translator: Dian Li <xslidian@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/yaron/vlc-trans/"
@@ -29773,6 +29773,11 @@ msgstr "DVD 导航"
 msgid "Close navigation"
 msgstr "关闭导航"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2 倍速"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -29784,10 +29789,6 @@ msgstr "预设:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "播放器"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2 倍速"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

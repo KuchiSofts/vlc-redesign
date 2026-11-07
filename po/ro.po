@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2014-08-19 01:41+0000\n"
 "Last-Translator: Cristian Silaghi <cristian.silaghi@mozilla.ro>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/vlc-trans/"
@@ -30509,6 +30509,11 @@ msgstr "Navigare DVD"
 msgid "Close navigation"
 msgstr "Închide navigarea"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Viteză 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -30520,10 +30525,6 @@ msgstr "Presetări:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Player"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Viteză 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

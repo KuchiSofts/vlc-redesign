@@ -29,6 +29,10 @@ Updated as the work moves (last: 2026-11-06).
 **0.5.7** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- ✅ Hold Space or the video for 2× speed, done in the interface (VideoLAN's core unchanged), from
+  [@SHR1F](https://github.com/SHR1F)'s [#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)
+- ✅ The design check passes on Windows checkouts ([#62](https://github.com/KuchiSofts/vlc-redesign/pull/62), @SHR1F)
+- 🟡 A folder of many subtitles refreshes the list once ([#63](https://github.com/KuchiSofts/vlc-redesign/pull/63), @SHR1F)
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)

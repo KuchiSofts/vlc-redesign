@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-10-06 11:13+0000\n"
 "Last-Translator: Vikas Hegde <vikashegde82@gmail.com>\n"
 "Language-Team: Kannada (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -30455,6 +30455,11 @@ msgstr "DVD ನ್ಯಾವಿಗೇಶನ್"
 msgid "Close navigation"
 msgstr "ನ್ಯಾವಿಗೇಶನ್ ಮುಚ್ಚಿ"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× ವೇಗ"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -30466,10 +30471,6 @@ msgstr "ಪೂರ್ವನಿಗದಿಗಳು:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "ಪ್ಲೇಯರ್"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× ವೇಗ"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2016-04-08 22:09+0000\n"
 "Last-Translator: Benny Beat <bennybeat@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -30974,6 +30974,11 @@ msgstr "Navegació del DVD"
 msgid "Close navigation"
 msgstr "Tanca la navegació"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Velocitat 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -30985,10 +30990,6 @@ msgstr "Predefinits:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Reproductor"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Velocitat 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

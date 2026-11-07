@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2016-05-27 05:32+0000\n"
 "Last-Translator: Rajnikant Kumbhar <rajnikant.kumbhar@gmail.com>\n"
 "Language-Team: Marathi (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -30279,6 +30279,11 @@ msgstr "DVD दिशादर्शन"
 msgid "Close navigation"
 msgstr "दिशादर्शन बंद करा"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× वेग"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -30290,10 +30295,6 @@ msgstr "पूर्वरचना:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "प्लेअर"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× वेग"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

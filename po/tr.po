@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-16 03:12+0100\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -30657,6 +30657,11 @@ msgstr "DVD gezintisi"
 msgid "Close navigation"
 msgstr "Gezintiyi kapat"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× hız"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4,00"
@@ -30668,10 +30673,6 @@ msgstr "Önayarlar:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Oynatıcı"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× hız"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

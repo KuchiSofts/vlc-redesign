@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2011-03-09 11:32+0200\n"
 "Last-Translator: sipho <sipho@translate.org.za>\n"
 "Language-Team: SIpho\n"
@@ -30233,6 +30233,11 @@ msgstr ""
 msgid "Close navigation"
 msgstr ""
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr ""
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr ""
@@ -30243,10 +30248,6 @@ msgstr ""
 
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
-msgstr ""
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
 msgstr ""
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967

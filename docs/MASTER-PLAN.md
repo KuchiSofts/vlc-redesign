@@ -18,7 +18,9 @@ What is being worked on, updated as it changes (2026-11-07):
   screen no longer held by the last message. The in-app update checked end to end on the published 0.5.4 →
   0.5.5 (775 files, all as the zip but plugins.dat and the portable README, now version-free). VideoLAN at
   5e2c7454ec. Android 0.5.6 (versionCode 13105060). After the tag, VideoLAN's 2cb78ca89c (Qt contrib
-  without tablet events, a contrib build flag that changes no 0.5.6 binary) merged to main: in 0.5.7.
+  without tablet events, a contrib build flag that changes no 0.5.6 binary) merged to main: in 0.5.7. Published 2026-11-07 ([v0.5.6](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.6)):
+  23 files, the small updates 4.8 MB (x64) and 4.5 MB (ARM64) from 0.5.5; Linux and macOS from the release PR's
+  CI (#61, the same tree as the tag; macOS smoke with the updater: 0 failures on both); SHA256SUMS signed.
 - 🟢 **Release 0.5.5** (2026-11-07, the owner's "upload"): the last full release before update releases: macOS
   updates itself, Android TV lighter (the mini player's tick bound to the lifecycle, the header synced once per
   frame, no menu or dialog on a closing page), the library's lists without a time zone per item, every catalog on

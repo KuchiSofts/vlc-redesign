@@ -112,6 +112,8 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
   with them); the in-app update checked end to end on the published 0.5.4 → 0.5.5
 - ✅ Samsung TV: the app is named *Juxto Media Player* (it was *Redesign Player for TV*), 0.5.6
 - ✅ VideoLAN master merged to `5e2c7454ec` (the video surface's hot path, Dolby Vision, VP9 on macOS)
+- ✅ Published: [v0.5.6](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.6), 23 files; the small updates
+  4.8 MB (x64) and 4.5 MB (ARM64) from 0.5.5
 
 ### 0.5.5 (2026-11-07)
 

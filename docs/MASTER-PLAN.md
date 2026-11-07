@@ -17,7 +17,11 @@ What is being worked on, updated as it changes (2026-11-07):
   frame, no menu or dialog on a closing page), the library's lists without a time zone per item, every catalog on
   the current texts, VideoLAN at ad11e4bec1. Android on VideoLAN's latest with the version code from the version
   (13105050; 0.5.4 was 13070290: it installs over it, checked on the TV emulator), signed with the release key.
-  The Samsung app 0.5.5 (unchanged). From 0.5.6: update releases (platforms.yml full: 0.5.5).
+  The Samsung app 0.5.5 (unchanged). From 0.5.6: update releases (platforms.yml full: 0.5.5). Published 2026-11-07
+  ([v0.5.5](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.5)): 35 files, the small updates 5.6 MB (x64)
+  and 5.7 MB (ARM64) from 0.5.4; the Linux and macOS files from the release PR's CI (#59, the same tree as the tag;
+  macOS smoke with the updater's stage and swap: 0 failures on both); SHA256SUMS signed. The Android source tagged
+  v0.5.5. Weblate: export run, already current (2,014 texts, no language losing any).
 - 🟢 **Update releases** (2026-11-07, the owner's rule): every version is published; fixes and improvements as
   update releases (portable copies + what the apps update from; deltas from every version since the last full
   release), full releases only for big changes (docs/RELEASE-CHECKLIST.md). make-release.ps1 -Update,

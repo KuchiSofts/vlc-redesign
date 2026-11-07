@@ -113,6 +113,8 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ Android TV: lighter (the mini player and the header no longer work in the background); Android on
   VideoLAN's latest, with a new version code
 - ✅ Translations: every catalog on the current texts; VideoLAN master merged to `ad11e4bec1`
+- ✅ Published: [v0.5.5](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.5), 35 files; the small updates
+  5.6 MB (x64) and 5.7 MB (ARM64) from 0.5.4
 
 ### 0.5.4 (2026-11-06)
 

@@ -365,7 +365,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 ## Roadmap
 
 The current release is **0.5.5** (2026-11-07): macOS updates itself, Android TV is lighter, and
-VideoLAN's latest fixes; from 0.5.6 versions of fixes come as update releases (its files and checksums on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.5)); the next, **0.5.6**, an update release, brings fixes as the issues bring them. The status of each platform and what comes after is
+VideoLAN's latest fixes; on Windows a 5.6 MB small update from 0.5.4; from 0.5.6 versions of fixes come as update releases (its files and checksums on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.5)); the next, **0.5.6**, an update release, brings fixes as the issues bring them. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).
 

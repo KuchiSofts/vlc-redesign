@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-06 21:05+0000\n"
+"POT-Creation-Date: 2026-11-07 18:09+0000\n"
 "PO-Revision-Date: 2014-11-02 18:53+0000\n"
 "Last-Translator: Gonçalo Cordeiro <gzcordeiro@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/vlc-trans/"
@@ -1339,6 +1339,7 @@ msgid "Track number"
 msgstr "Número da pista"
 
 #: src/input/meta.c:65 modules/demux/mp4/meta.c:529
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:66
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:61
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:94 modules/mux/asf.c:64
 msgid "Rating"
@@ -15697,12 +15698,12 @@ msgstr "Codificador de audio libtwolame"
 msgid "Ulead DV audio decoder"
 msgstr "Descodificador de audio Ulead DV"
 
-#: modules/codec/videotoolbox/decoder.c:2307
+#: modules/codec/videotoolbox/decoder.c:2524
 #, fuzzy
 msgid "Use Hardware decoders only"
 msgstr "Descodificación por hardware"
 
-#: modules/codec/videotoolbox/decoder.c:2335
+#: modules/codec/videotoolbox/decoder.c:2552
 #, fuzzy
 msgid "VideoToolbox video decoder"
 msgstr "Descodificador de vídeo Theora"
@@ -19045,12 +19046,12 @@ msgstr "Nome de ficheiro"
 msgid "Track Number"
 msgstr "Número de pista"
 
-#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:76
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:77
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:72
 msgid "Ascending"
 msgstr "Ascendente"
 
-#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:77
+#: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:78
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:73
 msgid "Descending"
 msgstr "Descendente"
@@ -19071,20 +19072,20 @@ msgstr ""
 msgid "Library"
 msgstr "Biblioteca"
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:558
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:562
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:318
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:323
 #: share/lua/http/dialogs/mosaic_window.html:114
 msgid "Columns"
 msgstr "Columnas"
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:682
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:899
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:686
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:903
 msgid "All genres"
 msgstr ""
 
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:684
-#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:900
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:688
+#: modules/gui/macosx/library/audio-library/VLCLibraryAudioDataSource.m:904
 msgid "All artists"
 msgstr ""
 
@@ -22400,7 +22401,7 @@ msgstr "Extraer"
 #: modules/gui/qt/dialogs/epg/epg.cpp:91
 #: modules/gui/qt/dialogs/extended/extended.cpp:148
 #: modules/gui/qt/dialogs/help/help.cpp:70
-#: modules/gui/qt/dialogs/help/help.cpp:394
+#: modules/gui/qt/dialogs/help/help.cpp:412
 #: modules/gui/qt/dialogs/mediainfo/mediainfo.cpp:79
 #: modules/gui/qt/dialogs/messages/messages.cpp:106
 #: modules/gui/qt/dialogs/messages/messages.cpp:471
@@ -24083,35 +24084,35 @@ msgstr ""
 "underline; color:#0057ae;\">CC BY 4.0</span></a>, adaptada a Qt. Sen "
 "relación con VideoLAN nin con Juxtopposed nin avalada por eles.</p>"
 
-#: modules/gui/qt/dialogs/help/help.cpp:396
+#: modules/gui/qt/dialogs/help/help.cpp:414
 msgid "&Recheck version"
 msgstr "&Comprobar de novo a versión"
 
-#: modules/gui/qt/dialogs/help/help.cpp:399
+#: modules/gui/qt/dialogs/help/help.cpp:417
 msgid "&Yes"
 msgstr "&Si"
 
-#: modules/gui/qt/dialogs/help/help.cpp:401
+#: modules/gui/qt/dialogs/help/help.cpp:419
 msgid "&No"
 msgstr "&Non"
 
-#: modules/gui/qt/dialogs/help/help.cpp:404
+#: modules/gui/qt/dialogs/help/help.cpp:422
 msgid "VLC media player updates"
 msgstr "Actualizacións do VLC media player"
 
-#: modules/gui/qt/dialogs/help/help.cpp:483
+#: modules/gui/qt/dialogs/help/help.cpp:502
 msgid "A new version of VLC (%1.%2.%3%4) is available."
 msgstr "Está dispoñíbel unha versión nova do VLC (%1.%2.%3%4)."
 
-#: modules/gui/qt/dialogs/help/help.cpp:506
+#: modules/gui/qt/dialogs/help/help.cpp:525
 msgid "You have the latest version of VLC media player."
 msgstr "Xa ten a última versión do VLC media player."
 
-#: modules/gui/qt/dialogs/help/help.cpp:513
+#: modules/gui/qt/dialogs/help/help.cpp:532
 msgid "An error occurred while checking for updates..."
 msgstr "Produciuse un erro ao comprobar se había actualizacións…"
 
-#: modules/gui/qt/dialogs/help/help.cpp:520
+#: modules/gui/qt/dialogs/help/help.cpp:539
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:96
 msgid "Checking for updates..."
 msgstr "Buscando actualizacións..."
@@ -26723,7 +26724,7 @@ msgid "Audio delay"
 msgstr "Atraso do audio"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/player/qml/PlayerView.qml:926
+#: modules/gui/qt/player/qml/PlayerView.qml:927
 #: modules/gui/qt/player/qml/AudioContent.qml:462
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
@@ -30777,74 +30778,78 @@ msgstr "Preconfiguracións:"
 msgid "Player"
 msgstr "Reprodutor"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:965
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Velocidade 2×"
+
+#: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "Tamaño dos subtítulos %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles on the TV: %1"
 msgstr "Subtítulos na TV: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1120
+#: modules/gui/qt/player/qml/PlayerView.qml:1122
 msgid "Subtitles off on the TV"
 msgstr "Subtítulos desactivados na TV"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1231
+#: modules/gui/qt/player/qml/PlayerView.qml:1233
 msgid "Not playing on %1"
 msgstr "Non se está a reproducir en %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1362
 msgid "Connecting to %1…"
 msgstr "Conectando con %1…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
+#: modules/gui/qt/player/qml/PlayerView.qml:1237
 msgid "Playing on %1"
 msgstr "Reproducindo en %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1236
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "The sound plays on %1"
 msgstr "O son reprodúcese en %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1261
+#: modules/gui/qt/player/qml/PlayerView.qml:1263
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "Pause, busque e cambie os subtítulos aquí: a TV segue os cambios."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1278
+#: modules/gui/qt/player/qml/PlayerView.qml:1280
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "O Firewall de Windows non permite que %1 se conecte a este computador para "
 "ler o medio."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1290
+#: modules/gui/qt/player/qml/PlayerView.qml:1292
 msgid "Waiting for Windows…"
 msgstr "Agardando por Windows…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1291
+#: modules/gui/qt/player/qml/PlayerView.qml:1293
 msgid "Allow on public networks too"
 msgstr "Permitir tamén nas redes públicas"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1294
 msgid "Allow on private networks"
 msgstr "Permitir nas redes privadas"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1304
+#: modules/gui/qt/player/qml/PlayerView.qml:1306
 msgid "Try again"
 msgstr "Tentar de novo"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1309
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
 msgid "Play here"
 msgstr "Reproducir aquí"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
-#: modules/gui/qt/player/qml/PlayerView.qml:1370
+#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1372
 msgid "Stop casting"
 msgstr "Deter a emisión"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1363
 msgid "Also on %1"
 msgstr "Tamén en %1"
 

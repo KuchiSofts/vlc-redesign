@@ -18,6 +18,7 @@
 #include "videosurface.hpp"
 
 #include <QSGRectangleNode>
+#include <QStyleHints>
 #include <QThreadPool>
 #include <vlc_window.h>
 
@@ -27,6 +28,7 @@
 #endif
 
 #include "maininterface/mainctx.hpp"
+#include "player/player_controller.hpp"
 
 VideoSurfaceProvider::VideoSurfaceProvider(bool threadedSurfaceUpdates, QObject* parent)
     : QObject(parent)
@@ -125,6 +127,22 @@ VideoSurface::VideoSurface(QQuickItem* parent)
     setAcceptedMouseButtons(Qt::AllButtons);
     setFlag(ItemAcceptsInputMethod, true);
 
+    m_mouseHoldTimer.setSingleShot(true);
+    m_mouseHoldTimer.setInterval(PlayerController::SpeedHoldDelay);
+    connect(&m_mouseHoldTimer, &QTimer::timeout, this, [this]() {
+        m_mouseHold = m_holdSpeedPlayer && m_holdSpeedPlayer->beginSpeedHold(PlayerController::MouseSpeedHold)
+                    ? MouseHold::Active : MouseHold::Cancelled;
+    });
+    connect(this, &QQuickItem::windowChanged, this, [this](QQuickWindow *window) {
+        cancelMouseHold();
+        disconnect(m_holdWindowConnection);
+        if (window)
+            m_holdWindowConnection = connect(window, &QWindow::activeChanged, this, [this, window]() {
+                if (!window->isActive())
+                    cancelMouseHold();
+            });
+    });
+
     {
         // NOTE: Update render position even if render loop is not threaded, since
         //       calling `QQuickItem::mapToScene()` is expensive whereas the Qt
@@ -136,6 +154,41 @@ VideoSurface::VideoSurface(QQuickItem* parent)
         setUpdateRenderPosition(true);
         setFlag(ItemHasContents, false); // `setUpdateRenderPosition(true)` sets `ItemHasContents`
     }
+}
+
+VideoSurface::~VideoSurface()
+{
+    cancelMouseHold();
+}
+
+PlayerController* VideoSurface::holdSpeedPlayer() const
+{
+    return m_holdSpeedPlayer;
+}
+
+void VideoSurface::setHoldSpeedPlayer(PlayerController *player)
+{
+    if (m_holdSpeedPlayer == player)
+        return;
+    cancelMouseHold();
+    if (m_holdSpeedPlayer)
+        disconnect(m_holdSpeedPlayer, nullptr, this, nullptr);
+    m_holdSpeedPlayer = player;
+    if (player)
+    {
+        connect(player, &PlayerController::inputChanged, this, &VideoSurface::cancelMouseHold);
+        connect(player, &PlayerController::playingStateChanged, this, &VideoSurface::cancelMouseHold);
+    }
+    emit holdSpeedPlayerChanged();
+}
+
+void VideoSurface::cancelMouseHold()
+{
+    m_mouseHoldTimer.stop();
+    if (m_mouseHold == MouseHold::Active && m_holdSpeedPlayer)
+        m_holdSpeedPlayer->endSpeedHold(PlayerController::MouseSpeedHold);
+    if (m_mouseHold != MouseHold::Idle)
+        m_mouseHold = MouseHold::Cancelled;
 }
 
 int VideoSurface::qtMouseButton2VLC( Qt::MouseButton qtButton )
@@ -155,6 +208,20 @@ int VideoSurface::qtMouseButton2VLC( Qt::MouseButton qtButton )
 
 void VideoSurface::mousePressEvent(QMouseEvent* event)
 {
+    if (event->button() == Qt::LeftButton && event->source() == Qt::MouseEventNotSynthesized
+        && event->modifiers() == Qt::NoModifier && window() && window()->isActive()
+        && m_holdSpeedPlayer && m_holdSpeedPlayer->getPlayingState() == PlayerController::PLAYING_STATE_PLAYING
+        && m_holdSpeedPlayer->canHoldSpeed())
+    {
+        // A hold must not also send a left click to the video output.
+        cancelMouseHold();
+        m_mouseHold = MouseHold::Pending;
+        m_leftPressPosition = event->position();
+        m_mouseHoldTimer.start();
+        event->accept();
+        return;
+    }
+
     int vlc_button = qtMouseButton2VLC( event->button() );
     if( vlc_button >= 0 )
     {
@@ -167,6 +234,20 @@ void VideoSurface::mousePressEvent(QMouseEvent* event)
 
 void VideoSurface::mouseReleaseEvent(QMouseEvent* event)
 {
+    if (event->button() == Qt::LeftButton && m_mouseHold != MouseHold::Idle)
+    {
+        const bool click = m_mouseHold == MouseHold::Pending;
+        cancelMouseHold();
+        m_mouseHold = MouseHold::Idle;
+        if (click)
+        {
+            emit mousePressed(0);
+            emit mouseReleased(0);
+        }
+        event->accept();
+        return;
+    }
+
     int vlc_button = qtMouseButton2VLC( event->button() );
     if( vlc_button >= 0 )
     {
@@ -180,6 +261,14 @@ void VideoSurface::mouseReleaseEvent(QMouseEvent* event)
 void VideoSurface::mouseMoveEvent(QMouseEvent* event)
 {
     QPointF current_pos = event->position();
+    if (m_mouseHold == MouseHold::Pending
+        && (current_pos - m_leftPressPosition).manhattanLength() >= QGuiApplication::styleHints()->startDragDistance())
+    {
+        // Give a drag back to the video output with its original press.
+        m_mouseHoldTimer.stop();
+        m_mouseHold = MouseHold::Idle;
+        emit mousePressed(0);
+    }
     QQuickWindow* window = this->window();
     if (!window)
         return;
@@ -211,11 +300,18 @@ void VideoSurface::mouseDoubleClickEvent(QMouseEvent* event)
         if( m_doubleClickEnabled )
             emit mouseDblClicked(vlc_button);
         else
-            emit mousePressed(vlc_button);
+            return mousePressEvent(event);
         event->accept();
     }
     else
         event->ignore();
+}
+
+void VideoSurface::mouseUngrabEvent()
+{
+    cancelMouseHold();
+    m_mouseHold = MouseHold::Idle;
+    ViewBlockingRectangle::mouseUngrabEvent();
 }
 
 void VideoSurface::keyPressEvent(QKeyEvent* event)
@@ -317,6 +413,7 @@ void VideoSurface::itemChange(ItemChange change, const ItemChangeData &value)
         {
             if (!value.boolValue)
             {
+                cancelMouseHold();
                 // Connection is made in `::updatePaintNode()`:
                 disconnect(m_synchConnection);
             }
@@ -333,6 +430,7 @@ void VideoSurface::setVideoSurfaceProvider(VideoSurfaceProvider *newVideoSurface
     if (m_provider == newVideoSurfaceProvider)
         return;
 
+    cancelMouseHold();
     if (m_provider)
     {
         disconnect(this, nullptr, m_provider, nullptr);

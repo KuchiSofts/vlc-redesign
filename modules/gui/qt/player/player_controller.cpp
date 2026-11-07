@@ -25,6 +25,7 @@
 #include "player_controller.hpp"
 #include "player_controller_p.hpp"
 #include "player/subtitle_finder.hpp"
+#include "iptv/iptv_addon.hpp"
 #include "maininterface/compositor.hpp"   /* videoTakesOpenGL */
 #include "util/shared_input_item.hpp"
 
@@ -1481,6 +1482,15 @@ PlayerController::PlayerController( qt_intf_t *_p_intf )
 {
     connect( &d_ptr->m_position_timer, &QTimer::timeout, this, &PlayerController::updatePositionFromTimer );
     connect( &d_ptr->m_time_timer, &QTimer::timeout, this, &PlayerController::updateTimeFromTimer );
+    connect(this, &PlayerController::inputChanged, this, &PlayerController::cancelSpeedHolds);
+    connect(this, &PlayerController::playingStateChanged, this, [this](PlayingState state) {
+        if (state != PLAYING_STATE_PLAYING)
+            cancelSpeedHolds();
+    });
+    connect(this, &PlayerController::rateChangableChanged, this, [this](bool changeable) {
+        if (!changeable)
+            cancelSpeedHolds();
+    });
 }
 
 PlayerController::~PlayerController()
@@ -1531,7 +1541,7 @@ void PlayerController::setRate( float new_rate )
 {
     Q_D(PlayerController);
 
-    if (qFuzzyCompare(d->m_rate, new_rate))
+    if (qFuzzyCompare(d->m_rate, new_rate) && !holdSpeedActive())
         return;
 
     msg_Dbg( d->p_intf, "setRate %f", new_rate);
@@ -1549,6 +1559,65 @@ void PlayerController::setRate( float new_rate )
     // Emitted unlocked: slots may call back into the player.
     d->m_rate = new_rate;
     emit rateChanged(d->m_rate);
+}
+
+bool PlayerController::canHoldSpeed() const
+{
+    Q_D(const PlayerController);
+    if (isInteractive() || !hasVideoOutput() || IptvAddon::isTvUrl(getUrl().toString()))
+        return false;
+
+    vlc_player_locker lock{ d->m_player };
+    if (!vlc_player_CanChangeRate(d->m_player) || !vlc_player_CanSeek(d->m_player)
+        || vlc_player_GetRenderer(d->m_player) || vlc_player_IsRecording(d->m_player))
+        return false;
+
+    const auto *track = vlc_player_GetSelectedTrack(d->m_player, VIDEO_ES);
+    return track && track->fmt.video.projection_mode == PROJECTION_MODE_RECTANGULAR;
+}
+
+bool PlayerController::beginSpeedHold(SpeedHoldSource source)
+{
+    Q_D(PlayerController);
+    if (!canHoldSpeed())
+        return false;
+
+    const bool wasActive = holdSpeedActive();
+    {
+        vlc_player_locker lock{ d->m_player };
+        if (vlc_player_GetState(d->m_player) != VLC_PLAYER_STATE_PLAYING
+            || !d->isCurrentItemSynced()
+            || (!wasActive && !vlc_player_SetTemporaryRate(d->m_player, 2.f)))
+            return false;
+    }
+    m_speedHoldSources |= source;
+    if (!wasActive)
+        emit holdSpeedActiveChanged();
+    return true;
+}
+
+void PlayerController::endSpeedHold(SpeedHoldSource source)
+{
+    if (!(m_speedHoldSources & source))
+        return;
+    if (m_speedHoldSources == static_cast<unsigned>(source))
+        cancelSpeedHolds();
+    else
+        m_speedHoldSources &= ~static_cast<unsigned>(source);
+}
+
+void PlayerController::cancelSpeedHolds()
+{
+    Q_D(PlayerController);
+    if (!holdSpeedActive())
+        return;
+
+    m_speedHoldSources = 0;
+    {
+        vlc_player_locker lock{ d->m_player };
+        vlc_player_SetTemporaryRate(d->m_player, 0.f);
+    }
+    emit holdSpeedActiveChanged();
 }
 
 void PlayerController::slower()

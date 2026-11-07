@@ -15,6 +15,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- Hold Space or the left mouse button over a playing video for a temporary 2× speed; releasing it brings back
+  the speed before (by [@SHR1F](https://github.com/SHR1F), [#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)).
+
 ### Changed
 
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).

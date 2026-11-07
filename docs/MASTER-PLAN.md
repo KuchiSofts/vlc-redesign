@@ -12,6 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-06):
 
+- 🟢 **Memory checked** (2026-11-07, toward 0.5.5): soaks on 0.5.4 (20 min mixed, 45 min minimized, seek-only,
+  next-only, 25 min fast = 1,500 changes): threads, handles, GDI flat, clean exits; seeking flat; media changes warm
+  up ~10 MB in the first ~100, then creep. A heap walk over 600 changes (after 300): ~2 KB/change in the NVIDIA driver
+  (known, the display closed between media), QML objects awaiting the JS GC, and QTimeZone::systemTimeZone() rebuilt
+  per library item (a registry read each on Windows): replaced by local time (the strings gone, 100 -> 0).
 - 🟢 **macOS updates itself** (2026-11-06, toward 0.5.5, the owner's request with the rule "updates, not releases"):
   the updater takes the release's disk image of this Mac's architecture, checks SHA256SUMS.txt's signature with the
   Security framework (redesign_update_verify.h, loaded at run time like GnuTLS on Linux), and

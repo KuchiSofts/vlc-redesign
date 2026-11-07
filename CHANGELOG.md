@@ -27,6 +27,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Windows: the library's lists (Home, the media pages, network folders) and the programme guide no longer build the
+  system's time zone again for every item: on Windows each one read the registry and kept its own copy, at every
+  refresh (a media change refreshes Home's recent lists). The dates shown are the same (local time). Found with a
+  heap walk over 900 media changes; what is left per change is the graphics driver's (about 2 KB, VideoLAN closes
+  the video display between media on purpose).
 - Translations: every catalog follows the interface's current texts again. 89 languages had been left on an older
   template, so the volume meter's texts and a few newer ones were not offered to translators on Weblate, and the
   Estonian translation of the volume meter ([#53](https://github.com/KuchiSofts/vlc-redesign/pull/53)) did not reach

@@ -26,8 +26,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class VLCLibraryHeroView;
 @class VLCLibraryHomeViewActionsView;
+@class VLCLibraryHeroView;
 @class VLCLibraryHomeViewAudioCarouselContainerView;
 @class VLCLibraryHomeViewBrowseCarouselContainerView;
 @class VLCLibraryHomeViewRecentlyAddedCarouselContainerView;

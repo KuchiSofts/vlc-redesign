@@ -75,7 +75,8 @@ STATE_NOTES = {
 
 
 def sha256(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Use the same text bytes for checksums as the asset comparison does.
+    return hashlib.sha256(unify(path.read_bytes(), path.name)).hexdigest()
 
 
 def png_size(path):

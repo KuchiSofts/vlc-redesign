@@ -19,6 +19,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - Hold Space or the left mouse button over a playing video for a temporary 2× speed; releasing it brings back
   the speed before (by [@SHR1F](https://github.com/SHR1F), [#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)).
+- Subtitles from the internet in every app ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)): the
+  Android app (phones, tablets, Android TV) and the Samsung TV app search them as the desktop does, with the same
+  free services and no account (OpenSubtitles, Wizdom, Addic7ed, YIFY Subtitles), list them by language and load
+  one in a tap; when a video has none in your languages the best one loads by itself, if you said so in the
+  welcome or in Settings › Subtitles (with a second language there too). With your own free OpenSubtitles.com key
+  they ask OpenSubtitles.com as well. The key's steps are in every app: on the desktop under the fields of **Add
+  subtitles to the library › From OpenSubtitles** (with a link to the page), on Android and the Samsung TV in
+  Settings › Subtitles, and on the wiki ([Subtitles](https://github.com/KuchiSofts/vlc-redesign/wiki/Subtitles#a-free-opensubtitlescom-key)).
 
 ### Changed
 

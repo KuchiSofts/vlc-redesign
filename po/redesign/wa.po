@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2013-12-08 08:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Walloon (http://www.transifex.com/projects/p/vlc-trans/"
@@ -7319,6 +7319,14 @@ msgstr "Cweraedje so OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Cwerez so OpenSubtitles po vey les fitchîs di sortites."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Vos n' avoz nén co d' clé? C' est a gråtis: fijhoz on conte so opensubtitles.com, drovoz \"API consumers\", tchoezixhoz \"New consumer\", dinez-lyi on no (VLC Redesign) et copyîz chal si clé d' API, avou l' no d' uzeu et l' sicret di vosse conte."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Drovi \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Ovraedje so les bokets odio…"
@@ -7922,6 +7930,11 @@ msgstr "Naviaedje DVD"
 msgid "Close navigation"
 msgstr "Clôre li naviaedje"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Radisté 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7933,10 +7946,6 @@ msgstr "Prézapontiaedjes:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Djouweu"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Radisté 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

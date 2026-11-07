@@ -928,6 +928,32 @@ Widgets.RedesignDialog {
                 }
             }
 
+            // where the key comes from, free (#67): an account, then API consumers
+            Text {
+                id: keyHelp
+
+                objectName: "openSubtitlesKeyHelp"
+                Layout.fillWidth: true
+                Layout.bottomMargin: VLCStyle.dp(14, VLCStyle.scale)
+                visible: service.results.length === 0
+                wrapMode: Text.WordWrap
+                textFormat: Text.StyledText
+                horizontalAlignment: Text.AlignLeft
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                lineHeight: 1.25
+                color: VLCStyle.redesign.color("#8A8A8A", "#6b6b6b")
+                linkColor: VLCStyle.redesign.accent
+                text: qsTr("No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password.")
+                      + " <a href=\"https://www.opensubtitles.com/en/consumers\">" + qsTr("Open API consumers") + "</a>"
+                onLinkActivated: (link) => Qt.openUrlExternally(link)
+                Accessible.name: qsTr("No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password.")
+
+                HoverHandler {
+                    cursorShape: keyHelp.hoveredLink.length > 0 ? Qt.PointingHandCursor : Qt.ArrowCursor
+                }
+            }
+
             ListView {
                 id: results
 

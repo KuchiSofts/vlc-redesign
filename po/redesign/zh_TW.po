@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-09-23 19:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/yaron/vlc-trans/"
@@ -7088,6 +7088,14 @@ msgstr "正在搜尋 OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "搜尋 OpenSubtitles 以查看字幕檔案。"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "還沒有金鑰嗎？可免費取得：在 opensubtitles.com 註冊帳號，開啟「API consumers」，選擇「New consumer」，為其命名（VLC Redesign），然後將它的 API 金鑰複製到這裡，並填入您帳號的使用者名稱與密碼。"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "開啟「API consumers」"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "正在處理音訊軌…"
@@ -7681,6 +7689,11 @@ msgstr "DVD 導覽"
 msgid "Close navigation"
 msgstr "關閉導覽"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2 倍速"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7692,10 +7705,6 @@ msgstr "預置："
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "播放器"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2 倍速"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

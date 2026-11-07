@@ -28607,6 +28607,14 @@ msgstr "正在搜尋 OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "搜尋 OpenSubtitles 以查看字幕檔案。"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "還沒有金鑰嗎？可免費取得：在 opensubtitles.com 註冊帳號，開啟「API consumers」，選擇「New consumer」，為其命名（VLC Redesign），然後將它的 API 金鑰複製到這裡，並填入您帳號的使用者名稱與密碼。"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "開啟「API consumers」"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "正在處理音訊軌…"

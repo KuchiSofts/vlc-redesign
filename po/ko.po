@@ -29280,6 +29280,14 @@ msgstr "OpenSubtitles 검색 중…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "OpenSubtitles를 검색하면 자막 파일이 표시됩니다."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "아직 키가 없나요? 무료입니다. opensubtitles.com에 가입하고 \"API consumers\"를 연 다음 \"New consumer\"를 선택하고 이름(VLC Redesign)을 지정한 뒤, 해당 API 키를 계정의 사용자명 및 비밀번호와 함께 여기에 복사하세요."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" 열기"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "오디오 트랙 처리 중…"

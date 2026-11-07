@@ -304,7 +304,10 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             cancelSpaceHold();
     });
     connect(m_window, &QWindow::focusObjectChanged, this, [this]() {
-        if (focusedItemTakesKeys())
+        // Only while Space is held: the window also emits this as it is
+        // destroyed (VLC quitting), when the compositor and the focused item
+        // are being destroyed and must not be read (a segfault on Linux)
+        if ((m_spacePressed || m_spaceTapPending) && focusedItemTakesKeys())
             cancelSpaceHold();
     });
     connect(m_window, &QWindow::activeChanged, this, [this]() {

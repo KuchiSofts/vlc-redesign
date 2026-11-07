@@ -138,6 +138,7 @@ public:
     Q_PROPERTY(QString name READ getName NOTIFY nameChanged FINAL)
     Q_PROPERTY(float buffering READ getBuffering  NOTIFY bufferingChanged FINAL)
     Q_PROPERTY(float rate READ getRate WRITE setRate NOTIFY rateChanged FINAL)
+    Q_PROPERTY(bool holdSpeedActive READ holdSpeedActive NOTIFY holdSpeedActiveChanged FINAL)
     Q_PROPERTY(QUrl url READ getUrl NOTIFY inputChanged FINAL)
 
     Q_PROPERTY(VLCTime time READ getTime WRITE setTime NOTIFY timeChanged FINAL)
@@ -326,6 +327,13 @@ public:
     void updatePosition();
     void updateTime(vlc_tick_t system_now, bool forceTimer);
 
+    enum SpeedHoldSource { KeyboardSpeedHold = 1, MouseSpeedHold = 2 };
+    static constexpr int SpeedHoldDelay = 350;
+    bool canHoldSpeed() const;
+    bool beginSpeedHold(SpeedHoldSource source);
+    void endSpeedHold(SpeedHoldSource source);
+    bool holdSpeedActive() const { return m_speedHoldSources != 0; }
+
     //getter/setters binded to a Q_PROPERTY
 public slots:
     //playback
@@ -478,6 +486,7 @@ signals:
     void nameChanged( const QString& );
     void bufferingChanged( float );
     void rateChanged( float );
+    void holdSpeedActiveChanged();
 
     void timeChanged( VLCTime );
     void remainingTimeChanged( VLCTime );
@@ -565,6 +574,8 @@ signals:
 
 private:
     Q_DECLARE_PRIVATE(PlayerController)
+    void cancelSpeedHolds();
+    unsigned m_speedHoldSources = 0;
     QScopedPointer<PlayerControllerPrivate> d_ptr;
 };
 

@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QWindow>
 #include <QPointer>
+#include <QTimer>
 #include "util/vlchotkeyconverter.hpp"
 
 class MainCtx;
@@ -66,6 +67,11 @@ signals:
 private:
     bool applyKeyEvent(QKeyEvent * event) const;
     bool focusedItemTakesKeys() const;
+    bool canTakeSpace() const;
+    void cancelSpaceHold();
+    QTimer m_spaceHoldTimer;
+    bool m_spacePressed = false;
+    bool m_spaceTapPending = false;
 
 protected:
     virtual void updateCSDWindowSettings();

@@ -25,7 +25,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - The design check (`design/tools/sync_assets.py`) passes on Windows checkouts with CRLF line endings
   (by [@SHR1F](https://github.com/SHR1F), [#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)).
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
-- Refresh subtitle source labels once per folder scan to keep the player responsive in folders with many subtitle files.
+- The player stays responsive in folders with many subtitle files: their source labels are refreshed once per
+  folder scan (by [@SHR1F](https://github.com/SHR1F), [#63](https://github.com/KuchiSofts/vlc-redesign/pull/63)).
+
+### Fixed
+
+- In Hide UI, pressing Space toggles playback once, and double-clicking the video respects the player's
+  double-click setting (by [@SHR1F](https://github.com/SHR1F), [#65](https://github.com/KuchiSofts/vlc-redesign/pull/65)).
 
 ## [0.5.6] · 2026-11-07
 

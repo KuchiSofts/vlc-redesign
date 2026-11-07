@@ -28,9 +28,9 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.5.5
+    version: 0.5.6
     date: 2026-11-07
-    next: 0.5.6
+    next: 0.5.7
     full: 0.5.5
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
@@ -47,9 +47,9 @@ platforms:
     name: Linux
     short: Linux
     status: released
-    version: 0.5.5
+    version: 0.5.6
     date: 2026-11-07
-    next: 0.5.6
+    next: 0.5.7
     full: 0.5.5
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
@@ -80,9 +80,9 @@ platforms:
     name: macOS
     short: macOS
     status: released
-    version: 0.5.5
+    version: 0.5.6
     date: 2026-11-07
-    next: 0.5.6
+    next: 0.5.7
     full: 0.5.5
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
@@ -99,9 +99,9 @@ platforms:
     name: Windows on ARM64
     short: Windows ARM64
     status: released
-    version: 0.5.5
+    version: 0.5.6
     date: 2026-11-07
-    next: 0.5.6
+    next: 0.5.7
     full: 0.5.5
     os: windows-arm64
     requires: Windows 11 on ARM64
@@ -118,12 +118,12 @@ platforms:
     name: Android (phones, tablets, TV)
     short: Android
     status: released
-    version: 0.5.5
+    version: 0.5.6
     date: 2026-11-07
-    next: 0.5.6
+    next: 0.5.7
     full: 0.5.5
     os: android
-    requires: Android 8.0 or later
+    requires: Android 5.0 or later
     repository: KuchiSofts/vlc-redesign
     page: https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update
     notes: One APK for phones, tablets and Android TV (ARM64, ARMv7, x86, x86_64), beside VLC; not on Google Play
@@ -132,12 +132,12 @@ platforms:
         file: vlc-redesign-{version}-android.apk
 
   - id: samsung-tv
-    name: Samsung Smart TV (Tizen): Redesign Player for TV
+    name: Samsung Smart TV (Tizen): Juxto Media Player
     short: Samsung TV
     status: released
-    version: 0.5.5
+    version: 0.5.6
     date: 2026-11-07
-    next: 0.5.6
+    next: 0.5.7
     full: 0.5.5
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode
@@ -146,8 +146,7 @@ platforms:
     notes: A player of its own inspired by VLC, in the design (the TV plays the video); the source with an install guide
     downloads:
       - label: Source and guide
-        file: Redesign-Player-for-TV-{version}-source.zip
-        full_only: yes
+        file: Juxto-Media-Player-TV-{version}-source.zip
 
   - id: ios
     name: iPhone, iPad, Apple TV

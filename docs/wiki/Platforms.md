@@ -20,7 +20,7 @@ The study behind the order, with the evidence from VideoLAN's build system:
 | **[Linux](#linux)** | **Released** | **0.5.2** (2026-11-02) | 0.5.3 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
 | **[macOS](#macos)** | **Released** | **0.5.2** (2026-11-02) | 0.5.3 | macOS 12 Monterey, Apple Silicon or Intel |
 | **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.5.2** (2026-11-02) | 0.5.3 | Windows 11 on ARM64 |
-| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.5.2** (2026-11-02) | 0.5.3 | Android 8.0 or later |
+| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.5.2** (2026-11-02) | 0.5.3 | Android 5.0 or later |
 | [Samsung Smart TV (Tizen)](#samsung-smart-tv-tizen) | Research | none yet | | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
@@ -155,7 +155,7 @@ Home in the light theme. Click for the MP4.</sub>
 |---|---|
 | **Status** | **Released** in 0.5.0: an APK on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/latest), not on Google Play; how to install: [Install and update](Install-and-Update#android) |
 | **Version** | 0.5.2, 2026-11-02 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.2)); 0.5.0 was the first for Android. Next: 0.5.3 |
-| **Needs** | Android 8.0 or later |
+| **Needs** | Android 5.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
 | **Files** | `vlc-redesign-0.5.2-android.apk` (125 MB; ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
 

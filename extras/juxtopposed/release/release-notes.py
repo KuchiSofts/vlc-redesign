@@ -94,7 +94,7 @@ for arch, a, deb, rpm in (('x86_64', 'x86_64', 'amd64', 'x86_64'), ('ARM64', 'aa
                     ('Folder to run from, %s' % arch, 'vlc-redesign-%s-linux-%s.tar.xz' % (V, a))])
 macos = table([('Apple Silicon (macOS 12+)', 'vlc-redesign-%s-macos-arm64.dmg' % V),
                ('Intel (macOS 12+)', 'vlc-redesign-%s-macos-x86_64.dmg' % V)])
-android = table([('Phones and tablets (Android 8.0+; ARM64, ARMv7, x86, x86_64)', 'vlc-redesign-%s-android.apk' % V)])
+android = table([('Phones, tablets and Android TV (Android 5.0+; ARM64, ARMv7, x86, x86_64)', 'vlc-redesign-%s-android.apk' % V)])
 WIKI = 'https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update'
 HEAD = '| What | File | Size | SHA-256 |\n|---|---|---|---|\n'
 others = ''
@@ -121,13 +121,13 @@ if android:
                'update, and from 0.5.1 the app says when one is out. Source: '
                '[vlc-redesign-android](https://github.com/KuchiSofts/vlc-redesign-android). Step by step: '
                '[Install and update](%s#android).\n' % WIKI)
-samsung = table([('Redesign Player for TV: the source and its install guide (Tizen 3.0+, 2017 models and later)',
-                  'Redesign-Player-for-TV-%s-source.zip' % V)])
+samsung = table([('Juxto Media Player: the source and its install guide (Tizen 3.0+, 2017 models and later)',
+                  'Juxto-Media-Player-TV-%s-source.zip' % V)])
 if samsung:
     others += ('\n### Samsung TV\n\n' + HEAD + '\n'.join(samsung) +
                "\n\nSamsung TVs install apps from the store or from a computer in developer mode: the zip's `README.md` "
                "(and the wiki's [Samsung TV](%s#samsung-tv) part) goes through it step by step, with a free Samsung "
-               "certificate. The app has none of VLC's code (the TV plays the video), so it has its own name: a player "
+               "certificate. The app has none of VLC's code (the TV plays the video), so it has its own name, Juxto Media Player: a player "
                "of its own, inspired by VLC and with features like VLC's, not VLC. Its mark is the designer's pixel "
                "cat.\n" % WIKI)
 covered = ['Windows (x64 and ARM64)'] + [n for n, t in (('Linux', linux), ('macOS', macos), ('Android', android),

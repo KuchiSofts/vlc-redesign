@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `2b22905a8a` (2026-11-07).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `ad11e4bec1` (2026-11-07).
 
 **Contents:** [Unreleased](#unreleased) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -24,6 +24,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   Redesign closes, and it opens again on what was playing, where it was. An app that can't be replaced (run from
   its disk image, or in a folder you can't write to) opens the release page, as before. The first version with it
   is 0.5.5: install it from its disk image once.
+
+### Changed
+
+- Releases: a version with fixes and improvements is now an **update release**: the apps update themselves to it
+  (Windows with the small updates, from every version since the last full release; the Linux AppImage; macOS and
+  Android), and it carries the portable copies; the installers and the .deb, .rpm and Flatpak packages stay those of
+  the last full release (README, the website and the release notes link there). Full releases, with every package,
+  come with the big changes.
+- The README's download buttons follow the published version by themselves (they still named 0.5.3 after 0.5.4).
 
 ### Fixed
 

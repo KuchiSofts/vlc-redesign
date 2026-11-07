@@ -12,8 +12,14 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-06):
 
-- 🟢 **VideoLAN merged to 2b22905a8a** (2026-11-07): 2 commits, packaging only (the NSIS installer's architecture,
-  a Qt contrib include); nothing of the built code changed.
+- 🟢 **Update releases** (2026-11-07, the owner's rule): every version is published; fixes and improvements as
+  update releases (portable copies + what the apps update from; deltas from every version since the last full
+  release), full releases only for big changes (docs/RELEASE-CHECKLIST.md). make-release.ps1 -Update,
+  platforms.yml full: / full_only, render.py keeps the README's buttons in step (they named 0.5.3 after 0.5.4),
+  release-notes.py says so with the full release's link. Plan: 0.5.5 one last full release (the macOS updater must
+  reach Macs, the Android version code needs an upstream merge), then update releases.
+- 🟢 **VideoLAN merged to ad11e4bec1** (2026-11-07): 3 commits: packaging (the NSIS installer's architecture, a Qt
+  contrib include) and egl_pbuffer's delete on the right display.
 - 🟢 **Memory checked** (2026-11-07, toward 0.5.5): soaks on 0.5.4 (20 min mixed, 45 min minimized, seek-only,
   next-only, 25 min fast = 1,500 changes): threads, handles, GDI flat, clean exits; seeking flat; media changes warm
   up ~10 MB in the first ~100, then creep. A heap walk over 600 changes (after 300): ~2 KB/change in the NVIDIA driver

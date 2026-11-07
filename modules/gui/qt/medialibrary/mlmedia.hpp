@@ -69,7 +69,7 @@ public:
         m_mrl = getMRL();
         m_type = media->i_type;
         m_isFavorite = media->b_is_favorite;
-        m_lastPlayedDate = QDateTime::fromSecsSinceEpoch(media->i_last_played_date, QTimeZone::systemTimeZone());
+        m_lastPlayedDate = QDateTime::fromSecsSinceEpoch(media->i_last_played_date);
     }
 
     QString title() const { return m_title; }

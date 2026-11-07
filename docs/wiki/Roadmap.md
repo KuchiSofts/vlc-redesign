@@ -34,6 +34,7 @@ with a build to try):
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
 - ✅ macOS: the app updates itself (the release's disk image, checked against the signed checksums, swapped in on
   quit); from 0.5.5
+- ✅ Memory: long soaks and a heap walk; the library no longer rebuilds the time zone per item
 - ✅ Translations: every catalog on the current texts again, Weblate offering the newest ones in every language
 - 📋 Android: an upstream merge before the next Android release (the version code's release counter is at its last
   step on the current base)

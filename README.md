@@ -367,7 +367,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 The current release is **0.5.8** (2026-11-08), an update release: more subtitle services in every app (SubSource
 and SubDL with your free key, OpenSubtitles.com and seven more with a free account or key), the languages to search,
 and Live TV from your own servers (Jellyfin, Emby, Tvheadend, NextPVR, Channels DVR, HDHomeRun) with Schedules Direct
-and an automatic guide (on Windows a small update from 0.5.7; its files and checksums on the
+and an automatic guide (on Windows a 11.8 MB small update from 0.5.7; its files and checksums on the
 [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.8)); the next, **0.5.9**, an update
 release, brings fixes as the issues bring them. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the

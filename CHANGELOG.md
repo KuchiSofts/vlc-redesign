@@ -15,6 +15,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- Work on 0.5.9 (an update release) started: a round of stability, start-up speed and memory in every app, and
+  keys in full screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
+
 ### Fixed
 
 - Quitting VLC no longer waits for Live TV: the calls of your servers stop at once (a Jellyfin guide held by

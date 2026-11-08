@@ -5470,6 +5470,36 @@ msgstr "ਭਲਕੇ"
 msgid "Yesterday"
 msgstr "ਕੱਲ੍ਹ"
 
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
+#: modules/gui/qt/iptv/qml/TvToast.qml:75
+msgid "Watch"
+msgstr "ਵੇਖੋ"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+msgid "Watch from the start"
+msgstr "ਸ਼ੁਰੂ ਤੋਂ ਵੇਖੋ"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
+msgid "Favorite"
+msgstr "ਮਨਪਸੰਦ"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+msgid "Show in the Guide"
+msgstr "ਗਾਈਡ ਵਿੱਚ ਵੇਖਾਓ"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+msgid "What's On"
+msgstr "ਹੁਣ ਕੀ ਚੱਲ ਰਿਹਾ ਹੈ"
+
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
 msgstr "ਕੋਈ ਗਾਈਡ ਨਹੀਂ"
@@ -5507,36 +5537,6 @@ msgstr "ਫ਼ਿਲਮਾਂ"
 msgid "Series"
 msgstr "ਲੜੀਵਾਰ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
-msgid "Watch"
-msgstr "ਵੇਖੋ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
-msgid "Watch from the start"
-msgstr "ਸ਼ੁਰੂ ਤੋਂ ਵੇਖੋ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
-msgid "Favorite"
-msgstr "ਮਨਪਸੰਦ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
-msgid "Show in the Guide"
-msgstr "ਗਾਈਡ ਵਿੱਚ ਵੇਖਾਓ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
-msgid "What's On"
-msgstr "ਹੁਣ ਕੀ ਚੱਲ ਰਿਹਾ ਹੈ"
-
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:196
 msgid "Watch TV in VLC"
 msgstr "VLC ਵਿੱਚ TV ਵੇਖੋ"
@@ -5554,19 +5554,6 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
 msgid "Add a Link"
 msgstr "ਲਿੰਕ ਜੋੜੋ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
-msgid "Favorites"
-msgstr "ਮਨਪਸੰਦ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
-msgid "Recently Watched"
-msgstr "ਹਾਲ ਹੀ ਵਿੱਚ ਵੇਖੇ"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
@@ -5601,6 +5588,19 @@ msgstr "ਚੈਨਲ ਲੋਡ ਹੋ ਰਹੇ ਹਨ…"
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "ਕੋਈ ਚੈਨਲ ਨਹੀਂ"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+msgid "Favorites"
+msgstr "ਮਨਪਸੰਦ"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+msgid "Recently Watched"
+msgstr "ਹਾਲ ਹੀ ਵਿੱਚ ਵੇਖੇ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:137
 msgid "Now"
@@ -7070,6 +7070,14 @@ msgstr "ਸਾਰੀਆਂ ਸਬ-ਟਾਈਟਲ ਸੇਵਾਵਾਂ ਬੰ�
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API ਕੁੰਜੀ"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "ਹਾਲੇ ਕੁੰਜੀ ਨਹੀਂ ਹੈ? ਇਹ ਮੁਫ਼ਤ ਹੈ: opensubtitles.com ਉੱਤੇ ਸਾਈਨ ਅੱਪ ਕਰੋ, \"API consumers\" ਖੋਲ੍ਹੋ, \"New consumer\" ਚੁਣੋ, ਇਸ ਨੂੰ ਨਾਂ ਦਿਓ (VLC Redesign) ਅਤੇ ਇਸ ਦੀ API ਕੁੰਜੀ ਆਪਣੇ ਖਾਤੇ ਦੇ ਵਰਤੋਂਕਾਰ ਨਾਂ ਅਤੇ ਪਾਸਵਰਡ ਸਮੇਤ ਇੱਥੇ ਕਾਪੀ ਕਰੋ।"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" ਖੋਲ੍ਹੋ"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
 msgid "Waiting…"
 msgstr "ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"
@@ -7141,14 +7149,6 @@ msgstr "OpenSubtitles ਵਿੱਚ ਖੋਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "ਸਬ-ਟਾਈਟਲ ਫਾਇਲਾਂ ਵੇਖਣ ਲਈ OpenSubtitles ਵਿੱਚ ਖੋਜੋ।"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "ਹਾਲੇ ਕੁੰਜੀ ਨਹੀਂ ਹੈ? ਇਹ ਮੁਫ਼ਤ ਹੈ: opensubtitles.com ਉੱਤੇ ਸਾਈਨ ਅੱਪ ਕਰੋ, \"API consumers\" ਖੋਲ੍ਹੋ, \"New consumer\" ਚੁਣੋ, ਇਸ ਨੂੰ ਨਾਂ ਦਿਓ (VLC Redesign) ਅਤੇ ਇਸ ਦੀ API ਕੁੰਜੀ ਆਪਣੇ ਖਾਤੇ ਦੇ ਵਰਤੋਂਕਾਰ ਨਾਂ ਅਤੇ ਪਾਸਵਰਡ ਸਮੇਤ ਇੱਥੇ ਕਾਪੀ ਕਰੋ।"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
-msgid "Open API consumers"
-msgstr "\"API consumers\" ਖੋਲ੍ਹੋ"
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"

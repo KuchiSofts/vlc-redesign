@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-08).
+Updated as the work moves (last: 2026-11-08, 0.5.7 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|

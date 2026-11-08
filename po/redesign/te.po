@@ -5466,6 +5466,36 @@ msgstr "రేపు"
 msgid "Yesterday"
 msgstr "నిన్న"
 
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
+#: modules/gui/qt/iptv/qml/TvToast.qml:75
+msgid "Watch"
+msgstr "చూడు"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+msgid "Watch from the start"
+msgstr "మొదటి నుండి చూడు"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
+msgid "Favorite"
+msgstr "ఇష్టమైనది"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+msgid "Show in the Guide"
+msgstr "మార్గదర్శకంలో చూపించు"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+msgid "What's On"
+msgstr "ఇప్పుడు ప్రసారంలో"
+
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
 msgstr "మార్గదర్శకం లేదు"
@@ -5503,36 +5533,6 @@ msgstr "సినిమాలు"
 msgid "Series"
 msgstr "సిరీస్"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
-msgid "Watch"
-msgstr "చూడు"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
-msgid "Watch from the start"
-msgstr "మొదటి నుండి చూడు"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
-msgid "Favorite"
-msgstr "ఇష్టమైనది"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
-msgid "Show in the Guide"
-msgstr "మార్గదర్శకంలో చూపించు"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
-msgid "What's On"
-msgstr "ఇప్పుడు ప్రసారంలో"
-
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:196
 msgid "Watch TV in VLC"
 msgstr "VLCలో టివి చూడండి"
@@ -5550,19 +5550,6 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
 msgid "Add a Link"
 msgstr "ఒక లింకును జతచేయి"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
-msgid "Favorites"
-msgstr "ఇష్టమైనవి"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
-msgid "Recently Watched"
-msgstr "ఇటీవల చూసినవి"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
@@ -5597,6 +5584,19 @@ msgstr "ఛానళ్లను లోడ్ చేస్తోంది…"
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "ఛానళ్లు లేవు"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+msgid "Favorites"
+msgstr "ఇష్టమైనవి"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+msgid "Recently Watched"
+msgstr "ఇటీవల చూసినవి"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:137
 msgid "Now"
@@ -7065,6 +7065,14 @@ msgstr "అన్ని ఉపశీర్షిక సేవలు ఆపివ
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API కీ"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "ఇంకా కీ లేదా? ఇది ఉచితం: opensubtitles.comలో నమోదు చేసుకోండి, \"API consumers\" తెరవండి, \"New consumer\" ఎంచుకోండి, దానికి పేరు పెట్టండి (VLC Redesign), ఆపై దాని API కీని మీ ఖాతా వాడుకరిపేరు మరియు సంకేతపదంతో పాటు ఇక్కడ కాపీ చేయండి."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" తెరవండి"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
 msgid "Waiting…"
 msgstr "వేచి ఉంది…"
@@ -7136,14 +7144,6 @@ msgstr "OpenSubtitlesలో శోధిస్తోంది…"
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "ఉపశీర్షిక దస్త్రాలను చూడడానికి OpenSubtitlesలో శోధించండి."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "ఇంకా కీ లేదా? ఇది ఉచితం: opensubtitles.comలో నమోదు చేసుకోండి, \"API consumers\" తెరవండి, \"New consumer\" ఎంచుకోండి, దానికి పేరు పెట్టండి (VLC Redesign), ఆపై దాని API కీని మీ ఖాతా వాడుకరిపేరు మరియు సంకేతపదంతో పాటు ఇక్కడ కాపీ చేయండి."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
-msgid "Open API consumers"
-msgstr "\"API consumers\" తెరవండి"
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"

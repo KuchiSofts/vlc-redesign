@@ -15,6 +15,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- Translations: the texts of the TV menu of the library next to the video are on Weblate too (`po/redesign`),
+  with their translations.
+
 ## [0.5.7] · 2026-11-08
 
 An update release: subtitles from the internet in every app, Android and the Samsung TV app search them as the

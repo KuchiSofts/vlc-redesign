@@ -368,7 +368,7 @@ The current release is **0.5.7** (2026-11-08), an update release: subtitles from
 and the Samsung TV app search the free services as the desktop does, for any file, even one whose name says nothing),
 Live TV in the library next to the video, and holding Space or the video for 2× (on Windows a 9.0 MB small update from 0.5.6;
 its files and checksums on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7)); the
-next, **0.5.8**, an update release, brings fixes as the issues bring them. The status of each platform and what comes after is
+next, **0.5.8**, an update release, brings fixes as the issues bring them (SubSource for Arabic subtitles first). The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).
 

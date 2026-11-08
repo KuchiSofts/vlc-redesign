@@ -686,7 +686,7 @@ FocusScope {
         width: item ? Math.min(item.implicitWidth, parent.width) : 0
 
         sourceComponent: CompactLibrary {
-            onOpenLibraryRequested: (section) => {
+            onOpenLibraryRequested: (section, properties) => {
                 // (the places of the panel in a section: the section's page;
                 // its Network, the services of Discover)
                 const uris = {
@@ -698,13 +698,15 @@ FocusScope {
                     network: ["discover", "services"], service: ["discover", "services"],
                     netfolder: ["discover", "services"],
                     playlists: ["video", "playlists"], playlist: ["video", "playlists"],
-                    recent: ["home", "recent"], folder: ["network"]
+                    recent: ["home", "recent"], folder: ["network"], tv: ["tv"]
                 }
                 rootPlayer.libraryVisible = false
                 MainCtx.playerView = false
                 // A folder opens in the folder page of the library
                 if (section === "folder" && compactLibrary.item.location.folder)
                     History.push(["folder"], { folderUrl: compactLibrary.item.location.folder })
+                else if (properties)
+                    History.push(uris[section] ?? ["home"], properties)
                 else
                     History.push(uris[section] ?? ["home"])
             }
@@ -946,6 +948,9 @@ FocusScope {
         onLoaded: {
             item.restoreFocus = rootPlayer
             item.bottomInset = Qt.binding(() => controlBar.state === "visible" ? rootPlayer.height - controlBar.y : 0)
+            // (its banner and list beside the library next to the video, not
+            // over its channels)
+            item.startInset = Qt.binding(() => compactLibrary.visible ? compactLibrary.width : 0)
             item.idle = Qt.binding(() => rootPlayer._nothingPlays)
         }
     }

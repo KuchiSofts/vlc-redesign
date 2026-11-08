@@ -121,43 +121,27 @@ Widgets.PageExt {
         _programmeDialog.show(channel, programme)
     }
 
-    // Figma "file context menu" rows for a channel
-    Widgets.RedesignContextMenu {
+    // a channel to show when the guide opens (Show in the Guide of the
+    // library next to the video)
+    property string guideChannel: ""
+    // the channel's row of the guide, in view (in All when the group shown
+    // does not have it)
+    function showInGuide(key) {
+        if (Iptv.channelModel.indexOfKey(key) < 0)
+            Iptv.channelModel.group = ""
+        if (guideLoader.item)
+            guideLoader.item.showChannel(key)
+    }
+
+    TvChannelMenu {
         id: channelMenu
         parentItem: root
-
-        function channel(dataList) { return dataList[0] }
-
-        actions: [
-            { text: qsTr("Watch"), icon: "play",
-              action: (dataList) => Iptv.play(channelMenu.channel(dataList).key) },
-            { text: qsTr("Watch from the start"), icon: "recent",
-              visible: (dataList) => channelMenu.channel(dataList).catchupDays > 0
-                                     && channelMenu.channel(dataList).nowStart > 0,
-              action: (dataList) => {
-                  const ch = channelMenu.channel(dataList)
-                  Iptv.playCatchup(ch.key, ch.nowStart, ch.nowStop, ch.nowTitle)
-              } },
-            { text: (dataList) => channelMenu.channel(dataList).favorite ? qsTr("Remove from Favorites")
-                                                                         : qsTr("Favorite"),
-              icon: "favorite",
-              action: (dataList) => Iptv.toggleFavorite(channelMenu.channel(dataList).key) },
-            { text: qsTr("Show in the Guide"), icon: "lists",
-              action: (dataList) => {
-                  root.view = "guide"
-                  Qt.callLater(() => { if (guideLoader.item) guideLoader.item.showChannel(channelMenu.channel(dataList).key) })
-              } },
-            { text: qsTr("What's On"), icon: "info",
-              enabled: (dataList) => channelMenu.channel(dataList).nowStart > 0,
-              action: (dataList) => {
-                  const ch = channelMenu.channel(dataList)
-                  root.openProgramme(ch, { start: ch.nowStart, stop: ch.nowStop, title: ch.nowTitle })
-              } }
-        ]
-
-        onRequestData: (requestID, indexes) => {
-            setData(requestID, indexes.map(i => Iptv.channelModel.get(i)))
+        channels: Iptv.channelModel
+        onGuideRequested: (key) => {
+            root.view = "guide"
+            Qt.callLater(() => root.showInGuide(key))
         }
+        onProgrammeRequested: (channel, programme) => root.openProgramme(channel, programme)
     }
 
     Item {
@@ -226,7 +210,7 @@ Widgets.PageExt {
 
         // The groups: All, the favourites, the ones watched last, then the
         // provider's (chips of the segmented controls of the design)
-        ListView {
+        TvGroupChips {
             id: chips
             visible: root._hasSources && !root._library
             anchors.left: parent.left
@@ -236,46 +220,7 @@ Widgets.PageExt {
             anchors.rightMargin: root.px(20)
             anchors.topMargin: root.px(16)
             height: visible ? root.px(30) : 0
-            orientation: ListView.Horizontal
-            spacing: root.px(8)
-            clip: true
-            boundsBehavior: Flickable.StopAtBounds
-            model: [{ name: "", label: qsTr("All"), count: Iptv.channelCount },
-                    { name: "favorites", label: qsTr("Favorites"), count: Iptv.favorites.length },
-                    { name: "recent", label: qsTr("Recently Watched"), count: -1 }]
-                   .concat(Iptv.groups.map(g => ({ name: g.name, label: g.name, count: g.count })))
-
-            delegate: T.Button {
-                id: chip
-                required property var modelData
-                readonly property bool selected: Iptv.channelModel.group === modelData.name
-                height: chips.height
-                width: chipText.implicitWidth + root.px(24)
-                focusPolicy: Qt.StrongFocus
-                Accessible.role: Accessible.RadioButton
-                Accessible.name: modelData.label
-                Accessible.checkable: true
-                Accessible.checked: selected
-                onClicked: Iptv.channelModel.group = modelData.name
-
-                background: Rectangle {
-                    radius: root.px(6)
-                    color: chip.selected ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
-                                         : chip.hovered ? root.c("#222222", "#9c9c9b") : root.c("#191919", "#ababaa")
-                    border.width: chip.visualFocus ? 1 : 0
-                    border.color: VLCStyle.redesign.accent
-                }
-                contentItem: Text {
-                    id: chipText
-                    text: chip.modelData.count > 0 && chip.modelData.name !== "favorites"
-                          ? chip.modelData.label + "  " + chip.modelData.count : chip.modelData.label
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    color: chip.selected ? VLCStyle.redesign.accent : root.c("#8F8F8F", "#2e2e2e")
-                    font.family: VLCStyle.redesign.fontFamily
-                    font.pixelSize: root.px(13)
-                }
-            }
+            channels: Iptv.channelModel
         }
 
         // the reminders of the guide, and what could not be done
@@ -530,7 +475,15 @@ Widgets.PageExt {
                 visible: active
                 focus: active
                 source: "qrc:///qt/qml/VLC/Network/TvGuideView.qml"
-                onLoaded: item.programmeClicked.connect((channel, programme) => root.openProgramme(channel, programme))
+                onLoaded: {
+                    item.programmeClicked.connect((channel, programme) => root.openProgramme(channel, programme))
+                    // (once: the guide opened again later stays where it is)
+                    if (root.guideChannel !== "") {
+                        const key = root.guideChannel
+                        root.guideChannel = ""
+                        Qt.callLater(() => root.showInGuide(key))
+                    }
+                }
             }
         }
     }

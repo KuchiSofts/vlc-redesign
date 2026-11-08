@@ -178,6 +178,9 @@ private:
     SubtitlePreferences *m_preferences;
     QUrl m_url;
     bool m_prepared = false;
+    // OpenSubtitles asked what this very file is (once a media, when its name
+    // didn't say it for sure)
+    bool m_hashAsked = false;
     // the media (setMedia, reset) and the title (useMatch): the answers of
     // before are dropped
     quint64 m_revision = 0;

@@ -287,6 +287,77 @@ void searchOpenSubtitles(QObject *context, const Query &query, Done done)
     runOpenSubtitles(QPointer<QObject>(context), chain, done);
 }
 
+} // namespace
+
+Identity identityOfHash(const QByteArray &openSubtitlesReply)
+{
+    // a few subtitles of a file are filed under another title: the one most of them name
+    QHash<QString, int> votes;
+    QHash<QString, Identity> identities;
+    int total = 0;
+    static const QRegularExpression quoted(QStringLiteral(R"re(^"([^"]+)")re"));
+    for (const QJsonValue item : QJsonDocument::fromJson(openSubtitlesReply).array())
+    {
+        const QJsonObject o = item.toObject();
+        const auto text = [&o](const char *key) { return o.value(QLatin1String(key)).toVariant().toString().trimmed(); };
+        if (text("MatchedBy") != QLatin1String("moviehash"))
+            continue;
+        Identity identity;
+        identity.series = text("MovieKind") == QLatin1String("episode");
+        const qlonglong number = (identity.series ? text("SeriesIMDBParent") : text("IDMovieImdb")).toLongLong();
+        if (number <= 0)
+            continue;
+        identity.imdb = QStringLiteral("tt%1").arg(number, 7, 10, QLatin1Char('0'));
+        identity.title = text("MovieName");
+        if (identity.series)
+        {
+            // ("\"Breaking Bad\" Pilot": the series in quotes, the episode after it)
+            const QRegularExpressionMatch m = quoted.match(identity.title);
+            if (m.hasMatch())
+                identity.title = m.captured(1);
+            identity.season = text("SeriesSeason").toInt();
+            identity.episode = text("SeriesEpisode").toInt();
+            if (identity.season <= 0 && identity.episode <= 0)
+                identity.season = identity.episode = -1;
+        }
+        else
+            identity.year = text("MovieYear").toInt();
+        if (identity.title.isEmpty())
+            continue;
+        const QString key = QStringLiteral("%1/%2/%3").arg(identity.imdb).arg(identity.season).arg(identity.episode);
+        ++votes[key];
+        ++total;
+        if (!identities.contains(key))
+            identities.insert(key, identity);
+    }
+    QString best;
+    for (auto it = votes.constBegin(); it != votes.constEnd(); ++it)
+        if (best.isEmpty() || it.value() > votes.value(best))
+            best = it.key();
+    if (best.isEmpty())
+        return {};
+    Identity identity = identities.value(best);
+    identity.sure = votes.value(best) * 2 > total;
+    return identity;
+}
+
+void identifyByHash(QObject *context, const QString &hash, qint64 size, std::function<void(const Identity &)> done)
+{
+    if (hash.isEmpty() || size <= 0)
+    {
+        done({});
+        return;
+    }
+    HttpRequest request = makeRequest(openSubtitlesUrl({ QStringLiteral("moviebytesize-%1").arg(size),
+                                                         QStringLiteral("moviehash-") + hash }));
+    request.headers.append(qMakePair(QByteArray("X-User-Agent"), userAgent()));
+    httpRequestAsync(context, request, [done](const HttpResponse &reply) {
+        done(ok(reply) ? identityOfHash(reply.body) : Identity());
+    });
+}
+
+namespace {
+
 // ---------------------------------------------------------------------------
 // Wizdom: Hebrew subtitles, by the IMDb id (of the series, with the season
 // and episode), scored against the name of the video file

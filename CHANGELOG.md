@@ -7,13 +7,19 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `2cb78ca89c` (2026-11-07).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.5.7] · 2026-11-08
+
+An update release: subtitles from the internet in every app, Android and the Samsung TV app search them as the
+desktop does, every free service asked for any file; Live TV in the library next to the video; holding Space
+or the video plays at 2×. With fixes from [@SHR1F](https://github.com/SHR1F)'s pull requests.
 
 ### Added
 
@@ -27,19 +33,45 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   they ask OpenSubtitles.com as well. The key's steps are in every app: on the desktop under the fields of **Add
   subtitles to the library › From OpenSubtitles** (with a link to the page), on Android and the Samsung TV in
   Settings › Subtitles, and on the wiki ([Subtitles](https://github.com/KuchiSofts/vlc-redesign/wiki/Subtitles#a-free-opensubtitlescom-key)).
+- **Live TV in the library next to the video**: with the Live TV add-on on, the player's library (the Library
+  button, or L) has *TV* after *Network*. Its channels show their number, logo, name and what is on with its
+  progress, under the provider's groups with All, Favorites and Recently Watched; the panel's search finds a
+  channel by name or number among all of them. A click or Enter switches channel while the video stays, the
+  right-click menu is the TV page's (Favorite, Show in the Guide, What's On…), and Up, Down, Left and Right move
+  through the channels and groups. Opened while a channel plays, the library lands on TV at that channel, in the
+  group chosen there or else the channel's own.
+  Without a source yet, *Add a Link* and *Browse the Catalog* open the TV sources over the player. The channel's
+  banner and the channel list over the video now sit beside the library instead of over it, and a channel made a
+  favourite shows its heart in the list over the video at once.
 
 ### Changed
 
+- Subtitles from the internet: every free service is asked for any file, also one whose name says nothing
+  ("VID_20241108.mp4"). When the name doesn't identify the video, or only guesses it, the file's fingerprint
+  tells OpenSubtitles what it is (the title most of the subtitles made for that very file name, an episode's
+  series, season and episode), and Wizdom, YIFY Subtitles and Addic7ed are asked with it too (they go by the IMDb
+  id). Under the title of the search, what each service found ("OpenSubtitles 87 · Wizdom 4 · YIFY Subtitles 0",
+  a dash for one that didn't answer, its reason in the tooltip). On the desktop, Android and the Samsung TV app.
 - The design check (`design/tools/sync_assets.py`) passes on Windows checkouts with CRLF line endings
   (by [@SHR1F](https://github.com/SHR1F), [#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)).
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
 - The player stays responsive in folders with many subtitle files: their source labels are refreshed once per
   folder scan (by [@SHR1F](https://github.com/SHR1F), [#63](https://github.com/KuchiSofts/vlc-redesign/pull/63)).
+- The release check stops a release until every platform in `platforms.yml` is at its version: About's "Also on"
+  line is built from that file, and in 0.5.6 it still named 0.5.5 for the other platforms.
 
 ### Fixed
 
 - In Hide UI, pressing Space toggles playback once, and double-clicking the video respects the player's
   double-click setting (by [@SHR1F](https://github.com/SHR1F), [#65](https://github.com/KuchiSofts/vlc-redesign/pull/65)).
+- Android: the Live TV information bar on a phone held upright had a few letters of the programme between the
+  channel's column and the side; narrower than 600 dp it is stacked (the channel, the programme across the whole
+  width, then the time with the arrows). Landscape, tablets and TVs keep one row.
+- The search of the library next to the video showed nothing of what was typed, nor its *Search* placeholder (the
+  field had no height); it filtered all the same.
+- The player's control bar took the keyboard focus whenever a new media started (its buttons are made again, and
+  each one removed handed the focus to a neighbour even when it did not have it): a channel tuned with Enter from
+  the library next to the video left the list. The focus moves on only when the button removed had it.
 
 ## [0.5.6] · 2026-11-07
 
@@ -2106,7 +2138,7 @@ the ones to watch when merging upstream, and the candidates to propose to VideoL
 | `bin/Makefile.am`, `bin/meson.build` | Build the `vlc-waveform` helper |
 | `extras/package/win32/package.mak` | Credits, changelog and font licenses in the package |
 
-[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.5.6...main
+[Unreleased]: https://github.com/KuchiSofts/vlc-redesign/compare/v0.5.7...main
 [0.4.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.1
 [0.4.0]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.4.0
 [0.3.1]: https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.3.1

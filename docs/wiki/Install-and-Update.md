@@ -29,13 +29,13 @@ update release: the apps update themselves to it. The .deb, .rpm and Flatpak pac
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.5.8-win64-setup.exe` | | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
-| `vlc-redesign-0.5.8-win64.zip` | | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.5.8-winarm64-setup.exe` | | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.5.8-winarm64.zip` | | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.8-delta-from-0.5.7.vrdelta` | | A small update from 0.5.7, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.8-delta-from-0.5.6.vrdelta`, `...-from-0.5.5.vrdelta` | | The small updates from 0.5.6 and from 0.5.5. |
-| `vlc-redesign-0.5.8-winarm64-delta-from-0.5.7.vrdelta`, `...-from-0.5.6.vrdelta`, `...-from-0.5.5.vrdelta` | | The small updates of Windows on ARM64 from 0.5.7, 0.5.5 and 0.5.4. |
+| `vlc-redesign-0.5.8-win64-setup.exe` | 59.9 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
+| `vlc-redesign-0.5.8-win64.zip` | 108.4 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.5.8-winarm64-setup.exe` | 47.7 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.5.8-winarm64.zip` | 84.6 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.5.8-delta-from-0.5.7.vrdelta` | 11.8 MB | A small update from 0.5.7, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.8-delta-from-0.5.6.vrdelta`, `...-from-0.5.5.vrdelta` | 12.0 MB, 12.1 MB | The small updates from 0.5.6 and from 0.5.5. |
+| `vlc-redesign-0.5.8-winarm64-delta-from-0.5.7.vrdelta`, `...-from-0.5.6.vrdelta`, `...-from-0.5.5.vrdelta` | 10.6 MB, 11.1 MB, 11.2 MB | The small updates of Windows on ARM64 from 0.5.7, 0.5.5 and 0.5.4. |
 | `vlc-redesign-0.5.8-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -58,7 +58,7 @@ PC.
 | [`vlc-redesign-livetv_0.5.5_amd64.deb`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-livetv_0.5.5_amd64.deb) (0.5.5) | | The Live TV add-on for the .deb (optional). |
 | [`vlc-redesign-0.5.5-1.x86_64.rpm`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-0.5.5-1.x86_64.rpm) (0.5.5) | 155 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
 | [`vlc-redesign-livetv-0.5.5-1.x86_64.rpm`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-livetv-0.5.5-1.x86_64.rpm) (0.5.5) | | The Live TV add-on for the .rpm (optional). |
-| `vlc-redesign-0.5.8-x86_64.AppImage` | 164 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
+| `vlc-redesign-0.5.8-x86_64.AppImage` | 165 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
 | `vlc-redesign-0.5.8-linux-x86_64.tar.xz` | 125 MB | A folder to run from, nothing installed. |
 | [`vlc-redesign-0.5.5-x86_64.flatpak`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-0.5.5-x86_64.flatpak) (0.5.5) | 127 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.5-x86_64.flatpak`. |
 | `SHA256SUMS-linux-x86_64.txt` | | The SHA-256 of the Linux files, to check a download. |
@@ -269,7 +269,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.5.8 is available* · *You have 0.5.8.* | **What's new**, **Skip**, **Update now · 9.0 MB** (or **Download**) |
+| *VLC Redesign 0.5.8 is available* · *You have 0.5.8.* | **What's new**, **Skip**, **Update now · 11.8 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.5.8… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.5.8…* | |
 | *VLC Redesign 0.5.8 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |

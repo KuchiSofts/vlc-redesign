@@ -37,6 +37,9 @@ Updated as the work moves (last: 2026-11-08, 0.5.8 published).
 **0.5.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 🔨 In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
+  choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
+  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF)
 - ✅ Stability (on request): every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded, no QML
   warning left; start-up measured (no regression), memory soaked
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

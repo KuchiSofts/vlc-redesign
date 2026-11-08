@@ -37,6 +37,8 @@ Updated as the work moves (last: 2026-11-08, 0.5.8 published).
 **0.5.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- ✅ Stability (on request): every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded, no QML
+  warning left; start-up measured (no regression), memory soaked
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

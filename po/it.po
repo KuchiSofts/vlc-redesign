@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:06+0000\n"
+"POT-Creation-Date: 2026-11-08 07:32+0000\n"
 "PO-Revision-Date: 2017-11-16 03:00+0100\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -1699,7 +1699,7 @@ msgid "Accessibility"
 msgstr "Accessibilità"
 
 #: src/libvlc-module.c:157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
 msgid "Test"
 msgstr "Test"
 
@@ -5322,7 +5322,7 @@ msgstr "Plugin"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -10012,7 +10012,7 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:406
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:439
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:435
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
@@ -13465,8 +13465,8 @@ msgid "Enabled"
 msgstr "Abilitato"
 
 #: modules/audio_output/mmdevice.c:1626
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:635
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:636
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:637
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
 msgid "Output device"
 msgstr "Dispositivo di uscita"
@@ -20170,7 +20170,7 @@ msgstr "Abilita compressore a intervallo dinamico"
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:66
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:396
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:458
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:832
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
 #: modules/gui/qt/player/qml/TracksMenu.qml:570
@@ -20317,8 +20317,8 @@ msgstr "Seleziona la preimpostazione che vuoi rimuovere:"
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:937
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:354
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:266
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:269
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:271
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:211
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:325
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
@@ -20356,7 +20356,7 @@ msgstr "Aggiungi"
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:98
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:358
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:58
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:70
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:80
 #: modules/gui/qt/widgets/qml/SearchBox.qml:305
@@ -21422,9 +21422,9 @@ msgstr "Media Resource Locator (MRL)"
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:777
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:800
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:814
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:779
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:802
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:816
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
@@ -22796,7 +22796,7 @@ msgstr "es. 1:02:10"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:29
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:82
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:776
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:778
 msgid "Plugins and extensions"
 msgstr "Plugin ed estensioni"
 
@@ -24510,8 +24510,8 @@ msgid " f/s"
 msgstr " f/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1404
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:691
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:705
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:693
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:707
 msgid "Advanced Options"
 msgstr "Opzioni avanzate"
 
@@ -25797,97 +25797,97 @@ msgstr "Meno lingue: ricerca più veloce"
 msgid "Subtitle services"
 msgstr "Servizi di sottotitoli"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
 msgid "Key works"
 msgstr "Chiave valida"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
 msgid "Signed in as %1"
 msgstr "Accesso eseguito come %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
 msgid "Key refused"
 msgstr "Chiave rifiutata"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
 msgid "Wrong user name or password"
 msgstr "Nome utente o password errati"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:104
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:315
 msgid "Busy: try again in a minute"
 msgstr "Occupato: riprova tra un minuto"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
 msgid "No answer, try again"
 msgstr "Nessuna risposta, riprova"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
 msgid "Hide"
 msgstr "Nascondi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
 msgid "Show"
 msgstr "Mostra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:313
 #: modules/gui/qt/player/subtitle_providers.cpp:97
 msgid "Key refused: check it"
 msgstr "Chiave rifiutata: controllala"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "Accesso rifiutato: controlla le credenziali"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:317
 msgid "Asked only when %1 is one of your subtitle languages"
 msgstr "Consultato solo se %1 è tra le tue lingue dei sottotitoli"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:344
 msgid "Your free key"
 msgstr "La tua chiave gratuita"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 msgid "User name (optional)"
 msgstr "Nome utente (facoltativo)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
 msgid "User name"
 msgstr "Nome utente"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
 msgid "Password (optional)"
 msgstr "Password (facoltativa)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:347
 msgid "Email"
 msgstr "Email"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
 msgid "Sign in"
 msgstr "Accedi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
 msgid "Sign out"
 msgstr "Esci"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
 msgid "Create a free account"
 msgstr "Crea un account gratuito"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:599
 msgid "Get a free key"
 msgstr "Ottieni una chiave gratuita"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:406
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:421
 msgid "Add a service"
 msgstr "Aggiungi un servizio"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:436
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:451
 msgid ""
 "To find subtitles, the services turned on get the video's title, its IMDb "
 "id, its file name and hash (made from a part of the file), and nothing else."
@@ -25897,7 +25897,7 @@ msgstr ""
 "file), e nient'altro."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:636
 msgid "Current output device"
 msgstr "Dispositivo di uscita attuale"
 
@@ -25920,7 +25920,7 @@ msgstr ""
 "mantiene questa selezione finché resta attiva."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -25933,7 +25933,7 @@ msgstr "Diagnostica"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 msgid "Developer mode"
 msgstr "Modalità sviluppatore"
 
@@ -26046,7 +26046,7 @@ msgid "Show all"
 msgstr "Mostra tutto"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:533
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:662
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:664
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
@@ -26117,48 +26117,48 @@ msgstr "Seconda lingua"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:674
 msgid "No matching settings"
 msgstr "Nessuna impostazione corrispondente"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:675
 msgid "No settings are available for this category on this VLC installation"
 msgstr ""
 "Nessuna impostazione disponibile per questa categoria in questa "
 "installazione di VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "Show installed add-ons only"
 msgstr "Mostra solo le estensioni installate"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:789
 msgid "No advanced options on this page."
 msgstr "Nessuna opzione avanzata in questa pagina."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:801
 msgid "Welcome setup"
 msgstr "Configurazione iniziale"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 msgid "All VLC options"
 msgstr "Tutte le opzioni di VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Ripristina tutte le impostazioni"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:845
 msgid "Reset all settings?"
 msgstr "Ripristinare tutte le impostazioni?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:846
 msgid "Every setting of %1 goes back to its default."
 msgstr ""
 "Ogni impostazione del lettore multimediale %1 tornerà al valore predefinito."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:900
 msgid "Discard changes"
 msgstr "Annulla modifiche"
 
@@ -29116,12 +29116,12 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles ha restituito una sessione di accesso non valida."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1344
+#: modules/gui/qt/player/subtitle_providers.cpp:1860
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "Download da OpenSubtitles non riuscito. Controlla la tua quota."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1355
+#: modules/gui/qt/player/subtitle_providers.cpp:1871
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr ""
 "OpenSubtitles non ha restituito un link valido per scaricare i sottotitoli."
@@ -30754,62 +30754,92 @@ msgstr "%1 chiede di attendere un momento (troppe ricerche)."
 msgid "%1 didn't answer (%2)."
 msgstr "%1 non ha risposto (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1187
+#: modules/gui/qt/player/subtitle_providers.cpp:1574
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "Tutte le lingue · film e serie · trova quelli fatti per il tuo file"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1189
+#: modules/gui/qt/player/subtitle_providers.cpp:1576
 msgid "With your own free key · all languages"
 msgstr "Con la tua chiave gratuita personale · tutte le lingue"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1193
+#: modules/gui/qt/player/subtitle_providers.cpp:1580
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "Con la tua chiave gratuita personale · forte in arabo, molte lingue"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1196
+#: modules/gui/qt/player/subtitle_providers.cpp:1583
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "Con la tua chiave gratuita personale · l'archivio di Subscene, molte lingue"
+"Con la tua chiave gratuita personale · l'archivio di Subscene, molte lingue"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1199
+#: modules/gui/qt/player/subtitle_providers.cpp:1586
 msgid "Hebrew · movies and series"
 msgstr "Ebraico · film e serie"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1201
+#: modules/gui/qt/player/subtitle_providers.cpp:1588
 msgid "Series · many languages"
 msgstr "Serie · molte lingue"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1203
+#: modules/gui/qt/player/subtitle_providers.cpp:1590
 msgid "Movies · many languages"
 msgstr "Film · molte lingue"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1414
+#: modules/gui/qt/player/subtitle_providers.cpp:1594
+msgid ""
+"With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
+msgstr "Con il tuo account gratuito · croato, serbo, bosniaco, sloveno, macedone"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1598
+msgid "With your free token · Chinese"
+msgstr "Con il tuo token gratuito · cinese"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1601
+msgid "With your free key · anime, Japanese"
+msgstr "Con la tua chiave gratuita · anime, giapponese"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1604
+msgid "With your free key · series, French"
+msgstr "Con la tua chiave gratuita · serie, francese"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1607
+msgid "With your free key · Romanian"
+msgstr "Con la tua chiave gratuita · rumeno"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1610
+msgid "With your free account · Polish · finds those made for your file"
+msgstr "Con il tuo account gratuito · Polacco · trova quelli fatti per il tuo file"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1613
+msgid "With your free account · Portuguese (Brazil)"
+msgstr "Con il tuo account gratuito · portoghese (Brasile)"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1984
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr ""
 "Questo sottotitolo è in un archivio RAR, che non può essere aperto qui."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1426
-#: modules/gui/qt/player/subtitle_providers.cpp:1459
-#: modules/gui/qt/player/subtitle_search.cpp:1373
+#: modules/gui/qt/player/subtitle_providers.cpp:1996
+#: modules/gui/qt/player/subtitle_providers.cpp:2029
+#: modules/gui/qt/player/subtitle_search.cpp:1378
 msgid "The subtitle couldn't be unpacked."
 msgstr "Impossibile estrarre il sottotitolo."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1460
+#: modules/gui/qt/player/subtitle_providers.cpp:2030
 msgid "The archive has no subtitle in it."
 msgstr "L'archivio non contiene sottotitoli."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1472
+#: modules/gui/qt/player/subtitle_providers.cpp:2042
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles riserva questo sottotitolo ai membri paganti. Scegline un "
 "altro."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1478
+#: modules/gui/qt/player/subtitle_providers.cpp:2048
 msgid "The subtitle is empty."
 msgstr "Il sottotitolo è vuoto."
 
 #: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1333
+#: modules/gui/qt/player/subtitle_search.cpp:1338
 msgid "No connection to the internet."
 msgstr "Nessuna connessione a Internet."
 
@@ -30827,11 +30857,11 @@ msgstr "Nessun sottotitolo trovato per %1."
 
 #: modules/gui/qt/player/subtitle_search.cpp:1284
 #: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1334
+#: modules/gui/qt/player/subtitle_search.cpp:1339
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Impossibile scaricare il sottotitolo (%1)."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1364
+#: modules/gui/qt/player/subtitle_search.cpp:1369
 msgid "The subtitle couldn't be saved."
 msgstr "Impossibile salvare il sottotitolo."
 

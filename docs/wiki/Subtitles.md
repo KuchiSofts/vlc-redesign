@@ -147,11 +147,20 @@ finds it works):
 | **Wizdom** | Hebrew, movies and series. Asked only when Hebrew is one of your languages to search. | nothing |
 | **Addic7ed** | Series, many languages (through Gestdown). | nothing |
 | **YIFY Subtitles** | Movies, many languages. | nothing |
+| **Titlovi** | Croatian, Serbian, Bosnian, Slovenian, Macedonian. | your free account |
+| **Assrt** | Chinese (simplified and traditional). | your free token |
+| **Jimaku** | Anime, Japanese. | your free key |
+| **BetaSeries** | Series, French. | your free key |
+| **Subs.ro** | Romanian. | your free key |
+| **Napisy24** | Polish; finds those made for your very file. | your free account |
+| **Legendas.net** | Portuguese (Brazil). | your free account (its email) |
+
+The services of one language (Wizdom, Titlovi, Assrt, Jimaku, BetaSeries, Subs.ro, Napisy24, Legendas.net) are asked
+only when one of their languages is one of your languages to search; each row says which.
 
 Checked and not added: Podnapisi (its address is gone), Subscene (closed: SubDL and SubSource keep its archive),
-Subf2m (hides its subtitle links from programs), BSPlayer (plain HTTP only, and it failed), Jimaku (anime, a key
-of its own) and the sites of one language that need a sign-in (Ktuvit, Titulky,
-Legendas).
+Subf2m (hides its subtitle links from programs), BSPlayer (plain HTTP only, and it failed), Ktuvit (Hebrew: it
+didn't answer on 2026-11-08), Titulky and Legendas.tv (pages behind a sign-in, no interface for programs).
 
 ### Languages to search
 
@@ -192,6 +201,13 @@ written to the log.
 | **OpenSubtitles.com** | See [A free OpenSubtitles.com key](#a-free-opensubtitlescom-key). |
 | **SubSource** | Sign up on [subsource.net](https://subsource.net), then on your dashboard's **API** tab choose **Create an API key** and copy it into *Your free key*. A free key asks up to 60 times a minute, 7,200 a day. |
 | **SubDL** | Sign up on [subdl.com](https://subdl.com), then open [subdl.com/panel/api](https://subdl.com/panel/api) (*API* in your panel) and copy your API key into *Your free key*. |
+| **Titlovi** | Create an account on [titlovi.com](https://titlovi.com) and confirm it; then **Sign in** with its user name and password. |
+| **Assrt** | Sign up on [assrt.net](https://assrt.net); your API token is in your user panel ([assrt.net/usercp.php](https://assrt.net/usercp.php)). Copy it into *Your free key*. |
+| **Jimaku** | Sign in on [jimaku.cc](https://jimaku.cc) and open your account page ([jimaku.cc/account](https://jimaku.cc/account)): generate an API key there. |
+| **BetaSeries** | Create an account on [betaseries.com](https://www.betaseries.com), then ask for an API key at [betaseries.com/api](https://www.betaseries.com/api/) (free for personal use). |
+| **Subs.ro** | Create an account on [subs.ro](https://subs.ro), then get your API key at [subs.ro/api](https://subs.ro/api). |
+| **Napisy24** | Create an account on [napisy24.pl](https://napisy24.pl); then **Sign in** with its user name and password. |
+| **Legendas.net** | Create an account on [legendas.net](https://legendas.net); then **Sign in** with its email and password. |
 
 **What is sent:** the video's title, its IMDb id, its file name and a fingerprint of the file (its size and its
 first and last 64 KB), nothing else. **The cache** keeps the subtitles of the last 500 media and drops those not

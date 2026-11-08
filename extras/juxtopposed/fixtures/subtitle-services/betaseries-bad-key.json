@@ -1,0 +1,8 @@
+{
+    "errors": [
+        {
+            "code": 1001,
+            "text": "Mauvaise clé API."
+        }
+    ]
+}

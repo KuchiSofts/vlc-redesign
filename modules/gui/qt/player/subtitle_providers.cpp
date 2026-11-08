@@ -827,6 +827,393 @@ void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
     });
 }
 
+// ---------------------------------------------------------------------------
+// The services of wave 2 (with an account or a key), as Bazarr's providers
+// ask them
+
+// Who is signed in: the user name, or the email (Legendas.net)
+QString whoOf(const QString &providerId, const Credentials &credentials)
+{
+    return providerId == QLatin1String("legendasnet") ? credentials.email.trimmed() : credentials.username.trimmed();
+}
+
+// Signs in to a service that gives a session (a token): done(session) or
+// done({}, problem); a session kept for this run is given again
+void signIn(QObject *context, const QString &providerId, const Credentials &credentials,
+            std::function<void(const Session &, Problem)> done)
+{
+    if (providerId == QLatin1String("opensubtitlescom"))
+    {
+        openSubtitlesComSignIn(context, credentials, done);
+        return;
+    }
+    const QString who = whoOf(providerId, credentials);
+    const auto known = sessions().constFind(providerId);
+    if (known != sessions().constEnd() && known->username == who)
+    {
+        done(known->session, Problem::None);
+        return;
+    }
+    HttpRequest request;
+    if (providerId == QLatin1String("titlovi"))
+    {
+        // (its parameters in the address, as its add-ons send them; a
+        // body, for the length the server asks of a POST)
+        request = jsonRequest(titloviLoginUrl(who, credentials.password));
+        request.body = request.url.query(QUrl::FullyEncoded).toUtf8();
+        request.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/x-www-form-urlencoded")));
+    }
+    else if (providerId == QLatin1String("legendasnet"))
+    {
+        request = jsonRequest(QUrl(QStringLiteral("https://legendas.net/api/v1/login")));
+        request.body = legendasLoginBody(who, credentials.password);
+        request.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/json")));
+    }
+    else
+    {
+        done({}, Problem::Failed);
+        return;
+    }
+    request.method = "POST";
+    httpRequestAsync(context, request, [providerId, who, done](const HttpResponse &reply) {
+        if (!ok(reply))
+        {
+            const Problem problem = reply.status == 401 || reply.status == 403 ? Problem::LoginRefused
+                                                                               : problemOfReply(reply);
+            done({}, problem);
+            return;
+        }
+        const Session session = providerId == QLatin1String("titlovi") ? titloviSession(reply.body)
+                                                                       : legendasSession(reply.body);
+        if (session.token.isEmpty())
+        {
+            done({}, Problem::LoginRefused);
+            return;
+        }
+        sessions().insert(providerId, { who, session });
+        done(session, Problem::None);
+    });
+}
+
+// The search of a service signed in: ask(session, again) asks it; a 401 then
+// signs in again, once (its token ran out)
+void withSession(QObject *context, const QString &providerId, const QString &name, const Query &query,
+                 const Done &done, std::function<void(const Session &, std::function<void()>)> ask)
+{
+    QPointer<QObject> guard(context);
+    signIn(context, providerId, query.credentials, [guard, providerId, name, query, done, ask](const Session &session,
+                                                                                              Problem problem) {
+        if (!guard)
+            return;
+        if (problem != Problem::None)
+        {
+            done({}, failure(name, {}, problem), problem);
+            return;
+        }
+        ask(session, [guard, providerId, name, query, done, ask]() {
+            forgetSession(providerId);
+            if (guard)
+                signIn(guard, providerId, query.credentials, [guard, name, done, ask](const Session &fresh, Problem again) {
+                    if (!guard)
+                        return;
+                    if (again != Problem::None)
+                        done({}, failure(name, {}, again), again);
+                    else
+                        ask(fresh, {});
+                });
+        });
+    });
+}
+
+void searchTitlovi(QObject *context, const Query &query, Done done)
+{
+    if (titloviSearchUrl(query, { QStringLiteral("t"), {}, QStringLiteral("u") }).isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    QPointer<QObject> guard(context);
+    const QString name = QStringLiteral("Titlovi");
+    withSession(context, QStringLiteral("titlovi"), name, query, done,
+                [guard, query, name, done](const Session &session, std::function<void()> again) {
+        if (!guard)
+            return;
+        httpRequestAsync(guard, jsonRequest(titloviSearchUrl(query, session)),
+                         [query, name, done, again](const HttpResponse &reply) {
+            if (reply.error.isEmpty() && reply.status == 401 && again)
+            {
+                again();
+                return;
+            }
+            if (!ok(reply))
+            {
+                const Problem problem = reply.status == 401 ? Problem::LoginRefused : problemOfReply(reply);
+                done({}, failure(name, reply, problem), problem);
+                return;
+            }
+            done(parseTitlovi(reply.body, query), {}, Problem::None);
+        });
+    });
+}
+
+void searchAssrt(QObject *context, const Query &query, Done done)
+{
+    const QUrl url = assrtSearchUrl(query);
+    if (query.credentials.key.isEmpty() || url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    httpRequestAsync(context, jsonRequest(url), [query, done](const HttpResponse &reply) {
+        const QString name = QStringLiteral("Assrt");
+        // (its errors are answers too: 400 with their status)
+        if (!reply.error.isEmpty() || reply.body.isEmpty() || (reply.status != 200 && reply.status != 400))
+        {
+            failed(done, name, reply, true);
+            return;
+        }
+        QString error;
+        bool refused = false;
+        const QList<Result> results = parseAssrt(reply.body, query, &error, &refused);
+        if (refused)
+            done({}, failure(name, reply, Problem::KeyRefused), Problem::KeyRefused);
+        else if (!error.isEmpty())
+            done({}, name + QStringLiteral(": ") + error, Problem::Failed);
+        else
+            done(results, {}, Problem::None);
+    });
+}
+
+HttpRequest jimakuRequest(const QUrl &url, const QString &key)
+{
+    HttpRequest request = jsonRequest(url);
+    request.headers.append(qMakePair(QByteArray("Authorization"), key.toUtf8()));
+    return request;
+}
+
+void searchJimaku(QObject *context, const Query &query, Done done)
+{
+    const QUrl url = jimakuSearchUrl(query);
+    if (query.credentials.key.isEmpty() || url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    QPointer<QObject> guard(context);
+    const QString name = QStringLiteral("Jimaku");
+    httpRequestAsync(context, jimakuRequest(url, query.credentials.key), [guard, query, name, done](const HttpResponse &reply) {
+        if (!guard)
+            return;
+        if (!ok(reply))
+        {
+            failed(done, name, reply, true);
+            return;
+        }
+        const QUrl files = jimakuFilesUrl(jimakuEntryId(reply.body, query), query);
+        if (files.isEmpty())
+        {
+            nothing(done);
+            return;
+        }
+        QTimer::singleShot(requestGapMs, guard, [guard, query, name, files, done]() {
+            if (!guard)
+                return;
+            httpRequestAsync(guard, jimakuRequest(files, query.credentials.key), [query, name, done](const HttpResponse &reply) {
+                if (!ok(reply))
+                    failed(done, name, reply, true);
+                else
+                    done(parseJimaku(reply.body, query), {}, Problem::None);
+            });
+        });
+    });
+}
+
+// BetaSeries' answers: its errors come as 400 with their code
+bool betaSeriesFailed(const HttpResponse &reply, const Done &done)
+{
+    const QString name = QStringLiteral("BetaSeries");
+    if (!reply.error.isEmpty() || (reply.status != 200 && reply.status != 400))
+    {
+        failed(done, name, reply, true);
+        return true;
+    }
+    QString error;
+    bool refused = false;
+    parseBetaSeries(reply.body, &error, &refused);
+    if (refused)
+        done({}, failure(name, reply, Problem::KeyRefused), Problem::KeyRefused);
+    else if (!error.isEmpty())
+        done({}, name + QStringLiteral(": ") + error, Problem::Failed);
+    else if (reply.status == 400)
+        nothing(done); // (no such show or episode)
+    else
+        return false;
+    return true;
+}
+
+void searchBetaSeries(QObject *context, const Query &query, Done done)
+{
+    const QUrl url = betaSeriesShowUrl(query);
+    if (query.credentials.key.isEmpty() || url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    QPointer<QObject> guard(context);
+    httpRequestAsync(context, jsonRequest(url), [guard, query, done](const HttpResponse &reply) {
+        if (!guard || betaSeriesFailed(reply, done))
+            return;
+        const QUrl episode = betaSeriesEpisodeUrl(betaSeriesShowId(reply.body), query);
+        if (episode.isEmpty())
+        {
+            nothing(done);
+            return;
+        }
+        QTimer::singleShot(requestGapMs, guard, [guard, episode, done]() {
+            if (!guard)
+                return;
+            httpRequestAsync(guard, jsonRequest(episode), [done](const HttpResponse &reply) {
+                if (betaSeriesFailed(reply, done))
+                    return;
+                QString error;
+                bool refused = false;
+                done(parseBetaSeries(reply.body, &error, &refused), {}, Problem::None);
+            });
+        });
+    });
+}
+
+HttpRequest subsRoRequest(const QUrl &url, const QString &key)
+{
+    HttpRequest request = jsonRequest(url);
+    request.headers.append(qMakePair(QByteArray("X-Subs-Api-Key"), key.toUtf8()));
+    return request;
+}
+
+void searchSubsRo(QObject *context, const Query &query, Done done)
+{
+    const QUrl url = subsRoSearchUrl(query);
+    if (query.credentials.key.isEmpty() || url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    httpRequestAsync(context, subsRoRequest(url, query.credentials.key), [query, done](const HttpResponse &reply) {
+        const QString name = QStringLiteral("Subs.ro");
+        if (reply.error.isEmpty() && reply.status == 404)
+        {
+            nothing(done);
+            return;
+        }
+        if (!ok(reply))
+        {
+            failed(done, name, reply, true);
+            return;
+        }
+        QString error;
+        const QList<Result> results = parseSubsRo(reply.body, query, &error);
+        if (!error.isEmpty())
+            done({}, name + QStringLiteral(": ") + error, Problem::Failed);
+        else
+            done(results, {}, Problem::None);
+    });
+}
+
+const QUrl &napisy24Url()
+{
+    static const QUrl url(QStringLiteral("https://napisy24.pl/run/CheckSubAgent.php"));
+    return url;
+}
+
+HttpRequest napisy24Request(const Query &query)
+{
+    HttpRequest request = makeRequest(napisy24Url());
+    request.method = "POST";
+    request.body = napisy24Body(query, query.credentials.username.trimmed(), query.credentials.password);
+    request.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/x-www-form-urlencoded")));
+    return request;
+}
+
+// Napisy24: the subtitle made for this very file (its hash), Polish
+void searchNapisy24(QObject *context, const Query &query, Done done)
+{
+    if (query.hash.isEmpty() || query.size <= 0 || query.credentials.username.trimmed().isEmpty()
+        || query.credentials.password.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    httpRequestAsync(context, napisy24Request(query), [query, done](const HttpResponse &reply) {
+        const QString name = QStringLiteral("Napisy24");
+        if (!ok(reply))
+        {
+            failed(done, name, reply);
+            return;
+        }
+        const Napisy24Answer answer = parseNapisy24(reply.body);
+        if (answer.loginRefused)
+        {
+            done({}, failure(name, reply, Problem::LoginRefused), Problem::LoginRefused);
+            return;
+        }
+        if (!answer.found)
+        {
+            nothing(done);
+            return;
+        }
+        Result r;
+        r.id = QStringLiteral("napisy24:%1-%2").arg(query.hash).arg(query.size);
+        r.provider = QStringLiteral("napisy24");
+        r.language = QStringLiteral("pl");
+        r.release = answer.title.isEmpty() ? QFileInfo(query.fileName).completeBaseName() : answer.title;
+        r.fileName = query.fileName;
+        r.url = napisy24Url();
+        r.exact = true;
+        done({ r }, {}, Problem::None);
+    });
+}
+
+void searchLegendas(QObject *context, const Query &query, Done done)
+{
+    const QByteArray body = legendasSearchBody(query);
+    if (body.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    QPointer<QObject> guard(context);
+    const QString name = QStringLiteral("Legendas.net");
+    withSession(context, QStringLiteral("legendasnet"), name, query, done,
+                [guard, query, body, name, done](const Session &session, std::function<void()> again) {
+        if (!guard)
+            return;
+        // (a GET with a JSON body, as its API asks)
+        HttpRequest request = jsonRequest(legendasSearchUrl(query));
+        request.body = body;
+        request.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/json")));
+        request.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + session.token.toUtf8()));
+        httpRequestAsync(guard, request, [query, name, done, again](const HttpResponse &reply) {
+            if (reply.error.isEmpty() && reply.status == 401 && again)
+            {
+                again();
+                return;
+            }
+            if (reply.error.isEmpty() && reply.status == 404)
+            {
+                nothing(done);
+                return;
+            }
+            if (!ok(reply))
+            {
+                const Problem problem = reply.status == 401 ? Problem::LoginRefused : problemOfReply(reply);
+                done({}, failure(name, reply, problem), problem);
+                return;
+            }
+            done(parseLegendas(reply.body, query), {}, Problem::None);
+        });
+    });
+}
+
 #ifdef HAVE_ZLIB
 // inflates a gzip file (windowBits 16 + 15) or a raw deflate stream (-15);
 // empty when it unpacks to more than limit (it stops there)
@@ -1201,6 +1588,30 @@ const QList<Provider> &providers()
           N_("Series · many languages"), false, true, {}, 0, 0, {}, false },
         { QStringLiteral("yify"), QStringLiteral("YIFY Subtitles"),
           N_("Movies · many languages"), true, false, {}, 0, 0, {}, false },
+        // with an account or a key, each for its languages (asked only when
+        // one of them is to be searched)
+        { QStringLiteral("titlovi"), QStringLiteral("Titlovi"),
+          N_("With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"), true, true,
+          { QStringLiteral("hr"), QStringLiteral("sr"), QStringLiteral("bs"), QStringLiteral("sl"), QStringLiteral("mk") },
+          UsernameField | PasswordField, UsernameField | PasswordField, QStringLiteral("https://titlovi.com"), true },
+        { QStringLiteral("assrt"), QStringLiteral("Assrt"),
+          N_("With your free token · Chinese"), true, true, { QStringLiteral("zh"), QStringLiteral("zh-TW") },
+          KeyField, KeyField, QStringLiteral("https://assrt.net/usercp.php"), false },
+        { QStringLiteral("jimaku"), QStringLiteral("Jimaku"),
+          N_("With your free key · anime, Japanese"), true, true, { QStringLiteral("ja") },
+          KeyField, KeyField, QStringLiteral("https://jimaku.cc/account"), false },
+        { QStringLiteral("betaseries"), QStringLiteral("BetaSeries"),
+          N_("With your free key · series, French"), false, true, { QStringLiteral("fr") },
+          KeyField, KeyField, QStringLiteral("https://www.betaseries.com/api/"), false },
+        { QStringLiteral("subsro"), QStringLiteral("Subs.ro"),
+          N_("With your free key · Romanian"), true, true, { QStringLiteral("ro") },
+          KeyField, KeyField, QStringLiteral("https://subs.ro/api"), false },
+        { QStringLiteral("napisy24"), QStringLiteral("Napisy24"),
+          N_("With your free account · Polish · finds those made for your file"), true, true, { QStringLiteral("pl") },
+          UsernameField | PasswordField, UsernameField | PasswordField, QStringLiteral("https://napisy24.pl"), true },
+        { QStringLiteral("legendasnet"), QStringLiteral("Legendas.net"),
+          N_("With your free account · Portuguese (Brazil)"), true, true, { QStringLiteral("pt-BR") },
+          EmailField | PasswordField, EmailField | PasswordField, QStringLiteral("https://legendas.net"), true },
     };
     return list;
 }
@@ -1237,6 +1648,20 @@ void search(QObject *context, const QString &providerId, const Query &query, Don
         searchAddic7ed(context, query, done);
     else if (providerId == QLatin1String("yify"))
         searchYify(context, query, done);
+    else if (providerId == QLatin1String("titlovi"))
+        searchTitlovi(context, query, done);
+    else if (providerId == QLatin1String("assrt"))
+        searchAssrt(context, query, done);
+    else if (providerId == QLatin1String("jimaku"))
+        searchJimaku(context, query, done);
+    else if (providerId == QLatin1String("betaseries"))
+        searchBetaSeries(context, query, done);
+    else if (providerId == QLatin1String("subsro"))
+        searchSubsRo(context, query, done);
+    else if (providerId == QLatin1String("napisy24"))
+        searchNapisy24(context, query, done);
+    else if (providerId == QLatin1String("legendasnet"))
+        searchLegendas(context, query, done);
     else
         nothing(done);
 }
@@ -1299,6 +1724,97 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
             }
             done(checkOf(reply.status), {});
         });
+        return;
+    }
+    const auto checkOfSignIn = [](Problem problem) {
+        switch (problem)
+        {
+            case Problem::None: return Check::SignedIn;
+            case Problem::LoginRefused: return Check::LoginRefused;
+            case Problem::KeyRefused: return Check::KeyRefused;
+            case Problem::Busy: return Check::Busy;
+            default: return Check::NoAnswer;
+        }
+    };
+    if (providerId == QLatin1String("titlovi") || providerId == QLatin1String("legendasnet"))
+    {
+        forgetSession(providerId);
+        const QString who = whoOf(providerId, credentials);
+        signIn(context, providerId, credentials, [done, who, checkOfSignIn](const Session &, Problem problem) {
+            const Check result = checkOfSignIn(problem);
+            done(result, result == Check::SignedIn ? who : QString());
+        });
+        return;
+    }
+    if (providerId == QLatin1String("napisy24"))
+    {
+        // (a file it doesn't know: what it says of the account)
+        Query probe;
+        probe.hash = QStringLiteral("0000000000000000");
+        probe.size = 1;
+        probe.fileName = QStringLiteral("check.mkv");
+        probe.credentials = credentials;
+        const QString who = credentials.username.trimmed();
+        httpRequestAsync(context, napisy24Request(probe), [done, who](const HttpResponse &reply) {
+            if (!ok(reply))
+                done(checkOf(reply.status) == Check::Works ? Check::NoAnswer : checkOf(reply.status), {});
+            else if (parseNapisy24(reply.body).loginRefused)
+                done(Check::LoginRefused, {});
+            else if (reply.body.startsWith("OK"))
+                done(Check::SignedIn, who);
+            else
+                done(Check::NoAnswer, {});
+        });
+        return;
+    }
+    if (providerId == QLatin1String("assrt"))
+    {
+        httpRequestAsync(context, jsonRequest(assrtCheckUrl(key)), [done](const HttpResponse &reply) {
+            if (!reply.error.isEmpty() || (reply.status != 200 && reply.status != 400))
+            {
+                done(checkOf(reply.status), {});
+                return;
+            }
+            const QJsonObject answer = QJsonDocument::fromJson(reply.body).object();
+            const int status = answer.value(QLatin1String("status")).toVariant().toInt();
+            done(answer.isEmpty() ? Check::NoAnswer : status == 0 ? Check::Works
+                 : status == 20001 ? Check::KeyRefused : Check::NoAnswer, {});
+        });
+        return;
+    }
+    if (providerId == QLatin1String("jimaku"))
+    {
+        Query probe;
+        probe.title = QStringLiteral("Frieren");
+        httpRequestAsync(context, jimakuRequest(jimakuSearchUrl(probe), key),
+                         [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+        return;
+    }
+    if (providerId == QLatin1String("betaseries"))
+    {
+        Query probe;
+        probe.series = true;
+        probe.imdb = QStringLiteral("tt0903747");
+        probe.credentials.key = key;
+        httpRequestAsync(context, jsonRequest(betaSeriesShowUrl(probe)), [done](const HttpResponse &reply) {
+            if (!reply.error.isEmpty() || (reply.status != 200 && reply.status != 400))
+            {
+                done(checkOf(reply.status), {});
+                return;
+            }
+            QString error;
+            bool refused = false;
+            parseBetaSeries(reply.body, &error, &refused);
+            done(refused ? Check::KeyRefused : reply.status == 200 ? Check::Works : Check::NoAnswer, {});
+        });
+        return;
+    }
+    if (providerId == QLatin1String("subsro"))
+    {
+        Query probe;
+        probe.imdb = QStringLiteral("tt0133093");
+        httpRequestAsync(context, subsRoRequest(subsRoSearchUrl(probe), key),
+                         [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
         return;
     }
     done(Check::Works, {});
@@ -1401,6 +1917,60 @@ void prepareDownload(QObject *context, const Result &result, const Credentials &
         download.headers.append(qMakePair(QByteArray("Referer"), QByteArray("https://yifysubtitles.ch/")));
     if (result.provider == QLatin1String("subsource"))
         download.headers.append(qMakePair(QByteArray("X-API-Key"), credentials.key.trimmed().toUtf8()));
+    if (result.provider == QLatin1String("jimaku"))
+        download.headers.append(qMakePair(QByteArray("Authorization"), credentials.key.trimmed().toUtf8()));
+    if (result.provider == QLatin1String("subsro"))
+        download.headers.append(qMakePair(QByteArray("X-Subs-Api-Key"), credentials.key.trimmed().toUtf8()));
+    if (result.provider == QLatin1String("napisy24"))
+    {
+        // the subtitle comes with the answer of the file's search, asked again
+        const QString hashAndSize = result.id.section(QLatin1Char(':'), 1);
+        Query file;
+        file.hash = hashAndSize.section(QLatin1Char('-'), 0, 0);
+        file.size = hashAndSize.section(QLatin1Char('-'), 1).toLongLong();
+        file.fileName = result.fileName;
+        file.credentials = credentials;
+        const HttpRequest request = napisy24Request(file);
+        download.method = request.method;
+        download.body = request.body;
+        download.headers = request.headers;
+        download.unwrap = [](const QByteArray &answer) { return parseNapisy24(answer).archive; };
+    }
+    if (result.provider == QLatin1String("assrt"))
+    {
+        // the file of its language, from the subtitle's details
+        const QString id = result.id.section(QLatin1Char(':'), 1);
+        const QString language = result.language;
+        httpRequestAsync(context, jsonRequest(assrtDetailUrl(credentials.key.trimmed(), id)),
+                         [download, language, done](const HttpResponse &reply) {
+            Download prepared = download;
+            prepared.url = ok(reply) ? assrtFileOf(reply.body, language) : QUrl();
+            if (prepared.url.isEmpty())
+            {
+                prepared.problem = ok(reply) ? Problem::Failed : problemOfReply(reply);
+                prepared.error = failure(QStringLiteral("Assrt"), reply,
+                                         reply.status == 400 ? Problem::KeyRefused : Problem::None);
+            }
+            done(prepared);
+        });
+        return;
+    }
+    if (result.provider == QLatin1String("legendasnet"))
+    {
+        signIn(context, result.provider, credentials, [download, done](const Session &session, Problem problem) {
+            Download prepared = download;
+            if (problem != Problem::None)
+            {
+                prepared.url.clear();
+                prepared.problem = problem;
+                prepared.error = failure(QStringLiteral("Legendas.net"), {}, problem);
+            }
+            else
+                prepared.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + session.token.toUtf8()));
+            done(prepared);
+        });
+        return;
+    }
     done(download);
 }
 

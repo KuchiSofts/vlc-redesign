@@ -92,6 +92,13 @@ and a toggle; the services of [Subtitles found online](Subtitles#subtitles-found
 | **Wizdom** | On | Hebrew · movies and series. *Asked only when Hebrew is one of your subtitle languages* |
 | **Addic7ed** | On | Series · many languages |
 | **YIFY Subtitles** | On | Movies · many languages |
+| **Titlovi** | Off | With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian. *User name*, *Password* |
+| **Assrt** | Off | With your free token · Chinese. *Your free key* |
+| **Jimaku** | Off | With your free key · anime, Japanese. *Your free key* |
+| **BetaSeries** | Off | With your free key · series, French. *Your free key* |
+| **Subs.ro** | Off | With your free key · Romanian. *Your free key* |
+| **Napisy24** | Off | With your free account · Polish · finds those made for your file. *User name*, *Password* |
+| **Legendas.net** | Off | With your free account · Portuguese (Brazil). *Email*, *Password* |
 
 - A service with a key or an account shows its fields when it is on or has them (the key and the password hidden,
   with **Show**), **Test** (or **Sign in** for an account alone), **Clear** (or **Sign out**) and **Get a free key**

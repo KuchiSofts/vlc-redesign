@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:06+0000\n"
+"POT-Creation-Date: 2026-11-08 07:32+0000\n"
 "PO-Revision-Date: 2017-11-16 03:02+0100\n"
 "Last-Translator: Fumio Nakayama <fumio.n6a@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -873,7 +873,7 @@ msgstr "入力アクセスとコーデック"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -3670,29 +3670,106 @@ msgstr "言語が少ないほど検索が速くなります"
 msgid "Subtitle services"
 msgstr "字幕サービス"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+msgid "Key works"
+msgstr "キーは有効です"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+msgid "Signed in as %1"
+msgstr "%1としてログイン中"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+msgid "Key refused"
+msgstr "キーが拒否されました"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+msgid "Wrong user name or password"
+msgstr "ユーザー名またはパスワードが違います"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:315
+msgid "Busy: try again in a minute"
+msgstr "混雑中: 1分後にもう一度お試しください"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+msgid "No answer, try again"
+msgstr "応答がありません。もう一度お試しください"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+msgid "Hide"
+msgstr "非表示"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+msgid "Show"
+msgstr "表示"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:313
 #: modules/gui/qt/player/subtitle_providers.cpp:97
 msgid "Key refused: check it"
 msgstr "キーが拒否されました: 確認してください"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "ログインが拒否されました: 確認してください"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:317
+msgid "Asked only when %1 is one of your subtitle languages"
+msgstr "%1が字幕の言語に含まれる場合のみ使用されます"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:344
+msgid "Your free key"
+msgstr "無料キー"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+msgid "User name (optional)"
+msgstr "ユーザー名 (任意)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
 msgid "User name"
 msgstr "ユーザー名"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+msgid "Password (optional)"
+msgstr "パスワード (任意)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:347
+msgid "Email"
+msgstr "メールアドレス"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+msgid "Sign in"
+msgstr "ログイン"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
+msgid "Sign out"
+msgstr "ログアウト"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+msgid "Create a free account"
+msgstr "無料アカウントを作成"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:599
 msgid "Get a free key"
 msgstr "無料キーを取得"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:421
+msgid "Add a service"
+msgstr "サービスを追加"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:451
+msgid ""
+"To find subtitles, the services turned on get the video's title, its IMDb "
+"id, its file name and hash (made from a part of the file), and nothing else."
+msgstr ""
+"字幕を検索するため、有効なサービスにはビデオのタイトル、IMDb ID、ファイル名、"
+"ハッシュ (ファイルの一部から生成) のみが送信されます。"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:636
 msgid "Current output device"
 msgstr "現在の出力デバイス"
 
@@ -3709,7 +3786,7 @@ msgstr ""
 "が有効な間はこの選択が保持されます。"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -3722,7 +3799,7 @@ msgstr "診断"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 msgid "Developer mode"
 msgstr "開発者モード"
 
@@ -3879,45 +3956,45 @@ msgstr "第2言語"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:674
 msgid "No matching settings"
 msgstr "一致する設定はありません"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:675
 msgid "No settings are available for this category on this VLC installation"
 msgstr "このVLCのインストールでは、このカテゴリーで利用できる設定はありません"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "Show installed add-ons only"
 msgstr "インストール済みのアドオンのみ表示"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:789
 msgid "No advanced options on this page."
 msgstr "このページに詳細設定オプションはありません。"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:801
 msgid "Welcome setup"
 msgstr "初期設定"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 msgid "All VLC options"
 msgstr "VLCのすべてのオプション"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "すべての設定をリセット"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:845
 msgid "Reset all settings?"
 msgstr "すべての設定をリセットしますか?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:846
 msgid "Every setting of %1 goes back to its default."
 msgstr "%1メディアプレイヤーのすべての設定がデフォルトに戻ります。"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:900
 msgid "Discard changes"
 msgstr "変更を破棄"
 
@@ -6395,14 +6472,14 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitlesから無効なログインセッションが返されました。"
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1344
+#: modules/gui/qt/player/subtitle_providers.cpp:1860
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr ""
 "OpenSubtitlesからのダウンロードに失敗しました。ダウンロードの上限を確認してく"
 "ださい。"
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1355
+#: modules/gui/qt/player/subtitle_providers.cpp:1871
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitlesから有効な字幕のダウンロードリンクが返されませんでした。"
 
@@ -7640,60 +7717,89 @@ msgstr "%1からしばらく待つよう求められました (検索回数が�
 msgid "%1 didn't answer (%2)."
 msgstr "%1から応答がありませんでした (%2)。"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1187
+#: modules/gui/qt/player/subtitle_providers.cpp:1574
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "全言語 · 映画とシリーズ · ファイルに合わせた字幕を検索"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1189
+#: modules/gui/qt/player/subtitle_providers.cpp:1576
 msgid "With your own free key · all languages"
 msgstr "自分の無料キーで · すべての言語"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1193
+#: modules/gui/qt/player/subtitle_providers.cpp:1580
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "自分の無料キーで · アラビア語に強い、多言語"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1196
+#: modules/gui/qt/player/subtitle_providers.cpp:1583
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "自分の無料キーで · Subsceneのアーカイブ、多言語"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1199
+#: modules/gui/qt/player/subtitle_providers.cpp:1586
 msgid "Hebrew · movies and series"
 msgstr "ヘブライ語 · 映画とシリーズ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1201
+#: modules/gui/qt/player/subtitle_providers.cpp:1588
 msgid "Series · many languages"
 msgstr "シリーズ · 多言語"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1203
+#: modules/gui/qt/player/subtitle_providers.cpp:1590
 msgid "Movies · many languages"
 msgstr "映画 · 多言語"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1414
+#: modules/gui/qt/player/subtitle_providers.cpp:1594
+msgid ""
+"With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
+msgstr "無料アカウントで · クロアチア語、セルビア語、ボスニア語、スロベニア語、マケドニア語"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1598
+msgid "With your free token · Chinese"
+msgstr "無料トークンで · 中国語"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1601
+msgid "With your free key · anime, Japanese"
+msgstr "無料キーで · アニメ、日本語"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1604
+msgid "With your free key · series, French"
+msgstr "無料キーで · ドラマ、フランス語"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1607
+msgid "With your free key · Romanian"
+msgstr "無料キーで · ルーマニア語"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1610
+msgid "With your free account · Polish · finds those made for your file"
+msgstr "無料アカウントで · ポーランド語 · ファイル専用に作られた字幕を検索"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1613
+msgid "With your free account · Portuguese (Brazil)"
+msgstr "無料アカウントで · ポルトガル語 (ブラジル)"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1984
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "この字幕はRARアーカイブで提供されているため、ここでは開けません。"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1426
-#: modules/gui/qt/player/subtitle_providers.cpp:1459
-#: modules/gui/qt/player/subtitle_search.cpp:1373
+#: modules/gui/qt/player/subtitle_providers.cpp:1996
+#: modules/gui/qt/player/subtitle_providers.cpp:2029
+#: modules/gui/qt/player/subtitle_search.cpp:1378
 msgid "The subtitle couldn't be unpacked."
 msgstr "字幕を展開できませんでした。"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1460
+#: modules/gui/qt/player/subtitle_providers.cpp:2030
 msgid "The archive has no subtitle in it."
 msgstr "アーカイブに字幕が含まれていません。"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1472
+#: modules/gui/qt/player/subtitle_providers.cpp:2042
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "この字幕はOpenSubtitlesの有料会員専用です。別の字幕を選択してください。"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1478
+#: modules/gui/qt/player/subtitle_providers.cpp:2048
 msgid "The subtitle is empty."
 msgstr "字幕が空です。"
 
 #: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1333
+#: modules/gui/qt/player/subtitle_search.cpp:1338
 msgid "No connection to the internet."
 msgstr "インターネットに接続されていません。"
 
@@ -7711,11 +7817,11 @@ msgstr "%1の字幕は見つかりませんでした。"
 
 #: modules/gui/qt/player/subtitle_search.cpp:1284
 #: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1334
+#: modules/gui/qt/player/subtitle_search.cpp:1339
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "字幕をダウンロードできませんでした (%1)。"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1364
+#: modules/gui/qt/player/subtitle_search.cpp:1369
 msgid "The subtitle couldn't be saved."
 msgstr "字幕を保存できませんでした。"
 

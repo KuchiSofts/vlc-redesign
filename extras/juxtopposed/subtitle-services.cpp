@@ -352,6 +352,195 @@ static void testOpenSubtitlesCom()
     CHECK(openSubtitlesComLink("not json").isEmpty());
 }
 
+static void testTitlovi()
+{
+    CHECK(titloviLanguage(QStringLiteral("hr")) == QLatin1String("Hrvatski"));
+    CHECK(languageOfTitlovi(QStringLiteral("Cirilica")) == QLatin1String("sr"));
+    CHECK(languageOfTitlovi(QStringLiteral("Slovenski")) == QLatin1String("sl"));
+    CHECK(languageOfTitlovi(QStringLiteral("Klingon")).isEmpty());
+    const QUrl login = titloviLoginUrl(QStringLiteral("me"), QStringLiteral("p&w"));
+    CHECK(login.toString(QUrl::RemoveQuery) == QLatin1String("https://kodi.titlovi.com/api/subtitles/gettoken"));
+    CHECK(item(login, "password") == QLatin1String("p&w") && item(login, "json") == QLatin1String("true"));
+    const Session session = titloviSession(readFixture("titlovi-login.json"));
+    CHECK(session.token == QLatin1String("0a1b2c3d-token") && session.userId == QLatin1String("12345"));
+    CHECK(titloviSession("{}").token.isEmpty());
+
+    // the user's Balkan languages, by their names, signed in
+    Query q = episode();
+    q.languages = { QStringLiteral("hr"), QStringLiteral("en"), QStringLiteral("sr") };
+    QUrl url = titloviSearchUrl(q, session);
+    CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://kodi.titlovi.com/api/subtitles/search"));
+    CHECK(item(url, "lang") == QLatin1String("Hrvatski|Srpski"));
+    CHECK(item(url, "query") == QLatin1String("Breaking Bad"));
+    CHECK(item(url, "season") == QLatin1String("2"));
+    CHECK(item(url, "imdbID") == QLatin1String("tt0903747"));
+    CHECK(item(url, "token") == QLatin1String("0a1b2c3d-token") && item(url, "userid") == QLatin1String("12345"));
+    Query english = q;
+    english.languages = { QStringLiteral("en") };
+    CHECK(titloviSearchUrl(english, session).isEmpty()); // (none of its own)
+
+    // this episode, the whole season (Episode 0); not another one, nor elsewhere
+    QList<Result> results = parseTitlovi(readFixture("titlovi-search.json"), q);
+    CHECK(results.size() == 3);
+    const Result *croatian = byId(results, "titlovi:101");
+    CHECK(croatian && croatian->language == QLatin1String("hr") && croatian->release == QLatin1String("Breaking.Bad.S02E03.720p"));
+    CHECK(croatian && croatian->url == QUrl(QStringLiteral("https://titlovi.com/download/?type=1&mediaid=101")));
+    CHECK(byId(results, "titlovi:102") && byId(results, "titlovi:102")->language == QLatin1String("sr"));
+    CHECK(byId(results, "titlovi:103") && byId(results, "titlovi:103")->release == QLatin1String("Breaking Bad"));
+    CHECK(!byId(results, "titlovi:104") && !byId(results, "titlovi:105") && !byId(results, "titlovi:106"));
+    // a film: every one of a known language and link
+    CHECK(parseTitlovi(readFixture("titlovi-search.json"), film()).size() == 5);
+}
+
+static void testAssrt()
+{
+    Query q = film();
+    q.languages = { QStringLiteral("zh-TW"), QStringLiteral("en") };
+    QUrl url = assrtSearchUrl(q);
+    CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://api.assrt.net/v1/sub/search"));
+    CHECK(item(url, "q") == QLatin1String("The Matrix 1999"));
+    CHECK(item(url, "token") == QLatin1String("my-key") && item(url, "is_file") == QLatin1String("1"));
+    CHECK(item(assrtSearchUrl(episode()), "q") == QLatin1String("Breaking Bad S02E03"));
+
+    QString error;
+    bool refused = true;
+    QList<Result> results = parseAssrt(readFixture("assrt-search.json"), q, &error, &refused);
+    CHECK(error.isEmpty() && !refused);
+    CHECK(results.size() == 3);
+    // the user's first language it has
+    CHECK(byId(results, "assrt:6001") && byId(results, "assrt:6001")->language == QLatin1String("en"));
+    CHECK(byId(results, "assrt:6001") && byId(results, "assrt:6001")->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264"));
+    const Result *traditional = byId(results, "assrt:6002");
+    CHECK(traditional && traditional->language == QLatin1String("zh-TW") && traditional->release == QStringLiteral("黑客帝国"));
+    CHECK(byId(results, "assrt:6004") && byId(results, "assrt:6004")->language == QLatin1String("zh"));
+    CHECK(!byId(results, "assrt:6003"));
+    CHECK(parseAssrt(readFixture("assrt-invalid-token.json"), q, &error, &refused).isEmpty());
+    CHECK(refused && error == QLatin1String("invalid token"));
+
+    CHECK(item(assrtDetailUrl(QStringLiteral("k"), QStringLiteral("6001")), "id") == QLatin1String("6001"));
+    const QByteArray detail = readFixture("assrt-detail.json");
+    CHECK(assrtFileOf(detail, QStringLiteral("en")).toString().endsWith(QLatin1String("The.Matrix.1999.eng.srt")));
+    CHECK(assrtFileOf(detail, QStringLiteral("zh")).toString().endsWith(QLatin1String("The.Matrix.1999.chs.srt")));
+    // (its file elsewhere is not taken: the first of its own)
+    CHECK(assrtFileOf(detail, QStringLiteral("zh-TW")).toString().endsWith(QLatin1String("The.Matrix.1999.chs.srt")));
+    CHECK(assrtFileOf("{}", QStringLiteral("zh")).isEmpty());
+    CHECK(item(assrtCheckUrl(QStringLiteral("k")), "token") == QLatin1String("k"));
+}
+
+static void testJimaku()
+{
+    Query q = episode();
+    q.title = QStringLiteral("Sousou no Frieren");
+    q.season = 1;
+    QUrl url = jimakuSearchUrl(q);
+    CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://jimaku.cc/api/entries/search"));
+    CHECK(item(url, "query") == QLatin1String("sousou no frieren") && item(url, "anime") == QLatin1String("true"));
+    Query second = q;
+    second.season = 2;
+    CHECK(item(jimakuSearchUrl(second), "query") == QLatin1String("sousou no frieren 2"));
+    // the series of that name (not its film)
+    CHECK(jimakuEntryId(readFixture("jimaku-entries.json"), q) == QLatin1String("21"));
+    Query movie = film();
+    movie.title = QStringLiteral("Frieren: The Movie");
+    CHECK(jimakuEntryId(readFixture("jimaku-entries.json"), movie) == QLatin1String("22"));
+    CHECK(jimakuEntryId("[]", q).isEmpty());
+    url = jimakuFilesUrl(QStringLiteral("21"), q);
+    CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://jimaku.cc/api/entries/21/files"));
+    CHECK(item(url, "episode") == QLatin1String("3"));
+    CHECK(jimakuFilesUrl(QStringLiteral("../x"), q).isEmpty());
+    // Japanese; no archives it can't open, no machine-made ones, none broken or elsewhere
+    const QList<Result> results = parseJimaku(readFixture("jimaku-files.json"), q);
+    CHECK(results.size() == 2);
+    for (const Result &r : results)
+        CHECK(r.language == QLatin1String("ja") && r.url.host() == QLatin1String("jimaku.cc"));
+    CHECK(byId(results, "jimaku:[SubsPlease] Sousou no Frieren - 03.ja.ass"));
+    CHECK(parseJimaku(readFixture("jimaku-unauthorized.json"), q).isEmpty());
+}
+
+static void testBetaSeries()
+{
+    Query q = episode();
+    QUrl url = betaSeriesShowUrl(q);
+    CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://api.betaseries.com/shows/display"));
+    CHECK(item(url, "imdb_id") == QLatin1String("tt0903747") && item(url, "key") == QLatin1String("my-key"));
+    CHECK(betaSeriesShowUrl(film()).isEmpty()); // (series only)
+    CHECK(betaSeriesShowId(readFixture("betaseries-show.json")) == QLatin1String("481"));
+    url = betaSeriesEpisodeUrl(QStringLiteral("481"), q);
+    CHECK(item(url, "id") == QLatin1String("481") && item(url, "season") == QLatin1String("2")
+          && item(url, "episode") == QLatin1String("3") && item(url, "subtitles") == QLatin1String("1"));
+    QString error;
+    bool refused = true;
+    const QList<Result> results = parseBetaSeries(readFixture("betaseries-episodes.json"), &error, &refused);
+    CHECK(error.isEmpty() && !refused);
+    CHECK(results.size() == 2);
+    CHECK(byId(results, "betaseries:9001") && byId(results, "betaseries:9001")->language == QLatin1String("fr"));
+    CHECK(byId(results, "betaseries:9002") && byId(results, "betaseries:9002")->language == QLatin1String("en"));
+    CHECK(byId(results, "betaseries:9001") && byId(results, "betaseries:9001")->release == QLatin1String("Breaking.Bad.S02E03.720p.fr"));
+    CHECK(parseBetaSeries(readFixture("betaseries-bad-key.json"), &error, &refused).isEmpty());
+    CHECK(refused && error == QStringLiteral("Mauvaise clé API."));
+    error.clear();
+    CHECK(parseBetaSeries(readFixture("betaseries-not-found.json"), &error, &refused).isEmpty());
+    CHECK(!refused && error.isEmpty());
+}
+
+static void testSubsRo()
+{
+    QUrl url = subsRoSearchUrl(film());
+    CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://api.subs.ro/v1.0/search/imdbid/0133093"));
+    CHECK(item(url, "language") == QLatin1String("ro"));
+    Query unknown = film();
+    unknown.imdb.clear();
+    CHECK(subsRoSearchUrl(unknown).isEmpty());
+    QString error;
+    QList<Result> results = parseSubsRo(readFixture("subsro-search.json"), film(), &error);
+    CHECK(error.isEmpty() && results.size() == 3);
+    const Result *matrix = byId(results, "subsro:501");
+    CHECK(matrix && matrix->language == QLatin1String("ro") && matrix->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264"));
+    CHECK(matrix && matrix->downloads == 1200);
+    // an episode: its season's
+    results = parseSubsRo(readFixture("subsro-search.json"), episode(), &error);
+    CHECK(byId(results, "subsro:502") && !byId(results, "subsro:503") && !byId(results, "subsro:504"));
+    CHECK(parseSubsRo(readFixture("subsro-invalid-key.json"), film(), &error).isEmpty());
+    CHECK(error == QLatin1String("Invalid API key"));
+}
+
+static void testNapisy24()
+{
+    Query q = film();
+    q.size = 734003200;
+    const QByteArray body = napisy24Body(q, QStringLiteral("me@x"), QStringLiteral("p&w"));
+    CHECK(body.contains("postAction=CheckSub") && body.contains("fh=8e245d9679d31e12") && body.contains("fs=734003200"));
+    CHECK(body.contains("ua=me%40x") && body.contains("ap=p%26w") && body.contains("n24pref=1"));
+    CHECK(body.contains("fn=The.Matrix.1999.1080p.BluRay.x264.mkv"));
+    const Napisy24Answer found = parseNapisy24(readFixture("napisy24-found.bin"));
+    CHECK(found.found && !found.loginRefused);
+    CHECK(found.imdb == QLatin1String("tt0133093") && found.title == QLatin1String("The Matrix"));
+    CHECK(found.archive.startsWith("PK\x03\x04"));
+    const Napisy24Answer refused = parseNapisy24(readFixture("napisy24-login-error.txt"));
+    CHECK(refused.loginRefused && !refused.found);
+    const Napisy24Answer info = parseNapisy24(readFixture("napisy24-video-info.txt"));
+    CHECK(!info.found && !info.loginRefused && info.archive.isEmpty());
+}
+
+static void testLegendas()
+{
+    CHECK(legendasLoginBody(QStringLiteral("me@x.org"), QStringLiteral("p\"w")) == "{\"email\":\"me@x.org\",\"password\":\"p\\\"w\"}");
+    CHECK(legendasSession(readFixture("legendas-login.json")).token == QLatin1String("eyJhbGciOiJIUzI1NiJ9.legendas.token"));
+    CHECK(legendasSession(readFixture("legendas-login-refused.json")).token.isEmpty());
+    CHECK(legendasSearchUrl(film()) == QUrl(QStringLiteral("https://legendas.net/api/v1/search/movie")));
+    CHECK(legendasSearchUrl(episode()) == QUrl(QStringLiteral("https://legendas.net/api/v1/search/tv")));
+    CHECK(legendasSearchBody(film()) == "{\"imdb_id\":\"tt0133093\",\"page\":1,\"per_page\":25}");
+    CHECK(legendasSearchBody(episode()) == "{\"imdb_id\":\"tt0903747\",\"page\":1,\"per_page\":25,\"tv_episode\":3,\"tv_season\":2}");
+    QList<Result> results = parseLegendas(readFixture("legendas-movies.json"), film());
+    CHECK(results.size() == 2);
+    const Result *matrix = byId(results, "legendasnet:701");
+    CHECK(matrix && matrix->language == QLatin1String("pt-BR")
+          && matrix->url == QUrl(QStringLiteral("https://legendas.net/uploads/legendas/the-matrix-1999.zip")));
+    CHECK(byId(results, "legendasnet:704") && byId(results, "legendasnet:704")->foreignOnly);
+    results = parseLegendas(readFixture("legendas-tv.json"), episode());
+    CHECK(results.size() == 1 && byId(results, "legendasnet:801"));
+}
+
 int main(int argc, char **argv)
 {
     fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures/subtitle-services");
@@ -359,6 +548,13 @@ int main(int argc, char **argv)
     testSubSource();
     testSubDl();
     testOpenSubtitlesCom();
+    testTitlovi();
+    testAssrt();
+    testJimaku();
+    testBetaSeries();
+    testSubsRo();
+    testNapisy24();
+    testLegendas();
     std::printf("subtitle services: %d checks, %d failed\n", checks, failures);
     return failures ? 1 : 0;
 }

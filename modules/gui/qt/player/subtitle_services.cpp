@@ -668,4 +668,600 @@ QUrl openSubtitlesComCheckUrl()
     return openSubtitlesComSearchUrl(query);
 }
 
+// ---------------------------------------------------------------------------
+// Wave 2
+
+namespace {
+
+bool hostOf(const QUrl &url, const char *domain)
+{
+    const QString host = url.host().toLower();
+    const QLatin1String d(domain);
+    return (url.scheme() == QLatin1String("https") || url.scheme() == QLatin1String("http"))
+        && (host == d || host.endsWith(QLatin1Char('.') + d));
+}
+
+QString digitsOfImdb(const QString &imdb)
+{
+    return imdb.startsWith(QLatin1String("tt")) ? imdb.mid(2) : QString();
+}
+
+double popularity(qint64 downloads)
+{
+    return std::log10(double(std::max<qint64>(downloads, 0)) + 1.) * 3.;
+}
+
+// "Breaking Bad S02E03", "The Matrix 1999": the words a site of names is
+// searched by
+QString keywords(const Query &query)
+{
+    if (query.series && query.season >= 0 && query.episode >= 0)
+        return QStringLiteral("%1 S%2E%3").arg(query.title).arg(query.season, 2, 10, QLatin1Char('0'))
+                                          .arg(query.episode, 2, 10, QLatin1Char('0'));
+    if (!query.series && query.year > 0)
+        return QStringLiteral("%1 %2").arg(query.title).arg(query.year);
+    return query.title;
+}
+
+const QList<QPair<QString, QString>> &titloviLanguages()
+{
+    static const QList<QPair<QString, QString>> list = {
+        { "hr", "Hrvatski" }, { "sr", "Srpski" }, { "bs", "Bosanski" }, { "sl", "Slovenski" },
+        { "mk", "Makedonski" }, { "en", "English" },
+    };
+    return list;
+}
+
+} // namespace
+
+// --- Titlovi
+
+QString titloviLanguage(const QString &code)
+{
+    for (const auto &l : titloviLanguages())
+        if (l.first == code)
+            return l.second;
+    return {};
+}
+
+QString languageOfTitlovi(const QString &name)
+{
+    if (name.compare(QLatin1String("Cirilica"), Qt::CaseInsensitive) == 0)
+        return QStringLiteral("sr");
+    for (const auto &l : titloviLanguages())
+        if (l.second.compare(name, Qt::CaseInsensitive) == 0)
+            return l.first;
+    return {};
+}
+
+QUrl titloviLoginUrl(const QString &username, const QString &password)
+{
+    return withQuery(QStringLiteral("https://kodi.titlovi.com/api/subtitles/gettoken"),
+                     { { QStringLiteral("username"), username }, { QStringLiteral("password"), password },
+                       { QStringLiteral("json"), QStringLiteral("true") } });
+}
+
+Session titloviSession(const QByteArray &loginReply)
+{
+    const QJsonObject o = QJsonDocument::fromJson(loginReply).object();
+    Session session;
+    session.token = text(o, "Token");
+    session.userId = text(o, "UserId");
+    if (session.token.isEmpty() || session.userId.isEmpty())
+        return {};
+    return session;
+}
+
+QUrl titloviSearchUrl(const Query &query, const Session &session)
+{
+    QStringList names;
+    for (const QString &code : query.languages)
+    {
+        const QString name = titloviLanguage(code);
+        if (!name.isEmpty() && code != QLatin1String("en") && !names.contains(name))
+            names.append(name);
+    }
+    if (names.isEmpty() || query.title.isEmpty())
+        return {};
+    QList<QPair<QString, QString>> items = { { QStringLiteral("query"), query.title },
+                                             { QStringLiteral("lang"), names.join(QLatin1Char('|')) } };
+    if (query.series && query.season >= 0 && query.episode >= 0)
+        items.append({ QStringLiteral("season"), QString::number(query.season) });
+    if (query.imdb.startsWith(QLatin1String("tt")))
+        items.append({ QStringLiteral("imdbID"), query.imdb });
+    items.append({ QStringLiteral("token"), session.token });
+    items.append({ QStringLiteral("userid"), session.userId });
+    items.append({ QStringLiteral("json"), QStringLiteral("true") });
+    return withQuery(QStringLiteral("https://kodi.titlovi.com/api/subtitles/search"), items);
+}
+
+QList<Result> parseTitlovi(const QByteArray &body, const Query &query)
+{
+    QList<Result> results;
+    const bool episode = query.series && query.season >= 0 && query.episode >= 0;
+    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("SubtitleResults")).toArray())
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = text(o, "Id");
+        const QUrl link(text(o, "Link"));
+        const QString language = languageOfTitlovi(text(o, "Lang"));
+        if (id.isEmpty() || language.isEmpty() || !hostOf(link, "titlovi.com"))
+            continue;
+        if (episode)
+        {
+            // (Episode 0: the whole season)
+            const int season = o.value(QLatin1String("Season")).toVariant().toInt();
+            const int number = o.value(QLatin1String("Episode")).toVariant().toInt();
+            if (season != query.season || (number != 0 && number != query.episode))
+                continue;
+        }
+        Result r;
+        r.id = QStringLiteral("titlovi:") + id;
+        r.provider = QStringLiteral("titlovi");
+        r.language = language;
+        r.release = cleanRelease(text(o, "Release"));
+        if (r.release.isEmpty())
+            r.release = cleanRelease(text(o, "Title"));
+        r.url = link;
+        r.downloads = o.value(QLatin1String("DownloadCount")).toVariant().toInt();
+        r.rank = popularity(r.downloads) + std::min(o.value(QLatin1String("Rating")).toVariant().toDouble(), 10.) * 0.5;
+        results.append(r);
+    }
+    return results;
+}
+
+// --- Assrt
+
+QUrl assrtSearchUrl(const Query &query)
+{
+    if (query.title.isEmpty())
+        return {};
+    return withQuery(QStringLiteral("https://api.assrt.net/v1/sub/search"),
+                     { { QStringLiteral("token"), query.credentials.key }, { QStringLiteral("q"), keywords(query) },
+                       { QStringLiteral("is_file"), QStringLiteral("1") } });
+}
+
+QList<Result> parseAssrt(const QByteArray &body, const Query &query, QString *error, bool *refused)
+{
+    QList<Result> results;
+    *refused = false;
+    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    const int status = answer.value(QLatin1String("status")).toVariant().toInt();
+    if (answer.isEmpty() || status != 0)
+    {
+        *error = text(answer, "errmsg");
+        if (error->isEmpty())
+            *error = QStringLiteral("?");
+        *refused = status == 20001 || error->contains(QLatin1String("token"), Qt::CaseInsensitive);
+        return results;
+    }
+    static const QList<QPair<QString, QString>> codes = {
+        { "langchs", "zh" }, { "langdou", "zh" }, { "langcht", "zh-TW" }, { "langeng", "en" },
+    };
+    for (const QJsonValue item : answer.value(QLatin1String("sub")).toObject().value(QLatin1String("subs")).toArray())
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = text(o, "id");
+        if (id.isEmpty() || id == QLatin1String("0"))
+            continue;
+        const QJsonObject list = o.value(QLatin1String("lang")).toObject().value(QLatin1String("langlist")).toObject();
+        QStringList has;
+        for (const auto &code : codes)
+            if (list.value(code.first).toBool() && !has.contains(code.second))
+                has.append(code.second);
+        if (has.isEmpty())
+            continue;
+        // the user's first language it has
+        QString language = has.first();
+        for (const QString &wanted : query.languages)
+            if (has.contains(wanted))
+            {
+                language = wanted;
+                break;
+            }
+        QString release = text(o, "videoname");
+        if (release.isEmpty() || release == QStringLiteral("不知道"))
+        {
+            const QJsonValue native = o.value(QLatin1String("native_name"));
+            release = native.isArray() ? native.toArray().at(0).toString() : native.toString();
+        }
+        Result r;
+        r.id = QStringLiteral("assrt:") + id;
+        r.provider = QStringLiteral("assrt");
+        r.language = language;
+        r.release = cleanRelease(release);
+        r.url = withQuery(QStringLiteral("https://api.assrt.net/v1/sub/detail"), { { QStringLiteral("id"), id } });
+        r.rank = std::min(o.value(QLatin1String("vote_score")).toVariant().toDouble(), 20.) * 0.5;
+        results.append(r);
+    }
+    return results;
+}
+
+QUrl assrtDetailUrl(const QString &key, const QString &id)
+{
+    return withQuery(QStringLiteral("https://api.assrt.net/v1/sub/detail"),
+                     { { QStringLiteral("token"), key }, { QStringLiteral("id"), id } });
+}
+
+QUrl assrtFileOf(const QByteArray &detailReply, const QString &language)
+{
+    const QJsonObject sub = QJsonDocument::fromJson(detailReply).object().value(QLatin1String("sub")).toObject()
+                                .value(QLatin1String("subs")).toArray().at(0).toObject();
+    static const QHash<QString, QStringList> marks = {
+        { "zh", { "chs", "简", "sc.", ".sc", "gb" } },
+        { "zh-TW", { "cht", "繁", "tc.", ".tc", "big5" } },
+        { "en", { "eng", "英", ".en." } },
+    };
+    QUrl first;
+    for (const QJsonValue item : sub.value(QLatin1String("filelist")).toArray())
+    {
+        const QJsonObject f = item.toObject();
+        const QString name = text(f, "f").toLower();
+        const QUrl url(text(f, "url"));
+        if (!hostOf(url, "assrt.net"))
+            continue;
+        static const QRegularExpression subtitleRe(QStringLiteral(R"(\.(srt|ass|ssa|vtt|sub)$)"));
+        if (!subtitleRe.match(name).hasMatch())
+            continue;
+        if (first.isEmpty())
+            first = url;
+        for (const QString &mark : marks.value(language))
+            if (name.contains(mark))
+                return url;
+    }
+    if (!first.isEmpty())
+        return first;
+    const QUrl archive(text(sub, "url"));
+    return hostOf(archive, "assrt.net") ? archive : QUrl();
+}
+
+QUrl assrtCheckUrl(const QString &key)
+{
+    return withQuery(QStringLiteral("https://api.assrt.net/v1/user/quota"), { { QStringLiteral("token"), key } });
+}
+
+// --- Jimaku
+
+namespace {
+
+// the name an entry of Jimaku has for a season after the first ("Name 2")
+QString jimakuName(const Query &query)
+{
+    QString name = query.title.toLower();
+    if (query.series && query.season > 1)
+        name += QStringLiteral(" %1").arg(query.season);
+    return name;
+}
+
+} // namespace
+
+QUrl jimakuSearchUrl(const Query &query)
+{
+    if (query.title.isEmpty())
+        return {};
+    return withQuery(QStringLiteral("https://jimaku.cc/api/entries/search"),
+                     { { QStringLiteral("query"), jimakuName(query) }, { QStringLiteral("anime"), QStringLiteral("true") } });
+}
+
+QString jimakuEntryId(const QByteArray &body, const Query &query)
+{
+    const QString wanted = jimakuName(query);
+    const auto simple = [](const QString &s) {
+        QString out;
+        for (const QChar c : s.toLower())
+            if (c.isLetterOrNumber())
+                out.append(c);
+        return out;
+    };
+    QString first;
+    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = text(o, "id");
+        if (id.isEmpty())
+            continue;
+        const QJsonObject flags = o.value(QLatin1String("flags")).toObject();
+        // (a film for a film, a series for an episode)
+        if (flags.value(QLatin1String("movie")).toBool() == query.series && flags.contains(QLatin1String("movie")))
+            continue;
+        if (first.isEmpty())
+            first = id;
+        for (const char *key : { "name", "english_name", "japanese_name" })
+            if (!text(o, key).isEmpty() && simple(text(o, key)) == simple(wanted))
+                return id;
+    }
+    return first;
+}
+
+QUrl jimakuFilesUrl(const QString &entryId, const Query &query)
+{
+    static const QRegularExpression digits(QStringLiteral("^[0-9]+$"));
+    if (!digits.match(entryId).hasMatch())
+        return {};
+    const QString address = QStringLiteral("https://jimaku.cc/api/entries/%1/files").arg(entryId);
+    if (query.series && query.episode >= 0)
+        return withQuery(address, { { QStringLiteral("episode"), QString::number(query.episode) } });
+    return QUrl(address);
+}
+
+QList<Result> parseJimaku(const QByteArray &body, const Query &query)
+{
+    Q_UNUSED(query);
+    QList<Result> results;
+    static const QRegularExpression unhandled(QStringLiteral(R"(\.(rar|7z)$)"), QRegularExpression::CaseInsensitiveOption);
+    static const QRegularExpression whisper(QStringLiteral(R"([\[(]?whisperai[\])]?|[\[(]whisper[\])])"),
+                                            QRegularExpression::CaseInsensitiveOption);
+    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    {
+        const QJsonObject o = item.toObject();
+        const QString name = text(o, "name");
+        const QUrl url(text(o, "url"));
+        if (name.isEmpty() || !hostOf(url, "jimaku.cc") || unhandled.match(name).hasMatch()
+            || whisper.match(name).hasMatch())
+            continue;
+        // (a file this small is broken)
+        if (o.contains(QLatin1String("size")) && o.value(QLatin1String("size")).toVariant().toLongLong() < 500)
+            continue;
+        Result r;
+        r.id = QStringLiteral("jimaku:") + name;
+        r.provider = QStringLiteral("jimaku");
+        r.language = QStringLiteral("ja");
+        r.fileName = name;
+        r.release = QFileInfo(name).completeBaseName();
+        r.url = url;
+        results.append(r);
+    }
+    return results;
+}
+
+// --- BetaSeries
+
+QUrl betaSeriesShowUrl(const Query &query)
+{
+    if (!query.series || !query.imdb.startsWith(QLatin1String("tt")))
+        return {};
+    return withQuery(QStringLiteral("https://api.betaseries.com/shows/display"),
+                     { { QStringLiteral("imdb_id"), query.imdb }, { QStringLiteral("v"), QStringLiteral("3.0") },
+                       { QStringLiteral("key"), query.credentials.key } });
+}
+
+QString betaSeriesShowId(const QByteArray &body)
+{
+    const QString id = text(QJsonDocument::fromJson(body).object().value(QLatin1String("show")).toObject(), "id");
+    return id == QLatin1String("0") ? QString() : id;
+}
+
+QUrl betaSeriesEpisodeUrl(const QString &showId, const Query &query)
+{
+    if (showId.isEmpty() || query.season < 0 || query.episode < 0)
+        return {};
+    return withQuery(QStringLiteral("https://api.betaseries.com/shows/episodes"),
+                     { { QStringLiteral("id"), showId }, { QStringLiteral("season"), QString::number(query.season) },
+                       { QStringLiteral("episode"), QString::number(query.episode) },
+                       { QStringLiteral("subtitles"), QStringLiteral("1") }, { QStringLiteral("v"), QStringLiteral("3.0") },
+                       { QStringLiteral("key"), query.credentials.key } });
+}
+
+QList<Result> parseBetaSeries(const QByteArray &body, QString *error, bool *refused)
+{
+    QList<Result> results;
+    *refused = false;
+    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    const QJsonArray errors = answer.value(QLatin1String("errors")).toArray();
+    if (!errors.isEmpty())
+    {
+        const QJsonObject e = errors.at(0).toObject();
+        const int code = e.value(QLatin1String("code")).toVariant().toInt();
+        // (4001: no such show or episode: nothing found)
+        if (code != 4001)
+            *error = text(e, "text").isEmpty() ? QStringLiteral("?") : text(e, "text");
+        *refused = code == 1001;
+        return results;
+    }
+    QJsonArray subtitles = answer.value(QLatin1String("episode")).toObject().value(QLatin1String("subtitles")).toArray();
+    if (subtitles.isEmpty())
+        subtitles = answer.value(QLatin1String("episodes")).toArray().at(0).toObject()
+                        .value(QLatin1String("subtitles")).toArray();
+    for (const QJsonValue item : subtitles)
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = text(o, "id");
+        const QUrl url(text(o, "url"));
+        const QString language = text(o, "language").toUpper();
+        // (SeriesSub closed: its links are gone)
+        if (id.isEmpty() || text(o, "source") == QLatin1String("seriessub") || !hostOf(url, "betaseries.com"))
+            continue;
+        Result r;
+        r.id = QStringLiteral("betaseries:") + id;
+        r.provider = QStringLiteral("betaseries");
+        r.language = language == QLatin1String("VO") ? QStringLiteral("en") : QStringLiteral("fr");
+        r.fileName = text(o, "file");
+        r.release = QFileInfo(r.fileName).completeBaseName();
+        r.url = url;
+        r.rank = std::min(o.value(QLatin1String("quality")).toVariant().toDouble(), 5.);
+        results.append(r);
+    }
+    return results;
+}
+
+// --- Subs.ro
+
+QUrl subsRoSearchUrl(const Query &query)
+{
+    const QString digits = digitsOfImdb(query.imdb);
+    if (digits.isEmpty())
+        return {};
+    return withQuery(QStringLiteral("https://api.subs.ro/v1.0/search/imdbid/") + digits,
+                     { { QStringLiteral("language"), QStringLiteral("ro") } });
+}
+
+QList<Result> parseSubsRo(const QByteArray &body, const Query &query, QString *error)
+{
+    QList<Result> results;
+    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    if (answer.value(QLatin1String("status")).toVariant().toInt() != 200)
+    {
+        *error = messageOf(answer).isEmpty() ? QStringLiteral("?") : messageOf(answer);
+        return results;
+    }
+    static const QRegularExpression seasonRe(QStringLiteral(R"([Ss]ezon(?:ul)?\s*(\d{1,2})|[Ss](\d{1,2})[Ee]\d+)"));
+    for (const QJsonValue item : answer.value(QLatin1String("items")).toArray())
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = text(o, "id");
+        const QString title = text(o, "title");
+        const QString description = text(o, "description");
+        const QUrl link(text(o, "downloadLink"));
+        if (id.isEmpty() || title.isEmpty() || !hostOf(link, "subs.ro"))
+            continue;
+        if (query.series && query.season >= 0)
+        {
+            int season = -1;
+            for (const QString &where : { title, description })
+            {
+                const QRegularExpressionMatch m = seasonRe.match(where);
+                if (m.hasMatch())
+                {
+                    season = (m.captured(1).isEmpty() ? m.captured(2) : m.captured(1)).toInt();
+                    break;
+                }
+            }
+            if (season >= 0 && season != query.season)
+                continue;
+            if (!releaseOfEpisode(description, query.season, query.episode))
+                continue;
+        }
+        Result r;
+        r.id = QStringLiteral("subsro:") + id;
+        r.provider = QStringLiteral("subsro");
+        r.language = QStringLiteral("ro");
+        r.release = cleanRelease(description.section(QLatin1Char('\n'), 0, 0));
+        if (r.release.isEmpty())
+            r.release = title;
+        r.url = link;
+        r.downloads = o.value(QLatin1String("downloads")).toVariant().toInt();
+        r.rank = popularity(r.downloads);
+        results.append(r);
+    }
+    return results;
+}
+
+// --- Napisy24
+
+QByteArray napisy24Body(const Query &query, const QString &username, const QString &password)
+{
+    QUrlQuery form;
+    const auto add = [&form](const char *key, const QString &value) {
+        form.addQueryItem(QLatin1String(key), QString::fromUtf8(QUrl::toPercentEncoding(value)));
+    };
+    add("postAction", QStringLiteral("CheckSub"));
+    add("ua", username);
+    add("ap", password);
+    add("fs", QString::number(query.size));
+    add("fh", query.hash);
+    add("fn", QFileInfo(query.fileName).fileName());
+    add("n24pref", QStringLiteral("1"));
+    return form.query(QUrl::FullyEncoded).toUtf8();
+}
+
+Napisy24Answer parseNapisy24(const QByteArray &body)
+{
+    Napisy24Answer answer;
+    const qsizetype split = body.indexOf("||");
+    const QString head = QString::fromUtf8(split >= 0 ? body.left(split) : body).trimmed();
+    if (head.startsWith(QLatin1String("login error")))
+    {
+        answer.loginRefused = true;
+        return answer;
+    }
+    if (!head.startsWith(QLatin1String("OK-2")))
+        return answer;
+    for (const QString &part : head.split(QLatin1Char('|')).mid(1))
+    {
+        const QString key = part.section(QLatin1Char(':'), 0, 0);
+        const QString value = part.section(QLatin1Char(':'), 1);
+        if (key == QLatin1String("imdb") && value.toLongLong() > 0)
+            answer.imdb = QStringLiteral("tt%1").arg(value.toLongLong(), 7, 10, QLatin1Char('0'));
+        else if (key == QLatin1String("ftitle"))
+            answer.title = value;
+    }
+    answer.archive = split >= 0 ? body.mid(split + 2) : QByteArray();
+    answer.found = answer.archive.startsWith("PK");
+    return answer;
+}
+
+// --- Legendas.net
+
+QByteArray legendasLoginBody(const QString &email, const QString &password)
+{
+    return QJsonDocument(QJsonObject{ { QStringLiteral("email"), email }, { QStringLiteral("password"), password } })
+        .toJson(QJsonDocument::Compact);
+}
+
+Session legendasSession(const QByteArray &loginReply)
+{
+    Session session;
+    session.token = text(QJsonDocument::fromJson(loginReply).object(), "access_token");
+    return session;
+}
+
+QUrl legendasSearchUrl(const Query &query)
+{
+    return QUrl(query.series ? QStringLiteral("https://legendas.net/api/v1/search/tv")
+                             : QStringLiteral("https://legendas.net/api/v1/search/movie"));
+}
+
+QByteArray legendasSearchBody(const Query &query)
+{
+    QJsonObject o{ { QStringLiteral("page"), 1 }, { QStringLiteral("per_page"), 25 } };
+    if (query.imdb.startsWith(QLatin1String("tt")))
+        o.insert(QStringLiteral("imdb_id"), query.imdb);
+    else if (!query.title.isEmpty())
+        o.insert(QStringLiteral("name"), query.title);
+    else
+        return {};
+    if (query.series && query.season >= 0 && query.episode >= 0)
+    {
+        o.insert(QStringLiteral("tv_season"), query.season);
+        o.insert(QStringLiteral("tv_episode"), query.episode);
+    }
+    return QJsonDocument(o).toJson(QJsonDocument::Compact);
+}
+
+QList<Result> parseLegendas(const QByteArray &body, const Query &query)
+{
+    QList<Result> results;
+    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    if ((answer.contains(QLatin1String("success")) && !answer.value(QLatin1String("success")).toBool())
+        || (answer.contains(QLatin1String("status")) && !answer.value(QLatin1String("status")).toBool()))
+        return results;
+    const QJsonArray items = answer.value(query.series ? QLatin1String("tv_shows") : QLatin1String("movies")).toArray();
+    static const QRegularExpression pathRe(QStringLiteral(R"(^/[A-Za-z0-9._~%/\-]+$)"));
+    for (const QJsonValue item : items)
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = text(o, "id");
+        const QString path = text(o, "path");
+        if (id.isEmpty() || !pathRe.match(path).hasMatch() || path.contains(QLatin1String("..")))
+            continue;
+        if (query.series && query.season >= 0 && query.episode >= 0)
+        {
+            const int season = o.value(QLatin1String("season")).toVariant().toInt();
+            const int number = o.value(QLatin1String("episode")).toVariant().toInt();
+            if ((season > 0 && season != query.season) || (number > 0 && number != query.episode))
+                continue;
+        }
+        Result r;
+        r.id = QStringLiteral("legendasnet:") + id;
+        r.provider = QStringLiteral("legendasnet");
+        r.language = QStringLiteral("pt-BR");
+        r.release = cleanRelease(text(o, "release_name"));
+        r.url = QUrl(QStringLiteral("https://legendas.net") + path);
+        const QString comment = text(o, "comment").toLower();
+        r.foreignOnly = comment.contains(QLatin1String("forced")) || comment.contains(QLatin1String("foreign"));
+        results.append(r);
+    }
+    return results;
+}
+
 } // namespace SubtitleProviders

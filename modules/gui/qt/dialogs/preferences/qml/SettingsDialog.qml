@@ -594,7 +594,9 @@ Dialog {
                     visible: searchField.text.length === 0
                              ? root.selectedCategory === "subtitles"
                              : root.searchMatches([qsTr("Subtitle services"), "OpenSubtitles", "SubSource", "SubDL",
-                                                   "Wizdom", "Addic7ed", "YIFY", qsTr("Get a free key")])
+                                                   "Wizdom", "Addic7ed", "YIFY", "Titlovi", "Assrt", "Jimaku",
+                                                   "BetaSeries", "Subs.ro", "Napisy24", "Legendas.net",
+                                                   qsTr("Get a free key")])
                 }
 
                 Column {

@@ -445,12 +445,13 @@ QStringList fieldNames(int fields)
     QStringList names;
     if (fields & SubtitleProviders::KeyField)
         names.append(QStringLiteral("key"));
+    // (who first: the user name or the email, then the password)
     if (fields & SubtitleProviders::UsernameField)
         names.append(QStringLiteral("username"));
-    if (fields & SubtitleProviders::PasswordField)
-        names.append(QStringLiteral("password"));
     if (fields & SubtitleProviders::EmailField)
         names.append(QStringLiteral("email"));
+    if (fields & SubtitleProviders::PasswordField)
+        names.append(QStringLiteral("password"));
     return names;
 }
 

@@ -89,6 +89,7 @@ struct Session
 {
     QString token;
     QUrl base;
+    QString userId; // (Titlovi)
 };
 Session openSubtitlesComSession(const QByteArray &loginReply);
 QByteArray openSubtitlesComLoginBody(const QString &username, const QString &password);
@@ -96,5 +97,66 @@ QByteArray openSubtitlesComDownloadBody(const QString &fileId);
 // The link of a download's answer (https only), empty when none
 QUrl openSubtitlesComLink(const QByteArray &downloadReply);
 QUrl openSubtitlesComCheckUrl();
+
+// ---------------------------------------------------------------------------
+// The services with an account or a key of wave 2, each as Bazarr's provider
+// of it asks it (custom_libs/subliminal_patch/providers/<name>.py)
+
+// Titlovi (kodi.titlovi.com/api/subtitles): the Balkan languages, signed in
+// (a token and the user's id, given at sign-in)
+QString titloviLanguage(const QString &code);        // "hr" → "Hrvatski"
+QString languageOfTitlovi(const QString &name);      // "Cirilica" → "sr"
+QUrl titloviLoginUrl(const QString &username, const QString &password);
+Session titloviSession(const QByteArray &loginReply);
+QUrl titloviSearchUrl(const Query &query, const Session &session);
+QList<Result> parseTitlovi(const QByteArray &body, const Query &query);
+
+// Assrt (api.assrt.net/v1): Chinese, with the user's token
+QUrl assrtSearchUrl(const Query &query);
+// error: its errmsg; refused: the token is ("invalid token", 20001)
+QList<Result> parseAssrt(const QByteArray &body, const Query &query, QString *error, bool *refused);
+QUrl assrtDetailUrl(const QString &key, const QString &id);
+// the file of a detail's answer for this language (else its archive)
+QUrl assrtFileOf(const QByteArray &detailReply, const QString &language);
+QUrl assrtCheckUrl(const QString &key);
+
+// Jimaku (jimaku.cc/api): anime, Japanese, the key in Authorization
+QUrl jimakuSearchUrl(const Query &query);
+QString jimakuEntryId(const QByteArray &body, const Query &query);
+QUrl jimakuFilesUrl(const QString &entryId, const Query &query);
+QList<Result> parseJimaku(const QByteArray &body, const Query &query);
+
+// BetaSeries (api.betaseries.com): series, French; the show by its IMDb id,
+// then its episode's subtitles
+QUrl betaSeriesShowUrl(const Query &query);
+QString betaSeriesShowId(const QByteArray &body);
+QUrl betaSeriesEpisodeUrl(const QString &showId, const Query &query);
+// refused: its error 1001 (the key)
+QList<Result> parseBetaSeries(const QByteArray &body, QString *error, bool *refused);
+
+// Subs.ro (api.subs.ro/v1.0): Romanian, the key in X-Subs-Api-Key
+QUrl subsRoSearchUrl(const Query &query);
+QList<Result> parseSubsRo(const QByteArray &body, const Query &query, QString *error);
+
+// Napisy24 (napisy24.pl): Polish, those made for this very file (its hash),
+// signed in; the subtitle comes with the answer (a zip after "||")
+QByteArray napisy24Body(const Query &query, const QString &username, const QString &password);
+struct Napisy24Answer
+{
+    bool loginRefused = false;
+    bool found = false;
+    QString imdb;
+    QString title;
+    QByteArray archive;
+};
+Napisy24Answer parseNapisy24(const QByteArray &body);
+
+// Legendas.net (legendas.net/api/v1): Portuguese (Brazil), signed in with an
+// email (a token given at sign-in); its searches are GET with a JSON body
+QByteArray legendasLoginBody(const QString &email, const QString &password);
+Session legendasSession(const QByteArray &loginReply);
+QUrl legendasSearchUrl(const Query &query);
+QByteArray legendasSearchBody(const Query &query);
+QList<Result> parseLegendas(const QByteArray &body, const Query &query);
 
 } // namespace SubtitleProviders

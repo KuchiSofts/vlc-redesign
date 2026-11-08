@@ -318,7 +318,8 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     curl_easy_setopt(curl, CURLOPT_LOW_SPEED_TIME,
                      std::max(1L, static_cast<long>(request.timeoutMs / 1000)));
 
-    if (request.method == "GET")
+    // (a GET with a body, as some services ask for their searches, stays a GET)
+    if (request.method == "GET" && request.body.isEmpty())
         curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
     else if (request.method == "HEAD")
         curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);

@@ -260,9 +260,11 @@ FocusScope {
             width: ListView.view.width
             height: root.rowHeight
 
-            // the programmes of the blocks asked, by start
-            property var programmes: []
-            property var _blocks: ({})
+            // the programmes of the blocks asked, by start (both set as the
+            // row is made, and again for another channel: no initial binding,
+            // which each of these assignments would overwrite)
+            property var programmes
+            property var _blocks
             // the ones of the blocks in sight, as cells: changed at its ends
             // only (a new list made every cell of every row again at each
             // block the time crossed)
@@ -335,7 +337,14 @@ FocusScope {
                 if (model.hasGuide)
                     Qt.callLater(load)
             }
-            Component.onCompleted: if (model.hasGuide) load()
+            Component.onCompleted: {
+                if (!programmes)
+                    programmes = []
+                if (!_blocks)
+                    _blocks = {}
+                if (model.hasGuide)
+                    load()
+            }
             Connections {
                 target: root
                 function onFirstBlockChanged() { if (row.model.hasGuide) row.load() }

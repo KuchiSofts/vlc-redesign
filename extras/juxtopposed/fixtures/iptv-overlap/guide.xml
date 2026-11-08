@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A long programme that contains two short ones (a film interrupted by the
+     news and the weather), then one after it. {DAY} is today (UTC) where the
+     test reads it, so the guide's days keep it. The rule of every app: the
+     short ones win their slots, the long one shows around them. -->
+<tv generator-info-name="VLC Redesign tests">
+  <channel id="movies.example">
+    <display-name>Example Movies</display-name>
+  </channel>
+  <programme start="{DAY}180000 +0000" stop="{DAY}220000 +0000" channel="movies.example">
+    <title lang="en">Movie Night</title>
+    <desc lang="en">A long film.</desc>
+    <category lang="en">Movies</category>
+  </programme>
+  <programme start="{DAY}190000 +0000" stop="{DAY}193000 +0000" channel="movies.example">
+    <title lang="en">News</title>
+    <desc lang="en">The news at seven.</desc>
+  </programme>
+  <programme start="{DAY}203000 +0000" stop="{DAY}204500 +0000" channel="movies.example">
+    <title lang="en">Weather</title>
+  </programme>
+  <programme start="{DAY}220000 +0000" stop="{DAY}230000 +0000" channel="movies.example">
+    <title lang="en">Late Show</title>
+  </programme>
+</tv>

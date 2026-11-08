@@ -875,6 +875,154 @@ void testProgrammesBetween()
     CHECK(iptv::programmesBetween(day, 79800, 80500) == QVector<int>({ 0, int(day.size()) - 1 }));
 }
 
+// The guide's rule of every app: where a long programme contains shorter
+// ones, the shorter ones win their slots and the long one shows around them
+void testWithoutOverlaps()
+{
+    auto entry = [](qint64 start, qint64 stop, const char* title) {
+        iptv::Entry e;
+        e.start = start;
+        e.stop = stop;
+        e.title = QString::fromLatin1(title);
+        e.descOffset = start;
+        e.descLength = 1;
+        return e;
+    };
+    auto shape = [](const iptv::EntryList& list) {
+        QStringList out;
+        for (const iptv::Entry& e : list)
+            out << QStringLiteral("%1 %2-%3").arg(e.title).arg(e.start).arg(e.stop);
+        return out.join(QStringLiteral(", "));
+    };
+    // a long one with two inside: cut around them, each part its own
+    // (the description of the long one in each of its parts)
+    const iptv::EntryList contained = iptv::withoutOverlaps(
+        { entry(0, 100, "A"), entry(10, 20, "B"), entry(50, 60, "C"), entry(100, 120, "D") });
+    CHECK(shape(contained) == QStringLiteral("A 0-10, B 10-20, A 20-50, C 50-60, A 60-100, D 100-120"));
+    CHECK(contained.value(2).descOffset == 0 && contained.value(4).descOffset == 0);
+    // overlapping at one end: the shorter one wins what they share
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 90, "A"), entry(60, 120, "B") }))
+          == QStringLiteral("A 0-60, B 60-120"));
+    // starting together: the shorter first, the rest of the longer after
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(0, 30, "B") }))
+          == QStringLiteral("B 0-30, A 30-60"));
+    // a short one at the very end of a long one
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 100, "A"), entry(90, 100, "B") }))
+          == QStringLiteral("A 0-90, B 90-100"));
+    // the same programme twice: once
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(0, 60, "A2"), entry(60, 90, "B") }))
+          == QStringLiteral("A 0-60, B 60-90"));
+    // none: as it is (an empty one, a programme of no length, are kept out)
+    const iptv::EntryList plain { entry(0, 10, "A"), entry(10, 20, "B"), entry(30, 40, "C") };
+    CHECK(shape(iptv::withoutOverlaps(plain)) == shape(plain));
+    CHECK(iptv::withoutOverlaps({}).isEmpty());
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(20, 20, "Z"), entry(10, 20, "B") }))
+          == QStringLiteral("A 0-10, B 10-20, A 20-60"));
+}
+
+// The same through the service, from a guide (fixtures/iptv-overlap): what
+// is on now and next at moments inside and outside the short ones, a guide
+// row's list, the long one's description in its parts
+void testGuideOverlaps(const QString& dir, const QString& fixtures)
+{
+    QFile file(fixtures + QStringLiteral("/iptv-overlap/guide.xml"));
+    CHECK(file.open(QIODevice::ReadOnly));
+    const QDateTime today(QDateTime::currentDateTimeUtc().date(), QTime(0, 0), QTimeZone::utc());
+    const QByteArray guide = file.readAll().replace("{DAY}", today.toString(QStringLiteral("yyyyMMdd")).toLatin1());
+    FakeHost host;
+    host.onDownload = [&](const QString& url, const QString& path) {
+        if (url.endsWith(QLatin1String("/list.m3u")))
+            return writeFile(path, "#EXTM3U url-tvg=\"https://epg.example/overlap.xml\"\n"
+                                   "#EXTINF:-1 tvg-id=\"movies.example\",Example Movies\nhttp://s/movies\n");
+        if (url.endsWith(QLatin1String("/overlap.xml")))
+            return writeFile(path, guide);
+        return false;
+    };
+    Tv tv(host, dir);
+    tv.add(m3uSource());
+    QString key;
+    CHECK(waitFor([&]() {
+        const QJsonArray list = tv.channels();
+        if (list.size() != 1 || !list.at(0).toObject().value(QLatin1String("guide")).toBool())
+            return false;
+        key = list.at(0).toObject().value(QLatin1String("key")).toString();
+        return true;
+    }));
+    const qint64 day = today.toSecsSinceEpoch();
+    auto at = [&](int h, int m) { return day + h * 3600 + m * 60; };
+    auto nowNext = [&](qint64 t) {
+        return tv.ask({ { QStringLiteral("op"), QStringLiteral("nowNext") }, { QStringLiteral("keys"), QJsonArray { key } },
+                        { QStringLiteral("at"), double(t) } })
+            .value(QLatin1String("channels")).toObject().value(key).toObject();
+    };
+    auto is = [](const QJsonObject& p, const char* title, qint64 start, qint64 stop) {
+        return p.value(QLatin1String("title")).toString() == QLatin1String(title)
+               && qint64(p.value(QLatin1String("start")).toDouble()) == start
+               && (stop < 0 || qint64(p.value(QLatin1String("stop")).toDouble()) == stop);
+    };
+    struct Moment { int h, m; const char* now; int nowFrom[2]; int nowTo[2]; const char* next; int nextFrom[2]; };
+    const Moment moments[] = {
+        { 18, 30, "Movie Night", { 18, 0 }, { 19, 0 }, "News", { 19, 0 } },
+        { 19, 10, "News", { 19, 0 }, { 19, 30 }, "Movie Night", { 19, 30 } },
+        { 20, 0, "Movie Night", { 19, 30 }, { 20, 30 }, "Weather", { 20, 30 } },
+        { 20, 40, "Weather", { 20, 30 }, { 20, 45 }, "Movie Night", { 20, 45 } },
+        { 21, 0, "Movie Night", { 20, 45 }, { 22, 0 }, "Late Show", { 22, 0 } },
+        { 22, 30, "Late Show", { 22, 0 }, { 23, 0 }, "", { 0, 0 } },
+    };
+    for (const Moment& m : moments)
+    {
+        const QJsonObject nn = nowNext(at(m.h, m.m));
+        const bool now = is(nn.value(QLatin1String("now")).toObject(), m.now, at(m.nowFrom[0], m.nowFrom[1]),
+                            at(m.nowTo[0], m.nowTo[1]));
+        const bool next = *m.next ? is(nn.value(QLatin1String("next")).toObject(), m.next, at(m.nextFrom[0], m.nextFrom[1]), -1)
+                                  : !nn.contains(QLatin1String("next"));
+        if (!now || !next)
+            std::fprintf(stderr, "at %02d:%02d: %s\n", m.h, m.m, QJsonDocument(nn).toJson(QJsonDocument::Compact).constData());
+        CHECK(now);
+        CHECK(next);
+    }
+    // before the long one and after the last: nothing on
+    CHECK(!nowNext(at(17, 0)).contains(QLatin1String("now")));
+    CHECK(!nowNext(at(23, 30)).contains(QLatin1String("now")));
+    // a guide row from 18:00 to 23:00: the long one around the short ones
+    const QJsonArray row = tv.ask({ { QStringLiteral("op"), QStringLiteral("programmes") },
+                                    { QStringLiteral("keys"), QJsonArray { key } },
+                                    { QStringLiteral("from"), double(at(18, 0)) },
+                                    { QStringLiteral("to"), double(at(23, 0)) } })
+                               .value(QLatin1String("programmes")).toObject().value(key).toArray();
+    QStringList shown;
+    for (const QJsonValue& v : row)
+    {
+        const QJsonObject p = v.toObject();
+        const qint64 s = qint64(p.value(QLatin1String("start")).toDouble()) - day;
+        const qint64 e = qint64(p.value(QLatin1String("stop")).toDouble()) - day;
+        shown << QStringLiteral("%1 %2:%3-%4:%5").arg(p.value(QLatin1String("title")).toString())
+                     .arg(s / 3600, 2, 10, QLatin1Char('0')).arg(s % 3600 / 60, 2, 10, QLatin1Char('0'))
+                     .arg(e / 3600, 2, 10, QLatin1Char('0')).arg(e % 3600 / 60, 2, 10, QLatin1Char('0'));
+    }
+    std::printf("a guide row: %s\n", qPrintable(shown.join(QStringLiteral(", "))));
+    CHECK(shown == QStringList({ QStringLiteral("Movie Night 18:00-19:00"), QStringLiteral("News 19:00-19:30"),
+                                 QStringLiteral("Movie Night 19:30-20:30"), QStringLiteral("Weather 20:30-20:45"),
+                                 QStringLiteral("Movie Night 20:45-22:00"), QStringLiteral("Late Show 22:00-23:00") }));
+    // a row that starts inside the long one, between the short ones
+    const QJsonArray later = tv.ask({ { QStringLiteral("op"), QStringLiteral("programmes") },
+                                      { QStringLiteral("keys"), QJsonArray { key } },
+                                      { QStringLiteral("from"), double(at(19, 45)) },
+                                      { QStringLiteral("to"), double(at(20, 35)) } })
+                                 .value(QLatin1String("programmes")).toObject().value(key).toArray();
+    CHECK(later.size() == 2 && is(later.at(0).toObject(), "Movie Night", at(19, 30), at(20, 30))
+          && is(later.at(1).toObject(), "Weather", at(20, 30), at(20, 45)));
+    // the long one's description, in each of its parts; the short one's own
+    auto description = [&](qint64 t) {
+        return tv.ask({ { QStringLiteral("op"), QStringLiteral("description") }, { QStringLiteral("key"), key },
+                        { QStringLiteral("start"), double(t) } })
+            .value(QLatin1String("description")).toString();
+    };
+    CHECK(description(at(18, 0)) == QStringLiteral("A long film."));
+    CHECK(description(at(20, 45)) == QStringLiteral("A long film."));
+    CHECK(description(at(19, 0)) == QStringLiteral("The news at seven."));
+}
+
 // 18: the tuners found are asked once each, briefly (any computer can answer
 // the discovery, a tuner answers from each of its addresses)
 QByteArray hdhrReply()
@@ -926,12 +1074,15 @@ void testDiscover(const QString& dir)
 
 }
 
-int main()
+int main(int argc, char** argv)
 {
+    const QString fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures");
     QTemporaryDir tmp;
     const QString root = tmp.path();
     testBackOff();
     testProgrammesBetween();
+    testWithoutOverlaps();
+    testGuideOverlaps(root + QStringLiteral("/overlaps"), fixtures);
     testLimits(root + QStringLiteral("/limits"));
     testThrowingJob(root + QStringLiteral("/throw"));
     testDuplicates(root + QStringLiteral("/duplicates"));

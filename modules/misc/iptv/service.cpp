@@ -28,6 +28,8 @@
 #include <chrono>
 #include <cmath>
 #include <exception>
+#include <set>
+#include <tuple>
 
 namespace iptv {
 
@@ -434,6 +436,66 @@ bool refreshDue(qint64 now, qint64 playlistUpdated, qint64 lastAttempt, int fail
     if (failures > 0)
         return now - lastAttempt >= delay;
     return playlistUpdated == 0 || now - playlistUpdated > delay;
+}
+
+EntryList withoutOverlaps(const EntryList& list)
+{
+    bool overlap = false;
+    for (qsizetype i = 1; i < list.size() && !overlap; ++i)
+        overlap = list[i].start < list[i - 1].stop;
+    if (!overlap)
+        return list;
+    // the moments a programme starts or ends, and between two of them the
+    // shortest of those on (the earlier start, then the first in the list,
+    // when they are as long)
+    struct Edge
+    {
+        qint64 at;
+        int index;
+        bool starts;
+    };
+    QVector<Edge> edges;
+    edges.reserve(list.size() * 2);
+    for (int i = 0; i < int(list.size()); ++i)
+        if (list[i].stop > list[i].start)
+        {
+            edges.append({ list[i].start, i, true });
+            edges.append({ list[i].stop, i, false });
+        }
+    std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) { return a.at < b.at; });
+    using Key = std::tuple<qint64, qint64, int>;   // length, start, index
+    std::set<Key> on;
+    EntryList out;
+    out.reserve(list.size() + list.size() / 2);
+    int current = -1;
+    qint64 since = 0;
+    for (qsizetype k = 0; k < edges.size();)
+    {
+        const qint64 at = edges[k].at;
+        for (; k < edges.size() && edges[k].at == at; ++k)
+        {
+            const Entry& e = list[edges[k].index];
+            const Key key { e.stop - e.start, e.start, edges[k].index };
+            if (edges[k].starts)
+                on.insert(key);
+            else
+                on.erase(key);
+        }
+        const int chosen = on.empty() ? -1 : std::get<2>(*on.begin());
+        if (chosen == current)
+            continue;
+        // the part of the one shown until now, then the next from here
+        if (current >= 0 && at > since)
+        {
+            Entry part = list[current];
+            part.start = since;
+            part.stop = at;
+            out.append(std::move(part));
+        }
+        current = chosen;
+        since = at;
+    }
+    return out;
 }
 
 QVector<int> programmesBetween(const EntryList& list, qint64 from, qint64 to)
@@ -1324,6 +1386,9 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
                     list->append(std::move(e));
             if (list->isEmpty())
                 continue;
+            // (a long programme that contains shorter ones: they win their
+            // slots, it shows around them; every app's rule)
+            *list = withoutOverlaps(*list);
             list->squeeze();
             data->programmes += int(list->size());
             data->byKey.insert(it.key(), std::move(list));

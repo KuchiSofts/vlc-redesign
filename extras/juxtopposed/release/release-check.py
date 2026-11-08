@@ -131,6 +131,16 @@ if release:
           'set version: %s, date: and next:' % release)
     nxt = re.search(r'(?m)^\s+next: ([0-9.]+)', win)
     check(nxt and vkey(nxt.group(1)) > vkey(release), 'platforms.yml: the next version', 'next: must be after %s' % release)
+    # every published platform goes out with the version, and About's "Also on" line is built from this file into
+    # the release (site/platforms.json): a platform still at an older version would show it there (0.5.6 said 0.5.5)
+    behind = []
+    for part in re.findall(r'(?ms)^  - id: .*?(?=^  - id: |\Z)', platforms):
+        pid = re.match(r'  - id: (\S+)', part).group(1)
+        ver = re.search(r'(?m)^\s+version: ([0-9.]+)\s*$', part)
+        if ver and ver.group(1) != release:
+            behind.append('%s at %s' % (pid, ver.group(1)))
+    check(not behind, 'platforms.yml: every platform at %s' % release,
+          '%s; set version, date and next of each, then render.py' % ', '.join(behind))
 else:
     nxt = re.search(r'(?m)^\s+next: ([0-9.]+)', win)
     check(nxt and nxt.group(1) == version, 'platforms.yml: next is %s' % version, 'next: should be the version being prepared')

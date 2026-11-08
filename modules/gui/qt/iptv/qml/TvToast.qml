@@ -12,9 +12,10 @@ import VLC.MainInterface
 import VLC.Style
 import VLC.Widgets as Widgets
 
-// What Live TV has to say for a moment (no archive, no such channel) and
-// the reminders of the guide, with Watch: a card of the menus (#191919 at
-// 95 %, radius 10) at the top of the view
+// What Live TV has to say for a moment (no archive, no such channel), the
+// reminders of the guide, with Watch, and what the automatic guide found,
+// with Undo: a card of the menus (#191919 at 95 %, radius 10) at the top of
+// the view
 Rectangle {
     id: root
 
@@ -22,11 +23,14 @@ Rectangle {
     readonly property bool _dark: forceDark || VLCStyle.palette.isDark
     property string text
     property var reminder: null
+    // the source whose automatic guide Undo removes ("": none)
+    property string undoSource: ""
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
 
     function say(message) {
         reminder = null
+        undoSource = ""
         text = message
         hideTimer.interval = 4000
         hideTimer.restart()
@@ -43,7 +47,19 @@ Rectangle {
     Connections {
         target: Iptv
         function onMessage(text) { root.say(text) }
+        function onGuideFound(result) {
+            root.reminder = null
+            root.undoSource = result.found > result.before ? result.id : ""
+            root.text = result.found > result.before
+                        ? qsTr("Guide found for %1 of %2 channels").arg(result.found).arg(result.total)
+                        : result.error ? qsTr("The list of channels to match could not be downloaded")
+                        : result.before > 0 ? qsTr("Guide for %1 of %2 channels").arg(result.before).arg(result.total)
+                        : qsTr("No free guide was found for the channels of %1").arg(result.name)
+            hideTimer.interval = result.found > result.before ? 15000 : 6000
+            hideTimer.restart()
+        }
         function onReminderDue(reminder) {
+            root.undoSource = ""
             root.reminder = reminder
             root.text = qsTr("%1 starts now on %2").arg(reminder.title).arg(reminder.channel)
             hideTimer.interval = 30000
@@ -75,6 +91,18 @@ Rectangle {
             text: qsTr("Watch")
             onClicked: {
                 Iptv.play(root.reminder.key)
+                hideTimer.stop()
+            }
+        }
+        Widgets.RedesignButton {
+            objectName: "tvGuideUndo"
+            visible: root.undoSource !== ""
+            anchors.verticalCenter: parent.verticalCenter
+            darkTheme: root._dark
+            text: qsTr("Undo")
+            onClicked: {
+                Iptv.removeAutoGuide(root.undoSource)
+                root.undoSource = ""
                 hideTimer.stop()
             }
         }

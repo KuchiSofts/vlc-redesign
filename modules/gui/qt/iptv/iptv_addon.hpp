@@ -234,6 +234,26 @@ public:
     Q_INVOKABLE void refresh(const QString& id = QString());
 
     Q_INVOKABLE void catalog(const QJSValue& done);
+    // Test, Sign in: the fields typed of a source (id: the one edited, its
+    // password and key kept when left empty): done({ result: "works",
+    // "signedIn", "refused" or "noAnswer", who })
+    Q_INVOKABLE void testSource(const QVariantMap& source, const QString& id, const QJSValue& done);
+    // the tuners and servers of the local network: done([{ kind, name,
+    // address, id, added }])
+    Q_INVOKABLE void discover(const QJSValue& done);
+    // the automatic guide of a source: look now (guideFound tells what it
+    // found), or remove it (Undo)
+    Q_INVOKABLE void findGuide(const QString& id);
+    // the password and key of an account forgotten, the source turned off
+    Q_INVOKABLE void signOut(const QString& id);
+    Q_INVOKABLE void removeAutoGuide(const QString& id);
+    // a guide of a source (its id in status' guides) turned off or on, removed
+    Q_INVOKABLE void setGuideEnabled(const QString& id, const QString& guide, bool enabled);
+    Q_INVOKABLE void removeGuide(const QString& id, const QString& guide);
+    // the guide id of a channel: done({ name, user, own, auto, hasGuide });
+    // the user's own (empty: none), which wins
+    Q_INVOKABLE void channelGuide(const QString& key, const QJSValue& done);
+    Q_INVOKABLE void setChannelGuide(const QString& key, const QString& guideId);
     // the page of the project's discussions to suggest a source
     Q_INVOKABLE QString suggestionUrl() const;
 
@@ -287,6 +307,8 @@ signals:
     // a short message for the player (no archive, the source failed...)
     void message(const QString& text);
     void reminderDue(const QVariantMap& reminder);
+    // the automatic guide looked: { id, name, found, before, total, error }
+    void guideFound(const QVariantMap& result);
 
 private:
     void load();

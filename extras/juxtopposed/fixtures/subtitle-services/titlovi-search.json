@@ -1,0 +1,83 @@
+{
+ "ResultsFound": 7,
+ "PagesAvailable": 1,
+ "CurrentPage": 1,
+ "SubtitleResults": [
+  {
+   "Id": 101,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Hrvatski",
+   "Release": "Breaking.Bad.S02E03.720p",
+   "Link": "https://titlovi.com/download/?type=1&mediaid=101",
+   "Season": 2,
+   "Episode": 3,
+   "Rating": 8.5,
+   "DownloadCount": 1500
+  },
+  {
+   "Id": 102,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Cirilica",
+   "Release": "Breaking.Bad.S02E03.HDTV",
+   "Link": "https://titlovi.com/download/?type=1&mediaid=102",
+   "Season": 2,
+   "Episode": 3,
+   "Rating": 0,
+   "DownloadCount": 20
+  },
+  {
+   "Id": 103,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Bosanski",
+   "Release": "",
+   "Link": "https://titlovi.com/download/?type=1&mediaid=103",
+   "Season": 2,
+   "Episode": 0,
+   "Rating": 0,
+   "DownloadCount": 5
+  },
+  {
+   "Id": 104,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Slovenski",
+   "Release": "Breaking.Bad.S02E04",
+   "Link": "https://titlovi.com/download/?type=1&mediaid=104",
+   "Season": 2,
+   "Episode": 4
+  },
+  {
+   "Id": 105,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Makedonski",
+   "Release": "Breaking.Bad.S01E03",
+   "Link": "https://titlovi.com/download/?type=1&mediaid=105",
+   "Season": 1,
+   "Episode": 3
+  },
+  {
+   "Id": 106,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Hrvatski",
+   "Release": "Elsewhere",
+   "Link": "https://evil.example/download/106",
+   "Season": 2,
+   "Episode": 3
+  },
+  {
+   "Id": 107,
+   "Title": "Breaking Bad",
+   "Year": 2008,
+   "Lang": "Klingon",
+   "Release": "Unknown language",
+   "Link": "https://titlovi.com/download/?type=1&mediaid=107",
+   "Season": 2,
+   "Episode": 3
+  }
+ ]
+}

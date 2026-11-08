@@ -1,0 +1,44 @@
+[
+ {
+  "GuideNumber": "2.1",
+  "GuideName": "DEMO-HD",
+  "Affiliate": "DEMO",
+  "Guide": [
+   {
+    "StartTime": 1794200400,
+    "EndTime": 1794202200,
+    "Title": "Morning News",
+    "Synopsis": "The news of the morning.",
+    "Filter": [
+     "News"
+    ]
+   },
+   {
+    "StartTime": 1794202200,
+    "EndTime": 1794204000,
+    "Title": "Open Movie Hour",
+    "EpisodeNumber": "S02E05",
+    "EpisodeTitle": "The Fifth",
+    "Filter": [
+     "Movies"
+    ]
+   },
+   {
+    "StartTime": 1794204000,
+    "EndTime": 1794204000,
+    "Title": "Zero length"
+   }
+  ]
+ },
+ {
+  "GuideNumber": "4.1",
+  "GuideName": "SAMPLE",
+  "Guide": [
+   {
+    "StartTime": 1794200400,
+    "EndTime": 1794204000,
+    "Title": "Sample Show"
+   }
+  ]
+ }
+]

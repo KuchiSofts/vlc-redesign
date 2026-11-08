@@ -1,0 +1,28 @@
+[
+ {
+  "GuideNumber": "2.1",
+  "GuideName": "DEMO-HD",
+  "VideoCodec": "MPEG2",
+  "AudioCodec": "AC3",
+  "HD": 1,
+  "URL": "http://192.168.1.50:5004/auto/v2.1"
+ },
+ {
+  "GuideNumber": "4.1",
+  "GuideName": "SAMPLE",
+  "VideoCodec": "MPEG2",
+  "AudioCodec": "AC3",
+  "URL": "http://192.168.1.50:5004/auto/v4.1"
+ },
+ {
+  "GuideNumber": "7.1",
+  "GuideName": "LOCKED",
+  "DRM": 1,
+  "URL": "http://192.168.1.50:5004/auto/v7.1"
+ },
+ {
+  "GuideNumber": "",
+  "GuideName": "NONUMBER",
+  "URL": "http://192.168.1.50:5004/auto/v0"
+ }
+]

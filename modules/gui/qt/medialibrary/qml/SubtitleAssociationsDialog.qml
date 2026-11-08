@@ -139,11 +139,12 @@ Widgets.RedesignDialog {
         }
     }
 
-    // The OpenSubtitles account stays for the session (in memory, shared by
-    // the dialogs; never written to disk)
+    // The OpenSubtitles.com account: the one of the subtitle services
+    // (Settings, Subtitles: one key for both), kept as they keep it
+    // (SubtitleSearch::setCredentials: on Windows sealed for this user)
     onAboutToShow: {
-        const account = service.rememberedAccount()
-        apiKeyField.text = account.apiKey
+        const account = SubtitleFinder.serviceCredentials("opensubtitlescom")
+        apiKeyField.text = account.key
         usernameField.text = account.username
         passwordField.text = account.password
     }
@@ -154,7 +155,8 @@ Widgets.RedesignDialog {
         // (the searches and downloads going on stopped)
         batch.cancel()
         root._batchResult = ""
-        service.rememberAccount(apiKeyField.text, usernameField.text, passwordField.text)
+        SubtitleFinder.setServiceCredentials("opensubtitlescom", { key: apiKeyField.text, username: usernameField.text,
+                                                                 password: passwordField.text, email: "" })
         onlineSelection = -1
         _saveAfterDownload = false
     }
@@ -692,7 +694,8 @@ Widgets.RedesignDialog {
                     return second !== "" ? qsTr("%1, else %2").arg(first).arg(second) : first
                 }
                 readonly property string text: {
-                    const services = SubtitleFinder.services.filter(service => service.enabled)
+                    // (those asked: on, with their credentials, one of their languages searched)
+                    const services = SubtitleFinder.services.filter(service => service.asked)
                                                             .map(service => service.name)
                     return services.length > 0 ? languages + " · " + services.join(", ")
                                                : qsTr("Every subtitle service is off (Subtitles panel of the player)")

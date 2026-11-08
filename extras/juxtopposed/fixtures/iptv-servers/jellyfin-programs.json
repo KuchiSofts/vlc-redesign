@@ -1,0 +1,33 @@
+{
+ "Items": [
+  {
+   "Name": "Open Movie Hour",
+   "ChannelId": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+   "Id": "p1",
+   "StartDate": "2026-11-08T06:00:00.0000000Z",
+   "EndDate": "2026-11-08T07:30:00.0000000Z",
+   "Overview": "A film of the open movie projects.",
+   "Genres": [
+    "Movie"
+   ],
+   "EpisodeTitle": null
+  },
+  {
+   "Name": "Bunny Stories",
+   "ChannelId": "b1b2c3d4e5f60718293a4b5c6d7e8f90",
+   "Id": "p2",
+   "StartDate": "2026-11-08T06:00:00Z",
+   "EndDate": "2026-11-08T06:30:00Z",
+   "EpisodeTitle": "The Meadow",
+   "ParentIndexNumber": 3,
+   "IndexNumber": 7,
+   "Genres": []
+  },
+  {
+   "Name": "",
+   "ChannelId": "b1",
+   "StartDate": "2026-11-08T06:30:00Z",
+   "EndDate": "2026-11-08T07:00:00Z"
+  }
+ ]
+}

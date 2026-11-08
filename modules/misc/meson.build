@@ -81,6 +81,18 @@ endif
 # The Live TV (IPTV) add-on: its own plugin, with QtCore, that the Qt
 # interface finds at run time (include/vlc_iptv.h); a package can leave it out
 iptv_qt_dep = dependency('qt6', modules: ['Core'], required: false)
+# (WinHTTP on Windows, libcurl elsewhere: util/http_request.cpp)
+iptv_http_deps = []
+iptv_http_args = []
+if host_system == 'windows'
+    iptv_http_deps += cc.find_library('winhttp')
+else
+    iptv_curl_dep = dependency('libcurl', required: false)
+    if iptv_curl_dep.found()
+        iptv_http_deps += iptv_curl_dep
+        iptv_http_args += '-DQT_HAS_LIBCURL'
+    endif
+endif
 if get_option('qt').allowed() and iptv_qt_dep.found()
     iptv_catalog_h = custom_target('iptv_catalog_h',
         input: 'iptv/catalog/catalog.json',
@@ -94,8 +106,13 @@ if get_option('qt').allowed() and iptv_qt_dep.found()
             'iptv/playlist.cpp',
             'iptv/guide.cpp',
             'iptv/xtream.cpp',
+            'iptv/servers.cpp',
+            'iptv/autoguide.cpp',
+            # the servers' APIs through the HTTP client of the interface
+            '../gui/qt/util/http_request.cpp',
         ), iptv_catalog_h],
-        'dependencies' : [iptv_qt_dep, z_dep],
+        'dependencies' : [iptv_qt_dep, z_dep, iptv_http_deps],
+        'cpp_args' : iptv_http_args,
         'plugin_dir' : 'misc',
     }
 endif

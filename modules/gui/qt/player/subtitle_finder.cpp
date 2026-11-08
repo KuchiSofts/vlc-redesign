@@ -122,6 +122,8 @@ SubtitleFinder::SubtitleFinder(qt_intf_t *intf, PlayerController *player,
     connect(m_search, &SubtitleSearch::stateChanged, this, &SubtitleFinder::stateChanged);
     connect(m_search, &SubtitleSearch::resultsChanged, this, &SubtitleFinder::resultsChanged);
     connect(m_search, &SubtitleSearch::runsChanged, this, &SubtitleFinder::providersChanged);
+    // (the services of a language follow the languages to search)
+    connect(m_preferences, &SubtitlePreferences::changed, this, &SubtitleFinder::providersChanged);
     connect(m_search, &SubtitleSearch::finished, this, &SubtitleFinder::onSearchFinished);
     m_startTimer.setSingleShot(true);
     m_startTimer.setInterval(startDelayMs);
@@ -436,23 +438,83 @@ void SubtitleFinder::onSearchFinished()
         autoPick();
 }
 
+namespace {
+
+QStringList fieldNames(int fields)
+{
+    QStringList names;
+    if (fields & SubtitleProviders::KeyField)
+        names.append(QStringLiteral("key"));
+    // (who first: the user name or the email, then the password)
+    if (fields & SubtitleProviders::UsernameField)
+        names.append(QStringLiteral("username"));
+    if (fields & SubtitleProviders::EmailField)
+        names.append(QStringLiteral("email"));
+    if (fields & SubtitleProviders::PasswordField)
+        names.append(QStringLiteral("password"));
+    return names;
+}
+
+SubtitleProviders::Credentials credentialsOf(const QVariantMap &map)
+{
+    SubtitleProviders::Credentials c;
+    c.key = map.value(QStringLiteral("key")).toString().trimmed();
+    c.username = map.value(QStringLiteral("username")).toString().trimmed();
+    c.password = map.value(QStringLiteral("password")).toString();
+    c.email = map.value(QStringLiteral("email")).toString().trimmed();
+    return c;
+}
+
+} // namespace
+
 QVariantList SubtitleFinder::services() const
 {
     // in another language of the interface, the bindings asking are made again
     markTranslationBinding(this);
+    QSettings *settings = m_intf->mainSettings;
+    const QStringList searched = m_preferences->searched();
     QVariantList list;
     const QHash<QString, SubtitleSearch::Run> &runs = m_search->runs();
     for (const SubtitleProviders::Provider &provider : SubtitleProviders::providers())
     {
         const auto run = runs.constFind(provider.id);
+        const SubtitleProviders::Credentials own = SubtitleSearch::credentials(settings, provider.id);
+        const bool complete = SubtitleProviders::hasRequired(provider, own);
+        QString status;
+        switch (SubtitleSearch::serviceStatus(settings, provider.id))
+        {
+            case SubtitleSearch::StatusKeyRefused: status = QStringLiteral("keyRefused"); break;
+            case SubtitleSearch::StatusLoginRefused: status = QStringLiteral("loginRefused"); break;
+            case SubtitleSearch::StatusBusy: status = QStringLiteral("busy"); break;
+            default: break;
+        }
+        QStringList languageNames;
+        bool languageOn = provider.languages.isEmpty();
+        for (const QString &code : provider.languages)
+        {
+            languageNames.append(m_preferences->name(code));
+            languageOn = languageOn || searched.contains(code);
+        }
         list.append(QVariantMap{
             { QStringLiteral("id"), provider.id },
             { QStringLiteral("name"), provider.name },
             { QStringLiteral("detail"), qfut(provider.detail) },
-            { QStringLiteral("enabled"), serviceEnabled(provider.id) },
+            { QStringLiteral("enabled"), serviceEnabled(provider.id) && (!provider.required || complete) },
+            { QStringLiteral("switched"), SubtitleSearch::serviceSwitched(settings, provider.id) },
+            { QStringLiteral("removed"), SubtitleSearch::serviceRemoved(settings, provider.id) },
+            { QStringLiteral("asked"), SubtitleSearch::serviceAsked(settings, provider, searched) },
             { QStringLiteral("busy"), run != runs.constEnd() && run->busy },
             { QStringLiteral("count"), run != runs.constEnd() ? run->count : -1 },
             { QStringLiteral("error"), run != runs.constEnd() ? run->error : QString() },
+            { QStringLiteral("fields"), fieldNames(provider.fields) },
+            { QStringLiteral("required"), fieldNames(provider.required) },
+            { QStringLiteral("page"), provider.page },
+            { QStringLiteral("account"), provider.account },
+            { QStringLiteral("hasCredentials"), provider.fields != 0 && own != SubtitleProviders::Credentials() },
+            { QStringLiteral("status"), status },
+            { QStringLiteral("languages"), provider.languages },
+            { QStringLiteral("languageNames"), languageNames.join(QLatin1String(" / ")) },
+            { QStringLiteral("languageOn"), languageOn },
         });
     }
     return list;
@@ -469,6 +531,63 @@ void SubtitleFinder::setServiceEnabled(const QString &id, bool enabled)
         return;
     SubtitleSearch::setServiceEnabled(m_intf->mainSettings, id, enabled);
     emit providersChanged();
+}
+
+void SubtitleFinder::setServiceRemoved(const QString &id, bool removed)
+{
+    if (!SubtitleProviders::provider(id) || SubtitleSearch::serviceRemoved(m_intf->mainSettings, id) == removed)
+        return;
+    SubtitleSearch::setServiceRemoved(m_intf->mainSettings, id, removed);
+    emit providersChanged();
+}
+
+QVariantMap SubtitleFinder::serviceCredentials(const QString &id) const
+{
+    const SubtitleProviders::Credentials c = SubtitleSearch::credentials(m_intf->mainSettings, id);
+    return { { QStringLiteral("key"), c.key }, { QStringLiteral("username"), c.username },
+             { QStringLiteral("password"), c.password }, { QStringLiteral("email"), c.email } };
+}
+
+void SubtitleFinder::setServiceCredentials(const QString &id, const QVariantMap &credentials)
+{
+    if (!SubtitleProviders::provider(id))
+        return;
+    if (SubtitleSearch::setCredentials(m_intf->mainSettings, id, credentialsOf(credentials)))
+        emit providersChanged();
+}
+
+void SubtitleFinder::checkService(const QString &id, const QVariantMap &credentials)
+{
+    const SubtitleProviders::Credentials typed = credentialsOf(credentials);
+    if (!SubtitleProviders::provider(id) || !httpRequestSupported())
+    {
+        emit serviceChecked(id, QStringLiteral("noAnswer"), {});
+        return;
+    }
+    SubtitleProviders::check(this, id, typed, [this, id, typed](SubtitleProviders::Check check, const QString &who) {
+        using SubtitleProviders::Check;
+        static const char *const names[] = { "works", "signedIn", "keyRefused", "loginRefused", "noAnswer", "busy" };
+        msg_Dbg(m_intf, "online subtitles: %s: the credentials checked: %s", qtu(id), names[int(check)]);
+        // working the first time: the service turns on by itself
+        QSettings *settings = m_intf->mainSettings;
+        if ((check == Check::Works || check == Check::SignedIn) && !SubtitleSearch::serviceSwitched(settings, id))
+        {
+            SubtitleSearch::setServiceEnabled(settings, id, true);
+            emit providersChanged();
+        }
+        // (those kept: what is known of them follows)
+        if (typed == SubtitleSearch::credentials(settings, id))
+        {
+            using SubtitleProviders::Problem;
+            const Problem problem = check == Check::Works || check == Check::SignedIn ? Problem::None
+                                  : check == Check::KeyRefused ? Problem::KeyRefused
+                                  : check == Check::LoginRefused ? Problem::LoginRefused
+                                  : check == Check::Busy ? Problem::Busy : Problem::Failed;
+            SubtitleSearch::noteProblem(m_intf->mainSettings, id, problem);
+            emit providersChanged();
+        }
+        emit serviceChecked(id, QString::fromLatin1(names[int(check)]), who);
+    });
 }
 
 bool SubtitleFinder::loadedLanguage(const QString &language) const

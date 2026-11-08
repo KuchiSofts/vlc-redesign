@@ -21,13 +21,25 @@
 #include <vlc_keystore.h>
 #include <vlc_stream.h>
 #include <vlc_fs.h>
+#include <vlc_network.h>
+#ifndef _WIN32
+# include <arpa/inet.h>  // inet_pton, inet_ntop (LAN discovery)
+# include <poll.h>
+#endif
 
 #include "service.hpp"
+// (the HTTP client of the interface: the servers' APIs, POST and sign-ins)
+#include "../../gui/qt/util/http_request.hpp"
 
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonDocument>
+#include <QRandomGenerator>
+#include <QUrl>
+#include <atomic>
+#include <chrono>
 
 #include <cstdlib>
 #include <cstring>
@@ -51,7 +63,9 @@ namespace {
 class VlcHost : public iptv::Host
 {
 public:
-    VlcHost(vlc_iptv_t* obj, const std::string& keystoreFile) : m_obj(obj)
+    VlcHost(vlc_iptv_t* obj, const std::string& keystoreFile)
+        : m_obj(obj)
+        , m_folder(QFileInfo(QString::fromStdString(keystoreFile)).absolutePath())
     {
         // a keystore that keeps the secrets (not the one in memory)
         var_Create(obj, "keystore", VLC_VAR_STRING);
@@ -76,6 +90,11 @@ public:
     {
         // the access alone: a guide.xml.gz stays compressed on disk (read
         // inflated as it is parsed)
+        if (m_detached)
+        {
+            *error = QStringLiteral("cancelled");
+            return false;
+        }
         stream_t* s = vlc_access_NewMRL(VLC_OBJECT(m_obj), url.toUtf8().constData());
         if (!s)
         {
@@ -141,6 +160,11 @@ public:
 
     QByteArray fetch(const QString& url, QString* error, qint64 limit) override
     {
+        if (m_detached)
+        {
+            *error = QStringLiteral("cancelled");
+            return QByteArray();
+        }
         stream_t* s = vlc_access_NewMRL(VLC_OBJECT(m_obj), url.toUtf8().constData());
         if (!s)
         {
@@ -221,18 +245,27 @@ public:
     void notify(const QJsonObject& event) override
     {
         const QByteArray json = QJsonDocument(event).toJson(QJsonDocument::Compact);
-        if (m_obj->owner_cbs && m_obj->owner_cbs->on_event)
+        if (!m_detached && m_obj->owner_cbs && m_obj->owner_cbs->on_event)
             m_obj->owner_cbs->on_event(m_obj, json.constData(), m_obj->owner_data);
     }
 
     void log(const QString& message) override
     {
-        msg_Warn(m_obj, "%s", message.toUtf8().constData());
+        if (!m_detached)
+            msg_Warn(m_obj, "%s", message.toUtf8().constData());
     }
 
     void debug(const QString& message) override
     {
-        msg_Dbg(m_obj, "%s", message.toUtf8().constData());
+        if (!m_detached)
+            msg_Dbg(m_obj, "%s", message.toUtf8().constData());
+    }
+
+    // Close let go of a thread it could not stop: the VLC object is
+    // destroyed, what is left uses nothing of it anymore
+    void detach()
+    {
+        m_detached = true;
     }
 
     void enterWorker() override
@@ -247,8 +280,153 @@ public:
             vlc_interrupt_kill(m_interrupt);
     }
 
+    iptv::HttpReply call(const iptv::HttpCall& c) override
+    {
+        HttpRequest request;
+        request.method = c.method;
+        request.url = QUrl(c.url);
+        request.headers = c.headers;
+        request.headers.append(qMakePair(QByteArray("User-Agent"), QByteArray("VLC-Redesign")));
+        request.body = c.body;
+        request.username = c.username;
+        request.password = c.password;
+        request.timeoutMs = c.timeoutMs;
+        request.deadlineMs = c.timeoutMs * 4;
+        request.maxBytes = c.maxBytes;
+        const HttpResponse response = httpRequestSync(request);
+        iptv::HttpReply reply;
+        reply.status = response.status;
+        reply.body = response.body;
+        reply.error = response.error;
+        if (response.body.size() > c.maxBytes)
+        {
+            reply.body.clear();
+            reply.error = QStringLiteral("too large");
+        }
+        return reply;
+    }
+
+    QVector<iptv::Datagram> broadcast(quint16 port, const QByteArray& packet, int ms,
+                                      const QString& address) override
+    {
+        QVector<iptv::Datagram> answers;
+        const int fd = vlc_socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, true);
+        if (fd == -1)
+            return answers;
+        int yes = 1;
+        setsockopt(fd, SOL_SOCKET, SO_BROADCAST, reinterpret_cast<const char*>(&yes), sizeof(yes));
+        // from the address this computer has on the network of its default
+        // route (a UDP "connect" sends nothing): Windows sends a broadcast or
+        // a multicast on its first adapter otherwise, often a virtual one
+        // (Hyper-V, Docker, WSL) where nothing answers
+        struct in_addr local = {};
+        {
+            const int probe = vlc_socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, true);
+            if (probe != -1)
+            {
+                struct sockaddr_in away = {};
+                away.sin_family = AF_INET;
+                away.sin_port = htons(9);
+                // (TEST-NET-1: an address never reached)
+                inet_pton(AF_INET, "192.0.2.1", &away.sin_addr);
+                struct sockaddr_in name = {};
+                socklen_t nameLength = sizeof(name);
+                if (connect(probe, reinterpret_cast<const struct sockaddr*>(&away), sizeof(away)) == 0
+                    && getsockname(probe, reinterpret_cast<struct sockaddr*>(&name), &nameLength) == 0)
+                    local = name.sin_addr;
+                net_Close(probe);
+            }
+        }
+        if (local.s_addr != 0)
+        {
+            struct sockaddr_in bound = {};
+            bound.sin_family = AF_INET;
+            bound.sin_addr = local;
+            bind(fd, reinterpret_cast<const struct sockaddr*>(&bound), sizeof(bound));
+            setsockopt(fd, IPPROTO_IP, IP_MULTICAST_IF, reinterpret_cast<const char*>(&local), sizeof(local));
+        }
+        struct sockaddr_in to = {};
+        to.sin_family = AF_INET;
+        to.sin_port = htons(port);
+        to.sin_addr.s_addr = htonl(INADDR_BROADCAST);
+        if (!address.isEmpty())
+        {
+            // a multicast group (mDNS): the hops multicast DNS asks for
+            if (inet_pton(AF_INET, qUtf8Printable(address), &to.sin_addr) != 1)
+            {
+                net_Close(fd);
+                return answers;
+            }
+#ifdef _WIN32
+            DWORD ttl = 255;
+#else
+            unsigned char ttl = 255;
+#endif
+            setsockopt(fd, IPPROTO_IP, IP_MULTICAST_TTL, reinterpret_cast<const char*>(&ttl), sizeof(ttl));
+        }
+        if (sendto(fd, packet.constData(), int(packet.size()), 0, reinterpret_cast<const struct sockaddr*>(&to),
+                   sizeof(to)) < 0)
+        {
+            net_Close(fd);
+            return answers;
+        }
+        const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(ms);
+        char buffer[8192];
+        for (;;)
+        {
+            const auto left = std::chrono::duration_cast<std::chrono::milliseconds>(
+                deadline - std::chrono::steady_clock::now()).count();
+            if (left <= 0)
+                break;
+            struct pollfd ufd = {};
+            ufd.fd = fd;
+            ufd.events = POLLIN;
+            if (poll(&ufd, 1, int(left)) <= 0)
+                break;
+            struct sockaddr_in from = {};
+            socklen_t fromLength = sizeof(from);
+            const auto got = recvfrom(fd, buffer, sizeof(buffer), 0, reinterpret_cast<struct sockaddr*>(&from),
+                                      &fromLength);
+            if (got <= 0)
+                continue;
+            char address[64] = {};
+            if (!inet_ntop(AF_INET, &from.sin_addr, address, sizeof(address)))
+                continue;
+            answers.append({ QString::fromLatin1(address), QByteArray(buffer, int(got)) });
+            if (answers.size() >= 32)
+                break;
+        }
+        net_Close(fd);
+        return answers;
+    }
+
+    QString deviceId() override
+    {
+        // made once, kept next to the sources (what a server names this
+        // client by, in its list of devices)
+        std::lock_guard<std::mutex> guard(m_deviceLock);
+        if (!m_deviceId.isEmpty())
+            return m_deviceId;
+        QFile file(m_folder + QStringLiteral("/device-id"));
+        if (file.open(QIODevice::ReadOnly))
+            m_deviceId = QString::fromLatin1(file.readAll()).trimmed();
+        file.close();
+        if (m_deviceId.size() < 16)
+        {
+            m_deviceId = QString::number(QRandomGenerator::global()->generate64(), 16)
+                       + QString::number(QRandomGenerator::global()->generate64(), 16);
+            if (file.open(QIODevice::WriteOnly))
+                file.write(m_deviceId.toLatin1());
+        }
+        return m_deviceId;
+    }
+
 private:
     vlc_iptv_t* m_obj;
+    std::atomic<bool> m_detached { false };
+    QString m_folder;
+    std::mutex m_deviceLock;
+    QString m_deviceId;
     vlc_keystore* m_keystore = nullptr;
     std::mutex m_keystoreLock;
     vlc_interrupt_t* m_interrupt = nullptr;
@@ -268,16 +446,27 @@ public:
         {
             vlc_interrupt_t* interrupt = vlc_interrupt_create();
             m_interrupts.push_back(interrupt);
+            m_running++;
             m_threads.emplace_back([this, interrupt]() {
                 if (interrupt)
                     vlc_interrupt_set(interrupt);
                 run();
+                std::lock_guard<std::mutex> guard(m_lock);
+                m_running--;
+                m_ended.notify_all();
             });
         }
     }
 
     ~Executor()
     {
+        if (m_threads.empty())
+        {
+            for (vlc_interrupt_t* interrupt : m_interrupts)
+                if (interrupt)
+                    vlc_interrupt_destroy(interrupt);
+            return;
+        }
         {
             std::lock_guard<std::mutex> guard(m_lock);
             m_quit = true;
@@ -294,8 +483,27 @@ public:
                 vlc_interrupt_destroy(interrupt);
     }
 
-    // Runs job on one of the threads and waits for it; false when closing
-    bool runAndWait(const std::function<void()>& job)
+    // VLC quits: a download in progress on one of the threads (a logo, the
+    // films of an account) stops, and the waits for the jobs are bounded
+    void interrupt()
+    {
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            if (m_stopping)
+                return;
+            m_stopping = true;
+            m_stoppedAt = std::chrono::steady_clock::now();
+        }
+        for (vlc_interrupt_t* interrupt : m_interrupts)
+            if (interrupt)
+                vlc_interrupt_kill(interrupt);
+    }
+
+    // Runs job on one of the threads and waits for it; false when closing,
+    // or when VLC quits and the job is still not done `bound` later (it may
+    // run later: it must own what it uses)
+    bool runAndWait(const std::function<void()>& job,
+                    std::chrono::milliseconds bound = std::chrono::seconds(3))
     {
         auto done = std::make_shared<std::promise<void>>();
         std::future<void> result = done->get_future();
@@ -309,7 +517,38 @@ public:
             });
         }
         m_wait.notify_one();
-        result.wait();
+        while (result.wait_for(std::chrono::milliseconds(100)) != std::future_status::ready)
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            if (m_stopping && std::chrono::steady_clock::now() - m_stoppedAt > bound)
+                return false;
+        }
+        return true;
+    }
+
+    // The threads end, waited for at most ms; false when one is still in a
+    // download VLC could not stop (they are then let go, with this object)
+    bool shutdown(int ms)
+    {
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            m_quit = true;
+        }
+        interrupt();
+        m_wait.notify_all();
+        std::unique_lock<std::mutex> guard(m_lock);
+        if (!m_ended.wait_for(guard, std::chrono::milliseconds(ms),
+                              [this]() { return m_running == 0; }))
+        {
+            for (std::thread& t : m_threads)
+                t.detach();
+            m_threads.clear();
+            return false;
+        }
+        guard.unlock();
+        for (std::thread& t : m_threads)
+            t.join();
+        m_threads.clear();
         return true;
     }
 
@@ -337,14 +576,26 @@ private:
     bool m_quit = false;
     std::vector<std::thread> m_threads;
     std::vector<vlc_interrupt_t*> m_interrupts;
+    std::condition_variable m_ended;
+    int m_running = 0;
+    bool m_stopping = false;
+    std::chrono::steady_clock::time_point m_stoppedAt;
 };
 
 struct Sys
 {
     std::unique_ptr<VlcHost> host;
-    std::unique_ptr<iptv::Service> service;
+    // (shared: a request that VLC's quitting gave up on may still use it)
+    std::mutex serviceLock;
+    std::shared_ptr<iptv::Service> service;
     std::unique_ptr<Executor> executor;
 };
+
+std::shared_ptr<iptv::Service> serviceOf(Sys* sys)
+{
+    std::lock_guard<std::mutex> guard(sys->serviceLock);
+    return sys->service;
+}
 
 QString userDir(const char* dir)
 {
@@ -354,20 +605,34 @@ QString userDir(const char* dir)
 char* Request(vlc_iptv_t* obj, const char* json)
 {
     auto* sys = static_cast<Sys*>(obj->sys);
-    const std::string request(json);
-    std::string answer;
+    // (owned by the job: VLC quitting, the wait for it may give up first)
+    auto request = std::make_shared<const std::string>(json);
+    auto answer = std::make_shared<std::string>();
     // (on a thread of the plugin, see Executor)
-    if (!sys->executor->runAndWait([&]() {
-            const QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(request));
+    if (!sys->executor->runAndWait([sys, request, answer]() {
+            const QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(*request));
+            const std::shared_ptr<iptv::Service> service = serviceOf(sys);
             QJsonObject out;
             if (!doc.isObject())
                 out.insert(QLatin1String("error"), QStringLiteral("not a JSON object"));
+            else if (!service)
+                out.insert(QLatin1String("error"), QStringLiteral("closing"));
             else
-                out = sys->service->request(doc.object());
-            answer = QJsonDocument(out).toJson(QJsonDocument::Compact).toStdString();
+                out = service->request(doc.object());
+            *answer = QJsonDocument(out).toJson(QJsonDocument::Compact).toStdString();
         }))
-        answer = "{\"error\":\"closing\"}";
-    return strdup(answer.c_str());
+        return strdup("{\"error\":\"closing\"}");
+    return strdup(answer->c_str());
+}
+
+void Stop(vlc_iptv_t* obj)
+{
+    // (from a thread of the interface: flags, locks and interrupts only,
+    // nothing of Qt made here)
+    auto* sys = static_cast<Sys*>(obj->sys);
+    if (const std::shared_ptr<iptv::Service> service = serviceOf(sys))
+        service->stop();
+    sys->executor->interrupt();
 }
 
 int Open(vlc_object_t* p_this)
@@ -391,7 +656,7 @@ int Open(vlc_object_t* p_this)
         sys->executor = std::make_unique<Executor>(3);
         Sys* s = sys.get();
         s->executor->runAndWait([&]() {
-            s->service = std::make_unique<iptv::Service>(
+            s->service = std::make_shared<iptv::Service>(
                 *s->host, userDir(dataDir.c_str()), userDir(cacheDir.c_str()),
                 QByteArray::fromRawData(iptv_catalog, int(sizeof(iptv_catalog) - 1)));
         });
@@ -404,6 +669,7 @@ int Open(vlc_object_t* p_this)
         return VLC_ENOMEM;
     }
     obj->request = Request;
+    obj->stop = Stop;
     return VLC_SUCCESS;
 }
 
@@ -411,9 +677,37 @@ void Close(vlc_object_t* p_this)
 {
     auto* obj = reinterpret_cast<vlc_iptv_t*>(p_this);
     auto* sys = static_cast<Sys*>(obj->sys);
-    // the service stops on a thread of the plugin (its worker's downloads
-    // are interrupted), then those threads, then the host
-    sys->executor->runAndWait([sys]() { sys->service.reset(); });
+    // Whatever a download does, VLC's quitting never waits for it without
+    // bound: what is in progress stops (the worker's and the threads'
+    // downloads are interrupted); the service ends on a thread of the plugin,
+    // its worker waited for 5 s at most, then those threads 3 s at most,
+    // then the host. A download VLC could not stop (an HTTPS connection
+    // that never closes) keeps what it uses: let go, not destroyed.
+    {
+        // (not kept: the service is destroyed on a thread of the plugin)
+        const std::shared_ptr<iptv::Service> service = serviceOf(sys);
+        if (service)
+            service->stop();
+    }
+    sys->executor->interrupt();
+    auto stopped = std::make_shared<std::atomic<bool>>(false);
+    const bool ran = sys->executor->runAndWait([sys, stopped]() {
+        std::shared_ptr<iptv::Service> service;
+        {
+            std::lock_guard<std::mutex> guard(sys->serviceLock);
+            service = std::move(sys->service);
+        }
+        if (!service || service->waitStopped(5000))
+            *stopped = true;
+        else
+            new std::shared_ptr<iptv::Service>(service);   // (let go)
+    }, std::chrono::seconds(8));
+    if (!ran || !*stopped || !sys->executor->shutdown(3000))
+    {
+        msg_Warn(obj, "a download could not be stopped: Live TV let go of it");
+        sys->host->detach();
+        return;   // (sys, its host and threads let go too)
+    }
     sys->executor.reset();
     delete sys;
 }

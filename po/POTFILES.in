@@ -768,6 +768,7 @@ modules/gui/qt/dialogs/preferences/simple_preferences.cpp
 modules/gui/qt/dialogs/preferences/simple_preferences.hpp
 modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml
+modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml

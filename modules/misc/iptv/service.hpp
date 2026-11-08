@@ -8,10 +8,14 @@
  *****************************************************************************/
 #pragma once
 
+#include "autoguide.hpp"
 #include "guide.hpp"
 #include "playlist.hpp"
 
+#include <QByteArray>
 #include <QHash>
+#include <QList>
+#include <QPair>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QString>
@@ -19,6 +23,7 @@
 #include <QVector>
 
 #include <atomic>
+#include <chrono>
 #include <condition_variable>
 #include <deque>
 #include <functional>
@@ -31,6 +36,32 @@ struct vlc_iptv;
 struct vlc_interrupt;
 
 namespace iptv {
+
+// A request of the API of a server of the user (its own Jellyfin,
+// Tvheadend...): any method, headers, a body, the user it asks for
+struct HttpCall
+{
+    QByteArray method = "GET";
+    QString url;
+    QList<QPair<QByteArray, QByteArray>> headers;
+    QByteArray body;
+    QString username;
+    QString password;
+    int timeoutMs = 15000;
+    qint64 maxBytes = 64 << 20;
+};
+struct HttpReply
+{
+    int status = 0;     // 0: no answer
+    QByteArray body;
+    QString error;
+};
+// What answered a broadcast on the network: its address, and what it said
+struct Datagram
+{
+    QString from;
+    QByteArray data;
+};
 
 // What VLC gives the service: downloads through its own access modules
 // (the proxy and the network settings of VLC), its keystore, its folders.
@@ -58,6 +89,15 @@ struct Host
     // The worker thread of the service: its downloads stop when killed
     virtual void enterWorker() = 0;
     virtual void killWorker() = 0;
+    // A request of a server's API (blocking, any thread)
+    virtual HttpReply call(const HttpCall& request) = 0;
+    // A UDP broadcast on the local network (or to a multicast group:
+    // address), and the answers of the next ms milliseconds (the discovery
+    // of the user's tuners and servers)
+    virtual QVector<Datagram> broadcast(quint16 port, const QByteArray& packet, int ms,
+                                        const QString& address = QString()) = 0;
+    // A random id of this copy of VLC, kept (what servers name a client by)
+    virtual QString deviceId() = 0;
 };
 
 // A source of channels: an M3U playlist (a link or a file) or an Xtream
@@ -66,15 +106,31 @@ struct SourceConfig
 {
     QString id;
     QString name;
-    QString kind;            // "m3u" or "xtream"
+    // "m3u", "xtream", or a server of the user: "jellyfin", "emby",
+    // "tvheadend", "nextpvr", "channels" (Channels DVR), "hdhomerun"; or a
+    // guide alone, for the channels of every source: "schedulesdirect"
+    QString kind;
     QString url;             // the playlist (secret: often holds a token)
     QStringList epg;         // the guides the user added
-    QString server;          // Xtream Codes
-    QString username;
-    QString password;        // (secret)
+    QString server;          // Xtream Codes, the servers: its address
+    QString username;        // (also for an M3U behind a login)
+    QString password;        // (secret; NextPVR: its PIN)
+    QString key;             // an API key (Jellyfin, Emby) (secret)
     QString catalogId;       // added from the catalog
     bool enabled = true;
     bool useHeaderGuides = true;   // the guides the playlist names itself
+    QStringList epgOff;      // the guides turned off (of epg, the playlist's, autoEpg)
+    // the automatic guide: the guides it attached, the iptv-org id of each
+    // channel it matched (by identityOf), when it last looked; turned off
+    // when the user removed it (not again by itself)
+    QStringList autoEpg;
+    QHash<QString, autoguide::Match> autoIds;
+    qint64 autoChecked = 0;
+    bool autoGuideOff = false;
+    int autoFound = 0;       // the channels with a guide after it, of
+    int autoTotal = 0;
+    // the guide id the user gave a channel (by identityOf): it wins
+    QHash<QString, QString> guideIds;
 };
 
 // A programme kept in memory; its description stays on disk (descOffset in
@@ -115,6 +171,13 @@ public:
 
     // The answer of a request of the interface (see vlc_iptv.h)
     QJsonObject request(const QJsonObject& request);
+    // VLC quits: the worker stops at once, its downloads and the calls of
+    // the servers too (any thread, never blocks)
+    void stop();
+    // Stops the worker and waits for it, at most ms: false when it is still
+    // in a download VLC could not stop (this service must then never be
+    // destroyed: the worker uses it)
+    bool waitStopped(int ms);
 
 private:
     struct SourceState
@@ -131,6 +194,8 @@ private:
         bool hasVod = false;
         bool hasSeries = false;
         qint64 expires = 0;
+        // its server refused the user's sign-in (shown on its row)
+        bool refused = false;
     };
     struct ChannelEntry
     {
@@ -157,6 +222,26 @@ private:
     void schedule();
     void refreshSources(const QStringList& ids, bool guides);
     bool loadPlaylist(const SourceConfig& cfg, bool download, SourceState& state);
+    // a server of the user: its channels and guide written as the source's
+    // playlist.m3u and guide.xml (false and why when it can't be asked)
+    bool downloadServer(const SourceConfig& cfg, SourceState& state);
+    // Schedules Direct: the guide of the stations of the user's lineups,
+    // written as the source's guide.xml (a guide alone: no channels)
+    bool downloadSchedulesDirect(const SourceConfig& cfg, SourceState& state);
+    // Test, Sign in: one request with the fields typed
+    QJsonObject testSource(const QJsonObject& request);
+    // the tuners and servers found on the local network
+    QJsonObject discover();
+    // a channel of Jellyfin or Emby: its stream, opened when it plays
+    QString openServerStream(const QString& sourceId, const QString& channelUrl, QString* error);
+    // the automatic guide of a source (automatic: after an update, only
+    // when its guides miss channels and it did not look this week)
+    void findGuide(const QString& id, bool automatic);
+    // iptv-org's channels (downloaded once a week, the fields kept)
+    QVector<autoguide::Known> knownChannels(QString* error);
+    // signed in to Jellyfin or Emby (kept for this run)
+    bool mediaBrowserSession(const SourceConfig& cfg, QString* token, QString* userId, QString* error,
+                             bool* refused);
     void loadGuides(bool download, const QStringList& onlySources);
     void rebuild();
     void updateCatalog(bool force);
@@ -190,6 +275,8 @@ private:
     QVector<ChannelEntry> m_channels;
     QHash<QString, int> m_channelIndex;
     int m_revision = 0;
+    // the sessions of the servers signed in, by source (token, user id)
+    QHash<QString, QPair<QString, QString>> m_sessions;
     // options of the interface
     int m_guideDays = 7;
     int m_refreshHours = 24;
@@ -202,6 +289,13 @@ private:
     std::deque<Job> m_jobs;
     std::atomic<bool> m_quit { false };
     std::thread m_thread;
+    // the worker ended (waitStopped)
+    std::mutex m_endLock;
+    std::condition_variable m_endWait;
+    bool m_workerEnded = false;
+    // the catalog is refreshed this long after the start at the earliest
+    // (or when it is shown): nothing downloads in the first moments
+    std::chrono::steady_clock::time_point m_startedAt = std::chrono::steady_clock::now();
 };
 
 }

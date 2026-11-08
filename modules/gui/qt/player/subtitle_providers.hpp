@@ -18,12 +18,50 @@
 
 class QObject;
 
-// The free services subtitles are found on, without an account: what each
-// is asked, and what it answers, for SubtitleFinder. Each search is a few
-// requests, one after the other (the services ask for no more), at most a
-// few seconds; a service that does not answer is left out of the results.
+// The services subtitles are found on: the free ones without an account,
+// and those asked with the user's own free key or account (SubSource, SubDL,
+// OpenSubtitles.com...: their requests and answers in subtitle_services.cpp,
+// tested by themselves); what each is asked, and what it answers, for
+// SubtitleFinder. Each search is a few requests, one after the other (the
+// services ask for no more), at most a few seconds; a service that does not
+// answer is left out of the results.
 namespace SubtitleProviders
 {
+
+// What went wrong asking a service
+enum class Problem
+{
+    None,
+    NoAnswer,     // no answer at all
+    Busy,         // too many searches (429): later
+    KeyRefused,   // the user's key isn't taken (401, 403)
+    LoginRefused, // the user name or password isn't
+    Failed        // another answer
+};
+
+// The credentials a service takes (Provider::fields)
+enum Field
+{
+    KeyField = 1,      // an API key or token
+    UsernameField = 2,
+    PasswordField = 4,
+    EmailField = 8
+};
+
+// The user's credentials for a service (secrets: never logged)
+struct Credentials
+{
+    QString key;
+    QString username;
+    QString password;
+    QString email;
+    bool operator==(const Credentials &other) const
+    {
+        return key == other.key && username == other.username && password == other.password
+            && email == other.email;
+    }
+    bool operator!=(const Credentials &other) const { return !(*this == other); }
+};
 
 // What is known of the video
 struct Query
@@ -37,7 +75,9 @@ struct Query
     QString fileName;      // of the video ("The.Matrix.1999.1080p.mkv")
     QString hash;          // OpenSubtitles hash of a local file, else empty
     qint64 size = 0;
-    QStringList languages; // the user's, the default first (SubtitlePreferences)
+    QStringList languages; // the user's to search, in their order (SubtitlePreferences)
+    bool everyLanguage = true; // the others asked too (else only those)
+    Credentials credentials; // the user's for the service asked (its own)
 };
 
 // A subtitle one of them has
@@ -66,20 +106,58 @@ struct Provider
                            // untranslated (N_()): shown in the interface language
     bool movies;
     bool series;
-    QString onlyLanguage;  // its only language ("he"), empty: all
+    QStringList languages; // its only languages ("he"), empty: all; asked
+                           // only when one of them is one of the user's
+    int fields = 0;        // the credentials it takes (Field)
+    int required = 0;      // of them, those it needs: asked only with them
+    QString page;          // where its free key or account is made
+    bool account = false;  // that page makes an account (else a key)
 };
 
 // The services, in the order they are asked and shown
 const QList<Provider> &providers();
 const Provider *provider(const QString &id);
+// Whether the credentials have what the service needs
+bool hasRequired(const Provider &provider, const Credentials &credentials);
 
 // Searches one service; done is called on the thread of context with its
-// results, or an error (and no results) when it could not be asked
+// results, or an error and what went wrong (and no results) when it could
+// not be asked
 void search(QObject *context, const QString &providerId, const Query &query,
-            std::function<void(const QList<Result> &results, const QString &error)> done);
+            std::function<void(const QList<Result> &results, const QString &error, Problem problem)> done);
 
-// The request of a download (its headers: some services want them)
-QList<QPair<QByteArray, QByteArray>> downloadHeaders(const Result &result);
+// What checking credentials found: they work (who, when signed in), or not
+enum class Check
+{
+    Works,
+    SignedIn,
+    KeyRefused,
+    LoginRefused,
+    NoAnswer,
+    Busy
+};
+// One cheap request with the credentials typed (Test, Sign in)
+void check(QObject *context, const QString &providerId, const Credentials &credentials,
+           std::function<void(Check check, const QString &who)> done);
+// The signed-in session of a service forgotten (Sign out, new credentials)
+void forgetSession(const QString &providerId);
+
+// A download: its request (some services want headers; OpenSubtitles.com
+// gives the link of each when asked), or why it can't be
+struct Download
+{
+    QUrl url;
+    QList<QPair<QByteArray, QByteArray>> headers;
+    QByteArray method = "GET";
+    QByteArray body;
+    // the file of what was downloaded, when it comes inside an answer
+    // (Napisy24's): empty when there is none
+    std::function<QByteArray(const QByteArray &answer)> unwrap;
+    QString error;
+    Problem problem = Problem::None;
+};
+void prepareDownload(QObject *context, const Result &result, const Credentials &credentials,
+                     std::function<void(const Download &download)> done);
 
 // The subtitle of what was downloaded: unpacked (gzip, zip), in UTF-8,
 // without the ads a service adds; its extension (srt, ass, vtt...). Empty,

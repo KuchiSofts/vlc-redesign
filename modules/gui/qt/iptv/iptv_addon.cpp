@@ -428,7 +428,13 @@ void IptvAddon::load()
 void IptvAddon::unload()
 {
     m_clock.stop();
-    // the requests on their way end first
+    // the requests on their way end first: stopped (a download or a call of
+    // a server would run to its timeout, or hang), then waited for
+    {
+        QReadLocker guard(&m_bridge->lock);
+        if (m_bridge->object && m_bridge->object->stop)
+            m_bridge->object->stop(m_bridge->object);
+    }
     m_pool.waitForDone();
     QWriteLocker guard(&m_bridge->lock);
     if (!m_bridge->object)
@@ -503,6 +509,14 @@ void IptvAddon::onEvent(const QJsonObject& event)
         m_busy = std::any_of(m_sources.cbegin(), m_sources.cend(),
                              [](const QVariant& v) { return v.toMap().value(QStringLiteral("busy")).toBool(); });
         emit sourcesChanged();
+        return;
+    }
+    if (kind == QLatin1String("guideFound"))
+    {
+        msg_Dbg(m_intf, "TV: the automatic guide: %d of %d channels with a guide (%d before)",
+                event.value(QLatin1String("found")).toInt(), event.value(QLatin1String("total")).toInt(),
+                event.value(QLatin1String("before")).toInt());
+        emit guideFound(event.toVariantMap());
         return;
     }
     if (kind != QLatin1String("changed"))
@@ -732,6 +746,72 @@ void IptvAddon::callJs(const QJSValue& callback, const QVariant& value)
 }
 
 /* Sources */
+
+void IptvAddon::testSource(const QVariantMap& source, const QString& id, const QJSValue& done)
+{
+    QJsonObject r;
+    r.insert(QLatin1String("op"), QStringLiteral("testSource"));
+    r.insert(QLatin1String("source"), QJsonObject::fromVariantMap(source));
+    r.insert(QLatin1String("id"), id);
+    call(r, [this, done](const QJsonObject& answer) {
+        msg_Dbg(m_intf, "TV: a source checked: %s", qtu(answer.value(QLatin1String("result")).toString()));
+        callJs(done, answer.toVariantMap());
+    });
+}
+
+void IptvAddon::discover(const QJSValue& done)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("discover") } }, [this, done](const QJsonObject& answer) {
+        const QJsonArray found = answer.value(QLatin1String("found")).toArray();
+        msg_Dbg(m_intf, "TV: %lld found on the network", (long long)found.size());
+        callJs(done, found.toVariantList());
+    });
+}
+
+void IptvAddon::findGuide(const QString& id)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("findGuide") }, { QStringLiteral("id"), id } },
+         [](const QJsonObject&) {});
+}
+
+void IptvAddon::signOut(const QString& id)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("signOut") }, { QStringLiteral("id"), id } },
+         [this](const QJsonObject&) { loadStatus(); });
+}
+
+void IptvAddon::removeAutoGuide(const QString& id)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("removeAutoGuide") }, { QStringLiteral("id"), id } },
+         [this](const QJsonObject&) { loadStatus(); });
+}
+
+void IptvAddon::setGuideEnabled(const QString& id, const QString& guide, bool enabled)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("setGuideEnabled") }, { QStringLiteral("id"), id },
+                       { QStringLiteral("guide"), guide }, { QStringLiteral("enabled"), enabled } },
+         [this](const QJsonObject&) { loadStatus(); });
+}
+
+void IptvAddon::removeGuide(const QString& id, const QString& guide)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("removeGuide") }, { QStringLiteral("id"), id },
+                       { QStringLiteral("guide"), guide } },
+         [this](const QJsonObject&) { loadStatus(); });
+}
+
+void IptvAddon::channelGuide(const QString& key, const QJSValue& done)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("channelGuide") }, { QStringLiteral("key"), key } },
+         [this, done](const QJsonObject& answer) { callJs(done, answer.toVariantMap()); });
+}
+
+void IptvAddon::setChannelGuide(const QString& key, const QString& guideId)
+{
+    call(QJsonObject { { QStringLiteral("op"), QStringLiteral("setChannelGuide") }, { QStringLiteral("key"), key },
+                       { QStringLiteral("guideId"), guideId } },
+         [](const QJsonObject&) {});
+}
 
 void IptvAddon::addSource(const QVariantMap& source, const QJSValue& done)
 {

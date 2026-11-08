@@ -160,21 +160,36 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
         headers += header.first + ": " + header.second + "\r\n";
     const std::wstring wideHeaders = QString::fromUtf8(headers).toStdWString();
     const auto bodySize = static_cast<DWORD>(request.body.size());
-    if (!WinHttpSendRequest(handle.handle,
-                            wideHeaders.empty() ? WINHTTP_NO_ADDITIONAL_HEADERS : wideHeaders.c_str(),
-                            static_cast<DWORD>(-1L),
-                            bodySize ? const_cast<char*>(request.body.constData()) : WINHTTP_NO_REQUEST_DATA,
-                            bodySize, bodySize, 0)
-        || !WinHttpReceiveResponse(handle.handle, nullptr))
-    {
-        response.error = state.cancelled ? cancelled : lastError("HTTP request");
-        return response;
-    }
-
+    const std::wstring user = request.username.toStdWString();
+    const std::wstring password = request.password.toStdWString();
     DWORD status = 0;
-    DWORD statusSize = sizeof(status);
-    WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER,
-                        WINHTTP_HEADER_NAME_BY_INDEX, &status, &statusSize, WINHTTP_NO_HEADER_INDEX);
+    for (int attempt = 0; ; ++attempt)
+    {
+        if (!WinHttpSendRequest(handle.handle,
+                                wideHeaders.empty() ? WINHTTP_NO_ADDITIONAL_HEADERS : wideHeaders.c_str(),
+                                static_cast<DWORD>(-1L),
+                                bodySize ? const_cast<char*>(request.body.constData()) : WINHTTP_NO_REQUEST_DATA,
+                                bodySize, bodySize, 0)
+            || !WinHttpReceiveResponse(handle.handle, nullptr))
+        {
+            response.error = state.cancelled ? cancelled : lastError("HTTP request");
+            return response;
+        }
+        DWORD statusSize = sizeof(status);
+        WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER,
+                            WINHTTP_HEADER_NAME_BY_INDEX, &status, &statusSize, WINHTTP_NO_HEADER_INDEX);
+        // the server asks who: the request's user, once, in the way it
+        // says (Digest rather than Basic)
+        if (status != 401 || attempt > 0 || user.empty())
+            break;
+        DWORD supported = 0, first = 0, target = 0;
+        if (!WinHttpQueryAuthSchemes(handle.handle, &supported, &first, &target))
+            break;
+        const DWORD scheme = (supported & WINHTTP_AUTH_SCHEME_DIGEST) ? WINHTTP_AUTH_SCHEME_DIGEST
+                           : (supported & WINHTTP_AUTH_SCHEME_BASIC) ? WINHTTP_AUTH_SCHEME_BASIC : 0;
+        if (!scheme || !WinHttpSetCredentials(handle.handle, target, scheme, user.c_str(), password.c_str(), nullptr))
+            break;
+    }
     response.status = static_cast<int>(status);
 
     DWORD length = 0;
@@ -300,6 +315,15 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     const QByteArray encodedUrl = url.toEncoded(QUrl::RemoveFragment);
     curl_easy_setopt(curl, CURLOPT_URL, encodedUrl.constData());
     curl_easy_setopt(curl, CURLOPT_USERAGENT, "VLC");
+    // the server asks who: Basic or Digest, as it says
+    const QByteArray user = request.username.toUtf8();
+    const QByteArray password = request.password.toUtf8();
+    if (!user.isEmpty())
+    {
+        curl_easy_setopt(curl, CURLOPT_HTTPAUTH, static_cast<long>(CURLAUTH_ANY));
+        curl_easy_setopt(curl, CURLOPT_USERNAME, user.constData());
+        curl_easy_setopt(curl, CURLOPT_PASSWORD, password.constData());
+    }
     curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1L);
     // Redirects are followed, except from HTTPS to HTTP (as WinHTTP)
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
@@ -318,7 +342,8 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     curl_easy_setopt(curl, CURLOPT_LOW_SPEED_TIME,
                      std::max(1L, static_cast<long>(request.timeoutMs / 1000)));
 
-    if (request.method == "GET")
+    // (a GET with a body, as some services ask for their searches, stays a GET)
+    if (request.method == "GET" && request.body.isEmpty())
         curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
     else if (request.method == "HEAD")
         curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);
@@ -439,6 +464,12 @@ private:
     QHash<QThread*, std::shared_ptr<RequestState>> m_requests;
     bool m_shutDown = false;
 };
+}
+
+HttpResponse httpRequestSync(const HttpRequest& request)
+{
+    RequestState state;
+    return perform(request, state);
 }
 
 HttpCancel httpRequestAsync(QObject* context, HttpRequest request,

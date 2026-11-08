@@ -1,0 +1,13 @@
+{
+ "MediaSources": [
+  {
+   "Protocol": "Http",
+   "Id": "ms-0124",
+   "Container": "ts",
+   "SupportsDirectStream": false,
+   "LiveStreamId": "live-4568",
+   "TranscodingUrl": "/videos/b1b2/master.m3u8?DeviceId=x&MediaSourceId=ms-0124&PlaySessionId=play-1"
+  }
+ ],
+ "PlaySessionId": "play-1"
+}

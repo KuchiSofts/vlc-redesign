@@ -1,0 +1,26 @@
+{
+ "success": true,
+ "data": [
+  {
+   "movieId": 901,
+   "imdbId": "tt0903747",
+   "title": "Breaking Bad",
+   "type": "tvseries",
+   "season": 1
+  },
+  {
+   "movieId": 902,
+   "imdbId": "tt0903747",
+   "title": "Breaking Bad",
+   "type": "tvseries",
+   "season": 2
+  },
+  {
+   "movieId": 903,
+   "imdbId": "tt0903747",
+   "title": "Breaking Bad",
+   "type": "tvseries",
+   "season": 3
+  }
+ ]
+}

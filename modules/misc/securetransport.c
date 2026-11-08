@@ -493,8 +493,8 @@ static int st_GetFD (vlc_tls_t *session, short *restrict events)
 /**
  * Sends data through a TLS session.
  */
-static ssize_t st_Send (vlc_tls_t *session, const struct iovec *iov,
-                        unsigned count)
+static ssize_t st_SendLocked (vlc_tls_t *session, const struct iovec *iov,
+                              unsigned count)
 {
     vlc_tls_st_t *sys = (vlc_tls_st_t *)session;
     OSStatus ret = noErr;
@@ -553,10 +553,30 @@ static ssize_t st_Send (vlc_tls_t *session, const struct iovec *iov,
     return ret != noErr ? st_Error(session, ret) : actualSize;
 }
 
+/*
+ * SSLRead() and SSLWrite() call the socket's readv()/writev(), which are
+ * cancellation points: a thread cancelled there (vlc_cancel(), e.g. the
+ * HTTP/2 receive thread as its connection closes) would end with sys->lock
+ * held, and the next st_Send() (the HTTP/2 output thread sending GOAWAY)
+ * would wait for it forever: VLC hung at quit after an HTTPS download on
+ * macOS. The socket is non-blocking (the waits are outside, in poll()), so
+ * cancellation can wait until the lock is released.
+ */
+static ssize_t st_Send (vlc_tls_t *session, const struct iovec *iov,
+                        unsigned count)
+{
+    int canc = vlc_savecancel();
+    ssize_t val = st_SendLocked(session, iov, count);
+    int err = errno;
+    vlc_restorecancel(canc);
+    errno = err;
+    return val;
+}
+
 /**
  * Receives data through a TLS session.
  */
-static ssize_t st_Recv (vlc_tls_t *session, struct iovec *iov, unsigned count)
+static ssize_t st_RecvLocked (vlc_tls_t *session, struct iovec *iov, unsigned count)
 {
     vlc_tls_st_t *sys = (vlc_tls_st_t *)session;
 
@@ -583,6 +603,17 @@ static ssize_t st_Recv (vlc_tls_t *session, struct iovec *iov, unsigned count)
 
     vlc_mutex_unlock(&sys->lock);
     return ret != noErr ? st_Error(session, ret) : actualSize;
+}
+
+static ssize_t st_Recv (vlc_tls_t *session, struct iovec *iov, unsigned count)
+{
+    /* (no cancellation while sys->lock is held: see st_Send) */
+    int canc = vlc_savecancel();
+    ssize_t val = st_RecvLocked(session, iov, count);
+    int err = errno;
+    vlc_restorecancel(canc);
+    errno = err;
+    return val;
 }
 
 /**

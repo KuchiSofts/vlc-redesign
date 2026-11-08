@@ -15,6 +15,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- Work on 0.5.9 (an update release) started: a round of stability, start-up speed and memory in every app, and
+  keys in full screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
+
 ## [0.5.8] · 2026-11-08
 
 An update release: more subtitle services in every app (SubSource and SubDL with your free key, OpenSubtitles.com,

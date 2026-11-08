@@ -997,8 +997,9 @@ FocusScope {
         anchors.fill: parent
         z: 10
         controlsVisible: controlBar.state === "visible"
-        // where the player's messages show (subtitleSizeToast)
-        messageY: VLCStyle.dp(24, VLCStyle.scale) + (topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0)
+        // where the player's messages show (subtitleSizeToast): under the
+        // top bar while it shows
+        messageTop: topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0
         // a key a panel took after all: as before
         onUntouched: playerToolbarVisibilityFSM.keyboardMove()
     }

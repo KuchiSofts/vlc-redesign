@@ -106,6 +106,14 @@ Android and the Samsung TV app.
   was translated as the music genre in 50 languages; Arabic has the right word for a password.
 - Seek bar: the frame preview showed the same frame everywhere when VLC was started with `--start-time`
   (or `--stop-time`/`--run-time`): the thumbnailer inherited it. Every preview now shows its own moment.
+- macOS: VLC could hang at quit after an HTTPS download (Live TV's catalog, a guide, a playlist, a logo).
+  SecureTransport kept its session lock while reading or writing, and a thread cancelled there (the HTTP/2
+  receive thread, as the connection closes) ended with the lock held; the HTTP/2 output thread then waited for
+  it forever. Reading and writing are no longer cancelled while the lock is held (an upstream VLC bug).
+- Live TV never makes quitting wait without bound: what is in progress (downloads, the calls of your servers)
+  is stopped first; the add-on waits for its worker 5 s and its threads 3 s at most, and lets go of one it
+  could not stop instead of hanging (a Jellyfin guide held by its server made VLC wait 2 minutes). The
+  catalog's newer copy is no longer downloaded at the start: 10 minutes later, or when the catalog is shown.
 
 ## [0.5.7] · 2026-11-08
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2008-08-23 18:31+0200\n"
 "Last-Translator: Alexander Didebulidze <didebuli@in.tum.de>\n"
 "Language-Team: Georgian <geognome@googlegroups.com>\n"
@@ -7222,6 +7222,14 @@ msgstr "OpenSubtitles-ში ძებნა…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "ტიტრების ფაილების სანახავად მოძებნეთ OpenSubtitles-ში."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "ჯერ არ გაქვთ გასაღები? ის უფასოა: დარეგისტრირდით opensubtitles.com-ზე, გახსენით „API consumers“, აირჩიეთ „New consumer“, დაარქვით მას სახელი (VLC Redesign) და დააკოპირეთ მისი API გასაღები აქ, თქვენი ანგარიშის მომხმარებლის სახელთან და პაროლთან ერთად."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "„API consumers“-ის გახსნა"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "აუდიოტრეკები მუშავდება…"
@@ -7817,6 +7825,11 @@ msgstr "DVD ნავიგაცია"
 msgid "Close navigation"
 msgstr "ნავიგაციის დახურვა"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× სიჩქარე"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4,00"
@@ -7828,10 +7841,6 @@ msgstr "შაბლონები:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "დამკვრელი"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× სიჩქარე"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-15 17:38+0100\n"
 "Last-Translator: Michał Trzebiatowski <michtrz@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7308,6 +7308,14 @@ msgstr "Wyszukiwanie w OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Przeszukaj OpenSubtitles, aby zobaczyć pliki napisów."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Nie masz jeszcze klucza? Jest bezpłatny: zarejestruj się na opensubtitles.com, otwórz „API consumers”, wybierz „New consumer”, nadaj mu nazwę (VLC Redesign) i skopiuj tutaj jego klucz API wraz z nazwą użytkownika i hasłem swojego konta."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Otwórz „API consumers”"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Przetwarzanie ścieżek dźwiękowych…"
@@ -7909,6 +7917,11 @@ msgstr "Nawigacja DVD"
 msgid "Close navigation"
 msgstr "Zamknij nawigację"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Prędkość 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7920,10 +7933,6 @@ msgstr "Predefiniowane:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Odtwarzacz"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Prędkość 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

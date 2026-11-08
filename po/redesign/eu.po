@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2016-04-04 16:53+0000\n"
 "Last-Translator: Alexander Gabilondo <alexgabi@openmailbox.org>\n"
 "Language-Team: Basque (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7313,6 +7313,14 @@ msgstr "OpenSubtitles-en bilatzen…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Bilatu OpenSubtitles-en azpititulu-fitxategiak ikusteko."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Oraindik ez duzu gakorik? Doakoa da: erregistratu opensubtitles.com-en, ireki «API consumers», aukeratu «New consumer», eman izen bat (VLC Redesign) eta kopiatu hona haren API gakoa, zure kontuaren erabiltzaile-izenarekin eta pasahitzarekin batera."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Ireki «API consumers»"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Audio-pistak lantzen…"
@@ -7917,6 +7925,11 @@ msgstr "DVD nabigazioa"
 msgid "Close navigation"
 msgstr "Itxi nabigazioa"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× abiadura"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7928,10 +7941,6 @@ msgstr "Aurrezarpenak:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Erreproduzigailua"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× abiadura"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

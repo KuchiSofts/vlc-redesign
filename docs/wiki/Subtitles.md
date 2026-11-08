@@ -232,11 +232,49 @@ The pencil of the header (*Add subtitles to the library*), or **Add Subtitle Tra
 video, folder or playlist of the library, opens the subtitle window of the library:
 
 - **From Computer** (files you choose), **From Link** (a *Direct HTTPS link to a subtitle file*) or **From
-  OpenSubtitles** (a search with your own *OpenSubtitles API key*, *Username* and *Password*).
+  OpenSubtitles** (a search with your own *OpenSubtitles API key*, *Username* and *Password*: see
+  [A free OpenSubtitles.com key](#a-free-opensubtitlescom-key)).
 - **To This File**, **To This Folder** or **To This Playlist**.
 
 The subtitles attached play with the media every time. **Add Audio Tracks** does the same for audio files. It needs
 a local file and the media library.
+
+### A free OpenSubtitles.com key
+
+The online search of the player needs no account. OpenSubtitles.com, the newer OpenSubtitles, asks for a key of your
+own; it is free:
+
+1. Sign up on [opensubtitles.com](https://www.opensubtitles.com) (a free account).
+2. Open **API consumers**: [opensubtitles.com/en/consumers](https://www.opensubtitles.com/en/consumers).
+3. Choose **New consumer**, give it a name (*VLC Redesign*) and save it.
+4. Copy its **API key** into VLC Redesign, with the account's username and password: they raise how many subtitles
+   you can download a day (a free account has a daily limit).
+
+Where it goes:
+
+| App | Where |
+|---|---|
+| Windows, Linux, macOS | **Add subtitles to the library** › **From OpenSubtitles** (the dialog says the same under the fields, with a link to the page) |
+| Android (phone, tablet, Android TV) | Settings › Subtitles › *Subtitle services*: **OpenSubtitles API key**, **Username**, **Password**, and *How to get a free key* (**Open** goes to the page). With a key, OpenSubtitles.com is asked too in the online search. |
+| Samsung TV (Juxto Media Player) | Settings › Subtitles: the same fields and the same steps (the address is shown as text) |
+
+The key and the account stay on the device, in the app's own settings; they are sent only to OpenSubtitles.com.
+
+## Online subtitles on Android and on Samsung TVs
+
+The Android app (phones, tablets, Android TV) and the Samsung TV app find subtitles online as the desktop does
+([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)): the same services without an account (OpenSubtitles,
+Wizdom, Addic7ed, YIFY Subtitles), the same identification of the video (IMDb, Wikidata, Cinemeta) and the same
+order of the results.
+
+- **Android:** the languages and tracks panel › Subtitles › ⋯ › **Search subtitles online**: what the video was taken
+  for (*Elephants Dream (2006) · 30 found*), the subtitles by language, each with its service, *For this file* and
+  its downloads. A tap downloads it, shows it and keeps it for the file. *The video is another one: search by its
+  title* finds the right one. Settings › Subtitles has the second language, **Find subtitles online when a video has
+  none in these languages** (asked in the welcome's privacy step), each service and the OpenSubtitles.com key.
+  When it finds one by itself: *English · Downloaded from OpenSubtitles*.
+- **Samsung TV:** the subtitles panel of the player has the same list, OK to load one; Settings › Subtitles the same
+  choices.
 
 ## Remembered choices
 

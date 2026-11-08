@@ -28559,6 +28559,14 @@ msgstr "تلاش جاری ہے (OpenSubtitles)…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "سب ٹائٹل فائلیں دیکھنے کے لیے OpenSubtitles پر تلاش کریں۔"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "ابھی تک کلید نہیں ہے؟ یہ مفت ہے: opensubtitles.com پر سائن اپ کریں، \"API consumers\" کھولیں، \"New consumer\" منتخب کریں، اسے نام دیں (VLC Redesign) اور اس کی API کلید اپنے اکاؤنٹ کے صارف نام اور پاس ورڈ کے ساتھ یہاں کاپی کریں۔"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" کھولیں"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "آڈیو ٹریکس پر کام جاری ہے…"

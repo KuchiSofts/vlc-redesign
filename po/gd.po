@@ -29147,6 +29147,14 @@ msgstr "A' lorg air OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Lorg air OpenSubtitles gus na faidhlichean fho-thiotalan fhaicinn."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Chan eil iuchair agad fhathast? Tha i an-asgaidh: clàraich air opensubtitles.com, fosgail \"API consumers\", tagh \"New consumer\", thoir ainm air (VLC Redesign) agus dèan lethbhreac dhen iuchair API aige an-seo, còmhla ri ainm-cleachdaiche is facal-faire a' chunntais agad."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Fosgail \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Ag obair air na tracaichean fuaime…"

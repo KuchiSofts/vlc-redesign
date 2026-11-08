@@ -29672,6 +29672,14 @@ msgstr "Iskanje v OpenSubtitles …"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Za ogled datotek podnapisov preiščite OpenSubtitles."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Še nimate ključa? Je brezplačen: registrirajte se na opensubtitles.com, odprite »API consumers«, izberite »New consumer«, poimenujte ga (VLC Redesign) in sem kopirajte njegov ključ API, skupaj z uporabniškim imenom in geslom svojega računa."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Odpri »API consumers«"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Obdelovanje zvočnih sledi …"

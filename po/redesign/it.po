@@ -46,7 +46,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-16 03:00+0100\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7361,6 +7361,14 @@ msgstr "Ricerca su OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Cerca su OpenSubtitles per vedere i file di sottotitoli."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Non hai ancora una chiave? È gratuita: registrati su opensubtitles.com, apri \"API consumers\", scegli \"New consumer\", dagli un nome (VLC Redesign) e copia qui la sua chiave API, insieme al nome utente e alla password del tuo account."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Apri \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Elaborazione delle tracce audio…"
@@ -7964,6 +7972,11 @@ msgstr "Navigazione DVD"
 msgid "Close navigation"
 msgstr "Chiudi navigazione"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Velocità 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7975,10 +7988,6 @@ msgstr "Preimpostazioni:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Lettore"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Velocità 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

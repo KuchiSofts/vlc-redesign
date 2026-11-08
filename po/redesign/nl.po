@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-22 21:15+0100\n"
 "Last-Translator: Thomas De Rocker\n"
 "Language-Team: Dutch (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7295,6 +7295,14 @@ msgstr "Zoeken op OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Zoek op OpenSubtitles om de ondertitelbestanden te zien."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Nog geen sleutel? Die is gratis: maak een account aan op opensubtitles.com, open \"API consumers\", kies \"New consumer\", geef deze een naam (VLC Redesign) en kopieer de API-sleutel ervan hierheen, samen met de gebruikersnaam en het wachtwoord van uw account."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" openen"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Bezig met audiosporen…"
@@ -7895,6 +7903,11 @@ msgstr "Dvd-navigatie"
 msgid "Close navigation"
 msgstr "Navigatie sluiten"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2× snelheid"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7906,10 +7919,6 @@ msgstr "Presets:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Speler"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2× snelheid"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

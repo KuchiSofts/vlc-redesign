@@ -12,6 +12,9 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-08):
 
+- 🟢 **"Also on" in About**: 0.5.6's line named 0.5.5 for the other platforms (platforms.yml was updated after
+  the build). `release-check.py --release X.Y.Z` now fails until every platform in platforms.yml is at X.Y.Z, and
+  docs/RELEASE-CHECKLIST.md says so (version, date and next of each platform, before the build).
 - 🟡 **#67, online subtitles in every app** (on request, and how to get the OpenSubtitles key free): the desktop's search (subtitle_search.cpp,
   subtitle_providers.cpp) ported to Android (OnlineSubtitles.kt, RdOnlineSubtitlesSheet, the automatic search, the
   settings, OnlineSubtitlesTest 11/11; on the Android 16 emulator: Elephants Dream 30 found, one loaded in sync and

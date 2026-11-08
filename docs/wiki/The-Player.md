@@ -319,7 +319,8 @@ channel without leaving the video.
   the TV page you picked it in, else in the channel's own group. <kbd>Page Up</kbd> and <kbd>Page Down</kbd> go
   through the group shown there.
 - **The keyboard**: <kbd>Tab</kbd> into the list, then <kbd>Up</kbd> and <kbd>Down</kbd> move through the channels,
-  <kbd>Enter</kbd> watches one, <kbd>Left</kbd> and <kbd>Right</kbd> switch the group.
+  <kbd>Enter</kbd> watches one (the keyboard stays on its row, to go on zapping), <kbd>Left</kbd> and <kbd>Right</kbd>
+  switch the group.
 - **More**: *Guide* (the TV page's guide) and *Sources*. **Open in the library** opens the TV page.
 - **No source yet**: what Live TV is, with **Add a Link** and **Browse the Catalog**. They open the TV sources over the
   player, and the channels show in the panel as soon as they load.

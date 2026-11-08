@@ -41,6 +41,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - The search of the library next to the video showed nothing of what was typed, nor its *Search* placeholder (the
   field had no height); it filtered all the same.
+- The player's control bar took the keyboard focus whenever a new media started (its buttons are made again, and
+  each one removed handed the focus to a neighbour even when it did not have it): a channel tuned with Enter from
+  the library next to the video left the list. The focus moves on only when the button removed had it.
 
 ## [0.5.6] · 2026-11-07
 

@@ -110,7 +110,14 @@ Repeater {
         // NOTE: We update the 'navigation chain' after removing the item.
         item.removeNavigation()
 
-        item.recoverFocus(index)
+        // The focus goes on to a neighbour only when the control removed had
+        // it (still known here: the item leaves the scene after the signal).
+        // Every control was taken away when the bar was made again for a new
+        // media, as a channel tuned from the library next to the video, and
+        // the focus pulled into the bar from wherever it was: the keyboard
+        // left the channel list after Enter.
+        if (item.activeFocus)
+            item.recoverFocus(index)
     }
 
     delegate: Loader {

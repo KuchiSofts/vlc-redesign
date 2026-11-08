@@ -29,11 +29,14 @@ Updated as the work moves (last: 2026-11-08, 0.5.8 published).
 **0.5.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🔨 In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
+- ✅ In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
   choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
-  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF)
-- ✅ Stability (on request): every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded, no QML
-  warning left; start-up measured (no regression), memory soaked
+  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF): desktop, Android (phones, tablets, TV)
+  and the Samsung TV app
+- ✅ Stability (on request), in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded,
+  stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread free of
+  network and disk work, no QML warning left; the desktop starts faster (window 0.60 → 0.48 s), memory soaked
+- 🟡 The release: the three apps' branches together, built and tested on every platform
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -52,3 +55,4 @@ After it:
 - 📋 Windows: tests on more real PCs (Windows 10, Intel graphics, screens of different scales)
 - 📋 Code-signed Windows releases (no SmartScreen warning): waiting for SignPath's approval
 - 💡 The Samsung TV app in Samsung's store; the TV side of casting (drawn in the design); then iPhone and iPad
+

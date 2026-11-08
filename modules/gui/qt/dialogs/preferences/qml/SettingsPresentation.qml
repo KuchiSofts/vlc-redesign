@@ -59,6 +59,11 @@ readonly property var items: ({
                             { false: qsTr("Always"), true: qsTr("In fullscreen only") }, { info: true }],
         "mouse-hide-timeout": [qsTr("Playback Controls"), qsTr("Hide after"), "slider", null, { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         "qt-fs-controller": [qsTr("Playback Controls"), qsTr("Show controls in fullscreen"), "", null, { info: true }],
+        // what a key of VLC shows in fullscreen (issue #72; ShortcutFeedback.qml);
+        // the line under it: SettingsOptionList
+        "qt-fs-shortcut-feedback": [qsTr("Playback Controls"), qsTr("When you use a shortcut in full screen"), "",
+                                    { 0: qsTr("Show the controls"), 1: qsTr("Show only the progress"),
+                                      2: qsTr("Show only a message") }, { info: true }],
         "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true }],
         "qt-start-minimized": [qsTr("Notifications and System Tray"), qsTr("Start minimized to the tray"), "", null, { info: true }],
         "qt-notification": [qsTr("Notifications and System Tray"), qsTr("Show a popup when the track changes"), "", null,

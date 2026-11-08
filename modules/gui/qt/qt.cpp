@@ -250,6 +250,13 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define QT_FULLSCREEN_LONGTEXT N_( "Show the playback controls in fullscreen when the " \
     "mouse moves. Off, only the keyboard shows them (the I key). The skins read it " \
     "for their fullscreen controller too." )
+/* What a key bound to an action shows in fullscreen (issue #72): the
+ * controls, as before, or the player's own short feedback instead
+ * (MainCtx::fsShortcutFeedback, ShortcutFeedback.qml) */
+#define QT_FS_SHORTCUT_TEXT N_( "When you use a shortcut in full screen" )
+#define QT_FS_SHORTCUT_LONGTEXT N_( "What a key of VLC (seek, volume, pause, speed...) shows " \
+    "in full screen: the controls; a thin progress line with a small message (the time " \
+    "and what the key did); or that message alone." )
 #define QT_NATIVEOPEN_TEXT N_( "Embed the file browser in open dialog" )
 
 #define FULLSCREEN_NUMBER_TEXT N_( "Define which screen fullscreen goes" )
@@ -363,6 +370,10 @@ static const int i_notification_list[] =
 static const char *const psz_notification_list_text[] =
     { N_("Never"), N_("When minimized"), N_("Always") };
 
+static const int i_fs_shortcut_list[] = { 0, 1, 2 };
+static const char *const psz_fs_shortcut_list_text[] =
+    { N_("Show the controls"), N_("Show only the progress"), N_("Show only a message") };
+
 static const int i_raise_list[] =
     { MainCtx::RAISE_NEVER, MainCtx::RAISE_VIDEO, \
       MainCtx::RAISE_AUDIO, MainCtx::RAISE_AUDIOVIDEO,  };
@@ -444,6 +455,12 @@ vlc_module_begin ()
               TITLE_LONGTEXT )
     add_bool( "qt-fs-controller", true, QT_FULLSCREEN_TEXT,
               QT_FULLSCREEN_LONGTEXT )
+    /* 0 the controls (as before), 1 the progress line and the message, 2
+     * the message only */
+    add_integer( "qt-fs-shortcut-feedback", 0, QT_FS_SHORTCUT_TEXT,
+                 QT_FS_SHORTCUT_LONGTEXT )
+        change_integer_range( 0, 2 )
+        change_integer_list( i_fs_shortcut_list, psz_fs_shortcut_list_text )
 
     add_string("qt-compositor", "auto", QT_COMPOSITOR_TEXT, QT_COMPOSITOR_LONGTEXT)
             change_string_list(compositor_vlc, compositor_user)

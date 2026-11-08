@@ -39,6 +39,9 @@ static const Option entries[] = {
     // the mouse shows the controls in fullscreen (Player.qml), the skins
     // read it too
     {"interface", "qt-fs-controller"},
+    // what a key of the hotkeys shows in fullscreen: the controls, or the
+    // player's short feedback (ShortcutFeedback.qml, issue #72)
+    {"interface", "qt-fs-shortcut-feedback"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
     // the Playlist section of the design: the queue under the folders of its

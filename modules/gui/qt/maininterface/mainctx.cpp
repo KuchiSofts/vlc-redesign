@@ -130,6 +130,9 @@ static int IntfBossCB( vlc_object_t *p_this, const char *psz_variable,
 static int IntfRaiseMainCB( vlc_object_t *p_this, const char *psz_variable,
                            vlc_value_t old_val, vlc_value_t new_val,
                            void *param );
+static int KeyFeedbackTextCB( vlc_object_t *p_this, const char *psz_variable,
+                              vlc_value_t old_val, vlc_value_t new_val,
+                              void *param );
 
 const QEvent::Type MainCtx::ToolbarsNeedRebuild =
         (QEvent::Type)QEvent::registerEventType();
@@ -257,6 +260,14 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     vlc_object_t *instance = VLC_OBJECT(vlc_object_instance(p_intf));
     var_Create(instance, "intf-volume-meter", VLC_VAR_BOOL);
     var_SetBool(instance, "intf-volume-meter", true);
+
+    /* "When you use a shortcut in full screen" (issue #72): until the time
+     * of intf-key-feedback (set as a key is sent, giveShortcutFeedback), the
+     * player gives its messages to the interface instead of drawing them on
+     * the video (src/player/osd.c) */
+    var_Create(instance, "intf-key-feedback", VLC_VAR_INTEGER);
+    var_Create(instance, "intf-key-feedback-text", VLC_VAR_STRING);
+    var_AddCallback(instance, "intf-key-feedback-text", KeyFeedbackTextCB, this);
 
     /* Get the available interfaces */
     m_extraInterfaces = new VLCVarChoiceModel(VLC_OBJECT(p_intf->intf), "intf-add", this);
@@ -392,6 +403,9 @@ MainCtx::~MainCtx()
 {
     /* no meter any more: the volume's message on the video again */
     var_SetBool(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-volume-meter", false);
+    /* nor the feedback of the keys: the core's messages, at once */
+    var_SetInteger(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-key-feedback", 0);
+    var_DelCallback(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-key-feedback-text", KeyFeedbackTextCB, this);
 
     /* The hotkeys left are dropped; an action still running ends first (as
      * the callbacks it may call go below) */
@@ -627,6 +641,7 @@ void MainCtx::loadPrefs(const bool callSignals)
     loadFromVLCOption(m_mouseHideTimeout, "mouse-hide-timeout", &MainCtx::mouseHideTimeoutChanged);
     loadFromVLCOption(m_fsSensitivity, "qt-fs-sensitivity", &MainCtx::fsSensitivityChanged);
     loadFromVLCOption(m_fullscreenControls, "qt-fs-controller", &MainCtx::fullscreenControlsChanged);
+    loadFromVLCOption(m_fsShortcutFeedback, "qt-fs-shortcut-feedback", &MainCtx::fsShortcutFeedbackChanged);
     loadFromVLCOption(m_playlistTree, "playlist-tree", &MainCtx::playlistTreeChanged);
     loadFromVLCOption(m_showErrorDialogs, "qt-error-dialogs", &MainCtx::showErrorDialogsChanged);
 
@@ -817,7 +832,107 @@ void MainCtx::sendHotkey(Qt::Key key , Qt::KeyboardModifiers modifiers)
 {
     QKeyEvent event(QEvent::KeyPress, key, modifiers );
     int vlckey = qtEventToVLCKey(&event);
+    // the player knows the key it saw went to the hotkeys (PlayerView.qml)
+    ++m_hotkeySerial;
+    if (m_shortcutFeedbackActive)
+        giveShortcutFeedback(vlckey);
     postHotkey(vlckey);
+}
+
+void MainCtx::setShortcutFeedbackActive(bool active)
+{
+    if (active == m_shortcutFeedbackActive)
+        return;
+    m_shortcutFeedbackActive = active;
+    m_seekSum.reset();
+    // out of full screen: the core's messages on the video again at once
+    if (!active)
+        var_SetInteger(vlc_object_instance(p_intf), "intf-key-feedback", 0);
+    emit shortcutFeedbackActiveChanged();
+}
+
+int MainCtx::shortcutKindOf(const QString &action) const
+{
+    const int kind = shortcutfeedback::kindOf(action.toStdString());
+    // the arrows turn a 360 degrees video (VLC's player): the picture shows
+    // it, the controls show as before
+    if (action.startsWith(QLatin1String("nav-")) && kind != shortcutfeedback::Controls)
+    {
+        PlayerController *player = p_intf->p_mainPlayerController;
+        const SharedVOutThread vout = player ? player->getVout() : SharedVOutThread();
+        if (vout && var_GetBool(vout.get(), "viewpoint-changeable"))
+            return shortcutfeedback::Controls;
+    }
+    return kind;
+}
+
+int MainCtx::shortcutKind(Qt::Key key, Qt::KeyboardModifiers modifiers) const
+{
+    QKeyEvent event(QEvent::KeyPress, key, modifiers);
+    return shortcutKindOf(vlcKeyAction(VLC_OBJECT(p_intf), qtEventToVLCKey(&event)));
+}
+
+QString MainCtx::shortcutRateText(double rate) const
+{
+    return qfu(shortcutfeedback::rateText(rate).c_str());
+}
+
+void MainCtx::giveShortcutFeedback(int vlcKey)
+{
+    using namespace shortcutfeedback;
+    const QString action = vlcKeyAction(VLC_OBJECT(p_intf), vlcKey);
+    const int kind = shortcutKindOf(action);
+    // the controls (as before), or the volume: the window's meter shows it
+    // (VolumeMeter.qml; the core has no message for it with the meter)
+    if (kind == None || kind == Controls || kind == Volume)
+    {
+        m_seekSum.reset();
+        return;
+    }
+
+    QString text;
+    PlayerController *player = p_intf->p_mainPlayerController;
+    if (kind == Seek)
+    {
+        const int64_t sizes[4] = { var_InheritInteger(p_intf, "extrashort-jump-size"),
+                                   var_InheritInteger(p_intf, "short-jump-size"),
+                                   var_InheritInteger(p_intf, "medium-jump-size"),
+                                   var_InheritInteger(p_intf, "long-jump-size") };
+        // (a live stream doesn't jump: the time only)
+        const int64_t seconds = player && player->isSeekable()
+                                ? jumpSeconds(action.toStdString(), sizes) : 0;
+        if (seconds != 0)
+        {
+            const int64_t sum = m_seekSum.add(seconds, MS_FROM_VLC_TICK(vlc_tick_now()));
+            /* xgettext: The step of a jump in seconds shown in full screen
+             * ("+10 s"); a minute and more are written 1:10 */
+            // xgettext:no-c-format
+            const QString format = qtr("%1 s");
+            text = qfu(stepText(sum, format.toStdString()).c_str());
+        }
+        else
+            m_seekSum.reset();
+    }
+    else
+    {
+        m_seekSum.reset();
+        // the action's name in the shortcuts, until (or without) the core's
+        // message for it
+        if (kind == Frame || kind == Message)
+        {
+            const QByteArray option = QByteArrayLiteral("key-") + action.toLatin1();
+            const module_config_t *item = config_FindConfig(option.constData());
+            if (item && item->psz_text)
+                text = qfut(item->psz_text);
+        }
+    }
+
+    /* The core draws none of its messages on the video for a moment
+     * (src/player/osd.c): the feedback is the one message. Set before the
+     * key goes (its action may run at once in the hotkeys' thread). */
+    var_SetInteger(vlc_object_instance(p_intf), "intf-key-feedback",
+                   vlc_tick_now() + VLC_TICK_FROM_MS(feedbackMs));
+    emit shortcutFeedback(kind, action, text);
 }
 
 double MainCtx::windowLuminance(QQuickWindow *window, const QRectF &area) const
@@ -1363,6 +1478,22 @@ static int IntfShowCB( vlc_object_t *, const char *,
 }
 
 /*****************************************************************************
+ * KeyFeedbackTextCB: the message the player gave instead of drawing it on
+ * the video, for a key fed back in full screen (src/player/osd.c). From any
+ * thread: shown in the interface's.
+ *****************************************************************************/
+static int KeyFeedbackTextCB( vlc_object_t *, const char *,
+                              vlc_value_t, vlc_value_t new_val, void *param )
+{
+    MainCtx *ctx = static_cast<MainCtx *>( param );
+    const QString text = qfu( new_val.psz_string ? new_val.psz_string : "" ).trimmed();
+    if( !text.isEmpty() )
+        QMetaObject::invokeMethod( ctx, [ctx, text]() { emit ctx->shortcutMessage( text ); },
+                                   Qt::QueuedConnection );
+    return VLC_SUCCESS;
+}
+
+/*****************************************************************************
  * IntfRaiseMainCB: callback triggered by the intf-show-main libvlc variable.
  *****************************************************************************/
 static int IntfRaiseMainCB( vlc_object_t *, const char *,
@@ -1609,6 +1740,8 @@ bool MainCtx::takeSizeKey(int vlcKey, bool playerKeys)
         const int step = subtitleScaleStep(p_intf, vlcKey);
         if (step != 2)
         {
+            // a key of an action of VLC: its size is its feedback
+            ++m_hotkeySerial;
             player->stepSubtitleTextScale(step, true, vlcKey);
             return true;
         }

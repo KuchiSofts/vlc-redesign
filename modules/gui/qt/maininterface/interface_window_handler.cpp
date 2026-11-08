@@ -456,6 +456,8 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
             {
                 if (m_spacePressed || takeSpace)
                 {
+                    // (the hotkeys' key: not the controls in full screen)
+                    m_mainCtx->keyHeldForHotkeys();
                     event->accept();
                     return true;
                 }
@@ -466,6 +468,9 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
                 m_spacePressed = takeSpace;
                 if (takeSpace)
                 {
+                    // played or paused as it is released, a hold speeds up:
+                    // the hotkeys' key all the same (PlayerView.qml)
+                    m_mainCtx->keyHeldForHotkeys();
                     m_spaceTapPending = true;
                     m_spaceHoldTimer.start();
                     event->accept();

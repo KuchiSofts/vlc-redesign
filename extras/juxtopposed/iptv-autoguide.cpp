@@ -145,6 +145,50 @@ static void testGuides()
     CHECK(pickGuides(catalog, {}, {}, 4, 2).isEmpty());
 }
 
+// Names that end in "TV" (about 1 in 8 of iptv-org's): matched by a list
+// that writes them with or without it, both sides folded the same way (a
+// table that dropped it on one side never matched them)
+static void testTvNames()
+{
+    bool tv = false;
+    CHECK(matchName(QStringLiteral("Arte TV"), nullptr, nullptr, &tv) == QLatin1String("artetv") && tv);
+    CHECK(matchName(QStringLiteral("Channel 5 TV HD"), nullptr, nullptr, &tv) == QLatin1String("channel5tv") && tv);
+    CHECK(matchName(QStringLiteral("Arte"), nullptr, nullptr, &tv) == QLatin1String("arte") && !tv);
+    // (one word: "MTV" is not "M" and a "TV", "TV" alone is a name)
+    CHECK(matchName(QStringLiteral("MTV"), nullptr, nullptr, &tv) == QLatin1String("mtv") && !tv);
+    CHECK(matchName(QStringLiteral("TV"), nullptr, nullptr, &tv) == QLatin1String("tv") && !tv);
+
+    const Matcher matcher(QVector<Known> {
+        { QStringLiteral("Arte.fr"), QStringLiteral("Arte TV"), {}, QStringLiteral("FR") },
+        { QStringLiteral("Channel5.uk"), QStringLiteral("Channel 5 TV"), {}, QStringLiteral("GB") },
+        { QStringLiteral("Rai1.it"), QStringLiteral("Rai 1"), {}, QStringLiteral("IT") },
+        { QStringLiteral("MTV.us"), QStringLiteral("MTV"), {}, QStringLiteral("US") } });
+    auto idOf = [&](const char *name) {
+        return matcher.match(QString(), QString::fromUtf8(name), QString(), QString()).id;
+    };
+    // iptv-org's "Arte TV": the list's "Arte", "Arte TV", "FR: Arte HD"
+    CHECK(idOf("Arte") == QLatin1String("Arte.fr"));
+    CHECK(idOf("Arte TV") == QLatin1String("Arte.fr"));
+    CHECK(idOf("FR: Arte HD") == QLatin1String("Arte.fr"));
+    // "Channel 5 TV": the list's "Channel 5 TV HD", "Channel 5"
+    CHECK(idOf("Channel 5 TV HD") == QLatin1String("Channel5.uk"));
+    CHECK(idOf("Channel 5") == QLatin1String("Channel5.uk"));
+    // iptv-org's "Rai 1": the list's "Rai 1 TV"
+    CHECK(idOf("Rai 1 TV") == QLatin1String("Rai1.it"));
+    // "MTV" is no "M"
+    CHECK(idOf("MTV") == QLatin1String("MTV.us"));
+    CHECK(idOf("M").isEmpty());
+    // a "+1" of a name written without its "TV": an hour later
+    const Match later = matcher.match(QString(), QStringLiteral("Arte +1"), QString(), QString());
+    CHECK(later.id == QLatin1String("Arte.fr") && later.shiftSecs == 3600);
+    // the name as it is first: "Sample" is "Sample", not "Sample TV"
+    const Matcher both(QVector<Known> {
+        { QStringLiteral("SampleTV.uk"), QStringLiteral("Sample TV"), {}, QStringLiteral("GB") },
+        { QStringLiteral("Sample.uk"), QStringLiteral("Sample"), {}, QStringLiteral("GB") } });
+    CHECK(both.match(QString(), QStringLiteral("Sample"), QString(), QString()).id == QLatin1String("Sample.uk"));
+    CHECK(both.match(QString(), QStringLiteral("Sample TV"), QString(), QString()).id == QLatin1String("SampleTV.uk"));
+}
+
 static double secondsOf(const std::function<void()> &f)
 {
     QElapsedTimer timer;
@@ -226,6 +270,7 @@ int main(int argc, char **argv)
     testMatcher();
     testGuides();
     testLarge();
+    testTvNames();
     std::printf("TV automatic guide: %d checks, %d failed\n", checks, failures);
     return failures ? 1 : 0;
 }

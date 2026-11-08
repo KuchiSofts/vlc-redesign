@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `adfa27855b` (2026-11-08).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `f94b611735` (2026-11-08).
 
 **Contents:** [Unreleased](#unreleased) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -45,8 +45,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   first: OpenSubtitles, Wizdom, Addic7ed and YIFY Subtitles. The keys stay on the computer, on Windows sealed for
   your user (a copy of the settings elsewhere can't read them), and are never written to the log; the library's
   **From OpenSubtitles** uses the same OpenSubtitles.com key and account.
-- VideoLAN's master merged up to `adfa27855b` (1 commit): a race in the Qt interface's MediaTreeListener destructor
-  fixed.
+- VideoLAN's master merged up to `f94b611735` (2 commits): a race in the Qt interface's MediaTreeListener destructor
+  fixed; the Record item of the playlist's menu takes its icon as the other items do.
 
 - Translations: the texts of the TV menu of the library next to the video are on Weblate too (`po/redesign`),
   with their translations.

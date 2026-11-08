@@ -1,0 +1,12 @@
+192.168.1.5
+http://192.168.1.5:8096/
+https://user:pw@media.example:8920/jellyfin/?x=1#f
+media.example/emby
+http://[::1]:8096
+http://[fe80::1%25eth0]/
+ftp://media.example
+http://panel.example:8080/get.php?username=me&password=p%40ss&type=m3u_plus
+panel.example:8080/player_api.php
+http://panel.example/get.php?username=&password=x
+http://:80
+http://a:99999/

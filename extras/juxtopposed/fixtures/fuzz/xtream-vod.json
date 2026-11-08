@@ -1,0 +1,4 @@
+[{"num":1,"name":"Film","stream_type":"movie","stream_id":7,"stream_icon":"http://p/7.jpg","rating":"7.5","rating_5based":3.8,
+"added":"1700000000","is_adult":"0","category_id":"3","container_extension":"mkv","year":"1999"},
+{"num":2,"name":"Second","stream_id":"8","rating":8,"added":1700000001,"category_id":9,"container_extension":"","year":2001},
+{"num":3,"name":"No rating","stream_id":9,"rating":null,"added":null,"year":null}]

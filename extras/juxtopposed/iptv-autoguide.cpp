@@ -13,10 +13,13 @@
  */
 #include "modules/misc/iptv/autoguide.hpp"
 
+#include <QElapsedTimer>
 #include <QFile>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <cstdio>
+#include <functional>
 
 using namespace iptv::autoguide;
 
@@ -142,12 +145,87 @@ static void testGuides()
     CHECK(pickGuides(catalog, {}, {}, 4, 2).isEmpty());
 }
 
+static double secondsOf(const std::function<void()> &f)
+{
+    QElapsedTimer timer;
+    timer.start();
+    f();
+    return double(timer.nsecsElapsed()) / 1e9;
+}
+
+// What a hostile list or catalog could make slow: a name of a megabyte of
+// '(' never closed (each looked for to the end: a minute), thousands of
+// channels of one name (their candidates sorted and looked through at every
+// match: hours), thousands of guides of hosts it does not rank (ranked again
+// for each country: minutes)
+static void testLarge()
+{
+    double took = secondsOf([] {
+        CHECK(!matchName(QString(1 << 20, QLatin1Char('('))).contains(QLatin1Char('(')));
+        matchName(QString(1 << 20, QLatin1Char('[')));
+    });
+    std::printf("matchName of 1 MB of '(' and of '[': %.3f s\n", took);
+    CHECK(took < 2.0);
+    // (what it was is kept: the name of a channel, its country, its "+1")
+    QString country;
+    int plus = 0;
+    CHECK(matchName(QStringLiteral("UK: BBC One (+1) [Geo-blocked]"), &country, &plus) == QStringLiteral("bbcone")
+          && country == QStringLiteral("GB") && plus == 1);
+
+    const int count = 20000;
+    QVector<Known> same;
+    for (int i = 0; i < count; ++i)
+        same.append({ QStringLiteral("Same%1.x").arg(i), QStringLiteral("Same"), {},
+                      QString(QChar(u'A' + i % 26)) + QChar(u'A' + (i / 26) % 26) });
+    // two more of one country, at the end
+    same.append({ QStringLiteral("Last.il"), QStringLiteral("Last"), {}, QStringLiteral("IL") });
+    same.append({ QStringLiteral("Last2.il"), QStringLiteral("Last"), {}, QStringLiteral("IL") });
+    took = secondsOf([&] {
+        const Matcher matcher(same);
+        for (int i = 0; i < count; ++i)
+            matcher.match(QString(), QStringLiteral("Same"), QString(), QStringLiteral("IL"));
+        // the first of a country, in the order of the database
+        CHECK(matcher.match(QString(), QStringLiteral("Same"), QStringLiteral("AB"), QString()).id
+              == QStringLiteral("Same26.x"));
+        // several countries and none asked: none
+        CHECK(!matcher.match(QString(), QStringLiteral("Same"), QString(), QString()).isValid());
+        // all of one country: the first
+        CHECK(matcher.match(QString(), QStringLiteral("Last"), QString(), QString()).id == QStringLiteral("Last.il"));
+        // a "+1" of a name only without it: the guide of that one, an hour later
+        const Match later = matcher.match(QString(), QStringLiteral("Last +1"), QString(), QString());
+        CHECK(later.id == QStringLiteral("Last.il") && later.shiftSecs == 3600);
+    });
+    std::printf("Matcher of %d channels of one name, and as many matches: %.3f s\n", count, took);
+    CHECK(took < 5.0);
+
+    QJsonArray catalog;
+    for (int i = 0; i < count; ++i)
+        catalog.append(QJsonObject { { QStringLiteral("kind"), QStringLiteral("epg") },
+                                     { QStringLiteral("url"), QStringLiteral("https://other%1.example/g.xml").arg(i) },
+                                     { QStringLiteral("countries"),
+                                       QJsonArray { QString(QChar(u'A' + i % 26)) + QChar(u'A' + (i / 26) % 12) } } });
+    catalog.append(QJsonObject { { QStringLiteral("kind"), QStringLiteral("epg") },
+                                 { QStringLiteral("url"), QStringLiteral("https://iptv-epg.org/files/epg-zz.xml.gz") },
+                                 { QStringLiteral("countries"), QJsonArray { QStringLiteral("ZZ") } } });
+    QHash<QString, int> byCountry;
+    for (int i = 0; i < 300; ++i)
+        byCountry.insert(QString(QChar(u'A' + i % 26)) + QChar(u'A' + (i / 26) % 12), 3);
+    byCountry.insert(QStringLiteral("ZZ"), 2);
+    QStringList picked;
+    took = secondsOf([&] { picked = pickGuides(catalog, byCountry, {}, 100, 2); });
+    std::printf("pickGuides of %d guides of hosts it does not rank, %lld countries: %.3f s\n", count + 1,
+                (long long)byCountry.size(), took);
+    CHECK(took < 2.0);
+    CHECK(picked == QStringList { QStringLiteral("https://iptv-epg.org/files/epg-zz.xml.gz") });
+}
+
 int main(int argc, char **argv)
 {
     fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures/iptv-autoguide");
     testNames();
     testMatcher();
     testGuides();
+    testLarge();
     std::printf("TV automatic guide: %d checks, %d failed\n", checks, failures);
     return failures ? 1 : 0;
 }

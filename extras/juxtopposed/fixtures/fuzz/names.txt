@@ -1,0 +1,25 @@
+Example News HD
+IL: Test Channel
+UK: BBC One (1080p) [Geo-blocked]
+US | CNN
+|FR| France 2 FHD
+DE - Das Erste
+Sky Sports +1
+Film4 +12
+Film4 +13
+Channel 4 (+1)
+Café Télé
+Ｆｕｌｌ Ｗｉｄｔｈ
+M&M TV 4K HEVC
+(US) Fox
+[Not 24/7] Radio
+{x} curly
+ערוץ 12
+قناة الجزيرة
+a
++
+(
+()
+a (b [c {d
+TV
+HD

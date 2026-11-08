@@ -14,8 +14,9 @@ MASTER-PLAN.md 13.3) into what shows it:
   python render.py --check      fails if one of them is out of date
   python render.py --also-on windows
                                 prints the "Also on" line of the release notes
-  python render.py --build DIR  the website ready to publish in DIR: site/
-                                and the screenshots of docs/media
+  python render.py --build DIR  the website ready to publish in DIR: site/,
+                                the screenshots of docs/media and the catalog
+                                of Live TV (tv/catalog.json)
 
 Python 3.8 or later, standard library only. platforms.yml is read by a small
 reader of its own, for the shape that file keeps (mappings, lists of mappings
@@ -404,6 +405,11 @@ def build(target, data):
         src = os.path.join(ROOT, rel)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(media, os.path.basename(rel)))
+    # the catalog of Live TV, as checked last (the app fetches it once a day)
+    catalog = os.path.join(ROOT, 'modules', 'misc', 'iptv', 'catalog', 'catalog.json')
+    if os.path.exists(catalog):
+        os.makedirs(os.path.join(target, 'tv'), exist_ok=True)
+        shutil.copy2(catalog, os.path.join(target, 'tv', 'catalog.json'))
     # no Jekyll on GitHub Pages: the files as they are
     open(os.path.join(target, '.nojekyll'), 'w').close()
 

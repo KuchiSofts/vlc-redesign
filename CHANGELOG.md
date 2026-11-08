@@ -34,6 +34,29 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   results (your preferred and second languages, and any you add), each on or off, moved or removed. **Every other
   language too** is off at first: the services are asked only for your languages, a faster search; the search that
   runs by itself uses the same list.
+- **Live TV: your own servers and tuners**, in TV Sources › **Accounts**: **Jellyfin** and **Emby** (their Live TV,
+  channels and guide; your user and password or an API key), **Tvheadend** (with its user, Basic or Digest),
+  **NextPVR** (its PIN), **Channels DVR** and **HDHomeRun** tuners (their channels and free guide). **Test** or
+  **Sign in** (*Signed in as …*, *Server found*, *Wrong user name or password*), **Sign Out**; a server that refuses
+  the sign-in says *Sign-in refused: check it* on the source's row. Those on your network are offered by themselves
+  (*Found on your network*: Jellyfin and Emby, HDHomeRun, Channels DVR). Plex is left out: its Live TV needs a Plex
+  Pass and plays only through its transcoder's sessions.
+- **Schedules Direct**, a paid guide (the US, Canada and more), for the channels of every source: the stations of
+  your account's lineups, matched by their names and call signs. Only the SHA-1 of the password is kept.
+- An **M3U behind a login**: Add a Link takes its user name and password (Basic or Digest), optional.
+- **The automatic guide**: a source whose guides miss channels has them matched to iptv-org's database of channels
+  (their guide id, else their name and country, without "HD", accents or country prefixes; a "+1" channel gets the
+  guide of the one it repeats, an hour later) and the free guides of the catalog for their countries attached:
+  *Guide found for 112 of 130 channels*, with **Undo**. By itself after an update, once a week at most, or **Find a
+  Guide**. **Guide Id…** in a channel's menu: the id you give it comes first.
+- **Guides** in TV Sources: each source's guides with their state (programmes, error, *Off*) and where each comes
+  from (*Added by you*, *From the playlist*, *Found for you*), **Turn Off** / **Turn On**, **Remove**; per source
+  **Find a Guide**, **Update** and **Edit**.
+- **A smarter catalog**: 460 free, legal sources, with iptv-org's lists of every country (180) and category (29)
+  that has channels, made from its API, each country's with the guide that names its channels by iptv-org's ids.
+  **For you** first (your country and languages) and **Recommended**; every list and guide is checked every day,
+  and one that fails twice says *Not answering* and comes last. The app fetches the catalog checked last from the
+  project's website once a day (offline: the one built in).
 
 ### Changed
 
@@ -50,6 +73,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - Translations: the texts of the TV menu of the library next to the video are on Weblate too (`po/redesign`),
   with their translations.
+- Live TV, technical: the servers' APIs (`modules/misc/iptv/servers.cpp`) and the automatic guide
+  (`autoguide.cpp`) are pure parsers with fixtures (`iptv-servers`, 135 checks; `iptv-autoguide`, 47 checks, in
+  `unit-tests.sh`); the HTTP client of the interface (WinHTTP, curl) gained Basic and Digest sign-in and a blocking
+  call, used by the add-on's worker. The network discovery sends from the address of the default route (Windows
+  otherwise sends on a virtual adapter of Hyper-V, Docker or WSL). `iptv_org.py` makes the catalog's iptv-org lists
+  and checks every list and guide; the website's workflow runs it every day and publishes `tv/catalog.json`.
 
 ## [0.5.7] · 2026-11-08
 

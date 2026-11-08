@@ -21,13 +21,20 @@
 #include <vlc_keystore.h>
 #include <vlc_stream.h>
 #include <vlc_fs.h>
+#include <vlc_network.h>
 
 #include "service.hpp"
+// (the HTTP client of the interface: the servers' APIs, POST and sign-ins)
+#include "../../gui/qt/util/http_request.hpp"
 
 #include <QDateTime>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonDocument>
+#include <QRandomGenerator>
+#include <QUrl>
+#include <chrono>
 
 #include <cstdlib>
 #include <cstring>
@@ -51,7 +58,9 @@ namespace {
 class VlcHost : public iptv::Host
 {
 public:
-    VlcHost(vlc_iptv_t* obj, const std::string& keystoreFile) : m_obj(obj)
+    VlcHost(vlc_iptv_t* obj, const std::string& keystoreFile)
+        : m_obj(obj)
+        , m_folder(QFileInfo(QString::fromStdString(keystoreFile)).absolutePath())
     {
         // a keystore that keeps the secrets (not the one in memory)
         var_Create(obj, "keystore", VLC_VAR_STRING);
@@ -247,8 +256,152 @@ public:
             vlc_interrupt_kill(m_interrupt);
     }
 
+    iptv::HttpReply call(const iptv::HttpCall& c) override
+    {
+        HttpRequest request;
+        request.method = c.method;
+        request.url = QUrl(c.url);
+        request.headers = c.headers;
+        request.headers.append(qMakePair(QByteArray("User-Agent"), QByteArray("VLC-Redesign")));
+        request.body = c.body;
+        request.username = c.username;
+        request.password = c.password;
+        request.timeoutMs = c.timeoutMs;
+        request.deadlineMs = c.timeoutMs * 4;
+        request.maxBytes = c.maxBytes;
+        const HttpResponse response = httpRequestSync(request);
+        iptv::HttpReply reply;
+        reply.status = response.status;
+        reply.body = response.body;
+        reply.error = response.error;
+        if (response.body.size() > c.maxBytes)
+        {
+            reply.body.clear();
+            reply.error = QStringLiteral("too large");
+        }
+        return reply;
+    }
+
+    QVector<iptv::Datagram> broadcast(quint16 port, const QByteArray& packet, int ms,
+                                      const QString& address) override
+    {
+        QVector<iptv::Datagram> answers;
+        const int fd = vlc_socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, true);
+        if (fd == -1)
+            return answers;
+        int yes = 1;
+        setsockopt(fd, SOL_SOCKET, SO_BROADCAST, reinterpret_cast<const char*>(&yes), sizeof(yes));
+        // from the address this computer has on the network of its default
+        // route (a UDP "connect" sends nothing): Windows sends a broadcast or
+        // a multicast on its first adapter otherwise, often a virtual one
+        // (Hyper-V, Docker, WSL) where nothing answers
+        struct in_addr local = {};
+        {
+            const int probe = vlc_socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP, true);
+            if (probe != -1)
+            {
+                struct sockaddr_in away = {};
+                away.sin_family = AF_INET;
+                away.sin_port = htons(9);
+                // (TEST-NET-1: an address never reached)
+                inet_pton(AF_INET, "192.0.2.1", &away.sin_addr);
+                struct sockaddr_in name = {};
+                socklen_t nameLength = sizeof(name);
+                if (connect(probe, reinterpret_cast<const struct sockaddr*>(&away), sizeof(away)) == 0
+                    && getsockname(probe, reinterpret_cast<struct sockaddr*>(&name), &nameLength) == 0)
+                    local = name.sin_addr;
+                net_Close(probe);
+            }
+        }
+        if (local.s_addr != 0)
+        {
+            struct sockaddr_in bound = {};
+            bound.sin_family = AF_INET;
+            bound.sin_addr = local;
+            bind(fd, reinterpret_cast<const struct sockaddr*>(&bound), sizeof(bound));
+            setsockopt(fd, IPPROTO_IP, IP_MULTICAST_IF, reinterpret_cast<const char*>(&local), sizeof(local));
+        }
+        struct sockaddr_in to = {};
+        to.sin_family = AF_INET;
+        to.sin_port = htons(port);
+        to.sin_addr.s_addr = htonl(INADDR_BROADCAST);
+        if (!address.isEmpty())
+        {
+            // a multicast group (mDNS): the hops multicast DNS asks for
+            if (inet_pton(AF_INET, qUtf8Printable(address), &to.sin_addr) != 1)
+            {
+                net_Close(fd);
+                return answers;
+            }
+#ifdef _WIN32
+            DWORD ttl = 255;
+#else
+            unsigned char ttl = 255;
+#endif
+            setsockopt(fd, IPPROTO_IP, IP_MULTICAST_TTL, reinterpret_cast<const char*>(&ttl), sizeof(ttl));
+        }
+        if (sendto(fd, packet.constData(), int(packet.size()), 0, reinterpret_cast<const struct sockaddr*>(&to),
+                   sizeof(to)) < 0)
+        {
+            net_Close(fd);
+            return answers;
+        }
+        const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(ms);
+        char buffer[8192];
+        for (;;)
+        {
+            const auto left = std::chrono::duration_cast<std::chrono::milliseconds>(
+                deadline - std::chrono::steady_clock::now()).count();
+            if (left <= 0)
+                break;
+            struct pollfd ufd = {};
+            ufd.fd = fd;
+            ufd.events = POLLIN;
+            if (poll(&ufd, 1, int(left)) <= 0)
+                break;
+            struct sockaddr_in from = {};
+            socklen_t fromLength = sizeof(from);
+            const auto got = recvfrom(fd, buffer, sizeof(buffer), 0, reinterpret_cast<struct sockaddr*>(&from),
+                                      &fromLength);
+            if (got <= 0)
+                continue;
+            char address[64] = {};
+            if (!inet_ntop(AF_INET, &from.sin_addr, address, sizeof(address)))
+                continue;
+            answers.append({ QString::fromLatin1(address), QByteArray(buffer, int(got)) });
+            if (answers.size() >= 32)
+                break;
+        }
+        net_Close(fd);
+        return answers;
+    }
+
+    QString deviceId() override
+    {
+        // made once, kept next to the sources (what a server names this
+        // client by, in its list of devices)
+        std::lock_guard<std::mutex> guard(m_deviceLock);
+        if (!m_deviceId.isEmpty())
+            return m_deviceId;
+        QFile file(m_folder + QStringLiteral("/device-id"));
+        if (file.open(QIODevice::ReadOnly))
+            m_deviceId = QString::fromLatin1(file.readAll()).trimmed();
+        file.close();
+        if (m_deviceId.size() < 16)
+        {
+            m_deviceId = QString::number(QRandomGenerator::global()->generate64(), 16)
+                       + QString::number(QRandomGenerator::global()->generate64(), 16);
+            if (file.open(QIODevice::WriteOnly))
+                file.write(m_deviceId.toLatin1());
+        }
+        return m_deviceId;
+    }
+
 private:
     vlc_iptv_t* m_obj;
+    QString m_folder;
+    std::mutex m_deviceLock;
+    QString m_deviceId;
     vlc_keystore* m_keystore = nullptr;
     std::mutex m_keystoreLock;
     vlc_interrupt_t* m_interrupt = nullptr;

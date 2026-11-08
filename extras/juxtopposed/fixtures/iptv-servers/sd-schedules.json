@@ -1,0 +1,40 @@
+[
+ {
+  "stationID": "90001",
+  "programs": [
+   {
+    "programID": "EP000000010001",
+    "airDateTime": "2026-11-09T05:00:00Z",
+    "duration": 1800,
+    "md5": "a"
+   },
+   {
+    "programID": "SH000000020000",
+    "airDateTime": "2026-11-09T05:30:00Z",
+    "duration": 3600,
+    "md5": "b"
+   },
+   {
+    "programID": "",
+    "airDateTime": "2026-11-09T06:30:00Z",
+    "duration": 600
+   }
+  ],
+  "metadata": {
+   "modified": "2026-11-08T10:00:00Z",
+   "md5": "c",
+   "startDate": "2026-11-09"
+  }
+ },
+ {
+  "stationID": "90002",
+  "programs": [
+   {
+    "programID": "EP000000010001",
+    "airDateTime": "2026-11-09T06:00:00Z",
+    "duration": 1800,
+    "md5": "d"
+   }
+  ]
+ }
+]

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:32+0000\n"
+"POT-Creation-Date: 2026-11-08 10:17+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Potato <sheppaul@naver.com>\n"
 "Language-Team: Korean (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
-#: modules/gui/qt/menus/menus.cpp:910
+#: modules/gui/qt/menus/menus.cpp:908
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:43
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistButton.qml:36
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistNameWidget.qml:26
@@ -1523,7 +1523,7 @@ msgstr "Windows 10 버전 1809 이상이 필요합니다."
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:166
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:194
@@ -1682,7 +1682,7 @@ msgid "Add to Media Library"
 msgstr "미디어 라이브러리에 추가"
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -1774,7 +1774,7 @@ msgstr "비밀번호 저장"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
-#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:65
+#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "네트워크 스트림 열기"
 
@@ -1799,8 +1799,11 @@ msgid "e.g., https://www.example.com/stream.avi"
 msgstr "예: https://www.example.com/stream.avi"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:368
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:461
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
 msgid "(optional)"
 msgstr "(선택 사항)"
 
@@ -3507,7 +3510,7 @@ msgstr "전문가 환경설정"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:428
+#: modules/misc/iptv/iptv.cpp:581
 msgid "Live TV"
 msgstr "실시간 TV"
 
@@ -3616,7 +3619,7 @@ msgid "Languages to search"
 msgstr "검색할 언어"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:421
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
@@ -3651,14 +3654,17 @@ msgid "Key works"
 msgstr "키가 유효합니다"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
 msgid "Signed in as %1"
 msgstr "%1 계정으로 로그인됨"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Key refused"
 msgstr "키가 거부됨"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Wrong user name or password"
 msgstr "사용자명 또는 비밀번호가 잘못되었습니다"
 
@@ -3668,6 +3674,7 @@ msgid "Busy: try again in a minute"
 msgstr "혼잡: 1분 후에 다시 시도하세요"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
 msgid "No answer, try again"
 msgstr "응답 없음, 다시 시도하세요"
 
@@ -3685,6 +3692,7 @@ msgid "Key refused: check it"
 msgstr "키가 거부됨: 확인하세요"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "로그인이 거부됨: 확인하세요"
@@ -3698,16 +3706,23 @@ msgid "Your free key"
 msgstr "무료 키"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
 msgid "User name (optional)"
 msgstr "사용자명(선택 사항)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
 msgid "User name"
 msgstr "사용자명"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
 msgstr "비밀번호(선택 사항)"
 
@@ -3716,6 +3731,7 @@ msgid "Email"
 msgstr "이메일"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Sign in"
 msgstr "로그인"
 
@@ -4419,7 +4435,7 @@ msgid "History"
 msgstr "기록"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:423
+#: modules/misc/iptv/iptv.cpp:576
 msgid "Live TV (IPTV) add-on"
 msgstr "실시간 TV(IPTV) 애드온"
 
@@ -4429,8 +4445,8 @@ msgstr "실시간 TV(IPTV) 애드온"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "편성표"
@@ -5248,8 +5264,8 @@ msgid "Updating…"
 msgstr "업데이트 중…"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -5286,7 +5302,7 @@ msgid "Free channel lists"
 msgstr "무료 채널 목록"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:210
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "카탈로그 둘러보기"
@@ -5577,69 +5593,69 @@ msgstr "프로필 삭제"
 msgid "Its layout and its settings go with it."
 msgstr "레이아웃과 설정도 함께 삭제됩니다."
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:869
+#: modules/gui/qt/iptv/iptv_addon.cpp:943
 msgid "This channel cannot be played"
 msgstr "이 채널을 재생할 수 없습니다"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:909
+#: modules/gui/qt/iptv/iptv_addon.cpp:983
 msgid "This programme is older than the channel's archive"
 msgstr "이 프로그램은 채널 아카이브보다 오래되었습니다"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:910
+#: modules/gui/qt/iptv/iptv_addon.cpp:984
 msgid "This programme has not started yet"
 msgstr "이 프로그램은 아직 시작하지 않았습니다"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:911
+#: modules/gui/qt/iptv/iptv_addon.cpp:985
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr "이 채널에는 아카이브가 없어 지난 프로그램을 재생할 수 없습니다"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:935
+#: modules/gui/qt/iptv/iptv_addon.cpp:1009
 msgid "The guide does not say what is on"
 msgstr "편성표에 현재 방송 정보가 없습니다"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:1059
 msgid "No channel %1"
 msgstr "채널 %1 없음"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1187
+#: modules/gui/qt/iptv/iptv_addon.cpp:1261
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1분"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1시간"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1시간 %2분"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1272
 msgid "Today"
 msgstr "오늘"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1200
+#: modules/gui/qt/iptv/iptv_addon.cpp:1274
 msgid "Tomorrow"
 msgstr "내일"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1202
+#: modules/gui/qt/iptv/iptv_addon.cpp:1276
 msgid "Yesterday"
 msgstr "어제"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
+#: modules/gui/qt/iptv/qml/TvToast.qml:91
 msgid "Watch"
 msgstr "시청"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:37
 msgid "Watch from the start"
 msgstr "처음부터 시청"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:45
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
@@ -5649,13 +5665,17 @@ msgstr "처음부터 시청"
 msgid "Favorite"
 msgstr "즐겨찾기"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:48
 msgid "Show in the Guide"
 msgstr "편성표에서 보기"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:50
 msgid "What's On"
 msgstr "현재 방송 정보"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
+msgid "Guide Id…"
+msgstr "편성표 ID…"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
@@ -5666,9 +5686,9 @@ msgid "Next at %1"
 msgstr "다음: %1"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1일"
@@ -5680,24 +5700,24 @@ msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "다시보기: 지난 %1일"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:277
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:674
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
 msgid "Films"
 msgstr "영화"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:278
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:675
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
 msgid "Series"
 msgstr "시리즈"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:185
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "VLC에서 TV 시청"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:195
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
@@ -5706,48 +5726,48 @@ msgstr ""
 "TV 공급자의 재생목록 링크(M3U)나 Xtream Codes 로그인 정보, 또는 카탈로그의 무"
 "료 채널 목록을 추가하세요. 방송 편성표도 함께 제공됩니다."
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:448
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "링크 추가"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:257
 msgid "Updating the guide of %1… %2 MB"
 msgstr "%1의 편성표 업데이트 중… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:258
 msgid "Updating the channels of %1…"
 msgstr "%1의 채널 업데이트 중…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:261
 msgid "%1 could not be loaded: %2"
 msgstr "%1을(를) 불러올 수 없음: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:455
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "검색과 일치하는 채널이 없습니다"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:456
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "아직 즐겨찾는 채널이 없음: 채널을 마우스 오른쪽 버튼으로 클릭하여 추가하세요"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:457
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "아직 시청한 채널이 없습니다"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:458
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "채널 불러오는 중…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:459
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
@@ -5894,7 +5914,7 @@ msgid "Channel"
 msgstr "채널"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Catch-up"
 msgstr "다시보기"
 
@@ -5903,106 +5923,153 @@ msgid "The past %1 day"
 msgid_plural "The past %1 days"
 msgstr[0] "지난 %1일"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:75
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:53
+msgid "The Live TV of your Jellyfin server: its channels and guide"
+msgstr "내 Jellyfin 서버의 실시간 TV: 채널과 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:55
+msgid "The Live TV of your Emby server: its channels and guide"
+msgstr "내 Emby 서버의 실시간 TV: 채널과 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:57
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:59
+msgid "Your TV server: its channels and guide"
+msgstr "내 TV 서버: 채널과 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:61
+msgid "Your TV server on your network: its channels and guide"
+msgstr "내 네트워크의 TV 서버: 채널과 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:63
+msgid "A tuner of your network: its channels and free guide"
+msgstr "내 네트워크의 튜너: 채널과 무료 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:66
+msgid ""
+"A paid guide (the US, Canada and more) for the channels of every source: the "
+"lineups of your account"
+msgstr "모든 소스의 채널을 위한 유료 편성표(미국, 캐나다 등): 내 계정의 라인업"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "TV 소스"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Add Guide"
 msgstr "편성표 추가"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
 msgid "Add Source"
 msgstr "소스 추가"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:113
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:215
 msgid "This source cannot be added: fill in the fields marked as needed."
 msgstr "이 소스를 추가할 수 없습니다: 필수로 표시된 항목을 입력하세요."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:245
 msgid "Your Sources (%1)"
 msgstr "내 소스 (%1)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:247
+msgid "Accounts"
+msgstr "계정"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+msgid "Guides"
+msgstr "편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
 msgid "Catalog"
 msgstr "카탈로그"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:200
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
 msgid "Your TV sources"
 msgstr "내 TV 소스"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:202
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:310
 msgid ""
 "The guides of the first sources come first when several name the same "
 "channel."
 msgstr "여러 소스가 같은 채널을 지정하면 앞쪽 소스의 편성표가 우선합니다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:203
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:311
 msgid "No source yet: add the link of your provider, or one of the catalog."
 msgstr "아직 소스가 없습니다: 공급자의 링크나 카탈로그의 소스를 추가하세요."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:268
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+msgid "%1 programme"
+msgid_plural "%1 programmes"
+msgstr[0] "프로그램 %1개"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:379
 msgid "Guide %1"
 msgid_plural "Guide %1"
 msgstr[0] "편성표 %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:269
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
 msgid "%1 channel has a programme guide"
 msgid_plural "%1 channels have a programme guide"
 msgstr[0] "채널 %1개에 방송 편성표가 있습니다"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:275
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:386
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
 msgstr[0] "다시보기 %1일"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
 msgid "Updating the guide… %1 MB"
 msgstr "편성표 업데이트 중… %1 MB"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
 msgid "Updating the channels…"
 msgstr "채널 업데이트 중…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:288
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:400
 msgid "Updated %1 at %2"
 msgstr "%1 %2에 업데이트됨"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn Off"
 msgstr "끄기"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn On"
 msgstr "켜기"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:340
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:453
 msgid "Update All"
 msgstr "모두 업데이트"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:358
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:471
 msgid "Playlist (M3U)"
 msgstr "재생목록 (M3U)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:359
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:472
 msgid "Xtream Codes"
 msgstr "Xtream Codes"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:360
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:473
 msgid "Guide (XMLTV)"
 msgstr "편성표 (XMLTV)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:373
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:486
 msgid "e.g., My TV"
 msgstr "예: 내 TV"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:493
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:503
 msgid "Playlist link or file"
 msgstr "재생목록 링크 또는 파일"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:381
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:494
 msgid ""
 "The M3U link your provider gave you; its guide is found in it when it names "
 "one."
@@ -6010,53 +6077,55 @@ msgstr ""
 "공급자가 제공한 M3U 링크입니다. 링크에 편성표가 지정되어 있으면 거기서 찾습니"
 "다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:502
 msgid "e.g., https://example.com/playlist.m3u"
 msgstr "예: https://example.com/playlist.m3u"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:396
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:509
 msgid "Choose a playlist"
 msgstr "재생목록 선택"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:510
 msgid "Playlists (*.m3u *.m3u8)"
 msgstr "재생목록 (*.m3u *.m3u8)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:413
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:420
-msgid "Server"
-msgstr "서버"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:414
-msgid "The address of the provider's panel, with its port (http://host:8080)."
-msgstr "공급자 패널의 주소와 포트입니다 (http://host:8080)."
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
-msgid "e.g., http://example.com:8080"
-msgstr "예: http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
 msgid "(empty: unchanged)"
 msgstr "(비워 두면 변경 안 함)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:445
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:558
+msgid "Server"
+msgstr "서버"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+msgid "The address of the provider's panel, with its port (http://host:8080)."
+msgstr "공급자 패널의 주소와 포트입니다 (http://host:8080)."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:557
+msgid "e.g., http://example.com:8080"
+msgstr "예: http://example.com:8080"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "For the source"
 msgstr "대상 소스"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:446
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
 msgid "Its channels are matched by their guide id, then by their name."
 msgstr "채널은 편성표 ID로 먼저 일치시키고, 그다음 이름으로 일치시킵니다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:447
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:585
 msgid "Add a source first."
 msgstr "먼저 소스를 추가하세요."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:460
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:470
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:598
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:608
 msgid "Guide links"
 msgstr "편성표 링크"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:462
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:600
 msgid ""
 "XMLTV guides (.xml or .xml.gz), one per line; several are merged, the first "
 "first."
@@ -6064,59 +6133,187 @@ msgstr ""
 "XMLTV 편성표(.xml 또는 .xml.gz)를 한 줄에 하나씩 입력합니다. 여러 개는 병합되"
 "며 첫 번째가 우선합니다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:469
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:607
 msgid "e.g., https://example.com/guide.xml.gz"
 msgstr "예: https://example.com/guide.xml.gz"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:476
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:614
 msgid ""
 "Links and passwords are kept in the keystore of VLC, never written to its "
 "log."
 msgstr "링크와 비밀번호는 VLC 키 저장소에 보관되며 로그에 기록되지 않습니다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
-msgid "Search the catalog"
-msgstr "카탈로그 검색"
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:634
+msgid "Found on your network"
+msgstr "내 네트워크에서 찾음"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
-msgid "A-Z"
-msgstr "가나다순"
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:635
+msgid "Looking on your network…"
+msgstr "네트워크에서 찾는 중…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
-msgid "Most channels"
-msgstr "채널 많은 순"
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:637
+msgid "Nothing found on your network: type the server's address."
+msgstr "네트워크에서 아무것도 찾지 못함: 서버 주소를 입력하세요."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
-msgid "Free"
-msgstr "무료"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-msgid "Guides"
-msgstr "편성표"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
-msgid "Paid"
-msgstr "유료"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Added"
 msgstr "추가됨"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:661
+msgid "Look again"
+msgstr "다시 찾기"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+msgid "Server address"
+msgstr "서버 주소"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+msgid "e.g., %1"
+msgstr "예: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+msgid "PIN"
+msgstr "PIN"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+msgid "API key"
+msgstr "API 키"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+msgid "Instead of a user: a key made in the server's dashboard."
+msgstr "사용자 대신: 서버 대시보드에서 만든 키입니다."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+msgid "Server found"
+msgstr "서버를 찾았습니다"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+msgid "Sign Out"
+msgstr "로그아웃"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+msgid ""
+"Passwords and keys are kept in the keystore of VLC, never written to its log."
+msgstr "비밀번호와 키는 VLC 키 저장소에 보관되며 로그에 기록되지 않습니다."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+msgid "The guide of %1"
+msgstr "%1 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+msgid ""
+"The id the guides give this channel. Yours comes first; leave it empty to "
+"use the one of its list or the one found for it."
+msgstr "편성표가 이 채널에 부여한 ID입니다. 직접 입력한 ID가 우선하며, 비워 두면 목록의 ID나 자동으로 찾은 ID를 사용합니다."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+msgid "Its list: %1"
+msgstr "목록의 ID: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+msgid "Found for it: %1"
+msgstr "찾은 ID: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+msgid "Guide id"
+msgstr "편성표 ID"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+msgid "The guides of your sources"
+msgstr "내 소스의 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+msgid ""
+"Each source's own guides and those you added; the channels are matched by "
+"their guide id, then by their name."
+msgstr "각 소스의 자체 편성표와 직접 추가한 편성표입니다. 채널은 편성표 ID로 먼저 일치시키고, 그다음 이름으로 일치시킵니다."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+msgid "A guide for the channels of every source"
+msgstr "모든 소스의 채널을 위한 편성표"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvToast.qml:56
+msgid "Guide for %1 of %2 channels"
+msgstr "채널 %2개 중 %1개 편성표 있음"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+msgid "Find a Guide"
+msgstr "편성표 찾기"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+msgid "Found for you: %1 channel matched by its name or id"
+msgid_plural "Found for you: %1 channels matched by their name or id"
+msgstr[0] "자동으로 찾음: 이름 또는 ID로 일치한 채널 %1개"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+msgid "Added by you"
+msgstr "직접 추가함"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+msgid "Found for you"
+msgstr "자동으로 찾음"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+msgid "From the playlist"
+msgstr "재생목록에서"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+msgid "No guide yet: add one, or one of the catalog's."
+msgstr "아직 편성표 없음: 직접 추가하거나 카탈로그에서 추가하세요."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
+msgid "Search the catalog"
+msgstr "카탈로그 검색"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+msgid "A-Z"
+msgstr "가나다순"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+msgid "Most channels"
+msgstr "채널 많은 순"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+msgid "For you"
+msgstr "맞춤"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+msgid "Recommended"
+msgstr "추천"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+msgid "Free"
+msgstr "무료"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+msgid "Not answering"
+msgstr "응답 없음"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+msgid "Paid"
+msgstr "유료"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
 msgid "Loading the catalog…"
 msgstr "카탈로그 불러오는 중…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
 msgid "The catalog is empty in this version."
 msgstr "이 버전에서는 카탈로그가 비어 있습니다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Nothing in the catalog matches"
 msgstr "카탈로그에 일치하는 항목 없음"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:739
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
@@ -6124,13 +6321,29 @@ msgstr ""
 "무료 합법 소스만 표시됩니다. 제안된 서비스는 검토를 거친 후 카탈로그에 추가됩"
 "니다."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
 msgid "Suggest a Service"
 msgstr "서비스 제안"
 
-#: modules/gui/qt/iptv/qml/TvToast.qml:48
+#: modules/gui/qt/iptv/qml/TvToast.qml:54
+msgid "Guide found for %1 of %2 channels"
+msgstr "채널 %2개 중 %1개의 편성표를 찾았습니다"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:55
+msgid "The list of channels to match could not be downloaded"
+msgstr "일치시킬 채널 목록을 다운로드할 수 없습니다"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:57
+msgid "No free guide was found for the channels of %1"
+msgstr "%1의 채널에 맞는 무료 편성표를 찾지 못했습니다"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:64
 msgid "%1 starts now on %2"
 msgstr "%2에서 %1 지금 시작"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:102
+msgid "Undo"
+msgstr "실행 취소"
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1308
 msgid "Paste from clipboard"
@@ -6241,12 +6454,12 @@ msgstr "홈 화면"
 
 #: modules/gui/qt/maininterface/qml/NoMedialibHome.qml:184
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:36
-#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:71
+#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:71
 msgid "Open Disc"
 msgstr "디스크 열기"
 
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
-#: modules/gui/qt/menus/menus.cpp:962 modules/gui/qt/menus/qml/MainMenu.qml:77
+#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "캡처 장치 열기"
 
@@ -7320,7 +7533,7 @@ msgstr "캐스트 장치 검색"
 msgid "Scanning..."
 msgstr "검색 중..."
 
-#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:941
+#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "재생 대기열이 끝나면 종료"
 
@@ -7388,27 +7601,27 @@ msgstr "이전 챕터"
 msgid "Next Chapter"
 msgstr "다음 챕터"
 
-#: modules/gui/qt/menus/menus.cpp:831
+#: modules/gui/qt/menus/menus.cpp:829
 msgid "Previous Item"
 msgstr "이전 항목"
 
-#: modules/gui/qt/menus/menus.cpp:834
+#: modules/gui/qt/menus/menus.cpp:832
 msgid "Next Item"
 msgstr "다음 항목"
 
-#: modules/gui/qt/menus/menus.cpp:846
+#: modules/gui/qt/menus/menus.cpp:844
 msgid "Hide UI"
 msgstr "UI 숨기기"
 
-#: modules/gui/qt/menus/menus.cpp:873
+#: modules/gui/qt/menus/menus.cpp:871
 msgid "More Settings"
 msgstr "추가 설정"
 
-#: modules/gui/qt/menus/menus.cpp:952 modules/gui/qt/menus/qml/MainMenu.qml:53
+#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/qml/MainMenu.qml:53
 msgid "Open File(s)"
 msgstr "파일 열기"
 
-#: modules/gui/qt/menus/menus.cpp:967 modules/gui/qt/menus/menus.cpp:970
+#: modules/gui/qt/menus/menus.cpp:965 modules/gui/qt/menus/menus.cpp:968
 msgid "Open Location from Clipboard"
 msgstr "클립보드의 위치 열기"
 
@@ -7692,7 +7905,9 @@ msgstr "영화 · 다양한 언어"
 #: modules/gui/qt/player/subtitle_providers.cpp:1594
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
-msgstr "무료 계정 사용 · 크로아티아어, 세르비아어, 보스니아어, 슬로베니아어, 마케도니아어"
+msgstr ""
+"무료 계정 사용 · 크로아티아어, 세르비아어, 보스니아어, 슬로베니아어, 마케도니"
+"아어"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1598
 msgid "With your free token · Chinese"
@@ -9416,7 +9631,7 @@ msgstr "보안 128비트 (이상)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "보안 256비트 (128비트 암호 제외)"
 
-#: modules/misc/iptv/iptv.cpp:424
+#: modules/misc/iptv/iptv.cpp:577
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -9424,7 +9639,7 @@ msgstr ""
 "라이브러리에 TV를 표시합니다: IPTV 재생목록과 계정의 채널 및 방송 편성표. 끄"
 "면 아무것도 불러오지 않습니다."
 
-#: modules/misc/iptv/iptv.cpp:429
+#: modules/misc/iptv/iptv.cpp:582
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "실시간 TV (IPTV) 채널 및 방송 편성표"
 

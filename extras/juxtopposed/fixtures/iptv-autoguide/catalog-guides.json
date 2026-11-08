@@ -1,0 +1,88 @@
+{
+ "version": 1,
+ "updated": "2026-11-08",
+ "sources": [
+  {
+   "id": "epg-openepg-gb",
+   "kind": "epg",
+   "url": "https://www.open-epg.com/files/unitedkingdom1.xml.gz",
+   "countries": [
+    "GB"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "epg-iptvepg-gb",
+   "kind": "epg",
+   "url": "https://iptv-epg.org/files/epg-gb.xml.gz",
+   "countries": [
+    "GB"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "epg-region",
+   "kind": "epg",
+   "url": "https://iptv-epg.org/files/epg-region.xml.gz",
+   "countries": [
+    "GB",
+    "IE",
+    "FR"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "epg-iptvepg-fr",
+   "kind": "epg",
+   "url": "https://iptv-epg.org/files/epg-fr.xml.gz",
+   "countries": [
+    "FR"
+   ],
+   "status": "not answering"
+  },
+  {
+   "id": "epg-pw-fr",
+   "kind": "epg",
+   "url": "https://epg.pw/xmltv/epg_FR.xml.gz",
+   "countries": [
+    "FR"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "epg-share-fr",
+   "kind": "epg",
+   "url": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
+   "countries": [
+    "FR"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "epg-mjh-il",
+   "kind": "epg",
+   "url": "https://i.mjh.nz/demo/il.xml.gz",
+   "countries": [
+    "IL"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "epg-iptvepg-il",
+   "kind": "epg",
+   "url": "https://iptv-epg.org/files/epg-il.xml.gz",
+   "countries": [
+    "IL"
+   ],
+   "status": "works"
+  },
+  {
+   "id": "list-gb",
+   "kind": "m3u",
+   "url": "https://iptv-org.github.io/iptv/countries/uk.m3u",
+   "countries": [
+    "GB"
+   ]
+  }
+ ]
+}

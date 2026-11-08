@@ -1,0 +1,10 @@
+{
+ "FriendlyName": "HDHomeRun CONNECT",
+ "ModelNumber": "HDHR4-2US",
+ "FirmwareName": "hdhomerun4_atsc",
+ "DeviceID": "1050ABCD",
+ "DeviceAuth": "made-up-device-auth",
+ "BaseURL": "http://192.168.1.50:80",
+ "LineupURL": "http://192.168.1.50:80/lineup.json",
+ "TunerCount": 2
+}

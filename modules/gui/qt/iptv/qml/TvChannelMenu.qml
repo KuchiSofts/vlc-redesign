@@ -20,10 +20,14 @@ Widgets.RedesignContextMenu {
 
     // the channels of the rows: Iptv.channelModel, Iptv.playerModel
     property var channels: null
+    // Guide Id… shown (where the sources dialog can open)
+    property bool guideIdEnabled: false
 
     // the guide and the programme's card belong to the page showing them
     signal guideRequested(string key)
     signal programmeRequested(var channel, var programme)
+    // the guide id of the channel (the TV page's sources dialog)
+    signal guideIdRequested(string key)
 
     function channel(dataList) { return dataList[0] }
 
@@ -48,7 +52,11 @@ Widgets.RedesignContextMenu {
           action: (dataList) => {
               const ch = root.channel(dataList)
               root.programmeRequested(ch, { start: ch.nowStart, stop: ch.nowStop, title: ch.nowTitle })
-          } }
+          } },
+        // (the menu of the library next to the video has no sources dialog)
+        { text: qsTr("Guide Id…"), icon: "lists",
+          visible: (dataList) => root.guideIdEnabled,
+          action: (dataList) => root.guideIdRequested(root.channel(dataList).key) }
     ]
 
     onRequestData: (requestID, indexes) => {

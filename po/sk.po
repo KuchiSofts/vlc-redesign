@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:32+0000\n"
+"POT-Creation-Date: 2026-11-08 10:17+0000\n"
 "PO-Revision-Date: 2017-11-16 03:09+0100\n"
 "Last-Translator: Marián Hikaník <podnety@mojepreklady.net>\n"
 "Language-Team: Slovak (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -40,7 +40,7 @@ msgstr "Nastavenia programu VLC"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:223
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:20
-#: modules/gui/qt/menus/menus.cpp:1060 modules/gui/qt/menus/menus.cpp:1078
+#: modules/gui/qt/menus/menus.cpp:1058 modules/gui/qt/menus/menus.cpp:1076
 msgid "Interface"
 msgstr "Rozhranie"
 
@@ -59,7 +59,7 @@ msgstr "Rozhranie"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:246
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
-#: modules/gui/qt/menus/menus.cpp:863
+#: modules/gui/qt/menus/menus.cpp:861
 #: modules/gui/qt/player/qml/TracksMenu.qml:38
 #: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:371
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
@@ -84,7 +84,7 @@ msgstr "Zvuk"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/maininterface/navigationmodel.cpp:274
-#: modules/gui/qt/menus/menus.cpp:859
+#: modules/gui/qt/menus/menus.cpp:857
 #: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:371
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
@@ -103,7 +103,7 @@ msgid "Stream output"
 msgstr "Výstup streamu"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
-#: modules/gui/qt/menus/menus.cpp:910
+#: modules/gui/qt/menus/menus.cpp:908
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:43
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistButton.qml:36
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistNameWidget.qml:26
@@ -954,7 +954,8 @@ msgstr "Kodek"
 
 #: src/input/es_out.c:4711 src/input/meta.c:69 modules/access/imem.c:70
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:387
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:555 modules/stream_out/setid.c:50
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1108
+#: modules/stream_out/setid.c:50
 msgid "Language"
 msgstr "Jazyk"
 
@@ -1275,7 +1276,7 @@ msgstr "Biely bod masteringu"
 
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
-#: modules/gui/qt/menus/menus.cpp:867
+#: modules/gui/qt/menus/menus.cpp:865
 #: modules/gui/qt/player/qml/TracksListPage.qml:80
 msgid "Subtitle"
 msgstr "Titulky"
@@ -1655,6 +1656,7 @@ msgstr "Prístupnosť"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Test"
 msgstr "Test"
 
@@ -1769,7 +1771,8 @@ msgstr "Zapnuté"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
-#: modules/gui/qt/menus/menus.cpp:923 modules/gui/qt/player/hdr_output.cpp:33
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:963
+#: modules/gui/qt/menus/menus.cpp:921 modules/gui/qt/player/hdr_output.cpp:33
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:430
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
 msgid "Off"
@@ -4331,11 +4334,11 @@ msgid "Select the hotkey to set the playback rate back to normal."
 msgstr ""
 "Vyberte si kláves na nastavenie rýchlosti prehrávania na normálnu hodnotu."
 
-#: src/libvlc-module.c:1378 modules/gui/qt/menus/menus.cpp:643
+#: src/libvlc-module.c:1378 modules/gui/qt/menus/menus.cpp:641
 msgid "Faster (fine)"
 msgstr "Rýchlejšie (presnejšie)"
 
-#: src/libvlc-module.c:1380 modules/gui/qt/menus/menus.cpp:649
+#: src/libvlc-module.c:1380 modules/gui/qt/menus/menus.cpp:647
 msgid "Slower (fine)"
 msgstr "Pomalšie (presnejšie)"
 
@@ -4390,7 +4393,7 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:826
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:824
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
 msgid "Stop"
@@ -4528,7 +4531,7 @@ msgstr "Dĺžka veľkého skoku, v sekundách."
 
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
-#: modules/gui/qt/menus/menus.cpp:702 modules/gui/qt/menus/menus.cpp:1114
+#: modules/gui/qt/menus/menus.cpp:700 modules/gui/qt/menus/menus.cpp:1112
 #: modules/gui/qt/qt.cpp:1700 modules/gui/skins2/commands/cmd_quit.cpp:40
 msgid "Quit"
 msgstr "Koniec"
@@ -5035,7 +5038,7 @@ msgid "Takes a video snapshot and writes it to disk."
 msgstr "Z prehrávaného videa sa vytvorí snímka a uloží sa na disk."
 
 #: src/libvlc-module.c:1553 modules/gui/macosx/menus/VLCMainMenu.m:390
-#: modules/gui/qt/menus/menus.cpp:619 modules/gui/qt/menus/menus.cpp:838
+#: modules/gui/qt/menus/menus.cpp:618 modules/gui/qt/menus/menus.cpp:836
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:45
 #: modules/gui/qt/player/qml/controlbarcontrols/RecordButton.qml:29
 #: modules/stream_out/record.c:60
@@ -8315,7 +8318,7 @@ msgstr "Vyžaduje Windows 10 verzie 1809 alebo novší."
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:166
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:194
@@ -9944,8 +9947,10 @@ msgstr ""
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:439
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:435
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:563
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:573
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
 #: modules/lua/vlc.c:57 modules/lua/vlc.c:86 modules/misc/audioscrobbler.c:119
 #: modules/stream_out/rtp.c:168
@@ -10117,7 +10122,7 @@ msgid "Set the group of the elementary stream"
 msgstr "Nastavenie skupiny elementárneho streamu"
 
 #: modules/access/imem.c:56 modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:567
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1120
 msgid "Category"
 msgstr "Kategória"
 
@@ -11669,7 +11674,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:29
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:103
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
 #: modules/gui/qt/maininterface/navigationmodel.cpp:275
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
 msgid "All"
@@ -18329,7 +18334,7 @@ msgstr ""
 #: modules/gui/macosx/library/media-source/VLCMediaSourceCollectionViewItem.m:87
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:27
-#: modules/gui/qt/menus/menus.cpp:907 modules/gui/skins2/vars/playtree.cpp:210
+#: modules/gui/qt/menus/menus.cpp:905 modules/gui/skins2/vars/playtree.cpp:210
 msgid "Playlist"
 msgstr "Playlist"
 
@@ -18898,7 +18903,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:75
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:179
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:34
-#: modules/gui/qt/menus/menus.cpp:816
+#: modules/gui/qt/menus/menus.cpp:814
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:870
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1126
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:33
@@ -18956,7 +18961,7 @@ msgid "Add to Favorites"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -19103,7 +19108,7 @@ msgstr "Tento počítač"
 #: modules/gui/qt/dialogs/sout/sout.cpp:98
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:99
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:192
-#: modules/gui/qt/menus/menus.cpp:975
+#: modules/gui/qt/menus/menus.cpp:973
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Stream"
 msgstr "Stream"
@@ -19500,7 +19505,7 @@ msgstr "Zobraziť všetko"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
-#: modules/gui/qt/menus/menus.cpp:979
+#: modules/gui/qt/menus/menus.cpp:977
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
 msgid "Quit VLC"
@@ -19562,7 +19567,8 @@ msgid "Save Play Queue to Library..."
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:377
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:321
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:434
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:928
 msgid "Edit"
 msgstr "Úpravy"
 
@@ -19606,7 +19612,7 @@ msgid "Find"
 msgstr "Hľadať: %s"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:385
-#: modules/gui/qt/menus/menus.cpp:877 modules/gui/qt/menus/menus.cpp:897
+#: modules/gui/qt/menus/menus.cpp:875 modules/gui/qt/menus/menus.cpp:895
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1009
 msgid "View"
 msgstr "Zobraziť"
@@ -19615,7 +19621,7 @@ msgstr "Zobraziť"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:239
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:245
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:24
-#: modules/gui/qt/menus/menus.cpp:856
+#: modules/gui/qt/menus/menus.cpp:854
 #: modules/gui/qt/player/qml/TracksMenu.qml:400
 msgid "Playback"
 msgstr "Prehrávanie"
@@ -19637,7 +19643,7 @@ msgstr "Synchronizácia stopy"
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:920
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:918
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:260
@@ -19865,8 +19871,8 @@ msgid "Bring All to Front"
 msgstr "Preniesť všetky do popredia"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:499
-#: modules/gui/qt/dialogs/help/help.cpp:58 modules/gui/qt/menus/menus.cpp:881
-#: modules/gui/qt/menus/menus.cpp:898 modules/gui/qt/menus/menus.cpp:1110
+#: modules/gui/qt/dialogs/help/help.cpp:58 modules/gui/qt/menus/menus.cpp:879
+#: modules/gui/qt/menus/menus.cpp:896 modules/gui/qt/menus/menus.cpp:1108
 msgid "Help"
 msgstr "Pomocník"
 
@@ -19928,7 +19934,7 @@ msgstr "Uložiť playlist"
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:59
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:464
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:352
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:169
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:35
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1146
@@ -19958,17 +19964,17 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
-#: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:816
+#: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:814
 msgid "Pause"
 msgstr "Pozastaviť"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1737
-#: modules/gui/qt/menus/menus.cpp:925
+#: modules/gui/qt/menus/menus.cpp:923
 msgid "Repeat One"
 msgstr "Opakovať jedenkrát"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1743
-#: modules/gui/qt/menus/menus.cpp:924
+#: modules/gui/qt/menus/menus.cpp:922
 msgid "Repeat All"
 msgstr "Opakovať všetko"
 
@@ -19998,7 +20004,7 @@ msgstr "Menu média"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:107
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:46
-#: modules/gui/qt/menus/menus.cpp:915
+#: modules/gui/qt/menus/menus.cpp:913
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:53
 #: modules/gui/qt/player/qml/controlbarcontrols/RandomButton.qml:28
@@ -20231,7 +20237,8 @@ msgstr "Vyberte prednastavenie, ktoré chcete odstrániť:"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:211
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:325
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:438
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:990
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:169
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:150
@@ -20258,7 +20265,7 @@ msgstr "Zadajte názov pre nové prednastavenie:"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:97
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Add"
@@ -20280,8 +20287,10 @@ msgstr "Vyčistiť"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:72
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:114
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:367
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:480
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:487
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:694
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:710
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:213
 #: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:440
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:179
@@ -22429,7 +22438,7 @@ msgstr "Uložiť heslo"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
-#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:65
+#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "Otvoriť sieťový stream"
 
@@ -22453,8 +22462,11 @@ msgid "e.g., https://www.example.com/stream.avi"
 msgstr "napr. https://www.example.com/stream.avi"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:368
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:461
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
 msgid "(optional)"
 msgstr "(voliteľné)"
 
@@ -22859,7 +22871,7 @@ msgid "Open Directory"
 msgstr "Otvoriť priečinok"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:88
-#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:59
+#: modules/gui/qt/menus/menus.cpp:954 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
 msgstr "Otvoriť priečinok"
 
@@ -22969,13 +22981,14 @@ msgid "No EPG Data Available"
 msgstr "Nie sú dostupné žiadne údaje EPG"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:48 modules/gui/qt/menus/menus.cpp:266
-#: modules/gui/qt/menus/menus.cpp:892
+#: modules/gui/qt/menus/menus.cpp:890
 msgid "Program Guide"
 msgstr "Programový sprievodca"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:86
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:54
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:316
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:429
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:923
 msgid "Update"
 msgstr "Aktualizácia"
 
@@ -23681,7 +23694,7 @@ msgstr "Farby: %1"
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:168
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:522
 #: modules/gui/qt/dialogs/sout/convert.cpp:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:394
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:507
 #: modules/gui/qt/maininterface/navigationmodel.cpp:288
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:78
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
@@ -23861,7 +23874,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:324
 #: modules/gui/qt/dialogs/sout/sout.cpp:95
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:87
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:182
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:349
 #: modules/gui/qt/player/qml/controlbarcontrols/BackButton.qml:30
 msgid "Back"
@@ -24258,8 +24271,8 @@ msgstr "Vyčistiť správy"
 msgid "Clear the errors"
 msgstr "Vymazať chyby"
 
-#: modules/gui/qt/dialogs/open/open.cpp:49 modules/gui/qt/menus/menus.cpp:687
-#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/menus.cpp:1104
+#: modules/gui/qt/dialogs/open/open.cpp:49 modules/gui/qt/menus/menus.cpp:685
+#: modules/gui/qt/menus/menus.cpp:948 modules/gui/qt/menus/menus.cpp:1102
 msgid "Open Media"
 msgstr "Otvoriť médium"
 
@@ -25480,7 +25493,7 @@ msgstr "Konflikt priradenia klávesovej skratky"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:428
+#: modules/misc/iptv/iptv.cpp:581
 msgid "Live TV"
 msgstr "Živá TV"
 
@@ -25652,7 +25665,7 @@ msgid "Languages to search"
 msgstr "Hľadané jazyky"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:421
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
@@ -25687,14 +25700,17 @@ msgid "Key works"
 msgstr "Kľúč funguje"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
 msgid "Signed in as %1"
 msgstr "Prihlásený ako %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Key refused"
 msgstr "Kľúč odmietnutý"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Wrong user name or password"
 msgstr "Nesprávne meno používateľa alebo heslo"
 
@@ -25704,6 +25720,7 @@ msgid "Busy: try again in a minute"
 msgstr "Služba je zaneprázdnená: skúste to o minútu"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
 msgid "No answer, try again"
 msgstr "Bez odpovede, skúste to znova"
 
@@ -25721,6 +25738,7 @@ msgid "Key refused: check it"
 msgstr "Kľúč odmietnutý: skontrolujte ho"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "Prihlásenie odmietnuté: skontrolujte údaje"
@@ -25734,16 +25752,23 @@ msgid "Your free key"
 msgstr "Váš bezplatný kľúč"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
 msgid "User name (optional)"
 msgstr "Meno používateľa (voliteľné)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
 msgid "User name"
 msgstr "Meno používateľa"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
 msgstr "Heslo (voliteľné)"
 
@@ -25752,6 +25777,7 @@ msgid "Email"
 msgstr "E-mail"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Sign in"
 msgstr "Prihlásiť sa"
 
@@ -26506,7 +26532,7 @@ msgid "History"
 msgstr "História"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:423
+#: modules/misc/iptv/iptv.cpp:576
 msgid "Live TV (IPTV) add-on"
 msgstr "Doplnok Živá TV (IPTV)"
 
@@ -26516,8 +26542,8 @@ msgstr "Doplnok Živá TV (IPTV)"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "Sprievodca"
@@ -27430,8 +27456,8 @@ msgid "Updating…"
 msgstr "Aktualizuje sa…"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -27474,7 +27500,7 @@ msgid "Free channel lists"
 msgstr "Bezplatné zoznamy kanálov"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:210
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "Prehľadávať katalóg"
@@ -27595,7 +27621,7 @@ msgstr "Obnoviť všetko"
 #: modules/gui/qt/dialogs/sout/convert.cpp:106
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:105
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:194
-#: modules/gui/qt/menus/menus.cpp:973 modules/gui/qt/menus/qml/MainMenu.qml:83
+#: modules/gui/qt/menus/menus.cpp:971 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
 msgstr "Konvertovať"
 
@@ -28063,73 +28089,73 @@ msgstr "Vysielanie: "
 msgid "Schedule: "
 msgstr "Naplánovanie: "
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:869
+#: modules/gui/qt/iptv/iptv_addon.cpp:943
 msgid "This channel cannot be played"
 msgstr "Tento kanál sa nedá prehrať"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:909
+#: modules/gui/qt/iptv/iptv_addon.cpp:983
 msgid "This programme is older than the channel's archive"
 msgstr "Tento program je starší než archív kanála"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:910
+#: modules/gui/qt/iptv/iptv_addon.cpp:984
 msgid "This programme has not started yet"
 msgstr "Tento program sa ešte nezačal"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:911
+#: modules/gui/qt/iptv/iptv_addon.cpp:985
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr "Tento kanál nemá archív: minulé programy sa nedajú prehrať"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:935
+#: modules/gui/qt/iptv/iptv_addon.cpp:1009
 msgid "The guide does not say what is on"
 msgstr "Sprievodca neuvádza, čo práve beží"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:1059
 msgid "No channel %1"
 msgstr "Žiadny kanál %1"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1187
+#: modules/gui/qt/iptv/iptv_addon.cpp:1261
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 min"
 msgstr[1] "%1 min"
 msgstr[2] "%1 min"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 h"
 msgstr[1] "%1 h"
 msgstr[2] "%1 h"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 h %2 min"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1272
 msgid "Today"
 msgstr "Dnes"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1200
+#: modules/gui/qt/iptv/iptv_addon.cpp:1274
 msgid "Tomorrow"
 msgstr "Zajtra"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1202
+#: modules/gui/qt/iptv/iptv_addon.cpp:1276
 msgid "Yesterday"
 msgstr "Včera"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
+#: modules/gui/qt/iptv/qml/TvToast.qml:91
 msgid "Watch"
 msgstr "Pozerať"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:37
 msgid "Watch from the start"
 msgstr "Pozerať od začiatku"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:45
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
@@ -28139,13 +28165,17 @@ msgstr "Pozerať od začiatku"
 msgid "Favorite"
 msgstr "Pridať do obľúbených"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:48
 msgid "Show in the Guide"
 msgstr "Zobraziť v sprievodcovi"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:50
 msgid "What's On"
 msgstr "Čo práve beží"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
+msgid "Guide Id…"
+msgstr "ID v sprievodcovi…"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
@@ -28156,9 +28186,9 @@ msgid "Next at %1"
 msgstr "Ďalej o %1"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 d"
@@ -28174,24 +28204,24 @@ msgstr[1] "Archív: posledné %1 dni"
 msgstr[2] "Archív: posledných %1 dní"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:277
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:674
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
 msgid "Films"
 msgstr "Filmy"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:278
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:675
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
 msgid "Series"
 msgstr "Seriály"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:185
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "Pozerajte TV vo VLC"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:195
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
@@ -28201,49 +28231,49 @@ msgstr ""
 "Xtream Codes alebo bezplatný zoznam kanálov z katalógu. Programový "
 "sprievodca príde spolu s ním."
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:448
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "Pridať odkaz"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:257
 msgid "Updating the guide of %1… %2 MB"
 msgstr "Aktualizuje sa sprievodca zdroja %1… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:258
 msgid "Updating the channels of %1…"
 msgstr "Aktualizujú sa kanály zdroja %1…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:261
 msgid "%1 could not be loaded: %2"
 msgstr "%1 sa nepodarilo načítať: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:455
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "Hľadaniu nezodpovedá žiadny kanál"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:456
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Zatiaľ žiadny obľúbený kanál: kliknite na kanál pravým tlačidlom myši a "
 "pridajte ho"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:457
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "Zatiaľ ste nesledovali žiadny kanál"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:458
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "Načítavajú sa kanály…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:459
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
@@ -28390,7 +28420,7 @@ msgid "Channel"
 msgstr "Kanál"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Catch-up"
 msgstr "Archív"
 
@@ -28401,36 +28431,74 @@ msgstr[0] "Posledný %1 deň"
 msgstr[1] "Posledné %1 dni"
 msgstr[2] "Posledných %1 dní"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:75
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:53
+msgid "The Live TV of your Jellyfin server: its channels and guide"
+msgstr "Živá TV vášho servera Jellyfin: jeho kanály a sprievodca"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:55
+msgid "The Live TV of your Emby server: its channels and guide"
+msgstr "Živá TV vášho servera Emby: jeho kanály a sprievodca"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:57
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:59
+msgid "Your TV server: its channels and guide"
+msgstr "Váš TV server: jeho kanály a sprievodca"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:61
+msgid "Your TV server on your network: its channels and guide"
+msgstr "Váš TV server vo vašej sieti: jeho kanály a sprievodca"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:63
+msgid "A tuner of your network: its channels and free guide"
+msgstr "Tuner vo vašej sieti: jeho kanály a bezplatný sprievodca"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:66
+msgid ""
+"A paid guide (the US, Canada and more) for the channels of every source: the "
+"lineups of your account"
+msgstr "Platený sprievodca (USA, Kanada a ďalšie) pre kanály všetkých zdrojov: ponuky kanálov vášho účtu"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "TV zdroje"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Add Guide"
 msgstr "Pridať sprievodcu"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
 msgid "Add Source"
 msgstr "Pridať zdroj"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:113
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:215
 msgid "This source cannot be added: fill in the fields marked as needed."
 msgstr "Tento zdroj sa nedá pridať: vyplňte polia označené ako povinné."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:245
 msgid "Your Sources (%1)"
 msgstr "Vaše zdroje (%1)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:247
+msgid "Accounts"
+msgstr "Účty"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+msgid "Guides"
+msgstr "Sprievodcovia"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
 msgid "Catalog"
 msgstr "Katalóg"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:200
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
 msgid "Your TV sources"
 msgstr "Vaše TV zdroje"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:202
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:310
 msgid ""
 "The guides of the first sources come first when several name the same "
 "channel."
@@ -28438,79 +28506,90 @@ msgstr ""
 "Keď viac zdrojov uvádza ten istý kanál, prednosť majú sprievodcovia prvých "
 "zdrojov."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:203
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:311
 msgid "No source yet: add the link of your provider, or one of the catalog."
 msgstr ""
 "Zatiaľ žiadny zdroj: pridajte odkaz od svojho poskytovateľa alebo zdroj z "
 "katalógu."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:268
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+msgid "%1 programme"
+msgid_plural "%1 programmes"
+msgstr[0] "%1 program"
+msgstr[1] "%1 programy"
+msgstr[2] "%1 programov"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:379
 msgid "Guide %1"
 msgid_plural "Guide %1"
 msgstr[0] "Sprievodca %1"
 msgstr[1] "Sprievodca %1"
 msgstr[2] "Sprievodca %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:269
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
 msgid "%1 channel has a programme guide"
 msgid_plural "%1 channels have a programme guide"
 msgstr[0] "%1 kanál má programového sprievodcu"
 msgstr[1] "%1 kanály majú programového sprievodcu"
 msgstr[2] "%1 kanálov má programového sprievodcu"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:275
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:386
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
 msgstr[0] "Archív %1 d"
 msgstr[1] "Archív %1 d"
 msgstr[2] "Archív %1 d"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
 msgid "Updating the guide… %1 MB"
 msgstr "Aktualizuje sa sprievodca… %1 MB"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
 msgid "Updating the channels…"
 msgstr "Aktualizujú sa kanály…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:288
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:400
 msgid "Updated %1 at %2"
 msgstr "Aktualizované %1 o %2"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn Off"
 msgstr "Vypnúť"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn On"
 msgstr "Zapnúť"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:340
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:453
 msgid "Update All"
 msgstr "Aktualizovať všetko"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:358
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:471
 msgid "Playlist (M3U)"
 msgstr "Playlist (M3U)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:359
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:472
 msgid "Xtream Codes"
 msgstr "Xtream Codes"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:360
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:473
 msgid "Guide (XMLTV)"
 msgstr "Sprievodca (XMLTV)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:373
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:486
 msgid "e.g., My TV"
 msgstr "napr. Moja TV"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:493
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:503
 msgid "Playlist link or file"
 msgstr "Odkaz alebo súbor playlistu"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:381
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:494
 msgid ""
 "The M3U link your provider gave you; its guide is found in it when it names "
 "one."
@@ -28518,53 +28597,55 @@ msgstr ""
 "Odkaz M3U, ktorý vám dal poskytovateľ; sprievodca sa v ňom nájde, ak ho "
 "uvádza."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:502
 msgid "e.g., https://example.com/playlist.m3u"
 msgstr "napr. https://example.com/playlist.m3u"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:396
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:509
 msgid "Choose a playlist"
 msgstr "Vyberte playlist"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:510
 msgid "Playlists (*.m3u *.m3u8)"
 msgstr "Playlisty (*.m3u *.m3u8)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:413
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:420
-msgid "Server"
-msgstr "Server"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:414
-msgid "The address of the provider's panel, with its port (http://host:8080)."
-msgstr "Adresa panela poskytovateľa aj s portom (http://host:8080)."
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
-msgid "e.g., http://example.com:8080"
-msgstr "napr. http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
 msgid "(empty: unchanged)"
 msgstr "(prázdne: bez zmeny)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:445
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:558
+msgid "Server"
+msgstr "Server"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+msgid "The address of the provider's panel, with its port (http://host:8080)."
+msgstr "Adresa panela poskytovateľa aj s portom (http://host:8080)."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:557
+msgid "e.g., http://example.com:8080"
+msgstr "napr. http://example.com:8080"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "For the source"
 msgstr "Pre zdroj"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:446
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
 msgid "Its channels are matched by their guide id, then by their name."
 msgstr "Jeho kanály sa priraďujú podľa id v sprievodcovi, potom podľa názvu."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:447
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:585
 msgid "Add a source first."
 msgstr "Najprv pridajte zdroj."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:460
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:470
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:598
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:608
 msgid "Guide links"
 msgstr "Odkazy na sprievodcov"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:462
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:600
 msgid ""
 "XMLTV guides (.xml or .xml.gz), one per line; several are merged, the first "
 "first."
@@ -28572,11 +28653,11 @@ msgstr ""
 "Sprievodcovia XMLTV (.xml alebo .xml.gz), jeden na riadok; viacerí sa "
 "zlúčia, prvý má prednosť."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:469
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:607
 msgid "e.g., https://example.com/guide.xml.gz"
 msgstr "napr. https://example.com/guide.xml.gz"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:476
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:614
 msgid ""
 "Links and passwords are kept in the keystore of VLC, never written to its "
 "log."
@@ -28584,54 +28665,189 @@ msgstr ""
 "Odkazy a heslá sa uchovávajú v úložisku kľúčov VLC a nikdy sa nezapisujú do "
 "jeho denníka."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:634
+msgid "Found on your network"
+msgstr "Nájdené vo vašej sieti"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:635
+msgid "Looking on your network…"
+msgstr "Hľadá sa vo vašej sieti…"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:637
+msgid "Nothing found on your network: type the server's address."
+msgstr "Vo vašej sieti sa nič nenašlo: zadajte adresu servera."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+msgid "Added"
+msgstr "Pridané"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:661
+msgid "Look again"
+msgstr "Hľadať znova"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+msgid "Server address"
+msgstr "Adresa servera"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+msgid "e.g., %1"
+msgstr "napr. %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+msgid "PIN"
+msgstr "PIN"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+msgid "API key"
+msgstr "Kľúč API"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+msgid "Instead of a user: a key made in the server's dashboard."
+msgstr "Namiesto používateľa: kľúč vytvorený v ovládacom paneli servera."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+msgid "Server found"
+msgstr "Server nájdený"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+msgid "Sign Out"
+msgstr "Odhlásiť sa"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+msgid ""
+"Passwords and keys are kept in the keystore of VLC, never written to its log."
+msgstr "Heslá a kľúče sa uchovávajú v úložisku kľúčov VLC a nikdy sa nezapisujú do jeho denníka."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+msgid "The guide of %1"
+msgstr "Sprievodca kanála %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+msgid ""
+"The id the guides give this channel. Yours comes first; leave it empty to "
+"use the one of its list or the one found for it."
+msgstr "Id, ktoré sprievodcovia dávajú tomuto kanálu. Vaše má prednosť; nechajte pole prázdne, aby sa použilo id z jeho zoznamu alebo id nájdené preň."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+msgid "Its list: %1"
+msgstr "Z jeho zoznamu: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
+msgid "none"
+msgstr "žiadne"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+msgid "Found for it: %1"
+msgstr "Nájdené preň: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+msgid "Guide id"
+msgstr "ID v sprievodcovi"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+msgid "The guides of your sources"
+msgstr "Sprievodcovia vašich zdrojov"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+msgid ""
+"Each source's own guides and those you added; the channels are matched by "
+"their guide id, then by their name."
+msgstr "Vlastní sprievodcovia každého zdroja a tí, ktorých ste pridali; kanály sa priraďujú podľa id v sprievodcovi, potom podľa názvu."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+msgid "A guide for the channels of every source"
+msgstr "Sprievodca pre kanály všetkých zdrojov"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvToast.qml:56
+msgid "Guide for %1 of %2 channels"
+msgstr "Kanály so sprievodcom: %1 z %2"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+msgid "Find a Guide"
+msgstr "Nájsť sprievodcu"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+msgid "Found for you: %1 channel matched by its name or id"
+msgid_plural "Found for you: %1 channels matched by their name or id"
+msgstr[0] "Nájdené pre vás: %1 kanál priradený podľa názvu alebo id"
+msgstr[1] "Nájdené pre vás: %1 kanály priradené podľa názvu alebo id"
+msgstr[2] "Nájdené pre vás: %1 kanálov priradených podľa názvu alebo id"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+msgid "Added by you"
+msgstr "Pridali ste"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+msgid "Found for you"
+msgstr "Nájdené pre vás"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+msgid "From the playlist"
+msgstr "Z playlistu"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+msgid "No guide yet: add one, or one of the catalog's."
+msgstr "Zatiaľ žiadny sprievodca: pridajte vlastného alebo jedného z katalógu."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
 msgid "Search the catalog"
 msgstr "Hľadať v katalógu"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1114
 #: modules/meta_engine/ID3Genres.h:35
 msgid "Country"
 msgstr "Country"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
 msgid "A-Z"
 msgstr "A-Z"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
 msgid "Most channels"
 msgstr "Najviac kanálov"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+msgid "For you"
+msgstr "Pre vás"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+msgid "Recommended"
+msgstr "Odporúčané"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
 msgid "Free"
 msgstr "Bezplatné"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-msgid "Guides"
-msgstr "Sprievodcovia"
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+msgid "Not answering"
+msgstr "Neodpovedá"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
 msgid "Paid"
 msgstr "Platené"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
-msgid "Added"
-msgstr "Pridané"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
 msgid "Loading the catalog…"
 msgstr "Načítava sa katalóg…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
 msgid "The catalog is empty in this version."
 msgstr "Katalóg je v tejto verzii prázdny."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Nothing in the catalog matches"
 msgstr "V katalógu nič nezodpovedá"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:739
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
@@ -28639,13 +28855,29 @@ msgstr ""
 "Uvádzajú sa len bezplatné, legálne zdroje. Návrhy sa pred zaradením do "
 "katalógu kontrolujú."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
 msgid "Suggest a Service"
 msgstr "Navrhnúť službu"
 
-#: modules/gui/qt/iptv/qml/TvToast.qml:48
+#: modules/gui/qt/iptv/qml/TvToast.qml:54
+msgid "Guide found for %1 of %2 channels"
+msgstr "Sprievodca nájdený pre kanály: %1 z %2"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:55
+msgid "The list of channels to match could not be downloaded"
+msgstr "Zoznam kanálov na priradenie sa nepodarilo stiahnuť"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:57
+msgid "No free guide was found for the channels of %1"
+msgstr "Pre kanály zdroja %1 sa nenašiel žiadny bezplatný sprievodca"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:64
 msgid "%1 starts now on %2"
 msgstr "%1 sa začína teraz na %2"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:102
+msgid "Undo"
+msgstr "Vrátiť späť"
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1308
 msgid "Paste from clipboard"
@@ -28791,7 +29023,7 @@ msgstr "Domovské zobrazenie"
 
 #: modules/gui/qt/maininterface/qml/NoMedialibHome.qml:184
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:36
-#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:71
+#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:71
 msgid "Open Disc"
 msgstr "Otvoriť disk"
 
@@ -28800,7 +29032,7 @@ msgid "Open Multiple Files"
 msgstr "Otvoriť viacero súborov"
 
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
-#: modules/gui/qt/menus/menus.cpp:962 modules/gui/qt/menus/qml/MainMenu.qml:77
+#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "Otvoriť zachytávacie zariadenie"
 
@@ -30012,7 +30244,7 @@ msgstr "Otvoriť &súbor..."
 msgid "&Open Multiple Files..."
 msgstr "&Otvoriť viaceré súbory..."
 
-#: modules/gui/qt/menus/menus.cpp:189 modules/gui/qt/menus/menus.cpp:692
+#: modules/gui/qt/menus/menus.cpp:189 modules/gui/qt/menus/menus.cpp:690
 msgid "Open &Disc..."
 msgstr "Otvoriť &disk..."
 
@@ -30020,7 +30252,7 @@ msgstr "Otvoriť &disk..."
 msgid "Open &Network Stream..."
 msgstr "Otvoriť stream v &sieti..."
 
-#: modules/gui/qt/menus/menus.cpp:193 modules/gui/qt/menus/menus.cpp:696
+#: modules/gui/qt/menus/menus.cpp:193 modules/gui/qt/menus/menus.cpp:694
 msgid "Open &Capture Device..."
 msgstr "Otvoriť &zaznamenávacie zariadenie..."
 
@@ -30040,7 +30272,7 @@ msgstr "Konve&rtovať / Uložiť..."
 msgid "&Stream..."
 msgstr "&Stream..."
 
-#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:941
+#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "Ukončiť na konci frontu prehrávania"
 
@@ -30048,11 +30280,11 @@ msgstr "Ukončiť na konci frontu prehrávania"
 msgid "Close to systray"
 msgstr "Zatvoriť do systémovej lišty"
 
-#: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:887
+#: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:885
 msgid "&Effects and Filters"
 msgstr "&Efekty a filtre"
 
-#: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:888
+#: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:886
 msgid "&Track Synchronization"
 msgstr "Synchronizácia s&topy"
 
@@ -30060,15 +30292,15 @@ msgstr "Synchronizácia s&topy"
 msgid "Media &Statistics"
 msgstr "&Štatistiky média"
 
-#: modules/gui/qt/menus/menus.cpp:272 modules/gui/qt/menus/menus.cpp:894
+#: modules/gui/qt/menus/menus.cpp:272 modules/gui/qt/menus/menus.cpp:892
 msgid "Plu&gins and extensions"
 msgstr "Prídavné &moduly a rozšírenia"
 
-#: modules/gui/qt/menus/menus.cpp:277 modules/gui/qt/menus/menus.cpp:895
+#: modules/gui/qt/menus/menus.cpp:277 modules/gui/qt/menus/menus.cpp:893
 msgid "Customi&ze Interface..."
 msgstr "Prispôsobiť ro&zhranie..."
 
-#: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:896
+#: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:894
 #: modules/gui/qt/qt.cpp:1697
 msgid "&Preferences"
 msgstr "&Nastavenia"
@@ -30153,7 +30385,7 @@ msgstr "S&topa s videom"
 msgid "&3D Output"
 msgstr "&3D výstup"
 
-#: modules/gui/qt/menus/menus.cpp:465 modules/gui/qt/menus/menus.cpp:1015
+#: modules/gui/qt/menus/menus.cpp:465 modules/gui/qt/menus/menus.cpp:1013
 msgid "&Fullscreen"
 msgstr "Zobrazovanie na &celú obrazovku"
 
@@ -30244,91 +30476,91 @@ msgstr "Do&zadu"
 msgid "Ne&xt"
 msgstr "Ď&alej"
 
-#: modules/gui/qt/menus/menus.cpp:630
+#: modules/gui/qt/menus/menus.cpp:628
 msgid "Sp&eed"
 msgstr "Rých&losť"
 
-#: modules/gui/qt/menus/menus.cpp:636
+#: modules/gui/qt/menus/menus.cpp:634
 msgid "&Faster"
 msgstr "&Rýchlejšie"
 
-#: modules/gui/qt/menus/menus.cpp:646
+#: modules/gui/qt/menus/menus.cpp:644
 msgid "N&ormal Speed"
 msgstr "N&ormálna rýchlosť"
 
-#: modules/gui/qt/menus/menus.cpp:654
+#: modules/gui/qt/menus/menus.cpp:652
 msgid "Slo&wer"
 msgstr "Po&malšie"
 
-#: modules/gui/qt/menus/menus.cpp:667
+#: modules/gui/qt/menus/menus.cpp:665
 msgid "&Jump Forward"
 msgstr "Preskočiť &dopredu"
 
-#: modules/gui/qt/menus/menus.cpp:673
+#: modules/gui/qt/menus/menus.cpp:671
 msgid "Jump Bac&kward"
 msgstr "Preskočiť do&zadu"
 
-#: modules/gui/qt/menus/menus.cpp:694
+#: modules/gui/qt/menus/menus.cpp:692
 msgid "Open &Network..."
 msgstr "Otvoriť súbor v &sieti..."
 
-#: modules/gui/qt/menus/menus.cpp:831
+#: modules/gui/qt/menus/menus.cpp:829
 msgid "Previous Item"
 msgstr "Predchádzajúca položka"
 
-#: modules/gui/qt/menus/menus.cpp:834
+#: modules/gui/qt/menus/menus.cpp:832
 msgid "Next Item"
 msgstr "Ďalšia položka"
 
-#: modules/gui/qt/menus/menus.cpp:846
+#: modules/gui/qt/menus/menus.cpp:844
 msgid "Hide UI"
 msgstr "Skryť rozhranie"
 
-#: modules/gui/qt/menus/menus.cpp:873
+#: modules/gui/qt/menus/menus.cpp:871
 msgid "More Settings"
 msgstr "Ďalšie nastavenia"
 
-#: modules/gui/qt/menus/menus.cpp:952 modules/gui/qt/menus/qml/MainMenu.qml:53
+#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/qml/MainMenu.qml:53
 msgid "Open File(s)"
 msgstr "Otvoriť súbor(y)"
 
-#: modules/gui/qt/menus/menus.cpp:967 modules/gui/qt/menus/menus.cpp:970
+#: modules/gui/qt/menus/menus.cpp:965 modules/gui/qt/menus/menus.cpp:968
 msgid "Open Location from Clipboard"
 msgstr "Otvoriť umiestnenie zo schránky"
 
-#: modules/gui/qt/menus/menus.cpp:1025
+#: modules/gui/qt/menus/menus.cpp:1023
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:288
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:371
 msgid "&Audio"
 msgstr "&Zvuk"
 
-#: modules/gui/qt/menus/menus.cpp:1033
+#: modules/gui/qt/menus/menus.cpp:1031
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:291
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:369
 msgid "&Video"
 msgstr "&Video"
 
-#: modules/gui/qt/menus/menus.cpp:1041
+#: modules/gui/qt/menus/menus.cpp:1039
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:294
 msgid "Subti&tle"
 msgstr "Ti&tulky"
 
-#: modules/gui/qt/menus/menus.cpp:1047
+#: modules/gui/qt/menus/menus.cpp:1045
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:367
 msgid "&Playback"
 msgstr "&Prehrávanie"
 
-#: modules/gui/qt/menus/menus.cpp:1069
+#: modules/gui/qt/menus/menus.cpp:1067
 #: modules/gui/skins2/src/theme_repository.cpp:115
 msgid "Open skin..."
 msgstr "Otvoriť vzhľad..."
 
-#: modules/gui/qt/menus/menus.cpp:1090
+#: modules/gui/qt/menus/menus.cpp:1088
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:297
 msgid "Tool&s"
 msgstr "&Nástroje"
 
-#: modules/gui/qt/menus/menus.cpp:1094
+#: modules/gui/qt/menus/menus.cpp:1092
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:301
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:377
 msgid "V&iew"
@@ -30676,7 +30908,9 @@ msgstr "Filmy · mnoho jazykov"
 #: modules/gui/qt/player/subtitle_providers.cpp:1594
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
-msgstr "S vaším bezplatným účtom · chorvátsky, srbsky, bosniansky, slovinsky, macedónsky"
+msgstr ""
+"S vaším bezplatným účtom · chorvátsky, srbsky, bosniansky, slovinsky, "
+"macedónsky"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1598
 msgid "With your free token · Chinese"
@@ -30696,7 +30930,8 @@ msgstr "S vaším bezplatným kľúčom · rumunsky"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1610
 msgid "With your free account · Polish · finds those made for your file"
-msgstr "S vaším bezplatným účtom · Poľsky · nájde titulky priamo k vášmu súboru"
+msgstr ""
+"S vaším bezplatným účtom · Poľsky · nájde titulky priamo k vášmu súboru"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1613
 msgid "With your free account · Portuguese (Brazil)"
@@ -34320,7 +34555,7 @@ msgstr "Šetrič obrazovky XDG"
 msgid "XDG screen saver inhibition"
 msgstr "Blokovanie šetriča obrazovky X"
 
-#: modules/misc/iptv/iptv.cpp:424
+#: modules/misc/iptv/iptv.cpp:577
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -34328,7 +34563,7 @@ msgstr ""
 "Zobrazuje TV v knižnici: kanály vašich playlistov a účtov IPTV s ich "
 "programovým sprievodcom. Keď je vypnuté, nič z toho sa nenačíta."
 
-#: modules/misc/iptv/iptv.cpp:429
+#: modules/misc/iptv/iptv.cpp:582
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "Kanály a programový sprievodca Živej TV (IPTV)"
 
@@ -39974,10 +40209,6 @@ msgstr "..."
 #: modules/gui/qt/dialogs/extended/video_effects.ui:1099
 msgid "full"
 msgstr "plné"
-
-#: modules/gui/qt/dialogs/extended/video_effects.ui:1139
-msgid "none"
-msgstr "žiadne"
 
 #: modules/gui/qt/dialogs/extended/video_effects.ui:1209
 msgid "Logo erase"

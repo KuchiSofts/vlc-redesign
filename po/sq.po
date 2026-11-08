@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:32+0000\n"
+"POT-Creation-Date: 2026-11-08 10:17+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Albanian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -46,7 +46,7 @@ msgstr "Preferencat VLC"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:223
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:20
-#: modules/gui/qt/menus/menus.cpp:1060 modules/gui/qt/menus/menus.cpp:1078
+#: modules/gui/qt/menus/menus.cpp:1058 modules/gui/qt/menus/menus.cpp:1076
 msgid "Interface"
 msgstr "Ndërfaqja"
 
@@ -65,7 +65,7 @@ msgstr "Ndërfaqja"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:246
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
-#: modules/gui/qt/menus/menus.cpp:863
+#: modules/gui/qt/menus/menus.cpp:861
 #: modules/gui/qt/player/qml/TracksMenu.qml:38
 #: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:371
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
@@ -90,7 +90,7 @@ msgstr "Zëri"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/maininterface/navigationmodel.cpp:274
-#: modules/gui/qt/menus/menus.cpp:859
+#: modules/gui/qt/menus/menus.cpp:857
 #: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:371
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
@@ -109,7 +109,7 @@ msgid "Stream output"
 msgstr "Dalja e rrjedhës"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
-#: modules/gui/qt/menus/menus.cpp:910
+#: modules/gui/qt/menus/menus.cpp:908
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:43
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistButton.qml:36
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistNameWidget.qml:26
@@ -903,7 +903,8 @@ msgstr "Kodek"
 
 #: src/input/es_out.c:4711 src/input/meta.c:69 modules/access/imem.c:70
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:387
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:555 modules/stream_out/setid.c:50
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1108
+#: modules/stream_out/setid.c:50
 msgid "Language"
 msgstr "Gjuha"
 
@@ -1224,7 +1225,7 @@ msgstr "Pika e bardhë e masterimit"
 
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
-#: modules/gui/qt/menus/menus.cpp:867
+#: modules/gui/qt/menus/menus.cpp:865
 #: modules/gui/qt/player/qml/TracksListPage.qml:80
 msgid "Subtitle"
 msgstr "Titra"
@@ -1591,6 +1592,7 @@ msgstr "Qasshmëria"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Test"
 msgstr "Test"
 
@@ -1702,7 +1704,8 @@ msgstr "Ndez"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
-#: modules/gui/qt/menus/menus.cpp:923 modules/gui/qt/player/hdr_output.cpp:33
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:963
+#: modules/gui/qt/menus/menus.cpp:921 modules/gui/qt/player/hdr_output.cpp:33
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:430
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
 msgid "Off"
@@ -4132,11 +4135,11 @@ msgstr ""
 "Zgjidhni shkurtoren e tastierës për ta kthyer shpejtësinë e luajtjes në "
 "normale."
 
-#: src/libvlc-module.c:1378 modules/gui/qt/menus/menus.cpp:643
+#: src/libvlc-module.c:1378 modules/gui/qt/menus/menus.cpp:641
 msgid "Faster (fine)"
 msgstr "Më shpejt (imët)"
 
-#: src/libvlc-module.c:1380 modules/gui/qt/menus/menus.cpp:649
+#: src/libvlc-module.c:1380 modules/gui/qt/menus/menus.cpp:647
 msgid "Slower (fine)"
 msgstr "Më ngadalë (imët)"
 
@@ -4192,7 +4195,7 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:826
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:824
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
 msgid "Stop"
@@ -4334,7 +4337,7 @@ msgstr "Gjatësia e kërcimit të gjatë, në sekonda."
 
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
-#: modules/gui/qt/menus/menus.cpp:702 modules/gui/qt/menus/menus.cpp:1114
+#: modules/gui/qt/menus/menus.cpp:700 modules/gui/qt/menus/menus.cpp:1112
 #: modules/gui/qt/qt.cpp:1700 modules/gui/skins2/commands/cmd_quit.cpp:40
 msgid "Quit"
 msgstr "Dil"
@@ -4839,7 +4842,7 @@ msgid "Takes a video snapshot and writes it to disk."
 msgstr "Bën një fotografi të videos dhe e shkruan në disk."
 
 #: src/libvlc-module.c:1553 modules/gui/macosx/menus/VLCMainMenu.m:390
-#: modules/gui/qt/menus/menus.cpp:619 modules/gui/qt/menus/menus.cpp:838
+#: modules/gui/qt/menus/menus.cpp:618 modules/gui/qt/menus/menus.cpp:836
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:45
 #: modules/gui/qt/player/qml/controlbarcontrols/RecordButton.qml:29
 #: modules/stream_out/record.c:60
@@ -8122,7 +8125,7 @@ msgstr "Kërkon Windows 10 version 1809 ose më të ri."
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:166
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:194
@@ -9623,8 +9626,10 @@ msgstr ""
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:439
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:435
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:563
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:573
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
 #: modules/lua/vlc.c:57 modules/lua/vlc.c:86 modules/misc/audioscrobbler.c:119
 #: modules/stream_out/rtp.c:168
@@ -9798,7 +9803,7 @@ msgid "Set the group of the elementary stream"
 msgstr ""
 
 #: modules/access/imem.c:56 modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:567
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1120
 msgid "Category"
 msgstr "Kategori"
 
@@ -11305,7 +11310,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:29
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:103
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
 #: modules/gui/qt/maininterface/navigationmodel.cpp:275
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
 msgid "All"
@@ -17461,7 +17466,7 @@ msgstr ""
 #: modules/gui/macosx/library/media-source/VLCMediaSourceCollectionViewItem.m:87
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:27
-#: modules/gui/qt/menus/menus.cpp:907 modules/gui/skins2/vars/playtree.cpp:210
+#: modules/gui/qt/menus/menus.cpp:905 modules/gui/skins2/vars/playtree.cpp:210
 msgid "Playlist"
 msgstr "Lista e luajtjes"
 
@@ -18021,7 +18026,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:75
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:179
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:34
-#: modules/gui/qt/menus/menus.cpp:816
+#: modules/gui/qt/menus/menus.cpp:814
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:870
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1126
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:33
@@ -18079,7 +18084,7 @@ msgid "Add to Favorites"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -18226,7 +18231,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/sout.cpp:98
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:99
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:192
-#: modules/gui/qt/menus/menus.cpp:975
+#: modules/gui/qt/menus/menus.cpp:973
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Stream"
 msgstr "Transmeto"
@@ -18594,7 +18599,7 @@ msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
-#: modules/gui/qt/menus/menus.cpp:979
+#: modules/gui/qt/menus/menus.cpp:977
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
 msgid "Quit VLC"
@@ -18656,7 +18661,8 @@ msgid "Save Play Queue to Library..."
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:377
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:321
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:434
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:928
 msgid "Edit"
 msgstr "Modifiko"
 
@@ -18699,7 +18705,7 @@ msgid "Find"
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:385
-#: modules/gui/qt/menus/menus.cpp:877 modules/gui/qt/menus/menus.cpp:897
+#: modules/gui/qt/menus/menus.cpp:875 modules/gui/qt/menus/menus.cpp:895
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1009
 msgid "View"
 msgstr "Pamja"
@@ -18708,7 +18714,7 @@ msgstr "Pamja"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:239
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:245
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:24
-#: modules/gui/qt/menus/menus.cpp:856
+#: modules/gui/qt/menus/menus.cpp:854
 #: modules/gui/qt/player/qml/TracksMenu.qml:400
 msgid "Playback"
 msgstr "Luajtja"
@@ -18730,7 +18736,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:920
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:918
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:260
@@ -18958,8 +18964,8 @@ msgid "Bring All to Front"
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:499
-#: modules/gui/qt/dialogs/help/help.cpp:58 modules/gui/qt/menus/menus.cpp:881
-#: modules/gui/qt/menus/menus.cpp:898 modules/gui/qt/menus/menus.cpp:1110
+#: modules/gui/qt/dialogs/help/help.cpp:58 modules/gui/qt/menus/menus.cpp:879
+#: modules/gui/qt/menus/menus.cpp:896 modules/gui/qt/menus/menus.cpp:1108
 msgid "Help"
 msgstr "Ndihma"
 
@@ -19021,7 +19027,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:59
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:464
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:352
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:169
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:35
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1146
@@ -19051,17 +19057,17 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
-#: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:816
+#: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:814
 msgid "Pause"
 msgstr "Pusho"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1737
-#: modules/gui/qt/menus/menus.cpp:925
+#: modules/gui/qt/menus/menus.cpp:923
 msgid "Repeat One"
 msgstr "Përsërit Një"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1743
-#: modules/gui/qt/menus/menus.cpp:924
+#: modules/gui/qt/menus/menus.cpp:922
 msgid "Repeat All"
 msgstr "Përsëri T'gjitha"
 
@@ -19091,7 +19097,7 @@ msgstr "Menu Media"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:107
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:46
-#: modules/gui/qt/menus/menus.cpp:915
+#: modules/gui/qt/menus/menus.cpp:913
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:53
 #: modules/gui/qt/player/qml/controlbarcontrols/RandomButton.qml:28
@@ -19321,7 +19327,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:211
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:325
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:438
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:990
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:169
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:150
@@ -19348,7 +19355,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:97
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Add"
@@ -19370,8 +19377,10 @@ msgstr "Pastro"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:72
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:114
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:367
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:480
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:487
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:694
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:710
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:213
 #: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:440
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:179
@@ -21481,7 +21490,7 @@ msgstr "Ruaj fjalëkalimin"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
-#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:65
+#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "Hap transmetim rrjeti"
 
@@ -21506,8 +21515,11 @@ msgid "e.g., https://www.example.com/stream.avi"
 msgstr "p.sh. https://www.example.com/stream.avi"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:368
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:461
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
 msgid "(optional)"
 msgstr "(opsionale)"
 
@@ -21910,7 +21922,7 @@ msgid "Open Directory"
 msgstr "Hap dosje"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:88
-#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:59
+#: modules/gui/qt/menus/menus.cpp:954 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
 msgstr "Hap dosje"
 
@@ -22020,13 +22032,14 @@ msgid "No EPG Data Available"
 msgstr "Nuk ka të dhëna EPG"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:48 modules/gui/qt/menus/menus.cpp:266
-#: modules/gui/qt/menus/menus.cpp:892
+#: modules/gui/qt/menus/menus.cpp:890
 msgid "Program Guide"
 msgstr "Udhëzuesi i programeve"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:86
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:54
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:316
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:429
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:923
 msgid "Update"
 msgstr "Përditëso"
 
@@ -22731,7 +22744,7 @@ msgstr "Ngjyrat për %1"
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:168
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:522
 #: modules/gui/qt/dialogs/sout/convert.cpp:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:394
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:507
 #: modules/gui/qt/maininterface/navigationmodel.cpp:288
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:78
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
@@ -22913,7 +22926,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:324
 #: modules/gui/qt/dialogs/sout/sout.cpp:95
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:87
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:182
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:349
 #: modules/gui/qt/player/qml/controlbarcontrols/BackButton.qml:30
 msgid "Back"
@@ -23309,8 +23322,8 @@ msgstr "Pastro mesazhet"
 msgid "Clear the errors"
 msgstr "Pastro gabimet"
 
-#: modules/gui/qt/dialogs/open/open.cpp:49 modules/gui/qt/menus/menus.cpp:687
-#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/menus.cpp:1104
+#: modules/gui/qt/dialogs/open/open.cpp:49 modules/gui/qt/menus/menus.cpp:685
+#: modules/gui/qt/menus/menus.cpp:948 modules/gui/qt/menus/menus.cpp:1102
 msgid "Open Media"
 msgstr "Hap media"
 
@@ -24531,7 +24544,7 @@ msgstr "Konflikt në caktimin e shkurtores"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:428
+#: modules/misc/iptv/iptv.cpp:581
 msgid "Live TV"
 msgstr "TV drejtpërdrejt"
 
@@ -24702,7 +24715,7 @@ msgid "Languages to search"
 msgstr "Gjuhët për kërkim"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:421
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
@@ -24737,14 +24750,17 @@ msgid "Key works"
 msgstr "Çelësi funksionon"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
 msgid "Signed in as %1"
 msgstr "Ke hyrë si %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Key refused"
 msgstr "Çelësi u refuzua"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Wrong user name or password"
 msgstr "Emër përdoruesi ose fjalëkalim i gabuar"
 
@@ -24754,6 +24770,7 @@ msgid "Busy: try again in a minute"
 msgstr "Shërbimi është i zënë: provo pas një minute"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
 msgid "No answer, try again"
 msgstr "Nuk ka përgjigje, provo sërish"
 
@@ -24771,6 +24788,7 @@ msgid "Key refused: check it"
 msgstr "Çelësi u refuzua: kontrolloje"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "Hyrja u refuzua: kontrollo të dhënat"
@@ -24784,16 +24802,23 @@ msgid "Your free key"
 msgstr "Çelësi yt falas"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
 msgid "User name (optional)"
 msgstr "Emri i përdoruesit (opsional)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
 msgid "User name"
 msgstr "Emri i përdoruesit"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
 msgstr "Fjalëkalimi (opsional)"
 
@@ -24802,6 +24827,7 @@ msgid "Email"
 msgstr "Email"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Sign in"
 msgstr "Hyr"
 
@@ -25554,7 +25580,7 @@ msgid "History"
 msgstr "Historiku"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:423
+#: modules/misc/iptv/iptv.cpp:576
 msgid "Live TV (IPTV) add-on"
 msgstr "Shtesa TV drejtpërdrejt (IPTV)"
 
@@ -25564,8 +25590,8 @@ msgstr "Shtesa TV drejtpërdrejt (IPTV)"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "Udhëzuesi"
@@ -26478,8 +26504,8 @@ msgid "Updating…"
 msgstr "Duke përditësuar…"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -26519,7 +26545,7 @@ msgid "Free channel lists"
 msgstr "Lista falas kanalesh"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:210
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "Shfleto katalogun"
@@ -26639,7 +26665,7 @@ msgstr "Rivendos të gjitha"
 #: modules/gui/qt/dialogs/sout/convert.cpp:106
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:105
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:194
-#: modules/gui/qt/menus/menus.cpp:973 modules/gui/qt/menus/qml/MainMenu.qml:83
+#: modules/gui/qt/menus/menus.cpp:971 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
 msgstr "Konverto"
 
@@ -27098,71 +27124,71 @@ msgstr "Transmetim: "
 msgid "Schedule: "
 msgstr "Planifikim: "
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:869
+#: modules/gui/qt/iptv/iptv_addon.cpp:943
 msgid "This channel cannot be played"
 msgstr "Ky kanal nuk mund të luhet"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:909
+#: modules/gui/qt/iptv/iptv_addon.cpp:983
 msgid "This programme is older than the channel's archive"
 msgstr "Ky program është më i vjetër se arkivi i kanalit"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:910
+#: modules/gui/qt/iptv/iptv_addon.cpp:984
 msgid "This programme has not started yet"
 msgstr "Ky program nuk ka filluar ende"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:911
+#: modules/gui/qt/iptv/iptv_addon.cpp:985
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr "Ky kanal nuk ka arkiv: programet e kaluara nuk mund të luhen"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:935
+#: modules/gui/qt/iptv/iptv_addon.cpp:1009
 msgid "The guide does not say what is on"
 msgstr "Udhëzuesi nuk thotë çfarë po jepet"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:1059
 msgid "No channel %1"
 msgstr "Asnjë kanal %1"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1187
+#: modules/gui/qt/iptv/iptv_addon.cpp:1261
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 min"
 msgstr[1] "%1 min"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 orë"
 msgstr[1] "%1 orë"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 orë %2 min"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1272
 msgid "Today"
 msgstr "Sot"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1200
+#: modules/gui/qt/iptv/iptv_addon.cpp:1274
 msgid "Tomorrow"
 msgstr "Nesër"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1202
+#: modules/gui/qt/iptv/iptv_addon.cpp:1276
 msgid "Yesterday"
 msgstr "Dje"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
+#: modules/gui/qt/iptv/qml/TvToast.qml:91
 msgid "Watch"
 msgstr "Shiko"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:37
 msgid "Watch from the start"
 msgstr "Shiko nga fillimi"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:45
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
@@ -27172,13 +27198,17 @@ msgstr "Shiko nga fillimi"
 msgid "Favorite"
 msgstr "E preferuar"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:48
 msgid "Show in the Guide"
 msgstr "Shfaq në udhëzues"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:50
 msgid "What's On"
 msgstr "Çfarë po jepet"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
+msgid "Guide Id…"
+msgstr "ID-ja në udhëzues…"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
@@ -27189,9 +27219,9 @@ msgid "Next at %1"
 msgstr "Më pas në %1"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 d"
@@ -27205,24 +27235,24 @@ msgstr[0] "Arkivi: %1 ditën e fundit"
 msgstr[1] "Arkivi: %1 ditët e fundit"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:277
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:674
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
 msgid "Films"
 msgstr "Filma"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:278
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:675
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
 msgid "Series"
 msgstr "Seriale"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:185
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "Shikoni TV në VLC"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:195
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
@@ -27232,49 +27262,49 @@ msgstr ""
 "hyrjen e tij Xtream Codes, ose një listë falas kanalesh nga katalogu. "
 "Udhëzuesi i programeve vjen bashkë me të."
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:448
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "Shto një lidhje"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:257
 msgid "Updating the guide of %1… %2 MB"
 msgstr "Duke përditësuar udhëzuesin e %1… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:258
 msgid "Updating the channels of %1…"
 msgstr "Duke përditësuar kanalet e %1…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:261
 msgid "%1 could not be loaded: %2"
 msgstr "%1 nuk u ngarkua dot: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:455
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "Asnjë kanal nuk përputhet me kërkimin"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:456
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Ende asnjë kanal i preferuar: klikoni me të djathtën mbi një kanal për ta "
 "shtuar"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:457
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "Ende nuk keni parë asnjë kanal"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:458
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "Duke ngarkuar kanalet…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:459
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
@@ -27421,7 +27451,7 @@ msgid "Channel"
 msgstr "Kanali"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Catch-up"
 msgstr "Arkivi"
 
@@ -27431,37 +27461,75 @@ msgid_plural "The past %1 days"
 msgstr[0] "%1 ditën e fundit"
 msgstr[1] "%1 ditët e fundit"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:75
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:53
+msgid "The Live TV of your Jellyfin server: its channels and guide"
+msgstr "TV drejtpërdrejt i shërbyesit tuaj Jellyfin: kanalet dhe udhëzuesi i tij"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:55
+msgid "The Live TV of your Emby server: its channels and guide"
+msgstr "TV drejtpërdrejt i shërbyesit tuaj Emby: kanalet dhe udhëzuesi i tij"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:57
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:59
+msgid "Your TV server: its channels and guide"
+msgstr "Shërbyesi juaj TV: kanalet dhe udhëzuesi i tij"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:61
+msgid "Your TV server on your network: its channels and guide"
+msgstr "Shërbyesi juaj TV në rrjetin tuaj: kanalet dhe udhëzuesi i tij"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:63
+msgid "A tuner of your network: its channels and free guide"
+msgstr "Një sintonizues në rrjetin tuaj: kanalet e tij dhe udhëzues falas"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:66
+msgid ""
+"A paid guide (the US, Canada and more) for the channels of every source: the "
+"lineups of your account"
+msgstr "Një udhëzues me pagesë (SHBA, Kanada dhe më tepër) për kanalet e çdo burimi: paketat e kanaleve të llogarisë suaj"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "Burimet e TV-së"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Add Guide"
 msgstr "Shto udhëzues"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
 msgid "Add Source"
 msgstr "Shto burim"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:113
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:215
 msgid "This source cannot be added: fill in the fields marked as needed."
 msgstr ""
 "Ky burim nuk mund të shtohet: plotësoni fushat e shënuara si të nevojshme."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:245
 msgid "Your Sources (%1)"
 msgstr "Burimet tuaja (%1)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:247
+msgid "Accounts"
+msgstr "Llogaritë"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+msgid "Guides"
+msgstr "Udhëzues"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
 msgid "Catalog"
 msgstr "Katalogu"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:200
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
 msgid "Your TV sources"
 msgstr "Burimet tuaja të TV-së"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:202
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:310
 msgid ""
 "The guides of the first sources come first when several name the same "
 "channel."
@@ -27469,127 +27537,139 @@ msgstr ""
 "Udhëzuesit e burimeve të para vijnë të parët kur disa përmendin të njëjtin "
 "kanal."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:203
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:311
 msgid "No source yet: add the link of your provider, or one of the catalog."
 msgstr "Ende asnjë burim: shtoni lidhjen e ofruesit tuaj ose një nga katalogu."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:268
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+msgid "%1 programme"
+msgid_plural "%1 programmes"
+msgstr[0] "%1 program"
+msgstr[1] "%1 programe"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:379
 msgid "Guide %1"
 msgid_plural "Guide %1"
 msgstr[0] "Udhëzues %1"
 msgstr[1] "Udhëzues %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:269
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
 msgid "%1 channel has a programme guide"
 msgid_plural "%1 channels have a programme guide"
 msgstr[0] "%1 kanal ka udhëzues programesh"
 msgstr[1] "%1 kanale kanë udhëzues programesh"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:275
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:386
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
 msgstr[0] "Arkiv %1 d"
 msgstr[1] "Arkiv %1 d"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
 msgid "Updating the guide… %1 MB"
 msgstr "Duke përditësuar udhëzuesin… %1 MB"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
 msgid "Updating the channels…"
 msgstr "Duke përditësuar kanalet…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:288
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:400
 msgid "Updated %1 at %2"
 msgstr "Përditësuar %1 në %2"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn Off"
 msgstr "Çaktivizo"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn On"
 msgstr "Aktivizo"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:340
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:453
 msgid "Update All"
 msgstr "Përditësoji të gjitha"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:358
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:471
 msgid "Playlist (M3U)"
 msgstr "Lista e luajtjes (M3U)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:359
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:472
 msgid "Xtream Codes"
 msgstr "Xtream Codes"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:360
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:473
 msgid "Guide (XMLTV)"
 msgstr "Udhëzues (XMLTV)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:373
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:486
 msgid "e.g., My TV"
 msgstr "p.sh. TV-ja ime"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:493
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:503
 msgid "Playlist link or file"
 msgstr "Lidhja ose skedari i listës së luajtjes"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:381
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:494
 msgid ""
 "The M3U link your provider gave you; its guide is found in it when it names "
 "one."
 msgstr ""
 "Lidhja M3U që ju dha ofruesi; udhëzuesi gjendet në të kur ajo e përmend."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:502
 msgid "e.g., https://example.com/playlist.m3u"
 msgstr "p.sh. https://example.com/playlist.m3u"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:396
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:509
 msgid "Choose a playlist"
 msgstr "Zgjidhni një listë luajtjeje"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:510
 msgid "Playlists (*.m3u *.m3u8)"
 msgstr "Lista luajtjeje (*.m3u *.m3u8)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:413
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:420
-msgid "Server"
-msgstr "Shërbyesi"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:414
-msgid "The address of the provider's panel, with its port (http://host:8080)."
-msgstr "Adresa e panelit të ofruesit, me portën e saj (http://host:8080)."
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
-msgid "e.g., http://example.com:8080"
-msgstr "p.sh. http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
 msgid "(empty: unchanged)"
 msgstr "(bosh: e pandryshuar)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:445
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:558
+msgid "Server"
+msgstr "Shërbyesi"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+msgid "The address of the provider's panel, with its port (http://host:8080)."
+msgstr "Adresa e panelit të ofruesit, me portën e saj (http://host:8080)."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:557
+msgid "e.g., http://example.com:8080"
+msgstr "p.sh. http://example.com:8080"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "For the source"
 msgstr "Për burimin"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:446
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
 msgid "Its channels are matched by their guide id, then by their name."
 msgstr "Kanalet e tij përputhen sipas ID-së në udhëzues, pastaj sipas emrit."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:447
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:585
 msgid "Add a source first."
 msgstr "Shtoni fillimisht një burim."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:460
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:470
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:598
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:608
 msgid "Guide links"
 msgstr "Lidhjet e udhëzuesve"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:462
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:600
 msgid ""
 "XMLTV guides (.xml or .xml.gz), one per line; several are merged, the first "
 "first."
@@ -27597,11 +27677,11 @@ msgstr ""
 "Udhëzues XMLTV (.xml ose .xml.gz), një për rresht; disa bashkohen, i pari ka "
 "përparësi."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:469
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:607
 msgid "e.g., https://example.com/guide.xml.gz"
 msgstr "p.sh. https://example.com/guide.xml.gz"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:476
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:614
 msgid ""
 "Links and passwords are kept in the keystore of VLC, never written to its "
 "log."
@@ -27609,54 +27689,188 @@ msgstr ""
 "Lidhjet dhe fjalëkalimet mbahen në ruajtësin e kyçeve të VLC-së, kurrë nuk "
 "shkruhen në regjistrin e tij."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:634
+msgid "Found on your network"
+msgstr "Gjetur në rrjetin tuaj"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:635
+msgid "Looking on your network…"
+msgstr "Po kërkohet në rrjetin tuaj…"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:637
+msgid "Nothing found on your network: type the server's address."
+msgstr "Nuk u gjet asgjë në rrjetin tuaj: shkruani adresën e shërbyesit."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+msgid "Added"
+msgstr "U shtua"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:661
+msgid "Look again"
+msgstr "Kërko sërish"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+msgid "Server address"
+msgstr "Adresa e shërbyesit"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+msgid "e.g., %1"
+msgstr "p.sh. %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+msgid "PIN"
+msgstr "PIN"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+msgid "API key"
+msgstr "Çelës API"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+msgid "Instead of a user: a key made in the server's dashboard."
+msgstr "Në vend të përdoruesit: një çelës i krijuar në panelin e shërbyesit."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+msgid "Server found"
+msgstr "U gjet shërbyesi"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+msgid "Sign Out"
+msgstr "Dil"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+msgid ""
+"Passwords and keys are kept in the keystore of VLC, never written to its log."
+msgstr "Fjalëkalimet dhe çelësat mbahen në ruajtësin e kyçeve të VLC-së, kurrë nuk shkruhen në regjistrin e tij."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+msgid "The guide of %1"
+msgstr "Udhëzuesi i %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+msgid ""
+"The id the guides give this channel. Yours comes first; leave it empty to "
+"use the one of its list or the one found for it."
+msgstr "ID-ja që udhëzuesit i japin këtij kanali. E juaja vjen e para; lëreni bosh për të përdorur atë të listës së tij ose atë të gjetur për të."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+msgid "Its list: %1"
+msgstr "Nga lista e tij: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
+msgid "none"
+msgstr "asnjë"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+msgid "Found for it: %1"
+msgstr "Gjetur për të: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+msgid "Guide id"
+msgstr "ID-ja në udhëzues"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+msgid "The guides of your sources"
+msgstr "Udhëzuesit e burimeve tuaja"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+msgid ""
+"Each source's own guides and those you added; the channels are matched by "
+"their guide id, then by their name."
+msgstr "Udhëzuesit e vetë çdo burimi dhe ata që shtuat; kanalet përputhen sipas ID-së në udhëzues, pastaj sipas emrit."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+msgid "A guide for the channels of every source"
+msgstr "Një udhëzues për kanalet e çdo burimi"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvToast.qml:56
+msgid "Guide for %1 of %2 channels"
+msgstr "Kanale me udhëzues: %1 nga %2"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+msgid "Find a Guide"
+msgstr "Gjej një udhëzues"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+msgid "Found for you: %1 channel matched by its name or id"
+msgid_plural "Found for you: %1 channels matched by their name or id"
+msgstr[0] "Gjetur për ju: %1 kanal i përputhur sipas emrit ose ID-së"
+msgstr[1] "Gjetur për ju: %1 kanale të përputhura sipas emrit ose ID-së"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+msgid "Added by you"
+msgstr "Shtuar nga ju"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+msgid "Found for you"
+msgstr "Gjetur për ju"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+msgid "From the playlist"
+msgstr "Nga lista e kanaleve"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+msgid "No guide yet: add one, or one of the catalog's."
+msgstr "Ende pa udhëzues: shtoni një, ose një nga katalogu."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
 msgid "Search the catalog"
 msgstr "Kërko në katalog"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1114
 #: modules/meta_engine/ID3Genres.h:35
 msgid "Country"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
 msgid "A-Z"
 msgstr "A-Z"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
 msgid "Most channels"
 msgstr "Më shumë kanale"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+msgid "For you"
+msgstr "Për ju"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+msgid "Recommended"
+msgstr "Të rekomanduara"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
 msgid "Free"
 msgstr "Falas"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-msgid "Guides"
-msgstr "Udhëzues"
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+msgid "Not answering"
+msgstr "Nuk përgjigjet"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
 msgid "Paid"
 msgstr "Me pagesë"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
-msgid "Added"
-msgstr "U shtua"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
 msgid "Loading the catalog…"
 msgstr "Duke ngarkuar katalogun…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
 msgid "The catalog is empty in this version."
 msgstr "Katalogu është bosh në këtë version."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Nothing in the catalog matches"
 msgstr "Asgjë në katalog nuk përputhet"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:739
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
@@ -27664,13 +27878,29 @@ msgstr ""
 "Listohen vetëm burime falas dhe të ligjshme. Sugjerimet shqyrtohen para se "
 "të hyjnë në katalog."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
 msgid "Suggest a Service"
 msgstr "Sugjeroni një shërbim"
 
-#: modules/gui/qt/iptv/qml/TvToast.qml:48
+#: modules/gui/qt/iptv/qml/TvToast.qml:54
+msgid "Guide found for %1 of %2 channels"
+msgstr "U gjet udhëzues për kanalet: %1 nga %2"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:55
+msgid "The list of channels to match could not be downloaded"
+msgstr "Lista e kanaleve për përputhje nuk u shkarkua dot"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:57
+msgid "No free guide was found for the channels of %1"
+msgstr "Nuk u gjet udhëzues falas për kanalet e %1"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:64
 msgid "%1 starts now on %2"
 msgstr "%1 fillon tani në %2"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:102
+msgid "Undo"
+msgstr "Zhbëj"
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1308
 msgid "Paste from clipboard"
@@ -27816,7 +28046,7 @@ msgstr "Pamja kryesore"
 
 #: modules/gui/qt/maininterface/qml/NoMedialibHome.qml:184
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:36
-#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:71
+#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:71
 msgid "Open Disc"
 msgstr "Hap disk"
 
@@ -27825,7 +28055,7 @@ msgid "Open Multiple Files"
 msgstr "Hap disa skedarë"
 
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
-#: modules/gui/qt/menus/menus.cpp:962 modules/gui/qt/menus/qml/MainMenu.qml:77
+#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "Hap pajisje kapjeje"
 
@@ -29033,7 +29263,7 @@ msgstr "Hap &skedar..."
 msgid "&Open Multiple Files..."
 msgstr "&Hap disa skedarë..."
 
-#: modules/gui/qt/menus/menus.cpp:189 modules/gui/qt/menus/menus.cpp:692
+#: modules/gui/qt/menus/menus.cpp:189 modules/gui/qt/menus/menus.cpp:690
 msgid "Open &Disc..."
 msgstr "Hap &disk..."
 
@@ -29041,7 +29271,7 @@ msgstr "Hap &disk..."
 msgid "Open &Network Stream..."
 msgstr "Hap transmetim &rrjeti..."
 
-#: modules/gui/qt/menus/menus.cpp:193 modules/gui/qt/menus/menus.cpp:696
+#: modules/gui/qt/menus/menus.cpp:193 modules/gui/qt/menus/menus.cpp:694
 msgid "Open &Capture Device..."
 msgstr "Hap &pajisje kapjeje..."
 
@@ -29061,7 +29291,7 @@ msgstr "&Konverto / Ruaj..."
 msgid "&Stream..."
 msgstr "&Transmeto..."
 
-#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:941
+#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "Dil në fund të radhës së luajtjes"
 
@@ -29069,11 +29299,11 @@ msgstr "Dil në fund të radhës së luajtjes"
 msgid "Close to systray"
 msgstr "Mbyll në hapësirën e sistemit"
 
-#: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:887
+#: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:885
 msgid "&Effects and Filters"
 msgstr "&Efektet dhe filtrat"
 
-#: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:888
+#: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:886
 msgid "&Track Synchronization"
 msgstr "&Sinkronizimi i pistave"
 
@@ -29081,15 +29311,15 @@ msgstr "&Sinkronizimi i pistave"
 msgid "Media &Statistics"
 msgstr "&Statistikat e medias"
 
-#: modules/gui/qt/menus/menus.cpp:272 modules/gui/qt/menus/menus.cpp:894
+#: modules/gui/qt/menus/menus.cpp:272 modules/gui/qt/menus/menus.cpp:892
 msgid "Plu&gins and extensions"
 msgstr "Sht&ojcat dhe zgjerimet"
 
-#: modules/gui/qt/menus/menus.cpp:277 modules/gui/qt/menus/menus.cpp:895
+#: modules/gui/qt/menus/menus.cpp:277 modules/gui/qt/menus/menus.cpp:893
 msgid "Customi&ze Interface..."
 msgstr "&Personalizo ndërfaqen..."
 
-#: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:896
+#: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:894
 #: modules/gui/qt/qt.cpp:1697
 msgid "&Preferences"
 msgstr "&Preferencat"
@@ -29174,7 +29404,7 @@ msgstr "&Pista video"
 msgid "&3D Output"
 msgstr "Dalja &3D"
 
-#: modules/gui/qt/menus/menus.cpp:465 modules/gui/qt/menus/menus.cpp:1015
+#: modules/gui/qt/menus/menus.cpp:465 modules/gui/qt/menus/menus.cpp:1013
 msgid "&Fullscreen"
 msgstr "&Ekran i plotë"
 
@@ -29265,91 +29495,91 @@ msgstr "I &mëparshmi"
 msgid "Ne&xt"
 msgstr "&Tjetri"
 
-#: modules/gui/qt/menus/menus.cpp:630
+#: modules/gui/qt/menus/menus.cpp:628
 msgid "Sp&eed"
 msgstr "&Shpejtësia"
 
-#: modules/gui/qt/menus/menus.cpp:636
+#: modules/gui/qt/menus/menus.cpp:634
 msgid "&Faster"
 msgstr "Më &shpejt"
 
-#: modules/gui/qt/menus/menus.cpp:646
+#: modules/gui/qt/menus/menus.cpp:644
 msgid "N&ormal Speed"
 msgstr "Shpejtësi &normale"
 
-#: modules/gui/qt/menus/menus.cpp:654
+#: modules/gui/qt/menus/menus.cpp:652
 msgid "Slo&wer"
 msgstr "Më &ngadalë"
 
-#: modules/gui/qt/menus/menus.cpp:667
+#: modules/gui/qt/menus/menus.cpp:665
 msgid "&Jump Forward"
 msgstr "&Kërce përpara"
 
-#: modules/gui/qt/menus/menus.cpp:673
+#: modules/gui/qt/menus/menus.cpp:671
 msgid "Jump Bac&kward"
 msgstr "Kërce &prapa"
 
-#: modules/gui/qt/menus/menus.cpp:694
+#: modules/gui/qt/menus/menus.cpp:692
 msgid "Open &Network..."
 msgstr "Hap &rrjet..."
 
-#: modules/gui/qt/menus/menus.cpp:831
+#: modules/gui/qt/menus/menus.cpp:829
 msgid "Previous Item"
 msgstr "Elementi i mëparshëm"
 
-#: modules/gui/qt/menus/menus.cpp:834
+#: modules/gui/qt/menus/menus.cpp:832
 msgid "Next Item"
 msgstr "Elementi tjetër"
 
-#: modules/gui/qt/menus/menus.cpp:846
+#: modules/gui/qt/menus/menus.cpp:844
 msgid "Hide UI"
 msgstr "Fshih ndërfaqen"
 
-#: modules/gui/qt/menus/menus.cpp:873
+#: modules/gui/qt/menus/menus.cpp:871
 msgid "More Settings"
 msgstr "Më shumë cilësime"
 
-#: modules/gui/qt/menus/menus.cpp:952 modules/gui/qt/menus/qml/MainMenu.qml:53
+#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/qml/MainMenu.qml:53
 msgid "Open File(s)"
 msgstr "Hap skedar(ë)"
 
-#: modules/gui/qt/menus/menus.cpp:967 modules/gui/qt/menus/menus.cpp:970
+#: modules/gui/qt/menus/menus.cpp:965 modules/gui/qt/menus/menus.cpp:968
 msgid "Open Location from Clipboard"
 msgstr "Hap vendndodhjen nga kujtesa e fragmenteve"
 
-#: modules/gui/qt/menus/menus.cpp:1025
+#: modules/gui/qt/menus/menus.cpp:1023
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:288
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:371
 msgid "&Audio"
 msgstr "&Audio"
 
-#: modules/gui/qt/menus/menus.cpp:1033
+#: modules/gui/qt/menus/menus.cpp:1031
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:291
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:369
 msgid "&Video"
 msgstr "&Video"
 
-#: modules/gui/qt/menus/menus.cpp:1041
+#: modules/gui/qt/menus/menus.cpp:1039
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:294
 msgid "Subti&tle"
 msgstr "&Titrat"
 
-#: modules/gui/qt/menus/menus.cpp:1047
+#: modules/gui/qt/menus/menus.cpp:1045
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:367
 msgid "&Playback"
 msgstr "&Luajtja"
 
-#: modules/gui/qt/menus/menus.cpp:1069
+#: modules/gui/qt/menus/menus.cpp:1067
 #: modules/gui/skins2/src/theme_repository.cpp:115
 msgid "Open skin..."
 msgstr "Hap lëkurë..."
 
-#: modules/gui/qt/menus/menus.cpp:1090
+#: modules/gui/qt/menus/menus.cpp:1088
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:297
 msgid "Tool&s"
 msgstr "V&eglat"
 
-#: modules/gui/qt/menus/menus.cpp:1094
+#: modules/gui/qt/menus/menus.cpp:1092
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:301
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:377
 msgid "V&iew"
@@ -29695,7 +29925,9 @@ msgstr "Filma · shumë gjuhë"
 #: modules/gui/qt/player/subtitle_providers.cpp:1594
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
-msgstr "Me llogarinë tënde falas · kroatisht, serbisht, boshnjakisht, sllovenisht, maqedonisht"
+msgstr ""
+"Me llogarinë tënde falas · kroatisht, serbisht, boshnjakisht, sllovenisht, "
+"maqedonisht"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1598
 msgid "With your free token · Chinese"
@@ -29715,7 +29947,8 @@ msgstr "Me çelësin tënd falas · rumanisht"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1610
 msgid "With your free account · Polish · finds those made for your file"
-msgstr "Me llogarinë tënde falas · Polonisht · gjen titrat e bëra për skedarin tënd"
+msgstr ""
+"Me llogarinë tënde falas · Polonisht · gjen titrat e bëra për skedarin tënd"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1613
 msgid "With your free account · Portuguese (Brazil)"
@@ -33282,7 +33515,7 @@ msgstr ""
 msgid "XDG screen saver inhibition"
 msgstr ""
 
-#: modules/misc/iptv/iptv.cpp:424
+#: modules/misc/iptv/iptv.cpp:577
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -33291,7 +33524,7 @@ msgstr ""
 "IPTV, me udhëzuesin e tyre të programeve. Kur është çaktivizuar, nuk "
 "ngarkohet asgjë prej saj."
 
-#: modules/misc/iptv/iptv.cpp:429
+#: modules/misc/iptv/iptv.cpp:582
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "Kanalet dhe udhëzuesi i programeve i TV drejtpërdrejt (IPTV)"
 
@@ -38521,10 +38754,6 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/video_effects.ui:1099
 msgid "full"
 msgstr ""
-
-#: modules/gui/qt/dialogs/extended/video_effects.ui:1139
-msgid "none"
-msgstr "asnjë"
 
 #: modules/gui/qt/dialogs/extended/video_effects.ui:1209
 msgid "Logo erase"

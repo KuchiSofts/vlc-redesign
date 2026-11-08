@@ -1,0 +1,36 @@
+{
+ "Items": [
+  {
+   "Name": "Open Movie One",
+   "ServerId": "f00d",
+   "Id": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+   "ChannelNumber": "101",
+   "Type": "TvChannel",
+   "ChannelType": "TV",
+   "ImageTags": {
+    "Primary": "0123abcd"
+   }
+  },
+  {
+   "Name": "Bunny Kids",
+   "Id": "b1b2c3d4e5f60718293a4b5c6d7e8f90",
+   "Number": "102",
+   "Type": "TvChannel",
+   "ChannelType": "TV",
+   "ImageTags": {}
+  },
+  {
+   "Name": "Demo Radio",
+   "Id": "c1b2c3d4e5f60718293a4b5c6d7e8f90",
+   "ChannelNumber": "900",
+   "ChannelType": "Radio"
+  },
+  {
+   "Name": "Bad id",
+   "Id": "../../etc",
+   "ChannelNumber": "1"
+  }
+ ],
+ "TotalRecordCount": 4,
+ "StartIndex": 0
+}

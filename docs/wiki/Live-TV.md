@@ -18,8 +18,8 @@ catalog.
 
 ## Add your TV
 
-Open **TV** in the sidebar, then **Add a Link** (or **Sources** at the top of the TV page, or **Settings > TV >
-Manage Sources**).
+Open **TV** in the sidebar, then **Add a Link** (or **Sources** at the top of the TV page, **Settings > TV > Manage
+Sources**, or **TV** in the player's library next to the video).
 
 | Source | What to type |
 |---|---|
@@ -55,7 +55,7 @@ they reach the catalog.
   what is next. Or **Grid View** (the List/Grid button of the header). The search of the header finds a channel by
   its name or its number.
 - The **groups** of your provider are the chips above the list, with **All**, **Favorites** and **Recently
-  Watched**.
+  Watched** (the mouse wheel goes along them when they run past the width).
 - **Right-click** a channel: *Watch*, *Watch from the start* (with catch-up), *Favorite*, *Show in the Guide*,
   *What's On*.
 - The marks at the end of a row: ↺ *7 d* is a channel with an archive of the past 7 days; the heart a favourite.
@@ -94,6 +94,11 @@ category and three lines of the description. It hides by itself, and stays while
 guide (its ‹ › buttons, or a swipe across a touchpad). Its buttons: the programme on now from its start (with
 catch-up), the channel up and down, the channel list. While a programme of the archive plays, **Back to Live**
 returns. When a channel has no archive, VLC says so.
+
+**The library next to the video** (the player's **Library** button, or <kbd>L</kbd>) has **TV** after *Network*:
+the channels with their groups and the search, a click switches channel while the video stays. Opened while a
+channel plays, it shows that channel in the group you chose it in. See
+[The library next to the video](The-Player#tv-next-to-the-video).
 
 **Subtitles** are for films and videos: a live channel (and music) has no subtitle files, online search or sync,
 and the *Languages and tracks* button only shows when the stream carries subtitle or audio tracks to choose from.

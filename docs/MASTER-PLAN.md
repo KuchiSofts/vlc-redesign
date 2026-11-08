@@ -12,6 +12,19 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-08):
 
+- 🟢 **Release 0.5.7** (2026-11-08, the owner: "i want to make a release for the update"): an update release. Online
+  subtitles in every app (#67) with every free service asked for any file; Live TV in the library next to the
+  video; hold for 2× (#64 → #66); Hide UI fixes (#65); the Android Live TV bar on a phone held upright; every
+  platform at 0.5.7 in platforms.yml before the build (About's "Also on"), the wiki's Platforms page too.
+- 🟡 **Every subtitle service, every file** (the owner: "search subtitles from all the free subtitle websites like
+  yifysubtitles.ch and opensubtitles and wizdom.xyz, make it to all the apps"): the four free services answered
+  (checked live: The Matrix on each); YIFY and Wizdom were skipped when the name didn't identify the video, so the
+  OpenSubtitles fingerprint answer now names it (identityOfHash: the majority title, a guess otherwise) on the
+  desktop, Android and the Samsung TV app, and each service's count shows under the search's title. Podnapisi is
+  gone (no DNS), BSPlayer answers over HTTP only and failed, SubDL and SubSource need a key.
+- 🟢 **"Also on" in About**: 0.5.6's line named 0.5.5 for the other platforms (platforms.yml was updated after
+  the build). `release-check.py --release X.Y.Z` now fails until every platform in platforms.yml is at X.Y.Z, and
+  docs/RELEASE-CHECKLIST.md says so (version, date and next of each platform, before the build).
 - 🟡 **#67, online subtitles in every app** (the owner: "the online subtitle need to be on all the apps for any
   platform", and how to get the OpenSubtitles key free): the desktop's search (subtitle_search.cpp,
   subtitle_providers.cpp) ported to Android (OnlineSubtitles.kt, RdOnlineSubtitlesSheet, the automatic search, the

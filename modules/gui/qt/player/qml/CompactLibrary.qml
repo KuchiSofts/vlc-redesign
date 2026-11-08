@@ -19,7 +19,8 @@ import VLC.Widgets as Widgets
 
 // Library next to the video (Figma "Player" with the sidebar open, the
 // places of Figma 848:1996 "sidebar"): a column of sections and a compact
-// list, to pick media without leaving the player.
+// list, to pick media without leaving the player. With Live TV on, TV after
+// Network: the channels to tune to, where it opens while one plays.
 FocusScope {
     id: root
 
@@ -45,12 +46,18 @@ FocusScope {
     onLocationChanged: {
         root._clearSearch()
         root._updateNetwork()
+        if (location.section === "tv")
+            Qt.callLater(root._showTvChannel)
     }
     // Closed, the models of the panel are gone (and nothing is searched)
     onVisibleChanged: {
         root._clearSearch()
         root._updateNetwork()
+        if (visible)
+            root._openedWhileTv()
     }
+    // (made when first opened: maybe while a channel plays)
+    Component.onCompleted: root._openedWhileTv()
 
     function _clearSearch() {
         for (const model of _searchedModels) {
@@ -58,6 +65,8 @@ FocusScope {
                 model.searchPattern = ""
         }
         _searchedModels = []
+        // (the channels of TV, searched by their own property)
+        _searchTv("")
         searchField.visible = false
         searchField.text = ""
     }
@@ -74,17 +83,23 @@ FocusScope {
         const song = Helpers.localPathFromUrl(Player.url).replace(/\\/g, "/").toLowerCase()
         return folder !== "" && song.startsWith(folder.endsWith("/") ? folder : folder + "/")
     }
+    // Live TV: while its add-on is there and on (as the TV of the sidebar)
+    readonly property bool _tvAvailable: Iptv.available && Iptv.enabled
+    readonly property bool _tvShown: location.section === "tv"
+    readonly property bool _tvHasSources: Iptv.sources.length > 0
     readonly property var _sections: [
         { section: "home", icon: "home", title: qsTr("Home") },
         { section: "videos", icon: "videos", title: qsTr("Videos") },
         { section: "music", icon: "songs", title: qsTr("Music") },
-        { section: "network", icon: "streaming", title: qsTr("Network") },
+        { section: "network", icon: "streaming", title: qsTr("Network") }
+    ].concat(_tvAvailable ? [{ section: "tv", icon: "tv", title: qsTr("TV") }] : []).concat([
         { section: "playlists", icon: "playlist", title: qsTr("Playlists") },
         { section: "recent", icon: "recent", title: qsTr("Recent") }
-    ]
+    ])
 
-    // Leave the player for the library window, on the same section
-    signal openLibraryRequested(string section)
+    // Leave the player for the library window, on the same section (the
+    // properties of its page: null for none)
+    signal openLibraryRequested(string section, var properties)
 
     // Figma "sidebar": the column of sections (50) and the panel (377)
     implicitWidth: VLCStyle.dp(427, VLCStyle.scale)
@@ -295,6 +310,7 @@ FocusScope {
         case "network": return qsTr("Network")
         case "playlists": return qsTr("Playlists")
         case "recent": return qsTr("Recent")
+        case "tv": return qsTr("TV")
         case "songs": return qsTr("Songs")
         case "albums": return qsTr("Albums")
         case "artists": return qsTr("Artists")
@@ -424,11 +440,15 @@ FocusScope {
         case "network":
             // (the "Add a service" row of the sources, gone while searching)
             return Math.max(0, list.count - (searchField.text === "" ? 1 : 0))
+        case "tv":
+            return Iptv.playerModel.count
         default:
             return list.count
         }
     }
-    readonly property bool _counted: location.section === "home" ? !!mlModels.item : !!_model
+    readonly property bool _counted: location.section === "home" ? !!mlModels.item
+                                   : _tvShown ? _tvHasSources
+                                   : !!_model
 
     // The Add row at the top of the list (Figma 848:1996): a folder to the
     // library, or media to a folder (the Open media menu of the library's
@@ -730,7 +750,7 @@ FocusScope {
                 // played together
                 // (Figma 848:1996 draws it on every place: the sections add
                 // to the library and rescan it)
-                visible: ["folder", "home", "videos", "music", "songs", "network"].includes(root.location.section)
+                visible: ["folder", "home", "videos", "music", "songs", "network", "tv"].includes(root.location.section)
                          || (root._mlAvailable && ["playlists", "playlist", "album", "artist", "genre"]
                                                       .includes(root.location.section))
                 onClicked: {
@@ -742,7 +762,25 @@ FocusScope {
                     case "music":
                     case "songs": foldersMenu.toggleFrom(this); break
                     case "network": networkMenu.toggleFrom(this); break
+                    case "tv": tvMenu.toggleFrom(this); break
                     default: collectionMenu.toggleFrom(this)
+                    }
+                }
+
+                // TV: the guide of the TV page, the sources (the dialog of
+                // the TV page and Settings, over the player)
+                Widgets.RedesignMenu {
+                    id: tvMenu
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Guide")
+                        iconName: "lists"
+                        enabled: root._tvHasSources
+                        onTriggered: root._openTvGuide("")
+                    }
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Sources")
+                        iconName: "tv"
+                        onTriggered: root._openTvSources(root._tvHasSources ? "sources" : "link")
                     }
                 }
 
@@ -827,7 +865,7 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 iconSource: "qrc:///redesign/icons/open/dim.svg"
                 description: qsTr("Open in the library")
-                onClicked: root.openLibraryRequested(root.location.section)
+                onClicked: root.openLibraryRequested(root.location.section, null)
             }
         }
 
@@ -846,7 +884,9 @@ FocusScope {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 visible: !searchField.visible
-                text: root._counted ? qsTr("%1 item", "%1 items", root._count).arg(root._count) : ""
+                text: !root._counted ? ""
+                      : root._tvShown ? qsTr("%1 channel", "%1 channels", root._count).arg(root._count)
+                      : qsTr("%1 item", "%1 items", root._count).arg(root._count)
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
@@ -867,6 +907,10 @@ FocusScope {
                 id: searchField
 
                 Layout.fillWidth: true
+                Layout.fillHeight: true
+                // (the Templates field has no size of its own: it was 0
+                // high, what was typed never showed)
+                implicitHeight: VLCStyle.dp(24, VLCStyle.scale)
                 visible: false
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
@@ -874,13 +918,32 @@ FocusScope {
                 placeholderText: qsTr("Search")
                 placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 horizontalAlignment: TextInput.AlignLeft
+                verticalAlignment: TextInput.AlignVCenter
+                selectByMouse: true
                 onTextChanged: {
+                    // TV: the channels by their name or number
+                    if (root._tvShown) {
+                        root._searchTv(text)
+                        return
+                    }
                     const models = root._toolModels.filter(model => model && model.searchPattern !== undefined)
                     for (const model of models)
                         model.searchPattern = text
                     root._searchedModels = text !== "" ? models : []
                 }
                 Keys.onEscapePressed: { text = ""; visible = false }
+
+                // nor a placeholder
+                Text {
+                    anchors.fill: parent
+                    visible: searchField.text.length === 0 && searchField.preeditText.length === 0
+                    text: searchField.placeholderText
+                    color: searchField.placeholderTextColor
+                    font: searchField.font
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                }
             }
             PanelButton {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
@@ -954,7 +1017,7 @@ FocusScope {
                     Widgets.RedesignOptionItem {
                         text: qsTr("Grid View")
                         iconSource: "qrc:///redesign/icons/grid/default.svg"
-                        onTriggered: root.openLibraryRequested(root.location.section)
+                        onTriggered: root.openLibraryRequested(root.location.section, null)
                     }
                     Widgets.RedesignOptionItem {
                         text: qsTr("List View")
@@ -967,7 +1030,8 @@ FocusScope {
                 Layout.leftMargin: VLCStyle.dp(12, VLCStyle.scale)
                 iconSource: "qrc:///redesign/icons/search/dim.svg"
                 description: qsTr("Search")
-                enabled: root._toolModels.some(model => model && model.searchPattern !== undefined)
+                enabled: root._tvShown ? root._tvHasSources
+                                       : root._toolModels.some(model => model && model.searchPattern !== undefined)
                 onClicked: {
                     searchField.visible = !searchField.visible
                     if (searchField.visible)
@@ -1139,7 +1203,7 @@ FocusScope {
             spacing: VLCStyle.dp(10, VLCStyle.scale)
             clip: true
             boundsBehavior: Flickable.StopAtBounds
-            visible: root.location.section !== "home"
+            visible: root.location.section !== "home" && !root._tvShown
             model: root._model
 
             header: Loader {
@@ -1343,6 +1407,340 @@ FocusScope {
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontNormal
         }
+
+        // TV (not in Figma 848:1996: Live TV came later): the groups of the
+        // TV page as chips, then the channels as the list over the video
+        // shows them (number, logo, name, what is on and its progress), the
+        // one playing in the accent. A click or Enter tunes the player to a
+        // channel; a right-click, the menu of the TV page's channels.
+        Item {
+            id: tvPlace
+
+            anchors {
+                top: separator.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+            visible: root._tvShown
+
+            Network.TvGroupChips {
+                id: tvChips
+                x: VLCStyle.dp(20, VLCStyle.scale)
+                y: VLCStyle.dp(20, VLCStyle.scale)
+                width: parent.width - 2 * x
+                height: VLCStyle.dp(30, VLCStyle.scale)
+                visible: root._tvHasSources
+                channels: Iptv.playerModel
+            }
+
+            ListView {
+                id: tvList
+
+                anchors {
+                    top: tvChips.bottom
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                    topMargin: VLCStyle.dp(12, VLCStyle.scale)
+                    leftMargin: VLCStyle.dp(8, VLCStyle.scale)
+                    rightMargin: VLCStyle.dp(8, VLCStyle.scale)
+                }
+                visible: root._tvHasSources
+                // (the list over the video's: the channel up and down go
+                // through the group chosen here; none while closed)
+                model: root._tvShown && root.visible && root._tvAvailable ? Iptv.playerModel : null
+                clip: true
+                bottomMargin: VLCStyle.dp(20, VLCStyle.scale)
+                reuseItems: true
+                boundsBehavior: Flickable.StopAtBounds
+                keyNavigationEnabled: true
+                highlightMoveDuration: 0
+                T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+
+                delegate: Network.TvChannelRow {
+                    width: ListView.view.width
+                    compact: true
+                    focus: ListView.isCurrentItem
+                    // (Enter, the keyboard on the row: it stays there)
+                    onPlay: root._tune(model, visualFocus)
+                    onMenu: (point) => channelMenu.popup([index], point)
+                    // (the row Tab reached: Up and Down go on from it)
+                    onActiveFocusChanged: if (activeFocus) ListView.view.currentIndex = index
+                }
+
+                // Up and Down through the channels, Left and Right the group
+                // before and after (as the list over the video)
+                Keys.onUpPressed: root._tvStep(-1)
+                Keys.onDownPressed: root._tvStep(1)
+                Keys.onLeftPressed: root._tvSwitchGroup(LayoutMirroring.enabled ? 1 : -1)
+                Keys.onRightPressed: root._tvSwitchGroup(LayoutMirroring.enabled ? -1 : 1)
+
+                Text {
+                    anchors.centerIn: parent
+                    width: parent.width - VLCStyle.dp(40, VLCStyle.scale)
+                    visible: tvList.count === 0
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
+                    // (the words of the TV page)
+                    text: Iptv.playerModel.search !== "" ? qsTr("No channel matches the search")
+                          : Iptv.playerModel.group === "favorites" ? qsTr("No favorite channel yet: right-click a channel to add it")
+                          : Iptv.playerModel.group === "recent" ? qsTr("No channel watched yet")
+                          : (Iptv.busy || !Iptv.channelsLoaded) ? qsTr("Loading the channels…")
+                          : qsTr("No channels")
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.redesign.fontNormal
+                }
+            }
+
+            // No source yet: what Live TV is and the ways to add one, as the
+            // TV page says it (its dialog opens over the player)
+            Column {
+                anchors.centerIn: parent
+                width: parent.width - VLCStyle.dp(40, VLCStyle.scale)
+                visible: !root._tvHasSources
+                spacing: VLCStyle.dp(16, VLCStyle.scale)
+
+                Image {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: VLCStyle.dp(48, VLCStyle.scale)
+                    height: width
+                    sourceSize: Qt.size(width, height)
+                    source: SVGColorImage.colorize("qrc:///redesign/duo/tv.svg")
+                                         .color1(VLCStyle.redesign.color("#8F8F8F"))
+                                         .color2(VLCStyle.redesign.accent).uri()
+                }
+                Text {
+                    width: parent.width
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Watch TV in VLC")
+                    color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
+                    font.weight: Font.Medium
+                }
+                Text {
+                    width: parent.width
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Add the playlist link of your TV provider (M3U) or its Xtream Codes login, or a free channel list of the catalog. Its programme guide comes with it.")
+                    color: VLCStyle.redesign.color("#6B6B6B")
+                    font.family: VLCStyle.redesign.fontFamily
+                    font.pixelSize: VLCStyle.redesign.fontNormal
+                    lineHeight: 1.3
+                }
+                // side by side, one under the other when they do not fit
+                Grid {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    columns: addLinkButton.implicitWidth + catalogButton.implicitWidth + spacing <= parent.width ? 2 : 1
+                    spacing: VLCStyle.dp(12, VLCStyle.scale)
+                    horizontalItemAlignment: Grid.AlignHCenter
+
+                    Widgets.RedesignButton {
+                        id: addLinkButton
+                        text: qsTr("Add a Link")
+                        accent: true
+                        onClicked: root._openTvSources("link")
+                    }
+                    Widgets.RedesignButton {
+                        id: catalogButton
+                        text: qsTr("Browse the Catalog")
+                        onClicked: root._openTvSources("catalog")
+                    }
+                }
+            }
+        }
+    }
+
+    // The menu of a channel (the TV page's)
+    Network.TvChannelMenu {
+        id: channelMenu
+        parentItem: root
+        channels: Iptv.playerModel
+        onGuideRequested: (key) => root._openTvGuide(key)
+        onProgrammeRequested: (channel, programme) => root._tvDialog("TvProgrammeDialog")?.show(channel, programme)
+    }
+
+    // the add-on switched off: TV is gone from the column and the history
+    Connections {
+        target: Iptv
+        function onEnabledChanged() {
+            if (root._tvAvailable)
+                return
+            root._back = root._back.filter(place => place.section !== "tv")
+            root._forward = root._forward.filter(place => place.section !== "tv")
+            if (root._tvShown)
+                root.location = { section: "home" }
+        }
+        // a channel switched to (here, by its keys, a number typed, the list
+        // over the video) or the channels loaded: in view
+        function onChannelSwitched() { Qt.callLater(root._followTvChannel) }
+        function onChannelsChanged() { Qt.callLater(root._followTvChannel) }
+    }
+
+    // Opened while a channel plays: on TV, at the channel
+    function _openedWhileTv() {
+        if (!_tvAvailable || !Iptv.playing)
+            return
+        if (_tvShown)
+            Qt.callLater(_showTvChannel)
+        else
+            go({ section: "tv" })
+    }
+
+    // The group of the TV list was chosen (a chip, Left and Right, the list
+    // over the video), All too: TV opens on it while it has the channel
+    // playing. The groups set here are not choices (_tvAutoGroup).
+    property bool _tvAllChosen: false
+    property bool _tvAutoGroup: false
+    Connections {
+        target: Iptv.playerModel
+        function onFilterChanged() {
+            if (!root._tvAutoGroup)
+                root._tvAllChosen = Iptv.playerModel.group === ""
+        }
+    }
+
+    // TV shown: the channel playing in the group chosen (here, in the list
+    // over the video: its channel up and down go through it), else in the
+    // group of the TV page it was likely picked in, else in its own group,
+    // highlighted and in view; the channel watched last in view otherwise.
+    // Recently Watched in the order of now.
+    function _showTvChannel() {
+        if (!_tvShown || !_tvAvailable || !visible)
+            return
+        const model = Iptv.playerModel
+        const key = Iptv.currentChannel.key ?? ""
+        _tvAutoGroup = true
+        if (model.group === "recent")
+            model.refilter()
+        if (Iptv.playing && key !== ""
+                && ((model.group === "" && !_tvAllChosen) || model.indexOfKey(key) < 0)) {
+            let chosen = ""
+            for (const group of [Iptv.channelModel.group, Iptv.currentChannel.group ?? ""]) {
+                if (group === "")
+                    continue
+                model.group = group
+                if (model.indexOfKey(key) >= 0) {
+                    chosen = group
+                    break
+                }
+            }
+            model.group = chosen
+        }
+        _tvAutoGroup = false
+        const i = model.indexOfKey(key)
+        if (i >= 0) {
+            tvList.currentIndex = i
+            tvList.positionViewAtIndex(i, ListView.Center)
+        } else {
+            tvList.positionViewAtBeginning()
+        }
+        tvChips.showCurrent()
+    }
+
+    // The channel switched to, in view when the group shown has it (the
+    // keyboard's focus kept on its row)
+    function _followTvChannel() {
+        if (!_tvShown || !visible)
+            return
+        const key = Iptv.currentChannel.key ?? ""
+        const keyboard = _tvKeyboardKey !== "" && _tvKeyboardKey === key
+        _tvKeyboardKey = ""
+        const i = Iptv.playerModel.indexOfKey(key)
+        if (i < 0)
+            return
+        if (keyboard || (tvList.currentItem && tvList.currentItem.visualFocus)) {
+            _tvFocusRow(i)
+        } else {
+            tvList.currentIndex = i
+            tvList.positionViewAtIndex(i, ListView.Contain)
+        }
+    }
+
+    // A channel tuned to in the player, as the TV page does (the one watched
+    // live is left as it is: a click on it would start it again). Tuned by
+    // the keyboard (Enter on a row with its focus frame), the row keeps the
+    // keyboard once the channel switched; a click forces no frame.
+    property string _tvKeyboardKey: ""
+    function _tune(channel, byKeyboard) {
+        if (channel.current && Iptv.playing && !((Iptv.catchupProgramme.start ?? 0) > 0))
+            return
+        _tvKeyboardKey = byKeyboard ? channel.key : ""
+        Iptv.play(channel.key)
+    }
+
+    // The keys of the list (it has them while a row has the keyboard's
+    // focus: the player's hotkeys take them otherwise, so the row keeps it;
+    // given before the row is made current, which focuses it for no key)
+    function _tvFocusRow(i) {
+        tvList.positionViewAtIndex(i, ListView.Contain)
+        const row = tvList.itemAtIndex(i)
+        if (row)
+            row.forceActiveFocus(Qt.TabFocusReason)
+        tvList.currentIndex = i
+    }
+    function _tvStep(step) {
+        if (tvList.count > 0)
+            _tvFocusRow(Math.max(0, Math.min(tvList.count - 1, tvList.currentIndex + step)))
+    }
+    function _tvSwitchGroup(step) {
+        const names = tvChips.groups.map(g => g.name)
+        const i = Math.max(0, names.indexOf(Iptv.playerModel.group))
+        Iptv.playerModel.group = names[(i + step + names.length) % names.length]
+        if (tvList.count > 0)
+            _tvFocusRow(Math.max(0, Iptv.playerModel.currentIndex))
+    }
+
+    // TV searched: among all the channels (a number typed is found whatever
+    // the group shown), the group back when the search is cleared (All when
+    // it does not have the channel playing then)
+    property var _tvGroupBeforeSearch: null
+    function _searchTv(text) {
+        const model = Iptv.playerModel
+        _tvAutoGroup = true
+        if (text !== "" && _tvGroupBeforeSearch === null) {
+            _tvGroupBeforeSearch = model.group
+            model.group = ""
+        }
+        model.search = text
+        if (text === "" && _tvGroupBeforeSearch !== null) {
+            // (unless another group was chosen while searching)
+            if (model.group === "") {
+                model.group = _tvGroupBeforeSearch
+                if (Iptv.playing && model.indexOfKey(Iptv.currentChannel.key ?? "") < 0)
+                    model.group = ""
+            }
+            _tvGroupBeforeSearch = null
+            Qt.callLater(_followTvChannel)
+        }
+        _tvAutoGroup = false
+    }
+
+    // The guide of the TV page, at a channel ("": as it was left)
+    function _openTvGuide(key) {
+        MainCtx.setSettingValue("iptv/view", "guide")
+        openLibraryRequested("tv", key !== "" ? { guideChannel: key } : null)
+    }
+
+    // The dialogs of Live TV (the sources of the TV page and Settings, the
+    // card of a programme), over the player: made when first opened
+    property var _tvDialogs: ({})
+    function _tvDialog(name) {
+        if (!_tvDialogs[name]) {
+            const component = Qt.createComponent("qrc:///qt/qml/VLC/Network/" + name + ".qml")
+            if (component.status !== Component.Ready) {
+                console.warn(component.errorString())
+                return null
+            }
+            _tvDialogs[name] = component.createObject(root)
+        }
+        return _tvDialogs[name]
+    }
+    function _openTvSources(page) {
+        _tvDialog("TvSourceDialog")?.openAt(page)
     }
 
     PlaylistCreateDialog {

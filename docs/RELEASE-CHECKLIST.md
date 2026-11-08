@@ -23,11 +23,11 @@ python extras/juxtopposed/release/release-check.py --release 0.4.0  # the releas
 
 | Area | Every upload | A release X.Y.Z, in addition |
 |---|---|---|
-| Version | `redesign_version.hpp` is the version being prepared; `platforms.yml` `next:` is that version | `redesign_version.hpp` is X.Y.Z; `platforms.yml` Windows `version: X.Y.Z`, `next:` after it |
+| Version | `redesign_version.hpp` is the version being prepared; `platforms.yml` `next:` is that version | `redesign_version.hpp` is X.Y.Z; `platforms.yml`: every platform at `version: X.Y.Z` (About's "Also on" line is built from it), `next:` after it |
 | Changelog | When code changed: `[Unreleased]` has entries, and CHANGELOG.md is part of the upload | A dated `## [X.Y.Z] · YYYY-MM-DD` section with entries, linked in **Contents**; `[Unreleased]` empty |
 | Roadmap and plan | When code changed: `ROADMAP.md` and `docs/MASTER-PLAN.md` are part of the upload; both name the version | `README.md` is part of the upload too |
 | README, website | `README.md` names the version; the platform bar and `site/` match `platforms.yml` (`render.py --check`) | |
-| Wiki | | `docs/wiki/Home.md` and `docs/wiki/Install-and-Update.md` name X.Y.Z |
+| Wiki | | `docs/wiki/Home.md`, `docs/wiki/Install-and-Update.md` and `docs/wiki/Platforms.md` name X.Y.Z |
 | Design | `design/tools/check_qml.py`: the app uses the values of `design/tokens.json` | |
 | Translations | `po/vlc.pot` is newer than the last change to a text of the interface | |
 | VideoLAN | VideoLAN's master is fetched and fully merged; the merged commit is named in the changelog or the plan | |
@@ -127,7 +127,9 @@ An update release:
 1. Everything of *Before every upload*.
 2. `CHANGELOG.md`: `[Unreleased]` becomes `## [X.Y.Z] · YYYY-MM-DD` with a one-paragraph summary, a new empty
    `[Unreleased]` above it, and the link in **Contents**.
-3. `platforms.yml`: `version: X.Y.Z`, `date:`, `next:` the following version; `render.py`.
+3. `platforms.yml`: `version: X.Y.Z`, `date:`, `next:` the following version for every platform that is out
+   (Windows, ARM64, Linux, macOS, Android, Samsung TV); `render.py`. Before the build: the app carries it for the
+   "Also on" line of About (0.5.6 named 0.5.5 for the others).
 4. `README.md` (what is new, the screenshots), `docs/wiki/Home.md`, `docs/wiki/Install-and-Update.md`, and every
    wiki page whose feature changed.
 5. Commit "Release X.Y.Z"; tag it `vX.Y.Z` ("VLC Redesign X.Y.Z"); `make-release.ps1` (runs the check, builds,

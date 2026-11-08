@@ -813,8 +813,10 @@ modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml
 modules/gui/qt/dialogs/vlm/vlm.cpp
 modules/gui/qt/dialogs/vlm/vlm.hpp
 modules/gui/qt/iptv/iptv_addon.cpp
+modules/gui/qt/iptv/qml/TvChannelMenu.qml
 modules/gui/qt/iptv/qml/TvChannelRow.qml
 modules/gui/qt/iptv/qml/TvDisplay.qml
+modules/gui/qt/iptv/qml/TvGroupChips.qml
 modules/gui/qt/iptv/qml/TvGuideView.qml
 modules/gui/qt/iptv/qml/TvLibraryView.qml
 modules/gui/qt/iptv/qml/TvPlayerOverlay.qml

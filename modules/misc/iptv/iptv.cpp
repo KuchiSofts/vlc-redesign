@@ -278,10 +278,26 @@ public:
     {
         if (m_interrupt)
             vlc_interrupt_kill(m_interrupt);
+        // the calls of the servers in progress end now, no more starts
+        std::lock_guard<std::mutex> guard(m_callsLock);
+        m_closing = true;
+        for (HttpSyncRequest* c : m_calls)
+            c->cancel();
     }
 
     iptv::HttpReply call(const iptv::HttpCall& c) override
     {
+        iptv::HttpReply reply;
+        HttpSyncRequest sync;
+        {
+            std::lock_guard<std::mutex> guard(m_callsLock);
+            if (m_closing)
+            {
+                reply.error = QStringLiteral("closing");
+                return reply;
+            }
+            m_calls.push_back(&sync);
+        }
         HttpRequest request;
         request.method = c.method;
         request.url = QUrl(c.url);
@@ -293,8 +309,11 @@ public:
         request.timeoutMs = c.timeoutMs;
         request.deadlineMs = c.timeoutMs * 4;
         request.maxBytes = c.maxBytes;
-        const HttpResponse response = httpRequestSync(request);
-        iptv::HttpReply reply;
+        const HttpResponse response = sync.run(request);
+        {
+            std::lock_guard<std::mutex> guard(m_callsLock);
+            m_calls.erase(std::find(m_calls.begin(), m_calls.end(), &sync));
+        }
         reply.status = response.status;
         reply.body = response.body;
         reply.error = response.error;
@@ -378,11 +397,20 @@ public:
                 deadline - std::chrono::steady_clock::now()).count();
             if (left <= 0)
                 break;
+            {
+                std::lock_guard<std::mutex> guard(m_callsLock);
+                if (m_closing)
+                    break;
+            }
             struct pollfd ufd = {};
             ufd.fd = fd;
             ufd.events = POLLIN;
-            if (poll(&ufd, 1, int(left)) <= 0)
+            // (in slices: VLC quitting ends the wait)
+            const int ready = poll(&ufd, 1, int(std::min<long long>(left, 100)));
+            if (ready < 0)
                 break;
+            if (ready == 0)
+                continue;
             struct sockaddr_in from = {};
             socklen_t fromLength = sizeof(from);
             const auto got = recvfrom(fd, buffer, sizeof(buffer), 0, reinterpret_cast<struct sockaddr*>(&from),
@@ -424,6 +452,10 @@ public:
 private:
     vlc_iptv_t* m_obj;
     std::atomic<bool> m_detached { false };
+    // the calls of the servers in progress (killWorker() cancels them)
+    std::mutex m_callsLock;
+    std::vector<HttpSyncRequest*> m_calls;
+    bool m_closing = false;
     QString m_folder;
     std::mutex m_deviceLock;
     QString m_deviceId;

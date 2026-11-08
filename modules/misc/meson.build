@@ -111,7 +111,7 @@ if get_option('qt').allowed() and iptv_qt_dep.found()
             # the servers' APIs through the HTTP client of the interface
             '../gui/qt/util/http_request.cpp',
         ), iptv_catalog_h],
-        'dependencies' : [iptv_qt_dep, z_dep, iptv_http_deps],
+        'dependencies' : [iptv_qt_dep, z_dep, iptv_http_deps, dl_lib],
         'cpp_args' : iptv_http_args,
         'plugin_dir' : 'misc',
     }

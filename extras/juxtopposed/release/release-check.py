@@ -119,7 +119,7 @@ if code_changed or release:
 for path in ('README.md', 'ROADMAP.md', 'docs/MASTER-PLAN.md'):
     check(target in read(path), '%s names %s' % (path, target), 'no mention of %s' % target)
 if release:
-    for path in ('docs/wiki/Install-and-Update.md', 'docs/wiki/Home.md'):
+    for path in ('docs/wiki/Install-and-Update.md', 'docs/wiki/Home.md', 'docs/wiki/Platforms.md'):
         check(release in read(path), '%s names %s' % (path, release), 'the wiki still speaks of an older version')
 
 # --- platforms, website, design tokens ----------------------------------------

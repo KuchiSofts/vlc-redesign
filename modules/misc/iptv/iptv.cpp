@@ -68,9 +68,12 @@ namespace {
 // context of its own, made the thread's for the time of the download, that
 // the thread's context forwards to (VLC quitting kills the worker's and the
 // request threads' contexts: the download ends at once), and that the idle
-// watch raises when nothing came for the idle time (VLC's reads wait without
-// bound: a server that stalls kept the download forever). The watch never
-// raises it once the reading ended (the transfer is unregistered first), and
+// watch kills when nothing came for the idle time (VLC's reads wait without
+// bound: a server that stalls kept the download forever). Killed, not only
+// raised: a raise wakes one wait, and VLC's reads (vlc_tls_Read) wait again
+// until data comes or vlc_killed() says to stop; the context is this
+// download's alone, the thread's own is not killed. The watch never touches
+// it once the reading ended (the transfer is unregistered first), and
 // nothing of it is left on the thread's own context.
 class Reading
 {
@@ -88,13 +91,13 @@ public:
         m_outer = vlc_interrupt_set(m_context);
         vlc_interrupt_t* const context = m_context;
         m_transfer = std::make_unique<iptv::IdleWatch::Transfer>(
-            watch, std::chrono::seconds(qMax(1, idleSecs)), [context]() { vlc_interrupt_raise(context); });
+            watch, std::chrono::seconds(qMax(1, idleSecs)), [context]() { vlc_interrupt_kill(context); });
     }
 
     ~Reading()
     {
-        // (unregistered first: no raise after this, then the thread's own
-        // context back, its forwarding undone, ours destroyed)
+        // (unregistered first: never killed after this, then the thread's
+        // own context back, its forwarding undone, ours destroyed)
         m_transfer.reset();
         if (!m_context)
             return;
@@ -106,8 +109,9 @@ public:
     Reading(const Reading&) = delete;
     Reading& operator=(const Reading&) = delete;
 
-    // VLC quits (before the download or while it reads)
-    bool cancelled() const { return m_cancelled || vlc_killed(); }
+    // VLC quits (before the download or while it reads); the context killed
+    // by the watch is not that (silent)
+    bool cancelled() const { return m_cancelled || (vlc_killed() && !silent()); }
     // nothing came for the idle time
     bool silent() const { return m_transfer && m_transfer->expired(); }
     void received()

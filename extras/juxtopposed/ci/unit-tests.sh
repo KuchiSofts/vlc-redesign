@@ -58,7 +58,7 @@ echo "== Live TV: downloads that stall (a local server that sends a few bytes, t
 g++ -std=c++17 -O1 -Wall -Wextra $san -pthread -I. extras/juxtopposed/iptv-idle.cpp -o "$out/iptv-idle"
 "$out/iptv-idle"
 
-echo "== Live TV: the service (limits, failures, back-off, answers cut short, removals)"
+echo "== Live TV: the service (limits, failures, back-off, answers cut short, removals, the keystore)"
 g++ -std=c++17 -O1 -Wall -Wextra $san $fcast -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/iptv-service.cpp modules/misc/iptv/service.cpp modules/misc/iptv/servers.cpp \
     modules/misc/iptv/autoguide.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp \

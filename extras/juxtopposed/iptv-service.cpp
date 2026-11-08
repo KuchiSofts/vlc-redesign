@@ -427,6 +427,107 @@ void testNoAnswer(const QString& dir)
     CHECK(iptv::refreshDue(now + 1800, 1, now, 2, 24));
 }
 
+// (d) the keystore: read on the worker after the start, never as the
+// service is made (the interface's thread: a locked keyring's prompt froze
+// it) nor with the service's lock held; a change stores the secrets of its
+// source alone, out of the lock; what changes no secret stores none
+void testKeystore(const QString& dir)
+{
+    QDir().mkpath(dir + QStringLiteral("/data"));
+    CHECK(writeFile(dir + QStringLiteral("/data/sources.json"), R"({"version":1,"sources":[
+        {"id":"s1","kind":"m3u","name":"One","keystore":true},
+        {"id":"s2","kind":"xtream","name":"Two","server":"http://panel.example","username":"me","keystore":true},
+        {"id":"s3","kind":"m3u","name":"Three","keystore":true}],"options":{"catalogChecked":0}})"));
+    FakeHost host;
+    host.hasKeystore = true;
+    host.putSecret(QStringLiteral("s1"), R"({"url":"https://lists.example/1.m3u?token=t1","password":"","key":""})");
+    host.putSecret(QStringLiteral("s2"), R"({"url":"","password":"p2","key":""})");
+    host.putSecret(QStringLiteral("s3"), R"({"url":"https://lists.example/3.m3u?token=t3","password":"","key":""})");
+    host.onDownload = [](const QString& url, const QString& path) {
+        return url.contains(QLatin1String("lists.example")) && writeFile(path, "#EXTM3U\n#EXTINF:-1,A\nhttp://s/a\n");
+    };
+    host.holdKeystore();
+    const std::thread::id caller = std::this_thread::get_id();
+    QElapsedTimer took;
+    took.start();
+    {
+        Tv tv(host, dir);
+        // made at once, nothing read of the keystore yet (it was, here, on
+        // the thread that makes the service)
+        CHECK(took.elapsed() < 2000);
+        CHECK(host.secretCalls(QStringLiteral("load")).isEmpty());
+        host.probed = &tv.service;
+        // answered meanwhile; what needs a secret waits for it
+        CHECK(tv.status(QStringLiteral("s1")).value(QLatin1String("name")).toString() == QStringLiteral("One"));
+        QJsonObject got;
+        std::thread asking([&]() {
+            got = tv.ask({ { QStringLiteral("op"), QStringLiteral("getSource") }, { QStringLiteral("id"), QStringLiteral("s1") } });
+        });
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+        host.openKeystore();
+        asking.join();
+        CHECK(got.value(QLatin1String("source")).toObject().value(QLatin1String("url")).toString()
+              == QStringLiteral("https://lists.example/1.m3u?token=t1"));
+        CHECK(waitFor([&]() { return host.secretCalls(QStringLiteral("load")).size() == 3; }));
+        for (const FakeHost::SecretCall& c : host.secretCalls(QStringLiteral("load")))
+        {
+            CHECK(c.thread != caller);
+            CHECK(c.lockFree);
+        }
+        CHECK(waitFor([&]() { return tv.channels().size() == 2; }));
+        // one source changed (its password left empty: the one kept)
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("updateSource") }, { QStringLiteral("id"), QStringLiteral("s2") },
+                 { QStringLiteral("source"), QJsonObject { { QStringLiteral("kind"), QStringLiteral("xtream") },
+                                                           { QStringLiteral("name"), QStringLiteral("Two again") },
+                                                           { QStringLiteral("server"), QStringLiteral("http://panel.example") },
+                                                           { QStringLiteral("username"), QStringLiteral("me") } } } });
+        QVector<FakeHost::SecretCall> stores = host.secretCalls(QStringLiteral("store"));
+        CHECK(stores.size() == 1);
+        CHECK(stores.value(0).id == QStringLiteral("s2") && stores.value(0).lockFree);
+        CHECK(QJsonDocument::fromJson(stores.value(0).data).object().value(QLatin1String("password")).toString()
+              == QStringLiteral("p2"));
+        // what changes no secret stores none: its order, on or off, the
+        // automatic guide, the catalog's date
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("enableSource") }, { QStringLiteral("id"), QStringLiteral("s3") },
+                 { QStringLiteral("enabled"), false } });
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("moveSource") }, { QStringLiteral("id"), QStringLiteral("s1") },
+                 { QStringLiteral("index"), 2 } });
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("removeAutoGuide") }, { QStringLiteral("id"), QStringLiteral("s1") } });
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("catalog") } });
+        CHECK(waitFor([&]() { return host.fetchesOf(QStringLiteral("/catalog.json")) >= 1; }));
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+        CHECK(host.secretCalls(QStringLiteral("store")).size() == 1);
+        // the file: no secret in it, each source's in the keystore
+        QFile file(dir + QStringLiteral("/data/sources.json"));
+        CHECK(file.open(QIODevice::ReadOnly));
+        const QByteArray saved = file.readAll();
+        CHECK(!saved.contains("token=t1") && !saved.contains("token=t3") && !saved.contains("\"p2\""));
+        CHECK(saved.count("\"keystore\": true") == 3);
+        CHECK(saved.contains("Two again"));
+        // signing out: its secrets stored again (forgotten), out of the lock
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("signOut") }, { QStringLiteral("id"), QStringLiteral("s2") } });
+        stores = host.secretCalls(QStringLiteral("store"));
+        CHECK(stores.size() == 2 && stores.value(1).id == QStringLiteral("s2") && stores.value(1).lockFree);
+        CHECK(QJsonDocument::fromJson(stores.value(1).data).object().value(QLatin1String("password")).toString().isEmpty());
+        // removed: its secrets too
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("removeSource") }, { QStringLiteral("id"), QStringLiteral("s1") } });
+        const QVector<FakeHost::SecretCall> removes = host.secretCalls(QStringLiteral("remove"));
+        CHECK(removes.size() == 1 && removes.value(0).id == QStringLiteral("s1") && removes.value(0).lockFree);
+        host.probed = nullptr;
+        host.joinProbes();
+    }
+    // no keystore: a new source's secrets in the file, as before
+    FakeHost bare;
+    const QString dir2 = dir + QStringLiteral("-bare");
+    Tv tv(bare, dir2);
+    tv.add(m3uSource(QStringLiteral("https://lists.example/x.m3u?token=secret2")));
+    CHECK(bare.secretCalls(QStringLiteral("store")).size() == 1);
+    QFile file(dir2 + QStringLiteral("/data/sources.json"));
+    CHECK(file.open(QIODevice::ReadOnly));
+    const QByteArray saved = file.readAll();
+    CHECK(saved.contains("token=secret2") && !saved.contains("\"keystore\": true"));
+}
+
 // 2: a job that throws (out of memory) is given up, the worker goes on and
 // stops as always; no source stays busy
 void testThrowingJob(const QString& dir)
@@ -839,6 +940,7 @@ int main()
     testRemoveSource(root + QStringLiteral("/remove"));
     testDiscover(root + QStringLiteral("/discover"));
     testNoAnswer(root + QStringLiteral("/noanswer"));
+    testKeystore(root + QStringLiteral("/keystore"));
     std::printf("TV service: %d checks, %d failed\n", int(checks), int(failures));
     return failures ? 1 : 0;
 }

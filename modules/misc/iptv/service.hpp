@@ -134,6 +134,9 @@ struct SourceConfig
     // (in memory) the user's changes of the automatic guide: one it was
     // looking for meanwhile does not undo them
     quint32 autoEdits = 0;
+    // (in memory) its secrets are in VLC's keystore, not in the file (the
+    // file's "keystore"; a new source's go there unless there is none)
+    bool inKeystore = true;
     bool enabled = true;
     bool useHeaderGuides = true;   // the guides the playlist names itself
     QStringList epgOff;      // the guides turned off (of epg, the playlist's, autoEpg)
@@ -241,7 +244,18 @@ private:
 
     // configuration
     void loadConfig();
+    // (under m_lock) the file; the keystore is not touched (storeSecrets)
     void saveConfig();
+    // The secrets of the sources kept in VLC's keystore, read on the worker
+    // as it starts (a locked keyring's prompt froze the interface when they
+    // were read as the module loaded)
+    void loadSecrets();
+    // The secrets of one source changed, to the keystore: out of m_lock (a
+    // keystore may ask the user), one source at a time (m_secretLock)
+    void storeSecrets(const QString& id);
+    // (with m_lock held) waits for loadSecrets, 10 s at most: false when they
+    // are still not read (what reads or changes a secret then fails)
+    bool secretsReady(std::unique_lock<std::mutex>& guard);
     QJsonObject sourceToJson(const SourceConfig& s, bool withSecrets) const;
     SourceConfig sourceFromJson(const QJsonObject& o) const;
     SourceConfig* findSource(const QString& id);
@@ -317,6 +331,11 @@ private:
     QSet<QString> m_languages;
     bool m_started = false;
     qint64 m_catalogChecked = 0;
+    // the keystore's secrets read (loadSecrets), waited for with m_lock
+    bool m_secretsReady = true;
+    std::condition_variable m_secretsWait;
+    // the keystore's calls, one at a time (never with m_lock held)
+    std::mutex m_secretLock;
 
     std::mutex m_jobLock;
     std::condition_variable m_jobWait;

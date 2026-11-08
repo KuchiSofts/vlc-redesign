@@ -133,13 +133,14 @@ public:
         : m_obj(obj)
         , m_folder(QFileInfo(QString::fromStdString(keystoreFile)).absolutePath())
     {
-        // a keystore that keeps the secrets (not the one in memory)
+        // a keystore that keeps the secrets (not the one in memory), made at
+        // its first use, on the worker (not here, on the interface's thread:
+        // opening a wallet may ask for its password)
         var_Create(obj, "keystore", VLC_VAR_STRING);
         var_SetString(obj, "keystore", "secret,kwallet,keychain,file_crypt,none");
         // (the encrypted file of Windows and macOS needs its path: VLC sets none)
         var_Create(obj, "keystore-file", VLC_VAR_STRING);
         var_SetString(obj, "keystore-file", keystoreFile.c_str());
-        m_keystore = vlc_keystore_create(obj);
         m_interrupt = vlc_interrupt_create();
     }
 
@@ -321,14 +322,14 @@ public:
 
     bool storeSecret(const QString& id, const QByteArray& secret) override
     {
-        if (!m_keystore)
+        std::lock_guard<std::mutex> guard(m_keystoreLock);
+        if (!keystore())
             return false;
         const QByteArray server = id.toUtf8();
         const char* values[KEY_MAX];
         VLC_KEYSTORE_VALUES_INIT(values);
         values[KEY_PROTOCOL] = "vlc-iptv";
         values[KEY_SERVER] = server.constData();
-        std::lock_guard<std::mutex> guard(m_keystoreLock);
         return vlc_keystore_store(m_keystore, values,
                                   reinterpret_cast<const uint8_t*>(secret.constData()), secret.size(),
                                   "VLC Live TV source") == VLC_SUCCESS;
@@ -337,7 +338,8 @@ public:
     QByteArray loadSecret(const QString& id, bool* found) override
     {
         *found = false;
-        if (!m_keystore)
+        std::lock_guard<std::mutex> guard(m_keystoreLock);
+        if (!keystore())
             return QByteArray();
         const QByteArray server = id.toUtf8();
         const char* values[KEY_MAX];
@@ -345,7 +347,6 @@ public:
         values[KEY_PROTOCOL] = "vlc-iptv";
         values[KEY_SERVER] = server.constData();
         vlc_keystore_entry* entries = nullptr;
-        std::lock_guard<std::mutex> guard(m_keystoreLock);
         const unsigned count = vlc_keystore_find(m_keystore, values, &entries);
         QByteArray out;
         if (count > 0 && entries[0].p_secret)
@@ -360,15 +361,27 @@ public:
 
     void removeSecret(const QString& id) override
     {
-        if (!m_keystore)
+        std::lock_guard<std::mutex> guard(m_keystoreLock);
+        if (!keystore())
             return;
         const QByteArray server = id.toUtf8();
         const char* values[KEY_MAX];
         VLC_KEYSTORE_VALUES_INIT(values);
         values[KEY_PROTOCOL] = "vlc-iptv";
         values[KEY_SERVER] = server.constData();
-        std::lock_guard<std::mutex> guard(m_keystoreLock);
         vlc_keystore_remove(m_keystore, values);
+    }
+
+    // (under m_keystoreLock) the keystore, made at its first use: on the
+    // worker or a request's thread, never the interface's
+    vlc_keystore* keystore()
+    {
+        if (!m_keystoreTried && !m_detached)
+        {
+            m_keystoreTried = true;
+            m_keystore = vlc_keystore_create(VLC_OBJECT(m_obj));
+        }
+        return m_keystore;
     }
 
     void notify(const QJsonObject& event) override
@@ -589,6 +602,7 @@ private:
     std::mutex m_deviceLock;
     QString m_deviceId;
     vlc_keystore* m_keystore = nullptr;
+    bool m_keystoreTried = false;
     std::mutex m_keystoreLock;
     vlc_interrupt_t* m_interrupt = nullptr;
     // the downloads watched for silence (its thread made at the first one)

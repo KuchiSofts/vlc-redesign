@@ -257,6 +257,7 @@ qml_modules += {
        '../../player/qml/SliderBar.qml',
        '../../player/qml/TopBar.qml',
        '../../player/qml/PlayerToast.qml',
+       '../../player/qml/ShortcutFeedback.qml',
        '../../player/qml/Title.qml',
        '../../player/qml/TracksMenu.qml',
        '../../player/qml/TracksPage.qml',

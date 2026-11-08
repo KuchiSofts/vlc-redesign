@@ -278,6 +278,8 @@ qt_plugin_sources = files(
     '../../player/subtitle_cues.hpp',
     '../../player/subtitle_cues_parser.cpp',
     '../../player/subtitle_cues_parser.hpp',
+    '../../player/shortcut_feedback.cpp',
+    '../../player/shortcut_feedback.hpp',
     '../../player/subtitle_charset.c',
     '../../player/local_folder_model.cpp',
     '../../player/local_folder_model.hpp',

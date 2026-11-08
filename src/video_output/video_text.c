@@ -137,10 +137,24 @@ void vout_OSDMessageVa(vout_thread_t *vout, int channel,
 {
     char *string;
     if (vasprintf(&string, format, args) != -1) {
+        libvlc_int_t *libvlc = vlc_object_instance(vout);
+        /* VLC Redesign: an interface that shows what a key did itself (the
+         * Qt interface's "When you use a shortcut in full screen", issue
+         * #72) sets "intf-key-feedback" on the instance, as it sends the key,
+         * to the time its own feedback lasts until. Until then a message
+         * (what the player, the hotkeys or the video output says: "Subtitle
+         * track: English", "Aspect ratio: 16:9", a snapshot's file) goes to
+         * it in "intf-key-feedback-text" instead of the video: one message,
+         * not two. Without the variable nothing changes. */
+        if (channel == VOUT_SPU_CHANNEL_OSD && var_Type(libvlc, "intf-key-feedback") != 0
+         && vlc_tick_now() < var_GetInteger(libvlc, "intf-key-feedback")) {
+            var_SetString(libvlc, "intf-key-feedback-text", string);
+            free(string);
+            return;
+        }
         /* VLC Redesign: the shortcut that did it, on a line of its own (the
          * designer's OSD): the key of an action pressed just before (the
          * volume's message comes a moment after its key, from the output) */
-        libvlc_int_t *libvlc = vlc_object_instance(vout);
         uint_fast32_t key = var_GetInteger(libvlc, "key-action-keycode");
         vlc_tick_t date = var_GetInteger(libvlc, "key-action-date");
         if (key != 0 && channel == VOUT_SPU_CHANNEL_OSD

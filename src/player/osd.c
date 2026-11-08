@@ -30,6 +30,23 @@
 #include "player.h"
 #include "input/resource.h"
 
+/* VLC Redesign: an interface that shows what a key did itself (the Qt
+ * interface's "When you use a shortcut in full screen", issue #72) sets
+ * "intf-key-feedback" on the instance, as it sends the key, to the time its
+ * own feedback lasts until. Until then the player draws no icon (play,
+ * pause), time or slider on the video (one message, not two); the text of a
+ * message goes to the interface instead (vout_OSDMessageVa). Without the
+ * variable (no such interface, or not in that mode) nothing changes. (A time
+ * and not a flag around the key's action: some actions end in another
+ * thread, the arrows' seek in the input's events.) */
+static bool
+vlc_player_osd_IsTaken(vlc_object_t *obj)
+{
+    vlc_object_t *libvlc = VLC_OBJECT(vlc_object_instance(obj));
+    return var_Type(libvlc, "intf-key-feedback") != 0
+        && vlc_tick_now() < var_GetInteger(libvlc, "intf-key-feedback");
+}
+
 static vout_thread_t **
 vlc_player_osd_HoldAll(vlc_player_t *player, size_t *count)
 {
@@ -109,6 +126,10 @@ vlc_player_osd_Message(vlc_player_t *player, const char *fmt, ...)
 void
 vlc_player_osd_Icon(vlc_player_t *player, vlc_osd_widget_type type)
 {
+    /* (play, pause: the interface says it) */
+    if (vlc_player_osd_IsTaken(VLC_OBJECT(player)))
+        return;
+
     size_t count;
     vout_thread_t **vouts = vlc_player_osd_HoldAll(player, &count);
 
@@ -122,6 +143,10 @@ vlc_player_osd_Position(vlc_player_t *player,
                         struct vlc_player_input *input, vlc_tick_t time,
                         double position)
 {
+    /* (the interface shows the time and the progress) */
+    if (vlc_player_osd_IsTaken(VLC_OBJECT(player)))
+        return;
+
     if (input->length != VLC_TICK_INVALID)
     {
         if (time == VLC_TICK_INVALID)
@@ -161,6 +186,8 @@ vlc_player_osd_Volume(vlc_player_t *player, bool mute_action)
     vlc_object_t *libvlc = VLC_OBJECT(vlc_object_instance(player));
     if (var_Type(libvlc, "intf-volume-meter") != 0
      && var_GetBool(libvlc, "intf-volume-meter"))
+        return;
+    if (vlc_player_osd_IsTaken(libvlc))
         return;
 
     size_t count;

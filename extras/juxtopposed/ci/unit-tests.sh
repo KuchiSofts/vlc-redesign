@@ -7,7 +7,8 @@
 # playlists, guides and Xtream answers (fixtures/), the subtitle cues of the
 # seek bar, the subtitle services asked with the user's key or account (their
 # addresses and answers, fixtures/subtitle-services), and the encoding
-# detection of text subtitles (the corpus).
+# detection of text subtitles (the corpus); and what a shortcut shows in
+# full screen (the kinds of the actions, the jumps added up, their texts).
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
 # with g++, Qt 6 Core, zlib and Python 3:
 #   sh extras/juxtopposed/ci/unit-tests.sh
@@ -22,6 +23,11 @@ echo "== subtitle cues"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/subtitle-cues-parser.cpp \
     modules/gui/qt/player/subtitle_cues_parser.cpp -o "$out/subtitle-cues-parser"
 "$out/subtitle-cues-parser"
+
+echo "== shortcut feedback in full screen (the kinds, the jumps added up, the texts)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/shortcut-feedback.cpp \
+    modules/gui/qt/player/shortcut_feedback.cpp -o "$out/shortcut-feedback"
+"$out/shortcut-feedback"
 
 echo "== Live TV parsers"
 # (Qt's own allocations are not ours: only the parsers' leaks count; a

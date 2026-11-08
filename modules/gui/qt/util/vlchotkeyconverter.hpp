@@ -18,6 +18,9 @@ int qtKeyModifiersToVLC( const QInputEvent& e );
 int qtEventToVLCKey( QKeyEvent *e );
 /* whether a hotkey of VLC (not global) takes this key */
 bool isVLCKeyBound( struct vlc_object_t *obj, int vlcKey );
+/* the action of VLC (not global) this key has, as the core maps it: its name
+ * without "key-" ("jump+short"), empty for none */
+QString vlcKeyAction( struct vlc_object_t *obj, int vlcKey );
 int qtWheelEventToVLCKey( const QWheelEvent& e );
 QString VLCKeyToString( unsigned val, bool );
 

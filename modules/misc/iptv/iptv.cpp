@@ -22,6 +22,10 @@
 #include <vlc_stream.h>
 #include <vlc_fs.h>
 #include <vlc_network.h>
+#ifndef _WIN32
+# include <arpa/inet.h>  // inet_pton, inet_ntop (LAN discovery)
+# include <poll.h>
+#endif
 
 #include "service.hpp"
 // (the HTTP client of the interface: the servers' APIs, POST and sign-ins)

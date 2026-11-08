@@ -235,6 +235,24 @@ struct InternetHandle
     explicit operator bool() const { return handle != nullptr; }
 };
 
+// The status callback taken off a handle before it closes (destroyed before
+// that handle), whichever way the request ended: the session's and the
+// connection's HANDLE_CLOSING may come on a thread of WinHTTP after their
+// WinHttpCloseHandle, when the module this code is in (the Live TV add-on
+// has its own copy) may be unloaded already
+struct CallbackOff
+{
+    HINTERNET handle = nullptr;
+    explicit CallbackOff(HINTERNET h) : handle(h) {}
+    ~CallbackOff()
+    {
+        if (handle)
+            WinHttpSetStatusCallback(handle, nullptr, 0, 0);
+    }
+    CallbackOff(const CallbackOff&) = delete;
+    CallbackOff& operator=(const CallbackOff&) = delete;
+};
+
 // The request handle and its call: closed by the worker (whatever ended
 // the request), then freed once WinHTTP says it is gone; registered with the
 // state meanwhile, for a cancel to wake the worker
@@ -365,6 +383,9 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
         response.error = lastError("WinHttpSetStatusCallback");
         return response;
     }
+    // (after the request is gone, on every return: the request's own
+    // callbacks end before ~AsyncRequest returns)
+    const CallbackOff sessionOff(session.handle);
 
     const std::wstring host = url.host(QUrl::FullyEncoded).toStdWString();
     const auto port = static_cast<INTERNET_PORT>(url.port(https ? INTERNET_DEFAULT_HTTPS_PORT
@@ -375,6 +396,8 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
         response.error = lastError("WinHttpConnect");
         return response;
     }
+    // (the connection has the session's callback, given as it was made)
+    const CallbackOff connectionOff(connection.handle);
 
     const std::wstring method = QString::fromLatin1(request.method).toStdWString();
     const std::wstring path = QString::fromLatin1(
@@ -511,9 +534,8 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
         if (response.body.size() > request.maxBytes)
             response.body.truncate(request.maxBytes + 1);
     }
-    // (the request is gone by now: its connection and session next, which
-    // have no context, so nothing of this code is called back for them)
-    WinHttpSetStatusCallback(session.handle, nullptr, 0, 0);
+    // (the request is gone by now: connectionOff and sessionOff take the
+    // callback off its connection and session before they close)
     return response;
 }
 }

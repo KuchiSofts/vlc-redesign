@@ -169,7 +169,8 @@ libiptv_plugin_la_SOURCES = \
 nodist_libiptv_plugin_la_SOURCES = misc/iptv/catalog.h
 libiptv_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/misc/iptv
 libiptv_plugin_la_CXXFLAGS = $(AM_CXXFLAGS) $(IPTV_QT_CFLAGS) -fPIC
-libiptv_plugin_la_LIBADD = $(IPTV_QT_LIBS) $(LIBZ)
+# ($(LIBDL): dladdr, dlopen, keeping the plug-in loaded, on a glibc before 2.34)
+libiptv_plugin_la_LIBADD = $(IPTV_QT_LIBS) $(LIBZ) $(LIBDL)
 libiptv_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(misc_RPATH)
 # the servers' APIs (Jellyfin, Tvheadend...) through the HTTP client of the
 # interface: WinHTTP on Windows, libcurl elsewhere

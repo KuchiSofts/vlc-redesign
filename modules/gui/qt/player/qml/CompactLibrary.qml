@@ -1508,7 +1508,7 @@ FocusScope {
                     height: width
                     sourceSize: Qt.size(width, height)
                     source: SVGColorImage.colorize("qrc:///redesign/duo/tv.svg")
-                                         .color1(VLCStyle.redesign.color("#8F8F8F", "#5a5a59"))
+                                         .color1(VLCStyle.redesign.color("#8F8F8F"))
                                          .color2(VLCStyle.redesign.accent).uri()
                 }
                 Text {
@@ -1526,7 +1526,7 @@ FocusScope {
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
                     text: qsTr("Add the playlist link of your TV provider (M3U) or its Xtream Codes login, or a free channel list of the catalog. Its programme guide comes with it.")
-                    color: VLCStyle.redesign.color("#6B6B6B", "#4d4d4d")
+                    color: VLCStyle.redesign.color("#6B6B6B")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.redesign.fontNormal
                     lineHeight: 1.3

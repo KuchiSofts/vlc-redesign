@@ -12,6 +12,15 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-08):
 
+- 🟡 **0.5.9 stability round** (the owner: "search every line and code and improve stablity and app loading speed
+  and memory leak and fix all bugs and errors"), branch `feature/stability-0.5.9`. macOS hung at quit after an
+  HTTPS download (SecureTransport kept its lock in a cancelled thread: fixed, 39532a9441 in 0.5.8), Live TV's quit
+  bounded and its server calls cancelled (122.8 s to quit with a held call on 0.5.8), the plug-in pinned when a
+  thread is let go. Two reviews of every line (Live TV; subtitles, updater, previews) and a fuzz test of 69
+  parsers (3 overflows, 9 quadratic paths, a 16 GB XMLTV text): all fixed with tests (iptv-service,
+  parsers-fuzz). A sweep of every page with --qt-verbose: 19 kinds of QML warnings, 18 fixed. Start-up: window
+  0.6-1.1 s, settled 1.2-1.7 s (first start after an install: an antivirus scan of the new DLLs). Soaks of
+  dialogs, frame previews, TV updates and media changes.
 - ✅ **0.5.8** published 2026-11-08 (an update release; VideoLAN merged to `978212a42d`): SubSource with your own free key (#70, @Elshepl); Android TV: the
   focus after the TV sources close; Weblate has the TV menu's texts.
 - 🟡 **Subtitle services** (the owner: "add subsource.net too and add more free websites ... allow to enable and

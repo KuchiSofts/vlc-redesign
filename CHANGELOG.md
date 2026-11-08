@@ -15,6 +15,29 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- Quitting VLC no longer waits for Live TV: the calls of your servers stop at once (a Jellyfin guide held by
+  its server made VLC wait 2 minutes), the network discovery too, and the add-on is kept loaded when it had to
+  let go of a download it could not stop (it would have crashed at the very end).
+- Live TV is sturdier with odd sources and servers: downloads have a size limit (a TV stream added as a playlist
+  filled the disk), answers cut short or broken no longer replace what was kept, a source that fails is tried
+  again after 15 minutes, then less often (a refused Xtream Codes account was signed in every minute), the
+  automatic guide no longer brings back a guide you removed meanwhile, and guides of many channels of one name,
+  huge names or texts, or numbers out of range are read quickly and safely.
+- Online subtitles: a search always finishes (a service that answered a byte at a time kept it searching),
+  answers of an older search or video are dropped, archives are used only whole, Test / Sign in keeps nothing,
+  and the key of a service travels over HTTPS only. Subtitle files: VobSub, SAMI and long tags read safely and
+  quickly.
+- Frame previews of an odd video are bounded in size; the updater checks the publisher before an update is
+  marked ready and cleans up old installers.
+- No QML warning left on any page, dialog or the player (a connection could outlive its page).
+
+### Technical
+
+- Tests, in `unit-tests.sh` under ASan and UBSan: the Live TV service with a fake network (`iptv-service`), the
+  parsers against malformed and huge input (`parsers-fuzz`: 69 parsers), and more checks in the existing ones.
+
 ## [0.5.8] · 2026-11-08
 
 An update release: more subtitle services in every app (SubSource and SubDL with your free key, OpenSubtitles.com,

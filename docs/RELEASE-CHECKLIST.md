@@ -27,7 +27,7 @@ python extras/juxtopposed/release/release-check.py --release 0.4.0  # the releas
 | Changelog | When code changed: `[Unreleased]` has entries, and CHANGELOG.md is part of the upload | A dated `## [X.Y.Z] · YYYY-MM-DD` section with entries, linked in **Contents**; `[Unreleased]` empty |
 | Roadmap and plan | When code changed: `ROADMAP.md` and `docs/MASTER-PLAN.md` are part of the upload; both name the version | `README.md` is part of the upload too |
 | README, website | `README.md` names the version; the platform bar and `site/` match `platforms.yml` (`render.py --check`) | |
-| Wiki | | `docs/wiki/Home.md` and `docs/wiki/Install-and-Update.md` name X.Y.Z |
+| Wiki | | `docs/wiki/Home.md`, `docs/wiki/Install-and-Update.md` and `docs/wiki/Platforms.md` name X.Y.Z |
 | Design | `design/tools/check_qml.py`: the app uses the values of `design/tokens.json` | |
 | Translations | `po/vlc.pot` is newer than the last change to a text of the interface | |
 | VideoLAN | VideoLAN's master is fetched and fully merged; the merged commit is named in the changelog or the plan | |

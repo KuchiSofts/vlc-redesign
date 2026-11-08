@@ -91,4 +91,21 @@ QByteArray subtitleOf(const QByteArray &download, const Result &result, const QS
 // The User-Agent the services are told
 QByteArray userAgent();
 
+// What OpenSubtitles knows of this very file (its hash): the title most of
+// the subtitles made for it are filed under, with its IMDb id (of the series
+// for an episode), year, season and episode. imdb is empty when it doesn't
+// know the file; sure when those subtitles agree on it
+struct Identity
+{
+    QString imdb;
+    QString title;
+    int year = 0;
+    bool series = false;
+    int season = -1;
+    int episode = -1;
+    bool sure = false;
+};
+Identity identityOfHash(const QByteArray &openSubtitlesReply);
+void identifyByHash(QObject *context, const QString &hash, qint64 size, std::function<void(const Identity &)> done);
+
 } // namespace SubtitleProviders

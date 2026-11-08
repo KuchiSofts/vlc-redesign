@@ -30,6 +30,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- Subtitles from the internet: every free service is asked for any file, also one whose name says nothing
+  ("VID_20241108.mp4"). When the name doesn't identify the video, or only guesses it, the file's fingerprint
+  tells OpenSubtitles what it is (the title most of the subtitles made for that very file name, an episode's
+  series, season and episode), and Wizdom, YIFY Subtitles and Addic7ed are asked with it too (they go by the IMDb
+  id). Under the title of the search, what each service found ("OpenSubtitles 87 · Wizdom 4 · YIFY Subtitles 0",
+  a dash for one that didn't answer, its reason in the tooltip). On the desktop, Android and the Samsung TV app.
 - The design check (`design/tools/sync_assets.py`) passes on Windows checkouts with CRLF line endings
   (by [@SHR1F](https://github.com/SHR1F), [#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)).
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).

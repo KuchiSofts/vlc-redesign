@@ -327,6 +327,36 @@ ColumnLayout {
         }
     }
 
+    // Every service asked and what it found (not only those with results):
+    // "OpenSubtitles 87 · Wizdom 4 · YIFY Subtitles 0", a dash for one that
+    // didn't answer (its reason in the tooltip)
+    Text {
+        id: servicesLine
+
+        readonly property var asked: SubtitleFinder.services.filter(s => s.enabled && (s.count >= 0 || s.error !== ""))
+
+        Layout.fillWidth: true
+        visible: asked.length > 0 && (SubtitleFinder.state === SubtitleFinder.Ready
+                                      || SubtitleFinder.state === SubtitleFinder.NotFound)
+        text: asked.map(s => s.error !== "" ? s.name + " –" : s.name + " " + s.count).join("  ·  ")
+        color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
+        elide: Text.ElideRight
+        horizontalAlignment: Text.AlignLeft
+        Accessible.role: Accessible.StaticText
+        Accessible.name: text
+
+        MouseArea {
+            id: servicesHover
+            anchors.fill: parent
+            hoverEnabled: true
+            acceptedButtons: Qt.NoButton
+        }
+        T.ToolTip.visible: servicesHover.containsMouse && servicesLine.asked.some(s => s.error !== "")
+        T.ToolTip.text: servicesLine.asked.filter(s => s.error !== "").map(s => s.error).join("\n")
+    }
+
     // The title of the video, when the search took it for another one
     ColumnLayout {
         id: titleSearch

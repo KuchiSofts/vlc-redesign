@@ -401,6 +401,7 @@ void SubtitleSearch::reset()
     m_url.clear();
     m_media = Media();
     m_match = Match();
+    m_hashAsked = false;
     m_found.clear();
     m_runs.clear();
     m_pending = 0;
@@ -844,6 +845,33 @@ void SubtitleSearch::useMatch(const Match &match)
 // as they come, the best first in each language
 void SubtitleSearch::querySubtitles()
 {
+    // its name didn't say what it is, or only a guess: OpenSubtitles may know
+    // this very file (its hash). With its title every service is asked (YIFY
+    // and Wizdom go by the IMDb id), not only the hash's
+    if ((m_match.imdb.isEmpty() || !m_match.strong) && !m_media.hash.isEmpty() && !m_hashAsked)
+    {
+        m_hashAsked = true;
+        const quint64 revision = m_revision;
+        SubtitleProviders::identifyByHash(this, m_media.hash, m_media.size,
+            [this, revision](const SubtitleProviders::Identity &found) {
+                if (revision != m_revision)
+                    return;
+                // (about this very file: it wins over a guess from the name)
+                if (!found.imdb.isEmpty())
+                {
+                    msg_Dbg(m_intf, "online subtitles: the file's hash says %s (%s)%s", qtu(found.title),
+                            qtu(found.imdb), found.sure ? "" : ", a guess");
+                    m_match = { found.imdb, found.title, found.year, found.series, found.sure };
+                    if (found.series && m_media.season < 0 && found.season >= 0)
+                    {
+                        m_media.season = found.season;
+                        m_media.episode = found.episode;
+                    }
+                }
+                querySubtitles();
+            });
+        return;
+    }
     ++m_searchRevision;
     const quint64 revision = m_searchRevision;
     msg_Dbg(m_intf, "online subtitles: \"%s\" is %s (%s%s), the hash %s",

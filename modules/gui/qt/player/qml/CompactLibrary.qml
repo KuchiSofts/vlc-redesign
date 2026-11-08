@@ -1462,7 +1462,8 @@ FocusScope {
                     width: ListView.view.width
                     compact: true
                     focus: ListView.isCurrentItem
-                    onPlay: root._tune(model)
+                    // (Enter, the keyboard on the row: it stays there)
+                    onPlay: root._tune(model, visualFocus)
                     onMenu: (point) => channelMenu.popup([index], point)
                     // (the row Tab reached: Up and Down go on from it)
                     onActiveFocusChanged: if (activeFocus) ListView.view.currentIndex = index
@@ -1645,10 +1646,13 @@ FocusScope {
     function _followTvChannel() {
         if (!_tvShown || !visible)
             return
-        const i = Iptv.playerModel.indexOfKey(Iptv.currentChannel.key ?? "")
+        const key = Iptv.currentChannel.key ?? ""
+        const keyboard = _tvKeyboardKey !== "" && _tvKeyboardKey === key
+        _tvKeyboardKey = ""
+        const i = Iptv.playerModel.indexOfKey(key)
         if (i < 0)
             return
-        if (tvList.currentItem && tvList.currentItem.visualFocus) {
+        if (keyboard || (tvList.currentItem && tvList.currentItem.visualFocus)) {
             _tvFocusRow(i)
         } else {
             tvList.currentIndex = i
@@ -1657,10 +1661,14 @@ FocusScope {
     }
 
     // A channel tuned to in the player, as the TV page does (the one watched
-    // live is left as it is: a click on it would start it again)
-    function _tune(channel) {
+    // live is left as it is: a click on it would start it again). Tuned by
+    // the keyboard (Enter on a row with its focus frame), the row keeps the
+    // keyboard once the channel switched; a click forces no frame.
+    property string _tvKeyboardKey: ""
+    function _tune(channel, byKeyboard) {
         if (channel.current && Iptv.playing && !((Iptv.catchupProgramme.start ?? 0) > 0))
             return
+        _tvKeyboardKey = byKeyboard ? channel.key : ""
         Iptv.play(channel.key)
     }
 

@@ -200,7 +200,11 @@ void SubtitleFinder::scanFolder()
     free(paths);
 
     auto found = std::make_shared<QList<QPair<QString, QString>>>(); // MRL, name
-    QThread *worker = QThread::create([found, folders]() {
+    // (waited for at the exit, a few seconds at most: runInBackground; its
+    // answer dropped if the finder is gone, which the worker can't tell)
+    const quint64 revision = m_revision;
+    runInBackground(this, [found, folders]() {
+        QThread::currentThread()->setPriority(QThread::LowPriority);
         for (const QString &folder : folders)
         {
             const QFileInfoList files = QDir(folder).entryInfoList(QDir::Files | QDir::Readable);
@@ -210,11 +214,7 @@ void SubtitleFinder::scanFolder()
             if (found->size() > 500)
                 break;
         }
-    });
-    // (by the finished signal, as HTTP answers: dropped if the finder is
-    // gone, which the worker can't tell)
-    const quint64 revision = m_revision;
-    connect(worker, &QThread::finished, this, [this, found, revision]() {
+    }, [this, found, revision]() {
         if (revision != m_revision)
             return;
         // The files found next to the videos played before go: the table
@@ -238,8 +238,6 @@ void SubtitleFinder::scanFolder()
         if (changed)
             emit sourcesChanged();
     });
-    connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-    worker->start(QThread::LowPriority);
 }
 
 // VLC shows a subtitle added to a media only when none is (b_forced), so

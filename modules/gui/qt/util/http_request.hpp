@@ -12,6 +12,7 @@
 #include <QUrl>
 
 #include <functional>
+#include <memory>
 
 class QObject;
 
@@ -54,6 +55,24 @@ using HttpCancel = std::function<void()>;
 // The request, here and now (it blocks: a worker thread's, the Live TV
 // module's). Its timeouts bound how long.
 HttpResponse httpRequestSync(const HttpRequest& request);
+
+// The same, stoppable from another thread: cancel() (any thread, before,
+// during or after) ends it at once with the error "Cancelled". What a
+// module that quits stops its requests with (a guide of a server waits
+// for minutes otherwise).
+class HttpSyncRequest
+{
+public:
+    HttpSyncRequest();
+    ~HttpSyncRequest();
+    HttpSyncRequest(const HttpSyncRequest&) = delete;
+    HttpSyncRequest& operator=(const HttpSyncRequest&) = delete;
+    HttpResponse run(const HttpRequest& request);
+    void cancel();
+
+private:
+    std::shared_ptr<void> m_state;
+};
 
 // Runs the request on a worker thread and calls done in the thread of
 // context. done is dropped if context is destroyed first.

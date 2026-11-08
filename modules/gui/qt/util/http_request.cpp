@@ -472,6 +472,23 @@ HttpResponse httpRequestSync(const HttpRequest& request)
     return perform(request, state);
 }
 
+HttpSyncRequest::HttpSyncRequest()
+    : m_state(std::make_shared<RequestState>())
+{
+}
+
+HttpSyncRequest::~HttpSyncRequest() = default;
+
+HttpResponse HttpSyncRequest::run(const HttpRequest& request)
+{
+    return perform(request, *std::static_pointer_cast<RequestState>(m_state));
+}
+
+void HttpSyncRequest::cancel()
+{
+    std::static_pointer_cast<RequestState>(m_state)->cancel();
+}
+
 HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
                             std::function<void(const HttpResponse&)> done)
 {

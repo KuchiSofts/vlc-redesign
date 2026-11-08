@@ -21,6 +21,8 @@ What is being worked on, updated as it changes (2026-11-08):
   parsers-fuzz). A sweep of every page with --qt-verbose: 19 kinds of QML warnings, 18 fixed. Start-up: window
   0.6-1.1 s, settled 1.2-1.7 s (first start after an install: an antivirus scan of the new DLLs). Soaks of
   dialogs, frame previews, TV updates and media changes.
+- 🟡 **0.5.9** started (an update release): stability, start-up and memory in every app; #72 (keys in full screen
+  without the controls).
 - ✅ **0.5.8** published 2026-11-08 (an update release; VideoLAN merged to `978212a42d`): SubSource with your own free key (#70, @Elshepl); Android TV: the
   focus after the TV sources close; Weblate has the TV menu's texts.
 - 🟡 **Subtitle services** (the owner: "add subsource.net too and add more free websites ... allow to enable and

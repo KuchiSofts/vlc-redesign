@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 10:17+0000\n"
+"POT-Creation-Date: 2026-11-08 19:14+0000\n"
 "PO-Revision-Date: 2014-09-03 10:44+0000\n"
 "Last-Translator: Sok Sophea <sksophea@gmail.com>\n"
 "Language-Team: Khmer (http://www.transifex.com/projects/p/vlc-trans/language/"
@@ -274,7 +274,7 @@ msgstr "វាគ្រប់គ្រងរបៀបដោះស្រាយក
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:181
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -623,7 +623,7 @@ msgid "Automatically start playing the play queue content once it's loaded."
 msgstr "ចាប់ផ្ដើមចាក់មាតិកាជួរចាក់ដោយស្វ័យប្រវត្តិ នៅពេលវាត្រូវបានផ្ទុករួច។"
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Use the media library"
 msgstr "ប្រើបណ្ណាល័យមេឌៀ"
 
@@ -859,12 +859,12 @@ msgstr "ការចូលប្រើការបញ្ចូល និងក�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Startup"
 msgstr "ការចាប់ផ្ដើម"
 
@@ -1339,66 +1339,66 @@ msgctxt "key"
 msgid "Zoom Out"
 msgstr "បង្រួម"
 
-#: src/player/osd.c:177
+#: src/player/osd.c:204
 #, c-format
 msgid "Volume: %ld%%"
 msgstr "កម្រិតសំឡេង៖ %ld%%"
 
-#: src/player/osd.c:192
+#: src/player/osd.c:219
 #, c-format
 msgid "Video tracks: %s"
 msgstr "បទវីដេអូ៖ %s"
 
-#: src/player/osd.c:193
+#: src/player/osd.c:220
 #, c-format
 msgid "Video track: %s"
 msgstr "បទវីដេអូ៖ %s"
 
-#: src/player/osd.c:196
+#: src/player/osd.c:223
 #, c-format
 msgid "Audio tracks: %s"
 msgstr "បទអូឌីយ៉ូ៖ %s"
 
-#: src/player/osd.c:200
+#: src/player/osd.c:227
 #, c-format
 msgid "Subtitle tracks: %s"
 msgstr "បទចំណងជើងរង៖ %s"
 
-#: src/player/osd.c:321
+#: src/player/osd.c:348
 msgid "Original size"
 msgstr "ទំហំដើម"
 
-#: src/player/osd.c:328
+#: src/player/osd.c:355
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr "ច្រឹបខាងក្រោម៖ %d px"
 
-#: src/player/osd.c:331
+#: src/player/osd.c:358
 #, c-format
 msgid "Top crop: %d px"
 msgstr "ច្រឹបខាងលើ៖ %d px"
 
-#: src/player/osd.c:334
+#: src/player/osd.c:361
 #, c-format
 msgid "Left crop: %d px"
 msgstr "ច្រឹបខាងឆ្វេង៖ %d px"
 
-#: src/player/osd.c:337
+#: src/player/osd.c:364
 #, c-format
 msgid "Right crop: %d px"
 msgstr "ច្រឹបខាងស្ដាំ៖ %d px"
 
-#: src/player/osd.c:347
+#: src/player/osd.c:374
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr "មិនត្របាញ់ %s (%s)"
 
-#: src/player/osd.c:357
+#: src/player/osd.c:384
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr "ទីតាំងចំណងជើងរងទីពីរ %d px"
 
-#: src/player/osd.c:371
+#: src/player/osd.c:398
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr "ពង្រីក៖ x%.2f"
@@ -1593,7 +1593,7 @@ msgid "Additional fonts directory"
 msgstr "ថតពុម្ពអក្សរបន្ថែម"
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "ល្អបំផុត"
@@ -1785,9 +1785,9 @@ msgstr "ឧ. https://www.example.com/stream.avi"
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:697
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:746
 msgid "(optional)"
 msgstr "(ស្រេចចិត្ត)"
 
@@ -2944,7 +2944,7 @@ msgstr ""
 "ជាមួយតំណទៅកំណត់ត្រាការផ្លាស់ប្ដូរពេញលេញ។ កំណត់ចំណាំជាភាសាអង់គ្លេស។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
 msgid "Discover cast devices"
 msgstr "រកឧបករណ៍បញ្ជូន"
 
@@ -2963,7 +2963,7 @@ msgid "Opens the window where it was when VLC was closed."
 msgstr "បើកបង្អួចនៅកន្លែងដែលវានៅ ពេល VLC ត្រូវបានបិទ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
 msgid "Always show the player bar"
 msgstr "បង្ហាញរបារកម្មវិធីចាក់ជានិច្ច"
 
@@ -2976,7 +2976,7 @@ msgstr ""
 "ឬបើកឯកសារនៅពេលវាទទេ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 msgid "Increase text contrast"
 msgstr "បង្កើនកម្រិតពន្លឺប្រៀបធៀបអត្ថបទ"
 
@@ -2989,7 +2989,7 @@ msgstr ""
 "ដល់កម្រិតពន្លឺប្រៀបធៀបដែលគោលការណ៍ណែនាំភាពងាយស្រួលប្រើ WCAG តម្រូវ (AA)។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:266
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
 msgid "Popup duration"
 msgstr "រយៈពេលផ្ទាំងលេចឡើង"
 
@@ -2998,7 +2998,7 @@ msgid "How long the popup of the track changes stays on the screen."
 msgstr "រយៈពេលដែលផ្ទាំងលេចឡើងនៃការផ្លាស់ប្ដូរបទស្ថិតនៅលើអេក្រង់។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Process priority"
 msgstr "អាទិភាពដំណើរការ"
 
@@ -3009,7 +3009,7 @@ msgid ""
 msgstr "ចំនួនពេលវេលាប្រព័ន្ធដំណើរការដែលប្រព័ន្ធផ្ដល់ឲ្យ VLC ធៀបនឹងកម្មវិធីផ្សេងទៀត។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 msgid "Volume indicator"
 msgstr "ធាតុក្រាហ្វិកកម្រិតសំឡេង"
 
@@ -3024,7 +3024,7 @@ msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "Double click on the video"
 msgstr "ចុចពីរដងលើវីដេអូ"
 
@@ -3037,7 +3037,7 @@ msgid "Nothing|Toggle fullscreen"
 msgstr "គ្មានអ្វី|បិទ/បើកពេញអេក្រង់"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:276
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Size values"
 msgstr "តម្លៃទំហំ"
 
@@ -3058,7 +3058,7 @@ msgid ""
 msgstr "កម្រិតស្រអាប់នៃប្រអប់នៅពីក្រោយចំណងជើងរង នៅពេលមានប្រអប់ (រក្សាទុកខណៈពេលគ្មាន)។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Never remember items matching"
 msgstr "កុំចងចាំធាតុដែលត្រូវនឹង"
 
@@ -3071,7 +3071,7 @@ msgstr ""
 "ហើយទីតាំងចាក់របស់វាក៏មិនត្រូវបានរក្សាទុកដែរ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 msgid "Update the channels and the guide"
 msgstr "ធ្វើបច្ចុប្បន្នភាពឆានែល និងមគ្គុទ្ទេសក៍"
 
@@ -3088,7 +3088,7 @@ msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "មិនដែល|រៀងរាល់ 6 ម៉ោង|រៀងរាល់ 12 ម៉ោង|រៀងរាល់ថ្ងៃ|រៀងរាល់សប្ដាហ៍"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 msgid "Days of the guide kept"
 msgstr "ចំនួនថ្ងៃនៃមគ្គុទ្ទេសក៍ដែលរក្សាទុក"
 
@@ -3102,7 +3102,7 @@ msgstr ""
 "ចំនួនថ្ងៃតិចប្រើអង្គចងចាំតិចជាងសម្រាប់មគ្គុទ្ទេសក៍ធំ ហើយបណ្ណសាររបស់ឆានែលថយក្រោយបានត្រឹមចំនួននេះ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "Hours across the guide"
 msgstr "ម៉ោងតាមទទឹងមគ្គុទ្ទេសក៍"
 
@@ -3111,7 +3111,7 @@ msgid "The time the guide shows across its width."
 msgstr "រយៈពេលដែលមគ្គុទ្ទេសក៍បង្ហាញតាមទទឹងរបស់វា។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "Guide languages"
 msgstr "ភាសាមគ្គុទ្ទេសក៍"
 
@@ -3124,8 +3124,8 @@ msgstr ""
 "បំបែកដោយសញ្ញាក្បៀស)។ ទទេ៖ គ្រប់ភាសា។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/qt.cpp:356
 msgid "Channel banner"
 msgstr "បដាឆានែល"
 
@@ -3138,7 +3138,7 @@ msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "ឆានែល ឥឡូវ និងបន្ទាប់|ឆានែល និងឥឡូវ|តែឆានែល|គ្មាន"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Show programme descriptions"
 msgstr "បង្ហាញការពិពណ៌នាកម្មវិធី"
 
@@ -3148,7 +3148,7 @@ msgid ""
 msgstr "បង្ហាញការពិពណ៌នាអំពីអ្វីដែលកំពុងចាក់ក្នុងបញ្ជីឆានែល និងបដា។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Show the progress of what is on"
 msgstr "បង្ហាញវឌ្ឍនភាពនៃអ្វីដែលកំពុងចាក់"
 
@@ -3160,7 +3160,7 @@ msgstr ""
 "របារបង្ហាញថាកម្មវិធីបានចាក់ប៉ុន្មានហើយ ផ្អែកលើពេលចាប់ផ្ដើម និងបញ្ចប់របស់វាក្នុងមគ្គុទ្ទេសក៍។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Show what is next"
 msgstr "បង្ហាញអ្វីដែលបន្ទាប់"
 
@@ -3169,7 +3169,7 @@ msgid "Shows the next programme in the channel lists and the banner."
 msgstr "បង្ហាញកម្មវិធីបន្ទាប់ក្នុងបញ្ជីឆានែល និងបដា។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 msgid "Start on the last channel"
 msgstr "ចាប់ផ្ដើមលើឆានែលចុងក្រោយ"
 
@@ -3178,7 +3178,7 @@ msgid "When VLC opens with nothing to play, the channel watched last plays."
 msgstr "នៅពេល VLC បើកដោយគ្មានអ្វីត្រូវចាក់ ឆានែលដែលបានមើលចុងក្រោយនឹងចាក់។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Show adult channels"
 msgstr "បង្ហាញឆានែលមនុស្សពេញវ័យ"
 
@@ -3187,12 +3187,12 @@ msgid "Lists the channels whose group or name says they are for adults."
 msgstr "រាយឆានែលដែលក្រុម ឬឈ្មោះបញ្ជាក់ថាសម្រាប់មនុស្សពេញវ័យ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "System monospace"
 msgstr "ទទឹងថេរប្រព័ន្ធ"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "System, sans-serif"
 msgstr "ប្រព័ន្ធ, sans-serif"
 
@@ -3258,7 +3258,7 @@ msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "ចាក់ធាតុបច្ចុប្បន្នម្ដងទៀត (មួយ) ឬជួរចាក់ទាំងមូល (ទាំងអស់)។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 msgid "When playback finishes"
 msgstr "នៅពេលការចាក់បញ្ចប់"
 
@@ -3276,7 +3276,7 @@ msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "ចាប់ផ្ដើម VLC ជាមួយស្បែកដែលបានជ្រើសខាងក្រោម ជំនួសឲ្យចំណុចប្រទាក់នេះ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 msgid "Remember the playback position"
 msgstr "ចងចាំទីតាំងចាក់"
 
@@ -3285,7 +3285,7 @@ msgid "Lets VLC continue the media where you left off."
 msgstr "អនុញ្ញាតឲ្យ VLC បន្តមេឌៀពីកន្លែងដែលអ្នកបានឈប់។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Reverse scroll direction"
 msgstr "បញ្ច្រាសទិសរំកិល"
 
@@ -3294,7 +3294,7 @@ msgid "The wheels that seek go backwards when turned forwards."
 msgstr "កង់ដែលរំកិលទីតាំងទៅថយក្រោយ នៅពេលបង្វិលទៅមុខ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Web remote control"
 msgstr "ការបញ្ជាពីចម្ងាយតាមវេប"
 
@@ -3304,7 +3304,7 @@ msgid ""
 msgstr "អនុញ្ញាតឲ្យកម្មវិធីរុករកវេបបញ្ជា VLC។ កំណត់ពាក្យសម្ងាត់របស់វានៅក្នុងជម្រើសកម្រិតខ្ពស់។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Video post-processing"
 msgstr "ការដំណើរការក្រោយវីដេអូ"
 
@@ -3315,7 +3315,7 @@ msgid ""
 msgstr "ធ្វើឲ្យរូបភាពនៃវីដេអូដែលអ៊ិនកូដមិនល្អប្រសើរឡើង ដោយប្រើថាមពលដំណើរការបន្ថែម។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
 msgid "Visualization size"
 msgstr "ទំហំរូបភាពមើលឃើញ"
 
@@ -3328,7 +3328,7 @@ msgid "Match window"
 msgstr "ស្មើបង្អួច"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 msgid "Seek precisely"
 msgstr "រំកិលឲ្យបានច្បាស់លាស់"
 
@@ -3448,7 +3448,7 @@ msgid ""
 msgstr "%1 បានផ្លាស់ប្ដូរនៅក្រៅការកំណត់ ឬមិនមានទេ។ ការផ្លាស់ប្ដូររបស់អ្នកមិនត្រូវបានរក្សាទុកទេ។"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:358
+#: modules/gui/qt/qt.cpp:365
 msgid "Expert"
 msgstr "អ្នកជំនាញ"
 
@@ -3467,7 +3467,7 @@ msgstr "ចំណូលចិត្តអ្នកជំនាញ"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:581
+#: modules/misc/iptv/iptv.cpp:839
 msgid "Live TV"
 msgstr "ទូរទស្សន៍ផ្សាយផ្ទាល់"
 
@@ -3538,7 +3538,7 @@ msgstr "រចនាប័ទ្ម"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:347
 msgid "Accent color"
 msgstr "ពណ៌សង្កត់"
 
@@ -3608,17 +3608,17 @@ msgid "Key works"
 msgstr "កូនសោដំណើរការ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:782
 msgid "Signed in as %1"
 msgstr "បានចូលជា %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Key refused"
 msgstr "កូនសោត្រូវបានបដិសេធ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Wrong user name or password"
 msgstr "ឈ្មោះអ្នកប្រើ ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ"
 
@@ -3628,7 +3628,7 @@ msgid "Busy: try again in a minute"
 msgstr "រវល់៖ សូមព្យាយាមម្ដងទៀតក្នុងរយៈពេលមួយនាទី"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
 msgid "No answer, try again"
 msgstr "គ្មានការឆ្លើយតប សូមព្យាយាមម្ដងទៀត"
 
@@ -3662,15 +3662,15 @@ msgstr "កូនសោឥតគិតថ្លៃរបស់អ្នក"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
 msgid "User name (optional)"
 msgstr "ឈ្មោះអ្នកប្រើ (ស្រេចចិត្ត)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:730
 msgid "User name"
 msgstr "ឈ្មោះ​អ្នកប្រើ"
 
@@ -3685,7 +3685,7 @@ msgid "Email"
 msgstr "អ៊ីមែល"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:765
 msgid "Sign in"
 msgstr "ចូល"
 
@@ -3855,19 +3855,19 @@ msgstr "បញ្ជូនបទដែលបានចាក់ទៅ last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
 msgid "Last.fm username"
 msgstr "ឈ្មោះអ្នកប្រើ Last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Last.fm password"
 msgstr "ពាក្យសម្ងាត់ Last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm submission URL"
 msgstr "URL បញ្ជូន Last.fm"
 
@@ -3926,7 +3926,7 @@ msgid "All VLC options"
 msgstr "ជម្រើស VLC ទាំងអស់"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:359
 msgid "Reset all settings"
 msgstr "កំណត់ការកំណត់ទាំងអស់ឡើងវិញ"
 
@@ -3962,7 +3962,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Two-pass"
 msgstr "ពីរជុំ"
 
@@ -4039,12 +4039,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "ចាក់វីដេអូ ដើម្បីកែសម្រួល និងមើលរូបភាពជាមុន។"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Spatial audio"
 msgstr "អូឌីយ៉ូលំហ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Stereo widening"
 msgstr "ការពង្រីកស្តេរ៉េអូ"
 
@@ -4069,7 +4069,7 @@ msgid "The address the played tracks are sent to."
 msgstr "អាសយដ្ឋានដែលបទដែលបានចាក់ត្រូវបានផ្ញើទៅ។"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Nothing"
 msgstr "គ្មានអ្វី"
 
@@ -4089,51 +4089,55 @@ msgstr ""
 msgid "Applies the next time VLC starts"
 msgstr "អនុវត្តនៅពេល VLC ចាប់ផ្ដើមលើកក្រោយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:301
+msgid "Moving the mouse or pressing Tab still shows the controls."
+msgstr "ការផ្លាស់ទីកណ្ដុរ ឬការចុច Tab នៅតែបង្ហាញឧបករណ៍បញ្ជា។"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:313
 msgid "Choose a snapshot folder"
 msgstr "ជ្រើសថតរូបថត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a time-shift buffer folder"
 msgstr "ជ្រើសថតបណ្ដោះអាសន្នសម្រាប់ការផ្លាស់ពេល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
 msgid "Choose a recording folder"
 msgstr "ជ្រើសថតសម្រាប់ការថត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:317
 msgid "Choose a folder"
 msgstr "ជ្រើសថតមួយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:321
 msgid "Choose a skin"
 msgstr "ជ្រើសស្បែកមួយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "ឯកសារស្បែក (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:325
 msgid "Choose a log file"
 msgstr "ជ្រើសឯកសារកំណត់ហេតុមួយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:351
 msgid "Open configurations folder"
 msgstr "បើកថតការកំណត់រចនាសម្ព័ន្ធ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:352
 msgid "Shows the folder of the settings of VLC."
 msgstr "បង្ហាញថតនៃការកំណត់របស់ VLC។"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
 msgid "Puts every setting of VLC back to its default."
 msgstr "ដាក់រាល់ការកំណត់របស់ VLC ត្រឡប់ទៅលំនាំដើមវិញ។"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:376
 msgid "Rescan plugins"
 msgstr "ស្កេនកម្មវិធីជំនួយឡើងវិញ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "ស្កេនឡើងវិញ"
 
@@ -4292,8 +4296,9 @@ msgstr "បើកពេញអេក្រង់នៅលើ"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Playback Controls"
 msgstr "ឧបករណ៍បញ្ជាការចាក់"
 
@@ -4317,831 +4322,851 @@ msgstr "លាក់បន្ទាប់ពី"
 msgid "Show controls in fullscreen"
 msgstr "បង្ហាញឧបករណ៍បញ្ជាក្នុងពេលពេញអេក្រង់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/qt.cpp:256
+msgid "When you use a shortcut in full screen"
+msgstr "នៅពេលអ្នកប្រើផ្លូវកាត់ក្នុងពេលពេញអេក្រង់"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:375
+msgid "Show the controls"
+msgstr "បង្ហាញឧបករណ៍បញ្ជា"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:375
+msgid "Show only the progress"
+msgstr "បង្ហាញតែវឌ្ឍនភាព"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:375
+msgid "Show only a message"
+msgstr "បង្ហាញតែសារ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
 msgid "Notifications and System Tray"
 msgstr "ការជូនដំណឹង និងថាសប្រព័ន្ធ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
 msgid "Show a system tray icon"
 msgstr "បង្ហាញរូបតំណាងថាសប្រព័ន្ធ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 msgid "Start minimized to the tray"
 msgstr "ចាប់ផ្ដើមដោយបង្រួមទៅថាស"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 msgid "Show a popup when the track changes"
 msgstr "បង្ហាញផ្ទាំងលេចឡើង នៅពេលបទផ្លាស់ប្ដូរ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
 msgid "Show the playlist as a tree"
 msgstr "បង្ហាញបញ្ជីចាក់ជាមែកធាង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
 msgid "Player Bar"
 msgstr "របារកម្មវិធីចាក់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 msgid "Window opacity"
 msgstr "ភាពស្រអាប់បង្អួច"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:81
 msgid "Pause video when window is minimized"
 msgstr "ផ្អាកវីដេអូ នៅពេលបង្អួចត្រូវបានបង្រួមអប្បបរមា"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
 msgid "Bring VLC to the front when playback starts"
 msgstr "នាំ VLC មកខាងមុខ នៅពេលការចាក់ចាប់ផ្ដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 msgid "Audio and video"
 msgstr "អូឌីយ៉ូ និងវីដេអូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
 msgid "Show cover art in the window when playing audio"
 msgstr "បង្ហាញរូបក្របនៅក្នុងបង្អួច នៅពេលចាក់អូឌីយ៉ូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
 msgid "Show the file browser inside the open dialog"
 msgstr "បង្ហាញកម្មវិធីរុករកឯកសារនៅក្នុងប្រអប់បើក"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:86
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
 msgid "Allow the app icon to change"
 msgstr "អនុញ្ញាតឲ្យរូបតំណាងកម្មវិធីផ្លាស់ប្ដូរ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Fullscreen controls opacity"
 msgstr "ភាពស្រអាប់ឧបករណ៍បញ្ជាពេញអេក្រង់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Fullscreen controls sensitivity"
 msgstr "ភាពរសើបឧបករណ៍បញ្ជាពេញអេក្រង់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "History"
 msgstr "ប្រវត្តិ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:576
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/misc/iptv/iptv.cpp:834
 msgid "Live TV (IPTV) add-on"
 msgstr "កម្មវិធីបន្ថែមទូរទស្សន៍ផ្សាយផ្ទាល់ (IPTV)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1225
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "មគ្គុទ្ទេសក៍"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 msgid "days"
 msgstr "ថ្ងៃ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "h"
 msgstr "ម៉ោង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "e.g., en, he"
 msgstr "ឧ. en, he"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 msgid "Watching"
 msgstr "ពេលកំពុងមើល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Lists"
 msgstr "បញ្ជី"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Fetch titles and cover art from the internet"
 msgstr "ទាញយកចំណងជើង និងរូបក្របពីអ៊ីនធឺណិត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Additional interfaces"
 msgstr "ចំណុចប្រទាក់បន្ថែម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
 msgid "Continue where you left off"
 msgstr "បន្តពីកន្លែងដែលអ្នកបានឈប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 msgid "Start playing as soon as a file opens"
 msgstr "ចាប់ផ្ដើមចាក់ភ្លាមៗ នៅពេលឯកសារបើក"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
 msgid "Default playback speed"
 msgstr "ល្បឿនចាក់លំនាំដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 msgid "Pause when another app uses audio"
 msgstr "ផ្អាក នៅពេលកម្មវិធីផ្សេងប្រើអូឌីយ៉ូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "បទ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Preferred video quality"
 msgstr "គុណភាពវីដេអូដែលពេញចិត្ត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Standard (576p)"
 msgstr "ស្តង់ដារ (576p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Low (360p)"
 msgstr "ទាប (360p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Very low (240p)"
 msgstr "ទាបណាស់ (240p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 msgid "Preferred menu language"
 msgstr "ភាសាម៉ឺនុយដែលពេញចិត្ត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "Default audio track"
 msgstr "បទអូឌីយ៉ូលំនាំដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Default subtitle track"
 msgstr "បទចំណងជើងរងលំនាំដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Order"
 msgstr "លំដាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 msgid "Stop after each item"
 msgstr "ឈប់បន្ទាប់ពីធាតុនីមួយៗ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Seeking"
 msgstr "ការរំកិល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
+#: modules/gui/qt/qt.cpp:311
 msgid "Show thumbnail while scrubbing"
 msgstr "បង្ហាញរូបភាពតូចខណៈពេលអូស"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Files & Discs"
 msgstr "ឯកសារ និងឌីស"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Default optical drive"
 msgstr "ដ្រាយអុបទិកលំនាំដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 msgid "Repair damaged AVI files"
 msgstr "ជួសជុលឯកសារ AVI ដែលខូច"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 msgid "When needed"
 msgstr "នៅពេលចាំបាច់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Load matching .mkv files from the same folder"
 msgstr "ផ្ទុកឯកសារ .mkv ដែលត្រូវគ្នាពីថតដដែល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Time-shift"
 msgstr "ការផ្លាស់ពេល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 msgid "Time-shift buffer folder"
 msgstr "ថតបណ្ដោះអាសន្នការផ្លាស់ពេល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Time-shift buffer size"
 msgstr "ទំហំបណ្ដោះអាសន្នការផ្លាស់ពេល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Pause on the last frame of each item"
 msgstr "ផ្អាកនៅស៊ុមចុងក្រោយនៃធាតុនីមួយៗ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Resume the last playback states (tracks, speed...)"
 msgstr "បន្តស្ថានភាពចាក់ចុងក្រោយ (បទ ល្បឿន...)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Start videos in fullscreen"
 msgstr "ចាប់ផ្ដើមវីដេអូក្នុងពេលពេញអេក្រង់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
 msgid "Stop the screensaver during playback"
 msgstr "បញ្ឈប់ធាតុរក្សាអេក្រង់ក្នុងពេលចាក់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Play video as desktop wallpaper"
 msgstr "ចាក់វីដេអូជាផ្ទាំងរូបភាពផ្ទៃតុ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Method"
 msgstr "វិធីសាស្ត្រ"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:403
-msgid "Framing"
-msgstr "ការដាក់ស៊ុម"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-msgid "Scale video to the window"
-msgstr "ធ្វើមាត្រដ្ឋានវីដេអូតាមបង្អួច"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-msgid "Position in the window"
-msgstr "ទីតាំងនៅក្នុងបង្អួច"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:408
+msgid "Framing"
+msgstr "ការដាក់ស៊ុម"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+msgid "Scale video to the window"
+msgstr "ធ្វើមាត្រដ្ឋានវីដេអូតាមបង្អួច"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+msgid "Position in the window"
+msgstr "ទីតាំងនៅក្នុងបង្អួច"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Snapshots"
 msgstr "រូបថត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Save to"
 msgstr "រក្សាទុកទៅ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "File name prefix"
 msgstr "បុព្វបទឈ្មោះឯកសារ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 msgid "Number files sequentially"
 msgstr "ដាក់លេខឯកសារតាមលំដាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Show a preview after capture"
 msgstr "បង្ហាញការមើលជាមុនបន្ទាប់ពីការចាប់យក"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
 msgid "Custom aspect ratios"
 msgstr "សមាមាត្រផ្ទាល់ខ្លួន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Custom crop ratios"
 msgstr "សមាមាត្រច្រឹបផ្ទាល់ខ្លួន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "កម្ពស់រូបថត (0: តាមសមាមាត្រ, -1: ដើម)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Deinterlacing filter"
 msgstr "តម្រងមិនត្របាញ់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Speaker setup"
 msgstr "ការរៀបចំឧបករណ៍បំពងសំឡេង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Maximum volume"
 msgstr "កម្រិតសំឡេងអតិបរមា"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 #: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "កម្រិតសំឡេងពេលចាប់ផ្ដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 msgid "Volume step"
 msgstr "ជំហានកម្រិតសំឡេង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Loudness"
 msgstr "ភាពខ្លាំងសំឡេង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Normalize loudness"
 msgstr "ធ្វើឲ្យភាពខ្លាំងសំឡេងស្មើគ្នា"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Target level"
 msgstr "កម្រិតគោលដៅ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 msgid "Night mode"
 msgstr "របៀបពេលយប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Replay gain preamp"
 msgstr "ការពង្រីកមុន Replay gain"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Spatial audio mode"
 msgstr "របៀបអូឌីយ៉ូលំហ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
 msgid "Pitch shift"
 msgstr "ការប្ដូរកម្រិតសំឡេង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "Chorus/flanger"
 msgstr "Chorus/flanger"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 msgid "Preferred audio language"
 msgstr "ភាសាអូឌីយ៉ូដែលពេញចិត្ត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "ការពន្យារពេលអូឌីយ៉ូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
 msgid "Pass compressed audio to the receiver"
 msgstr "បញ្ជូនអូឌីយ៉ូដែលបានបង្ហាប់ទៅឧបករណ៍ទទួល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 msgid "Detect Dolby Surround"
 msgstr "រកឃើញ Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Fastest"
 msgstr "លឿនបំផុត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Balanced"
 msgstr "មានតុល្យភាព"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Output gain"
 msgstr "ការពង្រីកលទ្ធផល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Keep the pitch when changing the speed"
 msgstr "រក្សាកម្រិតសំឡេង នៅពេលផ្លាស់ប្ដូរល្បឿន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 msgid "Equalizer preamp"
 msgstr "ការពង្រីកមុនអេគ្វាឡាយហ្ស៊ឺ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
 msgid "Compressor ratio"
 msgstr "សមាមាត្រឧបករណ៍បង្ហាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 msgid "Compressor threshold"
 msgstr "កម្រិតចាប់ផ្ដើមឧបករណ៍បង្ហាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Compressor makeup gain"
 msgstr "ការពង្រីកបំពេញឧបករណ៍បង្ហាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Tracks & Languages"
 msgstr "បទ និងភាសា"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
 msgid "Preferred language"
 msgstr "ភាសាដែលពេញចិត្ត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Text encoding"
 msgstr "ការអ៊ិនកូដអត្ថបទ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Loading Subtitles"
 msgstr "ការផ្ទុកចំណងជើងរង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Load subtitle files automatically"
 msgstr "ផ្ទុកឯកសារចំណងជើងរងដោយស្វ័យប្រវត្តិ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "File name matching"
 msgstr "ការផ្គូផ្គងឈ្មោះឯកសារ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
 msgid "Bold"
 msgstr "ដិត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 msgid "Text color"
 msgstr "ពណ៌អត្ថបទ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Vertical position"
 msgstr "ទីតាំងបញ្ឈរ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Timing"
 msgstr "ពេលវេលា"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/qt.cpp:313
 msgid "Show subtitle lines on the seek bar"
 msgstr "បង្ហាញបន្ទាត់ចំណងជើងរងនៅលើរបាររំកិល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "On-Screen Messages"
 msgstr "សារលើអេក្រង់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Show feedback for shortcuts"
 msgstr "បង្ហាញប្រតិកម្មសម្រាប់ផ្លូវកាត់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Show feedback for"
 msgstr "បង្ហាញប្រតិកម្មរយៈពេល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Show filename when a video starts"
 msgstr "បង្ហាញឈ្មោះឯកសារ នៅពេលវីដេអូចាប់ផ្ដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 msgid "Show filename for"
 msgstr "បង្ហាញឈ្មោះឯកសាររយៈពេល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Load subtitles from these folders"
 msgstr "ផ្ទុកចំណងជើងរងពីថតទាំងនេះ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Monospace font"
 msgstr "ពុម្ពអក្សរទទឹងថេរ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "Text alignment"
 msgstr "ការតម្រឹមអត្ថបទ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Position of the filename"
 msgstr "ទីតាំងឈ្មោះឯកសារ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Skip Amounts"
 msgstr "ចំនួនរំលង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Very short skip"
 msgstr "ការរំលងខ្លីបំផុត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Short skip"
 msgstr "ការរំលងខ្លី"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Medium skip"
 msgstr "ការរំលងមធ្យម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Long skip"
 msgstr "ការរំលងវែង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Mouse"
 msgstr "កណ្ដុរ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Single click on the video"
 msgstr "ចុចម្ដងលើវីដេអូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Play / Pause"
 msgstr "ចាក់ / ផ្អាក"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Play / Pause on release"
 msgstr "ចាក់ / ផ្អាក ពេលលែង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Scroll wheel"
 msgstr "កង់រំកិល"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 msgid "Horizontal scroll"
 msgstr "ការរំកិលផ្ដេក"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:404
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
 msgid "Remotes"
 msgstr "ការបញ្ជាពីចម្ងាយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Handle mouse clicks in the video"
 msgstr "ដោះស្រាយការចុចកណ្ដុរនៅក្នុងវីដេអូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Web remote password"
 msgstr "ពាក្យសម្ងាត់ការបញ្ជាពីចម្ងាយតាមវេប"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Web remote address"
 msgstr "អាសយដ្ឋានការបញ្ជាពីចម្ងាយតាមវេប"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Ignore the volume keys of the keyboard"
 msgstr "មិនអើពើគ្រាប់ចុចកម្រិតសំឡេងនៃក្ដារចុច"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Opening Files"
 msgstr "ការបើកឯកសារ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Only allow one VLC window"
 msgstr "អនុញ្ញាតតែបង្អួច VLC មួយប៉ុណ្ណោះ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Apply to files opened from the file manager"
 msgstr "អនុវត្តចំពោះឯកសារដែលបើកពីកម្មវិធីគ្រប់គ្រងឯកសារ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Add to the playlist instead of replacing it"
 msgstr "បន្ថែមទៅបញ្ជីចាក់ ជំនួសឲ្យការជំនួសវា"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 msgid "When opening a folder"
 msgstr "នៅពេលបើកថតមួយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Only this folder"
 msgstr "តែថតនេះ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Include subfolders"
 msgstr "រួមបញ្ចូលថតរង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Include and expand subfolders"
 msgstr "រួមបញ្ចូល និងពង្រីកថតរង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Metadata & Artwork"
 msgstr "ទិន្នន័យមេតា និងរូបភាព"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Fetch titles and artwork"
 msgstr "ទាញយកចំណងជើង និងរូបភាព"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Read media information automatically"
 msgstr "អានព័ត៌មានមេឌៀដោយស្វ័យប្រវត្តិ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Ignored file extensions"
 msgstr "កន្ទុយឯកសារដែលមិនអើពើ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Buffering"
 msgstr "ការផ្ទុកបណ្ដោះអាសន្ន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 msgid "Local files"
 msgstr "ឯកសារមូលដ្ឋាន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 msgid "Network streams"
 msgstr "ស្ទ្រីមបណ្ដាញ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Live capture"
 msgstr "ការចាប់យកផ្ទាល់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Proxy"
 msgstr "ប្រូកស៊ី"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "System proxy"
 msgstr "ប្រូកស៊ីប្រព័ន្ធ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Security"
 msgstr "សុវត្ថិភាព"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Verify certificates against the system trust store"
 msgstr "ផ្ទៀងផ្ទាត់វិញ្ញាបនបត្រជាមួយឃ្លាំងទុកចិត្តរបស់ប្រព័ន្ធ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Cipher preference"
 msgstr "ចំណូលចិត្តការអ៊ិនគ្រីប"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Secure (128-bit)"
 msgstr "មានសុវត្ថិភាព (128 ប៊ីត)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Most secure (256-bit)"
 msgstr "មានសុវត្ថិភាពបំផុត (256 ប៊ីត)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Connections"
 msgstr "ការតភ្ជាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Connection timeout"
 msgstr "ពេលអស់ការតភ្ជាប់"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "HTTP user agent"
 msgstr "ភ្នាក់ងារអ្នកប្រើ HTTP"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Trusted certificates folder"
 msgstr "ថតវិញ្ញាបនបត្រដែលទុកចិត្ត"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Post-processing quality"
 msgstr "គុណភាពដំណើរការក្រោយ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Skip the H.264 loop filter"
 msgstr "រំលងតម្រងរង្វិល H.264"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Non-reference frames"
 msgstr "ស៊ុមមិនមែនយោង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Bidirectional frames"
 msgstr "ស៊ុមទ្វេទិស"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Non-key frames"
 msgstr "ស៊ុមមិនមែនគន្លឹះ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Decoding threads"
 msgstr "ខ្សែស្រឡាយឌិកូដ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
-msgid "Smooth Playback"
-msgstr "ការចាក់រលូន"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
-msgid "Drop frames when the system can't keep up"
-msgstr "ទម្លាក់ស៊ុម នៅពេលប្រព័ន្ធតាមមិនទាន់"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+msgid "Smooth Playback"
+msgstr "ការចាក់រលូន"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+msgid "Drop frames when the system can't keep up"
+msgstr "ទម្លាក់ស៊ុម នៅពេលប្រព័ន្ធតាមមិនទាន់"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
 msgid "Developer"
 msgstr "អ្នកអភិវឌ្ឍ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 msgid "Decoder"
 msgstr "ឧបករណ៍ឌិកូដ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
 msgid "Clock reference averaging"
 msgstr "ការធ្វើមធ្យមនាឡិកាយោង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Save recordings to"
 msgstr "រក្សាទុកការថតទៅ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Record without re-encoding when possible"
 msgstr "ថតដោយមិនអ៊ិនកូដឡើងវិញ នៅពេលអាចធ្វើបាន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Casting"
 msgstr "ការបញ្ជូន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
 msgid "Cast quality"
 msgstr "គុណភាពបញ្ជូន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Low CPU"
 msgstr "CPU ទាប"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
 msgid "Play locally while streaming"
 msgstr "ចាក់នៅលើម៉ាស៊ីននេះផងខណៈពេលស្ទ្រីម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Include audio"
 msgstr "រួមបញ្ចូលអូឌីយ៉ូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Include video"
 msgstr "រួមបញ្ចូលវីដេអូ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Include subtitles"
 msgstr "រួម​បញ្ចូល​ចំណង​ជើង​រង"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
 msgid "Encoding preset"
 msgstr "ការកំណត់ស្រេចការអ៊ិនកូដ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
 msgid "Tuning"
 msgstr "ការលៃតម្រូវ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
 msgid "Send Dolby audio as is"
 msgstr "ផ្ញើអូឌីយ៉ូ Dolby ដូចដើម"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Cast HTTP port"
 msgstr "ច្រក HTTP សម្រាប់ការបញ្ជូន"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Keep the stream output open between items"
 msgstr "រក្សាលទ្ធផលស្ទ្រីមឲ្យបើករវាងធាតុ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:427
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "ជម្រើសច្រើនទៀត"
@@ -5217,7 +5242,7 @@ msgstr "កំពុងធ្វើបច្ចុប្បន្នភាព…
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -5545,53 +5570,53 @@ msgstr "លុបប្រវត្តិរូប"
 msgid "Its layout and its settings go with it."
 msgstr "ប្លង់ និងការកំណត់របស់វានឹងត្រូវលុបជាមួយ។"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:943
+#: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "មិនអាចចាក់ឆានែលនេះបានទេ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:983
+#: modules/gui/qt/iptv/iptv_addon.cpp:989
 msgid "This programme is older than the channel's archive"
 msgstr "កម្មវិធីនេះចាស់ជាងបណ្ណសាររបស់ឆានែល"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:984
+#: modules/gui/qt/iptv/iptv_addon.cpp:990
 msgid "This programme has not started yet"
 msgstr "កម្មវិធីនេះមិនទាន់ចាប់ផ្ដើមនៅឡើយទេ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:991
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr "ឆានែលនេះគ្មានបណ្ណសារទេ៖ មិនអាចចាក់កម្មវិធីកន្លងមកបានទេ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1009
+#: modules/gui/qt/iptv/iptv_addon.cpp:1015
 msgid "The guide does not say what is on"
 msgstr "មគ្គុទ្ទេសក៍មិនបានបញ្ជាក់ថាកំពុងចាក់អ្វីទេ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1059
+#: modules/gui/qt/iptv/iptv_addon.cpp:1065
 msgid "No channel %1"
 msgstr "គ្មានឆានែល %1 ទេ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1261
+#: modules/gui/qt/iptv/iptv_addon.cpp:1267
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 នាទី"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1264
+#: modules/gui/qt/iptv/iptv_addon.cpp:1270
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 ម៉ោង"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1270 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 ម៉ោង %2 នាទី"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1272
+#: modules/gui/qt/iptv/iptv_addon.cpp:1278
 msgid "Today"
 msgstr "ថ្ងៃនេះ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1274
+#: modules/gui/qt/iptv/iptv_addon.cpp:1280
 msgid "Tomorrow"
 msgstr "ថ្ងៃស្អែក"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1276
+#: modules/gui/qt/iptv/iptv_addon.cpp:1282
 msgid "Yesterday"
 msgstr "ម្សិលមិញ"
 
@@ -5640,7 +5665,7 @@ msgstr "បន្ទាប់នៅម៉ោង %1"
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1229
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 ថ្ងៃ"
@@ -5653,14 +5678,14 @@ msgstr[0] "មើលឡើងវិញ៖ %1 ថ្ងៃចុងក្រោ�
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1232
 msgid "Films"
 msgstr "ភាពយន្ត"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1233
 msgid "Series"
 msgstr "រឿងភាគ"
 
@@ -5727,7 +5752,7 @@ msgstr "គ្មានឆានែល"
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:513
 #: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "ចំណូលចិត្ត"
@@ -5832,11 +5857,11 @@ msgstr "កម្មវិធីមុន"
 msgid "Programme after"
 msgstr "កម្មវិធីបន្ទាប់"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:352
 msgid "Next channel"
 msgstr "ឆានែលបន្ទាប់"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:353
 msgid "Previous channel"
 msgstr "ឆានែលមុន"
 
@@ -5865,7 +5890,7 @@ msgid "Channel"
 msgstr "ឆានែល"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1141
 msgid "Catch-up"
 msgstr "មើលឡើងវិញ"
 
@@ -5899,15 +5924,17 @@ msgstr "ឧបករណ៍ចាប់សញ្ញានៅលើបណ្ដា
 msgid ""
 "A paid guide (the US, Canada and more) for the channels of every source: the "
 "lineups of your account"
-msgstr "មគ្គុទ្ទេសក៍បង់ប្រាក់ (សហរដ្ឋអាមេរិក កាណាដា និងច្រើនទៀត) សម្រាប់ឆានែលនៃគ្រប់ប្រភព៖ បញ្ជីឆានែលនៃគណនីរបស់អ្នក"
+msgstr ""
+"មគ្គុទ្ទេសក៍បង់ប្រាក់ (សហរដ្ឋអាមេរិក កាណាដា និងច្រើនទៀត) សម្រាប់ឆានែលនៃគ្រប់ប្រភព៖ "
+"បញ្ជីឆានែលនៃគណនីរបស់អ្នក"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "ប្រភពទូរទស្សន៍"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1011
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 msgid "Add Guide"
 msgstr "បន្ថែមមគ្គុទ្ទេសក៍"
 
@@ -5928,12 +5955,12 @@ msgid "Accounts"
 msgstr "គណនី"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1142
 msgid "Guides"
 msgstr "មគ្គុទ្ទេសក៍"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1017
 msgid "Catalog"
 msgstr "កាតាឡុក"
 
@@ -5952,7 +5979,7 @@ msgid "No source yet: add the link of your provider, or one of the catalog."
 msgstr "មិនទាន់មានប្រភពទេ៖ បន្ថែមតំណរបស់អ្នកផ្ដល់សេវារបស់អ្នក ឬមួយពីកាតាឡុក។"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
 msgid "%1 programme"
 msgid_plural "%1 programmes"
 msgstr[0] "%1 កម្មវិធី"
@@ -5973,7 +6000,7 @@ msgid_plural "Catch-up %1 d"
 msgstr[0] "មើលឡើងវិញ %1 ថ្ងៃ"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:940
 msgid "Updating the guide… %1 MB"
 msgstr "កំពុងធ្វើបច្ចុប្បន្នភាពមគ្គុទ្ទេសក៍… %1 MB"
 
@@ -5986,12 +6013,12 @@ msgid "Updated %1 at %2"
 msgstr "បានធ្វើបច្ចុប្បន្នភាព %1 នៅម៉ោង %2"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:986
 msgid "Turn Off"
 msgstr "បិទ"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:986
 msgid "Turn On"
 msgstr "បើក"
 
@@ -6042,7 +6069,7 @@ msgstr "បញ្ជីចាក់ (*.m3u *.m3u8)"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
 msgid "(empty: unchanged)"
 msgstr "(ទទេ៖ មិនផ្លាស់ប្ដូរ)"
 
@@ -6109,7 +6136,7 @@ msgid "Nothing found on your network: type the server's address."
 msgstr "រកមិនឃើញអ្វីនៅលើបណ្ដាញរបស់អ្នកទេ៖ វាយអាសយដ្ឋានម៉ាស៊ីនមេ។"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 msgid "Added"
 msgstr "បានបន្ថែម"
 
@@ -6117,156 +6144,162 @@ msgstr "បានបន្ថែម"
 msgid "Look again"
 msgstr "រកម្ដងទៀត"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:693
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:704
 msgid "Server address"
 msgstr "អាសយដ្ឋានម៉ាស៊ីនមេ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:703
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:845
 msgid "e.g., %1"
 msgstr "ឧ. %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:738
 msgid "PIN"
 msgstr "PIN"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:754
 msgid "API key"
 msgstr "កូនសោ API"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
 msgid "Instead of a user: a key made in the server's dashboard."
 msgstr "ជំនួសឲ្យអ្នកប្រើ៖ កូនសោដែលបានបង្កើតក្នុងផ្ទាំងគ្រប់គ្រងរបស់ម៉ាស៊ីនមេ។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Server found"
 msgstr "បានរកឃើញម៉ាស៊ីនមេ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:798
 msgid "Sign Out"
 msgstr "ចាកចេញ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:810
 msgid ""
 "Passwords and keys are kept in the keystore of VLC, never written to its log."
-msgstr "ពាក្យសម្ងាត់ និងកូនសោត្រូវបានរក្សាទុកក្នុងឃ្លាំងសោរបស់ VLC ហើយមិនដែលត្រូវបានសរសេរក្នុងកំណត់ហេតុរបស់វាទេ។"
+msgstr ""
+"ពាក្យសម្ងាត់ និងកូនសោត្រូវបានរក្សាទុកក្នុងឃ្លាំងសោរបស់ VLC "
+"ហើយមិនដែលត្រូវបានសរសេរក្នុងកំណត់ហេតុរបស់វាទេ។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:827
 msgid "The guide of %1"
 msgstr "មគ្គុទ្ទេសក៍នៃ %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:828
 msgid ""
 "The id the guides give this channel. Yours comes first; leave it empty to "
 "use the one of its list or the one found for it."
-msgstr "ID ដែលមគ្គុទ្ទេសក៍ផ្ដល់ឲ្យឆានែលនេះ។ ID របស់អ្នកមកមុន។ ទុកវាឲ្យទទេ ដើម្បីប្រើ ID ពីបញ្ជីរបស់វា ឬ ID ដែលបានរកឃើញសម្រាប់វា។"
+msgstr ""
+"ID ដែលមគ្គុទ្ទេសក៍ផ្ដល់ឲ្យឆានែលនេះ។ ID របស់អ្នកមកមុន។ ទុកវាឲ្យទទេ ដើម្បីប្រើ ID ពីបញ្ជីរបស់វា ឬ "
+"ID ដែលបានរកឃើញសម្រាប់វា។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
 msgid "Its list: %1"
 msgstr "បញ្ជីរបស់វា៖ %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:833
 msgid "Found for it: %1"
 msgstr "បានរកឃើញសម្រាប់វា៖ %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:846
 msgid "Guide id"
 msgstr "ID មគ្គុទ្ទេសក៍"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:862
 msgid "The guides of your sources"
 msgstr "មគ្គុទ្ទេសក៍នៃប្រភពរបស់អ្នក"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:863
 msgid ""
 "Each source's own guides and those you added; the channels are matched by "
 "their guide id, then by their name."
-msgstr "មគ្គុទ្ទេសក៍ផ្ទាល់របស់ប្រភពនីមួយៗ និងមគ្គុទ្ទេសក៍ដែលអ្នកបានបន្ថែម។ ឆានែលត្រូវបានផ្គូផ្គងតាម ID មគ្គុទ្ទេសក៍ រួចតាមឈ្មោះ។"
+msgstr ""
+"មគ្គុទ្ទេសក៍ផ្ទាល់របស់ប្រភពនីមួយៗ និងមគ្គុទ្ទេសក៍ដែលអ្នកបានបន្ថែម។ ឆានែលត្រូវបានផ្គូផ្គងតាម ID "
+"មគ្គុទ្ទេសក៍ រួចតាមឈ្មោះ។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:902
 msgid "A guide for the channels of every source"
 msgstr "មគ្គុទ្ទេសក៍សម្រាប់ឆានែលនៃគ្រប់ប្រភព"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:903
 #: modules/gui/qt/iptv/qml/TvToast.qml:56
 msgid "Guide for %1 of %2 channels"
 msgstr "មគ្គុទ្ទេសក៍សម្រាប់ %1 នៃ %2 ឆានែល"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:920
 msgid "Find a Guide"
 msgstr "ស្វែងរកមគ្គុទ្ទេសក៍"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:941
 msgid "Found for you: %1 channel matched by its name or id"
 msgid_plural "Found for you: %1 channels matched by their name or id"
 msgstr[0] "បានរកឃើញសម្រាប់អ្នក៖ %1 ឆានែល ត្រូវបានផ្គូផ្គងតាមឈ្មោះ ឬ ID"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
 msgid "Added by you"
 msgstr "បន្ថែមដោយអ្នក"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:970
 msgid "Found for you"
 msgstr "បានរកឃើញសម្រាប់អ្នក"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:971
 msgid "From the playlist"
 msgstr "ពីបញ្ជីចាក់"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1000
 msgid "No guide yet: add one, or one of the catalog's."
 msgstr "មិនទាន់មានមគ្គុទ្ទេសក៍ទេ៖ បន្ថែមមួយ ឬមួយពីកាតាឡុក។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1107
 msgid "Search the catalog"
 msgstr "ស្វែងរកក្នុងកាតាឡុក"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1130
 msgid "A-Z"
 msgstr "ក-អ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1130
 msgid "Most channels"
 msgstr "ឆានែលច្រើនបំផុត"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1131
 msgid "For you"
 msgstr "សម្រាប់អ្នក"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Recommended"
 msgstr "បានណែនាំ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1142
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 msgid "Free"
 msgstr "ឥតគិតថ្លៃ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1237
 msgid "Not answering"
 msgstr "មិនឆ្លើយតប"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 msgid "Paid"
 msgstr "បង់ប្រាក់"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Loading the catalog…"
 msgstr "កំពុងផ្ទុកកាតាឡុក…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1287
 msgid "The catalog is empty in this version."
 msgstr "កាតាឡុកទទេនៅក្នុងកំណែនេះ។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1288
 msgid "Nothing in the catalog matches"
 msgstr "គ្មានអ្វីក្នុងកាតាឡុកត្រូវគ្នាទេ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1302
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
@@ -6274,7 +6307,7 @@ msgstr ""
 "មានតែប្រភពឥតគិតថ្លៃ និងស្របច្បាប់ប៉ុណ្ណោះដែលត្រូវបានរាយ។ "
 "ការស្នើត្រូវបានពិនិត្យមុនពេលចូលក្នុងកាតាឡុក។"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1310
 msgid "Suggest a Service"
 msgstr "ស្នើសេវាកម្ម"
 
@@ -6298,15 +6331,22 @@ msgstr "%1 ចាប់ផ្ដើមឥឡូវនៅលើ %2"
 msgid "Undo"
 msgstr "មិនធ្វើវិញ"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1308
+#. xgettext: The step of a jump in seconds shown in full screen
+#. * ("+10 s"); a minute and more are written 1:10
+#: modules/gui/qt/maininterface/mainctx.cpp:910
+#, no-c-format
+msgid "%1 s"
+msgstr "%1 វិ"
+
+#: modules/gui/qt/maininterface/mainctx.cpp:1423
 msgid "Paste from clipboard"
 msgstr "បិទភ្ជាប់ពីក្ដារតម្បៀតខ្ទាស់"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1309
+#: modules/gui/qt/maininterface/mainctx.cpp:1424
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "តើអ្នកចង់បន្ថែម URL ខាងក្រោមទៅជួរចាក់ឬទេ?"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1310
+#: modules/gui/qt/maininterface/mainctx.cpp:1425
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -6320,7 +6360,7 @@ msgstr "បន្ថែមទៅជួរ"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1673
+#: modules/gui/qt/maininterface/mainctx.cpp:1806
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -6565,52 +6605,58 @@ msgstr "ទិដ្ឋភាពទទេ"
 msgid "Bookmark at %1"
 msgstr "ចំណាំនៅ %1"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:125
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:128
 msgid "Online subtitle search is not available in this build."
 msgstr "ការស្វែងរកចំណងជើងរងតាមអ៊ីនធឺណិតមិនមាននៅក្នុងកំណែនេះទេ។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:130
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:133
 msgid "Enter an OpenSubtitles API key and a title to search."
 msgstr "បញ្ចូលកូនសោ API របស់ OpenSubtitles និងចំណងជើងមួយដើម្បីស្វែងរក។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:142
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:145
 msgid "OpenSubtitles search failed. Check the API key and network."
 msgstr "ការស្វែងរក OpenSubtitles បានបរាជ័យ។ ពិនិត្យកូនសោ API និងបណ្ដាញ។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:148
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:151
 msgid "OpenSubtitles returned an invalid search response."
 msgstr "OpenSubtitles បានត្រឡប់ការឆ្លើយតបស្វែងរកមិនត្រឹមត្រូវ។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:182
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:185
 msgid "Enter your API key and OpenSubtitles account credentials to download."
 msgstr "បញ្ចូលកូនសោ API និងព័ត៌មានសម្ងាត់គណនី OpenSubtitles របស់អ្នក ដើម្បីទាញយក។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:194
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:197
 msgid "OpenSubtitles login failed. Check your account credentials."
 msgstr "ការចូល OpenSubtitles បានបរាជ័យ។ ពិនិត្យព័ត៌មានសម្ងាត់គណនីរបស់អ្នក។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:202
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:205
 msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles បានត្រឡប់វគ្គចូលមិនត្រឹមត្រូវ។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1860
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:216
+#: modules/gui/qt/player/subtitle_providers.cpp:1744
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "ការទាញយក OpenSubtitles បានបរាជ័យ។ ពិនិត្យកូតារបស់អ្នក។"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1871
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:226
+#: modules/gui/qt/player/subtitle_providers.cpp:1755
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles មិនបានត្រឡប់តំណទាញយកចំណងជើងរងត្រឹមត្រូវទេ។"
 
-#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
-#: modules/gui/qt/player/subtitle_search.cpp:654
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
+#: modules/gui/qt/player/subtitle_search.cpp:670
 msgid "This build can't search the internet."
 msgstr "កំណែនេះមិនអាចស្វែងរកតាមអ៊ីនធឺណិតបានទេ។"
 
-#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
+#: modules/gui/qt/player/subtitle_search.cpp:692
 msgid "The subtitle services took too long to answer."
 msgstr "សេវាចំណងជើងរងចំណាយពេលយូរពេកក្នុងការឆ្លើយតប។"
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:353
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "រកមិនឃើញមេឌៀគោលដៅនៅក្នុងបណ្ណាល័យទេ។"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6743,10 +6789,6 @@ msgstr "ឯកសារអូឌីយ៉ូមួយបាត់ ឬមិន�
 msgid "A subtitle file is missing or unreadable: %1"
 msgstr "ឯកសារចំណងជើងរងមួយបាត់ ឬមិនអាចអានបាន៖ %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
-msgid "The destination media could not be found in the library."
-msgstr "រកមិនឃើញមេឌៀគោលដៅនៅក្នុងបណ្ណាល័យទេ។"
-
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
 msgid "Could not save audio track association for %1."
 msgstr "មិនអាចរក្សាទុកការភ្ជាប់បទអូឌីយ៉ូសម្រាប់ %1 បានទេ។"
@@ -6771,23 +6813,23 @@ msgstr ""
 msgid "Downloading subtitles is not available in this build."
 msgstr "ការទាញយកចំណងជើងរងមិនមាននៅក្នុងកំណែនេះទេ។"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:83
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:86
 msgid "The subtitle exceeds the 20 MB download limit."
 msgstr "ចំណងជើងរងលើសដែនកំណត់ទាញយក 20 MB។"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:88
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:91
 msgid "Could not download the subtitle: %1"
 msgstr "មិនអាចទាញយកចំណងជើងរងបានទេ៖ %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:89
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:92
 msgid "HTTP status %1"
 msgstr "ស្ថានភាព HTTP %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:101
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:106
 msgid "Could not create the subtitle storage folder."
 msgstr "មិនអាចបង្កើតថតផ្ទុកចំណងជើងរងបានទេ។"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:111
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:116
 msgid "Could not save the downloaded subtitle."
 msgstr "មិនអាចរក្សាទុកចំណងជើងរងដែលបានទាញយកបានទេ។"
 
@@ -6832,26 +6874,26 @@ msgid "Unknown artist"
 msgstr "សិល្បករមិនស្គាល់"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:228
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:231
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "បន្តមើល"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:593
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:596
 #: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "វីដេអូថ្មី"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:312
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:315
 #: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "ស្ដាប់ម្ដងទៀត"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:677
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:680
 #: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "តន្ត្រីថ្មី"
@@ -6870,7 +6912,7 @@ msgstr "តន្ត្រីថ្មី"
 msgid "Alphabetic"
 msgstr "តាមអក្ខរក្រម"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:383
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:386
 #: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "ថតដែលចូលញឹកញាប់"
@@ -7808,7 +7850,14 @@ msgstr "ចាប់ផ្ដើមចាក់ មុនពេលកំណត�
 msgid "Choose a duration between one second and 24 hours."
 msgstr "ជ្រើសរយៈពេលចន្លោះពីមួយវិនាទីដល់ 24 ម៉ោង។"
 
+#: modules/gui/qt/player/subtitle_finder.cpp:769
+#: modules/gui/qt/player/subtitle_search.cpp:1344
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+msgid "The subtitle couldn't be saved."
+msgstr "មិនអាចរក្សាទុកចំណងជើងរងបានទេ។"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:101
+#: modules/gui/qt/player/subtitle_search.cpp:707
 msgid "%1 didn't answer."
 msgstr "%1 មិនបានឆ្លើយតបទេ។"
 
@@ -7820,112 +7869,108 @@ msgstr "%1 សុំឲ្យរង់ចាំបន្តិច (ការស�
 msgid "%1 didn't answer (%2)."
 msgstr "%1 មិនបានឆ្លើយតបទេ (%2)។"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1574
+#: modules/gui/qt/player/subtitle_providers.cpp:1458
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "គ្រប់ភាសា · ភាពយន្ត និងរឿងភាគ · រកចំណងជើងរងដែលធ្វើសម្រាប់ឯកសាររបស់អ្នក"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1576
+#: modules/gui/qt/player/subtitle_providers.cpp:1460
 msgid "With your own free key · all languages"
 msgstr "ជាមួយកូនសោឥតគិតថ្លៃរបស់អ្នកផ្ទាល់ · គ្រប់ភាសា"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1580
+#: modules/gui/qt/player/subtitle_providers.cpp:1464
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "ជាមួយកូនសោឥតគិតថ្លៃរបស់អ្នកផ្ទាល់ · ខ្លាំងផ្នែកភាសាអារ៉ាប់ ភាសាច្រើន"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1583
+#: modules/gui/qt/player/subtitle_providers.cpp:1467
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "ជាមួយកូនសោឥតគិតថ្លៃរបស់អ្នកផ្ទាល់ · បណ្ណសារ Subscene ភាសាច្រើន"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1586
+#: modules/gui/qt/player/subtitle_providers.cpp:1470
 msgid "Hebrew · movies and series"
 msgstr "ហេប្រឺ · ភាពយន្ត និងរឿងភាគ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1588
+#: modules/gui/qt/player/subtitle_providers.cpp:1472
 msgid "Series · many languages"
 msgstr "រឿងភាគ · ភាសាច្រើន"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1590
+#: modules/gui/qt/player/subtitle_providers.cpp:1474
 msgid "Movies · many languages"
 msgstr "ភាពយន្ត · ភាសាច្រើន"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1594
+#: modules/gui/qt/player/subtitle_providers.cpp:1478
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr "ជាមួយគណនីឥតគិតថ្លៃរបស់អ្នក · ភាសាក្រូអាត សើប បូស្ន៊ី ស្លូវ៉ានី ម៉ាសេដូនី"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1598
+#: modules/gui/qt/player/subtitle_providers.cpp:1482
 msgid "With your free token · Chinese"
 msgstr "ជាមួយថូខឹនឥតគិតថ្លៃរបស់អ្នក · ភាសាចិន"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1601
+#: modules/gui/qt/player/subtitle_providers.cpp:1485
 msgid "With your free key · anime, Japanese"
 msgstr "ជាមួយកូនសោឥតគិតថ្លៃរបស់អ្នក · អានីមេ ភាសាជប៉ុន"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1604
+#: modules/gui/qt/player/subtitle_providers.cpp:1488
 msgid "With your free key · series, French"
 msgstr "ជាមួយកូនសោឥតគិតថ្លៃរបស់អ្នក · រឿងភាគ ភាសាបារាំង"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1607
+#: modules/gui/qt/player/subtitle_providers.cpp:1491
 msgid "With your free key · Romanian"
 msgstr "ជាមួយកូនសោឥតគិតថ្លៃរបស់អ្នក · ភាសារ៉ូម៉ានី"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1610
+#: modules/gui/qt/player/subtitle_providers.cpp:1494
 msgid "With your free account · Polish · finds those made for your file"
 msgstr "ជាមួយគណនីឥតគិតថ្លៃរបស់អ្នក · ភាសាប៉ូឡូញ · រកឃើញចំណងជើងរងដែលធ្វើសម្រាប់ឯកសាររបស់អ្នក"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1613
+#: modules/gui/qt/player/subtitle_providers.cpp:1497
 msgid "With your free account · Portuguese (Brazil)"
 msgstr "ជាមួយគណនីឥតគិតថ្លៃរបស់អ្នក · ភាសាព័រទុយហ្គាល់ (ប្រេស៊ីល)"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1984
+#: modules/gui/qt/player/subtitle_providers.cpp:1880
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "ចំណងជើងរងនេះមកជាបណ្ណសារ RAR ដែលមិនអាចបើកនៅទីនេះបានទេ។"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1996
-#: modules/gui/qt/player/subtitle_providers.cpp:2029
-#: modules/gui/qt/player/subtitle_search.cpp:1378
+#: modules/gui/qt/player/subtitle_providers.cpp:1889
+#: modules/gui/qt/player/subtitle_providers.cpp:1922
+#: modules/gui/qt/player/subtitle_search.cpp:1439
 msgid "The subtitle couldn't be unpacked."
 msgstr "មិនអាចពន្លាចំណងជើងរងបានទេ។"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2030
+#: modules/gui/qt/player/subtitle_providers.cpp:1923
 msgid "The archive has no subtitle in it."
 msgstr "បណ្ណសារនេះគ្មានចំណងជើងរងនៅក្នុងទេ។"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2042
+#: modules/gui/qt/player/subtitle_providers.cpp:1935
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr "OpenSubtitles រក្សាចំណងជើងរងនេះសម្រាប់សមាជិកបង់ប្រាក់របស់ខ្លួន។ ជ្រើសមួយផ្សេងទៀត។"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2048
+#: modules/gui/qt/player/subtitle_providers.cpp:1941
 msgid "The subtitle is empty."
 msgstr "ចំណងជើងរងទទេ។"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1338
+#: modules/gui/qt/player/subtitle_search.cpp:1290
+#: modules/gui/qt/player/subtitle_search.cpp:1399
 msgid "No connection to the internet."
 msgstr "គ្មានការតភ្ជាប់អ៊ីនធឺណិតទេ។"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1239
+#: modules/gui/qt/player/subtitle_search.cpp:1293
 msgid "The video couldn't be identified from its name."
 msgstr "មិនអាចកំណត់អត្តសញ្ញាណវីដេអូពីឈ្មោះរបស់វាបានទេ។"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1240
+#: modules/gui/qt/player/subtitle_search.cpp:1294
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "រកមិនឃើញ \"%1\" ទេ។ ស្វែងរកតាមចំណងជើងរបស់វា។"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1242
+#: modules/gui/qt/player/subtitle_search.cpp:1296
 msgid "No subtitles were found for %1."
 msgstr "រកមិនឃើញចំណងជើងរងសម្រាប់ %1 ទេ។"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1284
-#: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1339
+#: modules/gui/qt/player/subtitle_search.cpp:1338
+#: modules/gui/qt/player/subtitle_search.cpp:1380
+#: modules/gui/qt/player/subtitle_search.cpp:1400
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "មិនអាចទាញយកចំណងជើងរងបានទេ (%1)។"
-
-#: modules/gui/qt/player/subtitle_search.cpp:1369
-msgid "The subtitle couldn't be saved."
-msgstr "មិនអាចរក្សាទុកចំណងជើងរងបានទេ។"
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -8116,69 +8161,74 @@ msgstr "កម្មវិធីចាក់"
 msgid "Subtitle size %1%"
 msgstr "ទំហំចំណងជើងរង %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1127
+#: modules/gui/qt/player/qml/PlayerView.qml:1157
 msgid "Subtitles on the TV: %1"
 msgstr "ចំណងជើងរងនៅលើទូរទស្សន៍៖ %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1127
+#: modules/gui/qt/player/qml/PlayerView.qml:1157
 msgid "Subtitles off on the TV"
 msgstr "បានបិទចំណងជើងរងនៅលើទូរទស្សន៍"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1238
+#: modules/gui/qt/player/qml/PlayerView.qml:1268
 msgid "Not playing on %1"
 msgstr "មិនកំពុងចាក់លើ %1 ទេ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1240
-#: modules/gui/qt/player/qml/PlayerView.qml:1367
+#: modules/gui/qt/player/qml/PlayerView.qml:1270
+#: modules/gui/qt/player/qml/PlayerView.qml:1397
 msgid "Connecting to %1…"
 msgstr "កំពុងតភ្ជាប់ទៅ %1…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1242
+#: modules/gui/qt/player/qml/PlayerView.qml:1272
 msgid "Playing on %1"
 msgstr "កំពុងចាក់លើ %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1243
+#: modules/gui/qt/player/qml/PlayerView.qml:1273
 msgid "The sound plays on %1"
 msgstr "សំឡេងចាក់លើ %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1268
+#: modules/gui/qt/player/qml/PlayerView.qml:1298
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ផ្អាក រំកិល និងប្ដូរចំណងជើងរងនៅទីនេះ៖ ទូរទស្សន៍នឹងធ្វើតាម។"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1285
+#: modules/gui/qt/player/qml/PlayerView.qml:1315
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr "Windows Firewall មិនអនុញ្ញាតឲ្យ %1 តភ្ជាប់មកកុំព្យូទ័រនេះ ដើម្បីអានមេឌៀទេ។"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1297
+#: modules/gui/qt/player/qml/PlayerView.qml:1327
 msgid "Waiting for Windows…"
 msgstr "កំពុងរង់ចាំ Windows…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1298
+#: modules/gui/qt/player/qml/PlayerView.qml:1328
 msgid "Allow on public networks too"
 msgstr "អនុញ្ញាតលើបណ្ដាញសាធារណៈផងដែរ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1299
+#: modules/gui/qt/player/qml/PlayerView.qml:1329
 msgid "Allow on private networks"
 msgstr "អនុញ្ញាតលើបណ្ដាញឯកជន"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1341
 msgid "Try again"
 msgstr "ព្យាយាមម្ដងទៀត"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1316
-#: modules/gui/qt/player/qml/PlayerView.qml:1326
+#: modules/gui/qt/player/qml/PlayerView.qml:1346
+#: modules/gui/qt/player/qml/PlayerView.qml:1356
 msgid "Play here"
 msgstr "ចាក់នៅទីនេះ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1326
-#: modules/gui/qt/player/qml/PlayerView.qml:1377
+#: modules/gui/qt/player/qml/PlayerView.qml:1356
+#: modules/gui/qt/player/qml/PlayerView.qml:1407
 msgid "Stop casting"
 msgstr "បញ្ឈប់ការបញ្ជូន"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1368
+#: modules/gui/qt/player/qml/PlayerView.qml:1398
 msgid "Also on %1"
 msgstr "ក៏នៅលើ %1 ផងដែរ"
+
+#: modules/gui/qt/player/qml/ShortcutFeedback.qml:148
+#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
+msgid "Playing"
+msgstr "កំពុងចាក់"
 
 #: modules/gui/qt/player/qml/ResumeDialog.qml:45
 msgid "Resume dialog"
@@ -8278,27 +8328,27 @@ msgstr "បទវីដេអូ"
 msgid "Track list"
 msgstr "បញ្ជីបទ"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:321
+#: modules/gui/qt/player/qml/AudioContent.qml:329
 msgid "Title and artist"
 msgstr "ចំណងជើង និងសិល្បករ"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:451
+#: modules/gui/qt/player/qml/AudioContent.qml:465
 msgid "Step back"
 msgstr "ថយក្រោយមួយជំហាន"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:476
+#: modules/gui/qt/player/qml/AudioContent.qml:490
 msgid "Toggle lyrics view"
 msgstr "បិទ/បើកទិដ្ឋភាពទំនុកច្រៀង"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:513
+#: modules/gui/qt/player/qml/AudioContent.qml:529
 msgid "Sync lyrics to playback"
 msgstr "ធ្វើសមកាលកម្មទំនុកច្រៀងតាមការចាក់"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:528
+#: modules/gui/qt/player/qml/AudioContent.qml:544
 msgid "Sync lyrics to playback position"
 msgstr "ធ្វើសមកាលកម្មទំនុកច្រៀងតាមទីតាំងចាក់"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:548
+#: modules/gui/qt/player/qml/AudioContent.qml:564
 msgid "Volume %1%"
 msgstr "កម្រិតសំឡេង %1%"
 
@@ -8406,15 +8456,15 @@ msgstr "បណ្ណាល័យមេឌៀមិនមានទេ។"
 msgid "Nothing here yet."
 msgstr "មិនទាន់មានអ្វីនៅទីនេះនៅឡើយទេ។"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:159
+#: modules/gui/qt/player/qml/ControlBar.qml:156
 msgid "Player controls"
 msgstr "ឧបករណ៍បញ្ជាកម្មវិធីចាក់"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:442
+#: modules/gui/qt/player/qml/ControlBar.qml:439
 msgid "%1 (%2x)"
 msgstr "%1 (%2x)"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:457
+#: modules/gui/qt/player/qml/ControlBar.qml:454
 msgid "Progress"
 msgstr "វឌ្ឍនភាព"
 
@@ -8910,10 +8960,6 @@ msgstr "ជ្រើសកម្រិតពង្រីកវីដេអូ"
 msgid "Zoom is unavailable without video"
 msgstr "មិនអាចពង្រីកបានទេ បើគ្មានវីដេអូ"
 
-#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
-msgid "Playing"
-msgstr "កំពុងចាក់"
-
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:197
 msgid "Media cover"
 msgstr "ក្របមេឌៀ"
@@ -8930,19 +8976,19 @@ msgstr "យកធាតុដែលបានជ្រើសចេញ"
 msgid "Add files to the queue"
 msgstr "បន្ថែមឯកសារទៅជួរ"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "គ្មានលទ្ធផល"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "មិនទាន់មានមាតិកានៅឡើយទេ"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:651
 msgid "Drag & Drop some content here!"
 msgstr "អូស និងទម្លាក់មាតិកាមួយចំនួននៅទីនេះ!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:716
 msgid "Play queue"
 msgstr "ជួរចាក់"
 
@@ -9022,7 +9068,14 @@ msgstr ""
 "មានតែក្ដារចុចប៉ុណ្ណោះដែលបង្ហាញពួកវា (គ្រាប់ចុច I)។ "
 "ស្បែកក៏អានវាសម្រាប់ឧបករណ៍បញ្ជាពេញអេក្រង់របស់ពួកវាដែរ។"
 
-#: modules/gui/qt/qt.cpp:266
+#: modules/gui/qt/qt.cpp:257
+msgid ""
+"What a key of VLC (seek, volume, pause, speed...) shows in full screen: the "
+"controls; a thin progress line with a small message (the time and what the "
+"key did); or that message alone."
+msgstr "អ្វីដែលគ្រាប់ចុចរបស់ VLC (រំកិល កម្រិតសំឡេង ផ្អាក ល្បឿន...) បង្ហាញក្នុងពេលពេញអេក្រង់៖ ឧបករណ៍បញ្ជា; បន្ទាត់វឌ្ឍនភាពស្ដើងជាមួយសារតូចមួយ (ពេលវេលា និងអ្វីដែលគ្រាប់ចុចបានធ្វើ); ឬតែសារនោះ។"
+
+#: modules/gui/qt/qt.cpp:273
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -9031,7 +9084,7 @@ msgstr ""
 "បង្ហាញរូបក្របនៃអូឌីយ៉ូដែលកំពុងចាក់នៅក្នុងកម្មវិធីចាក់ (កោណនៅក្នុងទិដ្ឋភាពបង្រួម)។ ពេលបិទ "
 "រូបភាពធម្មតាមួយជំនួសវា ដែលក៏ការពារការដុតអេក្រង់ផងដែរ។"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:297
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -9039,11 +9092,11 @@ msgstr ""
 "ជម្រើសនេះអនុញ្ញាតឲ្យចំណុចប្រទាក់ត្រូវបានបង្ហាញ និងលើកឡើងដោយស្វ័យប្រវត្តិ នៅពេលការចាក់វីដេអូ/"
 "អូឌីយ៉ូចាប់ផ្ដើម ឬមិនដែលសោះ។"
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:300
 msgid "Enable window titlebar"
 msgstr "បើករបារចំណងជើងបង្អួច"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:301
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -9051,38 +9104,38 @@ msgstr ""
 "ជម្រើសនេះបើករបារចំណងជើង។ ការបិទវានឹងយករបារចំណងជើងចេញ ហើយផ្លាស់ទីប៊ូតុងបង្អួចចូលក្នុងចំណុចប្រទាក់ "
 "(ការតុបតែងផ្នែកម៉ាស៊ីនភ្ញៀវ)"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the menu bar"
 msgstr "បង្ហាញរបារម៉ឺនុយ"
 
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:306
 msgid "This option displays the classic menu bar"
 msgstr "ជម្រើសនេះបង្ហាញរបារម៉ឺនុយបុរាណ"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:308
 msgid "Pin video controls"
 msgstr "ខ្ទាស់ឧបករណ៍បញ្ជាវីដេអូ"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:309
 msgid "Place video controls above and below the video instead of above"
 msgstr "ដាក់ឧបករណ៍បញ្ជាវីដេអូនៅខាងលើ និងខាងក្រោមវីដេអូ ជំនួសឲ្យនៅខាងលើ"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:312
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "បង្ហាញស៊ុមនៅទីតាំងដែលដាក់កណ្ដុរពីលើ ខាងលើរបាររំកិល"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:314
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
 msgstr ""
 "សម្គាល់នៅលើរបាររំកិលនូវទីតាំងបន្ទាត់នៃចំណងជើងរងដែលកំពុងបង្ហាញ នៅពេលវាមកពីឯកសារចំណងជើងរង"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:319
 msgid "Select Qt video integration backend"
 msgstr "ជ្រើសផ្នែកខាងក្រោយការរួមបញ្ចូលវីដេអូ Qt"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:320
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -9090,11 +9143,11 @@ msgstr ""
 "ជ្រើសផ្នែកខាងក្រោយការរួមបញ្ចូលវីដេអូ Qt។ ប្រើដោយប្រុងប្រយ័ត្ន ចំណុចប្រទាក់អាចនឹងមិនចាប់ផ្ដើម "
 "ប្រសិនបើ compositor ដែលមិនត្រូវគ្នាត្រូវបានជ្រើស"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:322
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "ប្រើការរំកិលរលូននៅក្នុងទិដ្ឋភាពផ្អែកលើ Flickable"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -9104,19 +9157,19 @@ msgstr ""
 "ជម្រើសនេះត្រូវបានគោរពតែជាមួយកម្មវិធីដោះស្រាយការរំកិលប៉ុណ្ណោះ សូមមើលជម្រើស `qt-use-scroll-"
 "handler`។"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:326
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "ប្រើកម្មវិធីដោះស្រាយការរំកិល Kirigami សម្រាប់ទិដ្ឋភាពផ្អែកលើ Flickable"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:327
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "ការប្រើកម្មវិធីដោះស្រាយការរំកិល Kirigami អាចកែលម្អឥរិយាបថរំកិល។"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:329
 msgid "Safe area for the user interface"
 msgstr "តំបន់សុវត្ថិភាពសម្រាប់ចំណុចប្រទាក់អ្នកប្រើ"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -9124,19 +9177,19 @@ msgstr ""
 "កំណត់ភាគរយតំបន់សុវត្ថិភាពចន្លោះ 0.0 និង 100 "
 "នៅពេលអ្នកចង់ធានាការមើលឃើញចំណុចប្រទាក់អ្នកប្រើនៅលើផ្ទៃមើលដែលមានកំណត់"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:334
 msgid "Print Qt's important internal messages"
 msgstr "បោះពុម្ពសារខាងក្នុងសំខាន់ៗរបស់ Qt"
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:335
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "បើកប្រភេទសារទាំងអស់ផ្ទាល់ខ្លួនរបស់ Qt លើកលែងតែប្រភេទបំបាត់កំហុស។"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:337
 msgid "Hide the window on close"
 msgstr "លាក់បង្អួចនៅពេលបិទ"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -9144,11 +9197,11 @@ msgstr ""
 "ជំនួសឲ្យការបិទកម្មវិធី លាក់បង្អួច។ "
 "ការកំណត់នេះអនុវត្តបានតែនៅពេលរូបតំណាងថាសប្រព័ន្ធត្រូវបានបើកប៉ុណ្ណោះ។"
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:340
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "បើកតម្រងព្រិលផ្ទៃខាងក្រោយសម្រាប់បង្អួចមេ ប្រសិនបើអាចធ្វើបាន"
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -9158,44 +9211,44 @@ msgstr ""
 "ប្រើភាពថ្លាថ្លានៅក្នុងផ្ទៃខាងក្រោយនៃផ្នែកមួយចំនួននៃចំណុចប្រទាក់អ្នកប្រើ ជំនួសឲ្យពណ៌ដិត។ "
 "ការកំណត់នេះធ្វើឲ្យអត្ថបទពិបាកអាន។"
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:344
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "បើករបៀបរូបភាពក្នុងរូបភាព (PiP)"
 
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/qt.cpp:345
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
 msgstr ""
 "របៀបរូបភាពក្នុងរូបភាពអនុញ្ញាតឲ្យចាក់វីដេអូក្នុងតំបន់តូចជាង ដើម្បីឲ្យចំណុចប្រទាក់នៅតែអាចប្រើបាន។"
 
-#: modules/gui/qt/qt.cpp:341
+#: modules/gui/qt/qt.cpp:348
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
 msgstr "កែសម្រួលពណ៌សង្កត់ តម្លៃពិសេសគឺ 'default' និង 'system' (ត្រូវការ Qt 6.6)។"
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:354
 msgid "Last channel watched"
 msgstr "ឆានែលដែលបានមើលចុងក្រោយ"
 
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:355
 msgid "Channel list"
 msgstr "បញ្ជីឆានែល"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:360
 msgid "Zoom the interface in"
 msgstr "ពង្រីកផ្ទៃប្រើប្រាស់"
 
-#: modules/gui/qt/qt.cpp:354
+#: modules/gui/qt/qt.cpp:361
 msgid "Zoom the interface out"
 msgstr "បង្រួមផ្ទៃប្រើប្រាស់"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:472
 msgid "Check for VLC Redesign updates"
 msgstr "ពិនិត្យរកបច្ចុប្បន្នភាព VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:456
+#: modules/gui/qt/qt.cpp:473
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -9203,11 +9256,11 @@ msgstr ""
 "ស្វែងរកកំណែចេញផ្សាយថ្មីរបស់ VLC Redesign នៅលើ GitHub នៅពេលចាប់ផ្ដើម "
 "យ៉ាងច្រើនម្ដងក្នុងមួយថ្ងៃ។"
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:477
 msgid "Resume at"
 msgstr "បន្តនៅ"
 
-#: modules/gui/qt/qt.cpp:461
+#: modules/gui/qt/qt.cpp:478
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9267,27 +9320,27 @@ msgstr ""
 "បច្ចុប្បន្នភាពនេះមិនត្រូវបានចុះហត្ថលេខាដោយអ្នកបោះផ្សាយនៃច្បាប់ចម្លងនេះ (%1) ទេ "
 "ដូច្នេះវាមិនត្រូវបានប្រើទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:496
+#: modules/gui/qt/util/redesign_updater.cpp:532
 msgid "%1 (later)"
 msgstr "%1 (ពេលក្រោយ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:498
+#: modules/gui/qt/util/redesign_updater.cpp:534
 msgid "%1 (soon)"
 msgstr "%1 (ឆាប់ៗនេះ)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:694
+#: modules/gui/qt/util/redesign_updater.cpp:731
 msgid "This build cannot check for updates."
 msgstr "កំណែនេះមិនអាចពិនិត្យរកបច្ចុប្បន្នភាពបានទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:708
+#: modules/gui/qt/util/redesign_updater.cpp:748
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "មិនអាចទាក់ទង GitHub បានទេ។ ពិនិត្យការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:725
+#: modules/gui/qt/util/redesign_updater.cpp:765
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub បានផ្ញើចម្លើយដែលមិនរំពឹងទុក (%1)។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:853
+#: modules/gui/qt/util/redesign_updater.cpp:893
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9295,48 +9348,48 @@ msgstr ""
 "បច្ចុប្បន្នភាពនេះមិនត្រូវបានចុះហត្ថលេខាដោយ VLC Redesign ទេ ដូច្នេះវាមិនត្រូវបានប្រើទេ។ "
 "សូមទាញយកវាពីទំព័រចេញផ្សាយជំនួសវិញ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:875
-#: modules/gui/qt/util/redesign_updater.cpp:916
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr "ផលបូកផ្ទៀងផ្ទាត់នៃបច្ចុប្បន្នភាពបាត់; សូមទាញយកវាពីទំព័រចេញផ្សាយជំនួសវិញ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:890
-#: modules/gui/qt/util/redesign_updater.cpp:962
+#: modules/gui/qt/util/redesign_updater.cpp:930
+#: modules/gui/qt/util/redesign_updater.cpp:1002
 msgid "The download failed. Check your connection and try again."
 msgstr "ការទាញយកបានបរាជ័យ។ ពិនិត្យការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:1015
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "បច្ចុប្បន្នភាពមិនត្រូវនឹងផលបូកផ្ទៀងផ្ទាត់របស់វាទេ ដូច្នេះវាមិនត្រូវបានប្រើទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1006
+#: modules/gui/qt/util/redesign_updater.cpp:1037
 msgid "The update isn't in a format this version knows."
 msgstr "បច្ចុប្បន្នភាពមិនមែនជាទម្រង់ដែលកំណែនេះស្គាល់ទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1009
-#: modules/gui/qt/util/redesign_updater.cpp:1033
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1050
-#: modules/gui/qt/util/redesign_updater.cpp:1284
+#: modules/gui/qt/util/redesign_updater.cpp:1040
+#: modules/gui/qt/util/redesign_updater.cpp:1064
+#: modules/gui/qt/util/redesign_updater.cpp:1075
+#: modules/gui/qt/util/redesign_updater.cpp:1081
+#: modules/gui/qt/util/redesign_updater.cpp:1355
 msgid "The update is damaged."
 msgstr "បច្ចុប្បន្នភាពខូច។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1014
-#: modules/gui/qt/util/redesign_updater.cpp:1281
+#: modules/gui/qt/util/redesign_updater.cpp:1045
+#: modules/gui/qt/util/redesign_updater.cpp:1352
 msgid "The update isn't for this version."
 msgstr "បច្ចុប្បន្នភាពនេះមិនមែនសម្រាប់កំណែនេះទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1023
-#: modules/gui/qt/util/redesign_updater.cpp:1060
-#: modules/gui/qt/util/redesign_updater.cpp:1069
-#: modules/gui/qt/util/redesign_updater.cpp:1073
-#: modules/gui/qt/util/redesign_updater.cpp:1077
-#: modules/gui/qt/util/redesign_updater.cpp:1277
+#: modules/gui/qt/util/redesign_updater.cpp:1054
+#: modules/gui/qt/util/redesign_updater.cpp:1091
+#: modules/gui/qt/util/redesign_updater.cpp:1100
+#: modules/gui/qt/util/redesign_updater.cpp:1112
+#: modules/gui/qt/util/redesign_updater.cpp:1116
+#: modules/gui/qt/util/redesign_updater.cpp:1348
 msgid "The update can't be written in %1."
 msgstr "មិនអាចសរសេរបច្ចុប្បន្នភាពនៅក្នុង %1 បានទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1025
+#: modules/gui/qt/util/redesign_updater.cpp:1056
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9344,32 +9397,32 @@ msgstr ""
 "ឯកសារមួយរបស់ VLC Redesign ត្រូវបានផ្លាស់ប្ដូរតាំងពីវាត្រូវបានដំឡើង "
 "ដូច្នេះមិនអាចប្រើបច្ចុប្បន្នភាពតូចបានទេ៖ សូមធ្វើបច្ចុប្បន្នភាពដោយប្រើកម្មវិធីដំឡើងជំនួសវិញ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1055
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "បច្ចុប្បន្នភាពខូច៖ ឯកសារមួយមិនត្រូវនឹងផលបូកផ្ទៀងផ្ទាត់របស់វាទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1180
-#: modules/gui/qt/util/redesign_updater.cpp:1345
+#: modules/gui/qt/util/redesign_updater.cpp:1249
+#: modules/gui/qt/util/redesign_updater.cpp:1416
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "មិនអាចចាប់ផ្ដើមបច្ចុប្បន្នភាពបានទេ។ វានឹងត្រូវព្យាយាមម្ដងទៀតនៅពេលក្រោយ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1207
+#: modules/gui/qt/util/redesign_updater.cpp:1276
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "ការទាញយកបានបរាជ័យ។ ព្យាយាមម្ដងទៀត ឬទាញយកវាពីទំព័រចេញផ្សាយ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1220
+#: modules/gui/qt/util/redesign_updater.cpp:1289
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "កម្មវិធីដំឡើងដែលបានទាញយកមិនត្រូវនឹងផលបូកផ្ទៀងផ្ទាត់របស់វាទេ ដូច្នេះវាមិនត្រូវបានដំណើរការទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1232
-#: modules/gui/qt/util/redesign_updater.cpp:1240
-#: modules/gui/qt/util/redesign_updater.cpp:1254
+#: modules/gui/qt/util/redesign_updater.cpp:1301
+#: modules/gui/qt/util/redesign_updater.cpp:1309
+#: modules/gui/qt/util/redesign_updater.cpp:1325
 msgid "The installer couldn't be saved to %1."
 msgstr "មិនអាចរក្សាទុកកម្មវិធីដំឡើងទៅ %1 បានទេ។"
 
-#: modules/gui/qt/util/redesign_updater.cpp:1325
-#: modules/gui/qt/util/redesign_updater.cpp:1363
+#: modules/gui/qt/util/redesign_updater.cpp:1396
+#: modules/gui/qt/util/redesign_updater.cpp:1434
 msgid "The installer couldn't be started."
 msgstr "មិនអាចចាប់ផ្ដើមកម្មវិធីដំឡើងបានទេ។"
 
@@ -9488,15 +9541,15 @@ msgstr "បញ្ជី/ក្រឡា"
 msgid "Search a language"
 msgstr "ស្វែងរកភាសា"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:187
+#: modules/gui/qt/widgets/qml/SearchBox.qml:185
 msgid "filter"
 msgstr "តម្រង"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:261
+#: modules/gui/qt/widgets/qml/SearchBox.qml:259
 msgid "Case sensitive"
 msgstr "ប្រកាន់អក្សរតូចធំ"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:284
+#: modules/gui/qt/widgets/qml/SearchBox.qml:282
 msgid "Use regular expression"
 msgstr "ប្រើកន្សោមធម្មតា"
 
@@ -9564,7 +9617,7 @@ msgstr "មានសុវត្ថិភាព 128 ប៊ីត (ឬខ្ព�
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "មានសុវត្ថិភាព 256 ប៊ីត (មិនរាប់បញ្ចូលការអ៊ិនគ្រីប 128 ប៊ីត)"
 
-#: modules/misc/iptv/iptv.cpp:577
+#: modules/misc/iptv/iptv.cpp:835
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -9572,7 +9625,7 @@ msgstr ""
 "បង្ហាញទូរទស្សន៍ក្នុងបណ្ណាល័យ៖ ឆានែលនៃបញ្ជីចាក់ និងគណនី IPTV របស់អ្នក "
 "ជាមួយមគ្គុទ្ទេសក៍កម្មវិធីរបស់វា។ ពេលបិទ គ្មានអ្វីពីវាត្រូវបានផ្ទុកទេ។"
 
-#: modules/misc/iptv/iptv.cpp:582
+#: modules/misc/iptv/iptv.cpp:840
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "ឆានែល និងមគ្គុទ្ទេសក៍កម្មវិធីទូរទស្សន៍ផ្សាយផ្ទាល់ (IPTV)"
 

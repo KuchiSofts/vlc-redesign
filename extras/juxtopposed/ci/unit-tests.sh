@@ -67,6 +67,21 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(p
     $(pkg-config --libs Qt6Core) -lz -o "$out/subtitle-services"
 "$out/subtitle-services" extras/juxtopposed/fixtures/subtitle-services
 
+echo "== the interface's HTTP client (redirects, deadlines, cancels)"
+# with libcurl (its development files), through local servers; without,
+# the rules of its redirects only
+if pkg-config --exists libcurl; then
+    http="-DQT_HAS_LIBCURL $(pkg-config --cflags libcurl)"
+    httplibs=$(pkg-config --libs libcurl)
+else
+    http=
+    httplibs=
+fi
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC $http -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/http-request-test.cpp modules/gui/qt/util/http_request.cpp \
+    $(pkg-config --libs Qt6Core) $httplibs -o "$out/http-request-test"
+"$out/http-request-test" python3 extras/juxtopposed/http-test-server.py
+
 echo "== the parsers against malformed and huge input (fuzz)"
 g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core)     extras/juxtopposed/parsers-fuzz.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp     modules/misc/iptv/xtream.cpp modules/misc/iptv/servers.cpp modules/misc/iptv/autoguide.cpp     modules/gui/qt/player/subtitle_services.cpp modules/gui/qt/player/subtitle_cues_parser.cpp     $(pkg-config --libs Qt6Core) -lz -o "$out/parsers-fuzz"
 "$out/parsers-fuzz" extras/juxtopposed/fixtures

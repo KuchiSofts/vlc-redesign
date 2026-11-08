@@ -57,6 +57,77 @@ struct RequestState
 #endif
     }
 };
+
+// at most this many redirects in a chain
+constexpr int maxRedirects = 10;
+
+bool isRedirect(int status)
+{
+    return status == 301 || status == 302 || status == 303 || status == 307 || status == 308;
+}
+
+// scheme, host and port (the scheme's own when none is said)
+bool sameOrigin(const QUrl& a, const QUrl& b)
+{
+    const auto port = [](const QUrl& url) {
+        return url.port(url.scheme().compare(QLatin1String("https"), Qt::CaseInsensitive) == 0 ? 443 : 80);
+    };
+    return a.scheme().compare(b.scheme(), Qt::CaseInsensitive) == 0
+        && a.host().compare(b.host(), Qt::CaseInsensitive) == 0 && port(a) == port(b);
+}
+}
+
+bool httpFollowRedirect(HttpRequest& request, int status, const QUrl& target, QString* error)
+{
+    const QString scheme = target.scheme().toLower();
+    if (!target.isValid() || target.host().isEmpty()
+        || (scheme != QLatin1String("http") && scheme != QLatin1String("https")))
+    {
+        *error = QStringLiteral("Redirect to an address that isn't http or https refused");
+        return false;
+    }
+    if (request.url.scheme().compare(QLatin1String("https"), Qt::CaseInsensitive) == 0
+        && scheme == QLatin1String("http"))
+    {
+        *error = QStringLiteral("Redirect from HTTPS to HTTP refused");
+        return false;
+    }
+    // 303, and 301 and 302 of a POST (as the browsers and libcurl): asked
+    // again with GET, without the body
+    const bool toGet = status == 303 ? request.method != "HEAD"
+                                     : (status == 301 || status == 302) && request.method == "POST";
+    if (toGet)
+    {
+        request.method = "GET";
+        request.body.clear();
+    }
+    if (!sameOrigin(request.url, target))
+    {
+        // Another server: only what is no secret goes with the request
+        static const char* const kept[] = { "User-Agent", "Accept", "Accept-Language", "Referer" };
+        QList<QPair<QByteArray, QByteArray>> headers;
+        for (const auto& header : std::as_const(request.headers))
+        {
+            bool keep = std::any_of(std::begin(kept), std::end(kept), [&header](const char* name) {
+                return header.first.compare(name, Qt::CaseInsensitive) == 0;
+            });
+            keep = keep || (header.first.compare("Content-Type", Qt::CaseInsensitive) == 0 && !request.body.isEmpty());
+            if (keep)
+                headers.append(header);
+        }
+        request.headers = headers;
+        request.username.clear();
+        request.password.clear();
+    }
+    else if (toGet)
+    {
+        // (no body, no type of it)
+        request.headers.erase(std::remove_if(request.headers.begin(), request.headers.end(), [](const auto& header) {
+            return header.first.compare("Content-Type", Qt::CaseInsensitive) == 0;
+        }), request.headers.end());
+    }
+    request.url = target;
+    return true;
 }
 
 #ifdef _WIN32
@@ -100,7 +171,10 @@ QString lastError(const char* step)
     return QStringLiteral("%1 failed (%2)").arg(QLatin1String(step)).arg(GetLastError());
 }
 
-HttpResponse perform(const HttpRequest& request, RequestState& state)
+// One hop of a request: its redirects are not followed (perform() does, by
+// httpFollowRedirect), their address in location
+HttpResponse performHop(const HttpRequest& request, RequestState& state, const QDeadlineTimer& deadline,
+                        QUrl* location)
 {
     HttpResponse response;
     const QUrl& url = request.url;
@@ -111,8 +185,6 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
         return response;
     }
     const QString cancelled = QStringLiteral("Cancelled");
-    const QDeadlineTimer deadline = request.deadlineMs > 0 ? QDeadlineTimer(request.deadlineMs)
-                                                           : QDeadlineTimer(QDeadlineTimer::Forever);
 
     // The proxy of the system (its settings, or the script it names), as
     // the browsers use; WinHTTP's own setting before Windows 8.1
@@ -144,7 +216,6 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     const std::wstring method = QString::fromLatin1(request.method).toStdWString();
     const std::wstring path = QString::fromLatin1(
         url.toEncoded(QUrl::RemoveScheme | QUrl::RemoveAuthority | QUrl::RemoveFragment)).toStdWString();
-    // Redirects are followed, except from HTTPS to HTTP (WinHTTP default policy).
     InternetHandle handle(state, WinHttpOpenRequest(connection.handle, method.c_str(),
                                                     path.empty() ? L"/" : path.c_str(), nullptr,
                                                     WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES,
@@ -152,6 +223,14 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     if (!handle)
     {
         response.error = state.cancelled ? cancelled : lastError("WinHttpOpenRequest");
+        return response;
+    }
+    // Redirects are not WinHTTP's to follow: perform() does, without the
+    // secret headers to another server (WinHTTP would send them all)
+    DWORD redirects = WINHTTP_OPTION_REDIRECT_POLICY_NEVER;
+    if (!WinHttpSetOption(handle.handle, WINHTTP_OPTION_REDIRECT_POLICY, &redirects, sizeof(redirects)))
+    {
+        response.error = state.cancelled ? cancelled : lastError("WinHttpSetOption");
         return response;
     }
 
@@ -191,6 +270,21 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
             break;
     }
     response.status = static_cast<int>(status);
+    if (isRedirect(response.status))
+    {
+        // where to (perform() decides); its body isn't read
+        DWORD size = 0;
+        WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_LOCATION, WINHTTP_HEADER_NAME_BY_INDEX,
+                            WINHTTP_NO_OUTPUT_BUFFER, &size, WINHTTP_NO_HEADER_INDEX);
+        if (GetLastError() == ERROR_INSUFFICIENT_BUFFER && size > 0 && size <= 64 * 1024)
+        {
+            std::wstring value(size / sizeof(wchar_t) + 1, L'\0');
+            if (WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_LOCATION, WINHTTP_HEADER_NAME_BY_INDEX,
+                                    value.data(), &size, WINHTTP_NO_HEADER_INDEX))
+                *location = QUrl(QString::fromWCharArray(value.c_str(), int(size / sizeof(wchar_t))).trimmed());
+        }
+        return response;
+    }
 
     DWORD length = 0;
     DWORD lengthSize = sizeof(length);
@@ -214,7 +308,17 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
             response.error = QStringLiteral("Timed out");
             break;
         }
-        if (!WinHttpReadData(handle.handle, buffer, sizeof(buffer), &read))
+        // What has come, not a full buffer: WinHttpReadData waits for all it
+        // is asked (an answer a byte at a time went on past its deadline)
+        DWORD available = 0;
+        if (!WinHttpQueryDataAvailable(handle.handle, &available))
+        {
+            response.error = state.cancelled ? cancelled : lastError("WinHttpQueryDataAvailable");
+            break;
+        }
+        if (available == 0)
+            break;
+        if (!WinHttpReadData(handle.handle, buffer, std::min<DWORD>(available, sizeof(buffer)), &read))
         {
             response.error = state.cancelled ? cancelled : lastError("WinHttpReadData");
             break;
@@ -282,7 +386,10 @@ int curlProgress(void* opaque, curl_off_t dltotal, curl_off_t, curl_off_t, curl_
     return (t->state.cancelled || t->expired) ? 1 : 0;
 }
 
-HttpResponse perform(const HttpRequest& request, RequestState& state)
+// One hop of a request: its redirects are not followed (perform() does, by
+// httpFollowRedirect), their address in location
+HttpResponse performHop(const HttpRequest& request, RequestState& state, const QDeadlineTimer& deadline,
+                        QUrl* location)
 {
     static std::once_flag initialized;
     std::call_once(initialized, []() { curl_global_init(CURL_GLOBAL_DEFAULT); });
@@ -308,9 +415,7 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
         response.error = QStringLiteral("curl_easy_init failed");
         return response;
     }
-    CurlTransfer transfer { request, state, response,
-                            request.deadlineMs > 0 ? QDeadlineTimer(request.deadlineMs)
-                                                   : QDeadlineTimer(QDeadlineTimer::Forever) };
+    CurlTransfer transfer { request, state, response, deadline };
 
     const QByteArray encodedUrl = url.toEncoded(QUrl::RemoveFragment);
     curl_easy_setopt(curl, CURLOPT_URL, encodedUrl.constData());
@@ -325,16 +430,14 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
         curl_easy_setopt(curl, CURLOPT_PASSWORD, password.constData());
     }
     curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1L);
-    // Redirects are followed, except from HTTPS to HTTP (as WinHTTP)
-    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-    curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 10L);
+    // Redirects are not libcurl's to follow: perform() does, without the
+    // secret headers to another server (libcurl keeps all but
+    // Authorization and Cookie)
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 0L);
 #if LIBCURL_VERSION_NUM >= 0x075500 /* 7.85 */
     curl_easy_setopt(curl, CURLOPT_PROTOCOLS_STR, "http,https");
-    curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS_STR, https ? "https" : "http,https");
 #else
     curl_easy_setopt(curl, CURLOPT_PROTOCOLS, static_cast<long>(CURLPROTO_HTTP | CURLPROTO_HTTPS));
-    curl_easy_setopt(curl, CURLOPT_REDIR_PROTOCOLS,
-                     static_cast<long>(https ? CURLPROTO_HTTPS : (CURLPROTO_HTTP | CURLPROTO_HTTPS)));
 #endif
     // each step at most timeoutMs: connecting, then no data for that long
     curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT_MS, static_cast<long>(request.timeoutMs));
@@ -373,6 +476,14 @@ HttpResponse perform(const HttpRequest& request, RequestState& state)
     long status = 0;
     curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status);
     response.status = static_cast<int>(status);
+    if (code == CURLE_OK && isRedirect(response.status))
+    {
+        // where to (perform() decides); its body is no answer
+        char* target = nullptr;
+        if (curl_easy_getinfo(curl, CURLINFO_REDIRECT_URL, &target) == CURLE_OK && target)
+            *location = QUrl::fromEncoded(QByteArray(target));
+        response.body.clear();
+    }
     curl_slist_free_all(headers);
     curl_easy_cleanup(curl);
 
@@ -396,7 +507,7 @@ bool httpRequestSupported()
 }
 #else
 namespace {
-HttpResponse perform(const HttpRequest&, RequestState&)
+HttpResponse performHop(const HttpRequest&, RequestState&, const QDeadlineTimer&, QUrl*)
 {
     HttpResponse response;
     response.error = QStringLiteral("No HTTP backend in this build");
@@ -409,6 +520,36 @@ bool httpRequestSupported()
     return false;
 }
 #endif
+
+namespace {
+// The request, its redirects followed (httpFollowRedirect), all of it
+// within its deadline
+HttpResponse perform(const HttpRequest& original, RequestState& state)
+{
+    const QDeadlineTimer deadline = original.deadlineMs > 0 ? QDeadlineTimer(original.deadlineMs)
+                                                            : QDeadlineTimer(QDeadlineTimer::Forever);
+    HttpRequest request = original;
+    for (int hop = 0;; ++hop)
+    {
+        QUrl location;
+        HttpResponse response = performHop(request, state, deadline, &location);
+        if (!response.error.isEmpty() || !isRedirect(response.status) || location.isEmpty())
+            return response;
+        QString error;
+        if (hop == maxRedirects)
+            error = QStringLiteral("Too many redirects");
+        else if (deadline.hasExpired())
+            error = QStringLiteral("Timed out");
+        else if (state.cancelled)
+            error = QStringLiteral("Cancelled");
+        else if (httpFollowRedirect(request, response.status, request.url.resolved(location), &error))
+            continue;
+        response.error = error;
+        response.body.clear();
+        return response;
+    }
+}
+}
 
 namespace {
 // The requests in flight. Their threads run the code of this module: when

@@ -94,15 +94,13 @@ T.Pane {
 
     // Figma "Controls": the row(s) of 54, 20 from the sides (one binding
     // per property: two exclusive ones restore the value of the other)
-    // (a plain binding: nothing else writes it, and a Binding element on it
-    // was reported as "changed from elsewhere" when the control resized)
+    // (plain bindings: nothing else writes them, and a Binding element on
+    // them was reported as "changed from elsewhere" when the control resized)
     topPadding: root.inlineTimeline ? (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2 : 0
-    Binding on bottomPadding {
-        value: root.inlineTimeline
-               ? Math.max(VLCStyle.applicationVerticalMargin + VLCStyle.margin_xsmall,
-                          (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2)
-               : Math.max(VLCStyle.applicationVerticalMargin, root._rowPadding)
-    }
+    bottomPadding: root.inlineTimeline
+                   ? Math.max(VLCStyle.applicationVerticalMargin + VLCStyle.margin_xsmall,
+                              (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2)
+                   : Math.max(VLCStyle.applicationVerticalMargin, root._rowPadding)
     Binding on leftPadding {
         value: Math.max(VLCStyle.applicationHorizontalMargin, VLCStyle.redesign.controlPadding)
     }

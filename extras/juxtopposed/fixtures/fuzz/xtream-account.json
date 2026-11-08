@@ -1,0 +1,4 @@
+{"user_info":{"username":"me","password":"p@ss","message":"","auth":1,"status":"Active","exp_date":"1893456000",
+"is_trial":"0","active_cons":"0","created_at":"1700000000","max_connections":"2","allowed_output_formats":["m3u8","ts","rtmp"]},
+"server_info":{"url":"panel.example","port":"8080","https_port":"8443","server_protocol":"http","rtmp_port":"8880",
+"timezone":"Asia/Jerusalem","timestamp_now":1793037600,"time_now":"2026-10-25 21:00:00","process":true}}

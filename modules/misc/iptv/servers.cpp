@@ -18,6 +18,7 @@
 #include <QXmlStreamWriter>
 
 #include <algorithm>
+#include <cmath>
 
 namespace iptv {
 namespace servers {
@@ -27,6 +28,18 @@ namespace {
 QString text(const QJsonObject &o, const char *key)
 {
     return o.value(QLatin1String(key)).toVariant().toString().trimmed();
+}
+
+// A time in seconds (or milliseconds) a server gives as a number or as text:
+// 0 when it is none, never a number out of range of a qint64
+qint64 integerOf(const QJsonValue &v)
+{
+    if (v.isString())
+        return v.toString().trimmed().toLongLong();
+    const double d = v.toDouble();
+    if (!std::isfinite(d) || std::fabs(d) >= 9.2e18)
+        return 0;
+    return qint64(d);
 }
 
 // (no regular expressions in this plugin: their per-thread JIT stacks of the
@@ -83,6 +96,30 @@ QString attribute(QString value)
 {
     // (a quote would end the attribute of the M3U line)
     return value.replace(QLatin1Char('"'), QLatin1Char('\'')).replace(QLatin1Char('\n'), QLatin1Char(' '));
+}
+
+// A text as XML may hold it: lone surrogates ("\ud800" in a server's JSON)
+// and the control characters XML 1.0 forbids dropped (written, the guide
+// did not read back)
+QString xmlText(const QString &s)
+{
+    QString out;
+    out.reserve(s.size());
+    for (qsizetype i = 0; i < s.size(); ++i)
+    {
+        const QChar c = s[i];
+        if (c.isHighSurrogate() && i + 1 < s.size() && s[i + 1].isLowSurrogate())
+        {
+            out += c;
+            out += s[++i];
+            continue;
+        }
+        const char16_t u = c.unicode();
+        if (c.isSurrogate() || u == 0xFFFE || u == 0xFFFF || (u < 0x20 && u != 0x09 && u != 0x0A && u != 0x0D))
+            continue;
+        out += c;
+    }
+    return out;
 }
 
 QString xmltvTime(qint64 secs)
@@ -187,17 +224,17 @@ QByteArray xmltvOf(const QVector<Channel> &channels, const QVector<Programme> &p
     for (const Channel &c : channels)
     {
         xml.writeStartElement(QStringLiteral("channel"));
-        xml.writeAttribute(QStringLiteral("id"), c.id);
-        xml.writeTextElement(QStringLiteral("display-name"), c.name);
+        xml.writeAttribute(QStringLiteral("id"), xmlText(c.id));
+        xml.writeTextElement(QStringLiteral("display-name"), xmlText(c.name));
         for (const QString &name : c.altNames)
             if (!name.isEmpty() && name != c.name)
-                xml.writeTextElement(QStringLiteral("display-name"), name);
+                xml.writeTextElement(QStringLiteral("display-name"), xmlText(name));
         if (!c.number.isEmpty())
-            xml.writeTextElement(QStringLiteral("display-name"), c.number);
+            xml.writeTextElement(QStringLiteral("display-name"), xmlText(c.number));
         if (!c.logo.isEmpty())
         {
             xml.writeStartElement(QStringLiteral("icon"));
-            xml.writeAttribute(QStringLiteral("src"), c.logo);
+            xml.writeAttribute(QStringLiteral("src"), xmlText(c.logo));
             xml.writeEndElement();
         }
         xml.writeEndElement();
@@ -209,14 +246,14 @@ QByteArray xmltvOf(const QVector<Channel> &channels, const QVector<Programme> &p
         xml.writeStartElement(QStringLiteral("programme"));
         xml.writeAttribute(QStringLiteral("start"), xmltvTime(p.start));
         xml.writeAttribute(QStringLiteral("stop"), xmltvTime(p.stop));
-        xml.writeAttribute(QStringLiteral("channel"), p.channel);
-        xml.writeTextElement(QStringLiteral("title"), p.title);
+        xml.writeAttribute(QStringLiteral("channel"), xmlText(p.channel));
+        xml.writeTextElement(QStringLiteral("title"), xmlText(p.title));
         if (!p.subtitle.isEmpty())
-            xml.writeTextElement(QStringLiteral("sub-title"), p.subtitle);
+            xml.writeTextElement(QStringLiteral("sub-title"), xmlText(p.subtitle));
         if (!p.description.isEmpty())
-            xml.writeTextElement(QStringLiteral("desc"), p.description);
+            xml.writeTextElement(QStringLiteral("desc"), xmlText(p.description));
         if (!p.category.isEmpty())
-            xml.writeTextElement(QStringLiteral("category"), p.category);
+            xml.writeTextElement(QStringLiteral("category"), xmlText(p.category));
         if (p.season > 0 || p.episode > 0)
         {
             // xmltv_ns counts from 0
@@ -316,8 +353,8 @@ QVector<Programme> parseHdhrGuide(const QByteArray &json)
             const QJsonObject o = g.toObject();
             Programme p;
             p.channel = number;
-            p.start = o.value(QLatin1String("StartTime")).toVariant().toLongLong();
-            p.stop = o.value(QLatin1String("EndTime")).toVariant().toLongLong();
+            p.start = integerOf(o.value(QLatin1String("StartTime")));
+            p.stop = integerOf(o.value(QLatin1String("EndTime")));
             p.title = text(o, "Title");
             p.subtitle = text(o, "EpisodeTitle");
             p.description = text(o, "Synopsis");
@@ -513,11 +550,17 @@ QString mediaBrowserStreamUrl(const QByteArray &playbackInfo, const QString &bas
         && (path.scheme() == QLatin1String("http") || path.scheme() == QLatin1String("https")))
         return path.toString(QUrl::FullyEncoded);
     const QString transcoding = text(source, "TranscodingUrl");
-    if (transcoding.isEmpty() || !transcoding.startsWith(QLatin1Char('/')))
+    // (a path on the server only: "//host/..." is another host, which would
+    // be sent the token)
+    if (transcoding.isEmpty() || !transcoding.startsWith(QLatin1Char('/'))
+        || transcoding.startsWith(QLatin1String("//")) || transcoding.contains(QLatin1Char('\\')))
         return {};
     // (its path from the server's root: under /emby for Emby)
     QUrl url(QUrl(api).resolved(QUrl(emby && !transcoding.startsWith(QLatin1String("/emby"), Qt::CaseInsensitive)
                                          ? QStringLiteral("/emby") + transcoding : transcoding)));
+    const QUrl server(api);
+    if (url.scheme() != server.scheme() || url.host() != server.host() || url.port() != server.port())
+        return {};
     QUrlQuery query(url);
     if (!query.hasQueryItem(QStringLiteral("LiveStreamId")) && !liveStreamId.isEmpty())
         query.addQueryItem(QStringLiteral("LiveStreamId"), liveStreamId);
@@ -676,8 +719,8 @@ QVector<Programme> parseNextPvrListings(const QByteArray &json, const QString &c
         const QJsonObject o = v.toObject();
         Programme p;
         p.channel = channelId;
-        p.start = o.value(QLatin1String("start")).toVariant().toLongLong();
-        p.stop = o.value(QLatin1String("end")).toVariant().toLongLong();
+        p.start = integerOf(o.value(QLatin1String("start")));
+        p.stop = integerOf(o.value(QLatin1String("end")));
         // (milliseconds in some versions)
         if (p.start > 100000000000LL)
         {
@@ -727,6 +770,9 @@ bool readName(const QByteArray &p, qsizetype offset, QString *name, qsizetype *n
     QStringList labels;
     qsizetype at = offset;
     qsizetype after = -1;
+    // (255 bytes at most, RFC 1035: a long name read again by every record
+    // of a packet, through its pointers, was quadratic)
+    qsizetype nameLength = 0;
     for (int jumps = 0; jumps < 32;)
     {
         if (at >= p.size())
@@ -753,6 +799,9 @@ bool readName(const QByteArray &p, qsizetype offset, QString *name, qsizetype *n
             continue;
         }
         if (at + 1 + length > p.size())
+            return false;
+        nameLength += 1 + length;
+        if (nameLength > 255)
             return false;
         labels << QString::fromUtf8(p.mid(at + 1, length));
         at += 1 + length;

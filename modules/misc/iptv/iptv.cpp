@@ -40,6 +40,7 @@
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QRandomGenerator>
+#include <QSaveFile>
 #include <QUrl>
 #include <atomic>
 #include <chrono>
@@ -48,6 +49,7 @@
 #include <cstring>
 #include <condition_variable>
 #include <deque>
+#include <exception>
 #include <functional>
 #include <future>
 #include <string>
@@ -88,7 +90,7 @@ public:
             vlc_interrupt_destroy(m_interrupt);
     }
 
-    bool download(const QString& url, const QString& path, QString* error,
+    bool download(const QString& url, const QString& path, QString* error, qint64 limit,
                   const std::function<void(qint64, qint64)>& progress) override
     {
         // the access alone: a guide.xml.gz stays compressed on disk (read
@@ -107,7 +109,10 @@ public:
         uint64_t size = 0;
         if (vlc_stream_GetSize(s, &size) != VLC_SUCCESS)
             size = 0;
-        QFile out(path + QStringLiteral(".part"));
+        // (a file of its own, put in place at once when complete: two
+        // threads downloading the same logo never share one, the one there
+        // stays until it is replaced)
+        QSaveFile out(path);
         if (!out.open(QIODevice::WriteOnly))
         {
             vlc_stream_Delete(s);
@@ -122,6 +127,13 @@ public:
             const ssize_t got = vlc_stream_Read(s, buffer.get(), 256 * 1024);
             if (got <= 0)
                 break;
+            // (a link that is a stream, not a file, would fill the disk)
+            if (total + got > limit)
+            {
+                failed = true;
+                *error = QStringLiteral("too large");
+                break;
+            }
             if (out.write(buffer.get(), got) != got)
             {
                 failed = true;
@@ -136,8 +148,9 @@ public:
             }
         }
         vlc_stream_Delete(s);
-        out.close();
-        if (vlc_killed())
+        // (an error reads as the end of the stream: stopped, or shorter than
+        // the size announced, it is not what was asked for)
+        if (!failed && vlc_killed())
         {
             failed = true;
             *error = QStringLiteral("cancelled");
@@ -147,13 +160,17 @@ public:
             failed = true;
             *error = QStringLiteral("empty answer");
         }
+        else if (!failed && size > 0 && uint64_t(total) != size)
+        {
+            failed = true;
+            *error = QStringLiteral("cut short");
+        }
         if (failed)
         {
-            QFile::remove(out.fileName());
+            out.cancelWriting();
             return false;
         }
-        QFile::remove(path);
-        if (!QFile::rename(out.fileName(), path))
+        if (!out.commit())
         {
             *error = QStringLiteral("cannot be saved");
             return false;
@@ -171,9 +188,12 @@ public:
         stream_t* s = vlc_access_NewMRL(VLC_OBJECT(m_obj), url.toUtf8().constData());
         if (!s)
         {
-            *error = QStringLiteral("cannot be reached");
+            *error = vlc_killed() ? QStringLiteral("cancelled") : QStringLiteral("cannot be reached");
             return QByteArray();
         }
+        uint64_t size = 0;
+        if (vlc_stream_GetSize(s, &size) != VLC_SUCCESS)
+            size = 0;
         QByteArray out;
         char buffer[64 * 1024];
         for (;;)
@@ -190,6 +210,17 @@ public:
             }
         }
         vlc_stream_Delete(s);
+        // (stopped, or shorter than announced: an answer cut short, none)
+        if (vlc_killed())
+        {
+            out.clear();
+            *error = QStringLiteral("cancelled");
+        }
+        else if (!out.isEmpty() && size > 0 && uint64_t(out.size()) != size)
+        {
+            out.clear();
+            *error = QStringLiteral("cut short");
+        }
         return out;
     }
 
@@ -547,7 +578,15 @@ public:
             if (m_quit)
                 return false;
             m_jobs.push_back([job, done]() {
-                job();
+                // (a job that throws, out of memory on an enormous answer,
+                // still ends its wait; an exception out of a thread ends VLC)
+                try
+                {
+                    job();
+                }
+                catch (...)
+                {
+                }
                 done->set_value();
             });
         }
@@ -601,7 +640,15 @@ private:
                 job = std::move(m_jobs.front());
                 m_jobs.pop_front();
             }
-            job();
+            try
+            {
+                job();
+            }
+            catch (...)
+            {
+                // (the jobs of runAndWait catch their own; nothing may leave
+                // a thread)
+            }
         }
     }
 
@@ -645,19 +692,27 @@ char* Request(vlc_iptv_t* obj, const char* json)
     auto answer = std::make_shared<std::string>();
     // (on a thread of the plugin, see Executor)
     if (!sys->executor->runAndWait([sys, request, answer]() {
-            const QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(*request));
-            const std::shared_ptr<iptv::Service> service = serviceOf(sys);
-            QJsonObject out;
-            if (!doc.isObject())
-                out.insert(QLatin1String("error"), QStringLiteral("not a JSON object"));
-            else if (!service)
-                out.insert(QLatin1String("error"), QStringLiteral("closing"));
-            else
-                out = service->request(doc.object());
-            *answer = QJsonDocument(out).toJson(QJsonDocument::Compact).toStdString();
+            try
+            {
+                const QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(*request));
+                const std::shared_ptr<iptv::Service> service = serviceOf(sys);
+                QJsonObject out;
+                if (!doc.isObject())
+                    out.insert(QLatin1String("error"), QStringLiteral("not a JSON object"));
+                else if (!service)
+                    out.insert(QLatin1String("error"), QStringLiteral("closing"));
+                else
+                    out = service->request(doc.object());
+                *answer = QJsonDocument(out).toJson(QJsonDocument::Compact).toStdString();
+            }
+            catch (const std::exception&)
+            {
+                // (out of memory on an enormous answer: an error, VLC goes on)
+                *answer = "{\"error\":\"failed\"}";
+            }
         }))
         return strdup("{\"error\":\"closing\"}");
-    return strdup(answer->c_str());
+    return strdup(answer->empty() ? "{\"error\":\"failed\"}" : answer->c_str());
 }
 
 void Stop(vlc_iptv_t* obj)
@@ -691,9 +746,18 @@ int Open(vlc_object_t* p_this)
         sys->executor = std::make_unique<Executor>(3);
         Sys* s = sys.get();
         s->executor->runAndWait([&]() {
-            s->service = std::make_shared<iptv::Service>(
-                *s->host, userDir(dataDir.c_str()), userDir(cacheDir.c_str()),
-                QByteArray::fromRawData(iptv_catalog, int(sizeof(iptv_catalog) - 1)));
+            // (failed, its thread not made, out of memory: no service, the
+            // module is not loaded; the exception would end VLC on this thread)
+            try
+            {
+                s->service = std::make_shared<iptv::Service>(
+                    *s->host, userDir(dataDir.c_str()), userDir(cacheDir.c_str()),
+                    QByteArray::fromRawData(iptv_catalog, int(sizeof(iptv_catalog) - 1)));
+            }
+            catch (const std::exception&)
+            {
+                s->service.reset();
+            }
         });
         if (!s->service)
             return VLC_EGENERIC;

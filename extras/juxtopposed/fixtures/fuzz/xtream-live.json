@@ -1,0 +1,6 @@
+[{"num":1,"name":"News One","stream_type":"live","stream_id":101,"stream_icon":"http://l/1.png","epg_channel_id":"news1",
+"added":"1700000000","is_adult":"0","category_id":"3","custom_sid":"","tv_archive":1,"direct_source":"","tv_archive_duration":"5"},
+{"num":2,"name":"Radio","stream_type":"radio_streams","stream_id":"102","stream_icon":"","epg_channel_id":null,"category_id":"9"},
+{"num":3,"name":"Late","stream_type":"live","stream_id":103.0,"is_adult":1,"category_id":12,"tv_archive":"1","tv_archive_duration":7},
+{"num":4,"name":"No id","stream_type":"live","stream_id":null},
+{"num":5,"name":"Odd","stream_type":"live","stream_id":104.5,"tv_archive":true,"tv_archive_duration":"0"}]

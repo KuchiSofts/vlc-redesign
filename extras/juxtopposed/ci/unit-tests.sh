@@ -24,15 +24,17 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/subtitle-cues-parse
 "$out/subtitle-cues-parser"
 
 echo "== Live TV parsers"
-# (Qt's own allocations are not ours: only the parsers' leaks count)
-g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
+# (Qt's own allocations are not ours: only the parsers' leaks count; a
+# number out of range made an int or a qint64, tvg-shift="1e9", aborts too)
+fcast="-fsanitize=float-cast-overflow"
+g++ -std=c++17 -O1 -Wall -Wextra $san $fcast -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/iptv-parsers.cpp modules/misc/iptv/playlist.cpp \
     modules/misc/iptv/guide.cpp modules/misc/iptv/xtream.cpp \
     $(pkg-config --libs Qt6Core) -lz -o "$out/iptv-parsers"
 "$out/iptv-parsers" extras/juxtopposed/fixtures
 
 echo "== Live TV: the user's servers and tuners"
-g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
+g++ -std=c++17 -O1 -Wall -Wextra $san $fcast -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/iptv-servers.cpp modules/misc/iptv/servers.cpp \
     modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp \
     $(pkg-config --libs Qt6Core) -lz -o "$out/iptv-servers"
@@ -52,11 +54,22 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflag
 # (the service a stuck download keeps is let go on purpose: not a leak of the code)
 ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 "$out/iptv-stop"
 
-echo "== subtitle services (keys and accounts)"
-g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
+echo "== Live TV: the service (limits, failures, back-off, answers cut short, removals)"
+g++ -std=c++17 -O1 -Wall -Wextra $san $fcast -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/iptv-service.cpp modules/misc/iptv/service.cpp modules/misc/iptv/servers.cpp \
+    modules/misc/iptv/autoguide.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp \
+    modules/misc/iptv/xtream.cpp $(pkg-config --libs Qt6Core) -lz -o "$out/iptv-service"
+"$out/iptv-service"
+
+echo "== subtitle services (keys and accounts, YIFY's page, the archives)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/subtitle-services.cpp modules/gui/qt/player/subtitle_services.cpp \
-    $(pkg-config --libs Qt6Core) -o "$out/subtitle-services"
+    $(pkg-config --libs Qt6Core) -lz -o "$out/subtitle-services"
 "$out/subtitle-services" extras/juxtopposed/fixtures/subtitle-services
+
+echo "== the parsers against malformed and huge input (fuzz)"
+g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core)     extras/juxtopposed/parsers-fuzz.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp     modules/misc/iptv/xtream.cpp modules/misc/iptv/servers.cpp modules/misc/iptv/autoguide.cpp     modules/gui/qt/player/subtitle_services.cpp modules/gui/qt/player/subtitle_cues_parser.cpp     $(pkg-config --libs Qt6Core) -lz -o "$out/parsers-fuzz"
+"$out/parsers-fuzz" extras/juxtopposed/fixtures
 
 echo "== subtitle encodings"
 python3 extras/juxtopposed/subtitle-charset-test.py --cc "gcc $san"

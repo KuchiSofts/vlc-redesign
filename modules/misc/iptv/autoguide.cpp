@@ -123,10 +123,13 @@ QVector<Known> readCompactChannels(const QByteArray& data)
     return channels;
 }
 
-QString matchName(const QString& name, QString* country, int* plusHours)
+QString matchName(const QString& rawName, QString* country, int* plusHours)
 {
     QString found;
     int plus = 0;
+    // (a name of 512 characters at most: no channel has more, and a megabyte
+    // of '(' never closed, each looked for to the end, took a minute)
+    const QString name = rawName.left(512);
     // lower case, the accents off
     QString folded;
     {
@@ -266,11 +269,22 @@ Matcher::Matcher(QVector<Known> channels)
                 continue;
             if (plus > 0)
                 key += QStringLiteral("+%1").arg(plus);
-            if (!keys.contains(key))
-            {
-                keys.insert(key);
-                m_byName.insert(key, i);
-            }
+            if (keys.contains(key))
+                continue;
+            keys.insert(key);
+            // (what a match needs of the channels of a name, made once: in
+            // the order of the database, the first of each country; sorted
+            // and looked through at every match, thousands of channels of
+            // one name took hours)
+            Named& named = m_byName[key];
+            const QString& c = k.country;
+            if (named.first < 0)
+                named.first = i;
+            else if (c != m_channels[named.first].country)
+                named.oneCountry = false;
+            ++named.count;
+            if (!c.isEmpty() && !named.byCountry.contains(c))
+                named.byCountry.insert(c, i);
         }
     }
 }
@@ -303,39 +317,32 @@ Match Matcher::match(const QString& tvgId, const QString& name, const QString& l
     if (hint.isEmpty())
         hint = listCountry.toUpper();
     // a "+1" channel: the one of that name, else the one it repeats
-    QList<int> candidates;
+    const Named* candidates = nullptr;
     int shift = 0;
     if (plus > 0)
-        candidates = m_byName.values(key + QStringLiteral("+%1").arg(plus));
-    if (candidates.isEmpty())
     {
-        candidates = m_byName.values(key);
+        const auto it = m_byName.constFind(key + QStringLiteral("+%1").arg(plus));
+        if (it != m_byName.cend())
+            candidates = &*it;
+    }
+    if (!candidates)
+    {
+        const auto it = m_byName.constFind(key);
+        if (it == m_byName.cend())
+            return m;
+        candidates = &*it;
         shift = plus * 3600;
     }
-    if (candidates.isEmpty())
-        return m;
-    // (the order of the database, not of the hash)
-    std::sort(candidates.begin(), candidates.end());
+    // (the first in the order of the database, not of the hash)
     auto inCountry = [&](const QString& country) -> int {
-        if (country.isEmpty())
-            return -1;
-        for (const int i : std::as_const(candidates))
-            if (m_channels[i].country == country)
-                return i;
-        return -1;
+        return country.isEmpty() ? -1 : candidates->byCountry.value(country, -1);
     };
     int chosen = inCountry(hint);
     if (chosen < 0 && hint.isEmpty())
         chosen = inCountry(preferred.toUpper());
-    if (chosen < 0)
-    {
-        // one channel of that name, or all in one country
-        const QString first = m_channels[candidates.first()].country;
-        const bool oneCountry = std::all_of(candidates.cbegin(), candidates.cend(),
-                                            [&](int i) { return m_channels[i].country == first; });
-        if (candidates.size() == 1 || (oneCountry && hint.isEmpty()))
-            chosen = candidates.first();
-    }
+    // one channel of that name, or all in one country
+    if (chosen < 0 && (candidates->count == 1 || (candidates->oneCountry && hint.isEmpty())))
+        chosen = candidates->first;
     if (chosen < 0)
         return m;
     m.id = m_channels[chosen].id;
@@ -368,6 +375,31 @@ QStringList pickGuides(const QJsonArray& catalogSources, const QHash<QString, in
                 return i;
         return -1;
     };
+    // the guides that can be offered, read and ranked once (for each country
+    // they were again: thousands of guides of hosts it does not rank took
+    // minutes)
+    struct Offered { int rank; QSet<QString> countries; int countryCount; QString url; };
+    QVector<Offered> guides;
+    {
+        const QSet<QString> skipped(skip.cbegin(), skip.cend());
+        for (const QJsonValue v : catalogSources)
+        {
+            const QJsonObject o = v.toObject();
+            const QString url = o.value(QLatin1String("url")).toString();
+            if (o.value(QLatin1String("kind")).toString() != QLatin1String("epg")
+                || o.value(QLatin1String("status")).toString() == QLatin1String("not answering")
+                || skipped.contains(url))
+                continue;
+            const int r = rank(url);
+            if (r < 0)
+                continue;
+            const QJsonArray covers = o.value(QLatin1String("countries")).toArray();
+            Offered g { r, {}, int(covers.size()), url };
+            for (const QJsonValue c : covers)
+                g.countries.insert(c.toString());
+            guides.append(std::move(g));
+        }
+    }
     QStringList picked;
     for (const auto& country : std::as_const(countries))
     {
@@ -380,19 +412,9 @@ QStringList pickGuides(const QJsonArray& catalogSources, const QHash<QString, in
         // this country alone before the one of a region)
         struct Offer { int rank; int countries; QString url; };
         QVector<Offer> offers;
-        for (const QJsonValue v : catalogSources)
-        {
-            const QJsonObject o = v.toObject();
-            const QString url = o.value(QLatin1String("url")).toString();
-            if (o.value(QLatin1String("kind")).toString() != QLatin1String("epg")
-                || o.value(QLatin1String("status")).toString() == QLatin1String("not answering")
-                || skip.contains(url) || picked.contains(url))
-                continue;
-            const QJsonArray covers = o.value(QLatin1String("countries")).toArray();
-            const int r = rank(url);
-            if (covers.contains(country.second) && r >= 0)
-                offers.append({ r, int(covers.size()), url });
-        }
+        for (const Offered& g : std::as_const(guides))
+            if (g.countries.contains(country.second) && !picked.contains(g.url))
+                offers.append({ g.rank, g.countryCount, g.url });
         std::sort(offers.begin(), offers.end(), [](const Offer& a, const Offer& b) {
             return a.rank != b.rank ? a.rank < b.rank : a.countries < b.countries;
         });

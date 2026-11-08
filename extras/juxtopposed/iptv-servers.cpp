@@ -16,6 +16,7 @@
 #include "modules/misc/iptv/servers.hpp"
 
 #include <QCryptographicHash>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -334,9 +335,105 @@ static void testSchedulesDirect()
     CHECK(read.idByName.value(guideKey(QStringLiteral("Demo Broadcasting"))) == guideKey(QStringLiteral("90001")));
 }
 
+// Times out of range of a qint64 (1e300, infinity as text): no programme of
+// them, never a cast out of range (built with -fsanitize=float-cast-overflow)
+static void testOutOfRangeTimes()
+{
+    const QVector<Programme> hdhr = parseHdhrGuide(R"([{"GuideNumber":"5.1","Guide":[
+        {"StartTime":1e300,"EndTime":1e301,"Title":"Huge"},
+        {"StartTime":-1e300,"EndTime":1700003600,"Title":"Negative"},
+        {"StartTime":1700000000,"EndTime":1700003600,"Title":"Fine"}]}])");
+    CHECK(hdhr.size() == 2);
+    CHECK(hdhr.value(hdhr.size() - 1).title == QStringLiteral("Fine") && hdhr.value(hdhr.size() - 1).start == 1700000000);
+    for (const Programme &p : hdhr)
+        CHECK(p.title != QStringLiteral("Huge"));
+    const QVector<Programme> nextpvr = parseNextPvrListings(R"({"listings":[
+        {"start":1e300,"end":1e300,"name":"Huge"},
+        {"start":"1700000000000","end":"1700003600000","name":"Milliseconds as text"}]})", QStringLiteral("7"));
+    CHECK(nextpvr.size() == 1);
+    CHECK(nextpvr.value(0).start == 1700000000 && nextpvr.value(0).stop == 1700003600);
+}
+
+// What a server or a packet could send that the parsers took badly: a name
+// of mDNS longer than 255 bytes read again by every record (quadratic), a
+// lone surrogate in a programme (the guide written did not read back), a
+// TranscodingUrl of another host (sent the token)
+static void testHostile()
+{
+    // one long name (32 KB of labels), then as many records pointing to it
+    QByteArray records;
+    QByteArray name;
+    while (name.size() < 32 * 1024)
+        name += char(63) + QByteArray(63, 'a');
+    name += '\0';
+    auto record = [](const QByteArray &owner, quint16 type, const QByteArray &data) {
+        QByteArray r = owner;
+        r += char(type >> 8);
+        r += char(type & 0xff);
+        r += QByteArray::fromHex("0001000000780000");
+        r[r.size() - 2] = char(data.size() >> 8);
+        r[r.size() - 1] = char(data.size() & 0xff);
+        return r + data;
+    };
+    records += record(name, 16, QByteArray(1, '\0'));
+    int count = 1;
+    while (records.size() < 64 * 1024 && count < 65535)
+    {
+        records += record(QByteArray::fromHex("c00c"), 12, QByteArray::fromHex("c00c"));
+        ++count;
+    }
+    QByteArray packet = QByteArray::fromHex("000084000000");
+    packet += char(count >> 8);
+    packet += char(count & 0xff);
+    packet += QByteArray::fromHex("00000000");
+    packet += records;
+    QElapsedTimer timer;
+    timer.start();
+    CHECK(parseMdnsAnswer(packet, QStringLiteral("_channels_dvr._tcp.local")).isEmpty());
+    std::printf("mDNS: a name of 32 KB read by %d records: %lld ms\n", count, (long long)timer.elapsed());
+    CHECK(timer.elapsed() < 500);
+    // (the fixture's own names, of the usual lengths, still read)
+    CHECK(parseMdnsAnswer(fixture("mdns-channels-reply.bin"), QStringLiteral("_channels_dvr._tcp.local")).size() == 1);
+
+    // a lone surrogate and control characters in what a server sent: dropped
+    // from the guide written, which reads back
+    QVector<Channel> channels { Channel {} };
+    channels[0].id = QStringLiteral("1");
+    channels[0].name = QStringLiteral("One") + QChar(0xD800);
+    QVector<Programme> programmes { Programme {} };
+    programmes[0].channel = QStringLiteral("1");
+    programmes[0].start = 1700000000;
+    programmes[0].stop = 1700003600;
+    programmes[0].title = QStringLiteral("Title") + QChar(0xDC00) + QChar(0x01) + QChar(0xFFFF);
+    programmes[0].description = QStringLiteral("A \U0001F600 face, a ") + QChar(0xD800) + QStringLiteral(" alone");
+    GuideFilter all;
+    const Guide read = parseXmltv(xmltvOf(channels, programmes), all);
+    CHECK(read.error.isEmpty());
+    const QVector<iptv::Programme> list = read.programmes.value(guideKey(QStringLiteral("1")));
+    CHECK(list.size() == 1);
+    CHECK(list.value(0).title == QStringLiteral("Title"));
+    CHECK(list.value(0).description == QStringLiteral("A \U0001F600 face, a  alone"));
+    CHECK(read.idByName.value(guideKey(QStringLiteral("One"))) == guideKey(QStringLiteral("1")));
+
+    // a TranscodingUrl on another host ("//host", "/\host"): none
+    const QString base = QStringLiteral("http://192.168.1.10:8096");
+    for (const char *other : { "//evil.example/videos/x/master.m3u8?a=1", "/\\evil.example/x", "///evil.example/x" })
+    {
+        const QByteArray info = QByteArray(R"({"MediaSources":[{"SupportsDirectStream":false,"TranscodingUrl":")")
+                                + QByteArray(other).replace("\\", "\\\\") + R"(","LiveStreamId":"l"}],"PlaySessionId":"s"})";
+        CHECK(mediaBrowserStreamUrl(info, base, QStringLiteral("b1"), QStringLiteral("tok"), false).isEmpty());
+    }
+    const QUrl own(mediaBrowserStreamUrl(
+        R"({"MediaSources":[{"SupportsDirectStream":false,"TranscodingUrl":"/videos/b1/master.m3u8?a=1"}]})", base,
+        QStringLiteral("b1"), QStringLiteral("tok"), false));
+    CHECK(own.host() == QStringLiteral("192.168.1.10") && own.port() == 8096 && own.path() == QStringLiteral("/videos/b1/master.m3u8"));
+}
+
 int main(int argc, char **argv)
 {
     fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures/iptv-servers");
+    testOutOfRangeTimes();
+    testHostile();
     testCommon();
     testHdhomerun();
     testMediaBrowser();

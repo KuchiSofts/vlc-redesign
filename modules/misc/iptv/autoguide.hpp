@@ -73,9 +73,19 @@ public:
     int size() const { return int(m_channels.size()); }
 
 private:
+    // the channels of a name (matchName, with "+1" when it has one): the
+    // first in the database, how many, whether all are of its country, the
+    // first of each country
+    struct Named
+    {
+        int first = -1;
+        int count = 0;
+        bool oneCountry = true;
+        QHash<QString, int> byCountry;
+    };
     QVector<Known> m_channels;
     QHash<QString, int> m_byId;            // the id, lower case
-    QMultiHash<QString, int> m_byName;     // matchName, with "+1" when it has one
+    QHash<QString, Named> m_byName;
 };
 
 // The guides of the catalog for the countries of the channels matched:

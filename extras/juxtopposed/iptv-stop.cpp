@@ -35,7 +35,7 @@ class TestHost : public iptv::Host
 public:
     explicit TestHost(bool stuck) : m_stuck(stuck) {}
 
-    bool download(const QString&, const QString&, QString* error,
+    bool download(const QString&, const QString&, QString* error, qint64,
                   const std::function<void(qint64, qint64)>&) override
     {
         wait();

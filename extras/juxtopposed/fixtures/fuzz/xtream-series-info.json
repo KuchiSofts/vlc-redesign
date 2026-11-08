@@ -1,0 +1,4 @@
+{"seasons":[{"season_number":1,"name":"Season 1"}],"info":{"name":"Show","cover":"http://p/31.jpg","plot":"P"},
+"episodes":{"2":[{"id":"21","episode_num":1,"title":"B","container_extension":"mkv","info":{"duration_secs":2700,"plot":"x","movie_image":"http://p/e21.jpg"},"season":2}],
+"1":[{"id":"11","episode_num":"1","title":"A","container_extension":"mp4","info":{"duration_secs":"2600"},"season":"1"},
+{"id":12,"episode_num":2,"title":"A2","info":[],"season":1}]}}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv source-info-name="fuzz seed">
+  <channel id="IL: Test.Channel-HD">
+    <display-name>Test Channel FHD</display-name>
+    <display-name lang="he">&#1506;&#1512;&#1493;&#1509;</display-name>
+    <icon src="https://logo.example/t.png"/>
+    <url>https://t.example/</url>
+  </channel>
+  <channel id="shop"><display-name>Shop +1</display-name></channel>
+  <programme start="20261025180000" stop="20261025190000 -0130" channel="IL: Test.Channel-HD">
+    <title lang="EN">One</title>
+    <title lang="he">&#1488;</title>
+    <desc lang="he">first</desc>
+    <desc lang="en">second &amp; more</desc>
+    <category>A</category><category>B</category>
+    <episode-num system="xmltv_ns">0.1.0/1</episode-num>
+  </programme>
+  <programme start="20261025190000 +0000" stop="20261025180000 +0000" channel="shop">
+    <title>Ends before it starts</title>
+    <episode-num system="xmltv_ns"> . 3 . </episode-num>
+  </programme>
+  <programme start="202610252000" channel="shop">
+    <title>No seconds, no stop</title>
+    <sub-title lang="en">Sub</sub-title>
+    <episode-num system="onscreen">S01E02</episode-num>
+    <rating system="VCHIP"><value>TV-G</value></rating>
+    <credits><actor>Someone</actor></credits>
+  </programme>
+  <programme start="20261025210000 +1400" stop="20261025220000 -1200" channel="shop">
+    <title>Far zones</title>
+    <episode-num system="common">Ep 7</episode-num>
+    <episode-num system="xmltv_ns">1/2.3/4.</episode-num>
+  </programme>
+  <programme start="garbage" stop="20261025220000 +0000" channel="shop"><title>Bad start</title></programme>
+  <programme start="20261025230000 +0000" channel=""><title>No channel</title></programme>
+</tv>

@@ -8,8 +8,11 @@
  *****************************************************************************/
 #include "playlist.hpp"
 
+#include <QSet>
 #include <QUrl>
 #include <QUrlQuery>
+
+#include <cmath>
 
 namespace iptv {
 
@@ -117,28 +120,49 @@ bool looksFlussonic(const QString& url)
            || (name.startsWith(QLatin1String("tracks-")) && name.size() > 7);
 }
 
+// The longest catchup-source kept: an address with its placeholders (one of
+// megabytes took minutes to fill in)
+const qsizetype kMaxTemplate = 4096;
+
 QString fillTemplate(QString tpl, const QDateTime& start, int duration, const QDateTime& now)
 {
+    if (tpl.size() > kMaxTemplate)
+        return QString();
     const QDateTime end = start.addSecs(duration);
     const QDateTime utc = start.toUTC();
     const auto num = [](qint64 v) { return QString::number(v); };
-    // {duration:60} -> minutes, {offset:1} -> seconds ago
+    // {duration:60} -> minutes, {offset:1} -> seconds ago; in one pass, each
+    // looked for after the last (from the start each time, it was quadratic)
     for (const QLatin1String name : { QLatin1String("{duration:"), QLatin1String("{offset:") })
     {
-        qsizetype at;
-        while ((at = tpl.indexOf(name)) >= 0)
+        QString out;
+        out.reserve(tpl.size());
+        qsizetype pos = 0;
+        for (;;)
         {
-            const qsizetype close = tpl.indexOf(u'}', at);
+            const qsizetype at = tpl.indexOf(name, pos);
+            const qsizetype close = at < 0 ? -1 : tpl.indexOf(u'}', at);
             if (close < 0)
+            {
+                out += QStringView(tpl).mid(pos);
                 break;
+            }
             const QStringView digits = QStringView(tpl).mid(at + name.size(), close - at - name.size());
             bool ok = false;
             const qint64 divisor = qMax<qint64>(1, digits.toLongLong(&ok));
             if (!ok)
-                break;
+            {
+                // (not one: kept as it is, the next one looked for after it)
+                out += QStringView(tpl).mid(pos, at + name.size() - pos);
+                pos = at + name.size();
+                continue;
+            }
             const qint64 value = name == QLatin1String("{duration:") ? duration : start.secsTo(now);
-            tpl.replace(at, close - at + 1, num(value / divisor));
+            out += QStringView(tpl).mid(pos, at - pos);
+            out += num(value / divisor);
+            pos = close + 1;
         }
+        tpl = out;
     }
     const QList<QPair<QString, QString>> keys = {
         { "{utc}", num(start.toSecsSinceEpoch()) },
@@ -195,6 +219,10 @@ Playlist parseM3u(const QByteArray& data, const QString& base)
     bool havePending = false;
     bool pendingHasTitle = false;
     QString pendingGroup;
+    // the guides named, once each and 32 at most (thousands were each looked
+    // for in the list: quadratic)
+    QSet<QString> guidesNamed;
+    const qsizetype maxGuides = 32;
     const auto lines = QStringView(text).split(u'\n');
     for (QStringView raw : lines)
     {
@@ -206,8 +234,16 @@ Playlist parseM3u(const QByteArray& data, const QString& base)
             const ExtInf header = parseExtInf(QString(QStringLiteral("#EXTM3U:0 ") + line.mid(7).toString()));
             for (const char* key : { "url-tvg", "x-tvg-url", "tvg-url" })
                 for (const QString& u : header.attrs.value(key).split(u',', Qt::SkipEmptyParts))
-                    if (!out.guideUrls.contains(u.trimmed()))
-                        out.guideUrls << u.trimmed();
+                {
+                    const QString guide = u.trimmed();
+                    if (out.guideUrls.size() >= maxGuides)
+                        break;
+                    if (!guide.isEmpty() && !guidesNamed.contains(guide))
+                    {
+                        guidesNamed.insert(guide);
+                        out.guideUrls << guide;
+                    }
+                }
             for (const char* key : { "catchup", "catchup-type", "catchup-source", "catchup-days",
                                      "tvg-shift" })
                 if (header.attrs.contains(key))
@@ -229,13 +265,19 @@ Playlist parseM3u(const QByteArray& data, const QString& base)
             pending.logo = resolve(a.value("tvg-logo", a.value("logo")), base);
             pending.group = a.value("group-title");
             pending.number = a.value("tvg-chno", a.value("channel-number")).toInt();
-            pending.guideShiftSecs = int(a.value("tvg-shift").toDouble() * 3600);
+            // (hours, two days at most either way: "1e9" or "inf" is no shift
+            // to make an int of)
+            const double shiftHours = a.value("tvg-shift").toDouble();
+            pending.guideShiftSecs = std::isfinite(shiftHours) ? int(qBound(-48.0, shiftHours, 48.0) * 3600) : 0;
             pendingHasTitle = !pending.group.isEmpty();
             if (!pendingHasTitle)
                 pending.group = pendingGroup;
             pending.radio = a.value("radio").compare("true", Qt::CaseInsensitive) == 0;
             pending.catchup = modeOf(a.value("catchup", a.value("catchup-type")));
+            // (an address with its placeholders: one of more than 4 KB is none)
             pending.catchupSource = a.value("catchup-source");
+            if (pending.catchupSource.size() > kMaxTemplate)
+                pending.catchupSource.clear();
             if (!pending.catchupSource.isEmpty() && pending.catchup != CatchupMode::Xtream)
                 pending.catchup = a.value("catchup").compare("append", Qt::CaseInsensitive) == 0
                                       ? CatchupMode::Append : CatchupMode::Template;
@@ -343,7 +385,7 @@ QString catchupUrl(const Channel& channel, const QDateTime& start, int durationS
         const QDateTime local = start.toUTC().addSecs(channel.timeOffsetSecs);
         url.setPath(QStringLiteral("/timeshift/%1/%2/%3/%4/%5.ts")
                         .arg(user, pass)
-                        .arg((durationSecs + 59) / 60)
+                        .arg((qint64(durationSecs) + 59) / 60)   // (in qint64: near INT_MAX it overflowed)
                         .arg(local.toString("yyyy-MM-dd:HH-mm"), id),
                     QUrl::TolerantMode);
         url.setQuery(QString());

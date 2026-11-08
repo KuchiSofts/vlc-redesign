@@ -63,6 +63,12 @@ struct Datagram
     QByteArray data;
 };
 
+// The most a download keeps (a link that is a stream, not a file, would fill
+// the disk otherwise): a playlist, a guide (XMLTV, gzip or not), a logo
+constexpr qint64 kPlaylistMaxBytes = 512LL << 20;
+constexpr qint64 kGuideMaxBytes = 2LL << 30;
+constexpr qint64 kLogoMaxBytes = 2LL << 20;
+
 // What VLC gives the service: downloads through its own access modules
 // (the proxy and the network settings of VLC), its keystore, its folders.
 // Implemented in iptv.cpp, the glue of the module.
@@ -70,9 +76,11 @@ struct Host
 {
     virtual ~Host() = default;
     // Saves the resource at url (http(s), file...) to path, as it is (a
-    // gzip-compressed guide stays so); false and why on an error.
-    // progress gets the bytes received and the size when known (0).
-    virtual bool download(const QString& url, const QString& path, QString* error,
+    // gzip-compressed guide stays so); false and why on an error, when it
+    // is larger than limit bytes, cut short or stopped (path then keeps
+    // what it had). progress gets the bytes received and the size when
+    // known (0).
+    virtual bool download(const QString& url, const QString& path, QString* error, qint64 limit,
                           const std::function<void(qint64, qint64)>& progress = {}) = 0;
     // A small answer (an Xtream Codes API call) read into memory
     virtual QByteArray fetch(const QString& url, QString* error, qint64 limit = 256 << 20) = 0;
@@ -117,6 +125,9 @@ struct SourceConfig
     QString password;        // (secret; NextPVR: its PIN)
     QString key;             // an API key (Jellyfin, Emby) (secret)
     QString catalogId;       // added from the catalog
+    // (in memory) the user's changes of the automatic guide: one it was
+    // looking for meanwhile does not undo them
+    quint32 autoEdits = 0;
     bool enabled = true;
     bool useHeaderGuides = true;   // the guides the playlist names itself
     QStringList epgOff;      // the guides turned off (of epg, the playlist's, autoEpg)
@@ -162,6 +173,18 @@ struct GuideData
     QString error;
 };
 
+// A source refreshed by itself: after its refresh period, or, when its last
+// refreshes failed (offline, a password refused), 15 minutes after the
+// last, then 30, 60... up to the period (never a sign-in every minute).
+// refreshHours 0: never.
+qint64 retryDelaySecs(int failures, int refreshHours);
+bool refreshDue(qint64 now, qint64 playlistUpdated, qint64 lastAttempt, int failures, int refreshHours);
+
+// The programmes of a list (sorted by start) on between from and to: the
+// ones that started before from and still run (a long one before shorter
+// ones too), then those starting before to; their indexes
+QVector<int> programmesBetween(const EntryList& list, qint64 from, qint64 to);
+
 class Service
 {
 public:
@@ -196,6 +219,9 @@ private:
         qint64 expires = 0;
         // its server refused the user's sign-in (shown on its row)
         bool refused = false;
+        // its last refresh, and the ones that failed since one worked
+        qint64 lastAttempt = 0;
+        int failures = 0;
     };
     struct ChannelEntry
     {
@@ -218,6 +244,8 @@ private:
     // the worker
     void post(Job job);
     void run();
+    // a job threw (out of memory): logged, its sources no longer busy
+    void jobFailed(const char* what) noexcept;
     void startup();
     void schedule();
     void refreshSources(const QStringList& ids, bool guides);

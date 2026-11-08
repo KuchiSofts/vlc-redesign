@@ -21,8 +21,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), by [@BarbodF](https://github.com/BarbodF)'s
   request; Fixes #72): **Settings › Interface › Playback Controls › When you use a shortcut in full screen**:
   *Show the controls* (as before, the default), *Show only the progress* (a thin line of the progress on the bottom
-  edge, in your accent colour, with a small message at the top: what the key did and the time, "+30 s
-  00:02:50 / 00:25:40"), or *Show only a message*. Every key of VLC's shortcuts counts (seek, jump, pause, speed,
+  edge, in your accent colour, with a message at the top, readable from the sofa (it grows with the screen: 24 px
+  text at 1080p): what the key did and the time, "+30 s  00:02:50 / 00:25:40"), or *Show only a message*. Every key of VLC's shortcuts counts (seek, jump, pause, speed,
   frame step, delays, tracks, subtitle size and position, aspect ratio, zoom...): jumps in a row add up ("+1:10"),
   the message goes 1.5 s after the last key, the volume keys show the volume indicator, and what VLC would have
   written on the video ("Subtitle track: English", "Aspect ratio: 16:9") shows in the message instead, never both.

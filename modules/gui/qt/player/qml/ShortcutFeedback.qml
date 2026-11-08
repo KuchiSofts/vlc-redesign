@@ -11,8 +11,9 @@ import VLC.Player
 
 // What a shortcut did in full screen while the controls stay hidden ("When
 // you use a shortcut in full screen" of the settings, issue #72; VLC 3 drew
-// a message on the video instead of its controller): a small message at the
-// top centre, where the player's messages show, never over the subtitles:
+// a message on the video instead of its controller): a message at the top
+// centre, where the player's messages show, never over the subtitles, and
+// as large as a TV's (it grows with the screen: fontSize below):
 // what the key did and the time ("+30 s  00:02:50 / 00:25:40"); with "Show
 // only the progress" a thin line of the progress on the bottom edge too.
 // Gone 1.5 s after the last key; the jumps of keys in a row add up (MainCtx).
@@ -23,8 +24,19 @@ Item {
 
     // the controls show (the mouse moved, Tab): the line is under them
     property bool controlsVisible: false
-    // where the message shows (under the top bar while it shows)
-    property real messageY: px(24)
+    // the bottom of what is drawn at the top (the top bar while it shows):
+    // the message goes under it
+    property real messageTop: 0
+
+    // Read from a sofa, as the TV app's: the message grows with the screen,
+    // its text 2.2 % of the height of the video (24 px at 1080p), never under
+    // 18 px; the card keeps the proportions of the player's messages
+    // (PlayerToast.qml: 14 px text in a card of 40, radius 10, 16 on each
+    // side, 24 under the top)
+    readonly property real fontSize: Math.max(18, Math.round(height * 0.022))
+    readonly property real _unit: fontSize / 14
+    // the line: 4 px, a little thicker on a large screen
+    readonly property real lineHeight: Math.max(4, Math.round(fontSize / 6))
 
     // MainCtx.fsShortcutFeedback 1 (the progress) or 2 (the message only),
     // in full screen with a video: PlayerView sets it
@@ -208,7 +220,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        height: root.px(36)
+        height: Math.round(root.fontSize * 1.5)
 
         LayoutMirroring.enabled: false
         LayoutMirroring.childrenInherit: true
@@ -232,7 +244,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            height: root.px(4)
+            height: root.lineHeight
             color: Qt.alpha(VLCStyle.redesign.textPrimary, 0.25)
 
             Rectangle {
@@ -253,10 +265,10 @@ Item {
         readonly property bool wanted: root._shown && (root._text.length > 0 || root._time.length > 0)
 
         anchors.horizontalCenter: parent.horizontalCenter
-        y: root.messageY
-        width: Math.min(row.implicitWidth + root.px(32), root.width - root.px(40))
-        height: root.px(40)
-        radius: root.px(10)
+        y: Math.round(root.messageTop + 24 * root._unit)
+        width: Math.min(row.implicitWidth + Math.round(32 * root._unit), root.width - root.px(40))
+        height: Math.round(40 * root._unit)
+        radius: Math.round(10 * root._unit)
         color: Qt.alpha(VLCStyle.redesign.controlBackground, 0.95)
 
         visible: opacity > 0
@@ -273,21 +285,21 @@ Item {
             id: row
 
             anchors.centerIn: parent
-            spacing: root.px(12)
+            spacing: Math.round(12 * root._unit)
 
             Text {
                 id: label
 
                 visible: text.length > 0
                 anchors.verticalCenter: parent.verticalCenter
-                width: Math.min(implicitWidth, root.width - root.px(72)
+                width: Math.min(implicitWidth, root.width - root.px(40) - Math.round(32 * root._unit)
                                 - (timeText.visible ? timeText.implicitWidth + row.spacing : 0))
                 text: root._text
                 textFormat: Text.PlainText
                 elide: Text.ElideRight
                 color: VLCStyle.redesign.textPrimary
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: root.px(14)
+                font.pixelSize: root.fontSize
                 font.weight: Font.DemiBold
                 font.features: { "tnum": 1 }
             }
@@ -301,7 +313,7 @@ Item {
                 textFormat: Text.PlainText
                 color: VLCStyle.redesign.textSecondary
                 font.family: VLCStyle.redesign.fontFamily
-                font.pixelSize: root.px(14)
+                font.pixelSize: root.fontSize
                 font.features: { "tnum": 1 }
             }
         }

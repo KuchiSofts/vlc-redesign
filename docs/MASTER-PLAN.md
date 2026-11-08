@@ -1386,6 +1386,12 @@ them are in the app.
 - 🟢 *Additional command line options* (Global, advanced; new core option `extra-options`, read at every start; the
   command line wins; `--help`, `--config` and the like ignored) · checked in the app (`--no-qt-bgcone` from vlcrc)
 - 🟢 *Show controls in fullscreen* (Interface, `qt-fs-controller`, live) · in the app ⏳
+- 🟢 *When you use a shortcut in full screen* (Interface › Playback Controls, new, `qt-fs-shortcut-feedback`, live,
+  #72): *Show the controls* (default, as before) / *Show only the progress* (a 4 px accent line on the bottom edge and
+  a message at the top centre: the step of the jumps in a row and the time) / *Show only a message*; the core's OSD
+  for that key goes into the message (`intf-key-feedback`, src/video_output/video_text.c, src/player/osd.c); the
+  volume keys keep the volume indicator · checked in the app (Windows, hidden desktop: Right ×3 `+30 s`, Space
+  *Paused*, `a` *Aspect ratio: 16:9*, mouse and Tab show the bar, windowed unchanged, Hebrew)
 - 🟢 *Show cover art in the window when playing audio* (Interface, advanced, `qt-bgcone`) · checked in the app (off: the
   dark placeholder of the theme)
 - 🟢 *Show the playlist as a tree* (Interface › Playlist, `playlist-tree`, live): VLC 4's queue is flat, so the queue

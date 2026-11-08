@@ -29,6 +29,9 @@ Updated as the work moves (last: 2026-11-08).
 **0.5.8** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 📋 SubSource as a subtitle service, with your own free API key, for its Arabic subtitles in particular
+  ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70), @Elshepl)
+- 📋 Android TV: after the TV sources close, the remote's focus goes back to the page (not the title bar's ⋯)
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)

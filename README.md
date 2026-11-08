@@ -366,7 +366,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 The current release is **0.5.7** (2026-11-08), an update release: subtitles from the internet in every app (Android
 and the Samsung TV app search the free services as the desktop does, for any file, even one whose name says nothing),
-Live TV in the library next to the video, and holding Space or the video for 2× (on Windows a small update from 0.5.6;
+Live TV in the library next to the video, and holding Space or the video for 2× (on Windows a 9.0 MB small update from 0.5.6;
 its files and checksums on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7)); the
 next, **0.5.8**, an update release, brings fixes as the issues bring them. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the

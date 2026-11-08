@@ -12,7 +12,8 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-08):
 
-- 🟢 **Release 0.5.7** (2026-11-08, on request): an update release. Online
+- ✅ **Release 0.5.7** published 2026-11-08 ([v0.5.7](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7),
+  23 files; Android PR #3 and tag v0.5.7; the Samsung source 0.5.7) (on request): an update release. Online
   subtitles in every app (#67) with every free service asked for any file; Live TV in the library next to the
   video; hold for 2× (#64 → #66); Hide UI fixes (#65); the Android Live TV bar on a phone held upright; every
   platform at 0.5.7 in platforms.yml before the build (About's "Also on"), the wiki's Platforms page too.

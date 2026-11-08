@@ -1,0 +1,25 @@
+{
+ "channels": [
+  {
+   "channelId": 7101,
+   "channelNumber": 2,
+   "channelMinor": 1,
+   "channelNumberFormated": "2.1",
+   "channelName": "Demo One",
+   "channelType": "1",
+   "channelIcon": true
+  },
+  {
+   "channelId": 7102,
+   "channelNumber": 5,
+   "channelNumberFormated": "5",
+   "channelName": "Demo Radio",
+   "channelType": "radio",
+   "channelIcon": false
+  },
+  {
+   "channelId": "x7",
+   "channelName": "Bad id"
+  }
+ ]
+}

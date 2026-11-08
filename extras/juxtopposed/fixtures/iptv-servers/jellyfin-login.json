@@ -1,0 +1,12 @@
+{
+ "User": {
+  "Name": "demo",
+  "ServerId": "f00d",
+  "Id": "4d5e6f708192a3b4c5d6e7f8091a2b3c"
+ },
+ "SessionInfo": {
+  "Id": "s1"
+ },
+ "AccessToken": "made-up-access-token",
+ "ServerId": "f00d"
+}

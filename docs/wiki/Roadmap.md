@@ -35,6 +35,11 @@ with a build to try):
   Napisy24, Legendas.net), a services page in Settings › Subtitles (each service on or off, removed or added back,
   your keys tested and your accounts signed in there) and the languages to search (fewer: a faster search): on the
   desktop; Android and the Samsung TV app next
+- 🔨 Live TV: your own servers and tuners (Jellyfin, Emby, Tvheadend, NextPVR, Channels DVR, HDHomeRun, found on
+  your network), Schedules Direct's guide, an M3U behind a login, the automatic guide (the channels without one
+  matched to iptv-org's database and the free guides of their countries attached, with Undo), a Guides tab and a
+  smarter catalog (iptv-org's lists of every country and category, *For you* and *Recommended*, every list checked
+  every day): on the desktop; Android and the Samsung TV app next
 - 📋 Android TV: after the TV sources close, the remote's focus goes back to the page (not the title bar's ⋯)
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)

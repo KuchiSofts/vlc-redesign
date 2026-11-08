@@ -2,7 +2,9 @@
 # 13.3). On main this renders it into the README, site/platforms.json and
 # site/index.html (committed back when they changed) and publishes site/ on
 # GitHub Pages (Settings > Pages > Source: GitHub Actions). A pull request only
-# checks that the rendered files are up to date.
+# checks that the rendered files are up to date. Once a day it also checks
+# every list and guide of the Live TV catalog and publishes it as
+# tv/catalog.json (the copy the app fetches once a day; not committed).
 name: Platforms and website
 
 on:
@@ -13,6 +15,7 @@ on:
       - 'site/**'
       - 'docs/media/**'
       - 'extras/juxtopposed/platforms/**'
+      - 'modules/misc/iptv/catalog/**'
       - '.github/workflows/platforms.yml'
   pull_request:
     paths:
@@ -22,6 +25,8 @@ on:
       - 'extras/juxtopposed/platforms/**'
       - '.github/workflows/platforms.yml'
   workflow_dispatch:
+  schedule:
+    - cron: '23 5 * * *'
 
 permissions:
   contents: read
@@ -36,6 +41,14 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
+
+      - name: Check the Live TV catalog (daily)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          # (the failures in a row of the published copy carry on)
+          curl -sfL https://kuchisofts.github.io/vlc-redesign/tv/catalog.json -o "$RUNNER_TEMP/published.json" || true
+          python3 modules/misc/iptv/catalog/iptv_org.py --previous "$RUNNER_TEMP/published.json" ||
+            echo "::warning::The Live TV catalog could not be checked; the committed one is published"
 
       - name: Check the rendered files (pull request)
         if: github.event_name == 'pull_request'

@@ -83,6 +83,19 @@ VLC media player is made by the volunteers of the [VideoLAN](https://www.videola
 See [AUTHORS](AUTHORS) for the developers and [THANKS](THANKS) for the libraries VLC uses.
 *VLC*, *VLC media player* and the cone logo are trademarks of VideoLAN; this is an unofficial build.
 
+## Live TV data
+
+The catalog of free channel lists and guides, and the automatic guide, use the work of these projects (nothing of
+theirs is shipped but their addresses; their lists and guides are fetched as you use them):
+
+- [iptv-org](https://github.com/iptv-org): its lists of publicly available channels and its database of channels
+  ([API](https://github.com/iptv-org/api), the automatic guide matches channels with it).
+- The free guides of [iptv-epg.org](https://iptv-epg.org), [epgshare01](https://epgshare01.online),
+  [Open-EPG](https://www.open-epg.com), [EPG.PW](https://epg.pw) and [i.mjh.nz](https://i.mjh.nz), and every other
+  list and guide named in the catalog (its `website` fields).
+- The APIs of the servers and services you sign in to, as their documentation and open-source clients describe them:
+  Jellyfin, Emby, Tvheadend, NextPVR, Channels DVR, HDHomeRun and Schedules Direct.
+
 ## Fonts
 
 | Font | Authors | License | File |

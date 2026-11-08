@@ -1,0 +1,7 @@
+{
+ "response": "INVALID_USER",
+ "code": 4003,
+ "serverID": "20141201.web.1",
+ "message": "Invalid user name or password.",
+ "datetime": "2026-11-08T10:00:00Z"
+}

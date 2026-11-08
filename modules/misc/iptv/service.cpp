@@ -7,6 +7,7 @@
  * (at your option) any later version.
  *****************************************************************************/
 #include "service.hpp"
+#include "servers.hpp"
 #include "xtream.hpp"
 
 #include <QCryptographicHash>
@@ -17,6 +18,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QJsonDocument>
+#include <QLocale>
 #include <QRandomGenerator>
 #include <QTimeZone>
 #include <QUrl>
@@ -83,6 +85,67 @@ bool writeAll(const QString& path, const QByteArray& data)
     return QFile::rename(path + QStringLiteral(".part"), path);
 }
 
+// The servers of the user (their own Jellyfin, Tvheadend...): written as an
+// M3U and an XMLTV guide of the source, then read as any other
+bool isServerKind(const QString& kind)
+{
+    static const QSet<QString> kinds = { "jellyfin", "emby", "tvheadend", "nextpvr", "channels", "hdhomerun" };
+    return kinds.contains(kind);
+}
+
+int defaultPort(const QString& kind)
+{
+    if (kind == QLatin1String("jellyfin") || kind == QLatin1String("emby"))
+        return 8096;
+    if (kind == QLatin1String("tvheadend"))
+        return 9981;
+    if (kind == QLatin1String("nextpvr"))
+        return 8866;
+    if (kind == QLatin1String("channels"))
+        return 8089;
+    return 80;
+}
+
+QString kindName(const QString& kind)
+{
+    static const QHash<QString, QString> names = {
+        { "jellyfin", "Jellyfin" }, { "emby", "Emby" }, { "tvheadend", "Tvheadend" }, { "nextpvr", "NextPVR" },
+        { "channels", "Channels DVR" }, { "hdhomerun", "HDHomeRun" }, { "schedulesdirect", "Schedules Direct" },
+    };
+    return names.value(kind);
+}
+
+// A guide alone, for the channels of every source (Schedules Direct)
+bool isGuideOnly(const QString& kind)
+{
+    return kind == QLatin1String("schedulesdirect");
+}
+
+// The guides a source names itself are read: those of its playlist (the
+// user's choice) or of its account (always)
+bool usesOwnGuides(const SourceConfig& s)
+{
+    return s.useHeaderGuides || s.kind == QLatin1String("xtream") || isServerKind(s.kind) || isGuideOnly(s.kind);
+}
+
+// A playlist naming this guide (the one of its server, written next to it)
+QByteArray m3uNamingGuide(const QByteArray& m3u, const QString& guideUrl)
+{
+    const qsizetype end = m3u.indexOf('\n');
+    const QByteArray first = (end < 0 ? m3u : m3u.left(end)).trimmed();
+    const QByteArray header = "#EXTM3U url-tvg=\"" + guideUrl.toUtf8() + "\"";
+    if (!first.startsWith("#EXTM3U"))
+        return header + '\n' + m3u;
+    return header + (end < 0 ? QByteArray() : m3u.mid(end));
+}
+
+QString replyError(const HttpReply& reply)
+{
+    if (reply.status == 0)
+        return reply.error.isEmpty() ? QStringLiteral("cannot be reached") : reply.error;
+    return QStringLiteral("the server answered %1").arg(reply.status);
+}
+
 // The keys a channel can have in a guide, in the order they are tried
 QStringList guideKeysOf(const Channel& c)
 {
@@ -95,6 +158,64 @@ QStringList guideKeysOf(const Channel& c)
     keys.removeDuplicates();
     keys.removeAll(QString());
     return keys;
+}
+
+// A channel in the settings of its source: its guide id, else its name
+QString identityOf(const Channel& c)
+{
+    return c.tvgId.isEmpty() ? QStringLiteral("n:") + c.name : QStringLiteral("i:") + c.tvgId;
+}
+
+// The keys of a channel in the guides: the guide id the user gave it,
+// alone; else its own, then the one the automatic guide found for it
+struct ChannelKeys
+{
+    QStringList keys;
+    QString autoKey;
+    int autoShift = 0;
+};
+ChannelKeys keysOf(const SourceConfig& s, const Channel& c)
+{
+    ChannelKeys out;
+    const QString who = identityOf(c);
+    const QString mine = s.guideIds.value(who);
+    if (!mine.isEmpty())
+    {
+        out.keys << guideKey(mine);
+        return out;
+    }
+    out.keys = guideKeysOf(c);
+    // a feed of iptv-org ("BBCOne.uk@SD"): the channel's id too
+    if (c.tvgId.contains(u'@'))
+    {
+        const QString plain = guideKey(c.tvgId.section(u'@', 0, 0));
+        if (!plain.isEmpty() && !out.keys.contains(plain))
+            out.keys.insert(1, plain);
+    }
+    const auto found = s.autoIds.constFind(who);
+    if (found != s.autoIds.cend())
+    {
+        out.autoKey = guideKey(found->id);
+        out.autoShift = found->shiftSecs;
+        if (!out.keys.contains(out.autoKey))
+            out.keys << out.autoKey;
+    }
+    return out;
+}
+
+// The guides of a source in their order: the user's, the playlist's, the
+// automatic guide's; those turned off left out (unless all)
+QStringList guidesOf(const SourceConfig& s, const QStringList& headerGuides, bool all)
+{
+    QStringList urls = s.epg;
+    if (usesOwnGuides(s))
+        urls << headerGuides;
+    urls << s.autoEpg;
+    urls.removeDuplicates();
+    if (!all)
+        for (const QString& off : s.epgOff)
+            urls.removeAll(off);
+    return urls;
 }
 
 int programmeIndex(const EntryList& list, qint64 t)
@@ -297,6 +418,7 @@ void Service::loadConfig()
             const QJsonObject secret = QJsonDocument::fromJson(m_host.loadSecret(s.id, &found)).object();
             s.url = secret.value(QLatin1String("url")).toString();
             s.password = secret.value(QLatin1String("password")).toString();
+            s.key = secret.value(QLatin1String("key")).toString();
         }
         m_sources.append(s);
     }
@@ -314,12 +436,14 @@ void Service::saveConfig()
         QJsonObject secret;
         secret.insert(QLatin1String("url"), s.url);
         secret.insert(QLatin1String("password"), s.password);
+        secret.insert(QLatin1String("key"), s.key);
         if (m_host.storeSecret(s.id, QJsonDocument(secret).toJson(QJsonDocument::Compact)))
             o.insert(QLatin1String("keystore"), true);
         else
         {
             o.insert(QLatin1String("url"), s.url);
             o.insert(QLatin1String("password"), s.password);
+            o.insert(QLatin1String("key"), s.key);
         }
         list.append(o);
     }
@@ -345,10 +469,25 @@ QJsonObject Service::sourceToJson(const SourceConfig& s, bool withSecrets) const
     o.insert(QLatin1String("catalogId"), s.catalogId);
     o.insert(QLatin1String("enabled"), s.enabled);
     o.insert(QLatin1String("useHeaderGuides"), s.useHeaderGuides);
+    o.insert(QLatin1String("epgOff"), QJsonArray::fromStringList(s.epgOff));
+    o.insert(QLatin1String("autoEpg"), QJsonArray::fromStringList(s.autoEpg));
+    QJsonObject autoIds;
+    for (auto it = s.autoIds.cbegin(); it != s.autoIds.cend(); ++it)
+        autoIds.insert(it.key(), QJsonArray { it->id, it->country, it->shiftSecs });
+    o.insert(QLatin1String("autoIds"), autoIds);
+    o.insert(QLatin1String("autoChecked"), double(s.autoChecked));
+    o.insert(QLatin1String("autoGuideOff"), s.autoGuideOff);
+    o.insert(QLatin1String("autoFound"), s.autoFound);
+    o.insert(QLatin1String("autoTotal"), s.autoTotal);
+    QJsonObject guideIds;
+    for (auto it = s.guideIds.cbegin(); it != s.guideIds.cend(); ++it)
+        guideIds.insert(it.key(), it.value());
+    o.insert(QLatin1String("guideIds"), guideIds);
     if (withSecrets)
     {
         o.insert(QLatin1String("url"), s.url);
         o.insert(QLatin1String("password"), s.password);
+        o.insert(QLatin1String("key"), s.key);
     }
     return o;
 }
@@ -366,9 +505,33 @@ SourceConfig Service::sourceFromJson(const QJsonObject& o) const
     s.server = o.value(QLatin1String("server")).toString().trimmed();
     s.username = o.value(QLatin1String("username")).toString().trimmed();
     s.password = o.value(QLatin1String("password")).toString();
+    s.key = o.value(QLatin1String("key")).toString().trimmed();
     s.catalogId = o.value(QLatin1String("catalogId")).toString();
     s.enabled = o.value(QLatin1String("enabled")).toBool(true);
     s.useHeaderGuides = o.value(QLatin1String("useHeaderGuides")).toBool(true);
+    for (const QJsonValue& e : o.value(QLatin1String("epgOff")).toArray())
+        s.epgOff << e.toString();
+    for (const QJsonValue& e : o.value(QLatin1String("autoEpg")).toArray())
+        s.autoEpg << e.toString();
+    const QJsonObject autoIds = o.value(QLatin1String("autoIds")).toObject();
+    for (auto it = autoIds.constBegin(); it != autoIds.constEnd(); ++it)
+    {
+        const QJsonArray a = it.value().toArray();
+        autoguide::Match m;
+        m.id = a.at(0).toString();
+        m.country = a.at(1).toString();
+        m.shiftSecs = a.at(2).toInt();
+        if (m.isValid())
+            s.autoIds.insert(it.key(), m);
+    }
+    s.autoChecked = qint64(o.value(QLatin1String("autoChecked")).toDouble());
+    s.autoGuideOff = o.value(QLatin1String("autoGuideOff")).toBool();
+    s.autoFound = o.value(QLatin1String("autoFound")).toInt();
+    s.autoTotal = o.value(QLatin1String("autoTotal")).toInt();
+    const QJsonObject guideIds = o.value(QLatin1String("guideIds")).toObject();
+    for (auto it = guideIds.constBegin(); it != guideIds.constEnd(); ++it)
+        if (!it.value().toString().trimmed().isEmpty())
+            s.guideIds.insert(it.key(), it.value().toString().trimmed());
     return s;
 }
 
@@ -457,7 +620,8 @@ void Service::startup()
     {
         std::lock_guard<std::mutex> guard(m_lock);
         for (const SourceConfig& cfg : sources)
-            if (cfg.enabled && m_state.value(cfg.id).channels.isEmpty())
+            if (cfg.enabled && (isGuideOnly(cfg.kind) ? m_state.value(cfg.id).playlistUpdated == 0
+                                                      : m_state.value(cfg.id).channels.isEmpty()))
                 missing << cfg.id;
     }
     if (!missing.isEmpty())
@@ -572,6 +736,11 @@ void Service::refreshSources(const QStringList& ids, bool guides)
     for (const QString& id : std::as_const(done))
         progress(id, QString(), 0, 0);
     changed("guide");
+    // the channels the guides miss: the automatic guide, once a week
+    if (guides)
+        for (const QString& id : std::as_const(done))
+            if (!m_quit)
+                findGuide(id, true);
 }
 
 bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& state)
@@ -642,8 +811,51 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
         return !state.channels.isEmpty();
     }
 
+    if (isGuideOnly(cfg.kind))
+    {
+        // no channels: its guide (guide.xml) serves those of every source
+        if (download && downloadSchedulesDirect(cfg, state))
+            state.error.clear();
+        const QString guidePath = dir + QStringLiteral("/guide.xml");
+        state.channels.clear();
+        if (!QFileInfo::exists(guidePath))
+        {
+            if (state.error.isEmpty() && download)
+                state.error = QStringLiteral("no guide yet");
+            return false;
+        }
+        state.headerGuides = QStringList { QUrl::fromLocalFile(guidePath).toString(QUrl::FullyEncoded) };
+        state.playlistUpdated = QFileInfo(guidePath).lastModified().toSecsSinceEpoch();
+        return state.error.isEmpty();
+    }
+
     const QString path = dir + QStringLiteral("/playlist.m3u");
-    if (download)
+    QString base = asUrl(cfg.url);
+    if (isServerKind(cfg.kind))
+    {
+        // asked by its API, written here (its playlist.m3u and guide.xml)
+        base = servers::baseUrl(cfg.server, defaultPort(cfg.kind));
+        if (download && downloadServer(cfg, state))
+            state.error.clear();
+    }
+    else if (download && !cfg.username.isEmpty())
+    {
+        // an M3U behind a login (Basic or Digest)
+        progress(cfg.id, QStringLiteral("playlist"), 0, 0);
+        HttpCall call;
+        call.url = asUrl(cfg.url);
+        call.username = cfg.username;
+        call.password = cfg.password;
+        call.timeoutMs = 30000;
+        call.maxBytes = 256 << 20;
+        const HttpReply reply = m_host.call(call);
+        state.refused = reply.status == 401 || reply.status == 403;
+        if (reply.status == 200 && !reply.body.isEmpty() && writeAll(path, reply.body))
+            state.error.clear();
+        else
+            state.error = state.refused ? QStringLiteral("sign-in refused") : replyError(reply);
+    }
+    else if (download)
     {
         if (m_host.download(asUrl(cfg.url), path, &error,
                             [this, &cfg](qint64 received, qint64 total) {
@@ -665,7 +877,7 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
         state.error = QStringLiteral("this link is a single stream, not a list of channels");
         return false;
     }
-    Playlist list = parseM3u(data, asUrl(cfg.url));
+    Playlist list = parseM3u(data, base);
     if (!list.error.isEmpty())
     {
         state.error = list.error;
@@ -692,14 +904,12 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
             if (!s.enabled)
                 continue;
             const SourceState state = m_state.value(s.id);
-            QStringList urls = s.epg;
-            if (s.useHeaderGuides || s.kind == QLatin1String("xtream"))
-                urls << state.headerGuides;
-            for (const QString& url : std::as_const(urls))
+            const QStringList urls = guidesOf(s, state.headerGuides, false);
+            for (const QString& url : urls)
                 if (std::none_of(wanted.cbegin(), wanted.cend(), [&](const Wanted& w) { return w.url == url; }))
                     wanted.append({ url, s.id });
             for (const Channel& c : state.channels)
-                for (const QString& k : guideKeysOf(c))
+                for (const QString& k : keysOf(s, c).keys)
                     filter.keys.insert(k);
         }
         days = m_guideDays;
@@ -912,9 +1122,8 @@ void Service::rebuild()
     {
         if (!s.enabled)
             continue;
-        QStringList urls = s.epg;
-        urls << m_state.value(s.id).headerGuides;
-        for (const QString& url : std::as_const(urls))
+        const QStringList urls = guidesOf(s, m_state.value(s.id).headerGuides, false);
+        for (const QString& url : urls)
         {
             const auto g = m_guides.value(url);
             if (g && !ordered.contains(g))
@@ -954,24 +1163,34 @@ void Service::rebuild()
                 key += QStringLiteral("#%1").arg(n);
             }
             entry.key = key;
-            const QStringList keys = guideKeysOf(c);
+            const ChannelKeys keys = keysOf(s, c);
             for (const auto& g : std::as_const(guides))
             {
                 std::shared_ptr<const EntryList> found;
-                for (const QString& k : keys)
+                QString by;
+                for (const QString& k : keys.keys)
                     if ((found = g->byKey.value(k)))
+                    {
+                        by = k;
                         break;
+                    }
                 if (!found)
-                    for (const QString& k : keys)
+                    for (const QString& k : keys.keys)
                     {
                         const QString id = g->idByName.value(k);
                         if (!id.isEmpty() && (found = g->byKey.value(id)))
+                        {
+                            by = k;
                             break;
+                        }
                     }
                 if (found && !found->isEmpty())
                 {
                     entry.guide = found;
                     entry.guideDescPath = g->descPath;
+                    // a "+1" channel: the guide of the one it repeats, later
+                    if (!keys.autoKey.isEmpty() && by == keys.autoKey)
+                        entry.channel.guideShiftSecs += keys.autoShift;
                     break;
                 }
             }
@@ -992,17 +1211,770 @@ void Service::updateCatalog(bool force)
         m_catalogChecked = now;
         saveConfig();
     }
-    // the copy of the project's repository, newer than the one of this
-    // build; quietly nothing when it is not there (yet)
+    // the copy of the project's website (its lists and guides checked every
+    // day), else of its repository; quietly nothing when neither answers
     QString error;
-    const QByteArray data = m_host.fetch(QStringLiteral(
-        "https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/modules/misc/iptv/catalog/catalog.json"),
-        &error, 8 << 20);
+    QByteArray data = m_host.fetch(QStringLiteral("https://kuchisofts.github.io/vlc-redesign/tv/catalog.json"),
+                                   &error, 8 << 20);
+    if (QJsonDocument::fromJson(data).object().value(QLatin1String("version")).toInt() != 1)
+        data = m_host.fetch(QStringLiteral(
+            "https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/modules/misc/iptv/catalog/catalog.json"),
+            &error, 8 << 20);
     const QJsonObject root = QJsonDocument::fromJson(data).object();
     if (root.value(QLatin1String("version")).toInt() != 1 || !root.value(QLatin1String("sources")).isArray())
         return;
     if (writeAll(m_cacheDir + QStringLiteral("/catalog.json"), data))
         changed("catalog");
+}
+
+/* The automatic guide: the channels without a guide matched to iptv-org's
+ * database (their guide id, else their name and country), and the free
+ * guides of the catalog that carry their countries attached. */
+
+QVector<autoguide::Known> Service::knownChannels(QString* error)
+{
+    // (8 MB: once a week, only the fields the matching needs kept)
+    const QString path = m_cacheDir + QStringLiteral("/iptv-org-channels.json");
+    const qint64 age = ageOf(path);
+    if (age < 0 || age > 7 * 86400)
+    {
+        const QString part = path + QStringLiteral(".part");
+        if (m_host.download(QStringLiteral("https://iptv-org.github.io/api/channels.json"), part, error))
+        {
+            QByteArray data = readAll(part);
+            if (isGzip(data))
+                data = gunzip(data, 256 << 20);
+            const QVector<autoguide::Known> fresh = autoguide::parseIptvOrgChannels(data);
+            QFile::remove(part);
+            if (!fresh.isEmpty())
+            {
+                writeAll(path, autoguide::compactChannels(fresh));
+                return fresh;
+            }
+            if (error)
+                *error = QStringLiteral("iptv-org's list of channels could not be read");
+        }
+        QFile::remove(part);
+    }
+    return autoguide::readCompactChannels(readAll(path));
+}
+
+void Service::findGuide(const QString& id, bool automatic)
+{
+    SourceConfig cfg;
+    QVector<Channel> channels;
+    QStringList headerGuides;
+    QSet<QString> covered;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        const SourceConfig* s = findSource(id);
+        // (a server of the user has its own guide)
+        if (!s || !s->enabled || isServerKind(s->kind))
+            return;
+        if (automatic && (s->autoGuideOff || nowSecs() - s->autoChecked < 7 * 86400))
+            return;
+        cfg = *s;
+        channels = m_state.value(id).channels;
+        headerGuides = m_state.value(id).headerGuides;
+        for (const ChannelEntry& c : std::as_const(m_channels))
+            if (c.sourceId == id && c.guide)
+                covered.insert(identityOf(c.channel));
+    }
+    const int total = int(channels.size());
+    const int before = int(covered.size());
+    // a guide that has nearly every channel: nothing to look for
+    if (total == 0 || (automatic && (total - before < 3 || (total - before) * 10 < total)))
+        return;
+    QElapsedTimer took;
+    took.start();
+    progress(id, QStringLiteral("guide"), 0, 0);
+    QString error;
+    const QVector<autoguide::Known> known = knownChannels(&error);
+    QHash<QString, autoguide::Match> ids;
+    QStringList guides;
+    if (!known.isEmpty())
+    {
+        const autoguide::Matcher matcher(known);
+        const QJsonArray catalogSources = catalog().value(QLatin1String("catalog")).toObject()
+                                              .value(QLatin1String("sources")).toArray();
+        // the country of the list (a catalog entry of one country), the user's
+        QString listCountry;
+        for (const QJsonValue& v : catalogSources)
+        {
+            const QJsonObject o = v.toObject();
+            const QJsonArray countries = o.value(QLatin1String("countries")).toArray();
+            if (!cfg.catalogId.isEmpty() && o.value(QLatin1String("id")).toString() == cfg.catalogId
+                && countries.size() == 1)
+                listCountry = countries.at(0).toString().toUpper();
+        }
+        if (listCountry == QLatin1String("UK"))
+            listCountry = QStringLiteral("GB");
+        const QString preferred = QLocale::system().name().section(u'_', 1, 1).toUpper();
+        QHash<QString, int> byCountry;
+        for (const Channel& c : std::as_const(channels))
+        {
+            const QString who = identityOf(c);
+            if (covered.contains(who) || cfg.guideIds.contains(who))
+                continue;
+            const autoguide::Match m = matcher.match(c.tvgId, c.name, listCountry, preferred);
+            if (!m.isValid())
+                continue;
+            ids.insert(who, m);
+            ++byCountry[m.country];
+        }
+        QStringList skip = cfg.epg;
+        skip << headerGuides << cfg.autoEpg;
+        guides = autoguide::pickGuides(catalogSources, byCountry, skip);
+    }
+    // (what it found before stays: the channels its guides cover)
+    const QStringList previousEpg = cfg.autoEpg;
+    const QHash<QString, autoguide::Match> previousIds = cfg.autoIds;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        SourceConfig* s = findSource(id);
+        if (!s)
+            return;
+        for (auto it = ids.cbegin(); it != ids.cend(); ++it)
+            s->autoIds.insert(it.key(), it.value());
+        for (const QString& url : std::as_const(guides))
+            if (!s->autoEpg.contains(url))
+                s->autoEpg << url;
+        s->autoChecked = nowSecs();
+        s->autoGuideOff = false;
+        saveConfig();
+    }
+    m_host.debug(QStringLiteral("automatic guide of %1: %2 of %3 channels matched (%4 of them without a guide), "
+                                "%5 guides, in %6 ms")
+                     .arg(cfg.name).arg(ids.size()).arg(total).arg(total - before).arg(guides.size())
+                     .arg(took.elapsed()));
+    if (!guides.isEmpty() || !ids.isEmpty())
+    {
+        loadGuides(true, { id });
+        rebuild();
+    }
+    progress(id, QString(), 0, 0);
+    int found = 0;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        for (const ChannelEntry& c : std::as_const(m_channels))
+            if (c.sourceId == id && c.guide)
+                ++found;
+        if (SourceConfig* s = findSource(id))
+        {
+            // nothing more found: as it was
+            if (found <= before)
+            {
+                s->autoEpg = previousEpg;
+                s->autoIds = previousIds;
+            }
+            s->autoFound = qMax(found, before);
+            s->autoTotal = total;
+            saveConfig();
+        }
+    }
+    if (found <= before && (!guides.isEmpty() || !ids.isEmpty()))
+    {
+        loadGuides(false, {});
+        rebuild();
+    }
+    changed("guide");
+    changed("sources");
+    // what the user is told (quietly nothing when it found nothing by itself)
+    if (found > before || !automatic)
+    {
+        QJsonObject event;
+        event.insert(QLatin1String("event"), QStringLiteral("guideFound"));
+        event.insert(QLatin1String("id"), id);
+        event.insert(QLatin1String("name"), cfg.name);
+        event.insert(QLatin1String("found"), found);
+        event.insert(QLatin1String("before"), before);
+        event.insert(QLatin1String("total"), total);
+        event.insert(QLatin1String("error"), known.isEmpty() ? error : QString());
+        m_host.notify(event);
+    }
+}
+
+/* The servers of the user: Jellyfin, Emby, Tvheadend, NextPVR, Channels
+ * DVR, HDHomeRun. What they answer is written as the source's playlist.m3u
+ * and guide.xml; the rest of the service reads them as any other source. */
+
+namespace {
+
+HttpCall jsonCall(const QString& url, const QList<QPair<QByteArray, QByteArray>>& headers = {})
+{
+    HttpCall call;
+    call.url = url;
+    call.headers = headers;
+    call.headers.append(qMakePair(QByteArray("Accept"), QByteArray("application/json")));
+    return call;
+}
+
+QList<QPair<QByteArray, QByteArray>> mediaBrowserHeaders(Host& host, const QString& token)
+{
+    const QByteArray value = servers::mediaBrowserAuthorization(host.deviceId(), QStringLiteral("1.0"), token);
+    // (Jellyfin reads Authorization, Emby X-Emby-Authorization)
+    return { { "Authorization", value }, { "X-Emby-Authorization", value }, { "Content-Type", "application/json" } };
+}
+
+} // namespace
+
+bool Service::mediaBrowserSession(const SourceConfig& cfg, QString* token, QString* userId, QString* error,
+                                  bool* refused)
+{
+    *refused = false;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        const auto it = m_sessions.constFind(cfg.id);
+        if (!cfg.id.isEmpty() && it != m_sessions.cend())
+        {
+            *token = it->first;
+            *userId = it->second;
+            return true;
+        }
+    }
+    const bool emby = cfg.kind == QLatin1String("emby");
+    const QString base = servers::baseUrl(cfg.server, defaultPort(cfg.kind));
+    if (cfg.username.isEmpty() && !cfg.key.isEmpty())
+    {
+        // an API key: the server's, no user (the channels of every user)
+        HttpReply reply = m_host.call(jsonCall(base + (emby ? QStringLiteral("/emby") : QString()) + QStringLiteral("/System/Info"),
+                                               mediaBrowserHeaders(m_host, cfg.key)));
+        if (reply.status != 200)
+        {
+            *refused = reply.status == 401 || reply.status == 403;
+            *error = *refused ? QStringLiteral("sign-in refused") : replyError(reply);
+            return false;
+        }
+        *token = cfg.key;
+        userId->clear();
+    }
+    else
+    {
+        HttpCall login = jsonCall(base + (emby ? QStringLiteral("/emby") : QString()) + QStringLiteral("/Users/AuthenticateByName"),
+                                  mediaBrowserHeaders(m_host, QString()));
+        login.method = "POST";
+        login.body = servers::mediaBrowserLoginBody(cfg.username, cfg.password);
+        const HttpReply reply = m_host.call(login);
+        const servers::Session session = servers::parseMediaBrowserLogin(reply.body);
+        if (reply.status != 200 || session.token.isEmpty())
+        {
+            *refused = reply.status == 401 || reply.status == 403 || (reply.status == 200 && session.token.isEmpty());
+            *error = *refused ? QStringLiteral("sign-in refused") : replyError(reply);
+            return false;
+        }
+        *token = session.token;
+        *userId = session.userId;
+    }
+    if (!cfg.id.isEmpty())
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_sessions.insert(cfg.id, { *token, *userId });
+    }
+    return true;
+}
+
+bool Service::downloadServer(const SourceConfig& cfg, SourceState& state)
+{
+    const QString dir = sourceDir(cfg.id);
+    QDir().mkpath(dir);
+    const QString playlistPath = dir + QStringLiteral("/playlist.m3u");
+    const QString guidePath = dir + QStringLiteral("/guide.xml");
+    const QString guideUrl = QUrl::fromLocalFile(guidePath).toString(QUrl::FullyEncoded);
+    const QString base = servers::baseUrl(cfg.server, defaultPort(cfg.kind));
+    state.refused = false;
+    if (base.isEmpty())
+    {
+        state.error = QStringLiteral("the server's address is not one");
+        return false;
+    }
+    int days;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        days = m_guideDays;
+    }
+    const qint64 from = nowSecs() - 3 * 3600;
+    const qint64 to = nowSecs() + qint64(qMin(days, 7)) * 86400;
+    QElapsedTimer took;
+    took.start();
+    auto refusedBy = [&state](const HttpReply& reply) {
+        state.refused = reply.status == 401 || reply.status == 403;
+        state.error = state.refused ? QStringLiteral("sign-in refused") : replyError(reply);
+        return false;
+    };
+
+    // Tvheadend and Channels DVR: their own M3U and XMLTV
+    if (cfg.kind == QLatin1String("tvheadend") || cfg.kind == QLatin1String("channels"))
+    {
+        const bool tvh = cfg.kind == QLatin1String("tvheadend");
+        HttpCall call;
+        call.url = (tvh ? servers::tvheadendPlaylistUrl(base) : servers::channelsPlaylistUrl(base)).toString(QUrl::FullyEncoded);
+        call.username = cfg.username;
+        call.password = cfg.password;
+        call.timeoutMs = 30000;
+        const HttpReply playlist = m_host.call(call);
+        if (playlist.status != 200 || playlist.body.isEmpty())
+            return refusedBy(playlist);
+        call.url = (tvh ? servers::tvheadendGuideUrl(base) : servers::channelsGuideUrl(base)).toString(QUrl::FullyEncoded);
+        call.timeoutMs = 120000;
+        call.maxBytes = 512 << 20;
+        const HttpReply guide = m_host.call(call);
+        if (guide.status == 200 && !guide.body.isEmpty())
+            writeAll(guidePath, guide.body);
+        const QByteArray m3u = tvh ? servers::tvheadendWithUser(playlist.body, cfg.username, cfg.password) : playlist.body;
+        m_host.debug(QStringLiteral("%1: its playlist and guide in %2 ms").arg(cfg.kind).arg(took.elapsed()));
+        return writeAll(playlistPath, m3uNamingGuide(m3u, guideUrl));
+    }
+
+    QVector<servers::Channel> channels;
+    QVector<servers::Programme> programmes;
+    if (cfg.kind == QLatin1String("hdhomerun"))
+    {
+        const HttpReply discover = m_host.call(jsonCall(base + QStringLiteral("/discover.json")));
+        if (discover.status != 200)
+            return refusedBy(discover);
+        const servers::Tuner tuner = servers::parseHdhrDiscover(discover.body);
+        const HttpReply lineup = m_host.call(jsonCall(tuner.lineupUrl.isEmpty() ? base + QStringLiteral("/lineup.json")
+                                                                                : tuner.lineupUrl));
+        if (lineup.status != 200)
+            return refusedBy(lineup);
+        channels = servers::parseHdhrLineup(lineup.body);
+        // its free guide (the next hours), by the tuner's DeviceAuth
+        if (!tuner.deviceAuth.isEmpty())
+        {
+            const HttpReply guide = m_host.call(jsonCall(servers::hdhrGuideUrl(tuner.deviceAuth).toString(QUrl::FullyEncoded)));
+            if (guide.status == 200)
+                programmes = servers::parseHdhrGuide(guide.body);
+        }
+    }
+    else if (cfg.kind == QLatin1String("jellyfin") || cfg.kind == QLatin1String("emby"))
+    {
+        const bool emby = cfg.kind == QLatin1String("emby");
+        QString token, userId, error;
+        bool refused = false;
+        if (!mediaBrowserSession(cfg, &token, &userId, &error, &refused))
+        {
+            state.refused = refused;
+            state.error = error;
+            return false;
+        }
+        const auto headers = mediaBrowserHeaders(m_host, token);
+        HttpReply list = m_host.call(jsonCall(servers::mediaBrowserChannelsUrl(base, userId, emby).toString(QUrl::FullyEncoded), headers));
+        if (list.status == 401)
+        {
+            // (its token ran out: signed in again, once)
+            {
+                std::lock_guard<std::mutex> guard(m_lock);
+                m_sessions.remove(cfg.id);
+            }
+            if (!mediaBrowserSession(cfg, &token, &userId, &error, &refused))
+            {
+                state.refused = refused;
+                state.error = error;
+                return false;
+            }
+            list = m_host.call(jsonCall(servers::mediaBrowserChannelsUrl(base, userId, emby).toString(QUrl::FullyEncoded),
+                                        mediaBrowserHeaders(m_host, token)));
+        }
+        if (list.status != 200)
+            return refusedBy(list);
+        channels = servers::parseMediaBrowserChannels(list.body, base, emby);
+        HttpCall guide = jsonCall(servers::mediaBrowserProgrammesUrl(base, userId, from, to, emby).toString(QUrl::FullyEncoded),
+                                  mediaBrowserHeaders(m_host, token));
+        guide.timeoutMs = 120000;
+        const HttpReply answer = m_host.call(guide);
+        if (answer.status == 200)
+            programmes = servers::parseMediaBrowserProgrammes(answer.body);
+        // (the logos need no token: the server shows its images to anyone, and the
+        // token stays out of the playlist written to the disk and out of the logs)
+    }
+    else if (cfg.kind == QLatin1String("nextpvr"))
+    {
+        const HttpReply initiate = m_host.call(jsonCall(servers::nextPvrInitiateUrl(base).toString(QUrl::FullyEncoded)));
+        const servers::Salted salted = servers::parseNextPvrInitiate(initiate.body);
+        if (initiate.status != 200 || salted.sid.isEmpty())
+            return refusedBy(initiate);
+        // (its PIN is 0000 until the user sets one)
+        const QString pin = cfg.password.isEmpty() ? QStringLiteral("0000") : cfg.password;
+        const HttpReply login = m_host.call(jsonCall(
+            servers::nextPvrLoginUrl(base, salted.sid, servers::nextPvrLoginKey(pin, salted.salt)).toString(QUrl::FullyEncoded)));
+        if (login.status != 200 || !servers::parseNextPvrLogin(login.body))
+        {
+            state.refused = login.status == 200 || login.status == 401 || login.status == 403;
+            state.error = state.refused ? QStringLiteral("sign-in refused") : replyError(login);
+            return false;
+        }
+        const HttpReply list = m_host.call(jsonCall(servers::nextPvrChannelsUrl(base, salted.sid).toString(QUrl::FullyEncoded)));
+        if (list.status != 200)
+            return refusedBy(list);
+        channels = servers::parseNextPvrChannels(list.body, base, salted.sid);
+        // their listings, a channel at a time (at most 300)
+        for (int i = 0; i < channels.size() && i < 300 && !m_quit; ++i)
+        {
+            const HttpReply listings = m_host.call(jsonCall(
+                servers::nextPvrListingsUrl(base, salted.sid, channels[i].id, from, to).toString(QUrl::FullyEncoded)));
+            if (listings.status == 200)
+                programmes += servers::parseNextPvrListings(listings.body, channels[i].id);
+        }
+    }
+    else
+    {
+        state.error = QStringLiteral("unknown kind of server");
+        return false;
+    }
+    if (channels.isEmpty())
+    {
+        state.error = QStringLiteral("the server has no TV channels");
+        return false;
+    }
+    m_host.debug(QStringLiteral("%1: %2 channels and %3 programmes in %4 ms")
+                     .arg(cfg.kind).arg(channels.size()).arg(programmes.size()).arg(took.elapsed()));
+    writeAll(guidePath, servers::xmltvOf(channels, programmes));
+    return writeAll(playlistPath, servers::m3uOf(channels, guideUrl));
+}
+
+QString Service::openServerStream(const QString& sourceId, const QString& channelUrl, QString* error)
+{
+    SourceConfig cfg;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        const SourceConfig* s = findSource(sourceId);
+        if (!s)
+            return {};
+        cfg = *s;
+    }
+    const bool emby = cfg.kind == QLatin1String("emby");
+    const QString base = servers::baseUrl(cfg.server, defaultPort(cfg.kind));
+    // (".../Videos/<id>/stream.ts")
+    const QStringList parts = QUrl(channelUrl).path().split(QLatin1Char('/'), Qt::SkipEmptyParts);
+    const qsizetype at = parts.indexOf(QStringLiteral("Videos"));
+    if (at < 0 || at + 1 >= parts.size())
+        return {};
+    const QString channelId = parts[at + 1];
+    for (int attempt = 0; attempt < 2; ++attempt)
+    {
+        QString token, userId;
+        bool refused = false;
+        if (!mediaBrowserSession(cfg, &token, &userId, error, &refused))
+            return {};
+        HttpCall info = jsonCall(servers::mediaBrowserPlaybackInfoUrl(base, channelId, userId, emby).toString(QUrl::FullyEncoded),
+                                 mediaBrowserHeaders(m_host, token));
+        info.method = "POST";
+        info.body = servers::mediaBrowserPlaybackInfoBody();
+        info.timeoutMs = 30000;
+        const HttpReply reply = m_host.call(info);
+        if (reply.status == 401 && attempt == 0)
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            m_sessions.remove(cfg.id);
+            continue;
+        }
+        if (reply.status != 200)
+        {
+            *error = replyError(reply);
+            return {};
+        }
+        const QString url = servers::mediaBrowserStreamUrl(reply.body, base, channelId, token, emby);
+        if (url.isEmpty())
+            *error = QStringLiteral("the server gave no stream");
+        return url;
+    }
+    return {};
+}
+
+bool Service::downloadSchedulesDirect(const SourceConfig& cfg, SourceState& state)
+{
+    const QString dir = sourceDir(cfg.id);
+    QDir().mkpath(dir);
+    state.refused = false;
+    int days;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        days = qBound(1, m_guideDays, 14);
+    }
+    QElapsedTimer took;
+    took.start();
+    progress(cfg.id, QStringLiteral("guide"), 0, 0);
+    // its token
+    HttpCall login = jsonCall(servers::sdBase() + QStringLiteral("/token"));
+    login.method = "POST";
+    login.body = servers::sdTokenBody(cfg.username, servers::sdPasswordHash(cfg.password));
+    login.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/json")));
+    const HttpReply signedIn = m_host.call(login);
+    const servers::SdAnswer token = servers::parseSdToken(signedIn.body);
+    if (token.token.isEmpty())
+    {
+        state.refused = (token.code >= 4001 && token.code <= 4005) || signedIn.status == 401 || signedIn.status == 403;
+        state.error = state.refused ? QStringLiteral("sign-in refused")
+                    : !token.message.isEmpty() ? token.message : replyError(signedIn);
+        return false;
+    }
+    const QList<QPair<QByteArray, QByteArray>> headers {
+        qMakePair(QByteArray("token"), token.token.toUtf8()),
+        qMakePair(QByteArray("Content-Type"), QByteArray("application/json")) };
+    // the lineups of the account, their stations
+    const HttpReply lineups = m_host.call(jsonCall(servers::sdBase() + QStringLiteral("/lineups"), headers));
+    int code = -1;
+    const QStringList uris = servers::parseSdLineups(lineups.body, &code);
+    if (uris.isEmpty())
+    {
+        state.error = code == 4102 ? QStringLiteral("no lineup in the account: add one on schedulesdirect.org")
+                                   : replyError(lineups);
+        return false;
+    }
+    QVector<servers::Channel> stations;
+    QSet<QString> seen;
+    for (const QString& uri : uris.mid(0, 4))
+    {
+        const HttpReply lineup = m_host.call(jsonCall(QStringLiteral("https://json.schedulesdirect.org") + uri, headers));
+        for (const servers::Channel& c : servers::parseSdLineup(lineup.body))
+            if (!seen.contains(c.id))
+            {
+                seen.insert(c.id);
+                stations.append(c);
+            }
+    }
+    if (stations.isEmpty())
+    {
+        state.error = QStringLiteral("the lineups have no stations");
+        return false;
+    }
+    // their schedules, then the programmes they name (5000 a request)
+    QStringList ids;
+    for (const servers::Channel& c : std::as_const(stations))
+        ids << c.id;
+    QVector<servers::SdAiring> airings;
+    for (qsizetype i = 0; i < ids.size(); i += 5000)
+    {
+        HttpCall call = jsonCall(servers::sdBase() + QStringLiteral("/schedules"), headers);
+        call.method = "POST";
+        call.body = servers::sdSchedulesBody(ids.mid(i, 5000), nowSecs(), days);
+        call.timeoutMs = 120000;
+        call.maxBytes = 256 << 20;
+        const HttpReply reply = m_host.call(call);
+        if (reply.status != 200)
+        {
+            state.error = replyError(reply);
+            return false;
+        }
+        airings += servers::parseSdSchedules(reply.body);
+        if (m_quit)
+            return false;
+    }
+    QStringList programs;
+    {
+        QSet<QString> unique;
+        for (const servers::SdAiring& a : std::as_const(airings))
+            if (!unique.contains(a.program))
+            {
+                unique.insert(a.program);
+                programs << a.program;
+            }
+    }
+    QHash<QString, servers::Programme> details;
+    for (qsizetype i = 0; i < programs.size(); i += 5000)
+    {
+        HttpCall call = jsonCall(servers::sdBase() + QStringLiteral("/programs"), headers);
+        call.method = "POST";
+        call.body = servers::sdProgramsBody(programs.mid(i, 5000));
+        call.timeoutMs = 120000;
+        call.maxBytes = 256 << 20;
+        const HttpReply reply = m_host.call(call);
+        if (reply.status != 200)
+        {
+            state.error = replyError(reply);
+            return false;
+        }
+        details.insert(servers::parseSdPrograms(reply.body));
+        progress(cfg.id, QStringLiteral("guide"), qint64(i + 5000) * 1024, qint64(programs.size()) * 1024);
+        if (m_quit)
+            return false;
+    }
+    QVector<servers::Programme> programmes;
+    programmes.reserve(airings.size());
+    for (const servers::SdAiring& a : std::as_const(airings))
+    {
+        const auto it = details.constFind(a.program);
+        if (it == details.cend())
+            continue;
+        servers::Programme p = *it;
+        p.channel = a.station;
+        p.start = a.start;
+        p.stop = a.start + a.duration;
+        programmes.append(p);
+    }
+    if (!writeAll(dir + QStringLiteral("/guide.xml"), servers::xmltvOf(stations, programmes)))
+    {
+        state.error = QStringLiteral("the guide could not be written");
+        return false;
+    }
+    m_host.debug(QStringLiteral("Schedules Direct: %1 stations and %2 programmes in %3 ms")
+                     .arg(stations.size()).arg(programmes.size()).arg(took.elapsed()));
+    return true;
+}
+
+QJsonObject Service::testSource(const QJsonObject& r)
+{
+    SourceConfig s = sourceFromJson(r.value(QLatin1String("source")).toObject());
+    // (an empty password or key of a source kept: its own)
+    const QString id = r.value(QLatin1String("id")).toString();
+    if (!id.isEmpty())
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        if (const SourceConfig* old = findSource(id))
+        {
+            if (s.password.isEmpty())
+                s.password = old->password;
+            if (s.key.isEmpty())
+                s.key = old->key;
+        }
+    }
+    s.id.clear();   // (no session kept for a test)
+    auto answer = [](const char* result, const QString& who = {}, int channels = -1) {
+        QJsonObject o { { QStringLiteral("result"), QLatin1String(result) } };
+        if (!who.isEmpty())
+            o.insert(QLatin1String("who"), who);
+        if (channels >= 0)
+            o.insert(QLatin1String("channels"), channels);
+        return o;
+    };
+    auto ofReply = [&](const HttpReply& reply, const QString& who) {
+        if (reply.status == 200)
+            return answer(who.isEmpty() ? "works" : "signedIn", who);
+        if (reply.status == 401 || reply.status == 403)
+            return answer("refused");
+        return answer("noAnswer");
+    };
+    const QString base = servers::baseUrl(s.server, defaultPort(s.kind));
+    if (s.kind == QLatin1String("xtream"))
+    {
+        QString error;
+        const xtream::Account account { s.server, s.username, s.password };
+        const QByteArray info = m_host.fetch(xtream::apiUrl(account).toString(QUrl::FullyEncoded), &error);
+        if (info.isEmpty())
+            return answer("noAnswer");
+        return xtream::parseAccountInfo(info).authenticated ? answer("signedIn", s.username) : answer("refused");
+    }
+    if (s.kind == QLatin1String("m3u"))
+    {
+        HttpCall call;
+        call.url = asUrl(s.url);
+        call.username = s.username;
+        call.password = s.password;
+        call.maxBytes = 64 << 20;
+        return ofReply(m_host.call(call), s.username);
+    }
+    if (isGuideOnly(s.kind))
+    {
+        HttpCall login = jsonCall(servers::sdBase() + QStringLiteral("/token"));
+        login.method = "POST";
+        login.body = servers::sdTokenBody(s.username, servers::sdPasswordHash(s.password));
+        login.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/json")));
+        const HttpReply reply = m_host.call(login);
+        const servers::SdAnswer token = servers::parseSdToken(reply.body);
+        if (!token.token.isEmpty())
+            return answer("signedIn", s.username);
+        const bool refused = (token.code >= 4001 && token.code <= 4005) || reply.status == 401 || reply.status == 403;
+        return answer(refused ? "refused" : "noAnswer");
+    }
+    if (base.isEmpty())
+        return answer("noAnswer");
+    if (s.kind == QLatin1String("jellyfin") || s.kind == QLatin1String("emby"))
+    {
+        QString token, userId, error;
+        bool refused = false;
+        if (!mediaBrowserSession(s, &token, &userId, &error, &refused))
+            return answer(refused ? "refused" : "noAnswer");
+        return answer(s.username.isEmpty() ? "works" : "signedIn", s.username);
+    }
+    if (s.kind == QLatin1String("tvheadend"))
+    {
+        HttpCall call = jsonCall(base + QStringLiteral("/api/serverinfo"));
+        call.username = s.username;
+        call.password = s.password;
+        return ofReply(m_host.call(call), s.username);
+    }
+    if (s.kind == QLatin1String("channels"))
+        return ofReply(m_host.call(jsonCall(base + QStringLiteral("/devices"))), {});
+    if (s.kind == QLatin1String("hdhomerun"))
+    {
+        const HttpReply reply = m_host.call(jsonCall(base + QStringLiteral("/discover.json")));
+        if (reply.status != 200)
+            return answer("noAnswer");
+        return answer("works", servers::parseHdhrDiscover(reply.body).name);
+    }
+    if (s.kind == QLatin1String("nextpvr"))
+    {
+        const HttpReply initiate = m_host.call(jsonCall(servers::nextPvrInitiateUrl(base).toString(QUrl::FullyEncoded)));
+        const servers::Salted salted = servers::parseNextPvrInitiate(initiate.body);
+        if (initiate.status != 200 || salted.sid.isEmpty())
+            return answer("noAnswer");
+        const QString pin = s.password.isEmpty() ? QStringLiteral("0000") : s.password;
+        const HttpReply login = m_host.call(jsonCall(
+            servers::nextPvrLoginUrl(base, salted.sid, servers::nextPvrLoginKey(pin, salted.salt)).toString(QUrl::FullyEncoded)));
+        if (login.status != 200)
+            return answer("noAnswer");
+        return servers::parseNextPvrLogin(login.body) ? answer("works") : answer("refused");
+    }
+    return answer("noAnswer");
+}
+
+QJsonObject Service::discover()
+{
+    QJsonArray found;
+    QSet<QString> seen;
+    auto add = [&](const servers::Found& f) {
+        if (f.address.isEmpty() || seen.contains(f.address))
+            return;
+        seen.insert(f.address);
+        found.append(QJsonObject { { QStringLiteral("kind"), f.kind }, { QStringLiteral("name"), f.name },
+                                   { QStringLiteral("address"), f.address }, { QStringLiteral("id"), f.id } });
+    };
+    // Jellyfin and Emby answer "who is ...?" on UDP 7359
+    for (const bool emby : { false, true })
+        for (const Datagram& d : m_host.broadcast(7359, servers::mediaBrowserDiscoverPacket(emby), 1200))
+            add(servers::parseMediaBrowserDiscoverReply(d.data, emby));
+    // HDHomeRun: its own discovery on UDP 65001, then its discover.json
+    for (const Datagram& d : m_host.broadcast(65001, servers::hdhrDiscoverPacket(), 1200))
+    {
+        if (!servers::isHdhrDiscoverReply(d.data))
+            continue;
+        const QString base = servers::baseUrl(d.from, 80);
+        const HttpReply reply = m_host.call(jsonCall(base + QStringLiteral("/discover.json")));
+        const servers::Tuner tuner = servers::parseHdhrDiscover(reply.body);
+        add({ QStringLiteral("hdhomerun"), tuner.name.isEmpty() ? QStringLiteral("HDHomeRun") : tuner.name,
+              tuner.baseUrl.isEmpty() ? base : tuner.baseUrl, tuner.id });
+    }
+    // Channels DVR: multicast DNS (Bonjour)
+    const QString channelsService = QStringLiteral("_channels_dvr._tcp.local");
+    for (const Datagram& d : m_host.broadcast(5353, servers::mdnsQuery(channelsService), 1200,
+                                              QStringLiteral("224.0.0.251")))
+        for (const servers::MdnsService& svc : servers::parseMdnsAnswer(d.data, channelsService))
+            add({ QStringLiteral("channels"), svc.name.isEmpty() ? QStringLiteral("Channels DVR") : svc.name,
+                  servers::baseUrl((svc.address.isEmpty() ? d.from : svc.address) + QLatin1Char(':')
+                                       + QString::number(svc.port > 0 ? svc.port : 8089), 8089),
+                  svc.host });
+    // and those its cloud knows on this network (when UDP is blocked)
+    HttpCall cloud = jsonCall(QStringLiteral("https://api.hdhomerun.com/discover"));
+    cloud.timeoutMs = 5000;
+    for (const servers::Tuner& t : servers::parseHdhrCloudDiscover(m_host.call(cloud).body))
+        if (!t.lineupUrl.isEmpty())
+            add({ QStringLiteral("hdhomerun"), t.name, t.baseUrl, t.id });
+    // the ones added already: not offered again
+    QJsonArray offered;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        for (const QJsonValue v : std::as_const(found))
+        {
+            const QString address = v.toObject().value(QLatin1String("address")).toString();
+            const bool added = std::any_of(m_sources.cbegin(), m_sources.cend(), [&](const SourceConfig& s) {
+                return isServerKind(s.kind) && servers::baseUrl(s.server, defaultPort(s.kind)) == address;
+            });
+            QJsonObject o = v.toObject();
+            o.insert(QLatin1String("added"), added);
+            offered.append(o);
+        }
+    }
+    return QJsonObject { { QStringLiteral("found"), offered } };
 }
 
 /* The answers */
@@ -1052,8 +2024,41 @@ QJsonObject Service::request(const QJsonObject& r)
         return nowNext(r);
     if (op == QLatin1String("description"))
         return description(r);
-    if (op == QLatin1String("play") || op == QLatin1String("catchup"))
+    if (op == QLatin1String("play"))
+    {
+        // a channel of Jellyfin or Emby: its stream opened now
+        QString sourceId, url;
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            const int index = m_channelIndex.value(r.value(QLatin1String("key")).toString(), -1);
+            if (index >= 0)
+            {
+                const SourceConfig* s = findSource(m_channels[index].sourceId);
+                if (s && (s->kind == QLatin1String("jellyfin") || s->kind == QLatin1String("emby")))
+                {
+                    sourceId = s->id;
+                    url = m_channels[index].channel.url;
+                }
+            }
+        }
+        if (!sourceId.isEmpty())
+        {
+            QString error;
+            const QString stream = openServerStream(sourceId, url, &error);
+            QJsonObject answer = catchup(r);
+            if (stream.isEmpty())
+                return QJsonObject { { QStringLiteral("error"), error } };
+            answer.insert(QLatin1String("url"), stream);
+            return answer;
+        }
         return catchup(r);
+    }
+    if (op == QLatin1String("catchup"))
+        return catchup(r);
+    if (op == QLatin1String("testSource"))
+        return testSource(r);
+    if (op == QLatin1String("discover"))
+        return discover();
     if (op == QLatin1String("catalog"))
         return catalog();
     if (op == QLatin1String("vod"))
@@ -1085,14 +2090,29 @@ QJsonObject Service::request(const QJsonObject& r)
     if (op == QLatin1String("addSource") || op == QLatin1String("updateSource"))
     {
         SourceConfig s = sourceFromJson(r.value(QLatin1String("source")).toObject());
-        if (s.kind != QLatin1String("xtream"))
+        if (s.kind != QLatin1String("xtream") && !isServerKind(s.kind) && !isGuideOnly(s.kind))
             s.kind = QStringLiteral("m3u");
-        if (s.kind == QLatin1String("m3u") ? s.url.isEmpty()
-                                           : (s.server.isEmpty() || s.username.isEmpty()))
+        // (Schedules Direct takes the SHA-1 of the password: only it is kept)
+        if (isGuideOnly(s.kind) && !s.password.isEmpty())
+            s.password = servers::sdPasswordHash(s.password);
+        // what each needs: an M3U its link; Xtream its server and user; a
+        // server its address (Jellyfin and Emby a user or an API key)
+        const bool mediaBrowser = s.kind == QLatin1String("jellyfin") || s.kind == QLatin1String("emby");
+        const bool incomplete = s.kind == QLatin1String("m3u") ? s.url.isEmpty()
+                              : s.kind == QLatin1String("xtream") ? (s.server.isEmpty() || s.username.isEmpty())
+                              : isGuideOnly(s.kind) ? (s.username.isEmpty()
+                                                       || (s.password.isEmpty() && op == QLatin1String("addSource")))
+                              : servers::baseUrl(s.server, defaultPort(s.kind)).isEmpty()
+                                    || (mediaBrowser && s.username.isEmpty() && s.key.isEmpty()
+                                        && op == QLatin1String("addSource"));
+        if (incomplete)
             return QJsonObject { { QStringLiteral("error"), QStringLiteral("incomplete") } };
         if (s.name.isEmpty())
-            s.name = s.kind == QLatin1String("xtream") ? hostOf(xtream::normalizeServer(s.server))
-                                                       : hostOf(s.url);
+            s.name = isGuideOnly(s.kind) ? kindName(s.kind)
+                   : s.kind == QLatin1String("xtream") ? hostOf(xtream::normalizeServer(s.server))
+                   : isServerKind(s.kind) ? kindName(s.kind) + QStringLiteral(" · ")
+                                                + hostOf(servers::baseUrl(s.server, defaultPort(s.kind)))
+                                          : hostOf(s.url);
         QString id;
         {
             std::lock_guard<std::mutex> guard(m_lock);
@@ -1102,9 +2122,24 @@ QJsonObject Service::request(const QJsonObject& r)
                 if (!old)
                     return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
                 s.id = old->id;
-                // a password left empty is the one kept
-                if (s.kind == QLatin1String("xtream") && s.password.isEmpty())
-                    s.password = old->password;
+                // a password or key left empty is the one kept
+                if (s.kind != QLatin1String("m3u") || !s.username.isEmpty())
+                {
+                    if (s.password.isEmpty())
+                        s.password = old->password;
+                    if (s.key.isEmpty())
+                        s.key = old->key;
+                }
+                m_sessions.remove(s.id);
+                // (what the dialog does not show)
+                s.epgOff = old->epgOff;
+                s.autoEpg = old->autoEpg;
+                s.autoIds = old->autoIds;
+                s.autoChecked = old->autoChecked;
+                s.autoGuideOff = old->autoGuideOff;
+                s.autoFound = old->autoFound;
+                s.autoTotal = old->autoTotal;
+                s.guideIds = old->guideIds;
                 *old = s;
             }
             else
@@ -1160,6 +2195,126 @@ QJsonObject Service::request(const QJsonObject& r)
         changed("sources");
         return out;
     }
+    // Sign Out: the password and key of an account forgotten, the source off
+    if (op == QLatin1String("signOut"))
+    {
+        const QString id = r.value(QLatin1String("id")).toString();
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            SourceConfig* s = findSource(id);
+            if (!s)
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
+            s->password.clear();
+            s->key.clear();
+            s->enabled = false;
+            m_sessions.remove(id);
+            saveConfig();
+        }
+        post([this]() { loadGuides(false, {}); rebuild(); changed("channels"); changed("guide"); });
+        changed("sources");
+        return out;
+    }
+    // the automatic guide: look now, or remove it (not again by itself)
+    if (op == QLatin1String("findGuide"))
+    {
+        const QString id = r.value(QLatin1String("id")).toString();
+        post([this, id]() { findGuide(id, false); });
+        return out;
+    }
+    if (op == QLatin1String("removeAutoGuide"))
+    {
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            SourceConfig* s = findSource(r.value(QLatin1String("id")).toString());
+            if (!s)
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
+            for (const QString& url : std::as_const(s->autoEpg))
+                s->epgOff.removeAll(url);
+            s->autoEpg.clear();
+            s->autoIds.clear();
+            s->autoGuideOff = true;
+            s->autoFound = 0;
+            s->autoTotal = 0;
+            saveConfig();
+        }
+        post([this]() { loadGuides(false, {}); rebuild(); changed("guide"); });
+        changed("sources");
+        return out;
+    }
+    // a guide of a source turned off or on, or removed (the playlist's own
+    // ones are only turned off)
+    if (op == QLatin1String("setGuideEnabled") || op == QLatin1String("removeGuide"))
+    {
+        const QString id = r.value(QLatin1String("id")).toString();
+        const QString guide = r.value(QLatin1String("guide")).toString();
+        const bool enabled = r.value(QLatin1String("enabled")).toBool(true);
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            SourceConfig* s = findSource(id);
+            if (!s)
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
+            QString url;
+            for (const QString& u : guidesOf(*s, m_state.value(id).headerGuides, true))
+                if (hashOf(u) == guide)
+                    url = u;
+            if (url.isEmpty())
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such guide") } };
+            if (op == QLatin1String("removeGuide") && (s->epg.contains(url) || s->autoEpg.contains(url)))
+            {
+                // (a guide found for the user, removed: not found again by itself)
+                if (s->autoEpg.contains(url))
+                    s->autoGuideOff = true;
+                s->epg.removeAll(url);
+                s->autoEpg.removeAll(url);
+                s->epgOff.removeAll(url);
+            }
+            else if (op == QLatin1String("removeGuide") || !enabled)
+            {
+                if (!s->epgOff.contains(url))
+                    s->epgOff << url;
+            }
+            else
+                s->epgOff.removeAll(url);
+            saveConfig();
+        }
+        post([this, id]() { loadGuides(true, { id }); rebuild(); changed("guide"); });
+        changed("sources");
+        return out;
+    }
+    // the guide id of a channel: the user's, the one of its list, the one the
+    // automatic guide found; and the user's own (empty: none)
+    if (op == QLatin1String("channelGuide") || op == QLatin1String("setChannelGuide"))
+    {
+        const QString key = r.value(QLatin1String("key")).toString();
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            const int index = m_channelIndex.value(key, -1);
+            if (index < 0)
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such channel") } };
+            const ChannelEntry& c = m_channels[index];
+            SourceConfig* s = findSource(c.sourceId);
+            if (!s)
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
+            const QString who = identityOf(c.channel);
+            if (op == QLatin1String("channelGuide"))
+            {
+                out.insert(QLatin1String("name"), c.channel.name);
+                out.insert(QLatin1String("user"), s->guideIds.value(who));
+                out.insert(QLatin1String("own"), c.channel.tvgId);
+                out.insert(QLatin1String("auto"), s->autoIds.value(who).id);
+                out.insert(QLatin1String("hasGuide"), bool(c.guide));
+                return out;
+            }
+            const QString id = r.value(QLatin1String("guideId")).toString().trimmed();
+            if (id.isEmpty())
+                s->guideIds.remove(who);
+            else
+                s->guideIds.insert(who, id);
+            saveConfig();
+        }
+        post([this]() { loadGuides(false, {}); rebuild(); changed("guide"); });
+        return out;
+    }
     if (op == QLatin1String("refresh"))
     {
         const QString id = r.value(QLatin1String("id")).toString();
@@ -1186,8 +2341,11 @@ QJsonObject Service::status()
     {
         const SourceState state = m_state.value(s.id);
         QJsonObject o = sourceToJson(s, false);
-        o.insert(QLatin1String("host"), s.kind == QLatin1String("xtream") ? hostOf(xtream::normalizeServer(s.server))
-                                                                          : hostOf(s.url));
+        o.insert(QLatin1String("host"), isGuideOnly(s.kind) ? QStringLiteral("schedulesdirect.org")
+                                        : s.kind == QLatin1String("xtream") ? hostOf(xtream::normalizeServer(s.server))
+                                        : isServerKind(s.kind) ? hostOf(servers::baseUrl(s.server, defaultPort(s.kind)))
+                                                               : hostOf(s.url));
+        o.insert(QLatin1String("refused"), state.refused);
         o.insert(QLatin1String("channels"), int(state.channels.size()));
         int catchupDays = 0, withGuide = 0;
         for (const ChannelEntry& c : std::as_const(m_channels))
@@ -1210,21 +2368,34 @@ QJsonObject Service::status()
         o.insert(QLatin1String("busy"), state.busy);
         busy = busy || state.busy;
         QJsonArray guides;
-        QStringList urls = s.epg;
-        if (s.useHeaderGuides || s.kind == QLatin1String("xtream"))
-            urls << state.headerGuides;
-        for (const QString& url : std::as_const(urls))
+        for (const QString& url : guidesOf(s, state.headerGuides, true))
         {
             const auto g = m_guides.value(url);
             QJsonObject go;
-            go.insert(QLatin1String("host"), hostOf(url));
+            // (by a hash: a guide's address may hold the user's password)
+            go.insert(QLatin1String("id"), hashOf(url));
+            // (a server's own guide, written next to it: the server's name)
+            go.insert(QLatin1String("host"), url.startsWith(QLatin1String("file:"))
+                                                 && (isServerKind(s.kind) || isGuideOnly(s.kind))
+                                             ? kindName(s.kind) : hostOf(url));
             go.insert(QLatin1String("own"), s.epg.contains(url));
+            go.insert(QLatin1String("auto"), s.autoEpg.contains(url) && !s.epg.contains(url));
+            go.insert(QLatin1String("enabled"), !s.epgOff.contains(url));
             go.insert(QLatin1String("programmes"), g ? g->programmes : 0);
             go.insert(QLatin1String("updated"), g ? double(g->updated) : 0.0);
             go.insert(QLatin1String("error"), g ? g->error : QString());
             guides.append(go);
         }
         o.insert(QLatin1String("guides"), guides);
+        QJsonObject automatic;
+        automatic.insert(QLatin1String("matched"), int(s.autoIds.size()));
+        automatic.insert(QLatin1String("guides"), int(s.autoEpg.size()));
+        automatic.insert(QLatin1String("found"), s.autoFound);
+        automatic.insert(QLatin1String("total"), s.autoTotal);
+        automatic.insert(QLatin1String("checked"), double(s.autoChecked));
+        automatic.insert(QLatin1String("off"), s.autoGuideOff);
+        o.insert(QLatin1String("autoGuide"), automatic);
+        o.insert(QLatin1String("isServer"), isServerKind(s.kind));
         sources.append(o);
     }
     QSet<QString> languages;

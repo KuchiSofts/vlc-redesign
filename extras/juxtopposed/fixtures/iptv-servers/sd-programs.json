@@ -1,0 +1,53 @@
+[
+ {
+  "programID": "EP000000010001",
+  "titles": [
+   {
+    "title120": "Open Movie Night"
+   }
+  ],
+  "episodeTitle150": "Big Buck Bunny",
+  "descriptions": {
+   "description100": [
+    {
+     "descriptionLanguage": "en",
+     "description": "Short."
+    }
+   ],
+   "description1000": [
+    {
+     "descriptionLanguage": "en",
+     "description": "A long one."
+    }
+   ]
+  },
+  "genres": [
+   "Animation",
+   "Comedy"
+  ],
+  "metadata": [
+   {
+    "Gracenote": {
+     "season": 2,
+     "episode": 5
+    }
+   }
+  ]
+ },
+ {
+  "programID": "SH000000020000",
+  "titles": [
+   {
+    "title120": "Demo News"
+   }
+  ],
+  "descriptions": {
+   "description100": [
+    {
+     "descriptionLanguage": "en",
+     "description": "Today."
+    }
+   ]
+  }
+ }
+]

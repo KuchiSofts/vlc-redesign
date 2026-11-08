@@ -1,0 +1,16 @@
+{
+ "MediaSources": [
+  {
+   "Protocol": "Http",
+   "Id": "ms-0123",
+   "Path": "http://127.0.0.1:8765/ch/openmovie.mp4",
+   "Type": "Default",
+   "Container": "mp4",
+   "IsInfiniteStream": true,
+   "SupportsDirectStream": true,
+   "SupportsTranscoding": true,
+   "LiveStreamId": "live-4567"
+  }
+ ],
+ "PlaySessionId": "play-89ab"
+}

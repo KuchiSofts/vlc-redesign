@@ -1,0 +1,53 @@
+{
+ "map": [
+  {
+   "stationID": "90001",
+   "uhfVhf": 20,
+   "atscMajor": 4,
+   "atscMinor": 1
+  },
+  {
+   "stationID": "90002",
+   "channel": "007"
+  },
+  {
+   "stationID": "90003",
+   "uhfVhf": 33
+  }
+ ],
+ "stations": [
+  {
+   "stationID": "90001",
+   "name": "Demo Broadcasting",
+   "callsign": "KDMO",
+   "affiliate": "DEMO",
+   "broadcastLanguage": [
+    "en"
+   ],
+   "logo": {
+    "URL": "https://example.invalid/kdmo.png",
+    "height": 270,
+    "width": 360
+   }
+  },
+  {
+   "stationID": "90002",
+   "name": "",
+   "callsign": "KSMP"
+  },
+  {
+   "stationID": "90003",
+   "name": "Sample Weather",
+   "callsign": "KWTR"
+  },
+  {
+   "stationID": "x9",
+   "name": "Not a station id"
+  }
+ ],
+ "metadata": {
+  "lineup": "USA-OTA-00000",
+  "modified": "2026-11-08T10:00:00Z",
+  "transport": "Antenna"
+ }
+}

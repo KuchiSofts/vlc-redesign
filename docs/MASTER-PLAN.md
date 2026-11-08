@@ -33,6 +33,27 @@ What is being worked on, updated as it changes (2026-11-08):
   fixtures, and Test / Sign in showed Key refused or Wrong user name or password for each on the hidden desktop),
   signed-in sessions kept for the run; Napisy24 needs an account (no anonymous answer: "login error"), so its
   detail line says so; Ktuvit didn't answer. VideoLAN merged to f94b611735 (2 commits). Next: Android and Samsung.
+- 🟡 **Live TV sources** (the owner: "please add free epg providers and free iptv providers and not free but big
+  providers (allow to enable and login or keys) make it super smart and try to search in github for api"; the spec
+  shared by the three apps): on the desktop, branch `feature/tv-sources` (after `feature/subtitle-services`).
+  Accounts: Jellyfin and Emby (sign-in by user or API key, channels and 7 days of guide, the stream resolved at play
+  time through PlaybackInfo: direct, else HLS, else the transcode), Tvheadend (Basic/Digest), NextPVR (PIN session),
+  Channels DVR, HDHomeRun (lineup without DRM, its free guide), Schedules Direct (token by SHA-1, lineups, stations,
+  schedules, programs → a guide for every source), an M3U behind a login; written as the source's playlist.m3u and
+  guide.xml. Found on the network: Jellyfin/Emby (UDP 7359), HDHomeRun (UDP 65001 + its cloud), Channels DVR
+  (mDNS), sent from the default route's address (Windows used a virtual adapter). Plex left out (Plex Pass and
+  transcoder sessions only). The automatic guide (autoguide.cpp: iptv-org's channels.json weekly, compact; tvg-id,
+  else folded name + country; "+1" shifted; iptv-epg.org first) with "Guide found for X of Y" and Undo, Find a
+  Guide, Guide Id… per channel. Guides tab (on/off, Remove, Update, Edit, where each comes from). Catalog: 460
+  sources (iptv-org every country and category from its API, UK as GB), For you, Recommended, daily checks published
+  by the website workflow as tv/catalog.json. Tests: iptv-servers 135 checks, iptv-autoguide 47. Live on the hidden
+  desktop: a Docker Jellyfin 10.10 with the Demo TV provider as its tuner (made-up user): wrong password refused,
+  signed in, 8 channels and 104 programmes, a channel plays; Sign Out, then "Sign-in refused: check it" on its row,
+  then signed in again. Schedules Direct's real API refused a made-up account. Discovery answered by made-up
+  responders on this PC (a Jellyfin on UDP 7359, a Channels DVR over mDNS); nothing real on this network. The
+  automatic guide on iptv-org's public Israel list (no screenshot of its channels): 34 of 34 matched by id,
+  iptv-epg.org's guide attached, 7 of 34 with a guide, Undo removed it; Guide Id… wins over the list's id; Find a
+  Guide on the made-up list finds nothing. Translations: 43 texts × 72 languages. Next: Android and Samsung.
 - ✅ **Release 0.5.7** published 2026-11-08 ([v0.5.7](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7),
   23 files; Android PR #3 and tag v0.5.7; the Samsung source 0.5.7) (the owner: "i want to make a release for the update"): an update release. Online
   subtitles in every app (#67) with every free service asked for any file; Live TV in the library next to the

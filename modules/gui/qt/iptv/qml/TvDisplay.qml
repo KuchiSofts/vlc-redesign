@@ -96,7 +96,7 @@ Widgets.PageExt {
 
     // The dialog of the sources, made when first opened
     property var _sourceDialog: null
-    function openSources(page) {
+    function openSources(page, key) {
         if (!_sourceDialog) {
             const component = Qt.createComponent("qrc:///qt/qml/VLC/Network/TvSourceDialog.qml")
             if (component.status !== Component.Ready) {
@@ -105,7 +105,10 @@ Widgets.PageExt {
             }
             _sourceDialog = component.createObject(root)
         }
-        _sourceDialog.openAt(page ?? (_hasSources ? "sources" : "link"))
+        if (page === "channel")
+            _sourceDialog.editChannelGuide(key)
+        else
+            _sourceDialog.openAt(page ?? (_hasSources ? "sources" : "link"))
     }
 
     property var _programmeDialog: null
@@ -137,11 +140,13 @@ Widgets.PageExt {
         id: channelMenu
         parentItem: root
         channels: Iptv.channelModel
+        guideIdEnabled: true
         onGuideRequested: (key) => {
             root.view = "guide"
             Qt.callLater(() => root.showInGuide(key))
         }
         onProgrammeRequested: (channel, programme) => root.openProgramme(channel, programme)
+        onGuideIdRequested: (key) => root.openSources("channel", key)
     }
 
     Item {

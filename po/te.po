@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:32+0000\n"
+"POT-Creation-Date: 2026-11-08 10:17+0000\n"
 "PO-Revision-Date: 2014-05-01 15:57+0000\n"
 "Last-Translator: rohitharikiran <rohithharikiran@gmail.com>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/vlc-trans/"
@@ -41,7 +41,7 @@ msgstr "VLC అభిరుచులు"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:223
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:20
-#: modules/gui/qt/menus/menus.cpp:1060 modules/gui/qt/menus/menus.cpp:1078
+#: modules/gui/qt/menus/menus.cpp:1058 modules/gui/qt/menus/menus.cpp:1076
 msgid "Interface"
 msgstr "అంతరవర్తి"
 
@@ -60,7 +60,7 @@ msgstr "అంతరవర్తి"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:246
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
-#: modules/gui/qt/menus/menus.cpp:863
+#: modules/gui/qt/menus/menus.cpp:861
 #: modules/gui/qt/player/qml/TracksMenu.qml:38
 #: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:371
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
@@ -85,7 +85,7 @@ msgstr "ఆడియో"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/maininterface/navigationmodel.cpp:274
-#: modules/gui/qt/menus/menus.cpp:859
+#: modules/gui/qt/menus/menus.cpp:857
 #: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:371
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
@@ -104,7 +104,7 @@ msgid "Stream output"
 msgstr "ప్రవాహం అవుట్‌పుట్"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
-#: modules/gui/qt/menus/menus.cpp:910
+#: modules/gui/qt/menus/menus.cpp:908
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:43
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistButton.qml:36
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistNameWidget.qml:26
@@ -889,7 +889,8 @@ msgstr "కొడెక్"
 
 #: src/input/es_out.c:4711 src/input/meta.c:69 modules/access/imem.c:70
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:387
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:555 modules/stream_out/setid.c:50
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1108
+#: modules/stream_out/setid.c:50
 msgid "Language"
 msgstr "భాష"
 
@@ -1210,7 +1211,7 @@ msgstr "మాస్టరింగ్ తెలుపు బిందువు"
 
 #: src/input/es_out.c:5014 modules/access/imem.c:63
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:216
-#: modules/gui/qt/menus/menus.cpp:867
+#: modules/gui/qt/menus/menus.cpp:865
 #: modules/gui/qt/player/qml/TracksListPage.qml:80
 msgid "Subtitle"
 msgstr "ఉపశీర్షిక"
@@ -1568,6 +1569,7 @@ msgstr "అందుబాటు"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Test"
 msgstr "పరీక్ష"
 
@@ -1673,7 +1675,8 @@ msgstr "ఆన్"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
-#: modules/gui/qt/menus/menus.cpp:923 modules/gui/qt/player/hdr_output.cpp:33
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:963
+#: modules/gui/qt/menus/menus.cpp:921 modules/gui/qt/player/hdr_output.cpp:33
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:430
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
 msgid "Off"
@@ -4013,11 +4016,11 @@ msgstr "సాధారణ రేటు"
 msgid "Select the hotkey to set the playback rate back to normal."
 msgstr "ప్లేబ్యాక్ రేటును తిరిగి సాధారణానికి అమర్చే వేగపుమీటను ఎంచుకోండి."
 
-#: src/libvlc-module.c:1378 modules/gui/qt/menus/menus.cpp:643
+#: src/libvlc-module.c:1378 modules/gui/qt/menus/menus.cpp:641
 msgid "Faster (fine)"
 msgstr "మరింతవేగం (బాగా)"
 
-#: src/libvlc-module.c:1380 modules/gui/qt/menus/menus.cpp:649
+#: src/libvlc-module.c:1380 modules/gui/qt/menus/menus.cpp:647
 msgid "Slower (fine)"
 msgstr "నెమ్మది (బాగా)"
 
@@ -4069,7 +4072,7 @@ msgstr "ప్రదర్శన వరుసలోని మునుపటి 
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:104
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:115
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:826
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:519 modules/gui/qt/menus/menus.cpp:824
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:34
 #: modules/gui/qt/player/qml/controlbarcontrols/StopButton.qml:29
 msgid "Stop"
@@ -4207,7 +4210,7 @@ msgstr "పెద్ద గెంతు నిడివి, సెకన్ల�
 
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
-#: modules/gui/qt/menus/menus.cpp:702 modules/gui/qt/menus/menus.cpp:1114
+#: modules/gui/qt/menus/menus.cpp:700 modules/gui/qt/menus/menus.cpp:1112
 #: modules/gui/qt/qt.cpp:1700 modules/gui/skins2/commands/cmd_quit.cpp:40
 msgid "Quit"
 msgstr "నిష్క్రమించు"
@@ -4690,7 +4693,7 @@ msgid "Takes a video snapshot and writes it to disk."
 msgstr "వీడియో తక్షణచిత్రం తీసి దాన్ని డిస్కుకు రాస్తుంది."
 
 #: src/libvlc-module.c:1553 modules/gui/macosx/menus/VLCMainMenu.m:390
-#: modules/gui/qt/menus/menus.cpp:619 modules/gui/qt/menus/menus.cpp:838
+#: modules/gui/qt/menus/menus.cpp:618 modules/gui/qt/menus/menus.cpp:836
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:45
 #: modules/gui/qt/player/qml/controlbarcontrols/RecordButton.qml:29
 #: modules/stream_out/record.c:60
@@ -7955,7 +7958,7 @@ msgstr "దీనికి Windows 10 రూపాంతరం 1809 లేదా
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:166
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:87
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:194
@@ -9451,8 +9454,10 @@ msgstr "URLలో వాడుకరిపేరు అమర్చకపోత�
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:439
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:435
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:563
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:573
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
 #: modules/lua/vlc.c:57 modules/lua/vlc.c:86 modules/misc/audioscrobbler.c:119
 #: modules/stream_out/rtp.c:168
@@ -9620,7 +9625,7 @@ msgid "Set the group of the elementary stream"
 msgstr ""
 
 #: modules/access/imem.c:56 modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:567
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1120
 msgid "Category"
 msgstr "వర్గం"
 
@@ -11106,7 +11111,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:29
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:103
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
 #: modules/gui/qt/maininterface/navigationmodel.cpp:275
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
 msgid "All"
@@ -17275,7 +17280,7 @@ msgstr ""
 #: modules/gui/macosx/library/media-source/VLCMediaSourceCollectionViewItem.m:87
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:27
-#: modules/gui/qt/menus/menus.cpp:907 modules/gui/skins2/vars/playtree.cpp:210
+#: modules/gui/qt/menus/menus.cpp:905 modules/gui/skins2/vars/playtree.cpp:210
 msgid "Playlist"
 msgstr "ప్రదర్శనజాబితా"
 
@@ -17835,7 +17840,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:75
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:179
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:34
-#: modules/gui/qt/menus/menus.cpp:816
+#: modules/gui/qt/menus/menus.cpp:814
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:870
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1126
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:33
@@ -17893,7 +17898,7 @@ msgid "Add to Favorites"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -18041,7 +18046,7 @@ msgstr "నా కంప్యూటర్"
 #: modules/gui/qt/dialogs/sout/sout.cpp:98
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:99
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:192
-#: modules/gui/qt/menus/menus.cpp:975
+#: modules/gui/qt/menus/menus.cpp:973
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Stream"
 msgstr "ప్రవాహం"
@@ -18407,7 +18412,7 @@ msgstr "అన్నీ చూపించు"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:356
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1154
-#: modules/gui/qt/menus/menus.cpp:979
+#: modules/gui/qt/menus/menus.cpp:977
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:52
 #: modules/gui/qt/player/qml/controlbarcontrols/QuitButton.qml:27
 msgid "Quit VLC"
@@ -18469,7 +18474,8 @@ msgid "Save Play Queue to Library..."
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:377
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:321
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:434
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:928
 msgid "Edit"
 msgstr "సవరించు"
 
@@ -18512,7 +18518,7 @@ msgid "Find"
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:385
-#: modules/gui/qt/menus/menus.cpp:877 modules/gui/qt/menus/menus.cpp:897
+#: modules/gui/qt/menus/menus.cpp:875 modules/gui/qt/menus/menus.cpp:895
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1009
 msgid "View"
 msgstr "వీక్షణ"
@@ -18521,7 +18527,7 @@ msgstr "వీక్షణ"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:239
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:245
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:24
-#: modules/gui/qt/menus/menus.cpp:856
+#: modules/gui/qt/menus/menus.cpp:854
 #: modules/gui/qt/player/qml/TracksMenu.qml:400
 msgid "Playback"
 msgstr "ప్లేబ్యాక్"
@@ -18543,7 +18549,7 @@ msgstr "ట్రాక్ సమకాలీకరణం"
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
-#: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:920
+#: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:918
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:260
@@ -18772,8 +18778,8 @@ msgid "Bring All to Front"
 msgstr "అన్నీ ముందుకు తీసుకురా"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:499
-#: modules/gui/qt/dialogs/help/help.cpp:58 modules/gui/qt/menus/menus.cpp:881
-#: modules/gui/qt/menus/menus.cpp:898 modules/gui/qt/menus/menus.cpp:1110
+#: modules/gui/qt/dialogs/help/help.cpp:58 modules/gui/qt/menus/menus.cpp:879
+#: modules/gui/qt/menus/menus.cpp:896 modules/gui/qt/menus/menus.cpp:1108
 msgid "Help"
 msgstr "సహాయం"
 
@@ -18835,7 +18841,7 @@ msgstr "ప్రదర్శనజాబితాను భద్రపరు�
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:59
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:464
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:352
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:169
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:35
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1146
@@ -18865,17 +18871,17 @@ msgstr ""
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
-#: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:816
+#: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:814
 msgid "Pause"
 msgstr "నిలిపివేయి"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1737
-#: modules/gui/qt/menus/menus.cpp:925
+#: modules/gui/qt/menus/menus.cpp:923
 msgid "Repeat One"
 msgstr "ఒకదానినే పునరావృతంచేయి"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1743
-#: modules/gui/qt/menus/menus.cpp:924
+#: modules/gui/qt/menus/menus.cpp:922
 msgid "Repeat All"
 msgstr "అన్నీ పునరావృతం చేయి"
 
@@ -18905,7 +18911,7 @@ msgstr "శుభ్రపరుచు"
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:107
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:46
-#: modules/gui/qt/menus/menus.cpp:915
+#: modules/gui/qt/menus/menus.cpp:913
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:53
 #: modules/gui/qt/player/qml/controlbarcontrols/RandomButton.qml:28
@@ -19137,7 +19143,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:211
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:325
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:438
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:990
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:169
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:150
@@ -19164,7 +19171,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:97
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Add"
@@ -19186,8 +19193,10 @@ msgstr "శుభ్రపరుచు"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:72
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:114
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:367
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:480
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:487
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:694
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:710
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:213
 #: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:440
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:179
@@ -21308,7 +21317,7 @@ msgstr "సంకేతపదాన్ని భద్రపరుచు"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
-#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:65
+#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:65
 msgid "Open Network Stream"
 msgstr "నెట్‌వర్క్ ప్రవాహాన్ని తెరువు"
 
@@ -21331,8 +21340,11 @@ msgid "e.g., https://www.example.com/stream.avi"
 msgstr "ఉదా., https://www.example.com/stream.avi"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:368
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:461
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
 msgid "(optional)"
 msgstr "(ఐచ్ఛికం)"
 
@@ -21731,7 +21743,7 @@ msgid "Open Directory"
 msgstr "డైరెక్టరీ తెరువు"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:88
-#: modules/gui/qt/menus/menus.cpp:956 modules/gui/qt/menus/qml/MainMenu.qml:59
+#: modules/gui/qt/menus/menus.cpp:954 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
 msgstr "సంచయం తెరువు"
 
@@ -21841,13 +21853,14 @@ msgid "No EPG Data Available"
 msgstr "EPG డేటా అందుబాటులో లేదు"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:48 modules/gui/qt/menus/menus.cpp:266
-#: modules/gui/qt/menus/menus.cpp:892
+#: modules/gui/qt/menus/menus.cpp:890
 msgid "Program Guide"
 msgstr "కార్యక్రమం మార్గదర్శకం"
 
 #: modules/gui/qt/dialogs/epg/epg.cpp:86
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:54
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:316
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:429
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:923
 msgid "Update"
 msgstr "నవీకరించు"
 
@@ -22546,7 +22559,7 @@ msgstr "%1 రంగులు"
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:168
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:522
 #: modules/gui/qt/dialogs/sout/convert.cpp:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:394
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:507
 #: modules/gui/qt/maininterface/navigationmodel.cpp:288
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:78
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:67
@@ -22720,7 +22733,7 @@ msgstr "రెండూ అమరికలలో ఉంటాయి: నవీ�
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:324
 #: modules/gui/qt/dialogs/sout/sout.cpp:95
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:87
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:182
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:349
 #: modules/gui/qt/player/qml/controlbarcontrols/BackButton.qml:30
 msgid "Back"
@@ -23114,8 +23127,8 @@ msgstr "సందేశాలను శుభ్రపరుచు"
 msgid "Clear the errors"
 msgstr "దోషాలను శుభ్రపరుచు"
 
-#: modules/gui/qt/dialogs/open/open.cpp:49 modules/gui/qt/menus/menus.cpp:687
-#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/menus.cpp:1104
+#: modules/gui/qt/dialogs/open/open.cpp:49 modules/gui/qt/menus/menus.cpp:685
+#: modules/gui/qt/menus/menus.cpp:948 modules/gui/qt/menus/menus.cpp:1102
 msgid "Open Media"
 msgstr "మాధ్యమం తెరువు"
 
@@ -24301,7 +24314,7 @@ msgstr "వేగపుమీట కేటాయింపు ఘర్షణ"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:428
+#: modules/misc/iptv/iptv.cpp:581
 msgid "Live TV"
 msgstr "ప్రత్యక్ష టివి"
 
@@ -24468,7 +24481,7 @@ msgid "Languages to search"
 msgstr "వెతకాల్సిన భాషలు"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:421
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
 msgid "Move up"
@@ -24503,14 +24516,17 @@ msgid "Key works"
 msgstr "కీ పని చేస్తోంది"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
 msgid "Signed in as %1"
 msgstr "%1గా సైన్ ఇన్ అయ్యారు"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Key refused"
 msgstr "కీ తిరస్కరించబడింది"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Wrong user name or password"
 msgstr "తప్పు వాడుకరి పేరు లేదా సంకేతపదం"
 
@@ -24520,6 +24536,7 @@ msgid "Busy: try again in a minute"
 msgstr "బిజీగా ఉంది: ఒక నిమిషంలో మళ్ళీ ప్రయత్నించండి"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
 msgid "No answer, try again"
 msgstr "సమాధానం లేదు, మళ్ళీ ప్రయత్నించండి"
 
@@ -24537,6 +24554,7 @@ msgid "Key refused: check it"
 msgstr "కీ తిరస్కరించబడింది: దాన్ని తనిఖీ చేయండి"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "సైన్-ఇన్ తిరస్కరించబడింది: దాన్ని తనిఖీ చేయండి"
@@ -24550,16 +24568,23 @@ msgid "Your free key"
 msgstr "మీ ఉచిత కీ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
 msgid "User name (optional)"
 msgstr "వాడుకరి పేరు (ఐచ్ఛికం)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
 msgid "User name"
 msgstr "వాడుకరి పేరు"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
 msgstr "సంకేతపదం (ఐచ్ఛికం)"
 
@@ -24568,6 +24593,7 @@ msgid "Email"
 msgstr "ఈమెయిల్"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
 msgid "Sign in"
 msgstr "సైన్ ఇన్ చేయి"
 
@@ -25315,7 +25341,7 @@ msgid "History"
 msgstr "చరిత్ర"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:423
+#: modules/misc/iptv/iptv.cpp:576
 msgid "Live TV (IPTV) add-on"
 msgstr "ప్రత్యక్ష టివి (IPTV) యాడ్-ఆన్"
 
@@ -25325,8 +25351,8 @@ msgstr "ప్రత్యక్ష టివి (IPTV) యాడ్-ఆన్"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "మార్గదర్శకం"
@@ -26239,8 +26265,8 @@ msgid "Updating…"
 msgstr "నవీకరిస్తోంది…"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -26280,7 +26306,7 @@ msgid "Free channel lists"
 msgstr "ఉచిత ఛానల్ జాబితాలు"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:210
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "కేటలాగ్‌ను విహరించు"
@@ -26400,7 +26426,7 @@ msgstr "అన్నీ తిరిగి అమర్చు"
 #: modules/gui/qt/dialogs/sout/convert.cpp:106
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:105
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:194
-#: modules/gui/qt/menus/menus.cpp:973 modules/gui/qt/menus/qml/MainMenu.qml:83
+#: modules/gui/qt/menus/menus.cpp:971 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
 msgstr "పరివర్తించు"
 
@@ -26856,71 +26882,71 @@ msgstr "విస్తృత ప్రసారం: "
 msgid "Schedule: "
 msgstr "ప్రణాళిక: "
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:869
+#: modules/gui/qt/iptv/iptv_addon.cpp:943
 msgid "This channel cannot be played"
 msgstr "ఈ ఛానల్‌ను ప్రదర్శించలేము"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:909
+#: modules/gui/qt/iptv/iptv_addon.cpp:983
 msgid "This programme is older than the channel's archive"
 msgstr "ఈ కార్యక్రమం ఛానల్ ఆర్కైవ్ కంటే పాతది"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:910
+#: modules/gui/qt/iptv/iptv_addon.cpp:984
 msgid "This programme has not started yet"
 msgstr "ఈ కార్యక్రమం ఇంకా ప్రారంభం కాలేదు"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:911
+#: modules/gui/qt/iptv/iptv_addon.cpp:985
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr "ఈ ఛానల్‌కు ఆర్కైవ్ లేదు: గత కార్యక్రమాలను ప్రదర్శించలేము"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:935
+#: modules/gui/qt/iptv/iptv_addon.cpp:1009
 msgid "The guide does not say what is on"
 msgstr "ప్రస్తుతం ఏమి ప్రసారమవుతోందో మార్గదర్శకం చెప్పడం లేదు"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:1059
 msgid "No channel %1"
 msgstr "ఛానల్ %1 లేదు"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1187
+#: modules/gui/qt/iptv/iptv_addon.cpp:1261
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 ని"
 msgstr[1] "%1 ని"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 గం"
 msgstr[1] "%1 గం"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 గం %2 ని"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1272
 msgid "Today"
 msgstr "ఈరోజు"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1200
+#: modules/gui/qt/iptv/iptv_addon.cpp:1274
 msgid "Tomorrow"
 msgstr "రేపు"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1202
+#: modules/gui/qt/iptv/iptv_addon.cpp:1276
 msgid "Yesterday"
 msgstr "నిన్న"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
+#: modules/gui/qt/iptv/qml/TvToast.qml:91
 msgid "Watch"
 msgstr "చూడు"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:37
 msgid "Watch from the start"
 msgstr "మొదటి నుండి చూడు"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:45
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
@@ -26930,13 +26956,17 @@ msgstr "మొదటి నుండి చూడు"
 msgid "Favorite"
 msgstr "ఇష్టమైనది"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:48
 msgid "Show in the Guide"
 msgstr "మార్గదర్శకంలో చూపించు"
 
-#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:50
 msgid "What's On"
 msgstr "ఇప్పుడు ప్రసారంలో"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
+msgid "Guide Id…"
+msgstr "మార్గదర్శక ఐడి…"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
@@ -26947,9 +26977,9 @@ msgid "Next at %1"
 msgstr "తదుపరి %1కు"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 రో"
@@ -26963,24 +26993,24 @@ msgstr[0] "క్యాచ్-అప్: గత %1 రోజు"
 msgstr[1] "క్యాచ్-అప్: గత %1 రోజులు"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:277
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:674
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
 msgid "Films"
 msgstr "సినిమాలు"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:278
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:675
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
 msgid "Series"
 msgstr "సిరీస్"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:185
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "VLCలో టివి చూడండి"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:195
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
@@ -26989,47 +27019,47 @@ msgstr ""
 "మీ టివి ప్రదాత ప్రదర్శనజాబితా లింకును (M3U) లేదా దాని Xtream Codes లాగిన్‌ను, లేదా కేటలాగ్‌లోని ఉచిత ఛానల్ "
 "జాబితాను జతచేయండి. దాని కార్యక్రమ మార్గదర్శకం దానితో పాటే వస్తుంది."
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:448
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "ఒక లింకును జతచేయి"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:257
 msgid "Updating the guide of %1… %2 MB"
 msgstr "%1 మార్గదర్శకాన్ని నవీకరిస్తోంది… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:258
 msgid "Updating the channels of %1…"
 msgstr "%1 ఛానళ్లను నవీకరిస్తోంది…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:261
 msgid "%1 could not be loaded: %2"
 msgstr "%1ను లోడ్ చేయలేకపోయింది: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:455
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "శోధనకు ఏ ఛానలూ సరిపోలలేదు"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:456
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "ఇంకా ఇష్టమైన ఛానల్ లేదు: జతచేయడానికి ఒక ఛానల్‌పై కుడి-నొక్కు నొక్కండి"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:457
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "ఇంకా ఏ ఛానలూ చూడలేదు"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:458
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "ఛానళ్లను లోడ్ చేస్తోంది…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:459
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
@@ -27176,7 +27206,7 @@ msgid "Channel"
 msgstr "ఛానల్"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Catch-up"
 msgstr "క్యాచ్-అప్"
 
@@ -27186,238 +27216,438 @@ msgid_plural "The past %1 days"
 msgstr[0] "గత %1 రోజు"
 msgstr[1] "గత %1 రోజులు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:75
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:53
+msgid "The Live TV of your Jellyfin server: its channels and guide"
+msgstr "మీ Jellyfin సేవిక ప్రత్యక్ష టివి: దాని ఛానళ్లు మరియు మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:55
+msgid "The Live TV of your Emby server: its channels and guide"
+msgstr "మీ Emby సేవిక ప్రత్యక్ష టివి: దాని ఛానళ్లు మరియు మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:57
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:59
+msgid "Your TV server: its channels and guide"
+msgstr "మీ టివి సేవిక: దాని ఛానళ్లు మరియు మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:61
+msgid "Your TV server on your network: its channels and guide"
+msgstr "మీ నెట్‌వర్క్‌లోని మీ టివి సేవిక: దాని ఛానళ్లు మరియు మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:63
+msgid "A tuner of your network: its channels and free guide"
+msgstr "మీ నెట్‌వర్క్‌లోని ఒక ట్యూనర్: దాని ఛానళ్లు మరియు ఉచిత మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:66
+msgid ""
+"A paid guide (the US, Canada and more) for the channels of every source: the "
+"lineups of your account"
+msgstr "ప్రతి మూలం ఛానళ్లకు చెల్లింపు మార్గదర్శకం (అమెరికా, కెనడా మరియు మరిన్ని): మీ ఖాతా లైనప్‌లు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "టివి మూలాలు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Add Guide"
 msgstr "మార్గదర్శకాన్ని జతచేయి"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:82
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
 msgid "Add Source"
 msgstr "మూలాన్ని జతచేయి"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:113
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:215
 msgid "This source cannot be added: fill in the fields marked as needed."
 msgstr "ఈ మూలాన్ని జతచేయలేము: అవసరమైనవిగా గుర్తించిన ఖాళీలను నింపండి."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:245
 msgid "Your Sources (%1)"
 msgstr "మీ మూలాలు (%1)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:247
+msgid "Accounts"
+msgstr "ఖాతాలు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+msgid "Guides"
+msgstr "మార్గదర్శకాలు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
 msgid "Catalog"
 msgstr "కేటలాగ్"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:200
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
 msgid "Your TV sources"
 msgstr "మీ టివి మూలాలు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:202
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:310
 msgid ""
 "The guides of the first sources come first when several name the same "
 "channel."
 msgstr "పలు మూలాలు ఒకే ఛానల్ పేరు చెప్పినప్పుడు మొదటి మూలాల మార్గదర్శకాలు ముందుగా వస్తాయి."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:203
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:311
 msgid "No source yet: add the link of your provider, or one of the catalog."
 msgstr "ఇంకా మూలం లేదు: మీ ప్రదాత లింకును, లేదా కేటలాగ్‌లోని ఒకదాన్ని జతచేయండి."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:268
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+msgid "%1 programme"
+msgid_plural "%1 programmes"
+msgstr[0] "%1 కార్యక్రమం"
+msgstr[1] "%1 కార్యక్రమాలు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:379
 msgid "Guide %1"
 msgid_plural "Guide %1"
 msgstr[0] "మార్గదర్శకం %1"
 msgstr[1] "మార్గదర్శకం %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:269
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
 msgid "%1 channel has a programme guide"
 msgid_plural "%1 channels have a programme guide"
 msgstr[0] "%1 ఛానల్‌కు కార్యక్రమ మార్గదర్శకం ఉంది"
 msgstr[1] "%1 ఛానళ్లకు కార్యక్రమ మార్గదర్శకం ఉంది"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:275
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:386
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
 msgstr[0] "క్యాచ్-అప్ %1 రో"
 msgstr[1] "క్యాచ్-అప్ %1 రో"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
 msgid "Updating the guide… %1 MB"
 msgstr "మార్గదర్శకాన్ని నవీకరిస్తోంది… %1 MB"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
 msgid "Updating the channels…"
 msgstr "ఛానళ్లను నవీకరిస్తోంది…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:288
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:400
 msgid "Updated %1 at %2"
 msgstr "%1 %2కు నవీకరించబడింది"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn Off"
 msgstr "ఆపివేయి"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Turn On"
 msgstr "ఆన్ చేయి"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:340
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:453
 msgid "Update All"
 msgstr "అన్నీ నవీకరించు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:358
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:471
 msgid "Playlist (M3U)"
 msgstr "ప్రదర్శనజాబితా (M3U)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:359
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:472
 msgid "Xtream Codes"
 msgstr "Xtream Codes"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:360
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:473
 msgid "Guide (XMLTV)"
 msgstr "మార్గదర్శకం (XMLTV)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:373
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:486
 msgid "e.g., My TV"
 msgstr "ఉదా., నా టివి"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:380
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:493
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:503
 msgid "Playlist link or file"
 msgstr "ప్రదర్శనజాబితా లింకు లేదా దస్త్రం"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:381
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:494
 msgid ""
 "The M3U link your provider gave you; its guide is found in it when it names "
 "one."
 msgstr "మీ ప్రదాత ఇచ్చిన M3U లింకు; అది మార్గదర్శకాన్ని పేర్కొంటే, మార్గదర్శకం దానిలో దొరుకుతుంది."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:502
 msgid "e.g., https://example.com/playlist.m3u"
 msgstr "ఉదా., https://example.com/playlist.m3u"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:396
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:509
 msgid "Choose a playlist"
 msgstr "ఒక ప్రదర్శనజాబితాను ఎంచుకోండి"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:397
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:510
 msgid "Playlists (*.m3u *.m3u8)"
 msgstr "ప్రదర్శనజాబితాలు (*.m3u *.m3u8)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:413
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:420
-msgid "Server"
-msgstr "సేవిక"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:414
-msgid "The address of the provider's panel, with its port (http://host:8080)."
-msgstr "ప్రదాత ప్యానెల్ చిరునామా, దాని పోర్టుతో (http://host:8080)."
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
-msgid "e.g., http://example.com:8080"
-msgstr "ఉదా., http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
 msgid "(empty: unchanged)"
 msgstr "(ఖాళీ: మార్పు లేదు)"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:445
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:558
+msgid "Server"
+msgstr "సేవిక"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+msgid "The address of the provider's panel, with its port (http://host:8080)."
+msgstr "ప్రదాత ప్యానెల్ చిరునామా, దాని పోర్టుతో (http://host:8080)."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:557
+msgid "e.g., http://example.com:8080"
+msgstr "ఉదా., http://example.com:8080"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "For the source"
 msgstr "మూలం కోసం"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:446
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
 msgid "Its channels are matched by their guide id, then by their name."
 msgstr "దాని ఛానళ్లు మార్గదర్శక ఐడితో, తర్వాత పేరుతో సరిపోల్చబడతాయి."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:447
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:585
 msgid "Add a source first."
 msgstr "ముందుగా ఒక మూలాన్ని జతచేయండి."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:460
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:470
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:598
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:608
 msgid "Guide links"
 msgstr "మార్గదర్శక లింకులు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:462
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:600
 msgid ""
 "XMLTV guides (.xml or .xml.gz), one per line; several are merged, the first "
 "first."
 msgstr ""
 "XMLTV మార్గదర్శకాలు (.xml లేదా .xml.gz), పంక్తికి ఒకటి; పలువి విలీనం చేయబడతాయి, మొదటిది ముందుగా."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:469
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:607
 msgid "e.g., https://example.com/guide.xml.gz"
 msgstr "ఉదా., https://example.com/guide.xml.gz"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:476
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:614
 msgid ""
 "Links and passwords are kept in the keystore of VLC, never written to its "
 "log."
 msgstr "లింకులు మరియు సంకేతపదాలు VLC కీస్టోర్‌లో ఉంచబడతాయి, దాని లాగ్‌లో ఎప్పుడూ వ్రాయబడవు."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:551
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:552
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:634
+msgid "Found on your network"
+msgstr "మీ నెట్‌వర్క్‌లో కనుగొన్నవి"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:635
+msgid "Looking on your network…"
+msgstr "మీ నెట్‌వర్క్‌లో వెతుకుతోంది…"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:637
+msgid "Nothing found on your network: type the server's address."
+msgstr "మీ నెట్‌వర్క్‌లో ఏదీ కనుగొనబడలేదు: సేవిక చిరునామాను టైప్ చేయి."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+msgid "Added"
+msgstr "జతచేయబడింది"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:661
+msgid "Look again"
+msgstr "మళ్ళీ వెతుకు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+msgid "Server address"
+msgstr "సేవిక చిరునామా"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+msgid "e.g., %1"
+msgstr "ఉదా., %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+msgid "PIN"
+msgstr "PIN"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+msgid "API key"
+msgstr "API కీ"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+msgid "Instead of a user: a key made in the server's dashboard."
+msgstr "వినియోగదారుకు బదులుగా: సేవిక డాష్‌బోర్డ్‌లో చేసిన కీ."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+msgid "Server found"
+msgstr "సేవిక కనుగొనబడింది"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+msgid "Sign Out"
+msgstr "సైన్ అవుట్ చేయి"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+msgid ""
+"Passwords and keys are kept in the keystore of VLC, never written to its log."
+msgstr "సంకేతపదాలు మరియు కీలు VLC కీస్టోర్‌లో ఉంచబడతాయి, దాని లాగ్‌లో ఎప్పుడూ రాయబడవు."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+msgid "The guide of %1"
+msgstr "%1 యొక్క మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+msgid ""
+"The id the guides give this channel. Yours comes first; leave it empty to "
+"use the one of its list or the one found for it."
+msgstr "మార్గదర్శకాలు ఈ ఛానల్‌కు ఇచ్చే ఐడి. మీది ముందు వస్తుంది; దాని జాబితాలోని ఐడిని లేదా దాని కోసం కనుగొన్న ఐడిని వాడటానికి ఖాళీగా వదిలేయి."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+msgid "Its list: %1"
+msgstr "దాని జాబితా: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
+msgid "none"
+msgstr "ఏదీకాదు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+msgid "Found for it: %1"
+msgstr "దీని కోసం కనుగొన్నది: %1"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+msgid "Guide id"
+msgstr "మార్గదర్శక ఐడి"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+msgid "The guides of your sources"
+msgstr "మీ మూలాల మార్గదర్శకాలు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+msgid ""
+"Each source's own guides and those you added; the channels are matched by "
+"their guide id, then by their name."
+msgstr "ప్రతి మూలం సొంత మార్గదర్శకాలు మరియు మీరు జతచేసినవి; ఛానళ్లు మార్గదర్శక ఐడితో, తర్వాత పేరుతో సరిపోల్చబడతాయి."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+msgid "A guide for the channels of every source"
+msgstr "ప్రతి మూలం ఛానళ్లకు ఒక మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvToast.qml:56
+msgid "Guide for %1 of %2 channels"
+msgstr "%2 ఛానళ్లలో %1 కి మార్గదర్శకం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+msgid "Find a Guide"
+msgstr "మార్గదర్శకాన్ని కనుగొను"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+msgid "Found for you: %1 channel matched by its name or id"
+msgid_plural "Found for you: %1 channels matched by their name or id"
+msgstr[0] "మీ కోసం కనుగొన్నది: పేరు లేదా ఐడితో సరిపోలిన %1 ఛానల్"
+msgstr[1] "మీ కోసం కనుగొన్నవి: పేరు లేదా ఐడితో సరిపోలిన %1 ఛానళ్లు"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+msgid "Added by you"
+msgstr "మీరు జతచేసినది"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+msgid "Found for you"
+msgstr "మీ కోసం కనుగొన్నది"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+msgid "From the playlist"
+msgstr "ప్రదర్శనజాబితా నుండి"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+msgid "No guide yet: add one, or one of the catalog's."
+msgstr "ఇంకా మార్గదర్శకం లేదు: ఒకటి జతచేయి, లేదా కేటలాగ్‌లోనిది ఒకటి."
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
 msgid "Search the catalog"
 msgstr "కేటలాగ్‌లో శోధించు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1114
 #: modules/meta_engine/ID3Genres.h:35
 msgid "Country"
 msgstr "కంట్రీ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
 msgid "A-Z"
 msgstr "A-Z"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:575
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
 msgid "Most channels"
 msgstr "ఎక్కువ ఛానళ్లు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+msgid "For you"
+msgstr "మీ కోసం"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+msgid "Recommended"
+msgstr "సిఫార్సు చేయబడినవి"
+
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
 msgid "Free"
 msgstr "ఉచితం"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:584
-msgid "Guides"
-msgstr "మార్గదర్శకాలు"
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+msgid "Not answering"
+msgstr "స్పందించడం లేదు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:677
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
 msgid "Paid"
 msgstr "చెల్లింపు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
-msgid "Added"
-msgstr "జతచేయబడింది"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
 msgid "Loading the catalog…"
 msgstr "కేటలాగ్‌ను లోడ్ చేస్తోంది…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
 msgid "The catalog is empty in this version."
 msgstr "ఈ వెర్షన్‌లో కేటలాగ్ ఖాళీగా ఉంది."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Nothing in the catalog matches"
 msgstr "కేటలాగ్‌లో ఏదీ సరిపోలలేదు"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:739
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
 msgstr ""
 "ఉచిత, చట్టబద్ధమైన మూలాలు మాత్రమే జాబితా చేయబడ్డాయి. సూచనలు కేటలాగ్‌కు చేరే ముందు సమీక్షించబడతాయి."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
 msgid "Suggest a Service"
 msgstr "ఒక సేవను సూచించు"
 
-#: modules/gui/qt/iptv/qml/TvToast.qml:48
+#: modules/gui/qt/iptv/qml/TvToast.qml:54
+msgid "Guide found for %1 of %2 channels"
+msgstr "%2 ఛానళ్లలో %1 కి మార్గదర్శకం కనుగొనబడింది"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:55
+msgid "The list of channels to match could not be downloaded"
+msgstr "సరిపోల్చాల్సిన ఛానళ్ల జాబితాను దింపుకోవడం సాధ్యపడలేదు"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:57
+msgid "No free guide was found for the channels of %1"
+msgstr "%1 లోని ఛానళ్లకు ఉచిత మార్గదర్శకం ఏదీ కనుగొనబడలేదు"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:64
 msgid "%1 starts now on %2"
 msgstr "%1 ఇప్పుడు %2లో మొదలవుతోంది"
+
+#: modules/gui/qt/iptv/qml/TvToast.qml:102
+msgid "Undo"
+msgstr "చర్యరద్దు చేయి"
 
 #: modules/gui/qt/maininterface/mainctx.cpp:1308
 msgid "Paste from clipboard"
@@ -27563,7 +27793,7 @@ msgstr "ముంగిలి వీక్షణ"
 
 #: modules/gui/qt/maininterface/qml/NoMedialibHome.qml:184
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:36
-#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:71
+#: modules/gui/qt/menus/menus.cpp:958 modules/gui/qt/menus/qml/MainMenu.qml:71
 msgid "Open Disc"
 msgstr "డిస్కును తెరువు"
 
@@ -27572,7 +27802,7 @@ msgid "Open Multiple Files"
 msgstr "అనేక దస్త్రాలను తెరువు"
 
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:38
-#: modules/gui/qt/menus/menus.cpp:962 modules/gui/qt/menus/qml/MainMenu.qml:77
+#: modules/gui/qt/menus/menus.cpp:960 modules/gui/qt/menus/qml/MainMenu.qml:77
 msgid "Open Capture Device"
 msgstr "సంగ్రహణ పరికరాన్ని తెరువు"
 
@@ -28760,7 +28990,7 @@ msgstr "ఒక దస్త్రాన్ని తెరువు...(&F)"
 msgid "&Open Multiple Files..."
 msgstr "అనేక దస్త్రాలను తెరువు (&O)..."
 
-#: modules/gui/qt/menus/menus.cpp:189 modules/gui/qt/menus/menus.cpp:692
+#: modules/gui/qt/menus/menus.cpp:189 modules/gui/qt/menus/menus.cpp:690
 msgid "Open &Disc..."
 msgstr "డిస్కు తెరువు...(&D)"
 
@@ -28768,7 +28998,7 @@ msgstr "డిస్కు తెరువు...(&D)"
 msgid "Open &Network Stream..."
 msgstr "నెట్‌వర్క్ ప్రవాహాన్ని తెరువు...(&N)"
 
-#: modules/gui/qt/menus/menus.cpp:193 modules/gui/qt/menus/menus.cpp:696
+#: modules/gui/qt/menus/menus.cpp:193 modules/gui/qt/menus/menus.cpp:694
 msgid "Open &Capture Device..."
 msgstr "బంధక పరికరాన్ని తెరువు...(&C)"
 
@@ -28788,7 +29018,7 @@ msgstr "పరివర్తించు / భద్రపరుచు...(&r)"
 msgid "&Stream..."
 msgstr "ప్రవాహం...(&S)"
 
-#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:941
+#: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "ప్రదర్శన వరుస చివరలో నిష్క్రమించు"
 
@@ -28796,11 +29026,11 @@ msgstr "ప్రదర్శన వరుస చివరలో నిష్క
 msgid "Close to systray"
 msgstr "వ్యవస్థపళ్లెమునకు మూసివేయి"
 
-#: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:887
+#: modules/gui/qt/menus/menus.cpp:246 modules/gui/qt/menus/menus.cpp:885
 msgid "&Effects and Filters"
 msgstr "ప్రభావాలు మరియు వడబోతకాలు (&E)"
 
-#: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:888
+#: modules/gui/qt/menus/menus.cpp:249 modules/gui/qt/menus/menus.cpp:886
 msgid "&Track Synchronization"
 msgstr "ట్రాక్ సమకాలీకరణం (&T)"
 
@@ -28808,15 +29038,15 @@ msgstr "ట్రాక్ సమకాలీకరణం (&T)"
 msgid "Media &Statistics"
 msgstr "మాధ్యమ గణాంకాలు (&S)"
 
-#: modules/gui/qt/menus/menus.cpp:272 modules/gui/qt/menus/menus.cpp:894
+#: modules/gui/qt/menus/menus.cpp:272 modules/gui/qt/menus/menus.cpp:892
 msgid "Plu&gins and extensions"
 msgstr "చొప్పింతలు మరియు పొడిగింతలు (&g)"
 
-#: modules/gui/qt/menus/menus.cpp:277 modules/gui/qt/menus/menus.cpp:895
+#: modules/gui/qt/menus/menus.cpp:277 modules/gui/qt/menus/menus.cpp:893
 msgid "Customi&ze Interface..."
 msgstr "అంతరవర్తిని అనురూపించు...(&z)"
 
-#: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:896
+#: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:894
 #: modules/gui/qt/qt.cpp:1697
 msgid "&Preferences"
 msgstr "ప్రాధాన్యతలు (&P)"
@@ -28901,7 +29131,7 @@ msgstr "వీడియో ట్రాక్ (&T)"
 msgid "&3D Output"
 msgstr "&3D అవుట్‌పుట్"
 
-#: modules/gui/qt/menus/menus.cpp:465 modules/gui/qt/menus/menus.cpp:1015
+#: modules/gui/qt/menus/menus.cpp:465 modules/gui/qt/menus/menus.cpp:1013
 msgid "&Fullscreen"
 msgstr "పూర్తితెర (&F)"
 
@@ -28992,91 +29222,91 @@ msgstr "మునుపటి (&v)"
 msgid "Ne&xt"
 msgstr "తరువాత (&x)"
 
-#: modules/gui/qt/menus/menus.cpp:630
+#: modules/gui/qt/menus/menus.cpp:628
 msgid "Sp&eed"
 msgstr "వేగం (&E)"
 
-#: modules/gui/qt/menus/menus.cpp:636
+#: modules/gui/qt/menus/menus.cpp:634
 msgid "&Faster"
 msgstr "మరింతవేగం (&F)"
 
-#: modules/gui/qt/menus/menus.cpp:646
+#: modules/gui/qt/menus/menus.cpp:644
 msgid "N&ormal Speed"
 msgstr "సాధారణ వేగం (&o)"
 
-#: modules/gui/qt/menus/menus.cpp:654
+#: modules/gui/qt/menus/menus.cpp:652
 msgid "Slo&wer"
 msgstr "నెమ్మది (&w)"
 
-#: modules/gui/qt/menus/menus.cpp:667
+#: modules/gui/qt/menus/menus.cpp:665
 msgid "&Jump Forward"
 msgstr "ముందుకు గెంతు (&J)"
 
-#: modules/gui/qt/menus/menus.cpp:673
+#: modules/gui/qt/menus/menus.cpp:671
 msgid "Jump Bac&kward"
 msgstr "వెనుకకు గెంతు (&k)"
 
-#: modules/gui/qt/menus/menus.cpp:694
+#: modules/gui/qt/menus/menus.cpp:692
 msgid "Open &Network..."
 msgstr "నెట్‌వర్క్ తెరువు...(&N)"
 
-#: modules/gui/qt/menus/menus.cpp:831
+#: modules/gui/qt/menus/menus.cpp:829
 msgid "Previous Item"
 msgstr "మునుపటి అంశం"
 
-#: modules/gui/qt/menus/menus.cpp:834
+#: modules/gui/qt/menus/menus.cpp:832
 msgid "Next Item"
 msgstr "తదుపరి అంశం"
 
-#: modules/gui/qt/menus/menus.cpp:846
+#: modules/gui/qt/menus/menus.cpp:844
 msgid "Hide UI"
 msgstr "అంతరవర్తిని దాచు"
 
-#: modules/gui/qt/menus/menus.cpp:873
+#: modules/gui/qt/menus/menus.cpp:871
 msgid "More Settings"
 msgstr "మరిన్ని అమరికలు"
 
-#: modules/gui/qt/menus/menus.cpp:952 modules/gui/qt/menus/qml/MainMenu.qml:53
+#: modules/gui/qt/menus/menus.cpp:950 modules/gui/qt/menus/qml/MainMenu.qml:53
 msgid "Open File(s)"
 msgstr "దస్త్రం(లు) తెరువు"
 
-#: modules/gui/qt/menus/menus.cpp:967 modules/gui/qt/menus/menus.cpp:970
+#: modules/gui/qt/menus/menus.cpp:965 modules/gui/qt/menus/menus.cpp:968
 msgid "Open Location from Clipboard"
 msgstr "క్లిప్‌బోర్డ్ నుండి స్థానాన్ని తెరువు"
 
-#: modules/gui/qt/menus/menus.cpp:1025
+#: modules/gui/qt/menus/menus.cpp:1023
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:288
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:371
 msgid "&Audio"
 msgstr "శ్రవ్యకం (&A)"
 
-#: modules/gui/qt/menus/menus.cpp:1033
+#: modules/gui/qt/menus/menus.cpp:1031
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:291
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:369
 msgid "&Video"
 msgstr "దృశ్యకం (&V)"
 
-#: modules/gui/qt/menus/menus.cpp:1041
+#: modules/gui/qt/menus/menus.cpp:1039
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:294
 msgid "Subti&tle"
 msgstr "ఉపశీర్షిక (&t)"
 
-#: modules/gui/qt/menus/menus.cpp:1047
+#: modules/gui/qt/menus/menus.cpp:1045
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:367
 msgid "&Playback"
 msgstr "ప్లేబ్యాక్ (&P)"
 
-#: modules/gui/qt/menus/menus.cpp:1069
+#: modules/gui/qt/menus/menus.cpp:1067
 #: modules/gui/skins2/src/theme_repository.cpp:115
 msgid "Open skin..."
 msgstr "తొడుగును తెరువు..."
 
-#: modules/gui/qt/menus/menus.cpp:1090
+#: modules/gui/qt/menus/menus.cpp:1088
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:297
 msgid "Tool&s"
 msgstr "పనిముట్లు (&S)"
 
-#: modules/gui/qt/menus/menus.cpp:1094
+#: modules/gui/qt/menus/menus.cpp:1092
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:301
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:377
 msgid "V&iew"
@@ -32966,7 +33196,7 @@ msgstr ""
 msgid "XDG screen saver inhibition"
 msgstr ""
 
-#: modules/misc/iptv/iptv.cpp:424
+#: modules/misc/iptv/iptv.cpp:577
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -32974,7 +33204,7 @@ msgstr ""
 "లైబ్రరీలో టివిని చూపిస్తుంది: మీ IPTV ప్రదర్శనజాబితాలు మరియు ఖాతాల ఛానళ్లు, వాటి కార్యక్రమ మార్గదర్శకంతో. "
 "ఆపివేస్తే, వాటిలో ఏదీ లోడ్ చేయబడదు."
 
-#: modules/misc/iptv/iptv.cpp:429
+#: modules/misc/iptv/iptv.cpp:582
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "ప్రత్యక్ష టివి (IPTV) ఛానళ్లు మరియు కార్యక్రమ మార్గదర్శకం"
 
@@ -38208,10 +38438,6 @@ msgstr "..."
 #: modules/gui/qt/dialogs/extended/video_effects.ui:1099
 msgid "full"
 msgstr ""
-
-#: modules/gui/qt/dialogs/extended/video_effects.ui:1139
-msgid "none"
-msgstr "ఏదీకాదు"
 
 #: modules/gui/qt/dialogs/extended/video_effects.ui:1209
 msgid "Logo erase"

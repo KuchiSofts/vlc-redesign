@@ -1,0 +1,29 @@
+{
+ "code": 0,
+ "serverID": "20141201.web.1",
+ "datetime": "2026-11-08T10:00:00Z",
+ "lineups": [
+  {
+   "lineup": "USA-OTA-00000",
+   "name": "Antenna",
+   "transport": "Antenna",
+   "location": "00000",
+   "uri": "/20141201/lineups/USA-OTA-00000",
+   "isDeleted": false
+  },
+  {
+   "lineup": "USA-DEMO-X",
+   "name": "An old one",
+   "transport": "Cable",
+   "location": "Demo",
+   "uri": "/20141201/lineups/USA-DEMO-X",
+   "isDeleted": true
+  },
+  {
+   "lineup": "ELSEWHERE",
+   "name": "Not on its server",
+   "uri": "https://elsewhere.example/x",
+   "isDeleted": false
+  }
+ ]
+}

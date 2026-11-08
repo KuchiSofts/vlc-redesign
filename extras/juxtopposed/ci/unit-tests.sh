@@ -31,6 +31,19 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflag
     $(pkg-config --libs Qt6Core) -lz -o "$out/iptv-parsers"
 "$out/iptv-parsers" extras/juxtopposed/fixtures
 
+echo "== Live TV: the user's servers and tuners"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/iptv-servers.cpp modules/misc/iptv/servers.cpp \
+    modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp \
+    $(pkg-config --libs Qt6Core) -lz -o "$out/iptv-servers"
+"$out/iptv-servers" extras/juxtopposed/fixtures/iptv-servers
+
+echo "== Live TV: the automatic guide"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/iptv-autoguide.cpp modules/misc/iptv/autoguide.cpp \
+    $(pkg-config --libs Qt6Core) -o "$out/iptv-autoguide"
+"$out/iptv-autoguide" extras/juxtopposed/fixtures/iptv-autoguide
+
 echo "== subtitle services (keys and accounts)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/subtitle-services.cpp modules/gui/qt/player/subtitle_services.cpp \

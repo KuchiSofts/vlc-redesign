@@ -36,7 +36,13 @@
 #include <cstdio>
 #include <functional>
 #include <memory>
+#include <random>
 #include <thread>
+#include <vector>
+
+#ifdef _WIN32
+# include <windows.h>
+#endif
 
 static int checks = 0;
 static int failures = 0;
@@ -360,6 +366,55 @@ static void testBounds(const Servers &s)
     CHECK(before.run(echo).error == QLatin1String("Cancelled"));
 }
 
+// Many requests at once, each cancelled at a moment of its own (connecting,
+// reading a large answer, between two hops, after its end): they all end,
+// and nothing is left of them (on Windows: the handles of the process, the
+// two events of each request's asynchronous calls among them)
+static void testStress(const Servers &s)
+{
+#ifdef _WIN32
+    DWORD handlesBefore = 0;
+    GetProcessHandleCount(GetCurrentProcess(), &handlesBefore);
+#endif
+    const char *const paths[] = { "/echo", "/big?bytes=300000", "/slow-body?ms=1&bytes=400",
+                                  "/redirect?code=302&to=/big%3Fbytes%3D100000", "/slow-headers?ms=50" };
+    std::atomic<int> ended { 0 }, odd { 0 };
+    std::vector<std::thread> threads;
+    for (int t = 0; t < 8; ++t)
+        threads.emplace_back([&, t]() {
+            std::mt19937 random(unsigned(t + 1));
+            for (int n = 0; n < 150; ++n)
+            {
+                HttpSyncRequest request;
+                HttpRequest what;
+                what.url = QUrl(s.url(s.first, paths[random() % 5]));
+                const int after = int(random() % 16);
+                std::thread canceller([&request, after]() {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(after));
+                    request.cancel();
+                });
+                const HttpResponse r = request.run(what);
+                canceller.join();
+                ++ended;
+                if (!(r.error == QLatin1String("Cancelled") || (r.error.isEmpty() && r.status == 200)))
+                    ++odd;
+            }
+        });
+    for (std::thread &thread : threads)
+        thread.join();
+    CHECK(ended == 8 * 150 && odd == 0);
+#ifdef _WIN32
+    DWORD handlesAfter = 0;
+    GetProcessHandleCount(GetCurrentProcess(), &handlesAfter);
+    // (WinHTTP keeps a few of its own: its threads, its pools)
+    CHECK(handlesAfter < handlesBefore + 200);
+    std::printf("stress: %d requests cancelled at random, 8 at once; handles %lu before, %lu after\n",
+                ended.load(), handlesBefore, handlesAfter);
+#else
+    std::printf("stress: %d requests cancelled at random, 8 at once\n", ended.load());
+#endif
+}
+
 // ---------------------------------------------------------------------------
 // The work of the interface off its thread (runInBackground), and the
 // answers read on the worker thread (httpRequestAsync's onWorker)
@@ -532,6 +587,7 @@ int main(int argc, char **argv)
         {
             testRedirects(servers);
             testBounds(servers);
+            testStress(servers);
         }
         else
             std::printf("no HTTP backend in this build: its rules and the work off the thread only\n");

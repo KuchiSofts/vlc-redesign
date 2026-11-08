@@ -41,8 +41,10 @@ struct RequestState
     std::mutex lock;
     std::atomic<bool> cancelled { false };
 #ifdef _WIN32
-    // the handles open: closing them interrupts the call in progress
-    std::vector<HINTERNET> handles;
+    // The event the worker of an asynchronous WinHTTP call waits on: a
+    // cancel wakes it, and it closes its request itself (a handle is never
+    // touched from another thread)
+    HANDLE wake = nullptr;
 #endif
 
     void cancel()
@@ -50,10 +52,8 @@ struct RequestState
         std::lock_guard<std::mutex> guard(lock);
         cancelled = true;
 #ifdef _WIN32
-        // the request first, then its connection and session
-        for (auto it = handles.rbegin(); it != handles.rend(); ++it)
-            WinHttpCloseHandle(*it);
-        handles.clear();
+        if (wake)
+            SetEvent(wake);
 #endif
     }
 };
@@ -132,44 +132,194 @@ bool httpFollowRedirect(HttpRequest& request, int status, const QUrl& target, QS
 
 #ifdef _WIN32
 namespace {
-// Closed once: by its owner, or by RequestState::cancel() from another thread
+// WinHTTP in its asynchronous mode. A synchronous call can't be stopped
+// safely: closing its handle from another thread while the call runs is a
+// race Microsoft warns of ("An application should never call
+// WinHttpCloseHandle on a synchronous request"). Asynchronous, each call
+// returns at once and its end comes to statusCallback; the worker thread
+// waits for that end, or for a cancel, or for the deadline; and only the
+// worker ever uses the handles: a cancel just wakes it, it closes the
+// request itself (which ends what is pending, as documented for the
+// asynchronous mode), then waits for WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING,
+// the last callback of the handle, before it frees what the callback uses.
+
+// What the callback reports of the calls of one request, to its worker
+struct AsyncCall
+{
+    // an end of a call (or a cancel): auto-reset
+    HANDLE event = CreateEventW(nullptr, FALSE, FALSE, nullptr);
+    // the request handle is gone (HANDLE_CLOSING): manual-reset
+    HANDLE closed = CreateEventW(nullptr, TRUE, FALSE, nullptr);
+    std::mutex lock;
+    bool done = false;  // the call waited for has ended
+    DWORD error = 0;    // and failed so (REQUEST_ERROR)
+    DWORD bytes = 0;    // what it read, or has to read (DATA_AVAILABLE)
+    // where the reads land: alive until HANDLE_CLOSING, as the call
+    char buffer[65536];
+
+    ~AsyncCall()
+    {
+        if (event)
+            CloseHandle(event);
+        if (closed)
+            CloseHandle(closed);
+    }
+
+    void finish(DWORD failure, DWORD count)
+    {
+        {
+            std::lock_guard<std::mutex> guard(lock);
+            done = true;
+            error = failure;
+            bytes = count;
+        }
+        SetEvent(event);
+    }
+};
+
+void CALLBACK statusCallback(HINTERNET, DWORD_PTR context, DWORD status, LPVOID info, DWORD length)
+{
+    // (the session's and the connection's own: no context, nothing to do)
+    auto* const call = reinterpret_cast<AsyncCall*>(context);
+    if (!call)
+        return;
+    switch (status)
+    {
+        case WINHTTP_CALLBACK_STATUS_SENDREQUEST_COMPLETE:
+        case WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE:
+            call->finish(0, 0);
+            break;
+        case WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE:
+            call->finish(0, info ? *static_cast<const DWORD*>(info) : 0);
+            break;
+        case WINHTTP_CALLBACK_STATUS_READ_COMPLETE:
+            call->finish(0, length);
+            break;
+        case WINHTTP_CALLBACK_STATUS_REQUEST_ERROR:
+        {
+            const auto* const result = static_cast<const WINHTTP_ASYNC_RESULT*>(info);
+            call->finish(result && result->dwError ? result->dwError : DWORD(ERROR_WINHTTP_INTERNAL_ERROR), 0);
+            break;
+        }
+        case WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING:
+        {
+            // the last callback of the request: call is the worker's to
+            // free once this is set (nothing of it is touched after)
+            const HANDLE closed = call->closed;
+            SetEvent(closed);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+QString lastError(const char* step, DWORD error = GetLastError())
+{
+    return QStringLiteral("%1 failed (%2)").arg(QLatin1String(step)).arg(error);
+}
+
+// A handle of the session or of the connection (no context, no callback
+// of its own to wait for), closed at the end
 struct InternetHandle
 {
-    HINTERNET handle;
-    RequestState& state;
-    InternetHandle(RequestState& s, HINTERNET h) : handle(h), state(s)
-    {
-        if (!handle)
-            return;
-        std::lock_guard<std::mutex> guard(state.lock);
-        if (state.cancelled)
-        {
-            WinHttpCloseHandle(handle);
-            handle = nullptr;
-            return;
-        }
-        state.handles.push_back(handle);
-    }
+    HINTERNET handle = nullptr;
+    explicit InternetHandle(HINTERNET h) : handle(h) {}
     ~InternetHandle()
     {
-        if (!handle)
-            return;
-        std::lock_guard<std::mutex> guard(state.lock);
-        const auto it = std::find(state.handles.begin(), state.handles.end(), handle);
-        if (it == state.handles.end())
-            return; // closed by cancel()
-        state.handles.erase(it);
-        WinHttpCloseHandle(handle);
+        if (handle)
+            WinHttpCloseHandle(handle);
     }
     InternetHandle(const InternetHandle&) = delete;
     InternetHandle& operator=(const InternetHandle&) = delete;
     explicit operator bool() const { return handle != nullptr; }
 };
 
-QString lastError(const char* step)
+// The request handle and its call: closed by the worker (whatever ended
+// the request), then freed once WinHTTP says it is gone; registered with the
+// state meanwhile, for a cancel to wake the worker
+class AsyncRequest
 {
-    return QStringLiteral("%1 failed (%2)").arg(QLatin1String(step)).arg(GetLastError());
-}
+public:
+    AsyncRequest(RequestState& state, HINTERNET handle) : m_state(state), m_handle(handle) {}
+
+    ~AsyncRequest()
+    {
+        if (m_registered)
+        {
+            std::lock_guard<std::mutex> guard(m_state.lock);
+            m_state.wake = nullptr;
+        }
+        if (!m_handle)
+        {
+            delete m_call;
+            return;
+        }
+        WinHttpCloseHandle(m_handle);
+        // with a context the request has its HANDLE_CLOSING to come (what
+        // was pending ends first, in error): only then is call free. (A
+        // handle that never says so keeps it: a leak, not a crash)
+        if (!m_withContext || WaitForSingleObject(m_call->closed, 10000) == WAIT_OBJECT_0)
+            delete m_call;
+    }
+
+    AsyncRequest(const AsyncRequest&) = delete;
+    AsyncRequest& operator=(const AsyncRequest&) = delete;
+
+    HINTERNET handle() const { return m_handle; }
+    AsyncCall* call() const { return m_call; }
+
+    // the callbacks of the request given call, and a cancel able to wake its
+    // worker: false when cancelled already, or when it can't be
+    bool start()
+    {
+        if (!m_handle || !m_call || !m_call->event || !m_call->closed)
+            return false;
+        DWORD_PTR context = reinterpret_cast<DWORD_PTR>(m_call);
+        if (!WinHttpSetOption(m_handle, WINHTTP_OPTION_CONTEXT_VALUE, &context, sizeof(context)))
+            return false;
+        m_withContext = true;
+        std::lock_guard<std::mutex> guard(m_state.lock);
+        if (m_state.cancelled)
+            return false;
+        m_state.wake = m_call->event;
+        m_registered = true;
+        return true;
+    }
+
+    // How the call just started ended: its end, a cancel, or the deadline.
+    // Its error (0: none) and count in error and bytes
+    enum Wait { Ended, Cancelled, Expired };
+    Wait wait(const QDeadlineTimer& deadline, DWORD* error, DWORD* bytes)
+    {
+        for (;;)
+        {
+            if (m_state.cancelled)
+                return Cancelled;
+            {
+                std::lock_guard<std::mutex> guard(m_call->lock);
+                if (m_call->done)
+                {
+                    m_call->done = false;
+                    *error = m_call->error;
+                    *bytes = m_call->bytes;
+                    return Ended;
+                }
+            }
+            if (deadline.hasExpired())
+                return Expired;
+            const qint64 left = deadline.remainingTime();
+            WaitForSingleObject(m_call->event, left < 0 ? INFINITE : DWORD(std::min<qint64>(left + 1, 0x7FFFFFFF)));
+        }
+    }
+
+private:
+    RequestState& m_state;
+    HINTERNET m_handle = nullptr;
+    AsyncCall* m_call = new AsyncCall;
+    bool m_withContext = false;
+    bool m_registered = false;
+};
 
 // One hop of a request: its redirects are not followed (perform() does, by
 // httpFollowRedirect), their address in location
@@ -185,55 +335,50 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
         return response;
     }
     const QString cancelled = QStringLiteral("Cancelled");
+    if (state.cancelled)
+    {
+        response.error = cancelled;
+        return response;
+    }
 
     // The proxy of the system (its settings, or the script it names), as
     // the browsers use; WinHTTP's own setting before Windows 8.1
     HINTERNET opened = WinHttpOpen(L"VLC", WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY,
-                                   WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
+                                   WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, WINHTTP_FLAG_ASYNC);
     if (!opened)
         opened = WinHttpOpen(L"VLC", WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
-                             WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, 0);
-    InternetHandle session(state, opened);
+                             WINHTTP_NO_PROXY_NAME, WINHTTP_NO_PROXY_BYPASS, WINHTTP_FLAG_ASYNC);
+    InternetHandle session(opened);
     if (!session)
     {
-        response.error = state.cancelled ? cancelled : lastError("WinHttpOpen");
+        response.error = lastError("WinHttpOpen");
         return response;
     }
     // each step at most this long: a stalled read ends the request
     WinHttpSetTimeouts(session.handle, request.timeoutMs, request.timeoutMs,
                        request.timeoutMs, request.timeoutMs);
+    // (set on the session: its connection and request have it too)
+    if (WinHttpSetStatusCallback(session.handle, statusCallback,
+                                 WINHTTP_CALLBACK_FLAG_ALL_COMPLETIONS | WINHTTP_CALLBACK_FLAG_HANDLES, 0)
+        == WINHTTP_INVALID_STATUS_CALLBACK)
+    {
+        response.error = lastError("WinHttpSetStatusCallback");
+        return response;
+    }
 
     const std::wstring host = url.host(QUrl::FullyEncoded).toStdWString();
     const auto port = static_cast<INTERNET_PORT>(url.port(https ? INTERNET_DEFAULT_HTTPS_PORT
                                                                 : INTERNET_DEFAULT_HTTP_PORT));
-    InternetHandle connection(state, WinHttpConnect(session.handle, host.c_str(), port, 0));
+    InternetHandle connection(WinHttpConnect(session.handle, host.c_str(), port, 0));
     if (!connection)
     {
-        response.error = state.cancelled ? cancelled : lastError("WinHttpConnect");
+        response.error = lastError("WinHttpConnect");
         return response;
     }
 
     const std::wstring method = QString::fromLatin1(request.method).toStdWString();
     const std::wstring path = QString::fromLatin1(
         url.toEncoded(QUrl::RemoveScheme | QUrl::RemoveAuthority | QUrl::RemoveFragment)).toStdWString();
-    InternetHandle handle(state, WinHttpOpenRequest(connection.handle, method.c_str(),
-                                                    path.empty() ? L"/" : path.c_str(), nullptr,
-                                                    WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES,
-                                                    https ? WINHTTP_FLAG_SECURE : 0));
-    if (!handle)
-    {
-        response.error = state.cancelled ? cancelled : lastError("WinHttpOpenRequest");
-        return response;
-    }
-    // Redirects are not WinHTTP's to follow: perform() does, without the
-    // secret headers to another server (WinHTTP would send them all)
-    DWORD redirects = WINHTTP_OPTION_REDIRECT_POLICY_NEVER;
-    if (!WinHttpSetOption(handle.handle, WINHTTP_OPTION_REDIRECT_POLICY, &redirects, sizeof(redirects)))
-    {
-        response.error = state.cancelled ? cancelled : lastError("WinHttpSetOption");
-        return response;
-    }
-
     QByteArray headers;
     for (const auto& header : request.headers)
         headers += header.first + ": " + header.second + "\r\n";
@@ -241,96 +386,134 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
     const auto bodySize = static_cast<DWORD>(request.body.size());
     const std::wstring user = request.username.toStdWString();
     const std::wstring password = request.password.toStdWString();
-    DWORD status = 0;
-    for (int attempt = 0; ; ++attempt)
     {
-        if (!WinHttpSendRequest(handle.handle,
-                                wideHeaders.empty() ? WINHTTP_NO_ADDITIONAL_HEADERS : wideHeaders.c_str(),
-                                static_cast<DWORD>(-1L),
-                                bodySize ? const_cast<char*>(request.body.constData()) : WINHTTP_NO_REQUEST_DATA,
-                                bodySize, bodySize, 0)
-            || !WinHttpReceiveResponse(handle.handle, nullptr))
+        // (the strings above outlive the request: what is pending of them
+        // ends before ~AsyncRequest returns)
+        AsyncRequest call(state, WinHttpOpenRequest(connection.handle, method.c_str(),
+                                                    path.empty() ? L"/" : path.c_str(), nullptr,
+                                                    WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES,
+                                                    https ? WINHTTP_FLAG_SECURE : 0));
+        if (!call.handle())
         {
-            response.error = state.cancelled ? cancelled : lastError("HTTP request");
+            response.error = lastError("WinHttpOpenRequest");
             return response;
         }
-        DWORD statusSize = sizeof(status);
-        WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER,
-                            WINHTTP_HEADER_NAME_BY_INDEX, &status, &statusSize, WINHTTP_NO_HEADER_INDEX);
-        // the server asks who: the request's user, once, in the way it
-        // says (Digest rather than Basic)
-        if (status != 401 || attempt > 0 || user.empty())
-            break;
-        DWORD supported = 0, first = 0, target = 0;
-        if (!WinHttpQueryAuthSchemes(handle.handle, &supported, &first, &target))
-            break;
-        const DWORD scheme = (supported & WINHTTP_AUTH_SCHEME_DIGEST) ? WINHTTP_AUTH_SCHEME_DIGEST
-                           : (supported & WINHTTP_AUTH_SCHEME_BASIC) ? WINHTTP_AUTH_SCHEME_BASIC : 0;
-        if (!scheme || !WinHttpSetCredentials(handle.handle, target, scheme, user.c_str(), password.c_str(), nullptr))
-            break;
-    }
-    response.status = static_cast<int>(status);
-    if (isRedirect(response.status))
-    {
-        // where to (perform() decides); its body isn't read
-        DWORD size = 0;
-        WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_LOCATION, WINHTTP_HEADER_NAME_BY_INDEX,
-                            WINHTTP_NO_OUTPUT_BUFFER, &size, WINHTTP_NO_HEADER_INDEX);
-        if (GetLastError() == ERROR_INSUFFICIENT_BUFFER && size > 0 && size <= 64 * 1024)
+        // Redirects are not WinHTTP's to follow: perform() does, without the
+        // secret headers to another server (WinHTTP would send them all)
+        DWORD redirects = WINHTTP_OPTION_REDIRECT_POLICY_NEVER;
+        if (!WinHttpSetOption(call.handle(), WINHTTP_OPTION_REDIRECT_POLICY, &redirects, sizeof(redirects)))
         {
-            std::wstring value(size / sizeof(wchar_t) + 1, L'\0');
-            if (WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_LOCATION, WINHTTP_HEADER_NAME_BY_INDEX,
-                                    value.data(), &size, WINHTTP_NO_HEADER_INDEX))
-                *location = QUrl(QString::fromWCharArray(value.c_str(), int(size / sizeof(wchar_t))).trimmed());
+            response.error = lastError("WinHttpSetOption");
+            return response;
         }
-        return response;
-    }
+        if (!call.start())
+        {
+            response.error = state.cancelled ? cancelled : lastError("WinHttpSetOption");
+            return response;
+        }
+        // how a call ended: true to go on, else response.error says why
+        DWORD error = 0, count = 0;
+        const auto ended = [&](BOOL started, const char* step) {
+            if (!started)
+            {
+                response.error = lastError(step);
+                return false;
+            }
+            switch (call.wait(deadline, &error, &count))
+            {
+                case AsyncRequest::Cancelled:
+                    response.error = cancelled;
+                    return false;
+                case AsyncRequest::Expired:
+                    response.error = QStringLiteral("Timed out");
+                    return false;
+                case AsyncRequest::Ended:
+                    break;
+            }
+            if (error)
+            {
+                response.error = state.cancelled ? cancelled : lastError(step, error);
+                return false;
+            }
+            return true;
+        };
 
-    DWORD length = 0;
-    DWORD lengthSize = sizeof(length);
-    if (!WinHttpQueryHeaders(handle.handle, WINHTTP_QUERY_CONTENT_LENGTH | WINHTTP_QUERY_FLAG_NUMBER,
-                             WINHTTP_HEADER_NAME_BY_INDEX, &length, &lengthSize, WINHTTP_NO_HEADER_INDEX))
-        length = 0;
-    if (length > 0 && static_cast<qsizetype>(length) <= request.maxBytes)
-        response.body.reserve(length);
+        DWORD status = 0;
+        for (int attempt = 0;; ++attempt)
+        {
+            const DWORD_PTR context = reinterpret_cast<DWORD_PTR>(call.call());
+            if (!ended(WinHttpSendRequest(call.handle(),
+                                          wideHeaders.empty() ? WINHTTP_NO_ADDITIONAL_HEADERS : wideHeaders.c_str(),
+                                          static_cast<DWORD>(-1L),
+                                          bodySize ? const_cast<char*>(request.body.constData()) : WINHTTP_NO_REQUEST_DATA,
+                                          bodySize, bodySize, context), "HTTP request")
+                || !ended(WinHttpReceiveResponse(call.handle(), nullptr), "HTTP request"))
+                return response;
+            DWORD statusSize = sizeof(status);
+            WinHttpQueryHeaders(call.handle(), WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER,
+                                WINHTTP_HEADER_NAME_BY_INDEX, &status, &statusSize, WINHTTP_NO_HEADER_INDEX);
+            // the server asks who: the request's user, once, in the way it
+            // says (Digest rather than Basic)
+            if (status != 401 || attempt > 0 || user.empty())
+                break;
+            DWORD supported = 0, first = 0, target = 0;
+            if (!WinHttpQueryAuthSchemes(call.handle(), &supported, &first, &target))
+                break;
+            const DWORD scheme = (supported & WINHTTP_AUTH_SCHEME_DIGEST) ? WINHTTP_AUTH_SCHEME_DIGEST
+                               : (supported & WINHTTP_AUTH_SCHEME_BASIC) ? WINHTTP_AUTH_SCHEME_BASIC : 0;
+            if (!scheme || !WinHttpSetCredentials(call.handle(), target, scheme, user.c_str(), password.c_str(), nullptr))
+                break;
+        }
+        response.status = static_cast<int>(status);
+        if (isRedirect(response.status))
+        {
+            // where to (perform() decides); its body isn't read
+            DWORD size = 0;
+            WinHttpQueryHeaders(call.handle(), WINHTTP_QUERY_LOCATION, WINHTTP_HEADER_NAME_BY_INDEX,
+                                WINHTTP_NO_OUTPUT_BUFFER, &size, WINHTTP_NO_HEADER_INDEX);
+            if (GetLastError() == ERROR_INSUFFICIENT_BUFFER && size > 0 && size <= 64 * 1024)
+            {
+                std::wstring value(size / sizeof(wchar_t) + 1, L'\0');
+                if (WinHttpQueryHeaders(call.handle(), WINHTTP_QUERY_LOCATION, WINHTTP_HEADER_NAME_BY_INDEX,
+                                        value.data(), &size, WINHTTP_NO_HEADER_INDEX))
+                    *location = QUrl(QString::fromWCharArray(value.c_str(), int(size / sizeof(wchar_t))).trimmed());
+            }
+            return response;
+        }
 
-    char buffer[65536];
-    while (response.body.size() <= request.maxBytes)
-    {
-        DWORD read = 0;
-        if (state.cancelled)
+        DWORD length = 0;
+        DWORD lengthSize = sizeof(length);
+        if (!WinHttpQueryHeaders(call.handle(), WINHTTP_QUERY_CONTENT_LENGTH | WINHTTP_QUERY_FLAG_NUMBER,
+                                 WINHTTP_HEADER_NAME_BY_INDEX, &length, &lengthSize, WINHTTP_NO_HEADER_INDEX))
+            length = 0;
+        if (length > 0 && static_cast<qsizetype>(length) <= request.maxBytes)
+            response.body.reserve(length);
+
+        // What has come, a buffer at most at a time (not a full buffer
+        // waited for: an answer a byte at a time ends at its deadline)
+        while (response.body.size() <= request.maxBytes)
         {
-            response.error = cancelled;
-            break;
+            if (!ended(WinHttpQueryDataAvailable(call.handle(), nullptr), "WinHttpQueryDataAvailable"))
+                break;
+            const DWORD available = count;
+            if (available == 0)
+                break;
+            if (!ended(WinHttpReadData(call.handle(), call.call()->buffer,
+                                       std::min<DWORD>(available, sizeof(call.call()->buffer)), nullptr),
+                       "WinHttpReadData"))
+                break;
+            if (count == 0)
+                break;
+            response.body.append(call.call()->buffer, count);
+            if (request.progress)
+                request.progress(response.body.size(), length);
         }
-        if (deadline.hasExpired())
-        {
-            response.error = QStringLiteral("Timed out");
-            break;
-        }
-        // What has come, not a full buffer: WinHttpReadData waits for all it
-        // is asked (an answer a byte at a time went on past its deadline)
-        DWORD available = 0;
-        if (!WinHttpQueryDataAvailable(handle.handle, &available))
-        {
-            response.error = state.cancelled ? cancelled : lastError("WinHttpQueryDataAvailable");
-            break;
-        }
-        if (available == 0)
-            break;
-        if (!WinHttpReadData(handle.handle, buffer, std::min<DWORD>(available, sizeof(buffer)), &read))
-        {
-            response.error = state.cancelled ? cancelled : lastError("WinHttpReadData");
-            break;
-        }
-        if (read == 0)
-            break;
-        response.body.append(buffer, read);
-        if (request.progress)
-            request.progress(response.body.size(), length);
+        if (response.body.size() > request.maxBytes)
+            response.body.truncate(request.maxBytes + 1);
     }
-    if (response.body.size() > request.maxBytes)
-        response.body.truncate(request.maxBytes + 1);
+    // (the request is gone by now: its connection and session next, which
+    // have no context, so nothing of this code is called back for them)
+    WinHttpSetStatusCallback(session.handle, nullptr, 0, 0);
     return response;
 }
 }

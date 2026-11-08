@@ -54,6 +54,10 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflag
 # (the service a stuck download keeps is let go on purpose: not a leak of the code)
 ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 "$out/iptv-stop"
 
+echo "== Live TV: downloads that stall (a local server that sends a few bytes, then nothing)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -pthread -I. extras/juxtopposed/iptv-idle.cpp -o "$out/iptv-idle"
+"$out/iptv-idle"
+
 echo "== Live TV: the service (limits, failures, back-off, answers cut short, removals)"
 g++ -std=c++17 -O1 -Wall -Wextra $san $fcast -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/iptv-service.cpp modules/misc/iptv/service.cpp modules/misc/iptv/servers.cpp \

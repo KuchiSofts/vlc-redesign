@@ -68,6 +68,10 @@ struct Datagram
 constexpr qint64 kPlaylistMaxBytes = 512LL << 20;
 constexpr qint64 kGuideMaxBytes = 2LL << 30;
 constexpr qint64 kLogoMaxBytes = 2LL << 20;
+// How long a download waits for its next bytes before it stops ("no answer"):
+// a playlist, a guide, an API's answer; a logo
+constexpr int kIdleSecs = 30;
+constexpr int kLogoIdleSecs = 15;
 
 // What VLC gives the service: downloads through its own access modules
 // (the proxy and the network settings of VLC), its keystore, its folders.
@@ -77,13 +81,15 @@ struct Host
     virtual ~Host() = default;
     // Saves the resource at url (http(s), file...) to path, as it is (a
     // gzip-compressed guide stays so); false and why on an error, when it
-    // is larger than limit bytes, cut short or stopped (path then keeps
-    // what it had). progress gets the bytes received and the size when
-    // known (0).
-    virtual bool download(const QString& url, const QString& path, QString* error, qint64 limit,
+    // is larger than limit bytes, cut short, stopped, or when nothing came
+    // for idleSecs ("no answer"; path then keeps what it had). progress gets
+    // the bytes received and the size when known (0).
+    virtual bool download(const QString& url, const QString& path, QString* error, qint64 limit, int idleSecs,
                           const std::function<void(qint64, qint64)>& progress = {}) = 0;
-    // A small answer (an Xtream Codes API call) read into memory
-    virtual QByteArray fetch(const QString& url, QString* error, qint64 limit = 256 << 20) = 0;
+    // A small answer (an Xtream Codes API call) read into memory; empty and
+    // why on an error, or when nothing came for idleSecs ("no answer")
+    virtual QByteArray fetch(const QString& url, QString* error, qint64 limit = 256 << 20,
+                             int idleSecs = kIdleSecs) = 0;
     // The secrets of a source (its link, its password) in VLC's keystore;
     // false when there is no keystore
     virtual bool storeSecret(const QString& id, const QByteArray& secret) = 0;

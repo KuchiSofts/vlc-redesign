@@ -32,7 +32,7 @@ What is being worked on, updated as it changes (2026-11-08):
   Legendas.net from Bazarr's providers (each checked live with made-up credentials: their refusals are the
   fixtures, and Test / Sign in showed Key refused or Wrong user name or password for each on the hidden desktop),
   signed-in sessions kept for the run; Napisy24 needs an account (no anonymous answer: "login error"), so its
-  detail line says so; Ktuvit didn't answer. VideoLAN merged to adfa27855b. Next: Android and Samsung.
+  detail line says so; Ktuvit didn't answer. VideoLAN merged to f94b611735 (2 commits). Next: Android and Samsung.
 - ✅ **Release 0.5.7** published 2026-11-08 ([v0.5.7](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7),
   23 files; Android PR #3 and tag v0.5.7; the Samsung source 0.5.7) (the owner: "i want to make a release for the update"): an update release. Online
   subtitles in every app (#67) with every free service asked for any file; Live TV in the library next to the

@@ -194,6 +194,14 @@ bool refreshDue(qint64 now, qint64 playlistUpdated, qint64 lastAttempt, int fail
 // ones too), then those starting before to; their indexes
 QVector<int> programmesBetween(const EntryList& list, qint64 from, qint64 to);
 
+// A list (sorted by start) where no two programmes overlap: where several
+// cover a moment, the shortest wins it (a long programme that contains
+// shorter ones shows around them, cut in parts with its title, its
+// description). What is on now and next, a guide's row, an archive's start
+// then follow the shorter ones in their slots. A list without overlaps is
+// returned as it is.
+EntryList withoutOverlaps(const EntryList& list);
+
 class Service
 {
 public:

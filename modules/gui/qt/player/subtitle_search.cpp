@@ -34,6 +34,11 @@
 #include <cmath>
 #include <memory>
 
+#ifdef _WIN32
+# include <windows.h>
+# include <wincrypt.h>
+#endif
+
 #include <vlc_common.h>
 #include <vlc_configuration.h>
 
@@ -51,6 +56,68 @@ const char keyRecent[] = "redesign/subtitle-recent";
 constexpr int maxRemembered = 500;
 // the services the user turned off ("redesign/subtitle-service/<id>")
 const char keyService[] = "redesign/subtitle-service/";
+// those removed from the list
+const char keyRemoved[] = "redesign/subtitle-service-removed/";
+// the user's credentials ("redesign/subtitle-credentials/<id>/<field>")
+const char keyCredentials[] = "redesign/subtitle-credentials/";
+// the credentials a search found refused ("<kind>:<their fingerprint>"):
+// shown on the service's row until they change or a search succeeds
+const char keyRefused[] = "redesign/subtitle-service-refused/";
+// a service that asked to wait (429): shown so for a minute
+constexpr qint64 busyMs = 60 * 1000;
+
+QHash<QString, qint64> &busyUntil()
+{
+    static QHash<QString, qint64> until;
+    return until;
+}
+
+// A secret as kept: on Windows sealed for this user on this PC ("dpapi:"
+// and the sealed bytes), elsewhere as it is (VLC keeps its own passwords so)
+QString seal(const QString &plain)
+{
+    if (plain.isEmpty())
+        return {};
+#ifdef _WIN32
+    QByteArray in = plain.toUtf8();
+    DATA_BLOB input = { DWORD(in.size()), reinterpret_cast<BYTE *>(in.data()) };
+    DATA_BLOB output = {};
+    if (!CryptProtectData(&input, L"VLC Redesign", nullptr, nullptr, nullptr, CRYPTPROTECT_UI_FORBIDDEN, &output))
+        return {};
+    const QByteArray sealed(reinterpret_cast<const char *>(output.pbData), int(output.cbData));
+    LocalFree(output.pbData);
+    return QStringLiteral("dpapi:") + QString::fromLatin1(sealed.toBase64());
+#else
+    return plain;
+#endif
+}
+
+QString unseal(const QString &kept)
+{
+    if (!kept.startsWith(QLatin1String("dpapi:")))
+        return kept;
+#ifdef _WIN32
+    QByteArray in = QByteArray::fromBase64(kept.mid(6).toLatin1());
+    DATA_BLOB input = { DWORD(in.size()), reinterpret_cast<BYTE *>(in.data()) };
+    DATA_BLOB output = {};
+    // (sealed for another user or PC: unknown here)
+    if (!CryptUnprotectData(&input, nullptr, nullptr, nullptr, nullptr, CRYPTPROTECT_UI_FORBIDDEN, &output))
+        return {};
+    const QString plain = QString::fromUtf8(reinterpret_cast<const char *>(output.pbData), int(output.cbData));
+    SecureZeroMemory(output.pbData, output.cbData);
+    LocalFree(output.pbData);
+    return plain;
+#else
+    return {};
+#endif
+}
+
+// What identifies credentials without them (their refusal is of these)
+QString fingerprint(const SubtitleProviders::Credentials &c)
+{
+    const QByteArray all = (c.key + QChar(1) + c.username + QChar(1) + c.password + QChar(1) + c.email).toUtf8();
+    return QString::fromLatin1(QCryptographicHash::hash(all, QCryptographicHash::Sha256).toHex().left(16));
+}
 constexpr qsizetype maxJsonBytes = 4 * 1024 * 1024;
 constexpr qsizetype maxSubtitleBytes = 8 * 1024 * 1024;
 // the downloads of media not played for that long leave the cache
@@ -348,12 +415,117 @@ QString SubtitleSearch::cacheRoot()
 
 bool SubtitleSearch::serviceEnabled(QSettings *settings, const QString &id)
 {
-    return settings->value(QString::fromLatin1(keyService) + id, true).toBool();
+    // on at first: the free services without an account; the others once
+    // turned on (or their credentials checked)
+    const SubtitleProviders::Provider *provider = SubtitleProviders::provider(id);
+    return settings->value(QString::fromLatin1(keyService) + id, provider && provider->fields == 0).toBool();
+}
+
+bool SubtitleSearch::serviceSwitched(QSettings *settings, const QString &id)
+{
+    return settings->contains(QString::fromLatin1(keyService) + id);
 }
 
 void SubtitleSearch::setServiceEnabled(QSettings *settings, const QString &id, bool enabled)
 {
     settings->setValue(QString::fromLatin1(keyService) + id, enabled);
+}
+
+bool SubtitleSearch::serviceRemoved(QSettings *settings, const QString &id)
+{
+    return settings->value(QString::fromLatin1(keyRemoved) + id, false).toBool();
+}
+
+void SubtitleSearch::setServiceRemoved(QSettings *settings, const QString &id, bool removed)
+{
+    if (removed)
+        settings->setValue(QString::fromLatin1(keyRemoved) + id, true);
+    else
+        settings->remove(QString::fromLatin1(keyRemoved) + id);
+}
+
+SubtitleProviders::Credentials SubtitleSearch::credentials(QSettings *settings, const QString &id)
+{
+    const QString prefix = QString::fromLatin1(keyCredentials) + id + QLatin1Char('/');
+    const auto value = [&](const char *field) {
+        return unseal(settings->value(prefix + QLatin1String(field)).toString());
+    };
+    SubtitleProviders::Credentials c;
+    c.key = value("key");
+    c.username = value("username");
+    c.password = value("password");
+    c.email = value("email");
+    return c;
+}
+
+bool SubtitleSearch::setCredentials(QSettings *settings, const QString &id,
+                                    const SubtitleProviders::Credentials &credentials)
+{
+    if (credentials == SubtitleSearch::credentials(settings, id))
+        return false;
+    const QString prefix = QString::fromLatin1(keyCredentials) + id + QLatin1Char('/');
+    const auto store = [&](const char *field, const QString &value) {
+        if (value.isEmpty())
+            settings->remove(prefix + QLatin1String(field));
+        else
+            settings->setValue(prefix + QLatin1String(field), seal(value));
+    };
+    store("key", credentials.key.trimmed());
+    store("username", credentials.username.trimmed());
+    store("password", credentials.password);
+    store("email", credentials.email.trimmed());
+    // (new ones: not refused, nor signed in with the old)
+    settings->remove(QString::fromLatin1(keyRefused) + id);
+    busyUntil().remove(id);
+    SubtitleProviders::forgetSession(id);
+    return true;
+}
+
+SubtitleSearch::ServiceStatus SubtitleSearch::serviceStatus(QSettings *settings, const QString &id)
+{
+    const QString refused = settings->value(QString::fromLatin1(keyRefused) + id).toString();
+    if (!refused.isEmpty() && refused.section(QLatin1Char(':'), 1) == fingerprint(credentials(settings, id)))
+        return refused.startsWith(QLatin1String("login:")) ? StatusLoginRefused : StatusKeyRefused;
+    if (busyUntil().value(id) > QDateTime::currentMSecsSinceEpoch())
+        return StatusBusy;
+    return StatusOk;
+}
+
+void SubtitleSearch::noteProblem(QSettings *settings, const QString &id, SubtitleProviders::Problem problem)
+{
+    using SubtitleProviders::Problem;
+    const QString key = QString::fromLatin1(keyRefused) + id;
+    switch (problem)
+    {
+        case Problem::None:
+            if (settings->contains(key))
+                settings->remove(key);
+            busyUntil().remove(id);
+            break;
+        case Problem::KeyRefused:
+        case Problem::LoginRefused:
+            settings->setValue(key, QString(QLatin1String(problem == Problem::KeyRefused ? "key:" : "login:")
+                                            + fingerprint(credentials(settings, id))));
+            break;
+        case Problem::Busy:
+            busyUntil().insert(id, QDateTime::currentMSecsSinceEpoch() + busyMs);
+            break;
+        default:
+            break;
+    }
+}
+
+bool SubtitleSearch::serviceAsked(QSettings *settings, const SubtitleProviders::Provider &provider,
+                                  const QStringList &languages)
+{
+    if (!serviceEnabled(settings, provider.id) || serviceRemoved(settings, provider.id))
+        return false;
+    if (provider.required && !SubtitleProviders::hasRequired(provider, credentials(settings, provider.id)))
+        return false;
+    if (provider.languages.isEmpty())
+        return true;
+    return std::any_of(provider.languages.cbegin(), provider.languages.cend(),
+                       [&languages](const QString &l) { return languages.contains(l); });
 }
 
 // (by its hash, else by its URL: streams and files too small to hash, as
@@ -894,11 +1066,16 @@ void SubtitleSearch::querySubtitles()
     query.fileName = m_media.name;
     query.hash = m_media.hash;
     query.size = m_media.size;
-    query.languages = m_preferences->wanted();
+    // the languages to search (Settings), and the others or not
+    m_languages = m_preferences->searched();
+    m_everyLanguage = m_preferences->everyLanguage();
+    query.languages = m_languages;
+    query.everyLanguage = m_everyLanguage;
 
     QStringList asked;
     for (const SubtitleProviders::Provider &provider : SubtitleProviders::providers())
-        if (serviceEnabled(m_intf->mainSettings, provider.id) && (query.series ? provider.series : provider.movies))
+        if (serviceAsked(m_intf->mainSettings, provider, query.languages)
+            && (query.series ? provider.series : provider.movies))
             asked.append(provider.id);
     // all counted before any is asked: one can answer at once (nothing to
     // ask it), and the search ends only with the last
@@ -911,17 +1088,23 @@ void SubtitleSearch::querySubtitles()
         finishSearch();
         return;
     }
+    msg_Dbg(m_intf, "online subtitles: asking %s in %s%s", qtu(asked.join(QLatin1String(", "))),
+            qtu(query.languages.join(QLatin1Char(','))), query.everyLanguage ? " and every other language" : "");
     for (const QString &id : asked)
     {
         QElapsedTimer timer;
         timer.start();
-        SubtitleProviders::search(this, id, query,
-            [this, revision, id, timer](const QList<SubtitleProviders::Result> &results, const QString &error) {
+        // (each its own credentials, never logged)
+        SubtitleProviders::Query own = query;
+        own.credentials = credentials(m_intf->mainSettings, id);
+        SubtitleProviders::search(this, id, own,
+            [this, revision, id, timer](const QList<SubtitleProviders::Result> &results, const QString &error,
+                                        SubtitleProviders::Problem problem) {
                 if (revision != m_searchRevision)
                     return;
                 msg_Dbg(m_intf, "online subtitles: %s: %lld in %lld ms%s%s", qtu(id), (long long)results.size(),
                         (long long)timer.elapsed(), error.isEmpty() ? "" : ", ", qtu(error));
-                onProviderDone(id, results, error);
+                onProviderDone(id, results, error, problem);
             });
         if (revision != m_searchRevision)
             return; // (another search started from an answer)
@@ -929,10 +1112,17 @@ void SubtitleSearch::querySubtitles()
 }
 
 void SubtitleSearch::onProviderDone(const QString &id, const QList<SubtitleProviders::Result> &results,
-                                    const QString &error)
+                                    const QString &error, SubtitleProviders::Problem problem)
 {
-    m_runs[id] = { false, int(results.size()), error };
-    m_found.append(results);
+    // what it found of the user's credentials: on its row in Settings
+    noteProblem(m_intf->mainSettings, id, problem);
+    // only the languages to search, unless every other one is asked too
+    QList<SubtitleProviders::Result> kept;
+    for (const SubtitleProviders::Result &r : results)
+        if (m_everyLanguage || m_languages.contains(r.language))
+            kept.append(r);
+    m_runs[id] = { false, int(kept.size()), error, problem };
+    m_found.append(kept);
     rebuildResults();
     emit runsChanged();
     if (--m_pending <= 0)
@@ -952,7 +1142,8 @@ void SubtitleSearch::rebuildResults()
         QString languageName;
         int order;
     };
-    const QStringList wanted = m_preferences->wanted();
+    // (in the order of the languages to search)
+    const QStringList wanted = m_languages.isEmpty() ? m_preferences->searched() : m_languages;
     const QSet<QString> fileTokens(m_media.tokens.begin(), m_media.tokens.end());
     static const QSet<QString> ignored = { "the", "a", "an", "of", "and", "srt", "sub", "subs", "subtitles",
                                            "heb", "eng", "he", "en" };
@@ -1115,61 +1306,76 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
         }
 
     const quint64 revision = m_downloadRevision;
-    HttpRequest request;
-    request.url = result.url;
-    request.timeoutMs = 30000;
-    request.maxBytes = maxSubtitleBytes;
-    request.headers = SubtitleProviders::downloadHeaders(result);
-    httpRequestAsync(this, request, [this, revision, done, result, folder, stem, pruneRoot](const HttpResponse &reply) {
+    const SubtitleProviders::Credentials own = credentials(m_intf->mainSettings, result.provider);
+    // (OpenSubtitles.com gives the link of each when asked)
+    SubtitleProviders::prepareDownload(this, result, own,
+        [this, revision, done, result, folder, stem, pruneRoot](const SubtitleProviders::Download &prepared) {
         if (revision != m_downloadRevision)
             return;
-        if (!replyOk(reply, maxSubtitleBytes) || reply.body.isEmpty())
+        if (prepared.url.isEmpty())
         {
-            done({}, reply.status == 0 ? qtr("No connection to the internet.")
-                                       : qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
+            if (prepared.problem == SubtitleProviders::Problem::KeyRefused
+                || prepared.problem == SubtitleProviders::Problem::LoginRefused)
+                noteProblem(m_intf->mainSettings, result.provider, prepared.problem);
+            done({}, prepared.error.isEmpty() ? qtr("The subtitle couldn't be downloaded (%1).").arg(0) : prepared.error);
             return;
         }
-        // Unpacked, converted and saved on a worker thread (an archive can
-        // be large); the answer comes back by the finished signal, dropped
-        // if the search is gone
-        struct Saved
-        {
-            QString file;
-            QString error;
-        };
-        auto saved = std::make_shared<Saved>();
-        const QByteArray body = reply.body;
-        const QString videoName = m_media.name;
-        const QString keep = QFileInfo(folder).fileName();
-        QThread *worker = QThread::create([saved, body, result, videoName, folder, stem, pruneRoot, keep]() {
-            // the cache cleaned up once a session, as it grows
-            static std::atomic<bool> pruned { false };
-            if (!pruneRoot.isEmpty() && !pruned.exchange(true))
-                pruneCache(pruneRoot, keep);
-            QString extension;
-            const QByteArray text = SubtitleProviders::subtitleOf(body, result, videoName, &extension,
-                                                                  &saved->error);
-            if (text.isEmpty())
-                return;
-            const QString file = stem + QLatin1Char('.') + extension;
-            QDir().mkpath(folder);
-            QSaveFile out(file);
-            if (!out.open(QIODevice::WriteOnly) || out.write(text) != text.size() || !out.commit())
-            {
-                saved->error = qtr("The subtitle couldn't be saved.");
-                return;
-            }
-            saved->file = file;
-        });
-        connect(worker, &QThread::finished, this, [this, revision, done, saved]() {
+        HttpRequest request;
+        request.url = prepared.url;
+        request.timeoutMs = 30000;
+        request.maxBytes = maxSubtitleBytes;
+        request.headers = prepared.headers;
+        httpRequestAsync(this, request, [this, revision, done, result, folder, stem, pruneRoot](const HttpResponse &reply) {
             if (revision != m_downloadRevision)
                 return;
-            if (saved->file.isEmpty())
-                done({}, saved->error.isEmpty() ? qtr("The subtitle couldn't be unpacked.") : saved->error);
-            else
-                done(saved->file, {});
+            if (!replyOk(reply, maxSubtitleBytes) || reply.body.isEmpty())
+            {
+                done({}, reply.status == 0 ? qtr("No connection to the internet.")
+                                           : qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
+                return;
+            }
+            // Unpacked, converted and saved on a worker thread (an archive can
+            // be large); the answer comes back by the finished signal, dropped
+            // if the search is gone
+            struct Saved
+            {
+                QString file;
+                QString error;
+            };
+            auto saved = std::make_shared<Saved>();
+            const QByteArray body = reply.body;
+            const QString videoName = m_media.name;
+            const QString keep = QFileInfo(folder).fileName();
+            QThread *worker = QThread::create([saved, body, result, videoName, folder, stem, pruneRoot, keep]() {
+                // the cache cleaned up once a session, as it grows
+                static std::atomic<bool> pruned { false };
+                if (!pruneRoot.isEmpty() && !pruned.exchange(true))
+                    pruneCache(pruneRoot, keep);
+                QString extension;
+                const QByteArray text = SubtitleProviders::subtitleOf(body, result, videoName, &extension,
+                                                                      &saved->error);
+                if (text.isEmpty())
+                    return;
+                const QString file = stem + QLatin1Char('.') + extension;
+                QDir().mkpath(folder);
+                QSaveFile out(file);
+                if (!out.open(QIODevice::WriteOnly) || out.write(text) != text.size() || !out.commit())
+                {
+                    saved->error = qtr("The subtitle couldn't be saved.");
+                    return;
+                }
+                saved->file = file;
+            });
+            connect(worker, &QThread::finished, this, [this, revision, done, saved]() {
+                if (revision != m_downloadRevision)
+                    return;
+                if (saved->file.isEmpty())
+                    done({}, saved->error.isEmpty() ? qtr("The subtitle couldn't be unpacked.") : saved->error);
+                else
+                    done(saved->file, {});
+            });
+            connect(worker, &QThread::finished, worker, &QObject::deleteLater);
+            worker->start(QThread::LowPriority);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
     });
 }

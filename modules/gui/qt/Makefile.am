@@ -91,7 +91,7 @@ endif
 
 if HAVE_WIN32
 libqt_plugin_la_CXXFLAGS += $(LIBCOMCXXFLAGS)
-libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp -lshell32 -liphlpapi
+libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp -lshell32 -liphlpapi -lcrypt32
 endif
 if HAVE_QT_LIBCURL
 # util/http_request.cpp: libcurl outside Windows

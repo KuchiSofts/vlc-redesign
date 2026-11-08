@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:12+0000\n"
+"POT-Creation-Date: 2026-11-08 07:06+0000\n"
 "PO-Revision-Date: 2017-10-06 11:13+0000\n"
 "Last-Translator: Vikas Hegde <vikashegde82@gmail.com>\n"
 "Language-Team: Kannada (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -448,10 +448,10 @@ msgstr ""
 
 #: include/vlc_intf_strings.h:67
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:265
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:171
-#: modules/gui/qt/player/qml/CompactLibrary.qml:874
-#: modules/gui/qt/player/qml/CompactLibrary.qml:969
+#: modules/gui/qt/player/qml/CompactLibrary.qml:918
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1032
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:567
 msgid "Search"
 msgstr "ಹುಡುಕು"
@@ -995,8 +995,8 @@ msgstr "ಪ್ರಕಾರ"
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:214
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:100
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:81
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:757
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:762
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:809
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgid "Channels"
 msgstr "ಚಾನಲ್ಗಳು"
@@ -1624,11 +1624,11 @@ msgstr ""
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:35
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
 #: modules/gui/qt/network/standardpathmodel.cpp:151
-#: modules/gui/qt/player/qml/CompactLibrary.qml:80
-#: modules/gui/qt/player/qml/CompactLibrary.qml:197
-#: modules/gui/qt/player/qml/CompactLibrary.qml:294
+#: modules/gui/qt/player/qml/CompactLibrary.qml:93
+#: modules/gui/qt/player/qml/CompactLibrary.qml:212
+#: modules/gui/qt/player/qml/CompactLibrary.qml:309
 msgid "Music"
 msgstr "ಸಂಗೀತ"
 
@@ -1659,6 +1659,7 @@ msgid "Accessibility"
 msgstr "ಪ್ರವೇಶಿಸುವಿಕೆ"
 
 #: src/libvlc-module.c:157
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
 msgid "Test"
 msgstr "ಪರೀಕ್ಷೆ"
 
@@ -1771,7 +1772,7 @@ msgstr "ಆನ್"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 #: modules/gui/qt/menus/menus.cpp:923 modules/gui/qt/player/hdr_output.cpp:33
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:400
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:430
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
 msgid "Off"
 msgstr "ಆಫ್ ಮಾಡಿ"
@@ -2649,7 +2650,7 @@ msgstr "ಮೊನೊಟೋನಿಕ್"
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:642
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:33
 #: modules/gui/qt/dialogs/toolbar/defaults.cpp:85
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:438
 #: modules/gui/qt/player/qml/controlbarcontrols/AspectRatioWidget.qml:41
 #: modules/logger/file.c:225 modules/spu/marq.c:63 modules/spu/rss.c:71
 #: modules/spu/rss.c:168
@@ -2717,7 +2718,7 @@ msgstr ""
 "Choose the program to select by giving its Service ID. Only use this option "
 "if you want to read a multi-program stream (like DVB streams for example)."
 
-#: src/libvlc-module.c:649 modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:755
+#: src/libvlc-module.c:649 modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:760
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:687
 #: modules/gui/qt/player/qml/controlbarcontrols/ProgramButton.qml:36
 msgid "Programs"
@@ -4308,10 +4309,10 @@ msgstr "ನಿಧಾನವಾಗಿ (ಉತ್ತಮ)"
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:259
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:334
 #: modules/gui/qt/dialogs/sout/sout.cpp:97
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:644
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:649
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:248
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:657
+#: modules/gui/qt/player/qml/CompactLibrary.qml:677
 #: modules/gui/qt/player/qml/controlbarcontrols/NextButton.qml:32
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:268 modules/notify/notify.c:361
 msgid "Next"
@@ -4330,7 +4331,7 @@ msgstr "ಪ್ಲೇ ಸರತಿಯಲ್ಲಿನ ಮುಂದಿನ ಐಟಂ
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:256
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:211
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:36
-#: modules/gui/qt/player/qml/CompactLibrary.qml:649
+#: modules/gui/qt/player/qml/CompactLibrary.qml:669
 #: modules/gui/qt/player/qml/controlbarcontrols/PreviousButton.qml:32
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:240 modules/notify/notify.c:359
 msgid "Previous"
@@ -5138,7 +5139,7 @@ msgstr "ಉಪಚಿತ್ರಗಳು"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:232
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:248
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:27
-#: modules/gui/qt/player/subtitle_search.cpp:977
+#: modules/gui/qt/player/subtitle_search.cpp:1196
 #: modules/gui/qt/player/qml/TracksMenu.qml:40
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:272
 #: share/lua/http/dialogs/create_stream.html:153
@@ -5200,8 +5201,8 @@ msgid "Plugins"
 msgstr "ಪ್ಲಗಿನ್ಗಳು"
 
 #: src/libvlc-module.c:2153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:533
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -6204,7 +6205,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:65
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:53
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:255
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:257
 msgid "Arabic"
 msgstr "ಅರೇಬಿಕ್"
 
@@ -6432,7 +6433,7 @@ msgstr ""
 msgid "Caucasian (Other)"
 msgstr ""
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Cebuano"
 msgstr "ಸೆಬುವಾನೊ"
 
@@ -6494,7 +6495,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:138
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:54
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:254
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:256
 msgid "Chinese"
 msgstr "ಚಿನೀಸ್"
 
@@ -6646,7 +6647,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:180
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:58
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:250
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:252
 msgid "English"
 msgstr "ಇಂಗ್ಲೀಷ್"
 
@@ -6709,7 +6710,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:197
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:60
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:250
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:252
 msgid "French"
 msgstr "ಫ್ರೆಂಚ್"
 
@@ -6775,7 +6776,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:215
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:61
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:251
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:253
 msgid "German"
 msgstr "ಜರ್ಮನ್"
 
@@ -6835,13 +6836,13 @@ msgstr ""
 msgid "Hausa"
 msgstr ""
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Hawaiian"
 msgstr "ಹವಾಯಿಯನ್"
 
 #: src/text/iso-639_def.h:232 src/text/iso-639_def.h:575
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:63
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:256
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:258
 msgid "Hebrew"
 msgstr "ಹೀಬ್ರೂ"
 
@@ -6870,7 +6871,7 @@ msgstr "ಹಿರಿ ಮೊಟು"
 msgid "Hittite"
 msgstr ""
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Hmong"
 msgstr "ಹ್ಮಾಂಗ್"
 
@@ -6962,13 +6963,13 @@ msgstr ""
 
 #: src/text/iso-639_def.h:263
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:67
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:252
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:254
 msgid "Italian"
 msgstr "ಇಟಾಲಿಯನ್"
 
 #: src/text/iso-639_def.h:264
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:68
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:254
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:256
 msgid "Japanese"
 msgstr "ಜಪಾನೀಸ್"
 
@@ -7106,7 +7107,7 @@ msgstr ""
 
 #: src/text/iso-639_def.h:298
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:69
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:255
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:257
 msgid "Korean"
 msgstr "ಕೊರಿಯನ್"
 
@@ -7291,7 +7292,7 @@ msgstr ""
 msgid "Mandingo"
 msgstr ""
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Manipuri"
 msgstr "ಮಣಿಪುರಿ"
 
@@ -7612,7 +7613,7 @@ msgstr "ಪೋಲಿಷ್"
 
 #: src/text/iso-639_def.h:425
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:74
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:252
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:254
 msgid "Portuguese"
 msgstr "ಪೋರ್ಚುಗೀಸ್"
 
@@ -7671,7 +7672,7 @@ msgstr "ರುಂಡಿ"
 
 #: src/text/iso-639_def.h:440
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:76
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:253
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:255
 msgid "Russian"
 msgstr "ರಷ್ಯನ್"
 
@@ -7884,7 +7885,7 @@ msgstr "ಸ್ವಾಟಿ"
 msgid "Swedish"
 msgstr "ಸ್ವೀಡಿಷ್"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Syriac"
 msgstr "ಸಿರಿಯಾಕ್"
 
@@ -8262,7 +8263,7 @@ msgstr "ಇದಕ್ಕೆ Windows 10 ಆವೃತ್ತಿ 1809 ಅಥವಾ �
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
@@ -8912,6 +8913,8 @@ msgstr "ಆಂಟೆನಾ"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:37
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:100
+#: modules/gui/qt/player/qml/CompactLibrary.qml:95
+#: modules/gui/qt/player/qml/CompactLibrary.qml:313
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgid "TV"
 msgstr "ಟಿವಿ"
@@ -9846,7 +9849,7 @@ msgstr ""
 #: modules/access_output/http-put.c:131 modules/access_output/http.c:53
 #: modules/gui/macosx/panels/dialogs/VLCCoreDialogProvider.m:217
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:349
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:869
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:872
 #: modules/misc/audioscrobbler.c:117 modules/stream_out/rtp.c:165
 msgid "Username"
 msgstr "ಬಳಕೆದಾರರ ಹೆಸರು"
@@ -9868,9 +9871,10 @@ msgstr ""
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:406
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:439
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:447
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:340
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:435
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:893
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
 #: modules/lua/vlc.c:57 modules/lua/vlc.c:86 modules/misc/audioscrobbler.c:119
 #: modules/stream_out/rtp.c:168
 msgid "Password"
@@ -11582,7 +11586,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:77
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:243
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:29
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:103
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
 #: modules/gui/qt/maininterface/navigationmodel.cpp:275
@@ -12628,7 +12632,7 @@ msgid "Large Hall"
 msgstr "ದೊಡ್ಡ ಹಾಲ್"
 
 #: modules/audio_filter/equalizer_presets.h:55
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:500
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:505
 msgid "Live"
 msgstr "ನೇರ ಪ್ರಸಾರ"
 
@@ -13267,8 +13271,8 @@ msgid "Enabled"
 msgstr "ಸಕ್ರಿಯ"
 
 #: modules/audio_output/mmdevice.c:1626
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:621
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:635
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
 msgid "Output device"
 msgstr "ಉತ್ಪಾದನೆ ಸಾಧನ"
@@ -18750,7 +18754,7 @@ msgid "Add to Favorites"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:141
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -19190,7 +19194,7 @@ msgstr "Mac OS X ಅಂತರ್ವರ್ತನ"
 
 #: modules/gui/macosx/main/macosx.m:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:13
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
@@ -19391,7 +19395,7 @@ msgstr "ಹುಡುಕಿ: %s"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:385
 #: modules/gui/qt/menus/menus.cpp:877 modules/gui/qt/menus/menus.cpp:897
-#: modules/gui/qt/player/qml/CompactLibrary.qml:946
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1009
 msgid "View"
 msgstr "ನೋಟ"
 
@@ -19863,8 +19867,8 @@ msgstr "ಕ್ರಿಯಾತ್ಮಕ ವ್ಯಾಪ್ತಿಯ ಸಂಕೆ�
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:148
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:66
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:396
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:456
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:816
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:458
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
 #: modules/gui/qt/player/qml/TracksMenu.qml:570
@@ -19873,7 +19877,7 @@ msgstr "ಕ್ರಿಯಾತ್ಮಕ ವ್ಯಾಪ್ತಿಯ ಸಂಕೆ�
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:274
 #: modules/gui/qt/player/qml/TracksPageSubtitle.qml:388
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:106
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:599
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:629
 msgid "Reset"
 msgstr "ಮರುಹೊಂದಿಸಿ"
 
@@ -20010,6 +20014,9 @@ msgstr "ನೀವು ತೆಗೆಯಲು ಬಯಸುವ ಪೂರ್ವಹ
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:99
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:937
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:269
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:271
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:211
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:325
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
@@ -20040,13 +20047,14 @@ msgstr "ಹೊಸ ಪೂರ್ವಹೊಂದಿಕೆಯ ಹೆಸರನ�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Add"
 msgstr "ಸೇರಿಸಿ"
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:98
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:358
 #: modules/gui/qt/dialogs/bookmarks/bookmarks.cpp:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:369
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:70
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:80
 #: modules/gui/qt/widgets/qml/SearchBox.qml:305
@@ -20720,8 +20728,8 @@ msgstr "ಸಂಕೇತಕಗಳು/ಮಕ್ಸರ್‍ ಗಳು"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:36
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:295
-#: modules/gui/qt/player/qml/CompactLibrary.qml:81
-#: modules/gui/qt/player/qml/CompactLibrary.qml:295
+#: modules/gui/qt/player/qml/CompactLibrary.qml:94
+#: modules/gui/qt/player/qml/CompactLibrary.qml:310
 msgid "Network"
 msgstr "ಜಾಲಬಂಧ"
 
@@ -21109,9 +21117,9 @@ msgstr "ಮಾಧ್ಯಮ ಸಂಪನ್ಮೂಲ ಪತ್ತೆಕಾರಕ 
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:552
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:763
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:786
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:777
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:800
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:814
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
@@ -22432,11 +22440,11 @@ msgstr "ಕಡತಗಳು"
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:79
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
-#: modules/gui/qt/player/qml/CompactLibrary.qml:293
+#: modules/gui/qt/player/qml/CompactLibrary.qml:92
+#: modules/gui/qt/player/qml/CompactLibrary.qml:213
+#: modules/gui/qt/player/qml/CompactLibrary.qml:308
 msgid "Videos"
 msgstr "ವೀಡಿಯೊಗಳು"
 
@@ -22482,7 +22490,7 @@ msgstr "ಉದಾ., 1:02:10"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:29
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:82
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:762
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:776
 msgid "Plugins and extensions"
 msgstr "ಪ್ಲಗಿನ್ಗಳು ಮತ್ತು ವಿಸ್ತರಣೆಗಳು"
 
@@ -23683,8 +23691,8 @@ msgid "Second language (when there are none)"
 msgstr "ಎರಡನೇ ಭಾಷೆ (ಯಾವುದೂ ಇಲ್ಲದಿದ್ದಾಗ)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "ಈ ಭಾಷೆಗಳಲ್ಲಿ ವೀಡಿಯೊಗೆ ಯಾವುದೂ ಇಲ್ಲದಿದ್ದಾಗ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಹುಡುಕಿ"
 
@@ -23702,19 +23710,19 @@ msgstr "ನಿಮ್ಮ ಆದ್ಯತೆಯ ಥೀಮ್ ಮತ್ತು ಬ�
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:92
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 msgid "Light"
 msgstr "ತಿಳಿ"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:31
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 msgid "Dark"
 msgstr "ಗಾಢ"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:33
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:432
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:30
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
@@ -24186,8 +24194,8 @@ msgid " f/s"
 msgstr " f/s"
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1404
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:677
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:691
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:705
 msgid "Advanced Options"
 msgstr "ಸುಧಾರಿತ ಆಯ್ಕೆಗಳು"
 
@@ -24340,7 +24348,7 @@ msgid "The previous audio device could not be restored."
 msgstr "ಹಿಂದಿನ ಧ್ವನಿ ಸಾಧನವನ್ನು ಮರುಸ್ಥಾಪಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:57
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:253
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:255
 msgid "Dutch"
 msgstr "ಡಚ್"
 
@@ -24349,7 +24357,7 @@ msgid "Greek"
 msgstr "ಗ್ರೀಕ್"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:77
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:251
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:253
 msgid "Spanish"
 msgstr "ಸ್ಪ್ಯಾನಿಷ್"
 
@@ -25371,12 +25379,12 @@ msgid "Right to left"
 msgstr "ಬಲದಿಂದ ಎಡಕ್ಕೆ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 msgid "Theme"
 msgstr "ಥೀಮ್"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 #: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "ಉಚ್ಚಾರಣಾ ಬಣ್ಣ"
@@ -25393,24 +25401,146 @@ msgstr "ಸಿಸ್ಟಂ ಉಚ್ಚಾರಣಾ ಬಣ್ಣವನ್ನು 
 msgid "VLC follows the system language."
 msgstr "VLC ಸಿಸ್ಟಮ್ ಭಾಷೆಯನ್ನು ಅನುಸರಿಸುತ್ತದೆ."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
 msgid "Second Language & Online Subtitles"
 msgstr "ಎರಡನೇ ಭಾಷೆ ಮತ್ತು ಆನ್‌ಲೈನ್ ಉಪಶೀರ್ಷಿಕೆಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:82
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:154
 msgid "Second language (when there are none in the preferred one)"
 msgstr "ಎರಡನೇ ಭಾಷೆ (ಆದ್ಯತೆಯ ಭಾಷೆಯಲ್ಲಿ ಯಾವುದೂ ಇಲ್ಲದಿದ್ದಾಗ)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:188
 msgid "Show both languages at once (dual subtitles)"
 msgstr "ಎರಡೂ ಭಾಷೆಗಳನ್ನು ಒಟ್ಟಿಗೆ ತೋರಿಸಿ (ದ್ವಿ ಉಪಶೀರ್ಷಿಕೆಗಳು)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:132
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+msgid "Languages to search"
+msgstr "ಹುಡುಕಬೇಕಾದ ಭಾಷೆಗಳು"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
+msgid "Move up"
+msgstr "ಮೇಲಕ್ಕೆ ಸರಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:258
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
+msgid "Move down"
+msgstr "ಕೆಳಕ್ಕೆ ಸರಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:297
+msgid "Add a language"
+msgstr "ಭಾಷೆಯನ್ನು ಸೇರಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+msgid "Every other language too"
+msgstr "ಇತರ ಎಲ್ಲಾ ಭಾಷೆಗಳೂ ಸಹ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:319
+msgid "Fewer languages: a faster search"
+msgstr "ಕಡಿಮೆ ಭಾಷೆಗಳು: ವೇಗದ ಹುಡುಕಾಟ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:596
 msgid "Subtitle services"
 msgstr "ಉಪಶೀರ್ಷಿಕೆ ಸೇವೆಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:100
+msgid "Key works"
+msgstr "ಕೀ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದೆ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:101
+msgid "Signed in as %1"
+msgstr "%1 ಆಗಿ ಸೈನ್ ಇನ್ ಆಗಿದೆ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:102
+msgid "Key refused"
+msgstr "ಕೀ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:103
+msgid "Wrong user name or password"
+msgstr "ತಪ್ಪಾದ ಬಳಕೆದಾರರ ಹೆಸರು ಅಥವಾ ಗುಪ್ತಪದ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:310
+msgid "Busy: try again in a minute"
+msgstr "ಕಾರ್ಯನಿರತವಾಗಿದೆ: ಒಂದು ನಿಮಿಷದಲ್ಲಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+msgid "No answer, try again"
+msgstr "ಉತ್ತರವಿಲ್ಲ, ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:143
+msgid "Hide"
+msgstr "ಮರೆಮಾಡಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:143
+msgid "Show"
+msgstr "ತೋರಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/player/subtitle_providers.cpp:97
+msgid "Key refused: check it"
+msgstr "ಕೀ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ: ಪರಿಶೀಲಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/player/subtitle_providers.cpp:99
+msgid "Sign-in refused: check it"
+msgstr "ಸೈನ್ ಇನ್ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ: ಪರಿಶೀಲಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:312
+msgid "Asked only when %1 is one of your subtitle languages"
+msgstr "%1 ನಿಮ್ಮ ಉಪಶೀರ್ಷಿಕೆ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದಾಗಿದ್ದಾಗ ಮಾತ್ರ ಕೇಳಲಾಗುತ್ತದೆ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:338
+msgid "Your free key"
+msgstr "ನಿಮ್ಮ ಉಚಿತ ಕೀ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+msgid "User name (optional)"
+msgstr "ಬಳಕೆದಾರರ ಹೆಸರು (ಐಚ್ಛಿಕ)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+msgid "User name"
+msgstr "ಬಳಕೆದಾರರ ಹೆಸರು"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:340
+msgid "Password (optional)"
+msgstr "ಗುಪ್ತಪದ (ಐಚ್ಛಿಕ)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:341
+msgid "Email"
+msgstr "ಇಮೇಲ್"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
+msgid "Sign in"
+msgstr "ಸೈನ್ ಇನ್ ಮಾಡಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:369
+msgid "Sign out"
+msgstr "ಸೈನ್ ಔಟ್ ಮಾಡಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
+msgid "Create a free account"
+msgstr "ಉಚಿತ ಖಾತೆ ರಚಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+msgid "Get a free key"
+msgstr "ಉಚಿತ ಕೀ ಪಡೆಯಿರಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:406
+msgid "Add a service"
+msgstr "ಸೇವೆಯನ್ನು ಸೇರಿಸಿ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:436
 msgid ""
 "To find subtitles, the services turned on get the video's title, its IMDb "
 "id, its file name and hash (made from a part of the file), and nothing else."
@@ -25420,7 +25550,7 @@ msgstr ""
 "ಅಲ್ಲ."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
 msgid "Current output device"
 msgstr "ಪ್ರಸ್ತುತ ಔಟ್‌ಪುಟ್ ಸಾಧನ"
 
@@ -25443,7 +25573,7 @@ msgstr ""
 "ಒತ್ತಿದರೆ, ಅದು ಸಕ್ರಿಯವಾಗಿರುವವರೆಗೆ ಈ ಆಯ್ಕೆ ಉಳಿಯುತ್ತದೆ."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -25456,7 +25586,7 @@ msgstr "ದೋಷನಿರ್ಣಯ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 msgid "Developer mode"
 msgstr "ಡೆವಲಪರ್ ಕ್ರಮ"
 
@@ -25516,59 +25646,59 @@ msgstr "ಕಾರ್ಯಕ್ಷಮತೆ ಸಿದ್ಧತೆಗಳು"
 msgid "Recording, Casting & Streaming Out"
 msgstr "ರೆಕಾರ್ಡಿಂಗ್, ಬಿತ್ತರಿಸುವಿಕೆ ಮತ್ತು ಸ್ಟ್ರೀಮ್ ಔಟ್"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:294
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:207
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:296
 #: modules/gui/qt/dialogs/sout/convert.cpp:103
 #: modules/gui/qt/menus/qml/MainMenu.qml:166
 msgid "Settings"
 msgstr "ಸಿದ್ಧತೆಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:295
 msgid "Search results"
 msgstr "ಹುಡುಕಾಟದ ಫಲಿತಾಂಶಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:34
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:47
 msgid "Interface language"
 msgstr "ಸಂಪರ್ಕಸಾಧನದ ಭಾಷೆ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:438
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:445
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:440
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:447
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:54
 #: modules/gui/qt/menus/qml/MainMenu.qml:156
 msgid "Keyboard Shortcuts"
 msgstr "ಕೀಬೋರ್ಡ್ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:439
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:450
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:441
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:452
 msgid "Edit Keyboard Shortcuts"
 msgstr "ಕೀಬೋರ್ಡ್ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳನ್ನು ಸಂಪಾದಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:440
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:455
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:442
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:457
 msgid "Reset all shortcuts"
 msgstr "ಎಲ್ಲಾ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳನ್ನು ಮರುಹೊಂದಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:449
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:451
 msgid "Defaults"
 msgstr "ಪೂರ್ವನಿಯೋಜಿತಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:483
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:485
 msgid "Set a shortcut"
 msgstr "ಶಾರ್ಟ್‌ಕಟ್ ಹೊಂದಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:491
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:493
 msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] "ಇನ್ನೂ %1 ಹೊಂದುವ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:493
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:495
 msgid "Show all"
 msgstr "ಎಲ್ಲವನ್ನೂ ತೋರಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:531
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:648
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:533
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:662
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
@@ -25586,98 +25716,98 @@ msgstr "ಎಲ್ಲವನ್ನೂ ತೋರಿಸಿ"
 msgid "Output"
 msgstr "Output"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:541
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr "ಪ್ಲೇ ಮಾಡಿದ ಟ್ರ್ಯಾಕ್‌ಗಳನ್ನು last.fm ಗೆ ಸಲ್ಲಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:542
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Last.fm username"
 msgstr "Last.fm ಬಳಕೆದಾರರ ಹೆಸರು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:542
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Last.fm password"
 msgstr "Last.fm ಗುಪ್ತಪದ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Last.fm submission URL"
 msgstr "Last.fm ಸಲ್ಲಿಕೆ URL"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:554
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:556
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:558
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:68
 msgid "Sidebar"
 msgstr "ಪಕ್ಕಪಟ್ಟಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:554
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:560
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:556
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:562
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:32
 msgid "Edit Sidebar"
 msgstr "ಪಕ್ಕಪಟ್ಟಿಯನ್ನು ಪರಿಷ್ಕರಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:555
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:559
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:557
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:561
 msgid "Order and pages of the sidebar"
 msgstr "ಪಕ್ಕಪಟ್ಟಿಯ ಕ್ರಮ ಮತ್ತು ಪುಟಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
 msgid "Dual subtitles"
 msgstr "ದ್ವಿ ಉಪಶೀರ್ಷಿಕೆಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
 msgid "Second language"
 msgstr "ಎರಡನೇ ಭಾಷೆ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
 msgid "No matching settings"
 msgstr "ಹೊಂದುವ ಯಾವುದೇ ಸಿದ್ಧತೆಗಳಿಲ್ಲ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
 msgid "No settings are available for this category on this VLC installation"
 msgstr "ಈ VLC ಸ್ಥಾಪನೆಯಲ್ಲಿ ಈ ವರ್ಗಕ್ಕೆ ಯಾವುದೇ ಸಿದ್ಧತೆಗಳು ಲಭ್ಯವಿಲ್ಲ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
 msgid "Show installed add-ons only"
 msgstr "ಸ್ಥಾಪಿಸಿದ ಆಡ್‌ಆನ್‌ಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
 msgid "No advanced options on this page."
 msgstr "ಈ ಪುಟದಲ್ಲಿ ಸುಧಾರಿತ ಆಯ್ಕೆಗಳಿಲ್ಲ."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "Welcome setup"
 msgstr "ಸ್ವಾಗತ ಹೊಂದಿಸುವಿಕೆ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
 msgid "All VLC options"
 msgstr "ಎಲ್ಲಾ VLC ಆಯ್ಕೆಗಳು"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "ಎಲ್ಲಾ ಸಿದ್ಧತೆಗಳನ್ನು ಮರುಹೊಂದಿಸಿ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
 msgid "Reset all settings?"
 msgstr "ಎಲ್ಲಾ ಸಿದ್ಧತೆಗಳನ್ನು ಮರುಹೊಂದಿಸಬೇಕೇ?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
 msgid "Every setting of %1 goes back to its default."
 msgstr "%1 ನ ಪ್ರತಿಯೊಂದು ಸಿದ್ಧತೆಯೂ ತನ್ನ ಪೂರ್ವನಿಯೋಜಿತಕ್ಕೆ ಮರಳುತ್ತದೆ."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
 msgid "Discard changes"
 msgstr "ಬದಲಾವಣೆಗಳನ್ನು ತ್ಯಜಿಸಿ"
 
@@ -25895,7 +26025,7 @@ msgid "Lower"
 msgstr "ಕೆಳಗೆ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:115
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:520
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:550
 msgid "Usual"
 msgstr "ಸಾಮಾನ್ಯ"
 
@@ -26149,9 +26279,10 @@ msgstr "ಲೈವ್ ಟಿವಿ (IPTV) ಆಡ್‌ಆನ್"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:951
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "ಮಾರ್ಗದರ್ಶಿ"
 
@@ -26459,7 +26590,7 @@ msgid "Audio delay"
 msgstr "ಧ್ವನಿ ವಿಳಂಬ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/player/qml/PlayerView.qml:927
+#: modules/gui/qt/player/qml/PlayerView.qml:929
 #: modules/gui/qt/player/qml/AudioContent.qml:462
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
@@ -27054,6 +27185,7 @@ msgstr "ಆಫ್"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:39
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:91
+#: modules/gui/qt/player/qml/CompactLibrary.qml:781
 msgid "Sources"
 msgstr "ಮೂಲಗಳು"
 
@@ -27064,6 +27196,7 @@ msgstr "ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
 msgstr[0] "%1 ಚಾನಲ್‌ಗಳು"
@@ -27099,7 +27232,8 @@ msgid "Free channel lists"
 msgstr "ಉಚಿತ ಚಾನಲ್ ಪಟ್ಟಿಗಳು"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:221
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "ಕ್ಯಾಟಲಾಗ್ ಬ್ರೌಸ್ ಮಾಡಿ"
 
@@ -27701,31 +27835,61 @@ msgstr "ಈಗ ಏನು ಪ್ರಸಾರವಾಗುತ್ತಿದೆ ಎಂ
 msgid "No channel %1"
 msgstr "ಚಾನಲ್ %1 ಇಲ್ಲ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1183
+#: modules/gui/qt/iptv/iptv_addon.cpp:1187
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 ನಿ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1186
+#: modules/gui/qt/iptv/iptv_addon.cpp:1190
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 ಗಂ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1186 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 ಗಂ %2 ನಿ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1194
+#: modules/gui/qt/iptv/iptv_addon.cpp:1198
 msgid "Today"
 msgstr "ಇಂದು"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1196
+#: modules/gui/qt/iptv/iptv_addon.cpp:1200
 msgid "Tomorrow"
 msgstr "ನಾಳೆ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1202
 msgid "Yesterday"
 msgstr "ನಿನ್ನೆ"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
+#: modules/gui/qt/iptv/qml/TvToast.qml:75
+msgid "Watch"
+msgstr "ವೀಕ್ಷಿಸಿ"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
+msgid "Watch from the start"
+msgstr "ಪ್ರಾರಂಭದಿಂದ ವೀಕ್ಷಿಸಿ"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
+msgid "Favorite"
+msgstr "ಮೆಚ್ಚಿನದು"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
+msgid "Show in the Guide"
+msgstr "ಮಾರ್ಗದರ್ಶಿಯಲ್ಲಿ ತೋರಿಸಿ"
+
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
+msgid "What's On"
+msgstr "ಈಗ ಏನು ಪ್ರಸಾರ"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
@@ -27736,15 +27900,15 @@ msgid "Next at %1"
 msgstr "ಮುಂದಿನದು %1 ಕ್ಕೆ"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:433
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:708
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 ದಿ"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:709
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:714
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "ಕ್ಯಾಚ್-ಅಪ್: ಕಳೆದ %1 ದಿನಗಳು"
@@ -27762,41 +27926,13 @@ msgstr "ಚಲನಚಿತ್ರಗಳು"
 msgid "Series"
 msgstr "ಸರಣಿಗಳು"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
-msgid "Watch"
-msgstr "ವೀಕ್ಷಿಸಿ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
-msgid "Watch from the start"
-msgstr "ಪ್ರಾರಂಭದಿಂದ ವೀಕ್ಷಿಸಿ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
-msgid "Favorite"
-msgstr "ಮೆಚ್ಚಿನದು"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
-msgid "Show in the Guide"
-msgstr "ಮಾರ್ಗದರ್ಶಿಯಲ್ಲಿ ತೋರಿಸಿ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
-msgid "What's On"
-msgstr "ಈಗ ಏನು ಪ್ರಸಾರ"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:196
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "VLC ಯಲ್ಲಿ ಟಿವಿ ವೀಕ್ಷಿಸಿ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:206
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
@@ -27805,76 +27941,82 @@ msgstr ""
 "ಅಥವಾ ಕ್ಯಾಟಲಾಗ್‌ನ ಉಚಿತ ಚಾನಲ್ ಪಟ್ಟಿಯನ್ನು ಸೇರಿಸಿ. ಅದರ ಕಾರ್ಯಕ್ರಮದ ಮಾರ್ಗದರ್ಶಿಯೂ ಜೊತೆಗೆ "
 "ಬರುತ್ತದೆ."
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:216
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "ಲಿಂಕ್ ಸೇರಿಸಿ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
-msgid "Favorites"
-msgstr "ಮೆಚ್ಚಿನವುಗಳು"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
-msgid "Recently Watched"
-msgstr "ಇತ್ತೀಚೆಗೆ ವೀಕ್ಷಿಸಿದವು"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:307
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
 msgid "Updating the guide of %1… %2 MB"
 msgstr "%1 ರ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:308
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
 msgid "Updating the channels of %1…"
 msgstr "%1 ರ ಚಾನಲ್‌ಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:311
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
 msgid "%1 could not be loaded: %2"
 msgstr "%1 ಅನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "ಹುಡುಕಾಟಕ್ಕೆ ಹೊಂದುವ ಯಾವುದೇ ಚಾನಲ್ ಇಲ್ಲ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "ಇನ್ನೂ ಯಾವುದೇ ಮೆಚ್ಚಿನ ಚಾನಲ್ ಇಲ್ಲ: ಸೇರಿಸಲು ಚಾನಲ್ ಮೇಲೆ ಬಲ-ಕ್ಲಿಕ್ ಮಾಡಿ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "ಇನ್ನೂ ಯಾವುದೇ ಚಾನಲ್ ವೀಕ್ಷಿಸಿಲ್ಲ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:508
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "ಚಾನಲ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:509
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
 msgstr "ಚಾನಲ್‌ಗಳಿಲ್ಲ"
+
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:420
+msgid "Favorites"
+msgstr "ಮೆಚ್ಚಿನವುಗಳು"
+
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:31
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:930
+msgid "Recently Watched"
+msgstr "ಇತ್ತೀಚೆಗೆ ವೀಕ್ಷಿಸಿದವು"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:137
 msgid "Now"
 msgstr "ಈಗ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:503
 msgid "Earlier"
 msgstr "ಹಿಂದೆ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:147
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:503
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:191
 msgid "Later"
 msgstr "ನಂತರ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:420
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "No guide for this channel"
 msgstr "ಈ ಚಾನಲ್‌ಗೆ ಮಾರ್ಗದರ್ಶಿ ಇಲ್ಲ"
 
@@ -27894,82 +28036,82 @@ msgstr "ಇಲ್ಲಿ ಏನೂ ಇಲ್ಲ"
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:497
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:502
 msgid "Archive"
 msgstr "ಆರ್ಕೈವ್"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:527
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:45
 msgid "Programme"
 msgstr "ಕಾರ್ಯಕ್ರಮ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "Loading the guide…"
 msgstr "ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:581
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:586
 msgid "From the archive, %1"
 msgstr "ಆರ್ಕೈವ್‌ನಿಂದ, %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:582
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:587
 msgid "%1 left"
 msgstr "%1 ಉಳಿದಿದೆ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:583
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:588
 msgid "in %1"
 msgstr "%1 ರಲ್ಲಿ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:584
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:589
 msgid "ended %1 ago"
 msgstr "%1 ಹಿಂದೆ ಮುಗಿದಿದೆ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:585
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:590
 msgid "on now"
 msgstr "ಈಗ ಪ್ರಸಾರದಲ್ಲಿದೆ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:716
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:721
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:53
 msgid "Watch from the Start"
 msgstr "ಪ್ರಾರಂಭದಿಂದ ವೀಕ್ಷಿಸಿ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:734
 msgid "Reminder Set"
 msgstr "ಜ್ಞಾಪನೆ ಹೊಂದಿಸಲಾಗಿದೆ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:734
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:50
 msgid "Remind Me"
 msgstr "ನನಗೆ ನೆನಪಿಸಿ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:739
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:744
 msgid "Back to Live"
 msgstr "ಲೈವ್‌ಗೆ ಹಿಂತಿರುಗಿ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:783
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:788
 msgid "Programme before"
 msgstr "ಹಿಂದಿನ ಕಾರ್ಯಕ್ರಮ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:789
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794
 msgid "Programme after"
 msgstr "ಮುಂದಿನ ಕಾರ್ಯಕ್ರಮ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "ಮುಂದಿನ ಚಾನಲ್"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "ಹಿಂದಿನ ಚಾನಲ್"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:914
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:919
 msgid "Previous group"
 msgstr "ಹಿಂದಿನ ಗುಂಪು"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:923
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:928
 msgid "All Channels"
 msgstr "ಎಲ್ಲಾ ಚಾನಲ್‌ಗಳು"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:938
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:943
 msgid "Next group"
 msgstr "ಮುಂದಿನ ಗುಂಪು"
 
@@ -28065,12 +28207,6 @@ msgstr "ಚಾನಲ್‌ಗಳನ್ನು ನವೀಕರಿಸಲಾಗು�
 msgid "Updated %1 at %2"
 msgstr "%1 ರಂದು %2 ಕ್ಕೆ ನವೀಕರಿಸಲಾಗಿದೆ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
-msgid "Move up"
-msgstr "ಮೇಲಕ್ಕೆ ಸರಿಸಿ"
-
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
 msgid "Turn Off"
 msgstr "ಆಫ್ ಮಾಡಿ"
@@ -28136,11 +28272,6 @@ msgstr "ಪೂರೈಕೆದಾರರ ಪ್ಯಾನೆಲ್‌ನ ವಿಳ�
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
 msgid "e.g., http://example.com:8080"
 msgstr "ಉದಾ., http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
-msgid "User name"
-msgstr "ಬಳಕೆದಾರರ ಹೆಸರು"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
 msgid "(empty: unchanged)"
@@ -28283,8 +28414,8 @@ msgstr "MC"
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:50
 #: modules/gui/qt/network/standardpathmodel.cpp:136
 #: modules/gui/qt/network/standardpathmodel.cpp:146
-#: modules/gui/qt/player/qml/CompactLibrary.qml:78
-#: modules/gui/qt/player/qml/CompactLibrary.qml:292
+#: modules/gui/qt/player/qml/CompactLibrary.qml:91
+#: modules/gui/qt/player/qml/CompactLibrary.qml:307
 msgid "Home"
 msgstr "Home"
 
@@ -28301,8 +28432,8 @@ msgstr "Home"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:96
+#: modules/gui/qt/player/qml/CompactLibrary.qml:311
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "ಪ್ಲೇಪಟ್ಟಿಗಳು"
@@ -28313,8 +28444,8 @@ msgstr "ಪ್ಲೇಪಟ್ಟಿಗಳು"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:316
+#: modules/gui/qt/player/qml/CompactLibrary.qml:527
 msgid "Artists"
 msgstr "ಕಲಾವಿದರು"
 
@@ -28324,8 +28455,8 @@ msgstr "ಕಲಾವಿದರು"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:315
+#: modules/gui/qt/player/qml/CompactLibrary.qml:526
 msgid "Albums"
 msgstr "ಆಲ್ಬಮ್‌ಗಳು"
 
@@ -28345,8 +28476,8 @@ msgstr "ಹಾಡುಗಳು"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:301
-#: modules/gui/qt/player/qml/CompactLibrary.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:317
+#: modules/gui/qt/player/qml/CompactLibrary.qml:528
 msgid "Genres"
 msgstr "ಶೈಲಿಗಳು"
 
@@ -28497,8 +28628,8 @@ msgstr "ಮರುಪರಿಶೀಲಿಸಿ"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:83
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
 msgid "Recent"
 msgstr "ಇತ್ತೀಚಿನವು"
 
@@ -28537,11 +28668,6 @@ msgstr ""
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:166
 msgid "hidden"
 msgstr "ಮರೆಮಾಡಲಾಗಿದೆ"
-
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
-msgid "Move down"
-msgstr "ಕೆಳಕ್ಕೆ ಸರಿಸಿ"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
@@ -28600,15 +28726,17 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles ಅಮಾನ್ಯ ಲಾಗಿನ್ ಸೆಷನ್ ಅನ್ನು ನೀಡಿದೆ."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
+#: modules/gui/qt/player/subtitle_providers.cpp:1344
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ. ನಿಮ್ಮ ಕೋಟಾವನ್ನು ಪರಿಶೀಲಿಸಿ."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
+#: modules/gui/qt/player/subtitle_providers.cpp:1355
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles ಮಾನ್ಯವಾದ ಉಪಶೀರ್ಷಿಕೆ ಡೌನ್‌ಲೋಡ್ ಲಿಂಕ್ ನೀಡಿಲ್ಲ."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
-#: modules/gui/qt/player/subtitle_search.cpp:481
+#: modules/gui/qt/player/subtitle_search.cpp:654
 msgid "This build can't search the internet."
 msgstr "ಈ ಬಿಲ್ಡ್ ಇಂಟರ್ನೆಟ್‌ನಲ್ಲಿ ಹುಡುಕಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
@@ -28693,12 +28821,12 @@ msgstr ""
 "(*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:599
 msgid "Choose the folder of the audio tracks"
 msgstr "ಧ್ವನಿ ಟ್ರ್ಯಾಕ್‌ಗಳ ಕೋಶವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:600
 msgid "Choose the folder of the subtitles"
 msgstr "ಉಪಶೀರ್ಷಿಕೆಗಳ ಕೋಶವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
@@ -28811,8 +28939,8 @@ msgid_plural "%1 Songs"
 msgstr[0] "%1 ಹಾಡುಗಳು"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:795
-#: modules/gui/qt/player/qml/CompactLibrary.qml:809
+#: modules/gui/qt/player/qml/CompactLibrary.qml:833
+#: modules/gui/qt/player/qml/CompactLibrary.qml:847
 msgid "Play all"
 msgstr "ಎಲ್ಲವನ್ನೂ ಪ್ಲೇ ಮಾಡಿ"
 
@@ -28840,25 +28968,25 @@ msgstr "ಅಪರಿಚಿತ ಕಲಾವಿದ"
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "ವೀಕ್ಷಣೆಯನ್ನು ಮುಂದುವರಿಸಿ"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:593
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "ಹೊಸ ವೀಡಿಯೊಗಳು"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:312
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "ಮತ್ತೆ ಆಲಿಸಿ"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:677
-#: modules/gui/qt/player/qml/CompactLibrary.qml:406
+#: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "ಹೊಸ ಸಂಗೀತ"
 
@@ -28877,7 +29005,7 @@ msgid "Alphabetic"
 msgstr "ಅಕಾರಾದಿ"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:383
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "ಆಗಾಗ್ಗೆ ಭೇಟಿ ನೀಡುವ ಕೋಶಗಳು"
 
@@ -29276,13 +29404,13 @@ msgid "Media library"
 msgstr "ಮಾಧ್ಯಮ ಭಂಡಾರ"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:619
+#: modules/gui/qt/player/qml/CompactLibrary.qml:639
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "ಮಾಧ್ಯಮವನ್ನು ತೆರೆಯಿರಿ"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:762
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
 msgid "Add folder to library…"
 msgstr "ಭಂಡಾರಕ್ಕೆ ಕೋಶವನ್ನು ಸೇರಿಸಿ…"
 
@@ -29369,7 +29497,7 @@ msgid_plural "%1 videos"
 msgstr[0] "%1 ವೀಡಿಯೊಗಳು"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:849
+#: modules/gui/qt/player/qml/CompactLibrary.qml:889
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
@@ -29402,146 +29530,153 @@ msgstr "ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಸೇರಿಸಿ"
 msgid "Download %1"
 msgstr "%1 ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:188
 msgid "%1 linked, %2 failed."
 msgstr "%1 ಜೋಡಿಸಲಾಗಿದೆ, %2 ವಿಫಲವಾಗಿದೆ."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:189
 msgid "Nothing was linked: %1 failed."
 msgstr "ಏನನ್ನೂ ಜೋಡಿಸಲಾಗಿಲ್ಲ: %1 ವಿಫಲವಾಗಿದೆ."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From Computer"
 msgstr "ಕಂಪ್ಯೂಟರ್‌ನಿಂದ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From Link"
 msgstr "ಲಿಂಕ್‌ನಿಂದ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles ನಿಂದ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From the Internet"
 msgstr "ಇಂಟರ್ನೆಟ್‌ನಿಂದ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:648
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "ಉಪಶೀರ್ಷಿಕೆ ಕಡತಕ್ಕೆ ನೇರ HTTPS ಲಿಂಕ್"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:663
 msgid "Title or episode"
 msgstr "ಶೀರ್ಷಿಕೆ ಅಥವಾ ಸಂಚಿಕೆ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:694
 msgid "%1, else %2"
 msgstr "%1, ಇಲ್ಲದಿದ್ದರೆ %2"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:701
 msgid "Every subtitle service is off (Subtitles panel of the player)"
 msgstr "ಎಲ್ಲಾ ಉಪಶೀರ್ಷಿಕೆ ಸೇವೆಗಳು ಆಫ್ ಆಗಿವೆ (ಪ್ಲೇಯರ್‌ನ ಉಪಶೀರ್ಷಿಕೆಗಳ ಫಲಕ)"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:865
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API ಕೀ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:953
+msgid ""
+"No key yet? It's free: sign up on opensubtitles.com, open API consumers, "
+"choose New consumer, name it (VLC Redesign) and copy its API key here, with "
+"your account's username and password."
+msgstr ""
+"ಇನ್ನೂ ಕೀ ಇಲ್ಲವೇ? ಇದು ಉಚಿತ: opensubtitles.com ನಲ್ಲಿ ನೋಂದಾಯಿಸಿ, \"API consumers\" "
+"ತೆರೆಯಿರಿ, \"New consumer\" ಆಯ್ಕೆಮಾಡಿ, ಅದಕ್ಕೆ ಹೆಸರು ನೀಡಿ (VLC Redesign) ಮತ್ತು "
+"ಅದರ API ಕೀಯನ್ನು ನಿಮ್ಮ ಖಾತೆಯ ಬಳಕೆದಾರರ ಹೆಸರು ಮತ್ತು ಗುಪ್ತಪದದೊಂದಿಗೆ ಇಲ್ಲಿ ನಕಲಿಸಿ."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:951
+msgid "Open API consumers"
+msgstr "\"API consumers\" ತೆರೆಯಿರಿ"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1030
 msgid "Waiting…"
 msgstr "ಕಾಯಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1031
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:395
 msgid "Searching…"
 msgstr "ಹುಡುಕಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1033
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:474
 msgid "For this file"
 msgstr "ಈ ಕಡತಕ್ಕಾಗಿ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1034
 msgid "Best guess"
 msgstr "ಅತ್ಯುತ್ತಮ ಊಹೆ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1035
 msgid "Not found"
 msgstr "ಕಂಡುಬಂದಿಲ್ಲ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1036
 msgid "No answer"
 msgstr "ಉತ್ತರವಿಲ್ಲ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1037
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "Downloading…"
 msgstr "ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1038
 msgid "Linked"
 msgstr "ಜೋಡಿಸಲಾಗಿದೆ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
 msgid "Don't download"
 msgstr "ಡೌನ್‌ಲೋಡ್ ಮಾಡಬೇಡಿ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1141
 msgid "Subtitle for %1"
 msgstr "%1 ಗಾಗಿ ಉಪಶೀರ್ಷಿಕೆ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
 msgid "Downloading and linking the subtitles chosen…"
 msgstr "ಆಯ್ಕೆ ಮಾಡಿದ ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಜೋಡಿಸಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1162
 msgid "Searching the internet: %1 of %2 videos done…"
 msgstr "ಇಂಟರ್ನೆಟ್‌ನಲ್ಲಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ: %2 ರಲ್ಲಿ %1 ವೀಡಿಯೊಗಳು ಮುಗಿದಿವೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1163
 msgid "For the file: %1 · By title: %2 · Not found: %3"
 msgstr "ಕಡತಕ್ಕಾಗಿ: %1 · ಶೀರ್ಷಿಕೆಯಿಂದ: %2 · ಕಂಡುಬಂದಿಲ್ಲ: %3"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1166
 msgid "No answer: %1"
 msgstr "ಉತ್ತರವಿಲ್ಲ: %1"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1189
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1199
 msgid "Working on subtitles…"
 msgstr "ಉಪಶೀರ್ಷಿಕೆಗಳ ಕೆಲಸ ನಡೆಯುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1194
 msgid "Searching OpenSubtitles…"
 msgstr "OpenSubtitles ನಲ್ಲಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1196
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "ಉಪಶೀರ್ಷಿಕೆ ಕಡತಗಳನ್ನು ನೋಡಲು OpenSubtitles ನಲ್ಲಿ ಹುಡುಕಿ."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "ಇನ್ನೂ ಕೀ ಇಲ್ಲವೇ? ಇದು ಉಚಿತ: opensubtitles.com ನಲ್ಲಿ ನೋಂದಾಯಿಸಿ, \"API consumers\" ತೆರೆಯಿರಿ, \"New consumer\" ಆಯ್ಕೆಮಾಡಿ, ಅದಕ್ಕೆ ಹೆಸರು ನೀಡಿ (VLC Redesign) ಮತ್ತು ಅದರ API ಕೀಯನ್ನು ನಿಮ್ಮ ಖಾತೆಯ ಬಳಕೆದಾರರ ಹೆಸರು ಮತ್ತು ಗುಪ್ತಪದದೊಂದಿಗೆ ಇಲ್ಲಿ ನಕಲಿಸಿ."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
-msgid "Open API consumers"
-msgstr "\"API consumers\" ತೆರೆಯಿರಿ"
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1199
 msgid "Working on audio tracks…"
 msgstr "ಧ್ವನಿ ಟ್ರ್ಯಾಕ್‌ಗಳ ಕೆಲಸ ನಡೆಯುತ್ತಿದೆ…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1202
 msgid "Enter a direct link to a subtitle file above."
 msgstr "ಮೇಲೆ ಉಪಶೀರ್ಷಿಕೆ ಕಡತಕ್ಕೆ ನೇರ ಲಿಂಕ್ ನಮೂದಿಸಿ."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1203
 msgid "No audio file in this folder: choose another one above."
 msgstr "ಈ ಕೋಶದಲ್ಲಿ ಧ್ವನಿ ಕಡತವಿಲ್ಲ: ಮೇಲೆ ಇನ್ನೊಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ."
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1204
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "ಈ ಕೋಶದಲ್ಲಿ ಉಪಶೀರ್ಷಿಕೆ ಕಡತವಿಲ್ಲ: ಮೇಲೆ ಇನ್ನೊಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ."
 
@@ -30195,84 +30330,97 @@ msgstr "ನಿದ್ರಾ ಟೈಮರ್ ಹೊಂದಿಸುವ ಮೊದಲ
 msgid "Choose a duration between one second and 24 hours."
 msgstr "ಒಂದು ಸೆಕೆಂಡಿನಿಂದ 24 ಗಂಟೆಗಳ ನಡುವಿನ ಅವಧಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:87
+#: modules/gui/qt/player/subtitle_providers.cpp:101
 msgid "%1 didn't answer."
 msgstr "%1 ಉತ್ತರಿಸಲಿಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:89
+#: modules/gui/qt/player/subtitle_providers.cpp:103
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1 ಸ್ವಲ್ಪ ಸಮಯ ಕಾಯಲು ಹೇಳುತ್ತಿದೆ (ಅತಿ ಹೆಚ್ಚು ಹುಡುಕಾಟಗಳು)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:90
+#: modules/gui/qt/player/subtitle_providers.cpp:104
 msgid "%1 didn't answer (%2)."
 msgstr "%1 ಉತ್ತರಿಸಲಿಲ್ಲ (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:858
+#: modules/gui/qt/player/subtitle_providers.cpp:1187
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 "ಎಲ್ಲಾ ಭಾಷೆಗಳು · ಚಲನಚಿತ್ರಗಳು ಮತ್ತು ಸರಣಿಗಳು · ನಿಮ್ಮ ಕಡತಕ್ಕಾಗಿ ಮಾಡಿದವುಗಳನ್ನು "
 "ಹುಡುಕುತ್ತದೆ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:860
+#: modules/gui/qt/player/subtitle_providers.cpp:1189
+msgid "With your own free key · all languages"
+msgstr "ನಿಮ್ಮದೇ ಉಚಿತ ಕೀಯೊಂದಿಗೆ · ಎಲ್ಲಾ ಭಾಷೆಗಳು"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1193
+msgid "With your own free key · strong in Arabic, many languages"
+msgstr "ನಿಮ್ಮದೇ ಉಚಿತ ಕೀಯೊಂದಿಗೆ · ಅರೇಬಿಕ್‌ನಲ್ಲಿ ಪ್ರಬಲ, ಹಲವು ಭಾಷೆಗಳು"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1196
+msgid "With your own free key · the Subscene archive, many languages"
+msgstr "ನಿಮ್ಮದೇ ಉಚಿತ ಕೀಯೊಂದಿಗೆ · Subscene ಆರ್ಕೈವ್, ಹಲವು ಭಾಷೆಗಳು"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1199
 msgid "Hebrew · movies and series"
 msgstr "ಹೀಬ್ರೂ · ಚಲನಚಿತ್ರಗಳು ಮತ್ತು ಸರಣಿಗಳು"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:862
+#: modules/gui/qt/player/subtitle_providers.cpp:1201
 msgid "Series · many languages"
 msgstr "ಸರಣಿಗಳು · ಹಲವು ಭಾಷೆಗಳು"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:864
+#: modules/gui/qt/player/subtitle_providers.cpp:1203
 msgid "Movies · many languages"
 msgstr "ಚಲನಚಿತ್ರಗಳು · ಹಲವು ಭಾಷೆಗಳು"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:910
+#: modules/gui/qt/player/subtitle_providers.cpp:1414
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "ಈ ಉಪಶೀರ್ಷಿಕೆ RAR ಆರ್ಕೈವ್ ಆಗಿ ಬರುತ್ತದೆ, ಅದನ್ನು ಇಲ್ಲಿ ತೆರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-#: modules/gui/qt/player/subtitle_search.cpp:1140
+#: modules/gui/qt/player/subtitle_providers.cpp:1426
+#: modules/gui/qt/player/subtitle_providers.cpp:1459
+#: modules/gui/qt/player/subtitle_search.cpp:1373
 msgid "The subtitle couldn't be unpacked."
 msgstr "ಉಪಶೀರ್ಷಿಕೆಯನ್ನು ಬಿಚ್ಚಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:956
+#: modules/gui/qt/player/subtitle_providers.cpp:1460
 msgid "The archive has no subtitle in it."
 msgstr "ಆರ್ಕೈವ್‌ನಲ್ಲಿ ಯಾವುದೇ ಉಪಶೀರ್ಷಿಕೆ ಇಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:968
+#: modules/gui/qt/player/subtitle_providers.cpp:1472
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles ಈ ಉಪಶೀರ್ಷಿಕೆಯನ್ನು ತನ್ನ ಪಾವತಿಸುವ ಸದಸ್ಯರಿಗಾಗಿ ಇರಿಸಿದೆ. ಬೇರೊಂದನ್ನು "
 "ಆಯ್ಕೆಮಾಡಿ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:974
+#: modules/gui/qt/player/subtitle_providers.cpp:1478
 msgid "The subtitle is empty."
 msgstr "ಉಪಶೀರ್ಷಿಕೆ ಖಾಲಿಯಾಗಿದೆ."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1017
-#: modules/gui/qt/player/subtitle_search.cpp:1100
+#: modules/gui/qt/player/subtitle_search.cpp:1236
+#: modules/gui/qt/player/subtitle_search.cpp:1333
 msgid "No connection to the internet."
 msgstr "ಇಂಟರ್ನೆಟ್‌ಗೆ ಸಂಪರ್ಕವಿಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1020
+#: modules/gui/qt/player/subtitle_search.cpp:1239
 msgid "The video couldn't be identified from its name."
 msgstr "ವೀಡಿಯೊವನ್ನು ಅದರ ಹೆಸರಿನಿಂದ ಗುರುತಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1021
+#: modules/gui/qt/player/subtitle_search.cpp:1240
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "\"%1\" ಕಂಡುಬಂದಿಲ್ಲ. ಅದರ ಶೀರ್ಷಿಕೆಗಾಗಿ ಹುಡುಕಿ."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1023
+#: modules/gui/qt/player/subtitle_search.cpp:1242
 msgid "No subtitles were found for %1."
 msgstr "%1 ಗಾಗಿ ಯಾವುದೇ ಉಪಶೀರ್ಷಿಕೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1065
-#: modules/gui/qt/player/subtitle_search.cpp:1101
+#: modules/gui/qt/player/subtitle_search.cpp:1284
+#: modules/gui/qt/player/subtitle_search.cpp:1320
+#: modules/gui/qt/player/subtitle_search.cpp:1334
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "ಉಪಶೀರ್ಷಿಕೆಯನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ (%1)."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1131
+#: modules/gui/qt/player/subtitle_search.cpp:1364
 msgid "The subtitle couldn't be saved."
 msgstr "ಉಪಶೀರ್ಷಿಕೆಯನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
@@ -30464,7 +30612,7 @@ msgid "Close navigation"
 msgstr "ನ್ಯಾವಿಗೇಶನ್ ಮುಚ್ಚಿ"
 
 #: modules/gui/qt/player/qml/MinimalView.qml:181
-#: modules/gui/qt/player/qml/PlayerView.qml:958
+#: modules/gui/qt/player/qml/PlayerView.qml:963
 msgid "2× speed"
 msgstr "2× ವೇಗ"
 
@@ -30480,73 +30628,73 @@ msgstr "ಪೂರ್ವನಿಗದಿಗಳು:"
 msgid "Player"
 msgstr "ಪ್ಲೇಯರ್"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:967
+#: modules/gui/qt/player/qml/PlayerView.qml:972
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "ಉಪಶೀರ್ಷಿಕೆ ಗಾತ್ರ %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1122
+#: modules/gui/qt/player/qml/PlayerView.qml:1127
 msgid "Subtitles on the TV: %1"
 msgstr "ಟಿವಿಯಲ್ಲಿ ಉಪಶೀರ್ಷಿಕೆಗಳು: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1122
+#: modules/gui/qt/player/qml/PlayerView.qml:1127
 msgid "Subtitles off on the TV"
 msgstr "ಟಿವಿಯಲ್ಲಿ ಉಪಶೀರ್ಷಿಕೆಗಳು ಆಫ್"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "Not playing on %1"
 msgstr "%1 ನಲ್ಲಿ ಪ್ಲೇ ಆಗುತ್ತಿಲ್ಲ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
-#: modules/gui/qt/player/qml/PlayerView.qml:1362
+#: modules/gui/qt/player/qml/PlayerView.qml:1240
+#: modules/gui/qt/player/qml/PlayerView.qml:1367
 msgid "Connecting to %1…"
 msgstr "%1 ಗೆ ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1237
+#: modules/gui/qt/player/qml/PlayerView.qml:1242
 msgid "Playing on %1"
 msgstr "%1 ನಲ್ಲಿ ಪ್ಲೇ ಆಗುತ್ತಿದೆ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1238
+#: modules/gui/qt/player/qml/PlayerView.qml:1243
 msgid "The sound plays on %1"
 msgstr "ಧ್ವನಿ %1 ನಲ್ಲಿ ಪ್ಲೇ ಆಗುತ್ತಿದೆ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1263
+#: modules/gui/qt/player/qml/PlayerView.qml:1268
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "ವಿರಾಮ, ಸರಿಸುವಿಕೆ ಮತ್ತು ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಇಲ್ಲಿಯೇ ಬದಲಿಸಿ: ಟಿವಿ ಅನುಸರಿಸುತ್ತದೆ."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1280
+#: modules/gui/qt/player/qml/PlayerView.qml:1285
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "ಮಾಧ್ಯಮವನ್ನು ಓದಲು ಈ ಕಂಪ್ಯೂಟರ್‌ಗೆ ಸಂಪರ್ಕಿಸಲು Windows Firewall %1 ಗೆ ಅನುಮತಿಸುತ್ತಿಲ್ಲ."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1297
 msgid "Waiting for Windows…"
 msgstr "Windows ಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1293
+#: modules/gui/qt/player/qml/PlayerView.qml:1298
 msgid "Allow on public networks too"
 msgstr "ಸಾರ್ವಜನಿಕ ಜಾಲಬಂಧಗಳಲ್ಲಿಯೂ ಅನುಮತಿಸಿ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1294
+#: modules/gui/qt/player/qml/PlayerView.qml:1299
 msgid "Allow on private networks"
 msgstr "ಖಾಸಗಿ ಜಾಲಬಂಧಗಳಲ್ಲಿ ಅನುಮತಿಸಿ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1306
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
 msgid "Try again"
 msgstr "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1311
-#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1316
+#: modules/gui/qt/player/qml/PlayerView.qml:1326
 msgid "Play here"
 msgstr "ಇಲ್ಲಿ ಪ್ಲೇ ಮಾಡಿ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1321
-#: modules/gui/qt/player/qml/PlayerView.qml:1372
+#: modules/gui/qt/player/qml/PlayerView.qml:1326
+#: modules/gui/qt/player/qml/PlayerView.qml:1377
 msgid "Stop casting"
 msgstr "ಬಿತ್ತರಿಸುವುದನ್ನು ನಿಲ್ಲಿಸಿ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1363
+#: modules/gui/qt/player/qml/PlayerView.qml:1368
 msgid "Also on %1"
 msgstr "%1 ನಲ್ಲಿಯೂ"
 
@@ -30725,45 +30873,45 @@ msgstr "ವಾಲ್ಯೂಮ್ %1%"
 msgid "Play audio to select a visualization."
 msgstr "ದೃಶ್ಯೀಕರಣವನ್ನು ಆಯ್ಕೆಮಾಡಲು ಧ್ವನಿಯನ್ನು ಪ್ಲೇ ಮಾಡಿ."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:200
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:314
+#: modules/gui/qt/player/qml/CompactLibrary.qml:525
 msgid "Songs"
 msgstr "ಹಾಡುಗಳು"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:727
+#: modules/gui/qt/player/qml/CompactLibrary.qml:747
 msgid "More"
 msgstr "ಇನ್ನಷ್ಟು"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:752
-#: modules/gui/qt/player/qml/CompactLibrary.qml:767
+#: modules/gui/qt/player/qml/CompactLibrary.qml:790
+#: modules/gui/qt/player/qml/CompactLibrary.qml:805
 msgid "Rescan library"
 msgstr "ಭಂಡಾರವನ್ನು ಮರುಸ್ಕ್ಯಾನ್ ಮಾಡಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:777
+#: modules/gui/qt/player/qml/CompactLibrary.qml:815
 msgid "Add network stream…"
 msgstr "ಜಾಲಬಂಧ ಸ್ಟ್ರೀಮ್ ಸೇರಿಸಿ…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:786
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
+#: modules/gui/qt/player/qml/CompactLibrary.qml:824
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Create playlist"
 msgstr "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು ರಚಿಸಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:800
-#: modules/gui/qt/player/qml/CompactLibrary.qml:814
+#: modules/gui/qt/player/qml/CompactLibrary.qml:838
+#: modules/gui/qt/player/qml/CompactLibrary.qml:852
 msgid "Add all to queue"
 msgstr "ಎಲ್ಲವನ್ನೂ ಸರತಿಗೆ ಸೇರಿಸಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:819
+#: modules/gui/qt/player/qml/CompactLibrary.qml:857
 msgid "Up one folder"
 msgstr "ಒಂದು ಕೋಶ ಮೇಲಕ್ಕೆ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:829
+#: modules/gui/qt/player/qml/CompactLibrary.qml:867
 msgid "Open in the library"
 msgstr "ಭಂಡಾರದಲ್ಲಿ ತೆರೆಯಿರಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/player/qml/CompactLibrary.qml:951
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
@@ -30773,55 +30921,55 @@ msgstr "ಭಂಡಾರದಲ್ಲಿ ತೆರೆಯಿರಿ"
 msgid "Sort"
 msgstr "ವಿಂಗಡಿಸಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:923
+#: modules/gui/qt/player/qml/CompactLibrary.qml:986
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "ಶೀರ್ಷಿಕೆ A-Z"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:927
+#: modules/gui/qt/player/qml/CompactLibrary.qml:990
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "ಶೀರ್ಷಿಕೆ Z-A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:931
+#: modules/gui/qt/player/qml/CompactLibrary.qml:994
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "ಹೊಸದು ಮೊದಲು"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:936
+#: modules/gui/qt/player/qml/CompactLibrary.qml:999
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "ಹಳೆಯದು ಮೊದಲು"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1018
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
 msgid "Grid View"
 msgstr "ಗ್ರಿಡ್ ನೋಟ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
 msgid "List View"
 msgstr "ಪಟ್ಟಿ ನೋಟ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1133
 msgid "See all"
 msgstr "ಎಲ್ಲವನ್ನೂ ನೋಡಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1279
 msgid "Add Network Stream"
 msgstr "ಜಾಲಬಂಧ ಸ್ಟ್ರೀಮ್ ಸೇರಿಸಿ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1388
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1404
 msgid "The media library is not available."
 msgstr "ಮಾಧ್ಯಮ ಭಂಡಾರ ಲಭ್ಯವಿಲ್ಲ."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1389
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1405
 msgid "Nothing here yet."
 msgstr "ಇಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ."
 
@@ -31107,67 +31255,67 @@ msgstr "ಭಂಡಾರ ಸಂಯೋಜನೆಗೆ ಸ್ಥಳೀಯ ಮಾಧ
 msgid "Load a subtitle file for playback"
 msgstr "ಪ್ಲೇಬ್ಯಾಕ್‌ಗಾಗಿ ಉಪಶೀರ್ಷಿಕೆ ಕಡತವನ್ನು ಲೋಡ್ ಮಾಡಿ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:344
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:374
 msgid "Title of the movie or series"
 msgstr "ಚಲನಚಿತ್ರ ಅಥವಾ ಸರಣಿಯ ಶೀರ್ಷಿಕೆ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:438
 msgid "Second"
 msgstr "ಎರಡನೇ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:409
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "ಆಗಾಗ ಬಳಸಿದ್ದು"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
 msgid "Looking for subtitles…"
 msgstr "ಉಪಶೀರ್ಷಿಕೆಗಳಿಗಾಗಿ ಹುಡುಕಲಾಗುತ್ತಿದೆ…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:466
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
 msgid "No subtitles yet"
 msgstr "ಇನ್ನೂ ಉಪಶೀರ್ಷಿಕೆಗಳಿಲ್ಲ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:540
 msgid "Position and size"
 msgstr "ಸ್ಥಾನ ಮತ್ತು ಗಾತ್ರ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:518
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:548
 msgctxt "subtitles"
 msgid "Position"
 msgstr "ಸ್ಥಾನ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:521
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:535
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:551
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:565
 msgid "%1%"
 msgstr "%1%"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:522
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:552
 msgid "Move the subtitles down"
 msgstr "ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಕೆಳಗೆ ಸರಿಸಿ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:523
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:553
 msgid "Move the subtitles up"
 msgstr "ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಮೇಲೆ ಸರಿಸಿ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:534
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:564
 msgctxt "subtitles"
 msgid "Size"
 msgstr "ಗಾತ್ರ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:536
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:566
 msgid "Smaller subtitles"
 msgstr "ಚಿಕ್ಕ ಉಪಶೀರ್ಷಿಕೆಗಳು"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:537
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
 msgid "Larger subtitles"
 msgstr "ದೊಡ್ಡ ಉಪಶೀರ್ಷಿಕೆಗಳು"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:804
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:809
 msgid "For the hearing impaired"
 msgstr "ಶ್ರವಣದೋಷವುಳ್ಳವರಿಗಾಗಿ"
 
@@ -32076,39 +32224,39 @@ msgstr "%1 ಈಗ ಬೇರೆ ಏನನ್ನೋ ಪ್ಲೇ ಮಾಡುತ�
 msgid "%1 couldn't play the video."
 msgstr "%1 ಗೆ ವೀಡಿಯೊವನ್ನು ಪ್ಲೇ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Asturian"
 msgstr "ಆಸ್ಟೂರಿಯನ್"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Central Kurdish"
 msgstr "ಮಧ್ಯ ಕುರ್ದಿಷ್"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Montenegrin"
 msgstr "ಮಾಂಟೆನೆಗ್ರಿನ್"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:66
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Dari"
 msgstr "ದರಿ"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:68
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Cantonese"
 msgstr "ಕ್ಯಾಂಟೋನೀಸ್"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:69
+#: modules/gui/qt/util/subtitle_preferences.cpp:73
 msgid "Standard Moroccan Tamazight"
 msgstr "ಪ್ರಮಾಣಿತ ಮೊರೊಕನ್ ತಮಾಜೈಟ್"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:70
+#: modules/gui/qt/util/subtitle_preferences.cpp:74
 msgid "Portuguese (Brazil)"
 msgstr "ಪೋರ್ಚುಗೀಸ್ (ಬ್ರೆಜಿಲ್)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:71
+#: modules/gui/qt/util/subtitle_preferences.cpp:75
 msgid "Chinese (Traditional)"
 msgstr "ಚೈನೀಸ್ (ಸಾಂಪ್ರದಾಯಿಕ)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:72
+#: modules/gui/qt/util/subtitle_preferences.cpp:76
 msgid "Spanish (Latin America)"
 msgstr "ಸ್ಪ್ಯಾನಿಷ್ (ಲ್ಯಾಟಿನ್ ಅಮೇರಿಕಾ)"
 

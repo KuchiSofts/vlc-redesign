@@ -327,6 +327,8 @@ qt_plugin_sources = files(
     '../../player/subtitle_providers.hpp',
     '../../player/subtitle_search.cpp',
     '../../player/subtitle_search.hpp',
+    '../../player/subtitle_services.cpp',
+    '../../player/subtitle_services.hpp',
     '../../util/redesign_version.hpp',
     '../../util/base_model.cpp',
     '../../util/base_model.hpp',

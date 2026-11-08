@@ -51,8 +51,13 @@ class SubtitleFinder : public QObject
     Q_PROPERTY(QVariantList titleResults READ titleResults NOTIFY titleResultsChanged FINAL)
     Q_PROPERTY(bool titleBusy READ titleBusy NOTIFY titleResultsChanged FINAL)
     Q_PROPERTY(bool supported READ supported CONSTANT FINAL)
-    // the services: { id, name, detail, enabled, busy, count (-1: not
-    // asked), error } (setServiceEnabled)
+    // the services, in their order: { id, name, detail, enabled (its switch,
+    // off while it lacks the credentials it needs), removed, asked (now: on,
+    // with them, one of its languages to search), busy, count (-1: not asked
+    // in this search), error; fields and required (of "key", "username",
+    // "password", "email"), page (of its free key or account), account (the
+    // page makes one), hasCredentials, status ("keyRefused", "loginRefused",
+    // "busy" or ""), languages (its only ones), languageNames, languageOn }
     Q_PROPERTY(QVariantList services READ services NOTIFY providersChanged FINAL)
 
 public:
@@ -91,6 +96,14 @@ public:
     // opens): the user's setting, once the user was asked about it (the
     // first-run setup, the installer)
     Q_INVOKABLE bool searchesByItself() const;
+    // The user's credentials of a service, for its fields: { key, username,
+    // password, email } (kept by SubtitleSearch::setCredentials)
+    Q_INVOKABLE QVariantMap serviceCredentials(const QString &id) const;
+    Q_INVOKABLE void setServiceCredentials(const QString &id, const QVariantMap &credentials);
+    // Test, Sign in: one cheap request with the credentials typed;
+    // serviceChecked(id, result, who) with "works", "signedIn",
+    // "keyRefused", "loginRefused", "busy" or "noAnswer"
+    Q_INVOKABLE void checkService(const QString &id, const QVariantMap &credentials);
 
     // The name of a subtitle loaded from the internet (its release), for the
     // track VLC made of it ("<md5 of its MRL>/spu/0"); empty for the others
@@ -119,6 +132,8 @@ public slots:
     void loadAlongside(const QString &id);
     // a service asked or not (kept)
     void setServiceEnabled(const QString &id, bool enabled);
+    // a service removed from the list (never asked), or back in it
+    void setServiceRemoved(const QString &id, bool removed);
 
 signals:
     void stateChanged();
@@ -131,6 +146,8 @@ signals:
     void providersChanged();
     // a subtitle chosen could not be loaded: why
     void downloadFailed(const QString &error);
+    // what checkService() found
+    void serviceChecked(const QString &id, const QString &result, const QString &who);
 
 private:
     void onInputChanged(bool hasInput);

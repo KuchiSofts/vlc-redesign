@@ -65,6 +65,14 @@ public:
         bool busy = false;
         int count = 0;
         QString error;
+        SubtitleProviders::Problem problem = SubtitleProviders::Problem::None;
+    };
+    // what the last searches found of a service's credentials
+    enum ServiceStatus {
+        StatusOk,
+        StatusKeyRefused,   // until they change or a search succeeds
+        StatusLoginRefused,
+        StatusBusy          // a minute
     };
 
     SubtitleSearch(qt_intf_t *intf, SubtitlePreferences *preferences, QObject *parent = nullptr);
@@ -121,9 +129,31 @@ public:
     // for this file (its hash), or of a title identified for sure
     QVariantMap bestOf(const QString &language) const;
 
-    // a service asked or not (the user's setting, kept)
+    // a service asked or not (the user's setting, kept; one that needs
+    // credentials is asked only with them)
     static bool serviceEnabled(QSettings *settings, const QString &id);
     static void setServiceEnabled(QSettings *settings, const QString &id, bool enabled);
+    // whether the user ever switched it (else its default: on for the free
+    // services without an account)
+    static bool serviceSwitched(QSettings *settings, const QString &id);
+    // a service removed from the list: never asked (another than off)
+    static bool serviceRemoved(QSettings *settings, const QString &id);
+    static void setServiceRemoved(QSettings *settings, const QString &id, bool removed);
+    // The user's credentials of a service (secrets: never logged). Kept in
+    // the settings of the profile, on Windows sealed for this user on this
+    // PC (DPAPI): a copy of them elsewhere can't be read. The library's
+    // OpenSubtitles.com form uses the same
+    static SubtitleProviders::Credentials credentials(QSettings *settings, const QString &id);
+    // false when they didn't change
+    static bool setCredentials(QSettings *settings, const QString &id,
+                               const SubtitleProviders::Credentials &credentials);
+    static ServiceStatus serviceStatus(QSettings *settings, const QString &id);
+    // what a search or a check found (Problem::None: they work)
+    static void noteProblem(QSettings *settings, const QString &id, SubtitleProviders::Problem problem);
+    // Whether a service is asked for these languages: on, not removed, with
+    // the credentials it needs, and one of its languages among them
+    static bool serviceAsked(QSettings *settings, const SubtitleProviders::Provider &provider,
+                             const QStringList &languages);
     // The subtitle chosen for a file ({ file, id, language, release,
     // service }; the last two may be missing), when its file is still there
     static QStringList rememberedChoice(QSettings *settings, const QString &mediaKey);
@@ -169,7 +199,7 @@ private:
     void searchCinemeta();
     void querySubtitles();
     void onProviderDone(const QString &id, const QList<SubtitleProviders::Result> &results,
-                        const QString &error);
+                        const QString &error, SubtitleProviders::Problem problem);
     void rebuildResults();
     void finishSearch();
     bool strongTitle(double similarity, int year, bool series) const;
@@ -197,4 +227,8 @@ private:
     QList<SubtitleProviders::Result> m_found;
     QHash<QString, Run> m_runs;
     int m_pending = 0;
+    // the languages of the search going on, in their order, and whether the
+    // others are kept too
+    QStringList m_languages;
+    bool m_everyLanguage = true;
 };

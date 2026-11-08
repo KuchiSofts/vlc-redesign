@@ -127,19 +127,71 @@ How it works:
    `1x02`, *Season 1 Episode 2*; the folder too, as in *Show Name/Season 1/02.mkv*). IMDb's suggestions, then
    Wikidata, then Stremio's Cinemeta give its IMDb id. The header shows *Identifying the video…*, then the title
    found (*Breaking Bad · S01E02*).
-2. **The services are asked together** (*Searching OpenSubtitles, Wizdom…*). Their subtitles of every language are
-   listed as they come, those made for this very file first (*3 found for this file*).
+2. **The services are asked together** (*Searching OpenSubtitles, Wizdom…*), for the **languages to search** (below).
+   Their subtitles are listed as they come, those made for this very file first (*3 found for this file*); the line
+   under the title says what each service found (*OpenSubtitles 7 · SubSource 3 · Wizdom 4*), a dash for one that
+   didn't answer or refused your key (the reason in its tooltip).
 3. **A click loads one.** It is downloaded, unpacked (only its subtitles, 16 MB at most), converted to UTF-8, kept
    in the cache and remembered for the file (*Downloading…*).
 
-The services (each can be turned off in [Settings: Subtitles](Settings-Subtitles)):
+The services, in the order of **Settings › Subtitles › Subtitle services**. The four without an account are on at
+first; the others are off until you give them your own free key (they turn on by themselves the first time **Test**
+finds it works):
 
-| Service | What it has |
+| Service | What it has | Needs |
+|---|---|---|
+| **OpenSubtitles** | All languages, movies and series; finds those made for your very file. | nothing |
+| **OpenSubtitles.com** | All languages, movies and series (the newer OpenSubtitles). | your free key; your account for more downloads a day |
+| **SubSource** | Many languages, strong in Arabic ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70)). | your free key |
+| **SubDL** | Many languages: the archive of Subscene. | your free key |
+| **Wizdom** | Hebrew, movies and series. Asked only when Hebrew is one of your languages to search. | nothing |
+| **Addic7ed** | Series, many languages (through Gestdown). | nothing |
+| **YIFY Subtitles** | Movies, many languages. | nothing |
+
+Checked and not added: Podnapisi (its address is gone), Subscene (closed: SubDL and SubSource keep its archive),
+Subf2m (hides its subtitle links from programs), BSPlayer (plain HTTP only, and it failed), Jimaku (anime, a key
+of its own) and the sites of one language that need a sign-in (Ktuvit, Titulky,
+Legendas).
+
+### Languages to search
+
+**Settings › Subtitles › Languages to search** lists the languages the services are asked for, in the order of the
+results: your preferred and second languages (always there, the preferred one always on), and those you add with
+**Add a language** (a list to type in: a language's name in English, in its own language, or its code). Each has a
+switch, **Move up** and **Move down**, and **Remove** (not the preferred one). The languages you often pick by hand
+are added off, for you to turn on.
+
+**Every other language too** (off at first) asks the services for every language as well; off, they are asked only
+for the languages on, which makes the search faster (*Fewer languages: a faster search*). The search that runs by
+itself when a video has none in your languages uses the same list.
+
+### The services page
+
+**Settings › Subtitles › Subtitle services**: each service with what it has and its switch.
+
+- **A service that takes a key or an account** shows its fields when it is on or has them: *Your free key* (hidden,
+  with **Show**), *User name* and *Password* where it takes them (*(optional)* when the key alone is enough).
+  **Test** (or **Sign in**) asks it once: *Key works*, *Signed in as …*, *Key refused*, *Wrong user name or
+  password*, *Busy: try again in a minute* or *No answer, try again*. **Clear** (or **Sign out**) forgets them.
+  **Get a free key** (or **Create a free account**) opens the page where it is made. Turning one on without them
+  puts you in its first field.
+- **A service of one language** says so: *Asked only when Hebrew is one of your subtitle languages*.
+- **What a search found** shows on its row until it changes: *Key refused: check it*, *Sign-in refused: check it*
+  (until the key or the account changes, or a search works), *Busy: try again in a minute* (a minute).
+- **Remove** (the ✕ of a row) takes a service out of the list: it is never asked. **Add a service** lists the ones
+  removed, to bring them back. Off is not removed: a service off stays in the list.
+
+The keys and passwords stay on the computer, in the settings of VLC Redesign (on Windows sealed for your user on
+this PC, so a copy of the settings elsewhere can't read them), and are sent only to their own service. They are never
+written to the log.
+
+### Free keys
+
+| Service | How to get it |
 |---|---|
-| **OpenSubtitles** | All languages, movies and series; finds those made for your very file. |
-| **Wizdom** | Hebrew, movies and series. |
-| **Addic7ed** | Series, many languages (through Gestdown). |
-| **YIFY Subtitles** | Movies, many languages. |
+| **OpenSubtitles.com** | See [A free OpenSubtitles.com key](#a-free-opensubtitlescom-key). |
+| **SubSource** | Sign up on [subsource.net](https://subsource.net), then on your dashboard's **API** tab choose **Create an API key** and copy it into *Your free key*. A free key asks up to 60 times a minute, 7,200 a day. |
+| **SubDL** | Sign up on [subdl.com](https://subdl.com), then open [subdl.com/panel/api](https://subdl.com/panel/api) (*API* in your panel) and copy your API key into *Your free key*. |
 
 **What is sent:** the video's title, its IMDb id, its file name and a fingerprint of the file (its size and its
 first and last 64 KB), nothing else. **The cache** keeps the subtitles of the last 500 media and drops those not
@@ -254,11 +306,12 @@ Where it goes:
 
 | App | Where |
 |---|---|
-| Windows, Linux, macOS | **Add subtitles to the library** › **From OpenSubtitles** (the dialog says the same under the fields, with a link to the page) |
+| Windows, Linux, macOS | Settings › Subtitles › *Subtitle services* › **OpenSubtitles.com**: *Your free key*, *User name (optional)*, *Password (optional)*, **Test** and **Get a free key**. **Add subtitles to the library** › **From OpenSubtitles** uses the same key and account (one key for both). |
 | Android (phone, tablet, Android TV) | Settings › Subtitles › *Subtitle services*: **OpenSubtitles API key**, **Username**, **Password**, and *How to get a free key* (**Open** goes to the page). With a key, OpenSubtitles.com is asked too in the online search. |
 | Samsung TV (Juxto Media Player) | Settings › Subtitles: the same fields and the same steps (the address is shown as text) |
 
-The key and the account stay on the device, in the app's own settings; they are sent only to OpenSubtitles.com.
+The key and the account stay on the device, in the app's own settings (on Windows sealed for your user on this
+PC); they are sent only to OpenSubtitles.com.
 
 ## Online subtitles on Android and on Samsung TVs
 

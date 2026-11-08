@@ -15,7 +15,29 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- SubSource in the online subtitle search, with your own free key, for its Arabic subtitles in particular
+  ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70), by [@Elshepl](https://github.com/Elshepl)'s
+  idea); SubDL (the Subscene archive, many languages) and OpenSubtitles.com (the newer OpenSubtitles) too, each with
+  your own free key. They are off until you give them one; **Test** checks it (*Key works*, *Key refused*) and turns
+  the service on the first time it works. The line under the search's title lists every service asked (a dash, with
+  the reason in its tooltip, for one that refused your key). On the desktop; Android and the Samsung TV app next.
+- **Languages to search** in Settings › Subtitles: the languages the services are asked for, in the order of the
+  results (your preferred and second languages, and any you add), each on or off, moved or removed. **Every other
+  language too** is off at first: the services are asked only for your languages, a faster search; the search that
+  runs by itself uses the same list.
+
 ### Changed
+
+- **Settings › Subtitles › Subtitle services**, a page of its own: each service with what it has and its switch;
+  the fields of the key or account it takes (hidden, with **Show**), **Test** or **Sign in**, **Clear** or **Sign
+  out**, and **Get a free key**; **Remove** takes a service out of the list and **Add a service** brings it back;
+  a service whose key a search found refused says *Key refused: check it* on its row, and one of one language says
+  when it is asked (*Asked only when Hebrew is one of your subtitle languages*: Wizdom is asked only then). On at
+  first: OpenSubtitles, Wizdom, Addic7ed and YIFY Subtitles. The keys stay on the computer, on Windows sealed for
+  your user (a copy of the settings elsewhere can't read them), and are never written to the log; the library's
+  **From OpenSubtitles** uses the same OpenSubtitles.com key and account.
 
 - Translations: the texts of the TV menu of the library next to the video are on Weblate too (`po/redesign`),
   with their translations.

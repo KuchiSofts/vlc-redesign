@@ -70,6 +70,8 @@ Thank you to everyone who tested, reported and translated:
   - [@Elshepl](https://github.com/Elshepl): subtitles from the internet in the Android app
     ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)), now in every app, and SubSource as a subtitle
     service for its Arabic subtitles ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70)).
+  - [@BarbodF](https://github.com/BarbodF): keys in full screen that don't reveal the controls, as in VLC 3
+    ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
 - **Translations:**
   - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
     ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).

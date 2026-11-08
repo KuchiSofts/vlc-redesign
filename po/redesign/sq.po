@@ -5577,6 +5577,36 @@ msgstr "Nesër"
 msgid "Yesterday"
 msgstr "Dje"
 
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
+#: modules/gui/qt/iptv/qml/TvToast.qml:75
+msgid "Watch"
+msgstr "Shiko"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+msgid "Watch from the start"
+msgstr "Shiko nga fillimi"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
+msgid "Favorite"
+msgstr "E preferuar"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+msgid "Show in the Guide"
+msgstr "Shfaq në udhëzues"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+msgid "What's On"
+msgstr "Çfarë po jepet"
+
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
 msgstr "Pa udhëzues"
@@ -5614,36 +5644,6 @@ msgstr "Filma"
 msgid "Series"
 msgstr "Seriale"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
-msgid "Watch"
-msgstr "Shiko"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
-msgid "Watch from the start"
-msgstr "Shiko nga fillimi"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
-msgid "Favorite"
-msgstr "E preferuar"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
-msgid "Show in the Guide"
-msgstr "Shfaq në udhëzues"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
-msgid "What's On"
-msgstr "Çfarë po jepet"
-
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:196
 msgid "Watch TV in VLC"
 msgstr "Shikoni TV në VLC"
@@ -5662,19 +5662,6 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
 msgid "Add a Link"
 msgstr "Shto një lidhje"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
-msgid "Favorites"
-msgstr "Të preferuarat"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
-msgid "Recently Watched"
-msgstr "Të parat së fundi"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
@@ -5711,6 +5698,19 @@ msgstr "Duke ngarkuar kanalet…"
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "Asnjë kanal"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+msgid "Favorites"
+msgstr "Të preferuarat"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+msgid "Recently Watched"
+msgstr "Të parat së fundi"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:137
 msgid "Now"
@@ -7206,6 +7206,14 @@ msgstr ""
 msgid "OpenSubtitles API key"
 msgstr "Çelësi API i OpenSubtitles"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Nuk keni ende çelës? Është falas: regjistrohuni në opensubtitles.com, hapni \"API consumers\", zgjidhni \"New consumer\", jepini një emër (VLC Redesign) dhe kopjoni këtu çelësin e tij API, së bashku me emrin e përdoruesit dhe fjalëkalimin e llogarisë suaj."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Hap \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
 msgid "Waiting…"
 msgstr "Në pritje…"
@@ -7277,14 +7285,6 @@ msgstr "Po kërkohet në OpenSubtitles…"
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Kërkoni në OpenSubtitles për të parë skedarët e titrave."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "Nuk keni ende çelës? Është falas: regjistrohuni në opensubtitles.com, hapni \"API consumers\", zgjidhni \"New consumer\", jepini një emër (VLC Redesign) dhe kopjoni këtu çelësin e tij API, së bashku me emrin e përdoruesit dhe fjalëkalimin e llogarisë suaj."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
-msgid "Open API consumers"
-msgstr "Hap \"API consumers\""
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"

@@ -5654,6 +5654,36 @@ msgstr "Αύριο"
 msgid "Yesterday"
 msgstr "Χθες"
 
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
+#: modules/gui/qt/iptv/qml/TvToast.qml:75
+msgid "Watch"
+msgstr "Παρακολούθηση"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+msgid "Watch from the start"
+msgstr "Παρακολούθηση από την αρχή"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
+msgid "Favorite"
+msgstr "Αγαπημένο"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+msgid "Show in the Guide"
+msgstr "Εμφάνιση στον οδηγό"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+msgid "What's On"
+msgstr "Τι προβάλλεται"
+
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
 msgstr "Χωρίς οδηγό"
@@ -5691,36 +5721,6 @@ msgstr "Ταινίες"
 msgid "Series"
 msgstr "Σειρές"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
-msgid "Watch"
-msgstr "Παρακολούθηση"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
-msgid "Watch from the start"
-msgstr "Παρακολούθηση από την αρχή"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
-msgid "Favorite"
-msgstr "Αγαπημένο"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
-msgid "Show in the Guide"
-msgstr "Εμφάνιση στον οδηγό"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
-msgid "What's On"
-msgstr "Τι προβάλλεται"
-
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:196
 msgid "Watch TV in VLC"
 msgstr "Παρακολουθήστε τηλεόραση στο VLC"
@@ -5739,19 +5739,6 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
 msgid "Add a Link"
 msgstr "Προσθήκη συνδέσμου"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
-msgid "Favorites"
-msgstr "Αγαπημένα"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
-msgid "Recently Watched"
-msgstr "Πρόσφατα προβληθέντα"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
@@ -5788,6 +5775,19 @@ msgstr "Φόρτωση των καναλιών…"
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "Κανένα κανάλι"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+msgid "Favorites"
+msgstr "Αγαπημένα"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+msgid "Recently Watched"
+msgstr "Πρόσφατα προβληθέντα"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:137
 msgid "Now"
@@ -7299,6 +7299,14 @@ msgstr ""
 msgid "OpenSubtitles API key"
 msgstr "Κλειδί API του OpenSubtitles"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Δεν έχετε ακόμη κλειδί; Είναι δωρεάν: εγγραφείτε στο opensubtitles.com, ανοίξτε το «API consumers», επιλέξτε «New consumer», δώστε του όνομα (VLC Redesign) και αντιγράψτε εδώ το κλειδί API του, μαζί με το όνομα χρήστη και τον κωδικό πρόσβασης του λογαριασμού σας."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Άνοιγμα «API consumers»"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
 msgid "Waiting…"
 msgstr "Σε αναμονή…"
@@ -7370,14 +7378,6 @@ msgstr "Αναζήτηση στο OpenSubtitles…"
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Κάντε αναζήτηση στο OpenSubtitles για να δείτε τα αρχεία υποτίτλων."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "Δεν έχετε ακόμη κλειδί; Είναι δωρεάν: εγγραφείτε στο opensubtitles.com, ανοίξτε το «API consumers», επιλέξτε «New consumer», δώστε του όνομα (VLC Redesign) και αντιγράψτε εδώ το κλειδί API του, μαζί με το όνομα χρήστη και τον κωδικό πρόσβασης του λογαριασμού σας."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
-msgid "Open API consumers"
-msgstr "Άνοιγμα «API consumers»"
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"

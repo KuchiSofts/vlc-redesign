@@ -5617,6 +5617,36 @@ msgstr "Deman"
 msgid "Yesterday"
 msgstr "Ièr"
 
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
+#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
+#: modules/gui/qt/iptv/qml/TvToast.qml:75
+msgid "Watch"
+msgstr "Agachar"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+msgid "Watch from the start"
+msgstr "Agachar dempuèi lo començament"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
+msgid "Favorite"
+msgstr "Favorit"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+msgid "Show in the Guide"
+msgstr "Afichar dins la guida"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+msgid "What's On"
+msgstr "Çò que passa"
+
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
 msgid "No guide"
 msgstr "Pas de guida"
@@ -5654,36 +5684,6 @@ msgstr "Filmes"
 msgid "Series"
 msgstr "Series"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
-#: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
-#: modules/gui/qt/iptv/qml/TvToast.qml:75
-msgid "Watch"
-msgstr "Agachar"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
-msgid "Watch from the start"
-msgstr "Agachar dempuèi lo començament"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:81
-msgid "Favorite"
-msgstr "Favorit"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
-msgid "Show in the Guide"
-msgstr "Afichar dins la guida"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
-msgid "What's On"
-msgstr "Çò que passa"
-
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:196
 msgid "Watch TV in VLC"
 msgstr "Agachatz la TV dins VLC"
@@ -5702,19 +5702,6 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
 msgid "Add a Link"
 msgstr "Apondre un ligam"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
-msgid "Favorites"
-msgstr "Favorits"
-
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
-msgid "Recently Watched"
-msgstr "Agachadas recentament"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:307
 msgid "Updating the guide of %1… %2 MB"
@@ -5751,6 +5738,19 @@ msgstr "Cargament de las cadenas…"
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
 msgid "No channels"
 msgstr "Cap de cadena"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+msgid "Favorites"
+msgstr "Favorits"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+msgid "Recently Watched"
+msgstr "Agachadas recentament"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:137
 msgid "Now"
@@ -7263,6 +7263,14 @@ msgstr ""
 msgid "OpenSubtitles API key"
 msgstr "Clau d'API OpenSubtitles"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Pas encara de clau? Es gratuita: creatz un compte sus opensubtitles.com, dobrissètz « API consumers », causissètz « New consumer », donatz-li un nom (VLC Redesign) e copiatz aquí sa clau d'API, amb lo nom d'utilizaire e lo senhal de vòstre compte."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Dobrir « API consumers »"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
 msgid "Waiting…"
 msgstr "En espèra…"
@@ -7334,14 +7342,6 @@ msgstr "Recèrca sus OpenSubtitles…"
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Cercatz sus OpenSubtitles per veire los fichièrs de sostítols."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "Pas encara de clau? Es gratuita: creatz un compte sus opensubtitles.com, dobrissètz « API consumers », causissètz « New consumer », donatz-li un nom (VLC Redesign) e copiatz aquí sa clau d'API, amb lo nom d'utilizaire e lo senhal de vòstre compte."
-
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
-msgid "Open API consumers"
-msgstr "Dobrir « API consumers »"
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"

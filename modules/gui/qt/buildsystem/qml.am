@@ -210,8 +210,10 @@ libqml_module_network_a_QML = \
 	network/qml/ServicesManage.qml \
 	network/qml/ServicesSources.qml \
 	iptv/qml/TvBadge.qml \
+	iptv/qml/TvChannelMenu.qml \
 	iptv/qml/TvChannelRow.qml \
 	iptv/qml/TvDisplay.qml \
+	iptv/qml/TvGroupChips.qml \
 	iptv/qml/TvGuideView.qml \
 	iptv/qml/TvLibraryView.qml \
 	iptv/qml/TvLogo.qml \

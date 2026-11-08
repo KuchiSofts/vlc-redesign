@@ -1,0 +1,36 @@
+{
+ "movies": [
+  {
+   "id": 701,
+   "path": "/uploads/legendas/the-matrix-1999.zip",
+   "release_name": "The.Matrix.1999.1080p.BluRay",
+   "uploader": "someone",
+   "comment": "",
+   "tmdb_id": 603
+  },
+  {
+   "id": 702,
+   "path": "https://evil.example/x.zip",
+   "release_name": "Elsewhere",
+   "uploader": "x",
+   "comment": "",
+   "tmdb_id": 603
+  },
+  {
+   "id": 703,
+   "path": "/uploads/../../etc/passwd",
+   "release_name": "Traversal",
+   "uploader": "x",
+   "comment": "",
+   "tmdb_id": 603
+  },
+  {
+   "id": 704,
+   "path": "/uploads/legendas/the-matrix-forced.srt",
+   "release_name": "The.Matrix.1999.Forced",
+   "uploader": "x",
+   "comment": "Forced (foreign parts)",
+   "tmdb_id": 603
+  }
+ ]
+}

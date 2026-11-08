@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:06+0000\n"
+"POT-Creation-Date: 2026-11-08 07:32+0000\n"
 "PO-Revision-Date: 2015-12-04 10:01+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Gujarati (India) (http://www.transifex.com/yaron/vlc-trans/"
@@ -864,7 +864,7 @@ msgstr "ઇનપુટ ઍક્સેસ અને કોડેક"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -3618,29 +3618,106 @@ msgstr "ઓછી ભાષાઓ: ઝડપી શોધ"
 msgid "Subtitle services"
 msgstr "ઉપશીર્ષક સેવાઓ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+msgid "Key works"
+msgstr "કી કામ કરે છે"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+msgid "Signed in as %1"
+msgstr "%1 તરીકે સાઇન ઇન થયેલ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+msgid "Key refused"
+msgstr "કી નકારાઈ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+msgid "Wrong user name or password"
+msgstr "ખોટું વપરાશકર્તા નામ અથવા પાસવર્ડ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:315
+msgid "Busy: try again in a minute"
+msgstr "વ્યસ્ત: એક મિનિટ પછી ફરી પ્રયાસ કરો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+msgid "No answer, try again"
+msgstr "કોઈ જવાબ નથી, ફરી પ્રયાસ કરો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+msgid "Hide"
+msgstr "છુપાવો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+msgid "Show"
+msgstr "બતાવો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:313
 #: modules/gui/qt/player/subtitle_providers.cpp:97
 msgid "Key refused: check it"
 msgstr "કી નકારાઈ: તેને તપાસો"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "સાઇન ઇન નકારાયું: તેને તપાસો"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:317
+msgid "Asked only when %1 is one of your subtitle languages"
+msgstr "ફક્ત ત્યારે જ પૂછાય છે જ્યારે %1 તમારી ઉપશીર્ષક ભાષાઓમાંની એક હોય"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:344
+msgid "Your free key"
+msgstr "તમારી મફત કી"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+msgid "User name (optional)"
+msgstr "વપરાશકર્તા નામ (વૈકલ્પિક)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
 msgid "User name"
 msgstr "વપરાશકર્તા નામ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+msgid "Password (optional)"
+msgstr "પાસવર્ડ (વૈકલ્પિક)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:347
+msgid "Email"
+msgstr "ઇમેઇલ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+msgid "Sign in"
+msgstr "સાઇન ઇન કરો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
+msgid "Sign out"
+msgstr "સાઇન આઉટ કરો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+msgid "Create a free account"
+msgstr "મફત એકાઉન્ટ બનાવો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:599
 msgid "Get a free key"
 msgstr "મફત કી મેળવો"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:421
+msgid "Add a service"
+msgstr "સેવા ઉમેરો"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:451
+msgid ""
+"To find subtitles, the services turned on get the video's title, its IMDb "
+"id, its file name and hash (made from a part of the file), and nothing else."
+msgstr ""
+"ઉપશીર્ષકો શોધવા માટે, ચાલુ કરેલી સેવાઓને વિડિઓનું શીર્ષક, તેનો IMDb id, તેનું ફાઇલ નામ અને "
+"હેશ (ફાઇલના એક ભાગમાંથી બનાવેલ) મળે છે, અને બીજું કંઈ નહીં."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:636
 msgid "Current output device"
 msgstr "હાલનું આઉટપુટ ઉપકરણ"
 
@@ -3657,7 +3734,7 @@ msgstr ""
 "ત્યાં સુધી જાળવી રાખે છે."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -3670,7 +3747,7 @@ msgstr "નિદાન"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 msgid "Developer mode"
 msgstr "ડેવલપર મોડ"
 
@@ -3826,45 +3903,45 @@ msgstr "બીજી ભાષા"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:674
 msgid "No matching settings"
 msgstr "કોઈ મેળ ખાતા સુયોજનો નથી"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:675
 msgid "No settings are available for this category on this VLC installation"
 msgstr "આ VLC ઇન્સ્ટોલેશન પર આ શ્રેણી માટે કોઈ સુયોજનો ઉપલબ્ધ નથી"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "Show installed add-ons only"
 msgstr "ફક્ત ઇન્સ્ટોલ કરેલા ઍડ-ઑન બતાવો"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:789
 msgid "No advanced options on this page."
 msgstr "આ પાના પર કોઈ ઉન્નત વિકલ્પો નથી."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:801
 msgid "Welcome setup"
 msgstr "સ્વાગત સેટઅપ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 msgid "All VLC options"
 msgstr "VLC ના બધા વિકલ્પો"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "બધા સુયોજનો ફરીથી સેટ કરો"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:845
 msgid "Reset all settings?"
 msgstr "બધા સુયોજનો ફરીથી સેટ કરવા છે?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:846
 msgid "Every setting of %1 goes back to its default."
 msgstr "%1 મીડિયા પ્લેયરનું દરેક સુયોજન તેની મૂળભૂત કિંમત પર પાછું જાય છે."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:900
 msgid "Discard changes"
 msgstr "ફેરફારો રદ કરો"
 
@@ -6335,12 +6412,12 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles એ અમાન્ય લૉગિન સત્ર આપ્યું."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1344
+#: modules/gui/qt/player/subtitle_providers.cpp:1860
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles ડાઉનલોડ નિષ્ફળ ગયું. તમારો ક્વોટા તપાસો."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1355
+#: modules/gui/qt/player/subtitle_providers.cpp:1871
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles એ માન્ય ઉપશીર્ષક ડાઉનલોડ લિંક આપી નથી."
 
@@ -7572,59 +7649,88 @@ msgstr "%1 થોડી વાર રાહ જોવા કહે છે (ઘ�
 msgid "%1 didn't answer (%2)."
 msgstr "%1 એ જવાબ આપ્યો નથી (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1187
+#: modules/gui/qt/player/subtitle_providers.cpp:1574
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "બધી ભાષાઓ · ફિલ્મો અને સિરીઝ · તમારી ફાઇલ માટે બનેલાં શોધે છે"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1189
+#: modules/gui/qt/player/subtitle_providers.cpp:1576
 msgid "With your own free key · all languages"
 msgstr "તમારી પોતાની મફત કી સાથે · બધી ભાષાઓ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1193
+#: modules/gui/qt/player/subtitle_providers.cpp:1580
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "તમારી પોતાની મફત કી સાથે · અરૅબીકમાં મજબૂત, ઘણી ભાષાઓ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1196
+#: modules/gui/qt/player/subtitle_providers.cpp:1583
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "તમારી પોતાની મફત કી સાથે · Subscene આર્કાઇવ, ઘણી ભાષાઓ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1199
+#: modules/gui/qt/player/subtitle_providers.cpp:1586
 msgid "Hebrew · movies and series"
 msgstr "હીબ્રુ · ફિલ્મો અને સિરીઝ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1201
+#: modules/gui/qt/player/subtitle_providers.cpp:1588
 msgid "Series · many languages"
 msgstr "સિરીઝ · ઘણી ભાષાઓ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1203
+#: modules/gui/qt/player/subtitle_providers.cpp:1590
 msgid "Movies · many languages"
 msgstr "ફિલ્મો · ઘણી ભાષાઓ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1414
+#: modules/gui/qt/player/subtitle_providers.cpp:1594
+msgid ""
+"With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
+msgstr "તમારા મફત એકાઉન્ટ સાથે · ક્રોએશિયન, સર્બિયન, બોસ્નિયાઈ, સ્લોવેનિયન, મેકેડોનિયાઈ"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1598
+msgid "With your free token · Chinese"
+msgstr "તમારા મફત ટોકન સાથે · ચીની"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1601
+msgid "With your free key · anime, Japanese"
+msgstr "તમારી મફત કી સાથે · એનાઇમ, જાપાની"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1604
+msgid "With your free key · series, French"
+msgstr "તમારી મફત કી સાથે · સિરીઝ, ફ્રેન્ચ"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1607
+msgid "With your free key · Romanian"
+msgstr "તમારી મફત કી સાથે · રોમાનિયન"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1610
+msgid "With your free account · Polish · finds those made for your file"
+msgstr "તમારા મફત એકાઉન્ટ સાથે · પોલિશ · તમારી ફાઇલ માટે બનેલા ઉપશીર્ષકો શોધે છે"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1613
+msgid "With your free account · Portuguese (Brazil)"
+msgstr "તમારા મફત એકાઉન્ટ સાથે · પોર્ટુગીઝ (બ્રાઝિલ)"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1984
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "આ ઉપશીર્ષક RAR આર્કાઇવ તરીકે આવે છે, જે અહીં ખોલી શકાતું નથી."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1426
-#: modules/gui/qt/player/subtitle_providers.cpp:1459
-#: modules/gui/qt/player/subtitle_search.cpp:1373
+#: modules/gui/qt/player/subtitle_providers.cpp:1996
+#: modules/gui/qt/player/subtitle_providers.cpp:2029
+#: modules/gui/qt/player/subtitle_search.cpp:1378
 msgid "The subtitle couldn't be unpacked."
 msgstr "ઉપશીર્ષક અનપેક કરી શકાયું નથી."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1460
+#: modules/gui/qt/player/subtitle_providers.cpp:2030
 msgid "The archive has no subtitle in it."
 msgstr "આર્કાઇવમાં કોઈ ઉપશીર્ષક નથી."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1472
+#: modules/gui/qt/player/subtitle_providers.cpp:2042
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr "OpenSubtitles આ ઉપશીર્ષક તેના ચૂકવણી કરનારા સભ્યો માટે રાખે છે. બીજું પસંદ કરો."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1478
+#: modules/gui/qt/player/subtitle_providers.cpp:2048
 msgid "The subtitle is empty."
 msgstr "ઉપશીર્ષક ખાલી છે."
 
 #: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1333
+#: modules/gui/qt/player/subtitle_search.cpp:1338
 msgid "No connection to the internet."
 msgstr "ઇન્ટરનેટ સાથે કોઈ જોડાણ નથી."
 
@@ -7642,11 +7748,11 @@ msgstr "%1 માટે કોઈ ઉપશીર્ષક મળ્યાં �
 
 #: modules/gui/qt/player/subtitle_search.cpp:1284
 #: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1334
+#: modules/gui/qt/player/subtitle_search.cpp:1339
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "ઉપશીર્ષક ડાઉનલોડ કરી શકાયું નથી (%1)."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1364
+#: modules/gui/qt/player/subtitle_search.cpp:1369
 msgid "The subtitle couldn't be saved."
 msgstr "ઉપશીર્ષક સંગ્રહી શકાયું નથી."
 

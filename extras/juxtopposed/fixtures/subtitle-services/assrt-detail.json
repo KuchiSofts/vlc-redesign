@@ -1,0 +1,35 @@
+{
+ "status": 0,
+ "sub": {
+  "action": "detail",
+  "subs": [
+   {
+    "id": 6001,
+    "filename": "The.Matrix.1999.zip",
+    "url": "https://file0.assrt.net/download/6001/The.Matrix.1999.zip",
+    "filelist": [
+     {
+      "url": "https://file0.assrt.net/onthefly/6001/-/1/The.Matrix.1999.chs.srt",
+      "f": "The.Matrix.1999.chs.srt",
+      "s": "80KB"
+     },
+     {
+      "url": "https://file0.assrt.net/onthefly/6001/-/2/The.Matrix.1999.eng.srt",
+      "f": "The.Matrix.1999.eng.srt",
+      "s": "70KB"
+     },
+     {
+      "url": "https://evil.example/x.srt",
+      "f": "The.Matrix.1999.cht.srt",
+      "s": "1KB"
+     },
+     {
+      "url": "https://file0.assrt.net/onthefly/6001/-/3/readme.txt",
+      "f": "readme.txt",
+      "s": "1KB"
+     }
+    ]
+   }
+  ]
+ }
+}

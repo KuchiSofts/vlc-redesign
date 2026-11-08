@@ -148,6 +148,11 @@ struct Download
 {
     QUrl url;
     QList<QPair<QByteArray, QByteArray>> headers;
+    QByteArray method = "GET";
+    QByteArray body;
+    // the file of what was downloaded, when it comes inside an answer
+    // (Napisy24's): empty when there is none
+    std::function<QByteArray(const QByteArray &answer)> unwrap;
     QString error;
     Problem problem = Problem::None;
 };

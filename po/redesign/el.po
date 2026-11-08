@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 07:06+0000\n"
+"POT-Creation-Date: 2026-11-08 07:32+0000\n"
 "PO-Revision-Date: 2015-12-05 19:04+0000\n"
 "Last-Translator: Savvas Nesseris <nesseris@yahoo.com>\n"
 "Language-Team: Greek (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -924,7 +924,7 @@ msgstr "Πρόσβαση εισόδου και codecs"
 
 #: src/libvlc-module.c:2153
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -3766,29 +3766,109 @@ msgstr "Λιγότερες γλώσσες: ταχύτερη αναζήτηση"
 msgid "Subtitle services"
 msgstr "Υπηρεσίες υποτίτλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+msgid "Key works"
+msgstr "Το κλειδί λειτουργεί"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+msgid "Signed in as %1"
+msgstr "Συνδεθήκατε ως %1"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+msgid "Key refused"
+msgstr "Το κλειδί απορρίφθηκε"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+msgid "Wrong user name or password"
+msgstr "Λάθος όνομα χρήστη ή κωδικός πρόσβασης"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:315
+msgid "Busy: try again in a minute"
+msgstr "Απασχολημένο: δοκιμάστε ξανά σε ένα λεπτό"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+msgid "No answer, try again"
+msgstr "Καμία απάντηση, δοκιμάστε ξανά"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+msgid "Hide"
+msgstr "Απόκρυψη"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+msgid "Show"
+msgstr "Εμφάνιση"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:313
 #: modules/gui/qt/player/subtitle_providers.cpp:97
 msgid "Key refused: check it"
 msgstr "Το κλειδί απορρίφθηκε: ελέγξτε το"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
 #: modules/gui/qt/player/subtitle_providers.cpp:99
 msgid "Sign-in refused: check it"
 msgstr "Η σύνδεση απορρίφθηκε: ελέγξτε τα στοιχεία"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:317
+msgid "Asked only when %1 is one of your subtitle languages"
+msgstr "Χρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων σας"
+"Χρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων σας"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:344
+msgid "Your free key"
+msgstr "Το δωρεάν κλειδί σας"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+msgid "User name (optional)"
+msgstr "Όνομα χρήστη (προαιρετικό)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
 msgid "User name"
 msgstr "Όνομα χρήστη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+msgid "Password (optional)"
+msgstr "Κωδικός πρόσβασης (προαιρετικός)"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:347
+msgid "Email"
+msgstr "Email"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+msgid "Sign in"
+msgstr "Σύνδεση"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
+msgid "Sign out"
+msgstr "Αποσύνδεση"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+msgid "Create a free account"
+msgstr "Δημιουργία δωρεάν λογαριασμού"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:599
 msgid "Get a free key"
 msgstr "Λήψη δωρεάν κλειδιού"
 
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:421
+msgid "Add a service"
+msgstr "Προσθήκη υπηρεσίας"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:451
+msgid ""
+"To find subtitles, the services turned on get the video's title, its IMDb "
+"id, its file name and hash (made from a part of the file), and nothing else."
+msgstr ""
+"Για την εύρεση υποτίτλων, οι ενεργοποιημένες υπηρεσίες λαμβάνουν τον τίτλο "
+"του βίντεο, το αναγνωριστικό IMDb, το όνομα αρχείου και τον κωδικό "
+"κατακερματισμού του (που δημιουργείται από ένα τμήμα του αρχείου) και τίποτα "
+"άλλο."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:636
 msgid "Current output device"
 msgstr "Τρέχουσα συσκευή εξόδου"
 
@@ -3805,7 +3885,7 @@ msgstr ""
 "διατηρεί αυτή την επιλογή όσο παραμένει ενεργή."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -3818,7 +3898,7 @@ msgstr "Διαγνωστικά"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:606
 msgid "Developer mode"
 msgstr "Λειτουργία προγραμματιστή"
 
@@ -3976,48 +4056,48 @@ msgstr "Δεύτερη γλώσσα"
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:674
 msgid "No matching settings"
 msgstr "Δεν βρέθηκαν ρυθμίσεις"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:675
 msgid "No settings are available for this category on this VLC installation"
 msgstr ""
 "Δεν υπάρχουν διαθέσιμες ρυθμίσεις για αυτή την κατηγορία σε αυτή την "
 "εγκατάσταση του VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
 msgid "Show installed add-ons only"
 msgstr "Εμφάνιση μόνο των εγκατεστημένων πρόσθετων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:789
 msgid "No advanced options on this page."
 msgstr "Δεν υπάρχουν επιλογές για προχωρημένους σε αυτή τη σελίδα."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:801
 msgid "Welcome setup"
 msgstr "Αρχική ρύθμιση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
 msgid "All VLC options"
 msgstr "Όλες οι επιλογές του VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Επαναφορά όλων των ρυθμίσεων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:845
 msgid "Reset all settings?"
 msgstr "Επαναφορά όλων των ρυθμίσεων;"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:846
 msgid "Every setting of %1 goes back to its default."
 msgstr ""
 "Κάθε ρύθμιση του αναπαραγωγού πολυμέσων %1 επιστρέφει στην προεπιλογή της."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:900
 msgid "Discard changes"
 msgstr "Απόρριψη αλλαγών"
 
@@ -6541,12 +6621,12 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "Το OpenSubtitles επέστρεψε μη έγκυρη περίοδο σύνδεσης."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1344
+#: modules/gui/qt/player/subtitle_providers.cpp:1860
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "Η λήψη από το OpenSubtitles απέτυχε. Ελέγξτε το όριο λήψεών σας."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1355
+#: modules/gui/qt/player/subtitle_providers.cpp:1871
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "Το OpenSubtitles δεν επέστρεψε έγκυρο σύνδεσμο λήψης υποτίτλων."
 
@@ -7801,65 +7881,94 @@ msgstr "Το %1 ζητά να περιμένετε λίγο (πάρα πολλέ
 msgid "%1 didn't answer (%2)."
 msgstr "Το %1 δεν απάντησε (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1187
+#: modules/gui/qt/player/subtitle_providers.cpp:1574
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 "Όλες οι γλώσσες · ταινίες και σειρές · βρίσκει όσους φτιάχτηκαν για το "
 "αρχείο σας"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1189
+#: modules/gui/qt/player/subtitle_providers.cpp:1576
 msgid "With your own free key · all languages"
 msgstr "Με το δικό σας δωρεάν κλειδί · όλες οι γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1193
+#: modules/gui/qt/player/subtitle_providers.cpp:1580
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "Με το δικό σας δωρεάν κλειδί · δυνατό στα Αραβικά, πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1196
+#: modules/gui/qt/player/subtitle_providers.cpp:1583
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "Με το δικό σας δωρεάν κλειδί · το αρχείο του Subscene, πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1199
+#: modules/gui/qt/player/subtitle_providers.cpp:1586
 msgid "Hebrew · movies and series"
 msgstr "Εβραϊκά · ταινίες και σειρές"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1201
+#: modules/gui/qt/player/subtitle_providers.cpp:1588
 msgid "Series · many languages"
 msgstr "Σειρές · πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1203
+#: modules/gui/qt/player/subtitle_providers.cpp:1590
 msgid "Movies · many languages"
 msgstr "Ταινίες · πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1414
+#: modules/gui/qt/player/subtitle_providers.cpp:1594
+msgid ""
+"With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
+msgstr "Με τον δωρεάν λογαριασμό σας · Κροατικά, Σερβικά, Βοσνιακά, Σλοβενικά, Σλαβομακεδονικά"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1598
+msgid "With your free token · Chinese"
+msgstr "Με το δωρεάν διακριτικό σας · Κινέζικα"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1601
+msgid "With your free key · anime, Japanese"
+msgstr "Με το δωρεάν κλειδί σας · anime, Ιαπωνικά"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1604
+msgid "With your free key · series, French"
+msgstr "Με το δωρεάν κλειδί σας · σειρές, Γαλλικά"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1607
+msgid "With your free key · Romanian"
+msgstr "Με το δωρεάν κλειδί σας · Ρουμανικά"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1610
+msgid "With your free account · Polish · finds those made for your file"
+msgstr "Με τον δωρεάν λογαριασμό σας · Πολωνικά · βρίσκει όσους φτιάχτηκαν για το αρχείο σας"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1613
+msgid "With your free account · Portuguese (Brazil)"
+msgstr "Με τον δωρεάν λογαριασμό σας · Πορτογαλικά (Βραζιλίας)"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1984
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr ""
 "Αυτοί οι υπότιτλοι διατίθενται ως αρχείο RAR, το οποίο δεν μπορεί να ανοίξει "
 "εδώ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1426
-#: modules/gui/qt/player/subtitle_providers.cpp:1459
-#: modules/gui/qt/player/subtitle_search.cpp:1373
+#: modules/gui/qt/player/subtitle_providers.cpp:1996
+#: modules/gui/qt/player/subtitle_providers.cpp:2029
+#: modules/gui/qt/player/subtitle_search.cpp:1378
 msgid "The subtitle couldn't be unpacked."
 msgstr "Δεν ήταν δυνατή η αποσυμπίεση των υποτίτλων."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1460
+#: modules/gui/qt/player/subtitle_providers.cpp:2030
 msgid "The archive has no subtitle in it."
 msgstr "Το αρχείο δεν περιέχει υπότιτλους."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1472
+#: modules/gui/qt/player/subtitle_providers.cpp:2042
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "Το OpenSubtitles διαθέτει αυτούς τους υπότιτλους μόνο στα συνδρομητικά μέλη "
 "του. Επιλέξτε άλλους."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1478
+#: modules/gui/qt/player/subtitle_providers.cpp:2048
 msgid "The subtitle is empty."
 msgstr "Οι υπότιτλοι είναι κενοί."
 
 #: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1333
+#: modules/gui/qt/player/subtitle_search.cpp:1338
 msgid "No connection to the internet."
 msgstr "Δεν υπάρχει σύνδεση στο διαδίκτυο."
 
@@ -7877,11 +7986,11 @@ msgstr "Δεν βρέθηκαν υπότιτλοι για το %1."
 
 #: modules/gui/qt/player/subtitle_search.cpp:1284
 #: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1334
+#: modules/gui/qt/player/subtitle_search.cpp:1339
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Δεν ήταν δυνατή η λήψη των υποτίτλων (%1)."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1364
+#: modules/gui/qt/player/subtitle_search.cpp:1369
 msgid "The subtitle couldn't be saved."
 msgstr "Δεν ήταν δυνατή η αποθήκευση των υποτίτλων."
 

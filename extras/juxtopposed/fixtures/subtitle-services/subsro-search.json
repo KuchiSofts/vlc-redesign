@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "count": 4,
+ "items": [
+  {
+   "id": 501,
+   "title": "The Matrix (1999)",
+   "year": 1999,
+   "description": "The.Matrix.1999.1080p.BluRay.x264\nTradus de X",
+   "downloadLink": "https://subs.ro/subtitrare/descarca/501",
+   "downloads": 1200
+  },
+  {
+   "id": 502,
+   "title": "Breaking Bad - Sezonul 2",
+   "year": 2009,
+   "description": "Breaking.Bad.S02E03.720p",
+   "downloadLink": "https://subs.ro/subtitrare/descarca/502"
+  },
+  {
+   "id": 503,
+   "title": "Breaking Bad - Sezonul 3",
+   "year": 2010,
+   "description": "Breaking.Bad.S03E01",
+   "downloadLink": "https://subs.ro/subtitrare/descarca/503"
+  },
+  {
+   "id": 504,
+   "title": "Elsewhere",
+   "description": "x",
+   "downloadLink": "https://evil.example/504"
+  }
+ ]
+}

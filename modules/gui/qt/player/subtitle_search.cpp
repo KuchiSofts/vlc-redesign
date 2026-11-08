@@ -1322,13 +1322,18 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
         }
         HttpRequest request;
         request.url = prepared.url;
+        request.method = prepared.method;
+        request.body = prepared.body;
         request.timeoutMs = 30000;
         request.maxBytes = maxSubtitleBytes;
         request.headers = prepared.headers;
-        httpRequestAsync(this, request, [this, revision, done, result, folder, stem, pruneRoot](const HttpResponse &reply) {
+        const auto unwrap = prepared.unwrap;
+        httpRequestAsync(this, request, [this, revision, done, result, folder, stem, pruneRoot, unwrap](const HttpResponse &reply) {
             if (revision != m_downloadRevision)
                 return;
-            if (!replyOk(reply, maxSubtitleBytes) || reply.body.isEmpty())
+            // (a file inside the answer: Napisy24's)
+            const QByteArray file = unwrap && replyOk(reply, maxSubtitleBytes) ? unwrap(reply.body) : reply.body;
+            if (!replyOk(reply, maxSubtitleBytes) || file.isEmpty())
             {
                 done({}, reply.status == 0 ? qtr("No connection to the internet.")
                                            : qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
@@ -1343,7 +1348,7 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
                 QString error;
             };
             auto saved = std::make_shared<Saved>();
-            const QByteArray body = reply.body;
+            const QByteArray body = file;
             const QString videoName = m_media.name;
             const QString keep = QFileInfo(folder).fileName();
             QThread *worker = QThread::create([saved, body, result, videoName, folder, stem, pruneRoot, keep]() {

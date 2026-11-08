@@ -208,8 +208,8 @@ SettingsSectionTitle {
             // (what a search found is of the credentials kept)
             readonly property bool sameAsKept: root._initial[service.id] !== undefined
                                                && root._same(values, root.typed_initial(service.id))
-            readonly property bool login: service.fields.indexOf("username") >= 0
-                                          && service.required.indexOf("key") < 0
+            // (an account without a key: Sign in, Sign out)
+            readonly property bool login: service.fields.indexOf("key") < 0
             readonly property bool languageOn: service.languages.length === 0
                                                || service.languages.some(l => root.languagesOn.indexOf(l) >= 0)
 
@@ -369,8 +369,7 @@ SettingsSectionTitle {
                     objectName: "settingsSubtitleServiceCheck_" + serviceRow.service.id
                     visible: serviceRow.on || serviceRow.anyTyped
                     text: serviceRow.login ? qsTr("Sign in") : qsTr("Test")
-                    enabled: !serviceRow.local.checking && root.complete(serviceRow.service)
-                             && (serviceRow.values.key !== "" || serviceRow.values.username !== "")
+                    enabled: !serviceRow.local.checking && root.complete(serviceRow.service) && serviceRow.anyTyped
                     onClicked: {
                         root.update(serviceRow.service.id, { checking: true, result: "" })
                         SubtitleFinder.checkService(serviceRow.service.id, root.typed(serviceRow.service.id))

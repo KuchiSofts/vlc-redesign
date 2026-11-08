@@ -1,0 +1,45 @@
+{
+ "episodes": [
+  {
+   "id": 2501,
+   "season": 2,
+   "episode": 3,
+   "subtitles": [
+    {
+     "id": 9001,
+     "language": "VF",
+     "source": "addic7ed",
+     "quality": 4,
+     "file": "Breaking.Bad.S02E03.720p.fr.srt",
+     "url": "https://www.betaseries.com/srt/9001",
+     "date": "2009-03-23 10:00:00"
+    },
+    {
+     "id": 9002,
+     "language": "VO",
+     "source": "addic7ed",
+     "quality": 3,
+     "file": "Breaking.Bad.S02E03.720p.en.srt",
+     "url": "https://www.betaseries.com/srt/9002"
+    },
+    {
+     "id": 9003,
+     "language": "VF",
+     "source": "seriessub",
+     "quality": 5,
+     "file": "gone.zip",
+     "url": "https://www.betaseries.com/srt/9003"
+    },
+    {
+     "id": 9004,
+     "language": "VF",
+     "source": "other",
+     "quality": 1,
+     "file": "elsewhere.srt",
+     "url": "https://evil.example/9004"
+    }
+   ]
+  }
+ ],
+ "errors": []
+}

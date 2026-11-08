@@ -26,6 +26,9 @@ FocusScope {
 
     // room kept at the bottom (the control bar when shown)
     property real bottomInset: 0
+    // room kept at the start (the library next to the video when shown: the
+    // banner and the list over the video only, not over its channels)
+    property real startInset: 0
     // the player shows its idle picture: nothing plays (Player.qml)
     property bool idle: false
     // the item the keyboard goes back to when the list closes
@@ -289,6 +292,7 @@ FocusScope {
     Item {
         id: bannerZone
         anchors.left: parent.left
+        anchors.leftMargin: root.startInset
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.bottomMargin: root.bottomInset
@@ -335,6 +339,7 @@ FocusScope {
                          bannerEnd.implicitHeight) + root.px(6)
         Behavior on height { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
         anchors.left: parent.left
+        anchors.leftMargin: root.startInset
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.bottomMargin: root.bottomInset + (wanted ? 0 : -root.px(8))
@@ -889,12 +894,12 @@ FocusScope {
         id: listPanel
         visible: false
         anchors.left: parent.left
-        anchors.leftMargin: root.px(16)
+        anchors.leftMargin: root.startInset + root.px(16)
         anchors.top: parent.top
         anchors.topMargin: root.px(16)
         anchors.bottom: parent.bottom
         anchors.bottomMargin: root.bottomInset + root.px(16)
-        width: Math.min(root.px(400), parent.width - root.px(32))
+        width: Math.min(root.px(400), parent.width - root.startInset - root.px(32))
         radius: root.px(14)
         color: Qt.rgba(14 / 255, 14 / 255, 14 / 255, 0.95)
 
@@ -994,6 +999,7 @@ FocusScope {
 
     TvToast {
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: root.startInset / 2
         anchors.top: parent.top
         anchors.topMargin: root.px(24)
         forceDark: true

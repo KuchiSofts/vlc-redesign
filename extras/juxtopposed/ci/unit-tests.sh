@@ -44,6 +44,14 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     $(pkg-config --libs Qt6Core) -o "$out/iptv-autoguide"
 "$out/iptv-autoguide" extras/juxtopposed/fixtures/iptv-autoguide
 
+echo "== Live TV: quitting never waits without bound"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/iptv-stop.cpp modules/misc/iptv/service.cpp modules/misc/iptv/servers.cpp \
+    modules/misc/iptv/autoguide.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp \
+    modules/misc/iptv/xtream.cpp $(pkg-config --libs Qt6Core) -lz -o "$out/iptv-stop"
+# (the service a stuck download keeps is let go on purpose: not a leak of the code)
+ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 "$out/iptv-stop"
+
 echo "== subtitle services (keys and accounts)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/subtitle-services.cpp modules/gui/qt/player/subtitle_services.cpp \

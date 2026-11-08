@@ -59,6 +59,14 @@ struct vlc_iptv
      */
     char *(*request)(vlc_iptv_t *iptv, const char *json);
 
+    /**
+     * Set by the module: what is in progress (downloads, the calls of the
+     * user's servers) stops at once, and no more is started; called before
+     * the interface waits for its requests and unloads the module (they
+     * would wait for their timeouts otherwise). Thread-safe, never blocks.
+     */
+    void (*stop)(vlc_iptv_t *iptv);
+
     void *sys;
 };
 

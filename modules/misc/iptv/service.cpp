@@ -393,11 +393,38 @@ Service::Service(Host& host, const QString& dataDir, const QString& cacheDir,
 
 Service::~Service()
 {
-    m_quit = true;
-    m_host.killWorker();
-    m_jobWait.notify_all();
+    stop();
     if (m_thread.joinable())
         m_thread.join();
+}
+
+void Service::stop()
+{
+    {
+        // (under the lock the worker waits with: its wakeup is never lost,
+        // it would sleep until its next check otherwise, a minute)
+        std::lock_guard<std::mutex> guard(m_jobLock);
+        m_quit = true;
+    }
+    m_host.killWorker();
+    m_jobWait.notify_all();
+}
+
+bool Service::waitStopped(int ms)
+{
+    stop();
+    {
+        std::unique_lock<std::mutex> guard(m_endLock);
+        if (!m_endWait.wait_for(guard, std::chrono::milliseconds(ms), [this]() { return m_workerEnded; }))
+        {
+            // (stuck in a download: left as it is, with this service)
+            m_thread.detach();
+            return false;
+        }
+    }
+    if (m_thread.joinable())
+        m_thread.join();
+    return true;
 }
 
 /* The configuration: the sources, in their order (the guides of the first
@@ -586,6 +613,9 @@ void Service::run()
             schedule();
         }
     }
+    std::lock_guard<std::mutex> guard(m_endLock);
+    m_workerEnded = true;
+    m_endWait.notify_all();
 }
 
 void Service::startup()
@@ -650,7 +680,10 @@ void Service::schedule()
     }
     if (!due.isEmpty())
         refreshSources(due, true);
-    updateCatalog(false);
+    // the catalog's newer copy: not in the first minutes (VLC may be quit
+    // at once; a start downloads enough), else once a day
+    if (std::chrono::steady_clock::now() - m_startedAt >= std::chrono::minutes(10))
+        updateCatalog(false);
 }
 
 void Service::progress(const QString& id, const QString& stage, qint64 received, qint64 total)
@@ -2576,6 +2609,9 @@ QJsonObject Service::catchup(const QJsonObject& r)
 
 QJsonObject Service::catalog()
 {
+    // shown: its newer copy is looked for (once a day), the one there answers now
+    if (!m_quit)
+        post([this]() { updateCatalog(false); });
     const QByteArray online = readAll(m_cacheDir + QStringLiteral("/catalog.json"));
     QJsonObject bundled = QJsonDocument::fromJson(m_bundledCatalog).object();
     const QJsonObject fetched = QJsonDocument::fromJson(online).object();

@@ -428,7 +428,13 @@ void IptvAddon::load()
 void IptvAddon::unload()
 {
     m_clock.stop();
-    // the requests on their way end first
+    // the requests on their way end first: stopped (a download or a call of
+    // a server would run to its timeout, or hang), then waited for
+    {
+        QReadLocker guard(&m_bridge->lock);
+        if (m_bridge->object && m_bridge->object->stop)
+            m_bridge->object->stop(m_bridge->object);
+    }
     m_pool.waitForDone();
     QWriteLocker guard(&m_bridge->lock);
     if (!m_bridge->object)

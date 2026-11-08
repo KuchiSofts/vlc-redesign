@@ -23,6 +23,7 @@
 #include <QVector>
 
 #include <atomic>
+#include <chrono>
 #include <condition_variable>
 #include <deque>
 #include <functional>
@@ -170,6 +171,13 @@ public:
 
     // The answer of a request of the interface (see vlc_iptv.h)
     QJsonObject request(const QJsonObject& request);
+    // VLC quits: the worker stops at once, its downloads and the calls of
+    // the servers too (any thread, never blocks)
+    void stop();
+    // Stops the worker and waits for it, at most ms: false when it is still
+    // in a download VLC could not stop (this service must then never be
+    // destroyed: the worker uses it)
+    bool waitStopped(int ms);
 
 private:
     struct SourceState
@@ -281,6 +289,13 @@ private:
     std::deque<Job> m_jobs;
     std::atomic<bool> m_quit { false };
     std::thread m_thread;
+    // the worker ended (waitStopped)
+    std::mutex m_endLock;
+    std::condition_variable m_endWait;
+    bool m_workerEnded = false;
+    // the catalog is refreshed this long after the start at the earliest
+    // (or when it is shown): nothing downloads in the first moments
+    std::chrono::steady_clock::time_point m_startedAt = std::chrono::steady_clock::now();
 };
 
 }

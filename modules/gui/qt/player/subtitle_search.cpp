@@ -122,12 +122,24 @@ constexpr qsizetype maxJsonBytes = 4 * 1024 * 1024;
 constexpr qsizetype maxSubtitleBytes = 8 * 1024 * 1024;
 // the downloads of media not played for that long leave the cache
 constexpr int cacheDays = 60;
+// The whole of a request, however slowly it is answered (each step has its
+// own timeout, but an answer a byte at a time would go on for days): a
+// question, a download
+constexpr int jsonDeadlineMs = 45 * 1000;
+constexpr int downloadDeadlineMs = 90 * 1000;
+// A search's bounds (its watchdog): the video identified (its file hashed,
+// IMDb, Wikidata, Cinemeta: seconds), then the services asked together
+// (each a few requests of at most jsonDeadlineMs). The services that have
+// not answered by then are left out of its results
+constexpr int identifyTimeoutMs = 60 * 1000;
+constexpr int searchTimeoutMs = 90 * 1000;
 
 HttpRequest jsonRequest(const QUrl &url, int timeoutMs = 20000)
 {
     HttpRequest request;
     request.url = url;
     request.timeoutMs = timeoutMs;
+    request.deadlineMs = jsonDeadlineMs;
     request.maxBytes = maxJsonBytes;
     // as Wikidata asks of programs: who they are, and where to read about them
     request.headers.append(qMakePair(QByteArray("User-Agent"),
@@ -398,6 +410,8 @@ SubtitleSearch::SubtitleSearch(qt_intf_t *intf, SubtitlePreferences *preferences
     , m_intf(intf)
     , m_preferences(preferences)
 {
+    m_watchdog.setSingleShot(true);
+    connect(&m_watchdog, &QTimer::timeout, this, &SubtitleSearch::onWatchdog);
 }
 
 QString SubtitleSearch::folderName(const QString &mediaKey)
@@ -408,7 +422,8 @@ QString SubtitleSearch::folderName(const QString &mediaKey)
 QString SubtitleSearch::cacheRoot()
 {
     char *cache = config_GetUserDir(VLC_CACHE_DIR);
-    const QString root = cache ? QString::fromUtf8(cache) + QStringLiteral("/subtitles") : QString();
+    // (none, or an empty one: no cache, not "/subtitles" at the root)
+    const QString root = cache && *cache ? QString::fromUtf8(cache) + QStringLiteral("/subtitles") : QString();
     free(cache);
     return root;
 }
@@ -567,6 +582,7 @@ void SubtitleSearch::setMedia(const QUrl &url, const QString &name, double fps)
 
 void SubtitleSearch::reset()
 {
+    m_watchdog.stop();
     ++m_revision;
     ++m_searchRevision;
     ++m_downloadRevision;
@@ -660,7 +676,41 @@ void SubtitleSearch::start()
     m_results.clear();
     emit resultsChanged();
     setState(Identifying);
+    // (a file on a drive that no longer answers, a service that never ends)
+    m_watchdog.start(identifyTimeoutMs);
     prepare([this]() { identify(); });
+}
+
+void SubtitleSearch::onWatchdog()
+{
+    if (m_state == Identifying)
+    {
+        // the answers of this media on their way are dropped (the next
+        // search hashes and identifies it again)
+        ++m_revision;
+        msg_Warn(m_intf, "online subtitles: %s: not identified in %d s", qtu(m_media.name), identifyTimeoutMs / 1000);
+        setState(Failed, qtr("The subtitle services took too long to answer."));
+        emit finished();
+    }
+    else if (m_state == Searching)
+    {
+        // the services that haven't answered are left out (their answers
+        // dropped), the search ends with the others'
+        ++m_searchRevision;
+        for (auto it = m_runs.begin(); it != m_runs.end(); ++it)
+        {
+            if (!it->busy)
+                continue;
+            const SubtitleProviders::Provider *provider = SubtitleProviders::provider(it.key());
+            msg_Warn(m_intf, "online subtitles: %s: no answer in %d s", qtu(it.key()), searchTimeoutMs / 1000);
+            it->busy = false;
+            it->error = qtr("%1 didn't answer.").arg(provider ? provider->name : it.key());
+            it->problem = SubtitleProviders::Problem::NoAnswer;
+        }
+        m_pending = 0;
+        emit runsChanged();
+        finishSearch();
+    }
 }
 
 void SubtitleSearch::identify()
@@ -1052,6 +1102,7 @@ void SubtitleSearch::querySubtitles()
             m_match.imdb.isEmpty() ? "" : m_match.strong ? ", sure" : ", a guess: not loaded by itself",
             m_media.hash.isEmpty() ? "unknown" : qtu(m_media.hash));
     setState(Searching);
+    m_watchdog.start(searchTimeoutMs);
     m_found.clear();
     m_runs.clear();
     m_pending = 0;
@@ -1183,7 +1234,9 @@ void SubtitleSearch::rebuildResults()
             score -= 3;
         if (r.foreignOnly)
             score -= 25;
-        score += std::clamp(r.rank, -30., 20.);
+        // (a rank that isn't a number would leave the list without an
+        // order: the services' parsers give 0 then, and so does this)
+        score += std::isfinite(r.rank) ? std::clamp(r.rank, -30., 20.) : 0.;
         const SubtitleProviders::Provider *provider = SubtitleProviders::provider(r.provider);
         const qsizetype rank = wanted.indexOf(r.language);
         QVariantMap map{
@@ -1219,6 +1272,7 @@ void SubtitleSearch::rebuildResults()
 
 void SubtitleSearch::finishSearch()
 {
+    m_watchdog.stop();
     msg_Dbg(m_intf, "online subtitles: %lld found", (long long)m_results.size());
     if (m_results.isEmpty())
     {
@@ -1284,6 +1338,12 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
         done({}, qtr("The subtitle couldn't be downloaded (%1).").arg(0));
         return;
     }
+    // (a folder of the profile or of the cache: none known, nowhere)
+    if (folder.isEmpty() || QDir::isRelativePath(folder))
+    {
+        done({}, qtr("The subtitle couldn't be saved."));
+        return;
+    }
     const SubtitleProviders::Result result = *choice;
     // (no cache folder: nothing of the cache to clean up)
     const QString pruneRoot = prune ? QFileInfo(folder).absolutePath() : QString();
@@ -1325,6 +1385,7 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
         request.method = prepared.method;
         request.body = prepared.body;
         request.timeoutMs = 30000;
+        request.deadlineMs = downloadDeadlineMs;
         request.maxBytes = maxSubtitleBytes;
         request.headers = prepared.headers;
         const auto unwrap = prepared.unwrap;

@@ -4,19 +4,29 @@
  * (modules/gui/qt/player/subtitle_services.cpp): the addresses they are
  * asked, their answers read from saved ones (fixtures/subtitle-services:
  * written from the shapes their maintained clients read, the refusals
- * recorded from the services with a made-up key), their errors. On Linux,
- * from the root of the tree:
- *   g++ -std=c++17 -O1 -Wall -Wextra -fPIC -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
+ * recorded from the services with a made-up key), their errors; YIFY's
+ * page read in one pass (against the expressions it was read with before,
+ * and against hostile pages, timed), and the archives a download comes in
+ * (gzip, zip: whole or nothing, within their bounds). On Linux, from the
+ * root of the tree:
+ *   g++ -std=c++17 -O1 -Wall -Wextra -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
  *       extras/juxtopposed/subtitle-services.cpp modules/gui/qt/player/subtitle_services.cpp \
- *       $(pkg-config --libs Qt6Core) -o subtitle-services
+ *       $(pkg-config --libs Qt6Core) -lz -o subtitle-services
  *   ./subtitle-services extras/juxtopposed/fixtures/subtitle-services
  */
 #include "modules/gui/qt/player/subtitle_services.hpp"
 
+#include <QElapsedTimer>
 #include <QFile>
 #include <QHash>
+#include <QRegularExpression>
 #include <QUrlQuery>
+#include <QtEndian>
+#include <algorithm>
+#include <cmath>
 #include <cstdio>
+#include <random>
+#include <zlib.h>
 
 using namespace SubtitleProviders;
 
@@ -455,6 +465,10 @@ static void testJimaku()
         CHECK(r.language == QLatin1String("ja") && r.url.host() == QLatin1String("jimaku.cc"));
     CHECK(byId(results, "jimaku:[SubsPlease] Sousou no Frieren - 03.ja.ass"));
     CHECK(parseJimaku(readFixture("jimaku-unauthorized.json"), q).isEmpty());
+    // (its downloads carry the user's key: never a link in clear text)
+    QByteArray clear = readFixture("jimaku-files.json");
+    clear.replace("https://jimaku.cc", "http://jimaku.cc");
+    CHECK(parseJimaku(clear, q).isEmpty());
 }
 
 static void testBetaSeries()
@@ -502,6 +516,11 @@ static void testSubsRo()
     CHECK(byId(results, "subsro:502") && !byId(results, "subsro:503") && !byId(results, "subsro:504"));
     CHECK(parseSubsRo(readFixture("subsro-invalid-key.json"), film(), &error).isEmpty());
     CHECK(error == QLatin1String("Invalid API key"));
+    // (its downloads carry the user's key: never a link in clear text)
+    QByteArray clear = readFixture("subsro-search.json");
+    clear.replace("https://subs.ro", "http://subs.ro");
+    error.clear();
+    CHECK(parseSubsRo(clear, film(), &error).isEmpty() && error.isEmpty());
 }
 
 static void testNapisy24()
@@ -541,6 +560,447 @@ static void testLegendas()
     CHECK(results.size() == 1 && byId(results, "legendasnet:801"));
 }
 
+// ---------------------------------------------------------------------------
+// YIFY: its page read in one pass
+
+// The page as it was read before (subtitle_providers.cpp until 0.5.9): the
+// same expressions, over the whole page. Its results are what parseYify must
+// give
+static QList<Result> yifyByExpressions(const QByteArray &body)
+{
+    static const QRegularExpression rowRe(QStringLiteral(R"re(<tr data-id="(\d+)">(.*?)</tr>)re"),
+                                          QRegularExpression::DotMatchesEverythingOption);
+    static const QRegularExpression ratingRe(QStringLiteral(R"re(<span class="label[^"]*">\s*(-?\d+)\s*</span>)re"));
+    static const QRegularExpression languageRe(QStringLiteral(R"re(<span class="sub-lang">([^<]+)</span>)re"));
+    static const QRegularExpression linkRe(QStringLiteral(
+        R"re(<a href="/subtitles/([A-Za-z0-9._\-]+)">\s*(?:<span class="text-muted">[^<]*</span>)?\s*([^<]*)</a>)re"));
+    const QString page = QString::fromUtf8(body);
+    QList<Result> results;
+    for (QRegularExpressionMatchIterator it = rowRe.globalMatch(page); it.hasNext();)
+    {
+        const QRegularExpressionMatch row = it.next();
+        const QString cells = row.captured(2);
+        const QRegularExpressionMatch link = linkRe.match(cells);
+        const QRegularExpressionMatch language = languageRe.match(cells);
+        if (!link.hasMatch() || !language.hasMatch())
+            continue;
+        Result r;
+        r.id = QStringLiteral("yify:") + row.captured(1);
+        r.provider = QStringLiteral("yify");
+        r.language = languageOf(language.captured(1));
+        if (r.language.isEmpty())
+            continue;
+        r.release = link.captured(2).trimmed();
+        r.url = QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/") + link.captured(1) + QStringLiteral(".zip"));
+        r.hearingImpaired = cells.contains(QLatin1String("hi-subtitle"));
+        const QRegularExpressionMatch rating = ratingRe.match(cells);
+        // (a rating of more digits than a double holds: 0, as parseYify)
+        const double value = rating.hasMatch() ? rating.captured(1).toDouble() : 0.;
+        r.rank = std::isfinite(value) ? std::min(value, 30.) * 0.5 : 0.;
+        results.append(r);
+    }
+    return results;
+}
+
+static bool sameResults(const QList<Result> &a, const QList<Result> &b)
+{
+    if (a.size() != b.size())
+        return false;
+    for (qsizetype i = 0; i < a.size(); ++i)
+        if (a[i].id != b[i].id || a[i].provider != b[i].provider || a[i].language != b[i].language
+            || a[i].release != b[i].release || a[i].url != b[i].url
+            || a[i].hearingImpaired != b[i].hearingImpaired || a[i].rank != b[i].rank)
+            return false;
+    return true;
+}
+
+// (where a byte starts a character: cuts and insertions there keep the
+// page's UTF-8 whole, as the two readings decode it alike)
+static bool charStart(const QByteArray &page, qsizetype at)
+{
+    return at >= page.size() || (quint8(page.at(at)) & 0xC0) != 0x80;
+}
+
+// how long parseYify takes over a page, in ms (and its results)
+static qint64 timedYify(const QByteArray &page, QList<Result> *results = nullptr)
+{
+    QElapsedTimer timer;
+    timer.start();
+    const QList<Result> found = parseYify(page, languageOf);
+    if (results)
+        *results = found;
+    return timer.elapsed();
+}
+
+static void testYify()
+{
+    const QByteArray page = readFixture("yify-movie.html");
+    const QList<Result> results = parseYify(page, languageOf);
+    CHECK(results.size() == 5);
+    const Result *hebrew = byId(results, "yify:101");
+    CHECK(hebrew && hebrew->provider == QLatin1String("yify") && hebrew->language == QLatin1String("he"));
+    CHECK(hebrew && hebrew->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264-YIFY"));
+    CHECK(hebrew && hebrew->url == QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/the-matrix-1999-hebrew-yify-101.zip")));
+    CHECK(hebrew && hebrew->rank == 6. && !hebrew->hearingImpaired);
+    const Result *english = byId(results, "yify:102");
+    CHECK(english && english->language == QLatin1String("en") && english->hearingImpaired && english->rank == -1.5);
+    CHECK(english && english->release == QLatin1String("The Matrix 1999 720p WEB"));
+    // a link that isn't one, then its own; the rating at most 30
+    const Result *arabic = byId(results, "yify:105");
+    CHECK(arabic && arabic->language == QLatin1String("ar") && arabic->release == QStringLiteral("الماتريكس 1999"));
+    CHECK(arabic && arabic->url.path().endsWith(QLatin1String("arabic-yify-105.zip")) && arabic->rank == 15.);
+    // a label without its quote, a muted label without its end: the next ones
+    const Result *german = byId(results, "yify:107");
+    CHECK(german && german->language == QLatin1String("de") && german->rank == 3.5);
+    CHECK(german && german->release == QLatin1String("Matrix.German")
+          && german->url.path().endsWith(QLatin1String("german-yify-107b.zip")));
+    CHECK(byId(results, "yify:108") && byId(results, "yify:108")->language == QLatin1String("pt-BR")
+          && byId(results, "yify:108")->rank == 0.);
+    // an unknown language, no link, not a row, a row never closed
+    CHECK(!byId(results, "yify:103") && !byId(results, "yify:104") && !byId(results, "yify:106")
+          && !byId(results, "yify:109"));
+    CHECK(parseYify({}, languageOf).isEmpty() && parseYify("<tr data-id=\"", languageOf).isEmpty());
+
+    // What the expressions found, on the page and on thousands of pages
+    // made of it (fixed seed): cut, doubled, with pieces of rows put in
+    CHECK(sameResults(results, yifyByExpressions(page)));
+    static const char *const pieces[] = {
+        "</tr>", "<tr data-id=\"7\">", "<tr data-id=\"", "\"", "\">", "<", "</span>", "<span class=\"label",
+        "<span class=\"label x\">", "<span class=\"sub-lang\">", "<span class=\"sub-lang\">English</span>",
+        "<a href=\"/subtitles/", "<a href=\"/subtitles/s-1\">", "<span class=\"text-muted\">", "</a>", " ", "\n",
+        "x", "5", "-", "hi-subtitle", "<tr data-id=\"55\"><a href=\"/subtitles/z\">Z</a><span class=\"sub-lang\">Arabic</span></tr>",
+    };
+    std::mt19937 random(5);
+    const auto boundary = [&random](const QByteArray &text) {
+        for (;;)
+        {
+            const qsizetype at = qsizetype(random() % quint32(text.size() + 1));
+            if (charStart(text, at))
+                return at;
+        }
+    };
+    int different = 0;
+    for (int n = 0; n < 3000; ++n)
+    {
+        QByteArray variant = page;
+        const int steps = 1 + int(random() % 4);
+        for (int s = 0; s < steps; ++s)
+        {
+            const qsizetype a = boundary(variant);
+            switch (random() % 3)
+            {
+                case 0: // a part cut
+                {
+                    qsizetype b = std::min(variant.size(), a + 1 + qsizetype(random() % 60));
+                    while (!charStart(variant, b))
+                        ++b;
+                    variant.remove(a, b - a);
+                    break;
+                }
+                case 1: // a piece of a row
+                    variant.insert(a, pieces[random() % (sizeof(pieces) / sizeof(*pieces))]);
+                    break;
+                default: // a part doubled
+                {
+                    qsizetype b = std::min(variant.size(), a + 1 + qsizetype(random() % 200));
+                    while (!charStart(variant, b))
+                        ++b;
+                    variant.insert(b, variant.mid(a, b - a));
+                    break;
+                }
+            }
+        }
+        if (!sameResults(parseYify(variant, languageOf), yifyByExpressions(variant)))
+        {
+            if (++different == 1)
+                std::fprintf(stderr, "YIFY: another reading than the expressions' of:\n%s\n", variant.constData());
+        }
+    }
+    CHECK(different == 0);
+
+    // Hostile pages of 1.5 to 2.9 MB (the page is asked for up to 2 MB):
+    // milliseconds each, the bound only catches a reading that would go
+    // back over the page
+    QList<Result> found;
+    CHECK(timedYify(QByteArray("<tr data-id=\"1\">").repeated(150000), &found) < 2000 && found.isEmpty());
+    CHECK(timedYify(QByteArray("<tr data-id=\"").repeated(180000), &found) < 2000 && found.isEmpty());
+    CHECK(timedYify(QByteArray("<tr data-id=\"12345678901234567890").repeated(80000), &found) < 2000 && found.isEmpty());
+    const QByteArray row("<tr data-id=\"1\">");
+    CHECK(timedYify(row + QByteArray("<span class=\"label").repeated(100000) + "</tr>") < 2000);
+    CHECK(timedYify(row + QByteArray("<span class=\"label x").repeated(80000) + "\"</tr>") < 2000);
+    CHECK(timedYify(row + QByteArray("<a href=\"/subtitles/a\">").repeated(80000) + "</tr>") < 2000);
+    CHECK(timedYify(row + QByteArray("<a href=\"/subtitles/").repeated(80000) + "</tr>") < 2000);
+    CHECK(timedYify(row + QByteArray("<span class=\"sub-lang\">x").repeated(80000) + "</tr>") < 2000);
+    CHECK(timedYify(row + "<a href=\"/subtitles/a\">" + QByteArray("<span class=\"text-muted\">").repeated(80000)
+                    + "</tr>") < 2000);
+    // (and many good rows: all of them)
+    const QByteArray good("<tr data-id=\"9\"><span class=\"label a\">3</span><span class=\"sub-lang\">English</span>"
+                          "<a href=\"/subtitles/m-9\">M</a></tr>\n");
+    CHECK(timedYify(good.repeated(15000), &found) < 2000 && found.size() == 15000);
+}
+
+// ---------------------------------------------------------------------------
+// Archives
+
+static QByteArray deflated(const QByteArray &data, int windowBits)
+{
+    z_stream s = {};
+    deflateInit2(&s, 9, Z_DEFLATED, windowBits, 8, Z_DEFAULT_STRATEGY);
+    QByteArray out(qsizetype(deflateBound(&s, uLong(data.size()))), '\0');
+    s.next_in = reinterpret_cast<Bytef *>(const_cast<char *>(data.constData()));
+    s.avail_in = uInt(data.size());
+    s.next_out = reinterpret_cast<Bytef *>(out.data());
+    s.avail_out = uInt(out.size());
+    deflate(&s, Z_FINISH);
+    out.resize(qsizetype(s.total_out));
+    deflateEnd(&s);
+    return out;
+}
+
+struct ZipEntry
+{
+    QByteArray name;
+    QByteArray stored; // its bytes in the archive
+    quint16 method = 0;
+    quint32 crc = 0;
+    quint32 packed = 0;   // the sizes it says
+    quint32 unpacked = 0;
+};
+
+static ZipEntry zipEntry(const QByteArray &name, const QByteArray &text, bool compressed)
+{
+    ZipEntry e;
+    e.name = name;
+    e.method = compressed ? 8 : 0;
+    e.stored = compressed ? deflated(text, -15) : text;
+    e.crc = quint32(crc32(0, reinterpret_cast<const Bytef *>(text.constData()), uInt(text.size())));
+    e.packed = quint32(e.stored.size());
+    e.unpacked = quint32(text.size());
+    return e;
+}
+
+static void put16(QByteArray &b, quint16 v)
+{
+    char c[2];
+    qToLittleEndian(v, c);
+    b.append(c, 2);
+}
+
+static void put32(QByteArray &b, quint32 v)
+{
+    char c[4];
+    qToLittleEndian(v, c);
+    b.append(c, 4);
+}
+
+static QByteArray makeZip(const QList<ZipEntry> &entries)
+{
+    QByteArray zip, central;
+    for (const ZipEntry &e : entries)
+    {
+        const quint32 offset = quint32(zip.size());
+        put32(zip, 0x04034b50); put16(zip, 20); put16(zip, 0); put16(zip, e.method); put16(zip, 0); put16(zip, 0);
+        put32(zip, e.crc); put32(zip, e.packed); put32(zip, e.unpacked); put16(zip, quint16(e.name.size()));
+        put16(zip, 0);
+        zip += e.name;
+        zip += e.stored;
+        put32(central, 0x02014b50); put16(central, 20); put16(central, 20); put16(central, 0); put16(central, e.method);
+        put16(central, 0); put16(central, 0); put32(central, e.crc); put32(central, e.packed); put32(central, e.unpacked);
+        put16(central, quint16(e.name.size())); put16(central, 0); put16(central, 0); put16(central, 0);
+        put16(central, 0); put32(central, 0); put32(central, offset);
+        central += e.name;
+    }
+    const quint32 centralOffset = quint32(zip.size());
+    zip += central;
+    put32(zip, 0x06054b50); put16(zip, 0); put16(zip, 0); put16(zip, quint16(entries.size()));
+    put16(zip, quint16(entries.size())); put32(zip, quint32(central.size())); put32(zip, centralOffset); put16(zip, 0);
+    return zip;
+}
+
+// the data unzip() gives the file of that name ("-" when it isn't listed)
+static QByteArray dataOf(const QList<QPair<QString, QByteArray>> &files, const char *name)
+{
+    for (const auto &file : files)
+        if (file.first == QLatin1String(name))
+            return file.second;
+    return "-";
+}
+
+static void testArchives()
+{
+    CHECK(isSubtitleName(QStringLiteral("Movie.SRT")) && isSubtitleName(QStringLiteral("a/b.ass")));
+    CHECK(!isSubtitleName(QStringLiteral("cover.jpg")) && !isSubtitleName(QStringLiteral("srt")));
+
+    QByteArray text;
+    for (int i = 1; i <= 400; ++i)
+        text += QByteArray::number(i) + "\n00:00:01,000 --> 00:00:02,000\nLine " + QByteArray::number(i * 7) + "\n\n";
+
+    // gzip: whole, or nothing
+    const QByteArray gz = deflated(text, 16 + MAX_WBITS);
+    CHECK(gunzip(gz, 1 << 20) == text);
+    CHECK(gunzip(gz, text.size()) == text);       // (exactly its limit)
+    CHECK(gunzip(gz, text.size() - 1).isEmpty()); // (past it)
+    bool cutShort = false;
+    for (qsizetype n = 0; n < gz.size(); n += 3)
+        cutShort = cutShort || !gunzip(gz.left(n), 1 << 20).isEmpty();
+    CHECK(!cutShort);                                       // every part of it
+    CHECK(gunzip(gz.left(gz.size() - 1), 1 << 20).isEmpty()); // (its size, last)
+    CHECK(gunzip(gz.left(gz.size() - 8), 1 << 20).isEmpty()); // (its CRC and size)
+    QByteArray damaged = gz;
+    damaged[damaged.size() - 8] = char(damaged.at(damaged.size() - 8) ^ 1); // (its CRC)
+    CHECK(gunzip(damaged, 1 << 20).isEmpty());
+    CHECK(gunzip("not gzip at all", 100).isEmpty() && gunzip({}, 100).isEmpty());
+    // a bomb: 32 MiB of zeros in 32 KiB, stopped at its limit
+    const QByteArray zeros(32 * 1024 * 1024, '\0');
+    const QByteArray bomb = deflated(zeros, 16 + MAX_WBITS);
+    QElapsedTimer timer;
+    timer.start();
+    CHECK(gunzip(bomb, 16 * 1024 * 1024).isEmpty());
+    CHECK(timer.elapsed() < 2000);
+
+    // zip: the subtitles, each whole or not at all
+    const QByteArray ass("[Script Info]\nTitle: x\n\n[Events]\n");
+    QList<QPair<QString, QByteArray>> files = unzip(makeZip({
+        zipEntry("Movie.srt", text, true), zipEntry("Movie.ass", ass, false), zipEntry("cover.jpg", "JPEG", false),
+        zipEntry("__MACOSX/._Movie.srt", "x", false), zipEntry("folder/", "", false) }));
+    CHECK(files.size() == 3);
+    CHECK(dataOf(files, "Movie.srt") == text && dataOf(files, "Movie.ass") == ass);
+    CHECK(dataOf(files, "cover.jpg").isEmpty() && dataOf(files, "folder/") == "-");
+
+    ZipEntry cut = zipEntry("Cut.srt", text, true); // its stream cut short
+    cut.stored.chop(10);
+    cut.packed = quint32(cut.stored.size());
+    ZipEntry smaller = zipEntry("Smaller.srt", text, true); // a size that lies
+    --smaller.unpacked;
+    ZipEntry larger = zipEntry("Larger.srt", text, true);
+    larger.unpacked += 5;
+    ZipEntry crc = zipEntry("Crc.srt", text, true); // another CRC
+    crc.crc ^= 1;
+    ZipEntry stored = zipEntry("Stored.srt", text, false); // stored, its sizes lie
+    stored.unpacked += 3;
+    ZipEntry shortStored = zipEntry("Short.srt", text, false);
+    shortStored.packed = 5;
+    ZipEntry bombed = zipEntry("Bomb.srt", zeros, true); // 32 MiB said to be 1000 bytes
+    bombed.unpacked = 1000;
+    ZipEntry huge = zipEntry("Huge.srt", "x", false); // more than a file may be
+    huge.unpacked = 9 * 1024 * 1024;
+    timer.restart();
+    files = unzip(makeZip({ cut, smaller, larger, crc, stored, shortStored, bombed, huge,
+                            zipEntry("Good.srt", text, true) }));
+    CHECK(timer.elapsed() < 2000);
+    CHECK(files.size() == 9);
+    for (const char *name : { "Cut.srt", "Smaller.srt", "Larger.srt", "Crc.srt", "Stored.srt", "Short.srt",
+                              "Bomb.srt", "Huge.srt" })
+        CHECK(dataOf(files, name).isEmpty());
+    CHECK(dataOf(files, "Good.srt") == text);
+
+    // at most 16 MiB in all, and 64 subtitles
+    const QByteArray seven(7 * 1024 * 1024, 'a');
+    files = unzip(makeZip({ zipEntry("1.srt", seven, true), zipEntry("2.srt", seven, true), zipEntry("3.srt", seven, true) }));
+    CHECK(dataOf(files, "1.srt") == seven && dataOf(files, "2.srt") == seven && dataOf(files, "3.srt").isEmpty());
+    QList<ZipEntry> many;
+    for (int i = 0; i < 70; ++i)
+        many.append(zipEntry(QByteArray::number(i) + ".srt", "1\n", false));
+    files = unzip(makeZip(many));
+    CHECK(files.size() == 70 && dataOf(files, "63.srt") == "1\n" && dataOf(files, "64.srt").isEmpty());
+
+    // cut anywhere, or any byte changed: whole files or none, never a crash
+    const QByteArray archive = makeZip({ zipEntry("A.srt", text, true), zipEntry("B.srt", ass, false) });
+    bool partial = false;
+    for (qsizetype n = 0; n <= archive.size(); n += 5)
+        for (const auto &file : unzip(archive.left(n)))
+            partial = partial || !(file.second.isEmpty() || file.second == text || file.second == ass);
+    std::mt19937 random(9);
+    for (int n = 0; n < 3000; ++n)
+    {
+        QByteArray changed = archive;
+        for (int k = 1 + int(random() % 3); k > 0; --k)
+            changed[qsizetype(random() % quint32(changed.size()))] = char(random());
+        for (const auto &file : unzip(changed))
+            partial = partial || !(file.second.isEmpty() || file.second == text || file.second == ass);
+    }
+    CHECK(!partial);
+    CHECK(unzip({}).isEmpty() && unzip("PK\x05\x06").isEmpty());
+
+    // What a file costs counts whether or not it is kept: two of 8 MiB that
+    // fail their CRC use the 16 MiB, the subtitle after them isn't unpacked
+    const QByteArray eight(8 * 1024 * 1024, '\0');
+    ZipEntry wrong = zipEntry("Wrong.srt", eight, true);
+    wrong.crc ^= 1;
+    ZipEntry wrongToo = wrong;
+    wrongToo.name = "WrongToo.srt";
+    files = unzip(makeZip({ wrong, wrongToo, zipEntry("After.srt", text, true) }));
+    CHECK(files.size() == 3 && dataOf(files, "Wrong.srt").isEmpty() && dataOf(files, "WrongToo.srt").isEmpty());
+    CHECK(dataOf(files, "After.srt").isEmpty());
+    // a thousand names of one such file (an "overlap" bomb): inflated twice,
+    // not 64 times (the fuzz test's: 3 s)
+    QByteArray overlap;
+    put32(overlap, 0x04034b50); put16(overlap, 20); put16(overlap, 0); put16(overlap, 8); put16(overlap, 0);
+    put16(overlap, 0); put32(overlap, wrong.crc); put32(overlap, wrong.packed); put32(overlap, wrong.unpacked);
+    put16(overlap, 5); put16(overlap, 0);
+    overlap += "x.srt";
+    overlap += wrong.stored;
+    QByteArray names;
+    for (int i = 0; i < 1000; ++i)
+    {
+        const QByteArray name = QByteArray::number(i) + ".srt";
+        put32(names, 0x02014b50); put16(names, 20); put16(names, 20); put16(names, 0); put16(names, 8);
+        put16(names, 0); put16(names, 0); put32(names, wrong.crc); put32(names, wrong.packed);
+        put32(names, wrong.unpacked); put16(names, quint16(name.size())); put16(names, 0); put16(names, 0);
+        put16(names, 0); put16(names, 0); put32(names, 0); put32(names, 0);
+        names += name;
+    }
+    const quint32 namesAt = quint32(overlap.size());
+    overlap += names;
+    put32(overlap, 0x06054b50); put16(overlap, 0); put16(overlap, 0); put16(overlap, 1000); put16(overlap, 1000);
+    put32(overlap, quint32(names.size())); put32(overlap, namesAt); put16(overlap, 0);
+    timer.restart();
+    files = unzip(overlap);
+    CHECK(timer.elapsed() < 1500);
+    bool none = files.size() == 1000;
+    for (const auto &file : files)
+        none = none && file.second.isEmpty();
+    CHECK(none);
+}
+
+// ---------------------------------------------------------------------------
+// The services' scores: "nan", "inf" and "-inf" are numbers to toDouble(),
+// none of them a rank (a NaN one would leave the results without an order)
+
+static void testRanks()
+{
+    for (const char *value : { "nan", "inf", "-inf", "NaN", "-Infinity" })
+    {
+        const QByteArray v(value);
+        QString error;
+        const QList<Result> subdl = parseSubDl("{\"status\": true, \"subtitles\": [{\"url\": \"/subtitle/1-2.zip\", "
+                                               "\"language\": \"EN\", \"release_name\": \"x\", \"rating\": \"" + v + "\"}]}",
+                                               film(), languageOf, &error);
+        CHECK(subdl.size() == 1 && subdl[0].rank == 0.);
+        Query croatian = film();
+        croatian.languages = { QStringLiteral("hr") };
+        const QList<Result> titlovi = parseTitlovi("{\"SubtitleResults\": [{\"Id\": \"1\", \"Link\": "
+                                                   "\"https://titlovi.com/download/?type=1&mediaid=1\", \"Lang\": "
+                                                   "\"Hrvatski\", \"Release\": \"x\", \"Rating\": \"" + v + "\"}]}",
+                                                   croatian);
+        CHECK(titlovi.size() == 1 && titlovi[0].rank == 0.);
+        bool refused = false;
+        const QList<Result> assrt = parseAssrt("{\"status\": 0, \"sub\": {\"subs\": [{\"id\": \"1\", \"lang\": "
+                                               "{\"langlist\": {\"langeng\": true}}, \"videoname\": \"x\", "
+                                               "\"vote_score\": \"" + v + "\"}]}}", film(), &error, &refused);
+        CHECK(assrt.size() == 1 && assrt[0].rank == 0.);
+        const QList<Result> beta = parseBetaSeries("{\"episode\": {\"subtitles\": [{\"id\": \"1\", \"url\": "
+                                                   "\"https://www.betaseries.com/srt/1\", \"language\": \"VF\", "
+                                                   "\"file\": \"x.srt\", \"quality\": \"" + v + "\"}]}}", &error, &refused);
+        CHECK(beta.size() == 1 && beta[0].rank == 0.);
+    }
+    // (a rating of more digits than a double holds)
+    const QList<Result> yify = parseYify("<tr data-id=\"1\"><span class=\"label a\">-" + QByteArray(400, '9')
+                                         + "</span><span class=\"sub-lang\">English</span>"
+                                         "<a href=\"/subtitles/m-1\">M</a></tr>", languageOf);
+    CHECK(yify.size() == 1 && yify[0].rank == 0.);
+}
+
 int main(int argc, char **argv)
 {
     fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures/subtitle-services");
@@ -555,6 +1015,9 @@ int main(int argc, char **argv)
     testSubsRo();
     testNapisy24();
     testLegendas();
+    testYify();
+    testArchives();
+    testRanks();
     std::printf("subtitle services: %d checks, %d failed\n", checks, failures);
     return failures ? 1 : 0;
 }

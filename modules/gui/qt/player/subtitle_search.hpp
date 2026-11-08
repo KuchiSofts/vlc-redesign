@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
+#include <QTimer>
 #include <QUrl>
 #include <QVariantList>
 #include <QVariantMap>
@@ -202,6 +203,8 @@ private:
                         const QString &error, SubtitleProviders::Problem problem);
     void rebuildResults();
     void finishSearch();
+    // the search took too long (m_watchdog): it ends with what it has
+    void onWatchdog();
     bool strongTitle(double similarity, int year, bool series) const;
 
     qt_intf_t *m_intf;
@@ -231,4 +234,7 @@ private:
     // others are kept too
     QStringList m_languages;
     bool m_everyLanguage = true;
+    // Whatever a service or a drive does, a search ends (Identifying and
+    // Searching each have their bound): the finder never stays busy
+    QTimer m_watchdog;
 };

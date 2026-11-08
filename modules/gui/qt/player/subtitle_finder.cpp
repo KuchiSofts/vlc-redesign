@@ -217,7 +217,21 @@ void SubtitleFinder::scanFolder()
     connect(worker, &QThread::finished, this, [this, found, revision]() {
         if (revision != m_revision)
             return;
+        // The files found next to the videos played before go: the table
+        // keeps those of this one (at most ~500), not of every folder seen
+        // in the session. (Only this scan records them; the subtitles added
+        // or found online stay)
         bool changed = false;
+        for (auto it = sources().begin(); it != sources().end();)
+        {
+            if (it->kind == QLatin1String("file"))
+            {
+                it = sources().erase(it);
+                changed = true;
+            }
+            else
+                ++it;
+        }
         for (const auto &file : *found)
             changed |= recordSource(file.first, QStringLiteral("file"), file.second);
         // Each notification refreshes the subtitle-track source labels.
@@ -308,6 +322,9 @@ void SubtitleFinder::onInputChanged(bool hasInput)
     m_loadingId.clear();
     m_loadedIds.clear();
     m_titleResults.clear();
+    // (a title search for the media before: its answer is dropped)
+    ++m_titleRevision;
+    m_titleBusy = false;
     // (its answers on their way, downloads too, dropped)
     m_search->reset();
     emit titleResultsChanged();
@@ -685,7 +702,11 @@ void SubtitleFinder::findTitle(const QString &query)
     m_titleBusy = true;
     m_titleResults.clear();
     emit titleResultsChanged();
-    m_search->findTitles(query, [this](const QVariantList &titles) {
+    // (only the answer of the last one asked is shown)
+    const quint64 revision = ++m_titleRevision;
+    m_search->findTitles(query, [this, revision](const QVariantList &titles) {
+        if (revision != m_titleRevision)
+            return;
         m_titleResults = titles;
         m_titleBusy = false;
         emit titleResultsChanged();
@@ -702,7 +723,10 @@ void SubtitleFinder::useTitle(int index)
     match.title = entry.value(QStringLiteral("label")).toString();
     match.year = entry.value(QStringLiteral("year")).toInt();
     match.series = entry.value(QStringLiteral("series")).toBool();
-    // (a download going on goes on: it is of this file all the same)
+    // (a download going on goes on: it is of this file all the same; a
+    // title search still on its way is dropped)
+    ++m_titleRevision;
+    m_titleBusy = false;
     m_titleResults.clear();
     emit titleResultsChanged();
     m_search->useMatch(match);
@@ -737,13 +761,22 @@ void SubtitleFinder::download(const QString &id, bool alongside)
     }
     const QString language = choice->language;
     // in VLC's cache, a folder a media; the others not played for long
-    // cleaned up (no cache folder: nothing to clean up)
+    // cleaned up. Without VLC's cache folder, nowhere (never "/<folder>",
+    // at the root of the drive)
     const QString root = SubtitleSearch::cacheRoot();
+    if (root.isEmpty())
+    {
+        const QString error = qtr("The subtitle couldn't be saved.");
+        m_search->setError(error);
+        emit downloadFailed(error);
+        downloadNext();
+        return;
+    }
     const QString folder = root + QLatin1Char('/') + SubtitleSearch::folderName(m_search->mediaKey());
     m_loadingId = id;
     emit resultsChanged();
     // (its answer dropped by the search once the media changed)
-    m_search->download(id, folder, !root.isEmpty(),
+    m_search->download(id, folder, true,
                        [this, id, language, alongside](const QString &file, const QString &error) {
         m_loadingId.clear();
         if (file.isEmpty())

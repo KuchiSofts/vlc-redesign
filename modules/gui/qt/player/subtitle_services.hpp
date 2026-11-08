@@ -10,6 +10,7 @@
 
 #include <QByteArray>
 #include <QList>
+#include <QPair>
 #include <QString>
 #include <QStringList>
 #include <QUrl>
@@ -158,5 +159,26 @@ Session legendasSession(const QByteArray &loginReply);
 QUrl legendasSearchUrl(const Query &query);
 QByteArray legendasSearchBody(const Query &query);
 QList<Result> parseLegendas(const QByteArray &body, const Query &query);
+
+// ---------------------------------------------------------------------------
+// YIFY Subtitles (yifysubtitles.ch): its page of a film, read in one pass
+// (its time grows with the page, whatever the page is), the language of
+// each row by languageOf
+QList<Result> parseYify(const QByteArray &page, const LanguageOf &languageOf);
+
+// ---------------------------------------------------------------------------
+// What a download comes in (with zlib, HAVE_ZLIB; without it gzip and the
+// compressed files of a zip are not opened)
+
+// Whether a file name is a subtitle's (srt, ass, ssa, vtt, sub, smi, txt)
+bool isSubtitleName(const QString &name);
+// A gzip file inflated: empty unless it is whole (its end and its CRC read)
+// and unpacks to at most limit bytes
+QByteArray gunzip(const QByteArray &data, qsizetype limit);
+// The files of a zip archive: { name, data }, through its central directory.
+// Only the subtitles are unpacked (the others have no data), at most 64 of
+// the first 1000 files, each up to 8 MiB and 16 MiB in all; a file has data
+// only when it is whole: the size and the CRC-32 the archive gives it
+QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip);
 
 } // namespace SubtitleProviders

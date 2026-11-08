@@ -63,6 +63,9 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
     request.url = url;
     request.headers = {{"Accept", "text/plain, application/octet-stream, */*"}};
     request.timeoutMs = 30000;
+    // the whole download, however slowly it comes (each step has its own
+    // timeout): the dialog is never left busy
+    request.deadlineMs = 90 * 1000;
     request.maxBytes = maxSubtitleBytes;
 
     m_busy = true;
@@ -94,9 +97,11 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
         // VLC (Qt's AppDataLocation); apart from the finder's cache, which it
         // cleans up: these are kept
         char *profile = config_GetUserDir(VLC_USERDATA_DIR);
-        const QString folder = QString::fromUtf8(profile ? profile : "") + QStringLiteral("/linked-subtitles");
+        // (none: nowhere, not "/linked-subtitles" at the root of the drive)
+        const QString folder = profile && *profile ? QString::fromUtf8(profile) + QStringLiteral("/linked-subtitles")
+                                                   : QString();
         free(profile);
-        if (!QDir().mkpath(folder))
+        if (folder.isEmpty() || !QDir().mkpath(folder))
         {
             setError(tr("Could not create the subtitle storage folder."));
             return;

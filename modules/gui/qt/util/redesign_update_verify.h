@@ -241,15 +241,17 @@ static inline int vlc_redesign_verify_signature(const unsigned char key[64],
     typedef SecKeyRef (*key_create_fn)(CFDataRef, CFDictionaryRef, CFErrorRef *);
     typedef Boolean (*verify_fn)(SecKeyRef, SecKeyAlgorithm, CFDataRef, CFDataRef, CFErrorRef *);
     unsigned char point[65], der[2 + 2 * 35];
-    void *cf, *sec;
-    data_create_fn data_create;
-    dict_create_fn dict_create;
-    release_fn release;
-    key_create_fn key_create;
-    verify_fn verify;
-    const CFDictionaryKeyCallBacks *key_callbacks;
-    const CFDictionaryValueCallBacks *value_callbacks;
-    const CFStringRef *attr_type, *type_ec, *attr_class, *class_public, *algorithm;
+    /* (all NULL: "out" reads them whichever step failed) */
+    void *cf = NULL, *sec = NULL;
+    data_create_fn data_create = NULL;
+    dict_create_fn dict_create = NULL;
+    release_fn release = NULL;
+    key_create_fn key_create = NULL;
+    verify_fn verify = NULL;
+    const CFDictionaryKeyCallBacks *key_callbacks = NULL;
+    const CFDictionaryValueCallBacks *value_callbacks = NULL;
+    const CFStringRef *attr_type = NULL, *type_ec = NULL, *attr_class = NULL, *class_public = NULL,
+                      *algorithm = NULL;
     CFDataRef key_data = NULL, text = NULL, signature = NULL;
     CFDictionaryRef attributes = NULL;
     SecKeyRef public_key = NULL;

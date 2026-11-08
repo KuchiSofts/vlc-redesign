@@ -36,10 +36,6 @@
 # include <cerrno>
 # include <cstring>
 #endif
-#ifdef HAVE_ZLIB
-# include <zlib.h>
-#endif
-
 #include <vlc_common.h>
 #include <vlc_iso_lang.h>
 #ifndef _WIN32
@@ -56,14 +52,17 @@ namespace SubtitleProviders
 namespace {
 
 constexpr qsizetype maxListBytes = 6 * 1024 * 1024;
-constexpr qsizetype maxDownloadBytes = 8 * 1024 * 1024;
-// what a download may unpack to in all (a small archive can unpack to
-// gigabytes), and how many files of an archive are looked at, and unpacked
+// a page of YIFY's (a film's, a few hundred KiB)
+constexpr qsizetype maxPageBytes = 2 * 1024 * 1024;
+// what a gzip download may unpack to (a small file can unpack to gigabytes;
+// zip archives have their own bounds, unzip())
 constexpr qsizetype maxUnpackedBytes = 16 * 1024 * 1024;
-constexpr int maxArchiveEntries = 1000;
-constexpr int maxArchiveSubtitles = 64;
 // between two requests to the same service (they ask for one at a time)
 constexpr int requestGapMs = 600;
+// The whole of a request to a service, however slowly it answers (each
+// step has its own timeout, but an answer a byte at a time would go on for
+// days): its search then ends without it
+constexpr int requestDeadlineMs = 45 * 1000;
 
 using Done = std::function<void(const QList<Result> &, const QString &, Problem)>;
 
@@ -72,6 +71,7 @@ HttpRequest makeRequest(const QUrl &url, qsizetype maxBytes = maxListBytes, int 
     HttpRequest request;
     request.url = url;
     request.timeoutMs = timeoutMs;
+    request.deadlineMs = requestDeadlineMs;
     request.maxBytes = maxBytes;
     request.headers.append(qMakePair(QByteArray("User-Agent"), userAgent()));
     return request;
@@ -564,48 +564,19 @@ void searchYify(QObject *context, const Query &query, Done done)
         return;
     }
     const QUrl url(QStringLiteral("https://yifysubtitles.ch/movie-imdb/") + query.imdb);
-    httpRequestAsync(context, makeRequest(url), [done](const HttpResponse &reply) {
+    httpRequestAsync(context, makeRequest(url, maxPageBytes), [done](const HttpResponse &reply) {
         if (reply.error.isEmpty() && reply.status == 404)
         {
             nothing(done);
             return;
         }
-        if (!ok(reply))
+        if (!ok(reply, maxPageBytes))
         {
             failed(done, QStringLiteral("YIFY"), reply);
             return;
         }
-        static const QRegularExpression rowRe(QStringLiteral(R"re(<tr data-id="(\d+)">(.*?)</tr>)re"),
-                                              QRegularExpression::DotMatchesEverythingOption);
-        static const QRegularExpression ratingRe(QStringLiteral(R"re(<span class="label[^"]*">\s*(-?\d+)\s*</span>)re"));
-        static const QRegularExpression languageRe(QStringLiteral(R"re(<span class="sub-lang">([^<]+)</span>)re"));
-        static const QRegularExpression linkRe(QStringLiteral(
-            R"re(<a href="/subtitles/([A-Za-z0-9._\-]+)">\s*(?:<span class="text-muted">[^<]*</span>)?\s*([^<]*)</a>)re"));
-        const QString page = QString::fromUtf8(reply.body);
-        QList<Result> results;
-        for (QRegularExpressionMatchIterator it = rowRe.globalMatch(page); it.hasNext();)
-        {
-            const QRegularExpressionMatch row = it.next();
-            const QString cells = row.captured(2);
-            const QRegularExpressionMatch link = linkRe.match(cells);
-            const QRegularExpressionMatch language = languageRe.match(cells);
-            if (!link.hasMatch() || !language.hasMatch())
-                continue;
-            Result r;
-            r.id = QStringLiteral("yify:") + row.captured(1);
-            r.provider = QStringLiteral("yify");
-            r.language = languageFromName(language.captured(1));
-            if (r.language.isEmpty())
-                continue;
-            r.release = link.captured(2).trimmed();
-            r.url = QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/") + link.captured(1)
-                         + QStringLiteral(".zip"));
-            r.hearingImpaired = cells.contains(QLatin1String("hi-subtitle"));
-            const QRegularExpressionMatch rating = ratingRe.match(cells);
-            r.rank = rating.hasMatch() ? std::min(rating.captured(1).toDouble(), 30.) * 0.5 : 0.;
-            results.append(r);
-        }
-        done(results, {}, Problem::None);
+        // (in one pass: its time follows the size of the page, whatever it is)
+        done(parseYify(reply.body, languageFromName), {}, Problem::None);
     });
 }
 
@@ -750,6 +721,7 @@ HttpRequest openSubtitlesComRequest(const QUrl &url, const QString &key, const Q
     HttpRequest request;
     request.url = url;
     request.timeoutMs = 15000;
+    request.deadlineMs = requestDeadlineMs;
     request.maxBytes = maxListBytes;
     request.headers = {
         { "Api-Key", key.toUtf8() },
@@ -793,12 +765,15 @@ QHash<QString, SignedIn> &sessions()
     return map;
 }
 
-// Signs in to OpenSubtitles.com: done(session) or done({}, problem)
+// Signs in to OpenSubtitles.com: done(session) or done({}, problem). A
+// check (Test, Sign in: credentials typed, maybe never saved) signs in
+// afresh and keeps nothing: the searches only ever use a session of the
+// credentials kept
 void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
-                            std::function<void(const Session &, Problem)> done)
+                            std::function<void(const Session &, Problem)> done, bool check = false)
 {
     const auto known = sessions().constFind(QStringLiteral("opensubtitlescom"));
-    if (known != sessions().constEnd() && known->username == credentials.username)
+    if (!check && known != sessions().constEnd() && known->username == credentials.username)
     {
         done(known->session, Problem::None);
         return;
@@ -808,7 +783,7 @@ void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
     login.method = "POST";
     login.body = openSubtitlesComLoginBody(credentials.username, credentials.password);
     const QString username = credentials.username;
-    httpRequestAsync(context, login, [done, username](const HttpResponse &reply) {
+    httpRequestAsync(context, login, [done, username, check](const HttpResponse &reply) {
         if (!ok(reply))
         {
             // (401: the account; 403: the key)
@@ -822,7 +797,8 @@ void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
             done({}, Problem::LoginRefused);
             return;
         }
-        sessions().insert(QStringLiteral("opensubtitlescom"), { username, session });
+        if (!check)
+            sessions().insert(QStringLiteral("opensubtitlescom"), { username, session });
         done(session, Problem::None);
     });
 }
@@ -838,18 +814,19 @@ QString whoOf(const QString &providerId, const Credentials &credentials)
 }
 
 // Signs in to a service that gives a session (a token): done(session) or
-// done({}, problem); a session kept for this run is given again
+// done({}, problem); a session kept for this run is given again. A check
+// signs in afresh and keeps nothing (openSubtitlesComSignIn)
 void signIn(QObject *context, const QString &providerId, const Credentials &credentials,
-            std::function<void(const Session &, Problem)> done)
+            std::function<void(const Session &, Problem)> done, bool check = false)
 {
     if (providerId == QLatin1String("opensubtitlescom"))
     {
-        openSubtitlesComSignIn(context, credentials, done);
+        openSubtitlesComSignIn(context, credentials, done, check);
         return;
     }
     const QString who = whoOf(providerId, credentials);
     const auto known = sessions().constFind(providerId);
-    if (known != sessions().constEnd() && known->username == who)
+    if (!check && known != sessions().constEnd() && known->username == who)
     {
         done(known->session, Problem::None);
         return;
@@ -875,7 +852,7 @@ void signIn(QObject *context, const QString &providerId, const Credentials &cred
         return;
     }
     request.method = "POST";
-    httpRequestAsync(context, request, [providerId, who, done](const HttpResponse &reply) {
+    httpRequestAsync(context, request, [providerId, who, done, check](const HttpResponse &reply) {
         if (!ok(reply))
         {
             const Problem problem = reply.status == 401 || reply.status == 403 ? Problem::LoginRefused
@@ -890,7 +867,8 @@ void signIn(QObject *context, const QString &providerId, const Credentials &cred
             done({}, Problem::LoginRefused);
             return;
         }
-        sessions().insert(providerId, { who, session });
+        if (!check)
+            sessions().insert(providerId, { who, session });
         done(session, Problem::None);
     });
 }
@@ -1214,43 +1192,8 @@ void searchLegendas(QObject *context, const Query &query, Done done)
     });
 }
 
-#ifdef HAVE_ZLIB
-// inflates a gzip file (windowBits 16 + 15) or a raw deflate stream (-15);
-// empty when it unpacks to more than limit (it stops there)
-QByteArray inflateData(const QByteArray &data, int windowBits, qsizetype limit)
-{
-    z_stream stream = {};
-    if (inflateInit2(&stream, windowBits) != Z_OK)
-        return {};
-    QByteArray out;
-    out.reserve(std::min(limit, data.size() * 3));
-    stream.next_in = reinterpret_cast<Bytef *>(const_cast<char *>(data.constData()));
-    stream.avail_in = uInt(data.size());
-    char buffer[65536];
-    int status = Z_OK;
-    do
-    {
-        stream.next_out = reinterpret_cast<Bytef *>(buffer);
-        stream.avail_out = sizeof(buffer);
-        status = ::inflate(&stream, Z_NO_FLUSH);
-        if (status != Z_OK && status != Z_STREAM_END)
-            break;
-        out.append(buffer, int(sizeof(buffer) - stream.avail_out));
-        if (out.size() > limit)
-            break;
-    } while (status != Z_STREAM_END && (stream.avail_in > 0 || stream.avail_out == 0));
-    inflateEnd(&stream);
-    if (out.size() > limit)
-        return {};
-    return status == Z_STREAM_END || !out.isEmpty() ? out : QByteArray();
-}
-#endif
-
-bool isSubtitleName(const QString &name)
-{
-    static const QSet<QString> extensions = { "srt", "ass", "ssa", "vtt", "sub", "smi", "txt" };
-    return extensions.contains(QFileInfo(name).suffix().toLower());
-}
+// (gzip and zip: gunzip() and unzip(), in subtitle_services.cpp, tested by
+// themselves)
 
 bool validUtf8(const QByteArray &data)
 {
@@ -1259,65 +1202,6 @@ bool validUtf8(const QByteArray &data)
     const QString text = utf8.decode(data);
     Q_UNUSED(text);
     return !utf8.hasError();
-}
-
-// The files of a zip archive: { name, data }, through its central directory.
-// Only the subtitles are unpacked (the others have no data), each up to the
-// size it declares, and at most maxUnpackedBytes in all.
-QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
-{
-    QList<QPair<QString, QByteArray>> files;
-    qsizetype total = 0;
-    int unpackedFiles = 0;
-    const auto u16 = [&zip](qsizetype at) { return qFromLittleEndian<quint16>(zip.constData() + at); };
-    const auto u32 = [&zip](qsizetype at) { return qFromLittleEndian<quint32>(zip.constData() + at); };
-    // the end of the central directory, in the last 64 KiB
-    qsizetype end = -1;
-    for (qsizetype i = zip.size() - 22; i >= std::max<qsizetype>(0, zip.size() - 65557); --i)
-        if (u32(i) == 0x06054b50)
-        {
-            end = i;
-            break;
-        }
-    if (end < 0)
-        return files;
-    const quint16 count = u16(end + 10);
-    qsizetype at = u32(end + 16);
-    for (quint16 n = 0; n < count && n < maxArchiveEntries && at + 46 <= zip.size()
-                        && u32(at) == 0x02014b50; ++n)
-    {
-        const quint16 method = u16(at + 10);
-        const quint32 packed = u32(at + 20);
-        const quint32 unpacked = u32(at + 24);
-        const quint16 nameLength = u16(at + 28), extraLength = u16(at + 30), commentLength = u16(at + 32);
-        const quint32 local = u32(at + 42);
-        const QString name = QString::fromUtf8(zip.mid(at + 46, nameLength));
-        at += 46 + nameLength + extraLength + commentLength;
-        if (name.endsWith(QLatin1Char('/')) || name.startsWith(QLatin1String("__MACOSX")))
-            continue;
-        if (!isSubtitleName(name) || unpackedFiles >= maxArchiveSubtitles
-            || unpacked > quint32(maxDownloadBytes) || qsizetype(unpacked) > maxUnpackedBytes - total
-            || qsizetype(local) + 30 > zip.size() || u32(local) != 0x04034b50)
-        {
-            files.append({ name, QByteArray() });
-            continue;
-        }
-        const qsizetype data = local + 30 + u16(local + 26) + u16(local + 28);
-        if (data + qsizetype(packed) > zip.size())
-            continue;
-        const QByteArray raw = zip.mid(data, packed);
-        QByteArray content;
-        if (method == 0)
-            content = raw.left(unpacked);
-#ifdef HAVE_ZLIB
-        else if (method == 8)
-            content = inflateData(raw, -MAX_WBITS, qsizetype(unpacked));
-#endif
-        ++unpackedFiles;
-        total += content.size();
-        files.append({ name, content });
-    }
-    return files;
 }
 
 // The Windows code page of a language's subtitles that aren't in UTF-8
@@ -1679,8 +1563,8 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
     {
         if (!credentials.username.trimmed().isEmpty() && !credentials.password.isEmpty())
         {
-            // signed in again with these
-            forgetSession(providerId);
+            // signed in afresh with these, the session not kept (they may
+            // never be saved; the session of those kept stays)
             Credentials typed = credentials;
             typed.key = key;
             typed.username = credentials.username.trimmed();
@@ -1694,7 +1578,7 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
                     case Problem::Busy: done(Check::Busy, {}); break;
                     default: done(Check::NoAnswer, {}); break;
                 }
-            });
+            }, true);
             return;
         }
         httpRequestAsync(context, openSubtitlesComRequest(openSubtitlesComCheckUrl(), key),
@@ -1738,12 +1622,12 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
     };
     if (providerId == QLatin1String("titlovi") || providerId == QLatin1String("legendasnet"))
     {
-        forgetSession(providerId);
+        // (afresh, the session not kept: as OpenSubtitles.com's above)
         const QString who = whoOf(providerId, credentials);
         signIn(context, providerId, credentials, [done, who, checkOfSignIn](const Session &, Problem problem) {
             const Check result = checkOfSignIn(problem);
             done(result, result == Check::SignedIn ? who : QString());
-        });
+        }, true);
         return;
     }
     if (providerId == QLatin1String("napisy24"))
@@ -1908,6 +1792,18 @@ void prepareDownload(QObject *context, const Result &result, const Credentials &
         return;
     }
     Download download;
+    // the user's key, account or session go with the download of these:
+    // over HTTPS only, never in clear text (their parsers take no other
+    // link; this keeps it so whatever a result says)
+    const bool keyed = result.provider == QLatin1String("subsource") || result.provider == QLatin1String("jimaku")
+                    || result.provider == QLatin1String("subsro") || result.provider == QLatin1String("napisy24")
+                    || result.provider == QLatin1String("legendasnet");
+    if (keyed && result.url.scheme() != QLatin1String("https"))
+    {
+        download.problem = Problem::Failed;
+        done(download); // (no address: "couldn't be downloaded")
+        return;
+    }
     download.url = result.url;
     download.headers.append(qMakePair(QByteArray("User-Agent"), userAgent()));
     if (result.provider == QLatin1String("opensubtitles"))
@@ -1986,11 +1882,8 @@ QByteArray subtitleOf(const QByteArray &download, const Result &result, const QS
     }
     if (data.startsWith("\x1F\x8B"))
     {
-#ifdef HAVE_ZLIB
-        data = inflateData(data, 16 + MAX_WBITS, maxUnpackedBytes);
-#else
-        data.clear();
-#endif
+        // (whole, or nothing: a file cut short isn't saved as the subtitle)
+        data = gunzip(data, maxUnpackedBytes);
         if (data.isEmpty())
         {
             *error = qtr("The subtitle couldn't be unpacked.");

@@ -58,6 +58,9 @@ HttpRequest MLOpenSubtitles::request(const QUrl& url, const QString& apiKey) con
         {"Content-Type", "application/json"},
     };
     result.timeoutMs = 30000;
+    // the whole request, however slowly it is answered: the dialog is never
+    // left busy
+    result.deadlineMs = 45 * 1000;
     result.maxBytes = maxJsonBytes;
     return result;
 }

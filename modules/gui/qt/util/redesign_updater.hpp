@@ -160,6 +160,9 @@ private:
     bool m_dismissed = false;
     bool m_aboutOpen = false;
     bool m_helperStarted = false;
+    // an update staged by a session before, its programs checked again
+    // (findStagedUpdate): no check of the releases meanwhile
+    bool m_verifyingStaged = false;
     // the small update failed in this session: the installer instead
     bool m_deltaFailed = false;
     // whether the folder of vlc.exe takes the update: -1 until checked

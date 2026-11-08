@@ -80,6 +80,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   otherwise sends on a virtual adapter of Hyper-V, Docker or WSL). `iptv_org.py` makes the catalog's iptv-org lists
   and checks every list and guide; the website's workflow runs it every day and publishes `tv/catalog.json`.
 
+### Fixed
+
+- Seek bar: the frame preview showed the same frame everywhere when VLC was started with `--start-time`
+  (or `--stop-time`/`--run-time`): the thumbnailer inherited it. Every preview now shows its own moment.
+
 ## [0.5.7] · 2026-11-08
 
 An update release: subtitles from the internet in every app, Android and the Samsung TV app search them as the

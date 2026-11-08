@@ -873,6 +873,7 @@ void Service::refreshSources(const QStringList& ids, bool guides)
         // (failed: refreshed by itself again later and later, see refreshDue)
         fresh.lastAttempt = nowSecs();
         fresh.failures = fresh.error.isEmpty() ? 0 : state.failures + 1;
+        int refreshHours = 0;
         {
             std::lock_guard<std::mutex> guard(m_lock);
             if (!findSource(id))
@@ -880,6 +881,17 @@ void Service::refreshSources(const QStringList& ids, bool guides)
             fresh.busy = guides;
             fresh.stage = guides ? QStringLiteral("guide") : QString();
             m_state.insert(id, fresh);
+            refreshHours = m_refreshHours;
+        }
+        // (its host only in the log: the rest of a link is often a token)
+        if (fresh.failures > 0)
+        {
+            const qint64 retry = retryDelaySecs(fresh.failures, refreshHours);
+            m_host.log(QStringLiteral("Live TV: %1 could not be refreshed (%2), %3")
+                           .arg(cfg.kind == QLatin1String("m3u") ? hostOf(cfg.url) : hostOf(asUrl(cfg.server)),
+                                fresh.error,
+                                retry < 0 ? QStringLiteral("not again by itself")
+                                          : QStringLiteral("again in %1 min").arg(retry / 60)));
         }
         done << id;
         rebuild();
@@ -1024,7 +1036,7 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
     }
     else if (download)
     {
-        if (m_host.download(asUrl(cfg.url), path, &error, kPlaylistMaxBytes,
+        if (m_host.download(asUrl(cfg.url), path, &error, kPlaylistMaxBytes, kIdleSecs,
                             [this, &cfg](qint64 received, qint64 total) {
                                 progress(cfg.id, QStringLiteral("playlist"), received, total);
                             }))
@@ -1104,7 +1116,7 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
         if (download && mine && (age < 0 || refreshHours <= 0 || age > qint64(refreshHours) * 3600 - 600))
         {
             progress(w.sourceId, QStringLiteral("guide"), 0, 0);
-            if (!m_host.download(asUrl(w.url), path, &error, kGuideMaxBytes,
+            if (!m_host.download(asUrl(w.url), path, &error, kGuideMaxBytes, kIdleSecs,
                                  [this, &w](qint64 received, qint64 total) {
                                      progress(w.sourceId, QStringLiteral("guide"), received, total);
                                  }))
@@ -1417,7 +1429,7 @@ QVector<autoguide::Known> Service::knownChannels(QString* error)
     {
         const QString part = path + QStringLiteral(".part");
         if (m_host.download(QStringLiteral("https://iptv-org.github.io/api/channels.json"), part, error,
-                            128LL << 20))
+                            128LL << 20, kIdleSecs))
         {
             QByteArray data = readAll(part);
             if (isGzip(data))
@@ -2323,7 +2335,7 @@ QJsonObject Service::request(const QJsonObject& r)
                                           : hostOf(s.url);
         QString id;
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::unique_lock<std::mutex> guard(m_lock);
             if (op == QLatin1String("updateSource"))
             {
                 SourceConfig* old = findSource(r.value(QLatin1String("id")).toString());
@@ -2572,6 +2584,8 @@ QJsonObject Service::status()
                                         : isServerKind(s.kind) ? hostOf(servers::baseUrl(s.server, defaultPort(s.kind)))
                                                                : hostOf(s.url));
         o.insert(QLatin1String("refused"), state.refused);
+        // (its refreshes that failed since one worked: waited for longer)
+        o.insert(QLatin1String("failures"), state.failures);
         o.insert(QLatin1String("channels"), int(state.channels.size()));
         int catchupDays = 0, withGuide = 0;
         for (const ChannelEntry& c : std::as_const(m_channels))
@@ -2923,7 +2937,7 @@ QJsonObject Service::logo(const QJsonObject& r)
     if (age < 0 || age > 30 * 86400)
     {
         QString error;
-        if (!m_host.download(url, path, &error, kLogoMaxBytes) && age < 0)
+        if (!m_host.download(url, path, &error, kLogoMaxBytes, kLogoIdleSecs) && age < 0)
         {
             if (!m_quit)
                 writeAll(missing, QByteArray());

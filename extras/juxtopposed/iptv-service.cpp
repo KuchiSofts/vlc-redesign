@@ -59,18 +59,30 @@ public:
     std::function<HttpReply(const HttpCall&)> onCall;
     std::function<QVector<Datagram>(quint16 port)> onBroadcast;
 
+    // a download that fails as VLC's host fails it (its idle time passed:
+    // "no answer"), the error for a URL, or none
+    std::function<QString(const QString& url)> downloadError;
+
     struct Download
     {
         QString url;
         qint64 limit;
+        int idleSecs;
     };
 
-    bool download(const QString& url, const QString& path, QString* error, qint64 limit,
+    bool download(const QString& url, const QString& path, QString* error, qint64 limit, int idleSecs,
                   const std::function<void(qint64, qint64)>&) override
     {
         {
             std::lock_guard<std::mutex> guard(m_lock);
-            m_downloads.append({ url, limit });
+            m_downloads.append({ url, limit, idleSecs });
+        }
+        const QString failure = downloadError ? downloadError(url) : QString();
+        if (!failure.isEmpty())
+        {
+            if (error)
+                *error = failure;
+            return false;
         }
         if (onDownload && onDownload(url, path))
             return true;
@@ -78,24 +90,103 @@ public:
             *error = QStringLiteral("none here");
         return false;
     }
-    QByteArray fetch(const QString& url, QString* error, qint64) override
+    QByteArray fetch(const QString& url, QString* error, qint64, int idleSecs) override
     {
         {
             std::lock_guard<std::mutex> guard(m_lock);
             m_fetches << url;
+            m_fetchIdle << idleSecs;
         }
         const QByteArray answer = onFetch ? onFetch(url) : QByteArray();
         if (answer.isEmpty() && error)
             *error = QStringLiteral("none here");
         return answer;
     }
-    bool storeSecret(const QString&, const QByteArray&) override { return false; }
-    QByteArray loadSecret(const QString&, bool* found) override
+
+    // The keystore: its secrets by id, none when absent; each call kept
+    // with its thread and whether the service's lock was free then
+    bool hasKeystore = false;
+    struct SecretCall
     {
-        *found = false;
-        return {};
+        QString op;
+        QString id;
+        QByteArray data;
+        std::thread::id thread;
+        bool lockFree;
+    };
+    // the service the lock is probed of (set once it is made)
+    std::atomic<iptv::Service*> probed { nullptr };
+    // the reads of the keystore wait until opened (a keyring to unlock)
+    void holdKeystore()
+    {
+        std::lock_guard<std::mutex> guard(m_gateLock);
+        m_keystoreHeld = true;
     }
-    void removeSecret(const QString&) override {}
+    void openKeystore()
+    {
+        std::lock_guard<std::mutex> guard(m_gateLock);
+        m_keystoreHeld = false;
+        m_gate.notify_all();
+    }
+
+    bool storeSecret(const QString& id, const QByteArray& secret) override
+    {
+        recordSecret(QStringLiteral("store"), id, secret);
+        std::lock_guard<std::mutex> guard(m_lock);
+        if (!hasKeystore)
+            return false;
+        m_keystore.insert(id, secret);
+        return true;
+    }
+    QByteArray loadSecret(const QString& id, bool* found) override
+    {
+        {
+            // (3 s at most: a service that read it as it was made fails the
+            // test rather than hang it)
+            std::unique_lock<std::mutex> guard(m_gateLock);
+            m_gate.wait_for(guard, std::chrono::seconds(3), [this]() { return !m_keystoreHeld; });
+        }
+        recordSecret(QStringLiteral("load"), id, {});
+        std::lock_guard<std::mutex> guard(m_lock);
+        *found = hasKeystore && m_keystore.contains(id);
+        return m_keystore.value(id);
+    }
+    void removeSecret(const QString& id) override
+    {
+        recordSecret(QStringLiteral("remove"), id, {});
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_keystore.remove(id);
+    }
+    void putSecret(const QString& id, const QByteArray& secret)
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_keystore.insert(id, secret);
+    }
+    QVector<SecretCall> secretCalls(const QString& op = QString())
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        QVector<SecretCall> out;
+        for (const SecretCall& c : std::as_const(m_secretCalls))
+            if (op.isEmpty() || c.op == op)
+                out.append(c);
+        return out;
+    }
+    QList<int> fetchIdle()
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        return m_fetchIdle;
+    }
+    // (before the service goes: the probes ask it)
+    void joinProbes()
+    {
+        std::vector<std::thread> probes;
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            probes.swap(m_probes);
+        }
+        for (std::thread& t : probes)
+            t.join();
+    }
     void notify(const QJsonObject&) override {}
     void log(const QString& message) override
     {
@@ -131,6 +222,20 @@ public:
                 return d.limit;
         return -1;
     }
+    int idleOf(const QString& part)
+    {
+        for (const Download& d : downloads())
+            if (d.url.contains(part))
+                return d.idleSecs;
+        return -1;
+    }
+    int downloadsOf(const QString& part)
+    {
+        int n = 0;
+        for (const Download& d : downloads())
+            n += d.url.contains(part) ? 1 : 0;
+        return n;
+    }
     int fetchesOf(const QString& part)
     {
         std::lock_guard<std::mutex> guard(m_lock);
@@ -151,11 +256,45 @@ public:
     }
 
 private:
+    // Whether the service's lock is free: a request that takes it, from
+    // another thread, answered within half a second (it waits for us when
+    // the thread calling us holds it)
+    bool lockFree()
+    {
+        iptv::Service* const service = probed.load();
+        if (!service)
+            return true;
+        auto done = std::make_shared<std::atomic<bool>>(false);
+        std::thread probe([service, done]() {
+            service->request(QJsonObject { { QStringLiteral("op"), QStringLiteral("status") } });
+            done->store(true);
+        });
+        for (int i = 0; i < 50 && !done->load(); ++i)
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        const bool free = done->load();
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_probes.push_back(std::move(probe));
+        return free;
+    }
+    void recordSecret(const QString& op, const QString& id, const QByteArray& data)
+    {
+        const bool free = lockFree();
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_secretCalls.append({ op, id, data, std::this_thread::get_id(), free });
+    }
+
     std::mutex m_lock;
     QVector<Download> m_downloads;
     QStringList m_fetches;
+    QList<int> m_fetchIdle;
     QVector<HttpCall> m_calls;
     QStringList m_logs;
+    QHash<QString, QByteArray> m_keystore;
+    QVector<SecretCall> m_secretCalls;
+    std::vector<std::thread> m_probes;
+    std::mutex m_gateLock;
+    std::condition_variable m_gate;
+    bool m_keystoreHeld = false;
 };
 
 bool waitFor(const std::function<bool()>& done, int ms = 10000)
@@ -236,6 +375,56 @@ void testLimits(const QString& dir)
     CHECK(host.limitOf(QStringLiteral("logo.example/a.png")) == iptv::kLogoMaxBytes);
     CHECK(iptv::kPlaylistMaxBytes == 512LL << 20 && iptv::kGuideMaxBytes == 2LL << 30
           && iptv::kLogoMaxBytes == 2LL << 20);
+    // (b) and the silence each waits for at most: 30 s, a logo 15 s
+    CHECK(host.idleOf(QStringLiteral("/list.m3u")) == iptv::kIdleSecs);
+    CHECK(host.idleOf(QStringLiteral("epg.example/g.xml")) == iptv::kIdleSecs);
+    CHECK(host.idleOf(QStringLiteral("logo.example/a.png")) == iptv::kLogoIdleSecs);
+    CHECK(iptv::kIdleSecs == 30 && iptv::kLogoIdleSecs == 15);
+}
+
+// (b) a download that stalls, stopped by VLC's host ("no answer"): the
+// channels and the playlist kept stay, the source waits longer each time
+void testNoAnswer(const QString& dir)
+{
+    const QByteArray m3u = "#EXTM3U\n#EXTINF:-1,A\nhttp://s/a\n#EXTINF:-1,B\nhttp://s/b\n";
+    FakeHost host;
+    std::atomic<bool> stalls { false };
+    host.onDownload = [&](const QString& url, const QString& path) {
+        return url.endsWith(QLatin1String("/list.m3u")) && writeFile(path, m3u);
+    };
+    host.downloadError = [&](const QString& url) {
+        return stalls && url.endsWith(QLatin1String("/list.m3u")) ? QStringLiteral("no answer") : QString();
+    };
+    Tv tv(host, dir);
+    const QString id = tv.add(m3uSource());
+    CHECK(waitFor([&]() { return tv.channels().size() == 2; }));
+    CHECK(waitFor([&]() { return !tv.status(id).value(QLatin1String("busy")).toBool(); }));
+    CHECK(tv.status(id).value(QLatin1String("failures")).toInt() == 0);
+    stalls = true;
+    for (int round = 1; round <= 2; ++round)
+    {
+        const int before = host.downloadsOf(QStringLiteral("/list.m3u"));
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("refresh") }, { QStringLiteral("id"), id } });
+        CHECK(waitFor([&]() { return host.downloadsOf(QStringLiteral("/list.m3u")) > before; }));
+        CHECK(waitFor([&]() {
+            const QJsonObject s = tv.status(id);
+            return !s.value(QLatin1String("busy")).toBool() && s.value(QLatin1String("failures")).toInt() == round;
+        }));
+        const QJsonObject s = tv.status(id);
+        CHECK(s.value(QLatin1String("error")).toString() == QStringLiteral("no answer"));
+        CHECK(tv.channels().size() == 2);
+        QFile kept(tv.sourceDir(id) + QStringLiteral("/playlist.m3u"));
+        CHECK(kept.open(QIODevice::ReadOnly) && kept.readAll() == m3u);
+    }
+    // (the log says why and when again, with the host only)
+    const QStringList said = host.logs().filter(QStringLiteral("could not be refreshed"));
+    CHECK(said.size() == 2);
+    CHECK(said.value(0) == QStringLiteral("Live TV: lists.example could not be refreshed (no answer), again in 15 min"));
+    CHECK(said.value(1).endsWith(QStringLiteral("again in 30 min")));
+    // and the next refresh by itself: not before then
+    const qint64 now = QDateTime::currentSecsSinceEpoch();
+    CHECK(!iptv::refreshDue(now + 60, 1, now, 2, 24));
+    CHECK(iptv::refreshDue(now + 1800, 1, now, 2, 24));
 }
 
 // 2: a job that throws (out of memory) is given up, the worker goes on and
@@ -446,6 +635,11 @@ void testCutShortAndConcurrent(const QString& dir)
     const QStringList left = QDir(tv.sourceDir(id)).entryList(QDir::Files);
     for (const QString& name : left)
         CHECK(name.endsWith(QLatin1String(".json")));
+    // (b) the API's answers wait 30 s at most for their next bytes
+    const QList<int> idle = host.fetchIdle();
+    CHECK(!idle.isEmpty());
+    for (const int secs : idle)
+        CHECK(secs == iptv::kIdleSecs);
 }
 
 // 11: the automatic guide removed while it looked: what it found is not put
@@ -644,6 +838,7 @@ int main()
     testAutoGuideRemovedMeanwhile(root + QStringLiteral("/autoguide"));
     testRemoveSource(root + QStringLiteral("/remove"));
     testDiscover(root + QStringLiteral("/discover"));
+    testNoAnswer(root + QStringLiteral("/noanswer"));
     std::printf("TV service: %d checks, %d failed\n", int(checks), int(failures));
     return failures ? 1 : 0;
 }

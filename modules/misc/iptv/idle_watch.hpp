@@ -20,9 +20,10 @@
 // Transfers watched for silence. VLC's network reads wait without bound: a
 // server that sends its headers and a few bytes, then nothing, kept a
 // download (and the thread it runs on) forever. A transfer that receives
-// nothing for its idle time is woken by its own function (raise: an
-// interruption of the thread's read), and again every interval until it
-// ends. Nothing of Qt: the thread is the plug-in's.
+// nothing for its idle time has its own function called (in VLC: a kill of
+// the download's interrupt context; a raise alone wakes one wait, and VLC's
+// reads wait again), and again every interval until it ends. Nothing of Qt:
+// the thread is the plug-in's.
 namespace iptv {
 
 class IdleWatch

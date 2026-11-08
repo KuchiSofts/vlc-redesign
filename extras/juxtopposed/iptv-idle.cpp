@@ -3,22 +3,27 @@
  * Live TV: downloads that stall (modules/misc/iptv/idle_watch.hpp). VLC's
  * network reads wait without bound: a server that sends its headers and a
  * few bytes, then nothing, kept a download (and its thread) forever. Here a
- * local server does just that, and a reader that waits as VLC's reads do (a
- * poll woken by its interruption, a pipe as vlc_poll_i11e's) is stopped by
- * the watch after its idle time, measured; one whose server goes on slowly
- * is not; a transfer ended is never raised afterwards; one not woken by the
- * first raise is raised again. On Linux, from the root of the tree:
+ * local server does just that, and a reader that waits as VLC's reads do
+ * (vlc_tls_Read: a poll woken by an interruption, a pipe as vlc_poll_i11e's,
+ * then a read again, until data comes or the context is killed) is stopped
+ * by the watch killing it after its idle time, measured. A wake alone (a
+ * raise) does not stop such a reader: the watch's first version raised, and
+ * on Windows the stalled download stayed open. One whose server goes on
+ * slowly is not stopped; a transfer ended is never touched afterwards. On
+ * Linux, from the root of the tree:
  *   g++ -std=c++17 -O1 -Wall -Wextra -pthread -I. extras/juxtopposed/iptv-idle.cpp -o iptv-idle && ./iptv-idle
  */
 #include "modules/misc/iptv/idle_watch.hpp"
 
 #include <arpa/inet.h>
+#include <fcntl.h>
 #include <netinet/in.h>
 #include <poll.h>
 #include <sys/socket.h>
 #include <unistd.h>
 
 #include <atomic>
+#include <cerrno>
 #include <chrono>
 #include <cstdio>
 #include <cstring>
@@ -101,12 +106,15 @@ private:
     std::thread m_thread;
 };
 
-// A reading as VLC's: a poll of the socket and of a pipe its interruption
-// writes to; what it read, and why it stopped
+// A reading as VLC's (vlc_tls_Read): a read of the socket, and when nothing
+// is there a poll of it and of a pipe its interruption writes to; woken, it
+// reads again; it stops at the end of the data or once killed (vlc_killed())
 struct Reader
 {
     int wake[2] = { -1, -1 };
     std::atomic<int> raised { 0 };
+    std::atomic<bool> killed { false };
+    std::atomic<bool> reading { false };
 
     Reader() { (void)!pipe(wake); }
     ~Reader()
@@ -114,15 +122,20 @@ struct Reader
         close(wake[0]);
         close(wake[1]);
     }
+    // an interruption: wakes the wait (vlc_interrupt_raise)
     void raise()
     {
         ++raised;
         (void)!write(wake[1], "!", 1);
     }
+    // and stops the reading (vlc_interrupt_kill)
+    void kill()
+    {
+        killed = true;
+        raise();
+    }
 
-    // reads until the end, or until woken (`wakes` times: the first ones
-    // taken as VLC's retries, which wait again)
-    std::string read(int port, iptv::IdleWatch::Transfer& transfer, int wakes, size_t* bytes)
+    std::string read(int port, iptv::IdleWatch::Transfer& transfer, size_t* bytes)
     {
         const int s = socket(AF_INET, SOCK_STREAM, 0);
         sockaddr_in a {};
@@ -131,28 +144,36 @@ struct Reader
         a.sin_port = htons(uint16_t(port));
         if (connect(s, reinterpret_cast<sockaddr*>(&a), sizeof a) != 0)
             return "cannot be reached";
+        fcntl(s, F_SETFL, fcntl(s, F_GETFL) | O_NONBLOCK);
+        reading = true;
         *bytes = 0;
         std::string why = "ended";
         char buffer[4096];
         for (;;)
         {
+            if (killed)
+            {
+                why = transfer.expired() ? "no answer" : "killed";
+                break;
+            }
+            const ssize_t got = recv(s, buffer, sizeof buffer, 0);
+            if (got > 0)
+            {
+                *bytes += size_t(got);
+                transfer.received();
+                continue;
+            }
+            if (got == 0 || (errno != EAGAIN && errno != EWOULDBLOCK))
+                break;
             pollfd fds[2] = { { s, POLLIN, 0 }, { wake[0], POLLIN, 0 } };
             poll(fds, 2, -1);
             if (fds[1].revents & POLLIN)
             {
                 char c;
                 (void)!::read(wake[0], &c, 1);
-                if (--wakes > 0)
-                    continue;
-                why = transfer.expired() ? "no answer" : "woken";
-                break;
             }
-            const ssize_t got = recv(s, buffer, sizeof buffer, 0);
-            if (got <= 0)
-                break;
-            *bytes += size_t(got);
-            transfer.received();
         }
+        reading = false;
         close(s);
         return why;
     }
@@ -173,8 +194,8 @@ int main()
         std::string why;
         double sinceLast = 0;
         {
-            iptv::IdleWatch::Transfer transfer(watch, milliseconds(1000), [&reader]() { reader.raise(); });
-            why = reader.read(server.port(), transfer, 1, &bytes);
+            iptv::IdleWatch::Transfer transfer(watch, milliseconds(1000), [&reader]() { reader.kill(); });
+            why = reader.read(server.port(), transfer, &bytes);
             sinceLast = secondsSince(server.lastSent());
         }
         std::printf("a stall after %zu bytes: \"%s\" %.2f s after the last byte\n", bytes, why.c_str(), sinceLast);
@@ -192,8 +213,8 @@ int main()
         const auto start = Clock::now();
         double sinceLast = 0;
         {
-            iptv::IdleWatch::Transfer transfer(watch, milliseconds(500), [&reader]() { reader.raise(); });
-            why = reader.read(server.port(), transfer, 1, &bytes);
+            iptv::IdleWatch::Transfer transfer(watch, milliseconds(500), [&reader]() { reader.kill(); });
+            why = reader.read(server.port(), transfer, &bytes);
             sinceLast = secondsSince(server.lastSent());
         }
         const double took = secondsSince(start);
@@ -204,50 +225,60 @@ int main()
         CHECK(took >= 2.1);
         CHECK(sinceLast >= 0.45 && sinceLast < 1.0);
     }
-    // a reading the first raise does not end (VLC's reads retry): raised
-    // again, every interval, until it ends
+    // a wake alone does not stop a reading as VLC's (it reads, then waits
+    // again): the watch calls its function again and again, and only a kill
+    // ends it (the watch that raised left a stalled download open on Windows)
     {
         StallingServer server(milliseconds(0), milliseconds(0));
         Reader reader;
         size_t bytes = 0;
         std::string why;
+        std::atomic<bool> done { false };
         {
             iptv::IdleWatch::Transfer transfer(watch, milliseconds(300), [&reader]() { reader.raise(); });
-            why = reader.read(server.port(), transfer, 3, &bytes);
+            std::thread t([&]() {
+                why = reader.read(server.port(), transfer, &bytes);
+                done = true;
+            });
+            std::this_thread::sleep_for(milliseconds(1500));
+            CHECK(!done && reader.reading);
+            CHECK(reader.raised >= 3);
+            CHECK(transfer.expired());
+            reader.kill();
+            t.join();
         }
         CHECK(why == "no answer");
-        CHECK(reader.raised >= 3);
     }
-    // ended before its idle time: never raised, then or afterwards
+    // ended before its idle time: never touched, then or afterwards
     {
         Reader reader;
         {
-            iptv::IdleWatch::Transfer transfer(watch, milliseconds(300), [&reader]() { reader.raise(); });
+            iptv::IdleWatch::Transfer transfer(watch, milliseconds(300), [&reader]() { reader.kill(); });
             std::this_thread::sleep_for(milliseconds(100));
             transfer.received();
             std::this_thread::sleep_for(milliseconds(150));
         }
         std::this_thread::sleep_for(milliseconds(800));
-        CHECK(reader.raised == 0);
+        CHECK(reader.raised == 0 && !reader.killed);
     }
-    // many at once, each by its own time; one ended while others are raised
+    // many at once, each by its own time; one ended while others are killed
     {
         Reader quick, slow, done;
         {
-            iptv::IdleWatch::Transfer a(watch, milliseconds(200), [&quick]() { quick.raise(); });
-            iptv::IdleWatch::Transfer b(watch, milliseconds(2000), [&slow]() { slow.raise(); });
+            iptv::IdleWatch::Transfer a(watch, milliseconds(200), [&quick]() { quick.kill(); });
+            iptv::IdleWatch::Transfer b(watch, milliseconds(2000), [&slow]() { slow.kill(); });
             {
-                iptv::IdleWatch::Transfer c(watch, milliseconds(200), [&done]() { done.raise(); });
+                iptv::IdleWatch::Transfer c(watch, milliseconds(200), [&done]() { done.kill(); });
                 std::this_thread::sleep_for(milliseconds(100));
             }
             std::this_thread::sleep_for(milliseconds(600));
-            CHECK(quick.raised >= 1 && a.expired());
-            CHECK(slow.raised == 0 && !b.expired());
+            CHECK(quick.killed && a.expired());
+            CHECK(!slow.killed && !b.expired());
         }
         const int after = quick.raised.load();
         std::this_thread::sleep_for(milliseconds(300));
         CHECK(quick.raised == after);
-        CHECK(done.raised == 0);
+        CHECK(!done.killed && done.raised == 0);
     }
     std::printf("TV idle downloads: %d checks, %d failed\n", checks, failures);
     return failures ? 1 : 0;

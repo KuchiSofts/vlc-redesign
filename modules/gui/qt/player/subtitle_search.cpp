@@ -42,6 +42,7 @@
 #include <vlc_common.h>
 #include <vlc_configuration.h>
 
+#include "player/subtitle_services.hpp"
 #include "util/http_request.hpp"
 #include "util/redesign_version.hpp"
 #include "util/subtitle_preferences.hpp"
@@ -1456,7 +1457,9 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
                 return;
             // (a file inside the answer: Napisy24's)
             const QByteArray file = unwrap && replyOk(reply, maxSubtitleBytes) ? unwrap(reply.body) : reply.body;
-            if (!replyOk(reply, maxSubtitleBytes) || file.isEmpty())
+            // (an error page, a check of the browser, a JSON error in place
+            // of the file: not saved as a subtitle)
+            if (!replyOk(reply, maxSubtitleBytes) || file.isEmpty() || SubtitleProviders::isErrorDocument(file))
             {
                 done({}, reply.status == 0 ? qtr("No connection to the internet.")
                                            : qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));

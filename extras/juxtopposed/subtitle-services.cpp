@@ -19,12 +19,14 @@
 #include <QElapsedTimer>
 #include <QFile>
 #include <QHash>
+#include <QJsonDocument>
 #include <QRegularExpression>
 #include <QUrlQuery>
 #include <QtEndian>
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
+#include <functional>
 #include <random>
 #include <zlib.h>
 
@@ -561,6 +563,274 @@ static void testLegendas()
 }
 
 // ---------------------------------------------------------------------------
+// Answers that aren't the service's: its failure, never "nothing found"
+
+// What subtitle_providers.cpp makes of an answer of 200 (readAnswer, then
+// readFailed): Failed when it isn't the service's (a page where JSON comes, a
+// check of the browser, nothing, JSON cut short) or says an error in place
+// of its results; else its results, none being "nothing found"
+enum class Outcome { Failed, Nothing, Found };
+static Outcome outcomeOf(const QByteArray &body, bool json, const std::function<QList<Result>(QString *)> &read)
+{
+    if (answerKind(body, json) != AnswerKind::Readable)
+        return Outcome::Failed;
+    QString error;
+    const QList<Result> results = read(&error);
+    if (!error.isEmpty())
+        return Outcome::Failed;
+    return results.isEmpty() ? Outcome::Nothing : Outcome::Found;
+}
+
+static void testAnswers()
+{
+    const QByteArray errorPage = readFixture("error-page.html");
+    const QByteArray cloudflare = readFixture("cloudflare-challenge.html");
+    const QByteArray ddosGuard = readFixture("ddos-guard.html");
+    const QByteArray yifyEmpty = readFixture("yify-empty.html");
+
+    // what an answer is
+    CHECK(answerKind(errorPage, true) == AnswerKind::Page);
+    CHECK(answerKind(errorPage, false) == AnswerKind::Readable); // (a page where a page comes: read)
+    CHECK(answerKind(cloudflare, true) == AnswerKind::Challenge);
+    CHECK(answerKind(cloudflare, false) == AnswerKind::Challenge);
+    CHECK(answerKind(ddosGuard, true) == AnswerKind::Challenge);
+    CHECK(answerKind(ddosGuard, false) == AnswerKind::Challenge);
+    // (a page that loads a script of cdnjs.cloudflare.com is no challenge)
+    CHECK(answerKind(yifyEmpty, false) == AnswerKind::Readable);
+    CHECK(answerKind(readFixture("yify-movie.html"), false) == AnswerKind::Readable);
+    CHECK(answerKind(QByteArray(), true) == AnswerKind::Empty);
+    CHECK(answerKind(QByteArray(), false) == AnswerKind::Empty);
+    CHECK(answerKind(" \r\n\t", true) == AnswerKind::Empty);
+    CHECK(answerKind("\xEF\xBB\xBF\n", true) == AnswerKind::Empty);
+    CHECK(answerKind("\xEF\xBB\xBF {\"data\":[]}\r\n", true) == AnswerKind::Readable);
+    CHECK(answerKind("[]", true) == AnswerKind::Readable);
+    // (cut short, even just after a "}"; its brackets counted, not those of its texts)
+    CHECK(answerKind("{\"data\":[{\"id\":1}", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("{\"data\":[{\"id\":1},", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("{\"data\":[1,2}", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("{\"a\":1}}", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("{\"a\":1}{\"b\":2}", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("{\"a\":\"}\"", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("{\"a\":\"}\"}", true) == AnswerKind::Readable);
+    CHECK(answerKind("{\"a\":\"\\\"}\"}", true) == AnswerKind::Readable);
+    CHECK(answerKind("{\"a\":\"\\\\\"}", true) == AnswerKind::Readable);
+    CHECK(answerKind("[{\"a\":[]},{\"b\":{}}]\n", true) == AnswerKind::Readable);
+    CHECK(answerKind(readFixture("oscom-search.json").chopped(2), true) == AnswerKind::Unreadable);
+    // every answer of the fixtures cut anywhere: never readable
+    {
+        int cuts = 0, readable = 0;
+        for (const char *name : { "oscom-search.json", "titlovi-search.json", "subdl-movie.json", "subsource-subtitles.json",
+                                  "jimaku-files.json", "betaseries-episodes.json", "legendas-movies.json", "assrt-search.json" })
+        {
+            const QByteArray whole = readFixture(name);
+            CHECK(answerKind(whole, true) == AnswerKind::Readable && !QJsonDocument::fromJson(whole).isNull());
+            const QByteArray body = whole.trimmed();
+            for (qsizetype n = 1; n < body.size(); ++n, ++cuts)
+                if (answerKind(body.left(n), true) == AnswerKind::Readable)
+                    ++readable;
+        }
+        CHECK(cuts > 10000 && readable == 0);
+    }
+    CHECK(answerKind("Service Unavailable", true) == AnswerKind::Unreadable);
+    CHECK(answerKind("Service Unavailable", false) == AnswerKind::Readable);
+    // (JSON that names a captcha is JSON: its message is read)
+    CHECK(answerKind("{\"message\":\"g-recaptcha required\"}", true) == AnswerKind::Readable);
+    // the real empty answers of each service stay readable
+    for (const char *name : { "subsource-empty.json", "subdl-not-found.json", "oscom-empty.json", "titlovi-empty.json",
+                              "jimaku-empty.json", "betaseries-not-found.json", "legendas-none.json",
+                              "legendas-empty.json", "assrt-search.json", "subsro-search.json" })
+    {
+        const bool readable = answerKind(readFixture(name), true) == AnswerKind::Readable;
+        if (!readable)
+            std::fprintf(stderr, "not readable: %s\n", name);
+        CHECK(readable);
+    }
+
+    // the error a JSON answer says, in each service's shape
+    const auto doc = [](const QByteArray &body) { return QJsonDocument::fromJson(body); };
+    // results as an array (OpenSubtitles.org, Wizdom, Jimaku): an object is an error
+    CHECK(answerError(doc(readFixture("opensubtitles-error.json")), true) == QLatin1String("Service Temporarily Unavailable"));
+    CHECK(answerError(doc(readFixture("wizdom-error.json")), true) == QLatin1String("Server Error"));
+    CHECK(answerError(doc(readFixture("jimaku-unauthorized.json")), true) == QLatin1String("unauthorized"));
+    CHECK(answerError(doc(readFixture("jimaku-empty.json")), true).isEmpty());
+    CHECK(answerError(doc("{}"), true) == QLatin1String("?"));
+    CHECK(answerError(doc("not json"), true) == QLatin1String("?"));
+    // results in an object's key (Gestdown for Addic7ed, OpenSubtitles.com, Titlovi)
+    CHECK(answerError(doc(readFixture("addic7ed-error.json")), false, "shows")
+          == QLatin1String("An error occurred while processing your request."));
+    CHECK(answerError(doc("{\"shows\":[]}"), false, "shows").isEmpty());
+    CHECK(answerError(doc("{\"matchingSubtitles\":[],\"episode\":null}"), false, "matchingSubtitles").isEmpty());
+    CHECK(answerError(doc("{\"shows\":[],\"message\":\"cached\"}"), false, "shows").isEmpty()); // (its results)
+    CHECK(answerError(doc("{}"), false, "shows").isEmpty());              // (no results, no error: nothing)
+    CHECK(answerError(doc("[]"), false, "shows") == QLatin1String("?"));  // (not its shape)
+    CHECK(answerError(doc("not json"), false, "shows") == QLatin1String("?"));
+    CHECK(answerError(doc(readFixture("titlovi-error.json")), false, "SubtitleResults") == QLatin1String("An error has occurred."));
+    CHECK(answerError(doc("{\"error\":{\"code\":403,\"message\":\"Quota exceeded\"}}"), false, "data") == QLatin1String("Quota exceeded"));
+    CHECK(answerError(doc("{\"errors\":[{\"code\":4001,\"text\":\"Show not found.\"}]}"), false, "shows")
+          == QLatin1String("Show not found."));
+    CHECK(answerError(doc("{\"errors\":[{\"message\":\"Bad request\"}]}"), false, "data") == QLatin1String("Bad request"));
+    CHECK(answerError(doc("{\"detail\":\"Not authenticated\"}"), false, "data") == QLatin1String("Not authenticated"));
+    CHECK(answerError(doc("{\"errmsg\":\"server busy\",\"status\":30900}"), false, "sub") == QLatin1String("server busy"));
+    CHECK(answerError(doc("{\"status\":500}"), false, "data") == QLatin1String("?"));
+    CHECK(answerError(doc("{\"status\":false}"), false, "data") == QLatin1String("?"));
+    CHECK(answerError(doc("{\"success\":false}"), false, "data") == QLatin1String("?"));
+    CHECK(answerError(doc("{\"status\":200,\"success\":true}"), false, "data").isEmpty());
+    CHECK(answerError(doc("{\"message\":\"" + QByteArray(500, 'x') + "\"}"), false, "data").size() == 200);
+
+    // each parser: the error in place of its results, none for a real empty answer
+    QString error;
+    CHECK(parseOpenSubtitlesCom(readFixture("oscom-empty.json"), languageOf, &error).isEmpty() && error.isEmpty());
+    CHECK(!parseOpenSubtitlesCom(readFixture("oscom-search.json"), languageOf, &error).isEmpty() && error.isEmpty());
+    CHECK(parseOpenSubtitlesCom(readFixture("oscom-key-refused.json"), languageOf, &error).isEmpty()
+          && error == QLatin1String("You cannot consume this service"));
+    CHECK(parseTitlovi(readFixture("titlovi-error.json"), film(), &error).isEmpty() && error == QLatin1String("An error has occurred."));
+    CHECK(parseTitlovi(readFixture("titlovi-empty.json"), film(), &error).isEmpty() && error.isEmpty());
+    CHECK(!parseTitlovi(readFixture("titlovi-search.json"), film(), &error).isEmpty() && error.isEmpty());
+    Query anime = film();
+    anime.title = QStringLiteral("Cowboy Bebop");
+    CHECK(jimakuEntryId(readFixture("jimaku-empty.json"), anime, &error).isEmpty() && error.isEmpty());
+    CHECK(jimakuEntryId(readFixture("jimaku-unauthorized.json"), anime, &error).isEmpty() && error == QLatin1String("unauthorized"));
+    CHECK(parseJimaku(readFixture("jimaku-empty.json"), anime, &error).isEmpty() && error.isEmpty());
+    CHECK(parseJimaku("{\"error\":\"Too many requests\"}", anime, &error).isEmpty() && error == QLatin1String("Too many requests"));
+    CHECK(parseLegendas(readFixture("legendas-error.json"), film(), &error).isEmpty()
+          && error == QLatin1String("Too many requests, try again later"));
+    error.clear();
+    CHECK(parseLegendas(readFixture("legendas-none.json"), film(), &error).isEmpty() && error.isEmpty());
+    CHECK(parseLegendas(readFixture("legendas-empty.json"), film(), &error).isEmpty() && error.isEmpty());
+    CHECK(parseLegendas("{\"detail\":\"Internal error\"}", film(), &error).isEmpty() && error == QLatin1String("Internal error"));
+    error.clear();
+    CHECK(!parseLegendas(readFixture("legendas-movies.json"), film(), &error).isEmpty() && error.isEmpty());
+    CHECK(parseSubDl(readFixture("subdl-error.json"), film(), languageOf, &error).isEmpty()
+          && error == QLatin1String("rate limit exceeded"));
+
+    // what the search makes of each: a failure, nothing found, results
+    const auto oscom = [](const QByteArray &body) {
+        return [body](QString *e) { return parseOpenSubtitlesCom(body, languageOf, e); };
+    };
+    const auto titlovi = [](const QByteArray &body) { return [body](QString *e) { return parseTitlovi(body, film(), e); }; };
+    const auto legendas = [](const QByteArray &body) { return [body](QString *e) { return parseLegendas(body, film(), e); }; };
+    const auto subDl = [](const QByteArray &body) {
+        return [body](QString *e) { return parseSubDl(body, film(), languageOf, e); };
+    };
+    const auto subSource = [](const QByteArray &body) {
+        return [body](QString *e) {
+            const QString id = subSourceMovieId(body, film(), e);
+            return id.isEmpty() ? QList<Result>() : QList<Result>{ Result() };
+        };
+    };
+    const auto jimaku = [anime](const QByteArray &body) { return [body, anime](QString *e) { return parseJimaku(body, anime, e); }; };
+    const auto betaSeries = [](const QByteArray &body) {
+        return [body](QString *e) { bool refused = false; return parseBetaSeries(body, e, &refused); };
+    };
+    const auto yify = [](const QByteArray &body) {
+        return [body](QString *e) {
+            if (!isYifyPage(body)) // (subtitle_providers.cpp: an error page of a server, not its own)
+                *e = QStringLiteral("?");
+            return parseYify(body, languageOf);
+        };
+    };
+    // an HTML error page where JSON comes, for every service that answers JSON
+    CHECK(outcomeOf(errorPage, true, oscom(errorPage)) == Outcome::Failed);
+    CHECK(outcomeOf(errorPage, true, titlovi(errorPage)) == Outcome::Failed);
+    CHECK(outcomeOf(errorPage, true, legendas(errorPage)) == Outcome::Failed);
+    CHECK(outcomeOf(errorPage, true, subDl(errorPage)) == Outcome::Failed);
+    CHECK(outcomeOf(errorPage, true, subSource(errorPage)) == Outcome::Failed);
+    CHECK(outcomeOf(errorPage, true, jimaku(errorPage)) == Outcome::Failed);
+    CHECK(outcomeOf(errorPage, true, betaSeries(errorPage)) == Outcome::Failed);
+    // (where a page comes, YIFY: a page not its own)
+    CHECK(outcomeOf(errorPage, false, yify(errorPage)) == Outcome::Failed);
+    // a check of the browser, wherever it comes
+    CHECK(outcomeOf(cloudflare, true, oscom(cloudflare)) == Outcome::Failed);
+    CHECK(outcomeOf(cloudflare, false, yify(cloudflare)) == Outcome::Failed);
+    CHECK(outcomeOf(ddosGuard, true, subSource(ddosGuard)) == Outcome::Failed);
+    CHECK(outcomeOf(ddosGuard, false, yify(ddosGuard)) == Outcome::Failed);
+    // nothing, a 200 with no body, where JSON comes
+    CHECK(outcomeOf(QByteArray(), true, oscom(QByteArray())) == Outcome::Failed);
+    CHECK(outcomeOf(QByteArray(), true, jimaku(QByteArray())) == Outcome::Failed);
+    CHECK(outcomeOf("\r\n", true, legendas("\r\n")) == Outcome::Failed);
+    // JSON cut short, or a server's text
+    CHECK(outcomeOf("{\"data\":[{\"id\":", true, oscom("{\"data\":[{\"id\":")) == Outcome::Failed);
+    CHECK(outcomeOf("Bad Gateway", true, titlovi("Bad Gateway")) == Outcome::Failed);
+    // JSON whole but not JSON: each parser says so
+    const QByteArray broken = "{\"data\":}";
+    CHECK(answerKind(broken, true) == AnswerKind::Readable);
+    CHECK(outcomeOf(broken, true, oscom(broken)) == Outcome::Failed);
+    CHECK(outcomeOf(broken, true, titlovi(broken)) == Outcome::Failed);
+    CHECK(outcomeOf(broken, true, legendas(broken)) == Outcome::Failed);
+    CHECK(outcomeOf(broken, true, subDl(broken)) == Outcome::Failed);
+    CHECK(outcomeOf(broken, true, subSource(broken)) == Outcome::Failed);
+    CHECK(outcomeOf(broken, true, jimaku(broken)) == Outcome::Failed);
+    CHECK(outcomeOf(broken, true, betaSeries(broken)) == Outcome::Failed);
+    CHECK(subSourceMovieId("{\"success\":false}", film(), &error).isEmpty() && error == QLatin1String("?"));
+    {
+        bool refused = true;
+        CHECK(parseBetaSeries(broken, &error, &refused).isEmpty() && error == QLatin1String("?") && !refused);
+        error.clear();
+        CHECK(parseAssrt(broken, film(), &error, &refused).isEmpty() && error == QLatin1String("?") && !refused);
+        error.clear();
+        CHECK(parseSubsRo(broken, film(), &error).isEmpty() && error == QLatin1String("?"));
+        error.clear();
+        CHECK(parseSubSource(broken, film(), languageOf, &error).isEmpty() && error == QLatin1String("?"));
+        error.clear();
+    }
+    // a JSON error in place of the results, in each shape
+    const QByteArray titloviError = readFixture("titlovi-error.json"), legendasError = readFixture("legendas-error.json");
+    const QByteArray subDlError = readFixture("subdl-error.json"), oscomError = readFixture("oscom-key-refused.json");
+    CHECK(outcomeOf(titloviError, true, titlovi(titloviError)) == Outcome::Failed);
+    CHECK(outcomeOf(legendasError, true, legendas(legendasError)) == Outcome::Failed);
+    CHECK(outcomeOf(subDlError, true, subDl(subDlError)) == Outcome::Failed);
+    CHECK(outcomeOf(oscomError, true, oscom(oscomError)) == Outcome::Failed);
+    CHECK(outcomeOf("{\"error\":\"unauthorized\"}", true, jimaku("{\"error\":\"unauthorized\"}")) == Outcome::Failed);
+    // the real empty answers: nothing found
+    const QByteArray oscomEmpty = readFixture("oscom-empty.json"), titloviEmpty = readFixture("titlovi-empty.json");
+    const QByteArray legendasNone = readFixture("legendas-none.json"), legendasEmpty = readFixture("legendas-empty.json");
+    const QByteArray subDlNone = readFixture("subdl-not-found.json"), subSourceNone = readFixture("subsource-empty.json");
+    const QByteArray jimakuNone = readFixture("jimaku-empty.json"), betaSeriesNone = readFixture("betaseries-not-found.json");
+    CHECK(outcomeOf(oscomEmpty, true, oscom(oscomEmpty)) == Outcome::Nothing);
+    CHECK(outcomeOf(titloviEmpty, true, titlovi(titloviEmpty)) == Outcome::Nothing);
+    CHECK(outcomeOf(legendasNone, true, legendas(legendasNone)) == Outcome::Nothing);
+    CHECK(outcomeOf(legendasEmpty, true, legendas(legendasEmpty)) == Outcome::Nothing);
+    CHECK(outcomeOf(subDlNone, true, subDl(subDlNone)) == Outcome::Nothing);
+    CHECK(outcomeOf(subSourceNone, true, subSource(subSourceNone)) == Outcome::Nothing);
+    CHECK(outcomeOf(jimakuNone, true, jimaku(jimakuNone)) == Outcome::Nothing);
+    CHECK(outcomeOf(betaSeriesNone, true, betaSeries(betaSeriesNone)) == Outcome::Nothing);
+    CHECK(outcomeOf(yifyEmpty, false, yify(yifyEmpty)) == Outcome::Nothing);
+    // and results stay results
+    const QByteArray oscomFound = readFixture("oscom-search.json"), yifyFound = readFixture("yify-movie.html");
+    CHECK(outcomeOf(oscomFound, true, oscom(oscomFound)) == Outcome::Found);
+    CHECK(outcomeOf(yifyFound, false, yify(yifyFound)) == Outcome::Found);
+
+    // YIFY's own page, or another
+    CHECK(isYifyPage(yifyEmpty) && isYifyPage(readFixture("yify-movie.html")));
+    CHECK(!isYifyPage(errorPage) && !isYifyPage(cloudflare));
+    CHECK(parseYify(yifyEmpty, languageOf).isEmpty());
+
+    // Napisy24: its own answers, or not one
+    const Napisy24Answer page = parseNapisy24(readFixture("napisy24-error.html"));
+    CHECK(page.unreadable && !page.found && !page.loginRefused);
+    CHECK(parseNapisy24(QByteArray()).unreadable);
+    CHECK(parseNapisy24(cloudflare).unreadable);
+    CHECK(!parseNapisy24(readFixture("napisy24-video-info.txt")).unreadable);
+    CHECK(!parseNapisy24("OK-0|").unreadable && !parseNapisy24("OK-0|").found);
+    CHECK(!parseNapisy24(readFixture("napisy24-found.bin")).unreadable);
+    const Napisy24Answer refused = parseNapisy24(readFixture("napisy24-login-error.txt"));
+    CHECK(refused.loginRefused && !refused.unreadable); // (its own refusal kept)
+
+    // a download that is a page or a JSON error, not a subtitle
+    CHECK(isErrorDocument(errorPage) && isErrorDocument(cloudflare) && isErrorDocument(ddosGuard));
+    CHECK(isErrorDocument(readFixture("opensubtitles-error.json")) && isErrorDocument("[]"));
+    CHECK(isErrorDocument("\xEF\xBB\xBF\r\n<!DOCTYPE html><html><body>Not Found</body></html>"));
+    CHECK(!isErrorDocument("1\r\n00:00:01,000 --> 00:00:02,000\r\nHello\r\n"));
+    CHECK(!isErrorDocument("\xEF\xBB\xBF" "1\n00:00:01,000 --> 00:00:02,000\n[Music]\n"));
+    CHECK(!isErrorDocument("WEBVTT\n\n00:01.000 --> 00:02.000\nHello\n"));
+    CHECK(!isErrorDocument("{1}{25}Hello|world\n{30}{50}{y:i}Again\n"));
+    CHECK(!isErrorDocument("[Script Info]\nTitle: x\nScriptType: v4.00+\n"));
+    CHECK(!isErrorDocument("<SAMI><HEAD><TITLE>x</TITLE></HEAD><BODY><SYNC Start=0><P>Hi</BODY></SAMI>"));
+    CHECK(!isErrorDocument("<?xml version=\"1.0\"?><tt xmlns=\"http://www.w3.org/ns/ttml\"></tt>"));
+    CHECK(!isErrorDocument(QByteArray()));
+}
+
+// ---------------------------------------------------------------------------
 // YIFY: its page read in one pass
 
 // The page as it was read before (subtitle_providers.cpp until 0.5.9): the
@@ -1015,6 +1285,7 @@ int main(int argc, char **argv)
     testSubsRo();
     testNapisy24();
     testLegendas();
+    testAnswers();
     testYify();
     testArchives();
     testRanks();

@@ -588,12 +588,16 @@ T.Pane {
 
                 anchors.centerIn: parent
 
-                visible: false
+                // The Binding sets a property of its own: visible also
+                // changes as the queue is shown or hidden, which it took
+                // for a change from elsewhere
+                property bool _shown
+                visible: _shown
                 enabled: visible
 
                 opacity: (listView.activeFocus) ? 1.0 : 0.4
 
-                Binding on visible {
+                Binding on _shown {
                     delayed: true
                     value: (listView.count === 0 && !listView.footerItem.firstItemIndicatorVisible)
                 }

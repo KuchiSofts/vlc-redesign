@@ -27,7 +27,7 @@ import VLC.Dialogs
 FocusScope {
     id: root
 
-    property var pagePrefix: [] // behave like a Page
+    property var pagePrefix // behave like a Page (no default, see PageExt)
 
     readonly property ColorContext colorContext: ColorContext {
         id: theme

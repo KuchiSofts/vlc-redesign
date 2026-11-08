@@ -249,9 +249,15 @@ T.AbstractButton {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                Binding on visible {
+                // The Binding sets a property of its own: visible also
+                // changes as the bar is shown or hidden, which it took for
+                // a change from elsewhere
+                property bool _hidden
+                visible: !_hidden
+
+                Binding on _hidden {
                     delayed: true
-                    value: (infoColumn.height > infoColumn.implicitHeight) && (artistLabel.text.length > 0)
+                    value: !((infoColumn.height > infoColumn.implicitHeight) && (artistLabel.text.length > 0))
                 }
 
                 text: {

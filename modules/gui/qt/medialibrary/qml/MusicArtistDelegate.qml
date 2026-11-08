@@ -97,7 +97,7 @@ T.ItemDelegate {
 
             // We need this for extra information such as modifiers
             Component.onCompleted: {
-                canceled.connect(initialAction) // DragHandler stole the event
+                canceled.connect(this, initialAction) // DragHandler stole the event
             }
 
             onSingleTapped: (eventPoint, button) => {

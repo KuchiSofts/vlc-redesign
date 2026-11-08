@@ -54,7 +54,8 @@ T.Pane {
     // the background under both rows
     topInset: 0
 
-    bottomPadding: VLCStyle.margin_xsmall
+    // (no padding set here: the Bindings below set them, a value here was
+    // replaced by them as the bar started)
 
     readonly property real sliderY: _mapSlider(0).y
     property int textPosition: ControlBar.TimeTextPosition.AboveSlider
@@ -128,13 +129,9 @@ T.Pane {
         color: VLCStyle.redesign.color("#222222", "#9c9c9b", VLCStyle.palette.isDark)
     }
 
-    Binding {
-        target: root.background
-        property: "visible"
-        when: root.inlineTimeline && root.background !== null
-        value: true
-        restoreMode: Binding.RestoreBinding
-    }
+    // (the background shown with the inline timeline: by the binding of
+    // its visible in PlayerView; a Binding here took every show of the bar
+    // for a change from elsewhere, visible following its parent too)
     Binding {
         target: root.background
         property: "opacity"

@@ -150,8 +150,8 @@ FocusScope {
     // Events
 
     Component.onCompleted: {
-        visibleChanged.connect(_handleFocus)
-        activeFocusChanged.connect(_handleFocus)
+        visibleChanged.connect(controlLayout, _handleFocus)
+        activeFocusChanged.connect(controlLayout, _handleFocus)
 
         _componentCompleted = true
     }

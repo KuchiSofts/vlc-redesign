@@ -225,7 +225,9 @@ MouseArea {
                 }
                 readonly property real sar: paintedHeight > 0 ? paintedWidth / paintedHeight : 1
                 readonly property url targetSource: VLCAccessImage.uri(centerContent.coverSource)
-                source: targetSource
+                // (by this handler only, which runs as it starts too: the
+                // fallback below replaces the source, and a binding beside
+                // it was replaced at once)
                 onTargetSourceChanged: source = targetSource
 
                 onStatusChanged: {
@@ -280,10 +282,16 @@ MouseArea {
                 font: albumLabel.font
             }
 
-            Binding on visible {
+            // The Bindings of this column set properties of their own:
+            // visible also changes as the player is shown or hidden, which
+            // they took for a change from elsewhere
+            property bool _hidden
+            visible: !_hidden
+
+            Binding on _hidden {
                 delayed: true
                 when: albumLabel.componentCompleted
-                value: albumLabel.text.length > 0 && centerContent.height > (albumLabel.y + albumLabel.height)
+                value: !(albumLabel.text.length > 0 && centerContent.height > (albumLabel.y + albumLabel.height))
             }
 
             // Figma "Player - Music": "untangle - juxtopposed", regular
@@ -365,9 +373,11 @@ MouseArea {
             Layout.preferredWidth: parent.parent.width - VLCStyle.margin_xlarge * 2
             Layout.preferredHeight: (lyricsLabelTextMetrics.height * 2) + VLCStyle.margin_xxxsmall
 
-            visible: false
+            // (hidden until the Binding sets it, see albumLabel)
+            property bool _shown
+            visible: _shown
 
-            Binding on visible {
+            Binding on _shown {
                 delayed: true
                 when: lyricsLabel.componentCompleted
 
@@ -420,15 +430,19 @@ MouseArea {
             Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: VLCStyle.margin_large
 
-            Binding on visible {
+            // (see albumLabel)
+            property bool _hidden
+            visible: !_hidden
+
+            Binding on _hidden {
                 delayed: true
                 when: audioControls.componentCompleted
                 // The jumps and the visualizer (Figma "Visualizer") are in the
                 // control bar of the design, under the cover and its title
                 // only: the lyrics button stays, for tracks with lyrics (a
                 // row under the title moved them up, Figma 4767:23726)
-                value: Player.videoTracks.count === 0 && Player.hasLyrics
-                       && centerContent.height > (audioControls.y + audioControls.height)
+                value: !(Player.videoTracks.count === 0 && Player.hasLyrics
+                         && centerContent.height > (audioControls.y + audioControls.height))
             }
 
             focus: true
@@ -495,9 +509,11 @@ MouseArea {
             Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: VLCStyle.margin_small
 
-            visible: false
+            // (hidden until the Binding sets it, see albumLabel)
+            property bool _shown
+            visible: _shown
 
-            Binding on visible {
+            Binding on _shown {
                 delayed: true
                 when: syncToPlaybackCheckBox.componentCompleted
                 value: musicView.lyricsLayoutActive &&

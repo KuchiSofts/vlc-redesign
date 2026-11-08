@@ -54,7 +54,7 @@ T.Menu {
     // press: the click that follows closes it, not opens it again
     property double _closedAt: 0
 
-    Component.onCompleted: root.closed.connect(() => { root._closedAt = Date.now() })
+    Component.onCompleted: root.closed.connect(root, () => { root._closedAt = Date.now() })
 
     // From the click of the button that opens it: opens it (at x, y of
     // the button, else where the mouse is), or closes it

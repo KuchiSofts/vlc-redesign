@@ -29,7 +29,9 @@ T.Page {
     id: root
 
     //path of the current page loader
-    property var pagePrefix: []
+    // (set by the PageLoader that creates the page, undefined otherwise:
+    // a default [] is a binding, which every page loaded replaced)
+    property var pagePrefix
 
     //note that T.Page introduce an intermediate Item, so to access our delegate,
     //we need to use contentChildren[0] rather than contentItem
@@ -78,8 +80,8 @@ T.Page {
     SortCtx {
         id: _sortCtx
 
-        readonly property string _sortCriteriaKey: ["sortCriteria", ...root.pagePrefix].join("/")
-        readonly property string _sortOrderKey:  ["sortOrder", ...root.pagePrefix].join("/")
+        readonly property string _sortCriteriaKey: ["sortCriteria", ...(root.pagePrefix ?? [])].join("/")
+        readonly property string _sortOrderKey:  ["sortOrder", ...(root.pagePrefix ?? [])].join("/")
 
         available: Helpers.isArray(root.sortModel) && (root.sortModel).length > 0
         model: root.sortModel

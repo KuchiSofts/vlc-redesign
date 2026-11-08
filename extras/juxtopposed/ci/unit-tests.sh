@@ -60,7 +60,11 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflag
 # (the service a stuck download keeps is let go on purpose: not a leak of the code)
 ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 "$out/iptv-stop"
 
-echo "== Live TV: the service (limits, failures, back-off, answers cut short, removals)"
+echo "== Live TV: downloads that stall (a local server that sends a few bytes, then nothing)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -pthread -I. extras/juxtopposed/iptv-idle.cpp -o "$out/iptv-idle"
+"$out/iptv-idle"
+
+echo "== Live TV: the service (limits, failures, back-off, answers cut short, removals, the keystore)"
 g++ -std=c++17 -O1 -Wall -Wextra $san $fcast -fPIC -DHAVE_ZLIB -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/iptv-service.cpp modules/misc/iptv/service.cpp modules/misc/iptv/servers.cpp \
     modules/misc/iptv/autoguide.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp \
@@ -72,6 +76,30 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(p
     extras/juxtopposed/subtitle-services.cpp modules/gui/qt/player/subtitle_services.cpp \
     $(pkg-config --libs Qt6Core) -lz -o "$out/subtitle-services"
 "$out/subtitle-services" extras/juxtopposed/fixtures/subtitle-services
+
+echo "== the interface's HTTP client (redirects, deadlines, cancels) and its work off the thread"
+# with libcurl (its development files), through local servers; without,
+# the rules of its redirects only
+if pkg-config --exists libcurl; then
+    http="-DQT_HAS_LIBCURL $(pkg-config --cflags libcurl)"
+    httplibs=$(pkg-config --libs libcurl)
+else
+    http=
+    httplibs=
+fi
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC $http -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/http-request-test.cpp modules/gui/qt/util/http_request.cpp \
+    $(pkg-config --libs Qt6Core) $httplibs -o "$out/http-request-test"
+"$out/http-request-test" python3 extras/juxtopposed/http-test-server.py
+# quitting: a stuck worker is let go on purpose (not a leak of the code)
+ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 "$out/http-request-test" python3 extras/juxtopposed/http-test-server.py --shutdown
+
+echo "== the updater's files: on the disk before they take their name (QSaveFile)"
+# (no sanitizer: the probe of the system's calls is preloaded first)
+gcc -shared -fPIC -O1 -Wall extras/juxtopposed/sync-probe.c -o "$out/sync-probe.so" -ldl
+g++ -std=c++17 -O1 -Wall -Wextra -fPIC $(pkg-config --cflags Qt6Core) extras/juxtopposed/savefile-sync-test.cpp \
+    $(pkg-config --libs Qt6Core) -ldl -o "$out/savefile-sync-test"
+LD_PRELOAD="$(cd "$out" && pwd)/sync-probe.so" "$out/savefile-sync-test"
 
 echo "== the parsers against malformed and huge input (fuzz)"
 g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core)     extras/juxtopposed/parsers-fuzz.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp     modules/misc/iptv/xtream.cpp modules/misc/iptv/servers.cpp modules/misc/iptv/autoguide.cpp     modules/gui/qt/player/subtitle_services.cpp modules/gui/qt/player/subtitle_cues_parser.cpp     $(pkg-config --libs Qt6Core) -lz -o "$out/parsers-fuzz"

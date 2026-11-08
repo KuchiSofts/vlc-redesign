@@ -78,16 +78,16 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
             return;
         // changed() is emitted once the file is added and matched (or with
         // the error): the dialog saves on the first change that is not busy
-        m_busy = false;
-
         const QByteArray& payload = reply.body;
         if (payload.size() > maxSubtitleBytes)
         {
+            m_busy = false;
             setError(tr("The subtitle exceeds the 20 MB download limit."));
             return;
         }
         if (!reply.error.isEmpty() || reply.status != 200 || payload.isEmpty())
         {
+            m_busy = false;
             setError(tr("Could not download the subtitle: %1")
                      .arg(reply.error.isEmpty() ? tr("HTTP status %1").arg(reply.status) : reply.error));
             return;
@@ -101,32 +101,52 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
         const QString folder = profile && *profile ? QString::fromUtf8(profile) + QStringLiteral("/linked-subtitles")
                                                    : QString();
         free(profile);
-        if (folder.isEmpty() || !QDir().mkpath(folder))
-        {
-            setError(tr("Could not create the subtitle storage folder."));
-            return;
-        }
         const QString hash = QString::fromLatin1(QCryptographicHash::hash(
             url.toString(QUrl::FullyEncoded).toUtf8(), QCryptographicHash::Sha256).toHex());
         const QString path = folder + QLatin1Char('/') + hash + QLatin1Char('.')
                              + QFileInfo(name).suffix().toLower();
-        QSaveFile file(path);
-        if (!file.open(QIODevice::WriteOnly) || file.write(payload) != payload.size() || !file.commit())
-        {
-            setError(tr("Could not save the downloaded subtitle."));
-            return;
-        }
-
-        const QUrl local = QUrl::fromLocalFile(path);
-        {
-            // the file is matched under its name (not the hash), then the
-            // change is signalled
-            const QSignalBlocker blocker(this);
-            addFiles({local});
-        }
-        for (auto& source : m_sources)
-            if (source.url == local)
-                source.label = name;
-        match();
+        // Written on a worker thread (up to 20 MB, maybe to a slow drive),
+        // still busy meanwhile; its answer dropped if the dialog moved on
+        // (cancel(), another destination) or is gone
+        enum class Saved { Yes, NoFolder, NoFile };
+        auto saved = std::make_shared<Saved>(Saved::NoFile);
+        const QByteArray data = payload;
+        const bool started = runInBackground(this, [saved, folder, path, data]() {
+            if (folder.isEmpty() || !QDir().mkpath(folder))
+            {
+                *saved = Saved::NoFolder;
+                return;
+            }
+            QSaveFile file(path);
+            if (file.open(QIODevice::WriteOnly) && file.write(data) == data.size() && file.commit())
+                *saved = Saved::Yes;
+        }, [this, revision, saved, path, name]() {
+            if (revision != m_revision)
+                return;
+            m_busy = false;
+            if (*saved == Saved::NoFolder)
+            {
+                setError(tr("Could not create the subtitle storage folder."));
+                return;
+            }
+            if (*saved == Saved::NoFile)
+            {
+                setError(tr("Could not save the downloaded subtitle."));
+                return;
+            }
+            const QUrl local = QUrl::fromLocalFile(path);
+            {
+                // the file is matched under its name (not the hash), then the
+                // change is signalled
+                const QSignalBlocker blocker(this);
+                addFiles({local});
+            }
+            for (auto& source : m_sources)
+                if (source.url == local)
+                    source.label = name;
+            match();
+        });
+        if (!started)
+            m_busy = false;
     });
 }

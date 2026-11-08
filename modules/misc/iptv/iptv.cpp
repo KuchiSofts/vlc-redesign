@@ -30,6 +30,7 @@
 # include <windows.h>
 #endif
 
+#include "idle_watch.hpp"
 #include "service.hpp"
 // (the HTTP client of the interface: the servers' APIs, POST and sign-ins)
 #include "../../gui/qt/util/http_request.hpp"
@@ -63,6 +64,70 @@
 
 namespace {
 
+// The reading of one download, on the thread that downloads: an interrupt
+// context of its own, made the thread's for the time of the download, that
+// the thread's context forwards to (VLC quitting kills the worker's and the
+// request threads' contexts: the download ends at once), and that the idle
+// watch kills when nothing came for the idle time (VLC's reads wait without
+// bound: a server that stalls kept the download forever). Killed, not only
+// raised: a raise wakes one wait, and VLC's reads (vlc_tls_Read) wait again
+// until data comes or vlc_killed() says to stop; the context is this
+// download's alone, the thread's own is not killed. The watch never touches
+// it once the reading ended (the transfer is unregistered first), and
+// nothing of it is left on the thread's own context.
+class Reading
+{
+public:
+    Reading(iptv::IdleWatch& watch, int idleSecs)
+    {
+        // (killed already, VLC quitting: forwarding would not tell it)
+        m_cancelled = vlc_killed();
+        if (m_cancelled)
+            return;
+        m_context = vlc_interrupt_create();
+        if (!m_context)
+            return;
+        vlc_interrupt_forward_start(m_context, m_forward);
+        m_outer = vlc_interrupt_set(m_context);
+        vlc_interrupt_t* const context = m_context;
+        m_transfer = std::make_unique<iptv::IdleWatch::Transfer>(
+            watch, std::chrono::seconds(qMax(1, idleSecs)), [context]() { vlc_interrupt_kill(context); });
+    }
+
+    ~Reading()
+    {
+        // (unregistered first: never killed after this, then the thread's
+        // own context back, its forwarding undone, ours destroyed)
+        m_transfer.reset();
+        if (!m_context)
+            return;
+        vlc_interrupt_set(m_outer);
+        vlc_interrupt_forward_stop(m_forward);
+        vlc_interrupt_destroy(m_context);
+    }
+
+    Reading(const Reading&) = delete;
+    Reading& operator=(const Reading&) = delete;
+
+    // VLC quits (before the download or while it reads); the context killed
+    // by the watch is not that (silent)
+    bool cancelled() const { return m_cancelled || (vlc_killed() && !silent()); }
+    // nothing came for the idle time
+    bool silent() const { return m_transfer && m_transfer->expired(); }
+    void received()
+    {
+        if (m_transfer)
+            m_transfer->received();
+    }
+
+private:
+    bool m_cancelled = false;
+    vlc_interrupt_t* m_context = nullptr;
+    vlc_interrupt_t* m_outer = nullptr;
+    void* m_forward[2] = { nullptr, nullptr };
+    std::unique_ptr<iptv::IdleWatch::Transfer> m_transfer;
+};
+
 // What the service needs of VLC. The links of the sources hold personal
 // tokens: they are never written to the log, only their host.
 class VlcHost : public iptv::Host
@@ -72,13 +137,14 @@ public:
         : m_obj(obj)
         , m_folder(QFileInfo(QString::fromStdString(keystoreFile)).absolutePath())
     {
-        // a keystore that keeps the secrets (not the one in memory)
+        // a keystore that keeps the secrets (not the one in memory), made at
+        // its first use, on the worker (not here, on the interface's thread:
+        // opening a wallet may ask for its password)
         var_Create(obj, "keystore", VLC_VAR_STRING);
         var_SetString(obj, "keystore", "secret,kwallet,keychain,file_crypt,none");
         // (the encrypted file of Windows and macOS needs its path: VLC sets none)
         var_Create(obj, "keystore-file", VLC_VAR_STRING);
         var_SetString(obj, "keystore-file", keystoreFile.c_str());
-        m_keystore = vlc_keystore_create(obj);
         m_interrupt = vlc_interrupt_create();
     }
 
@@ -90,7 +156,7 @@ public:
             vlc_interrupt_destroy(m_interrupt);
     }
 
-    bool download(const QString& url, const QString& path, QString* error, qint64 limit,
+    bool download(const QString& url, const QString& path, QString* error, qint64 limit, int idleSecs,
                   const std::function<void(qint64, qint64)>& progress) override
     {
         // the access alone: a guide.xml.gz stays compressed on disk (read
@@ -100,10 +166,18 @@ public:
             *error = QStringLiteral("cancelled");
             return false;
         }
+        Reading reading(m_watch, idleSecs);
+        if (reading.cancelled())
+        {
+            *error = QStringLiteral("cancelled");
+            return false;
+        }
         stream_t* s = vlc_access_NewMRL(VLC_OBJECT(m_obj), url.toUtf8().constData());
         if (!s)
         {
-            *error = vlc_killed() ? QStringLiteral("cancelled") : QStringLiteral("cannot be reached");
+            *error = reading.cancelled() ? QStringLiteral("cancelled")
+                   : reading.silent()    ? QStringLiteral("no answer")
+                                         : QStringLiteral("cannot be reached");
             return false;
         }
         uint64_t size = 0;
@@ -124,9 +198,14 @@ public:
         bool failed = false;
         for (;;)
         {
-            const ssize_t got = vlc_stream_Read(s, buffer.get(), 256 * 1024);
-            if (got <= 0)
+            // (what has come, at once: a full buffer waited for would make a
+            // slow server look silent)
+            const ssize_t got = vlc_stream_ReadPartial(s, buffer.get(), 256 * 1024);
+            if (got == 0 || reading.silent() || reading.cancelled())
                 break;
+            if (got < 0)
+                continue;
+            reading.received();
             // (a link that is a stream, not a file, would fill the disk)
             if (total + got > limit)
             {
@@ -148,12 +227,17 @@ public:
             }
         }
         vlc_stream_Delete(s);
-        // (an error reads as the end of the stream: stopped, or shorter than
-        // the size announced, it is not what was asked for)
-        if (!failed && vlc_killed())
+        // (an error reads as the end of the stream: stopped, silent, or
+        // shorter than the size announced, it is not what was asked for)
+        if (!failed && reading.cancelled())
         {
             failed = true;
             *error = QStringLiteral("cancelled");
+        }
+        else if (!failed && reading.silent())
+        {
+            failed = true;
+            *error = QStringLiteral("no answer");
         }
         else if (!failed && total == 0)
         {
@@ -178,9 +262,15 @@ public:
         return true;
     }
 
-    QByteArray fetch(const QString& url, QString* error, qint64 limit) override
+    QByteArray fetch(const QString& url, QString* error, qint64 limit, int idleSecs) override
     {
         if (m_detached)
+        {
+            *error = QStringLiteral("cancelled");
+            return QByteArray();
+        }
+        Reading reading(m_watch, idleSecs);
+        if (reading.cancelled())
         {
             *error = QStringLiteral("cancelled");
             return QByteArray();
@@ -188,7 +278,9 @@ public:
         stream_t* s = vlc_access_NewMRL(VLC_OBJECT(m_obj), url.toUtf8().constData());
         if (!s)
         {
-            *error = vlc_killed() ? QStringLiteral("cancelled") : QStringLiteral("cannot be reached");
+            *error = reading.cancelled() ? QStringLiteral("cancelled")
+                   : reading.silent()    ? QStringLiteral("no answer")
+                                         : QStringLiteral("cannot be reached");
             return QByteArray();
         }
         uint64_t size = 0;
@@ -198,9 +290,12 @@ public:
         char buffer[64 * 1024];
         for (;;)
         {
-            const ssize_t got = vlc_stream_Read(s, buffer, sizeof(buffer));
-            if (got <= 0)
+            const ssize_t got = vlc_stream_ReadPartial(s, buffer, sizeof(buffer));
+            if (got == 0 || reading.silent() || reading.cancelled())
                 break;
+            if (got < 0)
+                continue;
+            reading.received();
             out.append(buffer, got);
             if (out.size() > limit)
             {
@@ -210,11 +305,16 @@ public:
             }
         }
         vlc_stream_Delete(s);
-        // (stopped, or shorter than announced: an answer cut short, none)
-        if (vlc_killed())
+        // (stopped, silent, or shorter than announced: an answer cut short, none)
+        if (reading.cancelled())
         {
             out.clear();
             *error = QStringLiteral("cancelled");
+        }
+        else if (reading.silent())
+        {
+            out.clear();
+            *error = QStringLiteral("no answer");
         }
         else if (!out.isEmpty() && size > 0 && uint64_t(out.size()) != size)
         {
@@ -226,14 +326,14 @@ public:
 
     bool storeSecret(const QString& id, const QByteArray& secret) override
     {
-        if (!m_keystore)
+        std::lock_guard<std::mutex> guard(m_keystoreLock);
+        if (!keystore())
             return false;
         const QByteArray server = id.toUtf8();
         const char* values[KEY_MAX];
         VLC_KEYSTORE_VALUES_INIT(values);
         values[KEY_PROTOCOL] = "vlc-iptv";
         values[KEY_SERVER] = server.constData();
-        std::lock_guard<std::mutex> guard(m_keystoreLock);
         return vlc_keystore_store(m_keystore, values,
                                   reinterpret_cast<const uint8_t*>(secret.constData()), secret.size(),
                                   "VLC Live TV source") == VLC_SUCCESS;
@@ -242,7 +342,8 @@ public:
     QByteArray loadSecret(const QString& id, bool* found) override
     {
         *found = false;
-        if (!m_keystore)
+        std::lock_guard<std::mutex> guard(m_keystoreLock);
+        if (!keystore())
             return QByteArray();
         const QByteArray server = id.toUtf8();
         const char* values[KEY_MAX];
@@ -250,7 +351,6 @@ public:
         values[KEY_PROTOCOL] = "vlc-iptv";
         values[KEY_SERVER] = server.constData();
         vlc_keystore_entry* entries = nullptr;
-        std::lock_guard<std::mutex> guard(m_keystoreLock);
         const unsigned count = vlc_keystore_find(m_keystore, values, &entries);
         QByteArray out;
         if (count > 0 && entries[0].p_secret)
@@ -265,15 +365,27 @@ public:
 
     void removeSecret(const QString& id) override
     {
-        if (!m_keystore)
+        std::lock_guard<std::mutex> guard(m_keystoreLock);
+        if (!keystore())
             return;
         const QByteArray server = id.toUtf8();
         const char* values[KEY_MAX];
         VLC_KEYSTORE_VALUES_INIT(values);
         values[KEY_PROTOCOL] = "vlc-iptv";
         values[KEY_SERVER] = server.constData();
-        std::lock_guard<std::mutex> guard(m_keystoreLock);
         vlc_keystore_remove(m_keystore, values);
+    }
+
+    // (under m_keystoreLock) the keystore, made at its first use: on the
+    // worker or a request's thread, never the interface's
+    vlc_keystore* keystore()
+    {
+        if (!m_keystoreTried && !m_detached)
+        {
+            m_keystoreTried = true;
+            m_keystore = vlc_keystore_create(VLC_OBJECT(m_obj));
+        }
+        return m_keystore;
     }
 
     void notify(const QJsonObject& event) override
@@ -494,8 +606,11 @@ private:
     std::mutex m_deviceLock;
     QString m_deviceId;
     vlc_keystore* m_keystore = nullptr;
+    bool m_keystoreTried = false;
     std::mutex m_keystoreLock;
     vlc_interrupt_t* m_interrupt = nullptr;
+    // the downloads watched for silence (its thread made at the first one)
+    iptv::IdleWatch m_watch;
 };
 
 // The threads the requests of the interface are answered on. They come

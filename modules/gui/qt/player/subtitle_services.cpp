@@ -80,7 +80,166 @@ QString messageOf(const QJsonObject &o)
     return error.isString() ? error.toString() : QString();
 }
 
+// The same, in every shape a service's error takes: "message", "Message"
+// (.NET), "detail" (problem details), "errmsg", "error" (a string or an
+// object), "errors" (a list of { text | message }); empty without one
+QString errorMessageOf(const QJsonObject &o)
+{
+    QString message = messageOf(o);
+    for (const char *key : { "Message", "detail", "errmsg" })
+        if (message.isEmpty())
+            message = text(o, key);
+    if (message.isEmpty())
+    {
+        const QJsonObject first = o.value(QLatin1String("errors")).toArray().at(0).toObject();
+        message = text(first, "text");
+        if (message.isEmpty())
+            message = text(first, "message");
+    }
+    // (problem details: { "title", "status" } at least)
+    if (message.isEmpty())
+        message = text(o, "title");
+    return message.left(200);
+}
+
+// Whether an object says it is an error: one of those fields, or a status
+// or a success that says no (false, or an HTTP error: 400 and above)
+bool saysError(const QJsonObject &o)
+{
+    for (const char *key : { "error", "errors", "message", "Message", "detail", "errmsg" })
+        if (o.contains(QLatin1String(key)))
+            return true;
+    const QJsonValue status = o.value(QLatin1String("status"));
+    const QJsonValue success = o.value(QLatin1String("success"));
+    return (status.isBool() && !status.toBool()) || (status.isDouble() && status.toInt() >= 400)
+        || (success.isBool() && !success.toBool());
+}
+
+bool startsWithNoCase(const QByteArray &text, qsizetype at, const char *prefix)
+{
+    const qsizetype n = qsizetype(std::strlen(prefix));
+    return at + n <= text.size() && qstrnicmp(text.constData() + at, prefix, size_t(n)) == 0;
+}
+
+// the first byte of a text that isn't a space (or a mark of UTF-8)
+qsizetype firstOf(const QByteArray &body)
+{
+    qsizetype at = body.startsWith("\xEF\xBB\xBF") ? 3 : 0;
+    while (at < body.size() && (body.at(at) == ' ' || body.at(at) == '\t' || body.at(at) == '\r' || body.at(at) == '\n'))
+        ++at;
+    return at;
+}
+
+// A check of the browser, as its pages say it (not a mention of one: a
+// page may load scripts from cdnjs.cloudflare.com)
+bool isChallenge(const QByteArray &body)
+{
+    static const char *const marks[] = {
+        "cf-chl", "cf_chl_opt", "challenge-platform", "cf-browser-verification", "<title>just a moment",
+        "attention required! | cloudflare", "enable javascript and cookies to continue",
+        "ddos-guard", "sucuri website firewall", "_incapsula_resource", "incapsula incident",
+        "g-recaptcha", "h-captcha", "hcaptcha.com/1/api", "captcha-delivery.com",
+    };
+    // (in the start of the page, where they are, as text of any case)
+    const QByteArray head = body.left(64 * 1024).toLower();
+    return std::any_of(std::begin(marks), std::end(marks), [&head](const char *mark) { return head.contains(mark); });
+}
+
+// Whether the JSON of body[at..end] is whole: its first bracket closed at its
+// last byte (JSON cut short, even just after a "}", isn't), counted in one
+// pass without reading it (its parser reads it once)
+bool endsWhole(const QByteArray &body, qsizetype at, qsizetype end)
+{
+    const char *const p = body.constData();
+    qsizetype depth = 0;
+    bool inString = false;
+    for (qsizetype i = at; i <= end; ++i)
+    {
+        const char c = p[i];
+        if (inString)
+        {
+            if (c == '\\')
+                ++i;
+            else if (c == '"')
+                inString = false;
+        }
+        else if (c == '"')
+            inString = true;
+        else if (c == '{' || c == '[')
+            ++depth;
+        else if ((c == '}' || c == ']') && --depth <= 0)
+            return depth == 0 && i == end;
+    }
+    return false;
+}
+
 } // namespace
+
+AnswerKind answerKind(const QByteArray &body, bool json)
+{
+    const qsizetype at = firstOf(body);
+    if (at >= body.size())
+        return AnswerKind::Empty;
+    if (body.at(at) == '<' && isChallenge(body))
+        return AnswerKind::Challenge;
+    if (!json)
+        return AnswerKind::Readable;
+    if (body.at(at) == '<')
+        return AnswerKind::Page;
+    // JSON: an object or an array, whole (its brackets closed at its end)
+    qsizetype end = body.size() - 1;
+    while (end > at && (body.at(end) == ' ' || body.at(end) == '\t' || body.at(end) == '\r' || body.at(end) == '\n'))
+        --end;
+    const char first = body.at(at);
+    if ((first == '{' || first == '[') && endsWhole(body, at, end))
+        return AnswerKind::Readable;
+    return AnswerKind::Unreadable;
+}
+
+QString answerError(const QJsonDocument &doc, bool array, const char *key)
+{
+    const QString unknown = QStringLiteral("?");
+    if (array)
+    {
+        if (doc.isArray())
+            return {};
+        const QString message = doc.isObject() ? errorMessageOf(doc.object()) : QString();
+        return message.isEmpty() ? unknown : message;
+    }
+    if (!doc.isObject())
+        return unknown;
+    const QJsonObject o = doc.object();
+    if (key && o.contains(QLatin1String(key)))
+        return {};
+    if (!saysError(o))
+        return {}; // (no results and no error: nothing found)
+    const QString message = errorMessageOf(o);
+    return message.isEmpty() ? unknown : message;
+}
+
+bool isYifyPage(const QByteArray &page)
+{
+    // (its name, in its title and in its own links)
+    return page.contains("YIFY") || page.contains("yifysubtitles");
+}
+
+bool isErrorDocument(const QByteArray &body)
+{
+    const qsizetype at = firstOf(body);
+    if (at >= body.size())
+        return false;
+    if (body.at(at) == '<')
+        // (an HTML document; SAMI's <SAMI> is a subtitle)
+        return startsWithNoCase(body, at, "<!doctype html") || startsWithNoCase(body, at, "<html")
+            || isChallenge(body);
+    if (body.at(at) == '{' || body.at(at) == '[')
+    {
+        // (MicroDVD's "{1}{25}…" is no JSON)
+        const QJsonDocument doc = QJsonDocument::fromJson(body);
+        return doc.isObject() || doc.isArray();
+    }
+    return false;
+}
 
 Problem problemOf(int status)
 {
@@ -228,10 +387,14 @@ QUrl subSourceSearchUrl(const Query &query, bool byText)
 
 QString subSourceMovieId(const QByteArray &body, const Query &query, QString *error)
 {
-    const QJsonObject answer = QJsonDocument::fromJson(body).object();
-    if (answer.contains(QLatin1String("error")) || !answer.value(QLatin1String("success")).toBool(true))
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    const QJsonObject answer = doc.object();
+    if (!doc.isObject() || answer.contains(QLatin1String("error")) || !answer.value(QLatin1String("success")).toBool(true))
     {
+        // (not its answer, or an error that says nothing: still an error)
         *error = messageOf(answer);
+        if (error->isEmpty())
+            *error = QStringLiteral("?");
         return {};
     }
     QString first, firstOfSeason;
@@ -601,10 +764,14 @@ QUrl openSubtitlesComSearchUrl(const Query &query)
     return withQuery(openSubtitlesComApi + QStringLiteral("subtitles"), items);
 }
 
-QList<Result> parseOpenSubtitlesCom(const QByteArray &body, const LanguageOf &languageOf)
+QList<Result> parseOpenSubtitlesCom(const QByteArray &body, const LanguageOf &languageOf, QString *error)
 {
     QList<Result> results;
-    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("data")).toArray())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    // ({"message": …} in place of its "data")
+    if (error)
+        *error = answerError(doc, false, "data");
+    for (const QJsonValue item : doc.object().value(QLatin1String("data")).toArray())
     {
         const QJsonObject a = item.toObject().value(QLatin1String("attributes")).toObject();
         // made by a machine: not offered
@@ -800,11 +967,15 @@ QUrl titloviSearchUrl(const Query &query, const Session &session)
     return withQuery(QStringLiteral("https://kodi.titlovi.com/api/subtitles/search"), items);
 }
 
-QList<Result> parseTitlovi(const QByteArray &body, const Query &query)
+QList<Result> parseTitlovi(const QByteArray &body, const Query &query, QString *error)
 {
     QList<Result> results;
     const bool episode = query.series && query.season >= 0 && query.episode >= 0;
-    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("SubtitleResults")).toArray())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    // ({"Message": …} of .NET in place of its "SubtitleResults")
+    if (error)
+        *error = answerError(doc, false, "SubtitleResults");
+    for (const QJsonValue item : doc.object().value(QLatin1String("SubtitleResults")).toArray())
     {
         const QJsonObject o = item.toObject();
         const QString id = text(o, "Id");
@@ -968,7 +1139,7 @@ QUrl jimakuSearchUrl(const Query &query)
                      { { QStringLiteral("query"), jimakuName(query) }, { QStringLiteral("anime"), QStringLiteral("true") } });
 }
 
-QString jimakuEntryId(const QByteArray &body, const Query &query)
+QString jimakuEntryId(const QByteArray &body, const Query &query, QString *error)
 {
     const QString wanted = jimakuName(query);
     const auto simple = [](const QString &s) {
@@ -979,7 +1150,11 @@ QString jimakuEntryId(const QByteArray &body, const Query &query)
         return out;
     };
     QString first;
-    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    // ({"error": …} in place of its list)
+    if (error)
+        *error = answerError(doc, true);
+    for (const QJsonValue item : doc.array())
     {
         const QJsonObject o = item.toObject();
         const QString id = text(o, "id");
@@ -1009,14 +1184,17 @@ QUrl jimakuFilesUrl(const QString &entryId, const Query &query)
     return QUrl(address);
 }
 
-QList<Result> parseJimaku(const QByteArray &body, const Query &query)
+QList<Result> parseJimaku(const QByteArray &body, const Query &query, QString *error)
 {
     Q_UNUSED(query);
     QList<Result> results;
     static const QRegularExpression unhandled(QStringLiteral(R"(\.(rar|7z)$)"), QRegularExpression::CaseInsensitiveOption);
     static const QRegularExpression whisper(QStringLiteral(R"([\[(]?whisperai[\])]?|[\[(]whisper[\])])"),
                                             QRegularExpression::CaseInsensitiveOption);
-    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    if (error)
+        *error = answerError(doc, true);
+    for (const QJsonValue item : doc.array())
     {
         const QJsonObject o = item.toObject();
         const QString name = text(o, "name");
@@ -1071,7 +1249,13 @@ QList<Result> parseBetaSeries(const QByteArray &body, QString *error, bool *refu
 {
     QList<Result> results;
     *refused = false;
-    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    if (!doc.isObject())
+    {
+        *error = QStringLiteral("?"); // (not its answer)
+        return results;
+    }
+    const QJsonObject answer = doc.object();
     const QJsonArray errors = answer.value(QLatin1String("errors")).toArray();
     if (!errors.isEmpty())
     {
@@ -1199,6 +1383,13 @@ Napisy24Answer parseNapisy24(const QByteArray &body)
         answer.loginRefused = true;
         return answer;
     }
+    // (its answers start "OK-": 2 found, 1 the video known, 0 not; anything
+    // else, a page, nothing, is not one)
+    if (!head.startsWith(QLatin1String("OK-")))
+    {
+        answer.unreadable = true;
+        return answer;
+    }
     if (!head.startsWith(QLatin1String("OK-2")))
         return answer;
     for (const QString &part : head.split(QLatin1Char('|')).mid(1))
@@ -1253,14 +1444,26 @@ QByteArray legendasSearchBody(const Query &query)
     return QJsonDocument(o).toJson(QJsonDocument::Compact);
 }
 
-QList<Result> parseLegendas(const QByteArray &body, const Query &query)
+QList<Result> parseLegendas(const QByteArray &body, const Query &query, QString *error)
 {
     QList<Result> results;
-    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    const QJsonObject answer = doc.object();
+    const char *const key = query.series ? "tv_shows" : "movies";
     if ((answer.contains(QLatin1String("success")) && !answer.value(QLatin1String("success")).toBool())
         || (answer.contains(QLatin1String("status")) && !answer.value(QLatin1String("status")).toBool()))
+    {
+        // its error, unless it only says it found nothing
+        static const QRegularExpression nothing(QStringLiteral("not found|no results?|nenhum|encontrad"),
+                                                QRegularExpression::CaseInsensitiveOption);
+        const QString message = errorMessageOf(answer);
+        if (error && !nothing.match(message).hasMatch())
+            *error = message.isEmpty() ? QStringLiteral("?") : message;
         return results;
-    const QJsonArray items = answer.value(query.series ? QLatin1String("tv_shows") : QLatin1String("movies")).toArray();
+    }
+    if (error)
+        *error = answerError(doc, false, key);
+    const QJsonArray items = answer.value(QLatin1String(key)).toArray();
     static const QRegularExpression pathRe(QStringLiteral(R"(^/[A-Za-z0-9._~%/\-]+$)"));
     for (const QJsonValue item : items)
     {

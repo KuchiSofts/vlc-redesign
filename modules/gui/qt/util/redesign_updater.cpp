@@ -18,6 +18,7 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
+#include <QSaveFile>
 #include <QSysInfo>
 #include <QFileInfo>
 #include <QJsonArray>
@@ -379,6 +380,22 @@ bool safeRelativePath(const QString &path)
            && !path.startsWith(QLatin1String(".update"), Qt::CaseInsensitive);
 }
 
+// A file whole on the disk before it has its name: QSaveFile writes a
+// temporary file, syncs it (fsync or fdatasync; FlushFileBuffers on
+// Windows) and only then renames it into place
+// (extras/juxtopposed/savefile-sync-test.cpp sees that order); with these
+// permissions when some are given
+bool writeDurably(const QString &path, const QByteArray &data,
+                  QFileDevice::Permissions permissions = QFileDevice::Permissions())
+{
+    QSaveFile out(path);
+    if (!out.open(QIODevice::WriteOnly) || out.write(data) != data.size())
+        return false;
+    if (permissions != QFileDevice::Permissions() && !out.setPermissions(permissions))
+        return false;
+    return out.commit();
+}
+
 // vlc-redesign-update.exe puts the update in place once VLC has quit: a copy
 // of it, so the update can replace it too. Run once now, on the worker
 // thread (it returns at once without arguments): Windows may check a new
@@ -387,7 +404,9 @@ bool prepareHelper(const QString &dir)
 {
     const QString helper = dir + QStringLiteral("/.update/vlc-redesign-update.exe");
     QFile::remove(helper);
-    if (!QFile::copy(dir + QStringLiteral("/vlc-redesign-update.exe"), helper))
+    // (written to the disk too: ready.txt follows it)
+    QFile source(dir + QStringLiteral("/vlc-redesign-update.exe"));
+    if (!source.open(QIODevice::ReadOnly) || !writeDurably(helper, source.readAll()))
         return false;
     QProcess probe;
     probe.start(helper, {});
@@ -1004,19 +1023,20 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
         }
         setState(Preparing);
         // Checked and written on a worker thread: the interface stays
-        // responsive. The answer comes back by its finished signal, which
-        // is dropped if the updater is gone.
+        // responsive; waited for at the exit, a few seconds at most
+        // (runInBackground: a staging cut there leaves no ready.txt). Its
+        // answer is dropped if the updater is gone.
         auto error = std::make_shared<QString>();
         const QByteArray delta = response.body;
         const QString dir = appDir();
         const QString version = m_latestVersion;
-        QThread *worker = QThread::create([error, delta, expectedSha256, dir, version]() {
+        runInBackground(this, [error, delta, expectedSha256, dir, version]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
             if (sha256Hex(delta) != expectedSha256)
                 *error = qtr("The update doesn't match its checksum, so it wasn't used.");
             else // (its programs' publisher checked there, before ready.txt)
                 *error = stageDelta(delta, dir, version);
-        });
-        connect(worker, &QThread::finished, this, [this, error]() {
+        }, [this, error]() {
             if (error->isEmpty()) {
                 setState(Ready);
                 return;
@@ -1026,8 +1046,6 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
             m_deltaFailed = true;
             setState(Failed, *error);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
     });
 }
 
@@ -1086,8 +1104,8 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
             return qtr("The update is damaged: a file doesn't match its checksum.");
         const QString target = staged + QLatin1Char('/') + path;
         QDir().mkpath(QFileInfo(target).absolutePath());
-        QFile out(target);
-        if (!out.open(QIODevice::WriteOnly | QIODevice::Truncate) || out.write(data) != data.size())
+        // (on the disk before ready.txt names the update complete)
+        if (!writeDurably(target, data))
             return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     }
 
@@ -1095,11 +1113,9 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
     for (const QJsonValue value : header.value(QLatin1String("removed")).toArray())
         if (safeRelativePath(value.toString()))
             removed.append(value.toString());
-    QFile list(work + QStringLiteral("/removed.txt"));
-    if (!list.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
+    // (lines of '\n': the helper reads it as text, CRLF or not)
+    if (!writeDurably(work + QStringLiteral("/removed.txt"), removed.join('\n').toUtf8()))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
-    list.write(removed.join('\n').toUtf8());
-    list.close();
     // Its programs from the publisher of this copy, before the update is
     // complete: VLC closed (or stopped) while they are checked leaves no
     // ready.txt, so no update put in place unchecked
@@ -1110,9 +1126,10 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
     }
     if (!prepareHelper(dir))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
-    // last: the update is complete
-    QFile ready(work + QStringLiteral("/ready.txt"));
-    if (!ready.open(QIODevice::WriteOnly | QIODevice::Truncate) || ready.write(version.toUtf8()) <= 0)
+    // last: the update is complete. Every file above is on the disk by now
+    // (each synced before its rename), so a power cut leaves either no
+    // ready.txt or a whole update
+    if (version.isEmpty() || !writeDurably(work + QStringLiteral("/ready.txt"), version.toUtf8()))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     return {};
 }
@@ -1142,10 +1159,10 @@ void RedesignUpdater::findStagedUpdate()
         const QString dir = appDir();
         auto error = std::make_shared<QString>();
         m_verifyingStaged = true;
-        QThread *worker = QThread::create([error, dir]() {
+        runInBackground(this, [error, dir]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
             *error = stagedPublisherMismatch(dir + QStringLiteral("/.update/staged"));
-        });
-        connect(worker, &QThread::finished, this, [this, error, dir, version]() {
+        }, [this, error, dir, version]() {
             m_verifyingStaged = false;
             if (!error->isEmpty()) {
                 msg_Warn(m_intf, "update to %s: a program staged isn't of this copy's publisher: not used",
@@ -1160,8 +1177,6 @@ void RedesignUpdater::findStagedUpdate()
             m_latestVersion = version;
             setState(Ready);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
 #else
         // (small updates are Windows': nothing of another publisher to check)
         m_latestVersion = version;
@@ -1278,36 +1293,28 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
         }
         setState(Preparing);
         // Checked and saved on a worker thread: the interface stays
-        // responsive. The answer comes back by its finished signal, which
-        // is dropped if the updater is gone.
+        // responsive; waited for at the exit, a few seconds at most
+        // (runInBackground). Its answer is dropped if the updater is gone.
         struct Saved { QString error, path; };
         auto saved = std::make_shared<Saved>();
         const QByteArray body = response.body;
         const QString name = m_installerName;
-        QThread *worker = QThread::create([saved, body, expectedSha256, name]() {
+        runInBackground(this, [saved, body, expectedSha256, name]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
             if (sha256Hex(body) != expectedSha256) {
                 saved->error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
             } else {
 #ifdef __linux__
                 // The new AppImage next to the one running, then renamed over
                 // it: the running copy keeps its file open, the path (menus,
-                // shortcuts) opens the new one
+                // shortcuts) opens the new one. Synced before its rename
+                // (writeDurably): a power cut leaves the old AppImage or the
+                // whole new one, executable, never one cut short
                 const QString image = qEnvironmentVariable("APPIMAGE");
                 const QString dir = QFileInfo(image).absolutePath();
-                const QString part = dir + QStringLiteral("/.vlc-redesign-update.AppImage");
-                QFile file(part);
-                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size()
-                    || !file.flush()) {
+                if (!writeDurably(image, body,
+                                  QFile(image).permissions() | QFileDevice::ExeOwner | QFileDevice::ReadOwner)) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
-                    file.close();
-                    QFile::remove(part);
-                    return;
-                }
-                file.close();
-                file.setPermissions(QFile(image).permissions() | QFileDevice::ExeOwner | QFileDevice::ReadOwner);
-                if (std::rename(QFile::encodeName(part).constData(), QFile::encodeName(image).constData()) != 0) {
-                    saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
-                    QFile::remove(part);
                     return;
                 }
                 saved->path = image;
@@ -1319,12 +1326,10 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                     QDir().mkpath(dir);
                 // (the name of the release's file, never a path)
                 saved->path = dir + QLatin1Char('/') + QFileInfo(name).fileName();
-                QFile file(saved->path);
-                if (dir.isEmpty() || !file.open(QIODevice::WriteOnly | QIODevice::Truncate)
-                    || file.write(body) != body.size()) {
+                // (whole, or not there: never an installer cut short)
+                if (dir.isEmpty() || !writeDurably(saved->path, body)) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
                 } else {
-                    file.close();
                     saved->error = publisherMismatch(saved->path);
                     if (!saved->error.isEmpty())
                         QFile::remove(saved->path);
@@ -1362,15 +1367,12 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
 #endif
 #endif
             }
-        });
-        connect(worker, &QThread::finished, this, [this, saved]() {
+        }, [this, saved]() {
             if (!saved->error.isEmpty())
                 setState(Failed, saved->error);
             else
                 launchInstaller(saved->path);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
     });
 }
 

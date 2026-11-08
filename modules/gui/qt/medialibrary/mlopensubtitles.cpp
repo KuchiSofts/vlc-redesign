@@ -139,19 +139,21 @@ void MLOpenSubtitles::search(const QString& query, const QString& language,
     if (!language.trimmed().isEmpty())
         params.addQueryItem(QStringLiteral("languages"), language.trimmed().toLower());
     url.setQuery(params);
-    send(request(url, apiKey.trimmed()), [this](const HttpResponse& reply) {
-        if (!replyOk(reply))
-        {
-            fail(apiMessage(reply.body, tr("OpenSubtitles search failed. Check the API key and network.")));
-            return;
-        }
-        const QJsonDocument doc = QJsonDocument::fromJson(reply.body);
-        if (!doc.isObject())
-        {
-            fail(tr("OpenSubtitles returned an invalid search response."));
-            return;
-        }
+    // The answer (up to 2 MB) read on the worker thread of the request, not
+    // on the thread of the interface; dropped if another search started
+    struct Parsed
+    {
+        bool valid = false;
         QVariantList results;
+    };
+    auto parsed = std::make_shared<Parsed>();
+    begin();
+    const quint64 revision = m_revision;
+    httpRequestAsync(this, request(url, apiKey.trimmed()), [parsed](const HttpResponse& reply) {
+        if (!replyOk(reply))
+            return;
+        const QJsonDocument doc = QJsonDocument::fromJson(reply.body);
+        parsed->valid = doc.isObject();
         for (const auto& entry : doc.object().value(QStringLiteral("data")).toArray())
         {
             const auto attributes = entry.toObject().value(QStringLiteral("attributes")).toObject();
@@ -162,14 +164,27 @@ void MLOpenSubtitles::search(const QString& query, const QString& language,
             const int fileId = file.value(QStringLiteral("file_id")).toInt();
             if (fileId <= 0)
                 continue;
-            results.push_back(QVariantMap{
+            parsed->results.push_back(QVariantMap{
                 {"fileId", fileId},
                 {"filename", file.value(QStringLiteral("file_name")).toString()},
                 {"language", attributes.value(QStringLiteral("language")).toString()},
                 {"release", attributes.value(QStringLiteral("release")).toString()}
             });
         }
-        m_results = results;
+    }, [this, revision, parsed](const HttpResponse& reply) {
+        if (revision != m_revision)
+            return;
+        if (!replyOk(reply))
+        {
+            fail(apiMessage(reply.body, tr("OpenSubtitles search failed. Check the API key and network.")));
+            return;
+        }
+        if (!parsed->valid)
+        {
+            fail(tr("OpenSubtitles returned an invalid search response."));
+            return;
+        }
+        m_results = parsed->results;
         m_busy = false;
         emit changed();
     });

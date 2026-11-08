@@ -42,6 +42,7 @@
 #include <vlc_common.h>
 #include <vlc_configuration.h>
 
+#include "player/subtitle_services.hpp"
 #include "util/http_request.hpp"
 #include "util/redesign_version.hpp"
 #include "util/subtitle_preferences.hpp"
@@ -403,6 +404,155 @@ const QSet<QString> &filmClasses()
     return classes;
 }
 
+// The answers of IMDb, Wikidata and Cinemeta read on the worker thread of
+// their request (up to 4 MB each): nothing here touches the interface
+
+// IMDb's suggestions: { imdb, label, description, year, series, film, rank }
+QVariantList imdbCandidates(const QByteArray &body)
+{
+    QVariantList candidates;
+    int rank = 0;
+    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("d")).toArray())
+    {
+        const QJsonObject o = item.toObject();
+        const QString imdb = o.value(QLatin1String("id")).toString();
+        if (!imdb.startsWith(QLatin1String("tt")))
+            continue;
+        const QString kind = o.value(QLatin1String("qid")).toString();
+        const bool series = kind == QLatin1String("tvSeries") || kind == QLatin1String("tvMiniSeries");
+        const bool film = kind == QLatin1String("movie") || kind == QLatin1String("tvMovie")
+                        || kind == QLatin1String("short") || kind == QLatin1String("video");
+        if (!series && !film)
+            continue;
+        const int year = o.value(QLatin1String("y")).toInt();
+        QString description = o.value(QLatin1String("q")).toString();
+        const QString cast = o.value(QLatin1String("s")).toString();
+        if (!cast.isEmpty())
+            description += (description.isEmpty() ? QString() : QStringLiteral(" · ")) + cast;
+        candidates.append(QVariantMap{
+            { QStringLiteral("imdb"), imdb },
+            { QStringLiteral("label"), o.value(QLatin1String("l")).toString() },
+            { QStringLiteral("description"), description },
+            { QStringLiteral("year"), year },
+            { QStringLiteral("series"), series },
+            { QStringLiteral("film"), film },
+            { QStringLiteral("rank"), rank++ },
+        });
+    }
+    return candidates;
+}
+
+// Wikidata's items of a name: their ids, labels and descriptions
+struct WikidataFound
+{
+    QStringList ids;
+    QHash<QString, QPair<QString, QString>> labels; // id -> label, description
+};
+
+WikidataFound wikidataFound(const QByteArray &body)
+{
+    WikidataFound found;
+    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("search")).toArray())
+    {
+        const QJsonObject o = item.toObject();
+        const QString id = o.value(QLatin1String("id")).toString();
+        if (id.isEmpty())
+            continue;
+        found.ids.append(id);
+        found.labels.insert(id, { o.value(QLatin1String("label")).toString(),
+                                  o.value(QLatin1String("description")).toString() });
+    }
+    return found;
+}
+
+// Those items: their IMDb id (P345), what they are (P31) and their date
+// (P577, or P580 for a series), as IMDb's candidates
+QVariantList wikidataCandidates(const QByteArray &body, const QStringList &ids,
+                                const QHash<QString, QPair<QString, QString>> &labels)
+{
+    QVariantList candidates;
+    const QJsonObject all = QJsonDocument::fromJson(body).object().value(QLatin1String("entities")).toObject();
+    for (qsizetype rank = 0; rank < ids.size(); ++rank)
+    {
+        const QJsonObject claims = all.value(ids[rank]).toObject().value(QLatin1String("claims")).toObject();
+        const auto values = [&](const char *property) {
+            QList<QJsonValue> result;
+            for (const QJsonValue claim : claims.value(QLatin1String(property)).toArray())
+                result.append(claim.toObject().value(QLatin1String("mainsnak")).toObject()
+                                  .value(QLatin1String("datavalue")).toObject().value(QLatin1String("value")));
+            return result;
+        };
+        QString imdb;
+        for (const QJsonValue &v : values("P345"))
+            if (v.toString().startsWith(QLatin1String("tt")))
+            {
+                imdb = v.toString();
+                break;
+            }
+        if (imdb.isEmpty())
+            continue;
+        bool series = false, film = false;
+        for (const QJsonValue &v : values("P31"))
+        {
+            const QString cls = v.toObject().value(QLatin1String("id")).toString();
+            series = series || seriesClasses().contains(cls);
+            film = film || filmClasses().contains(cls);
+        }
+        const QString description = labels.value(ids[rank]).second;
+        if (!series && !film)
+        {
+            series = description.contains(QLatin1String("series"), Qt::CaseInsensitive);
+            film = description.contains(QLatin1String("film"), Qt::CaseInsensitive)
+                || description.contains(QLatin1String("movie"), Qt::CaseInsensitive);
+        }
+        if (description.contains(QLatin1String("episode of"), Qt::CaseInsensitive))
+            continue; // an episode's own item: the series has the subtitles
+        int year = 0;
+        for (const char *property : { "P577", "P580" })
+        {
+            for (const QJsonValue &v : values(property))
+            {
+                const QString time = v.toObject().value(QLatin1String("time")).toString();
+                const int y = time.mid(1, 4).toInt();
+                if (y > 0 && (year == 0 || y < year))
+                    year = y;
+            }
+            if (year)
+                break;
+        }
+        candidates.append(QVariantMap{
+            { QStringLiteral("imdb"), imdb },
+            { QStringLiteral("label"), labels.value(ids[rank]).first },
+            { QStringLiteral("description"), description },
+            { QStringLiteral("year"), year },
+            { QStringLiteral("series"), series },
+            { QStringLiteral("film"), film },
+            { QStringLiteral("rank"), int(rank) },
+        });
+    }
+    return candidates;
+}
+
+// Cinemeta's catalogue: its titles, in its order
+struct CinemetaMeta
+{
+    QString id;
+    QString name;
+    int year = 0;
+};
+
+QList<CinemetaMeta> cinemetaMetas(const QByteArray &body)
+{
+    QList<CinemetaMeta> metas;
+    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("metas")).toArray())
+    {
+        const QJsonObject o = item.toObject();
+        metas.append({ o.value(QLatin1String("id")).toString(), o.value(QLatin1String("name")).toString(),
+                       o.value(QLatin1String("releaseInfo")).toString().left(4).toInt() });
+    }
+    return metas;
+}
+
 } // namespace
 
 SubtitleSearch::SubtitleSearch(qt_intf_t *intf, SubtitlePreferences *preferences, QObject *parent)
@@ -616,12 +766,13 @@ void SubtitleSearch::prepare(std::function<void()> next)
     const quint64 revision = m_revision;
     auto hashed = std::make_shared<Hashed>();
     const QString path = m_media.path;
-    QThread *worker = QThread::create([hashed, path]() {
+    // (waited for at the exit, a few seconds at most: runInBackground; its
+    // answer dropped if the search is gone)
+    runInBackground(this, [hashed, path]() {
+        QThread::currentThread()->setPriority(QThread::LowPriority);
         if (!path.isEmpty())
             hashed->hash = openSubtitlesHash(path, &hashed->size);
-    });
-    // (by the finished signal: dropped if the search is gone)
-    connect(worker, &QThread::finished, this, [this, hashed, revision, next]() {
+    }, [this, hashed, revision, next]() {
         if (revision != m_revision)
             return;
         m_media.hash = hashed->hash;
@@ -630,8 +781,6 @@ void SubtitleSearch::prepare(std::function<void()> next)
                                               : m_url.toString();
         next();
     });
-    connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-    worker->start(QThread::LowPriority);
 }
 
 void SubtitleSearch::setState(State state, const QString &error)
@@ -756,40 +905,16 @@ void SubtitleSearch::searchImdb(const QString &query, bool forMedia, std::functi
     QByteArray address("https://v2.sg.media-imdb.com/suggestion/");
     address += shard.toUtf8() + '/' + QUrl::toPercentEncoding(words) + ".json";
     const QUrl url = QUrl::fromEncoded(address);
-    httpRequestAsync(this, jsonRequest(url, 15000), [this, revision, forMedia, query, done](const HttpResponse &reply) {
+    // (read on the worker thread of the request: a large answer doesn't
+    // hold the interface)
+    auto parsed = std::make_shared<QVariantList>();
+    httpRequestAsync(this, jsonRequest(url, 15000), [parsed](const HttpResponse &reply) {
+        if (replyOk(reply))
+            *parsed = imdbCandidates(reply.body);
+    }, [this, revision, forMedia, query, done, parsed](const HttpResponse &) {
         if (forMedia && revision != m_revision)
             return;
-        QVariantList candidates;
-        int rank = 0;
-        if (replyOk(reply))
-            for (const QJsonValue item : QJsonDocument::fromJson(reply.body).object()
-                                             .value(QLatin1String("d")).toArray())
-            {
-                const QJsonObject o = item.toObject();
-                const QString imdb = o.value(QLatin1String("id")).toString();
-                if (!imdb.startsWith(QLatin1String("tt")))
-                    continue;
-                const QString kind = o.value(QLatin1String("qid")).toString();
-                const bool series = kind == QLatin1String("tvSeries") || kind == QLatin1String("tvMiniSeries");
-                const bool film = kind == QLatin1String("movie") || kind == QLatin1String("tvMovie")
-                                || kind == QLatin1String("short") || kind == QLatin1String("video");
-                if (!series && !film)
-                    continue;
-                const int year = o.value(QLatin1String("y")).toInt();
-                QString description = o.value(QLatin1String("q")).toString();
-                const QString cast = o.value(QLatin1String("s")).toString();
-                if (!cast.isEmpty())
-                    description += (description.isEmpty() ? QString() : QStringLiteral(" · ")) + cast;
-                candidates.append(QVariantMap{
-                    { QStringLiteral("imdb"), imdb },
-                    { QStringLiteral("label"), o.value(QLatin1String("l")).toString() },
-                    { QStringLiteral("description"), description },
-                    { QStringLiteral("year"), year },
-                    { QStringLiteral("series"), series },
-                    { QStringLiteral("film"), film },
-                    { QStringLiteral("rank"), rank++ },
-                });
-            }
+        const QVariantList candidates = *parsed;
         if (candidates.isEmpty())
         {
             // not known there (or no answer): Wikidata
@@ -815,7 +940,11 @@ void SubtitleSearch::searchTitles(const QString &query, bool forMedia, std::func
     params.addQueryItem(QStringLiteral("limit"), QStringLiteral("10"));
     params.addQueryItem(QStringLiteral("format"), QStringLiteral("json"));
     url.setQuery(params);
-    httpRequestAsync(this, jsonRequest(url), [this, revision, forMedia, done](const HttpResponse &reply) {
+    auto found = std::make_shared<WikidataFound>();
+    httpRequestAsync(this, jsonRequest(url), [found](const HttpResponse &reply) {
+        if (replyOk(reply))
+            *found = wikidataFound(reply.body);
+    }, [this, revision, forMedia, done, found](const HttpResponse &reply) {
         if (forMedia && revision != m_revision)
             return;
         if (!replyOk(reply))
@@ -826,19 +955,8 @@ void SubtitleSearch::searchTitles(const QString &query, bool forMedia, std::func
                 done({});
             return;
         }
-        QStringList ids;
-        QHash<QString, QPair<QString, QString>> labels; // id -> label, description
-        for (const QJsonValue item : QJsonDocument::fromJson(reply.body).object()
-                                         .value(QLatin1String("search")).toArray())
-        {
-            const QJsonObject o = item.toObject();
-            const QString id = o.value(QLatin1String("id")).toString();
-            if (id.isEmpty())
-                continue;
-            ids.append(id);
-            labels.insert(id, { o.value(QLatin1String("label")).toString(),
-                                o.value(QLatin1String("description")).toString() });
-        }
+        const QStringList ids = found->ids;
+        const QHash<QString, QPair<QString, QString>> labels = found->labels; // id -> label, description
         if (ids.isEmpty())
         {
             if (forMedia)
@@ -854,72 +972,14 @@ void SubtitleSearch::searchTitles(const QString &query, bool forMedia, std::func
         q.addQueryItem(QStringLiteral("props"), QStringLiteral("claims"));
         q.addQueryItem(QStringLiteral("format"), QStringLiteral("json"));
         entities.setQuery(q);
-        httpRequestAsync(this, jsonRequest(entities), [this, revision, forMedia, ids, labels, done](const HttpResponse &reply) {
+        auto candidates = std::make_shared<QVariantList>();
+        httpRequestAsync(this, jsonRequest(entities), [candidates, ids, labels](const HttpResponse &reply) {
+            if (replyOk(reply))
+                *candidates = wikidataCandidates(reply.body, ids, labels);
+        }, [this, revision, forMedia, done, candidates](const HttpResponse &) {
             if (forMedia && revision != m_revision)
                 return;
-            QVariantList candidates;
-            const QJsonObject all = replyOk(reply)
-                ? QJsonDocument::fromJson(reply.body).object().value(QLatin1String("entities")).toObject()
-                : QJsonObject();
-            for (qsizetype rank = 0; rank < ids.size(); ++rank)
-            {
-                const QJsonObject claims = all.value(ids[rank]).toObject().value(QLatin1String("claims")).toObject();
-                const auto values = [&](const char *property) {
-                    QList<QJsonValue> result;
-                    for (const QJsonValue claim : claims.value(QLatin1String(property)).toArray())
-                        result.append(claim.toObject().value(QLatin1String("mainsnak")).toObject()
-                                          .value(QLatin1String("datavalue")).toObject().value(QLatin1String("value")));
-                    return result;
-                };
-                QString imdb;
-                for (const QJsonValue &v : values("P345"))
-                    if (v.toString().startsWith(QLatin1String("tt")))
-                    {
-                        imdb = v.toString();
-                        break;
-                    }
-                if (imdb.isEmpty())
-                    continue;
-                bool series = false, film = false;
-                for (const QJsonValue &v : values("P31"))
-                {
-                    const QString cls = v.toObject().value(QLatin1String("id")).toString();
-                    series = series || seriesClasses().contains(cls);
-                    film = film || filmClasses().contains(cls);
-                }
-                const QString description = labels.value(ids[rank]).second;
-                if (!series && !film)
-                {
-                    series = description.contains(QLatin1String("series"), Qt::CaseInsensitive);
-                    film = description.contains(QLatin1String("film"), Qt::CaseInsensitive)
-                        || description.contains(QLatin1String("movie"), Qt::CaseInsensitive);
-                }
-                if (description.contains(QLatin1String("episode of"), Qt::CaseInsensitive))
-                    continue; // an episode's own item: the series has the subtitles
-                int year = 0;
-                for (const char *property : { "P577", "P580" })
-                {
-                    for (const QJsonValue &v : values(property))
-                    {
-                        const QString time = v.toObject().value(QLatin1String("time")).toString();
-                        const int y = time.mid(1, 4).toInt();
-                        if (y > 0 && (year == 0 || y < year))
-                            year = y;
-                    }
-                    if (year)
-                        break;
-                }
-                candidates.append(QVariantMap{
-                    { QStringLiteral("imdb"), imdb },
-                    { QStringLiteral("label"), labels.value(ids[rank]).first },
-                    { QStringLiteral("description"), description },
-                    { QStringLiteral("year"), year },
-                    { QStringLiteral("series"), series },
-                    { QStringLiteral("film"), film },
-                    { QStringLiteral("rank"), int(rank) },
-                });
-            }
-            onTitles(candidates, forMedia, done);
+            onTitles(*candidates, forMedia, done);
         });
     });
 }
@@ -1009,7 +1069,11 @@ void SubtitleSearch::searchCinemeta()
     const QUrl url = QUrl::fromEncoded(QStringLiteral("https://v3-cinemeta.strem.io/catalog/%1/top/search=%2.json")
                                            .arg(series ? QStringLiteral("series") : QStringLiteral("movie"), encoded)
                                            .toUtf8());
-    httpRequestAsync(this, jsonRequest(url), [this, revision, series](const HttpResponse &reply) {
+    auto metas = std::make_shared<QList<CinemetaMeta>>();
+    httpRequestAsync(this, jsonRequest(url), [metas](const HttpResponse &reply) {
+        if (replyOk(reply))
+            *metas = cinemetaMetas(reply.body);
+    }, [this, revision, series, metas](const HttpResponse &reply) {
         if (revision != m_revision)
             return;
         if (!replyOk(reply))
@@ -1020,12 +1084,11 @@ void SubtitleSearch::searchCinemeta()
         double bestScore = -1e9;
         Match best;
         int rank = 0;
-        for (const QJsonValue item : QJsonDocument::fromJson(reply.body).object().value(QLatin1String("metas")).toArray())
+        for (const CinemetaMeta &meta : std::as_const(*metas))
         {
-            const QJsonObject o = item.toObject();
-            const QString id = o.value(QLatin1String("id")).toString();
-            const QString name = o.value(QLatin1String("name")).toString();
-            const int year = o.value(QLatin1String("releaseInfo")).toString().left(4).toInt();
+            const QString &id = meta.id;
+            const QString &name = meta.name;
+            const int year = meta.year;
             const double similarity = titleSimilarity(name, m_media.title);
             ++rank;
             if (!id.startsWith(QLatin1String("tt")) || similarity < 0.6)
@@ -1394,15 +1457,17 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
                 return;
             // (a file inside the answer: Napisy24's)
             const QByteArray file = unwrap && replyOk(reply, maxSubtitleBytes) ? unwrap(reply.body) : reply.body;
-            if (!replyOk(reply, maxSubtitleBytes) || file.isEmpty())
+            // (an error page, a check of the browser, a JSON error in place
+            // of the file: not saved as a subtitle)
+            if (!replyOk(reply, maxSubtitleBytes) || file.isEmpty() || SubtitleProviders::isErrorDocument(file))
             {
                 done({}, reply.status == 0 ? qtr("No connection to the internet.")
                                            : qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
                 return;
             }
             // Unpacked, converted and saved on a worker thread (an archive can
-            // be large); the answer comes back by the finished signal, dropped
-            // if the search is gone
+            // be large), waited for at the exit (runInBackground); its
+            // answer dropped if the search is gone
             struct Saved
             {
                 QString file;
@@ -1412,7 +1477,8 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
             const QByteArray body = file;
             const QString videoName = m_media.name;
             const QString keep = QFileInfo(folder).fileName();
-            QThread *worker = QThread::create([saved, body, result, videoName, folder, stem, pruneRoot, keep]() {
+            runInBackground(this, [saved, body, result, videoName, folder, stem, pruneRoot, keep]() {
+                QThread::currentThread()->setPriority(QThread::LowPriority);
                 // the cache cleaned up once a session, as it grows
                 static std::atomic<bool> pruned { false };
                 if (!pruneRoot.isEmpty() && !pruned.exchange(true))
@@ -1431,8 +1497,7 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
                     return;
                 }
                 saved->file = file;
-            });
-            connect(worker, &QThread::finished, this, [this, revision, done, saved]() {
+            }, [this, revision, done, saved]() {
                 if (revision != m_downloadRevision)
                     return;
                 if (saved->file.isEmpty())
@@ -1440,8 +1505,6 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
                 else
                     done(saved->file, {});
             });
-            connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-            worker->start(QThread::LowPriority);
         });
     });
 }

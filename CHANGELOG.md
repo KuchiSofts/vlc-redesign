@@ -45,10 +45,28 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   again after 15 minutes, then less often (a refused Xtream Codes account was signed in every minute), the
   automatic guide no longer brings back a guide you removed meanwhile, and guides of many channels of one name,
   huge names or texts, or numbers out of range are read quickly and safely.
-- Online subtitles: a search always finishes (a service that answered a byte at a time kept it searching),
+- Live TV: a server that stops sending no longer holds it: a download with nothing new for 30 s (a channel's logo
+  15 s) stops and is tried again later, and the other sources are still updated (one stalled playlist stopped
+  every update). A locked keyring no longer freezes VLC as it starts: your sources' passwords and keys are read in
+  the background, and only the source you changed has its secrets saved again.
+- Live TV guide: the automatic guide finds a channel with or without its "TV" ("Arte" is iptv-org's "Arte TV",
+  "Rai 1 TV" its "Rai 1"; "MTV" stays MTV), and a long programme that contains shorter ones (a film interrupted
+  by the news) shows around them: what is on now and next, the guide's rows and the descriptions follow the
+  shorter ones in their slots.
+- Online subtitles: a service that answers an error page, a browser check (Cloudflare and the like), nothing or a
+  JSON error shows as that service's failure, with its message, instead of "nothing found", and such a page is
+  never saved as a subtitle. A search always finishes (a service that answered a byte at a time kept it searching),
   answers of an older search or video are dropped, archives are used only whole, Test / Sign in keeps nothing,
   and the key of a service travels over HTTPS only. Subtitle files: VobSub, SAMI and long tags read safely and
   quickly.
+- Security: when a subtitle service or another web request of the interface is redirected to another server, your
+  API keys, password, sign-in and cookies are no longer sent there (a download that redirected elsewhere took your
+  key along), and a redirect from HTTPS to HTTP is refused.
+- The interface no longer waits on the network or the disk: the subtitle search, the subtitle files next to a video,
+  the folder Add Subtitles reads (a network share held VLC for seconds), the services' long answers and the
+  updater's work run in the background, and quitting waits for them 5 s at most.
+- Updates: every file of an update is on the disk before it is marked ready (a power cut could leave a "ready"
+  update with files cut short); a new AppImage or installer is saved the same way.
 - Frame previews of an odd video are bounded in size; the updater checks the publisher before an update is
   marked ready and cleans up old installers.
 - No QML warning left on any page, dialog or the player (a connection could outlive its page).
@@ -57,6 +75,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - Tests, in `unit-tests.sh` under ASan and UBSan: the Live TV service with a fake network (`iptv-service`), the
   parsers against malformed and huge input (`parsers-fuzz`: 69 parsers), and more checks in the existing ones.
+- The interface's HTTP client follows redirects itself with one set of rules on every system, and on Windows uses
+  WinHTTP's asynchronous mode: a request cancelled from another thread is closed by its own thread, never while a
+  call uses it. `http-request-test` (local servers on two addresses; 1,200 requests cancelled at random moments),
+  `iptv-idle` (stalled servers) and `savefile-sync-test` (what reaches the disk before a rename) are new.
 
 ## [0.5.8] · 2026-11-08
 

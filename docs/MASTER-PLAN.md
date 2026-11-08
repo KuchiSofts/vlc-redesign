@@ -10,9 +10,18 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-08):
+What is being worked on, updated as it changes (2026-11-09):
 
-- 🟡 **0.5.9 stability round** (on request), branch `feature/stability-0.5.9`. macOS hung at quit after an
+- 🟡 **0.5.9 release** (branch `release/0.5.9`: `feature/stability-0.5.9` + `feature/fs-controls-72`; VideoLAN has
+  nothing new since `978212a42d`): built and tested together on Windows, then Linux, macOS and ARM64 on GitHub;
+  Android and the Samsung TV app finished the same round (their own branches).
+- 🟢 **0.5.9 stability round, second part** (desktop): no secret header to another server on a redirect (both HTTP
+  backends, 169 checks on local servers), WinHTTP's asynchronous mode (a cancel never closes a handle in use; 1,200
+  random cancels), update files synced before ready.txt, Live TV downloads that stall killed after 30 s (a logo
+  15 s), the keystore read on the worker, subtitle and updater work off the interface's thread and joined at exit,
+  the automatic guide's "TV" names, a long programme around the shorter ones it contains, a service's error page
+  shown as its failure (500 checks).
+- 🟢 **0.5.9 stability round** (on request), branch `feature/stability-0.5.9`. macOS hung at quit after an
   HTTPS download (SecureTransport kept its lock in a cancelled thread: fixed, 39532a9441 in 0.5.8), Live TV's quit
   bounded and its server calls cancelled (122.8 s to quit with a held call on 0.5.8), the plug-in pinned when a
   thread is let go. Two reviews of every line (Live TV; subtitles, updater, previews) and a fuzz test of 69

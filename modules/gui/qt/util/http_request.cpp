@@ -447,12 +447,14 @@ public:
         m_shutDown = true;
         for (const auto& state : std::as_const(m_requests))
             state->cancel();
+        // cancelled, a request ends at once; the bound only keeps a stuck
+        // system call from blocking the exit: one bound for all of them (not
+        // ten seconds each, one after the other)
+        const QDeadlineTimer deadline(10000);
         for (auto it = m_requests.cbegin(); it != m_requests.cend(); ++it)
         {
             QThread* const thread = it.key();
-            // cancelled, a request ends at once; the bound only keeps a
-            // stuck system call from blocking the exit
-            if (thread->wait(QDeadlineTimer(10000)))
+            if (thread->wait(deadline))
                 delete thread; // its deleteLater would come after the event loop
         }
         m_requests.clear();

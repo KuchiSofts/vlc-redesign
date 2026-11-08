@@ -36,12 +36,15 @@ constexpr int searchTimeoutMs = 90 * 1000;
 // the subtitles of a video listed at most
 constexpr int maxCandidates = 12;
 
-// with the files linked by the dialog (kept, unlike the finder's cache)
+// with the files linked by the dialog (kept, unlike the finder's cache);
+// empty without the profile's folder (never "/linked-subtitles", at the
+// root of the drive)
 QString linkedFolder(const QString& mediaKey)
 {
     char *profile = config_GetUserDir(VLC_USERDATA_DIR);
-    const QString folder = QString::fromUtf8(profile ? profile : "") + QStringLiteral("/linked-subtitles/")
-                           + SubtitleSearch::folderName(mediaKey);
+    const QString folder = profile && *profile
+        ? QString::fromUtf8(profile) + QStringLiteral("/linked-subtitles/") + SubtitleSearch::folderName(mediaKey)
+        : QString();
     free(profile);
     return folder;
 }
@@ -319,6 +322,7 @@ void MLSubtitleBatch::startDownload(int row)
     SubtitleSearch* search = entry.search;
     const QString id = entry.candidates.value(entry.choice).toMap().value(QStringLiteral("id")).toString();
     const quint64 generation = m_generation;
+    // (no profile folder: SubtitleSearch::download says it can't be saved)
     search->download(id, linkedFolder(search->mediaKey()), false,
                      [this, generation, row, search](const QString& file, const QString& error) {
         if (generation != m_generation || m_rows[row].search != search)
@@ -342,6 +346,13 @@ void MLSubtitleBatch::linkFile(int row, const QString& file)
     const QUrl fileUrl = QUrl::fromLocalFile(file);
     const QByteArray fileMrl = MLSubtitleAssociations::mrlOf(fileUrl);
     const quint64 generation = m_generation;
+    // (the library gone while the file was downloaded: download() checked
+    // it, not since)
+    if (!m_ml)
+    {
+        downloadDone(row, Failed, QObject::tr("The destination media could not be found in the library."));
+        return;
+    }
     MLSubtitleAssociations::link(m_ml, this, { { 0, MLSubtitleAssociations::mrlOf(entry.url), fileMrl } }, false,
                                  [this, generation, row, search, file, fileUrl, fileMrl, id, result](int, const QString& error) {
         if (generation != m_generation || m_rows[row].search != search)

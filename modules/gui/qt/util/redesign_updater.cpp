@@ -395,6 +395,41 @@ bool prepareHelper(const QString &dir)
     return true;
 }
 
+// Where an installer (Windows) or a disk image (macOS) is saved before it is
+// run (downloadInstaller)
+QString installerFolder()
+{
+    const QString temp = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+    // (none known: nowhere, never at the root of the drive)
+    return temp.isEmpty() ? QString() : temp + QStringLiteral("/vlc-redesign-update");
+}
+
+// The installers the sessions before downloaded (run once, then left there:
+// a hundred MB each) go at the start. Those of the last hour stay: another
+// VLC may be saving one now, or the installer still running (it opens VLC
+// again at its end); the next start takes them
+void removeOldInstallers()
+{
+    const QString folder = installerFolder();
+    if (folder.isEmpty())
+        return;
+    const QDir dir(folder);
+    if (!dir.exists())
+        return;
+    const QDateTime before = QDateTime::currentDateTime().addSecs(-3600);
+    for (const QFileInfo &entry : dir.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden))
+    {
+        if (entry.lastModified() >= before)
+            continue;
+        if (entry.isDir() && !entry.isSymLink())
+            QDir(entry.filePath()).removeRecursively();
+        else
+            QFile::remove(entry.filePath());
+    }
+    // (the folder too, once it is empty)
+    QDir().rmdir(folder);
+}
+
 } // namespace
 
 RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
@@ -404,7 +439,7 @@ RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
     m_startupTimer.setSingleShot(true);
     m_startupTimer.setInterval(8000);
     connect(&m_startupTimer, &QTimer::timeout, this, [this]() {
-        if (m_state != Idle)
+        if (m_state != Idle || m_verifyingStaged)
             return;
         const QDateTime last = QDateTime::fromString(
             m_intf->mainSettings->value(keyLastCheck).toString(), Qt::ISODate);
@@ -412,6 +447,7 @@ RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
             check(false);
     });
     connect(qApp, &QCoreApplication::aboutToQuit, this, &RedesignUpdater::applyOnExit);
+    removeOldInstallers();
     findStagedUpdate();
     resumeAfterUpdate();
     scheduleStartupCheck();
@@ -686,7 +722,8 @@ void RedesignUpdater::setProgress(double progress)
 
 void RedesignUpdater::check(bool manual)
 {
-    if (m_state == Checking || m_state == Downloading || m_state == Preparing || m_state == Ready)
+    if (m_state == Checking || m_state == Downloading || m_state == Preparing || m_state == Ready
+        || m_verifyingStaged)
         return;
     m_manual = manual;
     m_dismissed = false;
@@ -704,6 +741,9 @@ void RedesignUpdater::check(bool manual)
 #endif
     httpRequestAsync(this, githubRequest(url, 1024 * 1024, 20000),
                      [this](const HttpResponse &response) {
+        // (an update staged before became Ready meanwhile: it stays so)
+        if (m_state != Checking)
+            return;
         if (!response.error.isEmpty() || response.status == 0) {
             setState(Failed, qtr("Couldn't reach GitHub. Check your connection and try again."));
             return;
@@ -971,19 +1011,10 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
         const QString dir = appDir();
         const QString version = m_latestVersion;
         QThread *worker = QThread::create([error, delta, expectedSha256, dir, version]() {
-            if (sha256Hex(delta) != expectedSha256) {
+            if (sha256Hex(delta) != expectedSha256)
                 *error = qtr("The update doesn't match its checksum, so it wasn't used.");
-            } else {
+            else // (its programs' publisher checked there, before ready.txt)
                 *error = stageDelta(delta, dir, version);
-                if (error->isEmpty()) {
-                    *error = stagedPublisherMismatch(dir + QStringLiteral("/.update/staged"));
-                    // (never put in place)
-                    if (!error->isEmpty()) {
-                        QFile::remove(dir + QStringLiteral("/.update/ready.txt"));
-                        QDir(dir + QStringLiteral("/.update/staged")).removeRecursively();
-                    }
-                }
-            }
         });
         connect(worker, &QThread::finished, this, [this, error]() {
             if (error->isEmpty()) {
@@ -1069,6 +1100,14 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     list.write(removed.join('\n').toUtf8());
     list.close();
+    // Its programs from the publisher of this copy, before the update is
+    // complete: VLC closed (or stopped) while they are checked leaves no
+    // ready.txt, so no update put in place unchecked
+    const QString publisher = stagedPublisherMismatch(staged);
+    if (!publisher.isEmpty()) {
+        QDir(staged).removeRecursively();
+        return publisher;
+    }
     if (!prepareHelper(dir))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     // last: the update is complete
@@ -1096,8 +1135,38 @@ void RedesignUpdater::findStagedUpdate()
     const QString version = QString::fromUtf8(ready.readAll()).trimmed();
     ready.close();
     if (!version.isEmpty() && versionLess(currentVersion(), version)) {
+#ifdef _WIN32
+        // Its programs checked again before it may be put in place (they
+        // were when it was staged; the folder may have changed since), on
+        // a worker thread: it is Ready once they are
+        const QString dir = appDir();
+        auto error = std::make_shared<QString>();
+        m_verifyingStaged = true;
+        QThread *worker = QThread::create([error, dir]() {
+            *error = stagedPublisherMismatch(dir + QStringLiteral("/.update/staged"));
+        });
+        connect(worker, &QThread::finished, this, [this, error, dir, version]() {
+            m_verifyingStaged = false;
+            if (!error->isEmpty()) {
+                msg_Warn(m_intf, "update to %s: a program staged isn't of this copy's publisher: not used",
+                         qtu(version));
+                QFile::remove(dir + QStringLiteral("/.update/ready.txt"));
+                QDir(dir + QStringLiteral("/.update/staged")).removeRecursively();
+                return;
+            }
+            // (a download started meanwhile goes on: the installer then)
+            if (m_state == Downloading || m_state == Preparing)
+                return;
+            m_latestVersion = version;
+            setState(Ready);
+        });
+        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
+        worker->start(QThread::LowPriority);
+#else
+        // (small updates are Windows': nothing of another publisher to check)
         m_latestVersion = version;
         m_state = Ready;
+#endif
     } else {
         // applied already, or older than this version
         ready.remove();
@@ -1244,13 +1313,15 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 saved->path = image;
                 Q_UNUSED(name);
 #else
-                const QString dir = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
-                                    + QStringLiteral("/vlc-redesign-update");
-                QDir().mkpath(dir);
+                // (removed by a start of VLC after it ran: removeOldInstallers)
+                const QString dir = installerFolder();
+                if (!dir.isEmpty())
+                    QDir().mkpath(dir);
                 // (the name of the release's file, never a path)
                 saved->path = dir + QLatin1Char('/') + QFileInfo(name).fileName();
                 QFile file(saved->path);
-                if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate) || file.write(body) != body.size()) {
+                if (dir.isEmpty() || !file.open(QIODevice::WriteOnly | QIODevice::Truncate)
+                    || file.write(body) != body.size()) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
                 } else {
                     file.close();

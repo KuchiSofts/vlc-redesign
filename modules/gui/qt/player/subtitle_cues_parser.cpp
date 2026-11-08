@@ -22,6 +22,11 @@ using View = std::string_view;
 // the end of a line known only by the next one (MicroDVD without its end,
 // SAMI, VobSub): at most this long
 constexpr int64_t openEndMs = 4000;
+// The latest time read (100000 hours, eleven years): a later one is not a
+// time of a film. Sums of times (VobSub's delays) stay within twice it, far
+// from what an int64 holds
+constexpr int64_t maxHours = 100000;
+constexpr int64_t maxTimeMs = maxHours * 3600 * 1000;
 
 bool isDigit(char c) { return c >= '0' && c <= '9'; }
 bool isSpace(char c) { return c == ' ' || c == '\t'; }
@@ -211,9 +216,13 @@ bool parseTime(View s, size_t &pos, int64_t &ms)
     const int64_t hours = count == 3 ? groups[0] : 0;
     const int64_t minutes = groups[count - 2];
     const int64_t seconds = groups[count - 1];
-    if (seconds >= 60 || (count == 3 && minutes >= 60))
+    if (seconds >= 60 || (count == 3 && minutes >= 60) || hours > maxHours)
         return false;
+    // (at most 9 digits a group: no overflow here; "m:s" with a large m
+    // past maxTimeMs is no time either)
     ms = ((hours * 60 + minutes) * 60 + seconds) * 1000 + fraction;
+    if (ms > maxTimeMs)
+        return false;
     if (negative)
         ms = -ms;
     pos = p;
@@ -226,10 +235,23 @@ std::string cleanText(View raw)
 {
     std::string out;
     out.reserve(raw.size());
+    // The next '>' and '}' (npos: none), looked for again only once passed:
+    // the text is read once, not to its end again for each '<' or '{'
+    // never closed
+    size_t nextGreater = 0, nextBrace = 0;
+    bool greaterKnown = false, braceKnown = false;
+    const auto nextOf = [&raw](char c, size_t from, size_t &cached, bool &known) {
+        if (!known || (cached != View::npos && cached < from)) {
+            cached = raw.find(c, from);
+            known = true;
+        }
+        return cached;
+    };
     for (size_t i = 0; i < raw.size(); ++i) {
         const char c = raw[i];
         if (c == '<') {
-            const size_t close = raw.find('>', i);
+            // a tag of less than 256 bytes
+            const size_t close = nextOf('>', i, nextGreater, greaterKnown);
             if (close != View::npos && close - i < 256) {
                 const View tag = raw.substr(i + 1, close - i - 1);
                 if (startsWithNoCase(tag, "br"))
@@ -238,7 +260,8 @@ std::string cleanText(View raw)
                 continue;
             }
         } else if (c == '{') {
-            const size_t close = raw.find('}', i);
+            // a {style} of less than 512 bytes
+            const size_t close = nextOf('}', i, nextBrace, braceKnown);
             if (close != View::npos && close - i < 512) {
                 i = close;
                 continue;
@@ -429,7 +452,9 @@ std::vector<Cue> parseAss(const std::vector<View> &lines)
 std::vector<Cue> parseMicroDvd(const std::vector<View> &lines, double fps)
 {
     std::vector<Cue> cues;
-    if (!(fps > 0))
+    // (no video has less than a frame a second: a smaller rate, or none,
+    // would make times past what an int64 holds of 9-digit frames)
+    if (!(fps >= 1))
         fps = 25.0;
     bool first = true;
     for (const View raw : lines) {
@@ -502,13 +527,21 @@ std::vector<Cue> parseSami(View text)
     struct Sync { int64_t start; std::string text; };
     std::vector<Sync> syncs;
     size_t at = findNoCase(text, "<sync");
+    // the first </body> after the SYNC read, looked for again only once the
+    // SYNCs pass it (not from each SYNC to the end of the file: npos, none
+    // later either)
+    size_t body = 0;
+    bool bodyKnown = false;
     while (at != View::npos && syncs.size() < maxCues) {
         const size_t close = text.find('>', at);
         if (close == View::npos)
             break;
         const View tag = text.substr(at, close - at);
         size_t next = findNoCase(text, "<sync", close);
-        const size_t body = findNoCase(text, "</body", close);
+        if (!bodyKnown || (body != View::npos && body < close)) {
+            body = findNoCase(text, "</body", close);
+            bodyKnown = true;
+        }
         const size_t stop = std::min(next, body);
         const size_t key = findNoCase(tag, "start");
         if (key != View::npos) {
@@ -564,8 +597,10 @@ std::vector<Cue> parseVobSubIndex(const std::vector<View> &lines, int index)
         } else if (inTrack && startsWithNoCase(line, "delay:")) {
             size_t p = 6;
             int64_t value;
+            // (each within maxTimeMs, the sum kept there: thousands of
+            // delays of 99999 hours never overflow)
             if (parseTime(line, p, value))
-                delay += value;
+                delay = std::clamp<int64_t>(delay + value, -maxTimeMs, maxTimeMs);
         } else if (inTrack && startsWithNoCase(line, "timestamp:")) {
             size_t p = 10;
             int64_t start;

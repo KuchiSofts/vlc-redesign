@@ -191,6 +191,9 @@ private:
     QStringList m_loadedIds;
     QVariantList m_titleResults;
     bool m_titleBusy = false;
+    // the title search going on: the answers of one before it (another
+    // name typed, another media, a title chosen) are dropped
+    quint64 m_titleRevision = 0;
     QString m_selectHash; // the file whose track is to be shown
     bool m_selectAlongside = false;
     // downloads waiting for the one going on: { id, alongside }

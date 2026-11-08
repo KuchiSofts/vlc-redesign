@@ -29093,6 +29093,14 @@ msgstr "Cweraedje so OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Cwerez so OpenSubtitles po vey les fitchîs di sortites."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Vos n' avoz nén co d' clé? C' est a gråtis: fijhoz on conte so opensubtitles.com, drovoz \"API consumers\", tchoezixhoz \"New consumer\", dinez-lyi on no (VLC Redesign) et copyîz chal si clé d' API, avou l' no d' uzeu et l' sicret di vosse conte."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Drovi \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Ovraedje so les bokets odio…"

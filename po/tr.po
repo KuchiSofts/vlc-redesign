@@ -29727,6 +29727,14 @@ msgstr "OpenSubtitles'ta aranıyor…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Altyazı dosyalarını görmek için OpenSubtitles'ta arayın."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Henüz anahtarınız yok mu? Ücretsizdir: opensubtitles.com'a kaydolun, \"API consumers\" sayfasını açın, \"New consumer\" seçeneğini seçin, ona bir ad verin (VLC Redesign) ve API anahtarını, hesabınızın kullanıcı adı ve parolasıyla birlikte buraya kopyalayın."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" sayfasını aç"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Ses kayıtları işleniyor…"

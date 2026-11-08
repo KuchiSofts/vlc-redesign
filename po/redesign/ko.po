@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-09-20 03:42+0000\n"
 "Last-Translator: Potato <sheppaul@naver.com>\n"
 "Language-Team: Korean (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7161,6 +7161,14 @@ msgstr "OpenSubtitles 검색 중…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "OpenSubtitles를 검색하면 자막 파일이 표시됩니다."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "아직 키가 없나요? 무료입니다. opensubtitles.com에 가입하고 \"API consumers\"를 연 다음 \"New consumer\"를 선택하고 이름(VLC Redesign)을 지정한 뒤, 해당 API 키를 계정의 사용자명 및 비밀번호와 함께 여기에 복사하세요."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "\"API consumers\" 열기"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "오디오 트랙 처리 중…"
@@ -7758,6 +7766,11 @@ msgstr "DVD 탐색"
 msgid "Close navigation"
 msgstr "탐색 닫기"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2배속"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7769,10 +7782,6 @@ msgstr "프리셋:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "플레이어"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2배속"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

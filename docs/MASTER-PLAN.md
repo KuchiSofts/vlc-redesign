@@ -10,8 +10,18 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-07):
+What is being worked on, updated as it changes (2026-11-08):
 
+- 🟡 **#67, online subtitles in every app** (the owner: "the online subtitle need to be on all the apps for any
+  platform", and how to get the OpenSubtitles key free): the desktop's search (subtitle_search.cpp,
+  subtitle_providers.cpp) ported to Android (OnlineSubtitles.kt, RdOnlineSubtitlesSheet, the automatic search, the
+  settings, OnlineSubtitlesTest 11/11; on the Android 16 emulator: Elephants Dream 30 found, one loaded in sync and
+  back on replay, Sintel's English loaded by itself; KuchiSofts/vlc-redesign-android#2) and to the Samsung TV app
+  (subonline.js, 25 tests; the preview: Sintel 91 found, the Hebrew one loaded by itself); OpenSubtitles.com with the
+  user's own key on both; the desktop's From OpenSubtitles says how to get the key (72 languages); the wiki's
+  Subtitles page has the steps for every app.
+- 🟡 **#66 merged** (hold Space or the video for 2×, every check green, the Linux exit segfault fixed); **#65**
+  merged with main (its MinimalView conflict with #66 kept both: the double-click setting and the hold), CI running.
 - 🟡 **0.5.7** (an update release): SHR1F's pull requests: #62 merged (the design check on CRLF checkouts), #63
   (the subtitle scan's labels once per folder) after its checks, #64 (hold Space or the video for 2×) rebuilt in the
   interface only: vlc_player_ChangeRate and the rate from before, the saved rate set back when a media is left during

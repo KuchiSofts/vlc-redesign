@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2017-11-16 03:02+0100\n"
 "Last-Translator: Fumio Nakayama <fumio.n6a@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -7213,6 +7213,14 @@ msgstr "OpenSubtitlesを検索しています…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "OpenSubtitlesを検索すると、字幕ファイルが表示されます。"
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "まだキーがありませんか？無料で取得できます。opensubtitles.comでアカウントを登録し、「API consumers」を開いて「New consumer」を選び、名前（VLC Redesign）を付けてから、そのAPIキーをここにコピーし、アカウントのユーザー名とパスワードも入力してください。"
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "「API consumers」を開く"
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "オーディオトラックを処理しています…"
@@ -7814,6 +7822,11 @@ msgstr "DVDナビゲーション"
 msgid "Close navigation"
 msgstr "ナビゲーションを閉じる"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "2倍速"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -7825,10 +7838,6 @@ msgstr "プリセット:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "プレイヤー"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "2倍速"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

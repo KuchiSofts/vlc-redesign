@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:09+0000\n"
+"POT-Creation-Date: 2026-11-07 18:12+0000\n"
 "PO-Revision-Date: 2015-04-10 17:25+0000\n"
 "Last-Translator: Michael Bauer\n"
 "Language-Team: Gaelic, Scottish (http://www.transifex.com/projects/p/vlc-"
@@ -7450,6 +7450,14 @@ msgstr "A' lorg air OpenSubtitles…"
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Lorg air OpenSubtitles gus na faidhlichean fho-thiotalan fhaicinn."
 
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
+msgstr "Chan eil iuchair agad fhathast? Tha i an-asgaidh: clàraich air opensubtitles.com, fosgail \"API consumers\", tagh \"New consumer\", thoir ainm air (VLC Redesign) agus dèan lethbhreac dhen iuchair API aige an-seo, còmhla ri ainm-cleachdaiche is facal-faire a' chunntais agad."
+
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+msgid "Open API consumers"
+msgstr "Fosgail \"API consumers\""
+
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
 msgid "Working on audio tracks…"
 msgstr "Ag obair air na tracaichean fuaime…"
@@ -8058,6 +8066,11 @@ msgstr "Seòladaireachd DVD"
 msgid "Close navigation"
 msgstr "Dùin an t-seòladaireachd"
 
+#: modules/gui/qt/player/qml/MinimalView.qml:181
+#: modules/gui/qt/player/qml/PlayerView.qml:958
+msgid "2× speed"
+msgstr "Astar 2×"
+
 #: modules/gui/qt/player/qml/PlaybackSpeed.qml:187
 msgid "4.00"
 msgstr "4.00"
@@ -8069,10 +8082,6 @@ msgstr "Ro-shocrachaidhean:"
 #: modules/gui/qt/player/qml/PlayerView.qml:129
 msgid "Player"
 msgstr "Cluicheadair"
-
-#: modules/gui/qt/player/qml/PlayerView.qml:958
-msgid "2× speed"
-msgstr "Astar 2×"
 
 #: modules/gui/qt/player/qml/PlayerView.qml:967
 #, no-c-format

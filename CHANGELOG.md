@@ -19,6 +19,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - Hold Space or the left mouse button over a playing video for a temporary 2× speed; releasing it brings back
   the speed before (by [@SHR1F](https://github.com/SHR1F), [#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)).
+- **Live TV in the library next to the video**: with the Live TV add-on on, the player's library (the Library
+  button, or L) has *TV* after *Network*. Its channels show their number, logo, name and what is on with its
+  progress, under the provider's groups with All, Favorites and Recently Watched; the panel's search finds a
+  channel by name or number among all of them. A click or Enter switches channel while the video stays, the
+  right-click menu is the TV page's (Favorite, Show in the Guide, What's On…), and Up, Down, Left and Right move
+  through the channels and groups. Opened while a channel plays, the library lands on TV at that channel, in the
+  group chosen there or else the channel's own.
+  Without a source yet, *Add a Link* and *Browse the Catalog* open the TV sources over the player. The channel's
+  banner and the channel list over the video now sit beside the library instead of over it, and a channel made a
+  favourite shows its heart in the list over the video at once.
 
 ### Changed
 
@@ -26,6 +36,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   (by [@SHR1F](https://github.com/SHR1F), [#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)).
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
 - Refresh subtitle source labels once per folder scan to keep the player responsive in folders with many subtitle files.
+
+### Fixed
+
+- The search of the library next to the video showed nothing of what was typed, nor its *Search* placeholder (the
+  field had no height); it filtered all the same.
 
 ## [0.5.6] · 2026-11-07
 

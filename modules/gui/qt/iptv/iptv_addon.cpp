@@ -1065,8 +1065,12 @@ void IptvAddon::saveFavorites()
         m_channelModel->refilter();
     else
         m_channelModel->nowNextChanged({});
+    // (the heart of the rows of the list over the video and of the library
+    // next to it, too)
     if (m_playerModel->group() == QLatin1String("favorites"))
         m_playerModel->refilter();
+    else
+        m_playerModel->nowNextChanged({});
     emit currentChannelChanged();
 }
 

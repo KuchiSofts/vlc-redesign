@@ -25,6 +25,9 @@
 #ifndef _WIN32
 # include <arpa/inet.h>  // inet_pton, inet_ntop (LAN discovery)
 # include <poll.h>
+# include <dlfcn.h>      // dladdr, dlopen (the plug-in kept loaded)
+#else
+# include <windows.h>
 #endif
 
 #include "service.hpp"
@@ -673,6 +676,23 @@ int Open(vlc_object_t* p_this)
     return VLC_SUCCESS;
 }
 
+// The plug-in stays loaded until the process ends: VLC unloads its
+// plug-ins at quit (module_EndBank: FreeLibrary, dlclose), and a thread let
+// go by Close still runs its code (it would crash there, waking up later,
+// and the static Qt's destructors would run under it)
+void keepLoaded()
+{
+#ifdef _WIN32
+    HMODULE self = nullptr;
+    GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+                       reinterpret_cast<LPCWSTR>(&keepLoaded), &self);
+#else
+    Dl_info info;
+    if (dladdr(reinterpret_cast<void*>(&keepLoaded), &info) && info.dli_fname)
+        dlopen(info.dli_fname, RTLD_LAZY | RTLD_NOLOAD | RTLD_NODELETE);
+#endif
+}
+
 void Close(vlc_object_t* p_this)
 {
     auto* obj = reinterpret_cast<vlc_iptv_t*>(p_this);
@@ -706,6 +726,7 @@ void Close(vlc_object_t* p_this)
     {
         msg_Warn(obj, "a download could not be stopped: Live TV let go of it");
         sys->host->detach();
+        keepLoaded();
         return;   // (sys, its host and threads let go too)
     }
     sys->executor.reset();

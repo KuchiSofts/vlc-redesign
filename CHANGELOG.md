@@ -67,6 +67,9 @@ or the video plays at 2×. With fixes from [@SHR1F](https://github.com/SHR1F)'s 
 - Android: the Live TV information bar on a phone held upright had a few letters of the programme between the
   channel's column and the side; narrower than 600 dp it is stacked (the channel, the programme across the whole
   width, then the time with the arrows). Landscape, tablets and TVs keep one row.
+- Android TV: the remote reaches the videos of the Videos page, and goes past the player's seek bar (OK holds it
+  to seek with Left and Right, OK or Back lets go), so Tracks, the subtitle search, Settings and the queue are
+  reachable with the remote.
 - The search of the library next to the video showed nothing of what was typed, nor its *Search* placeholder (the
   field had no height); it filtered all the same.
 - The player's control bar took the keyboard focus whenever a new media started (its buttons are made again, and

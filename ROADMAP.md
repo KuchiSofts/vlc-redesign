@@ -37,6 +37,9 @@ Updated as the work moves (last: 2026-11-08).
 **0.5.8** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 📋 SubSource as a subtitle service, with your own free API key, for its Arabic subtitles in particular
+  ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70), @Elshepl)
+- 📋 Android TV: after the TV sources close, the remote's focus goes back to the page (not the title bar's ⋯)
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
@@ -122,6 +125,9 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ Live TV in the library next to the video: the channels with what is on, their groups, search, the TV page's
   menu; a channel tuned there keeps the keyboard on the list
 - ✅ Android: the Live TV information bar stacked on a phone held upright
+- ✅ Android TV: the remote reaches every video of the Videos page and every button of the player
+- ✅ Published: [v0.5.7](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7), 23 files; the small updates
+  9.0 MB (x64) and 8.5 MB (ARM64) from 0.5.6
 
 ### 0.5.6 (2026-11-07)
 

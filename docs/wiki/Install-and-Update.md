@@ -29,13 +29,13 @@ update release: the apps update themselves to it. The .deb, .rpm and Flatpak pac
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.5.7-win64-setup.exe` | SIZE | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
-| `vlc-redesign-0.5.7-win64.zip` | SIZE | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.5.7-winarm64-setup.exe` | SIZE | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.5.7-winarm64.zip` | SIZE | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.5.7-delta-from-0.5.6.vrdelta` | SIZE | A small update from 0.5.6, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.5.7-delta-from-0.5.5.vrdelta` | SIZE | The small update from 0.5.5. |
-| `vlc-redesign-0.5.7-winarm64-delta-from-0.5.6.vrdelta`, `...-from-0.5.5.vrdelta` | SIZE | The small updates of Windows on ARM64 from 0.5.6 and 0.5.5. |
+| `vlc-redesign-0.5.7-win64-setup.exe` | 59.6 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
+| `vlc-redesign-0.5.7-win64.zip` | 107.9 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.5.7-winarm64-setup.exe` | 47.4 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.5.7-winarm64.zip` | 84.1 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.5.7-delta-from-0.5.6.vrdelta` | 9.0 MB | A small update from 0.5.6, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.5.7-delta-from-0.5.5.vrdelta`, `...-from-0.5.4.vrdelta` | 9.1 MB, 9.3 MB | The small updates from 0.5.5 and from 0.5.4. |
+| `vlc-redesign-0.5.7-winarm64-delta-from-0.5.6.vrdelta`, `...-from-0.5.5.vrdelta`, `...-from-0.5.4.vrdelta` | 8.5 MB, 8.6 MB, 8.9 MB | The small updates of Windows on ARM64 from 0.5.6, 0.5.5 and 0.5.4. |
 | `vlc-redesign-0.5.7-source.tar.gz` | | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -58,8 +58,8 @@ PC.
 | [`vlc-redesign-livetv_0.5.5_amd64.deb`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-livetv_0.5.5_amd64.deb) (0.5.5) | | The Live TV add-on for the .deb (optional). |
 | [`vlc-redesign-0.5.5-1.x86_64.rpm`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-0.5.5-1.x86_64.rpm) (0.5.5) | 155 MB | **For Fedora 39 and later.** Installs in `/opt/vlc-redesign`, the command `vlc-redesign`. |
 | [`vlc-redesign-livetv-0.5.5-1.x86_64.rpm`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-livetv-0.5.5-1.x86_64.rpm) (0.5.5) | | The Live TV add-on for the .rpm (optional). |
-| `vlc-redesign-0.5.7-x86_64.AppImage` | SIZE | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
-| `vlc-redesign-0.5.7-linux-x86_64.tar.xz` | SIZE | A folder to run from, nothing installed. |
+| `vlc-redesign-0.5.7-x86_64.AppImage` | 164 MB | **One file for any distribution with glibc 2.38 or later** (Arch among them), with its `.zsync`. |
+| `vlc-redesign-0.5.7-linux-x86_64.tar.xz` | 125 MB | A folder to run from, nothing installed. |
 | [`vlc-redesign-0.5.5-x86_64.flatpak`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.5/vlc-redesign-0.5.5-x86_64.flatpak) (0.5.5) | 127 MB | **A Flatpak** (its runtime comes from Flathub): `flatpak install --user vlc-redesign-0.5.5-x86_64.flatpak`. |
 | `SHA256SUMS-linux-x86_64.txt` | | The SHA-256 of the Linux files, to check a download. |
 
@@ -74,7 +74,7 @@ PC.
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.5.7-android.apk` (SIZE) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
+| `vlc-redesign-0.5.7-android.apk` (120 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
 updates in the app are for Windows; the AppImage on Linux and the app on macOS update themselves from the app with the
@@ -269,7 +269,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.5.7 is available* · *You have 0.5.7.* | **What's new**, **Skip**, **Update now · SIZE** (or **Download**) |
+| *VLC Redesign 0.5.7 is available* · *You have 0.5.7.* | **What's new**, **Skip**, **Update now · 9.0 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.5.7… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.5.7…* | |
 | *VLC Redesign 0.5.7 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |

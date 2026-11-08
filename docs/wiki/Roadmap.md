@@ -33,11 +33,13 @@ with a build to try):
   [@SHR1F](https://github.com/SHR1F)'s [#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)
 - ✅ The design check passes on Windows checkouts ([#62](https://github.com/KuchiSofts/vlc-redesign/pull/62), @SHR1F)
 - ✅ A folder of many subtitles refreshes the list once ([#63](https://github.com/KuchiSofts/vlc-redesign/pull/63), @SHR1F)
-- 🟡 Subtitles from the internet in every app ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)): Android
+- ✅ Subtitles from the internet in every app ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)): Android
   (phones, tablets, Android TV) and the Samsung TV app as on the desktop, OpenSubtitles.com with your own free key,
   and how to get the key in every app
-- 🟡 Hide UI: Space toggles playback once, the double-click follows its setting
+- ✅ Hide UI: Space toggles playback once, the double-click follows its setting
   ([#65](https://github.com/KuchiSofts/vlc-redesign/pull/65), @SHR1F)
+- ✅ A release waits until every platform is at its version: About's "Also on" line of 0.5.6 still named 0.5.5
+  for the others
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)

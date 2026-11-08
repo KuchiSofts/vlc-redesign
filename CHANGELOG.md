@@ -35,6 +35,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - VideoLAN master merged to `2cb78ca89c` (Qt's contrib built without tablet events).
 - The player stays responsive in folders with many subtitle files: their source labels are refreshed once per
   folder scan (by [@SHR1F](https://github.com/SHR1F), [#63](https://github.com/KuchiSofts/vlc-redesign/pull/63)).
+- The release check stops a release until every platform in `platforms.yml` is at its version: About's "Also on"
+  line is built from that file, and in 0.5.6 it still named 0.5.5 for the other platforms.
 
 ### Fixed
 

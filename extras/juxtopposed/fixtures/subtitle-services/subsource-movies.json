@@ -1,0 +1,19 @@
+{
+ "success": true,
+ "data": [
+  {
+   "movieId": 124,
+   "imdbId": "tt0234215",
+   "title": "The Matrix Reloaded",
+   "type": "movie",
+   "releaseYear": 2003
+  },
+  {
+   "movieId": 123,
+   "imdbId": "tt0133093",
+   "title": "The Matrix",
+   "type": "movie",
+   "releaseYear": 1999
+  }
+ ]
+}

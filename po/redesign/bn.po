@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:12+0000\n"
+"POT-Creation-Date: 2026-11-08 07:06+0000\n"
 "PO-Revision-Date: 2015-12-04 10:01+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Bengali (Bangladesh) (http://www.transifex.com/yaron/vlc-"
@@ -874,8 +874,8 @@ msgid "Input access and codecs"
 msgstr "ইনপুট অ্যাক্সেস ও কোডেক"
 
 #: src/libvlc-module.c:2153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:533
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -1464,23 +1464,23 @@ msgstr "পরবর্তী ফ্রেমের ত্রুটি"
 msgid "Previous frame error"
 msgstr "পূর্ববর্তী ফ্রেমের ত্রুটি"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Cebuano"
 msgstr "সেবুয়ানো"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Hawaiian"
 msgstr "হাওয়াইয়ান"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Hmong"
 msgstr "হমং"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Manipuri"
 msgstr "মণিপুরি"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Syriac"
 msgstr "সিরিয়াক"
 
@@ -1529,7 +1529,7 @@ msgstr "এর জন্য Windows 10 সংস্করণ 1809 বা তা�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
@@ -1693,7 +1693,7 @@ msgid "Add to Media Library"
 msgstr "মিডিয়া লাইব্রেরিতে যোগ করুন"
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:141
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -1997,11 +1997,11 @@ msgstr "পরিবর্তিত"
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:79
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
-#: modules/gui/qt/player/qml/CompactLibrary.qml:293
+#: modules/gui/qt/player/qml/CompactLibrary.qml:92
+#: modules/gui/qt/player/qml/CompactLibrary.qml:213
+#: modules/gui/qt/player/qml/CompactLibrary.qml:308
 msgid "Videos"
 msgstr "ভিডিও"
 
@@ -2721,8 +2721,8 @@ msgid "Second language (when there are none)"
 msgstr "দ্বিতীয় ভাষা (যখন কোনোটি থাকে না)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "কোনো ভিডিওতে এই ভাষাগুলোর সাবটাইটেল না থাকলে অনলাইনে খুঁজুন"
 
@@ -2740,13 +2740,13 @@ msgstr "আপনার পছন্দের থিম ও রং নির্�
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:92
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 msgid "Light"
 msgstr "হালকা"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:33
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:432
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:30
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
@@ -3577,12 +3577,12 @@ msgid "Layout direction"
 msgstr "লেআউটের দিক"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 msgid "Theme"
 msgstr "থিম"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 #: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "অ্যাকসেন্ট রং"
@@ -3599,33 +3599,78 @@ msgstr "সিস্টেমের অ্যাকসেন্ট রং অন
 msgid "VLC follows the system language."
 msgstr "VLC সিস্টেমের ভাষা অনুসরণ করে।"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
 msgid "Second Language & Online Subtitles"
 msgstr "দ্বিতীয় ভাষা ও অনলাইন সাবটাইটেল"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:82
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:154
 msgid "Second language (when there are none in the preferred one)"
 msgstr "দ্বিতীয় ভাষা (পছন্দের ভাষায় কোনোটি না থাকলে)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:188
 msgid "Show both languages at once (dual subtitles)"
 msgstr "একসাথে দুটি ভাষা দেখান (দ্বৈত সাবটাইটেল)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:132
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+msgid "Languages to search"
+msgstr "খোঁজার ভাষাগুলো"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
+msgid "Move up"
+msgstr "উপরে সরান"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:258
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
+msgid "Move down"
+msgstr "নিচে সরান"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:297
+msgid "Add a language"
+msgstr "ভাষা যোগ করুন"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+msgid "Every other language too"
+msgstr "বাকি সব ভাষাও"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:319
+msgid "Fewer languages: a faster search"
+msgstr "কম ভাষা: দ্রুত খোঁজ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:596
 msgid "Subtitle services"
 msgstr "সাবটাইটেল সেবা"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:191
-msgid ""
-"To find subtitles, the services turned on get the video's title, its IMDb "
-"id, its file name and hash (made from a part of the file), and nothing else."
-msgstr ""
-"সাবটাইটেল খুঁজতে, চালু থাকা সেবাগুলো ভিডিওর শিরোনাম, এর IMDb id, এর ফাইলের নাম ও "
-"হ্যাশ (ফাইলের একটি অংশ থেকে তৈরি) পায়, এর বাইরে আর কিছু নয়।"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/player/subtitle_providers.cpp:97
+msgid "Key refused: check it"
+msgstr "কী প্রত্যাখ্যাত: যাচাই করুন"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/player/subtitle_providers.cpp:99
+msgid "Sign-in refused: check it"
+msgstr "সাইন-ইন প্রত্যাখ্যাত: যাচাই করুন"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+msgid "User name"
+msgstr "ব্যবহারকারীর নাম"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+msgid "Get a free key"
+msgstr "বিনামূল্যে কী নিন"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
 msgid "Current output device"
 msgstr "বর্তমান আউটপুট ডিভাইস"
 
@@ -3642,7 +3687,7 @@ msgstr ""
 "পর্যন্ত এই নির্বাচন বজায় থাকে।"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -3655,7 +3700,7 @@ msgstr "ডায়াগনস্টিকস"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 msgid "Developer mode"
 msgstr "ডেভেলপার মোড"
 
@@ -3714,143 +3759,143 @@ msgstr "পারফরম্যান্স সেটিংস"
 msgid "Recording, Casting & Streaming Out"
 msgstr "রেকর্ডিং, কাস্টিং ও স্ট্রিমিং আউট"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:295
 msgid "Search results"
 msgstr "অনুসন্ধানের ফলাফল"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:34
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:47
 msgid "Interface language"
 msgstr "ইন্টারফেসের ভাষা"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:438
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:445
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:440
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:447
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:54
 #: modules/gui/qt/menus/qml/MainMenu.qml:156
 msgid "Keyboard Shortcuts"
 msgstr "কীবোর্ড শর্টকাট"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:439
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:450
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:441
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:452
 msgid "Edit Keyboard Shortcuts"
 msgstr "কীবোর্ড শর্টকাট সম্পাদনা করুন"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:440
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:455
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:442
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:457
 msgid "Reset all shortcuts"
 msgstr "সব শর্টকাট পুনঃনির্ধারণ করুন"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:449
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:451
 msgid "Defaults"
 msgstr "পূর্বনির্ধারিত মান"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:483
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:485
 msgid "Set a shortcut"
 msgstr "একটি শর্টকাট নির্ধারণ করুন"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:491
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:493
 msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] "আরও %1টি মিলে যাওয়া শর্টকাট"
 msgstr[1] "আরও %1টি মিলে যাওয়া শর্টকাট"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:493
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:495
 msgid "Show all"
 msgstr "সব দেখান"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:541
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr "চালানো ট্র্যাকগুলো last.fm-এ জমা দিন"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:542
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Last.fm username"
 msgstr "Last.fm ব্যবহারকারীর নাম"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:542
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Last.fm password"
 msgstr "Last.fm পাসওয়ার্ড"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Last.fm submission URL"
 msgstr "Last.fm জমা দেওয়ার URL"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:554
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:556
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:558
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:68
 msgid "Sidebar"
 msgstr "সাইডবার"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:554
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:560
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:556
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:562
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:32
 msgid "Edit Sidebar"
 msgstr "সাইডবার সম্পাদনা"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:555
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:559
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:557
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:561
 msgid "Order and pages of the sidebar"
 msgstr "সাইডবারের ক্রম ও পাতা"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
 msgid "Dual subtitles"
 msgstr "দ্বৈত সাবটাইটেল"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
 msgid "Second language"
 msgstr "দ্বিতীয় ভাষা"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
 msgid "No matching settings"
 msgstr "মেলে এমন কোনো সেটিং নেই"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
 msgid "No settings are available for this category on this VLC installation"
 msgstr "এই VLC ইনস্টলেশনে এই বিভাগের জন্য কোনো সেটিং উপলব্ধ নেই"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
 msgid "Show installed add-ons only"
 msgstr "শুধু ইনস্টল করা অ্যাড-অন দেখান"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
 msgid "No advanced options on this page."
 msgstr "এই পৃষ্ঠায় কোনো উন্নত অপশন নেই।"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "Welcome setup"
 msgstr "স্বাগত সেটআপ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
 msgid "All VLC options"
 msgstr "VLC-র সব অপশন"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "সব সেটিংস পুনঃনির্ধারণ করুন"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
 msgid "Reset all settings?"
 msgstr "সব সেটিংস পুনঃনির্ধারণ করবেন?"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
 msgid "Every setting of %1 goes back to its default."
 msgstr "%1 মিডিয়া প্লেয়ার-এর প্রতিটি সেটিং তার পূর্বনির্ধারিত মানে ফিরে যাবে।"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
 msgid "Discard changes"
 msgstr "পরিবর্তনগুলো বাতিল করুন"
 
@@ -4068,7 +4113,7 @@ msgid "Lower"
 msgstr "নিম্নতর"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:115
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:520
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:550
 msgid "Usual"
 msgstr "স্বাভাবিক"
 
@@ -4308,9 +4353,10 @@ msgstr "লাইভ টিভি (IPTV) অ্যাড-অন"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:951
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "গাইড"
 
@@ -5118,6 +5164,7 @@ msgstr "বন্ধ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:39
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:91
+#: modules/gui/qt/player/qml/CompactLibrary.qml:781
 msgid "Sources"
 msgstr "উৎস"
 
@@ -5128,6 +5175,7 @@ msgstr "হালনাগাদ হচ্ছে…"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
 msgstr[0] "%1টি চ্যানেল"
@@ -5166,7 +5214,8 @@ msgid "Free channel lists"
 msgstr "বিনামূল্যের চ্যানেল তালিকা"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:221
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "ক্যাটালগ ব্রাউজ করুন"
 
@@ -5480,48 +5529,48 @@ msgstr "এখন কী চলছে তা গাইডে বলা নেই
 msgid "No channel %1"
 msgstr "%1 নম্বর চ্যানেল নেই"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1183
+#: modules/gui/qt/iptv/iptv_addon.cpp:1187
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 মিনিট"
 msgstr[1] "%1 মিনিট"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1186
+#: modules/gui/qt/iptv/iptv_addon.cpp:1190
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 ঘণ্টা"
 msgstr[1] "%1 ঘণ্টা"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1186 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 ঘণ্টা %2 মিনিট"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1194
+#: modules/gui/qt/iptv/iptv_addon.cpp:1198
 msgid "Today"
 msgstr "আজ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1196
+#: modules/gui/qt/iptv/iptv_addon.cpp:1200
 msgid "Tomorrow"
 msgstr "আগামীকাল"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1202
 msgid "Yesterday"
 msgstr "গতকাল"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
 #: modules/gui/qt/iptv/qml/TvToast.qml:75
 msgid "Watch"
 msgstr "দেখুন"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
 msgid "Watch from the start"
 msgstr "শুরু থেকে দেখুন"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -5530,11 +5579,11 @@ msgstr "শুরু থেকে দেখুন"
 msgid "Favorite"
 msgstr "প্রিয়"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 msgid "Show in the Guide"
 msgstr "গাইডে দেখান"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
 msgid "What's On"
 msgstr "এখন কী চলছে"
 
@@ -5547,8 +5596,8 @@ msgid "Next at %1"
 msgstr "পরবর্তী %1-এ"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:433
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:708
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
@@ -5556,7 +5605,7 @@ msgstr[0] "%1 দিন"
 msgstr[1] "%1 দিন"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:709
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:714
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "ক্যাচ-আপ: গত %1 দিন"
@@ -5575,11 +5624,13 @@ msgstr "চলচ্চিত্র"
 msgid "Series"
 msgstr "সিরিজ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:196
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "VLC-তে টিভি দেখুন"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:206
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
@@ -5587,56 +5638,62 @@ msgstr ""
 "আপনার টিভি সরবরাহকারীর প্লেলিস্ট লিংক (M3U) বা এর Xtream Codes লগইন, অথবা "
 "ক্যাটালগ থেকে একটি বিনামূল্যের চ্যানেল তালিকা যোগ করুন। এর প্রোগ্রাম গাইড সঙ্গেই আসে।"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:216
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "একটি লিংক যোগ করুন"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:307
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
 msgid "Updating the guide of %1… %2 MB"
 msgstr "%1-এর গাইড হালনাগাদ হচ্ছে… %2 MB"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:308
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
 msgid "Updating the channels of %1…"
 msgstr "%1-এর চ্যানেল হালনাগাদ হচ্ছে…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:311
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
 msgid "%1 could not be loaded: %2"
 msgstr "%1 লোড করা যায়নি: %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "অনুসন্ধানের সাথে কোনো চ্যানেল মেলেনি"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "এখনো কোনো প্রিয় চ্যানেল নেই: যোগ করতে কোনো চ্যানেলে ডান-ক্লিক করুন"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "এখনো কোনো চ্যানেল দেখা হয়নি"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:508
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "চ্যানেল লোড হচ্ছে…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:509
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
 msgstr "কোনো চ্যানেল নেই"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+#: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "প্রিয়"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:31
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:930
 msgid "Recently Watched"
 msgstr "সম্প্রতি দেখা"
 
@@ -5645,18 +5702,18 @@ msgid "Now"
 msgstr "এখন"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:503
 msgid "Earlier"
 msgstr "আগে"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:147
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:503
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:191
 msgid "Later"
 msgstr "পরে"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:420
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "No guide for this channel"
 msgstr "এই চ্যানেলের কোনো গাইড নেই"
 
@@ -5676,82 +5733,82 @@ msgstr "এখানে কিছু নেই"
 msgid "S%1 E%2"
 msgstr "S%1 E%2"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:497
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:502
 msgid "Archive"
 msgstr "আর্কাইভ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:527
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:45
 msgid "Programme"
 msgstr "প্রোগ্রাম"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "Loading the guide…"
 msgstr "গাইড লোড হচ্ছে…"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:581
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:586
 msgid "From the archive, %1"
 msgstr "আর্কাইভ থেকে, %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:582
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:587
 msgid "%1 left"
 msgstr "%1 বাকি"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:583
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:588
 msgid "in %1"
 msgstr "%1 পরে"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:584
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:589
 msgid "ended %1 ago"
 msgstr "%1 আগে শেষ হয়েছে"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:585
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:590
 msgid "on now"
 msgstr "এখন চলছে"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:716
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:721
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:53
 msgid "Watch from the Start"
 msgstr "শুরু থেকে দেখুন"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:734
 msgid "Reminder Set"
 msgstr "রিমাইন্ডার সেট করা হয়েছে"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:734
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:50
 msgid "Remind Me"
 msgstr "আমাকে মনে করিয়ে দিন"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:739
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:744
 msgid "Back to Live"
 msgstr "লাইভে ফিরে যান"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:783
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:788
 msgid "Programme before"
 msgstr "আগের প্রোগ্রাম"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:789
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794
 msgid "Programme after"
 msgstr "পরের প্রোগ্রাম"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "পরবর্তী চ্যানেল"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "পূর্ববর্তী চ্যানেল"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:914
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:919
 msgid "Previous group"
 msgstr "আগের গ্রুপ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:923
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:928
 msgid "All Channels"
 msgstr "সব চ্যানেল"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:938
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:943
 msgid "Next group"
 msgstr "পরের গ্রুপ"
 
@@ -5848,12 +5905,6 @@ msgstr "চ্যানেল হালনাগাদ হচ্ছে…"
 msgid "Updated %1 at %2"
 msgstr "হালনাগাদ হয়েছে %1, %2-এ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
-msgid "Move up"
-msgstr "উপরে সরান"
-
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
 msgid "Turn Off"
 msgstr "বন্ধ করুন"
@@ -5919,11 +5970,6 @@ msgstr "সরবরাহকারীর প্যানেলের ঠিক�
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
 msgid "e.g., http://example.com:8080"
 msgstr "যেমন, http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
-msgid "User name"
-msgstr "ব্যবহারকারীর নাম"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
 msgid "(empty: unchanged)"
@@ -6066,8 +6112,8 @@ msgstr "MC"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:96
+#: modules/gui/qt/player/qml/CompactLibrary.qml:311
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "প্লেলিস্ট"
@@ -6078,8 +6124,8 @@ msgstr "প্লেলিস্ট"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:316
+#: modules/gui/qt/player/qml/CompactLibrary.qml:527
 msgid "Artists"
 msgstr "শিল্পী"
 
@@ -6089,8 +6135,8 @@ msgstr "শিল্পী"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:315
+#: modules/gui/qt/player/qml/CompactLibrary.qml:526
 msgid "Albums"
 msgstr "অ্যালবাম"
 
@@ -6099,8 +6145,8 @@ msgstr "অ্যালবাম"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:301
-#: modules/gui/qt/player/qml/CompactLibrary.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:317
+#: modules/gui/qt/player/qml/CompactLibrary.qml:528
 msgid "Genres"
 msgstr "ধারা"
 
@@ -6226,8 +6272,8 @@ msgstr "আবার যাচাই করুন"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:83
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
 msgid "Recent"
 msgstr "সাম্প্রতিক"
 
@@ -6266,11 +6312,6 @@ msgstr ""
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:166
 msgid "hidden"
 msgstr "লুকানো"
-
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
-msgid "Move down"
-msgstr "নিচে সরান"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
@@ -6328,15 +6369,17 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles একটি অবৈধ লগইন সেশন দিয়েছে।"
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
+#: modules/gui/qt/player/subtitle_providers.cpp:1344
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles ডাউনলোড ব্যর্থ হয়েছে। আপনার কোটা যাচাই করুন।"
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
+#: modules/gui/qt/player/subtitle_providers.cpp:1355
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles কোনো বৈধ সাবটাইটেল ডাউনলোড লিঙ্ক দেয়নি।"
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
-#: modules/gui/qt/player/subtitle_search.cpp:481
+#: modules/gui/qt/player/subtitle_search.cpp:654
 msgid "This build can't search the internet."
 msgstr "এই বিল্ড ইন্টারনেটে খুঁজতে পারে না।"
 
@@ -6420,12 +6463,12 @@ msgstr ""
 "সাবটাইটেল ফাইল (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;সব ফাইল (*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:599
 msgid "Choose the folder of the audio tracks"
 msgstr "অডিও ট্র্যাকের ফোল্ডার বেছে নিন"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:600
 msgid "Choose the folder of the subtitles"
 msgstr "সাবটাইটেলের ফোল্ডার বেছে নিন"
 
@@ -6539,8 +6582,8 @@ msgstr[0] "%1টি গান"
 msgstr[1] "%1টি গান"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:795
-#: modules/gui/qt/player/qml/CompactLibrary.qml:809
+#: modules/gui/qt/player/qml/CompactLibrary.qml:833
+#: modules/gui/qt/player/qml/CompactLibrary.qml:847
 msgid "Play all"
 msgstr "সব চালান"
 
@@ -6568,25 +6611,25 @@ msgstr "অজানা শিল্পী"
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "দেখা চালিয়ে যান"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:593
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "নতুন ভিডিও"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:312
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "আবার শুনুন"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:677
-#: modules/gui/qt/player/qml/CompactLibrary.qml:406
+#: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "নতুন মিউজিক"
 
@@ -6605,7 +6648,7 @@ msgid "Alphabetic"
 msgstr "বর্ণানুক্রমিক"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:383
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "প্রায়ই দেখা ফোল্ডার"
 
@@ -6940,13 +6983,13 @@ msgid "Media library"
 msgstr "মিডিয়া লাইব্রেরি"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:619
+#: modules/gui/qt/player/qml/CompactLibrary.qml:639
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "মিডিয়া খুলুন"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:762
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
 msgid "Add folder to library…"
 msgstr "লাইব্রেরিতে ফোল্ডার যোগ করুন…"
 
@@ -7035,7 +7078,7 @@ msgstr[0] "%1টি ভিডিও"
 msgstr[1] "%1টি ভিডিও"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:849
+#: modules/gui/qt/player/qml/CompactLibrary.qml:889
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
@@ -7069,146 +7112,153 @@ msgstr "সাবটাইটেল যোগ করুন"
 msgid "Download %1"
 msgstr "%1টি ডাউনলোড করুন"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:188
 msgid "%1 linked, %2 failed."
 msgstr "%1টি যুক্ত হয়েছে, %2টি ব্যর্থ হয়েছে।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:189
 msgid "Nothing was linked: %1 failed."
 msgstr "কিছুই যুক্ত হয়নি: %1টি ব্যর্থ হয়েছে।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From Computer"
 msgstr "কম্পিউটার থেকে"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From Link"
 msgstr "লিঙ্ক থেকে"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles থেকে"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From the Internet"
 msgstr "ইন্টারনেট থেকে"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:648
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "সাবটাইটেল ফাইলের সরাসরি HTTPS লিঙ্ক"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:663
 msgid "Title or episode"
 msgstr "শিরোনাম বা পর্ব"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:694
 msgid "%1, else %2"
 msgstr "%1, নইলে %2"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:701
 msgid "Every subtitle service is off (Subtitles panel of the player)"
 msgstr "সব সাবটাইটেল সেবা বন্ধ (প্লেয়ারের সাবটাইটেল প্যানেল)"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:865
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API কী"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "এখনও কোনো কী নেই? এটি বিনামূল্যে: opensubtitles.com-এ সাইন আপ করুন, \"API consumers\" খুলুন, \"New consumer\" বেছে নিন, এটির একটি নাম দিন (VLC Redesign) এবং এর API কী আপনার অ্যাকাউন্টের ব্যবহারকারীর নাম ও পাসওয়ার্ডসহ এখানে কপি করুন।"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:953
+msgid ""
+"No key yet? It's free: sign up on opensubtitles.com, open API consumers, "
+"choose New consumer, name it (VLC Redesign) and copy its API key here, with "
+"your account's username and password."
+msgstr ""
+"এখনও কোনো কী নেই? এটি বিনামূল্যে: opensubtitles.com-এ সাইন আপ করুন, \"API "
+"consumers\" খুলুন, \"New consumer\" বেছে নিন, এটির একটি নাম দিন (VLC Redesign) "
+"এবং এর API কী আপনার অ্যাকাউন্টের ব্যবহারকারীর নাম ও পাসওয়ার্ডসহ এখানে কপি করুন।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:951
 msgid "Open API consumers"
 msgstr "\"API consumers\" খুলুন"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1030
 msgid "Waiting…"
 msgstr "অপেক্ষা করা হচ্ছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1031
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:395
 msgid "Searching…"
 msgstr "খোঁজা হচ্ছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1033
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:474
 msgid "For this file"
 msgstr "এই ফাইলের জন্য"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1034
 msgid "Best guess"
 msgstr "সেরা অনুমান"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1035
 msgid "Not found"
 msgstr "পাওয়া যায়নি"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1036
 msgid "No answer"
 msgstr "কোনো উত্তর নেই"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1037
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "Downloading…"
 msgstr "ডাউনলোড হচ্ছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1038
 msgid "Linked"
 msgstr "যুক্ত"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
 msgid "Don't download"
 msgstr "ডাউনলোড করবেন না"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1141
 msgid "Subtitle for %1"
 msgstr "%1-এর সাবটাইটেল"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
 msgid "Downloading and linking the subtitles chosen…"
 msgstr "নির্বাচিত সাবটাইটেল ডাউনলোড ও যুক্ত করা হচ্ছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1162
 msgid "Searching the internet: %1 of %2 videos done…"
 msgstr "ইন্টারনেটে খোঁজা হচ্ছে: %2টির মধ্যে %1টি ভিডিও সম্পন্ন…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1163
 msgid "For the file: %1 · By title: %2 · Not found: %3"
 msgstr "এই ফাইলের জন্য: %1 · শিরোনাম অনুযায়ী: %2 · পাওয়া যায়নি: %3"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1166
 msgid "No answer: %1"
 msgstr "কোনো উত্তর নেই: %1"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1189
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1199
 msgid "Working on subtitles…"
 msgstr "সাবটাইটেল নিয়ে কাজ চলছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1194
 msgid "Searching OpenSubtitles…"
 msgstr "OpenSubtitles-এ খোঁজা হচ্ছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1196
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "সাবটাইটেল ফাইল দেখতে OpenSubtitles-এ খুঁজুন।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1199
 msgid "Working on audio tracks…"
 msgstr "অডিও ট্র্যাক নিয়ে কাজ চলছে…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1202
 msgid "Enter a direct link to a subtitle file above."
 msgstr "উপরে একটি সাবটাইটেল ফাইলের সরাসরি লিঙ্ক দিন।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1203
 msgid "No audio file in this folder: choose another one above."
 msgstr "এই ফোল্ডারে কোনো অডিও ফাইল নেই: উপরে অন্য একটি বেছে নিন।"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1204
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "এই ফোল্ডারে কোনো সাবটাইটেল ফাইল নেই: উপরে অন্য একটি বেছে নিন।"
 
@@ -7547,82 +7597,95 @@ msgstr "স্লিপ টাইমার নির্ধারণের আগ
 msgid "Choose a duration between one second and 24 hours."
 msgstr "এক সেকেন্ড থেকে 24 ঘণ্টার মধ্যে একটি সময়কাল বেছে নিন।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:87
+#: modules/gui/qt/player/subtitle_providers.cpp:101
 msgid "%1 didn't answer."
 msgstr "%1 সাড়া দেয়নি।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:89
+#: modules/gui/qt/player/subtitle_providers.cpp:103
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1 একটু অপেক্ষা করতে বলছে (অনেক বেশি অনুসন্ধান)।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:90
+#: modules/gui/qt/player/subtitle_providers.cpp:104
 msgid "%1 didn't answer (%2)."
 msgstr "%1 সাড়া দেয়নি (%2)।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:858
+#: modules/gui/qt/player/subtitle_providers.cpp:1187
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "সব ভাষা · সিনেমা ও সিরিজ · আপনার ফাইলের জন্য তৈরিগুলো খুঁজে দেয়"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:860
+#: modules/gui/qt/player/subtitle_providers.cpp:1189
+msgid "With your own free key · all languages"
+msgstr "আপনার নিজের বিনামূল্যের কী দিয়ে · সব ভাষা"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1193
+msgid "With your own free key · strong in Arabic, many languages"
+msgstr "আপনার নিজের বিনামূল্যের কী দিয়ে · আরবিতে সমৃদ্ধ, অনেক ভাষা"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1196
+msgid "With your own free key · the Subscene archive, many languages"
+msgstr "আপনার নিজের বিনামূল্যের কী দিয়ে · Subscene আর্কাইভ, অনেক ভাষা"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1199
 msgid "Hebrew · movies and series"
 msgstr "হিব্রু · সিনেমা ও সিরিজ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:862
+#: modules/gui/qt/player/subtitle_providers.cpp:1201
 msgid "Series · many languages"
 msgstr "সিরিজ · অনেক ভাষা"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:864
+#: modules/gui/qt/player/subtitle_providers.cpp:1203
 msgid "Movies · many languages"
 msgstr "সিনেমা · অনেক ভাষা"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:910
+#: modules/gui/qt/player/subtitle_providers.cpp:1414
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "এই সাবটাইটেলটি একটি RAR আর্কাইভ হিসেবে আসে, যা এখানে খোলা যায় না।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-#: modules/gui/qt/player/subtitle_search.cpp:1140
+#: modules/gui/qt/player/subtitle_providers.cpp:1426
+#: modules/gui/qt/player/subtitle_providers.cpp:1459
+#: modules/gui/qt/player/subtitle_search.cpp:1373
 msgid "The subtitle couldn't be unpacked."
 msgstr "সাবটাইটেল আনপ্যাক করা যায়নি।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:956
+#: modules/gui/qt/player/subtitle_providers.cpp:1460
 msgid "The archive has no subtitle in it."
 msgstr "আর্কাইভে কোনো সাবটাইটেল নেই।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:968
+#: modules/gui/qt/player/subtitle_providers.cpp:1472
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles এই সাবটাইটেলটি তার অর্থপ্রদানকারী সদস্যদের জন্য রাখে। অন্য একটি "
 "বেছে নিন।"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:974
+#: modules/gui/qt/player/subtitle_providers.cpp:1478
 msgid "The subtitle is empty."
 msgstr "সাবটাইটেলটি খালি।"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1017
-#: modules/gui/qt/player/subtitle_search.cpp:1100
+#: modules/gui/qt/player/subtitle_search.cpp:1236
+#: modules/gui/qt/player/subtitle_search.cpp:1333
 msgid "No connection to the internet."
 msgstr "ইন্টারনেট সংযোগ নেই।"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1020
+#: modules/gui/qt/player/subtitle_search.cpp:1239
 msgid "The video couldn't be identified from its name."
 msgstr "নাম থেকে ভিডিওটি শনাক্ত করা যায়নি।"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1021
+#: modules/gui/qt/player/subtitle_search.cpp:1240
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "\"%1\" পাওয়া যায়নি। এর শিরোনাম দিয়ে খুঁজুন।"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1023
+#: modules/gui/qt/player/subtitle_search.cpp:1242
 msgid "No subtitles were found for %1."
 msgstr "%1-এর জন্য কোনো সাবটাইটেল পাওয়া যায়নি।"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1065
-#: modules/gui/qt/player/subtitle_search.cpp:1101
+#: modules/gui/qt/player/subtitle_search.cpp:1284
+#: modules/gui/qt/player/subtitle_search.cpp:1320
+#: modules/gui/qt/player/subtitle_search.cpp:1334
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "সাবটাইটেল ডাউনলোড করা যায়নি (%1)।"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1131
+#: modules/gui/qt/player/subtitle_search.cpp:1364
 msgid "The subtitle couldn't be saved."
 msgstr "সাবটাইটেল সংরক্ষণ করা যায়নি।"
 
@@ -7794,7 +7857,7 @@ msgid "Close navigation"
 msgstr "নেভিগেশন বন্ধ করুন"
 
 #: modules/gui/qt/player/qml/MinimalView.qml:181
-#: modules/gui/qt/player/qml/PlayerView.qml:958
+#: modules/gui/qt/player/qml/PlayerView.qml:963
 msgid "2× speed"
 msgstr "২× গতি"
 
@@ -7810,73 +7873,73 @@ msgstr "প্রিসেট:"
 msgid "Player"
 msgstr "প্লেয়ার"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:967
+#: modules/gui/qt/player/qml/PlayerView.qml:972
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "সাবটাইটেলের আকার %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1122
+#: modules/gui/qt/player/qml/PlayerView.qml:1127
 msgid "Subtitles on the TV: %1"
 msgstr "টিভিতে সাবটাইটেল: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1122
+#: modules/gui/qt/player/qml/PlayerView.qml:1127
 msgid "Subtitles off on the TV"
 msgstr "টিভিতে সাবটাইটেল বন্ধ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "Not playing on %1"
 msgstr "%1-এ চলছে না"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
-#: modules/gui/qt/player/qml/PlayerView.qml:1362
+#: modules/gui/qt/player/qml/PlayerView.qml:1240
+#: modules/gui/qt/player/qml/PlayerView.qml:1367
 msgid "Connecting to %1…"
 msgstr "%1-এর সাথে সংযোগ করা হচ্ছে…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1237
+#: modules/gui/qt/player/qml/PlayerView.qml:1242
 msgid "Playing on %1"
 msgstr "%1-এ চলছে"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1238
+#: modules/gui/qt/player/qml/PlayerView.qml:1243
 msgid "The sound plays on %1"
 msgstr "শব্দ %1-এ বাজছে"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1263
+#: modules/gui/qt/player/qml/PlayerView.qml:1268
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "এখান থেকে বিরতি দিন, সিক করুন ও সাবটাইটেল বদলান: টিভি তা অনুসরণ করবে।"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1280
+#: modules/gui/qt/player/qml/PlayerView.qml:1285
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows Firewall মিডিয়া পড়ার জন্য %1-কে এই কম্পিউটারে সংযোগ করতে দিচ্ছে না।"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1297
 msgid "Waiting for Windows…"
 msgstr "Windows-এর জন্য অপেক্ষা করা হচ্ছে…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1293
+#: modules/gui/qt/player/qml/PlayerView.qml:1298
 msgid "Allow on public networks too"
 msgstr "পাবলিক নেটওয়ার্কেও অনুমতি দিন"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1294
+#: modules/gui/qt/player/qml/PlayerView.qml:1299
 msgid "Allow on private networks"
 msgstr "প্রাইভেট নেটওয়ার্কে অনুমতি দিন"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1306
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
 msgid "Try again"
 msgstr "আবার চেষ্টা করুন"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1311
-#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1316
+#: modules/gui/qt/player/qml/PlayerView.qml:1326
 msgid "Play here"
 msgstr "এখানে চালান"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1321
-#: modules/gui/qt/player/qml/PlayerView.qml:1372
+#: modules/gui/qt/player/qml/PlayerView.qml:1326
+#: modules/gui/qt/player/qml/PlayerView.qml:1377
 msgid "Stop casting"
 msgstr "কাস্টিং বন্ধ করুন"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1363
+#: modules/gui/qt/player/qml/PlayerView.qml:1368
 msgid "Also on %1"
 msgstr "%1-এও"
 
@@ -8006,45 +8069,45 @@ msgstr "ভলিউম %1%"
 msgid "Play audio to select a visualization."
 msgstr "দৃশ্যায়ন নির্বাচন করতে অডিও চালান।"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:200
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:314
+#: modules/gui/qt/player/qml/CompactLibrary.qml:525
 msgid "Songs"
 msgstr "গান"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:727
+#: modules/gui/qt/player/qml/CompactLibrary.qml:747
 msgid "More"
 msgstr "আরও"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:752
-#: modules/gui/qt/player/qml/CompactLibrary.qml:767
+#: modules/gui/qt/player/qml/CompactLibrary.qml:790
+#: modules/gui/qt/player/qml/CompactLibrary.qml:805
 msgid "Rescan library"
 msgstr "লাইব্রেরি পুনরায় স্ক্যান করুন"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:777
+#: modules/gui/qt/player/qml/CompactLibrary.qml:815
 msgid "Add network stream…"
 msgstr "নেটওয়ার্ক স্ট্রিম যোগ করুন…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:786
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
+#: modules/gui/qt/player/qml/CompactLibrary.qml:824
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Create playlist"
 msgstr "প্লেলিস্ট তৈরি করুন"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:800
-#: modules/gui/qt/player/qml/CompactLibrary.qml:814
+#: modules/gui/qt/player/qml/CompactLibrary.qml:838
+#: modules/gui/qt/player/qml/CompactLibrary.qml:852
 msgid "Add all to queue"
 msgstr "সব কিউতে যোগ করুন"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:819
+#: modules/gui/qt/player/qml/CompactLibrary.qml:857
 msgid "Up one folder"
 msgstr "এক ফোল্ডার উপরে"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:829
+#: modules/gui/qt/player/qml/CompactLibrary.qml:867
 msgid "Open in the library"
 msgstr "লাইব্রেরিতে খুলুন"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/player/qml/CompactLibrary.qml:951
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
@@ -8054,55 +8117,55 @@ msgstr "লাইব্রেরিতে খুলুন"
 msgid "Sort"
 msgstr "সাজান"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:923
+#: modules/gui/qt/player/qml/CompactLibrary.qml:986
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "শিরোনাম A-Z"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:927
+#: modules/gui/qt/player/qml/CompactLibrary.qml:990
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "শিরোনাম Z-A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:931
+#: modules/gui/qt/player/qml/CompactLibrary.qml:994
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "নতুনগুলো আগে"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:936
+#: modules/gui/qt/player/qml/CompactLibrary.qml:999
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "পুরোনোগুলো আগে"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1018
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
 msgid "Grid View"
 msgstr "গ্রিড ভিউ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
 msgid "List View"
 msgstr "তালিকা ভিউ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1133
 msgid "See all"
 msgstr "সব দেখুন"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1279
 msgid "Add Network Stream"
 msgstr "নেটওয়ার্ক স্ট্রিম যোগ করুন"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1388
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1404
 msgid "The media library is not available."
 msgstr "মিডিয়া লাইব্রেরি উপলব্ধ নেই।"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1389
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1405
 msgid "Nothing here yet."
 msgstr "এখানে এখনো কিছু নেই।"
 
@@ -8389,67 +8452,67 @@ msgstr "লাইব্রেরিতে যুক্ত করতে একট
 msgid "Load a subtitle file for playback"
 msgstr "প্লেব্যাকের জন্য একটি সাবটাইটেল ফাইল লোড করুন"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:344
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:374
 msgid "Title of the movie or series"
 msgstr "সিনেমা বা সিরিজের শিরোনাম"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:438
 msgid "Second"
 msgstr "দ্বিতীয়"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:409
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "প্রায়ই ব্যবহৃত"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
 msgid "Looking for subtitles…"
 msgstr "সাবটাইটেল খোঁজা হচ্ছে…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:466
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
 msgid "No subtitles yet"
 msgstr "এখনো কোনো সাবটাইটেল নেই"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:540
 msgid "Position and size"
 msgstr "অবস্থান ও আকার"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:518
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:548
 msgctxt "subtitles"
 msgid "Position"
 msgstr "অবস্থান"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:521
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:535
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:551
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:565
 msgid "%1%"
 msgstr "%1%"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:522
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:552
 msgid "Move the subtitles down"
 msgstr "সাবটাইটেল নিচে সরান"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:523
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:553
 msgid "Move the subtitles up"
 msgstr "সাবটাইটেল ওপরে সরান"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:534
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:564
 msgctxt "subtitles"
 msgid "Size"
 msgstr "আকার"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:536
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:566
 msgid "Smaller subtitles"
 msgstr "ছোট সাবটাইটেল"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:537
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
 msgid "Larger subtitles"
 msgstr "বড় সাবটাইটেল"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:804
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:809
 msgid "For the hearing impaired"
 msgstr "শ্রবণপ্রতিবন্ধীদের জন্য"
 
@@ -9111,39 +9174,39 @@ msgstr "%1 এখন অন্য কিছু চালাচ্ছে।"
 msgid "%1 couldn't play the video."
 msgstr "%1 ভিডিওটি চালাতে পারেনি।"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Asturian"
 msgstr "আস্তুরীয়"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Central Kurdish"
 msgstr "মধ্য কুর্দি"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Montenegrin"
 msgstr "মন্টিনিগ্রিন"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:66
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Dari"
 msgstr "দারি"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:68
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Cantonese"
 msgstr "ক্যান্টোনিজ"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:69
+#: modules/gui/qt/util/subtitle_preferences.cpp:73
 msgid "Standard Moroccan Tamazight"
 msgstr "প্রমিত মরোক্কান তামাজিত"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:70
+#: modules/gui/qt/util/subtitle_preferences.cpp:74
 msgid "Portuguese (Brazil)"
 msgstr "পর্তুগিজ (ব্রাজিল)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:71
+#: modules/gui/qt/util/subtitle_preferences.cpp:75
 msgid "Chinese (Traditional)"
 msgstr "চীনা (প্রথাগত)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:72
+#: modules/gui/qt/util/subtitle_preferences.cpp:76
 msgid "Spanish (Latin America)"
 msgstr "স্প্যানিশ (লাতিন আমেরিকা)"
 

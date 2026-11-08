@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-07 18:12+0000\n"
+"POT-Creation-Date: 2026-11-08 07:06+0000\n"
 "PO-Revision-Date: 2017-09-20 03:43+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Armenian (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -901,8 +901,8 @@ msgid "Input access and codecs"
 msgstr "Մուտքի հասանելիություն և կոդեկներ"
 
 #: src/libvlc-module.c:2153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:533
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:535
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -1491,23 +1491,23 @@ msgstr "Հաջորդ կադրի սխալ"
 msgid "Previous frame error"
 msgstr "Նախորդ կադրի սխալ"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:60
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Cebuano"
 msgstr "Սեբուերեն"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:63
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Hawaiian"
 msgstr "Հավայերեն"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:64
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Hmong"
 msgstr "Հմոնգերեն"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:65
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Manipuri"
 msgstr "Մանիպուրի"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:67
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Syriac"
 msgstr "Ասորերեն"
 
@@ -1556,7 +1556,7 @@ msgstr "Անհրաժեշտ է Windows 10, տարբերակ 1809 կամ ավել�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:559
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:314
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:79
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
@@ -1722,7 +1722,7 @@ msgid "Add to Media Library"
 msgstr "Ավելացնել մեդիա գրադարանում"
 
 #: modules/gui/macosx/library/VLCLibraryMenuController.m:284
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:141
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:40
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -2028,11 +2028,11 @@ msgstr "Փոփոխված"
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:237
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
 #: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:79
-#: modules/gui/qt/player/qml/CompactLibrary.qml:198
-#: modules/gui/qt/player/qml/CompactLibrary.qml:293
+#: modules/gui/qt/player/qml/CompactLibrary.qml:92
+#: modules/gui/qt/player/qml/CompactLibrary.qml:213
+#: modules/gui/qt/player/qml/CompactLibrary.qml:308
 msgid "Videos"
 msgstr "Վիդեոներ"
 
@@ -2763,8 +2763,8 @@ msgid "Second language (when there are none)"
 msgstr "Երկրորդ լեզու (երբ ենթագրեր չկան)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:122
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
 msgid "Find subtitles online when a video has none in these languages"
 msgstr "Գտնել ենթագրեր առցանց, երբ վիդեոն այս լեզուներով ենթագրեր չունի"
 
@@ -2783,13 +2783,13 @@ msgstr "Ընտրեք ձեր նախընտրած թեման և գույնը։"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:92
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 msgid "Light"
 msgstr "Բաց"
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:33
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:432
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:30
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
@@ -3646,12 +3646,12 @@ msgid "Layout direction"
 msgstr "Դասավորության ուղղություն"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 msgid "Theme"
 msgstr "Թեմա"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:428
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
 #: modules/gui/qt/qt.cpp:340
 msgid "Accent color"
 msgstr "Շեշտադրման գույն"
@@ -3668,34 +3668,78 @@ msgstr "Հետևել համակարգի շեշտադրման գույնին"
 msgid "VLC follows the system language."
 msgstr "VLC-ն հետևում է համակարգի լեզվին։"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:20
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
 msgid "Second Language & Online Subtitles"
 msgstr "Երկրորդ լեզու և առցանց ենթագրեր"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:82
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:154
 msgid "Second language (when there are none in the preferred one)"
 msgstr "Երկրորդ լեզու (երբ նախընտրելի լեզվով ենթագրեր չկան)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:188
 msgid "Show both languages at once (dual subtitles)"
 msgstr "Ցույց տալ երկու լեզուներն էլ միաժամանակ (կրկնակի ենթագրեր)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:132
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+msgid "Languages to search"
+msgstr "Որոնման լեզուներ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:250
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
+msgid "Move up"
+msgstr "Տեղափոխել վեր"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:258
+#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
+msgid "Move down"
+msgstr "Տեղափոխել վար"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:297
+msgid "Add a language"
+msgstr "Ավելացնել լեզու"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+msgid "Every other language too"
+msgstr "Նաև մնացած բոլոր լեզուները"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:319
+msgid "Fewer languages: a faster search"
+msgstr "Ավելի քիչ լեզուներ՝ ավելի արագ որոնում"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:22
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:596
 msgid "Subtitle services"
 msgstr "Ենթագրերի ծառայություններ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:191
-msgid ""
-"To find subtitles, the services turned on get the video's title, its IMDb "
-"id, its file name and hash (made from a part of the file), and nothing else."
-msgstr ""
-"Ենթագրեր գտնելու համար միացված ծառայությունները ստանում են վիդեոյի "
-"անվանումը, դրա IMDb id-ն, ֆայլի անունը և հեշը (ստացված ֆայլի մի մասից), և "
-"ուրիշ ոչինչ։"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:308
+#: modules/gui/qt/player/subtitle_providers.cpp:97
+msgid "Key refused: check it"
+msgstr "Բանալին մերժվեց, ստուգեք այն"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:309
+#: modules/gui/qt/player/subtitle_providers.cpp:99
+msgid "Sign-in refused: check it"
+msgstr "Մուտքը մերժվեց, ստուգեք տվյալները"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:339
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+msgid "User name"
+msgstr "Օգտվողի անուն"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:597
+msgid "Get a free key"
+msgstr "Ստանալ անվճար բանալի"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:53
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:634
 msgid "Current output device"
 msgstr "Ընթացիկ ելքի սարք"
 
@@ -3712,7 +3756,7 @@ msgstr ""
 "պահպանում է այս ընտրությունը, քանի դեռ այն ակտիվ է։"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -3725,7 +3769,7 @@ msgstr "Ախտորոշում"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:604
 msgid "Developer mode"
 msgstr "Մշակողի ռեժիմ"
 
@@ -3785,143 +3829,143 @@ msgstr "Արտադրողականության կարգավորումներ"
 msgid "Recording, Casting & Streaming Out"
 msgstr "Գրանցում, հեռարձակում և հոսքավորում"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:295
 msgid "Search results"
 msgstr "Որոնման արդյունքներ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:429
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:431
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:34
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:47
 msgid "Interface language"
 msgstr "Ինտերֆեյսի լեզու"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:438
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:445
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:440
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:447
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:54
 #: modules/gui/qt/menus/qml/MainMenu.qml:156
 msgid "Keyboard Shortcuts"
 msgstr "Ստեղնային դյուրանցումներ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:439
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:450
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:441
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:452
 msgid "Edit Keyboard Shortcuts"
 msgstr "Խմբագրել ստեղնային դյուրանցումները"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:440
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:455
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:442
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:457
 msgid "Reset all shortcuts"
 msgstr "Վերակայել բոլոր դյուրանցումները"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:449
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:451
 msgid "Defaults"
 msgstr "Լռելյայն արժեքներ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:483
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:485
 msgid "Set a shortcut"
 msgstr "Սահմանել դյուրանցում"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:491
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:493
 msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] "ևս %1 համապատասխանող դյուրանցում"
 msgstr[1] "ևս %1 համապատասխանող դյուրանցում"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:493
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:495
 msgid "Show all"
 msgstr "Ցույց տալ բոլորը"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:541
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr "Ուղարկել նվագարկված թրեքերը last.fm-ին"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:542
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Last.fm username"
 msgstr "Last.fm օգտանուն"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:542
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Last.fm password"
 msgstr "Last.fm գաղտնաբառ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:543
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Last.fm submission URL"
 msgstr "Last.fm ուղարկման URL"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:554
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:556
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:558
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:68
 msgid "Sidebar"
 msgstr "Կողային վահանակ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:554
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:560
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:556
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:562
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:32
 msgid "Edit Sidebar"
 msgstr "Խմբագրել կողային վահանակը"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:555
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:559
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:557
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:561
 msgid "Order and pages of the sidebar"
 msgstr "Կողային վահանակի հերթականությունը և էջերը"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
 msgid "Dual subtitles"
 msgstr "Կրկնակի ենթագրեր"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
 msgid "Second language"
 msgstr "Երկրորդ լեզու"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:584
 msgid "OpenSubtitles"
 msgstr "OpenSubtitles"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:658
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:672
 msgid "No matching settings"
 msgstr "Համապատասխան կարգավորումներ չկան"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:659
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:673
 msgid "No settings are available for this category on this VLC installation"
 msgstr "VLC-ի այս տեղադրման մեջ այս բաժնի համար կարգավորումներ հասանելի չեն"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:741
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:757
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:755
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:771
 msgid "Show installed add-ons only"
 msgstr "Ցույց տալ միայն տեղադրված հավելումները"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:773
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:787
 msgid "No advanced options on this page."
 msgstr "Այս էջում ընդլայնված ընտրանքներ չկան։"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:785
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
 msgid "Welcome setup"
 msgstr "Սկզբնական կարգավորում"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:799
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
 msgid "All VLC options"
 msgstr "VLC-ի բոլոր ընտրանքները"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:815
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
 msgid "Reset all settings"
 msgstr "Վերակայել բոլոր կարգավորումները"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:829
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:843
 msgid "Reset all settings?"
 msgstr "Վերակայե՞լ բոլոր կարգավորումները"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:830
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:844
 msgid "Every setting of %1 goes back to its default."
 msgstr "%1-ի յուրաքանչյուր կարգավորում կվերադառնա իր լռելյայն արժեքին։"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:884
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:898
 msgid "Discard changes"
 msgstr "Չեղարկել փոփոխությունները"
 
@@ -4139,7 +4183,7 @@ msgid "Lower"
 msgstr "Ավելի ցածր"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:115
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:520
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:550
 msgid "Usual"
 msgstr "Սովորական"
 
@@ -4379,9 +4423,10 @@ msgstr "Ուղիղ TV (IPTV) հավելում"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:951
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:582
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
+#: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "Ուղեցույց"
 
@@ -5189,6 +5234,7 @@ msgstr "ՈՉ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:39
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:91
+#: modules/gui/qt/player/qml/CompactLibrary.qml:781
 msgid "Sources"
 msgstr "Աղբյուրներ"
 
@@ -5199,6 +5245,7 @@ msgstr "Թարմացվում է…"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:263
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:665
+#: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
 msgstr[0] "%1 ալիք"
@@ -5237,7 +5284,8 @@ msgid "Free channel lists"
 msgstr "Անվճար ալիքների ցանկեր"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:221
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1549
 msgid "Browse the Catalog"
 msgstr "Դիտել կատալոգը"
 
@@ -5555,48 +5603,48 @@ msgstr "Ուղեցույցը չի նշում, թե ինչ է հիմա եթերո
 msgid "No channel %1"
 msgstr "%1 ալիք չկա"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1183
+#: modules/gui/qt/iptv/iptv_addon.cpp:1187
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 ր"
 msgstr[1] "%1 ր"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1186
+#: modules/gui/qt/iptv/iptv_addon.cpp:1190
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 ժ"
 msgstr[1] "%1 ժ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1186 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1190 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 ժ %2 ր"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1194
+#: modules/gui/qt/iptv/iptv_addon.cpp:1198
 msgid "Today"
 msgstr "Այսօր"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1196
+#: modules/gui/qt/iptv/iptv_addon.cpp:1200
 msgid "Tomorrow"
 msgstr "Վաղը"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1198
+#: modules/gui/qt/iptv/iptv_addon.cpp:1202
 msgid "Yesterday"
 msgstr "Երեկ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:132
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:727
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:31
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
 #: modules/gui/qt/iptv/qml/TvToast.qml:75
 msgid "Watch"
 msgstr "Դիտել"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:134
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:33
 msgid "Watch from the start"
 msgstr "Դիտել սկզբից"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:451
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:41
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:456
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -5605,11 +5653,11 @@ msgstr "Դիտել սկզբից"
 msgid "Favorite"
 msgstr "Ընտրյալ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:145
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 msgid "Show in the Guide"
 msgstr "Ցուցադրել ուղեցույցում"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:150
+#: modules/gui/qt/iptv/qml/TvChannelMenu.qml:46
 msgid "What's On"
 msgstr "Ինչ է եթերում"
 
@@ -5622,8 +5670,8 @@ msgid "Next at %1"
 msgstr "Հաջորդը՝ %1-ին"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:433
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:708
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:378
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:671
 msgid "%1 d"
 msgid_plural "%1 d"
@@ -5631,7 +5679,7 @@ msgstr[0] "%1 օր"
 msgstr[1] "%1 օր"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:220
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:709
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:714
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "Հետադարձ դիտում՝ վերջին %1 օրը"
@@ -5650,11 +5698,13 @@ msgstr "Ֆիլմեր"
 msgid "Series"
 msgstr "Սերիալներ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:196
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:180
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1518
 msgid "Watch TV in VLC"
 msgstr "Դիտեք TV VLC-ում"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:206
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:190
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1528
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
@@ -5663,56 +5713,62 @@ msgstr ""
 "մուտքի տվյալները, կամ կատալոգից որևէ անվճար ալիքների ցանկ։ Դրա ծրագրի "
 "ուղեցույցը գալիս է դրա հետ։"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:216
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:200
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:140
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:335
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1543
 msgid "Add a Link"
 msgstr "Ավելացնել հղում"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:307
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:252
 msgid "Updating the guide of %1… %2 MB"
 msgstr "Թարմացվում է %1-ի ուղեցույցը… %2 ՄԲ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:308
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:253
 msgid "Updating the channels of %1…"
 msgstr "Թարմացվում են %1-ի ալիքները…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:311
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:256
 msgid "%1 could not be loaded: %2"
 msgstr "%1-ը հնարավոր չեղավ բեռնել՝ %2"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:505
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:450
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:580
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1486
 msgid "No channel matches the search"
 msgstr "Ոչ մի ալիք չի համապատասխանում որոնմանը"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:506
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:451
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1487
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr "Դեռ ընտրյալ ալիք չկա․ ավելացնելու համար աջ սեղմեք ալիքի վրա"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:507
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:452
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1488
 msgid "No channel watched yet"
 msgstr "Դեռ ոչ մի ալիք չի դիտվել"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:508
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:453
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1489
 msgid "Loading the channels…"
 msgstr "Ալիքները բեռնվում են…"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:509
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:987
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:454
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1490
 msgid "No channels"
 msgstr "Ալիքներ չկան"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:244
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:924
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:510
-#: modules/gui/qt/player/qml/CompactLibrary.qml:404
+#: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "Ընտրյալներ"
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:245
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:925
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:31
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:930
 msgid "Recently Watched"
 msgstr "Վերջերս դիտված"
 
@@ -5721,18 +5777,18 @@ msgid "Now"
 msgstr "Հիմա"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:142
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:503
 msgid "Earlier"
 msgstr "Ավելի վաղ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:147
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:498
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:503
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:191
 msgid "Later"
 msgstr "Ավելի ուշ"
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:420
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "No guide for this channel"
 msgstr "Այս ալիքի համար ուղեցույց չկա"
 
@@ -5752,82 +5808,82 @@ msgstr "Այստեղ ոչինչ չկա"
 msgid "S%1 E%2"
 msgstr "Ե%1 Դ%2"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:497
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:502
 msgid "Archive"
 msgstr "Արխիվ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:527
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:45
 msgid "Programme"
 msgstr "Հաղորդում"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:525
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "Loading the guide…"
 msgstr "Ուղեցույցը բեռնվում է…"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:581
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:586
 msgid "From the archive, %1"
 msgstr "Արխիվից, %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:582
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:587
 msgid "%1 left"
 msgstr "մնաց %1"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:583
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:588
 msgid "in %1"
 msgstr "%1 հետո"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:584
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:589
 msgid "ended %1 ago"
 msgstr "ավարտվել է %1 առաջ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:585
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:590
 msgid "on now"
 msgstr "հիմա եթերում"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:716
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:721
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:53
 msgid "Watch from the Start"
 msgstr "Դիտել սկզբից"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:734
 msgid "Reminder Set"
 msgstr "Հիշեցումը սահմանված է"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:729
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:734
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:50
 msgid "Remind Me"
 msgstr "Հիշեցնել ինձ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:739
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:744
 msgid "Back to Live"
 msgstr "Վերադառնալ ուղիղ եթեր"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:783
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:788
 msgid "Programme before"
 msgstr "Նախորդ հաղորդումը"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:789
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794
 msgid "Programme after"
 msgstr "Հաջորդ հաղորդումը"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:794 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:345
 msgid "Next channel"
 msgstr "Հաջորդ ալիք"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:346
 msgid "Previous channel"
 msgstr "Նախորդ ալիք"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:914
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:919
 msgid "Previous group"
 msgstr "Նախորդ խումբ"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:923
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:928
 msgid "All Channels"
 msgstr "Բոլոր ալիքները"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:938
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:943
 msgid "Next group"
 msgstr "Հաջորդ խումբ"
 
@@ -5926,12 +5982,6 @@ msgstr "Ալիքները թարմացվում են…"
 msgid "Updated %1 at %2"
 msgstr "Թարմացվել է %1, %2-ին"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:242
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:91
-msgid "Move up"
-msgstr "Տեղափոխել վեր"
-
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
 msgid "Turn Off"
 msgstr "Անջատել"
@@ -5997,11 +6047,6 @@ msgstr "Մատակարարի վահանակի հասցեն՝ իր պորտով (
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:419
 msgid "e.g., http://example.com:8080"
 msgstr "օր.՝ http://example.com:8080"
-
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:423
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
-msgid "User name"
-msgstr "Օգտվողի անուն"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
 msgid "(empty: unchanged)"
@@ -6146,8 +6191,8 @@ msgstr "MC"
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:82
-#: modules/gui/qt/player/qml/CompactLibrary.qml:296
+#: modules/gui/qt/player/qml/CompactLibrary.qml:96
+#: modules/gui/qt/player/qml/CompactLibrary.qml:311
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
 msgid "Playlists"
 msgstr "Երգացանկեր"
@@ -6158,8 +6203,8 @@ msgstr "Երգացանկեր"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:300
-#: modules/gui/qt/player/qml/CompactLibrary.qml:507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:316
+#: modules/gui/qt/player/qml/CompactLibrary.qml:527
 msgid "Artists"
 msgstr "Արտիստներ"
 
@@ -6169,8 +6214,8 @@ msgstr "Արտիստներ"
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:299
-#: modules/gui/qt/player/qml/CompactLibrary.qml:506
+#: modules/gui/qt/player/qml/CompactLibrary.qml:315
+#: modules/gui/qt/player/qml/CompactLibrary.qml:526
 msgid "Albums"
 msgstr "Ալբոմներ"
 
@@ -6179,8 +6224,8 @@ msgstr "Ալբոմներ"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:301
-#: modules/gui/qt/player/qml/CompactLibrary.qml:508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:317
+#: modules/gui/qt/player/qml/CompactLibrary.qml:528
 msgid "Genres"
 msgstr "Ոճեր"
 
@@ -6305,8 +6350,8 @@ msgstr "Կրկին ստուգել"
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:83
-#: modules/gui/qt/player/qml/CompactLibrary.qml:297
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
 msgid "Recent"
 msgstr "Վերջինները"
 
@@ -6345,11 +6390,6 @@ msgstr ""
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:166
 msgid "hidden"
 msgstr "թաքցված"
-
-#: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:254
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:98
-msgid "Move down"
-msgstr "Տեղափոխել վար"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:265
 msgid "Show %1"
@@ -6409,15 +6449,17 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles-ը վերադարձրեց մուտքի անվավեր սեսիա։"
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
+#: modules/gui/qt/player/subtitle_providers.cpp:1344
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles ներբեռնումը ձախողվեց։ Ստուգեք ձեր սահմանաչափը։"
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
+#: modules/gui/qt/player/subtitle_providers.cpp:1355
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles-ը չվերադարձրեց ենթագրերի ներբեռնման վավեր հղում։"
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
-#: modules/gui/qt/player/subtitle_search.cpp:481
+#: modules/gui/qt/player/subtitle_search.cpp:654
 msgid "This build can't search the internet."
 msgstr "Այս տարբերակը չի կարող որոնել ինտերնետում։"
 
@@ -6502,12 +6544,12 @@ msgstr ""
 "(*)"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:597
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:599
 msgid "Choose the folder of the audio tracks"
 msgstr "Ընտրեք ձայնային գծերի պանակը"
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:598
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:600
 msgid "Choose the folder of the subtitles"
 msgstr "Ընտրեք ենթագրերի պանակը"
 
@@ -6621,8 +6663,8 @@ msgstr[0] "%1 երգ"
 msgstr[1] "%1 երգ"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:795
-#: modules/gui/qt/player/qml/CompactLibrary.qml:809
+#: modules/gui/qt/player/qml/CompactLibrary.qml:833
+#: modules/gui/qt/player/qml/CompactLibrary.qml:847
 msgid "Play all"
 msgstr "Նվագարկել բոլորը"
 
@@ -6650,25 +6692,25 @@ msgstr "Անհայտ արտիստ"
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:228
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
-#: modules/gui/qt/player/qml/CompactLibrary.qml:401
+#: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "Շարունակել դիտումը"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:593
-#: modules/gui/qt/player/qml/CompactLibrary.qml:405
+#: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "Նոր վիդեոներ"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:312
-#: modules/gui/qt/player/qml/CompactLibrary.qml:402
+#: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "Լսել կրկին"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:677
-#: modules/gui/qt/player/qml/CompactLibrary.qml:406
+#: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "Նոր երաժշտություն"
 
@@ -6687,7 +6729,7 @@ msgid "Alphabetic"
 msgstr "Այբբենական"
 
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:383
-#: modules/gui/qt/player/qml/CompactLibrary.qml:403
+#: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "Հաճախ այցելվող պանակներ"
 
@@ -7022,13 +7064,13 @@ msgid "Media library"
 msgstr "Մեդիա գրադարան"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:619
+#: modules/gui/qt/player/qml/CompactLibrary.qml:639
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "Բացել մեդիա"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:762
+#: modules/gui/qt/player/qml/CompactLibrary.qml:800
 msgid "Add folder to library…"
 msgstr "Ավելացնել պանակ գրադարանում…"
 
@@ -7117,7 +7159,7 @@ msgstr[0] "%1 վիդեո"
 msgstr[1] "%1 վիդեո"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:849
+#: modules/gui/qt/player/qml/CompactLibrary.qml:889
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
@@ -7151,147 +7193,154 @@ msgstr "Ավելացնել ենթագրեր"
 msgid "Download %1"
 msgstr "Ներբեռնել (%1)"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:186
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:188
 msgid "%1 linked, %2 failed."
 msgstr "Կապակցված՝ %1, ձախողված՝ %2։"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:187
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:189
 msgid "Nothing was linked: %1 failed."
 msgstr "Ոչինչ չկապակցվեց․ ձախողված՝ %1։"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:574
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From Computer"
 msgstr "Համակարգչից"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From Link"
 msgstr "Հղումից"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:576
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:578
 msgid "From OpenSubtitles"
 msgstr "OpenSubtitles-ից"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:577
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:579
 msgid "From the Internet"
 msgstr "Ինտերնետից"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:646
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:648
 msgid "Direct HTTPS link to a subtitle file"
 msgstr "Ենթագրերի ֆայլի ուղիղ HTTPS հղում"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:661
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:663
 msgid "Title or episode"
 msgstr "Անվանում կամ դրվագ"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:692
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:694
 msgid "%1, else %2"
 msgstr "%1, այլապես %2"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:698
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:701
 msgid "Every subtitle service is off (Subtitles panel of the player)"
 msgstr ""
 "Ենթագրերի բոլոր ծառայություններն անջատված են (նվագարկչի Ենթագրեր վահանակ)"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:862
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:865
 msgid "OpenSubtitles API key"
 msgstr "OpenSubtitles API բանալի"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:947 modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
-msgid "No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password."
-msgstr "Դեռ բանալի չունե՞ք։ Այն անվճար է։ Գրանցվեք opensubtitles.com-ում, բացեք «API consumers»-ը, ընտրեք «New consumer», անվանեք այն (VLC Redesign) և պատճենեք դրա API բանալին այստեղ՝ ձեր հաշվի օգտանվան և գաղտնաբառի հետ միասին։"
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:950
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:953
+msgid ""
+"No key yet? It's free: sign up on opensubtitles.com, open API consumers, "
+"choose New consumer, name it (VLC Redesign) and copy its API key here, with "
+"your account's username and password."
+msgstr ""
+"Դեռ բանալի չունե՞ք։ Այն անվճար է։ Գրանցվեք opensubtitles.com-ում, բացեք «API "
+"consumers»-ը, ընտրեք «New consumer», անվանեք այն (VLC Redesign) և պատճենեք "
+"դրա API բանալին այստեղ՝ ձեր հաշվի օգտանվան և գաղտնաբառի հետ միասին։"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:948
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:951
 msgid "Open API consumers"
 msgstr "Բացել «API consumers»-ը"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1001
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1030
 msgid "Waiting…"
 msgstr "Սպասում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1002
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:365
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1031
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:395
 msgid "Searching…"
 msgstr "Որոնում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1004
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:444
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1033
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:474
 msgid "For this file"
 msgstr "Այս ֆայլի համար"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1005
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1034
 msgid "Best guess"
 msgstr "Լավագույն ենթադրություն"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1006
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1035
 msgid "Not found"
 msgstr "Չի գտնվել"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1007
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1036
 msgid "No answer"
 msgstr "Պատասխան չկա"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1008
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1037
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "Downloading…"
 msgstr "Ներբեռնում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1009
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1038
 msgid "Linked"
 msgstr "Կապակցված"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1108
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
 msgid "Don't download"
 msgstr "Չներբեռնել"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1112
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1141
 msgid "Subtitle for %1"
 msgstr "Ենթագիր %1-ի համար"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1131
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
 msgid "Downloading and linking the subtitles chosen…"
 msgstr "Ընտրված ենթագրերի ներբեռնում և կապակցում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1133
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1162
 msgid "Searching the internet: %1 of %2 videos done…"
 msgstr "Որոնում ինտերնետում՝ պատրաստ է %1-ը %2 տեսանյութից…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1134
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1163
 msgid "For the file: %1 · By title: %2 · Not found: %3"
 msgstr "Ֆայլի համար՝ %1 · Ըստ վերնագրի՝ %2 · Չի գտնվել՝ %3"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1137
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1166
 msgid "No answer: %1"
 msgstr "Պատասխան չկա՝ %1"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1160
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1189
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1199
 msgid "Working on subtitles…"
 msgstr "Ենթագրերի մշակում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1165
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1194
 msgid "Searching OpenSubtitles…"
 msgstr "Որոնում OpenSubtitles-ում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1196
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr "Որոնեք OpenSubtitles-ում՝ ենթագրերի ֆայլերը տեսնելու համար։"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1199
 msgid "Working on audio tracks…"
 msgstr "Ձայնային գծերի մշակում…"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1202
 msgid "Enter a direct link to a subtitle file above."
 msgstr "Վերևում մուտքագրեք ենթագրերի ֆայլի ուղիղ հղում։"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1174
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1203
 msgid "No audio file in this folder: choose another one above."
 msgstr "Այս պանակում ձայնային ֆայլ չկա՝ վերևում ընտրեք մեկ այլ պանակ։"
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1204
 msgid "No subtitle file in this folder: choose another one above."
 msgstr "Այս պանակում ենթագրերի ֆայլ չկա՝ վերևում ընտրեք մեկ այլ պանակ։"
 
@@ -7633,84 +7682,97 @@ msgstr "Սկսեք նվագարկումը՝ նախքան քնի ժամաչափ �
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Ընտրեք տևողություն մեկ վայրկյանից մինչև 24 ժամ։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:87
+#: modules/gui/qt/player/subtitle_providers.cpp:101
 msgid "%1 didn't answer."
 msgstr "%1-ը չպատասխանեց։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:89
+#: modules/gui/qt/player/subtitle_providers.cpp:103
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1-ը խնդրում է մի պահ սպասել (չափազանց շատ որոնումներ)։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:90
+#: modules/gui/qt/player/subtitle_providers.cpp:104
 msgid "%1 didn't answer (%2)."
 msgstr "%1-ը չպատասխանեց (%2)։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:858
+#: modules/gui/qt/player/subtitle_providers.cpp:1187
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 "Բոլոր լեզուները · ֆիլմեր և սերիալներ · գտնում է ձեր ֆայլի համար "
 "պատրաստվածները"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:860
+#: modules/gui/qt/player/subtitle_providers.cpp:1189
+msgid "With your own free key · all languages"
+msgstr "Ձեր սեփական անվճար բանալիով · բոլոր լեզուները"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1193
+msgid "With your own free key · strong in Arabic, many languages"
+msgstr "Ձեր սեփական անվճար բանալիով · ուժեղ արաբերենով, բազմաթիվ լեզուներ"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1196
+msgid "With your own free key · the Subscene archive, many languages"
+msgstr "Ձեր սեփական անվճար բանալիով · Subscene-ի արխիվը, բազմաթիվ լեզուներ"
+
+#: modules/gui/qt/player/subtitle_providers.cpp:1199
 msgid "Hebrew · movies and series"
 msgstr "Եբրայերեն · ֆիլմեր և սերիալներ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:862
+#: modules/gui/qt/player/subtitle_providers.cpp:1201
 msgid "Series · many languages"
 msgstr "Սերիալներ · բազմաթիվ լեզուներ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:864
+#: modules/gui/qt/player/subtitle_providers.cpp:1203
 msgid "Movies · many languages"
 msgstr "Ֆիլմեր · բազմաթիվ լեզուներ"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:910
+#: modules/gui/qt/player/subtitle_providers.cpp:1414
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Այս ենթագրերը RAR արխիվով են, որը հնարավոր չէ բացել այստեղ։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:922
-#: modules/gui/qt/player/subtitle_providers.cpp:955
-#: modules/gui/qt/player/subtitle_search.cpp:1140
+#: modules/gui/qt/player/subtitle_providers.cpp:1426
+#: modules/gui/qt/player/subtitle_providers.cpp:1459
+#: modules/gui/qt/player/subtitle_search.cpp:1373
 msgid "The subtitle couldn't be unpacked."
 msgstr "Ենթագրերը հնարավոր չեղավ ապափաթեթավորել։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:956
+#: modules/gui/qt/player/subtitle_providers.cpp:1460
 msgid "The archive has no subtitle in it."
 msgstr "Արխիվում ենթագրեր չկան։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:968
+#: modules/gui/qt/player/subtitle_providers.cpp:1472
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles-ը այս ենթագրերը տրամադրում է միայն վճարող անդամներին։ Ընտրեք "
 "մեկ այլը։"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:974
+#: modules/gui/qt/player/subtitle_providers.cpp:1478
 msgid "The subtitle is empty."
 msgstr "Ենթագրերը դատարկ են։"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1017
-#: modules/gui/qt/player/subtitle_search.cpp:1100
+#: modules/gui/qt/player/subtitle_search.cpp:1236
+#: modules/gui/qt/player/subtitle_search.cpp:1333
 msgid "No connection to the internet."
 msgstr "Ինտերնետ կապ չկա։"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1020
+#: modules/gui/qt/player/subtitle_search.cpp:1239
 msgid "The video couldn't be identified from its name."
 msgstr "Վիդեոն հնարավոր չեղավ ճանաչել իր անունով։"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1021
+#: modules/gui/qt/player/subtitle_search.cpp:1240
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "«%1»-ը չի գտնվել։ Որոնեք դրա անվանումը։"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1023
+#: modules/gui/qt/player/subtitle_search.cpp:1242
 msgid "No subtitles were found for %1."
 msgstr "%1-ի համար ենթագրեր չեն գտնվել։"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1065
-#: modules/gui/qt/player/subtitle_search.cpp:1101
+#: modules/gui/qt/player/subtitle_search.cpp:1284
+#: modules/gui/qt/player/subtitle_search.cpp:1320
+#: modules/gui/qt/player/subtitle_search.cpp:1334
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Ենթագրերը հնարավոր չեղավ ներբեռնել (%1)։"
 
-#: modules/gui/qt/player/subtitle_search.cpp:1131
+#: modules/gui/qt/player/subtitle_search.cpp:1364
 msgid "The subtitle couldn't be saved."
 msgstr "Ենթագրերը հնարավոր չեղավ պահել։"
 
@@ -7882,7 +7944,7 @@ msgid "Close navigation"
 msgstr "Փակել նավարկումը"
 
 #: modules/gui/qt/player/qml/MinimalView.qml:181
-#: modules/gui/qt/player/qml/PlayerView.qml:958
+#: modules/gui/qt/player/qml/PlayerView.qml:963
 msgid "2× speed"
 msgstr "2× արագություն"
 
@@ -7898,74 +7960,74 @@ msgstr "Նախադրվածքներ:"
 msgid "Player"
 msgstr "Նվագարկիչ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:967
+#: modules/gui/qt/player/qml/PlayerView.qml:972
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr "Ենթագրերի չափը %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1122
+#: modules/gui/qt/player/qml/PlayerView.qml:1127
 msgid "Subtitles on the TV: %1"
 msgstr "Ենթագրեր հեռուստացույցում՝ %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1122
+#: modules/gui/qt/player/qml/PlayerView.qml:1127
 msgid "Subtitles off on the TV"
 msgstr "Ենթագրերն անջատված են հեռուստացույցում"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1233
+#: modules/gui/qt/player/qml/PlayerView.qml:1238
 msgid "Not playing on %1"
 msgstr "Չի նվագարկվում %1-ում"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1235
-#: modules/gui/qt/player/qml/PlayerView.qml:1362
+#: modules/gui/qt/player/qml/PlayerView.qml:1240
+#: modules/gui/qt/player/qml/PlayerView.qml:1367
 msgid "Connecting to %1…"
 msgstr "Միացում %1-ին…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1237
+#: modules/gui/qt/player/qml/PlayerView.qml:1242
 msgid "Playing on %1"
 msgstr "Նվագարկվում է %1-ում"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1238
+#: modules/gui/qt/player/qml/PlayerView.qml:1243
 msgid "The sound plays on %1"
 msgstr "Ձայնը հնչում է %1-ում"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1263
+#: modules/gui/qt/player/qml/PlayerView.qml:1268
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "Ընդմիջեք, տեղափոխվեք և փոխեք ենթագրերն այստեղ՝ հեռուստացույցը կհետևի։"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1280
+#: modules/gui/qt/player/qml/PlayerView.qml:1285
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows Firewall-ը թույլ չի տալիս %1-ին միանալ այս համակարգչին՝ մեդիան "
 "կարդալու համար։"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1292
+#: modules/gui/qt/player/qml/PlayerView.qml:1297
 msgid "Waiting for Windows…"
 msgstr "Սպասում Windows-ին…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1293
+#: modules/gui/qt/player/qml/PlayerView.qml:1298
 msgid "Allow on public networks too"
 msgstr "Թույլատրել նաև հանրային ցանցերում"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1294
+#: modules/gui/qt/player/qml/PlayerView.qml:1299
 msgid "Allow on private networks"
 msgstr "Թույլատրել մասնավոր ցանցերում"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1306
+#: modules/gui/qt/player/qml/PlayerView.qml:1311
 msgid "Try again"
 msgstr "Կրկին փորձել"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1311
-#: modules/gui/qt/player/qml/PlayerView.qml:1321
+#: modules/gui/qt/player/qml/PlayerView.qml:1316
+#: modules/gui/qt/player/qml/PlayerView.qml:1326
 msgid "Play here"
 msgstr "Նվագարկել այստեղ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1321
-#: modules/gui/qt/player/qml/PlayerView.qml:1372
+#: modules/gui/qt/player/qml/PlayerView.qml:1326
+#: modules/gui/qt/player/qml/PlayerView.qml:1377
 msgid "Stop casting"
 msgstr "Դադարեցնել հեռարձակումը"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1363
+#: modules/gui/qt/player/qml/PlayerView.qml:1368
 msgid "Also on %1"
 msgstr "Նաև %1-ում"
 
@@ -8095,45 +8157,45 @@ msgstr "Ձայնի բարձրություն՝ %1%"
 msgid "Play audio to select a visualization."
 msgstr "Նվագարկեք ձայն՝ վիզուալիզացիա ընտրելու համար։"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:199
-#: modules/gui/qt/player/qml/CompactLibrary.qml:200
-#: modules/gui/qt/player/qml/CompactLibrary.qml:298
-#: modules/gui/qt/player/qml/CompactLibrary.qml:505
+#: modules/gui/qt/player/qml/CompactLibrary.qml:214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:314
+#: modules/gui/qt/player/qml/CompactLibrary.qml:525
 msgid "Songs"
 msgstr "Երգեր"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:727
+#: modules/gui/qt/player/qml/CompactLibrary.qml:747
 msgid "More"
 msgstr "Ավելին"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:752
-#: modules/gui/qt/player/qml/CompactLibrary.qml:767
+#: modules/gui/qt/player/qml/CompactLibrary.qml:790
+#: modules/gui/qt/player/qml/CompactLibrary.qml:805
 msgid "Rescan library"
 msgstr "Վերասկանավորել գրադարանը"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:777
+#: modules/gui/qt/player/qml/CompactLibrary.qml:815
 msgid "Add network stream…"
 msgstr "Ավելացնել ցանցային հոսք…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:786
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
+#: modules/gui/qt/player/qml/CompactLibrary.qml:824
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Create playlist"
 msgstr "Ստեղծել երգացանկ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:800
-#: modules/gui/qt/player/qml/CompactLibrary.qml:814
+#: modules/gui/qt/player/qml/CompactLibrary.qml:838
+#: modules/gui/qt/player/qml/CompactLibrary.qml:852
 msgid "Add all to queue"
 msgstr "Ավելացնել բոլորը հերթում"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:819
+#: modules/gui/qt/player/qml/CompactLibrary.qml:857
 msgid "Up one folder"
 msgstr "Մեկ պանակ վեր"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:829
+#: modules/gui/qt/player/qml/CompactLibrary.qml:867
 msgid "Open in the library"
 msgstr "Բացել գրադարանում"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/player/qml/CompactLibrary.qml:951
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
@@ -8143,55 +8205,55 @@ msgstr "Բացել գրադարանում"
 msgid "Sort"
 msgstr "Դասավորել"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:923
+#: modules/gui/qt/player/qml/CompactLibrary.qml:986
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "Անվանում Ա-Ֆ"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:927
+#: modules/gui/qt/player/qml/CompactLibrary.qml:990
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "Անվանում Ֆ-Ա"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:931
+#: modules/gui/qt/player/qml/CompactLibrary.qml:994
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "Սկզբում նորերը"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:936
+#: modules/gui/qt/player/qml/CompactLibrary.qml:999
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "Սկզբում հները"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:955
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1018
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
 msgid "Grid View"
 msgstr "Ցանցային տեսք"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:960
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
 msgid "List View"
 msgstr "Ցուցակային Տեսք"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1069
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1133
 msgid "See all"
 msgstr "Տեսնել բոլորը"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1279
 msgid "Add Network Stream"
 msgstr "Ավելացնել ցանցային հոսք"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1324
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1340
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1388
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1404
 msgid "The media library is not available."
 msgstr "Մեդիա գրադարանը հասանելի չէ։"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1325
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1341
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1389
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1405
 msgid "Nothing here yet."
 msgstr "Այստեղ դեռ ոչինչ չկա։"
 
@@ -8482,67 +8544,67 @@ msgstr ""
 msgid "Load a subtitle file for playback"
 msgstr "Բեռնել ենթագրերի ֆայլ նվագարկման համար"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:344
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:374
 msgid "Title of the movie or series"
 msgstr "Ֆիլմի կամ սերիալի անվանումը"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:408
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:438
 msgid "Second"
 msgstr "Երկրորդ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:409
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:439
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr "Հաճախ օգտագործվող"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:465
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:495
 msgid "Looking for subtitles…"
 msgstr "Ենթագրերի որոնում…"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:466
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:496
 msgid "No subtitles yet"
 msgstr "Ենթագրեր դեռ չկան"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:510
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:540
 msgid "Position and size"
 msgstr "Դիրք և չափ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:518
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:548
 msgctxt "subtitles"
 msgid "Position"
 msgstr "Դիրք"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:521
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:535
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:551
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:565
 msgid "%1%"
 msgstr "%1%"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:522
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:552
 msgid "Move the subtitles down"
 msgstr "Տեղափոխել ենթագրերը ներքև"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:523
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:553
 msgid "Move the subtitles up"
 msgstr "Տեղափոխել ենթագրերը վերև"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:534
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:564
 msgctxt "subtitles"
 msgid "Size"
 msgstr "Չափ"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:536
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:566
 msgid "Smaller subtitles"
 msgstr "Փոքրացնել ենթագրերը"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:537
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
 msgid "Larger subtitles"
 msgstr "Մեծացնել ենթագրերը"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:774
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:804
 msgid "HI"
 msgstr "HI"
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:779
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:809
 msgid "For the hearing impaired"
 msgstr "Լսողության խնդիրներ ունեցողների համար"
 
@@ -9232,39 +9294,39 @@ msgstr "%1-ը հիմա այլ բան է նվագարկում։"
 msgid "%1 couldn't play the video."
 msgstr "%1-ը չկարողացավ նվագարկել վիդեոն։"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:59
+#: modules/gui/qt/util/subtitle_preferences.cpp:63
 msgid "Asturian"
 msgstr "Աստուրերեն"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:61
+#: modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Central Kurdish"
 msgstr "Կենտրոնական քրդերեն"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:62
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Montenegrin"
 msgstr "Չեռնոգորերեն"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:66
+#: modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Dari"
 msgstr "Դարի"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:68
+#: modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Cantonese"
 msgstr "Կանտոներեն"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:69
+#: modules/gui/qt/util/subtitle_preferences.cpp:73
 msgid "Standard Moroccan Tamazight"
 msgstr "Ստանդարտ մարոկյան թամազիղտ"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:70
+#: modules/gui/qt/util/subtitle_preferences.cpp:74
 msgid "Portuguese (Brazil)"
 msgstr "Պորտուգալերեն (Բրազիլիա)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:71
+#: modules/gui/qt/util/subtitle_preferences.cpp:75
 msgid "Chinese (Traditional)"
 msgstr "Չինարեն (ավանդական)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:72
+#: modules/gui/qt/util/subtitle_preferences.cpp:76
 msgid "Spanish (Latin America)"
 msgstr "Իսպաներեն (Լատինական Ամերիկա)"
 

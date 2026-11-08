@@ -1,0 +1,76 @@
+{
+ "status": true,
+ "results": [
+  {
+   "sd_id": 1,
+   "type": "movie",
+   "name": "The Matrix",
+   "imdb_id": "tt0133093"
+  }
+ ],
+ "subtitles": [
+  {
+   "release_name": "The.Matrix.1999.1080p.BluRay.x264-AMIABLE",
+   "name": "SUBDL::the-matrix",
+   "lang": "arabic",
+   "language": "AR",
+   "author": "someone",
+   "url": "/subtitle/3197651-3213944.zip",
+   "season": null,
+   "episode": null,
+   "hi": false,
+   "full_season": false,
+   "downloads": 1200
+  },
+  {
+   "release_name": "The.Matrix.1999.REMASTERED.720p",
+   "name": "SUBDL::the-matrix-br",
+   "lang": "brazillian portuguese",
+   "language": "BR_PT",
+   "url": "/subtitle/3197652-3213945.zip",
+   "hi": true
+  },
+  {
+   "release_name": "The.Matrix.1999.Big5",
+   "name": "SUBDL::matrix-zh",
+   "lang": "chinese bg code",
+   "language": "ZH_BG",
+   "url": "/subtitle/3197653-3213946.zip"
+  },
+  {
+   "release_name": "Duplicate",
+   "name": "dup",
+   "lang": "arabic",
+   "language": "AR",
+   "url": "/subtitle/3197651-3213944.zip"
+  },
+  {
+   "release_name": "Elsewhere",
+   "name": "evil",
+   "lang": "english",
+   "language": "EN",
+   "url": "https://evil.example/x.zip"
+  },
+  {
+   "release_name": "Traversal",
+   "name": "evil2",
+   "lang": "english",
+   "language": "EN",
+   "url": "/subtitle/../../etc/passwd"
+  },
+  {
+   "release_name": "Two languages",
+   "name": "mixed",
+   "lang": "bulgarian_english",
+   "language": "BG_EN",
+   "url": "/subtitle/3197654-1.zip"
+  },
+  {
+   "release_name": "",
+   "name": "The Matrix (English)",
+   "lang": "English",
+   "language": "",
+   "url": "/subtitle/3197655-3213947.zip"
+  }
+ ]
+}

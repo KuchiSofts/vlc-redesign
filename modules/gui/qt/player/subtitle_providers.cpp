@@ -11,6 +11,7 @@
 #endif
 
 #include "subtitle_providers.hpp"
+#include "subtitle_services.hpp"
 
 #include <QFileInfo>
 #include <QHash>
@@ -64,7 +65,7 @@ constexpr int maxArchiveSubtitles = 64;
 // between two requests to the same service (they ask for one at a time)
 constexpr int requestGapMs = 600;
 
-using Done = std::function<void(const QList<Result> &, const QString &)>;
+using Done = std::function<void(const QList<Result> &, const QString &, Problem)>;
 
 HttpRequest makeRequest(const QUrl &url, qsizetype maxBytes = maxListBytes, int timeoutMs = 15000)
 {
@@ -81,13 +82,42 @@ bool ok(const HttpResponse &reply, qsizetype maxBytes = maxListBytes)
     return reply.error.isEmpty() && reply.status == 200 && reply.body.size() <= maxBytes;
 }
 
-QString failure(const QString &name, const HttpResponse &reply)
+// What went wrong with an answer that isn't ok()
+Problem problemOfReply(const HttpResponse &reply)
 {
+    if (reply.status == 0)
+        return Problem::NoAnswer;
+    const Problem problem = problemOf(reply.status);
+    return problem == Problem::None ? Problem::Failed : problem;
+}
+
+QString failure(const QString &name, const HttpResponse &reply, Problem problem = Problem::None)
+{
+    if (problem == Problem::KeyRefused)
+        return QStringLiteral("%1: %2").arg(name, qtr("Key refused: check it"));
+    if (problem == Problem::LoginRefused)
+        return QStringLiteral("%1: %2").arg(name, qtr("Sign-in refused: check it"));
     if (reply.status == 0)
         return qtr("%1 didn't answer.").arg(name);
     if (reply.status == 429)
         return qtr("%1 asks to wait a moment (too many searches).").arg(name);
     return qtr("%1 didn't answer (%2).").arg(name).arg(reply.status);
+}
+
+// A service that didn't answer as it should: why. keyed: one asked with
+// the user's key (401 and 403 say it is refused; the others' mean a refusal
+// of another kind)
+void failed(const Done &done, const QString &name, const HttpResponse &reply, bool keyed = false)
+{
+    Problem problem = problemOfReply(reply);
+    if (problem == Problem::KeyRefused && !keyed)
+        problem = Problem::Failed;
+    done({}, failure(name, reply, problem), problem);
+}
+
+void nothing(const Done &done)
+{
+    done({}, {}, Problem::None);
 }
 
 // Lower case words, without accents: names compare in any script
@@ -213,6 +243,7 @@ struct Chain
     QList<Result> results;
     QSet<QString> seen;
     QString error;
+    Problem problem = Problem::None;
     int answered = 0;
 };
 
@@ -222,7 +253,10 @@ void runOpenSubtitles(QPointer<QObject> context, std::shared_ptr<Chain> chain, D
         return;
     if (chain->urls.isEmpty())
     {
-        done(chain->results, chain->answered == 0 ? chain->error : QString());
+        if (chain->answered == 0)
+            done(chain->results, chain->error, chain->problem);
+        else
+            done(chain->results, {}, Problem::None);
         return;
     }
     HttpRequest request = makeRequest(chain->urls.takeFirst());
@@ -234,7 +268,12 @@ void runOpenSubtitles(QPointer<QObject> context, std::shared_ptr<Chain> chain, D
             parseOpenSubtitles(reply.body, chain->results, chain->seen);
         }
         else if (chain->error.isEmpty())
+        {
+            chain->problem = problemOfReply(reply);
+            if (chain->problem == Problem::KeyRefused)
+                chain->problem = Problem::Failed;
             chain->error = failure(QStringLiteral("OpenSubtitles"), reply);
+        }
         if (chain->urls.isEmpty())
             runOpenSubtitles(context, chain, done);
         else
@@ -270,7 +309,9 @@ void searchOpenSubtitles(QObject *context, const Query &query, Done done)
         const QString padded = QStringLiteral("imdbid-%1").arg(imdb.toLongLong(), 7, 10, QLatin1Char('0'));
         for (const QString &code : wanted)
             chain->urls.append(openSubtitlesUrl(QStringList(episode) << padded << QStringLiteral("sublanguageid-") + code));
-        chain->urls.append(openSubtitlesUrl(QStringList(episode) << padded));
+        // (only the user's languages: a faster search)
+        if (query.everyLanguage || wanted.isEmpty())
+            chain->urls.append(openSubtitlesUrl(QStringList(episode) << padded));
     }
     else if (!query.title.isEmpty())
     {
@@ -281,7 +322,7 @@ void searchOpenSubtitles(QObject *context, const Query &query, Done done)
     }
     if (chain->urls.isEmpty())
     {
-        done({}, {});
+        nothing(done);
         return;
     }
     runOpenSubtitles(QPointer<QObject>(context), chain, done);
@@ -366,7 +407,7 @@ void searchWizdom(QObject *context, const Query &query, Done done)
 {
     if (!query.imdb.startsWith(QLatin1String("tt")))
     {
-        done({}, {});
+        nothing(done);
         return;
     }
     QUrl url(QStringLiteral("https://wizdom.xyz/api/search"));
@@ -381,12 +422,12 @@ void searchWizdom(QObject *context, const Query &query, Done done)
         // (it answers 500 when it has nothing)
         if (reply.error.isEmpty() && reply.status == 500)
         {
-            done({}, {});
+            nothing(done);
             return;
         }
         if (!ok(reply))
         {
-            done({}, failure(QStringLiteral("Wizdom"), reply));
+            failed(done, QStringLiteral("Wizdom"), reply);
             return;
         }
         QList<Result> results;
@@ -406,7 +447,7 @@ void searchWizdom(QObject *context, const Query &query, Done done)
             r.rank = o.value(QLatin1String("score")).toDouble() * 5.;
             results.append(r);
         }
-        done(results, {});
+        done(results, {}, Problem::None);
     });
 }
 
@@ -418,7 +459,7 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
 {
     if (!query.series || query.season < 0 || query.episode < 0 || query.title.isEmpty())
     {
-        done({}, {});
+        nothing(done);
         return;
     }
     QPointer<QObject> guard(context);
@@ -430,12 +471,12 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
             return;
         if (reply.error.isEmpty() && reply.status == 404)
         {
-            done({}, {});
+            nothing(done);
             return;
         }
         if (!ok(reply))
         {
-            done({}, failure(QStringLiteral("Addic7ed"), reply));
+            failed(done, QStringLiteral("Addic7ed"), reply);
             return;
         }
         // the show of that name
@@ -456,7 +497,7 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
         }
         if (showId.isEmpty())
         {
-            done({}, {});
+            nothing(done);
             return;
         }
         // the episode in each language, one after the other
@@ -470,7 +511,7 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
                 return;
             if (languages->isEmpty())
             {
-                done(*results, {});
+                done(*results, {}, Problem::None);
                 return;
             }
             const auto self = weak.lock();
@@ -519,19 +560,19 @@ void searchYify(QObject *context, const Query &query, Done done)
 {
     if (query.series || !query.imdb.startsWith(QLatin1String("tt")))
     {
-        done({}, {});
+        nothing(done);
         return;
     }
     const QUrl url(QStringLiteral("https://yifysubtitles.ch/movie-imdb/") + query.imdb);
     httpRequestAsync(context, makeRequest(url), [done](const HttpResponse &reply) {
         if (reply.error.isEmpty() && reply.status == 404)
         {
-            done({}, {});
+            nothing(done);
             return;
         }
         if (!ok(reply))
         {
-            done({}, failure(QStringLiteral("YIFY"), reply));
+            failed(done, QStringLiteral("YIFY"), reply);
             return;
         }
         static const QRegularExpression rowRe(QStringLiteral(R"re(<tr data-id="(\d+)">(.*?)</tr>)re"),
@@ -564,12 +605,227 @@ void searchYify(QObject *context, const Query &query, Done done)
             r.rank = rating.hasMatch() ? std::min(rating.captured(1).toDouble(), 30.) * 0.5 : 0.;
             results.append(r);
         }
-        done(results, {});
+        done(results, {}, Problem::None);
     });
 }
 
 // ---------------------------------------------------------------------------
-// What was downloaded
+// The services asked with the user's own key or account: what they are asked
+// and what they answer in subtitle_services.cpp (tested by themselves)
+
+QString languageOf(const QString &name)
+{
+    return languageFromName(name);
+}
+
+HttpRequest jsonRequest(const QUrl &url)
+{
+    HttpRequest request = makeRequest(url);
+    request.headers.append(qMakePair(QByteArray("Accept"), QByteArray("application/json")));
+    return request;
+}
+
+// SubSource: the title (by its IMDb id, else its name), then its subtitles
+void subSourceSubtitles(QPointer<QObject> guard, const Query &query, const QString &movieId, Done done)
+{
+    HttpRequest request = jsonRequest(subSourceSubtitlesUrl(movieId, query));
+    request.headers.append(qMakePair(QByteArray("X-API-Key"), query.credentials.key.toUtf8()));
+    httpRequestAsync(guard, request, [guard, query, done](const HttpResponse &reply) {
+        if (!guard)
+            return;
+        if (!ok(reply))
+        {
+            failed(done, QStringLiteral("SubSource"), reply, true);
+            return;
+        }
+        QString error;
+        const QList<Result> results = parseSubSource(reply.body, query, languageOf, &error);
+        if (!error.isEmpty())
+            done({}, QStringLiteral("SubSource: ") + error, Problem::Failed);
+        else
+            done(results, {}, Problem::None);
+    });
+}
+
+void subSourceFind(QPointer<QObject> guard, const Query &query, bool byText, Done done)
+{
+    const QUrl url = subSourceSearchUrl(query, byText);
+    if (url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    HttpRequest request = jsonRequest(url);
+    request.headers.append(qMakePair(QByteArray("X-API-Key"), query.credentials.key.toUtf8()));
+    httpRequestAsync(guard, request, [guard, query, byText, done](const HttpResponse &reply) {
+        if (!guard)
+            return;
+        if (!ok(reply))
+        {
+            failed(done, QStringLiteral("SubSource"), reply, true);
+            return;
+        }
+        QString error;
+        const QString movieId = subSourceMovieId(reply.body, query, &error);
+        if (!error.isEmpty())
+        {
+            done({}, QStringLiteral("SubSource: ") + error, Problem::Failed);
+            return;
+        }
+        // (one request a second at most: it asks for no more)
+        if (movieId.isEmpty())
+        {
+            // not known by its IMDb id: by its name
+            if (!byText && !query.title.isEmpty())
+                QTimer::singleShot(requestGapMs, guard, [guard, query, done]() {
+                    if (guard)
+                        subSourceFind(guard, query, true, done);
+                });
+            else
+                nothing(done);
+            return;
+        }
+        QTimer::singleShot(requestGapMs, guard, [guard, query, movieId, done]() {
+            if (guard)
+                subSourceSubtitles(guard, query, movieId, done);
+        });
+    });
+}
+
+void searchSubSource(QObject *context, const Query &query, Done done)
+{
+    if (query.credentials.key.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    subSourceFind(QPointer<QObject>(context), query, false, done);
+}
+
+// SubDL: its second version, else the first
+void searchSubDl(QObject *context, const Query &query, Done done, bool v2 = true)
+{
+    const QUrl url = subDlSearchUrl(query, v2);
+    if (query.credentials.key.isEmpty() || url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    HttpRequest request = jsonRequest(url);
+    if (v2)
+        request.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + query.credentials.key.toUtf8()));
+    QPointer<QObject> guard(context);
+    httpRequestAsync(context, request, [guard, query, done, v2](const HttpResponse &reply) {
+        if (!guard)
+            return;
+        if (v2 && reply.error.isEmpty() && reply.status == 404)
+        {
+            searchSubDl(guard, query, done, false);
+            return;
+        }
+        if (!ok(reply))
+        {
+            failed(done, QStringLiteral("SubDL"), reply, true);
+            return;
+        }
+        QString error;
+        const QList<Result> results = parseSubDl(reply.body, query, languageOf, &error);
+        if (!error.isEmpty())
+            done({}, QStringLiteral("SubDL: ") + error, Problem::Failed);
+        else
+            done(results, {}, Problem::None);
+    });
+}
+
+// OpenSubtitles.com: the user's free key (its own requests), signed in for
+// the downloads when the user gave the account
+QByteArray openSubtitlesComAgent()
+{
+    // (the name and version it asks for: "App v1.0")
+    return QByteArray("VLC-Redesign v" VLC_REDESIGN_VERSION);
+}
+
+HttpRequest openSubtitlesComRequest(const QUrl &url, const QString &key, const QString &token = {})
+{
+    HttpRequest request;
+    request.url = url;
+    request.timeoutMs = 15000;
+    request.maxBytes = maxListBytes;
+    request.headers = {
+        { "Api-Key", key.toUtf8() },
+        { "User-Agent", openSubtitlesComAgent() },
+        { "Accept", "application/json" },
+        { "Content-Type", "application/json" },
+    };
+    if (!token.isEmpty())
+        request.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + token.toUtf8()));
+    return request;
+}
+
+void searchOpenSubtitlesCom(QObject *context, const Query &query, Done done)
+{
+    const QUrl url = openSubtitlesComSearchUrl(query);
+    if (query.credentials.key.isEmpty() || url.isEmpty())
+    {
+        nothing(done);
+        return;
+    }
+    httpRequestAsync(context, openSubtitlesComRequest(url, query.credentials.key), [done](const HttpResponse &reply) {
+        if (!ok(reply))
+        {
+            failed(done, QStringLiteral("OpenSubtitles.com"), reply, true);
+            return;
+        }
+        done(parseOpenSubtitlesCom(reply.body, languageOf), {}, Problem::None);
+    });
+}
+
+// The sessions of the services signed in (in memory, for this run only):
+// their tokens, by service, with the user they are of
+struct SignedIn
+{
+    QString username;
+    Session session;
+};
+QHash<QString, SignedIn> &sessions()
+{
+    static QHash<QString, SignedIn> map;
+    return map;
+}
+
+// Signs in to OpenSubtitles.com: done(session) or done({}, problem)
+void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
+                            std::function<void(const Session &, Problem)> done)
+{
+    const auto known = sessions().constFind(QStringLiteral("opensubtitlescom"));
+    if (known != sessions().constEnd() && known->username == credentials.username)
+    {
+        done(known->session, Problem::None);
+        return;
+    }
+    HttpRequest login = openSubtitlesComRequest(QUrl(QStringLiteral("https://api.opensubtitles.com/api/v1/login")),
+                                                credentials.key);
+    login.method = "POST";
+    login.body = openSubtitlesComLoginBody(credentials.username, credentials.password);
+    const QString username = credentials.username;
+    httpRequestAsync(context, login, [done, username](const HttpResponse &reply) {
+        if (!ok(reply))
+        {
+            // (401: the account; 403: the key)
+            const Problem problem = reply.status == 401 ? Problem::LoginRefused : problemOfReply(reply);
+            done({}, problem);
+            return;
+        }
+        const Session session = openSubtitlesComSession(reply.body);
+        if (session.token.isEmpty())
+        {
+            done({}, Problem::LoginRefused);
+            return;
+        }
+        sessions().insert(QStringLiteral("opensubtitlescom"), { username, session });
+        done(session, Problem::None);
+    });
+}
 
 #ifdef HAVE_ZLIB
 // inflates a gzip file (windowBits 16 + 15) or a raw deflate stream (-15);
@@ -924,15 +1180,27 @@ QByteArray userAgent()
 
 const QList<Provider> &providers()
 {
+    // (the order of the services page: the four free ones without an
+    // account keep theirs, each keyed one after the one it is most like)
     static const QList<Provider> list = {
         { QStringLiteral("opensubtitles"), QStringLiteral("OpenSubtitles"),
-          N_("All languages · movies and series · finds those made for your file"), true, true, {} },
+          N_("All languages · movies and series · finds those made for your file"), true, true, {}, 0, 0, {}, false },
+        { QStringLiteral("opensubtitlescom"), QStringLiteral("OpenSubtitles.com"),
+          N_("With your own free key · all languages"), true, true, {},
+          KeyField | UsernameField | PasswordField, KeyField,
+          QStringLiteral("https://www.opensubtitles.com/en/consumers"), false },
+        { QStringLiteral("subsource"), QStringLiteral("SubSource"),
+          N_("With your own free key · strong in Arabic, many languages"), true, true, {},
+          KeyField, KeyField, QStringLiteral("https://subsource.net"), false },
+        { QStringLiteral("subdl"), QStringLiteral("SubDL"),
+          N_("With your own free key · the Subscene archive, many languages"), true, true, {},
+          KeyField, KeyField, QStringLiteral("https://subdl.com/panel/api"), false },
         { QStringLiteral("wizdom"), QStringLiteral("Wizdom"),
-          N_("Hebrew · movies and series"), true, true, QStringLiteral("he") },
+          N_("Hebrew · movies and series"), true, true, { QStringLiteral("he") }, 0, 0, {}, false },
         { QStringLiteral("addic7ed"), QStringLiteral("Addic7ed"),
-          N_("Series · many languages"), false, true, {} },
+          N_("Series · many languages"), false, true, {}, 0, 0, {}, false },
         { QStringLiteral("yify"), QStringLiteral("YIFY Subtitles"),
-          N_("Movies · many languages"), true, false, {} },
+          N_("Movies · many languages"), true, false, {}, 0, 0, {}, false },
     };
     return list;
 }
@@ -945,10 +1213,24 @@ const Provider *provider(const QString &id)
     return nullptr;
 }
 
+bool hasRequired(const Provider &provider, const Credentials &credentials)
+{
+    return (!(provider.required & KeyField) || !credentials.key.trimmed().isEmpty())
+        && (!(provider.required & UsernameField) || !credentials.username.trimmed().isEmpty())
+        && (!(provider.required & PasswordField) || !credentials.password.isEmpty())
+        && (!(provider.required & EmailField) || !credentials.email.trimmed().isEmpty());
+}
+
 void search(QObject *context, const QString &providerId, const Query &query, Done done)
 {
     if (providerId == QLatin1String("opensubtitles"))
         searchOpenSubtitles(context, query, done);
+    else if (providerId == QLatin1String("opensubtitlescom"))
+        searchOpenSubtitlesCom(context, query, done);
+    else if (providerId == QLatin1String("subsource"))
+        searchSubSource(context, query, done);
+    else if (providerId == QLatin1String("subdl"))
+        searchSubDl(context, query, done);
     else if (providerId == QLatin1String("wizdom"))
         searchWizdom(context, query, done);
     else if (providerId == QLatin1String("addic7ed"))
@@ -956,19 +1238,170 @@ void search(QObject *context, const QString &providerId, const Query &query, Don
     else if (providerId == QLatin1String("yify"))
         searchYify(context, query, done);
     else
-        done({}, {});
+        nothing(done);
 }
 
-QList<QPair<QByteArray, QByteArray>> downloadHeaders(const Result &result)
+void forgetSession(const QString &providerId)
 {
-    QList<QPair<QByteArray, QByteArray>> headers;
-    headers.append(qMakePair(QByteArray("User-Agent"), userAgent()));
+    sessions().remove(providerId);
+}
+
+void check(QObject *context, const QString &providerId, const Credentials &credentials,
+           std::function<void(Check check, const QString &who)> done)
+{
+    const QString key = credentials.key.trimmed();
+    if (providerId == QLatin1String("opensubtitlescom"))
+    {
+        if (!credentials.username.trimmed().isEmpty() && !credentials.password.isEmpty())
+        {
+            // signed in again with these
+            forgetSession(providerId);
+            Credentials typed = credentials;
+            typed.key = key;
+            typed.username = credentials.username.trimmed();
+            const QString who = typed.username;
+            openSubtitlesComSignIn(context, typed, [done, who](const Session &, Problem problem) {
+                switch (problem)
+                {
+                    case Problem::None: done(Check::SignedIn, who); break;
+                    case Problem::LoginRefused: done(Check::LoginRefused, {}); break;
+                    case Problem::KeyRefused: done(Check::KeyRefused, {}); break;
+                    case Problem::Busy: done(Check::Busy, {}); break;
+                    default: done(Check::NoAnswer, {}); break;
+                }
+            });
+            return;
+        }
+        httpRequestAsync(context, openSubtitlesComRequest(openSubtitlesComCheckUrl(), key),
+                         [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+        return;
+    }
+    if (providerId == QLatin1String("subsource"))
+    {
+        HttpRequest request = jsonRequest(subSourceCheckUrl());
+        request.headers.append(qMakePair(QByteArray("X-API-Key"), key.toUtf8()));
+        httpRequestAsync(context, request, [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+        return;
+    }
+    if (providerId == QLatin1String("subdl"))
+    {
+        HttpRequest request = jsonRequest(subDlCheckUrl(key, true));
+        request.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + key.toUtf8()));
+        QPointer<QObject> guard(context);
+        httpRequestAsync(context, request, [guard, key, done](const HttpResponse &reply) {
+            if (!guard)
+                return;
+            if (reply.error.isEmpty() && reply.status == 404)
+            {
+                httpRequestAsync(guard, jsonRequest(subDlCheckUrl(key, false)),
+                                 [done](const HttpResponse &v1) { done(checkOf(v1.status), {}); });
+                return;
+            }
+            done(checkOf(reply.status), {});
+        });
+        return;
+    }
+    done(Check::Works, {});
+}
+
+namespace {
+
+// OpenSubtitles.com: the link of a file, signed in when the user gave the
+// account (a higher quota), else with the key alone
+void openSubtitlesComDownload(QObject *context, const Result &result, const Credentials &credentials,
+                              std::function<void(const Download &)> done, bool again = false)
+{
+    const QString fileId = result.id.section(QLatin1Char(':'), 1);
+    const QString name = QStringLiteral("OpenSubtitles.com");
+    QPointer<QObject> guard(context);
+    const auto ask = [guard, fileId, name, result, credentials, done, again](const Session &session) {
+        if (!guard)
+            return;
+        const QUrl base = session.base.isEmpty() ? QUrl(QStringLiteral("https://api.opensubtitles.com/api/v1/"))
+                                                 : session.base;
+        HttpRequest request = openSubtitlesComRequest(base.resolved(QUrl(QStringLiteral("download"))),
+                                                      credentials.key.trimmed(), session.token);
+        request.method = "POST";
+        request.body = openSubtitlesComDownloadBody(fileId);
+        httpRequestAsync(guard, request, [guard, name, result, credentials, done, again, session](const HttpResponse &reply) {
+            if (!guard)
+                return;
+            Download download;
+            if (!ok(reply))
+            {
+                // (its token ran out: signed in again, once)
+                if (reply.status == 401 && !session.token.isEmpty() && !again)
+                {
+                    forgetSession(QStringLiteral("opensubtitlescom"));
+                    openSubtitlesComDownload(guard, result, credentials, done, true);
+                    return;
+                }
+                download.problem = problemOfReply(reply);
+                if (reply.status == 406 || reply.status == 429)
+                {
+                    // the downloads of the day used up
+                    download.problem = Problem::Busy;
+                    download.error = qtr("OpenSubtitles download failed. Check your quota.");
+                }
+                else
+                    download.error = failure(name, reply, download.problem);
+                done(download);
+                return;
+            }
+            download.url = openSubtitlesComLink(reply.body);
+            if (download.url.isEmpty())
+            {
+                download.problem = Problem::Failed;
+                download.error = qtr("OpenSubtitles did not return a valid subtitle download link.");
+            }
+            else
+                download.headers.append(qMakePair(QByteArray("User-Agent"), openSubtitlesComAgent()));
+            done(download);
+        });
+    };
+    if (credentials.username.trimmed().isEmpty() || credentials.password.isEmpty())
+    {
+        ask({});
+        return;
+    }
+    Credentials typed = credentials;
+    typed.username = credentials.username.trimmed();
+    typed.key = credentials.key.trimmed();
+    openSubtitlesComSignIn(context, typed, [ask, done, name](const Session &session, Problem problem) {
+        if (problem == Problem::LoginRefused || problem == Problem::KeyRefused)
+        {
+            Download download;
+            download.problem = problem;
+            download.error = failure(name, {}, problem);
+            done(download);
+            return;
+        }
+        // (no answer to the sign-in: with the key alone)
+        ask(session);
+    });
+}
+
+} // namespace
+
+void prepareDownload(QObject *context, const Result &result, const Credentials &credentials,
+                     std::function<void(const Download &download)> done)
+{
+    if (result.provider == QLatin1String("opensubtitlescom"))
+    {
+        openSubtitlesComDownload(context, result, credentials, done);
+        return;
+    }
+    Download download;
+    download.url = result.url;
+    download.headers.append(qMakePair(QByteArray("User-Agent"), userAgent()));
     if (result.provider == QLatin1String("opensubtitles"))
-        headers.append(qMakePair(QByteArray("X-User-Agent"), userAgent()));
+        download.headers.append(qMakePair(QByteArray("X-User-Agent"), userAgent()));
     // (YIFY's downloads are from its pages)
     if (result.provider == QLatin1String("yify"))
-        headers.append(qMakePair(QByteArray("Referer"), QByteArray("https://yifysubtitles.ch/")));
-    return headers;
+        download.headers.append(qMakePair(QByteArray("Referer"), QByteArray("https://yifysubtitles.ch/")));
+    if (result.provider == QLatin1String("subsource"))
+        download.headers.append(qMakePair(QByteArray("X-API-Key"), credentials.key.trimmed().toUtf8()));
+    done(download);
 }
 
 QByteArray subtitleOf(const QByteArray &download, const Result &result, const QString &videoName,

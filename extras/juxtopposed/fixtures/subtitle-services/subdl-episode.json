@@ -1,0 +1,65 @@
+{
+ "status": true,
+ "subtitles": [
+  {
+   "release_name": "Breaking.Bad.S02E03.720p",
+   "lang": "arabic",
+   "language": "AR",
+   "url": "/subtitle/1-1.zip",
+   "season": 2,
+   "episode": 3,
+   "full_season": false
+  },
+  {
+   "release_name": "Breaking.Bad.S02E04.720p",
+   "lang": "arabic",
+   "language": "AR",
+   "url": "/subtitle/1-2.zip",
+   "season": 2,
+   "episode": 4,
+   "full_season": false
+  },
+  {
+   "release_name": "Breaking.Bad.S02.Complete",
+   "lang": "arabic",
+   "language": "AR",
+   "url": "/subtitle/1-3.zip",
+   "season": 2,
+   "episode": null,
+   "full_season": true
+  },
+  {
+   "release_name": "Breaking.Bad.S02E01-E05",
+   "lang": "english",
+   "language": "EN",
+   "url": "/subtitle/1-4.zip",
+   "season": 2,
+   "episode_from": 1,
+   "episode_end": 5
+  },
+  {
+   "release_name": "Breaking.Bad.S02E06-E09",
+   "lang": "english",
+   "language": "EN",
+   "url": "/subtitle/1-5.zip",
+   "season": 2,
+   "episode_from": 6,
+   "episode_end": 9
+  },
+  {
+   "release_name": "Breaking.Bad.S01E03",
+   "lang": "english",
+   "language": "EN",
+   "url": "/subtitle/1-6.zip",
+   "season": 1,
+   "episode": 3
+  },
+  {
+   "release_name": "Breaking.Bad.S02E03.HDTV",
+   "lang": "english",
+   "language": "EN",
+   "url": "/subtitle/1-7.zip",
+   "season": 2
+  }
+ ]
+}

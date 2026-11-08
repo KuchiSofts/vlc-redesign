@@ -75,7 +75,35 @@ interface settings, saved with the rest of the page.
 | **Second language (when there are none in the preferred one)** | The same language list, with *None* first. Default: English, or *None* when the preferred language is English. | The subtitles VLC takes when a video has none in the preferred language. Choosing the preferred language here sets *None*. |
 | **Find subtitles online when a video has none in these languages** | Toggle. Default: on (the installer and the welcome setup ask). | When a video opens with no subtitles in the preferred or the second language, VLC asks the services below and loads the best result. Off, the player's panel searches only when you click its search button. |
 | **Show both languages at once (dual subtitles)** | Toggle. Default: off. | Shows the subtitles of both languages together. Dimmed, and turned off, while the second language is *None*. |
-| **Subtitle services** | A toggle per service, all on: *OpenSubtitles* (all languages, movies and series, finds those made for your file), *Wizdom* (Hebrew, movies and series), *Addic7ed* (series, many languages), *YIFY Subtitles* (movies, many languages). | The services asked. The note under them: "To find subtitles, the services turned on get the video's title, its IMDb id, its file name and hash (made from a part of the file), and nothing else." |
+| **Languages to search** | A row per language: the preferred one (always on), the second one, and those added with **Add a language** (the ones you often pick by hand are added off). Each has a toggle, **Move up**, **Move down** and **Remove** (not the preferred one). | The languages the services are asked for, in the order of the results. |
+| **Every other language too** | Toggle. Default: off. | On, the services are asked for every other language too; off, only for the languages on: a faster search (*Fewer languages: a faster search*). The search that runs by itself uses the same list. |
+
+## Subtitle services
+
+*(Not in the design: after Second Language & Online Subtitles.)* A row per service, in this order, with what it has
+and a toggle; the services of [Subtitles found online](Subtitles#subtitles-found-online).
+
+| Service | Default | Its row |
+|---|---|---|
+| **OpenSubtitles** | On | All languages · movies and series · finds those made for your file |
+| **OpenSubtitles.com** | Off | With your own free key · all languages. *Your free key*, *User name (optional)*, *Password (optional)* |
+| **SubSource** | Off | With your own free key · strong in Arabic, many languages. *Your free key* |
+| **SubDL** | Off | With your own free key · the Subscene archive, many languages. *Your free key* |
+| **Wizdom** | On | Hebrew · movies and series. *Asked only when Hebrew is one of your subtitle languages* |
+| **Addic7ed** | On | Series · many languages |
+| **YIFY Subtitles** | On | Movies · many languages |
+
+- A service with a key or an account shows its fields when it is on or has them (the key and the password hidden,
+  with **Show**), **Test** (or **Sign in** for an account alone), **Clear** (or **Sign out**) and **Get a free key**
+  (or **Create a free account**): the steps are in [Free keys](Subtitles#free-keys). **Test** answers *Key works*,
+  *Signed in as …*, *Key refused*, *Wrong user name or password*, *Busy: try again in a minute* or *No answer, try
+  again*; working the first time, it turns the service on. Turning one on without its key puts you in its field.
+- What a search found shows on the row: *Key refused: check it* or *Sign-in refused: check it* (until the key or the
+  account changes, or a search works), *Busy: try again in a minute*.
+- **✕ Remove** takes a service out of the list (never asked); **Add a service** lists the ones removed to bring
+  them back. A service off stays in the list.
+- The note under them: "To find subtitles, the services turned on get the video's title, its IMDb id, its file name
+  and hash (made from a part of the file), and nothing else."
 
 ## Advanced Options
 

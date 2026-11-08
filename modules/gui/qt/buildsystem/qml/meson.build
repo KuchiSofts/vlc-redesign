@@ -27,6 +27,7 @@ qml_modules += {
         '../../dialogs/firstrun/qml/SubtitleLanguagesStep.qml',
         '../../dialogs/preferences/qml/SettingsAppearance.qml',
         '../../dialogs/preferences/qml/SettingsSubtitleLanguages.qml',
+        '../../dialogs/preferences/qml/SettingsSubtitleServices.qml',
         '../../dialogs/preferences/qml/SettingsSidebar.qml',
         '../../dialogs/preferences/qml/ShortcutsDialog.qml',
         '../../dialogs/preferences/qml/SettingsOptionList.qml',

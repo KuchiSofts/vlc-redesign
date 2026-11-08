@@ -68,7 +68,8 @@ Thank you to everyone who tested, reported and translated:
   - [@muhammadali-og](https://github.com/muhammadali-og): buttons that show what is open, and Ctrl + wheel for
     the subtitle size ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
   - [@Elshepl](https://github.com/Elshepl): subtitles from the internet in the Android app
-    ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)), now in every app.
+    ([#67](https://github.com/KuchiSofts/vlc-redesign/issues/67)), now in every app, and SubSource as a subtitle
+    service for its Arabic subtitles ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70)).
 - **Translations:**
   - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
     ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).

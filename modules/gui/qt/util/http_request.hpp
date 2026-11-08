@@ -10,6 +10,7 @@
 #include <QPair>
 #include <QString>
 #include <QUrl>
+#include <QtGlobal>
 
 #include <functional>
 #include <memory>
@@ -47,6 +48,20 @@ struct HttpRequest
 
 // Whether this build can perform requests at all.
 bool httpRequestSupported();
+
+// Redirects (301, 302, 303, 307, 308; at most 10) are followed by this code,
+// not by the backend, in both (WinHTTP, libcurl), by these rules:
+//  - to http or https only, never from https to http (an error then);
+//  - to another origin (scheme, host or port), only the headers that are no
+//    secret go (User-Agent, Accept, Accept-Language, Referer; Content-Type
+//    with a body): an API key, an Authorization, a session's token, and the
+//    username and password, stay with the server they were for, for the
+//    rest of the chain;
+//  - 303 (and 301, 302 of a POST) asks again with GET (HEAD stays), without
+//    the body; 307 and 308 keep the method and the body.
+// The next hop of request, redirected (status) to target: request changed so;
+// false, and why, when the redirect is refused.
+bool httpFollowRedirect(HttpRequest& request, int status, const QUrl& target, QString* error);
 
 // Stops a request: done then gets the error "Cancelled" (nothing happens
 // once it has ended)

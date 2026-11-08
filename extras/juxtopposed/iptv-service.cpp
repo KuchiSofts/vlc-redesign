@@ -59,18 +59,30 @@ public:
     std::function<HttpReply(const HttpCall&)> onCall;
     std::function<QVector<Datagram>(quint16 port)> onBroadcast;
 
+    // a download that fails as VLC's host fails it (its idle time passed:
+    // "no answer"), the error for a URL, or none
+    std::function<QString(const QString& url)> downloadError;
+
     struct Download
     {
         QString url;
         qint64 limit;
+        int idleSecs;
     };
 
-    bool download(const QString& url, const QString& path, QString* error, qint64 limit,
+    bool download(const QString& url, const QString& path, QString* error, qint64 limit, int idleSecs,
                   const std::function<void(qint64, qint64)>&) override
     {
         {
             std::lock_guard<std::mutex> guard(m_lock);
-            m_downloads.append({ url, limit });
+            m_downloads.append({ url, limit, idleSecs });
+        }
+        const QString failure = downloadError ? downloadError(url) : QString();
+        if (!failure.isEmpty())
+        {
+            if (error)
+                *error = failure;
+            return false;
         }
         if (onDownload && onDownload(url, path))
             return true;
@@ -78,24 +90,103 @@ public:
             *error = QStringLiteral("none here");
         return false;
     }
-    QByteArray fetch(const QString& url, QString* error, qint64) override
+    QByteArray fetch(const QString& url, QString* error, qint64, int idleSecs) override
     {
         {
             std::lock_guard<std::mutex> guard(m_lock);
             m_fetches << url;
+            m_fetchIdle << idleSecs;
         }
         const QByteArray answer = onFetch ? onFetch(url) : QByteArray();
         if (answer.isEmpty() && error)
             *error = QStringLiteral("none here");
         return answer;
     }
-    bool storeSecret(const QString&, const QByteArray&) override { return false; }
-    QByteArray loadSecret(const QString&, bool* found) override
+
+    // The keystore: its secrets by id, none when absent; each call kept
+    // with its thread and whether the service's lock was free then
+    bool hasKeystore = false;
+    struct SecretCall
     {
-        *found = false;
-        return {};
+        QString op;
+        QString id;
+        QByteArray data;
+        std::thread::id thread;
+        bool lockFree;
+    };
+    // the service the lock is probed of (set once it is made)
+    std::atomic<iptv::Service*> probed { nullptr };
+    // the reads of the keystore wait until opened (a keyring to unlock)
+    void holdKeystore()
+    {
+        std::lock_guard<std::mutex> guard(m_gateLock);
+        m_keystoreHeld = true;
     }
-    void removeSecret(const QString&) override {}
+    void openKeystore()
+    {
+        std::lock_guard<std::mutex> guard(m_gateLock);
+        m_keystoreHeld = false;
+        m_gate.notify_all();
+    }
+
+    bool storeSecret(const QString& id, const QByteArray& secret) override
+    {
+        recordSecret(QStringLiteral("store"), id, secret);
+        std::lock_guard<std::mutex> guard(m_lock);
+        if (!hasKeystore)
+            return false;
+        m_keystore.insert(id, secret);
+        return true;
+    }
+    QByteArray loadSecret(const QString& id, bool* found) override
+    {
+        {
+            // (3 s at most: a service that read it as it was made fails the
+            // test rather than hang it)
+            std::unique_lock<std::mutex> guard(m_gateLock);
+            m_gate.wait_for(guard, std::chrono::seconds(3), [this]() { return !m_keystoreHeld; });
+        }
+        recordSecret(QStringLiteral("load"), id, {});
+        std::lock_guard<std::mutex> guard(m_lock);
+        *found = hasKeystore && m_keystore.contains(id);
+        return m_keystore.value(id);
+    }
+    void removeSecret(const QString& id) override
+    {
+        recordSecret(QStringLiteral("remove"), id, {});
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_keystore.remove(id);
+    }
+    void putSecret(const QString& id, const QByteArray& secret)
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_keystore.insert(id, secret);
+    }
+    QVector<SecretCall> secretCalls(const QString& op = QString())
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        QVector<SecretCall> out;
+        for (const SecretCall& c : std::as_const(m_secretCalls))
+            if (op.isEmpty() || c.op == op)
+                out.append(c);
+        return out;
+    }
+    QList<int> fetchIdle()
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        return m_fetchIdle;
+    }
+    // (before the service goes: the probes ask it)
+    void joinProbes()
+    {
+        std::vector<std::thread> probes;
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            probes.swap(m_probes);
+        }
+        for (std::thread& t : probes)
+            t.join();
+    }
     void notify(const QJsonObject&) override {}
     void log(const QString& message) override
     {
@@ -131,6 +222,20 @@ public:
                 return d.limit;
         return -1;
     }
+    int idleOf(const QString& part)
+    {
+        for (const Download& d : downloads())
+            if (d.url.contains(part))
+                return d.idleSecs;
+        return -1;
+    }
+    int downloadsOf(const QString& part)
+    {
+        int n = 0;
+        for (const Download& d : downloads())
+            n += d.url.contains(part) ? 1 : 0;
+        return n;
+    }
     int fetchesOf(const QString& part)
     {
         std::lock_guard<std::mutex> guard(m_lock);
@@ -151,11 +256,45 @@ public:
     }
 
 private:
+    // Whether the service's lock is free: a request that takes it, from
+    // another thread, answered within half a second (it waits for us when
+    // the thread calling us holds it)
+    bool lockFree()
+    {
+        iptv::Service* const service = probed.load();
+        if (!service)
+            return true;
+        auto done = std::make_shared<std::atomic<bool>>(false);
+        std::thread probe([service, done]() {
+            service->request(QJsonObject { { QStringLiteral("op"), QStringLiteral("status") } });
+            done->store(true);
+        });
+        for (int i = 0; i < 50 && !done->load(); ++i)
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        const bool free = done->load();
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_probes.push_back(std::move(probe));
+        return free;
+    }
+    void recordSecret(const QString& op, const QString& id, const QByteArray& data)
+    {
+        const bool free = lockFree();
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_secretCalls.append({ op, id, data, std::this_thread::get_id(), free });
+    }
+
     std::mutex m_lock;
     QVector<Download> m_downloads;
     QStringList m_fetches;
+    QList<int> m_fetchIdle;
     QVector<HttpCall> m_calls;
     QStringList m_logs;
+    QHash<QString, QByteArray> m_keystore;
+    QVector<SecretCall> m_secretCalls;
+    std::vector<std::thread> m_probes;
+    std::mutex m_gateLock;
+    std::condition_variable m_gate;
+    bool m_keystoreHeld = false;
 };
 
 bool waitFor(const std::function<bool()>& done, int ms = 10000)
@@ -236,6 +375,157 @@ void testLimits(const QString& dir)
     CHECK(host.limitOf(QStringLiteral("logo.example/a.png")) == iptv::kLogoMaxBytes);
     CHECK(iptv::kPlaylistMaxBytes == 512LL << 20 && iptv::kGuideMaxBytes == 2LL << 30
           && iptv::kLogoMaxBytes == 2LL << 20);
+    // (b) and the silence each waits for at most: 30 s, a logo 15 s
+    CHECK(host.idleOf(QStringLiteral("/list.m3u")) == iptv::kIdleSecs);
+    CHECK(host.idleOf(QStringLiteral("epg.example/g.xml")) == iptv::kIdleSecs);
+    CHECK(host.idleOf(QStringLiteral("logo.example/a.png")) == iptv::kLogoIdleSecs);
+    CHECK(iptv::kIdleSecs == 30 && iptv::kLogoIdleSecs == 15);
+}
+
+// (b) a download that stalls, stopped by VLC's host ("no answer"): the
+// channels and the playlist kept stay, the source waits longer each time
+void testNoAnswer(const QString& dir)
+{
+    const QByteArray m3u = "#EXTM3U\n#EXTINF:-1,A\nhttp://s/a\n#EXTINF:-1,B\nhttp://s/b\n";
+    FakeHost host;
+    std::atomic<bool> stalls { false };
+    host.onDownload = [&](const QString& url, const QString& path) {
+        return url.endsWith(QLatin1String("/list.m3u")) && writeFile(path, m3u);
+    };
+    host.downloadError = [&](const QString& url) {
+        return stalls && url.endsWith(QLatin1String("/list.m3u")) ? QStringLiteral("no answer") : QString();
+    };
+    Tv tv(host, dir);
+    const QString id = tv.add(m3uSource());
+    CHECK(waitFor([&]() { return tv.channels().size() == 2; }));
+    CHECK(waitFor([&]() { return !tv.status(id).value(QLatin1String("busy")).toBool(); }));
+    CHECK(tv.status(id).value(QLatin1String("failures")).toInt() == 0);
+    stalls = true;
+    for (int round = 1; round <= 2; ++round)
+    {
+        const int before = host.downloadsOf(QStringLiteral("/list.m3u"));
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("refresh") }, { QStringLiteral("id"), id } });
+        CHECK(waitFor([&]() { return host.downloadsOf(QStringLiteral("/list.m3u")) > before; }));
+        CHECK(waitFor([&]() {
+            const QJsonObject s = tv.status(id);
+            return !s.value(QLatin1String("busy")).toBool() && s.value(QLatin1String("failures")).toInt() == round;
+        }));
+        const QJsonObject s = tv.status(id);
+        CHECK(s.value(QLatin1String("error")).toString() == QStringLiteral("no answer"));
+        CHECK(tv.channels().size() == 2);
+        QFile kept(tv.sourceDir(id) + QStringLiteral("/playlist.m3u"));
+        CHECK(kept.open(QIODevice::ReadOnly) && kept.readAll() == m3u);
+    }
+    // (the log says why and when again, with the host only)
+    const QStringList said = host.logs().filter(QStringLiteral("could not be refreshed"));
+    CHECK(said.size() == 2);
+    CHECK(said.value(0) == QStringLiteral("Live TV: lists.example could not be refreshed (no answer), again in 15 min"));
+    CHECK(said.value(1).endsWith(QStringLiteral("again in 30 min")));
+    // and the next refresh by itself: not before then
+    const qint64 now = QDateTime::currentSecsSinceEpoch();
+    CHECK(!iptv::refreshDue(now + 60, 1, now, 2, 24));
+    CHECK(iptv::refreshDue(now + 1800, 1, now, 2, 24));
+}
+
+// (d) the keystore: read on the worker after the start, never as the
+// service is made (the interface's thread: a locked keyring's prompt froze
+// it) nor with the service's lock held; a change stores the secrets of its
+// source alone, out of the lock; what changes no secret stores none
+void testKeystore(const QString& dir)
+{
+    QDir().mkpath(dir + QStringLiteral("/data"));
+    CHECK(writeFile(dir + QStringLiteral("/data/sources.json"), R"({"version":1,"sources":[
+        {"id":"s1","kind":"m3u","name":"One","keystore":true},
+        {"id":"s2","kind":"xtream","name":"Two","server":"http://panel.example","username":"me","keystore":true},
+        {"id":"s3","kind":"m3u","name":"Three","keystore":true}],"options":{"catalogChecked":0}})"));
+    FakeHost host;
+    host.hasKeystore = true;
+    host.putSecret(QStringLiteral("s1"), R"({"url":"https://lists.example/1.m3u?token=t1","password":"","key":""})");
+    host.putSecret(QStringLiteral("s2"), R"({"url":"","password":"p2","key":""})");
+    host.putSecret(QStringLiteral("s3"), R"({"url":"https://lists.example/3.m3u?token=t3","password":"","key":""})");
+    host.onDownload = [](const QString& url, const QString& path) {
+        return url.contains(QLatin1String("lists.example")) && writeFile(path, "#EXTM3U\n#EXTINF:-1,A\nhttp://s/a\n");
+    };
+    host.holdKeystore();
+    const std::thread::id caller = std::this_thread::get_id();
+    QElapsedTimer took;
+    took.start();
+    {
+        Tv tv(host, dir);
+        // made at once, nothing read of the keystore yet (it was, here, on
+        // the thread that makes the service)
+        CHECK(took.elapsed() < 2000);
+        CHECK(host.secretCalls(QStringLiteral("load")).isEmpty());
+        host.probed = &tv.service;
+        // answered meanwhile; what needs a secret waits for it
+        CHECK(tv.status(QStringLiteral("s1")).value(QLatin1String("name")).toString() == QStringLiteral("One"));
+        QJsonObject got;
+        std::thread asking([&]() {
+            got = tv.ask({ { QStringLiteral("op"), QStringLiteral("getSource") }, { QStringLiteral("id"), QStringLiteral("s1") } });
+        });
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+        host.openKeystore();
+        asking.join();
+        CHECK(got.value(QLatin1String("source")).toObject().value(QLatin1String("url")).toString()
+              == QStringLiteral("https://lists.example/1.m3u?token=t1"));
+        CHECK(waitFor([&]() { return host.secretCalls(QStringLiteral("load")).size() == 3; }));
+        for (const FakeHost::SecretCall& c : host.secretCalls(QStringLiteral("load")))
+        {
+            CHECK(c.thread != caller);
+            CHECK(c.lockFree);
+        }
+        CHECK(waitFor([&]() { return tv.channels().size() == 2; }));
+        // one source changed (its password left empty: the one kept)
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("updateSource") }, { QStringLiteral("id"), QStringLiteral("s2") },
+                 { QStringLiteral("source"), QJsonObject { { QStringLiteral("kind"), QStringLiteral("xtream") },
+                                                           { QStringLiteral("name"), QStringLiteral("Two again") },
+                                                           { QStringLiteral("server"), QStringLiteral("http://panel.example") },
+                                                           { QStringLiteral("username"), QStringLiteral("me") } } } });
+        QVector<FakeHost::SecretCall> stores = host.secretCalls(QStringLiteral("store"));
+        CHECK(stores.size() == 1);
+        CHECK(stores.value(0).id == QStringLiteral("s2") && stores.value(0).lockFree);
+        CHECK(QJsonDocument::fromJson(stores.value(0).data).object().value(QLatin1String("password")).toString()
+              == QStringLiteral("p2"));
+        // what changes no secret stores none: its order, on or off, the
+        // automatic guide, the catalog's date
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("enableSource") }, { QStringLiteral("id"), QStringLiteral("s3") },
+                 { QStringLiteral("enabled"), false } });
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("moveSource") }, { QStringLiteral("id"), QStringLiteral("s1") },
+                 { QStringLiteral("index"), 2 } });
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("removeAutoGuide") }, { QStringLiteral("id"), QStringLiteral("s1") } });
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("catalog") } });
+        CHECK(waitFor([&]() { return host.fetchesOf(QStringLiteral("/catalog.json")) >= 1; }));
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+        CHECK(host.secretCalls(QStringLiteral("store")).size() == 1);
+        // the file: no secret in it, each source's in the keystore
+        QFile file(dir + QStringLiteral("/data/sources.json"));
+        CHECK(file.open(QIODevice::ReadOnly));
+        const QByteArray saved = file.readAll();
+        CHECK(!saved.contains("token=t1") && !saved.contains("token=t3") && !saved.contains("\"p2\""));
+        CHECK(saved.count("\"keystore\": true") == 3);
+        CHECK(saved.contains("Two again"));
+        // signing out: its secrets stored again (forgotten), out of the lock
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("signOut") }, { QStringLiteral("id"), QStringLiteral("s2") } });
+        stores = host.secretCalls(QStringLiteral("store"));
+        CHECK(stores.size() == 2 && stores.value(1).id == QStringLiteral("s2") && stores.value(1).lockFree);
+        CHECK(QJsonDocument::fromJson(stores.value(1).data).object().value(QLatin1String("password")).toString().isEmpty());
+        // removed: its secrets too
+        tv.ask({ { QStringLiteral("op"), QStringLiteral("removeSource") }, { QStringLiteral("id"), QStringLiteral("s1") } });
+        const QVector<FakeHost::SecretCall> removes = host.secretCalls(QStringLiteral("remove"));
+        CHECK(removes.size() == 1 && removes.value(0).id == QStringLiteral("s1") && removes.value(0).lockFree);
+        host.probed = nullptr;
+        host.joinProbes();
+    }
+    // no keystore: a new source's secrets in the file, as before
+    FakeHost bare;
+    const QString dir2 = dir + QStringLiteral("-bare");
+    Tv tv(bare, dir2);
+    tv.add(m3uSource(QStringLiteral("https://lists.example/x.m3u?token=secret2")));
+    CHECK(bare.secretCalls(QStringLiteral("store")).size() == 1);
+    QFile file(dir2 + QStringLiteral("/data/sources.json"));
+    CHECK(file.open(QIODevice::ReadOnly));
+    const QByteArray saved = file.readAll();
+    CHECK(saved.contains("token=secret2") && !saved.contains("\"keystore\": true"));
 }
 
 // 2: a job that throws (out of memory) is given up, the worker goes on and
@@ -446,6 +736,11 @@ void testCutShortAndConcurrent(const QString& dir)
     const QStringList left = QDir(tv.sourceDir(id)).entryList(QDir::Files);
     for (const QString& name : left)
         CHECK(name.endsWith(QLatin1String(".json")));
+    // (b) the API's answers wait 30 s at most for their next bytes
+    const QList<int> idle = host.fetchIdle();
+    CHECK(!idle.isEmpty());
+    for (const int secs : idle)
+        CHECK(secs == iptv::kIdleSecs);
 }
 
 // 11: the automatic guide removed while it looked: what it found is not put
@@ -580,6 +875,154 @@ void testProgrammesBetween()
     CHECK(iptv::programmesBetween(day, 79800, 80500) == QVector<int>({ 0, int(day.size()) - 1 }));
 }
 
+// The guide's rule of every app: where a long programme contains shorter
+// ones, the shorter ones win their slots and the long one shows around them
+void testWithoutOverlaps()
+{
+    auto entry = [](qint64 start, qint64 stop, const char* title) {
+        iptv::Entry e;
+        e.start = start;
+        e.stop = stop;
+        e.title = QString::fromLatin1(title);
+        e.descOffset = start;
+        e.descLength = 1;
+        return e;
+    };
+    auto shape = [](const iptv::EntryList& list) {
+        QStringList out;
+        for (const iptv::Entry& e : list)
+            out << QStringLiteral("%1 %2-%3").arg(e.title).arg(e.start).arg(e.stop);
+        return out.join(QStringLiteral(", "));
+    };
+    // a long one with two inside: cut around them, each part its own
+    // (the description of the long one in each of its parts)
+    const iptv::EntryList contained = iptv::withoutOverlaps(
+        { entry(0, 100, "A"), entry(10, 20, "B"), entry(50, 60, "C"), entry(100, 120, "D") });
+    CHECK(shape(contained) == QStringLiteral("A 0-10, B 10-20, A 20-50, C 50-60, A 60-100, D 100-120"));
+    CHECK(contained.value(2).descOffset == 0 && contained.value(4).descOffset == 0);
+    // overlapping at one end: the shorter one wins what they share
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 90, "A"), entry(60, 120, "B") }))
+          == QStringLiteral("A 0-60, B 60-120"));
+    // starting together: the shorter first, the rest of the longer after
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(0, 30, "B") }))
+          == QStringLiteral("B 0-30, A 30-60"));
+    // a short one at the very end of a long one
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 100, "A"), entry(90, 100, "B") }))
+          == QStringLiteral("A 0-90, B 90-100"));
+    // the same programme twice: once
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(0, 60, "A2"), entry(60, 90, "B") }))
+          == QStringLiteral("A 0-60, B 60-90"));
+    // none: as it is (an empty one, a programme of no length, are kept out)
+    const iptv::EntryList plain { entry(0, 10, "A"), entry(10, 20, "B"), entry(30, 40, "C") };
+    CHECK(shape(iptv::withoutOverlaps(plain)) == shape(plain));
+    CHECK(iptv::withoutOverlaps({}).isEmpty());
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(20, 20, "Z"), entry(10, 20, "B") }))
+          == QStringLiteral("A 0-10, B 10-20, A 20-60"));
+}
+
+// The same through the service, from a guide (fixtures/iptv-overlap): what
+// is on now and next at moments inside and outside the short ones, a guide
+// row's list, the long one's description in its parts
+void testGuideOverlaps(const QString& dir, const QString& fixtures)
+{
+    QFile file(fixtures + QStringLiteral("/iptv-overlap/guide.xml"));
+    CHECK(file.open(QIODevice::ReadOnly));
+    const QDateTime today(QDateTime::currentDateTimeUtc().date(), QTime(0, 0), QTimeZone::utc());
+    const QByteArray guide = file.readAll().replace("{DAY}", today.toString(QStringLiteral("yyyyMMdd")).toLatin1());
+    FakeHost host;
+    host.onDownload = [&](const QString& url, const QString& path) {
+        if (url.endsWith(QLatin1String("/list.m3u")))
+            return writeFile(path, "#EXTM3U url-tvg=\"https://epg.example/overlap.xml\"\n"
+                                   "#EXTINF:-1 tvg-id=\"movies.example\",Example Movies\nhttp://s/movies\n");
+        if (url.endsWith(QLatin1String("/overlap.xml")))
+            return writeFile(path, guide);
+        return false;
+    };
+    Tv tv(host, dir);
+    tv.add(m3uSource());
+    QString key;
+    CHECK(waitFor([&]() {
+        const QJsonArray list = tv.channels();
+        if (list.size() != 1 || !list.at(0).toObject().value(QLatin1String("guide")).toBool())
+            return false;
+        key = list.at(0).toObject().value(QLatin1String("key")).toString();
+        return true;
+    }));
+    const qint64 day = today.toSecsSinceEpoch();
+    auto at = [&](int h, int m) { return day + h * 3600 + m * 60; };
+    auto nowNext = [&](qint64 t) {
+        return tv.ask({ { QStringLiteral("op"), QStringLiteral("nowNext") }, { QStringLiteral("keys"), QJsonArray { key } },
+                        { QStringLiteral("at"), double(t) } })
+            .value(QLatin1String("channels")).toObject().value(key).toObject();
+    };
+    auto is = [](const QJsonObject& p, const char* title, qint64 start, qint64 stop) {
+        return p.value(QLatin1String("title")).toString() == QLatin1String(title)
+               && qint64(p.value(QLatin1String("start")).toDouble()) == start
+               && (stop < 0 || qint64(p.value(QLatin1String("stop")).toDouble()) == stop);
+    };
+    struct Moment { int h, m; const char* now; int nowFrom[2]; int nowTo[2]; const char* next; int nextFrom[2]; };
+    const Moment moments[] = {
+        { 18, 30, "Movie Night", { 18, 0 }, { 19, 0 }, "News", { 19, 0 } },
+        { 19, 10, "News", { 19, 0 }, { 19, 30 }, "Movie Night", { 19, 30 } },
+        { 20, 0, "Movie Night", { 19, 30 }, { 20, 30 }, "Weather", { 20, 30 } },
+        { 20, 40, "Weather", { 20, 30 }, { 20, 45 }, "Movie Night", { 20, 45 } },
+        { 21, 0, "Movie Night", { 20, 45 }, { 22, 0 }, "Late Show", { 22, 0 } },
+        { 22, 30, "Late Show", { 22, 0 }, { 23, 0 }, "", { 0, 0 } },
+    };
+    for (const Moment& m : moments)
+    {
+        const QJsonObject nn = nowNext(at(m.h, m.m));
+        const bool now = is(nn.value(QLatin1String("now")).toObject(), m.now, at(m.nowFrom[0], m.nowFrom[1]),
+                            at(m.nowTo[0], m.nowTo[1]));
+        const bool next = *m.next ? is(nn.value(QLatin1String("next")).toObject(), m.next, at(m.nextFrom[0], m.nextFrom[1]), -1)
+                                  : !nn.contains(QLatin1String("next"));
+        if (!now || !next)
+            std::fprintf(stderr, "at %02d:%02d: %s\n", m.h, m.m, QJsonDocument(nn).toJson(QJsonDocument::Compact).constData());
+        CHECK(now);
+        CHECK(next);
+    }
+    // before the long one and after the last: nothing on
+    CHECK(!nowNext(at(17, 0)).contains(QLatin1String("now")));
+    CHECK(!nowNext(at(23, 30)).contains(QLatin1String("now")));
+    // a guide row from 18:00 to 23:00: the long one around the short ones
+    const QJsonArray row = tv.ask({ { QStringLiteral("op"), QStringLiteral("programmes") },
+                                    { QStringLiteral("keys"), QJsonArray { key } },
+                                    { QStringLiteral("from"), double(at(18, 0)) },
+                                    { QStringLiteral("to"), double(at(23, 0)) } })
+                               .value(QLatin1String("programmes")).toObject().value(key).toArray();
+    QStringList shown;
+    for (const QJsonValue& v : row)
+    {
+        const QJsonObject p = v.toObject();
+        const qint64 s = qint64(p.value(QLatin1String("start")).toDouble()) - day;
+        const qint64 e = qint64(p.value(QLatin1String("stop")).toDouble()) - day;
+        shown << QStringLiteral("%1 %2:%3-%4:%5").arg(p.value(QLatin1String("title")).toString())
+                     .arg(s / 3600, 2, 10, QLatin1Char('0')).arg(s % 3600 / 60, 2, 10, QLatin1Char('0'))
+                     .arg(e / 3600, 2, 10, QLatin1Char('0')).arg(e % 3600 / 60, 2, 10, QLatin1Char('0'));
+    }
+    std::printf("a guide row: %s\n", qPrintable(shown.join(QStringLiteral(", "))));
+    CHECK(shown == QStringList({ QStringLiteral("Movie Night 18:00-19:00"), QStringLiteral("News 19:00-19:30"),
+                                 QStringLiteral("Movie Night 19:30-20:30"), QStringLiteral("Weather 20:30-20:45"),
+                                 QStringLiteral("Movie Night 20:45-22:00"), QStringLiteral("Late Show 22:00-23:00") }));
+    // a row that starts inside the long one, between the short ones
+    const QJsonArray later = tv.ask({ { QStringLiteral("op"), QStringLiteral("programmes") },
+                                      { QStringLiteral("keys"), QJsonArray { key } },
+                                      { QStringLiteral("from"), double(at(19, 45)) },
+                                      { QStringLiteral("to"), double(at(20, 35)) } })
+                                 .value(QLatin1String("programmes")).toObject().value(key).toArray();
+    CHECK(later.size() == 2 && is(later.at(0).toObject(), "Movie Night", at(19, 30), at(20, 30))
+          && is(later.at(1).toObject(), "Weather", at(20, 30), at(20, 45)));
+    // the long one's description, in each of its parts; the short one's own
+    auto description = [&](qint64 t) {
+        return tv.ask({ { QStringLiteral("op"), QStringLiteral("description") }, { QStringLiteral("key"), key },
+                        { QStringLiteral("start"), double(t) } })
+            .value(QLatin1String("description")).toString();
+    };
+    CHECK(description(at(18, 0)) == QStringLiteral("A long film."));
+    CHECK(description(at(20, 45)) == QStringLiteral("A long film."));
+    CHECK(description(at(19, 0)) == QStringLiteral("The news at seven."));
+}
+
 // 18: the tuners found are asked once each, briefly (any computer can answer
 // the discovery, a tuner answers from each of its addresses)
 QByteArray hdhrReply()
@@ -631,12 +1074,15 @@ void testDiscover(const QString& dir)
 
 }
 
-int main()
+int main(int argc, char** argv)
 {
+    const QString fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures");
     QTemporaryDir tmp;
     const QString root = tmp.path();
     testBackOff();
     testProgrammesBetween();
+    testWithoutOverlaps();
+    testGuideOverlaps(root + QStringLiteral("/overlaps"), fixtures);
     testLimits(root + QStringLiteral("/limits"));
     testThrowingJob(root + QStringLiteral("/throw"));
     testDuplicates(root + QStringLiteral("/duplicates"));
@@ -644,6 +1090,8 @@ int main()
     testAutoGuideRemovedMeanwhile(root + QStringLiteral("/autoguide"));
     testRemoveSource(root + QStringLiteral("/remove"));
     testDiscover(root + QStringLiteral("/discover"));
+    testNoAnswer(root + QStringLiteral("/noanswer"));
+    testKeystore(root + QStringLiteral("/keystore"));
     std::printf("TV service: %d checks, %d failed\n", int(checks), int(failures));
     return failures ? 1 : 0;
 }

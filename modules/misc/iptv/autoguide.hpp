@@ -44,8 +44,11 @@ QVector<Known> readCompactChannels(const QByteArray& data);
 // A channel's name folded for matching: lower case, accents off, the
 // separators and the quality ("HD", "FHD", "4K", "(1080p)", "[Geo-blocked]")
 // dropped; a country it names ("UK: ", "(US)") in country (ISO, upper case,
-// "UK" as "GB"), a "+1" (the same channel an hour later) in plusHours
-QString matchName(const QString& name, QString* country = nullptr, int* plusHours = nullptr);
+// "UK" as "GB"), a "+1" (the same channel an hour later) in plusHours;
+// whether its last word is "TV" (kept in the key, the same on both sides:
+// the Matcher also tries the name without it) in endsWithTv
+QString matchName(const QString& name, QString* country = nullptr, int* plusHours = nullptr,
+                  bool* endsWithTv = nullptr);
 
 // The country an iptv-org id ends with ("BBCOne.uk@HD" -> "GB"), or empty
 QString countryOfId(const QString& id);
@@ -83,9 +86,15 @@ private:
         bool oneCountry = true;
         QHash<QString, int> byCountry;
     };
+    // the channels of a key, the key as it is first (see the .cpp)
+    const Named* named(const QString& key, const QString& keyWithoutTv) const;
+
     QVector<Known> m_channels;
     QHash<QString, int> m_byId;            // the id, lower case
     QHash<QString, Named> m_byName;
+    // the names that end in "TV" without it ("Arte TV" as "arte"): what a
+    // list's "Arte" is matched to when no channel has that name exactly
+    QHash<QString, Named> m_byNameWithoutTv;
 };
 
 // The guides of the catalog for the countries of the channels matched:

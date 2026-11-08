@@ -26,7 +26,7 @@ jobs:
       - name: Tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends g++ pkg-config qt6-base-dev zlib1g-dev
+          sudo apt-get install -y --no-install-recommends g++ pkg-config qt6-base-dev zlib1g-dev libcurl4-openssl-dev
 
       - name: Parsers and encodings (address and undefined-behaviour sanitizers)
         run: sh extras/juxtopposed/ci/unit-tests.sh

@@ -35,7 +35,7 @@ class TestHost : public iptv::Host
 public:
     explicit TestHost(bool stuck) : m_stuck(stuck) {}
 
-    bool download(const QString&, const QString&, QString* error, qint64,
+    bool download(const QString&, const QString&, QString* error, qint64, int,
                   const std::function<void(qint64, qint64)>&) override
     {
         wait();
@@ -43,7 +43,7 @@ public:
             *error = QStringLiteral("stopped");
         return false;
     }
-    QByteArray fetch(const QString& url, QString* error, qint64) override
+    QByteArray fetch(const QString& url, QString* error, qint64, int) override
     {
         {
             std::lock_guard<std::mutex> guard(m_lock);

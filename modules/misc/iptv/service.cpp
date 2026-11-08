@@ -28,6 +28,8 @@
 #include <chrono>
 #include <cmath>
 #include <exception>
+#include <set>
+#include <tuple>
 
 namespace iptv {
 
@@ -436,6 +438,66 @@ bool refreshDue(qint64 now, qint64 playlistUpdated, qint64 lastAttempt, int fail
     return playlistUpdated == 0 || now - playlistUpdated > delay;
 }
 
+EntryList withoutOverlaps(const EntryList& list)
+{
+    bool overlap = false;
+    for (qsizetype i = 1; i < list.size() && !overlap; ++i)
+        overlap = list[i].start < list[i - 1].stop;
+    if (!overlap)
+        return list;
+    // the moments a programme starts or ends, and between two of them the
+    // shortest of those on (the earlier start, then the first in the list,
+    // when they are as long)
+    struct Edge
+    {
+        qint64 at;
+        int index;
+        bool starts;
+    };
+    QVector<Edge> edges;
+    edges.reserve(list.size() * 2);
+    for (int i = 0; i < int(list.size()); ++i)
+        if (list[i].stop > list[i].start)
+        {
+            edges.append({ list[i].start, i, true });
+            edges.append({ list[i].stop, i, false });
+        }
+    std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) { return a.at < b.at; });
+    using Key = std::tuple<qint64, qint64, int>;   // length, start, index
+    std::set<Key> on;
+    EntryList out;
+    out.reserve(list.size() + list.size() / 2);
+    int current = -1;
+    qint64 since = 0;
+    for (qsizetype k = 0; k < edges.size();)
+    {
+        const qint64 at = edges[k].at;
+        for (; k < edges.size() && edges[k].at == at; ++k)
+        {
+            const Entry& e = list[edges[k].index];
+            const Key key { e.stop - e.start, e.start, edges[k].index };
+            if (edges[k].starts)
+                on.insert(key);
+            else
+                on.erase(key);
+        }
+        const int chosen = on.empty() ? -1 : std::get<2>(*on.begin());
+        if (chosen == current)
+            continue;
+        // the part of the one shown until now, then the next from here
+        if (current >= 0 && at > since)
+        {
+            Entry part = list[current];
+            part.start = since;
+            part.stop = at;
+            out.append(std::move(part));
+        }
+        current = chosen;
+        since = at;
+    }
+    return out;
+}
+
 QVector<int> programmesBetween(const EntryList& list, qint64 from, qint64 to)
 {
     QVector<int> out;
@@ -493,6 +555,9 @@ void Service::stop()
     }
     m_host.killWorker();
     m_jobWait.notify_all();
+    // (a request waiting for the keystore's secrets: no longer, 10 s at most
+    // if this wakeup comes before its wait)
+    m_secretsWait.notify_all();
 }
 
 bool Service::waitStopped(int ms)
@@ -524,32 +589,108 @@ void Service::loadConfig()
         SourceConfig s = sourceFromJson(v.toObject());
         if (s.id.isEmpty())
             continue;
-        if (v.toObject().value(QLatin1String("keystore")).toBool())
-        {
-            bool found = false;
-            const QJsonObject secret = QJsonDocument::fromJson(m_host.loadSecret(s.id, &found)).object();
-            s.url = secret.value(QLatin1String("url")).toString();
-            s.password = secret.value(QLatin1String("password")).toString();
-            s.key = secret.value(QLatin1String("key")).toString();
-        }
+        // (its secrets in VLC's keystore: read by the worker, see loadSecrets;
+        // here, as the module loads, a locked keyring's prompt froze the
+        // interface)
+        s.inKeystore = v.toObject().value(QLatin1String("keystore")).toBool();
+        if (s.inKeystore)
+            m_secretsReady = false;
         m_sources.append(s);
     }
     const QJsonObject options = root.value(QLatin1String("options")).toObject();
     m_catalogChecked = secsOf(options.value(QLatin1String("catalogChecked")));
 }
 
+void Service::loadSecrets()
+{
+    QStringList ids;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        if (m_secretsReady)
+            return;
+        for (const SourceConfig& s : std::as_const(m_sources))
+            if (s.inKeystore)
+                ids << s.id;
+    }
+    // (out of m_lock: the interface's requests are answered meanwhile)
+    QHash<QString, QJsonObject> secrets;
+    {
+        std::lock_guard<std::mutex> guard(m_secretLock);
+        for (const QString& id : std::as_const(ids))
+        {
+            if (m_quit)
+                break;
+            bool found = false;
+            const QByteArray secret = m_host.loadSecret(id, &found);
+            if (found)
+                secrets.insert(id, QJsonDocument::fromJson(secret).object());
+        }
+    }
+    std::lock_guard<std::mutex> guard(m_lock);
+    for (SourceConfig& s : m_sources)
+    {
+        const auto it = secrets.constFind(s.id);
+        if (it == secrets.cend())
+            continue;
+        // (what a request set meanwhile wins: only what is still empty)
+        if (s.url.isEmpty())
+            s.url = it->value(QLatin1String("url")).toString();
+        if (s.password.isEmpty())
+            s.password = it->value(QLatin1String("password")).toString();
+        if (s.key.isEmpty())
+            s.key = it->value(QLatin1String("key")).toString();
+    }
+    m_secretsReady = true;
+    m_secretsWait.notify_all();
+}
+
+bool Service::secretsReady(std::unique_lock<std::mutex>& guard)
+{
+    return m_secretsWait.wait_for(guard, std::chrono::seconds(10), [this]() { return m_secretsReady || m_quit; })
+           && m_secretsReady;
+}
+
+void Service::storeSecrets(const QString& id)
+{
+    std::lock_guard<std::mutex> secretGuard(m_secretLock);
+    QByteArray secret;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        const SourceConfig* s = findSource(id);
+        if (!s)
+            return;
+        secret = QJsonDocument(QJsonObject { { QStringLiteral("url"), s->url },
+                                             { QStringLiteral("password"), s->password },
+                                             { QStringLiteral("key"), s->key } })
+                     .toJson(QJsonDocument::Compact);
+    }
+    const bool stored = m_host.storeSecret(id, secret);
+    bool removed = false;
+    {
+        std::lock_guard<std::mutex> guard(m_lock);
+        SourceConfig* s = findSource(id);
+        removed = !s;
+        // (no keystore: the secrets in the file, as before)
+        if (s && (!stored || !s->inKeystore))
+        {
+            s->inKeystore = stored;
+            saveConfig();
+        }
+    }
+    // (removed while it was stored: not left in the keystore)
+    if (removed && stored)
+        m_host.removeSecret(id);
+}
+
 void Service::saveConfig()
 {
-    // (under m_lock)
+    // (under m_lock; never the keystore here: a change of one source's name
+    // or of the catalog's date stored every secret, under the lock)
     QJsonArray list;
     for (const SourceConfig& s : std::as_const(m_sources))
     {
         QJsonObject o = sourceToJson(s, false);
-        QJsonObject secret;
-        secret.insert(QLatin1String("url"), s.url);
-        secret.insert(QLatin1String("password"), s.password);
-        secret.insert(QLatin1String("key"), s.key);
-        if (m_host.storeSecret(s.id, QJsonDocument(secret).toJson(QJsonDocument::Compact)))
+        if (s.inKeystore)
             o.insert(QLatin1String("keystore"), true);
         else
         {
@@ -675,6 +816,22 @@ void Service::post(Job job)
 void Service::run()
 {
     m_host.enterWorker();
+    // the keystore's secrets first, before any job (they are what the
+    // downloads ask with), here and not as the module loads
+    try
+    {
+        loadSecrets();
+    }
+    catch (const std::exception& e)
+    {
+        jobFailed(e.what());
+    }
+    {
+        // (none read, an exception: what waits for them goes on without)
+        std::lock_guard<std::mutex> guard(m_lock);
+        m_secretsReady = true;
+    }
+    m_secretsWait.notify_all();
     auto nextCheck = std::chrono::steady_clock::now() + std::chrono::seconds(60);
     while (!m_quit)
     {
@@ -873,6 +1030,7 @@ void Service::refreshSources(const QStringList& ids, bool guides)
         // (failed: refreshed by itself again later and later, see refreshDue)
         fresh.lastAttempt = nowSecs();
         fresh.failures = fresh.error.isEmpty() ? 0 : state.failures + 1;
+        int refreshHours = 0;
         {
             std::lock_guard<std::mutex> guard(m_lock);
             if (!findSource(id))
@@ -880,6 +1038,17 @@ void Service::refreshSources(const QStringList& ids, bool guides)
             fresh.busy = guides;
             fresh.stage = guides ? QStringLiteral("guide") : QString();
             m_state.insert(id, fresh);
+            refreshHours = m_refreshHours;
+        }
+        // (its host only in the log: the rest of a link is often a token)
+        if (fresh.failures > 0)
+        {
+            const qint64 retry = retryDelaySecs(fresh.failures, refreshHours);
+            m_host.log(QStringLiteral("Live TV: %1 could not be refreshed (%2), %3")
+                           .arg(cfg.kind == QLatin1String("m3u") ? hostOf(cfg.url) : hostOf(asUrl(cfg.server)),
+                                fresh.error,
+                                retry < 0 ? QStringLiteral("not again by itself")
+                                          : QStringLiteral("again in %1 min").arg(retry / 60)));
         }
         done << id;
         rebuild();
@@ -1024,7 +1193,7 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
     }
     else if (download)
     {
-        if (m_host.download(asUrl(cfg.url), path, &error, kPlaylistMaxBytes,
+        if (m_host.download(asUrl(cfg.url), path, &error, kPlaylistMaxBytes, kIdleSecs,
                             [this, &cfg](qint64 received, qint64 total) {
                                 progress(cfg.id, QStringLiteral("playlist"), received, total);
                             }))
@@ -1104,7 +1273,7 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
         if (download && mine && (age < 0 || refreshHours <= 0 || age > qint64(refreshHours) * 3600 - 600))
         {
             progress(w.sourceId, QStringLiteral("guide"), 0, 0);
-            if (!m_host.download(asUrl(w.url), path, &error, kGuideMaxBytes,
+            if (!m_host.download(asUrl(w.url), path, &error, kGuideMaxBytes, kIdleSecs,
                                  [this, &w](qint64 received, qint64 total) {
                                      progress(w.sourceId, QStringLiteral("guide"), received, total);
                                  }))
@@ -1217,6 +1386,9 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
                     list->append(std::move(e));
             if (list->isEmpty())
                 continue;
+            // (a long programme that contains shorter ones: they win their
+            // slots, it shows around them; every app's rule)
+            *list = withoutOverlaps(*list);
             list->squeeze();
             data->programmes += int(list->size());
             data->byKey.insert(it.key(), std::move(list));
@@ -1417,7 +1589,7 @@ QVector<autoguide::Known> Service::knownChannels(QString* error)
     {
         const QString part = path + QStringLiteral(".part");
         if (m_host.download(QStringLiteral("https://iptv-org.github.io/api/channels.json"), part, error,
-                            128LL << 20))
+                            128LL << 20, kIdleSecs))
         {
             QByteArray data = readAll(part);
             if (isGzip(data))
@@ -1838,7 +2010,12 @@ QString Service::openServerStream(const QString& sourceId, const QString& channe
 {
     SourceConfig cfg;
     {
-        std::lock_guard<std::mutex> guard(m_lock);
+        std::unique_lock<std::mutex> guard(m_lock);
+        if (!secretsReady(guard))
+        {
+            *error = QStringLiteral("the keystore is not open yet");
+            return {};
+        }
         const SourceConfig* s = findSource(sourceId);
         if (!s)
             return {};
@@ -2021,7 +2198,11 @@ QJsonObject Service::testSource(const QJsonObject& r)
     const QString id = r.value(QLatin1String("id")).toString();
     if (!id.isEmpty())
     {
-        std::lock_guard<std::mutex> guard(m_lock);
+        std::unique_lock<std::mutex> guard(m_lock);
+        // (its own secrets: read from the keystore first)
+        if (!secretsReady(guard))
+            return QJsonObject { { QStringLiteral("result"), QStringLiteral("noAnswer") },
+                                 { QStringLiteral("error"), QStringLiteral("the keystore is not open yet") } };
         if (const SourceConfig* old = findSource(id))
         {
             if (s.password.isEmpty())
@@ -2288,7 +2469,10 @@ QJsonObject Service::request(const QJsonObject& r)
         return logo(r);
     if (op == QLatin1String("getSource"))
     {
-        std::lock_guard<std::mutex> guard(m_lock);
+        std::unique_lock<std::mutex> guard(m_lock);
+        // (with its secrets: read from the keystore first)
+        if (!secretsReady(guard))
+            return QJsonObject { { QStringLiteral("error"), QStringLiteral("the keystore is not open yet") } };
         const SourceConfig* s = findSource(r.value(QLatin1String("id")).toString());
         if (!s)
             return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
@@ -2323,9 +2507,13 @@ QJsonObject Service::request(const QJsonObject& r)
                                           : hostOf(s.url);
         QString id;
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::unique_lock<std::mutex> guard(m_lock);
             if (op == QLatin1String("updateSource"))
             {
+                // (a password left empty is the one kept: read from the
+                // keystore first, never an empty one stored over it)
+                if (!secretsReady(guard))
+                    return QJsonObject { { QStringLiteral("error"), QStringLiteral("the keystore is not open yet") } };
                 SourceConfig* old = findSource(r.value(QLatin1String("id")).toString());
                 if (!old)
                     return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
@@ -2348,6 +2536,7 @@ QJsonObject Service::request(const QJsonObject& r)
                 s.autoFound = old->autoFound;
                 s.autoTotal = old->autoTotal;
                 s.autoEdits = old->autoEdits;
+                s.inKeystore = old->inKeystore;
                 s.guideIds = old->guideIds;
                 *old = s;
             }
@@ -2359,6 +2548,8 @@ QJsonObject Service::request(const QJsonObject& r)
             id = s.id;
             saveConfig();
         }
+        // its secrets alone to the keystore, out of the lock
+        storeSecrets(id);
         post([this, id]() { refreshSources({ id }, true); });
         changed("sources");
         out.insert(QLatin1String("id"), id);
@@ -2381,7 +2572,11 @@ QJsonObject Service::request(const QJsonObject& r)
             m_state.remove(id);
             saveConfig();
         }
-        m_host.removeSecret(id);
+        {
+            // (after a storing of it in progress, not before: one at a time)
+            std::lock_guard<std::mutex> secretGuard(m_secretLock);
+            m_host.removeSecret(id);
+        }
         // its files, on the worker: after a refresh of it in progress, which
         // would write them again
         post([this, id]() {
@@ -2422,7 +2617,11 @@ QJsonObject Service::request(const QJsonObject& r)
     {
         const QString id = r.value(QLatin1String("id")).toString();
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::unique_lock<std::mutex> guard(m_lock);
+            // (forgotten after they were read: never filled again from the
+            // keystore afterwards)
+            if (!secretsReady(guard))
+                return QJsonObject { { QStringLiteral("error"), QStringLiteral("the keystore is not open yet") } };
             SourceConfig* s = findSource(id);
             if (!s)
                 return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such source") } };
@@ -2432,6 +2631,7 @@ QJsonObject Service::request(const QJsonObject& r)
             m_sessions.remove(id);
             saveConfig();
         }
+        storeSecrets(id);
         post([this]() { loadGuides(false, {}); rebuild(); changed("channels"); changed("guide"); });
         changed("sources");
         return out;
@@ -2572,6 +2772,8 @@ QJsonObject Service::status()
                                         : isServerKind(s.kind) ? hostOf(servers::baseUrl(s.server, defaultPort(s.kind)))
                                                                : hostOf(s.url));
         o.insert(QLatin1String("refused"), state.refused);
+        // (its refreshes that failed since one worked: waited for longer)
+        o.insert(QLatin1String("failures"), state.failures);
         o.insert(QLatin1String("channels"), int(state.channels.size()));
         int catchupDays = 0, withGuide = 0;
         for (const ChannelEntry& c : std::as_const(m_channels))
@@ -2821,7 +3023,10 @@ QJsonObject Service::vod(const QJsonObject& r)
 {
     SourceConfig cfg;
     {
-        std::lock_guard<std::mutex> guard(m_lock);
+        std::unique_lock<std::mutex> guard(m_lock);
+        // (its password: read from the keystore first)
+        if (!secretsReady(guard))
+            return QJsonObject { { QStringLiteral("error"), QStringLiteral("the keystore is not open yet") } };
         const SourceConfig* s = findSource(r.value(QLatin1String("id")).toString());
         if (!s || s->kind != QLatin1String("xtream"))
             return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such account") } };
@@ -2879,7 +3084,10 @@ QJsonObject Service::seriesInfo(const QJsonObject& r)
 {
     SourceConfig cfg;
     {
-        std::lock_guard<std::mutex> guard(m_lock);
+        std::unique_lock<std::mutex> guard(m_lock);
+        // (its password: read from the keystore first)
+        if (!secretsReady(guard))
+            return QJsonObject { { QStringLiteral("error"), QStringLiteral("the keystore is not open yet") } };
         const SourceConfig* s = findSource(r.value(QLatin1String("id")).toString());
         if (!s || s->kind != QLatin1String("xtream"))
             return QJsonObject { { QStringLiteral("error"), QStringLiteral("no such account") } };
@@ -2923,7 +3131,7 @@ QJsonObject Service::logo(const QJsonObject& r)
     if (age < 0 || age > 30 * 86400)
     {
         QString error;
-        if (!m_host.download(url, path, &error, kLogoMaxBytes) && age < 0)
+        if (!m_host.download(url, path, &error, kLogoMaxBytes, kLogoIdleSecs) && age < 0)
         {
             if (!m_quit)
                 writeAll(missing, QByteArray());

@@ -165,6 +165,7 @@ libiptv_plugin_la_SOURCES = \
 	misc/iptv/xtream.cpp misc/iptv/xtream.hpp \
 	misc/iptv/servers.cpp misc/iptv/servers.hpp \
 	misc/iptv/autoguide.cpp misc/iptv/autoguide.hpp \
+	misc/iptv/idle_watch.hpp \
 	gui/qt/util/http_request.cpp gui/qt/util/http_request.hpp
 nodist_libiptv_plugin_la_SOURCES = misc/iptv/catalog.h
 libiptv_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/misc/iptv

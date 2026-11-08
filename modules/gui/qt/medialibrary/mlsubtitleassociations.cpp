@@ -20,6 +20,7 @@
 #include <QHash>
 #include <QSet>
 
+#include <memory>
 #include <utility>
 
 #include <vlc_input_item.h>
@@ -29,6 +30,7 @@
 #include "medialib.hpp"
 #include "mlhelper.hpp"
 #include "qt.hpp"
+#include "util/http_request.hpp"
 
 namespace {
 QString baseName(const QUrl& url)
@@ -217,10 +219,16 @@ void MLSubtitleAssociations::setAudio(bool audio)
 
 bool MLSubtitleAssociations::accepts(const QString& filename) const
 {
+    return accepts(filename, m_audio);
+}
+
+bool MLSubtitleAssociations::accepts(const QString& filename, bool audio)
+{
+    // (input_item_slave_GetType reads only its tables: any thread)
     enum slave_type type;
     const QByteArray name = QFile::encodeName(filename);
     return input_item_slave_GetType(name.constData(), &type)
-        && type == (m_audio ? SLAVE_TYPE_GENERIC : SLAVE_TYPE_SPU);
+        && type == (audio ? SLAVE_TYPE_GENERIC : SLAVE_TYPE_SPU);
 }
 
 void MLSubtitleAssociations::openFolderUrl(const QUrl& folder)
@@ -234,25 +242,13 @@ void MLSubtitleAssociations::openFolderUrl(const QUrl& folder)
     m_destinations.clear();
     m_error.clear();
     const QUrl url = fileUrl(folder);
-    const QDir dir(url.toLocalFile());
-    if (url.isEmpty() || !dir.exists())
+    if (url.isEmpty())
     {
         setError(tr("Choose an existing local folder."));
         return;
     }
-    QStringList patterns;
-    // audio tracks go with the videos
-    const QString extensions = m_audio ? QStringLiteral(EXTENSIONS_VIDEO)
-                                       : QStringLiteral(EXTENSIONS_VIDEO ";" EXTENSIONS_AUDIO);
-    for (const QString& pattern : extensions.split(QLatin1Char(';'), Qt::SkipEmptyParts))
-        patterns.push_back(pattern.trimmed());
-    const auto entries = dir.entryInfoList(patterns, QDir::Files | QDir::Readable, QDir::Name);
-    for (const auto& info : entries)
-        m_destinations.push_back({0, QUrl::fromLocalFile(info.absoluteFilePath()), info.fileName()});
-    if (m_destinations.isEmpty())
-        m_error = tr("No local media files were found in this destination.");
-    scanFolder(QUrl::fromLocalFile(dir.absolutePath()));
-    match();
+    // its media files and its subtitle files, on a worker thread
+    scanFolder(url, true);
 }
 
 void MLSubtitleAssociations::loadUrlTarget(const QUrl& target)
@@ -329,37 +325,91 @@ void MLSubtitleAssociations::chooseFiles()
     addFiles(values);
 }
 
-void MLSubtitleAssociations::scanFolder(const QUrl& folder)
+void MLSubtitleAssociations::scanFolder(const QUrl& folder, bool media)
 {
-    // the files found before go, the ones chosen stay
-    QVector<Source> kept;
-    for (const auto& source : m_sources)
-        if (!source.scanned)
-            kept.push_back(source);
-    m_sources = std::move(kept);
     m_folder = folder;
-
-    QSet<QString> seen;
-    for (const auto& source : m_sources)
-        seen.insert(source.url.toString(QUrl::FullyEncoded));
-    // one media: the files named after it (The_Wand_S01E01_English.srt)
-    const QString prefix = m_destinations.size() == 1 ? baseName(m_destinations.front().url) : QString();
-    const auto entries = QDir(folder.toLocalFile()).entryInfoList(QDir::Files | QDir::Readable, QDir::Name);
-    for (const auto& info : entries)
+    // What a folder holds, read on the worker thread (nothing of this
+    // object there: the values it needs, its answer by done)
+    struct Scan
     {
-        if (!accepts(info.fileName()))
-            continue;
-        if (!prefix.isEmpty() && !baseName(info.fileName()).startsWith(prefix))
-            continue;
-        const QUrl url = QUrl::fromLocalFile(info.absoluteFilePath());
-        if (seen.contains(url.toString(QUrl::FullyEncoded)))
-            continue;
-        Source source;
-        source.url = url;
-        source.label = info.fileName();
-        source.scanned = true;
-        m_sources.push_back(source);
-    }
+        bool exists = false;
+        QVector<Destination> media;
+        QVector<QPair<QUrl, QString>> files; // url, name
+    };
+    auto scan = std::make_shared<Scan>();
+    const QString path = folder.toLocalFile();
+    const bool audio = m_audio;
+    // one media: the files named after it (The_Wand_S01E01_English.srt)
+    const QString knownPrefix = !media && m_destinations.size() == 1 ? baseName(m_destinations.front().url) : QString();
+    const quint64 revision = m_revision;
+    m_busy = true;
+    emit changed();
+    const bool started = runInBackground(this, [scan, path, audio, media, knownPrefix]() {
+        const QDir dir(path);
+        scan->exists = dir.exists();
+        if (!scan->exists)
+            return;
+        QString prefix = knownPrefix;
+        if (media)
+        {
+            QStringList patterns;
+            // audio tracks go with the videos
+            const QString extensions = audio ? QStringLiteral(EXTENSIONS_VIDEO)
+                                             : QStringLiteral(EXTENSIONS_VIDEO ";" EXTENSIONS_AUDIO);
+            for (const QString& pattern : extensions.split(QLatin1Char(';'), Qt::SkipEmptyParts))
+                patterns.push_back(pattern.trimmed());
+            for (const auto& info : dir.entryInfoList(patterns, QDir::Files | QDir::Readable, QDir::Name))
+                scan->media.push_back({0, QUrl::fromLocalFile(info.absoluteFilePath()), info.fileName()});
+            if (scan->media.size() == 1)
+                prefix = baseName(scan->media.front().url);
+        }
+        for (const auto& info : dir.entryInfoList(QDir::Files | QDir::Readable, QDir::Name))
+        {
+            if (!accepts(info.fileName(), audio))
+                continue;
+            if (!prefix.isEmpty() && !baseName(info.fileName()).startsWith(prefix))
+                continue;
+            scan->files.push_back({QUrl::fromLocalFile(info.absoluteFilePath()), info.fileName()});
+        }
+    }, [this, revision, scan, media]() {
+        // (another destination since: its own scan)
+        if (revision != m_revision)
+            return;
+        m_busy = false;
+        if (media)
+        {
+            if (!scan->exists)
+            {
+                setError(tr("Choose an existing local folder."));
+                return;
+            }
+            m_destinations = scan->media;
+            if (m_destinations.isEmpty())
+                m_error = tr("No local media files were found in this destination.");
+        }
+        // the files found before go, the ones chosen stay
+        QVector<Source> kept;
+        for (const auto& source : std::as_const(m_sources))
+            if (!source.scanned)
+                kept.push_back(source);
+        m_sources = std::move(kept);
+        QSet<QString> seen;
+        for (const auto& source : std::as_const(m_sources))
+            seen.insert(source.url.toString(QUrl::FullyEncoded));
+        for (const auto& file : std::as_const(scan->files))
+        {
+            if (seen.contains(file.first.toString(QUrl::FullyEncoded)))
+                continue;
+            Source source;
+            source.url = file.first;
+            source.label = file.second;
+            source.scanned = true;
+            m_sources.push_back(source);
+        }
+        match();
+    });
+    if (!started)
+        m_busy = false;
 }
 
 void MLSubtitleAssociations::chooseFolder()

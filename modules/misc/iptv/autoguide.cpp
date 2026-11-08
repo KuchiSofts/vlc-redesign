@@ -123,7 +123,7 @@ QVector<Known> readCompactChannels(const QByteArray& data)
     return channels;
 }
 
-QString matchName(const QString& rawName, QString* country, int* plusHours)
+QString matchName(const QString& rawName, QString* country, int* plusHours, bool* endsWithTv)
 {
     QString found;
     int plus = 0;
@@ -238,6 +238,9 @@ QString matchName(const QString& rawName, QString* country, int* plusHours)
         *country = found;
     if (plusHours)
         *plusHours = plus;
+    // ("Arte TV": its last word, the key "artetv"; not "MTV", one word)
+    if (endsWithTv)
+        *endsWithTv = tokens.size() > 1 && tokens.constLast() == QLatin1String("tv");
     return tokens.join(QString());
 }
 
@@ -258,25 +261,18 @@ Matcher::Matcher(QVector<Known> channels)
     {
         const Known& k = m_channels[i];
         m_byId.insert(k.id.toLower(), i);
-        QSet<QString> keys;
+        QSet<QString> keys, keysWithoutTv;
         QStringList names = k.altNames;
         names << k.name;
-        for (const QString& name : std::as_const(names))
-        {
-            int plus = 0;
-            QString key = matchName(name, nullptr, &plus);
-            if (key.isEmpty())
-                continue;
-            if (plus > 0)
-                key += QStringLiteral("+%1").arg(plus);
-            if (keys.contains(key))
-                continue;
-            keys.insert(key);
-            // (what a match needs of the channels of a name, made once: in
-            // the order of the database, the first of each country; sorted
-            // and looked through at every match, thousands of channels of
-            // one name took hours)
-            Named& named = m_byName[key];
+        // (what a match needs of the channels of a name, made once: in the
+        // order of the database, the first of each country; sorted and
+        // looked through at every match, thousands of channels of one name
+        // took hours)
+        auto add = [&](QHash<QString, Named>& table, QSet<QString>& seen, const QString& key) {
+            if (seen.contains(key))
+                return;
+            seen.insert(key);
+            Named& named = table[key];
             const QString& c = k.country;
             if (named.first < 0)
                 named.first = i;
@@ -285,8 +281,42 @@ Matcher::Matcher(QVector<Known> channels)
             ++named.count;
             if (!c.isEmpty() && !named.byCountry.contains(c))
                 named.byCountry.insert(c, i);
+        };
+        for (const QString& name : std::as_const(names))
+        {
+            int plus = 0;
+            bool tv = false;
+            const QString key = matchName(name, nullptr, &plus, &tv);
+            if (key.isEmpty())
+                continue;
+            const QString later = plus > 0 ? QStringLiteral("+%1").arg(plus) : QString();
+            add(m_byName, keys, key + later);
+            // "Arte TV" also as "arte": a list's "Arte" finds it
+            if (tv)
+                add(m_byNameWithoutTv, keysWithoutTv, key.chopped(2) + later);
         }
     }
+}
+
+const Matcher::Named* Matcher::named(const QString& key, const QString& keyWithoutTv) const
+{
+    // the name as it is ("Channel 5 TV HD": "channel5tv"); without its "TV"
+    // when it ends so ("Rai 1 TV": "Rai 1"); a channel whose name ends in
+    // "TV" without it ("Arte": "Arte TV"). The two sides fold the same way:
+    // the "TV" is never dropped on one of them only
+    auto it = m_byName.constFind(key);
+    if (it != m_byName.cend())
+        return &*it;
+    if (!keyWithoutTv.isEmpty())
+    {
+        it = m_byName.constFind(keyWithoutTv);
+        if (it != m_byName.cend())
+            return &*it;
+    }
+    it = m_byNameWithoutTv.constFind(key);
+    if (it != m_byNameWithoutTv.cend())
+        return &*it;
+    return nullptr;
 }
 
 Match Matcher::match(const QString& tvgId, const QString& name, const QString& listCountry,
@@ -307,9 +337,11 @@ Match Matcher::match(const QString& tvgId, const QString& name, const QString& l
     }
     QString nameCountry;
     int plus = 0;
-    const QString key = matchName(name, &nameCountry, &plus);
+    bool tv = false;
+    const QString key = matchName(name, &nameCountry, &plus, &tv);
     if (key.isEmpty())
         return m;
+    const QString keyWithoutTv = tv ? key.chopped(2) : QString();
     // the country the list says: by the guide id, the name, the list
     QString hint = countryOfId(tvgId);
     if (hint.isEmpty())
@@ -321,16 +353,14 @@ Match Matcher::match(const QString& tvgId, const QString& name, const QString& l
     int shift = 0;
     if (plus > 0)
     {
-        const auto it = m_byName.constFind(key + QStringLiteral("+%1").arg(plus));
-        if (it != m_byName.cend())
-            candidates = &*it;
+        const QString later = QStringLiteral("+%1").arg(plus);
+        candidates = named(key + later, keyWithoutTv.isEmpty() ? QString() : keyWithoutTv + later);
     }
     if (!candidates)
     {
-        const auto it = m_byName.constFind(key);
-        if (it == m_byName.cend())
+        candidates = named(key, keyWithoutTv);
+        if (!candidates)
             return m;
-        candidates = &*it;
         shift = plus * 3600;
     }
     // (the first in the order of the database, not of the hash)

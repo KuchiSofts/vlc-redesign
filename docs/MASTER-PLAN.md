@@ -12,7 +12,7 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-08):
 
-- 🟡 **0.5.8** started (an update release): SubSource with your own free key (#70, @Elshepl); Android TV: the
+- ✅ **0.5.8** published 2026-11-08 (an update release; VideoLAN merged to `978212a42d`): SubSource with your own free key (#70, @Elshepl); Android TV: the
   focus after the TV sources close; Weblate has the TV menu's texts.
 - 🟡 **Subtitle services** (on request; the spec shared
   by the three apps): on the desktop, branch `feature/subtitle-services`. SubSource, SubDL and OpenSubtitles.com in

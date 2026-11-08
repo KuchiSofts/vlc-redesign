@@ -807,7 +807,7 @@ ListView {
         }
 
         Component.onCompleted: {
-            canceled.connect(initialAction)
+            canceled.connect(this, initialAction)
         }
 
         function initialAction() {

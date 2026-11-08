@@ -125,13 +125,12 @@ Repeater {
 
         // Settings
 
+        // (the binding only: the fallback below goes through setSource(),
+        // which keeps it; a handler writing source too replaced it as each
+        // control started)
         source: targetSource
 
         readonly property url targetSource: PlayerControlbarControls.control(model.id).source
-
-        onTargetSourceChanged: {
-            source = targetSource
-        }
 
         readonly property int controlId: model.id
 
@@ -353,19 +352,24 @@ Repeater {
             }
         }
 
-        Binding on visible {
+        // The Binding sets a property of its own: visible also changes as the
+        // bar is shown or hidden, which it took for a change from elsewhere
+        property bool _overflows
+        visible: !_overflows
+
+        Binding on _overflows {
             delayed: true // this is important
             when: condition
             value: {
                 if (condition) {
                     const span = repeater.fromEnd ? repeater._span(index, repeater.count)
                                                   : repeater._span(0, index + 1)
-                    return (repeater.reservedWidth + span <= repeater.availableWidth)
+                    return !(repeater.reservedWidth + span <= repeater.availableWidth)
                 } else
-                    return true;
+                    return false;
             }
 
-            property bool condition: false
+            property bool condition // (false: no value set beside the Binding)
 
             Binding on condition {
                 delayed: true
@@ -415,7 +419,8 @@ Repeater {
                 repeater.forceUnlock.connect(item, item.forceUnlock)
 
             //can't connect to enabledChanged in a Connections
-            item.onEnabledChanged.connect(() => {
+            // (with the loader as receiver: Qt found none for the function)
+            item.onEnabledChanged.connect(loader, () => {
                 if (loader.activeFocus && !item.enabled) // Loader has focus but item is not enabled
                     recoverFocus()
             })

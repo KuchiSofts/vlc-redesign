@@ -59,7 +59,10 @@ FSM {
     property alias isVisible: fsmVisible.active
 
     property int lockCount: 0 // Track the number of locks
-    property int timeoutDuration: MainCtx.mouseHideTimeout
+    // twice as long after a key than after the mouse (a factor, not the
+    // duration written by the transitions, which replaced this binding)
+    property int _timeoutFactor: 1
+    property int timeoutDuration: MainCtx.mouseHideTimeout * _timeoutFactor
 
     initialState: ((Player.isInteractive && MainCtx.hasEmbededVideo))
                   ? fsmHidden : fsmVisible
@@ -130,14 +133,14 @@ FSM {
                     mouseMove: {
                         guard: () => !Player.isInteractive,
                         action: () => { 
-                            fsm.timeoutDuration = MainCtx.mouseHideTimeout;
+                            fsm._timeoutFactor = 1;
                         },
                         target: fsmVideoMode
                     },
                     keyboardMove: {
                         guard: () => !Player.isInteractive,
                         action: () => { 
-                            fsm.timeoutDuration = MainCtx.mouseHideTimeout * 2
+                            fsm._timeoutFactor = 2
                         },
                         target: fsmVideoMode
                     }
@@ -177,14 +180,14 @@ FSM {
             mouseMove: {
                 guard: () => !Player.isInteractive,
                 action: () => {
-                    fsm.timeoutDuration = MainCtx.mouseHideTimeout
+                    fsm._timeoutFactor = 1
                 },
                 target: fsmVisible
             },
             keyboardMove: {
                 guard: () => !Player.isInteractive,
                 action: () => {
-                    fsm.timeoutDuration = MainCtx.mouseHideTimeout * 2
+                    fsm._timeoutFactor = 2
                 },
                 target: fsmVisible
             },
@@ -200,7 +203,8 @@ FSM {
  
     Timer {
         id: timeout
-        interval: fsm.timeoutDuration
+        // (interval: set by fsmVideoMode as it starts the timer, the only
+        // place it starts; a binding beside it was replaced there)
         repeat: false
         onTriggered: {
             fsm.timeout();

@@ -322,7 +322,7 @@ FSMState {
         _validateFSM(fsm)
 
         for (const signalName of Object.keys(signalMap)) {
-            signalMap[signalName].connect((...args) => {
+            signalMap[signalName].connect(fsm, (...args) => {
                 //events needs to be processed in order
                 //by default qml signals will process last emited first serve
                 //so we need a queue to store the call order

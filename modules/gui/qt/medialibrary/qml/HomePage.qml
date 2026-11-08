@@ -31,7 +31,7 @@ import VLC.Style
 Widgets.PageExt {
     id: root
 
-    property var pagePrefix: [] // behave like a Page
+    property var pagePrefix // behave like a Page (no default, see PageExt)
 
     // (its sections list what is recent: the newest first)
     defaultSortOrder: Qt.DescendingOrder
@@ -121,14 +121,17 @@ Widgets.PageExt {
         pixelAligned: (MainCtx.qtVersion() >= MainCtx.qtVersionCheck(6, 2, 5)) // QTBUG-103996
                       && (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
 
-        property bool _hasMedias: true
+        // true until known (the Binding sets the inverse: a true set here
+        // with the Binding on it was a change from elsewhere for it)
+        readonly property bool _hasMedias: !_noMedias
+        property bool _noMedias
 
-        Binding on _hasMedias {
+        Binding on _noMedias {
             when: !continueWatchingRow.model.loading && !listenAgainRow.model.loading
                   && !favoritesRow.model.loading
                   && !newVideoRow.model.loading && !newMusicRow.model.loading
-            value: continueWatchingRow.visible || listenAgainRow.visible || foldersRow.visible
-                   || favoritesRow.visible || newVideoRow.visible || newMusicRow.visible
+            value: !(continueWatchingRow.visible || listenAgainRow.visible || foldersRow.visible
+                     || favoritesRow.visible || newVideoRow.visible || newMusicRow.visible)
             restoreMode: Binding.RestoreNone
         }
 

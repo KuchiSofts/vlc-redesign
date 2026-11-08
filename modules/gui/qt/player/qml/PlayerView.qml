@@ -422,10 +422,10 @@ FocusScope {
                     }
 
                     Component.onCompleted: {
-                        mouseMoved.connect(videoSurface.onMouseMove)
-                        mousePressed.connect(videoSurface.onMouseEvent)
-                        mouseReleased.connect(videoSurface.onMouseEvent)
-                        mouseDblClicked.connect(videoSurface.onMouseEvent)
+                        mouseMoved.connect(videoSurface, videoSurface.onMouseMove)
+                        mousePressed.connect(videoSurface, videoSurface.onMouseEvent)
+                        mouseReleased.connect(videoSurface, videoSurface.onMouseEvent)
+                        mouseDblClicked.connect(videoSurface, videoSurface.onMouseEvent)
                     }
 
                     Binding on cursorShape {
@@ -998,9 +998,8 @@ FocusScope {
 
         focus: true
 
-        rightPadding: VLCStyle.applicationHorizontalMargin
-        leftPadding: VLCStyle.applicationHorizontalMargin
-        bottomPadding: VLCStyle.applicationVerticalMargin + VLCStyle.margin_xsmall
+        // (its paddings: the Bindings of ControlBar, which replaced values
+        // set here as it started)
 
         textPosition: (MainCtx.pinVideoControls)
                       ? ControlBar.TimeTextPosition.LeftRightSlider
@@ -1044,7 +1043,9 @@ FocusScope {
         background: Rectangle {
             id: controlBarBackground
 
-            visible: !MainCtx.hasEmbededVideo || MainCtx.pinVideoControls || !rootPlayer.displayFadeRectangles
+            // always under the timeline in the bar (see ControlBar)
+            visible: controlBar.inlineTimeline
+                     || !MainCtx.hasEmbededVideo || MainCtx.pinVideoControls || !rootPlayer.displayFadeRectangles
 
             opacity: {
                 if (MainCtx.hasEmbededVideo && !MainCtx.pinVideoControls && !rootPlayer.displayFadeRectangles) {

@@ -481,7 +481,7 @@ Widgets.PageExt {
                 focus: active
                 source: "qrc:///qt/qml/VLC/Network/TvGuideView.qml"
                 onLoaded: {
-                    item.programmeClicked.connect((channel, programme) => root.openProgramme(channel, programme))
+                    item.programmeClicked.connect(root, (channel, programme) => root.openProgramme(channel, programme))
                     // (once: the guide opened again later stays where it is)
                     if (root.guideChannel !== "") {
                         const key = root.guideChannel

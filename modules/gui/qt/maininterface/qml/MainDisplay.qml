@@ -252,7 +252,7 @@ FocusScope {
 
         Component.onCompleted: {
             if (MainCtx.useXmasCone()) {
-                MainCtx.kc_pressed.connect(voronoiSnowLoader.toggleActive)
+                MainCtx.kc_pressed.connect(voronoiSnowLoader, voronoiSnowLoader.toggleActive)
             }
         }
     }
@@ -483,17 +483,16 @@ FocusScope {
                 focus: true
 
                 anchors.fill: parent
-                anchors.leftMargin: (sidebar.visible && (VLCStyle.isScreenSmall ? (sidebar.state === "") : true)) ? sidebar.width : 0.0
+                // Prevent animating x on collapse with overlayed side navigation bar
+                // (in the binding: a Binding over it took its value for a
+                // change from elsewhere)
+                anchors.leftMargin: (VLCStyle.isScreenSmall && sidebar.state === "" && sidebar.transitioning)
+                                    ? 0.0
+                                    : (sidebar.visible && (VLCStyle.isScreenSmall ? (sidebar.state === "") : true)) ? sidebar.width : 0.0
                 anchors.rightMargin: (playlistLoader.shown && !VLCStyle.isScreenSmall)
                                      ? playlistLoader.width
                                      : 0
                 anchors.bottomMargin: g_mainDisplay.displayMargin
-
-                // Prevent animating x on collapse with overlayed side navigation bar:
-                Binding on anchors.leftMargin {
-                    when: (VLCStyle.isScreenSmall && sidebar.state === "" && sidebar.transitioning)
-                    value: 0.0
-                }
 
                 pageModel: g_mainDisplay.pageModel
 

@@ -109,12 +109,10 @@ FocusScope {
             implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                                      implicitContentHeight + topPadding + bottomPadding)
 
-            closePolicy: T.Popup.NoAutoClose
-
-            Binding on closePolicy {
-                when: textField.text.length === 0
-                value: T.Popup.CloseOnPressOutside
-            }
+            // (one binding: a Binding over the value set here took that value
+            // for a change from elsewhere)
+            closePolicy: (textField.text.length === 0) ? T.Popup.CloseOnPressOutside
+                                                       : T.Popup.NoAutoClose
 
             height: 0
 

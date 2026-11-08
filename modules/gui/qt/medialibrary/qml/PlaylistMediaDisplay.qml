@@ -204,8 +204,8 @@ Widgets.PageExt {
         }
 
         Component.onCompleted: {
-            model.transactionPendingChanged.connect(model.onBusynessChanged)
-            model.loadingChanged.connect(model.onBusynessChanged)
+            model.transactionPendingChanged.connect(model, model.onBusynessChanged)
+            model.loadingChanged.connect(model, model.onBusynessChanged)
             model.onBusynessChanged()
         }
 

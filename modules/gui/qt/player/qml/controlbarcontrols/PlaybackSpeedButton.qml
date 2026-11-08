@@ -100,8 +100,8 @@ PopupIconToolButton {
             }
 
             Component.onCompleted: {
-                wheelUpDown.connect(wheelToVLC.handle)
-                wheelLeftRight.connect(wheelToVLC.handle)
+                wheelUpDown.connect(wheelToVLC, wheelToVLC.handle)
+                wheelLeftRight.connect(wheelToVLC, wheelToVLC.handle)
             }
         }
 

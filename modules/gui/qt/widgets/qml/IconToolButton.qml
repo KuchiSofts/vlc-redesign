@@ -97,7 +97,7 @@ T.ToolButton {
     Component.onCompleted: {
         console.assert(text !== "", "text is empty: " + (description || objectName || control))
         // ("pressed" is the property here, not the signal)
-        control.pressedChanged.connect(() => {
+        control.pressedChanged.connect(control, () => {
             if (control.pressed)
                 control.pressedAt = Date.now()
         })

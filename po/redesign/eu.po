@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 10:17+0000\n"
+"POT-Creation-Date: 2026-11-08 19:14+0000\n"
 "PO-Revision-Date: 2016-04-04 16:53+0000\n"
 "Last-Translator: Alexander Gabilondo <alexgabi@openmailbox.org>\n"
 "Language-Team: Basque (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -278,7 +278,7 @@ msgstr "Sagu-klikarekin pausaraztea nola kudeatzen den kontrolatzen du"
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:181
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -662,7 +662,7 @@ msgstr ""
 "bezain laster."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Use the media library"
 msgstr "Erabili multimedia liburutegia"
 
@@ -917,12 +917,12 @@ msgstr "Sarrerako atzipena eta kodekak"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Startup"
 msgstr "Abiaraztea"
 
@@ -1399,66 +1399,66 @@ msgctxt "key"
 msgid "Zoom Out"
 msgstr "Urrundu zooma"
 
-#: src/player/osd.c:177
+#: src/player/osd.c:204
 #, c-format
 msgid "Volume: %ld%%"
 msgstr "Bolumena: %%%ld"
 
-#: src/player/osd.c:192
+#: src/player/osd.c:219
 #, c-format
 msgid "Video tracks: %s"
 msgstr "Bideo-pistak: %s"
 
-#: src/player/osd.c:193
+#: src/player/osd.c:220
 #, c-format
 msgid "Video track: %s"
 msgstr "Bideo-pista: %s"
 
-#: src/player/osd.c:196
+#: src/player/osd.c:223
 #, c-format
 msgid "Audio tracks: %s"
 msgstr "Audio-pistak: %s"
 
-#: src/player/osd.c:200
+#: src/player/osd.c:227
 #, c-format
 msgid "Subtitle tracks: %s"
 msgstr "Azpititulu-pistak: %s"
 
-#: src/player/osd.c:321
+#: src/player/osd.c:348
 msgid "Original size"
 msgstr "Jatorrizko tamaina"
 
-#: src/player/osd.c:328
+#: src/player/osd.c:355
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr "Beheko moztea: %d px"
 
-#: src/player/osd.c:331
+#: src/player/osd.c:358
 #, c-format
 msgid "Top crop: %d px"
 msgstr "Goiko moztea: %d px"
 
-#: src/player/osd.c:334
+#: src/player/osd.c:361
 #, c-format
 msgid "Left crop: %d px"
 msgstr "Ezkerreko moztea: %d px"
 
-#: src/player/osd.c:337
+#: src/player/osd.c:364
 #, c-format
 msgid "Right crop: %d px"
 msgstr "Eskuineko moztea: %d px"
 
-#: src/player/osd.c:347
+#: src/player/osd.c:374
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr "Gurutzelarkatuak bereiztea: %s (%s)"
 
-#: src/player/osd.c:357
+#: src/player/osd.c:384
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr "Bigarren azpitituluen posizioa: %d px"
 
-#: src/player/osd.c:371
+#: src/player/osd.c:398
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr "Zooma: x%.2f"
@@ -1657,7 +1657,7 @@ msgid "Additional fonts directory"
 msgstr "Letra-tipoen direktorio gehigarria"
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "Onena"
@@ -1854,9 +1854,9 @@ msgstr "adib., https://www.example.com/stream.avi"
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:697
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:746
 msgid "(optional)"
 msgstr "(aukerakoa)"
 
@@ -3045,7 +3045,7 @@ msgstr ""
 "Oharrak ingelesez daude."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
 msgid "Discover cast devices"
 msgstr "Aurkitu igortzeko gailuak"
 
@@ -3066,7 +3066,7 @@ msgid "Opens the window where it was when VLC was closed."
 msgstr "VLC itxi zenean zegoen lekuan irekitzen du leihoa."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
 msgid "Always show the player bar"
 msgstr "Erakutsi beti erreproduzigailuaren barra"
 
@@ -3080,7 +3080,7 @@ msgstr ""
 "abiarazten du, edo fitxategiak irekitzen ditu hutsik dagoenean."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 msgid "Increase text contrast"
 msgstr "Handitu testuaren kontrastea"
 
@@ -3094,7 +3094,7 @@ msgstr ""
 "kontrastera arte (AA)."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:266
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
 msgid "Popup duration"
 msgstr "Laster-leihoaren iraupena"
 
@@ -3103,7 +3103,7 @@ msgid "How long the popup of the track changes stays on the screen."
 msgstr "Pista-aldaketen laster-leihoa zenbat denbora geratzen den pantailan."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Process priority"
 msgstr "Prozesuaren lehentasuna"
 
@@ -3116,7 +3116,7 @@ msgstr ""
 "ematen dion."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 msgid "Volume indicator"
 msgstr "Bolumen-trepeta"
 
@@ -3131,7 +3131,7 @@ msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "Double click on the video"
 msgstr "Klik bikoitza bideoan"
 
@@ -3144,7 +3144,7 @@ msgid "Nothing|Toggle fullscreen"
 msgstr "Ezer ez|Txandakatu pantaila osoa"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:276
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Size values"
 msgstr "Tamaina-balioak"
 
@@ -3168,7 +3168,7 @@ msgstr ""
 "dagoen bitartean gordeta geratzen da)."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Never remember items matching"
 msgstr "Ez gogoratu inoiz honekin bat datozen elementuak"
 
@@ -3181,7 +3181,7 @@ msgstr ""
 "ez dira historian gordetzen, ezta haien erreprodukzio-posizioa ere."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 msgid "Update the channels and the guide"
 msgstr "Eguneratu kanalak eta gida"
 
@@ -3198,7 +3198,7 @@ msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "Inoiz ez|6 orduro|12 orduro|Egunero|Astero"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 msgid "Days of the guide kept"
 msgstr "Gidaren gordetako egunak"
 
@@ -3213,7 +3213,7 @@ msgstr ""
 "artxiboak ere hortaraino iristen dira atzera."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "Hours across the guide"
 msgstr "Gidaren zabalerako orduak"
 
@@ -3222,7 +3222,7 @@ msgid "The time the guide shows across its width."
 msgstr "Gidak bere zabalera osoan erakusten duen denbora."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "Guide languages"
 msgstr "Gidaren hizkuntzak"
 
@@ -3236,8 +3236,8 @@ msgstr ""
 "guztiak."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/qt.cpp:356
 msgid "Channel banner"
 msgstr "Kanal-banda"
 
@@ -3250,7 +3250,7 @@ msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "Kanala, orain eta hurrengoa|Kanala eta orain|Kanala soilik|Ezer ez"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Show programme descriptions"
 msgstr "Erakutsi programen deskribapenak"
 
@@ -3262,7 +3262,7 @@ msgstr ""
 "bandan."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Show the progress of what is on"
 msgstr "Erakutsi emititzen ari denaren aurrerapena"
 
@@ -3275,7 +3275,7 @@ msgstr ""
 "amaieran oinarrituta."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Show what is next"
 msgstr "Erakutsi hurrengoa"
 
@@ -3284,7 +3284,7 @@ msgid "Shows the next programme in the channel lists and the banner."
 msgstr "Hurrengo programa erakusten du kanal-zerrendetan eta kanal-bandan."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 msgid "Start on the last channel"
 msgstr "Hasi azken kanalean"
 
@@ -3295,7 +3295,7 @@ msgstr ""
 "erreproduzitzen da."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Show adult channels"
 msgstr "Erakutsi helduentzako kanalak"
 
@@ -3306,12 +3306,12 @@ msgstr ""
 "ditu."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "System monospace"
 msgstr "Sistemaren tarte bakarrekoa"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "System, sans-serif"
 msgstr "Sistema, sans-serif"
 
@@ -3377,7 +3377,7 @@ msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "Errepikatu uneko elementua (Bat) edo erreprodukzio-ilara osoa (Denak)."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 msgid "When playback finishes"
 msgstr "Erreprodukzioa amaitzean"
 
@@ -3396,7 +3396,7 @@ msgstr ""
 "VLC behean aukeratutako azalarekin abiarazten du, interfaze honen ordez."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 msgid "Remember the playback position"
 msgstr "Gogoratu erreprodukzio-posizioa"
 
@@ -3405,7 +3405,7 @@ msgid "Lets VLC continue the media where you left off."
 msgstr "VLCri multimedia utzi zenuen lekutik jarraitzea ahalbidetzen dio."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Reverse scroll direction"
 msgstr "Alderantzikatu korritzearen norabidea"
 
@@ -3414,7 +3414,7 @@ msgid "The wheels that seek go backwards when turned forwards."
 msgstr "Bilatzeko gurpilak atzerantz doaz aurrerantz biratzean."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Web remote control"
 msgstr "Web bidezko urruneko kontrola"
 
@@ -3426,7 +3426,7 @@ msgstr ""
 "pasahitza Aukera aurreratuetan."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Video post-processing"
 msgstr "Bideoaren post-prozesatzea"
 
@@ -3438,7 +3438,7 @@ msgstr ""
 "Gaizki kodetutako bideoen irudia hobetzen du, prozesatze-ahalmenaren kontura."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
 msgid "Visualization size"
 msgstr "Bistaratzearen tamaina"
 
@@ -3451,7 +3451,7 @@ msgid "Match window"
 msgstr "Leihoarekin bat"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 msgid "Seek precisely"
 msgstr "Bilatu zehatz"
 
@@ -3579,7 +3579,7 @@ msgstr ""
 "dira gorde."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:358
+#: modules/gui/qt/qt.cpp:365
 msgid "Expert"
 msgstr "Aditua"
 
@@ -3598,7 +3598,7 @@ msgstr "Adituen hobespenak"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:581
+#: modules/misc/iptv/iptv.cpp:839
 msgid "Live TV"
 msgstr "Zuzeneko telebista"
 
@@ -3672,7 +3672,7 @@ msgstr "Gaia"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:347
 msgid "Accent color"
 msgstr "Nabarmentze-kolorea"
 
@@ -3742,17 +3742,17 @@ msgid "Key works"
 msgstr "Gakoak funtzionatzen du"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:782
 msgid "Signed in as %1"
 msgstr "%1 gisa saioa hasita"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Key refused"
 msgstr "Gakoa baztertu da"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Wrong user name or password"
 msgstr "Erabiltzaile-izen edo pasahitz okerra"
 
@@ -3762,7 +3762,7 @@ msgid "Busy: try again in a minute"
 msgstr "Lanpetuta: saiatu berriro minutu bat barru"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
 msgid "No answer, try again"
 msgstr "Erantzunik ez, saiatu berriro"
 
@@ -3796,15 +3796,15 @@ msgstr "Zure doako gakoa"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
 msgid "User name (optional)"
 msgstr "Erabiltzaile-izena (aukerakoa)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:730
 msgid "User name"
 msgstr "Erabiltzaile-izena"
 
@@ -3819,7 +3819,7 @@ msgid "Email"
 msgstr "Helbide elektronikoa"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:765
 msgid "Sign in"
 msgstr "Hasi saioa"
 
@@ -3993,19 +3993,19 @@ msgstr "Bidali erreproduzitutako pistak last.fm-ra"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
 msgid "Last.fm username"
 msgstr "Last.fm erabiltzaile-izena"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Last.fm password"
 msgstr "Last.fm pasahitza"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm submission URL"
 msgstr "Last.fm bidalketa-URLa"
 
@@ -4064,7 +4064,7 @@ msgid "All VLC options"
 msgstr "VLCren aukera guztiak"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:359
 msgid "Reset all settings"
 msgstr "Berrezarri ezarpen guztiak"
 
@@ -4100,7 +4100,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Two-pass"
 msgstr "Bi igaroaldi"
 
@@ -4177,12 +4177,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "Erreproduzitu bideoa irudia doitzeko eta aurrebista ikusteko."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Spatial audio"
 msgstr "Audio espaziala"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Stereo widening"
 msgstr "Estereo-zabaltzea"
 
@@ -4209,7 +4209,7 @@ msgid "The address the played tracks are sent to."
 msgstr "Erreproduzitutako pistak bidaltzen diren helbidea."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Nothing"
 msgstr "Ezer ez"
 
@@ -4229,51 +4229,55 @@ msgstr ""
 msgid "Applies the next time VLC starts"
 msgstr "VLC hurrengoan abiarazten denean aplikatuko da"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:301
+msgid "Moving the mouse or pressing Tab still shows the controls."
+msgstr "Sagua mugitzeak edo Tab sakatzeak kontrolak erakusten jarraitzen du."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:313
 msgid "Choose a snapshot folder"
 msgstr "Aukeratu argazkien karpeta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a time-shift buffer folder"
 msgstr "Aukeratu timeshift bufferraren karpeta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
 msgid "Choose a recording folder"
 msgstr "Aukeratu grabazioen karpeta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:317
 msgid "Choose a folder"
 msgstr "Aukeratu karpeta bat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:321
 msgid "Choose a skin"
 msgstr "Aukeratu azal bat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "Azal-fitxategiak (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:325
 msgid "Choose a log file"
 msgstr "Aukeratu erregistro-fitxategi bat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:351
 msgid "Open configurations folder"
 msgstr "Ireki konfigurazioen karpeta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:352
 msgid "Shows the folder of the settings of VLC."
 msgstr "VLCren ezarpenen karpeta erakusten du."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
 msgid "Puts every setting of VLC back to its default."
 msgstr "VLCren ezarpen guztiak beren balio lehenetsira itzultzen ditu."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:376
 msgid "Rescan plugins"
 msgstr "Eskaneatu berriro pluginak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "Eskaneatu berriro"
 
@@ -4432,8 +4436,9 @@ msgstr "Pantaila osorako pantaila"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Playback Controls"
 msgstr "Erreprodukzio-kontrolak"
 
@@ -4457,832 +4462,852 @@ msgstr "Ezkutatzeko denbora"
 msgid "Show controls in fullscreen"
 msgstr "Erakutsi kontrolak pantaila osoan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/qt.cpp:256
+msgid "When you use a shortcut in full screen"
+msgstr "Pantaila osoan lasterbide bat erabiltzean"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:375
+msgid "Show the controls"
+msgstr "Erakutsi kontrolak"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:375
+msgid "Show only the progress"
+msgstr "Erakutsi aurrerapena soilik"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:375
+msgid "Show only a message"
+msgstr "Erakutsi mezu bat soilik"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
 msgid "Notifications and System Tray"
 msgstr "Jakinarazpenak eta sistemaren erretilua"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
 msgid "Show a system tray icon"
 msgstr "Erakutsi ikonoa sistemaren erretiluan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 msgid "Start minimized to the tray"
 msgstr "Hasi erretilura minimizatuta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 msgid "Show a popup when the track changes"
 msgstr "Erakutsi laster-leiho bat pista aldatzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
 msgid "Show the playlist as a tree"
 msgstr "Erakutsi erreprodukzio-zerrenda zuhaitz gisa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
 msgid "Player Bar"
 msgstr "Erreproduzigailuaren barra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 msgid "Window opacity"
 msgstr "Leihoaren opakutasuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:81
 msgid "Pause video when window is minimized"
 msgstr "Pausarazi bideoa leihoa minimizatzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
 msgid "Bring VLC to the front when playback starts"
 msgstr "Ekarri VLC aurrealdera erreprodukzioa hastean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 msgid "Audio and video"
 msgstr "Audioa eta bideoa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
 msgid "Show cover art in the window when playing audio"
 msgstr "Erakutsi azala leihoan audioa erreproduzitzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
 msgid "Show the file browser inside the open dialog"
 msgstr ""
 "Erakutsi fitxategi-arakatzailea irekitzeko elkarrizketa-koadroaren barruan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:86
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
 msgid "Allow the app icon to change"
 msgstr "Baimendu aplikazioaren ikonoa aldatzea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Fullscreen controls opacity"
 msgstr "Pantaila osoko kontrolen opakutasuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Fullscreen controls sensitivity"
 msgstr "Pantaila osoko kontrolen sentikortasuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "History"
 msgstr "Historia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:576
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/misc/iptv/iptv.cpp:834
 msgid "Live TV (IPTV) add-on"
 msgstr "Zuzeneko telebistaren (IPTV) gehigarria"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1225
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "Gida"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 msgid "days"
 msgstr "egun"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "h"
 msgstr "h"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "e.g., en, he"
 msgstr "adib., en, he"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 msgid "Watching"
 msgstr "Ikustea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Lists"
 msgstr "Zerrendak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Fetch titles and cover art from the internet"
 msgstr "Eskuratu tituluak eta azalak Internetetik"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Additional interfaces"
 msgstr "Interfaze gehigarriak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
 msgid "Continue where you left off"
 msgstr "Jarraitu utzi zenuen lekutik"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 msgid "Start playing as soon as a file opens"
 msgstr "Hasi erreproduzitzen fitxategi bat ireki bezain laster"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
 msgid "Default playback speed"
 msgstr "Erreprodukzio-abiadura lehenetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 msgid "Pause when another app uses audio"
 msgstr "Pausarazi beste aplikazio batek audioa erabiltzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "Pistak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Preferred video quality"
 msgstr "Bideo-kalitate hobetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Standard (576p)"
 msgstr "Estandarra (576p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Low (360p)"
 msgstr "Baxua (360p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Very low (240p)"
 msgstr "Oso baxua (240p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 msgid "Preferred menu language"
 msgstr "Menuen hizkuntza hobetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "Default audio track"
 msgstr "Audio-pista lehenetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Default subtitle track"
 msgstr "Azpititulu-pista lehenetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Order"
 msgstr "Ordena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 msgid "Stop after each item"
 msgstr "Gelditu elementu bakoitzaren ondoren"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Seeking"
 msgstr "Bilaketa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
+#: modules/gui/qt/qt.cpp:311
 msgid "Show thumbnail while scrubbing"
 msgstr "Erakutsi miniatura posizio-barra arrastatzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Files & Discs"
 msgstr "Fitxategiak eta diskoak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Default optical drive"
 msgstr "Unitate optiko lehenetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 msgid "Repair damaged AVI files"
 msgstr "Konpondu hondatutako AVI fitxategiak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 msgid "When needed"
 msgstr "Behar denean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Load matching .mkv files from the same folder"
 msgstr "Kargatu bat datozen .mkv fitxategiak karpeta beretik"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Time-shift"
 msgstr "Timeshift"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 msgid "Time-shift buffer folder"
 msgstr "Timeshift bufferraren karpeta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Time-shift buffer size"
 msgstr "Timeshift bufferraren tamaina"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Pause on the last frame of each item"
 msgstr "Pausarazi elementu bakoitzaren azken markoan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Resume the last playback states (tracks, speed...)"
 msgstr "Berreskuratu azken erreprodukzio-egoerak (pistak, abiadura...)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Start videos in fullscreen"
 msgstr "Hasi bideoak pantaila osoan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
 msgid "Stop the screensaver during playback"
 msgstr "Eragotzi pantaila-babeslea erreprodukzioan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Play video as desktop wallpaper"
 msgstr "Erreproduzitu bideoa mahaigaineko horma-paper gisa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Method"
 msgstr "Metodoa"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:403
-msgid "Framing"
-msgstr "Enkoadraketa"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-msgid "Scale video to the window"
-msgstr "Eskalatu bideoa leihora"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-msgid "Position in the window"
-msgstr "Posizioa leihoan"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:408
+msgid "Framing"
+msgstr "Enkoadraketa"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+msgid "Scale video to the window"
+msgstr "Eskalatu bideoa leihora"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+msgid "Position in the window"
+msgstr "Posizioa leihoan"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Snapshots"
 msgstr "Argazkiak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Save to"
 msgstr "Gorde hemen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "File name prefix"
 msgstr "Fitxategi-izenaren aurrizkia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 msgid "Number files sequentially"
 msgstr "Zenbakitu fitxategiak sekuentzialki"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Show a preview after capture"
 msgstr "Erakutsi aurrebista kapturaren ondoren"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
 msgid "Custom aspect ratios"
 msgstr "Aspektu-erlazio pertsonalizatuak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Custom crop ratios"
 msgstr "Mozte-erlazio pertsonalizatuak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Argazkiaren altuera (0: proportzionala, -1: jatorrizkoa)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Deinterlacing filter"
 msgstr "Gurutzelarkatuak bereizteko iragazkia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Speaker setup"
 msgstr "Bozgorailuen konfigurazioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Maximum volume"
 msgstr "Gehienezko bolumena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 #: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "Abioko bolumena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 msgid "Volume step"
 msgstr "Bolumen-urratsa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Loudness"
 msgstr "Ozentasuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Normalize loudness"
 msgstr "Normalizatu ozentasuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Target level"
 msgstr "Helburu-maila"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 msgid "Night mode"
 msgstr "Gau modua"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Replay gain preamp"
 msgstr "Erreprodukzio-irabaziaren aurreanplifikazioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Spatial audio mode"
 msgstr "Audio espazialaren modua"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
 msgid "Pitch shift"
 msgstr "Tonu-aldaketa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "Chorus/flanger"
 msgstr "Chorus/flanger"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 msgid "Preferred audio language"
 msgstr "Hobetsitako audio-hizkuntza"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "Audio-atzerapena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
 msgid "Pass compressed audio to the receiver"
 msgstr "Pasatu audio konprimatua hargailura"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 msgid "Detect Dolby Surround"
 msgstr "Detektatu Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Fastest"
 msgstr "Azkarrena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Balanced"
 msgstr "Orekatua"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Output gain"
 msgstr "Irteerako irabazia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Keep the pitch when changing the speed"
 msgstr "Mantendu tonua abiadura aldatzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 msgid "Equalizer preamp"
 msgstr "Ekualizadorearen aurreanplifikazioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
 msgid "Compressor ratio"
 msgstr "Konprimatzailearen erlazioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 msgid "Compressor threshold"
 msgstr "Konprimatzailearen atalasea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Compressor makeup gain"
 msgstr "Konprimatzailearen dezibelio-hazkundea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Tracks & Languages"
 msgstr "Pistak eta hizkuntzak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
 msgid "Preferred language"
 msgstr "Hizkuntza hobetsia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Text encoding"
 msgstr "Testuaren kodeketa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Loading Subtitles"
 msgstr "Azpitituluen karga"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Load subtitle files automatically"
 msgstr "Kargatu azpititulu-fitxategiak automatikoki"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "File name matching"
 msgstr "Fitxategi-izenen parekatzea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
 msgid "Bold"
 msgstr "Lodia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 msgid "Text color"
 msgstr "Testuaren kolorea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Vertical position"
 msgstr "Posizio bertikala"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Timing"
 msgstr "Sinkronizazioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/qt.cpp:313
 msgid "Show subtitle lines on the seek bar"
 msgstr "Erakutsi azpitituluen lerroak bilaketa-barran"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "On-Screen Messages"
 msgstr "Pantailako mezuak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Show feedback for shortcuts"
 msgstr "Erakutsi laster-bideen erantzuna pantailan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Show feedback for"
 msgstr "Erantzunaren iraupena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Show filename when a video starts"
 msgstr "Erakutsi fitxategi-izena bideo bat hastean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 msgid "Show filename for"
 msgstr "Fitxategi-izenaren iraupena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Load subtitles from these folders"
 msgstr "Kargatu azpitituluak karpeta hauetatik"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Monospace font"
 msgstr "Tarte bakarreko letra-tipoa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "Text alignment"
 msgstr "Testuaren lerrokatzea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Position of the filename"
 msgstr "Fitxategi-izenaren posizioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Skip Amounts"
 msgstr "Jauzien luzerak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Very short skip"
 msgstr "Jauzi oso laburra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Short skip"
 msgstr "Jauzi laburra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Medium skip"
 msgstr "Jauzi ertaina"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Long skip"
 msgstr "Jauzi luzea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Mouse"
 msgstr "Sagua"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Single click on the video"
 msgstr "Klik bakarra bideoan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Play / Pause"
 msgstr "Erreproduzitu / Pausarazi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Play / Pause on release"
 msgstr "Erreproduzitu / Pausarazi askatzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Scroll wheel"
 msgstr "Korritze-gurpila"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 msgid "Horizontal scroll"
 msgstr "Korritze horizontala"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:404
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
 msgid "Remotes"
 msgstr "Urruneko kontrolak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Handle mouse clicks in the video"
 msgstr "Kudeatu sagu-klikak bideoan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Web remote password"
 msgstr "Web bidezko urruneko kontrolaren pasahitza"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Web remote address"
 msgstr "Web bidezko urruneko kontrolaren helbidea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Ignore the volume keys of the keyboard"
 msgstr "Ez ikusi egin teklatuko bolumen-teklei"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Opening Files"
 msgstr "Fitxategiak irekitzea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Only allow one VLC window"
 msgstr "Baimendu VLC leiho bakarra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Apply to files opened from the file manager"
 msgstr "Aplikatu fitxategi-kudeatzailetik irekitako fitxategiei"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Add to the playlist instead of replacing it"
 msgstr "Gehitu erreprodukzio-zerrendara, ordeztu beharrean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 msgid "When opening a folder"
 msgstr "Karpeta bat irekitzean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Only this folder"
 msgstr "Karpeta hau soilik"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Include subfolders"
 msgstr "Sartu azpikarpetak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Include and expand subfolders"
 msgstr "Sartu eta zabaldu azpikarpetak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Metadata & Artwork"
 msgstr "Metadatuak eta azalak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Fetch titles and artwork"
 msgstr "Eskuratu tituluak eta azalak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Read media information automatically"
 msgstr "Irakurri multimedia-informazioa automatikoki"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Ignored file extensions"
 msgstr "Ez ikusi egindako fitxategi-luzapenak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Buffering"
 msgstr "Bufferreratzea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 msgid "Local files"
 msgstr "Fitxategi lokalak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 msgid "Network streams"
 msgstr "Sareko transmisio jarraituak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Live capture"
 msgstr "Zuzeneko kaptura"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Proxy"
 msgstr "Proxya"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "System proxy"
 msgstr "Sistemaren proxya"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Security"
 msgstr "Segurtasuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Verify certificates against the system trust store"
 msgstr "Egiaztatu ziurtagiriak sistemaren konfiantza-biltegiarekin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Cipher preference"
 msgstr "Zifratze-hobespena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Secure (128-bit)"
 msgstr "Segurua (128 bit)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Most secure (256-bit)"
 msgstr "Seguruena (256 bit)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Connections"
 msgstr "Konexioak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Connection timeout"
 msgstr "Konexioaren denbora-muga"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "HTTP user agent"
 msgstr "HTTP erabiltzaile-agentea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Trusted certificates folder"
 msgstr "Ziurtagiri fidagarrien karpeta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Post-processing quality"
 msgstr "Post-prozesatzearen kalitatea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Skip the H.264 loop filter"
 msgstr "Saltatu H.264 begizta-iragazkia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Non-reference frames"
 msgstr "Erreferentziakoak ez diren markoak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Bidirectional frames"
 msgstr "Marko bidirekzionalak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Non-key frames"
 msgstr "Gako-markoak ez direnak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Decoding threads"
 msgstr "Deskodetze-hariak"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
-msgid "Smooth Playback"
-msgstr "Erreprodukzio leuna"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
-msgid "Drop frames when the system can't keep up"
-msgstr "Baztertu markoak sistemak ezin duenean jarraitu"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+msgid "Smooth Playback"
+msgstr "Erreprodukzio leuna"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+msgid "Drop frames when the system can't keep up"
+msgstr "Baztertu markoak sistemak ezin duenean jarraitu"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
 msgid "Developer"
 msgstr "Garatzailea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 msgid "Decoder"
 msgstr "Deskodetzailea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
 msgid "Clock reference averaging"
 msgstr "Erloju-erreferentziaren batezbestekoa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Save recordings to"
 msgstr "Gorde grabazioak hemen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Record without re-encoding when possible"
 msgstr "Grabatu birkodetu gabe ahal denean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Casting"
 msgstr "Igorpena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
 msgid "Cast quality"
 msgstr "Igorpenaren kalitatea"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Low CPU"
 msgstr "PUZ gutxi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
 msgid "Play locally while streaming"
 msgstr "Erreproduzitu lokalki transmititzen den bitartean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Include audio"
 msgstr "Sartu audioa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Include video"
 msgstr "Sartu bideoa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Include subtitles"
 msgstr "Sartu azpitituluak ere"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
 msgid "Encoding preset"
 msgstr "Kodeketaren aurrezarpena"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
 msgid "Tuning"
 msgstr "Doikuntza"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
 msgid "Send Dolby audio as is"
 msgstr "Bidali Dolby audioa dagoen bezala"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Cast HTTP port"
 msgstr "Igorpenaren HTTP ataka"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Keep the stream output open between items"
 msgstr "Mantendu transmisioaren irteera irekita elementuen artean"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:427
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "Aukera gehiago"
@@ -5362,7 +5387,7 @@ msgstr "Eguneratzen…"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -5697,56 +5722,56 @@ msgstr "Ezabatu profila"
 msgid "Its layout and its settings go with it."
 msgstr "Haren diseinua eta ezarpenak ere ezabatuko dira."
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:943
+#: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "Ezin da kanal hau erreproduzitu"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:983
+#: modules/gui/qt/iptv/iptv_addon.cpp:989
 msgid "This programme is older than the channel's archive"
 msgstr "Programa hau kanalaren artxiboa baino zaharragoa da"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:984
+#: modules/gui/qt/iptv/iptv_addon.cpp:990
 msgid "This programme has not started yet"
 msgstr "Programa hau ez da oraindik hasi"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:991
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr ""
 "Kanal honek ez du artxiborik: ezin dira iraganeko programak erreproduzitu"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1009
+#: modules/gui/qt/iptv/iptv_addon.cpp:1015
 msgid "The guide does not say what is on"
 msgstr "Gidak ez du esaten zer dagoen emisioan"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1059
+#: modules/gui/qt/iptv/iptv_addon.cpp:1065
 msgid "No channel %1"
 msgstr "Ez dago %1 kanalik"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1261
+#: modules/gui/qt/iptv/iptv_addon.cpp:1267
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 min"
 msgstr[1] "%1 min"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1264
+#: modules/gui/qt/iptv/iptv_addon.cpp:1270
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 h"
 msgstr[1] "%1 h"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1270 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 h %2 min"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1272
+#: modules/gui/qt/iptv/iptv_addon.cpp:1278
 msgid "Today"
 msgstr "Gaur"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1274
+#: modules/gui/qt/iptv/iptv_addon.cpp:1280
 msgid "Tomorrow"
 msgstr "Bihar"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1276
+#: modules/gui/qt/iptv/iptv_addon.cpp:1282
 msgid "Yesterday"
 msgstr "Atzo"
 
@@ -5795,7 +5820,7 @@ msgstr "Hurrengoa: %1(e)tan"
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1229
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 eg."
@@ -5810,14 +5835,14 @@ msgstr[1] "Berriz ikusi: azken %1 egunetan"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1232
 msgid "Films"
 msgstr "Filmak"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1233
 msgid "Series"
 msgstr "Telesailak"
 
@@ -5886,7 +5911,7 @@ msgstr "Kanalik ez"
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:513
 #: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "Gogokoak"
@@ -5991,11 +6016,11 @@ msgstr "Aurreko programa"
 msgid "Programme after"
 msgstr "Hurrengo programa"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:352
 msgid "Next channel"
 msgstr "Hurrengo kanala"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:353
 msgid "Previous channel"
 msgstr "Aurreko kanala"
 
@@ -6024,7 +6049,7 @@ msgid "Channel"
 msgstr "Kanala"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1141
 msgid "Catch-up"
 msgstr "Berriz ikusi"
 
@@ -6059,15 +6084,17 @@ msgstr "Zure sareko sintonizadore bat: bere kanalak eta doako gida"
 msgid ""
 "A paid guide (the US, Canada and more) for the channels of every source: the "
 "lineups of your account"
-msgstr "Ordainpeko gida bat (AEB, Kanada eta gehiago) iturburu guztien kanaletarako: zure kontuko kanal-zerrendak"
+msgstr ""
+"Ordainpeko gida bat (AEB, Kanada eta gehiago) iturburu guztien kanaletarako: "
+"zure kontuko kanal-zerrendak"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "Telebista-iturburuak"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1011
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 msgid "Add Guide"
 msgstr "Gehitu gida"
 
@@ -6088,12 +6115,12 @@ msgid "Accounts"
 msgstr "Kontuak"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1142
 msgid "Guides"
 msgstr "Gidak"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1017
 msgid "Catalog"
 msgstr "Katalogoa"
 
@@ -6116,7 +6143,7 @@ msgstr ""
 "katalogoko bat."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
 msgid "%1 programme"
 msgid_plural "%1 programmes"
 msgstr[0] "%1 programa"
@@ -6141,7 +6168,7 @@ msgstr[0] "Berriz ikusi %1 eg."
 msgstr[1] "Berriz ikusi %1 eg."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:940
 msgid "Updating the guide… %1 MB"
 msgstr "Gida eguneratzen… %1 MB"
 
@@ -6154,12 +6181,12 @@ msgid "Updated %1 at %2"
 msgstr "Eguneratua: %1, %2(e)tan"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:986
 msgid "Turn Off"
 msgstr "Desaktibatu"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:986
 msgid "Turn On"
 msgstr "Aktibatu"
 
@@ -6210,7 +6237,7 @@ msgstr "Erreprodukzio-zerrendak (*.m3u *.m3u8)"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
 msgid "(empty: unchanged)"
 msgstr "(hutsik: aldatu gabe)"
 
@@ -6280,7 +6307,7 @@ msgid "Nothing found on your network: type the server's address."
 msgstr "Ez da ezer aurkitu zure sarean: idatzi zerbitzariaren helbidea."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 msgid "Added"
 msgstr "Gehituta"
 
@@ -6288,157 +6315,163 @@ msgstr "Gehituta"
 msgid "Look again"
 msgstr "Bilatu berriro"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:693
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:704
 msgid "Server address"
 msgstr "Zerbitzariaren helbidea"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:703
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:845
 msgid "e.g., %1"
 msgstr "adib., %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:738
 msgid "PIN"
 msgstr "PIN kodea"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:754
 msgid "API key"
 msgstr "API gakoa"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
 msgid "Instead of a user: a key made in the server's dashboard."
 msgstr "Erabiltzaile baten ordez: zerbitzariaren panelean sortutako gako bat."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Server found"
 msgstr "Zerbitzaria aurkitu da"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:798
 msgid "Sign Out"
 msgstr "Amaitu saioa"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:810
 msgid ""
 "Passwords and keys are kept in the keystore of VLC, never written to its log."
-msgstr "Pasahitzak eta gakoak VLCren gako-biltegian gordetzen dira, eta ez dira inoiz bere egunkarian idazten."
+msgstr ""
+"Pasahitzak eta gakoak VLCren gako-biltegian gordetzen dira, eta ez dira "
+"inoiz bere egunkarian idazten."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:827
 msgid "The guide of %1"
 msgstr "%1(r)en gida"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:828
 msgid ""
 "The id the guides give this channel. Yours comes first; leave it empty to "
 "use the one of its list or the one found for it."
-msgstr "Gidek kanal honi ematen dioten IDa. Zurea doa lehenengo; utzi hutsik bere zerrendakoa edo harentzat aurkitutakoa erabiltzeko."
+msgstr ""
+"Gidek kanal honi ematen dioten IDa. Zurea doa lehenengo; utzi hutsik bere "
+"zerrendakoa edo harentzat aurkitutakoa erabiltzeko."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
 msgid "Its list: %1"
 msgstr "Bere zerrenda: %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:833
 msgid "Found for it: %1"
 msgstr "Kanalarentzat aurkitua: %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:846
 msgid "Guide id"
 msgstr "Gidaren IDa"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:862
 msgid "The guides of your sources"
 msgstr "Zure iturburuen gidak"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:863
 msgid ""
 "Each source's own guides and those you added; the channels are matched by "
 "their guide id, then by their name."
-msgstr "Iturburu bakoitzaren gidak eta zuk gehitutakoak; kanalak gidaren IDaren arabera lotzen dira, eta ondoren izenaren arabera."
+msgstr ""
+"Iturburu bakoitzaren gidak eta zuk gehitutakoak; kanalak gidaren IDaren "
+"arabera lotzen dira, eta ondoren izenaren arabera."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:902
 msgid "A guide for the channels of every source"
 msgstr "Iturburu guztien kanaletarako gida bat"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:903
 #: modules/gui/qt/iptv/qml/TvToast.qml:56
 msgid "Guide for %1 of %2 channels"
 msgstr "Gida: %2 kanaletatik %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:920
 msgid "Find a Guide"
 msgstr "Bilatu gida bat"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:941
 msgid "Found for you: %1 channel matched by its name or id"
 msgid_plural "Found for you: %1 channels matched by their name or id"
 msgstr[0] "Zuretzat aurkitua: %1 kanal lotu da izenaren edo IDaren arabera"
 msgstr[1] "Zuretzat aurkituak: %1 kanal lotu dira izenaren edo IDaren arabera"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
 msgid "Added by you"
 msgstr "Zuk gehitua"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:970
 msgid "Found for you"
 msgstr "Zuretzat aurkitua"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:971
 msgid "From the playlist"
 msgstr "Erreprodukzio-zerrendatik"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1000
 msgid "No guide yet: add one, or one of the catalog's."
 msgstr "Oraindik ez dago gidarik: gehitu bat, edo katalogoko bat."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1107
 msgid "Search the catalog"
 msgstr "Bilatu katalogoan"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1130
 msgid "A-Z"
 msgstr "A-Z"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1130
 msgid "Most channels"
 msgstr "Kanal gehien"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1131
 msgid "For you"
 msgstr "Zuretzat"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Recommended"
 msgstr "Gomendatuak"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1142
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 msgid "Free"
 msgstr "Doan"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1237
 msgid "Not answering"
 msgstr "Ez du erantzuten"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 msgid "Paid"
 msgstr "Ordainpekoa"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Loading the catalog…"
 msgstr "Katalogoa kargatzen…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1287
 msgid "The catalog is empty in this version."
 msgstr "Katalogoa hutsik dago bertsio honetan."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1288
 msgid "Nothing in the catalog matches"
 msgstr "Katalogoan ez dago bat datorren ezer"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1302
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
@@ -6446,7 +6479,7 @@ msgstr ""
 "Doako iturburu legalak soilik zerrendatzen dira. Iradokizunak berrikusi "
 "egiten dira katalogora iritsi aurretik."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1310
 msgid "Suggest a Service"
 msgstr "Iradoki zerbitzu bat"
 
@@ -6470,15 +6503,22 @@ msgstr "%1 orain hasten da %2 kanalean"
 msgid "Undo"
 msgstr "Desegin"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1308
+#. xgettext: The step of a jump in seconds shown in full screen
+#. * ("+10 s"); a minute and more are written 1:10
+#: modules/gui/qt/maininterface/mainctx.cpp:910
+#, no-c-format
+msgid "%1 s"
+msgstr "%1 s"
+
+#: modules/gui/qt/maininterface/mainctx.cpp:1423
 msgid "Paste from clipboard"
 msgstr "Itsatsi arbeletik"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1309
+#: modules/gui/qt/maininterface/mainctx.cpp:1424
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Hurrengo URLak erreprodukzio-ilaran jarri nahi dituzu?"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1310
+#: modules/gui/qt/maininterface/mainctx.cpp:1425
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -6492,7 +6532,7 @@ msgstr "Jarri ilaran"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1673
+#: modules/gui/qt/maininterface/mainctx.cpp:1806
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -6742,57 +6782,63 @@ msgstr "Ikuspegi hutsa"
 msgid "Bookmark at %1"
 msgstr "Laster-marka: %1"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:125
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:128
 msgid "Online subtitle search is not available in this build."
 msgstr "Lineako azpititulu-bilaketa ez dago erabilgarri konpilazio honetan."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:130
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:133
 msgid "Enter an OpenSubtitles API key and a title to search."
 msgstr "Idatzi OpenSubtitles API gako bat eta titulu bat bilatzeko."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:142
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:145
 msgid "OpenSubtitles search failed. Check the API key and network."
 msgstr "OpenSubtitles bilaketak huts egin du. Egiaztatu API gakoa eta sarea."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:148
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:151
 msgid "OpenSubtitles returned an invalid search response."
 msgstr "OpenSubtitles-ek bilaketa-erantzun baliogabea itzuli du."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:182
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:185
 msgid "Enter your API key and OpenSubtitles account credentials to download."
 msgstr ""
 "Idatzi zure API gakoa eta OpenSubtitles kontuaren kredentzialak "
 "deskargatzeko."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:194
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:197
 msgid "OpenSubtitles login failed. Check your account credentials."
 msgstr ""
 "OpenSubtitles-en saioa hasteak huts egin du. Egiaztatu zure kontuaren "
 "kredentzialak."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:202
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:205
 msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles-ek saio baliogabea itzuli du."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1860
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:216
+#: modules/gui/qt/player/subtitle_providers.cpp:1744
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles deskargak huts egin du. Egiaztatu zure kuota."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1871
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:226
+#: modules/gui/qt/player/subtitle_providers.cpp:1755
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr ""
 "OpenSubtitles-ek ez du azpitituluak deskargatzeko baliozko estekarik itzuli."
 
-#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
-#: modules/gui/qt/player/subtitle_search.cpp:654
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
+#: modules/gui/qt/player/subtitle_search.cpp:670
 msgid "This build can't search the internet."
 msgstr "Konpilazio honek ezin du Interneten bilatu."
 
-#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
+#: modules/gui/qt/player/subtitle_search.cpp:692
 msgid "The subtitle services took too long to answer."
 msgstr "Azpititulu-zerbitzuek gehiegi berandu erantzun dute."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:353
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "Ezin izan da helburuko multimedia liburutegian aurkitu."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -6930,10 +6976,6 @@ msgstr "Audio-fitxategi bat falta da edo ezin da irakurri: %1"
 msgid "A subtitle file is missing or unreadable: %1"
 msgstr "Azpititulu-fitxategi bat falta da edo ezin da irakurri: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
-msgid "The destination media could not be found in the library."
-msgstr "Ezin izan da helburuko multimedia liburutegian aurkitu."
-
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
 msgid "Could not save audio track association for %1."
 msgstr "Ezin izan da audio-pistaren esleipena gorde (%1)."
@@ -6958,23 +7000,23 @@ msgstr ""
 msgid "Downloading subtitles is not available in this build."
 msgstr "Azpitituluak deskargatzea ez dago erabilgarri konpilazio honetan."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:83
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:86
 msgid "The subtitle exceeds the 20 MB download limit."
 msgstr "Azpitituluak 20 MB-ko deskarga-muga gainditzen du."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:88
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:91
 msgid "Could not download the subtitle: %1"
 msgstr "Ezin izan da azpititulua deskargatu: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:89
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:92
 msgid "HTTP status %1"
 msgstr "HTTP egoera %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:101
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:106
 msgid "Could not create the subtitle storage folder."
 msgstr "Ezin izan da azpitituluak gordetzeko karpeta sortu."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:111
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:116
 msgid "Could not save the downloaded subtitle."
 msgstr "Ezin izan da deskargatutako azpititulua gorde."
 
@@ -7020,26 +7062,26 @@ msgid "Unknown artist"
 msgstr "Artista ezezaguna"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:228
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:231
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "Jarraitu ikusten"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:593
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:596
 #: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "Bideo berriak"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:312
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:315
 #: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "Entzun berriro"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:677
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:680
 #: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "Musika berria"
@@ -7058,7 +7100,7 @@ msgstr "Musika berria"
 msgid "Alphabetic"
 msgstr "Alfabetikoa"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:383
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:386
 #: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "Sarri bisitatutako karpetak"
@@ -8020,7 +8062,14 @@ msgstr "Hasi erreprodukzioa lo-tenporizadorea ezarri aurretik."
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Aukeratu segundo bat eta 24 ordu arteko iraupena."
 
+#: modules/gui/qt/player/subtitle_finder.cpp:769
+#: modules/gui/qt/player/subtitle_search.cpp:1344
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+msgid "The subtitle couldn't be saved."
+msgstr "Ezin izan da azpititulua gorde."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:101
+#: modules/gui/qt/player/subtitle_search.cpp:707
 msgid "%1 didn't answer."
 msgstr "%1 zerbitzuak ez du erantzun."
 
@@ -8032,120 +8081,116 @@ msgstr "%1 zerbitzuak une bat itxaroteko eskatzen du (bilaketa gehiegi)."
 msgid "%1 didn't answer (%2)."
 msgstr "%1 zerbitzuak ez du erantzun (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1574
+#: modules/gui/qt/player/subtitle_providers.cpp:1458
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 "Hizkuntza guztiak · filmak eta telesailak · zure fitxategirako eginak "
 "aurkitzen ditu"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1576
+#: modules/gui/qt/player/subtitle_providers.cpp:1460
 msgid "With your own free key · all languages"
 msgstr "Zure doako gako propioarekin · hizkuntza guztiak"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1580
+#: modules/gui/qt/player/subtitle_providers.cpp:1464
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "Zure doako gako propioarekin · arabieran indartsua, hizkuntza asko"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1583
+#: modules/gui/qt/player/subtitle_providers.cpp:1467
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "Zure doako gako propioarekin · Subscene artxiboa, hizkuntza asko"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1586
+#: modules/gui/qt/player/subtitle_providers.cpp:1470
 msgid "Hebrew · movies and series"
 msgstr "Hebreera · filmak eta telesailak"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1588
+#: modules/gui/qt/player/subtitle_providers.cpp:1472
 msgid "Series · many languages"
 msgstr "Telesailak · hizkuntza asko"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1590
+#: modules/gui/qt/player/subtitle_providers.cpp:1474
 msgid "Movies · many languages"
 msgstr "Filmak · hizkuntza asko"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1594
+#: modules/gui/qt/player/subtitle_providers.cpp:1478
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr ""
 "Zure doako kontuarekin · kroaziera, serbiera, bosniera, esloveniera, "
 "mazedoniera"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1598
+#: modules/gui/qt/player/subtitle_providers.cpp:1482
 msgid "With your free token · Chinese"
 msgstr "Zure doako tokenarekin · txinera"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1601
+#: modules/gui/qt/player/subtitle_providers.cpp:1485
 msgid "With your free key · anime, Japanese"
 msgstr "Zure doako gakoarekin · anime, japoniera"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1604
+#: modules/gui/qt/player/subtitle_providers.cpp:1488
 msgid "With your free key · series, French"
 msgstr "Zure doako gakoarekin · telesailak, frantsesa"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1607
+#: modules/gui/qt/player/subtitle_providers.cpp:1491
 msgid "With your free key · Romanian"
 msgstr "Zure doako gakoarekin · errumaniera"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1610
+#: modules/gui/qt/player/subtitle_providers.cpp:1494
 msgid "With your free account · Polish · finds those made for your file"
 msgstr ""
 "Zure doako kontuarekin · Poloniera · zure fitxategirako egindakoak aurkitzen "
 "ditu"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1613
+#: modules/gui/qt/player/subtitle_providers.cpp:1497
 msgid "With your free account · Portuguese (Brazil)"
 msgstr "Zure doako kontuarekin · portugesa (Brasil)"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1984
+#: modules/gui/qt/player/subtitle_providers.cpp:1880
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Azpititulu hau RAR artxibo gisa dator, eta ezin da hemen ireki."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1996
-#: modules/gui/qt/player/subtitle_providers.cpp:2029
-#: modules/gui/qt/player/subtitle_search.cpp:1378
+#: modules/gui/qt/player/subtitle_providers.cpp:1889
+#: modules/gui/qt/player/subtitle_providers.cpp:1922
+#: modules/gui/qt/player/subtitle_search.cpp:1439
 msgid "The subtitle couldn't be unpacked."
 msgstr "Ezin izan da azpititulua deskonprimatu."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2030
+#: modules/gui/qt/player/subtitle_providers.cpp:1923
 msgid "The archive has no subtitle in it."
 msgstr "Artxiboak ez du azpititulurik."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2042
+#: modules/gui/qt/player/subtitle_providers.cpp:1935
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles-ek ordaintzen duten kideentzat gordetzen du azpititulu hau. "
 "Aukeratu beste bat."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2048
+#: modules/gui/qt/player/subtitle_providers.cpp:1941
 msgid "The subtitle is empty."
 msgstr "Azpititulua hutsik dago."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1338
+#: modules/gui/qt/player/subtitle_search.cpp:1290
+#: modules/gui/qt/player/subtitle_search.cpp:1399
 msgid "No connection to the internet."
 msgstr "Ez dago Interneteko konexiorik."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1239
+#: modules/gui/qt/player/subtitle_search.cpp:1293
 msgid "The video couldn't be identified from its name."
 msgstr "Ezin izan da bideoa identifikatu bere izenetik."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1240
+#: modules/gui/qt/player/subtitle_search.cpp:1294
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "Ez da \"%1\" aurkitu. Bilatu haren titulua."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1242
+#: modules/gui/qt/player/subtitle_search.cpp:1296
 msgid "No subtitles were found for %1."
 msgstr "Ez da azpititulurik aurkitu honetarako: %1."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1284
-#: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1339
+#: modules/gui/qt/player/subtitle_search.cpp:1338
+#: modules/gui/qt/player/subtitle_search.cpp:1380
+#: modules/gui/qt/player/subtitle_search.cpp:1400
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Ezin izan da azpititulua deskargatu (%1)."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1369
-msgid "The subtitle couldn't be saved."
-msgstr "Ezin izan da azpititulua gorde."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -8336,72 +8381,77 @@ msgstr "Erreproduzigailua"
 msgid "Subtitle size %1%"
 msgstr "Azpitituluen tamaina %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1127
+#: modules/gui/qt/player/qml/PlayerView.qml:1157
 msgid "Subtitles on the TV: %1"
 msgstr "Azpitituluak telebistan: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1127
+#: modules/gui/qt/player/qml/PlayerView.qml:1157
 msgid "Subtitles off on the TV"
 msgstr "Azpitituluak desaktibatuta telebistan"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1238
+#: modules/gui/qt/player/qml/PlayerView.qml:1268
 msgid "Not playing on %1"
 msgstr "Ez da %1 gailuan erreproduzitzen ari"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1240
-#: modules/gui/qt/player/qml/PlayerView.qml:1367
+#: modules/gui/qt/player/qml/PlayerView.qml:1270
+#: modules/gui/qt/player/qml/PlayerView.qml:1397
 msgid "Connecting to %1…"
 msgstr "%1 gailura konektatzen…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1242
+#: modules/gui/qt/player/qml/PlayerView.qml:1272
 msgid "Playing on %1"
 msgstr "%1 gailuan erreproduzitzen"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1243
+#: modules/gui/qt/player/qml/PlayerView.qml:1273
 msgid "The sound plays on %1"
 msgstr "Soinua %1 gailuan entzuten da"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1268
+#: modules/gui/qt/player/qml/PlayerView.qml:1298
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Pausarazi, bilatu eta aldatu azpitituluak hemen: telebistak jarraituko dizu."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1285
+#: modules/gui/qt/player/qml/PlayerView.qml:1315
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows suebakiak ez dio %1 gailuari uzten ordenagailu honetara konektatzen "
 "multimedia irakurtzeko."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1297
+#: modules/gui/qt/player/qml/PlayerView.qml:1327
 msgid "Waiting for Windows…"
 msgstr "Windows-en zain…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1298
+#: modules/gui/qt/player/qml/PlayerView.qml:1328
 msgid "Allow on public networks too"
 msgstr "Baimendu sare publikoetan ere"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1299
+#: modules/gui/qt/player/qml/PlayerView.qml:1329
 msgid "Allow on private networks"
 msgstr "Baimendu sare pribatuetan"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1341
 msgid "Try again"
 msgstr "Saiatu berriro"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1316
-#: modules/gui/qt/player/qml/PlayerView.qml:1326
+#: modules/gui/qt/player/qml/PlayerView.qml:1346
+#: modules/gui/qt/player/qml/PlayerView.qml:1356
 msgid "Play here"
 msgstr "Erreproduzitu hemen"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1326
-#: modules/gui/qt/player/qml/PlayerView.qml:1377
+#: modules/gui/qt/player/qml/PlayerView.qml:1356
+#: modules/gui/qt/player/qml/PlayerView.qml:1407
 msgid "Stop casting"
 msgstr "Gelditu igorpena"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1368
+#: modules/gui/qt/player/qml/PlayerView.qml:1398
 msgid "Also on %1"
 msgstr "%1 gailuan ere bai"
+
+#: modules/gui/qt/player/qml/ShortcutFeedback.qml:148
+#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
+msgid "Playing"
+msgstr "Erreproduzitzen"
 
 #: modules/gui/qt/player/qml/ResumeDialog.qml:45
 msgid "Resume dialog"
@@ -8501,27 +8551,27 @@ msgstr "Bideo-pistak"
 msgid "Track list"
 msgstr "Pisten zerrenda"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:321
+#: modules/gui/qt/player/qml/AudioContent.qml:329
 msgid "Title and artist"
 msgstr "Titulua eta artista"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:451
+#: modules/gui/qt/player/qml/AudioContent.qml:465
 msgid "Step back"
 msgstr "Atzera urrats bat"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:476
+#: modules/gui/qt/player/qml/AudioContent.qml:490
 msgid "Toggle lyrics view"
 msgstr "Txandakatu letren ikuspegia"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:513
+#: modules/gui/qt/player/qml/AudioContent.qml:529
 msgid "Sync lyrics to playback"
 msgstr "Sinkronizatu letrak erreprodukzioarekin"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:528
+#: modules/gui/qt/player/qml/AudioContent.qml:544
 msgid "Sync lyrics to playback position"
 msgstr "Sinkronizatu letrak erreprodukzio-posizioarekin"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:548
+#: modules/gui/qt/player/qml/AudioContent.qml:564
 msgid "Volume %1%"
 msgstr "Bolumena %%1"
 
@@ -8629,15 +8679,15 @@ msgstr "Multimedia liburutegia ez dago erabilgarri."
 msgid "Nothing here yet."
 msgstr "Oraindik ez dago ezer hemen."
 
-#: modules/gui/qt/player/qml/ControlBar.qml:159
+#: modules/gui/qt/player/qml/ControlBar.qml:156
 msgid "Player controls"
 msgstr "Erreproduzigailuaren kontrolak"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:442
+#: modules/gui/qt/player/qml/ControlBar.qml:439
 msgid "%1 (%2x)"
 msgstr "%1 (%2x)"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:457
+#: modules/gui/qt/player/qml/ControlBar.qml:454
 msgid "Progress"
 msgstr "Aurrerapena"
 
@@ -9140,10 +9190,6 @@ msgstr "Aukeratu bideoaren zoom-maila"
 msgid "Zoom is unavailable without video"
 msgstr "Zooma ez dago erabilgarri bideorik gabe"
 
-#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
-msgid "Playing"
-msgstr "Erreproduzitzen"
-
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:197
 msgid "Media cover"
 msgstr "Multimediaren azala"
@@ -9160,19 +9206,19 @@ msgstr "Kendu hautatutako elementuak"
 msgid "Add files to the queue"
 msgstr "Gehitu fitxategiak ilarara"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Emaitzarik ez"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Oraindik ez dago edukirik"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:651
 msgid "Drag & Drop some content here!"
 msgstr "Arrastatu eta jaregin edukia hemen!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:716
 msgid "Play queue"
 msgstr "Erreprodukzio-ilara"
 
@@ -9259,7 +9305,14 @@ msgstr ""
 "Desaktibatuta, teklatuak soilik erakusten ditu (I tekla). Azalek ere "
 "irakurtzen dute beren pantaila osoko kontrolatzailerako."
 
-#: modules/gui/qt/qt.cpp:266
+#: modules/gui/qt/qt.cpp:257
+msgid ""
+"What a key of VLC (seek, volume, pause, speed...) shows in full screen: the "
+"controls; a thin progress line with a small message (the time and what the "
+"key did); or that message alone."
+msgstr "VLCren tekla batek (bilaketa, bolumena, pausa, abiadura...) pantaila osoan erakusten duena: kontrolak; aurrerapen-lerro mehe bat mezu txiki batekin (denbora eta teklak egin duena); edo mezu hori bakarrik."
+
+#: modules/gui/qt/qt.cpp:273
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -9269,7 +9322,7 @@ msgstr ""
 "(ikuspegi trinkoko konoa). Desaktibatuta, irudi soil bat jartzen da haren "
 "lekuan, eta horrek pantaila erretzea ere eragozten du."
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:297
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -9277,11 +9330,11 @@ msgstr ""
 "Aukera honek interfazea automatikoki erakustea eta aurrera ekartzea "
 "ahalbidetzen du bideo/audio erreprodukzio bat hastean, edo inoiz ez."
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:300
 msgid "Enable window titlebar"
 msgstr "Gaitu leihoaren titulu-barra"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:301
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -9290,30 +9343,30 @@ msgstr ""
 "eta leihoaren botoiak interfazearen barrura eramango dira (bezeroaren aldeko "
 "dekorazioa)"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the menu bar"
 msgstr "Erakutsi menu-barra"
 
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:306
 msgid "This option displays the classic menu bar"
 msgstr "Aukera honek menu-barra klasikoa bistaratzen du"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:308
 msgid "Pin video controls"
 msgstr "Finkatu bideo-kontrolak"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:309
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Jarri bideo-kontrolak bideoaren gainean eta azpian, gainean soilik jarri "
 "beharrean"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:312
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Erakutsi sagua gainean dagoen posizioko markoa bilaketa-barraren gainean"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:314
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -9321,11 +9374,11 @@ msgstr ""
 "Markatu bilaketa-barran erakutsitako azpitituluaren lerroak non dauden, "
 "azpititulu-fitxategi batetik datorrenean"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:319
 msgid "Select Qt video integration backend"
 msgstr "Hautatu Qt bideo-integrazioaren motorra"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:320
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -9333,11 +9386,11 @@ msgstr ""
 "Hautatu Qt bideo-integrazioaren motorra. Kontuz erabili; baliteke interfazea "
 "ez abiaraztea konposatzaile bateraezin bat hautatzen bada"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:322
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Erabili korritze leuna Flickable oinarritutako ikuspegietan"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -9348,22 +9401,22 @@ msgstr ""
 "korritze-kudeatzaile batekin soilik errespetatzen da; ikus `qt-use-scroll-"
 "handler` aukera."
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:326
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Erabili Kirigami korritze-kudeatzailea Flickable oinarritutako "
 "ikuspegietarako"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:327
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Kirigami korritze-kudeatzailea erabiltzeak korritzearen portaera hobe dezake."
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:329
 msgid "Safe area for the user interface"
 msgstr "Erabiltzaile-interfazearen eremu segurua"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -9371,19 +9424,19 @@ msgstr ""
 "Eremu seguruaren ehunekoa ezartzen du 0,0 eta 100 artean, erabiltzaile-"
 "interfazea ikus-eremu mugatu batean ikusgai dagoela ziurtatu nahi duzunean"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:334
 msgid "Print Qt's important internal messages"
 msgstr "Inprimatu Qt-ren barne-mezu garrantzitsuak"
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:335
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr "Gaitu Qt-ren mezu-kategoria guztiak, arazketa-kategoria izan ezik."
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:337
 msgid "Hide the window on close"
 msgstr "Ezkutatu leihoa ixtean"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -9391,11 +9444,11 @@ msgstr ""
 "Aplikazioa itxi beharrean, ezkutatu leihoa. Ezarpen hau sistemaren "
 "erretiluko ikonoa gaituta dagoenean soilik aplikatzen da."
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:340
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Gaitu atzeko planoaren lausotze-iragazkia leiho nagusirako, ahal bada"
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -9406,11 +9459,11 @@ msgstr ""
 "kolore solido baten ordez. Ezarpen honek testuaren irakurgarritasuna "
 "kaltetzen du."
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:344
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Gaitu irudia irudian (PiP) modua"
 
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/qt.cpp:345
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -9418,7 +9471,7 @@ msgstr ""
 "Irudia irudian moduak bideoa eremu txikiago batean erreproduzitzea "
 "ahalbidetzen du, interfazea erabilgarri egon dadin."
 
-#: modules/gui/qt/qt.cpp:341
+#: modules/gui/qt/qt.cpp:348
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -9426,27 +9479,27 @@ msgstr ""
 "Nabarmentze-kolorea doitzen du; balio bereziak 'default' eta 'system' dira "
 "(Qt 6.6 behar du) ."
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:354
 msgid "Last channel watched"
 msgstr "Azken ikusitako kanala"
 
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:355
 msgid "Channel list"
 msgstr "Kanal-zerrenda"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:360
 msgid "Zoom the interface in"
 msgstr "Handitu interfazea"
 
-#: modules/gui/qt/qt.cpp:354
+#: modules/gui/qt/qt.cpp:361
 msgid "Zoom the interface out"
 msgstr "Txikitu interfazea"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:472
 msgid "Check for VLC Redesign updates"
 msgstr "Bilatu VLC Redesign-en eguneratzeak"
 
-#: modules/gui/qt/qt.cpp:456
+#: modules/gui/qt/qt.cpp:473
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -9454,11 +9507,11 @@ msgstr ""
 "Bilatu VLC Redesign-en bertsio berri bat GitHub-en abioan, gehienez egunean "
 "behin."
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:477
 msgid "Resume at"
 msgstr "Jarraitzeko unea"
 
-#: modules/gui/qt/qt.cpp:461
+#: modules/gui/qt/qt.cpp:478
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9522,28 +9575,28 @@ msgstr ""
 "Eguneraketa ez dago kopia honen argitaratzaileak (%1) sinatuta; beraz, ez da "
 "erabili."
 
-#: modules/gui/qt/util/redesign_updater.cpp:496
+#: modules/gui/qt/util/redesign_updater.cpp:532
 msgid "%1 (later)"
 msgstr "%1 (geroago)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:498
+#: modules/gui/qt/util/redesign_updater.cpp:534
 msgid "%1 (soon)"
 msgstr "%1 (laster)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:694
+#: modules/gui/qt/util/redesign_updater.cpp:731
 msgid "This build cannot check for updates."
 msgstr "Konpilazio honek ezin ditu eguneratzeak bilatu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:708
+#: modules/gui/qt/util/redesign_updater.cpp:748
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Ezin izan da GitHub-era iritsi. Egiaztatu zure konexioa eta saiatu berriro."
 
-#: modules/gui/qt/util/redesign_updater.cpp:725
+#: modules/gui/qt/util/redesign_updater.cpp:765
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub-ek ustekabeko erantzuna bidali du (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:853
+#: modules/gui/qt/util/redesign_updater.cpp:893
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9551,49 +9604,49 @@ msgstr ""
 "Eguneratze hau ez dago VLC Redesign-ek sinatuta; beraz, ez da erabili. "
 "Deskargatu argitalpenaren orritik."
 
-#: modules/gui/qt/util/redesign_updater.cpp:875
-#: modules/gui/qt/util/redesign_updater.cpp:916
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Eguneratzearen kontrol-batura falta da; deskargatu argitalpenaren orritik."
 
-#: modules/gui/qt/util/redesign_updater.cpp:890
-#: modules/gui/qt/util/redesign_updater.cpp:962
+#: modules/gui/qt/util/redesign_updater.cpp:930
+#: modules/gui/qt/util/redesign_updater.cpp:1002
 msgid "The download failed. Check your connection and try again."
 msgstr "Deskargak huts egin du. Egiaztatu zure konexioa eta saiatu berriro."
 
-#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:1015
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Eguneratzea ez dator bat bere kontrol-baturarekin, eta ez da erabili."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1006
+#: modules/gui/qt/util/redesign_updater.cpp:1037
 msgid "The update isn't in a format this version knows."
 msgstr "Eguneratzea ez dago bertsio honek ezagutzen duen formatu batean."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1009
-#: modules/gui/qt/util/redesign_updater.cpp:1033
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1050
-#: modules/gui/qt/util/redesign_updater.cpp:1284
+#: modules/gui/qt/util/redesign_updater.cpp:1040
+#: modules/gui/qt/util/redesign_updater.cpp:1064
+#: modules/gui/qt/util/redesign_updater.cpp:1075
+#: modules/gui/qt/util/redesign_updater.cpp:1081
+#: modules/gui/qt/util/redesign_updater.cpp:1355
 msgid "The update is damaged."
 msgstr "Eguneratzea hondatuta dago."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1014
-#: modules/gui/qt/util/redesign_updater.cpp:1281
+#: modules/gui/qt/util/redesign_updater.cpp:1045
+#: modules/gui/qt/util/redesign_updater.cpp:1352
 msgid "The update isn't for this version."
 msgstr "Eguneratzea ez da bertsio honetarako."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1023
-#: modules/gui/qt/util/redesign_updater.cpp:1060
-#: modules/gui/qt/util/redesign_updater.cpp:1069
-#: modules/gui/qt/util/redesign_updater.cpp:1073
-#: modules/gui/qt/util/redesign_updater.cpp:1077
-#: modules/gui/qt/util/redesign_updater.cpp:1277
+#: modules/gui/qt/util/redesign_updater.cpp:1054
+#: modules/gui/qt/util/redesign_updater.cpp:1091
+#: modules/gui/qt/util/redesign_updater.cpp:1100
+#: modules/gui/qt/util/redesign_updater.cpp:1112
+#: modules/gui/qt/util/redesign_updater.cpp:1116
+#: modules/gui/qt/util/redesign_updater.cpp:1348
 msgid "The update can't be written in %1."
 msgstr "Eguneratzea ezin da hemen idatzi: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1025
+#: modules/gui/qt/util/redesign_updater.cpp:1056
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9601,37 +9654,37 @@ msgstr ""
 "VLC Redesign-en fitxategi bat aldatu egin da instalatu zenetik, eta ezin da "
 "eguneratze txikia erabili: eguneratu instalatzailearekin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1055
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Eguneratzea hondatuta dago: fitxategi bat ez dator bat bere kontrol-"
 "baturarekin."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1180
-#: modules/gui/qt/util/redesign_updater.cpp:1345
+#: modules/gui/qt/util/redesign_updater.cpp:1249
+#: modules/gui/qt/util/redesign_updater.cpp:1416
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "Ezin izan da eguneratzea abiarazi. Hurrengoan berriro saiatuko da."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1207
+#: modules/gui/qt/util/redesign_updater.cpp:1276
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Deskargak huts egin du. Saiatu berriro, edo deskargatu argitalpenaren "
 "orritik."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1220
+#: modules/gui/qt/util/redesign_updater.cpp:1289
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Deskargatutako instalatzailea ez dator bat bere kontrol-baturarekin, eta ez "
 "da exekutatu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1232
-#: modules/gui/qt/util/redesign_updater.cpp:1240
-#: modules/gui/qt/util/redesign_updater.cpp:1254
+#: modules/gui/qt/util/redesign_updater.cpp:1301
+#: modules/gui/qt/util/redesign_updater.cpp:1309
+#: modules/gui/qt/util/redesign_updater.cpp:1325
 msgid "The installer couldn't be saved to %1."
 msgstr "Ezin izan da instalatzailea hemen gorde: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1325
-#: modules/gui/qt/util/redesign_updater.cpp:1363
+#: modules/gui/qt/util/redesign_updater.cpp:1396
+#: modules/gui/qt/util/redesign_updater.cpp:1434
 msgid "The installer couldn't be started."
 msgstr "Ezin izan da instalatzailea abiarazi."
 
@@ -9755,15 +9808,15 @@ msgstr "Zerrenda/Sareta"
 msgid "Search a language"
 msgstr "Bilatu hizkuntza bat"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:187
+#: modules/gui/qt/widgets/qml/SearchBox.qml:185
 msgid "filter"
 msgstr "iragazi"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:261
+#: modules/gui/qt/widgets/qml/SearchBox.qml:259
 msgid "Case sensitive"
 msgstr "Maiuskulak eta minuskulak bereizi"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:284
+#: modules/gui/qt/widgets/qml/SearchBox.qml:282
 msgid "Use regular expression"
 msgstr "Erabili adierazpen erregularra"
 
@@ -9831,7 +9884,7 @@ msgstr "Segurua, 128 bit (edo gehiago)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "Segurua, 256 bit (baztertu 128 biteko zifratzeak)"
 
-#: modules/misc/iptv/iptv.cpp:577
+#: modules/misc/iptv/iptv.cpp:835
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -9840,7 +9893,7 @@ msgstr ""
 "kontuetako kanalak, beren programa-gidarekin. Desaktibatuta, ez da ezer "
 "kargatzen."
 
-#: modules/misc/iptv/iptv.cpp:582
+#: modules/misc/iptv/iptv.cpp:840
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "Zuzeneko telebistaren (IPTV) kanalak eta programa-gida"
 

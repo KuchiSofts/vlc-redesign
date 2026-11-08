@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 10:17+0000\n"
+"POT-Creation-Date: 2026-11-08 19:14+0000\n"
 "PO-Revision-Date: 2008-08-23 18:31+0200\n"
 "Last-Translator: Alexander Didebulidze <didebuli@in.tum.de>\n"
 "Language-Team: Georgian <geognome@googlegroups.com>\n"
@@ -53,11 +53,11 @@ msgstr "ინტერფეისი"
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:581
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:230
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:26
 #: modules/gui/qt/menus/menus.cpp:861
 #: modules/gui/qt/player/qml/TracksMenu.qml:38
-#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:371
+#: modules/gui/qt/player/qml/TracksListPage.qml:90 modules/gui/qt/qt.cpp:382
 #: modules/stream_out/es.c:388 modules/stream_out/transcode/transcode.c:190
 #: share/lua/http/dialogs/create_stream.html:150
 msgid "Audio"
@@ -77,11 +77,11 @@ msgstr "აუდიო"
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:582
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:238
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:247
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:25
 #: modules/gui/qt/maininterface/navigationmodel.cpp:274
 #: modules/gui/qt/menus/menus.cpp:857
-#: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:371
+#: modules/gui/qt/player/qml/TracksMenu.qml:37 modules/gui/qt/qt.cpp:382
 #: modules/services_discovery/upnp.cpp:70 modules/stream_out/es.c:395
 #: modules/stream_out/transcode/transcode.c:163
 #: share/lua/http/dialogs/create_stream.html:147
@@ -113,7 +113,7 @@ msgstr "დაკვრის რიგი"
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:305
 #: modules/gui/qt/dialogs/extended/extended.cpp:110
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:82
-#: modules/gui/qt/qt.cpp:358
+#: modules/gui/qt/qt.cpp:365
 msgid "Advanced"
 msgstr "დამატებითი"
 
@@ -515,12 +515,12 @@ msgid "VU meter"
 msgstr "VU-მეტრი"
 
 #: src/audio_output/output.c:376 src/libvlc-module.c:222
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
 msgid "Audio filters"
 msgstr "აუდიო ფილტრები"
 
 #: src/audio_output/output.c:385 src/libvlc-module.c:1663
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
 msgid "Replay gain"
 msgstr "ReplayGain"
 
@@ -646,18 +646,18 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1265
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1584
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:419
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
-#: modules/gui/qt/qt.cpp:389
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:262
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
+#: modules/gui/qt/qt.cpp:400
 msgid "Automatic"
 msgstr "ავტომატური"
 
@@ -831,7 +831,7 @@ msgstr "VLC-მ ვერ გახსნა დეკოდერის მო�
 
 #: src/input/es_out.c:771 src/input/es_out.c:775 src/libvlc-module.c:259
 #: modules/gui/qt/dialogs/open/open_panels.cpp:581
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:86
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:41
 msgid "Track"
@@ -904,7 +904,7 @@ msgstr "კოდეკი"
 
 #: src/input/es_out.c:4711 src/input/meta.c:69 modules/access/imem.c:70
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:387
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1108
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1110
 #: modules/stream_out/setid.c:50
 msgid "Language"
 msgstr "ენა"
@@ -1247,7 +1247,7 @@ msgstr "VLC-მ ვერ გახსნა MRL '%s'. დეტალები�
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:233
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:67
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:39
-#: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:259
+#: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:265
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:86 modules/mux/avi.c:49
 msgid "Artist"
 msgstr "შემსრულებელი"
@@ -1265,11 +1265,11 @@ msgstr "საავტორო უფლებები"
 #: src/input/meta.c:62 src/libvlc-module.c:259
 #: modules/gui/macosx/library/VLCLibrarySortingMenuController.m:63
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:54
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:989
 #: modules/gui/qt/medialibrary/qml/MusicTrackListDisplay.qml:59
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:38
-#: modules/gui/qt/player/qml/AudioContent.qml:347
+#: modules/gui/qt/player/qml/AudioContent.qml:355
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:87
 msgid "Album"
 msgstr "ალბომი"
@@ -1442,7 +1442,7 @@ msgstr ""
 "\"http\", \"gestures\" ...)"
 
 #: src/libvlc-module.c:94
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
 msgid "Control interfaces"
 msgstr "მართვის ინტერფეისები"
 
@@ -1499,7 +1499,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:130
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Audio output module"
 msgstr "აუდიო გასავალის მოდული"
 
@@ -1512,7 +1512,7 @@ msgstr ""
 "ავტომატურად აირჩევა საუკეთესო ხელმისაწვდომი მეთოდი."
 
 #: src/libvlc-module.c:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
 msgid "Media role"
 msgstr "მედიის როლი"
 
@@ -1534,7 +1534,7 @@ msgstr ""
 
 #: src/libvlc-module.c:145
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:344
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
 #: modules/stream_out/display.c:43
 msgid "Enable audio"
 msgstr "ჩართე აუდიო"
@@ -1584,13 +1584,13 @@ msgid "Production"
 msgstr "წარმოება"
 
 #: src/libvlc-module.c:157
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 msgid "Accessibility"
 msgstr "მისაწვდომობა"
 
 #: src/libvlc-module.c:157
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:765
 msgid "Test"
 msgstr "ტესტი"
 
@@ -1684,23 +1684,23 @@ msgstr ""
 msgid "Auto"
 msgstr "ავტო"
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:348
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:375
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:201
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "On"
 msgstr "ჩართ."
 
-#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:348
+#: src/libvlc-module.c:198 src/libvlc-module.c:374 src/player/osd.c:375
 #: modules/access/dtv/access.c:100 modules/access/v4l2/v4l2.c:137
 #: modules/access/v4l2/v4l2.c:201
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1145
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:162
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:963
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
 #: modules/gui/qt/menus/menus.cpp:921 modules/gui/qt/player/hdr_output.cpp:33
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:430
 #: modules/video_filter/deinterlace/algo_phosphor.h:54
@@ -1809,7 +1809,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:273
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
 msgid "Video output module"
 msgstr "ვიდეო გასავალის მოდული"
 
@@ -1823,7 +1823,7 @@ msgstr ""
 
 #: src/libvlc-module.c:278
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:425
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
 #: modules/stream_out/display.c:45
 msgid "Enable video"
 msgstr "ჩართე ვიდეო"
@@ -2143,11 +2143,11 @@ msgstr "ეკრანდამცავის გამორთვა ვი�
 
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
-#: modules/gui/qt/qt.cpp:364 modules/gui/qt/qt.cpp:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/qt.cpp:371 modules/gui/qt/qt.cpp:382
 msgid "Never"
 msgstr "არასდროს"
 
@@ -2158,10 +2158,10 @@ msgstr "სრულ ეკრანზე"
 #: src/libvlc-module.c:432 modules/gui/macosx/main/macosx.m:125
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:51
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
-#: modules/gui/qt/qt.cpp:364 modules/keystore/keychain.m:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
+#: modules/gui/qt/qt.cpp:371 modules/keystore/keychain.m:55
 msgid "Always"
 msgstr "ყოველთვის"
 
@@ -2363,7 +2363,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:524
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
 msgid "Monitor pixel aspect ratio"
 msgstr "მონიტორის პიქსელის გვერდების შეფარდება"
 
@@ -2417,7 +2417,7 @@ msgstr "განსაზღვრავს, როგორ მუშავდ
 #: modules/audio_output/mmdevice.c:1621
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:181
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -2479,7 +2479,7 @@ msgstr ""
 "10000-ზე დააყენეთ."
 
 #: src/libvlc-module.c:585
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 msgid "Clock synchronisation"
 msgstr "საათის სინქრონიზაცია"
 
@@ -2492,7 +2492,7 @@ msgstr ""
 "გამორთვა. გამოიყენეთ, თუ ქსელური ნაკადები წყვეტილად იკვრება."
 
 #: src/libvlc-module.c:591
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
 msgid "Clock jitter"
 msgstr "საათის რყევა"
 
@@ -2740,17 +2740,17 @@ msgstr ""
 "დასაკრავად პროცესორის სიმძლავრე ან ქსელის გამტარობა არ გყოფნით."
 
 #: src/libvlc-module.c:711
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 msgid "Best available"
 msgstr "საუკეთესო ხელმისაწვდომი"
 
 #: src/libvlc-module.c:711
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 msgid "Full HD (1080p)"
 msgstr "Full HD (1080p)"
 
 #: src/libvlc-module.c:711
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 msgid "HD (720p)"
 msgstr "HD (720p)"
 
@@ -2864,7 +2864,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:763
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 msgid "Save recently played items"
 msgstr "ბოლოს დაკრული ელემენტების შენახვა"
 
@@ -3141,7 +3141,7 @@ msgid "Override the normal frames per second settings. "
 msgstr "კადრი წამში ჩვეულებრივი პარამეტრის გადაფარვა. "
 
 #: src/libvlc-module.c:893
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 #: modules/spu/subsdelay.c:267
 msgid "Subtitle delay"
 msgstr "ტიტრების დაყოვნება"
@@ -3289,7 +3289,7 @@ msgid "This private key file (PEM format) is used for server-side TLS."
 msgstr ""
 
 #: src/libvlc-module.c:983
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "HTTP proxy"
 msgstr "HTTP პროქსი"
 
@@ -3304,7 +3304,7 @@ msgstr ""
 "გარემოს ცვლადი."
 
 #: src/libvlc-module.c:989
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "HTTP proxy password"
 msgstr "HTTP პროქსის პაროლი"
 
@@ -3684,7 +3684,7 @@ msgid "Use only one instance when started from file manager"
 msgstr "მხოლოდ ერთი ეგზემპლარის გამოყენება ფაილების მენეჯერიდან გაშვებისას"
 
 #: src/libvlc-module.c:1181
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 msgid "Increase the priority of the process"
 msgstr "პროცესის პრიორიტეტის გაზრდა"
 
@@ -3821,7 +3821,7 @@ msgstr ""
 "ფაილებს შეიცავს. მიუთითეთ გაფართოებების მძიმით გამოყოფილი სია."
 
 #: src/libvlc-module.c:1264
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Show hidden files"
 msgstr "დამალული ფაილების ჩვენება"
 
@@ -3893,7 +3893,7 @@ msgid "Pause each item in the play queue on the last frame."
 msgstr "დაკვრის რიგის ყოველი ელემენტის დაპაუზება ბოლო კადრზე."
 
 #: src/libvlc-module.c:1299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
 msgid "Start paused"
 msgstr "დაპაუზებულად დაწყება"
 
@@ -3931,7 +3931,7 @@ msgid ""
 msgstr ""
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
 msgid "Use the media library"
 msgstr "მედიაბიბლიოთეკის გამოყენება"
 
@@ -4319,7 +4319,7 @@ msgstr "გრძელი გადახტომის სიგრძე, �
 #: src/libvlc-module.c:1432 modules/gui/macosx/main/VLCApplication.m:123
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:121
 #: modules/gui/qt/menus/menus.cpp:700 modules/gui/qt/menus/menus.cpp:1112
-#: modules/gui/qt/qt.cpp:1700 modules/gui/skins2/commands/cmd_quit.cpp:40
+#: modules/gui/qt/qt.cpp:1717 modules/gui/skins2/commands/cmd_quit.cpp:40
 msgid "Quit"
 msgstr "გასვლა"
 
@@ -4852,7 +4852,7 @@ msgstr "დაკვრის რიგის შემთხვევითი 
 
 #: src/libvlc-module.c:1562 src/libvlc-module.c:1563
 #: src/video_output/vout_intf.c:233 modules/gui/macosx/menus/VLCMainMenu.m:484
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:80
 #: modules/gui/qt/player/qml/controlbarcontrols/ZoomWidget.qml:65
 msgid "Zoom"
@@ -4974,7 +4974,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:232
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:248
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:27
-#: modules/gui/qt/player/subtitle_search.cpp:1196
+#: modules/gui/qt/player/subtitle_search.cpp:1249
 #: modules/gui/qt/player/qml/TracksMenu.qml:40
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:272
 #: share/lua/http/dialogs/create_stream.html:153
@@ -5042,12 +5042,12 @@ msgstr "პლაგინები"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Startup"
 msgstr "გაშვება"
 
@@ -5757,120 +5757,120 @@ msgstr "შესავალი ნაკადი"
 msgid "Update VLC media player"
 msgstr "VLC მედია დამკვრელი"
 
-#: src/player/osd.c:177
+#: src/player/osd.c:204
 #, c-format
 msgid "Volume: %ld%%"
 msgstr "ხმა: %ld%%"
 
-#: src/player/osd.c:192
+#: src/player/osd.c:219
 #, c-format
 msgid "Video tracks: %s"
 msgstr "ვიდეოტრეკები: %s"
 
-#: src/player/osd.c:193
+#: src/player/osd.c:220
 #, c-format
 msgid "Video track: %s"
 msgstr "ვიდეოტრეკი: %s"
 
-#: src/player/osd.c:196
+#: src/player/osd.c:223
 #, c-format
 msgid "Audio tracks: %s"
 msgstr "აუდიოტრეკები: %s"
 
-#: src/player/osd.c:197
+#: src/player/osd.c:224
 #, c-format
 msgid "Audio track: %s"
 msgstr "აუდიოტრეკი: %s"
 
-#: src/player/osd.c:200
+#: src/player/osd.c:227
 #, c-format
 msgid "Subtitle tracks: %s"
 msgstr "ტიტრების ტრეკები: %s"
 
-#: src/player/osd.c:201
+#: src/player/osd.c:228
 #, c-format
 msgid "Subtitle track: %s"
 msgstr "ტიტრების ტრეკი: %s"
 
-#: src/player/osd.c:216 src/player/osd.c:259
+#: src/player/osd.c:243 src/player/osd.c:286
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:98
 #: modules/gui/qt/player/qml/controlbarcontrols/Fallback.qml:69
 msgid "N/A"
 msgstr "არარი მოცემული"
 
-#: src/player/osd.c:274
+#: src/player/osd.c:301
 #, c-format
 msgid "Program Service ID: %s"
 msgstr "პროგრამის სერვისის ID: %s"
 
-#: src/player/osd.c:317
+#: src/player/osd.c:344
 #, c-format
 msgid "Aspect ratio: %s"
 msgstr "გვერდების შეფარდება: %s"
 
-#: src/player/osd.c:321
+#: src/player/osd.c:348
 msgid "Scaled to screen"
 msgstr "მორგებულია ეკრანზე"
 
-#: src/player/osd.c:321
+#: src/player/osd.c:348
 msgid "Original size"
 msgstr "საწყისი ზომა"
 
-#: src/player/osd.c:325
+#: src/player/osd.c:352
 #, c-format
 msgid "Crop: %s"
 msgstr "ჩამოჭრა: %s"
 
-#: src/player/osd.c:328
+#: src/player/osd.c:355
 #, c-format
 msgid "Bottom crop: %d px"
 msgstr "ქვედა ჩამოჭრა: %d px"
 
-#: src/player/osd.c:331
+#: src/player/osd.c:358
 #, c-format
 msgid "Top crop: %d px"
 msgstr "ზედა ჩამოჭრა: %d px"
 
-#: src/player/osd.c:334
+#: src/player/osd.c:361
 #, c-format
 msgid "Left crop: %d px"
 msgstr "მარცხენა ჩამოჭრა: %d px"
 
-#: src/player/osd.c:337
+#: src/player/osd.c:364
 #, c-format
 msgid "Right crop: %d px"
 msgstr "მარჯვენა ჩამოჭრა: %d px"
 
-#: src/player/osd.c:347
+#: src/player/osd.c:374
 #, c-format
 msgid "Deinterlace %s (%s)"
 msgstr "დეინტერლაცია: %s (%s)"
 
-#: src/player/osd.c:354
+#: src/player/osd.c:381
 #, c-format
 msgid "Subtitle position %d px"
 msgstr "ტიტრების მდებარეობა: %d px"
 
-#: src/player/osd.c:357
+#: src/player/osd.c:384
 #, c-format
 msgid "Secondary subtitle position %d px"
 msgstr "მეორადი ტიტრების მდებარეობა: %d px"
 
-#: src/player/osd.c:360
+#: src/player/osd.c:387
 #, c-format
 msgid "Subtitle text scale %d%%"
 msgstr "ტიტრების ტექსტის მასშტაბი: %d%%"
 
-#: src/player/osd.c:365
+#: src/player/osd.c:392
 msgid "Zooming reset"
 msgstr "მასშტაბი აღდგენილია"
 
-#: src/player/osd.c:369
+#: src/player/osd.c:396
 #, c-format
 msgid "Zoom mode: %s"
 msgstr "მასშტაბის რეჟიმი: %s"
 
-#: src/player/osd.c:371
+#: src/player/osd.c:398
 #, c-format
 msgid "Zoom: x%.2f"
 msgstr "მასშტაბი: x%.2f"
@@ -5901,8 +5901,8 @@ msgid "Previous chapter"
 msgstr "წინა თავი"
 
 #: src/player/player.c:1814
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:33
 msgid "Recording"
 msgstr "ჩაწერა"
@@ -8092,7 +8092,7 @@ msgstr "სტერეო გამოტანა"
 #: modules/gui/macosx/menus/VLCMainMenu.m:2027
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:268
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:81
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 #: modules/video_filter/croppadd.c:83
 msgid "Crop"
 msgstr "ჩამოჭრა"
@@ -8103,7 +8103,7 @@ msgstr "ჩამოჭრა"
 #: modules/gui/macosx/menus/VLCMainMenu.m:442
 #: modules/gui/macosx/menus/VLCMainMenu.m:443
 #: modules/gui/macosx/menus/VLCMainMenu.m:1849
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/player/qml/controlbarcontrols/AspectRatioWidget.qml:43
 msgid "Aspect ratio"
 msgstr "გვერდების შეფარდება"
@@ -9713,8 +9713,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:563
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:573
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:738
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:896
 #: modules/lua/vlc.c:57 modules/lua/vlc.c:86 modules/misc/audioscrobbler.c:119
 #: modules/stream_out/rtp.c:168
@@ -9850,7 +9850,7 @@ msgstr ""
 #: modules/access/idummy.c:40 modules/access_output/dummy.c:43
 #: modules/audio_output/adummy.c:49 modules/codec/ddummy.c:45
 #: modules/codec/edummy.c:38 modules/control/dummy.c:39
-#: modules/gui/qt/qt.cpp:401 modules/text_renderer/tdummy.c:34
+#: modules/gui/qt/qt.cpp:412 modules/text_renderer/tdummy.c:34
 #: modules/video_output/vdummy.c:48
 msgid "Dummy"
 msgstr "ფიქტიური"
@@ -9890,7 +9890,7 @@ msgid "Set the group of the elementary stream"
 msgstr "არჩევა ყველა"
 
 #: modules/access/imem.c:56 modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1120
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1122
 #, fuzzy
 msgid "Category"
 msgstr "თავი"
@@ -10007,7 +10007,7 @@ msgstr "CDDB სერვერის მისამართი."
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:64
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1378
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:33
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
 msgid "Size"
 msgstr "ზომა"
 
@@ -11513,7 +11513,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:164
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:29
 #: modules/gui/qt/iptv/qml/TvLibraryView.qml:103
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 #: modules/gui/qt/maininterface/navigationmodel.cpp:275
 #: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:49
 msgid "All"
@@ -12434,7 +12434,7 @@ msgstr "ვიდეოს ოფციები"
 #: modules/gui/qt/dialogs/extended/extended.cpp:78
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:116
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Compressor"
 msgstr "კომპრესორი"
 
@@ -12473,7 +12473,7 @@ msgstr "აუდიო"
 #: modules/audio_filter/equalizer.c:57
 #: modules/gui/qt/dialogs/extended/qml/EqualizerPanel.qml:38
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:41
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
 msgid "Equalizer preset"
 msgstr "ეკვალაიზერის შაბლონი"
 
@@ -12532,7 +12532,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:22
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:22
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:32
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 #: share/lua/http/index.html:237
 msgid "Equalizer"
 msgstr "ეკვალაიზერი"
@@ -12637,7 +12637,7 @@ msgstr "ვიდეო"
 
 #: modules/audio_filter/karaoke.c:33 modules/demux/xiph_metadata.h:48
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:225
 msgid "Karaoke"
 msgstr "კარაოკე"
 
@@ -12743,7 +12743,7 @@ msgstr "სიხშ 3 Q"
 
 #: modules/audio_filter/resampler/soxr.c:40
 #: modules/audio_filter/resampler/speex.c:36
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
 msgid "Resampling quality"
 msgstr "რესემპლინგის ხარისხი"
 
@@ -13237,7 +13237,7 @@ msgstr "ჩართული"
 #: modules/audio_output/mmdevice.c:1626
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:636
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:637
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 msgid "Output device"
 msgstr "გამოტანის მოწყობილობა"
 
@@ -13365,8 +13365,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1406
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:135
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 #: modules/video_filter/deinterlace/algo_phosphor.h:57
 msgid "High"
 msgstr "მაღალი"
@@ -13520,11 +13520,11 @@ msgstr "FFmpeg აუდიო/ვიდეო დეკოდერი"
 
 #: modules/codec/avcodec/avcodec.c:86 modules/codec/gstreamer/gstdecode.c:108
 #: modules/codec/omxil/mediacodec.c:206 modules/codec/omxil/omxil.c:88
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Decoding"
 msgstr "დეკოდირება"
 
@@ -14322,7 +14322,7 @@ msgid ""
 msgstr ""
 
 #: modules/codec/kate.c:197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
 msgid "Shadow"
 msgstr "ჩრდილი"
 
@@ -15567,7 +15567,7 @@ msgid "Good"
 msgstr ""
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "საუკეთესო"
@@ -16371,7 +16371,7 @@ msgstr "ნორმალური"
 
 #: modules/codec/x264.c:424
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:376
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
 #: modules/video_output/xcb/render.c:764
 msgid "Fast"
 msgstr "სწრაფი"
@@ -17707,8 +17707,8 @@ msgstr "წინა"
 #: modules/demux/mp4/meta.c:84 modules/demux/mpeg/es.c:510
 #: modules/demux/xiph_metadata.h:54 modules/demux/xiph_metadata.h:61
 #: modules/gui/macosx/menus/VLCMainMenu.m:403
-#: modules/gui/qt/player/qml/AudioContent.qml:413
-#: modules/gui/qt/player/qml/AudioContent.qml:473
+#: modules/gui/qt/player/qml/AudioContent.qml:423
+#: modules/gui/qt/player/qml/AudioContent.qml:487
 msgid "Lyrics"
 msgstr "სიმღერის ტექსტი"
 
@@ -18112,7 +18112,7 @@ msgstr ""
 #: modules/demux/playlist/wpl.c:99
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:212
 #: modules/gui/macosx/library/media-source/VLCMediaSourceCollectionViewItem.m:87
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_targets.cpp:27
 #: modules/gui/qt/menus/menus.cpp:905 modules/gui/skins2/vars/playtree.cpp:210
 msgid "Playlist"
@@ -19115,22 +19115,22 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:95
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:428
-#: modules/gui/qt/qt.cpp:279
+#: modules/gui/qt/qt.cpp:286
 msgid "Pause the video playback when minimized"
 msgstr "ვიდეოს დაკვრის დაპაუზება ჩაკეცვისას"
 
-#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:281
+#: modules/gui/macosx/main/macosx.m:96 modules/gui/qt/qt.cpp:288
 msgid ""
 "With this option enabled, the playback will be automatically paused when "
 "minimizing the window."
 msgstr ""
 "ამ პარამეტრის ჩართვისას დაკვრა ავტომატურად დაპაუზდება ფანჯრის ჩაკეცვისას."
 
-#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:283
+#: modules/gui/macosx/main/macosx.m:99 modules/gui/qt/qt.cpp:290
 msgid "Allow automatic icon changes"
 msgstr "ხატულის ავტომატური შეცვლის დაშვება"
 
-#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:285
+#: modules/gui/macosx/main/macosx.m:100 modules/gui/qt/qt.cpp:292
 msgid ""
 "This option allows the interface to change its icon on various occasions."
 msgstr ""
@@ -19197,12 +19197,12 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 msgid "Ask"
 msgstr "კითხვა"
 
-#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:287
+#: modules/gui/macosx/main/macosx.m:128 modules/gui/qt/qt.cpp:294
 msgid "Maximum Volume displayed"
 msgstr "ნაჩვენები მაქსიმალური ხმა"
 
@@ -19213,30 +19213,30 @@ msgstr "Mac OS X ინტერფეისი"
 #: modules/gui/macosx/main/macosx.m:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:13
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:260
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:268
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:403
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:408
 msgid "Appearance"
 msgstr "იერსახე"
 
@@ -19374,7 +19374,7 @@ msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:377
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:434
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:928
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:930
 msgid "Edit"
 msgstr "რედაქტირება"
 
@@ -19449,7 +19449,7 @@ msgstr "სინქრონიზაცია"
 #: modules/gui/macosx/menus/VLCMainMenu.m:401
 #: modules/gui/macosx/menus/VLCMainMenu.m:1749
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1143
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:918
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:29
@@ -19635,12 +19635,12 @@ msgstr "ინდექსი"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:81
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:86
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
 msgid "Window"
 msgstr "ფანჯარა"
 
@@ -19834,7 +19834,7 @@ msgid "Clear Menu"
 msgstr "მენიუს გაწმენდა"
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:107
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:46
 #: modules/gui/qt/menus/menus.cpp:913
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
@@ -19919,7 +19919,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:396
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:458
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:832
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:361
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
 #: modules/gui/qt/player/qml/TracksMenu.qml:570
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:129
@@ -19986,7 +19986,7 @@ msgid "Enable Spatializer"
 msgstr "ეკვალაიზერი"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Headphone virtualization"
 msgstr "ყურსასმენების ვირტუალიზაცია"
 
@@ -20079,7 +20079,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:276
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:211
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:438
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:990
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:992
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:169
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:150
@@ -20108,7 +20108,7 @@ msgstr "არჩევა ფაილი -სკენ შენახვა -
 
 #: modules/gui/macosx/panels/VLCBookmarksWindowController.m:97
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:199
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1219
 msgid "Add"
@@ -20120,7 +20120,7 @@ msgstr "დამატება"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:70
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:80
-#: modules/gui/qt/widgets/qml/SearchBox.qml:305
+#: modules/gui/qt/widgets/qml/SearchBox.qml:303
 msgid "Clear"
 msgstr "გაწმენდა"
 
@@ -20132,8 +20132,8 @@ msgstr "გაწმენდა"
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:130
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:480
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:487
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:694
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:710
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:712
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:213
 #: modules/gui/qt/medialibrary/mlplaylistlistmodel.cpp:440
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:179
@@ -20296,7 +20296,7 @@ msgstr ""
 
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:85
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1485
-#: modules/gui/qt/qt.cpp:371
+#: modules/gui/qt/qt.cpp:382
 msgid "Audio/Video"
 msgstr "აუდიო/ვიდეო"
 
@@ -20308,10 +20308,10 @@ msgstr "აუდიოტრეკის სინქრონიზაცი�
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:87
 #: modules/gui/macosx/panels/VLCTrackSynchronizationWindowController.m:91
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:291
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "s"
 msgstr "წმ"
 
@@ -20738,8 +20738,8 @@ msgid "Enable Last.fm submissions"
 msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:350
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
 msgid "Visualization"
 msgstr "ვიზუალიზაცია"
 
@@ -20818,12 +20818,12 @@ msgstr ""
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:373
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:31
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:36
@@ -20908,13 +20908,13 @@ msgid "Font color"
 msgstr "ფერი"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:413
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:260
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
 msgid "Font size"
 msgstr "შრიფტის სიდიდე"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:414
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:256
 #: modules/spu/marq.c:139 modules/spu/rss.c:188
 #: modules/text_renderer/freetype/freetype.c:59
 msgid "Font"
@@ -20940,14 +20940,14 @@ msgid "Force bold"
 msgstr "იძულებით მუქი"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:421
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:262
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:267
 #: modules/text_renderer/freetype/freetype.c:84
 #: modules/video_filter/sam3.cpp:138
 msgid "Outline color"
 msgstr "კონტურის ფერი"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:422
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
 #: modules/text_renderer/freetype/freetype.c:85
 #: modules/video_filter/sam3.cpp:136
 msgid "Outline thickness"
@@ -20991,7 +20991,7 @@ msgid "Folder"
 msgstr "საქაღალდე"
 
 #: modules/gui/macosx/preferences/VLCSimplePrefsController.m:442
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
 msgid "Format"
 msgstr "ფორმატი"
 
@@ -21233,7 +21233,7 @@ msgstr "რესურსი"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:779
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:802
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:816
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:353
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
 msgstr "გახსნა"
@@ -21313,7 +21313,7 @@ msgstr "გამოიყენე DVD მენიუ"
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:253
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:228
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:71
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:186
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:241
 #: modules/gui/qt/dialogs/sout/sout_widgets.cpp:282
@@ -21918,16 +21918,16 @@ msgstr "ხმის რეგულაცია"
 
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:60
 #: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:269
 msgid "Volume"
@@ -22416,9 +22416,9 @@ msgstr "მაგ., https://www.example.com/stream.avi"
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:599
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:695
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:744
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:697
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:724
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:746
 msgid "(optional)"
 msgstr "(არასავალდებულო)"
 
@@ -22940,7 +22940,7 @@ msgstr "პროგრამების გიდი"
 #: modules/gui/qt/dialogs/epg/epg.cpp:86
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:54
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:429
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:923
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:925
 msgid "Update"
 msgstr "განახლება"
 
@@ -23184,13 +23184,13 @@ msgstr "8 KHz"
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:27
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:28
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:38
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
 msgid "ms"
 msgstr "ms"
 
@@ -23440,23 +23440,23 @@ msgstr "შაბლონის ზოგიერთი ეფექტის 
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:124
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:215
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:225
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:42
 #: modules/gui/qt/player/qml/controlbarcontrols/ExtendedSettingsButton.qml:33
 msgid "Effects"
@@ -23992,7 +23992,7 @@ msgid "&Cancel"
 msgstr "&გაუქმება"
 
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:56
-#: modules/gui/qt/player/qml/ControlBar.qml:312
+#: modules/gui/qt/player/qml/ControlBar.qml:309
 msgid "Go to time"
 msgstr "დროზე გადასვლა"
 
@@ -24556,7 +24556,7 @@ msgstr "უდაბლესი"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:137
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1405
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:134
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 #: modules/video_filter/deinterlace/algo_phosphor.h:55
 msgid "Low"
 msgstr "დაბალი"
@@ -24566,7 +24566,7 @@ msgstr "დაბალი"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:172
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:377
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:134
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 #: modules/video_filter/deinterlace/algo_phosphor.h:56
 msgid "Medium"
 msgstr "საშუალო"
@@ -24626,7 +24626,7 @@ msgstr ""
 "სიახლეებს, ცვლილებების სრული სიის ბმულით. შენიშვნები ინგლისურადაა."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
 msgid "Discover cast devices"
 msgstr "ტრანსლირების მოწყობილობების აღმოჩენა"
 
@@ -24647,7 +24647,7 @@ msgid "Opens the window where it was when VLC was closed."
 msgstr "ფანჯარა იქ იხსნება, სადაც VLC-ის დახურვისას იყო."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
 msgid "Always show the player bar"
 msgstr "დამკვრელის ზოლის ყოველთვის ჩვენება"
 
@@ -24660,7 +24660,7 @@ msgstr ""
 "„დაკვრა“ იწყებს დაკვრის რიგს, ან, თუ ის ცარიელია, ხსნის ფაილებს."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:73
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
 msgid "Increase text contrast"
 msgstr "ტექსტის კონტრასტის გაზრდა"
 
@@ -24674,7 +24674,7 @@ msgstr ""
 "მოითხოვს (AA)."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:266
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
 msgid "Popup duration"
 msgstr "ამომხტარი ფანჯრის ხანგრძლივობა"
 
@@ -24683,7 +24683,7 @@ msgid "How long the popup of the track changes stays on the screen."
 msgstr "რამდენ ხანს რჩება ეკრანზე ტრეკის შეცვლის ამომხტარი ფანჯარა."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
 msgid "Process priority"
 msgstr "პროცესის პრიორიტეტი"
 
@@ -24695,7 +24695,7 @@ msgstr ""
 "რამდენ პროცესორის დროს აძლევს სისტემა VLC-ს სხვა პროგრამებთან შედარებით."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 msgid "Volume indicator"
 msgstr "ხმის ვიჯეტი"
 
@@ -24710,7 +24710,7 @@ msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "Double click on the video"
 msgstr "ორმაგი დაწკაპუნება ვიდეოზე"
 
@@ -24723,7 +24723,7 @@ msgid "Nothing|Toggle fullscreen"
 msgstr "არაფერი|სრული ეკრანის გადართვა"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:276
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "Size values"
 msgstr "ზომის მნიშვნელობები"
 
@@ -24739,8 +24739,8 @@ msgid "Relative|Pixels"
 msgstr "შეფარდებითი|პიქსელები"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:275
 #: modules/text_renderer/freetype/freetype.c:80
 msgid "Background opacity"
 msgstr "ფონის გაუმჭვირვალობა"
@@ -24754,7 +24754,7 @@ msgstr ""
 "სანამ არ არის)."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Never remember items matching"
 msgstr "არასდროს დაიმახსოვროს შესაბამისი ელემენტები"
 
@@ -24767,7 +24767,7 @@ msgstr ""
 "ემთხვევა, არ ინახება ისტორიაში, არც მათი დაკვრის პოზიცია."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 msgid "Update the channels and the guide"
 msgstr "არხებისა და გიდის განახლება"
 
@@ -24784,7 +24784,7 @@ msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "არასდროს|ყოველ 6 საათში|ყოველ 12 საათში|ყოველდღე|ყოველკვირა"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 msgid "Days of the guide kept"
 msgstr "გიდის შენახული დღეები"
 
@@ -24799,7 +24799,7 @@ msgstr ""
 "ამდენივე ხნით უკან სწვდება."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "Hours across the guide"
 msgstr "საათები გიდის სიგანეზე"
 
@@ -24808,7 +24808,7 @@ msgid "The time the guide shows across its width."
 msgstr "დრო, რომელსაც გიდი თავის სიგანეზე აჩვენებს."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "Guide languages"
 msgstr "გიდის ენები"
 
@@ -24822,8 +24822,8 @@ msgstr ""
 "ენა."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/qt.cpp:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/qt.cpp:356
 msgid "Channel banner"
 msgstr "არხის ბანერი"
 
@@ -24836,7 +24836,7 @@ msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "არხი, ახლა და შემდეგ|არხი და ახლა|მხოლოდ არხი|არაფერი"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Show programme descriptions"
 msgstr "გადაცემების აღწერების ჩვენება"
 
@@ -24846,7 +24846,7 @@ msgid ""
 msgstr "აჩვენებს მიმდინარე გადაცემის აღწერას არხების სიებსა და ბანერში."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Show the progress of what is on"
 msgstr "მიმდინარე გადაცემის პროგრესის ჩვენება"
 
@@ -24859,7 +24859,7 @@ msgstr ""
 "დაწყებისა და დასრულების მიხედვით."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Show what is next"
 msgstr "შემდეგი გადაცემის ჩვენება"
 
@@ -24868,7 +24868,7 @@ msgid "Shows the next programme in the channel lists and the banner."
 msgstr "აჩვენებს შემდეგ გადაცემას არხების სიებსა და ბანერში."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 msgid "Start on the last channel"
 msgstr "ბოლო არხით დაწყება"
 
@@ -24877,7 +24877,7 @@ msgid "When VLC opens with nothing to play, the channel watched last plays."
 msgstr "როცა VLC იხსნება და დასაკრავი არაფერია, ირთვება ბოლოს ნანახი არხი."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Show adult channels"
 msgstr "ზრდასრულთა არხების ჩვენება"
 
@@ -24888,12 +24888,12 @@ msgstr ""
 "ზრდასრულთათვისაა."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "System monospace"
 msgstr "სისტემური მონოსიგანის"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 msgid "System, sans-serif"
 msgstr "სისტემური, sans-serif"
 
@@ -24969,7 +24969,7 @@ msgid "One"
 msgstr "ერთი"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 msgid "When playback finishes"
 msgstr "დაკვრის დასრულებისას"
 
@@ -24987,7 +24987,7 @@ msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr "VLC-ს ამ ინტერფეისის ნაცვლად ქვემოთ არჩეული გარსით უშვებს."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 msgid "Remember the playback position"
 msgstr "დაკვრის პოზიციის დამახსოვრება"
 
@@ -24996,7 +24996,7 @@ msgid "Lets VLC continue the media where you left off."
 msgstr "VLC-ს საშუალებას აძლევს მედია იქიდან გააგრძელოს, სადაც შეაჩერეთ."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Reverse scroll direction"
 msgstr "გადახვევის მიმართულების შებრუნება"
 
@@ -25005,7 +25005,7 @@ msgid "The wheels that seek go backwards when turned forwards."
 msgstr "გადახვევის ბორბლები წინ დატრიალებისას უკან გადაახვევს."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 msgid "Web remote control"
 msgstr "ვებ დისტანციური მართვა"
 
@@ -25017,7 +25017,7 @@ msgstr ""
 "პარამეტრებში."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 msgid "Video post-processing"
 msgstr "ვიდეოს შემდგომი დამუშავება"
 
@@ -25030,7 +25030,7 @@ msgstr ""
 "ხარჯზე."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
 msgid "Visualization size"
 msgstr "ვიზუალიზაციის ზომა"
 
@@ -25043,7 +25043,7 @@ msgid "Match window"
 msgstr "ფანჯრის ზომით"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 msgid "Seek precisely"
 msgstr "ზუსტი გადახვევა"
 
@@ -25265,7 +25265,7 @@ msgid "Show settings"
 msgstr "პარამეტრების ჩვენება"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:75
-#: modules/gui/qt/qt.cpp:358
+#: modules/gui/qt/qt.cpp:365
 msgid "Simple"
 msgstr "მარტივი"
 
@@ -25278,7 +25278,7 @@ msgid "Switch to full preferences view"
 msgstr "პარამეტრების სრულ ხედზე გადართვა"
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:358
+#: modules/gui/qt/qt.cpp:365
 msgid "Expert"
 msgstr "ექსპერტი"
 
@@ -25441,7 +25441,7 @@ msgstr "ცხელი ღილაკის მინიჭების კო
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:581
+#: modules/misc/iptv/iptv.cpp:839
 msgid "Live TV"
 msgstr "პირდაპირი ტელევიზია"
 
@@ -25559,13 +25559,13 @@ msgid "Layout direction"
 msgstr "განლაგების მიმართულება"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:153
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Left to right"
 msgstr "მარცხნიდან მარჯვნივ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:154
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:291
 #: modules/text_renderer/freetype/freetype.c:126
 msgid "Right to left"
 msgstr "მარჯვნიდან მარცხნივ"
@@ -25577,7 +25577,7 @@ msgstr "თემა"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:347
 msgid "Accent color"
 msgstr "აქცენტის ფერი"
 
@@ -25647,17 +25647,17 @@ msgid "Key works"
 msgstr "გასაღები მუშაობს"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:780
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:782
 msgid "Signed in as %1"
 msgstr "შესული ხართ, როგორც %1"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Key refused"
 msgstr "გასაღები უარყოფილია"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Wrong user name or password"
 msgstr "მომხმარებლის სახელი ან პაროლი არასწორია"
 
@@ -25667,7 +25667,7 @@ msgid "Busy: try again in a minute"
 msgstr "დაკავებულია: სცადეთ ერთ წუთში"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:784
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
 msgid "No answer, try again"
 msgstr "პასუხი არ არის, სცადეთ ხელახლა"
 
@@ -25701,15 +25701,15 @@ msgstr "თქვენი უფასო გასაღები"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
 msgid "User name (optional)"
 msgstr "მომხმარებლის სახელი (არასავალდებულო)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:716
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:728
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:730
 msgid "User name"
 msgstr "მომხმარებლის სახელი"
 
@@ -25724,7 +25724,7 @@ msgid "Email"
 msgstr "ელფოსტა"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:763
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:765
 msgid "Sign in"
 msgstr "შესვლა"
 
@@ -25763,7 +25763,7 @@ msgid "No selectable device available"
 msgstr "ასარჩევი მოწყობილობა არ არის"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:81
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
 #: modules/keystore/keychain.m:52
 msgid "System default"
 msgstr "სისტემის ნაგულისხმევი"
@@ -25903,19 +25903,19 @@ msgstr "ყველას ჩვენება"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:533
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:664
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:188
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:234
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 #: share/lua/http/dialogs/create_stream.html:156
 msgid "Output"
 msgstr "გამოტანა"
@@ -25928,19 +25928,19 @@ msgstr "დაკრული ტრეკების გაგზავნა 
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
 msgid "Last.fm username"
 msgstr "Last.fm მომხმარებლის სახელი"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Last.fm password"
 msgstr "Last.fm პაროლი"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm submission URL"
 msgstr "Last.fm გაგზავნის URL"
 
@@ -25999,7 +25999,7 @@ msgid "All VLC options"
 msgstr "VLC-ის ყველა პარამეტრი"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:831
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:359
 msgid "Reset all settings"
 msgstr "ყველა პარამეტრის აღდგენა"
 
@@ -26036,7 +26036,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:212
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
 msgid "Two-pass"
 msgstr "ორგავლიანი"
 
@@ -26113,12 +26113,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "გამოსახულების რეგულირებისა და გადახედვისთვის დაუკარით ვიდეო."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Spatial audio"
 msgstr "სივრცითი აუდიო"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:216
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Stereo widening"
 msgstr "სტერეოს გაფართოება"
 
@@ -26144,7 +26144,7 @@ msgid "The address the played tracks are sent to."
 msgstr "მისამართი, რომელზეც დაკრული ტრეკები იგზავნება."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Nothing"
 msgstr "არაფერი"
 
@@ -26164,51 +26164,55 @@ msgstr ""
 msgid "Applies the next time VLC starts"
 msgstr "ამოქმედდება VLC-ის შემდეგი გაშვებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:301
+msgid "Moving the mouse or pressing Tab still shows the controls."
+msgstr "მაუსის მოძრაობა ან Tab-ის დაჭერა კვლავ აჩვენებს მართვის ელემენტებს."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:313
 msgid "Choose a snapshot folder"
 msgstr "აირჩიეთ კადრის სურათების საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
 msgid "Choose a time-shift buffer folder"
 msgstr "აირჩიეთ დროის წანაცვლების ბუფერის საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:315
 msgid "Choose a recording folder"
 msgstr "აირჩიეთ ჩანაწერების საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:317
 msgid "Choose a folder"
 msgstr "აირჩიეთ საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:321
 msgid "Choose a skin"
 msgstr "აირჩიეთ გარსი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
 msgid "Skin files (*.vlt *.wsz *.xml)"
 msgstr "გარსის ფაილები (*.vlt *.wsz *.xml)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:325
 msgid "Choose a log file"
 msgstr "აირჩიეთ ჟურნალის ფაილი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:351
 msgid "Open configurations folder"
 msgstr "კონფიგურაციების საქაღალდის გახსნა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:352
 msgid "Shows the folder of the settings of VLC."
 msgstr "აჩვენებს VLC-ის პარამეტრების საქაღალდეს."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
 msgid "Puts every setting of VLC back to its default."
 msgstr "VLC-ის ყველა პარამეტრს ნაგულისხმევ მნიშვნელობას უბრუნებს."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:376
 msgid "Rescan plugins"
 msgstr "მოდულების ხელახლა სკანირება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "ხელახლა სკანირება"
 
@@ -26381,8 +26385,9 @@ msgstr "სრული ეკრანის მონიტორი"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Playback Controls"
 msgstr "დაკვრის მართვა"
 
@@ -26406,728 +26411,748 @@ msgstr "დამალვის დრო"
 msgid "Show controls in fullscreen"
 msgstr "მართვის ელემენტების ჩვენება სრულ ეკრანზე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/qt.cpp:256
+msgid "When you use a shortcut in full screen"
+msgstr "როცა სრულ ეკრანზე მალსახმობს იყენებთ"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:375
+msgid "Show the controls"
+msgstr "მართვის ელემენტების ჩვენება"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:375
+msgid "Show only the progress"
+msgstr "მხოლოდ პროგრესის ჩვენება"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:375
+msgid "Show only a message"
+msgstr "მხოლოდ შეტყობინების ჩვენება"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
 msgid "Notifications and System Tray"
 msgstr "შეტყობინებები და სისტემური ზონა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
 msgid "Show a system tray icon"
 msgstr "სისტემურ ზონაში ხატულის ჩვენება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:63
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 msgid "Start minimized to the tray"
 msgstr "სისტემურ ზონაში ჩაკეცილად გაშვება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 msgid "Show a popup when the track changes"
 msgstr "ამომხტარი ფანჯრის ჩვენება ტრეკის შეცვლისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
 msgid "Show the playlist as a tree"
 msgstr "დაკვრის სიის ხის სახით ჩვენება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
 msgid "Player Bar"
 msgstr "დამკვრელის ზოლი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 msgid "Window opacity"
 msgstr "ფანჯრის გაუმჭვირვალობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:81
 msgid "Pause video when window is minimized"
 msgstr "ვიდეოს დაპაუზება ფანჯრის ჩაკეცვისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
 msgid "Bring VLC to the front when playback starts"
 msgstr "VLC-ის წინა პლანზე გამოტანა დაკვრის დაწყებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 msgid "Audio and video"
 msgstr "აუდიო და ვიდეო"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
 msgid "Show cover art in the window when playing audio"
 msgstr "გარეკანის ჩვენება ფანჯარაში აუდიოს დაკვრისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
 msgid "Show the file browser inside the open dialog"
 msgstr "ფაილების ბრაუზერის ჩვენება გახსნის ფანჯარაში"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:86
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
 msgid "Allow the app icon to change"
 msgstr "აპლიკაციის ხატულის შეცვლის დაშვება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
 msgid "Fullscreen controls opacity"
 msgstr "სრული ეკრანის მართვის ელემენტების გაუმჭვირვალობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
 msgid "Fullscreen controls sensitivity"
 msgstr "სრული ეკრანის მართვის ელემენტების მგრძნობელობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "History"
 msgstr "ისტორია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:97
-#: modules/misc/iptv/iptv.cpp:576
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/misc/iptv/iptv.cpp:834
 msgid "Live TV (IPTV) add-on"
 msgstr "პირდაპირი ტელევიზიის (IPTV) დამატება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1225
 #: modules/gui/qt/player/qml/CompactLibrary.qml:775
 msgid "Guide"
 msgstr "გიდი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 msgid "days"
 msgstr "დღე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "h"
 msgstr "სთ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "e.g., en, he"
 msgstr "მაგ., en, he"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
 msgid "Watching"
 msgstr "ყურებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Lists"
 msgstr "სიები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Fetch titles and cover art from the internet"
 msgstr "სათაურებისა და გარეკანების მიღება ინტერნეტიდან"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Additional interfaces"
 msgstr "დამატებითი ინტერფეისები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
 msgid "Continue where you left off"
 msgstr "გაგრძელება იქიდან, სადაც შეჩერდით"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
 msgid "Start playing as soon as a file opens"
 msgstr "დაკვრის დაწყება ფაილის გახსნისთანავე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
 msgid "Default playback speed"
 msgstr "დაკვრის ნაგულისხმევი სიჩქარე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 msgid "Pause when another app uses audio"
 msgstr "პაუზა, როცა სხვა აპლიკაცია აუდიოს იყენებს"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "კვალი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Preferred video quality"
 msgstr "ვიდეოს სასურველი ხარისხი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Standard (576p)"
 msgstr "სტანდარტული (576p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Low (360p)"
 msgstr "დაბალი (360p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Very low (240p)"
 msgstr "ძალიან დაბალი (240p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
 msgid "Preferred menu language"
 msgstr "მენიუს სასურველი ენა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
 msgid "Default audio track"
 msgstr "ნაგულისხმევი აუდიოტრეკი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Default subtitle track"
 msgstr "ნაგულისხმევი ტიტრების ტრეკი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Order"
 msgstr "თანმიმდევრობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 msgid "Stop after each item"
 msgstr "შეჩერება ყოველი ელემენტის შემდეგ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Seeking"
 msgstr "გადახვევა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
-#: modules/gui/qt/qt.cpp:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
+#: modules/gui/qt/qt.cpp:311
 msgid "Show thumbnail while scrubbing"
 msgstr "მინიატურის ჩვენება გადახვევისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Files & Discs"
 msgstr "ფაილები და დისკები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Default optical drive"
 msgstr "ნაგულისხმევი ოპტიკური დისკწამყვანი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 msgid "Repair damaged AVI files"
 msgstr "დაზიანებული AVI ფაილების შეკეთება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 msgid "When needed"
 msgstr "საჭიროებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "Load matching .mkv files from the same folder"
 msgstr "შესაბამისი .mkv ფაილების ჩატვირთვა იმავე საქაღალდიდან"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Time-shift"
 msgstr "დროის წანაცვლება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
 msgid "Time-shift buffer folder"
 msgstr "დროის წანაცვლების ბუფერის საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
 msgid "Time-shift buffer size"
 msgstr "დროის წანაცვლების ბუფერის ზომა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
 msgid "Pause on the last frame of each item"
 msgstr "პაუზა ყოველი ელემენტის ბოლო კადრზე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Resume the last playback states (tracks, speed...)"
 msgstr "დაკვრის ბოლო მდგომარეობის აღდგენა (ტრეკები, სიჩქარე...)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 msgid "Start videos in fullscreen"
 msgstr "ვიდეოების სრულ ეკრანზე გაშვება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:159
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
 msgid "Stop the screensaver during playback"
 msgstr "ეკრანმზოგის შეჩერება დაკვრისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Play video as desktop wallpaper"
 msgstr "ვიდეოს დაკვრა სამუშაო მაგიდის ფონად"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Deinterlacing"
 msgstr "დეინტერლაცია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:163
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
 msgid "Method"
 msgstr "მეთოდი"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:167
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:403
-msgid "Framing"
-msgstr "კადრირება"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
-msgid "Scale video to the window"
-msgstr "ვიდეოს მასშტაბირება ფანჯრის ზომაზე"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
-msgid "Position in the window"
-msgstr "მდებარეობა ფანჯარაში"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:408
+msgid "Framing"
+msgstr "კადრირება"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+msgid "Scale video to the window"
+msgstr "ვიდეოს მასშტაბირება ფანჯრის ზომაზე"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+msgid "Position in the window"
+msgstr "მდებარეობა ფანჯარაში"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Snapshots"
 msgstr "კადრის სურათები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Save to"
 msgstr "შენახვის ადგილი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "File name prefix"
 msgstr "ფაილის სახელის პრეფიქსი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 msgid "Number files sequentially"
 msgstr "ფაილების რიგითი დანომვრა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Show a preview after capture"
 msgstr "გადახედვის ჩვენება გადაღების შემდეგ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
 msgid "Custom aspect ratios"
 msgstr "გვერდების საკუთარი შეფარდებები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
 msgid "Custom crop ratios"
 msgstr "ჩამოჭრის საკუთარი პროპორციები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "კადრის სიმაღლე (0: პროპორციული, -1: საწყისი)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Deinterlacing filter"
 msgstr "დეინტერლაციის ფილტრი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Speaker setup"
 msgstr "დინამიკების კონფიგურაცია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Maximum volume"
 msgstr "მაქსიმალური ხმა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:192
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
 #: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "ხმის დონე გაშვებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
 msgid "Volume step"
 msgstr "ხმის ცვლილების ბიჯი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Loudness"
 msgstr "ხმამაღლობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Normalize loudness"
 msgstr "ხმამაღლობის ნორმალიზება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Target level"
 msgstr "სამიზნე დონე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 msgid "Night mode"
 msgstr "ღამის რეჟიმი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
 msgid "Replay gain preamp"
 msgstr "ReplayGain-ის წინასწარი გაძლიერება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Spatial audio mode"
 msgstr "სივრცითი აუდიოს რეჟიმი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
 msgid "Pitch shift"
 msgstr "ტონის წანაცვლება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "Chorus/flanger"
 msgstr "ქორუსი/ფლენჯერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
 msgid "Preferred audio language"
 msgstr "აუდიოს სასურველი ენა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "აუდიოს დაყოვნება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:229
 #: modules/gui/qt/player/qml/PlayerView.qml:929
-#: modules/gui/qt/player/qml/AudioContent.qml:462
+#: modules/gui/qt/player/qml/AudioContent.qml:476
 #: modules/visualization/visual/visual.c:120
 msgid "Visualizer"
 msgstr "ვიზუალიზატორი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
 msgid "Pass compressed audio to the receiver"
 msgstr "შეკუმშული აუდიოს გადაცემა რესივერზე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 msgid "Detect Dolby Surround"
 msgstr "Dolby Surround-ის ამოცნობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Fastest"
 msgstr "უსწრაფესი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:230
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Balanced"
 msgstr "დაბალანსებული"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
 msgid "Output gain"
 msgstr "გამოტანის გაძლიერება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Keep the pitch when changing the speed"
 msgstr "ტონის შენარჩუნება სიჩქარის შეცვლისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:237
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 msgid "Equalizer preamp"
 msgstr "ეკვალაიზერის წინაგამაძლიერებელი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
 msgid "Compressor ratio"
 msgstr "კომპრესორის თანაფარდობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 msgid "Compressor threshold"
 msgstr "კომპრესორის ზღვარი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Compressor makeup gain"
 msgstr "კომპრესორის კომპენსაციური გაძლიერება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Tracks & Languages"
 msgstr "ტრეკები და ენები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
 msgid "Enable subtitles"
 msgstr "ტიტრების ჩართვა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
 msgid "Preferred language"
 msgstr "სასურველი ენა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Text encoding"
 msgstr "ტექსტის კოდირება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Loading Subtitles"
 msgstr "ტიტრების ჩატვირთვა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Load subtitle files automatically"
 msgstr "ტიტრების ფაილების ავტომატური ჩატვირთვა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "File name matching"
 msgstr "ფაილის სახელის დამთხვევა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
 msgid "Bold"
 msgstr "მუქი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 msgid "Text color"
 msgstr "ტექსტის ფერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:260
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
 #: modules/text_renderer/freetype/freetype.c:65
 msgid "Text opacity"
 msgstr "ტექსტის გაუმჭვირვალობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:269
 #: modules/text_renderer/freetype/freetype.c:88
 msgid "Shadow color"
 msgstr "ჩრდილის ფერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:270
 #: modules/text_renderer/freetype/freetype.c:90
 msgid "Shadow distance"
 msgstr "ჩრდილის მანძილი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:266
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:271
 #: share/lua/http/dialogs/mosaic_window.html:133
 msgid "Background"
 msgstr "ფონი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:272
 #: modules/text_renderer/freetype/freetype.c:81
 msgid "Background color"
 msgstr "ფონის ფერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:273
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
 msgid "Vertical position"
 msgstr "ვერტიკალური მდებარეობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
 msgid "Timing"
 msgstr "დროის მორგება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:276
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/qt.cpp:313
 msgid "Show subtitle lines on the seek bar"
 msgstr "ტიტრების ხაზების ჩვენება გადახვევის ზოლზე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "On-Screen Messages"
 msgstr "ეკრანული შეტყობინებები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:277
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Show feedback for shortcuts"
 msgstr "მალსახმობების შედეგის ჩვენება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Show feedback for"
 msgstr "შედეგის ჩვენების ხანგრძლივობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Show filename when a video starts"
 msgstr "ფაილის სახელის ჩვენება ვიდეოს დაწყებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 msgid "Show filename for"
 msgstr "ფაილის სახელის ჩვენების ხანგრძლივობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
 msgid "Load subtitles from these folders"
 msgstr "ტიტრების ჩატვირთვა ამ საქაღალდეებიდან"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
 #: modules/text_renderer/freetype/freetype.c:89
 msgid "Shadow angle"
 msgstr "ჩრდილის კუთხე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
 #: modules/text_renderer/freetype/freetype.c:94
 msgid "Text direction"
 msgstr "ტექსტის მიმართულება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
 #: modules/text_renderer/freetype/freetype.c:83
 msgid "Outline opacity"
 msgstr "კონტურის გაუმჭვირვალობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:294
 #: modules/text_renderer/freetype/freetype.c:87
 msgid "Shadow opacity"
 msgstr "ჩრდილის გაუმჭვირვალობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:290
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
 msgid "Monospace font"
 msgstr "მონოსიგანის შრიფტი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:292
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "Text alignment"
 msgstr "ტექსტის სწორება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Position of the filename"
 msgstr "ფაილის სახელის მდებარეობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Skip Amounts"
 msgstr "გადახტომის სიდიდეები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 msgid "Very short skip"
 msgstr "ძალიან მოკლე გადახტომა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Short skip"
 msgstr "მოკლე გადახტომა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Medium skip"
 msgstr "საშუალო გადახტომა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Long skip"
 msgstr "გრძელი გადახტომა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Mouse"
 msgstr "მაუსი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Single click on the video"
 msgstr "ერთი დაწკაპუნება ვიდეოზე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Play / Pause"
 msgstr "დაკვრა / პაუზა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Play / Pause on release"
 msgstr "დაკვრა / პაუზა აშვებისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Scroll wheel"
 msgstr "გადახვევის ბორბალი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 msgid "Horizontal scroll"
 msgstr "ჰორიზონტალური გადახვევა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:404
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
 msgid "Remotes"
 msgstr "დისტანციური მართვა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 msgid "Handle mouse clicks in the video"
 msgstr "მაუსის დაწკაპუნებების დამუშავება ვიდეოში"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Web remote password"
 msgstr "ვებ დისტანციური მართვის პაროლი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Web remote address"
 msgstr "ვებ დისტანციური მართვის მისამართი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Ignore the volume keys of the keyboard"
 msgstr "კლავიატურის ხმის ღილაკების იგნორირება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Opening Files"
 msgstr "ფაილების გახსნა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 msgid "Only allow one VLC window"
 msgstr "მხოლოდ ერთი VLC ფანჯრის დაშვება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Apply to files opened from the file manager"
 msgstr "ფაილების მენეჯერიდან გახსნილ ფაილებზე გავრცელება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Add to the playlist instead of replacing it"
 msgstr "დაკვრის სიაში დამატება ჩანაცვლების ნაცვლად"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 msgid "When opening a folder"
 msgstr "საქაღალდის გახსნისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Only this folder"
 msgstr "მხოლოდ ეს საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "Include subfolders"
 msgstr "ქვესაქაღალდეების ჩართვით"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Include and expand subfolders"
 msgstr "ქვესაქაღალდეების ჩართვით და გაშლით"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Metadata & Artwork"
 msgstr "მეტამონაცემები და გარეკანები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
 msgid "Fetch titles and artwork"
 msgstr "სათაურებისა და გარეკანების მიღება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Read media information automatically"
 msgstr "მედიის ინფორმაციის ავტომატური წაკითხვა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Ignored file extensions"
 msgstr "იგნორირებული ფაილის გაფართოებები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Buffering"
 msgstr "ბუფერიზაცია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 msgid "Local files"
 msgstr "ლოკალური ფაილები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 #: modules/services_discovery/os2drive.c:36
 #: modules/services_discovery/os2drive.c:42
 #: modules/services_discovery/os2drive.c:43
@@ -27141,191 +27166,191 @@ msgstr "ლოკალური ფაილები"
 msgid "Discs"
 msgstr "დისკები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 msgid "Network streams"
 msgstr "ქსელური ნაკადები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Live capture"
 msgstr "პირდაპირი ჩაწერა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "Proxy"
 msgstr "პროქსი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "System proxy"
 msgstr "სისტემური პროქსი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Security"
 msgstr "უსაფრთხოება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Verify certificates against the system trust store"
 msgstr "სერტიფიკატების შემოწმება სისტემის სანდო საცავით"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Cipher preference"
 msgstr "შიფრის უპირატესობა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Secure (128-bit)"
 msgstr "უსაფრთხო (128-ბიტიანი)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Most secure (256-bit)"
 msgstr "ყველაზე უსაფრთხო (256-ბიტიანი)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Connections"
 msgstr "კავშირები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 msgid "Connection timeout"
 msgstr "კავშირის მოლოდინის ვადა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "HTTP user agent"
 msgstr "HTTP მომხმარებლის აგენტი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Trusted certificates folder"
 msgstr "სანდო სერტიფიკატების საქაღალდე"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
 msgid "Hardware-accelerated decoding"
 msgstr "აპარატულად დაჩქარებული დეკოდირება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Post-processing quality"
 msgstr "შემდგომი დამუშავების ხარისხი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Skip the H.264 loop filter"
 msgstr "H.264 მარყუჟის ფილტრის გამოტოვება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Non-reference frames"
 msgstr "არასაყრდენი კადრები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:349
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Bidirectional frames"
 msgstr "ორმხრივი კადრები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Non-key frames"
 msgstr "არასაკვანძო კადრები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Decoding threads"
 msgstr "დეკოდირების თრედები"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
-msgid "Smooth Playback"
-msgstr "გლუვი დაკვრა"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
-msgid "Drop frames when the system can't keep up"
-msgstr "კადრების გამოტოვება, როცა სისტემა ვერ ასწრებს"
-
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+msgid "Smooth Playback"
+msgstr "გლუვი დაკვრა"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+msgid "Drop frames when the system can't keep up"
+msgstr "კადრების გამოტოვება, როცა სისტემა ვერ ასწრებს"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
 msgid "Developer"
 msgstr "დეველოპერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 #: modules/mux/avi.c:56
 msgid "Encoder"
 msgstr "ენკოდერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 msgid "Decoder"
 msgstr "დეკოდერი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
 msgid "Clock reference averaging"
 msgstr "საათის ეტალონის გასაშუალება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Save recordings to"
 msgstr "ჩანაწერების შენახვის ადგილი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Record without re-encoding when possible"
 msgstr "ჩაწერა ხელახალი კოდირების გარეშე, როცა შესაძლებელია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Casting"
 msgstr "ტრანსლირება"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
 msgid "Cast quality"
 msgstr "ტრანსლირების ხარისხი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Low CPU"
 msgstr "პროცესორის დაბალი დატვირთვა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Streaming"
 msgstr "სტრიმინგი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
 msgid "Play locally while streaming"
 msgstr "ლოკალური დაკვრა სტრიმინგისას"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:369
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Include audio"
 msgstr "აუდიოს გადაცემა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Include video"
 msgstr "ვიდეოს გადაცემა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Include subtitles"
 msgstr "ტიტრების გადაცემა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
 msgid "Encoding preset"
 msgstr "კოდირების შაბლონი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
 msgid "Tuning"
 msgstr "ოპტიმიზაცია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
 msgid "Send Dolby audio as is"
 msgstr "Dolby აუდიოს უცვლელად გაგზავნა"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Cast HTTP port"
 msgstr "ტრანსლირების HTTP პორტი"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Keep the stream output open between items"
 msgstr "ნაკადის გამოტანის ღიად დატოვება ელემენტებს შორის"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:422
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:427
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "მეტი პარამეტრი"
@@ -27401,7 +27426,7 @@ msgstr "ახლდება…"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1221
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
 #: modules/gui/qt/player/qml/CompactLibrary.qml:888
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -28019,53 +28044,53 @@ msgstr "მაუწყებლობა: "
 msgid "Schedule: "
 msgstr "განრიგი: "
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:943
+#: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "ამ არხის დაკვრა შეუძლებელია"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:983
+#: modules/gui/qt/iptv/iptv_addon.cpp:989
 msgid "This programme is older than the channel's archive"
 msgstr "ეს გადაცემა არხის არქივზე ძველია"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:984
+#: modules/gui/qt/iptv/iptv_addon.cpp:990
 msgid "This programme has not started yet"
 msgstr "ეს გადაცემა ჯერ არ დაწყებულა"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:985
+#: modules/gui/qt/iptv/iptv_addon.cpp:991
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr "ამ არხს არქივი არ აქვს: წარსული გადაცემების დაკვრა შეუძლებელია"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1009
+#: modules/gui/qt/iptv/iptv_addon.cpp:1015
 msgid "The guide does not say what is on"
 msgstr "გიდში არ არის მითითებული, რა გადის ახლა"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1059
+#: modules/gui/qt/iptv/iptv_addon.cpp:1065
 msgid "No channel %1"
 msgstr "არხი %1 არ არსებობს"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1261
+#: modules/gui/qt/iptv/iptv_addon.cpp:1267
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] "%1 წთ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1264
+#: modules/gui/qt/iptv/iptv_addon.cpp:1270
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] "%1 სთ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1264 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1270 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr "%1 სთ %2 წთ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1272
+#: modules/gui/qt/iptv/iptv_addon.cpp:1278
 msgid "Today"
 msgstr "დღეს"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1274
+#: modules/gui/qt/iptv/iptv_addon.cpp:1280
 msgid "Tomorrow"
 msgstr "ხვალ"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1276
+#: modules/gui/qt/iptv/iptv_addon.cpp:1282
 msgid "Yesterday"
 msgstr "გუშინ"
 
@@ -28114,7 +28139,7 @@ msgstr "შემდეგი %1-ზე"
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:219
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:383
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:713
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1227
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1229
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] "%1 დღე"
@@ -28127,14 +28152,14 @@ msgstr[0] "ჩანაწერში ყურება: ბოლო %1 დ�
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1230
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1141
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1232
 msgid "Films"
 msgstr "ფილმები"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:389
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1231
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1233
 msgid "Series"
 msgstr "სერიალები"
 
@@ -28203,7 +28228,7 @@ msgstr "არხები არ არის"
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:510
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:513
 #: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "რჩეულები"
@@ -28308,11 +28333,11 @@ msgstr "წინა გადაცემა"
 msgid "Programme after"
 msgstr "შემდეგი გადაცემა"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:352
 msgid "Next channel"
 msgstr "შემდეგი არხი"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:346
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:353
 msgid "Previous channel"
 msgstr "წინა არხი"
 
@@ -28341,7 +28366,7 @@ msgid "Channel"
 msgstr "არხი"
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1141
 msgid "Catch-up"
 msgstr "ჩანაწერში ყურება"
 
@@ -28375,15 +28400,17 @@ msgstr "ტიუნერი თქვენს ქსელში: მის�
 msgid ""
 "A paid guide (the US, Canada and more) for the channels of every source: the "
 "lineups of your account"
-msgstr "ფასიანი გიდი (აშშ, კანადა და სხვა) ყველა წყაროს არხებისთვის: თქვენი ანგარიშის არხების სიები"
+msgstr ""
+"ფასიანი გიდი (აშშ, კანადა და სხვა) ყველა წყაროს არხებისთვის: თქვენი "
+"ანგარიშის არხების სიები"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:162
 msgid "TV Sources"
 msgstr "ტელევიზიის წყაროები"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1009
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1011
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 msgid "Add Guide"
 msgstr "გიდის დამატება"
 
@@ -28404,12 +28431,12 @@ msgid "Accounts"
 msgstr "ანგარიშები"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1142
 msgid "Guides"
 msgstr "გიდები"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1017
 msgid "Catalog"
 msgstr "კატალოგი"
 
@@ -28432,7 +28459,7 @@ msgstr ""
 "კატალოგიდან."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:372
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:965
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
 msgid "%1 programme"
 msgid_plural "%1 programmes"
 msgstr[0] "%1 გადაცემა"
@@ -28453,7 +28480,7 @@ msgid_plural "Catch-up %1 d"
 msgstr[0] "ჩანაწერში ყურება %1 დღე"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:395
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:938
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:940
 msgid "Updating the guide… %1 MB"
 msgstr "გიდი ახლდება… %1 MB"
 
@@ -28466,12 +28493,12 @@ msgid "Updated %1 at %2"
 msgstr "განახლდა %1, %2-ზე"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:986
 msgid "Turn Off"
 msgstr "გამორთვა"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:425
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:986
 msgid "Turn On"
 msgstr "ჩართვა"
 
@@ -28522,7 +28549,7 @@ msgstr "დაკვრის სიები (*.m3u *.m3u8)"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:723
 msgid "(empty: unchanged)"
 msgstr "(ცარიელი: უცვლელი)"
 
@@ -28589,7 +28616,7 @@ msgid "Nothing found on your network: type the server's address."
 msgstr "თქვენს ქსელში ვერაფერი მოიძებნა: შეიყვანეთ სერვერის მისამართი."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:649
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1259
 msgid "Added"
 msgstr "დამატებულია"
 
@@ -28597,167 +28624,173 @@ msgstr "დამატებულია"
 msgid "Look again"
 msgstr "ხელახლა ძებნა"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:691
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:702
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:693
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:704
 msgid "Server address"
 msgstr "სერვერის მისამართი"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:701
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:703
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:845
 msgid "e.g., %1"
 msgstr "მაგ., %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:720
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:736
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:722
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:738
 msgid "PIN"
 msgstr "PIN"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:743
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:754
 msgid "API key"
 msgstr "API გასაღები"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:747
 msgid "Instead of a user: a key made in the server's dashboard."
 msgstr "მომხმარებლის ნაცვლად: სერვერის პანელში შექმნილი გასაღები."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:781
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:783
 msgid "Server found"
 msgstr "სერვერი ნაპოვნია"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:796
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:798
 msgid "Sign Out"
 msgstr "გამოსვლა"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:808
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:810
 msgid ""
 "Passwords and keys are kept in the keystore of VLC, never written to its log."
-msgstr "პაროლები და გასაღებები ინახება VLC-ის გასაღებების საცავში და არასდროს იწერება მის ჟურნალში."
+msgstr ""
+"პაროლები და გასაღებები ინახება VLC-ის გასაღებების საცავში და არასდროს "
+"იწერება მის ჟურნალში."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:825
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:827
 msgid "The guide of %1"
 msgstr "%1-ის გიდი"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:826
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:828
 msgid ""
 "The id the guides give this channel. Yours comes first; leave it empty to "
 "use the one of its list or the one found for it."
-msgstr "ამ არხის id გიდებში. თქვენი პირველია; დატოვეთ ცარიელი, რომ გამოიყენოთ მისი სიის ან მისთვის ნაპოვნი id."
+msgstr ""
+"ამ არხის id გიდებში. თქვენი პირველია; დატოვეთ ცარიელი, რომ გამოიყენოთ მისი "
+"სიის ან მისთვის ნაპოვნი id."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
 msgid "Its list: %1"
 msgstr "მისი სია: %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:830
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:834
 #, fuzzy
 msgid "none"
 msgstr "არა"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:833
 msgid "Found for it: %1"
 msgstr "მისთვის ნაპოვნი: %1"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:846
 msgid "Guide id"
 msgstr "გიდის id"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:860
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:862
 msgid "The guides of your sources"
 msgstr "თქვენი წყაროების გიდები"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:861
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:863
 msgid ""
 "Each source's own guides and those you added; the channels are matched by "
 "their guide id, then by their name."
-msgstr "თითოეული წყაროს საკუთარი გიდები და თქვენ მიერ დამატებულები; არხები შედარდება გიდის id-ით, შემდეგ კი სახელით."
+msgstr ""
+"თითოეული წყაროს საკუთარი გიდები და თქვენ მიერ დამატებულები; არხები შედარდება "
+"გიდის id-ით, შემდეგ კი სახელით."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:900
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:902
 msgid "A guide for the channels of every source"
 msgstr "გიდი ყველა წყაროს არხებისთვის"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:901
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:903
 #: modules/gui/qt/iptv/qml/TvToast.qml:56
 msgid "Guide for %1 of %2 channels"
 msgstr "გიდი %2-დან %1 არხისთვის"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:918
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:920
 msgid "Find a Guide"
 msgstr "გიდის მოძებნა"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:939
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:941
 msgid "Found for you: %1 channel matched by its name or id"
 msgid_plural "Found for you: %1 channels matched by their name or id"
 msgstr[0] "თქვენთვის ნაპოვნია: %1 არხი, შედარებული სახელით ან id-ით"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:967
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
 msgid "Added by you"
 msgstr "თქვენ მიერ დამატებული"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:968
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:970
 msgid "Found for you"
 msgstr "თქვენთვის ნაპოვნი"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:969
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:971
 msgid "From the playlist"
 msgstr "დაკვრის სიიდან"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:998
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1000
 msgid "No guide yet: add one, or one of the catalog's."
 msgstr "გიდი ჯერ არ არის: დაამატეთ ერთი ან ერთ-ერთი კატალოგიდან."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1104
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1105
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1106
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1107
 msgid "Search the catalog"
 msgstr "კატალოგში ძებნა"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1114
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1116
 #: modules/meta_engine/ID3Genres.h:35
 msgid "Country"
 msgstr "ქვეყანა"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1130
 msgid "A-Z"
 msgstr "ა-ჰ"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1128
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1130
 msgid "Most channels"
 msgstr "ყველაზე მეტი არხი"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1129
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1131
 msgid "For you"
 msgstr "თქვენთვის"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1139
 msgid "Recommended"
 msgstr "რეკომენდებული"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1142
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 msgid "Free"
 msgstr "უფასო"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1235
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1237
 msgid "Not answering"
 msgstr "არ პასუხობს"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 msgid "Paid"
 msgstr "ფასიანი"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1284
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
 msgid "Loading the catalog…"
 msgstr "კატალოგი იტვირთება…"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1285
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1287
 msgid "The catalog is empty in this version."
 msgstr "ამ ვერსიაში კატალოგი ცარიელია."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1286
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1288
 msgid "Nothing in the catalog matches"
 msgstr "კატალოგში არაფერი შეესაბამება"
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1300
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1302
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
@@ -28765,7 +28798,7 @@ msgstr ""
 "ჩამოთვლილია მხოლოდ უფასო, ლეგალური წყაროები. შემოთავაზებები მოწმდება, სანამ "
 "კატალოგში მოხვდება."
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1310
 msgid "Suggest a Service"
 msgstr "სერვისის შეთავაზება"
 
@@ -28789,15 +28822,22 @@ msgstr "%1 ახლა იწყება არხზე %2"
 msgid "Undo"
 msgstr "გაუქმება"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1308
+#. xgettext: The step of a jump in seconds shown in full screen
+#. * ("+10 s"); a minute and more are written 1:10
+#: modules/gui/qt/maininterface/mainctx.cpp:910
+#, no-c-format
+msgid "%1 s"
+msgstr "%1 წმ"
+
+#: modules/gui/qt/maininterface/mainctx.cpp:1423
 msgid "Paste from clipboard"
 msgstr "ბუფერიდან ჩასმა"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1309
+#: modules/gui/qt/maininterface/mainctx.cpp:1424
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "გსურთ შემდეგი URL-ების დაკვრის რიგში ჩაყენება?"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1310
+#: modules/gui/qt/maininterface/mainctx.cpp:1425
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -28811,7 +28851,7 @@ msgstr "რიგში ჩაყენება"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1673
+#: modules/gui/qt/maininterface/mainctx.cpp:1806
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -29109,54 +29149,60 @@ msgstr "ცარიელი ხედი"
 msgid "Bookmark at %1"
 msgstr "სანიშნე: %1"
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:125
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:128
 msgid "Online subtitle search is not available in this build."
 msgstr "ტიტრების ონლაინ ძებნა ამ ანაწყობში მიუწვდომელია."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:130
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:133
 msgid "Enter an OpenSubtitles API key and a title to search."
 msgstr "საძიებლად შეიყვანეთ OpenSubtitles-ის API გასაღები და სათაური."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:142
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:145
 msgid "OpenSubtitles search failed. Check the API key and network."
 msgstr "OpenSubtitles-ში ძებნა ვერ მოხერხდა. შეამოწმეთ API გასაღები და ქსელი."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:148
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:151
 msgid "OpenSubtitles returned an invalid search response."
 msgstr "OpenSubtitles-მა ძებნის არასწორი პასუხი დააბრუნა."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:182
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:185
 msgid "Enter your API key and OpenSubtitles account credentials to download."
 msgstr ""
 "ჩამოსატვირთად შეიყვანეთ თქვენი API გასაღები და OpenSubtitles-ის ანგარიშის "
 "მონაცემები."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:194
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:197
 msgid "OpenSubtitles login failed. Check your account credentials."
 msgstr "OpenSubtitles-ში შესვლა ვერ მოხერხდა. შეამოწმეთ ანგარიშის მონაცემები."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:202
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:205
 msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles-მა შესვლის არასწორი სესია დააბრუნა."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:213
-#: modules/gui/qt/player/subtitle_providers.cpp:1860
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:216
+#: modules/gui/qt/player/subtitle_providers.cpp:1744
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles-დან ჩამოტვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი ლიმიტი."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:223
-#: modules/gui/qt/player/subtitle_providers.cpp:1871
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:226
+#: modules/gui/qt/player/subtitle_providers.cpp:1755
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles-მა ტიტრების ჩამოტვირთვის სწორი ბმული არ დააბრუნა."
 
-#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:188
-#: modules/gui/qt/player/subtitle_search.cpp:654
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
+#: modules/gui/qt/player/subtitle_search.cpp:670
 msgid "This build can't search the internet."
 msgstr "ამ ანაწყობს ინტერნეტში ძებნა არ შეუძლია."
 
-#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:207
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
+#: modules/gui/qt/player/subtitle_search.cpp:692
 msgid "The subtitle services took too long to answer."
 msgstr "ტიტრების სერვისებმა პასუხს ძალიან დიდხანს მოანდომეს."
+
+#: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:353
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+msgid "The destination media could not be found in the library."
+msgstr "დანიშნულების მედია ბიბლიოთეკაში ვერ მოიძებნა."
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
 msgid "This media"
@@ -29291,10 +29337,6 @@ msgstr "აუდიოფაილი არ არსებობს ან �
 msgid "A subtitle file is missing or unreadable: %1"
 msgstr "ტიტრების ფაილი არ არსებობს ან ვერ იკითხება: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
-msgid "The destination media could not be found in the library."
-msgstr "დანიშნულების მედია ბიბლიოთეკაში ვერ მოიძებნა."
-
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
 msgid "Could not save audio track association for %1."
 msgstr "%1-ისთვის აუდიოტრეკის ასოციაციის შენახვა ვერ მოხერხდა."
@@ -29319,23 +29361,23 @@ msgstr ""
 msgid "Downloading subtitles is not available in this build."
 msgstr "ტიტრების ჩამოტვირთვა ამ ანაწყობში მიუწვდომელია."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:83
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:86
 msgid "The subtitle exceeds the 20 MB download limit."
 msgstr "ტიტრები აღემატება ჩამოტვირთვის 20 MB ლიმიტს."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:88
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:91
 msgid "Could not download the subtitle: %1"
 msgstr "ტიტრების ჩამოტვირთვა ვერ მოხერხდა: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:89
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:92
 msgid "HTTP status %1"
 msgstr "HTTP სტატუსი %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:101
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:106
 msgid "Could not create the subtitle storage folder."
 msgstr "ტიტრების შესანახი საქაღალდის შექმნა ვერ მოხერხდა."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:111
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:116
 msgid "Could not save the downloaded subtitle."
 msgstr "ჩამოტვირთული ტიტრების შენახვა ვერ მოხერხდა."
 
@@ -29380,26 +29422,26 @@ msgid "Unknown artist"
 msgstr "უცნობი შემსრულებელი"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:228
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:231
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "ყურების გაგრძელება"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:593
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:596
 #: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "ახალი ვიდეოები"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:312
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:315
 #: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "ხელახლა მოსმენა"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:677
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:680
 #: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "ახალი მუსიკა"
@@ -29418,7 +29460,7 @@ msgstr "ახალი მუსიკა"
 msgid "Alphabetic"
 msgstr "ანბანური"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:383
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:386
 #: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "ხშირად მონახულებული საქაღალდეები"
@@ -30119,7 +30161,7 @@ msgstr "გაწმენდა"
 msgid "&Manage"
 msgstr "&მართვა"
 
-#: modules/gui/qt/menus/menus.cpp:183 modules/gui/qt/qt.cpp:1693
+#: modules/gui/qt/menus/menus.cpp:183 modules/gui/qt/qt.cpp:1710
 msgid "Open &File..."
 msgstr "&ფაილის გახსნა..."
 
@@ -30131,7 +30173,7 @@ msgstr "&რამდენიმე ფაილის გახსნა..."
 msgid "Open &Disc..."
 msgstr "&დისკის გახსნა..."
 
-#: modules/gui/qt/menus/menus.cpp:191 modules/gui/qt/qt.cpp:1694
+#: modules/gui/qt/menus/menus.cpp:191 modules/gui/qt/qt.cpp:1711
 msgid "Open &Network Stream..."
 msgstr "&ქსელური ნაკადის გახსნა..."
 
@@ -30184,7 +30226,7 @@ msgid "Customi&ze Interface..."
 msgstr "ინტერფეისის &მორგება..."
 
 #: modules/gui/qt/menus/menus.cpp:280 modules/gui/qt/menus/menus.cpp:894
-#: modules/gui/qt/qt.cpp:1697
+#: modules/gui/qt/qt.cpp:1714
 msgid "&Preferences"
 msgstr "&პარამეტრები"
 
@@ -30338,8 +30380,8 @@ msgstr "შემდეგი თავი"
 
 #: modules/gui/qt/menus/menus.cpp:562
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:304
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:379 modules/gui/qt/qt.cpp:1702
-#: modules/gui/qt/qt.cpp:1703
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:379 modules/gui/qt/qt.cpp:1719
+#: modules/gui/qt/qt.cpp:1720
 msgid "&Help"
 msgstr "&დახმარება"
 
@@ -30501,7 +30543,7 @@ msgid "Album sections"
 msgstr "ალბომების სექციები"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:281
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:365 modules/gui/qt/qt.cpp:1692
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:365 modules/gui/qt/qt.cpp:1709
 msgid "&Media"
 msgstr "&მედია"
 
@@ -30622,7 +30664,7 @@ msgstr "დოკუმენტები"
 
 #: modules/gui/qt/network/qml/BrowseDeviceView.qml:254
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:245
-#: modules/gui/qt/player/qml/AudioContent.qml:241
+#: modules/gui/qt/player/qml/AudioContent.qml:243
 #: modules/gui/qt/player/qml/controlbarcontrols/ArtworkInfoWidget.qml:181
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:189
 #: modules/gui/qt/playlist/qml/QueueColumns.qml:52
@@ -30743,7 +30785,14 @@ msgstr "ძილის ტაიმერის დაყენებამდ�
 msgid "Choose a duration between one second and 24 hours."
 msgstr "აირჩიეთ ხანგრძლივობა ერთი წამიდან 24 საათამდე."
 
+#: modules/gui/qt/player/subtitle_finder.cpp:769
+#: modules/gui/qt/player/subtitle_search.cpp:1344
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+msgid "The subtitle couldn't be saved."
+msgstr "ტიტრების შენახვა ვერ მოხერხდა."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:101
+#: modules/gui/qt/player/subtitle_search.cpp:707
 msgid "%1 didn't answer."
 msgstr "%1 არ პასუხობს."
 
@@ -30755,114 +30804,110 @@ msgstr "%1 გთხოვთ ცოტა მოიცადოთ (ძალ�
 msgid "%1 didn't answer (%2)."
 msgstr "%1 არ პასუხობს (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1574
+#: modules/gui/qt/player/subtitle_providers.cpp:1458
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "ყველა ენა · ფილმები და სერიალები · პოულობს თქვენი ფაილისთვის შექმნილს"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1576
+#: modules/gui/qt/player/subtitle_providers.cpp:1460
 msgid "With your own free key · all languages"
 msgstr "საკუთარი უფასო გასაღებით · ყველა ენა"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1580
+#: modules/gui/qt/player/subtitle_providers.cpp:1464
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "საკუთარი უფასო გასაღებით · ძლიერია არაბულში, მრავალი ენა"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1583
+#: modules/gui/qt/player/subtitle_providers.cpp:1467
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "საკუთარი უფასო გასაღებით · Subscene-ის არქივი, მრავალი ენა"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1586
+#: modules/gui/qt/player/subtitle_providers.cpp:1470
 msgid "Hebrew · movies and series"
 msgstr "ებრაული · ფილმები და სერიალები"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1588
+#: modules/gui/qt/player/subtitle_providers.cpp:1472
 msgid "Series · many languages"
 msgstr "სერიალები · ბევრი ენა"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1590
+#: modules/gui/qt/player/subtitle_providers.cpp:1474
 msgid "Movies · many languages"
 msgstr "ფილმები · ბევრი ენა"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1594
+#: modules/gui/qt/player/subtitle_providers.cpp:1478
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr ""
 "თქვენი უფასო ანგარიშით · ხორვატიული, სერბული, ბოსნიური, სლოვენური, "
 "მაკედონიური"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1598
+#: modules/gui/qt/player/subtitle_providers.cpp:1482
 msgid "With your free token · Chinese"
 msgstr "თქვენი უფასო ტოკენით · ჩინური"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1601
+#: modules/gui/qt/player/subtitle_providers.cpp:1485
 msgid "With your free key · anime, Japanese"
 msgstr "თქვენი უფასო გასაღებით · ანიმე, იაპონური"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1604
+#: modules/gui/qt/player/subtitle_providers.cpp:1488
 msgid "With your free key · series, French"
 msgstr "თქვენი უფასო გასაღებით · სერიალები, ფრანგული"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1607
+#: modules/gui/qt/player/subtitle_providers.cpp:1491
 msgid "With your free key · Romanian"
 msgstr "თქვენი უფასო გასაღებით · რუმინული"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1610
+#: modules/gui/qt/player/subtitle_providers.cpp:1494
 msgid "With your free account · Polish · finds those made for your file"
 msgstr "თქვენი უფასო ანგარიშით · პოლონური · პოულობს თქვენი ფაილისთვის შექმნილს"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1613
+#: modules/gui/qt/player/subtitle_providers.cpp:1497
 msgid "With your free account · Portuguese (Brazil)"
 msgstr "თქვენი უფასო ანგარიშით · პორტუგალიური (ბრაზილია)"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1984
+#: modules/gui/qt/player/subtitle_providers.cpp:1880
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "ეს ტიტრები RAR არქივშია, რომლის გახსნაც აქ შეუძლებელია."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1996
-#: modules/gui/qt/player/subtitle_providers.cpp:2029
-#: modules/gui/qt/player/subtitle_search.cpp:1378
+#: modules/gui/qt/player/subtitle_providers.cpp:1889
+#: modules/gui/qt/player/subtitle_providers.cpp:1922
+#: modules/gui/qt/player/subtitle_search.cpp:1439
 msgid "The subtitle couldn't be unpacked."
 msgstr "ტიტრების გახსნა არქივიდან ვერ მოხერხდა."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2030
+#: modules/gui/qt/player/subtitle_providers.cpp:1923
 msgid "The archive has no subtitle in it."
 msgstr "არქივში ტიტრები არ არის."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2042
+#: modules/gui/qt/player/subtitle_providers.cpp:1935
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr "OpenSubtitles ამ ტიტრებს ფასიანი წევრებისთვის ინახავს. აირჩიეთ სხვა."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2048
+#: modules/gui/qt/player/subtitle_providers.cpp:1941
 msgid "The subtitle is empty."
 msgstr "ტიტრები ცარიელია."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1236
-#: modules/gui/qt/player/subtitle_search.cpp:1338
+#: modules/gui/qt/player/subtitle_search.cpp:1290
+#: modules/gui/qt/player/subtitle_search.cpp:1399
 msgid "No connection to the internet."
 msgstr "ინტერნეტთან კავშირი არ არის."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1239
+#: modules/gui/qt/player/subtitle_search.cpp:1293
 msgid "The video couldn't be identified from its name."
 msgstr "ვიდეოს სახელით ამოცნობა ვერ მოხერხდა."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1240
+#: modules/gui/qt/player/subtitle_search.cpp:1294
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "\"%1\" ვერ მოიძებნა. მოძებნეთ მისი სათაურით."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1242
+#: modules/gui/qt/player/subtitle_search.cpp:1296
 msgid "No subtitles were found for %1."
 msgstr "%1-ისთვის ტიტრები ვერ მოიძებნა."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1284
-#: modules/gui/qt/player/subtitle_search.cpp:1320
-#: modules/gui/qt/player/subtitle_search.cpp:1339
+#: modules/gui/qt/player/subtitle_search.cpp:1338
+#: modules/gui/qt/player/subtitle_search.cpp:1380
+#: modules/gui/qt/player/subtitle_search.cpp:1400
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "ტიტრების ჩამოტვირთვა ვერ მოხერხდა (%1)."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1369
-msgid "The subtitle couldn't be saved."
-msgstr "ტიტრების შენახვა ვერ მოხერხდა."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."
@@ -31073,73 +31118,83 @@ msgstr "დამკვრელი"
 msgid "Subtitle size %1%"
 msgstr "სუბტიტრების ზომა %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1127
+#: modules/gui/qt/player/qml/PlayerView.qml:1157
 msgid "Subtitles on the TV: %1"
 msgstr "ტიტრები ტელევიზორზე: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1127
+#: modules/gui/qt/player/qml/PlayerView.qml:1157
 msgid "Subtitles off on the TV"
 msgstr "ტიტრები ტელევიზორზე გამორთულია"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1238
+#: modules/gui/qt/player/qml/PlayerView.qml:1268
 msgid "Not playing on %1"
 msgstr "%1-ზე არ იკვრება"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1240
-#: modules/gui/qt/player/qml/PlayerView.qml:1367
+#: modules/gui/qt/player/qml/PlayerView.qml:1270
+#: modules/gui/qt/player/qml/PlayerView.qml:1397
 msgid "Connecting to %1…"
 msgstr "%1-თან დაკავშირება…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1242
+#: modules/gui/qt/player/qml/PlayerView.qml:1272
 msgid "Playing on %1"
 msgstr "იკვრება %1-ზე"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1243
+#: modules/gui/qt/player/qml/PlayerView.qml:1273
 msgid "The sound plays on %1"
 msgstr "ხმა იკვრება %1-ზე"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1268
+#: modules/gui/qt/player/qml/PlayerView.qml:1298
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "დაპაუზება, გადახვევა და ტიტრების შეცვლა აქედან შეგიძლიათ: ტელევიზორი "
 "მიჰყვება."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1285
+#: modules/gui/qt/player/qml/PlayerView.qml:1315
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windows Firewall არ აძლევს %1-ს ამ კომპიუტერთან დაკავშირების უფლებას მედიის "
 "წასაკითხად."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1297
+#: modules/gui/qt/player/qml/PlayerView.qml:1327
 msgid "Waiting for Windows…"
 msgstr "Windows-ის მოლოდინი…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1298
+#: modules/gui/qt/player/qml/PlayerView.qml:1328
 msgid "Allow on public networks too"
 msgstr "საჯარო ქსელებშიც დაშვება"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1299
+#: modules/gui/qt/player/qml/PlayerView.qml:1329
 msgid "Allow on private networks"
 msgstr "პირად ქსელებში დაშვება"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1311
+#: modules/gui/qt/player/qml/PlayerView.qml:1341
 msgid "Try again"
 msgstr "ხელახლა ცდა"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1316
-#: modules/gui/qt/player/qml/PlayerView.qml:1326
+#: modules/gui/qt/player/qml/PlayerView.qml:1346
+#: modules/gui/qt/player/qml/PlayerView.qml:1356
 msgid "Play here"
 msgstr "აქ დაკვრა"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1326
-#: modules/gui/qt/player/qml/PlayerView.qml:1377
+#: modules/gui/qt/player/qml/PlayerView.qml:1356
+#: modules/gui/qt/player/qml/PlayerView.qml:1407
 msgid "Stop casting"
 msgstr "ტრანსლირების შეწყვეტა"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1368
+#: modules/gui/qt/player/qml/PlayerView.qml:1398
 msgid "Also on %1"
 msgstr "ასევე %1-ზე"
+
+#: modules/gui/qt/player/qml/ShortcutFeedback.qml:148
+#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:195
+msgid "Paused"
+msgstr "დაპაუზებულია"
+
+#: modules/gui/qt/player/qml/ShortcutFeedback.qml:148
+#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
+msgid "Playing"
+msgstr "იკვრება"
 
 #: modules/gui/qt/player/qml/ResumeDialog.qml:45
 msgid "Resume dialog"
@@ -31284,31 +31339,31 @@ msgstr "ვიდეოტრეკები"
 msgid "Track list"
 msgstr "ტრეკების სია"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:321
+#: modules/gui/qt/player/qml/AudioContent.qml:329
 msgid "Title and artist"
 msgstr "სათაური და შემსრულებელი"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:451
+#: modules/gui/qt/player/qml/AudioContent.qml:465
 msgid "Step back"
 msgstr "უკან გადადგმა"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:476
+#: modules/gui/qt/player/qml/AudioContent.qml:490
 msgid "Toggle lyrics view"
 msgstr "სიმღერის ტექსტის ხედის გადართვა"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:485
+#: modules/gui/qt/player/qml/AudioContent.qml:499
 msgid "Step forward"
 msgstr "წინ გადადგმა"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:513
+#: modules/gui/qt/player/qml/AudioContent.qml:529
 msgid "Sync lyrics to playback"
 msgstr "სიმღერის ტექსტის სინქრონიზაცია დაკვრასთან"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:528
+#: modules/gui/qt/player/qml/AudioContent.qml:544
 msgid "Sync lyrics to playback position"
 msgstr "სიმღერის ტექსტის სინქრონიზაცია დაკვრის პოზიციასთან"
 
-#: modules/gui/qt/player/qml/AudioContent.qml:548
+#: modules/gui/qt/player/qml/AudioContent.qml:564
 msgid "Volume %1%"
 msgstr "ხმა %1%"
 
@@ -31416,15 +31471,15 @@ msgstr "მედიაბიბლიოთეკა მიუწვდომ�
 msgid "Nothing here yet."
 msgstr "აქ ჯერ არაფერია."
 
-#: modules/gui/qt/player/qml/ControlBar.qml:159
+#: modules/gui/qt/player/qml/ControlBar.qml:156
 msgid "Player controls"
 msgstr "დამკვრელის მართვა"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:442
+#: modules/gui/qt/player/qml/ControlBar.qml:439
 msgid "%1 (%2x)"
 msgstr "%1 (%2x)"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:457
+#: modules/gui/qt/player/qml/ControlBar.qml:454
 msgid "Progress"
 msgstr "პროგრესი"
 
@@ -31977,14 +32032,6 @@ msgstr "აირჩიეთ ვიდეოს მასშტაბი"
 msgid "Zoom is unavailable without video"
 msgstr "მასშტაბი ვიდეოს გარეშე მიუწვდომელია"
 
-#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
-msgid "Playing"
-msgstr "იკვრება"
-
-#: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:195
-msgid "Paused"
-msgstr "დაპაუზებულია"
-
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:197
 msgid "Media cover"
 msgstr "მედიის გარეკანი"
@@ -32001,19 +32048,19 @@ msgstr "მონიშნული ელემენტების ამო�
 msgid "Add files to the queue"
 msgstr "ფაილების რიგში დამატება"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:630
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "შედეგები არ არის"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:631
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "შიგთავსი ჯერ არ არის"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:647
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:651
 msgid "Drag & Drop some content here!"
 msgstr "გადმოათრიეთ შიგთავსი აქ!"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:712
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:716
 msgid "Play queue"
 msgstr "დაკვრის რიგი"
 
@@ -32196,36 +32243,43 @@ msgstr ""
 "გამორთვისას მათ მხოლოდ კლავიატურა აჩენს (I კლავიში). გარსებიც ამას იყენებენ "
 "თავიანთი სრული ეკრანის მართვის პანელისთვის."
 
-#: modules/gui/qt/qt.cpp:253
+#: modules/gui/qt/qt.cpp:257
+msgid ""
+"What a key of VLC (seek, volume, pause, speed...) shows in full screen: the "
+"controls; a thin progress line with a small message (the time and what the "
+"key did); or that message alone."
+msgstr "რას აჩვენებს VLC-ის კლავიში (გადახვევა, ხმა, პაუზა, სიჩქარე...) სრულ ეკრანზე: მართვის ელემენტებს; პროგრესის თხელ ხაზს პატარა შეტყობინებით (დრო და რა გააკეთა კლავიშმა); ან მხოლოდ ამ შეტყობინებას."
+
+#: modules/gui/qt/qt.cpp:260
 msgid "Embed the file browser in open dialog"
 msgstr "ფაილების ბრაუზერის ჩაშენება გახსნის ფანჯარაში"
 
-#: modules/gui/qt/qt.cpp:255
+#: modules/gui/qt/qt.cpp:262
 msgid "Define which screen fullscreen goes"
 msgstr "რომელ ეკრანზე გაიხსნას სრული ეკრანი"
 
-#: modules/gui/qt/qt.cpp:256
+#: modules/gui/qt/qt.cpp:263
 msgid "Screennumber of fullscreen, instead of same screen where interface is."
 msgstr ""
 "სრული ეკრანის მონიტორის ნომერი, იმავე ეკრანის ნაცვლად, სადაც ინტერფეისია."
 
-#: modules/gui/qt/qt.cpp:259
+#: modules/gui/qt/qt.cpp:266
 msgid "Load extensions on startup"
 msgstr "გაფართოებების ჩატვირთვა გაშვებისას"
 
-#: modules/gui/qt/qt.cpp:260
+#: modules/gui/qt/qt.cpp:267
 msgid "Automatically load the extensions module on startup."
 msgstr "გაფართოებების მოდულის ავტომატური ჩატვირთვა გაშვებისას."
 
-#: modules/gui/qt/qt.cpp:263
+#: modules/gui/qt/qt.cpp:270
 msgid "Start in minimal view (without menus)"
 msgstr "მინიმალურ ხედში გაშვება (მენიუების გარეშე)"
 
-#: modules/gui/qt/qt.cpp:265
+#: modules/gui/qt/qt.cpp:272
 msgid "Display background cone or art"
 msgstr "ფონური კონუსის ან გარეკანის ჩვენება"
 
-#: modules/gui/qt/qt.cpp:266
+#: modules/gui/qt/qt.cpp:273
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -32235,19 +32289,19 @@ msgstr ""
 "გამორთვისას მის ადგილას უბრალო სურათია, რაც ეკრანის გადაწვასაც თავიდან "
 "აიცილებს."
 
-#: modules/gui/qt/qt.cpp:269
+#: modules/gui/qt/qt.cpp:276
 msgid "Expanding background cone or art"
 msgstr "ფონური კონუსის ან გარეკანის გაფართოება"
 
-#: modules/gui/qt/qt.cpp:270
+#: modules/gui/qt/qt.cpp:277
 msgid "Background art fits window's size."
 msgstr "ფონის სურათი ფანჯრის ზომას ერგება."
 
-#: modules/gui/qt/qt.cpp:272
+#: modules/gui/qt/qt.cpp:279
 msgid "Ignore keyboard volume buttons."
 msgstr "კლავიატურის ხმის ღილაკების იგნორირება."
 
-#: modules/gui/qt/qt.cpp:274
+#: modules/gui/qt/qt.cpp:281
 msgid ""
 "With this option checked, the volume up, volume down and mute buttons on "
 "your keyboard will always change your system volume. With this option "
@@ -32258,11 +32312,11 @@ msgstr ""
 "ღილაკები ყოველთვის სისტემის ხმას შეცვლის. გამორთვისას ეს ღილაკები VLC-ის "
 "ხმას შეცვლის, როცა VLC არჩეულია, და სისტემის ხმას — როცა VLC არჩეული არ არის."
 
-#: modules/gui/qt/qt.cpp:289
+#: modules/gui/qt/qt.cpp:296
 msgid "When to raise the interface"
 msgstr "როდის გამოჩნდეს ინტერფეისი წინა პლანზე"
 
-#: modules/gui/qt/qt.cpp:290
+#: modules/gui/qt/qt.cpp:297
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -32270,11 +32324,11 @@ msgstr ""
 "ეს პარამეტრი საშუალებას აძლევს ინტერფეისს ავტომატურად გამოჩნდეს და წინა "
 "პლანზე გადმოვიდეს ვიდეოს/აუდიოს დაკვრის დაწყებისას, ან არასდროს."
 
-#: modules/gui/qt/qt.cpp:293
+#: modules/gui/qt/qt.cpp:300
 msgid "Enable window titlebar"
 msgstr "ფანჯრის სათაურის ზოლის ჩართვა"
 
-#: modules/gui/qt/qt.cpp:294
+#: modules/gui/qt/qt.cpp:301
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -32282,29 +32336,29 @@ msgstr ""
 "ეს პარამეტრი რთავს სათაურის ზოლს. მისი გამორთვა წაშლის სათაურის ზოლს და "
 "ფანჯრის ღილაკებს ინტერფეისში გადაიტანს (კლიენტის მხარის დეკორაცია)"
 
-#: modules/gui/qt/qt.cpp:298
+#: modules/gui/qt/qt.cpp:305
 msgid "Show the menu bar"
 msgstr "მენიუს ზოლის ჩვენება"
 
-#: modules/gui/qt/qt.cpp:299
+#: modules/gui/qt/qt.cpp:306
 msgid "This option displays the classic menu bar"
 msgstr "ეს პარამეტრი აჩვენებს კლასიკურ მენიუს ზოლს"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:308
 msgid "Pin video controls"
 msgstr "ვიდეოს მართვის ელემენტების მიმაგრება"
 
-#: modules/gui/qt/qt.cpp:302
+#: modules/gui/qt/qt.cpp:309
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "ვიდეოს მართვის ელემენტების განთავსება ვიდეოს ზემოთ და ქვემოთ, ზედ გადაფარვის "
 "ნაცვლად"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:312
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "კადრის ჩვენება გადახვევის ზოლის ზემოთ, მაუსის მიტანის ადგილას"
 
-#: modules/gui/qt/qt.cpp:307
+#: modules/gui/qt/qt.cpp:314
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -32312,15 +32366,15 @@ msgstr ""
 "გადახვევის ზოლზე ნაჩვენები ტიტრების ხაზების ადგილების აღნიშვნა, როცა ტიტრები "
 "ტიტრების ფაილიდანაა"
 
-#: modules/gui/qt/qt.cpp:310
+#: modules/gui/qt/qt.cpp:317
 msgid "Fullscreen controller mouse sensitivity"
 msgstr "სრული ეკრანის მართვის პანელის მაუსის მგრძნობელობა"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:319
 msgid "Select Qt video integration backend"
 msgstr "Qt ვიდეოინტეგრაციის ბექენდის არჩევა"
 
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/qt.cpp:320
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -32328,11 +32382,11 @@ msgstr ""
 "Qt ვიდეოინტეგრაციის ბექენდის არჩევა. გამოიყენეთ სიფრთხილით: შეუთავსებელი "
 "კომპოზიტორის არჩევისას ინტერფეისი შეიძლება არ გაეშვას"
 
-#: modules/gui/qt/qt.cpp:315
+#: modules/gui/qt/qt.cpp:322
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "გლუვი გადახვევის გამოყენება Flickable-ზე დაფუძნებულ ხედებში"
 
-#: modules/gui/qt/qt.cpp:316
+#: modules/gui/qt/qt.cpp:323
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -32342,21 +32396,21 @@ msgstr ""
 "ხედებში (მაგ. დაკვრის რიგში). ეს პარამეტრი მხოლოდ გადახვევის დამმუშავებლით "
 "მოქმედებს, იხ. პარამეტრი `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:326
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Kirigami-ს გადახვევის დამმუშავებლის გამოყენება Flickable-ზე დაფუძნებულ "
 "ხედებში"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:327
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr "Kirigami-ს გადახვევის დამმუშავებელმა შეიძლება გადახვევა გააუმჯობესოს."
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:329
 msgid "Safe area for the user interface"
 msgstr "მომხმარებლის ინტერფეისის უსაფრთხო არე"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:330
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -32364,21 +32418,21 @@ msgstr ""
 "აყენებს უსაფრთხო არის პროცენტს 0.0-დან 100-მდე, როცა შეზღუდულ ხილვად არეში "
 "ინტერფეისის ხილვადობის უზრუნველყოფა გსურთ"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:334
 msgid "Print Qt's important internal messages"
 msgstr "Qt-ის მნიშვნელოვანი შიდა შეტყობინებების გამოტანა"
 
-#: modules/gui/qt/qt.cpp:328
+#: modules/gui/qt/qt.cpp:335
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Qt-ის ყველა საკუთარი შეტყობინების კატეგორიის ჩართვა, გამართვის კატეგორიის "
 "გარდა."
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:337
 msgid "Hide the window on close"
 msgstr "ფანჯრის დამალვა დახურვისას"
 
-#: modules/gui/qt/qt.cpp:331
+#: modules/gui/qt/qt.cpp:338
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -32386,12 +32440,12 @@ msgstr ""
 "აპლიკაციის დახურვის ნაცვლად ფანჯრის დამალვა. ეს პარამეტრი მოქმედებს მხოლოდ "
 "მაშინ, როცა სისტემური ზონის ხატულა ჩართულია."
 
-#: modules/gui/qt/qt.cpp:333
+#: modules/gui/qt/qt.cpp:340
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr ""
 "მთავარი ფანჯრისთვის ფონის გაბუნდოვნების ფილტრის ჩართვა, თუ შესაძლებელია"
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:341
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -32401,11 +32455,11 @@ msgstr ""
 "ფონში მყარი ფერის ნაცვლად ნახევრად გამჭვირვალობა გამოიყენება. ეს პარამეტრი "
 "ტექსტის წაკითხვადობას აუარესებს."
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:344
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "„სურათი სურათში“ (PiP) რეჟიმის ჩართვა"
 
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/qt.cpp:345
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -32413,7 +32467,7 @@ msgstr ""
 "„სურათი სურათში“ რეჟიმი ვიდეოს პატარა არეში უკრავს, რომ ინტერფეისი "
 "გამოყენებადი დარჩეს."
 
-#: modules/gui/qt/qt.cpp:341
+#: modules/gui/qt/qt.cpp:348
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -32421,39 +32475,39 @@ msgstr ""
 "არეგულირებს აქცენტის ფერს, სპეციალური მნიშვნელობებია 'default' და 'system' "
 "(საჭიროა Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:354
 msgid "Last channel watched"
 msgstr "ბოლოს ნანახი არხი"
 
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:355
 msgid "Channel list"
 msgstr "არხების სია"
 
-#: modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/qt.cpp:360
 msgid "Zoom the interface in"
 msgstr "ინტერფეისის გადიდება"
 
-#: modules/gui/qt/qt.cpp:354
+#: modules/gui/qt/qt.cpp:361
 msgid "Zoom the interface out"
 msgstr "ინტერფეისის დაპატარავება"
 
-#: modules/gui/qt/qt.cpp:364
+#: modules/gui/qt/qt.cpp:371
 msgid "When minimized"
 msgstr "ჩაკეცვისას"
 
-#: modules/gui/qt/qt.cpp:399 modules/video_output/xcb/x11.c:413
+#: modules/gui/qt/qt.cpp:410 modules/video_output/xcb/x11.c:413
 msgid "X11"
 msgstr "X11"
 
-#: modules/gui/qt/qt.cpp:407
+#: modules/gui/qt/qt.cpp:418
 msgid "Qt interface"
 msgstr "Qt ინტერფეისი"
 
-#: modules/gui/qt/qt.cpp:455
+#: modules/gui/qt/qt.cpp:472
 msgid "Check for VLC Redesign updates"
 msgstr "VLC Redesign-ის განახლებების შემოწმება"
 
-#: modules/gui/qt/qt.cpp:456
+#: modules/gui/qt/qt.cpp:473
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -32461,11 +32515,11 @@ msgstr ""
 "VLC Redesign-ის ახალი გამოშვების ძებნა GitHub-ზე გაშვებისას, დღეში მაქსიმუმ "
 "ერთხელ."
 
-#: modules/gui/qt/qt.cpp:460
+#: modules/gui/qt/qt.cpp:477
 msgid "Resume at"
 msgstr "გაგრძელება წამიდან"
 
-#: modules/gui/qt/qt.cpp:461
+#: modules/gui/qt/qt.cpp:478
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -32541,28 +32595,28 @@ msgstr ""
 "განახლება ამ ასლის გამომცემლის (%1) მიერ არ არის ხელმოწერილი, ამიტომ არ იქნა "
 "გამოყენებული."
 
-#: modules/gui/qt/util/redesign_updater.cpp:496
+#: modules/gui/qt/util/redesign_updater.cpp:532
 msgid "%1 (later)"
 msgstr "%1 (მოგვიანებით)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:498
+#: modules/gui/qt/util/redesign_updater.cpp:534
 msgid "%1 (soon)"
 msgstr "%1 (მალე)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:694
+#: modules/gui/qt/util/redesign_updater.cpp:731
 msgid "This build cannot check for updates."
 msgstr "ამ ანაწყობს განახლებების შემოწმება არ შეუძლია."
 
-#: modules/gui/qt/util/redesign_updater.cpp:708
+#: modules/gui/qt/util/redesign_updater.cpp:748
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "GitHub-თან დაკავშირება ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:725
+#: modules/gui/qt/util/redesign_updater.cpp:765
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub-მა მოულოდნელი პასუხი გამოგზავნა (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:853
+#: modules/gui/qt/util/redesign_updater.cpp:893
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -32570,50 +32624,50 @@ msgstr ""
 "ეს განახლება არ არის ხელმოწერილი VLC Redesign-ის მიერ, ამიტომ არ იქნა "
 "გამოყენებული. ამის ნაცვლად ჩამოტვირთეთ ის გამოშვების გვერდიდან."
 
-#: modules/gui/qt/util/redesign_updater.cpp:875
-#: modules/gui/qt/util/redesign_updater.cpp:916
+#: modules/gui/qt/util/redesign_updater.cpp:915
+#: modules/gui/qt/util/redesign_updater.cpp:956
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "განახლების საკონტროლო ჯამი არ არის; ჩამოტვირთეთ ის გამოშვების გვერდიდან."
 
-#: modules/gui/qt/util/redesign_updater.cpp:890
-#: modules/gui/qt/util/redesign_updater.cpp:962
+#: modules/gui/qt/util/redesign_updater.cpp:930
+#: modules/gui/qt/util/redesign_updater.cpp:1002
 msgid "The download failed. Check your connection and try again."
 msgstr "ჩამოტვირთვა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:1015
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "განახლება თავის საკონტროლო ჯამს არ ემთხვევა, ამიტომ არ იქნა გამოყენებული."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1006
+#: modules/gui/qt/util/redesign_updater.cpp:1037
 msgid "The update isn't in a format this version knows."
 msgstr "განახლება ისეთ ფორმატშია, რომელიც ამ ვერსიისთვის უცნობია."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1009
-#: modules/gui/qt/util/redesign_updater.cpp:1033
-#: modules/gui/qt/util/redesign_updater.cpp:1044
-#: modules/gui/qt/util/redesign_updater.cpp:1050
-#: modules/gui/qt/util/redesign_updater.cpp:1284
+#: modules/gui/qt/util/redesign_updater.cpp:1040
+#: modules/gui/qt/util/redesign_updater.cpp:1064
+#: modules/gui/qt/util/redesign_updater.cpp:1075
+#: modules/gui/qt/util/redesign_updater.cpp:1081
+#: modules/gui/qt/util/redesign_updater.cpp:1355
 msgid "The update is damaged."
 msgstr "განახლება დაზიანებულია."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1014
-#: modules/gui/qt/util/redesign_updater.cpp:1281
+#: modules/gui/qt/util/redesign_updater.cpp:1045
+#: modules/gui/qt/util/redesign_updater.cpp:1352
 msgid "The update isn't for this version."
 msgstr "განახლება ამ ვერსიისთვის არ არის."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1023
-#: modules/gui/qt/util/redesign_updater.cpp:1060
-#: modules/gui/qt/util/redesign_updater.cpp:1069
-#: modules/gui/qt/util/redesign_updater.cpp:1073
-#: modules/gui/qt/util/redesign_updater.cpp:1077
-#: modules/gui/qt/util/redesign_updater.cpp:1277
+#: modules/gui/qt/util/redesign_updater.cpp:1054
+#: modules/gui/qt/util/redesign_updater.cpp:1091
+#: modules/gui/qt/util/redesign_updater.cpp:1100
+#: modules/gui/qt/util/redesign_updater.cpp:1112
+#: modules/gui/qt/util/redesign_updater.cpp:1116
+#: modules/gui/qt/util/redesign_updater.cpp:1348
 msgid "The update can't be written in %1."
 msgstr "განახლების ჩაწერა შეუძლებელია აქ: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1025
+#: modules/gui/qt/util/redesign_updater.cpp:1056
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -32621,33 +32675,33 @@ msgstr ""
 "VLC Redesign-ის ერთ-ერთი ფაილი ინსტალაციის შემდეგ შეიცვალა, ამიტომ მცირე "
 "განახლების გამოყენება შეუძლებელია: განაახლეთ ინსტალატორით."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1055
+#: modules/gui/qt/util/redesign_updater.cpp:1086
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "განახლება დაზიანებულია: ერთ-ერთი ფაილი საკონტროლო ჯამს არ ემთხვევა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1180
-#: modules/gui/qt/util/redesign_updater.cpp:1345
+#: modules/gui/qt/util/redesign_updater.cpp:1249
+#: modules/gui/qt/util/redesign_updater.cpp:1416
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr "განახლების დაწყება ვერ მოხერხდა. შემდეგ ჯერზე ხელახლა ვცდით."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1207
+#: modules/gui/qt/util/redesign_updater.cpp:1276
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "ჩამოტვირთვა ვერ მოხერხდა. სცადეთ ხელახლა ან ჩამოტვირთეთ გამოშვების გვერდიდან."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1220
+#: modules/gui/qt/util/redesign_updater.cpp:1289
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "ჩამოტვირთული ინსტალატორი საკონტროლო ჯამს არ ემთხვევა, ამიტომ არ გაეშვა."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1232
-#: modules/gui/qt/util/redesign_updater.cpp:1240
-#: modules/gui/qt/util/redesign_updater.cpp:1254
+#: modules/gui/qt/util/redesign_updater.cpp:1301
+#: modules/gui/qt/util/redesign_updater.cpp:1309
+#: modules/gui/qt/util/redesign_updater.cpp:1325
 msgid "The installer couldn't be saved to %1."
 msgstr "ინსტალატორის შენახვა ვერ მოხერხდა აქ: %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1325
-#: modules/gui/qt/util/redesign_updater.cpp:1363
+#: modules/gui/qt/util/redesign_updater.cpp:1396
+#: modules/gui/qt/util/redesign_updater.cpp:1434
 msgid "The installer couldn't be started."
 msgstr "ინსტალატორის გაშვება ვერ მოხერხდა."
 
@@ -32803,15 +32857,15 @@ msgstr "სია/ბადე"
 msgid "Search a language"
 msgstr "ენის ძებნა"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:187
+#: modules/gui/qt/widgets/qml/SearchBox.qml:185
 msgid "filter"
 msgstr "ფილტრი"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:261
+#: modules/gui/qt/widgets/qml/SearchBox.qml:259
 msgid "Case sensitive"
 msgstr "რეგისტრის გათვალისწინება"
 
-#: modules/gui/qt/widgets/qml/SearchBox.qml:284
+#: modules/gui/qt/widgets/qml/SearchBox.qml:282
 msgid "Use regular expression"
 msgstr "რეგულარული გამოსახულების გამოყენება"
 
@@ -34482,7 +34536,7 @@ msgstr "ეკრანდამცავის გამორთვა"
 msgid "XDG screen saver inhibition"
 msgstr "X ეკრანმზოგის გამმორთველი"
 
-#: modules/misc/iptv/iptv.cpp:577
+#: modules/misc/iptv/iptv.cpp:835
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -34490,7 +34544,7 @@ msgstr ""
 "აჩვენებს ტელევიზიას ბიბლიოთეკაში: თქვენი IPTV დაკვრის სიებისა და ანგარიშების "
 "არხებს, მათი პროგრამების გიდით. გამორთვისას მისგან არაფერი იტვირთება."
 
-#: modules/misc/iptv/iptv.cpp:582
+#: modules/misc/iptv/iptv.cpp:840
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "პირდაპირი ტელევიზიის (IPTV) არხები და პროგრამების გიდი"
 

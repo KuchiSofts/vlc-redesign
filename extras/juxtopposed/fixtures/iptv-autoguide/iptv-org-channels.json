@@ -1,0 +1,84 @@
+[
+ {
+  "id": "OpenMovieOne.uk",
+  "name": "Open Movie One",
+  "alt_names": [
+   "OMO"
+  ],
+  "network": null,
+  "owners": [],
+  "country": "UK",
+  "categories": [
+   "movies"
+  ],
+  "is_nsfw": false,
+  "launched": null,
+  "closed": null,
+  "replaced_by": null,
+  "website": null
+ },
+ {
+  "id": "OpenMovieOne.us",
+  "name": "Open Movie One",
+  "alt_names": [],
+  "country": "US",
+  "closed": null
+ },
+ {
+  "id": "DemoNews.il",
+  "name": "Demo News",
+  "alt_names": [
+   "חדשות דמו"
+  ],
+  "country": "IL",
+  "closed": null
+ },
+ {
+  "id": "DemoKids.de",
+  "name": "Demo Kids",
+  "alt_names": [
+   "Démo Kinder"
+  ],
+  "country": "DE",
+  "closed": null
+ },
+ {
+  "id": "SampleSport.fr",
+  "name": "Sample Sport",
+  "alt_names": [],
+  "country": "FR",
+  "closed": null
+ },
+ {
+  "id": "SampleSportPlus1.fr",
+  "name": "Sample Sport +1",
+  "alt_names": [],
+  "country": "FR",
+  "closed": null
+ },
+ {
+  "id": "CanalDemo.fr",
+  "name": "Canal+ Demo",
+  "alt_names": [],
+  "country": "FR",
+  "closed": null
+ },
+ {
+  "id": "DemoWeather.fr",
+  "name": "Demo Weather",
+  "alt_names": [],
+  "country": "FR",
+  "closed": null
+ },
+ {
+  "id": "OldDemo.us",
+  "name": "Old Demo",
+  "alt_names": [],
+  "country": "US",
+  "closed": "2020-01-01"
+ },
+ {
+  "id": "",
+  "name": "No id"
+ }
+]

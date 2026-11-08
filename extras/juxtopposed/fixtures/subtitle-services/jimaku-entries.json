@@ -1,0 +1,32 @@
+[
+ {
+  "id": 22,
+  "name": "Sousou no Frieren Movie",
+  "english_name": "Frieren: The Movie",
+  "anilist_id": 9,
+  "flags": {
+   "anime": true,
+   "movie": true,
+   "unverified": false
+  }
+ },
+ {
+  "id": 21,
+  "name": "Sousou no Frieren",
+  "english_name": "Frieren: Beyond Journey's End",
+  "japanese_name": "葬送のフリーレン",
+  "anilist_id": 154587,
+  "flags": {
+   "anime": true,
+   "movie": false
+  }
+ },
+ {
+  "id": 23,
+  "name": "Frieren Recap",
+  "flags": {
+   "anime": true,
+   "movie": false
+  }
+ }
+]

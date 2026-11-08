@@ -42,6 +42,13 @@ class SubtitlePreferences : public QObject
     // and the second one ("" when none)
     Q_PROPERTY(QVariantMap usage READ usage NOTIFY changed FINAL)
     Q_PROPERTY(QString learned READ learned NOTIFY changed FINAL)
+    // The languages to search online (Settings), in the order of the
+    // results: { code, on }; the default one always there and on, the
+    // second one, and those the user picked by hand (off until turned on)
+    Q_PROPERTY(QVariantList searchLanguages READ searchLanguages NOTIFY changed FINAL)
+    // the services asked for every other language too (off: only those on,
+    // a faster search)
+    Q_PROPERTY(bool everyLanguage READ everyLanguage NOTIFY changed FINAL)
 
 public:
     explicit SubtitlePreferences(qt_intf_t *intf, QObject *parent = nullptr);
@@ -68,6 +75,12 @@ public:
     QStringList wanted() const;
     QVariantMap usage() const;
     QString learned() const;
+    QVariantList searchLanguages() const;
+    bool everyLanguage() const;
+    // the languages on, in their order: what the services are asked
+    QStringList searched() const;
+    // rows: { code, on } in their order
+    Q_INVOKABLE void setSearch(const QVariantList &rows, bool everyLanguage);
     // a subtitle of this language picked by hand
     Q_INVOKABLE void recordUse(const QString &code);
 

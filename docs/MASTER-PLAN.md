@@ -12,8 +12,48 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-08):
 
-- 🟡 **0.5.8** started (an update release): SubSource with your own free key (#70, @Elshepl); Android TV: the
+- ✅ **0.5.8** published 2026-11-08 (an update release; VideoLAN merged to `978212a42d`): SubSource with your own free key (#70, @Elshepl); Android TV: the
   focus after the TV sources close; Weblate has the TV menu's texts.
+- 🟡 **Subtitle services** (the owner: "add subsource.net too and add more free websites ... allow to enable and
+  disable and remove Online Subtitle Provider from settings make it super smart and professional"; the spec shared
+  by the three apps): on the desktop, branch `feature/subtitle-services`. SubSource, SubDL and OpenSubtitles.com in
+  the online search with the user's free key (player/subtitle_services.cpp: their requests and answers by
+  themselves, 263 checks with saved answers in unit-tests.sh, both waves; the refusals recorded from the services with a
+  made-up key); one credentials model (key, user name, password, email declared per service: the page draws them),
+  sealed with DPAPI on Windows, never logged; Settings › Subtitles › *Subtitle services* (switch, Test or Sign in,
+  Clear or Sign out, Get a free key, Remove and Add a service, "Key refused: check it" after a search, a service of
+  one language asked only with it) and *Languages to search* (on/off, add, remove, order; every other language
+  off at first: OpenSubtitles makes no request for every language, a faster search). On at first: OpenSubtitles,
+  Wizdom, Addic7ed, YIFY; the keyed ones turn on when their key is tested. The library's OpenSubtitles.com form
+  uses the same key. 27 texts in the 72 languages. Checked on the hidden desktop (Sintel he+en, the unnamed
+  VID_20241108_201500.mp4 → Breakin' (1984), a guess; wrong keys → Key refused live); the live answers of the
+  keyed services wait for the owner's keys. Wave 2 (the owner: "add subtitles providers with logins too and allow
+  to add keys and user and pass in the settings"): Titlovi, Assrt, Jimaku, BetaSeries, Subs.ro, Napisy24 and
+  Legendas.net from Bazarr's providers (each checked live with made-up credentials: their refusals are the
+  fixtures, and Test / Sign in showed Key refused or Wrong user name or password for each on the hidden desktop),
+  signed-in sessions kept for the run; Napisy24 needs an account (no anonymous answer: "login error"), so its
+  detail line says so; Ktuvit didn't answer. VideoLAN merged to f94b611735 (2 commits). Next: Android and Samsung.
+- 🟡 **Live TV sources** (the owner: "please add free epg providers and free iptv providers and not free but big
+  providers (allow to enable and login or keys) make it super smart and try to search in github for api"; the spec
+  shared by the three apps): on the desktop, branch `feature/tv-sources` (after `feature/subtitle-services`).
+  Accounts: Jellyfin and Emby (sign-in by user or API key, channels and 7 days of guide, the stream resolved at play
+  time through PlaybackInfo: direct, else HLS, else the transcode), Tvheadend (Basic/Digest), NextPVR (PIN session),
+  Channels DVR, HDHomeRun (lineup without DRM, its free guide), Schedules Direct (token by SHA-1, lineups, stations,
+  schedules, programs → a guide for every source), an M3U behind a login; written as the source's playlist.m3u and
+  guide.xml. Found on the network: Jellyfin/Emby (UDP 7359), HDHomeRun (UDP 65001 + its cloud), Channels DVR
+  (mDNS), sent from the default route's address (Windows used a virtual adapter). Plex left out (Plex Pass and
+  transcoder sessions only). The automatic guide (autoguide.cpp: iptv-org's channels.json weekly, compact; tvg-id,
+  else folded name + country; "+1" shifted; iptv-epg.org first) with "Guide found for X of Y" and Undo, Find a
+  Guide, Guide Id… per channel. Guides tab (on/off, Remove, Update, Edit, where each comes from). Catalog: 460
+  sources (iptv-org every country and category from its API, UK as GB), For you, Recommended, daily checks published
+  by the website workflow as tv/catalog.json. Tests: iptv-servers 135 checks, iptv-autoguide 47. Live on the hidden
+  desktop: a Docker Jellyfin 10.10 with the Demo TV provider as its tuner (made-up user): wrong password refused,
+  signed in, 8 channels and 104 programmes, a channel plays; Sign Out, then "Sign-in refused: check it" on its row,
+  then signed in again. Schedules Direct's real API refused a made-up account. Discovery answered by made-up
+  responders on this PC (a Jellyfin on UDP 7359, a Channels DVR over mDNS); nothing real on this network. The
+  automatic guide on iptv-org's public Israel list (no screenshot of its channels): 34 of 34 matched by id,
+  iptv-epg.org's guide attached, 7 of 34 with a guide, Undo removed it; Guide Id… wins over the list's id; Find a
+  Guide on the made-up list finds nothing. Translations: 43 texts × 72 languages. Next: Android and Samsung.
 - ✅ **Release 0.5.7** published 2026-11-08 ([v0.5.7](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7),
   23 files; Android PR #3 and tag v0.5.7; the Samsung source 0.5.7) (the owner: "i want to make a release for the update"): an update release. Online
   subtitles in every app (#67) with every free service asked for any file; Live TV in the library next to the

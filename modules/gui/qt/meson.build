@@ -206,6 +206,8 @@ if qt6_dep.found()
             cc.find_library('winhttp'),
             cc.find_library('shell32'),
             cc.find_library('iphlpapi'),
+            # the services' credentials sealed (player/subtitle_search.cpp)
+            cc.find_library('crypt32'),
         ]
     else
         # util/http_request.cpp: libcurl outside Windows

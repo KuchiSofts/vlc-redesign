@@ -1,0 +1,24 @@
+{
+ "tv_shows": [
+  {
+   "id": 801,
+   "path": "/uploads/legendas/bb-s02e03.zip",
+   "release_name": "Breaking.Bad.S02E03.720p",
+   "uploader": "x",
+   "comment": "",
+   "tmdb_id": 1396,
+   "season": 2,
+   "episode": 3
+  },
+  {
+   "id": 802,
+   "path": "/uploads/legendas/bb-s02e04.zip",
+   "release_name": "Breaking.Bad.S02E04.720p",
+   "uploader": "x",
+   "comment": "",
+   "tmdb_id": 1396,
+   "season": 2,
+   "episode": 4
+  }
+ ]
+}

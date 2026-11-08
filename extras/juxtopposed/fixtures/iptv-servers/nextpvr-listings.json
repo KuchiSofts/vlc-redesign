@@ -1,0 +1,30 @@
+{
+ "listings": [
+  {
+   "id": 1,
+   "name": "Morning News",
+   "subtitle": "",
+   "description": "The news.",
+   "start": 1794200400,
+   "end": 1794202200,
+   "genres": [
+    "News"
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Demo Series",
+   "subtitle": "S01E02",
+   "start": 1794202200,
+   "end": 1794204000,
+   "season": 1,
+   "episode": 2
+  },
+  {
+   "id": 3,
+   "name": "In milliseconds",
+   "start": 1794204000000,
+   "end": 1794205800000
+  }
+ ]
+}

@@ -1,0 +1,146 @@
+{
+ "total_pages": 1,
+ "total_count": 6,
+ "per_page": 60,
+ "page": 1,
+ "data": [
+  {
+   "id": "104567",
+   "type": "subtitle",
+   "attributes": {
+    "subtitle_id": "4567",
+    "language": "pt-BR",
+    "download_count": 1000,
+    "hearing_impaired": false,
+    "fps": 23.976,
+    "from_trusted": true,
+    "ai_translated": false,
+    "machine_translated": false,
+    "release": "The.Matrix.1999.1080p.BluRay.x264",
+    "moviehash_match": true,
+    "foreign_parts_only": false,
+    "files": [
+     {
+      "file_id": 4567,
+      "cd_number": 1,
+      "file_name": "The.Matrix.1999.1080p.BluRay.x264.srt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "104568",
+   "type": "subtitle",
+   "attributes": {
+    "subtitle_id": "4568",
+    "language": "en",
+    "download_count": 99,
+    "hearing_impaired": true,
+    "fps": 23.976,
+    "from_trusted": false,
+    "ai_translated": false,
+    "machine_translated": false,
+    "release": "* The.Matrix.1999.720p *",
+    "moviehash_match": false,
+    "foreign_parts_only": false,
+    "files": [
+     {
+      "file_id": 4568,
+      "cd_number": 1,
+      "file_name": "* The.Matrix.1999.720p *.srt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "104569",
+   "type": "subtitle",
+   "attributes": {
+    "subtitle_id": "4569",
+    "language": "zh-CN",
+    "download_count": 0,
+    "hearing_impaired": false,
+    "fps": 23.976,
+    "from_trusted": false,
+    "ai_translated": false,
+    "machine_translated": false,
+    "release": "",
+    "moviehash_match": false,
+    "foreign_parts_only": false,
+    "files": [
+     {
+      "file_id": 4569,
+      "cd_number": 1,
+      "file_name": "matrix.chs.srt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "104570",
+   "type": "subtitle",
+   "attributes": {
+    "subtitle_id": "4570",
+    "language": "ea",
+    "download_count": 0,
+    "hearing_impaired": false,
+    "fps": 23.976,
+    "from_trusted": false,
+    "ai_translated": false,
+    "machine_translated": false,
+    "release": "The.Matrix.1999.LATINO",
+    "moviehash_match": false,
+    "foreign_parts_only": false,
+    "files": [
+     {
+      "file_id": 4570,
+      "cd_number": 1,
+      "file_name": "The.Matrix.1999.LATINO.srt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "104571",
+   "type": "subtitle",
+   "attributes": {
+    "subtitle_id": "4571",
+    "language": "fr",
+    "download_count": 0,
+    "hearing_impaired": false,
+    "fps": 23.976,
+    "from_trusted": false,
+    "ai_translated": true,
+    "machine_translated": false,
+    "release": "Machine made",
+    "moviehash_match": false,
+    "foreign_parts_only": false,
+    "files": [
+     {
+      "file_id": 4571,
+      "cd_number": 1,
+      "file_name": "Machine made.srt"
+     }
+    ]
+   }
+  },
+  {
+   "id": "104572",
+   "type": "subtitle",
+   "attributes": {
+    "subtitle_id": "4572",
+    "language": "de",
+    "download_count": 0,
+    "hearing_impaired": false,
+    "fps": 23.976,
+    "from_trusted": false,
+    "ai_translated": false,
+    "machine_translated": false,
+    "release": "No file",
+    "moviehash_match": false,
+    "foreign_parts_only": false,
+    "files": []
+   }
+  }
+ ]
+}

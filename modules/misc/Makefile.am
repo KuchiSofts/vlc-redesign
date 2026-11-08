@@ -162,12 +162,24 @@ libiptv_plugin_la_SOURCES = \
 	misc/iptv/service.cpp misc/iptv/service.hpp \
 	misc/iptv/playlist.cpp misc/iptv/playlist.hpp \
 	misc/iptv/guide.cpp misc/iptv/guide.hpp \
-	misc/iptv/xtream.cpp misc/iptv/xtream.hpp
+	misc/iptv/xtream.cpp misc/iptv/xtream.hpp \
+	misc/iptv/servers.cpp misc/iptv/servers.hpp \
+	misc/iptv/autoguide.cpp misc/iptv/autoguide.hpp \
+	gui/qt/util/http_request.cpp gui/qt/util/http_request.hpp
 nodist_libiptv_plugin_la_SOURCES = misc/iptv/catalog.h
 libiptv_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/misc/iptv
 libiptv_plugin_la_CXXFLAGS = $(AM_CXXFLAGS) $(IPTV_QT_CFLAGS) -fPIC
 libiptv_plugin_la_LIBADD = $(IPTV_QT_LIBS) $(LIBZ)
 libiptv_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(misc_RPATH)
+# the servers' APIs (Jellyfin, Tvheadend...) through the HTTP client of the
+# interface: WinHTTP on Windows, libcurl elsewhere
+if HAVE_WIN32
+libiptv_plugin_la_LIBADD += -lwinhttp
+endif
+if HAVE_QT_LIBCURL
+libiptv_plugin_la_CXXFLAGS += $(QT_LIBCURL_CFLAGS) -DQT_HAS_LIBCURL
+libiptv_plugin_la_LIBADD += $(QT_LIBCURL_LIBS)
+endif
 EXTRA_DIST += misc/iptv/catalog/catalog.json misc/iptv/iptv.pro misc/iptv/embed_catalog.py
 # the catalog of the build, in the plugin (a newer one is fetched daily)
 misc/iptv/catalog.h: misc/iptv/catalog/catalog.json

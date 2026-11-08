@@ -41,6 +41,10 @@ const char keyShowBoth[] = "redesign/subtitle-dual";
 // how much the user picks each language by hand: { code: score }, each
 // choice adds 1 after the others fade (x 0.9), so the recent ones weigh most
 const char keyUsage[] = "redesign/subtitle-usage";
+// the languages to search online, in their order ("he", "-fr": off), and
+// every other one too or not
+const char keySearch[] = "redesign/subtitle-search";
+const char keySearchEvery[] = "redesign/subtitle-search-every";
 // the score from which a language is chosen by itself, after the default
 // and the second one: about three choices
 constexpr double learnedScore = 2.5;
@@ -281,6 +285,93 @@ QStringList SubtitlePreferences::wanted() const
     if (!third.isEmpty() && !result.contains(third))
         result.append(third);
     return result;
+}
+
+// ("code" on, "-code" off, in their order)
+QVariantList SubtitlePreferences::searchLanguages() const
+{
+    const QString first = primary();
+    const QString second = secondary();
+    QList<QPair<QString, bool>> rows;
+    const auto has = [&rows](const QString &code) {
+        return std::any_of(rows.cbegin(), rows.cend(), [&code](const auto &row) { return row.first == code; });
+    };
+    QSettings *settings = m_intf->mainSettings;
+    if (settings->contains(keySearch))
+    {
+        for (const QString &entry : settings->value(keySearch).toStringList())
+        {
+            const bool on = !entry.startsWith(QLatin1Char('-'));
+            const QString code = normalize(on ? entry : entry.mid(1));
+            if (!code.isEmpty() && !has(code))
+                rows.append({ code, on });
+        }
+    }
+    else
+    {
+        // at first: the default and the second one on, those picked by hand
+        // off, the most picked first
+        QVariantMap scores = usage();
+        QStringList picked = scores.keys();
+        std::sort(picked.begin(), picked.end(), [&scores](const QString &a, const QString &b) {
+            return scores.value(a).toDouble() > scores.value(b).toDouble();
+        });
+        for (const QString &code : picked)
+        {
+            const QString language = normalize(code);
+            if (!language.isEmpty() && language != first && language != second && !has(language)
+                && scores.value(code).toDouble() >= 1.)
+                rows.append({ language, false });
+        }
+    }
+    // the default one and the second one, always there (the default on)
+    if (!second.isEmpty() && !has(second))
+        rows.prepend({ second, true });
+    if (!has(first))
+        rows.prepend({ first, true });
+    QVariantList result;
+    for (const auto &row : rows)
+        result.append(QVariantMap{ { QStringLiteral("code"), row.first },
+                                   { QStringLiteral("on"), row.second || row.first == first } });
+    return result;
+}
+
+bool SubtitlePreferences::everyLanguage() const
+{
+    return m_intf->mainSettings->value(keySearchEvery, false).toBool();
+}
+
+QStringList SubtitlePreferences::searched() const
+{
+    QStringList codes;
+    for (const QVariant &row : searchLanguages())
+    {
+        const QVariantMap map = row.toMap();
+        if (map.value(QStringLiteral("on")).toBool())
+            codes.append(map.value(QStringLiteral("code")).toString());
+    }
+    return codes;
+}
+
+void SubtitlePreferences::setSearch(const QVariantList &rows, bool everyLanguage)
+{
+    QStringList entries;
+    for (const QVariant &row : rows)
+    {
+        const QVariantMap map = row.toMap();
+        const QString code = normalize(map.value(QStringLiteral("code")).toString());
+        if (code.isEmpty() || entries.contains(code) || entries.contains(QLatin1Char('-') + code))
+            continue;
+        entries.append(map.value(QStringLiteral("on")).toBool() ? code : QLatin1Char('-') + code);
+    }
+    QSettings *settings = m_intf->mainSettings;
+    if (entries == settings->value(keySearch).toStringList() && everyLanguage == this->everyLanguage()
+        && settings->contains(keySearch))
+        return;
+    settings->setValue(keySearch, entries);
+    settings->setValue(keySearchEvery, everyLanguage);
+    settings->sync();
+    emit changed();
 }
 
 QVariantMap SubtitlePreferences::usage() const

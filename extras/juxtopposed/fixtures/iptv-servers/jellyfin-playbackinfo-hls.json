@@ -1,0 +1,13 @@
+{
+ "MediaSources": [
+  {
+   "Protocol": "Http",
+   "Id": "ms-0125",
+   "Container": "hls",
+   "SupportsDirectStream": false,
+   "Path": "https://fast.example/live/master.m3u8",
+   "LiveStreamId": "live-4569"
+  }
+ ],
+ "PlaySessionId": "play-2"
+}

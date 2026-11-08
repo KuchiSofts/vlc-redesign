@@ -1,0 +1,5 @@
+{
+ "base_url": "https://evil.example/api/v1",
+ "token": "x",
+ "status": 200
+}

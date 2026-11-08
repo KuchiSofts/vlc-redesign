@@ -326,6 +326,14 @@ private:
         auto *data = new CallbackData { weak_from_this(), k, entry.width };
         if (input_item_t *item = input_item_New(qtu(entry.mrl), nullptr))
         {
+            // The frame asked for, whatever the command line gave the player:
+            // --start-time, --stop-time and --run-time are inherited by every
+            // input, the thumbnailer's too, and turned every preview of the
+            // seek bar into the frame at the start time.
+            input_item_AddOption(item, ":start-time=0", VLC_INPUT_OPTION_TRUSTED);
+            input_item_AddOption(item, ":stop-time=0", VLC_INPUT_OPTION_TRUSTED);
+            input_item_AddOption(item, ":run-time=0", VLC_INPUT_OPTION_TRUSTED);
+
             struct vlc_thumbnailer_arg arg = {};
             arg.seek.type = vlc_thumbnailer_arg::seek::VLC_THUMBNAILER_SEEK_POS;
             arg.seek.pos = entry.pos;

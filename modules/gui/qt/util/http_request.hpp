@@ -36,6 +36,9 @@ struct HttpRequest
     // of the whole request, 0 for none: a slow download ends there
     int deadlineMs = 0;
     qsizetype maxBytes = 2 * 1024 * 1024;
+    // who the server asks for (Basic or Digest, as it says), when it does
+    QString username;
+    QString password;
     // Called on the worker thread as the body arrives: the bytes received,
     // and the size the server announced (0 when unknown)
     std::function<void(qint64 received, qint64 total)> progress;
@@ -47,6 +50,10 @@ bool httpRequestSupported();
 // Stops a request: done then gets the error "Cancelled" (nothing happens
 // once it has ended)
 using HttpCancel = std::function<void()>;
+
+// The request, here and now (it blocks: a worker thread's, the Live TV
+// module's). Its timeouts bound how long.
+HttpResponse httpRequestSync(const HttpRequest& request);
 
 // Runs the request on a worker thread and calls done in the thread of
 // context. done is dropped if context is destroyed first.

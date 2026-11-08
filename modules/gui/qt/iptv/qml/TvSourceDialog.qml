@@ -18,8 +18,12 @@ import VLC.Dialogs
 
 // The TV sources (the dialogs of the design, as Open Network Stream): the
 // ones added, with what each can do; a link of the user's (an M3U playlist
-// or file, an Xtream Codes login, a guide); or one of the catalog of free,
-// legal channel lists, added in one click with its guide.
+// or file, behind a login or not, an Xtream Codes login, a guide); the
+// user's own servers and tuners (Accounts: Jellyfin, Emby, Tvheadend,
+// NextPVR, Channels DVR, HDHomeRun, with the fields each takes, Test or Sign
+// in, and those found on the network); the guides of every source (Guides);
+// or one of the catalog of free, legal channel lists, added in one click
+// with its guide, the ones of the user's country and languages first.
 Widgets.RedesignDialog {
     id: root
 
@@ -29,14 +33,77 @@ Widgets.RedesignDialog {
     // (the light theme from the map of the design: VLCStyle.redesign.color)
     function c(dark, light) { return VLCStyle.redesign.color(dark, undefined, root.darkTheme) }
 
-    // "sources", "link" or "catalog"
+    // "sources", "link", "accounts", "guides" or "catalog"; "channel": the
+    // guide id of a channel (from its menu)
     property string page: "sources"
+    property string _channelKey: ""
+    property var _channelGuide: null
+    // the accounts page: the kind of server, what Test answered, what the
+    // network has
+    property string serverKind: "jellyfin"
+    property string _test: ""
+    property string _testWho: ""
+    property bool _testing: false
+    property var _found: null
+    property bool _looking: false
+    // the servers and tuners of the user: the fields each takes, the port
+    // its address has when none is typed
+    readonly property var accountKinds: [
+        { kind: "jellyfin", name: "Jellyfin", port: 8096, fields: ["server", "username", "password", "key"],
+          detail: qsTr("The Live TV of your Jellyfin server: its channels and guide") },
+        { kind: "emby", name: "Emby", port: 8096, fields: ["server", "username", "password", "key"],
+          detail: qsTr("The Live TV of your Emby server: its channels and guide") },
+        { kind: "tvheadend", name: "Tvheadend", port: 9981, fields: ["server", "username", "password"],
+          detail: qsTr("Your TV server: its channels and guide") },
+        { kind: "nextpvr", name: "NextPVR", port: 8866, fields: ["server", "pin"],
+          detail: qsTr("Your TV server: its channels and guide") },
+        { kind: "channels", name: "Channels DVR", port: 8089, fields: ["server"],
+          detail: qsTr("Your TV server on your network: its channels and guide") },
+        { kind: "hdhomerun", name: "HDHomeRun", port: 80, fields: ["server"],
+          detail: qsTr("A tuner of your network: its channels and free guide") },
+        { kind: "schedulesdirect", name: "Schedules Direct", port: 0, fields: ["username", "password"],
+          required: ["username", "password"],
+          detail: qsTr("A paid guide (the US, Canada and more) for the channels of every source: the lineups of your account") }
+    ]
+    function _has(field) { return _account.fields.indexOf(field) >= 0 }
+    // the programmes of a guide alone (Schedules Direct)
+    function _programmesOf(source) {
+        return (source.guides || []).reduce((n, g) => n + (g.programmes || 0), 0)
+    }
+    readonly property var _account: accountKinds.find(k => k.kind === serverKind) || accountKinds[0]
+    function _isServer(kind) { return accountKinds.some(k => k.kind === kind) }
+    function _kindName(kind) {
+        const k = accountKinds.find(a => a.kind === kind)
+        return k ? k.name : kind === "xtream" ? "Xtream Codes" : "M3U"
+    }
+    function _accountSource() {
+        return { kind: serverKind, name: accName.text.trim(), server: accServer.text.trim(),
+                 username: accUser.text.trim(), password: accPassword.text, key: accKey.text.trim() }
+    }
+    function look() {
+        _looking = true
+        Iptv.discover((found) => { root._found = found; root._looking = false })
+    }
     // the link page: "m3u", "xtream" or "epg"; the source edited ("": a new one)
     property string kind: "m3u"
     property string editing: ""
     property string _error: ""
     property bool _saving: false
     property var _catalog: null
+
+    // the guide id of a channel: the user's wins over the one of its list
+    // and the one the automatic guide found
+    function editChannelGuide(key) {
+        _clear()
+        _channelKey = key
+        _channelGuide = null
+        Iptv.channelGuide(key, (guide) => {
+            root._channelGuide = guide
+            channelGuideField.text = guide.user || ""
+        })
+        page = "channel"
+        open()
+    }
 
     function openAt(which) {
         page = which || "sources"
@@ -54,14 +121,34 @@ Widgets.RedesignDialog {
         serverField.text = ""
         userField.text = ""
         passwordField.text = ""
+        m3uUser.text = ""
+        m3uPassword.text = ""
+        accName.text = ""
+        accServer.text = ""
+        accUser.text = ""
+        accPassword.text = ""
+        accKey.text = ""
+        channelGuideField.text = ""
+        _test = ""
+        _testWho = ""
     }
 
     function edit(id) {
         _clear()
         editing = id
         Iptv.getSource(id, (source) => {
-            root.kind = source.kind === "xtream" ? "xtream" : "m3u"
             nameField.text = source.name || ""
+            // the password and key stay where they are: an empty field keeps them
+            if (root._isServer(source.kind)) {
+                root.serverKind = source.kind
+                accName.text = source.name || ""
+                accServer.text = source.server || ""
+                accUser.text = source.username || ""
+                root.page = "accounts"
+                return
+            }
+            root.kind = source.kind === "xtream" ? "xtream" : "m3u"
+            m3uUser.text = source.kind === "m3u" ? source.username || "" : ""
             urlField.text = source.url || ""
             guidesField.text = (source.epg || []).join("\n")
             serverField.text = source.server || ""
@@ -77,19 +164,32 @@ Widgets.RedesignDialog {
     bodyHeight: VLCStyle.dp(560, VLCStyle.scale)
     closeOnAccept: false
     cancelText: qsTr("Close")
-    cancelVisible: page !== "link"
-    acceptVisible: page === "link"
-    acceptText: editing !== "" ? qsTr("Save") : kind === "epg" ? qsTr("Add Guide") : qsTr("Add Source")
-    acceptEnabled: !_saving && (kind === "m3u" ? urlField.text.trim() !== ""
+    cancelVisible: page !== "link" && page !== "accounts"
+    acceptVisible: page === "link" || page === "accounts" || page === "channel"
+    acceptText: editing !== "" || page === "channel" ? qsTr("Save")
+                : page === "link" && kind === "epg" ? qsTr("Add Guide") : qsTr("Add Source")
+    acceptEnabled: !_saving && (page === "channel" ? _channelGuide !== null
+                               : page === "accounts"
+                                ? (!_has("server") || accServer.text.trim() !== "")
+                                  && (editing !== "" || _account.fields.indexOf("key") < 0
+                                      || accUser.text.trim() !== "" || accKey.text.trim() !== "")
+                                  && (editing !== "" || (_account.required || []).every(
+                                          f => (f === "username" ? accUser.text.trim() : accPassword.text) !== ""))
+                               : kind === "m3u" ? urlField.text.trim() !== ""
                                : kind === "xtream" ? serverField.text.trim() !== "" && userField.text.trim() !== ""
                                                      && (editing !== "" || passwordField.text !== "")
                                : guidesField.text.trim() !== "" && epgTarget.value !== "")
-    extraText: page === "link" ? qsTr("Back") : ""
+    extraText: page === "link" || page === "accounts" ? qsTr("Back") : ""
     onExtraClicked: { _clear(); page = "sources" }
     onClosed: _clear()
 
     onAccepted: {
         _error = ""
+        if (page === "channel") {
+            Iptv.setChannelGuide(_channelKey, channelGuideField.text.trim())
+            close()
+            return
+        }
         const guides = guidesField.text.split(/\s+/).filter(u => u.length > 0)
         if (kind === "epg") {
             // a guide for a source added before
@@ -102,10 +202,12 @@ Widgets.RedesignDialog {
             })
             return
         }
-        const source = kind === "xtream"
+        const source = page === "accounts" ? _accountSource()
+                       : kind === "xtream"
                        ? { kind: "xtream", name: nameField.text.trim(), server: serverField.text.trim(),
                            username: userField.text.trim(), password: passwordField.text, epg: guides }
-                       : { kind: "m3u", name: nameField.text.trim(), url: urlField.text.trim(), epg: guides }
+                       : { kind: "m3u", name: nameField.text.trim(), url: urlField.text.trim(), epg: guides,
+                           username: m3uUser.text.trim(), password: m3uPassword.text }
         _saving = true
         const done = (answer) => {
             root._saving = false
@@ -125,6 +227,9 @@ Widgets.RedesignDialog {
     onPageChanged: {
         if (page === "catalog" && !_catalog)
             Iptv.catalog((catalog) => root._catalog = catalog)
+        // (the network looked at once, when the accounts first show)
+        if (page === "accounts" && _found === null && !_looking)
+            look()
     }
 
     headerContent: [
@@ -135,13 +240,16 @@ Widgets.RedesignDialog {
             spacing: VLCStyle.dp(10, VLCStyle.scale)
 
             SettingsSegmented {
+                visible: root.page !== "channel"
                 Layout.preferredWidth: Math.max(VLCStyle.dp(420, VLCStyle.scale), neededWidth)
                 options: [{ text: qsTr("Your Sources (%1)").arg(Iptv.sources.length), value: "sources" },
                           { text: qsTr("Add a Link"), value: "link" },
+                          { text: qsTr("Accounts"), value: "accounts" },
+                          { text: qsTr("Guides"), value: "guides" },
                           { text: qsTr("Catalog"), value: "catalog" }]
                 value: root.page
                 onChosen: (value) => {
-                    if (value === "link")
+                    if (value === "link" || value === "accounts")
                         root._clear()
                     root.page = value
                 }
@@ -250,7 +358,7 @@ Widgets.RedesignDialog {
                         }
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
-                            text: (sourceRow.s.kind === "xtream" ? "Xtream Codes · " : "M3U · ") + sourceRow.s.host
+                            text: root._kindName(sourceRow.s.kind) + " · " + sourceRow.s.host
                             color: root.c("#6B6B6B", "#4d4d4d")
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: root.px(12)
@@ -260,7 +368,10 @@ Widgets.RedesignDialog {
                     Row {
                         spacing: root.px(6)
                         TvBadge {
-                            text: qsTr("%1 channel", "%1 channels", sourceRow.s.channels).arg(sourceRow.s.channels)
+                            text: sourceRow.s.kind === "schedulesdirect"
+                                  ? qsTr("%1 programme", "%1 programmes", root._programmesOf(sourceRow.s))
+                                        .arg(root._programmesOf(sourceRow.s))
+                                  : qsTr("%1 channel", "%1 channels", sourceRow.s.channels).arg(sourceRow.s.channels)
                         }
                         TvBadge {
                             visible: sourceRow.s.withGuide > 0
@@ -284,11 +395,13 @@ Widgets.RedesignDialog {
                         text: sourceRow.s.busy ? (sourceRow.s.stage === "guide" ? qsTr("Updating the guide… %1 MB")
                                                                                      .arg((sourceRow.s.received / 1048576).toFixed(1))
                                                                                 : qsTr("Updating the channels…"))
+                              : sourceRow.s.refused ? qsTr("Sign-in refused: check it")
                               : sourceRow.s.error ? sourceRow.s.error
                               : sourceRow.s.updated > 0 ? qsTr("Updated %1 at %2").arg(Iptv.dayText(sourceRow.s.updated))
                                                                              .arg(Iptv.timeText(sourceRow.s.updated))
                               : ""
-                        color: sourceRow.s.error && !sourceRow.s.busy ? root.c("#e15033", "#b03a22") : root.c("#6B6B6B", "#4d4d4d")
+                        color: (sourceRow.s.error || sourceRow.s.refused) && !sourceRow.s.busy ? root.c("#e15033", "#b03a22")
+                                                                                              : root.c("#6B6B6B", "#4d4d4d")
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: root.px(12)
                     }
@@ -401,6 +514,31 @@ Widgets.RedesignDialog {
             }
         }
 
+        // a playlist behind a login (its server asks who: Basic or Digest)
+        GridLayout {
+            visible: root.kind === "m3u"
+            Layout.fillWidth: true
+            columns: 2
+            columnSpacing: root.px(16)
+            rowSpacing: root.px(10)
+            Widgets.RedesignDialogHeading { text: qsTr("User name (optional)") }
+            Widgets.RedesignDialogHeading {
+                text: qsTr("Password (optional)")
+                suffix: root.editing !== "" ? qsTr("(empty: unchanged)") : ""
+            }
+            Widgets.RedesignTextArea {
+                id: m3uUser
+                objectName: "tvSourceM3uUser"
+                Accessible.name: qsTr("User name (optional)")
+                onAccepted: root.accept()
+            }
+            PasswordField {
+                id: m3uPassword
+                objectName: "tvSourceM3uPassword"
+                Accessible.name: qsTr("Password (optional)")
+            }
+        }
+
         GridLayout {
             visible: root.kind === "xtream"
             Layout.fillWidth: true
@@ -481,6 +619,407 @@ Widgets.RedesignDialog {
         }
     }
 
+    // ---- the user's servers and tuners ----
+    ColumnLayout {
+        id: accountsPage
+        Layout.fillWidth: true
+        visible: root.page === "accounts"
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+        spacing: VLCStyle.dp(12, VLCStyle.scale)
+
+        // those found on the network, offered first
+        Widgets.RedesignDialogHeading {
+            visible: root.editing === ""
+            text: qsTr("Found on your network")
+            description: root._looking ? qsTr("Looking on your network…")
+                         : root._found !== null && root._found.length === 0
+                           ? qsTr("Nothing found on your network: type the server's address.") : ""
+        }
+        Flow {
+            visible: root.editing === ""
+            Layout.fillWidth: true
+            spacing: root.px(8)
+            Repeater {
+                model: root._found || []
+                delegate: Widgets.RedesignButton {
+                    required property var modelData
+                    objectName: "tvSourceFound_" + modelData.kind
+                    text: modelData.name + " · " + root._kindName(modelData.kind)
+                          + (modelData.added ? " · " + qsTr("Added") : "")
+                    enabled: !modelData.added
+                    onClicked: {
+                        root._clear()
+                        root.serverKind = modelData.kind
+                        accServer.text = modelData.address
+                        accName.text = modelData.name
+                    }
+                }
+            }
+            Widgets.RedesignButton {
+                objectName: "tvSourceLookAgain"
+                text: qsTr("Look again")
+                enabled: !root._looking
+                onClicked: root.look()
+            }
+        }
+
+        // the kind of server, then the fields it takes
+        SettingsSegmented {
+            visible: root.editing === ""
+            Layout.preferredWidth: Math.min(accountsPage.width, Math.max(VLCStyle.dp(480, VLCStyle.scale), neededWidth))
+            options: root.accountKinds.map(k => ({ text: k.name, value: k.kind }))
+            value: root.serverKind
+            onChosen: (value) => { root.serverKind = value; root._test = "" }
+        }
+        Text {
+            Layout.fillWidth: true
+            text: root._account.detail
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
+            color: root.c("#6B6B6B", "#4d4d4d")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(13)
+        }
+
+        GridLayout {
+            Layout.fillWidth: true
+            columns: 2
+            columnSpacing: root.px(16)
+            rowSpacing: root.px(10)
+            // (two halves, whatever the headings say)
+            uniformCellWidths: true
+
+            Widgets.RedesignDialogHeading { visible: root._has("server"); text: qsTr("Server address") }
+            Widgets.RedesignDialogHeading {
+                Layout.columnSpan: root._has("server") ? 1 : 2
+                text: qsTr("Name")
+                suffix: qsTr("(optional)")
+            }
+            Widgets.RedesignTextArea {
+                id: accServer
+                objectName: "tvSourceServerAddress"
+                visible: root._has("server")
+                placeholderText: qsTr("e.g., %1").arg("http://192.168.1.10:" + root._account.port)
+                Accessible.name: qsTr("Server address")
+                onAccepted: root.accept()
+            }
+            Widgets.RedesignTextArea {
+                id: accName
+                objectName: "tvSourceServerName"
+                Layout.columnSpan: root._has("server") ? 1 : 2
+                placeholderText: root._account.name
+                Accessible.name: qsTr("Name")
+                onAccepted: root.accept()
+            }
+
+            Widgets.RedesignDialogHeading {
+                visible: root._account.fields.indexOf("username") >= 0
+                text: root.serverKind === "tvheadend" ? qsTr("User name (optional)") : qsTr("User name")
+            }
+            Widgets.RedesignDialogHeading {
+                visible: root._account.fields.indexOf("password") >= 0 || root._account.fields.indexOf("pin") >= 0
+                text: root._account.fields.indexOf("pin") >= 0 ? qsTr("PIN") : qsTr("Password")
+                suffix: root.editing !== "" ? qsTr("(empty: unchanged)")
+                        : root._account.fields.indexOf("pin") >= 0 ? qsTr("(optional)") : ""
+            }
+            Widgets.RedesignTextArea {
+                id: accUser
+                objectName: "tvSourceServerUser"
+                visible: root._account.fields.indexOf("username") >= 0
+                Accessible.name: qsTr("User name")
+                onAccepted: root.accept()
+                onTextChanged: root._test = ""
+            }
+            PasswordField {
+                id: accPassword
+                objectName: "tvSourceServerPassword"
+                visible: root._account.fields.indexOf("password") >= 0 || root._account.fields.indexOf("pin") >= 0
+                Accessible.name: root._account.fields.indexOf("pin") >= 0 ? qsTr("PIN") : qsTr("Password")
+                onTextChanged: root._test = ""
+            }
+
+            Widgets.RedesignDialogHeading {
+                Layout.columnSpan: 2
+                visible: root._account.fields.indexOf("key") >= 0
+                text: qsTr("API key")
+                suffix: qsTr("(optional)")
+                description: qsTr("Instead of a user: a key made in the server's dashboard.")
+            }
+            PasswordField {
+                id: accKey
+                objectName: "tvSourceServerKey"
+                Layout.columnSpan: 2
+                visible: root._account.fields.indexOf("key") >= 0
+                Accessible.name: qsTr("API key")
+                onTextChanged: root._test = ""
+            }
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: root.px(12)
+            Widgets.RedesignButton {
+                objectName: "tvSourceServerTest"
+                text: root._account.fields.indexOf("username") >= 0 && accUser.text.trim() !== ""
+                      ? qsTr("Sign in") : qsTr("Test")
+                enabled: !root._testing && (root._has("server") ? accServer.text.trim() !== ""
+                                                                : accUser.text.trim() !== "")
+                onClicked: {
+                    root._testing = true
+                    root._test = ""
+                    Iptv.testSource(root._accountSource(), root.editing, (answer) => {
+                        root._testing = false
+                        root._test = answer.result || "noAnswer"
+                        root._testWho = answer.who || ""
+                    })
+                }
+            }
+            Text {
+                Layout.fillWidth: true
+                objectName: "tvSourceServerTestResult"
+                text: root._testing ? "…"
+                      : root._test === "signedIn" ? qsTr("Signed in as %1").arg(root._testWho)
+                      : root._test === "works" ? (root._testWho !== "" ? root._testWho + " · " : "") + qsTr("Server found")
+                      : root._test === "refused" ? (accUser.text.trim() === "" && accKey.text.trim() !== ""
+                                                    ? qsTr("Key refused") : qsTr("Wrong user name or password"))
+                      : root._test === "noAnswer" ? qsTr("No answer, try again") : ""
+                color: root._test === "signedIn" || root._test === "works" ? VLCStyle.redesign.accent
+                                                                           : root.c("#e15033", "#b03a22")
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
+                font.family: VLCStyle.redesign.fontFamily
+                font.pixelSize: root.px(13)
+            }
+            // an account edited: its password and key forgotten, the source off
+            Widgets.RedesignButton {
+                objectName: "tvSourceSignOut"
+                visible: root.editing !== "" && (root._has("password") || root._has("key") || root._has("pin"))
+                text: qsTr("Sign Out")
+                onClicked: {
+                    Iptv.signOut(root.editing)
+                    root._clear()
+                    root.page = "sources"
+                }
+            }
+        }
+
+        Text {
+            Layout.fillWidth: true
+            text: root._error !== "" ? root._error
+                  : qsTr("Passwords and keys are kept in the keystore of VLC, never written to its log.")
+            wrapMode: Text.WordWrap
+            color: root._error !== "" ? root.c("#e15033", "#b03a22") : root.c("#404040", "#7c7c7b")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(12)
+        }
+    }
+
+    // ---- the guide id of a channel ----
+    ColumnLayout {
+        Layout.fillWidth: true
+        visible: root.page === "channel"
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+        spacing: VLCStyle.dp(12, VLCStyle.scale)
+
+        Widgets.RedesignDialogHeading {
+            text: qsTr("The guide of %1").arg(root._channelGuide ? root._channelGuide.name : "")
+            description: qsTr("The id the guides give this channel. Yours comes first; leave it empty to use the one of its list or the one found for it.")
+        }
+        Text {
+            Layout.fillWidth: true
+            text: qsTr("Its list: %1").arg(root._channelGuide && root._channelGuide.own ? root._channelGuide.own : qsTr("none"))
+                  + "  ·  " + qsTr("Found for it: %1").arg(root._channelGuide && root._channelGuide.auto
+                                                           ? root._channelGuide.auto : qsTr("none"))
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignLeft
+            color: root.c("#6B6B6B", "#4d4d4d")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: root.px(12)
+        }
+        Widgets.RedesignTextArea {
+            id: channelGuideField
+            objectName: "tvChannelGuideId"
+            Layout.fillWidth: true
+            placeholderText: qsTr("e.g., %1").arg("BBCOne.uk")
+            Accessible.name: qsTr("Guide id")
+            onAccepted: root.accept()
+        }
+    }
+
+    // ---- the guides of every source ----
+    ColumnLayout {
+        id: guidesPage
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        visible: root.page === "guides"
+        LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        LayoutMirroring.childrenInherit: true
+        spacing: VLCStyle.dp(12, VLCStyle.scale)
+
+        Widgets.RedesignDialogHeading {
+            text: qsTr("The guides of your sources")
+            description: qsTr("Each source's own guides and those you added; the channels are matched by their guide id, then by their name.")
+        }
+        ListView {
+            Layout.preferredHeight: root.bodyHeight - VLCStyle.dp(150, VLCStyle.scale)
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            clip: true
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
+            model: Iptv.sources
+            boundsBehavior: Flickable.StopAtBounds
+            T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+            delegate: Rectangle {
+                id: guideRow
+                required property var modelData
+                readonly property var s: modelData
+                readonly property var found: modelData.autoGuide || ({})
+                width: ListView.view.width
+                height: guideColumn.implicitHeight + root.px(24)
+                radius: VLCStyle.dp(6, VLCStyle.scale)
+                color: root.c("#151515", "#b5b5b4")
+                opacity: modelData.enabled ? 1 : 0.6
+                Column {
+                    id: guideColumn
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.margins: root.px(16)
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: root.px(8)
+                    // the source: how many of its channels have a guide
+                    Item {
+                        width: parent.width
+                        height: Math.max(headText.implicitHeight, headActions.height)
+                        Text {
+                            id: headText
+                            anchors.left: parent.left
+                            anchors.right: headActions.left
+                            anchors.rightMargin: root.px(12)
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: guideRow.s.name + "  ·  " + (guideRow.s.kind === "schedulesdirect"
+                                      ? qsTr("A guide for the channels of every source")
+                                      : qsTr("Guide for %1 of %2 channels").arg(guideRow.s.withGuide).arg(guideRow.s.channels))
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
+                            color: root.c("#C6C6C6", "#2e2e2e")
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: root.px(14)
+                            font.weight: Font.Medium
+                        }
+                        Row {
+                            id: headActions
+                            anchors.right: parent.right
+                            anchors.verticalCenter: parent.verticalCenter
+                            spacing: root.px(8)
+                            Widgets.RedesignButton {
+                                objectName: "tvGuideFind"
+                                // (a server of the user has its own guide)
+                                visible: !guideRow.s.isServer && guideRow.s.kind !== "schedulesdirect"
+                                text: qsTr("Find a Guide")
+                                enabled: !guideRow.s.busy && guideRow.s.enabled && guideRow.s.channels > 0
+                                onClicked: Iptv.findGuide(guideRow.s.id)
+                            }
+                            Widgets.RedesignButton {
+                                text: qsTr("Update")
+                                enabled: !guideRow.s.busy && guideRow.s.enabled
+                                onClicked: Iptv.refresh(guideRow.s.id)
+                            }
+                            Widgets.RedesignButton {
+                                text: qsTr("Edit")
+                                onClicked: root.edit(guideRow.s.id)
+                            }
+                        }
+                    }
+                    // what the automatic guide matched
+                    Text {
+                        width: parent.width
+                        visible: (guideRow.found.matched || 0) > 0
+                        text: guideRow.s.busy && guideRow.s.stage === "guide"
+                              ? qsTr("Updating the guide… %1 MB").arg((guideRow.s.received / 1048576).toFixed(1))
+                              : qsTr("Found for you: %1 channel matched by its name or id",
+                                     "Found for you: %1 channels matched by their name or id",
+                                     guideRow.found.matched || 0).arg(guideRow.found.matched || 0)
+                        elide: Text.ElideRight
+                        horizontalAlignment: Text.AlignLeft
+                        color: root.c("#6B6B6B", "#4d4d4d")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(12)
+                    }
+                    // each guide: its state, where it comes from; on/off, Remove
+                    Repeater {
+                        model: guideRow.s.guides || []
+                        delegate: Item {
+                            id: guideLine
+                            required property var modelData
+                            width: guideColumn.width
+                            height: Math.max(lineText.implicitHeight, lineActions.height)
+                            Text {
+                                id: lineText
+                                anchors.left: parent.left
+                                anchors.right: lineActions.left
+                                anchors.rightMargin: root.px(12)
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: guideLine.modelData.host + "  ·  "
+                                      + (!guideLine.modelData.enabled ? qsTr("Off")
+                                         : guideLine.modelData.error ? guideLine.modelData.error
+                                         : qsTr("%1 programme", "%1 programmes", guideLine.modelData.programmes)
+                                               .arg(guideLine.modelData.programmes))
+                                      + "  ·  " + (guideLine.modelData.own ? qsTr("Added by you")
+                                                   : guideLine.modelData.auto ? qsTr("Found for you")
+                                                   : qsTr("From the playlist"))
+                                elide: Text.ElideRight
+                                horizontalAlignment: Text.AlignLeft
+                                opacity: guideLine.modelData.enabled ? 1 : 0.6
+                                color: guideLine.modelData.error && guideLine.modelData.enabled
+                                       ? root.c("#e15033", "#b03a22") : root.c("#6B6B6B", "#4d4d4d")
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: root.px(12)
+                            }
+                            Row {
+                                id: lineActions
+                                anchors.right: parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                spacing: root.px(8)
+                                Widgets.RedesignButton {
+                                    text: guideLine.modelData.enabled ? qsTr("Turn Off") : qsTr("Turn On")
+                                    onClicked: Iptv.setGuideEnabled(guideRow.s.id, guideLine.modelData.id,
+                                                                    !guideLine.modelData.enabled)
+                                }
+                                Widgets.RedesignButton {
+                                    visible: guideLine.modelData.own || guideLine.modelData.auto
+                                    text: qsTr("Remove")
+                                    onClicked: Iptv.removeGuide(guideRow.s.id, guideLine.modelData.id)
+                                }
+                            }
+                        }
+                    }
+                    Text {
+                        visible: (guideRow.s.guides || []).length === 0
+                        text: qsTr("No guide yet: add one, or one of the catalog's.")
+                        color: root.c("#6B6B6B", "#4d4d4d")
+                        font.family: VLCStyle.redesign.fontFamily
+                        font.pixelSize: root.px(12)
+                    }
+                }
+            }
+        }
+        Row {
+            spacing: root.px(12)
+            Widgets.RedesignButton {
+                text: qsTr("Add Guide")
+                accent: true
+                enabled: Iptv.sources.length > 0
+                onClicked: { root._clear(); root.kind = "epg"; root.page = "link" }
+            }
+            Widgets.RedesignButton {
+                text: qsTr("Catalog")
+                onClicked: root.page = "catalog"
+            }
+        }
+    }
+
     // ---- the catalog ----
     ColumnLayout {
         id: catalogPage
@@ -496,7 +1035,21 @@ Widgets.RedesignDialog {
         property string country: ""
         property string category: ""
         property string capability: ""
-        property string sort: "name"
+        // the user's first: of their country, in their languages
+        property string sort: "foryou"
+        readonly property string myCountry: (Qt.locale().name.split("_")[1] || "").toUpperCase()
+        readonly property var myLanguages: [String(Qt.uiLanguage).split(/[_-]/)[0], Qt.locale().name.split("_")[0]]
+                                           .filter(l => l.length > 0)
+        function forYou(s) {
+            const country = (s.countries || []).indexOf(myCountry) >= 0
+            const language = (s.languages || []).some(l => myLanguages.indexOf(l) >= 0)
+            // (one that stopped answering last, whatever it is)
+            return (country ? 2 : 0) + (language ? 1 : 0) - (s.status === "not answering" ? 10 : 0)
+        }
+        function recommended(s) {
+            return s.status !== "not answering" && ((s.countries || []).indexOf(myCountry) >= 0
+                   || (String(s.id).startsWith("iptv-org") && (s.languages || []).some(l => myLanguages.indexOf(l) >= 0)))
+        }
         // the values of a field of the sources, once each
         function distinct(field) {
             const seen = {}
@@ -518,13 +1071,15 @@ Widgets.RedesignDialog {
                 (language === "" || (s.languages || []).indexOf(language) >= 0)
                 && (country === "" || (s.countries || []).indexOf(country) >= 0)
                 && (category === "" || (s.categories || []).indexOf(category) >= 0)
-                && (capability === "" || (capability === "epg" ? (s.epg || []).length > 0
+                && (capability === "" || (capability === "recommended" ? recommended(s)
+                                         : capability === "epg" ? (s.epg || []).length > 0
                                          : capability === "catchup" ? !!(s.catchup && s.catchup.supported)
                                          : capability === "vod" ? !!(s.vod || s.series)
                                          : capability === "free" ? s.price === "free" : true))
                 && (text === "" || (s.name + " " + (s.description || "")).toLowerCase().indexOf(text) >= 0))
             return list.sort((a, b) => sort === "channels" ? (b.channels || 0) - (a.channels || 0)
-                                                           : String(a.name).localeCompare(String(b.name)))
+                                       : sort === "foryou" ? (forYou(b) - forYou(a)) || (b.channels || 0) - (a.channels || 0)
+                                       : String(a.name).localeCompare(String(b.name)))
         }
 
         // the filters: a search, and choices that cycle through the values
@@ -572,14 +1127,17 @@ Widgets.RedesignDialog {
             }
             Item { Layout.fillWidth: true }
             Widgets.RedesignButton {
-                text: catalogPage.sort === "name" ? qsTr("A-Z") : qsTr("Most channels")
-                onClicked: catalogPage.sort = catalogPage.sort === "name" ? "channels" : "name"
+                text: catalogPage.sort === "name" ? qsTr("A-Z") : catalogPage.sort === "channels" ? qsTr("Most channels")
+                                                                                                   : qsTr("For you")
+                onClicked: catalogPage.sort = catalogPage.sort === "foryou" ? "channels"
+                                              : catalogPage.sort === "channels" ? "name" : "foryou"
             }
         }
         // what the sources can do (a row of its own: the dialog's width)
         SettingsSegmented {
             Layout.preferredWidth: Math.min(catalogPage.width, Math.max(VLCStyle.dp(480, VLCStyle.scale), neededWidth))
-            options: [{ text: qsTr("All"), value: "" }, { text: qsTr("Guide"), value: "epg" },
+            options: [{ text: qsTr("All"), value: "" }, { text: qsTr("Recommended"), value: "recommended" },
+                      { text: qsTr("Guide"), value: "epg" },
                       { text: qsTr("Catch-up"), value: "catchup" }, { text: qsTr("Films"), value: "vod" },
                       { text: qsTr("Free"), value: "free" }, { text: qsTr("Guides"), value: "guides" }]
             value: catalogPage.capability
@@ -673,6 +1231,11 @@ Widgets.RedesignDialog {
                         }
                         TvBadge { visible: !!card.modelData.vod; icon: "video"; text: qsTr("Films") }
                         TvBadge { visible: !!card.modelData.series; icon: "playlist"; text: qsTr("Series") }
+                        // what the catalog's last check found (the copy of the repository)
+                        TvBadge {
+                            visible: card.modelData.status === "not answering"
+                            text: qsTr("Not answering")
+                        }
                         TvBadge {
                             text: card.modelData.price === "free" ? qsTr("Free") : qsTr("Paid")
                             accent: card.modelData.price === "free"

@@ -94,6 +94,7 @@ Dialog {
         inlineEffects.clearDirty()
         appearance.save()
         subtitleLanguages.save()
+        subtitleServices.save()
         developerMode.save()
         MainCtx.controlbarProfileModel.save()
         // Live TV switched on or off: its entry, its page and its keys follow
@@ -125,6 +126,7 @@ Dialog {
         config.refresh()
         appearance.begin()
         subtitleLanguages.begin()
+        subtitleServices.begin()
         developerMode.begin()
         lastfm.begin()
         advancedExpanded = false
@@ -580,7 +582,21 @@ Dialog {
                              ? root.selectedCategory === "subtitles"
                              : root.searchMatches([qsTr("Second Language & Online Subtitles"), qsTr("Dual subtitles"),
                                                    qsTr("Second language"), qsTr("OpenSubtitles"),
-                                                   qsTr("Find subtitles online when a video has none in these languages")])
+                                                   qsTr("Find subtitles online when a video has none in these languages"),
+                                                   qsTr("Languages to search"), qsTr("Every other language too")])
+                }
+
+                // the services asked, after the languages (they follow them)
+                SettingsSubtitleServices {
+                    id: subtitleServices
+                    width: parent.width
+                    languagesOn: subtitleLanguages.searchOn
+                    visible: searchField.text.length === 0
+                             ? root.selectedCategory === "subtitles"
+                             : root.searchMatches([qsTr("Subtitle services"), "OpenSubtitles", "SubSource", "SubDL",
+                                                   "Wizdom", "Addic7ed", "YIFY", "Titlovi", "Assrt", "Jimaku",
+                                                   "BetaSeries", "Subs.ro", "Napisy24", "Legendas.net",
+                                                   qsTr("Get a free key")])
                 }
 
                 Column {
@@ -650,7 +666,7 @@ Dialog {
 
                 Text {
                     visible: optionList.availableCount === 0 && !appearance.visible
-                             && !subtitleLanguages.visible
+                             && !subtitleLanguages.visible && !subtitleServices.visible
                              && !developerMode.visible
                              && !lastfm.visible && !shortcutsSection.visible && !sidebarSection.visible
                              && !inlineEffects.visible && !extensions.visible

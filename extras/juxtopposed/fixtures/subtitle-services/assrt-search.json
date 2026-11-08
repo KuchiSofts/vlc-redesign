@@ -1,0 +1,57 @@
+{
+ "status": 0,
+ "sub": {
+  "action": "search",
+  "keyword": "The Matrix 1999",
+  "subs": [
+   {
+    "id": 6001,
+    "native_name": "黑客帝国",
+    "videoname": "The.Matrix.1999.1080p.BluRay.x264",
+    "vote_score": 8,
+    "lang": {
+     "desc": "简 英",
+     "langlist": {
+      "langchs": true,
+      "langeng": true
+     }
+    }
+   },
+   {
+    "id": 6002,
+    "native_name": [
+     "黑客帝国",
+     "Matrix"
+    ],
+    "videoname": "不知道",
+    "vote_score": 0,
+    "lang": {
+     "desc": "繁",
+     "langlist": {
+      "langcht": true
+     }
+    }
+   },
+   {
+    "id": 6003,
+    "native_name": "x",
+    "videoname": "No language",
+    "lang": {
+     "desc": "",
+     "langlist": {}
+    }
+   },
+   {
+    "id": 6004,
+    "native_name": "黑客帝国",
+    "videoname": "The.Matrix.1999.Bilingual",
+    "lang": {
+     "desc": "双语",
+     "langlist": {
+      "langdou": true
+     }
+    }
+   }
+  ]
+ }
+}

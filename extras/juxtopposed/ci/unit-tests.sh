@@ -82,6 +82,13 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC $http -I. -Imodules/gui/qt $(pkg-con
     $(pkg-config --libs Qt6Core) $httplibs -o "$out/http-request-test"
 "$out/http-request-test" python3 extras/juxtopposed/http-test-server.py
 
+echo "== the updater's files: on the disk before they take their name (QSaveFile)"
+# (no sanitizer: the probe of the system's calls is preloaded first)
+gcc -shared -fPIC -O1 -Wall extras/juxtopposed/sync-probe.c -o "$out/sync-probe.so" -ldl
+g++ -std=c++17 -O1 -Wall -Wextra -fPIC $(pkg-config --cflags Qt6Core) extras/juxtopposed/savefile-sync-test.cpp \
+    $(pkg-config --libs Qt6Core) -ldl -o "$out/savefile-sync-test"
+LD_PRELOAD="$(cd "$out" && pwd)/sync-probe.so" "$out/savefile-sync-test"
+
 echo "== the parsers against malformed and huge input (fuzz)"
 g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-config --cflags Qt6Core)     extras/juxtopposed/parsers-fuzz.cpp modules/misc/iptv/playlist.cpp modules/misc/iptv/guide.cpp     modules/misc/iptv/xtream.cpp modules/misc/iptv/servers.cpp modules/misc/iptv/autoguide.cpp     modules/gui/qt/player/subtitle_services.cpp modules/gui/qt/player/subtitle_cues_parser.cpp     $(pkg-config --libs Qt6Core) -lz -o "$out/parsers-fuzz"
 "$out/parsers-fuzz" extras/juxtopposed/fixtures

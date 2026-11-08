@@ -292,14 +292,40 @@ without leaving the player:
 
 - **Places**: *Home* (the sections of the library's Home, each with *See all*), *Videos* and its folders, *Music*
   (*Songs*, *Albums*, *Artists*, *Genres*), *Network* (*Add Network Stream*, the services of the network),
-  *Playlists* and *Recent*.
+  **TV** (while the [Live TV](Live-TV) add-on is on, see below), *Playlists* and *Recent*.
 - **In each place**: a search, **Sort** (*Title A-Z*, *Title Z-A*, *Newest First*, *Oldest First*), **View**
   (*Grid View* / *List View*), *Play all*, *Add all to queue*, *Up one folder* in a folder, and **More**
   (*Rescan library*, *Add folder to library…*, *Add network stream…*, and *Create playlist* among the playlists).
   The **+** opens media.
 - **Open in the library** leaves the player for the same place in the library window.
 
-See [Library](Library).
+### TV next to the video
+
+With Live TV on, **TV** comes after *Network* in the column (the TV icon of the sidebar): the channels, to switch
+channel without leaving the video.
+
+- **The channels**: a row each, as in the channel list over the video: the number, the logo, the name, what is on
+  with its progress (when the guide has it), and the catch-up and favourite marks. The channel playing is in the
+  accent. The count reads *8 channels*.
+- **The groups** of your provider are chips above the list, with **All**, **Favorites** and **Recently Watched**, as
+  on the TV page. The search of the panel finds a channel by its name or its number among all the channels, whatever
+  the group shown; cleared, the group comes back.
+- **Click** a channel (or <kbd>Enter</kbd> on it) to watch it. The panel stays open, and the channel's banner and
+  the channel list over the video show beside it, not over its rows. A click on the channel you are watching leaves
+  it playing. **Right-click** a channel: *Watch*, *Watch from the start* (with catch-up), *Favorite*, *Show in the
+  Guide* (the TV page's guide at that channel), *What's On*.
+- **While a channel plays**, the library opens on **TV** (the **Library** button or <kbd>L</kbd>) with the channel
+  highlighted and in view: in the group you chose there (*All* too) when it has the channel, else in the group of
+  the TV page you picked it in, else in the channel's own group. <kbd>Page Up</kbd> and <kbd>Page Down</kbd> go
+  through the group shown there.
+- **The keyboard**: <kbd>Tab</kbd> into the list, then <kbd>Up</kbd> and <kbd>Down</kbd> move through the channels,
+  <kbd>Enter</kbd> watches one (the keyboard stays on its row, to go on zapping), <kbd>Left</kbd> and <kbd>Right</kbd>
+  switch the group.
+- **More**: *Guide* (the TV page's guide) and *Sources*. **Open in the library** opens the TV page.
+- **No source yet**: what Live TV is, with **Add a Link** and **Browse the Catalog**. They open the TV sources over the
+  player, and the channels show in the panel as soon as they load.
+
+See [Library](Library) and [Live TV](Live-TV).
 
 ## Mouse on the video
 

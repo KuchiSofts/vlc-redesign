@@ -27,6 +27,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   they ask OpenSubtitles.com as well. The key's steps are in every app: on the desktop under the fields of **Add
   subtitles to the library › From OpenSubtitles** (with a link to the page), on Android and the Samsung TV in
   Settings › Subtitles, and on the wiki ([Subtitles](https://github.com/KuchiSofts/vlc-redesign/wiki/Subtitles#a-free-opensubtitlescom-key)).
+- **Live TV in the library next to the video**: with the Live TV add-on on, the player's library (the Library
+  button, or L) has *TV* after *Network*. Its channels show their number, logo, name and what is on with its
+  progress, under the provider's groups with All, Favorites and Recently Watched; the panel's search finds a
+  channel by name or number among all of them. A click or Enter switches channel while the video stays, the
+  right-click menu is the TV page's (Favorite, Show in the Guide, What's On…), and Up, Down, Left and Right move
+  through the channels and groups. Opened while a channel plays, the library lands on TV at that channel, in the
+  group chosen there or else the channel's own.
+  Without a source yet, *Add a Link* and *Browse the Catalog* open the TV sources over the player. The channel's
+  banner and the channel list over the video now sit beside the library instead of over it, and a channel made a
+  favourite shows its heart in the list over the video at once.
 
 ### Changed
 
@@ -48,6 +58,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - In Hide UI, pressing Space toggles playback once, and double-clicking the video respects the player's
   double-click setting (by [@SHR1F](https://github.com/SHR1F), [#65](https://github.com/KuchiSofts/vlc-redesign/pull/65)).
+
+### Fixed
+
+- The search of the library next to the video showed nothing of what was typed, nor its *Search* placeholder (the
+  field had no height); it filtered all the same.
+- The player's control bar took the keyboard focus whenever a new media started (its buttons are made again, and
+  each one removed handed the focus to a neighbour even when it did not have it): a channel tuned with Enter from
+  the library next to the video left the list. The focus moves on only when the button removed had it.
 
 ## [0.5.6] · 2026-11-07
 

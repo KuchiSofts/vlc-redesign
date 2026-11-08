@@ -113,7 +113,10 @@ public:
     // the keys in the order shown (zapping goes through them)
     QStringList keys() const;
 
-    void refilter();
+    // (from QML too: Recently Watched shown again in the order of now; the
+    // list over the video is not filtered again at every switch, its channel
+    // up and down would go back and forth between the last two, see zap())
+    Q_INVOKABLE void refilter();
     void nowNextChanged(const QSet<QString>& keys);
 
 signals:

@@ -5,7 +5,11 @@
  * HTTP), then, when the build has a backend (libcurl outside Windows,
  * WinHTTP on Windows), the same through local servers
  * (extras/juxtopposed/http-test-server.py): what each server received,
- * deadlines, timeouts, cancels from another thread, sizes.
+ * deadlines, timeouts, cancels from another thread, sizes; the work of the
+ * interface off its thread (runInBackground, an answer read on the worker
+ * thread). With --shutdown, quitting: the requests cancelled, all of it
+ * waited for at most 5 s, a stuck worker let go with what it holds (run it
+ * without the leak checker: that worker is left on purpose).
  *
  * Linux, from the root of the tree, with g++, Qt 6 Core, libcurl, Python 3:
  *   g++ -std=c++17 -O1 -Wall -Wextra -fPIC -DQT_HAS_LIBCURL -I. -Imodules/gui/qt \
@@ -18,14 +22,20 @@
 
 #include <QCoreApplication>
 #include <QElapsedTimer>
+#include <QEventLoop>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QProcess>
 #include <QStringList>
+#include <QThread>
+#include <QTimer>
 
 #include <algorithm>
+#include <atomic>
 #include <chrono>
 #include <cstdio>
+#include <functional>
+#include <memory>
 #include <thread>
 
 static int checks = 0;
@@ -350,32 +360,190 @@ static void testBounds(const Servers &s)
     CHECK(before.run(echo).error == QLatin1String("Cancelled"));
 }
 
+// ---------------------------------------------------------------------------
+// The work of the interface off its thread (runInBackground), and the
+// answers read on the worker thread (httpRequestAsync's onWorker)
+
+// the events of this thread, until condition or ms
+static bool waitUntil(const std::function<bool()> &condition, int ms)
+{
+    QElapsedTimer timer;
+    timer.start();
+    while (!condition() && timer.elapsed() < ms)
+    {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 20);
+        QThread::msleep(2);
+    }
+    return condition();
+}
+
+static void testWorkers(const Servers *s)
+{
+    const QThread *const main = QThread::currentThread();
+    // the work on another thread, then done on this one, in that order
+    {
+        QObject context;
+        auto workThread = std::make_shared<const QThread *>(nullptr);
+        auto doneThread = std::make_shared<const QThread *>(nullptr);
+        auto order = std::make_shared<QByteArray>();
+        CHECK(runInBackground(&context, [workThread, order]() {
+            *workThread = QThread::currentThread();
+            *order += 'w';
+        }, [doneThread, order]() {
+            *doneThread = QThread::currentThread();
+            *order += 'd';
+        }));
+        CHECK(waitUntil([&]() { return *doneThread != nullptr; }, 5000));
+        CHECK(*workThread && *workThread != main && *doneThread == main && *order == "wd");
+    }
+    // done dropped once its context is gone; the work done all the same
+    {
+        auto context = std::make_unique<QObject>();
+        auto worked = std::make_shared<std::atomic<bool>>(false);
+        auto called = std::make_shared<bool>(false);
+        CHECK(runInBackground(context.get(), [worked]() {
+            QThread::msleep(100);
+            *worked = true;
+        }, [called]() { *called = true; }));
+        context.reset();
+        CHECK(waitUntil([&]() { return worked->load(); }, 5000));
+        waitUntil([]() { return false; }, 200);
+        CHECK(!*called);
+    }
+    if (!s)
+        return;
+    // an answer read on the worker thread, then done on this one
+    {
+        QObject context;
+        auto readOn = std::make_shared<const QThread *>(nullptr);
+        auto method = std::make_shared<QString>();
+        auto doneOn = std::make_shared<const QThread *>(nullptr);
+        HttpRequest request;
+        request.url = QUrl(s->url(s->first, "/echo"));
+        httpRequestAsync(&context, request, [readOn, method](const HttpResponse &reply) {
+            *readOn = QThread::currentThread();
+            *method = echoOf(reply).value(QLatin1String("method")).toString();
+        }, [doneOn, method](const HttpResponse &reply) {
+            *doneOn = QThread::currentThread();
+            CHECK(reply.status == 200 && *method == QLatin1String("GET"));
+        });
+        CHECK(waitUntil([&]() { return *doneOn != nullptr; }, 10000));
+        CHECK(*readOn && *readOn != main && *doneOn == main);
+    }
+    // the context gone: its request cancelled at once, done dropped
+    {
+        auto context = std::make_unique<QObject>();
+        struct End { std::atomic<bool> ended { false }; QString error; long long ms = 0; };
+        auto end = std::make_shared<End>();
+        auto called = std::make_shared<bool>(false);
+        HttpRequest request;
+        request.url = QUrl(s->url(s->first, "/slow-headers?ms=8000"));
+        const auto start = std::chrono::steady_clock::now();
+        httpRequestAsync(context.get(), request, [end, start](const HttpResponse &reply) {
+            end->error = reply.error;
+            end->ms = msSince(start);
+            end->ended = true;
+        }, [called](const HttpResponse &) { *called = true; });
+        waitUntil([]() { return false; }, 200);
+        context.reset();
+        CHECK(waitUntil([&]() { return end->ended.load(); }, 5000));
+        waitUntil([]() { return false; }, 100);
+        CHECK(end->error == QLatin1String("Cancelled") && end->ms < 2500 && !*called);
+    }
+}
+
+// When the application quits: the requests cancelled, then all of them and
+// the work waited for together, at most 5 s; what still runs then let go,
+// what it holds alive. (Its own run: the stuck work is left on purpose, so
+// the leak checker is off for it.)
+static int testShutdown(QCoreApplication &app, const Servers *s)
+{
+    struct Held
+    {
+        std::atomic<bool> *freed;
+        ~Held() { *freed = true; }
+    };
+    static std::atomic<bool> freed { false };
+    static std::atomic<bool> release { false };
+    static std::atomic<bool> stuckEnded { false };
+    QObject context;
+    std::shared_ptr<Held> held(new Held { &freed });
+    CHECK(runInBackground(&context, [held]() {
+        // stuck (a share that no longer answers): far past the bound
+        for (int i = 0; i < 30000 && !release; ++i)
+            QThread::msleep(1);
+        stuckEnded = true;
+    }));
+    held.reset();
+    auto quickEnded = std::make_shared<std::atomic<bool>>(false);
+    CHECK(runInBackground(&context, [quickEnded]() {
+        QThread::msleep(300);
+        *quickEnded = true;
+    }));
+    auto requestError = std::make_shared<QString>();
+    if (s)
+    {
+        HttpRequest request;
+        request.url = QUrl(s->url(s->first, "/slow-headers?ms=20000"));
+        httpRequestAsync(&context, request, [requestError](const HttpResponse &reply) { *requestError = reply.error; },
+                         [](const HttpResponse &) {});
+    }
+    QTimer::singleShot(200, &app, &QCoreApplication::quit);
+    const auto start = std::chrono::steady_clock::now();
+    app.exec();
+    const long long quitMs = msSince(start);
+    // the quick work and the request waited for, the stuck work let go at
+    // the bound, its function and what it holds alive
+    CHECK(quitMs >= 200 + 4500 && quitMs < 200 + 7000);
+    CHECK(*quickEnded && !stuckEnded && !freed);
+    if (s)
+        CHECK(*requestError == QLatin1String("Cancelled"));
+    // nothing more is started once quitting
+    CHECK(!runInBackground(&context, []() {}));
+    std::printf("quitting: %lld ms with a stuck one (the bound: 5 s); the request %s\n", quitMs,
+                qPrintable(requestError->isEmpty() ? QStringLiteral("-") : *requestError));
+    // (let it end now, before the process does)
+    release = true;
+    for (int i = 0; i < 5000 && !stuckEnded; ++i)
+        QThread::msleep(1);
+    return failures;
+}
+
 int main(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
-    testRules();
     const QString python = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("python3");
     const QString script = argc > 2 ? QString::fromLocal8Bit(argv[2]) : QStringLiteral("extras/juxtopposed/http-test-server.py");
-    if (httpRequestSupported())
+    const bool shutdown = argc > 3 && QByteArray(argv[3]) == "--shutdown";
+    if (!shutdown)
+        testRules();
+    Servers servers;
+    const bool network = httpRequestSupported();
+    if (network && !startServers(servers, python, script))
     {
-        Servers servers;
-        if (!startServers(servers, python, script))
-        {
-            std::fprintf(stderr, "the test servers didn't start (%s %s)\n", qPrintable(python), qPrintable(script));
-            ++failures;
-        }
-        else
+        std::fprintf(stderr, "the test servers didn't start (%s %s)\n", qPrintable(python), qPrintable(script));
+        ++failures;
+    }
+    else if (shutdown)
+        testShutdown(app, network ? &servers : nullptr);
+    else
+    {
+        if (network)
         {
             testRedirects(servers);
             testBounds(servers);
         }
+        else
+            std::printf("no HTTP backend in this build: its rules and the work off the thread only\n");
+        testWorkers(network ? &servers : nullptr);
+    }
+    if (network)
+    {
         servers.process.closeWriteChannel();
         if (!servers.process.waitForFinished(5000))
             servers.process.kill();
         servers.process.waitForFinished(2000);
     }
-    else
-        std::printf("no HTTP backend in this build: its rules only\n");
-    std::printf("http requests: %d checks, %d failed\n", checks, failures);
+    std::printf("http requests%s: %d checks, %d failed\n", shutdown ? " (quitting)" : "", checks, failures);
     return failures ? 1 : 0;
 }

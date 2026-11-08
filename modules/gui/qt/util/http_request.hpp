@@ -90,6 +90,22 @@ private:
 };
 
 // Runs the request on a worker thread and calls done in the thread of
-// context. done is dropped if context is destroyed first.
+// context. done is dropped if context is destroyed first (the request is
+// then cancelled).
 HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
                             std::function<void(const HttpResponse&)> done);
+// The same, onWorker called with the answer on the worker thread first (to
+// read it there: a large answer is parsed off the thread of the interface;
+// it must touch nothing of the interface), then done.
+HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
+                            std::function<void(const HttpResponse&)> onWorker,
+                            std::function<void(const HttpResponse&)> done);
+
+// Work of the interface off its thread (a file written, a folder read, an
+// archive unpacked): work on a worker thread, then done in the thread of
+// context, dropped if context is destroyed first. When the application
+// quits, the work still running and the requests (cancelled first) are
+// waited for together, at most 5 s; what still runs then is let go, never
+// deleted (what its functions hold stays alive). false, and nothing run,
+// once the application quits.
+bool runInBackground(QObject* context, std::function<void()> work, std::function<void()> done = {});

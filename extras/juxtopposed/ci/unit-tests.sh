@@ -71,7 +71,7 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(p
     $(pkg-config --libs Qt6Core) -lz -o "$out/subtitle-services"
 "$out/subtitle-services" extras/juxtopposed/fixtures/subtitle-services
 
-echo "== the interface's HTTP client (redirects, deadlines, cancels)"
+echo "== the interface's HTTP client (redirects, deadlines, cancels) and its work off the thread"
 # with libcurl (its development files), through local servers; without,
 # the rules of its redirects only
 if pkg-config --exists libcurl; then
@@ -85,6 +85,8 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC $http -I. -Imodules/gui/qt $(pkg-con
     extras/juxtopposed/http-request-test.cpp modules/gui/qt/util/http_request.cpp \
     $(pkg-config --libs Qt6Core) $httplibs -o "$out/http-request-test"
 "$out/http-request-test" python3 extras/juxtopposed/http-test-server.py
+# quitting: a stuck worker is let go on purpose (not a leak of the code)
+ASAN_OPTIONS=detect_leaks=0:abort_on_error=1 "$out/http-request-test" python3 extras/juxtopposed/http-test-server.py --shutdown
 
 echo "== the updater's files: on the disk before they take their name (QSaveFile)"
 # (no sanitizer: the probe of the system's calls is preloaded first)

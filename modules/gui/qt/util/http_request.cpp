@@ -552,9 +552,15 @@ HttpResponse perform(const HttpRequest& original, RequestState& state)
 }
 
 namespace {
-// The requests in flight. Their threads run the code of this module: when
-// the application quits they are cancelled and waited for, rather than
-// left running (detached) while the interface and its module go away.
+// The requests in flight and the background work (runInBackground). Their
+// threads run the code of this module: when the application quits (or
+// goes: the registry is its child) the requests are cancelled, then all of
+// them are waited for together, at most shutdownMs, rather than left
+// running (detached) while the interface and its module go away. One still
+// running then (a call of the system that doesn't return) is let go: its
+// thread is never deleted, nor what it uses.
+constexpr int shutdownMs = 5000;
+
 class RequestRegistry : public QObject
 {
 public:
@@ -576,6 +582,7 @@ public:
 
     bool isShutDown() const { return m_shutDown; }
 
+    // (state: null for background work, nothing to cancel)
     void add(QThread* thread, const std::shared_ptr<RequestState>& state)
     {
         m_requests.insert(thread, state);
@@ -587,18 +594,40 @@ public:
     {
         m_shutDown = true;
         for (const auto& state : std::as_const(m_requests))
-            state->cancel();
+            if (state)
+                state->cancel();
         // cancelled, a request ends at once; the bound only keeps a stuck
-        // system call from blocking the exit: one bound for all of them (not
-        // ten seconds each, one after the other)
-        const QDeadlineTimer deadline(10000);
+        // system call (or work) from blocking the exit: one bound for all
+        // of them (not so long each, one after the other)
+        const QDeadlineTimer deadline(shutdownMs);
         for (auto it = m_requests.cbegin(); it != m_requests.cend(); ++it)
         {
             QThread* const thread = it.key();
             if (thread->wait(deadline))
                 delete thread; // its deleteLater would come after the event loop
+            // else let go: deleting a running QThread aborts, and its work
+            // still uses what its function holds
         }
         m_requests.clear();
+    }
+
+    // A thread of this registry: done in the thread of context once it has
+    // ended (dropped if context is gone first), then the thread deleted
+    void start(QThread* thread, QObject* context, std::function<void()> done,
+               const std::shared_ptr<RequestState>& state)
+    {
+        QObject::connect(thread, &QThread::finished, context, std::move(done));
+        QObject::connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+        add(thread, state);
+        // nobody waits for the answer any more: the request stops
+        QMetaObject::Connection cancelWithContext;
+        if (state)
+            cancelWithContext = QObject::connect(context, &QObject::destroyed, this, [state]() { state->cancel(); });
+        QObject::connect(thread, &QThread::finished, this, [this, thread, cancelWithContext]() {
+            remove(thread);
+            QObject::disconnect(cancelWithContext);
+        });
+        thread->start();
     }
 
 private:
@@ -635,6 +664,13 @@ void HttpSyncRequest::cancel()
 HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
                             std::function<void(const HttpResponse&)> done)
 {
+    return httpRequestAsync(context, std::move(request), {}, std::move(done));
+}
+
+HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
+                            std::function<void(const HttpResponse&)> onWorker,
+                            std::function<void(const HttpResponse&)> done)
+{
     RequestRegistry* const registry = RequestRegistry::instance();
     // the application quitting: no new request (done is dropped, as when
     // context goes away)
@@ -643,29 +679,45 @@ HttpCancel httpRequestAsync(QObject* context, HttpRequest request,
 
     auto response = std::make_shared<HttpResponse>();
     auto state = std::make_shared<RequestState>();
-    QThread* thread = QThread::create([request = std::move(request), response, state]() {
+    QThread* thread = QThread::create([request = std::move(request), response, state,
+                                       onWorker = std::move(onWorker)]() {
         *response = perform(request, *state);
+        if (onWorker)
+            onWorker(*response);
     });
     // The context connection drops done if context goes away first.
-    QObject::connect(thread, &QThread::finished, context,
-                     [response, done = std::move(done)]() { done(*response); });
-    QObject::connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+    auto finished = [response, done = std::move(done)]() { done(*response); };
     if (registry)
+        registry->start(thread, context, std::move(finished), state);
+    else
     {
-        registry->add(thread, state);
-        // nobody waits for the answer any more: the request stops
-        const QMetaObject::Connection cancelWithContext =
-            QObject::connect(context, &QObject::destroyed, registry, [state]() { state->cancel(); });
-        QObject::connect(thread, &QThread::finished, registry,
-                         [registry, thread, cancelWithContext]() {
-            registry->remove(thread);
-            QObject::disconnect(cancelWithContext);
-        });
+        QObject::connect(thread, &QThread::finished, context, std::move(finished));
+        QObject::connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+        thread->start();
     }
-    thread->start();
     // (the state goes with the request: nothing to stop once it has ended)
     return [weak = std::weak_ptr<RequestState>(state)]() {
         if (const auto alive = weak.lock())
             alive->cancel();
     };
+}
+
+bool runInBackground(QObject* context, std::function<void()> work, std::function<void()> done)
+{
+    RequestRegistry* const registry = RequestRegistry::instance();
+    // the application quitting: no new work (done is dropped)
+    if (registry && registry->isShutDown())
+        return false;
+    QThread* thread = QThread::create(std::move(work));
+    if (!done)
+        done = []() {};
+    if (registry)
+        registry->start(thread, context, std::move(done), nullptr);
+    else
+    {
+        QObject::connect(thread, &QThread::finished, context, std::move(done));
+        QObject::connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+        thread->start();
+    }
+    return true;
 }

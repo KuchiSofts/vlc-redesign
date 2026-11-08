@@ -1023,19 +1023,20 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
         }
         setState(Preparing);
         // Checked and written on a worker thread: the interface stays
-        // responsive. The answer comes back by its finished signal, which
-        // is dropped if the updater is gone.
+        // responsive; waited for at the exit, a few seconds at most
+        // (runInBackground: a staging cut there leaves no ready.txt). Its
+        // answer is dropped if the updater is gone.
         auto error = std::make_shared<QString>();
         const QByteArray delta = response.body;
         const QString dir = appDir();
         const QString version = m_latestVersion;
-        QThread *worker = QThread::create([error, delta, expectedSha256, dir, version]() {
+        runInBackground(this, [error, delta, expectedSha256, dir, version]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
             if (sha256Hex(delta) != expectedSha256)
                 *error = qtr("The update doesn't match its checksum, so it wasn't used.");
             else // (its programs' publisher checked there, before ready.txt)
                 *error = stageDelta(delta, dir, version);
-        });
-        connect(worker, &QThread::finished, this, [this, error]() {
+        }, [this, error]() {
             if (error->isEmpty()) {
                 setState(Ready);
                 return;
@@ -1045,8 +1046,6 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
             m_deltaFailed = true;
             setState(Failed, *error);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
     });
 }
 
@@ -1160,10 +1159,10 @@ void RedesignUpdater::findStagedUpdate()
         const QString dir = appDir();
         auto error = std::make_shared<QString>();
         m_verifyingStaged = true;
-        QThread *worker = QThread::create([error, dir]() {
+        runInBackground(this, [error, dir]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
             *error = stagedPublisherMismatch(dir + QStringLiteral("/.update/staged"));
-        });
-        connect(worker, &QThread::finished, this, [this, error, dir, version]() {
+        }, [this, error, dir, version]() {
             m_verifyingStaged = false;
             if (!error->isEmpty()) {
                 msg_Warn(m_intf, "update to %s: a program staged isn't of this copy's publisher: not used",
@@ -1178,8 +1177,6 @@ void RedesignUpdater::findStagedUpdate()
             m_latestVersion = version;
             setState(Ready);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
 #else
         // (small updates are Windows': nothing of another publisher to check)
         m_latestVersion = version;
@@ -1296,13 +1293,14 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
         }
         setState(Preparing);
         // Checked and saved on a worker thread: the interface stays
-        // responsive. The answer comes back by its finished signal, which
-        // is dropped if the updater is gone.
+        // responsive; waited for at the exit, a few seconds at most
+        // (runInBackground). Its answer is dropped if the updater is gone.
         struct Saved { QString error, path; };
         auto saved = std::make_shared<Saved>();
         const QByteArray body = response.body;
         const QString name = m_installerName;
-        QThread *worker = QThread::create([saved, body, expectedSha256, name]() {
+        runInBackground(this, [saved, body, expectedSha256, name]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
             if (sha256Hex(body) != expectedSha256) {
                 saved->error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
             } else {
@@ -1369,15 +1367,12 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
 #endif
 #endif
             }
-        });
-        connect(worker, &QThread::finished, this, [this, saved]() {
+        }, [this, saved]() {
             if (!saved->error.isEmpty())
                 setState(Failed, saved->error);
             else
                 launchInstaller(saved->path);
         });
-        connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-        worker->start(QThread::LowPriority);
     });
 }
 

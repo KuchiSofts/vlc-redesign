@@ -5,15 +5,22 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `f94b611735` (2026-11-08).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `978212a42d` (2026-11-08).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.5.8] · 2026-11-08
+
+An update release: more subtitle services in every app (SubSource and SubDL with your free key, OpenSubtitles.com,
+seven more with a free account or key), the languages to search, and Live TV from your own servers (Jellyfin,
+Emby, Tvheadend, NextPVR, Channels DVR, HDHomeRun), with Schedules Direct and an automatic guide, on the desktop,
+Android and the Samsung TV app.
 
 ### Added
 
@@ -57,6 +64,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   **For you** first (your country and languages) and **Recommended**; every list and guide is checked every day,
   and one that fails twice says *Not answering* and comes last. The app fetches the catalog checked last from the
   project's website once a day (offline: the one built in).
+- **Android and the Samsung TV app** have the same subtitle services as the desktop: SubSource, SubDL,
+  OpenSubtitles.com and the seven services with a free account or key (Napisy24 needs your free account), each
+  with its switch, Test or Sign in, and Remove; the four free services on by default, a service with a key turning
+  on by itself once its key works; keys and passwords kept apart from the exported settings (Android: encrypted by
+  the keystore, Android 6 and later); and **Languages to search**, with "Every other language too" off by default.
+- **Live TV accounts on Android and the Samsung TV app** too: Jellyfin (password or Quick Connect), Emby,
+  Tvheadend, NextPVR, Channels DVR, HDHomeRun, Schedules Direct and an M3U behind a login; the automatic guide,
+  the Guides tab and the catalog with your country first. Android finds HDHomeRun, Jellyfin, Emby and Channels DVR
+  on your network and offers them. Every control is reached with the TV remote, right to left too.
 
 ### Changed
 
@@ -68,6 +84,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   first: OpenSubtitles, Wizdom, Addic7ed and YIFY Subtitles. The keys stay on the computer, on Windows sealed for
   your user (a copy of the settings elsewhere can't read them), and are never written to the log; the library's
   **From OpenSubtitles** uses the same OpenSubtitles.com key and account.
+- VideoLAN's master merged up to `978212a42d` (2 commits): contrib updates, png 1.6.59 and zlib 1.4.
 - VideoLAN's master merged up to `f94b611735` (2 commits): a race in the Qt interface's MediaTreeListener destructor
   fixed; the Record item of the playlist's menu takes its icon as the other items do.
 
@@ -82,6 +99,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Android: subtitles found online are saved in the app's own storage. On Android 14 the system's media provider
+  crashed when the player read them from the shared storage, and took the player with it (0.5.7 too).
+- Android: password fields showed what was typed (the Xtream Codes form too); the TV remote's focus jumped back to
+  the tabs after Update, Test or Add; a source turned off kept showing its loading error; the catalog's "Country"
+  was translated as the music genre in 50 languages; Arabic has the right word for a password.
 - Seek bar: the frame preview showed the same frame everywhere when VLC was started with `--start-time`
   (or `--stop-time`/`--run-time`): the thumbnailer inherited it. Every preview now shows its own moment.
 

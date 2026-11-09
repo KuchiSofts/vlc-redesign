@@ -105,6 +105,40 @@ static Query episode()
     return q;
 }
 
+// A video from the network (#73): whether its address names it, the size of
+// a byte range's answer, the hash from its first and last 64 KiB
+static void testNetworkMedia()
+{
+    CHECK(namesSomething(QStringLiteral("Sintel.2010.1080p.mp4")));
+    CHECK(namesSomething(QStringLiteral("Breaking Bad S01E02.mkv")));
+    CHECK(namesSomething(QStringLiteral("סינטל.mp4")));
+    CHECK(!namesSomething(QStringLiteral("500.mp4")));
+    CHECK(!namesSomething(QStringLiteral("index.m3u8")));
+    CHECK(!namesSomething(QStringLiteral("MASTER.m3u8")));
+    CHECK(!namesSomething(QStringLiteral("stream")));
+    CHECK(!namesSomething(QStringLiteral("a1b2c3.mp4")));
+    CHECK(!namesSomething(QString()));
+    CHECK(namesSomething(QStringLiteral("1917.Film.mp4")));
+    CHECK(contentRangeTotal("bytes 0-65535/1200000") == 1200000);
+    CHECK(contentRangeTotal(" Bytes 134464-199999/200000 ") == 200000);
+    CHECK(contentRangeTotal("bytes 0-65535/*") == -1);
+    CHECK(contentRangeTotal("items 0-1/2") == -1);
+    CHECK(contentRangeTotal("") == -1);
+    // the hash of a file is the same from its pieces: 200000 bytes, byte i
+    // (7 i + 3) & 255, as the test server of http-request-test sends it
+    QByteArray file(200000, Qt::Uninitialized);
+    for (int i = 0; i < file.size(); ++i)
+        file[i] = char((7 * i + 3) & 255);
+    const QByteArray head = file.left(65536), tail = file.right(65536);
+    quint64 sum = 200000;
+    for (int i = 0; i < 65536; i += 8)
+        sum += qFromLittleEndian<quint64>(head.constData() + i) + qFromLittleEndian<quint64>(tail.constData() + i);
+    CHECK(openSubtitlesHashOf(200000, head, tail) == QStringLiteral("%1").arg(sum, 16, 16, QLatin1Char('0')));
+    CHECK(openSubtitlesHashOf(200000, head, tail).size() == 16);
+    CHECK(openSubtitlesHashOf(200000, head.left(100), tail).isEmpty());
+    CHECK(openSubtitlesHashOf(1000, head, tail).isEmpty());
+}
+
 // Languages to search after the preferred or the second language was chosen
 static void testChosenLanguagesFirst()
 {
@@ -1301,6 +1335,7 @@ int main(int argc, char **argv)
     fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures/subtitle-services");
     testCommon();
     testChosenLanguagesFirst();
+    testNetworkMedia();
     testSubSource();
     testSubDl();
     testOpenSubtitlesCom();

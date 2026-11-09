@@ -392,15 +392,30 @@ void SubtitleFinder::prepareMedia(std::function<void()> next)
         return;
     }
     double fps = 0;
+    // a stream's own title (and its year), for an address that names no
+    // film ("500.mp4"): the player's name joins the artist to it
+    QString title;
     {
         vlc_player_t *player = m_intf->p_player;
         vlc_player_Lock(player);
         const struct vlc_player_track *video = vlc_player_GetSelectedTrack(player, VIDEO_ES);
         if (video && video->fmt.video.i_frame_rate && video->fmt.video.i_frame_rate_base)
             fps = double(video->fmt.video.i_frame_rate) / video->fmt.video.i_frame_rate_base;
+        if (input_item_t *item = vlc_player_GetCurrentMedia(player))
+        {
+            char *meta = input_item_GetTitle(item);
+            title = qfu(meta).trimmed();
+            free(meta);
+            char *date = input_item_GetDate(item);
+            const QString year = qfu(date).left(4);
+            free(date);
+            if (!title.isEmpty() && year.size() == 4 && year.toInt() >= 1900 && year.toInt() <= 2100
+                && !title.contains(year))
+                title += QStringLiteral(" (%1)").arg(year);
+        }
         vlc_player_Unlock(player);
     }
-    m_search->setMedia(url, m_player->getName(), fps);
+    m_search->setMedia(url, !title.isEmpty() ? title : m_player->getName(), fps);
     const quint64 revision = m_revision;
     m_search->prepare([this, revision, next]() {
         if (revision == m_revision)
@@ -417,12 +432,24 @@ QStringList SubtitleFinder::localLanguages() const
     for (size_t i = 0; i < count; ++i)
     {
         const struct vlc_player_track *track = vlc_player_GetSubtitleTrackAt(player, i);
-        if (track && track->fmt.psz_language)
+        if (!track)
+            continue;
+        const QString language = track->fmt.psz_language
+                               ? SubtitlePreferences::normalize(qfu(track->fmt.psz_language)) : QString();
+        if (!language.isEmpty())
         {
-            const QString language = SubtitlePreferences::normalize(qfu(track->fmt.psz_language));
-            if (!language.isEmpty())
-                languages.append(language);
+            languages.append(language);
+            continue;
         }
+        // A file of the user's beside the video (or added to it) whose name
+        // says no language ("Film.srt"): taken for the preferred language,
+        // so nothing is searched over it (every app's rule). Its track's id
+        // starts with the MD5 of its MRL, the media's own tracks' don't; one
+        // found online is no file of the user's
+        const char *id = vlc_es_id_GetStrId(track->es_id);
+        if (id && strlen(id) > 33 && id[32] == '/'
+            && sources().value(QString::fromLatin1(id, 32)).kind != QLatin1String("online"))
+            languages.append(m_preferences->primary());
     }
     vlc_player_Unlock(player);
     return languages;

@@ -200,6 +200,22 @@ QList<Result> parseLegendas(const QByteArray &body, const Query &query, QString 
 QList<Result> parseYify(const QByteArray &page, const LanguageOf &languageOf);
 
 // ---------------------------------------------------------------------------
+// A video played from the network (#73: a link, a server's file)
+
+// Whether the name in a stream's address says what it is: two letters in a
+// row in its stem, and none of the names servers give every stream ("index",
+// "master", "playlist", "stream", "video"...). "500.mp4", "index.m3u8": no;
+// the stream's title then (every app's rule)
+bool namesSomething(const QString &fileName);
+// The whole size in a Content-Range ("bytes 0-65535/1200000"), -1 when it
+// says none ("*") or isn't one
+qint64 contentRangeTotal(const QByteArray &contentRange);
+// The OpenSubtitles hash of a file of size bytes from its first and last
+// 64 KiB (the size plus their 64-bit little-endian words), empty when they
+// aren't 64 KiB each or the file is smaller
+QString openSubtitlesHashOf(qint64 size, const QByteArray &head, const QByteArray &tail);
+
+// ---------------------------------------------------------------------------
 // Languages to search (Settings > Subtitles): their list as it is kept,
 // "code" on, "-code" off, in their order. After the preferred language or the
 // second one was chosen: both on and first, the preferred before the second

@@ -44,7 +44,9 @@ Widgets.PageExt {
     ]
 
     // Figma 6261:15078: the media of the library, counted in the header
-    libraryItemCount: _libraryMedia.count
+    // (no count while the library has none: "0 items" stood over rows full
+    // of the media played from outside its folders, and while it was read)
+    libraryItemCount: _libraryMedia.count > 0 ? _libraryMedia.count : -1
     readonly property MLMediaModel _libraryMedia: MLMediaModel { ml: MediaLib }
 
     title: qsTr("Home")
@@ -71,10 +73,14 @@ Widgets.PageExt {
     // cards (in the grid; the list keeps its height)
     readonly property real _sectionEnd: VLCStyle.dp(20 + 20 + 17, VLCStyle.scale)
     readonly property real _cardsTop: VLCStyle.dp(20, VLCStyle.scale)
-    function _rowHeight(view, cardHeight) {
+    // (the cards of a row grow to end it at the page's margin: the picture
+    // of a card `cardWidth` wide in the design, `ratio` high for its width,
+    // grows with it, and the row with the picture)
+    function _rowHeight(view, cardHeight, cardWidth, ratio) {
         if (!MainCtx.gridView)
             return view.currentItem?.contentHeight ?? view.implicitHeight
-        return _cardsTop + cardHeight + _sectionEnd
+        const grown = Math.max(0, (view.currentItem?.cellWidth ?? cardWidth) - cardWidth)
+        return _cardsTop + cardHeight + Math.round(grown * ratio) + _sectionEnd
     }
 
     function positionContentAtBeginning() {
@@ -245,7 +251,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale), VLCStyle.dp(316, VLCStyle.scale), 9 / 16)
 
                 visible: model.count !== 0
 
@@ -333,7 +339,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale), VLCStyle.dp(200, VLCStyle.scale), 1)
 
                 visible: model.count !== 0
 
@@ -539,7 +545,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale), VLCStyle.dp(200, VLCStyle.scale), 1)
 
                 visible: model.count !== 0
 
@@ -619,7 +625,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale), VLCStyle.dp(316, VLCStyle.scale), 9 / 16)
 
                 visible: model.count !== 0
 
@@ -707,7 +713,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale), VLCStyle.dp(200, VLCStyle.scale), 1)
 
                 visible: model.count !== 0
 

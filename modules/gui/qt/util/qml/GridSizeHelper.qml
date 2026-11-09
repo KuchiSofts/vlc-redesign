@@ -50,6 +50,13 @@ QtObject{
     readonly property int _defaultHorizontalSpacing: VLCStyle.column_spacing
     readonly property int _spacingForCount: fixedPictureWidth ? horizontalSpacing : _defaultHorizontalSpacing
 
+    // The rows fill the page: as many cards as fit at the design's size,
+    // which then grow (their picture keeps its shape) so that the row ends
+    // at the page's margin, by this much at most. A page wider than that
+    // gets more cards in a row, not larger ones. Where the cards fit
+    // exactly (the design's own window), they are the design's.
+    readonly property real maxGrowth: 1.35
+
     property var maxNbItemPerRow
     readonly property int nbItemPerRow: {
         const _nbItemPerRow = Math.max(
@@ -58,19 +65,25 @@ QtObject{
                 (basePictureWidth + _spacingForCount)
             ), 1
         )
-
-        return maxNbItemPerRow ? Math.min(_nbItemPerRow, maxNbItemPerRow) : _nbItemPerRow
+        const _capped = maxNbItemPerRow ? Math.min(_nbItemPerRow, maxNbItemPerRow) : _nbItemPerRow
+        // (the most cards of a row holds until they would be larger than
+        // maxGrowth: a 4K or ultra-wide page)
+        const _needed = Math.ceil((availableWidth + _spacingForCount) /
+                                  (basePictureWidth * maxGrowth + _spacingForCount))
+        return Math.max(_capped, Math.min(_nbItemPerRow, _needed))
     }
 
     // NOTE: Responsive cell sizing based on available width
-    readonly property int cellWidth: fixedPictureWidth ? basePictureWidth
-        : (availableWidth + horizontalSpacing) / nbItemPerRow - horizontalSpacing
+    readonly property int _filledWidth: (availableWidth + horizontalSpacing) / nbItemPerRow - horizontalSpacing
+    readonly property int cellWidth: fixedPictureWidth
+        ? Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth)))
+        : _filledWidth
     readonly property int cellHeight: (basePictureHeight / basePictureWidth) * cellWidth + textHeight
 
     // NOTE: Find the maximum picture size for nbItemPerRow == 1, so that we downscale in most of the cases
     //       formula for maxPictureWidth depended on nbItemPerRow would be:
     //       (basePictureWidth + _defaultHorizontalSpacing) * (1 + 1 / nbItemPerRow) - _defaultHorizontalSpacing
-    readonly property int maxPictureWidth: fixedPictureWidth ? basePictureWidth
+    readonly property int maxPictureWidth: fixedPictureWidth ? Math.round(basePictureWidth * maxGrowth)
         : (basePictureWidth + _defaultHorizontalSpacing) * (1 + 1 / 3) - _defaultHorizontalSpacing
     readonly property int maxPictureHeight: (basePictureHeight / basePictureWidth) * maxPictureWidth
 }

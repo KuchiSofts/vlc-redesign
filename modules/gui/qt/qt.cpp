@@ -26,6 +26,7 @@
 #endif
 
 #include <qconfig.h>
+#include <QStyleHints>
 #include <QtPlugin>
 #include <QQuickStyle>
 
@@ -104,6 +105,7 @@ extern "C" char **environ;
 #include "dialogs/extensions/extensions_manager.hpp" /* Extensions manager */
 #include "dialogs/help/help.hpp"     /* Launch Update */
 #include "util/dismiss_popup_event_filter.hpp"
+#include "util/screen_fit.hpp"
 #include "maininterface/compositor.hpp"
 #include "util/vlctick.hpp"
 #include "util/shared_input_item.hpp"
@@ -1640,6 +1642,14 @@ static void *Thread( void *obj )
             QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
             return ThreadCleanup( p_intf, CLEANUP_ERROR );
         }
+
+        /* Whether the controls react to the pointer over them: asked of the
+         * system once. Qt asks again for each control it makes (a system
+         * call each: a tenth of the time Settings took to open). */
+        app.styleHints()->setUseHoverEffects( app.styleHints()->useHoverEffects() );
+
+        /* The dialogs and the other windows open inside their screen */
+        ScreenFit::install(&app);
 
         /* Check window type from the Qt platform back-end */
         bool known_type = true;

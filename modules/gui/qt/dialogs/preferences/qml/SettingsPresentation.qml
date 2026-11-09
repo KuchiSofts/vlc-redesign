@@ -50,6 +50,7 @@ readonly property var items: ({
         "qt-video-autoresize": [qsTr("Window"), qsTr("Resize window to fit video"), "boolchoice",
                                 { false: qsTr("Never"), true: qsTr("Always") }, { info: true }],
         "redesign/remember-window-geometry": [qsTr("Window"), qsTr("Remember window size and position"), "", null, { info: false }],
+        "redesign/interface-size": [qsTr("Window"), qsTr("Interface size"), "", null, { info: true }],
         "video-on-top": [qsTr("Window"), qsTr("Keep window above other windows"), "", null, { info: true }],
         "qt-titlebar": [qsTr("Window"), qsTr("Show window decorations"), "", null, { info: true }],
         "qt-name-in-title": [qsTr("Window"), qsTr("Show the file name in the title bar"), "", null, { info: true }],

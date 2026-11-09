@@ -120,6 +120,10 @@ class MainCtx : public QObject
     Q_PROPERTY(bool showRemainingTime READ isShowRemainingTime WRITE setShowRemainingTime NOTIFY showRemainingTimeChanged FINAL)
     Q_PROPERTY(VLCVarChoiceModel* extraInterfaces READ getExtraInterfaces CONSTANT FINAL)
     Q_PROPERTY(double intfScaleFactor READ getIntfScaleFactor NOTIFY intfScaleFactorChanged FINAL)
+    // "Interface size" of the settings: 0 Automatic, else a percentage of
+    // the design's size; and what Automatic finds for the window's screen
+    Q_PROPERTY(int interfaceSize READ interfaceSize NOTIFY interfaceSizeChanged FINAL)
+    Q_PROPERTY(int automaticInterfaceSize READ automaticInterfaceSize NOTIFY automaticInterfaceSizeChanged FINAL)
     Q_PROPERTY(bool mediaLibraryAvailable READ hasMediaLibrary CONSTANT FINAL)
     Q_PROPERTY(MediaLib* mediaLibrary READ getMediaLibrary CONSTANT FINAL)
     Q_PROPERTY(bool gridView READ hasGridView WRITE setGridView NOTIFY gridViewChanged FINAL)
@@ -322,6 +326,8 @@ public:
     inline bool isShowRemainingTime() const  { return m_showRemainingTime; }
     inline double getIntfScaleFactor() const { return m_intfScaleFactor; }
     Q_INVOKABLE inline double getIntfUserScaleFactor() const { return m_intfUserScaleFactor; }
+    inline int interfaceSize() const { return m_interfaceSize; }
+    inline int automaticInterfaceSize() const { return m_automaticInterfaceSize; }
     inline int CSDBorderSize() const { return 10; }
     inline double getMinIntfUserScaleFactor() const { return MIN_INTF_USER_SCALE_FACTOR; }
     inline double getMaxIntfUserScaleFactor() const { return MAX_INTF_USER_SCALE_FACTOR; }
@@ -648,6 +654,10 @@ protected:
 
     /* Flags */
     double               m_intfUserScaleFactor = 1.;
+    int                  m_interfaceSize = 0; /// "Interface size": 0 Automatic, else percent
+    int                  m_automaticInterfaceSize = 100; /// what Automatic finds for the screen
+    bool                 m_interfaceScaleForced = false; /// --qt-interface-scale
+    bool                 m_interfaceScaleDismissed = false; /// a size was chosen since
     double               m_intfScaleFactor = 1.;
     int                  i_notificationSetting = 0; /// Systray Notifications
     bool                 b_hideAfterCreation = false; /// --qt-start-minimized
@@ -786,6 +796,8 @@ public slots:
     void setLyricsMode( bool );
     void incrementIntfUserScaleFactor( bool increment);
     void setIntfUserScaleFactor( double );
+    /// "Interface size": 0 Automatic, else one of its percentages; kept
+    void setInterfaceSize( int percent );
     void setHasToolbarMenu( bool );
 
     void setPinVideoControls( bool );
@@ -855,6 +867,8 @@ signals:
     void requestInterfaceMinimized();
 
     void intfScaleFactorChanged();
+    void interfaceSizeChanged();
+    void automaticInterfaceSizeChanged();
     void intfDevicePixelRatioChanged();
     // the language of the interface changed: texts made once (models, menus,
     // dialogs) are made again; qsTr() bindings are retranslated by the engine

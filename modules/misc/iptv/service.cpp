@@ -1449,6 +1449,30 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
         if (name.endsWith(QLatin1String(".desc")) && bases.contains(name.section(u'-', 0, 0))
             && !inUse.contains(name))
             QFile::remove(dir.filePath(name));
+
+    // The files of a guide no source has anymore (removed from its source,
+    // the source deleted): a big free guide left 100 MB behind for ever (its
+    // file, index and descriptions). Those of a guide turned off or of a
+    // source disabled stay (no download again when it is turned back on);
+    // only after a reading of every source, with its secrets read.
+    // (m_lock is held: taken above for the guides kept)
+    if (!onlySources.isEmpty() || m_quit || !m_secretsReady)
+        return;
+    QSet<QString> known;
+    for (const SourceConfig& s : std::as_const(m_sources))
+        for (const QString& url : guidesOf(s, m_state.value(s.id).headerGuides, true))
+            known.insert(hashOf(url));
+    for (const QString& name : dir.entryList(QDir::Files))
+    {
+        const QString base = name.section(u'.', 0, 0).section(u'-', 0, 0);
+        const bool guideFile = name.endsWith(QLatin1String(".xmltv")) || name.endsWith(QLatin1String(".idx"))
+                            || name.endsWith(QLatin1String(".desc"));
+        if (guideFile && base.size() == 16 && !known.contains(base))
+        {
+            m_host.log(QStringLiteral("a guide no source has anymore: %1 removed").arg(name));
+            QFile::remove(dir.filePath(name));
+        }
+    }
 }
 
 void Service::rebuild()

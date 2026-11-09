@@ -14,6 +14,7 @@
  */
 #include "modules/misc/iptv/service.hpp"
 
+#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDir>
 #include <QElapsedTimer>
@@ -845,6 +846,52 @@ void testRemoveSource(const QString& dir)
               .value(QLatin1String("error")).toString() == QStringLiteral("no such source"));
 }
 
+// 19: the files of a guide no source has anymore (100 MB for a big free
+// guide) go at the next reading; the guide in use and other files stay
+void testStaleGuides(const QString& dir)
+{
+    const QString guides = dir + QStringLiteral("/cache/guides");
+    CHECK(QDir().mkpath(guides));
+    const QString stale = QStringLiteral("0123456789abcdef");
+    for (const QString& name : { stale + QStringLiteral(".xmltv"), stale + QStringLiteral(".idx"),
+                                 stale + QStringLiteral("-1794251685508.desc"), QStringLiteral("notes.txt") })
+        CHECK(writeFile(guides + u'/' + name, "x"));
+    const qint64 now = QDateTime::currentSecsSinceEpoch();
+    FakeHost host;
+    host.onDownload = [&](const QString& url, const QString& path) {
+        if (url.endsWith(QLatin1String("/list.m3u")))
+            return writeFile(path, "#EXTM3U url-tvg=\"https://epg.example/kept.xml\"\n"
+                                   "#EXTINF:-1 tvg-id=\"one.example\",One\nhttp://s/one\n");
+        if (url.endsWith(QLatin1String("/kept.xml")))
+            return writeFile(path, "<tv><channel id=\"one.example\"><display-name>One</display-name></channel>"
+                                   "<programme channel=\"one.example\" start=\"" + xmltvTime(now - 600)
+                                   + "\" stop=\"" + xmltvTime(now + 3000) + "\"><title>On now</title></programme></tv>");
+        return false;
+    };
+    {
+        Tv tv(host, dir);
+        tv.add(m3uSource());
+        CHECK(waitFor([&]() {
+            const QJsonArray list = tv.channels();
+            return list.size() == 1 && list.at(0).toObject().value(QLatin1String("guide")).toBool();
+        }));
+    }
+    // (a reading of one source added leaves the others' files: the next
+    // reading of every source, here the next start, takes them away)
+    Tv tv(host, dir);
+    CHECK(waitFor([&]() {
+        const QJsonArray list = tv.channels();
+        return list.size() == 1 && list.at(0).toObject().value(QLatin1String("guide")).toBool();
+    }));
+    const QString kept = QString::fromLatin1(
+        QCryptographicHash::hash("https://epg.example/kept.xml", QCryptographicHash::Sha1).toHex().left(16));
+    CHECK(waitFor([&]() { return !QFileInfo::exists(guides + u'/' + stale + QStringLiteral(".xmltv")); }));
+    CHECK(!QFileInfo::exists(guides + u'/' + stale + QStringLiteral(".idx")));
+    CHECK(!QFileInfo::exists(guides + u'/' + stale + QStringLiteral("-1794251685508.desc")));
+    CHECK(QFileInfo::exists(guides + u'/' + kept + QStringLiteral(".xmltv")));
+    CHECK(QFileInfo::exists(guides + QStringLiteral("/notes.txt")));
+}
+
 // 16: the programmes between two times when the ends are not in order (a
 // long programme before shorter ones): the long one still on is there
 void testProgrammesBetween()
@@ -1095,6 +1142,7 @@ int main(int argc, char** argv)
     testCutShortAndConcurrent(root + QStringLiteral("/xtream"));
     testAutoGuideRemovedMeanwhile(root + QStringLiteral("/autoguide"));
     testRemoveSource(root + QStringLiteral("/remove"));
+    testStaleGuides(root + QStringLiteral("/stale"));
     testDiscover(root + QStringLiteral("/discover"));
     testNoAnswer(root + QStringLiteral("/noanswer"));
     testKeystore(root + QStringLiteral("/keystore"));

@@ -85,7 +85,12 @@ QString nativeOf(const QString &code)
     // English: its default locale says "American English"
     if (language == QLocale::English)
         return QStringLiteral("English");
-    const QString name = QLocale(language).nativeLanguageName();
+    // a language Qt has no locale data for gets the default locale, and
+    // with it "American English" as its own name (Herero, Haitian, Hiri Motu)
+    const QLocale locale(language);
+    if (locale.language() != language)
+        return {};
+    const QString name = locale.nativeLanguageName();
     // the locale's own capitalisation: "עברית", "français" -> "Français"
     return name.isEmpty() ? name : name.left(1).toUpper() + name.mid(1);
 }

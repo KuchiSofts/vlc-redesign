@@ -13,6 +13,7 @@
 #   /slow-body?ms=&bytes=   the headers at once, then a byte every ms
 #   /stall?ms=              the headers and a byte, then nothing for ms
 #   /big?bytes=             that many bytes
+#   /file?bytes=            a file of that many bytes (byte i: (7 i + 3) & 255), with Range
 # It prints "PORTS <first> <second> <third>" once they listen, then serves
 # until its input closes (the test ends) or it is killed.
 import json
@@ -65,6 +66,20 @@ class Handler(BaseHTTPRequestHandler):
                 self.echo(body)
             elif path == "/redirect":
                 self.send(int(q.get("code", "302")), b"moved", [("Location", q.get("to", "/echo"))])
+            elif path == "/file":
+                size = int(q.get("bytes", "0"))
+                start, end, code, extra = 0, size - 1, 200, [("Accept-Ranges", "bytes")]
+                rng = self.headers.get("Range", "")
+                if rng.startswith("bytes=") and size > 0:
+                    first, _, last = rng[6:].partition("-")
+                    if first:
+                        start, end = int(first), min(int(last) if last else size - 1, size - 1)
+                    else:
+                        start = max(0, size - int(last))
+                    code = 206
+                    extra.append(("Content-Range", "bytes %d-%d/%d" % (start, end, size)))
+                data = bytes(((7 * i + 3) & 255) for i in range(start, end + 1))
+                self.send(code, data, extra)
             elif path == "/loop":
                 self.send(302, b"again", [("Location", "/loop")])
             elif path == "/auth":

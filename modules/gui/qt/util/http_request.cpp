@@ -130,6 +130,30 @@ bool httpFollowRedirect(HttpRequest& request, int status, const QUrl& target, QS
     return true;
 }
 
+QByteArray HttpResponse::header(const char *name) const
+{
+    for (const auto &h : headers)
+        if (h.first.compare(name, Qt::CaseInsensitive) == 0)
+            return h.second;
+    return {};
+}
+
+namespace {
+// A line of the answer's headers ("Name: value", its end of line or not)
+// into the response; the status line and malformed ones are passed over
+[[maybe_unused]] void addHeaderLine(HttpResponse &response, QByteArray line)
+{
+    if (response.headers.size() >= 100)
+        return;
+    while (line.endsWith('\n') || line.endsWith('\r'))
+        line.chop(1);
+    const qsizetype colon = line.indexOf(':');
+    if (colon <= 0 || line.startsWith("HTTP/"))
+        return;
+    response.headers.append({ line.left(colon).trimmed(), line.mid(colon + 1).trimmed() });
+}
+}
+
 #ifdef _WIN32
 namespace {
 // WinHTTP in its asynchronous mode. A synchronous call can't be stopped
@@ -488,6 +512,23 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
                 break;
         }
         response.status = static_cast<int>(status);
+        // its headers: the status line, then one a line
+        {
+            DWORD rawSize = 0;
+            WinHttpQueryHeaders(call.handle(), WINHTTP_QUERY_RAW_HEADERS_CRLF, WINHTTP_HEADER_NAME_BY_INDEX,
+                                WINHTTP_NO_OUTPUT_BUFFER, &rawSize, WINHTTP_NO_HEADER_INDEX);
+            if (GetLastError() == ERROR_INSUFFICIENT_BUFFER && rawSize > 0 && rawSize <= 256 * 1024)
+            {
+                std::wstring raw(rawSize / sizeof(wchar_t) + 1, L'\0');
+                if (WinHttpQueryHeaders(call.handle(), WINHTTP_QUERY_RAW_HEADERS_CRLF, WINHTTP_HEADER_NAME_BY_INDEX,
+                                        raw.data(), &rawSize, WINHTTP_NO_HEADER_INDEX))
+                {
+                    const QString text = QString::fromWCharArray(raw.c_str(), int(rawSize / sizeof(wchar_t)));
+                    for (const QString &line : text.split(QStringLiteral("\r\n"), Qt::SkipEmptyParts))
+                        addHeaderLine(response, line.toUtf8());
+                }
+            }
+        }
         if (isRedirect(response.status))
         {
             // where to (perform() decides); its body isn't read
@@ -582,6 +623,20 @@ size_t curlWrite(char* data, size_t size, size_t count, void* opaque)
     return bytes;
 }
 
+// The answer's headers, a line at a time; a new status line starts a new
+// answer (after a 401 asked again, or a 100), whose headers are the ones kept
+size_t curlHeader(char* data, size_t size, size_t count, void* opaque)
+{
+    auto* t = static_cast<CurlTransfer*>(opaque);
+    const size_t bytes = size * count;
+    const QByteArray line(data, static_cast<qsizetype>(bytes));
+    if (line.startsWith("HTTP/"))
+        t->response.headers.clear();
+    else
+        addHeaderLine(t->response, line);
+    return bytes;
+}
+
 int curlProgress(void* opaque, curl_off_t dltotal, curl_off_t, curl_off_t, curl_off_t)
 {
     auto* t = static_cast<CurlTransfer*>(opaque);
@@ -673,6 +728,8 @@ HttpResponse performHop(const HttpRequest& request, RequestState& state, const Q
 
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curlWrite);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &transfer);
+    curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, curlHeader);
+    curl_easy_setopt(curl, CURLOPT_HEADERDATA, &transfer);
     curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, curlProgress);
     curl_easy_setopt(curl, CURLOPT_XFERINFODATA, &transfer);
     curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);

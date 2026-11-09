@@ -25,6 +25,11 @@ struct HttpResponse
     int status = 0;    // HTTP status, 0 when no response was received
     QByteArray body;   // at most maxBytes + 1 bytes, to detect oversized replies
     QString error;     // transport error, empty on success
+    // The headers of the answer (the last one: not a redirect's, nor a 401
+    // asked again), as the server sent them, at most 100
+    QList<QPair<QByteArray, QByteArray>> headers;
+    // One of them by its name, in any case; empty when it isn't there
+    QByteArray header(const char *name) const;
 };
 
 struct HttpRequest

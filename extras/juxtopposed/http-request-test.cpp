@@ -275,6 +275,35 @@ static long long msSince(const std::chrono::steady_clock::time_point &start)
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
 }
 
+// The headers of an answer: by their name in any case; the last answer's
+// after a redirect; a byte range (Content-Range) as a file's read in pieces
+static void testHeaders(const Servers &s)
+{
+    HttpRequest echo;
+    echo.url = QUrl(s.url(s.first, "/echo"));
+    HttpResponse r = httpRequestSync(echo);
+    CHECK(r.status == 200 && r.header("Content-Type") == "application/json"
+          && r.header("content-type") == "application/json" && r.header("X-None").isEmpty());
+    // through a redirect: the headers of the answer at its end only
+    HttpRequest moved;
+    moved.url = QUrl(redirectTo(s, s.first, "302", QStringLiteral("/echo")));
+    r = httpRequestSync(moved);
+    CHECK(r.status == 200 && r.header("Content-Type") == "application/json" && r.header("Location").isEmpty());
+    // the first and the last 64 KiB of a file of 200000 bytes
+    HttpRequest head;
+    head.url = QUrl(s.url(s.first, "/file?bytes=200000"));
+    head.headers = { { "Range", "bytes=0-65535" } };
+    head.maxBytes = 65536;
+    r = httpRequestSync(head);
+    CHECK(r.status == 206 && r.header("Content-Range") == "bytes 0-65535/200000" && r.body.size() == 65536
+          && quint8(r.body.at(1)) == 10 && r.header("Accept-Ranges") == "bytes");
+    HttpRequest tail = head;
+    tail.headers = { { "Range", "bytes=134464-199999" } };
+    r = httpRequestSync(tail);
+    CHECK(r.status == 206 && r.header("Content-Range") == "bytes 134464-199999/200000" && r.body.size() == 65536
+          && quint8(r.body.at(0)) == quint8((7 * 134464 + 3) & 255));
+}
+
 static void testBounds(const Servers &s)
 {
     // A deadline over a slow answer (a byte every 100 ms, 20 s in all),
@@ -586,6 +615,7 @@ int main(int argc, char **argv)
         if (network)
         {
             testRedirects(servers);
+            testHeaders(servers);
             testBounds(servers);
             testStress(servers);
         }

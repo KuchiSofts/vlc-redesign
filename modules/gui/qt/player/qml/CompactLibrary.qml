@@ -509,7 +509,12 @@ FocusScope {
         }
     }
     MLPlaylistModel { id: playlistModel; ml: root._mlAvailable ? MediaLib : null }
-    MLRecentMediaModel { id: recentModel; ml: root._mlAvailable ? MediaLib : null }
+    // (the last played first, as the Recent page of the library)
+    MLRecentMediaModel {
+        id: recentModel
+        ml: root._mlAvailable ? MediaLib : null
+        sortOrder: Qt.DescendingOrder
+    }
 
     Binding {
         target: playlistModel

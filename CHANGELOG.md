@@ -17,6 +17,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Added
 
+- **Interface size** (Settings › Interface › Window): how large the pages, texts and controls are drawn.
+  *Automatic (N %)* picks the size that suits the screen the window is on and says which, then *100 %* (the design's
+  own size), *110 %*, *125 %*, *150 %*, *175 %* and *200 %*. A choice applies at once, without a restart, and is
+  kept. Automatic is 100 % on a usual desktop (the system's own scaling of the screen is not applied twice), more on
+  a screen that is small in scaled pixels or dense and left unscaled (4K at 100 % on X11), never over 150 %; it is
+  found again when the window moves to another screen or the screen's settings change. The same setting, with the
+  same choices, in the Android and Samsung TV apps. It replaces the scale VLC kept: a scale you had changed becomes
+  the nearest choice, the zoom keys (Ctrl + and Ctrl −) and a pinch step through the choices.
 - In full screen, a shortcut no longer has to show the playback controls, as in VLC 3
   ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), by [@BarbodF](https://github.com/BarbodF)'s
   request; Fixes #72): **Settings › Interface › Playback Controls › When you use a shortcut in full screen**:
@@ -33,6 +41,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- The first window is sized from the screen: 16:9, about two thirds of it (1280 × 720 on Full HD as before, larger
+  on a 1440p, 4K or ultra-wide screen, never more than nine tenths of a small one), larger with a larger interface
+  size. A window whose saved place no longer fits (a monitor unplugged, another resolution, a taskbar moved) opens
+  at its size where it can be reached, not out of sight or back at the default size; at the largest interface sizes
+  the window's smallest size never exceeds the screen.
+- Every dialog and window opens inside its screen: the dialogs of the interface are sized from the window and scroll
+  when it is too low for them (Open Network Stream put its name field under the buttons in a small window or at a
+  large interface size), and the windows of their own (Media Information, Messages, the advanced preferences, the
+  detached play queue...) are moved and, if larger, shrunk into the area of the screen a window may use, on a
+  screen at the left of or above the main one too.
+- The rows and grids of cards fill the page: as many cards as fit at the design's size, which then grow by up to a
+  third so that the row ends at the page's margin (Home's rows, Videos, a folder's page, the playlists); a wider page
+  gets more cards in a row, not larger ones. At the design's own window size the cards are the design's.
 - 0.6.0, a full release of every app: a round of stability, start-up speed and memory in every app, smarter
   automatic subtitles tested with real downloads, the Subtitles panel the same on every device, and keys in full
   screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
@@ -41,6 +62,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Open Recent, the Recent page, Ctrl+1 to Ctrl+0 and Recent of the library beside the video list the last played
+  first (they showed the oldest of the history, and never what was just played once it held more than ten). The
+  Recent page has the header of the library's pages, and its side bar entry shows it is open.
+- The subtitle language lists no longer say "American English" as the own name of Herero, Haitian or Hiri Motu, and
+  list what you type in alphabetical order.
+- The welcome's Browse opens in the folder it suggests (Videos), the other folder choosers in your home folder, not
+  in the folder VLC was started from.
+- Home no longer says "0 items" over rows full of media while the library has none of its own (or is still read).
+- Less work on the interface's thread: changing page no longer rewrites the settings file there (each page left
+  saved its unchanged sort, flushed to the disk: a hitch on a slow disk), the subtitle services of Settings are
+  read when their page shows, not at every opening of Settings, and Qt no longer asks the system whether controls
+  react to the pointer for every control it makes.
 - Live TV's guide no longer piles up the start times of programmes that ended on the left edge of the grid (two
   could overlap on one row). Checked with the largest free guides of the catalog (553 MB of XML, 572,000
   programmes, 2,000 of your channels): read in 9.6 s in the background, the window answering all along.
@@ -119,6 +152,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
+- Windows that fit their screen are in `util/screen_fit.cpp` (the size Automatic finds, the first window, a
+  rectangle put inside a screen, a saved geometry still reachable), tested in `unit-tests.sh` (`screen-fit`: negative
+  coordinates, portrait, ultra-wide and tiny screens).
 - Tests, in `unit-tests.sh` under ASan and UBSan: the Live TV service with a fake network (`iptv-service`), the
   parsers against malformed and huge input (`parsers-fuzz`: 69 parsers), and more checks in the existing ones.
 - VideoLAN's master merged up to `2eba4cdf90` (4 commits): MKV's "mkv-seek-percent" made obsolete, an error path

@@ -29,6 +29,12 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/shortcut-feedback.c
     modules/gui/qt/player/shortcut_feedback.cpp -o "$out/shortcut-feedback"
 "$out/shortcut-feedback"
 
+echo "== windows that fit their screen (the first size and scale, a saved geometry, negative coordinates)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/screen-fit.cpp modules/gui/qt/util/screen_fit.cpp \
+    $(pkg-config --libs Qt6Core) -o "$out/screen-fit"
+"$out/screen-fit"
+
 echo "== Live TV parsers"
 # (Qt's own allocations are not ours: only the parsers' leaks count; a
 # number out of range made an int or a qint64, tvg-shift="1e9", aborts too)

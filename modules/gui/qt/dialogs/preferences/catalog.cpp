@@ -31,6 +31,9 @@ static const Option entries[] = {
     {"interface", "skins2-last"},
     {"interface", "embedded-video"}, {"interface", "qt-video-autoresize"},
     {"interface", "qt:redesign/remember-window-geometry"},
+    // how large the interface is drawn: Automatic, 100 % ... 200 % (the
+    // same setting on every app)
+    {"interface", "qt:redesign/interface-size"},
     {"interface", "video-on-top"},
     {"interface", "qt-titlebar"}, {"interface", "qt-name-in-title"},
     {"interface", "qt-fullscreen-screennumber"},

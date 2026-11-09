@@ -46,6 +46,7 @@
 #include "util/renderer_manager.hpp"
 #include "util/csdbuttonmodel.hpp"
 #include "util/subtitle_preferences.hpp"
+#include "util/screen_fit.hpp"
 
 #include "util/vlchotkeyconverter.hpp"
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
@@ -430,7 +431,6 @@ MainCtx::~MainCtx()
 
     settings->beginGroup("MainWindow");
     settings->setValue( "ShowRemainingTime", m_showRemainingTime );
-    settings->setValue( "interface-scale", QString::number( m_intfUserScaleFactor ) );
 
     /* Save playlist state */
     settings->setValue( "playqueue-panel-docked", m_playqueuePanel->m_docked );
@@ -725,6 +725,32 @@ void MainCtx::loadPrefs(const bool callSignals)
     vlc::playlist::Media::setHistoryFilter( QRegularExpression(
         getSettings()->value( "redesign/recentplay-filter" ).toString(),
         QRegularExpression::CaseInsensitiveOption ) );
+
+    /* "Interface size" of the settings: Automatic (0, the size found for
+     * the screen), or a percentage of the design's size. The one setting of
+     * the scale: the factor an older version kept (always, 1 when it was
+     * never changed) becomes the nearest choice, once. */
+    int interfaceSize;
+    if (getSettings()->contains( "redesign/interface-size" ))
+        interfaceSize = getSettings()->value( "redesign/interface-size", 0 ).toInt();
+    else
+    {
+        const double kept = getSettings()->value( "MainWindow/interface-scale", 1.0 ).toDouble();
+        interfaceSize = std::fabs( kept - 1.0 ) < 0.005 ? 0 : ScreenFit::nearestInterfaceSize( kept * 100. );
+        getSettings()->setValue( "redesign/interface-size", interfaceSize );
+    }
+    if (interfaceSize != 0)
+        interfaceSize = ScreenFit::nearestInterfaceSize( interfaceSize );
+    const bool sizeChanged = interfaceSize != m_interfaceSize;
+    m_interfaceSize = interfaceSize;
+    /* (--qt-interface-scale on the command line: that factor, as it is) */
+    const auto forcedScaleFactor = var_InheritFloat(p_intf, "qt-interface-scale");
+    m_interfaceScaleForced = forcedScaleFactor != -1 && !m_interfaceScaleDismissed;
+    if (m_interfaceScaleForced)
+        m_intfUserScaleFactor = forcedScaleFactor;
+    updateIntfScaleFactor();
+    if (sizeChanged && callSignals)
+        emit interfaceSizeChanged();
 }
 
 void MainCtx::loadFromSettingsImpl(const bool callSignals)
@@ -766,15 +792,6 @@ void MainCtx::loadFromSettingsImpl(const bool callSignals)
     const auto colorSchemeIndex = getSettings()->value( "MainWindow/color-scheme-index", 0 ).toInt();
     m_colorScheme->setCurrentIndex(colorSchemeIndex);
 
-    /* user interface scale factor */
-    auto userIntfScaleFactor = var_InheritFloat(p_intf, "qt-interface-scale");
-    if (userIntfScaleFactor == -1)
-        userIntfScaleFactor = getSettings()->value( "MainWindow/interface-scale", 1.0).toDouble();
-    if (m_intfUserScaleFactor != userIntfScaleFactor)
-    {
-        m_intfUserScaleFactor = userIntfScaleFactor;
-        updateIntfScaleFactor();
-    }
 }
 
 void MainCtx::reloadPrefs()
@@ -1002,16 +1019,29 @@ void MainCtx::postHotkey(int vlcKey)
 
 void MainCtx::updateIntfScaleFactor()
 {
-    auto newValue = m_intfUserScaleFactor;
-    if (QWindow* window = p_intf->p_compositor ? p_intf->p_compositor->interfaceMainWindow() : nullptr)
+    // the screen of the window (the main one until there is a window)
+    QWindow* window = p_intf->p_compositor ? p_intf->p_compositor->interfaceMainWindow() : nullptr;
+    QScreen* screen = window ? window->screen() : nullptr;
+    // the system's own text size: 1 where it scales the pixels themselves
+    double systemScale = 1.;
+    if (screen)
+        systemScale = screen->logicalDotsPerInch() / VLC_REFERENCE_SCALE_FACTOR;
+    if (QScreen* measured = screen ? screen : QGuiApplication::primaryScreen())
     {
-        QScreen* screen = window->screen();
-        if (screen)
+        // "Interface size", Automatic: found again when the window moves
+        // to another screen or the screen's settings change
+        const int automatic = ScreenFit::automaticInterfaceSize(
+            measured->geometry().width(),
+            measured->logicalDotsPerInch() / VLC_REFERENCE_SCALE_FACTOR, measured->physicalSize() );
+        if (automatic != m_automaticInterfaceSize)
         {
-            qreal dpi = screen->logicalDotsPerInch();
-            newValue = m_intfUserScaleFactor * dpi / VLC_REFERENCE_SCALE_FACTOR;
+            m_automaticInterfaceSize = automatic;
+            emit automaticInterfaceSizeChanged();
         }
     }
+    if (!m_interfaceScaleForced)
+        m_intfUserScaleFactor = (m_interfaceSize != 0 ? m_interfaceSize : m_automaticInterfaceSize) / 100.;
+    const auto newValue = m_intfUserScaleFactor * systemScale;
 
     const int FACTOR_RESOLUTION = 100;
     if ( static_cast<int>(m_intfScaleFactor * FACTOR_RESOLUTION)
@@ -1037,19 +1067,36 @@ void MainCtx::setHasAcrylicSurface(const bool v)
 
 void MainCtx::incrementIntfUserScaleFactor(bool increment)
 {
-    if (increment)
-        setIntfUserScaleFactor(m_intfUserScaleFactor + 0.1);
-    else
-        setIntfUserScaleFactor(m_intfUserScaleFactor - 0.1);
+    // the zoom keys: the next choice of "Interface size"
+    setInterfaceSize( ScreenFit::steppedInterfaceSize( qRound(m_intfUserScaleFactor * 100.), increment ) );
 }
 
 void MainCtx::setIntfUserScaleFactor(double newValue)
 {
-    const auto value = qBound(getMinIntfUserScaleFactor(), newValue, getMaxIntfUserScaleFactor());
-    if (qFuzzyCompare(value, m_intfUserScaleFactor))
+    // (a pinch, the classic preferences) a choice of "Interface size": the
+    // nearest, the next one for a change too small to reach it
+    const int current = qRound(m_intfUserScaleFactor * 100.);
+    const double wanted = qBound(getMinIntfUserScaleFactor(), newValue, getMaxIntfUserScaleFactor()) * 100.;
+    if (std::fabs(wanted - current) < 2.)
         return;
-    m_intfUserScaleFactor = value;
+    int size = ScreenFit::nearestInterfaceSize( wanted );
+    if (size == current)
+        size = ScreenFit::steppedInterfaceSize( current, wanted > current );
+    setInterfaceSize( size );
+}
+
+void MainCtx::setInterfaceSize(int percent)
+{
+    const int size = percent == 0 ? 0 : ScreenFit::nearestInterfaceSize( percent );
+    // chosen: no more the factor of the command line
+    const bool changed = size != m_interfaceSize || m_interfaceScaleForced;
+    m_interfaceScaleForced = false;
+    m_interfaceScaleDismissed = true;
+    m_interfaceSize = size;
+    getSettings()->setValue( "redesign/interface-size", size );
     updateIntfScaleFactor();
+    if (changed)
+        emit interfaceSizeChanged();
 }
 
 void MainCtx::setHasToolbarMenu( bool hasToolbarMenu )
@@ -1835,6 +1882,30 @@ QColor MainCtx::systemAccent() const
 
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)
 {
+    // A value that is already kept is not set again: QSettings then writes
+    // the whole file once more, flushed to the disk, on the interface's
+    // thread. Every page left set its sort that way (a hitch at each change
+    // of page on a slow disk). A number or a switch is read back as text.
+    if (settings->contains(key))
+    {
+        const QVariant kept = settings->value(key);
+        bool same = kept == value;
+        if (!same && kept.typeId() == QMetaType::QString)
+        {
+            switch (value.typeId())
+            {
+            case QMetaType::Bool: case QMetaType::Int: case QMetaType::UInt:
+            case QMetaType::LongLong: case QMetaType::ULongLong: case QMetaType::Double:
+            case QMetaType::QString:
+                same = kept.toString() == value.toString();
+                break;
+            default:
+                break;
+            }
+        }
+        if (same)
+            return;
+    }
     settings->setValue(key, value);
     emit settingValueChanged(key);
 }

@@ -12,9 +12,17 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-09):
 
-- 🟡 **0.5.9 release** (branch `release/0.5.9`: `feature/stability-0.5.9` + `feature/fs-controls-72`; VideoLAN has
-  merged to `2eba4cdf90` on 9 Nov): built and tested together on Windows, then Linux, macOS and ARM64 on GitHub;
-  Android and the Samsung TV app finished the same round (their own branches).
+- 🟡 **0.6.0, a full release of every app** (the work planned as 0.5.9 is a big improvement for
+  every version, so it ships as 0.6.0 with every package): branch `release/0.6.0` (`feature/stability-0.5.9` +
+  `feature/fs-controls-72` + the subtitle work below; VideoLAN merged to `aa58853d86`), built and tested together on
+  Windows, then Linux, macOS and ARM64 on GitHub; Android (versionCode 13106000) and the Samsung TV app at 0.6.0 too.
+- 🟢 **Smarter automatic subtitles** (every app): a film opened as the
+  app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
+  longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for
+  left-to-right players shows in its place (93c03f55be, 776d5c8efa; Samsung a6aafb9, f945bcf; Android). 10/10 real
+  cases on Windows, English and Hebrew by themselves on the Samsung TV and the Android TVs.
+- 🟢 **The Subtitles panel the same on every device**: the Samsung TV app's panel rebuilt as the desktop's (2.9 % of
+  pixels differ, the fonts' drawing; 2bc9665), Android's opened above its button and being made the same.
 - 🟢 **0.5.9 stability round, second part** (desktop): no secret header to another server on a redirect (both HTTP
   backends, 169 checks on local servers), WinHTTP's asynchronous mode (a cancel never closes a handle in use; 1,200
   random cancels), update files synced before ready.txt, Live TV downloads that stall killed after 30 s (a logo

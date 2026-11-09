@@ -32,10 +32,10 @@ Updated as the work moves (last: 2026-11-08, 0.5.8 published).
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.9 and after
+## Next: 0.6.0 and after
 
-**0.5.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try):
+**0.6.0** is a full release of every app, with every package and installer: the round of stability, smarter
+automatic subtitles, and the same Subtitles panel on every device, made since 0.5.8:
 
 - ✅ In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
   choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
@@ -44,17 +44,25 @@ with a build to try):
 - ✅ Stability (on request), in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded,
   stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread free of
   network and disk work, no QML warning left; the desktop starts faster (window 0.60 → 0.48 s), memory soaked
-- 🔨 Online subtitles for videos played from the network (a link, SMB, NFS, UPnP/DLNA) on Android, manual and
-  automatic, as on the desktop ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), @Elshepl); checked on
-  the Samsung TV app too
-- 🟡 The release: the three apps' branches together, built and tested on every platform
+- ✅ Automatic subtitles, in every app: a film opened as the app starts
+  gets them too; a site's advert or the forced lines beside the video no longer stop the search; the video's own
+  Subs folder is used; Hebrew and Arabic punctuation written for left-to-right players shows in its place
+- ✅ Online subtitles for videos played from the network (a link, SMB, NFS, UPnP/DLNA) on Android, manual and
+  automatic, as on the desktop ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), @Elshepl); the
+  Samsung TV app too
+- ✅ The Subtitles panel the same on every device: the desktop's two columns (the languages and their subtitles),
+  the search in it and the timing; on the Samsung TV app with the remote; on Android (phones, tablets, TV) opened
+  above its button as on the desktop
+- 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
+  visits of each page
+- ✅ Android installs next to VLC for Android (it was refused before), and Android TV in Hebrew and Arabic is
+  mirrored everywhere, its focus where it should be
+- 🟡 The release: the three apps together, built and tested on every platform
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
 - 📋 The subtitle services with keys and accounts tried with real keys (SubSource, SubDL, OpenSubtitles.com and the
   seven others)
-- ✅ Android TV: after the TV sources close, the remote's focus goes back to the page (0.5.8); opened with the
-  remote, TV Sources has its tab focused and one Back closes it
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)

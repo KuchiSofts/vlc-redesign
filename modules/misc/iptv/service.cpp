@@ -1469,7 +1469,7 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
                             || name.endsWith(QLatin1String(".desc"));
         if (guideFile && base.size() == 16 && !known.contains(base))
         {
-            m_host.log(QStringLiteral("a guide no source has anymore: %1 removed").arg(name));
+            m_host.debug(QStringLiteral("a guide no source has anymore: %1 removed").arg(name));
             QFile::remove(dir.filePath(name));
         }
     }

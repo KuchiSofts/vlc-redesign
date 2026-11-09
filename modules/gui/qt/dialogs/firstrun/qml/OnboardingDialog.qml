@@ -137,7 +137,8 @@ Controls.Popup {
                 onConsentRequested: allowed => root.metadataNetworkAccess = allowed
                 onClearRequested: root.folderUrl = ""
                 onBrowseRequested: {
-                    const chosen = filePicker.chooseFolder(qsTr("Choose a media folder"))
+                    const chosen = filePicker.chooseFolder(qsTr("Choose a media folder"),
+                                                            root.folderUrl || controller.suggestedFolder)
                     if (chosen.toString() !== "")
                         root.folderUrl = chosen
                 }

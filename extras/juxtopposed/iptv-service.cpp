@@ -903,6 +903,12 @@ void testWithoutOverlaps()
     // overlapping at one end: the shorter one wins what they share
     CHECK(shape(iptv::withoutOverlaps({ entry(0, 90, "A"), entry(60, 120, "B") }))
           == QStringLiteral("A 0-60, B 60-120"));
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 50, "A"), entry(40, 120, "B") }))
+          == QStringLiteral("A 0-50, B 50-120"));
+    // two as long: the later one keeps what they share (a programme that
+    // runs over: the next starts on time), as on Android and the TV app
+    CHECK(shape(iptv::withoutOverlaps({ entry(0, 65, "A"), entry(60, 125, "B"), entry(125, 180, "C") }))
+          == QStringLiteral("A 0-60, B 60-125, C 125-180"));
     // starting together: the shorter first, the rest of the longer after
     CHECK(shape(iptv::withoutOverlaps({ entry(0, 60, "A"), entry(0, 30, "B") }))
           == QStringLiteral("B 0-30, A 30-60"));

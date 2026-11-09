@@ -59,6 +59,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Online subtitles: a preferred or second language you choose in Settings is searched, the preferred first (one
   turned off in Languages to search stayed off).
 - A jump to the very start shows 00:00 on the seek bar and in the message, not "--:--".
+- Online subtitles for a video played from the network: one on a web server is recognised by its hash as a file is
+  (its first and last bytes read by range), so the subtitles made for that very file are found; a stream whose
+  address names no film ("500.mp4", "index.m3u8") is searched by its own title and year; and a subtitle file of
+  yours beside the video whose name says no language ("Film.srt") counts as your language: nothing is searched over
+  it. The same rules on Android and the Samsung TV app.
 - Android: no crash on Android TV boxes and Android 5 at the start, in Home, in the update and when a key opens the
   options early; on Android 5.1 the player no longer waits for a media library that can't start (dead keys, the
   loading cone for ever); subtitles survive a full disk or a huge download; Live TV's worker stops for good and

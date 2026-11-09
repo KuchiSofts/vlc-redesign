@@ -79,6 +79,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
     left they showed at the wrong end. Such lines are now put right ("כדי להשיב.", "-מה?"), and correct files
     are left as they are (Text direction set to left to right keeps them as written).
   - The same on the Samsung TV app and Android.
+- Samsung TV app: the Subtitles panel is the desktop's own: the languages with how many subtitles each has beside
+  the subtitles of the one chosen (where each comes from, how many downloads, made for this very file), the search
+  by title in the panel, the services and what each found, the timing with its two marks, the size and position;
+  with the remote, Left and Right go between the two lists (mirrored in Hebrew and Arabic).
 - Android: no crash on Android TV boxes and Android 5 at the start, in Home, in the update and when a key opens the
   options early; on Android 5.1 the player no longer waits for a media library that can't start (dead keys, the
   loading cone for ever); subtitles survive a full disk or a huge download; Live TV's worker stops for good and

@@ -903,7 +903,16 @@ void MainCtx::giveShortcutFeedback(int vlcKey)
                                 ? jumpSeconds(action.toStdString(), sizes) : 0;
         if (seconds != 0)
         {
-            const int64_t sum = m_seekSum.add(seconds, MS_FROM_VLC_TICK(vlc_tick_now()));
+            // how far the jumps really go (within the media), not the sum of
+            // the keys: at 0:05, three jumps back say -5 s, not -30 s
+            // (no time known yet: the sum of the keys, as nothing else is)
+            const VLCTime time = player->getTime();
+            const VLCDuration length = player->getLength();
+            const int64_t nowMs = MS_FROM_VLC_TICK(vlc_tick_now());
+            const int64_t sum = time.valid()
+                ? m_seekSum.add(seconds, nowMs, time.asMilliseconds(),
+                                length.valid() ? length.asMilliseconds() : 0)
+                : m_seekSum.add(seconds, nowMs);
             /* xgettext: The step of a jump in seconds shown in full screen
              * ("+10 s"); a minute and more are written 1:10 */
             // xgettext:no-c-format

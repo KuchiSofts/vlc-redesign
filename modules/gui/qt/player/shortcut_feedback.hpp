@@ -59,12 +59,18 @@ class SeekSum
 public:
     // The sum with this jump (seconds) made at nowMs (a monotonic clock)
     int64_t add(int64_t seconds, int64_t nowMs);
+    // The same, and how far the run really moves (seconds, rounded): the
+    // sum kept within the media, from fromMs (the position before this
+    // jump; the run's own start is kept from its first jump) to 0 and to
+    // lengthMs (0: unknown, no end). At 0:05, three jumps of -10 s move -5 s
+    int64_t add(int64_t seconds, int64_t nowMs, int64_t fromMs, int64_t lengthMs);
     void reset();
     int64_t sum() const { return m_sum; }
 
 private:
     int64_t m_sum = 0;
     int64_t m_lastMs = 0;
+    int64_t m_fromMs = 0;
     bool m_started = false;
 };
 

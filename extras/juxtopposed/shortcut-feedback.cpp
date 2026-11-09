@@ -77,6 +77,29 @@ int main()
         CHECK(sum.add(3, 100) == 3);      // a clock that went back: not in a row
     }
 
+    // how far a run really moves: within the media, from where the run started
+    // (the position given with later jumps of the run is not used: the player
+    // may not have done the jump before yet)
+    {
+        SeekSum sum;
+        CHECK(sum.add(-10, 1000, 5000, 600000) == -5);       // at 0:05: back to the start
+        CHECK(sum.add(-10, 1200, 5000, 600000) == -5);
+        CHECK(sum.add(-10, 1400, 0, 600000) == -5);          // three jumps of -10 s: -5 s
+        CHECK(sum.sum() == -30);
+        CHECK(sum.add(10, 1500, 0, 600000) == 10);           // the other way: from the start
+        CHECK(sum.add(10, 1600, 4000, 600000) == 20);
+        CHECK(sum.add(10, 5000, 595000, 600000) == 5);       // a new run near the end: up to it
+        CHECK(sum.add(10, 5100, 600000, 600000) == 5);
+        CHECK(sum.add(30, 9000, 100000, 0) == 30);           // no length known: no end
+        CHECK(sum.add(-10, 9100, 2400, 0) == -2);            // 2.4 s back: 2 s
+        CHECK(sum.add(-10, 12000, 2600, 0) == -3);           // 2.6 s back: 3 s
+        CHECK(sum.add(-10, 15000, 0, 0) == 0);               // at the start: nothing moves
+        CHECK(sum.add(-10, 18000, -50, 0) == 0);             // a position not known yet
+        sum.reset();
+        CHECK(sum.add(60, 19000, 30000, 3600000) == 60);
+        CHECK(sum.add(60, 19100, 31000, 3600000) == 120);    // in a row: the sum, as before
+    }
+
     // the step: seconds, from a minute on m:ss, from an hour on h:mm:ss; the
     // sign and the number in a left-to-right isolate
     CHECK(stepText(10, "%1 s") == iso("+10") + " s");

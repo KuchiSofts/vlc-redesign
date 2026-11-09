@@ -20,7 +20,17 @@ echo "$input" | while read -r local_ref local_sha remote_ref remote_sha; do
         refs/tags/v*)
             prev=$(git describe --tags --abbrev=0 --match 'v[0-9]*' "$local_sha^{commit}^" 2>/dev/null)
             python "$here/release-check.py" --release "${remote_ref#refs/tags/v}" ${prev:+--base "$prev"} || exit 1 ;;
-        refs/heads/*) python "$here/release-check.py" || exit 1 ;;
+        refs/heads/*)
+            # translations alone (a volunteer's work merged from Weblate, which
+            # waits locked until main holds it): nothing else of the project
+            # changes with them, so they don't wait for the next release
+            if [ "$remote_sha" != "$zero" ] && git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null &&
+                [ -n "$(git diff --name-only "$remote_sha" "$local_sha")" ] &&
+                [ -z "$(git diff --name-only "$remote_sha" "$local_sha" | grep -v '^po/')" ]; then
+                echo "pre-push: translations only (po/): the release check is for the next upload"
+                continue
+            fi
+            python "$here/release-check.py" || exit 1 ;;
     esac
 done || {
     echo "pre-push: the project is not up to date for this upload (see above); nothing was pushed" >&2

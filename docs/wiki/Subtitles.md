@@ -114,10 +114,31 @@ Your default and second languages never count as learned: they already come firs
 > Example: you watch with German subtitles three times. German is now marked *Often used* and is chosen for a film
 > that has no subtitles in your default or second language.
 
+## Subtitles that come with a download
+
+Films often come in a folder with subtitle files of their own. VLC Redesign uses them, and is not fooled by the
+files that are not really subtitles:
+
+- **A Subs or Subtitles folder.** When the video is the only one in its folder, a file in your language in its
+  `Subs` or `Subtitles` folder (`Hebrew.heb.srt`, `English (SDH).eng.srt`, named by language rather than after the
+  film) shows by itself, and nothing is searched online for that language. The plain one comes before the one for
+  the hearing impaired (SDH, HI, CC).
+- **An advert or forced lines are not your subtitles.** Some sites put a small `.srt` named after the film next to
+  it, with only their advert ("Downloaded from ...") or a line or two; files of only the *forced* lines (signs and
+  foreign words) are common too. Such a file, a subtitle with under one line per five minutes of a film of 20
+  minutes or more, or with *forced* in its name, does not count as your language: the online search still runs. A
+  short film's own small subtitle always counts.
+- **Hebrew and Arabic punctuation in its place.** Many subtitle sites write a line's final punctuation first and
+  its dialogue dash last (`.שלום`, `?מה-`), for players that lay every line out left to right. VLC Redesign moves
+  them back (`שלום.`, `-מה?`), only in the files written that way. With *Text direction* set to *Left to right*,
+  lines stay as their file has them.
+
+The same on Android and on the Samsung TV app.
+
 ## Subtitles found online
 
-When a video opens with no subtitles in your languages, VLC Redesign looks for some online (1.5 seconds after it
-starts) and loads the best one: in your default language, else the second one, else the learned one. This is *Find
+When a video opens with no subtitles in your languages, VLC Redesign looks for some online (once its picture shows,
+a moment after it starts) and loads the best one: in your default language, else the second one, else the learned one. This is *Find
 subtitles online when a video has none in these languages* ([Settings: Subtitles](Settings-Subtitles)), asked by the
 installer and the first-run setup. With it off, the search runs only when you click the search button of the header.
 

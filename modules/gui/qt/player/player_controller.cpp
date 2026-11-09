@@ -1256,8 +1256,11 @@ static void on_player_timer_seek(const struct vlc_player_timer_point *point,
             PlayerController* q = that->q_func();
 
             that->m_player_time = point_copy;
+            // (a jump to the very start is time 0, which VLCTime takes for no
+            // time: "--:--" until playback went on; the start is VLC_TICK_0,
+            // as at the end of playback above)
             if (that->m_player_time.ts != VLC_TICK_INVALID)
-                that->m_time = that->m_player_time.ts - VLC_TICK_0;
+                that->m_time = std::max<vlc_tick_t>(that->m_player_time.ts - VLC_TICK_0, VLC_TICK_0);
             if (that->m_player_time.position > 0)
                 that->m_position = that->m_player_time.position;
             // a seek by time (the jumps, a typed time) has no position: from

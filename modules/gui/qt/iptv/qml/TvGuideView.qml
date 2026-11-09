@@ -486,9 +486,12 @@ FocusScope {
                             // (no clip of its own: its texts are cut to its width,
                             // a clip each kept the cells from being drawn together)
                             contentItem: Item {
-                                visible: cell.width > root.px(28)
                                 // the text stays in sight while its start is
-                                // left of the grid
+                                // left of the grid; a programme that ended
+                                // left of it shows none (a Text 0 wide is not
+                                // elided but drawn whole: the times of past
+                                // programmes piled up on the grid's edge)
+                                visible: cell.width - inset > root.px(28)
                                 readonly property real inset: Math.max(0, root.timeX - cell.x)
                                 Column {
                                     id: texts

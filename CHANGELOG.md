@@ -52,7 +52,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Live TV guide: the automatic guide finds a channel with or without its "TV" ("Arte" is iptv-org's "Arte TV",
   "Rai 1 TV" its "Rai 1"; "MTV" stays MTV), and a long programme that contains shorter ones (a film interrupted
   by the news) shows around them: what is on now and next, the guide's rows and the descriptions follow the
-  shorter ones in their slots.
+  shorter ones in their slots; where two as long overlap, the later one starts on time (a programme that runs
+  over), as on Android and the Samsung TV app.
 - Online subtitles: a service that answers an error page, a browser check (Cloudflare and the like), nothing or a
   JSON error shows as that service's failure, with its message, instead of "nothing found", and such a page is
   never saved as a subtitle. A search always finishes (a service that answered a byte at a time kept it searching),
@@ -65,11 +66,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - The interface no longer waits on the network or the disk: the subtitle search, the subtitle files next to a video,
   the folder Add Subtitles reads (a network share held VLC for seconds), the services' long answers and the
   updater's work run in the background, and quitting waits for them 5 s at most.
+- Windows: quitting VLC while Live TV was asking a server can no longer crash it at the very end (the network's
+  last notice could come after the add-on was unloaded).
 - Updates: every file of an update is on the disk before it is marked ready (a power cut could leave a "ready"
   update with files cut short); a new AppImage or installer is saved the same way.
 - Frame previews of an odd video are bounded in size; the updater checks the publisher before an update is
   marked ready and cleans up old installers.
-- No QML warning left on any page, dialog or the player (a connection could outlive its page).
+- No QML warning left on any page, dialog or the player (a connection could outlive its page), the Live TV
+  guide with a source included.
 
 ### Technical
 

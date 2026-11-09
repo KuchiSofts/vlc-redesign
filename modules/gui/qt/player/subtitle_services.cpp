@@ -1847,4 +1847,23 @@ QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
     return files;
 }
 
+QStringList withChosenLanguagesFirst(const QStringList &entries, const QString &preferred,
+                                     const QString &second)
+{
+    QStringList out;
+    if (!preferred.isEmpty())
+        out.append(preferred);
+    if (!second.isEmpty() && second != preferred)
+        out.append(second);
+    for (const QString &entry : entries)
+    {
+        const QString code = entry.startsWith(QLatin1Char('-')) ? entry.mid(1) : entry;
+        if (code.isEmpty() || code == preferred || code == second)
+            continue;
+        if (!out.contains(code) && !out.contains(QLatin1Char('-') + code))
+            out.append(entry);
+    }
+    return out;
+}
+
 } // namespace SubtitleProviders

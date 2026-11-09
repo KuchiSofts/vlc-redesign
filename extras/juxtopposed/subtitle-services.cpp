@@ -105,6 +105,31 @@ static Query episode()
     return q;
 }
 
+// Languages to search after the preferred or the second language was chosen
+static void testChosenLanguagesFirst()
+{
+    const auto list = [](std::initializer_list<const char *> codes) {
+        QStringList out;
+        for (const char *c : codes)
+            out << QString::fromLatin1(c);
+        return out;
+    };
+    // a second language turned off before: on, after the preferred
+    CHECK(withChosenLanguagesFirst(list({ "he", "en", "-fr", "de" }), QStringLiteral("he"), QStringLiteral("fr"))
+          == list({ "he", "fr", "en", "de" }));
+    // a preferred one lower in the list, or off: first and on
+    CHECK(withChosenLanguagesFirst(list({ "he", "en", "-fr" }), QStringLiteral("fr"), QStringLiteral("en"))
+          == list({ "fr", "en", "he" }));
+    // a new one: added; the rest in its order, off ones stay off
+    CHECK(withChosenLanguagesFirst(list({ "he", "-ar", "en" }), QStringLiteral("es"), QString())
+          == list({ "es", "he", "-ar", "en" }));
+    // no second, the same twice, duplicates and empty entries dropped
+    CHECK(withChosenLanguagesFirst(list({ "en", "en", "-", "", "-he" }), QStringLiteral("en"), QStringLiteral("en"))
+          == list({ "en", "-he" }));
+    CHECK(withChosenLanguagesFirst({}, QStringLiteral("pt-BR"), QStringLiteral("pt"))
+          == list({ "pt-BR", "pt" }));
+}
+
 static void testCommon()
 {
     CHECK(problemOf(200) == Problem::None);
@@ -1275,6 +1300,7 @@ int main(int argc, char **argv)
 {
     fixtures = argc > 1 ? QString::fromLocal8Bit(argv[1]) : QStringLiteral("extras/juxtopposed/fixtures/subtitle-services");
     testCommon();
+    testChosenLanguagesFirst();
     testSubSource();
     testSubDl();
     testOpenSubtitlesCom();

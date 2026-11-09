@@ -36,9 +36,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - 0.6.0, a full release of every app: a round of stability, start-up speed and memory in every app, smarter
   automatic subtitles tested with real downloads, the Subtitles panel the same on every device, and keys in full
   screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
+- Live TV's catalog of free guides has EPG.team's: about 3,800 channels (Russian, Ukrainian, Israeli, Polish,
+  Turkish, Georgian, Armenian, Baltic and Western European ones and more), in every app.
 
 ### Fixed
 
+- Live TV's guide no longer piles up the start times of programmes that ended on the left edge of the grid (two
+  could overlap on one row). Checked with the largest free guides of the catalog (553 MB of XML, 572,000
+  programmes, 2,000 of your channels): read in 9.6 s in the background, the window answering all along.
 - Quitting VLC no longer waits for Live TV: the calls of your servers stop at once (a Jellyfin guide held by
   its server made VLC wait 2 minutes), the network discovery too, and the add-on is kept loaded when it had to
   let go of a download it could not stop (it would have crashed at the very end).

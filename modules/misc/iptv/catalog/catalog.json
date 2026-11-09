@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "sources": [
   {
    "id": "iptv-org-lang-ja",
@@ -8996,6 +8996,60 @@
    "notes": "Free public guide from open-epg.com; refreshed daily. At verification: 45084 programmes from 2026-10-27 to 2026-11-02 (4.4 days ahead).",
    "failures": 0,
    "status": "works"
+  },
+  {
+   "id": "epg-team",
+   "name": "EPG.team: Russia, Israel, Europe and more",
+   "kind": "epg",
+   "url": "https://epg.team/1.7.xml",
+   "epg": [],
+   "website": "https://epg.team/",
+   "description": "Free XMLTV guide of about 3,800 channels from EPG.team: Russian, Ukrainian, Israeli, Polish, Turkish, Georgian, Armenian, Baltic and Western European channels and more.",
+   "languages": [
+    "ru",
+    "uk",
+    "he",
+    "pl",
+    "tr",
+    "en"
+   ],
+   "countries": [
+    "RU",
+    "UA",
+    "IL",
+    "PL",
+    "TR",
+    "GE",
+    "AM",
+    "KZ",
+    "BY",
+    "LV",
+    "LT",
+    "EE",
+    "MD",
+    "PT",
+    "FR",
+    "IT",
+    "ES",
+    "CZ",
+    "RO",
+    "GB",
+    "US",
+    "CA"
+   ],
+   "categories": [],
+   "channels": 3795,
+   "catchup": {
+    "supported": false,
+    "days": 0
+   },
+   "vod": false,
+   "series": false,
+   "price": "free",
+   "signup": false,
+   "logo": "",
+   "verified": "2026-11-09",
+   "notes": "Free public guide from EPG.team, updated daily. Large: about 50 MB downloaded (the server compresses it), 279 MB of XML with 588,531 programmes at verification."
   },
   {
    "id": "iptv-org-country-af",

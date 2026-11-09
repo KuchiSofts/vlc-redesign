@@ -419,9 +419,17 @@ Widgets.PageExt {
                 spacing: VLCStyle.dp(20, VLCStyle.scale)
                 clip: true
                 boundsBehavior: Flickable.StopAtBounds
+                // As the other rows: the cards that fit the width, none cut
+                // at the edge (a narrow window showed half a card, and the
+                // wheel scrolls the page, not the row); the chevron of the
+                // header opens every folder
+                interactive: false
+                readonly property int fit: Math.max(1, Math.floor((width - leftMargin - rightMargin + spacing)
+                                                                  / (cardSize + spacing)))
 
                 model: MLFrequentFoldersModel {
                     ml: MediaLib
+                    limit: foldersRow.fit
                 }
 
                 // Up and Down go to the rows above and below, as from the

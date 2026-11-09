@@ -86,6 +86,18 @@ FocusScope {
         clip: true
         boundsBehavior: Flickable.StopAtBounds
         model: [""].concat(root.categories)
+        // The wheel of a mouse goes along the categories, as along the groups
+        // of the channels (a list across takes the horizontal wheel only: an
+        // account's many categories ran past the width out of reach)
+        WheelHandler {
+            enabled: chips.contentWidth > chips.width
+            onWheel: (event) => {
+                const delta = event.angleDelta.y !== 0 ? event.angleDelta.y : event.angleDelta.x
+                const step = chips.effectiveLayoutDirection === Qt.RightToLeft ? delta : -delta
+                chips.contentX = Math.max(chips.originX,
+                                          Math.min(chips.originX + chips.contentWidth - chips.width, chips.contentX + step))
+            }
+        }
         delegate: T.Button {
             id: chip
             required property var modelData

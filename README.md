@@ -48,7 +48,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </tr>
 </table>
 
-<sub><b>0.5.8</b> · 2026-11-08 &nbsp;·&nbsp; next: 0.5.9 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+<sub><b>0.5.8</b> · 2026-11-08 &nbsp;·&nbsp; next: 0.6.0 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
 
 <br><br>
 
@@ -368,8 +368,9 @@ The current release is **0.5.8** (2026-11-08), an update release: more subtitle 
 and SubDL with your free key, OpenSubtitles.com and seven more with a free account or key), the languages to search,
 and Live TV from your own servers (Jellyfin, Emby, Tvheadend, NextPVR, Channels DVR, HDHomeRun) with Schedules Direct
 and an automatic guide (on Windows a 11.8 MB small update from 0.5.7; its files and checksums on the
-[release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.8)); the next, **0.5.9**, an update
-release, brings fixes as the issues bring them. The status of each platform and what comes after is
+[release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.8)); the next, **0.6.0**, a full
+release of every app, brings the stability round, smarter automatic subtitles and the same Subtitles
+panel on every device. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).
 

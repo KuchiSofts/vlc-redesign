@@ -892,7 +892,7 @@ static void testAnswers()
 // ---------------------------------------------------------------------------
 // YIFY: its page read in one pass
 
-// The page as it was read before (subtitle_providers.cpp until 0.5.9): the
+// The page as it was read before (subtitle_providers.cpp before 0.6.0): the
 // same expressions, over the whole page. Its results are what parseYify must
 // give
 static QList<Result> yifyByExpressions(const QByteArray &body)

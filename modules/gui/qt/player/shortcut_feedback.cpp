@@ -106,6 +106,25 @@ int64_t SeekSum::add(int64_t seconds, int64_t nowMs)
     return m_sum;
 }
 
+int64_t SeekSum::add(int64_t seconds, int64_t nowMs, int64_t fromMs, int64_t lengthMs)
+{
+    const int64_t before = m_sum;
+    const bool wasStarted = m_started;
+    add(seconds, nowMs);
+    // a new run (the first jump, a pause between, or the other way): it
+    // starts where the player is now
+    if (!wasStarted || m_sum != before + seconds)
+        m_fromMs = fromMs < 0 ? 0 : fromMs;
+    int64_t target = m_fromMs + m_sum * 1000;
+    if (target < 0)
+        target = 0;
+    if (lengthMs > 0 && target > lengthMs)
+        target = lengthMs;
+    const int64_t moved = target - m_fromMs;
+    // (to the nearest second, half away from zero)
+    return moved >= 0 ? (moved + 500) / 1000 : -((-moved + 500) / 1000);
+}
+
 void SeekSum::reset()
 {
     m_sum = 0;

@@ -43,7 +43,8 @@ with a build to try):
   plays with its access code (their players send Basic)
 - 📋 The subtitle services with keys and accounts tried with real keys (SubSource, SubDL, OpenSubtitles.com and the
   seven others)
-- 📋 Android TV: after the TV sources close, the remote's focus goes back to the page (not the title bar's ⋯)
+- ✅ Android TV: after the TV sources close, the remote's focus goes back to the page (0.5.8); opened with the
+  remote, TV Sources has its tab focused and one Back closes it
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)

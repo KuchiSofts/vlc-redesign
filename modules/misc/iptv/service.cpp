@@ -446,8 +446,9 @@ EntryList withoutOverlaps(const EntryList& list)
     if (!overlap)
         return list;
     // the moments a programme starts or ends, and between two of them the
-    // shortest of those on (the earlier start, then the first in the list,
-    // when they are as long)
+    // shortest of those on (when they are as long, the later start: the
+    // next programme starts on time when the one before runs over; then the
+    // first in the list). The rule of every app (Android, the Samsung TV app)
     struct Edge
     {
         qint64 at;
@@ -463,7 +464,7 @@ EntryList withoutOverlaps(const EntryList& list)
             edges.append({ list[i].stop, i, false });
         }
     std::sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) { return a.at < b.at; });
-    using Key = std::tuple<qint64, qint64, int>;   // length, start, index
+    using Key = std::tuple<qint64, qint64, int>;   // length, -start, index
     std::set<Key> on;
     EntryList out;
     out.reserve(list.size() + list.size() / 2);
@@ -475,7 +476,7 @@ EntryList withoutOverlaps(const EntryList& list)
         for (; k < edges.size() && edges[k].at == at; ++k)
         {
             const Entry& e = list[edges[k].index];
-            const Key key { e.stop - e.start, e.start, edges[k].index };
+            const Key key { e.stop - e.start, -e.start, edges[k].index };
             if (edges[k].starts)
                 on.insert(key);
             else

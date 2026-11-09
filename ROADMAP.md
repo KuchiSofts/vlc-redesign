@@ -45,6 +45,9 @@ with a build to try):
   leak"), in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded,
   stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread free of
   network and disk work, no QML warning left; the desktop starts faster (window 0.60 → 0.48 s), memory soaked
+- 🔨 Online subtitles for videos played from the network (a link, SMB, NFS, UPnP/DLNA) on Android, manual and
+  automatic, as on the desktop ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), @Elshepl); checked on
+  the Samsung TV app too
 - 🟡 The release: the three apps' branches together, built and tested on every platform
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in

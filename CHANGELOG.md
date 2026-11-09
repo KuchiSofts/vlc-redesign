@@ -59,6 +59,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Online subtitles: a preferred or second language you choose in Settings is searched, the preferred first (one
   turned off in Languages to search stayed off).
 - A jump to the very start shows 00:00 on the seek bar and in the message, not "--:--".
+- Android: no crash on Android TV boxes and Android 5 at the start, in Home, in the update and when a key opens the
+  options early; on Android 5.1 the player no longer waits for a media library that can't start (dead keys, the
+  loading cone for ever); subtitles survive a full disk or a huge download; Live TV's worker stops for good and
+  reads nothing on the main thread; a guide that fails or comes cut short keeps its channels' programmes; Addic7ed's
+  error pages are its failure; the preferred and second subtitle language are always searched first; on Android
+  TV, TV Sources opened with the remote has its tab focused and one Back closes it; a phone's Settings shows only
+  its own line under the #72 setting. Memory after 50 rounds of every page: 187 → 171 MB.
 - Online subtitles: a service that answers an error page, a browser check (Cloudflare and the like), nothing or a
   JSON error shows as that service's failure, with its message, instead of "nothing found", and such a page is
   never saved as a subtitle. A search always finishes (a service that answered a byte at a time kept it searching),

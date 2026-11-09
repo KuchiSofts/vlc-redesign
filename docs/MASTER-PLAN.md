@@ -10,8 +10,29 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-09):
+What is being worked on, updated as it changes (2026-11-10):
 
+- 🟢 **Interface size, the same on every app** (desktop): Settings › Interface › Window ›
+  *Interface size*: Automatic (N %), 100, 110, 125, 150, 175, 200 %, applied at once; the one setting of the scale
+  (VLC's kept factor migrates to the nearest choice, the zoom keys step through the choices). Automatic follows the
+  screen of the window (`util/screen_fit.cpp`, the rule of the Android and TV apps on the screen's width in scaled
+  pixels, plus dense screens left unscaled). Checked on Windows at a simulated 1280 × 720 and 960 × 540 screen
+  (QT_SCALE_FACTOR) and 2560 × 1440; Linux and macOS wait for their builds.
+- 🟢 **Windows and dialogs inside the screen** (desktop): the first window from the screen, a saved geometry that
+  no longer fits corrected, every dialog and separate window fitted into its screen when it shows, the dialogs'
+  body scrolling in a low window. 7,688 checks of the geometry in `unit-tests.sh` (negative coordinates included);
+  a second monitor itself could not be tried on the build PC.
+- 🟡 **Dead space** (desktop, first part): the rows and grids of cards fill the page's width
+  (the cards grow by up to a third; more cards on a wider page). Still to do: empty states with an icon and an
+  action, Home's short sections side by side, the TV pages' grids, a content column for wide lists.
+- 🟢 **The six faults of the first QA pass** (desktop): Recent the newest first with the library's header, the
+  language lists, Browse's start folder, Home's "0 items".
+- 🟡 **Responsiveness** (desktop): measured with a ping of the interface's thread (the longest wait per step) and
+  a stack sampler, old build against new, twice each: pages open with 20-60 ms waits and scroll with under 20 ms,
+  Settings takes about 1 s to open the first time (0.9-1.2 s in both builds: the making of its page, not one
+  cause). Removed: the settings file rewritten at each change of page, the subtitle services read at every
+  opening of Settings, a system call per control made. No gain shows in the numbers (they are within the noise);
+  resizing the window costs more since the cards grow with it (a longest wait of 50-57 ms, 6-9 ms before).
 - 🟡 **0.6.0, a full release of every app** (the work planned as 0.5.9 is a big improvement for
   every version, so it ships as 0.6.0 with every package): branch `release/0.6.0` (`feature/stability-0.5.9` +
   `feature/fs-controls-72` + the subtitle work below; VideoLAN merged to `aa58853d86`), built and tested together on

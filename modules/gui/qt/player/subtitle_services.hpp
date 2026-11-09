@@ -200,6 +200,15 @@ QList<Result> parseLegendas(const QByteArray &body, const Query &query, QString 
 QList<Result> parseYify(const QByteArray &page, const LanguageOf &languageOf);
 
 // ---------------------------------------------------------------------------
+// Languages to search (Settings > Subtitles): their list as it is kept,
+// "code" on, "-code" off, in their order. After the preferred language or the
+// second one was chosen: both on and first, the preferred before the second
+// (the second empty: none). The rest stays as it was, in its order. Every
+// app's rule: a language just chosen is searched, the preferred first
+QStringList withChosenLanguagesFirst(const QStringList &entries, const QString &preferred,
+                                     const QString &second);
+
+// ---------------------------------------------------------------------------
 // What a download comes in (with zlib, HAVE_ZLIB; without it gzip and the
 // compressed files of a zip are not opened)
 

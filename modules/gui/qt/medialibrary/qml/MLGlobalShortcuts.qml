@@ -28,6 +28,8 @@ Item {
         id: recentModel
         limit: 10
         ml: MediaLib
+        // Ctrl+1 is the media played last, as in "Open Recent"
+        sortOrder: Qt.DescendingOrder
     }
 
     //build all the shortcuts everytime, it seems that they can't be added/removed dynamically

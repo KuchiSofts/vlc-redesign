@@ -223,7 +223,17 @@ Widgets.PageLoader {
 
             title: qsTr("Recent")
 
+            // the header of the library's pages (Home, Videos): the arrows,
+            // the count, the sort, the grid/list switch and the search field
+            libraryHeader: true
+            libraryItemCount: recentView.model?.count ?? -1
+            hasGridListMode: recentView.hasGridListMode
+            isSearchable: recentView.isSearchable
+            sortModel: recentView.sortModel
+
             MediaView {
+                id: recentView
+
                 focus: true
 
                 anchors.fill: parent
@@ -231,6 +241,9 @@ Widgets.PageLoader {
                 model: MLRecentMediaModel {
                     ml: MediaLib
 
+                    // the last played first
+                    sortCriteria: recentPage.sort.criteria
+                    sortOrder: recentPage.sort.order
                     searchPattern: recentPage.search.pattern
                 }
 

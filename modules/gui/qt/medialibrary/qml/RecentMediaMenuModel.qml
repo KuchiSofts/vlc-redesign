@@ -10,5 +10,7 @@ import VLC.MediaLibrary
 // interface a quarter of a second.
 MLRecentMediaModel {
     ml: MediaLib
+    // the last played first (the model's own order is the first played first)
+    sortOrder: Qt.DescendingOrder
     limit: 10
 }

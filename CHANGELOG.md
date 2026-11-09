@@ -23,7 +23,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   *Show the controls* (as before, the default), *Show only the progress* (a thin line of the progress on the bottom
   edge, in your accent colour, with a message at the top, readable from the sofa (it grows with the screen: 24 px
   text at 1080p): what the key did and the time, "+30 s  00:02:50 / 00:25:40"), or *Show only a message*. Every key of VLC's shortcuts counts (seek, jump, pause, speed,
-  frame step, delays, tracks, subtitle size and position, aspect ratio, zoom...): jumps in a row add up ("+1:10"),
+  frame step, delays, tracks, subtitle size and position, aspect ratio, zoom...): jumps in a row add up ("+1:10")
+  and say how far they really went (three jumps back at 0:05: "−5 s"),
   the message goes 1.5 s after the last key, the volume keys show the volume indicator, and what VLC would have
   written on the video ("Subtitle track: English", "Aspect ratio: 16:9") shows in the message instead, never both.
   Moving the mouse or pressing Tab, Enter or the menu key still shows the controls; a key a panel uses is as before;
@@ -53,7 +54,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   "Rai 1 TV" its "Rai 1"; "MTV" stays MTV), and a long programme that contains shorter ones (a film interrupted
   by the news) shows around them: what is on now and next, the guide's rows and the descriptions follow the
   shorter ones in their slots; where two as long overlap, the later one starts on time (a programme that runs
-  over), as on Android and the Samsung TV app.
+  over), as on Android and the Samsung TV app; the half hours of the guide's timeline fall on the clock's half
+  hours in every time zone (in UTC+5:45 they showed :15 and :45).
+- Online subtitles: a preferred or second language you choose in Settings is searched, the preferred first (one
+  turned off in Languages to search stayed off).
+- A jump to the very start shows 00:00 on the seek bar and in the message, not "--:--".
 - Online subtitles: a service that answers an error page, a browser check (Cloudflare and the like), nothing or a
   JSON error shows as that service's failure, with its message, instead of "nothing found", and such a page is
   never saved as a subtitle. A search always finishes (a service that answered a byte at a time kept it searching),

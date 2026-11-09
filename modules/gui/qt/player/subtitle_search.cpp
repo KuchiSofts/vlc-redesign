@@ -169,15 +169,36 @@ QString openSubtitlesHash(const QString &path, qint64 *size)
     if (!file.seek(*size - chunk))
         return {};
     const QByteArray tail = file.read(chunk);
-    if (head.size() != chunk || tail.size() != chunk)
+    return SubtitleProviders::openSubtitlesHashOf(*size, head, tail);
+}
+
+// The same of a file on a web server (#73): its first and last 64 KiB asked
+// by their byte range, its size from the answer's Content-Range; two small
+// requests of a few seconds at most. None when the server sends the whole
+// file instead (it is stopped at 64 KiB) or says no size
+QString openSubtitlesHashOverHttp(const QUrl &url, qint64 *size)
+{
+    constexpr qint64 chunk = 65536;
+    HttpRequest head;
+    head.url = url;
+    head.headers = { { "Range", "bytes=0-65535" } };
+    head.maxBytes = chunk;
+    head.timeoutMs = 5000;
+    head.deadlineMs = 8000;
+    const HttpResponse first = httpRequestSync(head);
+    if (!first.error.isEmpty() || first.status != 206 || first.body.size() != chunk)
         return {};
-    quint64 hash = quint64(*size);
-    for (qint64 i = 0; i < chunk; i += 8)
-    {
-        hash += qFromLittleEndian<quint64>(head.constData() + i);
-        hash += qFromLittleEndian<quint64>(tail.constData() + i);
-    }
-    return QStringLiteral("%1").arg(hash, 16, 16, QLatin1Char('0'));
+    const qint64 total = SubtitleProviders::contentRangeTotal(first.header("Content-Range"));
+    if (total < chunk)
+        return {};
+    HttpRequest end = head;
+    end.headers = { { "Range", "bytes=" + QByteArray::number(total - chunk) + '-' + QByteArray::number(total - 1) } };
+    const HttpResponse last = httpRequestSync(end);
+    if (!last.error.isEmpty() || last.status != 206 || last.body.size() != chunk
+        || SubtitleProviders::contentRangeTotal(last.header("Content-Range")) != total)
+        return {};
+    *size = total;
+    return SubtitleProviders::openSubtitlesHashOf(total, first.body, last.body);
 }
 
 // Lower case, without accents or punctuation: titles compare in any script
@@ -718,8 +739,13 @@ void SubtitleSearch::setMedia(const QUrl &url, const QString &name, double fps)
     reset();
     m_url = url;
     m_media.path = url.isLocalFile() ? url.toLocalFile() : QString();
+    // a stream: the name in its address (decoded, without its query), or its
+    // title when the address names no film ("500.mp4", "index.m3u8"; #73)
+    const QString streamName = url.fileName(QUrl::FullyDecoded);
     m_media.name = !m_media.path.isEmpty() ? QFileInfo(m_media.path).fileName()
-                                           : (url.fileName().isEmpty() ? name : url.fileName());
+                 : !streamName.isEmpty() && (SubtitleProviders::namesSomething(streamName) || name.trimmed().isEmpty())
+                     ? streamName
+                     : name;
     const QString folder = !m_media.path.isEmpty() ? QFileInfo(m_media.path).dir().dirName() : QString();
     const ParsedName parsed = parseName(m_media.name, folder);
     m_media.title = parsed.title;
@@ -766,12 +792,15 @@ void SubtitleSearch::prepare(std::function<void()> next)
     const quint64 revision = m_revision;
     auto hashed = std::make_shared<Hashed>();
     const QString path = m_media.path;
+    const QUrl url = m_url;
     // (waited for at the exit, a few seconds at most: runInBackground; its
     // answer dropped if the search is gone)
-    runInBackground(this, [hashed, path]() {
+    runInBackground(this, [hashed, path, url]() {
         QThread::currentThread()->setPriority(QThread::LowPriority);
         if (!path.isEmpty())
             hashed->hash = openSubtitlesHash(path, &hashed->size);
+        else if (url.scheme() == QLatin1String("http") || url.scheme() == QLatin1String("https"))
+            hashed->hash = openSubtitlesHashOverHttp(url, &hashed->size);
     }, [this, hashed, revision, next]() {
         if (revision != m_revision)
             return;

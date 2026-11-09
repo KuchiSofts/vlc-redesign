@@ -1866,4 +1866,45 @@ QStringList withChosenLanguagesFirst(const QStringList &entries, const QString &
     return out;
 }
 
+bool namesSomething(const QString &fileName)
+{
+    QString stem = fileName;
+    static const QRegularExpression extension(QStringLiteral("\\.[A-Za-z0-9]{2,5}$"));
+    stem.remove(extension);
+    static const QRegularExpression generic(
+        QStringLiteral("^(index|master|playlist|manifest|chunklist|stream|video|media|movie|file|play|watch|get|download)$"),
+        QRegularExpression::CaseInsensitiveOption);
+    if (generic.match(stem).hasMatch())
+        return false;
+    for (qsizetype i = 0; i + 1 < stem.size(); ++i)
+        if (stem.at(i).isLetter() && stem.at(i + 1).isLetter())
+            return true;
+    return false;
+}
+
+qint64 contentRangeTotal(const QByteArray &contentRange)
+{
+    const QByteArray value = contentRange.trimmed();
+    const qsizetype slash = value.lastIndexOf('/');
+    if (!value.toLower().startsWith("bytes") || slash < 0)
+        return -1;
+    bool ok = false;
+    const qint64 total = value.mid(slash + 1).trimmed().toLongLong(&ok);
+    return ok && total >= 0 ? total : -1;
+}
+
+QString openSubtitlesHashOf(qint64 size, const QByteArray &head, const QByteArray &tail)
+{
+    constexpr qsizetype chunk = 65536;
+    if (size < chunk || head.size() != chunk || tail.size() != chunk)
+        return {};
+    quint64 hash = quint64(size);
+    for (qsizetype i = 0; i < chunk; i += 8)
+    {
+        hash += qFromLittleEndian<quint64>(head.constData() + i);
+        hash += qFromLittleEndian<quint64>(tail.constData() + i);
+    }
+    return QStringLiteral("%1").arg(hash, 16, 16, QLatin1Char('0'));
+}
+
 } // namespace SubtitleProviders

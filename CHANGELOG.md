@@ -64,6 +64,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   address names no film ("500.mp4", "index.m3u8") is searched by its own title and year; and a subtitle file of
   yours beside the video whose name says no language ("Film.srt") counts as your language: nothing is searched over
   it. The same rules on Android and the Samsung TV app.
+- Automatic subtitles, smarter with real downloads:
+  - **An advert or forced lines are not your subtitles.** A file beside the video that is only an advert (YTS's
+    "Downloaded from YTS.MX": 3 lines for a 103-minute film), or only the forced lines ("forced" in its name), no
+    longer counts as your subtitles, so the search still runs. A short film's own small subtitle still counts.
+  - **The video's own Subs folder is used.** When the video is alone in its folder, a file in your language in its
+    Subs or Subtitles folder ("Hebrew.heb.srt", "English (SDH).eng.srt") is shown by itself, with nothing searched
+    online; the plain one comes before the one for the hearing impaired.
+  - **Slow starts still get subtitles.** A film opened from the file manager while the app starts, or from a slow
+    server, used to get no automatic subtitles when its picture took more than a moment to come; the search now
+    waits for the picture.
+  - The same on the Samsung TV app and Android.
 - Android: no crash on Android TV boxes and Android 5 at the start, in Home, in the update and when a key opens the
   options early; on Android 5.1 the player no longer waits for a media library that can't start (dead keys, the
   loading cone for ever); subtitles survive a full disk or a huge download; Live TV's worker stops for good and

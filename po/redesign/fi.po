@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 19:14+0000\n"
+"POT-Creation-Date: 2026-11-09 23:01+0000\n"
 "PO-Revision-Date: 2017-02-06 13:43+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Finnish (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -48,7 +48,7 @@ msgid "Media Library Settings"
 msgstr "Mediakirjaston asetukset"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
 msgid "Waveform"
 msgstr "Aaltomuoto"
 
@@ -283,9 +283,9 @@ msgstr "Tämä määrää, miten hiiren napsautuksella tauottaminen käsitellä�
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:182
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -662,7 +662,7 @@ msgid "Automatically start playing the play queue content once it's loaded."
 msgstr "Aloita toistojonon sisällön toisto automaattisesti, kun se on ladattu."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Use the media library"
 msgstr "Käytä mediakirjastoa"
 
@@ -909,12 +909,12 @@ msgstr "Lähteiden käyttö ja koodekit"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Startup"
 msgstr "Käynnistys"
 
@@ -1494,23 +1494,23 @@ msgstr "Virhe siirryttäessä seuraavaan ruutuun"
 msgid "Previous frame error"
 msgstr "Virhe siirryttäessä edelliseen ruutuun"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:64
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Cebuano"
 msgstr "sebuano"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:67
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Hawaiian"
 msgstr "havaiji"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:68
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Hmong"
 msgstr "hmong"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:69
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Manipuri"
 msgstr "manipuri"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:71
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Syriac"
 msgstr "syyria"
 
@@ -1649,7 +1649,7 @@ msgid "Additional fonts directory"
 msgstr "Lisäfonttien kansio"
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "Paras"
@@ -2684,11 +2684,11 @@ msgstr "Ensimmäisen käynnistyksen asetuksia ei voitu tallentaa."
 msgid "Choose a media folder"
 msgstr "Valitse mediakansio"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:196
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:197
 msgid "Choose what VLC does online by itself."
 msgstr "Valitse, mitä VLC tekee verkossa itsenäisesti."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:209
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:210
 msgid ""
 "No telemetry, no ads, no account. These two connect to the internet without "
 "being asked each time, and send only what is written under them."
@@ -2697,19 +2697,19 @@ msgstr ""
 "internetiin kysymättä joka kerta ja lähettävät vain sen, mitä niiden alla "
 "lukee."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:227
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:228
 msgid "Check for updates once a day"
 msgstr "Tarkista päivitykset kerran päivässä"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:228
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:229
 msgid "Asks GitHub (api.github.com) for the latest release of VLC Redesign."
 msgstr "Kysyy GitHubilta (api.github.com) VLC Redesignin uusinta julkaisua."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:234
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:235
 msgid "Find subtitles online automatically"
 msgstr "Hae tekstitykset verkosta automaattisesti"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:235
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:236
 msgid ""
 "When a video has none in your languages: its name and a fingerprint of the "
 "file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
@@ -2720,18 +2720,18 @@ msgstr ""
 "Subtitles) ja sen nimi IMDb:lle, Wikidatalle ja Cinemetalle elokuvan "
 "tunnistamiseksi."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:251
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:252
 msgid "Privacy and code signing policy"
 msgstr "Tietosuoja- ja koodinallekirjoituskäytäntö"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:271
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:272
 msgid ""
 "Both stay in Settings: General for the updates, Subtitles for the subtitles."
 msgstr ""
 "Molemmat löytyvät asetuksista: päivitykset kohdasta Yleiset, tekstitykset "
 "kohdasta Tekstitykset."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:334
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:335
 msgid "Finish"
 msgstr "Valmis"
 
@@ -2976,50 +2976,50 @@ msgstr "Äänilähtö vaihtui; laitteen esikatselua ei voi säilyttää."
 msgid "The previous audio device could not be restored."
 msgstr "Edellistä äänilaitetta ei voitu palauttaa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:62
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:63
 msgid "Greek"
 msgstr "kreikka"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:95
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:96
 msgid "System language"
 msgstr "Järjestelmän kieli"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:138
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "Higher"
 msgstr "Korkeampi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:150
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:151
 msgid "Largest"
 msgstr "Suurin"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:165
 msgid "Slightly raised"
 msgstr "Hieman nostettu"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:165
 msgid "Raised"
 msgstr "Nostettu"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:175
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:176
 msgid "%1 MiB"
 msgstr "%1 Mt"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:185
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:186
 msgid "Same as video"
 msgstr "Sama kuin videossa"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:187
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:189
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:188
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:190
 msgid "%1 px wide"
 msgstr "%1 px leveä"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
 msgid "Show what's new after an update"
 msgstr "Näytä uutuudet päivityksen jälkeen"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
@@ -3027,32 +3027,43 @@ msgstr ""
 "Kun VLC avataan ensimmäistä kertaa päivityksen jälkeen, kortti näyttää "
 "version uutuudet ja linkin koko muutoslokiin. Tiedot ovat englanniksi."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
 msgid "Discover cast devices"
 msgstr "Etsi suoratoistolaitteita"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr ""
 "Etsii lähiverkon suoratoistolaitteita, kun Toistolaite-valikko avataan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
 msgstr "Muista ikkunan koko ja sijainti"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 msgid "Opens the window where it was when VLC was closed."
 msgstr "Avaa ikkunan siihen kohtaan, jossa se oli VLC:n sulkeutuessa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
+msgid "Interface size"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+msgid ""
+"How large the pages, texts and controls are drawn. Automatic picks the size "
+"that suits this screen."
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
 msgid "Always show the player bar"
 msgstr "Näytä soitinpalkki aina"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -3060,12 +3071,12 @@ msgstr ""
 "Pitää soitinpalkin kirjaston alareunassa, vaikka mitään ei toisteta: Toista "
 "käynnistää toistojonon tai avaa tiedostoja, kun jono on tyhjä."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 msgid "Increase text contrast"
 msgstr "Lisää tekstin kontrastia"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -3073,22 +3084,22 @@ msgstr ""
 "Piirtää suunnittelun himmeät tekstit (vihjeet, kuvaukset, katsotut kohteet) "
 "kirkkaampina WCAG-saavutettavuusohjeiden vaatimaan kontrastiin (AA)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Popup duration"
 msgstr "Ponnahdusikkunan kesto"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "How long the popup of the track changes stays on the screen."
 msgstr ""
 "Kuinka kauan raidan vaihtumisesta kertova ponnahdusikkuna pysyy näytöllä."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 msgid "Process priority"
 msgstr "Prosessin prioriteetti"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:269
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
@@ -3096,51 +3107,51 @@ msgstr ""
 "Kuinka paljon suoritinaikaa järjestelmä antaa VLC:lle muihin ohjelmiin "
 "verrattuna."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Volume indicator"
 msgstr "Äänenvoimakkuuden säädin"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Double click on the video"
 msgstr "Kaksoisnapsautus videossa"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:279
 msgid "What a double click on the video does."
 msgstr "Mitä videon kaksoisnapsautus tekee."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:279
 msgid "Nothing|Toggle fullscreen"
 msgstr "Ei mitään|Koko näyttö päälle/pois"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:276
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Size values"
 msgstr "Koon arvot"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
 msgstr ""
 "Valitse tekstityksen koko nimen mukaan (suhteessa kuvaan) tai pikseleinä."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
 msgid "Relative|Pixels"
 msgstr "Suhteellinen|Pikselit"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:280
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:284
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -3148,12 +3159,12 @@ msgstr ""
 "Kuinka peittävä tekstityksen takana oleva laatikko on, kun sellainen on "
 "käytössä (arvo säilyy, vaikka laatikkoa ei ole)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 msgid "Never remember items matching"
 msgstr "Älä muista kohteita, joihin täsmää"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -3161,12 +3172,12 @@ msgstr ""
 "Säännöllinen lauseke: kohteita, joiden osoite tai nimi vastaa sitä, ei "
 "tallenneta historiaan, eikä myöskään niiden toistokohtaa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 msgid "Update the channels and the guide"
 msgstr "Päivitä kanavat ja ohjelmaopas"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
 msgid ""
 "How often the playlists and the programme guides are downloaded again, in "
 "the background. Update in the sources does it at once."
@@ -3174,16 +3185,16 @@ msgstr ""
 "Kuinka usein soittolistat ja ohjelmaoppaat ladataan uudelleen taustalla. "
 "Päivitys lähteissä tekee sen heti."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:288
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:292
 msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "Ei koskaan|6 tunnin välein|12 tunnin välein|Päivittäin|Viikoittain"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 msgid "Days of the guide kept"
 msgstr "Ohjelmaoppaan säilytettävät päivät"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
 msgid ""
 "How many days of programmes are kept before and after today. Fewer use less "
 "memory with a large guide; the archives of the channels reach back as far as "
@@ -3193,21 +3204,21 @@ msgstr ""
 "Pienempi määrä käyttää vähemmän muistia suuren oppaan kanssa; kanavien "
 "arkistot ulottuvat yhtä kauas taaksepäin."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "Hours across the guide"
 msgstr "Oppaan leveys tunteina"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
 msgid "The time the guide shows across its width."
 msgstr "Aika, jonka opas näyttää koko leveydeltään."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "Guide languages"
 msgstr "Ohjelmaoppaan kielet"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:295
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
 msgid ""
 "Keeps only the programmes in these languages when a guide gives several "
 "(codes such as en, he, fr, separated by commas). Empty: every language."
@@ -3215,38 +3226,38 @@ msgstr ""
 "Säilyttää vain näillä kielillä olevat ohjelmat, kun opas tarjoaa useita "
 "(koodit kuten en, he, fr pilkuilla erotettuina). Tyhjä: kaikki kielet."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
-#: modules/gui/qt/qt.cpp:356
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/qt.cpp:358
 msgid "Channel banner"
 msgstr "Kanavapalkki"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
 msgid "What the banner shows over the video when the channel changes."
 msgstr "Mitä kanavapalkki näyttää videon päällä kanavan vaihtuessa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
 msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "Kanava, nyt ja seuraavaksi|Kanava ja nyt|Vain kanava|Ei mitään"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Show programme descriptions"
 msgstr "Näytä ohjelmakuvaukset"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
 msgid ""
 "Shows the description of what is on in the channel lists and the banner."
 msgstr ""
 "Näyttää meneillään olevan ohjelman kuvauksen kanavaluetteloissa ja "
 "kanavapalkissa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Show the progress of what is on"
 msgstr "Näytä meneillään olevan ohjelman edistyminen"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:307
 msgid ""
 "A bar of how much of the programme has played, from its start and end in the "
 "guide."
@@ -3254,242 +3265,247 @@ msgstr ""
 "Palkki, joka näyttää, kuinka paljon ohjelmasta on kulunut, oppaan alku- ja "
 "loppuajan mukaan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Show what is next"
 msgstr "Näytä seuraava ohjelma"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:309
 msgid "Shows the next programme in the channel lists and the banner."
 msgstr "Näyttää seuraavan ohjelman kanavaluetteloissa ja kanavapalkissa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Start on the last channel"
 msgstr "Aloita viimeisimmästä kanavasta"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:307
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:311
 msgid "When VLC opens with nothing to play, the channel watched last plays."
 msgstr ""
 "Kun VLC avataan ilman toistettavaa, viimeksi katsottu kanava alkaa toistua."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Show adult channels"
 msgstr "Näytä aikuisten kanavat"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:309
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:313
 msgid "Lists the channels whose group or name says they are for adults."
 msgstr ""
 "Näyttää luetteloissa kanavat, joiden ryhmä tai nimi kertoo niiden olevan "
 "aikuisille."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "System monospace"
 msgstr "Järjestelmän tasalevyinen"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "System, sans-serif"
 msgstr "Järjestelmä, sans-serif"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:379
 msgid "Ultra fast"
 msgstr "Ultranopea"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:379
 msgid "Super fast"
 msgstr "Supernopea"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:376
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:380
 msgid "Very fast"
 msgstr "Hyvin nopea"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Very slow"
 msgstr "Hyvin hidas"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Placebo"
 msgstr "Placebo"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:380
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:384
 msgid "Film"
 msgstr "Elokuva"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:381
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:385
 msgid "Still image"
 msgstr "Pysäytyskuva"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:386
 msgid "Fast decoding"
 msgstr "Nopea purku"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:386
 msgid "Zero latency"
 msgstr "Nollaviive"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:966
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:970
 msgid "%1: this value can not be used."
 msgstr "%1: tätä arvoa ei voi käyttää."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1029
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1033
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1062
 msgid "%1 is not available in this VLC installation."
 msgstr "%1 ei ole käytettävissä tässä VLC-asennuksessa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1047
 msgid "This setting"
 msgstr "Tämä asetus"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1057
 msgid "%1: choose a folder of this computer."
 msgstr "%1: valitse tämän tietokoneen kansio."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1086
 msgid "Select a category to reset."
 msgstr "Valitse palautettava luokka."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1148
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr "Toista nykyistä kohdetta (Yksi) tai koko toistojonoa (Kaikki)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 msgid "When playback finishes"
 msgstr "Kun toisto päättyy"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1153
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "Pysäytä tai lopeta VLC toistojonon lopussa."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1161
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1165
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Use a custom skin"
 msgstr "Käytä mukautettua ulkoasuteemaa"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1162
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1166
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr ""
 "Käynnistää VLC:n alla valitulla ulkoasuteemalla tämän käyttöliittymän sijaan."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Remember the playback position"
 msgstr "Muista toistokohta"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1183
 msgid "Lets VLC continue the media where you left off."
 msgstr "VLC jatkaa mediaa siitä, mihin jäit."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Reverse scroll direction"
 msgstr "Käänteinen vierityssuunta"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1194
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr "Kelaavat rullat siirtävät taaksepäin, kun niitä pyöritetään eteenpäin."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
 msgstr "Verkkokauko-ohjaus"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1210
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1214
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "Antaa verkkoselaimen ohjata VLC:tä. Aseta sen salasana kohdassa "
 "Lisäasetukset."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Video post-processing"
 msgstr "Videon jälkikäsittely"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1233
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
 msgstr ""
 "Parantaa huonosti koodattujen videoiden kuvaa laskentatehon kustannuksella."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Visualization size"
 msgstr "Visualisoinnin koko"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1279
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1283
 msgid "The size the visualizations are drawn at."
 msgstr "Koko, jossa visualisoinnit piirretään."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1280
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1284
 msgid "Match window"
 msgstr "Ikkunan mukaan"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Seek precisely"
 msgstr "Tarkka siirtyminen"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1322
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1326
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "Siirry täsmälleen pyydettyyn aikaan; hitaampaa kuin siirtyminen lähimpään "
 "avainruutuun."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1423
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
 msgid "From the file only"
 msgstr "Vain tiedostosta"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1425
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1429
 msgid "From the file and the internet"
 msgstr "Tiedostosta ja internetistä"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1442
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1446
 msgid "Box"
 msgstr "Laatikko"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
+#, no-c-format
+msgid "Automatic (%1 %)"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
 msgstr "Normaalia korkeampi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
 msgid "Below normal"
 msgstr "Normaalia alempi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
 msgid "Idle"
 msgstr "Joutoaika"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1639
 msgid "Current screen"
 msgstr "Nykyinen näyttö"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1644
 msgid "Screen %1 (%2)"
 msgstr "Näyttö %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1632
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1650
 msgid "Screen %1"
 msgstr "Näyttö %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1659
 msgid "Any title"
 msgstr "Mikä tahansa nimi"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1659
 msgid "Contains title"
 msgstr "Sisältää nimen"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1660
 msgid "Title with extra characters"
 msgstr "Nimi ja lisämerkkejä"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1660
 msgid "Exact title match"
 msgstr "Täsmälleen sama nimi"
 
@@ -3559,7 +3575,7 @@ msgstr ""
 "tallennettu."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:365
+#: modules/gui/qt/qt.cpp:367
 msgid "Expert"
 msgstr "Asiantuntija"
 
@@ -3578,7 +3594,7 @@ msgstr "Asiantuntija-asetukset"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:839
+#: modules/misc/iptv/iptv.cpp:954
 msgid "Live TV"
 msgstr "Suora TV"
 
@@ -3652,7 +3668,7 @@ msgstr "Teema"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:349
 msgid "Accent color"
 msgstr "Korostusväri"
 
@@ -3717,70 +3733,70 @@ msgstr "Vähemmän kieliä: nopeampi haku"
 msgid "Subtitle services"
 msgstr "Tekstityspalvelut"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:119
 msgid "Key works"
 msgstr "Avain toimii"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:120
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:782
 msgid "Signed in as %1"
 msgstr "Kirjautunut käyttäjänä %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:121
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Key refused"
 msgstr "Avain hylättiin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:122
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Wrong user name or password"
 msgstr "Väärä käyttäjätunnus tai salasana"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
 msgid "Busy: try again in a minute"
 msgstr "Varattu: yritä uudelleen minuutin päästä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
 msgid "No answer, try again"
 msgstr "Ei vastausta, yritä uudelleen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:162
 msgid "Hide"
 msgstr "Piilota"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:162
 msgid "Show"
 msgstr "Näytä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:313
-#: modules/gui/qt/player/subtitle_providers.cpp:97
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:327
+#: modules/gui/qt/player/subtitle_providers.cpp:100
 msgid "Key refused: check it"
 msgstr "Avain hylättiin: tarkista se"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:328
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
-#: modules/gui/qt/player/subtitle_providers.cpp:99
+#: modules/gui/qt/player/subtitle_providers.cpp:102
 msgid "Sign-in refused: check it"
 msgstr "Kirjautuminen hylättiin: tarkista tiedot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:331
 msgid "Asked only when %1 is one of your subtitle languages"
 msgstr "Kysytään vain, kun %1 on tekstityskieliesi joukossa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
 msgid "Your free key"
 msgstr "Ilmainen avaimesi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:359
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
 msgid "User name (optional)"
 msgstr "Käyttäjätunnus (valinnainen)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:359
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
@@ -3788,39 +3804,39 @@ msgstr "Käyttäjätunnus (valinnainen)"
 msgid "User name"
 msgstr "Käyttäjätunnus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:360
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
 msgstr "Salasana (valinnainen)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:361
 msgid "Email"
 msgstr "Sähköposti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:385
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:765
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:395
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:405
 msgid "Create a free account"
 msgstr "Luo ilmainen tili"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:405
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:599
 msgid "Get a free key"
 msgstr "Hanki ilmainen avain"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:421
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:436
 msgid "Add a service"
 msgstr "Lisää palvelu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:451
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:466
 msgid ""
 "To find subtitles, the services turned on get the video's title, its IMDb "
 "id, its file name and hash (made from a part of the file), and nothing else."
@@ -3973,19 +3989,19 @@ msgstr "Lähetä toistetut kappaleet Last.fm:ään"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Last.fm username"
 msgstr "Last.fm-käyttäjätunnus"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm password"
 msgstr "Last.fm-salasana"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Last.fm submission URL"
 msgstr "Last.fm-lähetyksen URL"
 
@@ -4080,7 +4096,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Two-pass"
 msgstr "Kaksivaiheinen"
 
@@ -4157,12 +4173,12 @@ msgid "Play video to adjust and preview the picture."
 msgstr "Toista videota, jotta voit säätää ja esikatsella kuvaa."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Spatial audio"
 msgstr "Tilaääni"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Stereo widening"
 msgstr "Stereon laajennus"
 
@@ -4187,7 +4203,7 @@ msgid "The address the played tracks are sent to."
 msgstr "Osoite, johon toistetut kappaleet lähetetään."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Nothing"
 msgstr "Ei mitään"
 
@@ -4394,897 +4410,897 @@ msgstr "Toista video pääikkunassa"
 msgid "Resize window to fit video"
 msgstr "Muuta ikkunan koko videon mukaan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
 msgid "Keep window above other windows"
 msgstr "Pidä ikkuna muiden ikkunoiden päällä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
 msgid "Show window decorations"
 msgstr "Näytä ikkunan kehykset"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
 msgid "Show the file name in the title bar"
 msgstr "Näytä tiedostonimi otsikkorivillä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
 msgid "Open fullscreen on"
 msgstr "Koko näytön tila näytössä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Playback Controls"
 msgstr "Toiston ohjaimet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
 msgid "Start in compact mode"
 msgstr "Käynnistä kompaktissa tilassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
 msgid "Auto-hide the controls"
 msgstr "Piilota ohjaimet automaattisesti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
 msgid "In fullscreen only"
 msgstr "Vain koko näytön tilassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
 msgid "Hide after"
 msgstr "Piilotusviive"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
 msgid "Show controls in fullscreen"
 msgstr "Näytä ohjaimet koko näytön tilassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
-#: modules/gui/qt/qt.cpp:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:258
 msgid "When you use a shortcut in full screen"
 msgstr "Kun käytät pikanäppäintä koko näytön tilassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
-#: modules/gui/qt/qt.cpp:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:377
 msgid "Show the controls"
 msgstr "Näytä ohjaimet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
-#: modules/gui/qt/qt.cpp:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:377
 msgid "Show only the progress"
 msgstr "Näytä vain edistyminen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
-#: modules/gui/qt/qt.cpp:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/qt.cpp:377
 msgid "Show only a message"
 msgstr "Näytä vain viesti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Notifications and System Tray"
 msgstr "Ilmoitukset ja ilmaisinalue"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 msgid "Show a system tray icon"
 msgstr "Näytä kuvake ilmaisinalueella"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 msgid "Start minimized to the tray"
 msgstr "Käynnistä pienennettynä ilmaisinalueelle"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Show a popup when the track changes"
 msgstr "Näytä ponnahdusikkuna, kun kappale vaihtuu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:75
 msgid "Show the playlist as a tree"
 msgstr "Näytä soittolista puuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
 msgid "Player Bar"
 msgstr "Soitinpalkki"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:80
 msgid "Window opacity"
 msgstr "Ikkunan peittävyys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:81
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:82
 msgid "Pause video when window is minimized"
 msgstr "Tauota video, kun ikkuna pienennetään"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 msgid "Bring VLC to the front when playback starts"
 msgstr "Tuo VLC eteen, kun toisto alkaa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
 msgid "Audio and video"
 msgstr "Ääni ja video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:89
 msgid "Show cover art in the window when playing audio"
 msgstr "Näytä kansikuva ikkunassa ääntä toistettaessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
 msgid "Show the file browser inside the open dialog"
 msgstr "Näytä tiedostoselain avausikkunassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:92
 msgid "Allow the app icon to change"
 msgstr "Salli sovelluskuvakkeen vaihtuminen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Fullscreen controls opacity"
 msgstr "Koko näytön ohjainten peittävyys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Fullscreen controls sensitivity"
 msgstr "Koko näytön ohjainten herkkyys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 msgid "History"
 msgstr "Historia"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
-#: modules/misc/iptv/iptv.cpp:834
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/misc/iptv/iptv.cpp:949
 msgid "Live TV (IPTV) add-on"
 msgstr "Suora TV (IPTV) -lisäosa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1225
-#: modules/gui/qt/player/qml/CompactLibrary.qml:775
+#: modules/gui/qt/player/qml/CompactLibrary.qml:780
 msgid "Guide"
 msgstr "Ohjelmaopas"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "days"
 msgstr "päivää"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "h"
 msgstr "t"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "e.g., en, he"
 msgstr "esim. en, he"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Watching"
 msgstr "Katselu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Lists"
 msgstr "Luettelot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
 msgid "Fetch titles and cover art from the internet"
 msgstr "Hae nimet ja kansikuvat internetistä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
 msgid "Additional interfaces"
 msgstr "Lisäkäyttöliittymät"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 msgid "Continue where you left off"
 msgstr "Jatka siitä, mihin jäit"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
 msgid "Start playing as soon as a file opens"
 msgstr "Aloita toisto heti, kun tiedosto avautuu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 msgid "Default playback speed"
 msgstr "Toiston oletusnopeus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Pause when another app uses audio"
 msgstr "Tauota, kun toinen sovellus käyttää ääntä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "Raidat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 msgid "Preferred video quality"
 msgstr "Ensisijainen videon laatu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 msgid "Standard (576p)"
 msgstr "Vakio (576p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 msgid "Low (360p)"
 msgstr "Matala (360p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 msgid "Very low (240p)"
 msgstr "Hyvin matala (240p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
 msgid "Preferred menu language"
 msgstr "Valikoiden ensisijainen kieli"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Default audio track"
 msgstr "Oletusääniraita"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 msgid "Default subtitle track"
 msgstr "Oletustekstitysraita"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Order"
 msgstr "Järjestys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 msgid "Stop after each item"
 msgstr "Pysäytä jokaisen kohteen jälkeen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Seeking"
 msgstr "Siirtyminen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/qt.cpp:313
 msgid "Show thumbnail while scrubbing"
 msgstr "Näytä pikkukuva kelatessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 msgid "Files & Discs"
 msgstr "Tiedostot ja levyt"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 msgid "Default optical drive"
 msgstr "Oletuslevyasema"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 msgid "Repair damaged AVI files"
 msgstr "Korjaa vahingoittuneet AVI-tiedostot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "When needed"
 msgstr "Tarvittaessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 msgid "Load matching .mkv files from the same folder"
 msgstr "Lataa vastaavat .mkv-tiedostot samasta kansiosta"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Time-shift"
 msgstr "Ajansiirto"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
 msgid "Time-shift buffer folder"
 msgstr "Ajansiirtopuskurin kansio"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Time-shift buffer size"
 msgstr "Ajansiirtopuskurin koko"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Pause on the last frame of each item"
 msgstr "Tauota kunkin kohteen viimeiseen kuvaan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Resume the last playback states (tracks, speed...)"
 msgstr "Palauta viimeisimmät toistotilat (raidat, nopeus...)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
 msgid "Start videos in fullscreen"
 msgstr "Aloita videot koko näytön tilassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Stop the screensaver during playback"
 msgstr "Estä näytönsäästäjä toiston aikana"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 msgid "Play video as desktop wallpaper"
 msgstr "Toista video työpöydän taustakuvana"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 msgid "Method"
 msgstr "Menetelmä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:408
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
 msgid "Framing"
 msgstr "Kuvan sovitus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 msgid "Scale video to the window"
 msgstr "Skaalaa video ikkunaan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Position in the window"
 msgstr "Sijainti ikkunassa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Snapshots"
 msgstr "Kuvakaappaukset"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "Save to"
 msgstr "Tallennuspaikka"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
 msgid "File name prefix"
 msgstr "Tiedostonimen etuliite"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Number files sequentially"
 msgstr "Numeroi tiedostot järjestyksessä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 msgid "Show a preview after capture"
 msgstr "Näytä esikatselu kaappauksen jälkeen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Custom aspect ratios"
 msgstr "Mukautetut kuvasuhteet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Custom crop ratios"
 msgstr "Mukautetut rajaussuhteet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Kuvakaappauksen korkeus (0: suhteessa, -1: alkuperäinen)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
 msgid "Deinterlacing filter"
 msgstr "Lomituksenpoistosuodin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Speaker setup"
 msgstr "Kaiutinkokoonpano"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 msgid "Maximum volume"
 msgstr "Suurin äänenvoimakkuus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 #: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "Äänenvoimakkuus käynnistettäessä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 msgid "Volume step"
 msgstr "Äänenvoimakkuuden askel"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Loudness"
 msgstr "Äänekkyys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Normalize loudness"
 msgstr "Normalisoi äänekkyys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 msgid "Target level"
 msgstr "Tavoitetaso"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
 msgid "Night mode"
 msgstr "Yötila"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Replay gain preamp"
 msgstr "Replay Gain -esivahvistus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Spatial audio mode"
 msgstr "Tilaäänen tila"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "Pitch shift"
 msgstr "Sävelkorkeuden siirto"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:225
 msgid "Chorus/flanger"
 msgstr "Chorus/flanger"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Preferred audio language"
 msgstr "Ensisijainen äänen kieli"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "Äänen viive"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 msgid "Pass compressed audio to the receiver"
 msgstr "Välitä pakattu ääni vastaanottimelle"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Detect Dolby Surround"
 msgstr "Tunnista Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Fastest"
 msgstr "Nopein"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Balanced"
 msgstr "Tasapainoinen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Output gain"
 msgstr "Lähtövahvistus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 msgid "Keep the pitch when changing the speed"
 msgstr "Säilytä sävelkorkeus nopeutta muutettaessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
 msgid "Equalizer preamp"
 msgstr "Taajuuskorjaimen esivahvistus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 msgid "Compressor ratio"
 msgstr "Kompressorin suhde"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Compressor threshold"
 msgstr "Kompressorin kynnys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
 msgid "Compressor makeup gain"
 msgstr "Kompressorin jälkivahvistus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Tracks & Languages"
 msgstr "Raidat ja kielet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Preferred language"
 msgstr "Ensisijainen kieli"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Text encoding"
 msgstr "Tekstin merkistö"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
 msgid "Loading Subtitles"
 msgstr "Tekstitysten lataus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "Load subtitle files automatically"
 msgstr "Lataa tekstitystiedostot automaattisesti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "File name matching"
 msgstr "Tiedostonimen vastaavuus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 msgid "Bold"
 msgstr "Lihavoitu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
 msgid "Text color"
 msgstr "Tekstin väri"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Vertical position"
 msgstr "Pystysijainti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Timing"
 msgstr "Ajoitus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/qt.cpp:315
 msgid "Show subtitle lines on the seek bar"
 msgstr "Näytä tekstitysrivit kelauspalkissa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "On-Screen Messages"
 msgstr "Näyttöviestit"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Show feedback for shortcuts"
 msgstr "Näytä palaute pikanäppäimistä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Show feedback for"
 msgstr "Palautteen näyttöaika"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 msgid "Show filename when a video starts"
 msgstr "Näytä tiedostonimi videon alkaessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
 msgid "Show filename for"
 msgstr "Tiedostonimen näyttöaika"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
 msgid "Load subtitles from these folders"
 msgstr "Lataa tekstitykset näistä kansioista"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Monospace font"
 msgstr "Tasalevyinen fontti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Text alignment"
 msgstr "Tekstin tasaus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Position of the filename"
 msgstr "Tiedostonimen sijainti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Skip Amounts"
 msgstr "Hyppyjen pituudet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Very short skip"
 msgstr "Hyvin lyhyt hyppy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Short skip"
 msgstr "Lyhyt hyppy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Medium skip"
 msgstr "Keskipitkä hyppy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Long skip"
 msgstr "Pitkä hyppy"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Mouse"
 msgstr "Hiiri"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Single click on the video"
 msgstr "Napsautus videossa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Play / Pause"
 msgstr "Toista / tauko"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "Play / Pause on release"
 msgstr "Toista / tauko vapautettaessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 msgid "Scroll wheel"
 msgstr "Hiiren rulla"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Vaakavieritys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:410
 msgid "Remotes"
 msgstr "Kauko-ohjaimet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Handle mouse clicks in the video"
 msgstr "Käsittele hiiren napsautukset videossa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Web remote password"
 msgstr "Verkkokauko-ohjauksen salasana"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Web remote address"
 msgstr "Verkkokauko-ohjauksen osoite"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Ignore the volume keys of the keyboard"
 msgstr "Ohita näppäimistön äänenvoimakkuusnäppäimet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Opening Files"
 msgstr "Tiedostojen avaaminen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Only allow one VLC window"
 msgstr "Salli vain yksi VLC-ikkuna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Apply to files opened from the file manager"
 msgstr "Käytä myös tiedostonhallinnasta avattaviin tiedostoihin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 msgid "Add to the playlist instead of replacing it"
 msgstr "Lisää soittolistaan sen korvaamisen sijaan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "When opening a folder"
 msgstr "Kansiota avattaessa"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Only this folder"
 msgstr "Vain tämä kansio"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Include subfolders"
 msgstr "Sisällytä alikansiot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Include and expand subfolders"
 msgstr "Sisällytä ja laajenna alikansiot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Metadata & Artwork"
 msgstr "Metatiedot ja kansikuvat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Fetch titles and artwork"
 msgstr "Hae nimet ja kansikuvat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Read media information automatically"
 msgstr "Lue mediatiedot automaattisesti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Ignored file extensions"
 msgstr "Ohitettavat tiedostopäätteet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Buffering"
 msgstr "Puskurointi"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Local files"
 msgstr "Paikalliset tiedostot"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Network streams"
 msgstr "Verkkovirrat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Live capture"
 msgstr "Suora kaappaus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Proxy"
 msgstr "Välityspalvelin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "System proxy"
 msgstr "Järjestelmän välityspalvelin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Security"
 msgstr "Suojaus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Verify certificates against the system trust store"
 msgstr "Tarkista varmenteet järjestelmän luotettujen varmenteiden säilöstä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Cipher preference"
 msgstr "Ensisijainen salaus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Secure (128-bit)"
 msgstr "Turvallinen (128-bittinen)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Most secure (256-bit)"
 msgstr "Turvallisin (256-bittinen)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Connections"
 msgstr "Yhteydet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Connection timeout"
 msgstr "Yhteyden aikakatkaisu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "HTTP user agent"
 msgstr "HTTP-käyttäjäagentti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Trusted certificates folder"
 msgstr "Luotettujen varmenteiden kansio"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Post-processing quality"
 msgstr "Jälkikäsittelyn laatu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Skip the H.264 loop filter"
 msgstr "Ohita H.264:n silmukkasuodin"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Non-reference frames"
 msgstr "Ei-viitekuvat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Bidirectional frames"
 msgstr "Kaksisuuntaiset kuvat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Non-key frames"
 msgstr "Muut kuin avainkuvat"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 msgid "Decoding threads"
 msgstr "Purkusäikeet"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 msgid "Smooth Playback"
 msgstr "Sujuva toisto"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 msgid "Drop frames when the system can't keep up"
 msgstr "Pudota kuvia, kun järjestelmä ei pysy perässä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Developer"
 msgstr "Kehittäjä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 msgid "Decoder"
 msgstr "Purkaja"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Clock reference averaging"
 msgstr "Kelloviitteen keskiarvoistus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Save recordings to"
 msgstr "Tallenteiden sijainti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
 msgid "Record without re-encoding when possible"
 msgstr "Tallenna ilman uudelleenkoodausta, kun mahdollista"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Casting"
 msgstr "Suoratoisto laitteeseen"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Cast quality"
 msgstr "Suoratoiston laatu"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
 msgid "Low CPU"
 msgstr "Kevyt suorittimelle"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Play locally while streaming"
 msgstr "Toista myös paikallisesti suoratoiston aikana"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Include audio"
 msgstr "Sisällytä ääni"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Include video"
 msgstr "Sisällytä video"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
 msgid "Include subtitles"
 msgstr "Sisällytä tekstitykset"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
 msgid "Encoding preset"
 msgstr "Koodauksen esiasetus"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
 msgid "Tuning"
 msgstr "Viritys"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Send Dolby audio as is"
 msgstr "Lähetä Dolby-ääni sellaisenaan"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Cast HTTP port"
 msgstr "Suoratoiston HTTP-portti"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:382
 msgid "Keep the stream output open between items"
 msgstr "Pidä virran lähtö auki kohteiden välillä"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:427
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:428
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "Lisää vaihtoehtoja"
@@ -5350,7 +5366,7 @@ msgstr "POIS"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:39
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:91
-#: modules/gui/qt/player/qml/CompactLibrary.qml:781
+#: modules/gui/qt/player/qml/CompactLibrary.qml:786
 msgid "Sources"
 msgstr "Lähteet"
 
@@ -5361,7 +5377,7 @@ msgstr "Päivitetään…"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
-#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/player/qml/CompactLibrary.qml:893
 msgid "%1 channel"
 msgid_plural "%1 channels"
 msgstr[0] "%1 kanava"
@@ -5401,7 +5417,7 @@ msgstr "Ilmaiset kanavaluettelot"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:210
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1549
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1554
 msgid "Browse the Catalog"
 msgstr "Selaa luetteloa"
 
@@ -5818,12 +5834,12 @@ msgid "Series"
 msgstr "Sarjat"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:185
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1518
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1523
 msgid "Watch TV in VLC"
 msgstr "Katso TV:tä VLC:llä"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:195
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1528
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1533
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
@@ -5835,7 +5851,7 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:205
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:448
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1543
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1548
 msgid "Add a Link"
 msgstr "Lisää linkki"
 
@@ -5852,38 +5868,38 @@ msgid "%1 could not be loaded: %2"
 msgstr "Kohdetta %1 ei voitu ladata: %2"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:455
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:580
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1486
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:595
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1491
 msgid "No channel matches the search"
 msgstr "Mikään kanava ei vastaa hakua"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:456
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1487
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1492
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Ei vielä suosikkikanavia: lisää kanava napsauttamalla sitä hiiren oikealla "
 "painikkeella"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:457
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1488
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1493
 msgid "No channel watched yet"
 msgstr "Kanavia ei ole vielä katsottu"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:458
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1489
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1494
 msgid "Loading the channels…"
 msgstr "Ladataan kanavia…"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:459
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1490
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1495
 msgid "No channels"
 msgstr "Ei kanavia"
 
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:513
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:527
 #: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "Suosikit"
@@ -5908,24 +5924,24 @@ msgstr "Aiemmin"
 msgid "Later"
 msgstr "Myöhemmin"
 
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:420
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:432
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "No guide for this channel"
 msgstr "Kanavalla ei ole ohjelmaopasta"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:195
 msgid "No account with films or series"
 msgstr "Ei tiliä, jolla on elokuvia tai sarjoja"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:196
 msgid "Loading…"
 msgstr "Ladataan…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:196
 msgid "Nothing here"
 msgstr "Täällä ei ole mitään"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:248
 msgid "S%1 E%2"
 msgstr "K%1 J%2"
 
@@ -5988,11 +6004,11 @@ msgstr "Edellinen ohjelma"
 msgid "Programme after"
 msgstr "Seuraava ohjelma"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:354
 msgid "Next channel"
 msgstr "Seuraava kanava"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:355
 msgid "Previous channel"
 msgstr "Edellinen kanava"
 
@@ -6479,20 +6495,20 @@ msgstr "Kumoa"
 
 #. xgettext: The step of a jump in seconds shown in full screen
 #. * ("+10 s"); a minute and more are written 1:10
-#: modules/gui/qt/maininterface/mainctx.cpp:910
+#: modules/gui/qt/maininterface/mainctx.cpp:936
 #, no-c-format
 msgid "%1 s"
 msgstr "%1 s"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1423
+#: modules/gui/qt/maininterface/mainctx.cpp:1479
 msgid "Paste from clipboard"
 msgstr "Liitä leikepöydältä"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1424
+#: modules/gui/qt/maininterface/mainctx.cpp:1480
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr "Haluatko lisätä seuraavat URL-osoitteet toistojonoon?"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1425
+#: modules/gui/qt/maininterface/mainctx.cpp:1481
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -6506,7 +6522,7 @@ msgstr "Lisää jonoon"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1806
+#: modules/gui/qt/maininterface/mainctx.cpp:1862
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -6541,7 +6557,7 @@ msgstr "Soittolistat"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
 #: modules/gui/qt/player/qml/CompactLibrary.qml:316
-#: modules/gui/qt/player/qml/CompactLibrary.qml:527
+#: modules/gui/qt/player/qml/CompactLibrary.qml:532
 msgid "Artists"
 msgstr "Esittäjät"
 
@@ -6552,7 +6568,7 @@ msgstr "Esittäjät"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
 #: modules/gui/qt/player/qml/CompactLibrary.qml:315
-#: modules/gui/qt/player/qml/CompactLibrary.qml:526
+#: modules/gui/qt/player/qml/CompactLibrary.qml:531
 msgid "Albums"
 msgstr "Albumit"
 
@@ -6562,7 +6578,7 @@ msgstr "Albumit"
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
 #: modules/gui/qt/player/qml/CompactLibrary.qml:317
-#: modules/gui/qt/player/qml/CompactLibrary.qml:528
+#: modules/gui/qt/player/qml/CompactLibrary.qml:533
 msgid "Genres"
 msgstr "Tyylilajit"
 
@@ -6764,110 +6780,111 @@ msgstr "Tekstitysten verkkohaku ei ole käytettävissä tässä koontiversiossa.
 msgid "Enter an OpenSubtitles API key and a title to search."
 msgstr "Anna OpenSubtitles-API-avain ja haettava nimi."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:145
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:179
 msgid "OpenSubtitles search failed. Check the API key and network."
 msgstr "OpenSubtitles-haku epäonnistui. Tarkista API-avain ja verkkoyhteys."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:151
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:184
 msgid "OpenSubtitles returned an invalid search response."
 msgstr "OpenSubtitles palautti virheellisen hakuvastauksen."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:185
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:200
 msgid "Enter your API key and OpenSubtitles account credentials to download."
 msgstr "Anna API-avaimesi ja OpenSubtitles-tilisi tunnistetiedot ladataksesi."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:197
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:212
 msgid "OpenSubtitles login failed. Check your account credentials."
 msgstr ""
 "OpenSubtitles-kirjautuminen epäonnistui. Tarkista tilisi tunnistetiedot."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:205
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:220
 msgid "OpenSubtitles returned an invalid login session."
 msgstr "OpenSubtitles palautti virheellisen kirjautumisistunnon."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:216
-#: modules/gui/qt/player/subtitle_providers.cpp:1744
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:231
+#: modules/gui/qt/player/subtitle_providers.cpp:1962
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "OpenSubtitles-lataus epäonnistui. Tarkista kiintiösi."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:226
-#: modules/gui/qt/player/subtitle_providers.cpp:1755
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:241
+#: modules/gui/qt/player/subtitle_providers.cpp:1973
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "OpenSubtitles ei palauttanut kelvollista tekstityksen latauslinkkiä."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
-#: modules/gui/qt/player/subtitle_search.cpp:670
+#: modules/gui/qt/player/subtitle_search.cpp:848
 msgid "This build can't search the internet."
 msgstr "Tämä koontiversio ei voi hakea internetistä."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
-#: modules/gui/qt/player/subtitle_search.cpp:692
+#: modules/gui/qt/player/subtitle_search.cpp:870
 msgid "The subtitle services took too long to answer."
 msgstr "Tekstityspalvelut vastasivat liian hitaasti."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:353
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:563
 msgid "The destination media could not be found in the library."
 msgstr "Kohdemediaa ei löytynyt kirjastosta."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:123
 msgid "This media"
 msgstr "Tämä media"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:131
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:133
 msgid "Select a media file, folder, or playlist from the library."
 msgstr "Valitse kirjastosta mediatiedosto, kansio tai soittolista."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:191
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:253
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:193
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:388
 msgid "No local media files were found in this destination."
 msgstr "Tästä kohteesta ei löytynyt paikallisia mediatiedostoja."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:203
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:205
 msgid "This file"
 msgstr "Tämä tiedosto"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:231
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:239
 msgid "This folder"
 msgstr "Tämä kansio"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:240
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:247
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:383
 msgid "Choose an existing local folder."
 msgstr "Valitse olemassa oleva paikallinen kansio."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:268
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:264
 msgid "Choose an existing local media file."
 msgstr "Valitse olemassa oleva paikallinen mediatiedosto."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:289
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:285
 msgid "Choose existing local audio files only."
 msgstr "Valitse vain olemassa olevia paikallisia äänitiedostoja."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:290
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:286
 msgid "Choose existing local subtitle files only."
 msgstr "Valitse vain olemassa olevia paikallisia tekstitystiedostoja."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:298
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:294
 msgid "A selected audio file is missing or unreadable: %1"
 msgstr "Valittu äänitiedosto puuttuu tai sitä ei voi lukea: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:299
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:295
 msgid "A selected subtitle file is missing or unreadable: %1"
 msgstr "Valittu tekstitystiedosto puuttuu tai sitä ei voi lukea: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:304
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:300
 msgid "Unsupported audio file: %1"
 msgstr "Ei-tuettu äänitiedosto: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:305
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:301
 msgid "Unsupported subtitle file: %1"
 msgstr "Ei-tuettu tekstitystiedosto: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:320
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:316
 msgid "Choose audio files"
 msgstr "Valitse äänitiedostot"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:321
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:317
 msgid ""
 "Audio files (*.aac *.ac3 *.dts *.dtshd *.eac3 *.flac *.m4a *.mp3 *.pcm);;All "
 "files (*)"
@@ -6875,60 +6892,60 @@ msgstr ""
 "Äänitiedostot (*.aac *.ac3 *.dts *.dtshd *.eac3 *.flac *.m4a *.mp3 "
 "*.pcm);;Kaikki tiedostot (*)"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:323
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:319
 msgid "Choose subtitle files"
 msgstr "Valitse tekstitystiedostot"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:324
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:320
 msgid ""
 "Subtitle files (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;All files (*)"
 msgstr ""
 "Tekstitystiedostot (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;Kaikki "
 "tiedostot (*)"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:419
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:599
 msgid "Choose the folder of the audio tracks"
 msgstr "Valitse ääniraitojen kansio"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:420
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:600
 msgid "Choose the folder of the subtitles"
 msgstr "Valitse tekstitysten kansio"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:403
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:453
 msgid "Several media files have this name. Choose one."
 msgstr "Useilla mediatiedostoilla on tämä nimi. Valitse yksi."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:405
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:455
 msgid "No exact filename match. Choose a destination."
 msgstr "Täsmälleen vastaavaa tiedostonimeä ei löytynyt. Valitse kohde."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:426
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:476
 msgid "Choose a destination and at least one audio file."
 msgstr "Valitse kohde ja vähintään yksi äänitiedosto."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:427
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
 msgid "Choose a destination and at least one subtitle file."
 msgstr "Valitse kohde ja vähintään yksi tekstitystiedosto."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:439
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:489
 msgid "An audio file is no longer readable: %1"
 msgstr "Äänitiedostoa ei voi enää lukea: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:440
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:490
 msgid "A subtitle file is no longer readable: %1"
 msgstr "Tekstitystiedostoa ei voi enää lukea: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:447
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:497
 msgid "Choose at least one audio file."
 msgstr "Valitse vähintään yksi äänitiedosto."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:447
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:497
 msgid "Choose at least one subtitle file."
 msgstr "Valitse vähintään yksi tekstitystiedosto."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:522
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
@@ -6936,19 +6953,19 @@ msgstr ""
 " %n liitos(ta) tallennettiin ennen tätä virhettä; nämä muutokset pysyvät "
 "tallennettuina."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:548
 msgid "An audio file is missing or unreadable: %1"
 msgstr "Äänitiedosto puuttuu tai sitä ei voi lukea: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:549
 msgid "A subtitle file is missing or unreadable: %1"
 msgstr "Tekstitystiedosto puuttuu tai sitä ei voi lukea: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:579
 msgid "Could not save audio track association for %1."
 msgstr "Ääniraidan liitosta kohteelle %1 ei voitu tallentaa."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:580
 msgid "Could not save subtitle association for %1."
 msgstr "Tekstityksen liitosta kohteelle %1 ei voitu tallentaa."
 
@@ -6968,7 +6985,7 @@ msgstr ""
 msgid "Downloading subtitles is not available in this build."
 msgstr "Tekstitysten lataaminen ei ole käytettävissä tässä koontiversiossa."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:86
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:85
 msgid "The subtitle exceeds the 20 MB download limit."
 msgstr "Tekstitys ylittää 20 Mt:n latausrajan."
 
@@ -6980,11 +6997,11 @@ msgstr "Tekstitystä ei voitu ladata: %1"
 msgid "HTTP status %1"
 msgstr "HTTP-tila %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:106
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "Tekstitysten tallennuskansiota ei voitu luoda."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:116
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:134
 msgid "Could not save the downloaded subtitle."
 msgstr "Ladattua tekstitystä ei voitu tallentaa."
 
@@ -7003,8 +7020,8 @@ msgstr[0] "%1 kappale"
 msgstr[1] "%1 kappaletta"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:833
-#: modules/gui/qt/player/qml/CompactLibrary.qml:847
+#: modules/gui/qt/player/qml/CompactLibrary.qml:838
+#: modules/gui/qt/player/qml/CompactLibrary.qml:852
 msgid "Play all"
 msgstr "Toista kaikki"
 
@@ -7030,26 +7047,26 @@ msgid "Unknown artist"
 msgstr "Tuntematon esittäjä"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:231
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:237
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "Jatka katselua"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:596
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:610
 #: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "Uudet videot"
 
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:315
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:267
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:321
 #: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "Kuuntele uudelleen"
 
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:680
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:300
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:694
 #: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "Uutta musiikkia"
@@ -7068,7 +7085,7 @@ msgstr "Uutta musiikkia"
 msgid "Alphabetic"
 msgstr "Aakkosjärjestys"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:386
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:392
 #: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "Usein käytetyt kansiot"
@@ -7379,11 +7396,11 @@ msgstr "Synkronoi uudelleen"
 msgid "Pin to Sidebar"
 msgstr "Kiinnitä sivupalkkiin"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "Mikään media ei vastaa hakua"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Tässä kansiossa ei ole mediaa"
 
@@ -7404,13 +7421,13 @@ msgid "Media library"
 msgstr "Mediakirjasto"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:639
+#: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "Avaa media"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:800
+#: modules/gui/qt/player/qml/CompactLibrary.qml:805
 msgid "Add folder to library…"
 msgstr "Lisää kansio kirjastoon…"
 
@@ -7499,7 +7516,7 @@ msgstr[0] "%1 video"
 msgstr[1] "%1 videota"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:889
+#: modules/gui/qt/player/qml/CompactLibrary.qml:894
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
@@ -8023,127 +8040,127 @@ msgstr "Aloita toisto ennen uniajastimen asettamista."
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Valitse kesto yhden sekunnin ja 24 tunnin väliltä."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:769
-#: modules/gui/qt/player/subtitle_search.cpp:1344
-#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_finder.cpp:1016
+#: modules/gui/qt/player/subtitle_search.cpp:1436
+#: modules/gui/qt/player/subtitle_search.cpp:1525
 msgid "The subtitle couldn't be saved."
 msgstr "Tekstitystä ei voitu tallentaa."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:101
-#: modules/gui/qt/player/subtitle_search.cpp:707
+#: modules/gui/qt/player/subtitle_providers.cpp:104
+#: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 ei vastannut."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:103
+#: modules/gui/qt/player/subtitle_providers.cpp:106
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "%1 pyytää odottamaan hetken (liikaa hakuja)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:104
+#: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
 msgstr "%1 ei vastannut (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1458
+#: modules/gui/qt/player/subtitle_providers.cpp:1674
 msgid "All languages · movies and series · finds those made for your file"
 msgstr "Kaikki kielet · elokuvat ja sarjat · löytää tiedostollesi tehdyt"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1460
+#: modules/gui/qt/player/subtitle_providers.cpp:1676
 msgid "With your own free key · all languages"
 msgstr "Omalla ilmaisella avaimella · kaikki kielet"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1464
+#: modules/gui/qt/player/subtitle_providers.cpp:1680
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "Omalla ilmaisella avaimella · erityisesti arabia, monia kieliä"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1467
+#: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "Omalla ilmaisella avaimella · Subscene-arkisto, monia kieliä"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1470
+#: modules/gui/qt/player/subtitle_providers.cpp:1686
 msgid "Hebrew · movies and series"
 msgstr "Heprea · elokuvat ja sarjat"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1472
+#: modules/gui/qt/player/subtitle_providers.cpp:1688
 msgid "Series · many languages"
 msgstr "Sarjat · monia kieliä"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1474
+#: modules/gui/qt/player/subtitle_providers.cpp:1690
 msgid "Movies · many languages"
 msgstr "Elokuvat · monia kieliä"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1478
+#: modules/gui/qt/player/subtitle_providers.cpp:1694
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr "Ilmaisella tililläsi · kroatia, serbia, bosnia, slovenia, makedonia"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1482
+#: modules/gui/qt/player/subtitle_providers.cpp:1698
 msgid "With your free token · Chinese"
 msgstr "Ilmaisella tokenillasi · kiina"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1485
+#: modules/gui/qt/player/subtitle_providers.cpp:1701
 msgid "With your free key · anime, Japanese"
 msgstr "Ilmaisella avaimellasi · anime, japani"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1488
+#: modules/gui/qt/player/subtitle_providers.cpp:1704
 msgid "With your free key · series, French"
 msgstr "Ilmaisella avaimellasi · sarjat, ranska"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1491
+#: modules/gui/qt/player/subtitle_providers.cpp:1707
 msgid "With your free key · Romanian"
 msgstr "Ilmaisella avaimellasi · romania"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1494
+#: modules/gui/qt/player/subtitle_providers.cpp:1710
 msgid "With your free account · Polish · finds those made for your file"
 msgstr "Ilmaisella tililläsi · Puola · löytää juuri tiedostollesi tehdyt"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1497
+#: modules/gui/qt/player/subtitle_providers.cpp:1713
 msgid "With your free account · Portuguese (Brazil)"
 msgstr "Ilmaisella tililläsi · portugali (Brasilia)"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1880
+#: modules/gui/qt/player/subtitle_providers.cpp:2098
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr "Tämä tekstitys on RAR-arkistossa, jota ei voi avata täällä."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1889
-#: modules/gui/qt/player/subtitle_providers.cpp:1922
-#: modules/gui/qt/player/subtitle_search.cpp:1439
+#: modules/gui/qt/player/subtitle_providers.cpp:2107
+#: modules/gui/qt/player/subtitle_providers.cpp:2140
+#: modules/gui/qt/player/subtitle_search.cpp:1533
 msgid "The subtitle couldn't be unpacked."
 msgstr "Tekstitystä ei voitu purkaa."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1923
+#: modules/gui/qt/player/subtitle_providers.cpp:2141
 msgid "The archive has no subtitle in it."
 msgstr "Arkistossa ei ole tekstitystä."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1935
+#: modules/gui/qt/player/subtitle_providers.cpp:2153
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "OpenSubtitles varaa tämän tekstityksen maksaville jäsenilleen. Valitse "
 "toinen."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1941
+#: modules/gui/qt/player/subtitle_providers.cpp:2159
 msgid "The subtitle is empty."
 msgstr "Tekstitys on tyhjä."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1290
-#: modules/gui/qt/player/subtitle_search.cpp:1399
+#: modules/gui/qt/player/subtitle_search.cpp:1382
+#: modules/gui/qt/player/subtitle_search.cpp:1493
 msgid "No connection to the internet."
 msgstr "Ei internetyhteyttä."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1293
+#: modules/gui/qt/player/subtitle_search.cpp:1385
 msgid "The video couldn't be identified from its name."
 msgstr "Videota ei voitu tunnistaa sen nimen perusteella."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1294
+#: modules/gui/qt/player/subtitle_search.cpp:1386
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "\"%1\" ei löytynyt. Hae sen nimellä."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1296
+#: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "Kohteelle %1 ei löytynyt tekstityksiä."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1338
-#: modules/gui/qt/player/subtitle_search.cpp:1380
-#: modules/gui/qt/player/subtitle_search.cpp:1400
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Tekstitystä ei voitu ladata (%1)."
 
@@ -8336,73 +8353,73 @@ msgstr "Soitin"
 msgid "Subtitle size %1%"
 msgstr "Tekstityksen koko %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1157
+#: modules/gui/qt/player/qml/PlayerView.qml:1158
 msgid "Subtitles on the TV: %1"
 msgstr "Tekstitys televisiossa: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1157
+#: modules/gui/qt/player/qml/PlayerView.qml:1158
 msgid "Subtitles off on the TV"
 msgstr "Tekstitys pois televisiosta"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1268
+#: modules/gui/qt/player/qml/PlayerView.qml:1269
 msgid "Not playing on %1"
 msgstr "Ei toistu laitteessa %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1270
-#: modules/gui/qt/player/qml/PlayerView.qml:1397
+#: modules/gui/qt/player/qml/PlayerView.qml:1271
+#: modules/gui/qt/player/qml/PlayerView.qml:1398
 msgid "Connecting to %1…"
 msgstr "Yhdistetään laitteeseen %1…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1272
+#: modules/gui/qt/player/qml/PlayerView.qml:1273
 msgid "Playing on %1"
 msgstr "Toistetaan laitteessa %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1273
+#: modules/gui/qt/player/qml/PlayerView.qml:1274
 msgid "The sound plays on %1"
 msgstr "Ääni toistuu laitteessa %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1298
+#: modules/gui/qt/player/qml/PlayerView.qml:1299
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr "Tauota, kelaa ja vaihda tekstitystä täällä: TV seuraa."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1315
+#: modules/gui/qt/player/qml/PlayerView.qml:1316
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Windowsin palomuuri ei salli laitteen %1 muodostaa yhteyttä tähän "
 "tietokoneeseen median lukemiseksi."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1327
+#: modules/gui/qt/player/qml/PlayerView.qml:1328
 msgid "Waiting for Windows…"
 msgstr "Odotetaan Windowsia…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1328
+#: modules/gui/qt/player/qml/PlayerView.qml:1329
 msgid "Allow on public networks too"
 msgstr "Salli myös julkisissa verkoissa"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1329
+#: modules/gui/qt/player/qml/PlayerView.qml:1330
 msgid "Allow on private networks"
 msgstr "Salli yksityisissä verkoissa"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1341
+#: modules/gui/qt/player/qml/PlayerView.qml:1342
 msgid "Try again"
 msgstr "Yritä uudelleen"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1346
-#: modules/gui/qt/player/qml/PlayerView.qml:1356
+#: modules/gui/qt/player/qml/PlayerView.qml:1347
+#: modules/gui/qt/player/qml/PlayerView.qml:1357
 msgid "Play here"
 msgstr "Toista täällä"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1356
-#: modules/gui/qt/player/qml/PlayerView.qml:1407
+#: modules/gui/qt/player/qml/PlayerView.qml:1357
+#: modules/gui/qt/player/qml/PlayerView.qml:1408
 msgid "Stop casting"
 msgstr "Lopeta suoratoisto"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1398
+#: modules/gui/qt/player/qml/PlayerView.qml:1399
 msgid "Also on %1"
 msgstr "Myös laitteessa %1"
 
-#: modules/gui/qt/player/qml/ShortcutFeedback.qml:148
+#: modules/gui/qt/player/qml/ShortcutFeedback.qml:160
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
 msgid "Playing"
 msgstr "Toistetaan"
@@ -8536,42 +8553,42 @@ msgstr "Toista ääntä, jotta voit valita visualisoinnin."
 #: modules/gui/qt/player/qml/CompactLibrary.qml:214
 #: modules/gui/qt/player/qml/CompactLibrary.qml:215
 #: modules/gui/qt/player/qml/CompactLibrary.qml:314
-#: modules/gui/qt/player/qml/CompactLibrary.qml:525
+#: modules/gui/qt/player/qml/CompactLibrary.qml:530
 msgid "Songs"
 msgstr "Kappaleet"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:747
+#: modules/gui/qt/player/qml/CompactLibrary.qml:752
 msgid "More"
 msgstr "Lisää"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:790
-#: modules/gui/qt/player/qml/CompactLibrary.qml:805
+#: modules/gui/qt/player/qml/CompactLibrary.qml:795
+#: modules/gui/qt/player/qml/CompactLibrary.qml:810
 msgid "Rescan library"
 msgstr "Skannaa kirjasto uudelleen"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:815
+#: modules/gui/qt/player/qml/CompactLibrary.qml:820
 msgid "Add network stream…"
 msgstr "Lisää verkkovirta…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:824
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1219
+#: modules/gui/qt/player/qml/CompactLibrary.qml:829
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1224
 msgid "Create playlist"
 msgstr "Luo soittolista"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:838
-#: modules/gui/qt/player/qml/CompactLibrary.qml:852
+#: modules/gui/qt/player/qml/CompactLibrary.qml:843
+#: modules/gui/qt/player/qml/CompactLibrary.qml:857
 msgid "Add all to queue"
 msgstr "Lisää kaikki jonoon"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:857
+#: modules/gui/qt/player/qml/CompactLibrary.qml:862
 msgid "Up one folder"
 msgstr "Yksi kansio ylöspäin"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:867
+#: modules/gui/qt/player/qml/CompactLibrary.qml:872
 msgid "Open in the library"
 msgstr "Avaa kirjastossa"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:951
+#: modules/gui/qt/player/qml/CompactLibrary.qml:956
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
@@ -8581,67 +8598,67 @@ msgstr "Avaa kirjastossa"
 msgid "Sort"
 msgstr "Lajittele"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:986
+#: modules/gui/qt/player/qml/CompactLibrary.qml:991
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "Nimi A-Ö"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:990
+#: modules/gui/qt/player/qml/CompactLibrary.qml:995
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "Nimi Ö-A"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:994
+#: modules/gui/qt/player/qml/CompactLibrary.qml:999
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "Uusimmat ensin"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:999
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1004
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "Vanhimmat ensin"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1018
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
 msgid "Grid View"
 msgstr "Ruudukkonäkymä"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1028
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
 msgid "List View"
 msgstr "Luettelonäkymä"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1133
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1138
 msgid "See all"
 msgstr "Näytä kaikki"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1279
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1284
 msgid "Add Network Stream"
 msgstr "Lisää verkkovirta"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1388
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1404
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1393
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1409
 msgid "The media library is not available."
 msgstr "Mediakirjasto ei ole käytettävissä."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1389
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1405
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1394
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1410
 msgid "Nothing here yet."
 msgstr "Täällä ei ole vielä mitään."
 
-#: modules/gui/qt/player/qml/ControlBar.qml:156
+#: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Soittimen ohjaimet"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:439
+#: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"
 msgstr "%1 (%2x)"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:454
+#: modules/gui/qt/player/qml/ControlBar.qml:452
 msgid "Progress"
 msgstr "Edistyminen"
 
@@ -9177,16 +9194,16 @@ msgstr "Toistojono"
 msgid "%1 elements, %2"
 msgstr "%1 kohdetta, %2"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:178
 msgid "Select the initial preferences view"
 msgstr "Valitse asetusten aloitusnäkymä"
 
-#: modules/gui/qt/qt.cpp:177
+#: modules/gui/qt/qt.cpp:179
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr "Valitse, mikä asetusnäkymä näytetään asetusikkunaa avattaessa."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:203
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -9194,7 +9211,7 @@ msgstr ""
 "Näytä ilmoitus, jossa on esittäjä ja kappaleen nimi, kun toistojonon "
 "nykyinen kohde vaihtuu VLC:n ollessa pienennettynä tai piilotettuna."
 
-#: modules/gui/qt/qt.cpp:205
+#: modules/gui/qt/qt.cpp:207
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -9204,7 +9221,7 @@ msgstr ""
 "peittävyyden väliltä 0,1–1. Tämä asetus toimii vain Windowsissa ja X11:ssä "
 "composite-laajennusten kanssa."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:213
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -9214,11 +9231,11 @@ msgstr ""
 "pääkäyttöliittymälle, toistojonolle ja laajennetulle paneelille. Tämä asetus "
 "toimii vain Windowsissa ja X11:ssä composite-laajennusten kanssa."
 
-#: modules/gui/qt/qt.cpp:216
+#: modules/gui/qt/qt.cpp:218
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Käyttöliittymän alkuperäinen skaalauskerroin väliltä 0,3–3,0"
 
-#: modules/gui/qt/qt.cpp:219
+#: modules/gui/qt/qt.cpp:221
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -9230,11 +9247,11 @@ msgstr ""
 "virheet tallennetaan vain VLC:n viesteihin ja nämä poistot tehdään heti; "
 "tiedoston poistaminen levyltä vahvistetaan aina."
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:231
 msgid "set the options for qml debugger"
 msgstr "aseta QML-virheenjäljittimen asetukset"
 
-#: modules/gui/qt/qt.cpp:230
+#: modules/gui/qt/qt.cpp:232
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -9242,7 +9259,7 @@ msgstr ""
 "aseta QML-virheenjäljittimen asetukset (katso http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:250
+#: modules/gui/qt/qt.cpp:252
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -9252,14 +9269,14 @@ msgstr ""
 "päältä vain näppäimistö näyttää ne (I-näppäin). Ulkoasuteemat käyttävät tätä "
 "myös koko näytön ohjaimessaan."
 
-#: modules/gui/qt/qt.cpp:257
+#: modules/gui/qt/qt.cpp:259
 msgid ""
 "What a key of VLC (seek, volume, pause, speed...) shows in full screen: the "
 "controls; a thin progress line with a small message (the time and what the "
 "key did); or that message alone."
 msgstr "Mitä VLC:n näppäin (siirtyminen, äänenvoimakkuus, tauko, nopeus...) näyttää koko näytön tilassa: ohjaimet; ohuen edistymisviivan ja pienen viestin (aika ja mitä näppäin teki); tai vain sen viestin."
 
-#: modules/gui/qt/qt.cpp:273
+#: modules/gui/qt/qt.cpp:275
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -9269,7 +9286,7 @@ msgstr ""
 "kartio). Pois päältä sen tilalla on tavallinen kuva, mikä myös estää näytön "
 "kiinni palamisen."
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:299
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -9277,11 +9294,11 @@ msgstr ""
 "Tällä asetuksella käyttöliittymä voidaan näyttää ja tuoda esiin "
 "automaattisesti video- tai äänitoiston alkaessa, tai ei koskaan."
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:302
 msgid "Enable window titlebar"
 msgstr "Ota ikkunan otsikkorivi käyttöön"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:303
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -9290,28 +9307,28 @@ msgstr ""
 "otsikkorivin ja siirtää ikkunan painikkeet käyttöliittymän sisään (Client "
 "Side Decoration)"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:307
 msgid "Show the menu bar"
 msgstr "Näytä valikkorivi"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:308
 msgid "This option displays the classic menu bar"
 msgstr "Tämä asetus näyttää perinteisen valikkorivin"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:310
 msgid "Pin video controls"
 msgstr "Kiinnitä videon ohjaimet"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:311
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Sijoita videon ohjaimet videon ylä- ja alapuolelle sen päällä olemisen sijaan"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:314
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr "Näytä hiiren osoittaman kohdan kuva kelauspalkin yläpuolella"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -9319,11 +9336,11 @@ msgstr ""
 "Merkitse kelauspalkkiin näytettävän tekstityksen rivien kohdat, kun "
 "tekstitys tulee tekstitystiedostosta"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:321
 msgid "Select Qt video integration backend"
 msgstr "Valitse Qt:n videointegraation taustajärjestelmä"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -9331,11 +9348,11 @@ msgstr ""
 "Valitse Qt:n videointegraation taustajärjestelmä. Käytä varoen, "
 "käyttöliittymä ei ehkä käynnisty, jos valitaan yhteensopimaton koostaja"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:324
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Käytä tasaista vieritystä Flickable-pohjaisissa näkymissä"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:325
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -9345,20 +9362,20 @@ msgstr ""
 "pohjaisista näkymistä (kuten toistojonosta). Asetusta noudatetaan vain "
 "vierityskäsittelijän kanssa, katso asetus `qt-use-scroll-handler`."
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:328
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr "Käytä Kirigamin vierityskäsittelijää Flickable-pohjaisissa näkymissä"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:329
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Kirigamin vierityskäsittelijän käyttö voi parantaa vierityksen toimintaa."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:331
 msgid "Safe area for the user interface"
 msgstr "Käyttöliittymän turva-alue"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:332
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -9366,21 +9383,21 @@ msgstr ""
 "Asettaa turva-alueen prosentteina väliltä 0,0–100, kun haluat varmistaa "
 "käyttöliittymän näkyvyyden rajoitetulla näyttöalueella"
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:336
 msgid "Print Qt's important internal messages"
 msgstr "Tulosta Qt:n tärkeät sisäiset viestit"
 
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Ota käyttöön kaikki Qt:n omat viestiluokat vianetsintäluokkaa lukuun "
 "ottamatta."
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:339
 msgid "Hide the window on close"
 msgstr "Piilota ikkuna suljettaessa"
 
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -9388,11 +9405,11 @@ msgstr ""
 "Piilota ikkuna sovelluksen sulkemisen sijaan. Tämä asetus on käytettävissä "
 "vain, kun ilmaisinalueen kuvake on käytössä."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:342
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr "Käytä pääikkunassa taustan sumennussuodinta, jos mahdollista"
 
-#: modules/gui/qt/qt.cpp:341
+#: modules/gui/qt/qt.cpp:343
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -9402,11 +9419,11 @@ msgstr ""
 "läpikuultavuutta käyttöliittymän tiettyjen osien taustoissa. Tämä asetus "
 "heikentää tekstin luettavuutta."
 
-#: modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/qt.cpp:346
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Ota kuva kuvassa -tila (PiP) käyttöön"
 
-#: modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/qt.cpp:347
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -9414,7 +9431,7 @@ msgstr ""
 "Kuva kuvassa -tilassa video toistetaan pienemmällä alueella, jotta "
 "käyttöliittymä pysyy käytettävänä."
 
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:350
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -9422,27 +9439,27 @@ msgstr ""
 "Säätää korostusväriä, erikoisarvot ovat 'default' ja 'system' (vaatii Qt "
 "6.6:n) ."
 
-#: modules/gui/qt/qt.cpp:354
+#: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"
 msgstr "Viimeksi katsottu kanava"
 
-#: modules/gui/qt/qt.cpp:355
+#: modules/gui/qt/qt.cpp:357
 msgid "Channel list"
 msgstr "Kanavaluettelo"
 
-#: modules/gui/qt/qt.cpp:360
+#: modules/gui/qt/qt.cpp:362
 msgid "Zoom the interface in"
 msgstr "Lähennä käyttöliittymää"
 
-#: modules/gui/qt/qt.cpp:361
+#: modules/gui/qt/qt.cpp:363
 msgid "Zoom the interface out"
 msgstr "Loitonna käyttöliittymää"
 
-#: modules/gui/qt/qt.cpp:472
+#: modules/gui/qt/qt.cpp:474
 msgid "Check for VLC Redesign updates"
 msgstr "Tarkista VLC Redesignin päivitykset"
 
-#: modules/gui/qt/qt.cpp:473
+#: modules/gui/qt/qt.cpp:475
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -9450,11 +9467,11 @@ msgstr ""
 "Etsi VLC Redesignin uutta julkaisua GitHubista käynnistyksen yhteydessä, "
 "enintään kerran päivässä."
 
-#: modules/gui/qt/qt.cpp:477
+#: modules/gui/qt/qt.cpp:479
 msgid "Resume at"
 msgstr "Jatka kohdasta"
 
-#: modules/gui/qt/qt.cpp:478
+#: modules/gui/qt/qt.cpp:480
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9507,7 +9524,7 @@ msgstr "Palauta"
 msgid "Don't restore"
 msgstr "Älä palauta"
 
-#: modules/gui/qt/util/redesign_updater.cpp:250
+#: modules/gui/qt/util/redesign_updater.cpp:251
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -9515,27 +9532,27 @@ msgstr ""
 "Päivitystä ei ole allekirjoittanut tämän kopion julkaisija (%1), joten sitä "
 "ei käytetty."
 
-#: modules/gui/qt/util/redesign_updater.cpp:532
+#: modules/gui/qt/util/redesign_updater.cpp:551
 msgid "%1 (later)"
 msgstr "%1 (myöhemmin)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:534
+#: modules/gui/qt/util/redesign_updater.cpp:553
 msgid "%1 (soon)"
 msgstr "%1 (pian)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:731
+#: modules/gui/qt/util/redesign_updater.cpp:750
 msgid "This build cannot check for updates."
 msgstr "Tämä koontiversio ei voi tarkistaa päivityksiä."
 
-#: modules/gui/qt/util/redesign_updater.cpp:748
+#: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubiin ei saatu yhteyttä. Tarkista yhteys ja yritä uudelleen."
 
-#: modules/gui/qt/util/redesign_updater.cpp:765
+#: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "GitHub lähetti odottamattoman vastauksen (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:893
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9543,49 +9560,49 @@ msgstr ""
 "VLC Redesign ei ole allekirjoittanut tätä päivitystä, joten sitä ei "
 "käytetty. Lataa se sen sijaan julkaisusivulta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:915
-#: modules/gui/qt/util/redesign_updater.cpp:956
+#: modules/gui/qt/util/redesign_updater.cpp:934
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Päivityksen tarkistussumma puuttuu; lataa se sen sijaan julkaisusivulta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:930
-#: modules/gui/qt/util/redesign_updater.cpp:1002
+#: modules/gui/qt/util/redesign_updater.cpp:949
+#: modules/gui/qt/util/redesign_updater.cpp:1021
 msgid "The download failed. Check your connection and try again."
 msgstr "Lataus epäonnistui. Tarkista yhteys ja yritä uudelleen."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1015
+#: modules/gui/qt/util/redesign_updater.cpp:1036
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Päivitys ei vastaa tarkistussummaansa, joten sitä ei käytetty."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1037
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Päivitys ei ole muodossa, jonka tämä versio tuntee."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1064
-#: modules/gui/qt/util/redesign_updater.cpp:1075
-#: modules/gui/qt/util/redesign_updater.cpp:1081
-#: modules/gui/qt/util/redesign_updater.cpp:1355
+#: modules/gui/qt/util/redesign_updater.cpp:1058
+#: modules/gui/qt/util/redesign_updater.cpp:1082
+#: modules/gui/qt/util/redesign_updater.cpp:1093
+#: modules/gui/qt/util/redesign_updater.cpp:1099
+#: modules/gui/qt/util/redesign_updater.cpp:1360
 msgid "The update is damaged."
 msgstr "Päivitys on vahingoittunut."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1045
-#: modules/gui/qt/util/redesign_updater.cpp:1352
+#: modules/gui/qt/util/redesign_updater.cpp:1063
+#: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Päivitys ei ole tälle versiolle."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1054
-#: modules/gui/qt/util/redesign_updater.cpp:1091
-#: modules/gui/qt/util/redesign_updater.cpp:1100
-#: modules/gui/qt/util/redesign_updater.cpp:1112
-#: modules/gui/qt/util/redesign_updater.cpp:1116
-#: modules/gui/qt/util/redesign_updater.cpp:1348
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
 msgid "The update can't be written in %1."
 msgstr "Päivitystä ei voi kirjoittaa kohteeseen %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1056
+#: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9593,34 +9610,33 @@ msgstr ""
 "VLC Redesignin tiedostoa on muutettu asennuksen jälkeen, joten pientä "
 "päivitystä ei voi käyttää: päivitä sen sijaan asennusohjelmalla."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1086
+#: modules/gui/qt/util/redesign_updater.cpp:1104
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr "Päivitys on vahingoittunut: tiedosto ei vastaa tarkistussummaansa."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1249
-#: modules/gui/qt/util/redesign_updater.cpp:1416
+#: modules/gui/qt/util/redesign_updater.cpp:1264
+#: modules/gui/qt/util/redesign_updater.cpp:1418
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Päivitystä ei voitu käynnistää. Sitä yritetään uudelleen ensi kerralla."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1276
+#: modules/gui/qt/util/redesign_updater.cpp:1291
 msgid "The download failed. Try again, or download it from the release page."
 msgstr "Lataus epäonnistui. Yritä uudelleen tai lataa se julkaisusivulta."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1289
+#: modules/gui/qt/util/redesign_updater.cpp:1305
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Ladattu asennusohjelma ei vastaa tarkistussummaansa, joten sitä ei "
 "suoritettu."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1301
-#: modules/gui/qt/util/redesign_updater.cpp:1309
-#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1317
+#: modules/gui/qt/util/redesign_updater.cpp:1331
 msgid "The installer couldn't be saved to %1."
 msgstr "Asennusohjelmaa ei voitu tallentaa kohteeseen %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1396
-#: modules/gui/qt/util/redesign_updater.cpp:1434
+#: modules/gui/qt/util/redesign_updater.cpp:1398
+#: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."
 msgstr "Asennusohjelmaa ei voitu käynnistää."
 
@@ -9659,43 +9675,43 @@ msgstr "%1 toistaa nyt jotain muuta."
 msgid "%1 couldn't play the video."
 msgstr "%1 ei voinut toistaa videota."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:63
+#: modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Asturian"
 msgstr "asturia"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:65
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Central Kurdish"
 msgstr "soranî (keskikurdi)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:66
+#: modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Montenegrin"
 msgstr "montenegro"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:70
+#: modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Dari"
 msgstr "dari"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:72
+#: modules/gui/qt/util/subtitle_preferences.cpp:73
 msgid "Cantonese"
 msgstr "kantoninkiina"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:73
+#: modules/gui/qt/util/subtitle_preferences.cpp:74
 msgid "Standard Moroccan Tamazight"
 msgstr "marokontamazight"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:74
+#: modules/gui/qt/util/subtitle_preferences.cpp:75
 msgid "Portuguese (Brazil)"
 msgstr "portugali (Brasilia)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:75
+#: modules/gui/qt/util/subtitle_preferences.cpp:76
 msgid "Chinese (Traditional)"
 msgstr "kiina (perinteinen)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:76
+#: modules/gui/qt/util/subtitle_preferences.cpp:77
 msgid "Spanish (Latin America)"
 msgstr "espanja (Latinalainen Amerikka)"
 
-#: modules/gui/qt/widgets/native/filepicker.cpp:69
+#: modules/gui/qt/widgets/native/filepicker.cpp:72
 msgid "Images (*.png *.jpg *.jpeg *.bmp)"
 msgstr "Kuvat (*.png *.jpg *.jpeg *.bmp)"
 
@@ -9820,7 +9836,7 @@ msgstr "Turvallinen 128-bittinen (tai vahvempi)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "Turvallinen 256-bittinen (ei 128-bittisiä salauksia)"
 
-#: modules/misc/iptv/iptv.cpp:835
+#: modules/misc/iptv/iptv.cpp:950
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -9828,7 +9844,7 @@ msgstr ""
 "Näyttää TV:n kirjastossa: IPTV-soittolistojesi ja -tiliesi kanavat "
 "ohjelmaoppaineen. Pois päältä mitään siitä ei ladata."
 
-#: modules/misc/iptv/iptv.cpp:840
+#: modules/misc/iptv/iptv.cpp:955
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "Suoran TV:n (IPTV) kanavat ja ohjelmaopas"
 

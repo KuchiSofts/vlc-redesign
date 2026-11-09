@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-08 19:14+0000\n"
+"POT-Creation-Date: 2026-11-09 23:01+0000\n"
 "PO-Revision-Date: 2015-12-05 19:04+0000\n"
 "Last-Translator: Savvas Nesseris <nesseris@yahoo.com>\n"
 "Language-Team: Greek (http://www.transifex.com/yaron/vlc-trans/language/"
@@ -40,7 +40,7 @@ msgid "Media Library Settings"
 msgstr "Ρυθμίσεις βιβλιοθήκης πολυμέσων"
 
 #: src/audio_output/output.c:337
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1247
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1251
 msgid "Waveform"
 msgstr "Κυματομορφή"
 
@@ -276,9 +276,9 @@ msgstr "Ορίζει πώς γίνεται η παύση με κλικ του π
 
 #: src/libvlc-module.c:552 modules/access/rist.h:85
 #: modules/audio_output/mmdevice.c:1621
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:181
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1245
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:350
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:182
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1249
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:23
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:145
 msgid "Disabled"
@@ -670,7 +670,7 @@ msgstr ""
 "μόλις φορτωθεί."
 
 #: src/libvlc-module.c:1317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
 msgid "Use the media library"
 msgstr "Χρήση της βιβλιοθήκης πολυμέσων"
 
@@ -928,12 +928,12 @@ msgstr "Πρόσβαση εισόδου και codecs"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Startup"
 msgstr "Εκκίνηση"
 
@@ -1514,23 +1514,23 @@ msgstr "Σφάλμα επόμενου καρέ"
 msgid "Previous frame error"
 msgstr "Σφάλμα προηγούμενου καρέ"
 
-#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:64
+#: src/text/iso-639_def.h:123 modules/gui/qt/util/subtitle_preferences.cpp:65
 msgid "Cebuano"
 msgstr "Σεμπουάνο"
 
-#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:67
+#: src/text/iso-639_def.h:231 modules/gui/qt/util/subtitle_preferences.cpp:68
 msgid "Hawaiian"
 msgstr "Χαβανέζικα"
 
-#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:68
+#: src/text/iso-639_def.h:239 modules/gui/qt/util/subtitle_preferences.cpp:69
 msgid "Hmong"
 msgstr "Χμονγκ"
 
-#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:69
+#: src/text/iso-639_def.h:344 modules/gui/qt/util/subtitle_preferences.cpp:70
 msgid "Manipuri"
 msgstr "Μανιπούρι"
 
-#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:71
+#: src/text/iso-639_def.h:494 modules/gui/qt/util/subtitle_preferences.cpp:72
 msgid "Syriac"
 msgstr "Συριακά"
 
@@ -1672,7 +1672,7 @@ msgid "Additional fonts directory"
 msgstr "Πρόσθετος κατάλογος γραμματοσειρών"
 
 #: modules/codec/vpx.c:62
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
 #: modules/video_output/xcb/render.c:764
 msgid "Best"
 msgstr "Βέλτιστη"
@@ -2715,11 +2715,11 @@ msgstr "Δεν ήταν δυνατή η αποθήκευση των προτιμ
 msgid "Choose a media folder"
 msgstr "Επιλέξτε φάκελο πολυμέσων"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:196
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:197
 msgid "Choose what VLC does online by itself."
 msgstr "Επιλέξτε τι κάνει το VLC στο διαδίκτυο από μόνο του."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:209
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:210
 msgid ""
 "No telemetry, no ads, no account. These two connect to the internet without "
 "being asked each time, and send only what is written under them."
@@ -2728,20 +2728,20 @@ msgstr ""
 "λειτουργίες συνδέονται στο διαδίκτυο χωρίς να ρωτούν κάθε φορά και στέλνουν "
 "μόνο όσα αναγράφονται κάτω από αυτές."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:227
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:228
 msgid "Check for updates once a day"
 msgstr "Έλεγχος για ενημερώσεις μία φορά την ημέρα"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:228
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:229
 msgid "Asks GitHub (api.github.com) for the latest release of VLC Redesign."
 msgstr ""
 "Ζητά από το GitHub (api.github.com) την πιο πρόσφατη έκδοση του VLC Redesign."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:234
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:235
 msgid "Find subtitles online automatically"
 msgstr "Αυτόματη εύρεση υποτίτλων στο διαδίκτυο"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:235
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:236
 msgid ""
 "When a video has none in your languages: its name and a fingerprint of the "
 "file to subtitle services (OpenSubtitles.org, Wizdom, Gestdown, YIFY "
@@ -2752,18 +2752,18 @@ msgstr ""
 "Gestdown, YIFY Subtitles), το όνομά του στα IMDb, Wikidata και Cinemeta για "
 "την αναγνώριση της ταινίας."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:251
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:252
 msgid "Privacy and code signing policy"
 msgstr "Πολιτική απορρήτου και υπογραφής κώδικα"
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:271
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:272
 msgid ""
 "Both stay in Settings: General for the updates, Subtitles for the subtitles."
 msgstr ""
 "Και οι δύο βρίσκονται στις Ρυθμίσεις: Γενικά για τις ενημερώσεις, Υπότιτλοι "
 "για τους υπότιτλους."
 
-#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:334
+#: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:335
 msgid "Finish"
 msgstr "Τερματισμός"
 
@@ -3016,50 +3016,50 @@ msgstr ""
 msgid "The previous audio device could not be restored."
 msgstr "Δεν ήταν δυνατή η επαναφορά της προηγούμενης συσκευής ήχου."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:62
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:63
 msgid "Greek"
 msgstr "Ελληνικά"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:95
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:96
 msgid "System language"
 msgstr "Γλώσσα συστήματος"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:138
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:116
 msgid "Higher"
 msgstr "Υψηλότερο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:150
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:151
 msgid "Largest"
 msgstr "Μέγιστο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:165
 msgid "Slightly raised"
 msgstr "Ελαφρώς ψηλότερα"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:164
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:165
 msgid "Raised"
 msgstr "Ψηλότερα"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:175
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:176
 msgid "%1 MiB"
 msgstr "%1 MiB"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:185
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:186
 msgid "Same as video"
 msgstr "Ίδιο με το βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:187
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:189
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:188
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:190
 msgid "%1 px wide"
 msgstr "Πλάτος %1 px"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:253
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
 msgid "Show what's new after an update"
 msgstr "Εμφάνιση των νέων μετά από ενημέρωση"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:254
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:255
 msgid ""
 "The first time VLC opens after an update, a card lists what is new in the "
 "version, with a link to the full changelog. The notes are in English."
@@ -3068,33 +3068,44 @@ msgstr ""
 "παραθέτει τι νέο υπάρχει στην έκδοση, με σύνδεσμο προς το πλήρες αρχείο "
 "αλλαγών. Οι σημειώσεις είναι στα Αγγλικά."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:256
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
 msgid "Discover cast devices"
 msgstr "Ανακάλυψη συσκευών μετάδοσης"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:257
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
 msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr ""
 "Αναζητά τις συσκευές μετάδοσης του τοπικού δικτύου όταν ανοίγει το μενού "
 "Μετάδοση."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
 msgstr "Απομνημόνευση μεγέθους και θέσης παραθύρου"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:259
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
 msgid "Opens the window where it was when VLC was closed."
 msgstr "Ανοίγει το παράθυρο εκεί που βρισκόταν όταν έκλεισε το VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:260
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:262
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
+msgid "Interface size"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
+msgid ""
+"How large the pages, texts and controls are drawn. Automatic picks the size "
+"that suits this screen."
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
 msgid "Always show the player bar"
 msgstr "Να εμφανίζεται πάντα η γραμμή αναπαραγωγής"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:261
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:265
 msgid ""
 "Keeps the player bar at the bottom of the library while nothing plays: Play "
 "starts the play queue, or opens files when it is empty."
@@ -3103,12 +3114,12 @@ msgstr ""
 "αναπαράγεται τίποτα: η Αναπαραγωγή ξεκινά την ουρά αναπαραγωγής ή ανοίγει "
 "αρχεία όταν αυτή είναι κενή."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:263
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:78
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
 msgid "Increase text contrast"
 msgstr "Αύξηση αντίθεσης κειμένου"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:264
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
 msgid ""
 "Draws the dim texts of the design (hints, descriptions, watched items) "
 "brighter, to the contrast the WCAG accessibility guidelines ask for (AA)."
@@ -3117,21 +3128,21 @@ msgstr ""
 "στοιχεία που έχουν προβληθεί), με την αντίθεση που ζητούν οι οδηγίες "
 "προσβασιμότητας WCAG (AA)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:266
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Popup duration"
 msgstr "Διάρκεια αναδυόμενου μηνύματος"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:267
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
 msgid "How long the popup of the track changes stays on the screen."
 msgstr "Πόση ώρα παραμένει στην οθόνη το αναδυόμενο μήνυμα αλλαγής κομματιού."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:268
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:272
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 msgid "Process priority"
 msgstr "Προτεραιότητα διεργασίας"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:269
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
 msgid ""
 "How much processor time the system gives VLC compared with the other "
 "programs."
@@ -3139,40 +3150,40 @@ msgstr ""
 "Πόσο χρόνο επεξεργαστή δίνει το σύστημα στο VLC σε σύγκριση με τα άλλα "
 "προγράμματα."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:270
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 msgid "Volume indicator"
 msgstr "Στοιχείο έντασης"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:271
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:273
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:274
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 msgid "Double click on the video"
 msgstr "Διπλό κλικ στο βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:279
 msgid "What a double click on the video does."
 msgstr "Τι κάνει ένα διπλό κλικ στο βίντεο."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:275
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:279
 msgid "Nothing|Toggle fullscreen"
 msgstr "Τίποτα|Εναλλαγή πλήρους οθόνης"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:276
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 msgid "Size values"
 msgstr "Τιμές μεγέθους"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:277
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
 msgid ""
 "Choose the size of the subtitles by name (relative to the picture), or in "
 "pixels."
@@ -3180,11 +3191,11 @@ msgstr ""
 "Επιλέξτε το μέγεθος των υποτίτλων με όνομα (σε σχέση με την εικόνα) ή σε "
 "pixel."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:278
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
 msgid "Relative|Pixels"
 msgstr "Σχετικό|Pixel"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:280
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:284
 msgid ""
 "How opaque the box behind the subtitles is when there is one (kept while "
 "there is none)."
@@ -3192,12 +3203,12 @@ msgstr ""
 "Πόσο αδιαφανές είναι το πλαίσιο πίσω από τους υπότιτλους όταν υπάρχει "
 "(διατηρείται όσο δεν υπάρχει)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:281
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 msgid "Never remember items matching"
 msgstr "Να μην απομνημονεύονται ποτέ στοιχεία που ταιριάζουν με"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:282
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
 msgid ""
 "A regular expression: the items whose address or name matches it are not "
 "saved in the history, nor their playback position."
@@ -3206,12 +3217,12 @@ msgstr ""
 "ταιριάζει με αυτήν δεν αποθηκεύονται στο ιστορικό, ούτε η θέση αναπαραγωγής "
 "τους."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
 msgid "Update the channels and the guide"
 msgstr "Ενημέρωση καναλιών και οδηγού"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:286
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
 msgid ""
 "How often the playlists and the programme guides are downloaded again, in "
 "the background. Update in the sources does it at once."
@@ -3219,16 +3230,16 @@ msgstr ""
 "Πόσο συχνά γίνεται ξανά λήψη των λιστών αναπαραγωγής και των οδηγών "
 "προγράμματος, στο παρασκήνιο. Η ενημέρωση στις πηγές το κάνει αμέσως."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:288
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:292
 msgid "Never|Every 6 hours|Every 12 hours|Every day|Every week"
 msgstr "Ποτέ|Κάθε 6 ώρες|Κάθε 12 ώρες|Κάθε μέρα|Κάθε εβδομάδα"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:289
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
 msgid "Days of the guide kept"
 msgstr "Ημέρες οδηγού που διατηρούνται"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:290
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
 msgid ""
 "How many days of programmes are kept before and after today. Fewer use less "
 "memory with a large guide; the archives of the channels reach back as far as "
@@ -3238,21 +3249,21 @@ msgstr ""
 "ημέρες χρησιμοποιούν λιγότερη μνήμη με μεγάλο οδηγό· τα αρχεία των καναλιών "
 "φτάνουν μέχρι εκεί πίσω."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:292
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:296
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
 msgid "Hours across the guide"
 msgstr "Ώρες στο πλάτος του οδηγού"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:293
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
 msgid "The time the guide shows across its width."
 msgstr "Το χρονικό διάστημα που δείχνει ο οδηγός σε όλο το πλάτος του."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 msgid "Guide languages"
 msgstr "Γλώσσες οδηγού"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:295
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
 msgid ""
 "Keeps only the programmes in these languages when a guide gives several "
 "(codes such as en, he, fr, separated by commas). Empty: every language."
@@ -3260,38 +3271,38 @@ msgstr ""
 "Κρατά μόνο τα προγράμματα σε αυτές τις γλώσσες όταν ένας οδηγός δίνει πολλές "
 "(κωδικοί όπως en, he, fr, χωρισμένοι με κόμματα). Κενό: όλες οι γλώσσες."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:297
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
-#: modules/gui/qt/qt.cpp:356
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/qt.cpp:358
 msgid "Channel banner"
 msgstr "Πλαίσιο καναλιού"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:298
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
 msgid "What the banner shows over the video when the channel changes."
 msgstr "Τι δείχνει το πλαίσιο πάνω από το βίντεο όταν αλλάζει το κανάλι."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:299
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
 msgid "Channel, now and next|Channel and now|Channel only|Nothing"
 msgstr "Κανάλι, τώρα και επόμενο|Κανάλι και τώρα|Μόνο κανάλι|Τίποτα"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:300
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 msgid "Show programme descriptions"
 msgstr "Εμφάνιση περιγραφών προγράμματος"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:301
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
 msgid ""
 "Shows the description of what is on in the channel lists and the banner."
 msgstr ""
 "Εμφανίζει την περιγραφή αυτού που προβάλλεται στις λίστες καναλιών και στο "
 "πλαίσιο."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:302
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 msgid "Show the progress of what is on"
 msgstr "Εμφάνιση της προόδου αυτού που προβάλλεται"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:303
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:307
 msgid ""
 "A bar of how much of the programme has played, from its start and end in the "
 "guide."
@@ -3299,168 +3310,168 @@ msgstr ""
 "Μια γραμμή που δείχνει πόσο από το πρόγραμμα έχει προβληθεί, με βάση την "
 "αρχή και το τέλος του στον οδηγό."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
 msgid "Show what is next"
 msgstr "Εμφάνιση του επόμενου"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:305
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:309
 msgid "Shows the next programme in the channel lists and the banner."
 msgstr "Εμφανίζει το επόμενο πρόγραμμα στις λίστες καναλιών και στο πλαίσιο."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:306
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Start on the last channel"
 msgstr "Έναρξη στο τελευταίο κανάλι"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:307
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:311
 msgid "When VLC opens with nothing to play, the channel watched last plays."
 msgstr ""
 "Όταν το VLC ανοίγει χωρίς κάτι για αναπαραγωγή, παίζει το κανάλι που "
 "παρακολουθήσατε τελευταίο."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:308
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:312
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Show adult channels"
 msgstr "Εμφάνιση καναλιών για ενήλικες"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:309
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:313
 msgid "Lists the channels whose group or name says they are for adults."
 msgstr ""
 "Εμφανίζει στις λίστες τα κανάλια των οποίων η ομάδα ή το όνομα δείχνει ότι "
 "είναι για ενήλικες."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
 msgid "System monospace"
 msgstr "Σταθερού πλάτους συστήματος"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:322
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:326
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:258
 msgid "System, sans-serif"
 msgstr "Συστήματος, sans-serif"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:379
 msgid "Ultra fast"
 msgstr "Εξαιρετικά γρήγορο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:375
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:379
 msgid "Super fast"
 msgstr "Πάρα πολύ γρήγορο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:376
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:380
 msgid "Very fast"
 msgstr "Πολύ γρήγορο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Very slow"
 msgstr "Πολύ αργό"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:378
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
 msgid "Placebo"
 msgstr "Placebo"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:380
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:384
 msgid "Film"
 msgstr "Ταινία"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:381
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:385
 msgid "Still image"
 msgstr "Στατική εικόνα"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:386
 msgid "Fast decoding"
 msgstr "Γρήγορη αποκωδικοποίηση"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:382
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:386
 msgid "Zero latency"
 msgstr "Μηδενική καθυστέρηση"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:966
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:970
 msgid "%1: this value can not be used."
 msgstr "%1: αυτή η τιμή δεν μπορεί να χρησιμοποιηθεί."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1029
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1058
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1033
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1062
 msgid "%1 is not available in this VLC installation."
 msgstr "Το %1 δεν είναι διαθέσιμο σε αυτή την εγκατάσταση του VLC."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1043
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1047
 msgid "This setting"
 msgstr "Αυτή η ρύθμιση"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1053
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1057
 msgid "%1: choose a folder of this computer."
 msgstr "%1: επιλέξτε έναν φάκελο αυτού του υπολογιστή."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1082
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1086
 msgid "Select a category to reset."
 msgstr "Επιλέξτε μια κατηγορία για επαναφορά."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1144
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1148
 msgid "Repeat the current item (One) or the whole play queue (All)."
 msgstr ""
 "Επανάληψη του τρέχοντος στοιχείου (Ένα) ή ολόκληρης της ουράς αναπαραγωγής "
 "(Όλα)."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1152
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 msgid "When playback finishes"
 msgstr "Όταν τελειώσει η αναπαραγωγή"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1153
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1157
 msgid "Stop, or quit VLC at the end of the play queue."
 msgstr "Διακοπή ή έξοδος από το VLC στο τέλος της ουράς αναπαραγωγής."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1161
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1165
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:47
 msgid "Use a custom skin"
 msgstr "Χρήση προσαρμοσμένης πρόσοψης"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1162
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1166
 msgid "Starts VLC with the skin chosen below instead of this interface."
 msgstr ""
 "Εκκινεί το VLC με την πρόσοψη που επιλέγεται παρακάτω αντί για αυτή τη "
 "διεπαφή."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
 msgid "Remember the playback position"
 msgstr "Απομνημόνευση της θέσης αναπαραγωγής"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1179
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1183
 msgid "Lets VLC continue the media where you left off."
 msgstr "Επιτρέπει στο VLC να συνεχίζει το πολυμέσο από εκεί που σταματήσατε."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1193
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
 msgid "Reverse scroll direction"
 msgstr "Αντιστροφή κατεύθυνσης κύλισης"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1194
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
 msgid "The wheels that seek go backwards when turned forwards."
 msgstr ""
 "Οι τροχοί που μετακινούν τη θέση αναπαραγωγής πηγαίνουν προς τα πίσω όταν "
 "γυρίζουν προς τα εμπρός."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1209
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
 msgstr "Απομακρυσμένος έλεγχος μέσω web"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1210
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1214
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
 "Επιτρέπει σε ένα πρόγραμμα περιήγησης να ελέγχει το VLC. Ορίστε τον κωδικό "
 "πρόσβασής του στις Επιλογές για προχωρημένους."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1228
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:351
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
 msgid "Video post-processing"
 msgstr "Μετεπεξεργασία βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1229
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1233
 msgid ""
 "Improves the picture of poorly encoded videos, at the cost of processing "
 "power."
@@ -3468,80 +3479,85 @@ msgstr ""
 "Βελτιώνει την εικόνα βίντεο με κακή κωδικοποίηση, με κόστος σε υπολογιστική "
 "ισχύ."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1278
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:238
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:239
 msgid "Visualization size"
 msgstr "Μέγεθος οπτικοποίησης"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1279
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1283
 msgid "The size the visualizations are drawn at."
 msgstr "Το μέγεθος στο οποίο σχεδιάζονται οι οπτικοποιήσεις."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1280
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1284
 msgid "Match window"
 msgstr "Ίδιο με το παράθυρο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1321
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
 msgid "Seek precisely"
 msgstr "Ακριβής μετάβαση"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1322
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1326
 msgid ""
 "Seek to the exact time asked, slower than seeking to the nearest key frame."
 msgstr ""
 "Μετάβαση στον ακριβή χρόνο που ζητήθηκε, πιο αργή από τη μετάβαση στο "
 "πλησιέστερο καρέ-κλειδί."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1423
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1427
 msgid "From the file only"
 msgstr "Μόνο από το αρχείο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1425
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1429
 msgid "From the file and the internet"
 msgstr "Από το αρχείο και το διαδίκτυο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1442
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1446
 msgid "Box"
 msgstr "Πλαίσιο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1502
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
+#, no-c-format
+msgid "Automatic (%1 %)"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
 msgstr "Πάνω από το κανονικό"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
 msgid "Below normal"
 msgstr "Κάτω από το κανονικό"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1503
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1521
 msgid "Idle"
 msgstr "Χαμηλή"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1621
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1639
 msgid "Current screen"
 msgstr "Τρέχουσα οθόνη"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1626
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1644
 msgid "Screen %1 (%2)"
 msgstr "Οθόνη %1 (%2)"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1632
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1650
 msgid "Screen %1"
 msgstr "Οθόνη %1"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1659
 msgid "Any title"
 msgstr "Οποιοσδήποτε τίτλος"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1641
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1659
 msgid "Contains title"
 msgstr "Περιέχει τον τίτλο"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1660
 msgid "Title with extra characters"
 msgstr "Τίτλος με επιπλέον χαρακτήρες"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1642
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1660
 msgid "Exact title match"
 msgstr "Ακριβής αντιστοιχία τίτλου"
 
@@ -3610,7 +3626,7 @@ msgstr ""
 "αποθηκεύτηκαν."
 
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:79
-#: modules/gui/qt/qt.cpp:365
+#: modules/gui/qt/qt.cpp:367
 msgid "Expert"
 msgstr "Για ειδικούς"
 
@@ -3629,7 +3645,7 @@ msgstr "Προτιμήσεις για ειδικούς"
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
-#: modules/misc/iptv/iptv.cpp:839
+#: modules/misc/iptv/iptv.cpp:954
 msgid "Live TV"
 msgstr "Ζωντανή τηλεόραση"
 
@@ -3704,7 +3720,7 @@ msgstr "Θέμα"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:192
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:430
-#: modules/gui/qt/qt.cpp:347
+#: modules/gui/qt/qt.cpp:349
 msgid "Accent color"
 msgstr "Χρώμα έμφασης"
 
@@ -3769,72 +3785,72 @@ msgstr "Λιγότερες γλώσσες: ταχύτερη αναζήτηση"
 msgid "Subtitle services"
 msgstr "Υπηρεσίες υποτίτλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:119
 msgid "Key works"
 msgstr "Το κλειδί λειτουργεί"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:106
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:120
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:782
 msgid "Signed in as %1"
 msgstr "Συνδεθήκατε ως %1"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:121
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Key refused"
 msgstr "Το κλειδί απορρίφθηκε"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:122
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Wrong user name or password"
 msgstr "Λάθος όνομα χρήστη ή κωδικός πρόσβασης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:109
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
 msgid "Busy: try again in a minute"
 msgstr "Απασχολημένο: δοκιμάστε ξανά σε ένα λεπτό"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:110
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
 msgid "No answer, try again"
 msgstr "Καμία απάντηση, δοκιμάστε ξανά"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:162
 msgid "Hide"
 msgstr "Απόκρυψη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:162
 msgid "Show"
 msgstr "Εμφάνιση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:313
-#: modules/gui/qt/player/subtitle_providers.cpp:97
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:327
+#: modules/gui/qt/player/subtitle_providers.cpp:100
 msgid "Key refused: check it"
 msgstr "Το κλειδί απορρίφθηκε: ελέγξτε το"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:314
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:328
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
-#: modules/gui/qt/player/subtitle_providers.cpp:99
+#: modules/gui/qt/player/subtitle_providers.cpp:102
 msgid "Sign-in refused: check it"
 msgstr "Η σύνδεση απορρίφθηκε: ελέγξτε τα στοιχεία"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:331
 msgid "Asked only when %1 is one of your subtitle languages"
 msgstr ""
 "Χρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων "
 "σαςΧρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων σας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:344
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
 msgid "Your free key"
 msgstr "Το δωρεάν κλειδί σας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:359
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:524
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
 msgid "User name (optional)"
 msgstr "Όνομα χρήστη (προαιρετικό)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:359
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:568
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:718
@@ -3842,39 +3858,39 @@ msgstr "Όνομα χρήστη (προαιρετικό)"
 msgid "User name"
 msgstr "Όνομα χρήστη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:360
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
 msgstr "Κωδικός πρόσβασης (προαιρετικός)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:361
 msgid "Email"
 msgstr "Email"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:385
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:765
 msgid "Sign in"
 msgstr "Σύνδεση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:381
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:395
 msgid "Sign out"
 msgstr "Αποσύνδεση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:405
 msgid "Create a free account"
 msgstr "Δημιουργία δωρεάν λογαριασμού"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:391
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:405
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:599
 msgid "Get a free key"
 msgstr "Λήψη δωρεάν κλειδιού"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:421
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:436
 msgid "Add a service"
 msgstr "Προσθήκη υπηρεσίας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:451
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:466
 msgid ""
 "To find subtitles, the services turned on get the video's title, its IMDb "
 "id, its file name and hash (made from a part of the file), and nothing else."
@@ -4028,19 +4044,19 @@ msgstr "Υποβολή των κομματιών που αναπαράγοντα
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Last.fm username"
 msgstr "Όνομα χρήστη Last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:544
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm password"
 msgstr "Κωδικός πρόσβασης Last.fm"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Last.fm submission URL"
 msgstr "Διεύθυνση URL υποβολής Last.fm"
 
@@ -4138,7 +4154,7 @@ msgstr " dB"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:205
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:217
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
 msgid "Two-pass"
 msgstr "Δύο περάσματα"
 
@@ -4220,12 +4236,12 @@ msgstr ""
 "εικόνας."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:124
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:218
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
 msgid "Spatial audio"
 msgstr "Χωρικός ήχος"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsInlineEffects.qml:132
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:222
 msgid "Stereo widening"
 msgstr "Διεύρυνση στερεοφωνίας"
 
@@ -4252,7 +4268,7 @@ msgid "The address the played tracks are sent to."
 msgstr "Η διεύθυνση στην οποία αποστέλλονται τα κομμάτια που αναπαράγονται."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Nothing"
 msgstr "Τίποτα"
 
@@ -4459,899 +4475,899 @@ msgstr "Αναπαραγωγή βίντεο μέσα στο κύριο παρά�
 msgid "Resize window to fit video"
 msgstr "Προσαρμογή μεγέθους παραθύρου στο βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
 msgid "Keep window above other windows"
 msgstr "Διατήρηση του παραθύρου πάνω από τα άλλα παράθυρα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:54
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
 msgid "Show window decorations"
 msgstr "Εμφάνιση διακοσμήσεων παραθύρου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
 msgid "Show the file name in the title bar"
 msgstr "Εμφάνιση του ονόματος αρχείου στη γραμμή τίτλου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:56
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
 msgid "Open fullscreen on"
 msgstr "Άνοιγμα πλήρους οθόνης σε"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Playback Controls"
 msgstr "Στοιχεία ελέγχου αναπαραγωγής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
 msgid "Start in compact mode"
 msgstr "Έναρξη σε συμπαγή λειτουργία"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
 msgid "Auto-hide the controls"
 msgstr "Αυτόματη απόκρυψη των στοιχείων ελέγχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
 msgid "In fullscreen only"
 msgstr "Μόνο σε πλήρη οθόνη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
 msgid "Hide after"
 msgstr "Απόκρυψη μετά από"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:61
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:62
 msgid "Show controls in fullscreen"
 msgstr "Εμφάνιση στοιχείων ελέγχου σε πλήρη οθόνη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:64
-#: modules/gui/qt/qt.cpp:256
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
+#: modules/gui/qt/qt.cpp:258
 msgid "When you use a shortcut in full screen"
 msgstr "Όταν χρησιμοποιείτε συντόμευση σε πλήρη οθόνη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
-#: modules/gui/qt/qt.cpp:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:377
 msgid "Show the controls"
 msgstr "Εμφάνιση των στοιχείων ελέγχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:65
-#: modules/gui/qt/qt.cpp:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
+#: modules/gui/qt/qt.cpp:377
 msgid "Show only the progress"
 msgstr "Εμφάνιση μόνο της προόδου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:66
-#: modules/gui/qt/qt.cpp:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/qt.cpp:377
 msgid "Show only a message"
 msgstr "Εμφάνιση μόνο ενός μηνύματος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:71
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:72
 msgid "Notifications and System Tray"
 msgstr "Ειδοποιήσεις και περιοχή ειδοποιήσεων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:67
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
 msgid "Show a system tray icon"
 msgstr "Εμφάνιση εικονιδίου στην περιοχή ειδοποιήσεων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:68
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
 msgid "Start minimized to the tray"
 msgstr "Έναρξη ελαχιστοποιημένο στην περιοχή ειδοποιήσεων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:70
 msgid "Show a popup when the track changes"
 msgstr "Εμφάνιση αναδυόμενου μηνύματος όταν αλλάζει το κομμάτι"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:74
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:75
 msgid "Show the playlist as a tree"
 msgstr "Εμφάνιση της λίστας αναπαραγωγής ως δέντρο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:76
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
 msgid "Player Bar"
 msgstr "Γραμμή αναπαραγωγής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:79
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:80
 msgid "Window opacity"
 msgstr "Αδιαφάνεια παραθύρου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:81
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:82
 msgid "Pause video when window is minimized"
 msgstr "Παύση βίντεο όταν το παράθυρο ελαχιστοποιείται"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:83
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
 msgid "Bring VLC to the front when playback starts"
 msgstr "Μεταφορά του VLC στο προσκήνιο όταν ξεκινά η αναπαραγωγή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:84
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:85
 msgid "Audio and video"
 msgstr "Ήχος και βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:88
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:89
 msgid "Show cover art in the window when playing audio"
 msgstr "Εμφάνιση εξωφύλλου στο παράθυρο κατά την αναπαραγωγή ήχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:90
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
 msgid "Show the file browser inside the open dialog"
 msgstr "Εμφάνιση της περιήγησης αρχείων μέσα στο παράθυρο ανοίγματος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:91
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:92
 msgid "Allow the app icon to change"
 msgstr "Να επιτρέπεται η αλλαγή του εικονιδίου της εφαρμογής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:93
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:94
 msgid "Fullscreen controls opacity"
 msgstr "Αδιαφάνεια στοιχείων ελέγχου πλήρους οθόνης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:95
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:96
 msgid "Fullscreen controls sensitivity"
 msgstr "Ευαισθησία στοιχείων ελέγχου πλήρους οθόνης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:98
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
 msgid "History"
 msgstr "Ιστορικό"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:102
-#: modules/misc/iptv/iptv.cpp:834
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
+#: modules/misc/iptv/iptv.cpp:949
 msgid "Live TV (IPTV) add-on"
 msgstr "Πρόσθετο ζωντανής τηλεόρασης (IPTV)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:104
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:956
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1140
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1225
-#: modules/gui/qt/player/qml/CompactLibrary.qml:775
+#: modules/gui/qt/player/qml/CompactLibrary.qml:780
 msgid "Guide"
 msgstr "Οδηγός"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:105
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:106
 msgid "days"
 msgstr "ημέρες"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:107
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
 msgid "h"
 msgstr "ώ."
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:109
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 msgid "e.g., en, he"
 msgstr "π.χ. en, he"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:110
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:111
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 msgid "Watching"
 msgstr "Παρακολούθηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:113
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:115
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
 msgid "Lists"
 msgstr "Λίστες"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:116
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:117
 msgid "Fetch titles and cover art from the internet"
 msgstr "Λήψη τίτλων και εξωφύλλων από το διαδίκτυο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:121
 msgid "Additional interfaces"
 msgstr "Πρόσθετες διεπαφές"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:123
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:124
 msgid "Continue where you left off"
 msgstr "Συνέχεια από εκεί που σταματήσατε"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:125
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:126
 msgid "Start playing as soon as a file opens"
 msgstr "Έναρξη αναπαραγωγής μόλις ανοίξει ένα αρχείο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
 msgid "Default playback speed"
 msgstr "Προεπιλεγμένη ταχύτητα αναπαραγωγής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:128
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
 msgid "Pause when another app uses audio"
 msgstr "Παύση όταν άλλη εφαρμογή χρησιμοποιεί ήχο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 msgctxt "media streams"
 msgid "Tracks"
 msgstr "Κομμάτια"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:129
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:130
 msgid "Preferred video quality"
 msgstr "Προτιμώμενη ποιότητα βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 msgid "Standard (576p)"
 msgstr "Τυπική (576p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 msgid "Low (360p)"
 msgstr "Χαμηλή (360p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:132
 msgid "Very low (240p)"
 msgstr "Πολύ χαμηλή (240p)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:133
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:134
 msgid "Preferred menu language"
 msgstr "Προτιμώμενη γλώσσα μενού"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:135
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
 msgid "Default audio track"
 msgstr "Προεπιλεγμένο κομμάτι ήχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:136
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 msgid "Default subtitle track"
 msgstr "Προεπιλεγμένο κομμάτι υποτίτλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:137
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:154
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Order"
 msgstr "Σειρά"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:139
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:140
 msgid "Stop after each item"
 msgstr "Διακοπή μετά από κάθε στοιχείο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:141
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 msgid "Seeking"
 msgstr "Μετάβαση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:142
-#: modules/gui/qt/qt.cpp:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/qt.cpp:313
 msgid "Show thumbnail while scrubbing"
 msgstr "Εμφάνιση μικρογραφίας κατά τη σάρωση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 msgid "Files & Discs"
 msgstr "Αρχεία και δίσκοι"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:143
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
 msgid "Default optical drive"
 msgstr "Προεπιλεγμένη μονάδα οπτικού δίσκου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:144
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
 msgid "Repair damaged AVI files"
 msgstr "Επιδιόρθωση κατεστραμμένων αρχείων AVI"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:145
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
 msgid "When needed"
 msgstr "Όταν χρειάζεται"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:146
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:147
 msgid "Load matching .mkv files from the same folder"
 msgstr "Φόρτωση αντίστοιχων αρχείων .mkv από τον ίδιο φάκελο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Time-shift"
 msgstr "Χρονική μετατόπιση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:148
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:149
 msgid "Time-shift buffer folder"
 msgstr "Φάκελος ενδιάμεσης μνήμης χρονικής μετατόπισης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:150
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:151
 msgid "Time-shift buffer size"
 msgstr "Μέγεθος ενδιάμεσης μνήμης χρονικής μετατόπισης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:155
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
 msgid "Pause on the last frame of each item"
 msgstr "Παύση στο τελευταίο καρέ κάθε στοιχείου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:156
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:157
 msgid "Resume the last playback states (tracks, speed...)"
 msgstr ""
 "Επαναφορά της τελευταίας κατάστασης αναπαραγωγής (κομμάτια, ταχύτητα...)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
 msgid "Start videos in fullscreen"
 msgstr "Έναρξη βίντεο σε πλήρη οθόνη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:164
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
 msgid "Stop the screensaver during playback"
 msgstr "Διακοπή της προφύλαξης οθόνης κατά την αναπαραγωγή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:166
 msgid "Play video as desktop wallpaper"
 msgstr "Αναπαραγωγή βίντεο ως ταπετσαρία επιφάνειας εργασίας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:168
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 msgid "Method"
 msgstr "Μέθοδος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:169
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:170
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:186
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:408
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:187
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
 msgid "Framing"
 msgstr "Καδράρισμα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:171
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:172
 msgid "Scale video to the window"
 msgstr "Κλιμάκωση βίντεο στο παράθυρο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:173
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 msgid "Position in the window"
 msgstr "Θέση στο παράθυρο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:178
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:177
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Snapshots"
 msgstr "Στιγμιότυπα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:174
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
 msgid "Save to"
 msgstr "Αποθήκευση σε"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:175
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:176
 msgid "File name prefix"
 msgstr "Πρόθεμα ονόματος αρχείου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:179
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
 msgid "Number files sequentially"
 msgstr "Διαδοχική αρίθμηση αρχείων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:180
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:181
 msgid "Show a preview after capture"
 msgstr "Εμφάνιση προεπισκόπησης μετά τη λήψη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:182
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:183
 msgid "Custom aspect ratios"
 msgstr "Προσαρμοσμένες αναλογίες διαστάσεων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:184
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:185
 msgid "Custom crop ratios"
 msgstr "Προσαρμοσμένες αναλογίες περικοπής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:189
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
 msgid "Snapshot height (0: proportional, -1: original)"
 msgstr "Ύψος στιγμιότυπου (0: αναλογικό, -1: αρχικό)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:190
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:191
 msgid "Deinterlacing filter"
 msgstr "Φίλτρο αποδιαπλοκής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
 msgid "Speaker setup"
 msgstr "Διάταξη ηχείων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:195
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 msgid "Maximum volume"
 msgstr "Μέγιστη ένταση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:197
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:199
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:200
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:201
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:202
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:203
 #: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:144
 msgid "Startup volume"
 msgstr "Ένταση κατά την εκκίνηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:204
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:205
 msgid "Volume step"
 msgstr "Βήμα έντασης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Loudness"
 msgstr "Ακουστότητα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
 msgid "Normalize loudness"
 msgstr "Κανονικοποίηση ακουστότητας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
 msgid "Target level"
 msgstr "Επίπεδο-στόχος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:209
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:210
 msgid "Night mode"
 msgstr "Νυχτερινή λειτουργία"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:213
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:214
 msgid "Replay gain preamp"
 msgstr "Προενίσχυση Replay Gain"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:219
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:220
 msgid "Spatial audio mode"
 msgstr "Λειτουργία χωρικού ήχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
 msgid "Pitch shift"
 msgstr "Μετατόπιση τονικού ύψους"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:224
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:225
 msgid "Chorus/flanger"
 msgstr "Chorus/flanger"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:226
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
 msgid "Preferred audio language"
 msgstr "Προτιμώμενη γλώσσα ήχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:227
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:228
 #: modules/gui/qt/player/qml/TracksMenu.qml:282
 msgid "Audio delay"
 msgstr "Καθυστέρηση ήχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:231
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
 msgid "Pass compressed audio to the receiver"
 msgstr "Διοχέτευση συμπιεσμένου ήχου στον δέκτη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:232
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:233
 msgid "Detect Dolby Surround"
 msgstr "Ανίχνευση Dolby Surround"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Fastest"
 msgstr "Ταχύτατη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:235
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:236
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
 msgid "Balanced"
 msgstr "Ισορροπημένη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:240
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
 msgid "Output gain"
 msgstr "Ενίσχυση εξόδου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:241
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
 msgid "Keep the pitch when changing the speed"
 msgstr "Διατήρηση του τονικού ύψους κατά την αλλαγή ταχύτητας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:242
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:243
 msgid "Equalizer preamp"
 msgstr "Προενισχυτής ισοσταθμιστή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:244
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
 msgid "Compressor ratio"
 msgstr "Λόγος συμπιεστή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:245
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
 msgid "Compressor threshold"
 msgstr "Κατώφλι συμπιεστή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:246
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:247
 msgid "Compressor makeup gain"
 msgstr "Αντισταθμιστική ενίσχυση συμπιεστή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:248
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:249
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Tracks & Languages"
 msgstr "Κομμάτια και γλώσσες"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:251
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
 msgid "Preferred language"
 msgstr "Προτιμώμενη γλώσσα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:252
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 msgid "Text encoding"
 msgstr "Κωδικοποίηση κειμένου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
 msgid "Loading Subtitles"
 msgstr "Φόρτωση υποτίτλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:253
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
 msgid "Load subtitle files automatically"
 msgstr "Αυτόματη φόρτωση αρχείων υποτίτλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:254
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:255
 msgid "File name matching"
 msgstr "Αντιστοίχιση ονόματος αρχείου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:263
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
 msgid "Bold"
 msgstr "Έντονα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:264
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:265
 msgid "Text color"
 msgstr "Χρώμα κειμένου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
 msgid "Vertical position"
 msgstr "Κατακόρυφη θέση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:279
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:280
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 msgid "Timing"
 msgstr "Χρονισμός"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:281
-#: modules/gui/qt/qt.cpp:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/qt.cpp:315
 msgid "Show subtitle lines on the seek bar"
 msgstr "Εμφάνιση των γραμμών υποτίτλων στη γραμμή προόδου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "On-Screen Messages"
 msgstr "Μηνύματα στην οθόνη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:282
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
 msgid "Show feedback for shortcuts"
 msgstr "Εμφάνιση ένδειξης για τις συντομεύσεις"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:283
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
 msgid "Show feedback for"
 msgstr "Διάρκεια ένδειξης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:284
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
 msgid "Show filename when a video starts"
 msgstr "Εμφάνιση ονόματος αρχείου όταν ξεκινά ένα βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:285
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:286
 msgid "Show filename for"
 msgstr "Διάρκεια εμφάνισης ονόματος αρχείου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:287
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:288
 msgid "Load subtitles from these folders"
 msgstr "Φόρτωση υποτίτλων από αυτούς τους φακέλους"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:295
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:296
 msgid "Monospace font"
 msgstr "Γραμματοσειρά σταθερού πλάτους"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:297
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
 msgid "Text alignment"
 msgstr "Στοίχιση κειμένου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:298
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:299
 msgid "Position of the filename"
 msgstr "Θέση του ονόματος αρχείου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Skip Amounts"
 msgstr "Μεγέθη μεταπήδησης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:300
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
 msgid "Very short skip"
 msgstr "Πολύ σύντομη μεταπήδηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:301
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
 msgid "Short skip"
 msgstr "Σύντομη μεταπήδηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:302
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
 msgid "Medium skip"
 msgstr "Μεσαία μεταπήδηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:303
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
 msgid "Long skip"
 msgstr "Μεγάλη μεταπήδηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Mouse"
 msgstr "Ποντίκι"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:304
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
 msgid "Single click on the video"
 msgstr "Μονό κλικ στο βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:305
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
 msgid "Play / Pause"
 msgstr "Αναπαραγωγή / Παύση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:306
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:307
 msgid "Play / Pause on release"
 msgstr "Αναπαραγωγή / Παύση κατά την απελευθέρωση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
 msgid "Scroll wheel"
 msgstr "Τροχός κύλισης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Οριζόντια κύλιση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:313
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:409
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:410
 msgid "Remotes"
 msgstr "Τηλεχειριστήρια"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
 msgid "Handle mouse clicks in the video"
 msgstr "Χειρισμός κλικ του ποντικιού στο βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:316
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Web remote password"
 msgstr "Κωδικός πρόσβασης απομακρυσμένου ελέγχου web"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Web remote address"
 msgstr "Διεύθυνση απομακρυσμένου ελέγχου web"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:319
 msgid "Ignore the volume keys of the keyboard"
 msgstr "Παράβλεψη των πλήκτρων έντασης του πληκτρολογίου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Opening Files"
 msgstr "Άνοιγμα αρχείων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:320
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
 msgid "Only allow one VLC window"
 msgstr "Να επιτρέπεται μόνο ένα παράθυρο VLC"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:321
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
 msgid "Apply to files opened from the file manager"
 msgstr "Εφαρμογή στα αρχεία που ανοίγουν από τη διαχείριση αρχείων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:322
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
 msgid "Add to the playlist instead of replacing it"
 msgstr "Προσθήκη στη λίστα αναπαραγωγής αντί για αντικατάστασή της"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:323
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
 msgid "When opening a folder"
 msgstr "Κατά το άνοιγμα φακέλου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Only this folder"
 msgstr "Μόνο αυτός ο φάκελος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:324
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
 msgid "Include subfolders"
 msgstr "Συμπερίληψη υποφακέλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:325
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:326
 msgid "Include and expand subfolders"
 msgstr "Συμπερίληψη και ανάπτυξη υποφακέλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:329
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Metadata & Artwork"
 msgstr "Μεταδεδομένα και εξώφυλλα"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:327
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:328
 msgid "Fetch titles and artwork"
 msgstr "Λήψη τίτλων και εξωφύλλων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:330
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
 msgid "Read media information automatically"
 msgstr "Αυτόματη ανάγνωση πληροφοριών πολυμέσων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:331
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:332
 msgid "Ignored file extensions"
 msgstr "Επεκτάσεις αρχείων που παραβλέπονται"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:333
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Buffering"
 msgstr "Προσωρινή αποθήκευση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:334
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:335
 msgid "Local files"
 msgstr "Τοπικά αρχεία"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:336
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
 msgid "Network streams"
 msgstr "Ροές δικτύου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:337
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 msgid "Live capture"
 msgstr "Ζωντανή λήψη"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 msgid "Proxy"
 msgstr "Διακομιστής μεσολάβησης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:338
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:339
 msgid "System proxy"
 msgstr "Διακομιστής μεσολάβησης συστήματος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Security"
 msgstr "Ασφάλεια"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:340
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
 msgid "Verify certificates against the system trust store"
 msgstr ""
 "Επαλήθευση πιστοποιητικών με το χώρο αξιόπιστων πιστοποιητικών του συστήματος"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:341
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:342
 msgid "Cipher preference"
 msgstr "Προτίμηση κρυπτογράφησης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Secure (128-bit)"
 msgstr "Ασφαλής (128 bit)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:343
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:344
 msgid "Most secure (256-bit)"
 msgstr "Πιο ασφαλής (256 bit)"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "Connections"
 msgstr "Συνδέσεις"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:345
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
 msgid "Connection timeout"
 msgstr "Χρονικό όριο σύνδεσης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:346
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
 msgid "HTTP user agent"
 msgstr "Πράκτορας χρήστη HTTP"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:347
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:348
 msgid "Trusted certificates folder"
 msgstr "Φάκελος αξιόπιστων πιστοποιητικών"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
 msgid "Post-processing quality"
 msgstr "Ποιότητα μετεπεξεργασίας"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
 msgid "Skip the H.264 loop filter"
 msgstr "Παράλειψη του φίλτρου βρόχου H.264"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Non-reference frames"
 msgstr "Καρέ μη αναφοράς"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:354
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
 msgid "Bidirectional frames"
 msgstr "Αμφίδρομα καρέ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:355
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
 msgid "Non-key frames"
 msgstr "Μη καρέ-κλειδιά"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:356
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 msgid "Decoding threads"
 msgstr "Νήματα αποκωδικοποίησης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 msgid "Smooth Playback"
 msgstr "Ομαλή αναπαραγωγή"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:357
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:358
 msgid "Drop frames when the system can't keep up"
 msgstr "Απόρριψη καρέ όταν το σύστημα δεν προλαβαίνει"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:360
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:363
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Developer"
 msgstr "Προγραμματιστής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:362
 msgid "Decoder"
 msgstr "Αποκωδικοποιητής"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:364
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
 msgid "Clock reference averaging"
 msgstr "Μέσος όρος αναφοράς ρολογιού"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
 msgid "Save recordings to"
 msgstr "Αποθήκευση εγγραφών σε"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:366
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
 msgid "Record without re-encoding when possible"
 msgstr "Εγγραφή χωρίς επανακωδικοποίηση όταν είναι δυνατό"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:367
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:368
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Casting"
 msgstr "Μετάδοση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:370
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
 msgid "Cast quality"
 msgstr "Ποιότητα μετάδοσης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:371
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:372
 msgid "Low CPU"
 msgstr "Χαμηλή χρήση CPU"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:373
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
 msgid "Play locally while streaming"
 msgstr "Τοπική αναπαραγωγή κατά τη μετάδοση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:374
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
 msgid "Include audio"
 msgstr "Συμπερίληψη ήχου"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:375
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
 msgid "Include video"
 msgstr "Συμπερίληψη βίντεο"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
 msgid "Include subtitles"
 msgstr "Να συμπεριλαμβάνονται οι υπότιτλοι"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:377
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
 msgid "Encoding preset"
 msgstr "Προρρύθμιση κωδικοποίησης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:378
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
 msgid "Tuning"
 msgstr "Βελτιστοποίηση"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:379
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
 msgid "Send Dolby audio as is"
 msgstr "Αποστολή ήχου Dolby ως έχει"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:380
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
 msgid "Cast HTTP port"
 msgstr "Θύρα HTTP μετάδοσης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:381
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:382
 msgid "Keep the stream output open between items"
 msgstr "Διατήρηση της εξόδου ροής ανοιχτής μεταξύ στοιχείων"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:427
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:428
 #: modules/gui/qt/widgets/qml/SplitButton.qml:142
 msgid "More options"
 msgstr "Περισσότερες επιλογές"
@@ -5420,7 +5436,7 @@ msgstr "ΟΧΙ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:39
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:91
-#: modules/gui/qt/player/qml/CompactLibrary.qml:781
+#: modules/gui/qt/player/qml/CompactLibrary.qml:786
 msgid "Sources"
 msgstr "Πηγές"
 
@@ -5431,7 +5447,7 @@ msgstr "Ενημέρωση…"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1223
-#: modules/gui/qt/player/qml/CompactLibrary.qml:888
+#: modules/gui/qt/player/qml/CompactLibrary.qml:893
 msgid "%1 channel"
 msgid_plural "%1 channels"
 msgstr[0] "%1 κανάλι"
@@ -5471,7 +5487,7 @@ msgstr "Δωρεάν λίστες καναλιών"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:210
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1549
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1554
 msgid "Browse the Catalog"
 msgstr "Περιήγηση στον κατάλογο"
 
@@ -5895,12 +5911,12 @@ msgid "Series"
 msgstr "Σειρές"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:185
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1518
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1523
 msgid "Watch TV in VLC"
 msgstr "Παρακολουθήστε τηλεόραση στο VLC"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:195
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1528
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1533
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
@@ -5912,7 +5928,7 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:205
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:448
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1543
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1548
 msgid "Add a Link"
 msgstr "Προσθήκη συνδέσμου"
 
@@ -5929,38 +5945,38 @@ msgid "%1 could not be loaded: %2"
 msgstr "Δεν ήταν δυνατή η φόρτωση του %1: %2"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:455
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:580
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1486
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:595
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1491
 msgid "No channel matches the search"
 msgstr "Κανένα κανάλι δεν ταιριάζει με την αναζήτηση"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:456
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1487
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1492
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 "Δεν υπάρχει ακόμη αγαπημένο κανάλι: κάντε δεξί κλικ σε ένα κανάλι για να το "
 "προσθέσετε"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:457
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1488
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1493
 msgid "No channel watched yet"
 msgstr "Δεν έχετε παρακολουθήσει ακόμη κανένα κανάλι"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:458
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1489
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1494
 msgid "Loading the channels…"
 msgstr "Φόρτωση των καναλιών…"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:459
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:992
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1490
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1495
 msgid "No channels"
 msgstr "Κανένα κανάλι"
 
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:513
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:527
 #: modules/gui/qt/player/qml/CompactLibrary.qml:420
 msgid "Favorites"
 msgstr "Αγαπημένα"
@@ -5985,24 +6001,24 @@ msgstr "Νωρίτερα"
 msgid "Later"
 msgstr "Αργότερα"
 
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:420
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:432
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:530
 msgid "No guide for this channel"
 msgstr "Δεν υπάρχει οδηγός για αυτό το κανάλι"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:183
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:195
 msgid "No account with films or series"
 msgstr "Δεν υπάρχει λογαριασμός με ταινίες ή σειρές"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:196
 msgid "Loading…"
 msgstr "Φόρτωση…"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:184
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:196
 msgid "Nothing here"
 msgstr "Δεν υπάρχει τίποτα εδώ"
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:236
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:248
 msgid "S%1 E%2"
 msgstr "Σ%1 Ε%2"
 
@@ -6065,11 +6081,11 @@ msgstr "Προηγούμενο πρόγραμμα"
 msgid "Programme after"
 msgstr "Επόμενο πρόγραμμα"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:352
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:799 modules/gui/qt/qt.cpp:354
 msgid "Next channel"
 msgstr "Επόμενο κανάλι"
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:353
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804 modules/gui/qt/qt.cpp:355
 msgid "Previous channel"
 msgstr "Προηγούμενο κανάλι"
 
@@ -6569,21 +6585,21 @@ msgstr "Αναίρεση"
 
 #. xgettext: The step of a jump in seconds shown in full screen
 #. * ("+10 s"); a minute and more are written 1:10
-#: modules/gui/qt/maininterface/mainctx.cpp:910
+#: modules/gui/qt/maininterface/mainctx.cpp:936
 #, no-c-format
 msgid "%1 s"
 msgstr "%1 δ"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1423
+#: modules/gui/qt/maininterface/mainctx.cpp:1479
 msgid "Paste from clipboard"
 msgstr "Επικόλληση από το πρόχειρο"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1424
+#: modules/gui/qt/maininterface/mainctx.cpp:1480
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr ""
 "Θέλετε να προσθέσετε τις παρακάτω διευθύνσεις URL στην ουρά αναπαραγωγής;"
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1425
+#: modules/gui/qt/maininterface/mainctx.cpp:1481
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -6597,7 +6613,7 @@ msgstr "Προσθήκη στην ουρά"
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1806
+#: modules/gui/qt/maininterface/mainctx.cpp:1862
 msgctxt "layout direction"
 msgid "LTR"
 msgstr "LTR"
@@ -6632,7 +6648,7 @@ msgstr "Λίστες αναπαραγωγής"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
 #: modules/gui/qt/player/qml/CompactLibrary.qml:316
-#: modules/gui/qt/player/qml/CompactLibrary.qml:527
+#: modules/gui/qt/player/qml/CompactLibrary.qml:532
 msgid "Artists"
 msgstr "Καλλιτέχνες"
 
@@ -6643,7 +6659,7 @@ msgstr "Καλλιτέχνες"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
 #: modules/gui/qt/player/qml/CompactLibrary.qml:315
-#: modules/gui/qt/player/qml/CompactLibrary.qml:526
+#: modules/gui/qt/player/qml/CompactLibrary.qml:531
 msgid "Albums"
 msgstr "Άλμπουμ"
 
@@ -6653,7 +6669,7 @@ msgstr "Άλμπουμ"
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
 #: modules/gui/qt/player/qml/CompactLibrary.qml:317
-#: modules/gui/qt/player/qml/CompactLibrary.qml:528
+#: modules/gui/qt/player/qml/CompactLibrary.qml:533
 msgid "Genres"
 msgstr "Είδη"
 
@@ -6863,115 +6879,116 @@ msgid "Enter an OpenSubtitles API key and a title to search."
 msgstr ""
 "Εισαγάγετε ένα κλειδί API του OpenSubtitles και έναν τίτλο για αναζήτηση."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:145
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:179
 msgid "OpenSubtitles search failed. Check the API key and network."
 msgstr ""
 "Η αναζήτηση στο OpenSubtitles απέτυχε. Ελέγξτε το κλειδί API και το δίκτυο."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:151
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:184
 msgid "OpenSubtitles returned an invalid search response."
 msgstr "Το OpenSubtitles επέστρεψε μη έγκυρη απάντηση αναζήτησης."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:185
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:200
 msgid "Enter your API key and OpenSubtitles account credentials to download."
 msgstr ""
 "Εισαγάγετε το κλειδί API και τα διαπιστευτήρια του λογαριασμού σας στο "
 "OpenSubtitles για λήψη."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:197
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:212
 msgid "OpenSubtitles login failed. Check your account credentials."
 msgstr ""
 "Η σύνδεση στο OpenSubtitles απέτυχε. Ελέγξτε τα διαπιστευτήρια του "
 "λογαριασμού σας."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:205
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:220
 msgid "OpenSubtitles returned an invalid login session."
 msgstr "Το OpenSubtitles επέστρεψε μη έγκυρη περίοδο σύνδεσης."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:216
-#: modules/gui/qt/player/subtitle_providers.cpp:1744
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:231
+#: modules/gui/qt/player/subtitle_providers.cpp:1962
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr "Η λήψη από το OpenSubtitles απέτυχε. Ελέγξτε το όριο λήψεών σας."
 
-#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:226
-#: modules/gui/qt/player/subtitle_providers.cpp:1755
+#: modules/gui/qt/medialibrary/mlopensubtitles.cpp:241
+#: modules/gui/qt/player/subtitle_providers.cpp:1973
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr "Το OpenSubtitles δεν επέστρεψε έγκυρο σύνδεσμο λήψης υποτίτλων."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
-#: modules/gui/qt/player/subtitle_search.cpp:670
+#: modules/gui/qt/player/subtitle_search.cpp:848
 msgid "This build can't search the internet."
 msgstr "Αυτή η έκδοση δεν μπορεί να κάνει αναζήτηση στο διαδίκτυο."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
-#: modules/gui/qt/player/subtitle_search.cpp:692
+#: modules/gui/qt/player/subtitle_search.cpp:870
 msgid "The subtitle services took too long to answer."
 msgstr "Οι υπηρεσίες υποτίτλων άργησαν πολύ να απαντήσουν."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:353
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:513
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:563
 msgid "The destination media could not be found in the library."
 msgstr "Το πολυμέσο προορισμού δεν βρέθηκε στη βιβλιοθήκη."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:121
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:123
 msgid "This media"
 msgstr "Αυτό το πολυμέσο"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:131
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:133
 msgid "Select a media file, folder, or playlist from the library."
 msgstr ""
 "Επιλέξτε ένα αρχείο πολυμέσων, φάκελο ή λίστα αναπαραγωγής από τη βιβλιοθήκη."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:191
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:253
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:193
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:388
 msgid "No local media files were found in this destination."
 msgstr "Δεν βρέθηκαν τοπικά αρχεία πολυμέσων σε αυτόν τον προορισμό."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:203
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:205
 msgid "This file"
 msgstr "Αυτό το αρχείο"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:231
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:239
 msgid "This folder"
 msgstr "Αυτός ο φάκελος"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:240
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:247
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:383
 msgid "Choose an existing local folder."
 msgstr "Επιλέξτε έναν υπάρχοντα τοπικό φάκελο."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:268
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:264
 msgid "Choose an existing local media file."
 msgstr "Επιλέξτε ένα υπάρχον τοπικό αρχείο πολυμέσων."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:289
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:285
 msgid "Choose existing local audio files only."
 msgstr "Επιλέξτε μόνο υπάρχοντα τοπικά αρχεία ήχου."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:290
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:286
 msgid "Choose existing local subtitle files only."
 msgstr "Επιλέξτε μόνο υπάρχοντα τοπικά αρχεία υποτίτλων."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:298
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:294
 msgid "A selected audio file is missing or unreadable: %1"
 msgstr "Ένα επιλεγμένο αρχείο ήχου λείπει ή δεν είναι αναγνώσιμο: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:299
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:295
 msgid "A selected subtitle file is missing or unreadable: %1"
 msgstr "Ένα επιλεγμένο αρχείο υποτίτλων λείπει ή δεν είναι αναγνώσιμο: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:304
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:300
 msgid "Unsupported audio file: %1"
 msgstr "Μη υποστηριζόμενο αρχείο ήχου: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:305
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:301
 msgid "Unsupported subtitle file: %1"
 msgstr "Μη υποστηριζόμενο αρχείο υποτίτλων: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:320
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:316
 msgid "Choose audio files"
 msgstr "Επιλέξτε αρχεία ήχου"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:321
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:317
 msgid ""
 "Audio files (*.aac *.ac3 *.dts *.dtshd *.eac3 *.flac *.m4a *.mp3 *.pcm);;All "
 "files (*)"
@@ -6979,60 +6996,60 @@ msgstr ""
 "Αρχεία ήχου (*.aac *.ac3 *.dts *.dtshd *.eac3 *.flac *.m4a *.mp3 *.pcm);;Όλα "
 "τα αρχεία (*)"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:323
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:319
 msgid "Choose subtitle files"
 msgstr "Επιλέξτε αρχεία υποτίτλων"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:324
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:320
 msgid ""
 "Subtitle files (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;All files (*)"
 msgstr ""
 "Αρχεία υποτίτλων (*.srt *.ass *.ssa *.sub *.vtt *.ttml *.smi);;Όλα τα αρχεία "
 "(*)"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:369
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:419
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:599
 msgid "Choose the folder of the audio tracks"
 msgstr "Επιλέξτε τον φάκελο των κομματιών ήχου"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:370
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:420
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:600
 msgid "Choose the folder of the subtitles"
 msgstr "Επιλέξτε τον φάκελο των υποτίτλων"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:403
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:453
 msgid "Several media files have this name. Choose one."
 msgstr "Αρκετά αρχεία πολυμέσων έχουν αυτό το όνομα. Επιλέξτε ένα."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:405
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:455
 msgid "No exact filename match. Choose a destination."
 msgstr "Δεν υπάρχει ακριβής αντιστοιχία ονόματος αρχείου. Επιλέξτε προορισμό."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:426
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:476
 msgid "Choose a destination and at least one audio file."
 msgstr "Επιλέξτε προορισμό και τουλάχιστον ένα αρχείο ήχου."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:427
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:477
 msgid "Choose a destination and at least one subtitle file."
 msgstr "Επιλέξτε προορισμό και τουλάχιστον ένα αρχείο υποτίτλων."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:439
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:489
 msgid "An audio file is no longer readable: %1"
 msgstr "Ένα αρχείο ήχου δεν είναι πλέον αναγνώσιμο: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:440
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:490
 msgid "A subtitle file is no longer readable: %1"
 msgstr "Ένα αρχείο υποτίτλων δεν είναι πλέον αναγνώσιμο: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:447
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:497
 msgid "Choose at least one audio file."
 msgstr "Επιλέξτε τουλάχιστον ένα αρχείο ήχου."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:447
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:497
 msgid "Choose at least one subtitle file."
 msgstr "Επιλέξτε τουλάχιστον ένα αρχείο υποτίτλων."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:472
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:522
 #, c-format
 msgid ""
 " %n association(s) were saved before this error; those changes remain saved."
@@ -7040,19 +7057,19 @@ msgstr ""
 " Αριθμός συσχετίσεων που αποθηκεύτηκαν πριν από αυτό το σφάλμα: %n· αυτές οι "
 "αλλαγές παραμένουν αποθηκευμένες."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:498
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:548
 msgid "An audio file is missing or unreadable: %1"
 msgstr "Ένα αρχείο ήχου λείπει ή δεν είναι αναγνώσιμο: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:499
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:549
 msgid "A subtitle file is missing or unreadable: %1"
 msgstr "Ένα αρχείο υποτίτλων λείπει ή δεν είναι αναγνώσιμο: %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:529
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:579
 msgid "Could not save audio track association for %1."
 msgstr "Δεν ήταν δυνατή η αποθήκευση της συσχέτισης κομματιού ήχου για το %1."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:530
+#: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:580
 msgid "Could not save subtitle association for %1."
 msgstr "Δεν ήταν δυνατή η αποθήκευση της συσχέτισης υποτίτλων για το %1."
 
@@ -7072,7 +7089,7 @@ msgstr ""
 msgid "Downloading subtitles is not available in this build."
 msgstr "Η λήψη υποτίτλων δεν είναι διαθέσιμη σε αυτή την έκδοση."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:86
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:85
 msgid "The subtitle exceeds the 20 MB download limit."
 msgstr "Οι υπότιτλοι υπερβαίνουν το όριο λήψης των 20 MB."
 
@@ -7084,11 +7101,11 @@ msgstr "Δεν ήταν δυνατή η λήψη των υποτίτλων: %1"
 msgid "HTTP status %1"
 msgstr "Κατάσταση HTTP %1"
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:106
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου αποθήκευσης υποτίτλων."
 
-#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:116
+#: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:134
 msgid "Could not save the downloaded subtitle."
 msgstr "Δεν ήταν δυνατή η αποθήκευση των υποτίτλων που λήφθηκαν."
 
@@ -7107,8 +7124,8 @@ msgstr[0] "%1 τραγούδι"
 msgstr[1] "%1 τραγούδια"
 
 #: modules/gui/qt/medialibrary/qml/ArtistTopBanner.qml:253
-#: modules/gui/qt/player/qml/CompactLibrary.qml:833
-#: modules/gui/qt/player/qml/CompactLibrary.qml:847
+#: modules/gui/qt/player/qml/CompactLibrary.qml:838
+#: modules/gui/qt/player/qml/CompactLibrary.qml:852
 msgid "Play all"
 msgstr "Αναπαραγωγή όλων"
 
@@ -7134,26 +7151,26 @@ msgid "Unknown artist"
 msgstr "Άγνωστος καλλιτέχνης"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:231
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:237
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:417
 msgid "Continue Watching"
 msgstr "Συνέχεια παρακολούθησης"
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:180
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:596
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:610
 #: modules/gui/qt/player/qml/CompactLibrary.qml:421
 msgid "New Videos"
 msgstr "Νέα βίντεο"
 
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:254
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:315
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:267
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:321
 #: modules/gui/qt/player/qml/CompactLibrary.qml:418
 msgid "Listen Again"
 msgstr "Ακούστε ξανά"
 
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:287
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:680
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:300
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:694
 #: modules/gui/qt/player/qml/CompactLibrary.qml:422
 msgid "New Music"
 msgstr "Νέα μουσική"
@@ -7172,7 +7189,7 @@ msgstr "Νέα μουσική"
 msgid "Alphabetic"
 msgstr "Αλφαβητικά"
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:386
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:392
 #: modules/gui/qt/player/qml/CompactLibrary.qml:419
 msgid "Frequently Visited Folders"
 msgstr "Συχνά επισκεπτόμενοι φάκελοι"
@@ -7485,11 +7502,11 @@ msgstr "Επανασυγχρονισμός"
 msgid "Pin to Sidebar"
 msgstr "Καρφίτσωμα στην πλευρική γραμμή"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:560
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "Κανένα πολυμέσο δεν ταιριάζει με την αναζήτηση"
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:561
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Δεν υπάρχουν πολυμέσα σε αυτόν τον φάκελο"
 
@@ -7510,13 +7527,13 @@ msgid "Media library"
 msgstr "Βιβλιοθήκη πολυμέσων"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
-#: modules/gui/qt/player/qml/CompactLibrary.qml:639
+#: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
 msgid "Open media"
 msgstr "Άνοιγμα πολυμέσων"
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:76
-#: modules/gui/qt/player/qml/CompactLibrary.qml:800
+#: modules/gui/qt/player/qml/CompactLibrary.qml:805
 msgid "Add folder to library…"
 msgstr "Προσθήκη φακέλου στη βιβλιοθήκη…"
 
@@ -7607,7 +7624,7 @@ msgstr[0] "%1 βίντεο"
 msgstr[1] "%1 βίντεο"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:889
+#: modules/gui/qt/player/qml/CompactLibrary.qml:894
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:195
 #: modules/gui/qt/widgets/qml/DragItem.qml:620
@@ -8139,135 +8156,135 @@ msgstr "Ξεκινήστε την αναπαραγωγή πριν ορίσετε
 msgid "Choose a duration between one second and 24 hours."
 msgstr "Επιλέξτε διάρκεια από ένα δευτερόλεπτο έως 24 ώρες."
 
-#: modules/gui/qt/player/subtitle_finder.cpp:769
-#: modules/gui/qt/player/subtitle_search.cpp:1344
-#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_finder.cpp:1016
+#: modules/gui/qt/player/subtitle_search.cpp:1436
+#: modules/gui/qt/player/subtitle_search.cpp:1525
 msgid "The subtitle couldn't be saved."
 msgstr "Δεν ήταν δυνατή η αποθήκευση των υποτίτλων."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:101
-#: modules/gui/qt/player/subtitle_search.cpp:707
+#: modules/gui/qt/player/subtitle_providers.cpp:104
+#: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "Το %1 δεν απάντησε."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:103
+#: modules/gui/qt/player/subtitle_providers.cpp:106
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr "Το %1 ζητά να περιμένετε λίγο (πάρα πολλές αναζητήσεις)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:104
+#: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
 msgstr "Το %1 δεν απάντησε (%2)."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1458
+#: modules/gui/qt/player/subtitle_providers.cpp:1674
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 "Όλες οι γλώσσες · ταινίες και σειρές · βρίσκει όσους φτιάχτηκαν για το "
 "αρχείο σας"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1460
+#: modules/gui/qt/player/subtitle_providers.cpp:1676
 msgid "With your own free key · all languages"
 msgstr "Με το δικό σας δωρεάν κλειδί · όλες οι γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1464
+#: modules/gui/qt/player/subtitle_providers.cpp:1680
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr "Με το δικό σας δωρεάν κλειδί · δυνατό στα Αραβικά, πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1467
+#: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr "Με το δικό σας δωρεάν κλειδί · το αρχείο του Subscene, πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1470
+#: modules/gui/qt/player/subtitle_providers.cpp:1686
 msgid "Hebrew · movies and series"
 msgstr "Εβραϊκά · ταινίες και σειρές"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1472
+#: modules/gui/qt/player/subtitle_providers.cpp:1688
 msgid "Series · many languages"
 msgstr "Σειρές · πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1474
+#: modules/gui/qt/player/subtitle_providers.cpp:1690
 msgid "Movies · many languages"
 msgstr "Ταινίες · πολλές γλώσσες"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1478
+#: modules/gui/qt/player/subtitle_providers.cpp:1694
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr ""
 "Με τον δωρεάν λογαριασμό σας · Κροατικά, Σερβικά, Βοσνιακά, Σλοβενικά, "
 "Σλαβομακεδονικά"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1482
+#: modules/gui/qt/player/subtitle_providers.cpp:1698
 msgid "With your free token · Chinese"
 msgstr "Με το δωρεάν διακριτικό σας · Κινέζικα"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1485
+#: modules/gui/qt/player/subtitle_providers.cpp:1701
 msgid "With your free key · anime, Japanese"
 msgstr "Με το δωρεάν κλειδί σας · anime, Ιαπωνικά"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1488
+#: modules/gui/qt/player/subtitle_providers.cpp:1704
 msgid "With your free key · series, French"
 msgstr "Με το δωρεάν κλειδί σας · σειρές, Γαλλικά"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1491
+#: modules/gui/qt/player/subtitle_providers.cpp:1707
 msgid "With your free key · Romanian"
 msgstr "Με το δωρεάν κλειδί σας · Ρουμανικά"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1494
+#: modules/gui/qt/player/subtitle_providers.cpp:1710
 msgid "With your free account · Polish · finds those made for your file"
 msgstr ""
 "Με τον δωρεάν λογαριασμό σας · Πολωνικά · βρίσκει όσους φτιάχτηκαν για το "
 "αρχείο σας"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1497
+#: modules/gui/qt/player/subtitle_providers.cpp:1713
 msgid "With your free account · Portuguese (Brazil)"
 msgstr "Με τον δωρεάν λογαριασμό σας · Πορτογαλικά (Βραζιλίας)"
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1880
+#: modules/gui/qt/player/subtitle_providers.cpp:2098
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr ""
 "Αυτοί οι υπότιτλοι διατίθενται ως αρχείο RAR, το οποίο δεν μπορεί να ανοίξει "
 "εδώ."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1889
-#: modules/gui/qt/player/subtitle_providers.cpp:1922
-#: modules/gui/qt/player/subtitle_search.cpp:1439
+#: modules/gui/qt/player/subtitle_providers.cpp:2107
+#: modules/gui/qt/player/subtitle_providers.cpp:2140
+#: modules/gui/qt/player/subtitle_search.cpp:1533
 msgid "The subtitle couldn't be unpacked."
 msgstr "Δεν ήταν δυνατή η αποσυμπίεση των υποτίτλων."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1923
+#: modules/gui/qt/player/subtitle_providers.cpp:2141
 msgid "The archive has no subtitle in it."
 msgstr "Το αρχείο δεν περιέχει υπότιτλους."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1935
+#: modules/gui/qt/player/subtitle_providers.cpp:2153
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 "Το OpenSubtitles διαθέτει αυτούς τους υπότιτλους μόνο στα συνδρομητικά μέλη "
 "του. Επιλέξτε άλλους."
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1941
+#: modules/gui/qt/player/subtitle_providers.cpp:2159
 msgid "The subtitle is empty."
 msgstr "Οι υπότιτλοι είναι κενοί."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1290
-#: modules/gui/qt/player/subtitle_search.cpp:1399
+#: modules/gui/qt/player/subtitle_search.cpp:1382
+#: modules/gui/qt/player/subtitle_search.cpp:1493
 msgid "No connection to the internet."
 msgstr "Δεν υπάρχει σύνδεση στο διαδίκτυο."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1293
+#: modules/gui/qt/player/subtitle_search.cpp:1385
 msgid "The video couldn't be identified from its name."
 msgstr "Δεν ήταν δυνατή η αναγνώριση του βίντεο από το όνομά του."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1294
+#: modules/gui/qt/player/subtitle_search.cpp:1386
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr "Το \"%1\" δεν βρέθηκε. Αναζητήστε τον τίτλο του."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1296
+#: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "Δεν βρέθηκαν υπότιτλοι για το %1."
 
-#: modules/gui/qt/player/subtitle_search.cpp:1338
-#: modules/gui/qt/player/subtitle_search.cpp:1380
-#: modules/gui/qt/player/subtitle_search.cpp:1400
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr "Δεν ήταν δυνατή η λήψη των υποτίτλων (%1)."
 
@@ -8460,75 +8477,75 @@ msgstr "Αναπαραγωγός"
 msgid "Subtitle size %1%"
 msgstr "Μέγεθος υποτίτλων %1%"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1157
+#: modules/gui/qt/player/qml/PlayerView.qml:1158
 msgid "Subtitles on the TV: %1"
 msgstr "Υπότιτλοι στην τηλεόραση: %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1157
+#: modules/gui/qt/player/qml/PlayerView.qml:1158
 msgid "Subtitles off on the TV"
 msgstr "Υπότιτλοι απενεργοποιημένοι στην τηλεόραση"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1268
+#: modules/gui/qt/player/qml/PlayerView.qml:1269
 msgid "Not playing on %1"
 msgstr "Δεν αναπαράγεται στο %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1270
-#: modules/gui/qt/player/qml/PlayerView.qml:1397
+#: modules/gui/qt/player/qml/PlayerView.qml:1271
+#: modules/gui/qt/player/qml/PlayerView.qml:1398
 msgid "Connecting to %1…"
 msgstr "Σύνδεση στο %1…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1272
+#: modules/gui/qt/player/qml/PlayerView.qml:1273
 msgid "Playing on %1"
 msgstr "Αναπαραγωγή στο %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1273
+#: modules/gui/qt/player/qml/PlayerView.qml:1274
 msgid "The sound plays on %1"
 msgstr "Ο ήχος αναπαράγεται στο %1"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1298
+#: modules/gui/qt/player/qml/PlayerView.qml:1299
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 "Κάντε παύση, μετακινηθείτε και αλλάξτε τους υπότιτλους εδώ: η τηλεόραση "
 "ακολουθεί."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1315
+#: modules/gui/qt/player/qml/PlayerView.qml:1316
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 "Το Τείχος προστασίας των Windows δεν επιτρέπει στο %1 να συνδεθεί σε αυτόν "
 "τον υπολογιστή για να διαβάσει το πολυμέσο."
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1327
+#: modules/gui/qt/player/qml/PlayerView.qml:1328
 msgid "Waiting for Windows…"
 msgstr "Αναμονή για τα Windows…"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1328
+#: modules/gui/qt/player/qml/PlayerView.qml:1329
 msgid "Allow on public networks too"
 msgstr "Να επιτρέπεται και σε δημόσια δίκτυα"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1329
+#: modules/gui/qt/player/qml/PlayerView.qml:1330
 msgid "Allow on private networks"
 msgstr "Να επιτρέπεται σε ιδιωτικά δίκτυα"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1341
+#: modules/gui/qt/player/qml/PlayerView.qml:1342
 msgid "Try again"
 msgstr "Δοκιμάστε ξανά"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1346
-#: modules/gui/qt/player/qml/PlayerView.qml:1356
+#: modules/gui/qt/player/qml/PlayerView.qml:1347
+#: modules/gui/qt/player/qml/PlayerView.qml:1357
 msgid "Play here"
 msgstr "Αναπαραγωγή εδώ"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1356
-#: modules/gui/qt/player/qml/PlayerView.qml:1407
+#: modules/gui/qt/player/qml/PlayerView.qml:1357
+#: modules/gui/qt/player/qml/PlayerView.qml:1408
 msgid "Stop casting"
 msgstr "Διακοπή μετάδοσης"
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1398
+#: modules/gui/qt/player/qml/PlayerView.qml:1399
 msgid "Also on %1"
 msgstr "Επίσης στο %1"
 
-#: modules/gui/qt/player/qml/ShortcutFeedback.qml:148
+#: modules/gui/qt/player/qml/ShortcutFeedback.qml:160
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:193
 msgid "Playing"
 msgstr "Αναπαράγεται"
@@ -8662,42 +8679,42 @@ msgstr "Αναπαραγάγετε ήχο για να επιλέξετε οπτ�
 #: modules/gui/qt/player/qml/CompactLibrary.qml:214
 #: modules/gui/qt/player/qml/CompactLibrary.qml:215
 #: modules/gui/qt/player/qml/CompactLibrary.qml:314
-#: modules/gui/qt/player/qml/CompactLibrary.qml:525
+#: modules/gui/qt/player/qml/CompactLibrary.qml:530
 msgid "Songs"
 msgstr "Τραγούδια"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:747
+#: modules/gui/qt/player/qml/CompactLibrary.qml:752
 msgid "More"
 msgstr "Περισσότερα"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:790
-#: modules/gui/qt/player/qml/CompactLibrary.qml:805
+#: modules/gui/qt/player/qml/CompactLibrary.qml:795
+#: modules/gui/qt/player/qml/CompactLibrary.qml:810
 msgid "Rescan library"
 msgstr "Επανασάρωση βιβλιοθήκης"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:815
+#: modules/gui/qt/player/qml/CompactLibrary.qml:820
 msgid "Add network stream…"
 msgstr "Προσθήκη ροής δικτύου…"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:824
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1219
+#: modules/gui/qt/player/qml/CompactLibrary.qml:829
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1224
 msgid "Create playlist"
 msgstr "Δημιουργία λίστας αναπαραγωγής"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:838
-#: modules/gui/qt/player/qml/CompactLibrary.qml:852
+#: modules/gui/qt/player/qml/CompactLibrary.qml:843
+#: modules/gui/qt/player/qml/CompactLibrary.qml:857
 msgid "Add all to queue"
 msgstr "Προσθήκη όλων στην ουρά"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:857
+#: modules/gui/qt/player/qml/CompactLibrary.qml:862
 msgid "Up one folder"
 msgstr "Έναν φάκελο επάνω"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:867
+#: modules/gui/qt/player/qml/CompactLibrary.qml:872
 msgid "Open in the library"
 msgstr "Άνοιγμα στη βιβλιοθήκη"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:951
+#: modules/gui/qt/player/qml/CompactLibrary.qml:956
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:207
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
@@ -8707,67 +8724,67 @@ msgstr "Άνοιγμα στη βιβλιοθήκη"
 msgid "Sort"
 msgstr "Ταξινόμηση"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:986
+#: modules/gui/qt/player/qml/CompactLibrary.qml:991
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title A-Z"
 msgstr "Τίτλος Α-Ω"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:990
+#: modules/gui/qt/player/qml/CompactLibrary.qml:995
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:82
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:83
 msgid "Title Z-A"
 msgstr "Τίτλος Ω-Α"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:994
+#: modules/gui/qt/player/qml/CompactLibrary.qml:999
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Newest First"
 msgstr "Πρώτα τα νεότερα"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:999
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1004
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:80
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:81
 msgid "Oldest First"
 msgstr "Πρώτα τα παλαιότερα"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1018
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:503
 msgid "Grid View"
 msgstr "Προβολή πλέγματος"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1023
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1028
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:509
 msgid "List View"
 msgstr "Προβολή λίστας"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1133
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1138
 msgid "See all"
 msgstr "Εμφάνιση όλων"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1279
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1284
 msgid "Add Network Stream"
 msgstr "Προσθήκη ροής δικτύου"
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1388
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1404
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1393
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1409
 msgid "The media library is not available."
 msgstr "Η βιβλιοθήκη πολυμέσων δεν είναι διαθέσιμη."
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1389
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1405
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1394
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1410
 msgid "Nothing here yet."
 msgstr "Δεν υπάρχει τίποτα εδώ ακόμη."
 
-#: modules/gui/qt/player/qml/ControlBar.qml:156
+#: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Στοιχεία ελέγχου αναπαραγωγού"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:439
+#: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"
 msgstr "%1 (%2x)"
 
-#: modules/gui/qt/player/qml/ControlBar.qml:454
+#: modules/gui/qt/player/qml/ControlBar.qml:452
 msgid "Progress"
 msgstr "Πρόοδος"
 
@@ -9309,18 +9326,18 @@ msgstr "Ουρά αναπαραγωγής"
 msgid "%1 elements, %2"
 msgstr "%1 στοιχεία, %2"
 
-#: modules/gui/qt/qt.cpp:176
+#: modules/gui/qt/qt.cpp:178
 msgid "Select the initial preferences view"
 msgstr "Επιλογή της αρχικής προβολής προτιμήσεων"
 
-#: modules/gui/qt/qt.cpp:177
+#: modules/gui/qt/qt.cpp:179
 msgid ""
 "Select which preferences view to show upon opening the preferences dialog."
 msgstr ""
 "Επιλέξτε ποια προβολή προτιμήσεων θα εμφανίζεται όταν ανοίγει το παράθυρο "
 "προτιμήσεων."
 
-#: modules/gui/qt/qt.cpp:201
+#: modules/gui/qt/qt.cpp:203
 msgid ""
 "Show a notification popup with the artist and track name when the current "
 "play queue item changes, when VLC is minimized or hidden."
@@ -9329,7 +9346,7 @@ msgstr ""
 "κομματιού όταν αλλάζει το τρέχον στοιχείο της ουράς αναπαραγωγής, ενώ το VLC "
 "είναι ελαχιστοποιημένο ή κρυφό."
 
-#: modules/gui/qt/qt.cpp:205
+#: modules/gui/qt/qt.cpp:207
 msgid ""
 "Sets the windows opacity between 0.1 and 1 for main interface, play queue "
 "and extended panel. This option only works with Windows and X11 with "
@@ -9339,7 +9356,7 @@ msgstr ""
 "την ουρά αναπαραγωγής και τον εκτεταμένο πίνακα. Αυτή η επιλογή λειτουργεί "
 "μόνο με Windows και X11 με επεκτάσεις σύνθεσης."
 
-#: modules/gui/qt/qt.cpp:211
+#: modules/gui/qt/qt.cpp:213
 msgid ""
 "Sets the fullscreen controller opacity between 0.1 and 1 for main interface, "
 "play queue and extended panel. This option only works with Windows and X11 "
@@ -9349,11 +9366,11 @@ msgstr ""
 "κύρια διεπαφή, την ουρά αναπαραγωγής και τον εκτεταμένο πίνακα. Αυτή η "
 "επιλογή λειτουργεί μόνο με Windows και X11 με επεκτάσεις σύνθεσης."
 
-#: modules/gui/qt/qt.cpp:216
+#: modules/gui/qt/qt.cpp:218
 msgid "Initial user scale factor for the interface, between 0.3 and 3.0"
 msgstr "Αρχικός συντελεστής κλίμακας της διεπαφής, μεταξύ 0.3 και 3.0"
 
-#: modules/gui/qt/qt.cpp:219
+#: modules/gui/qt/qt.cpp:221
 msgid ""
 "Show the errors of VLC at the bottom of the window, and ask before removing "
 "media from a playlist or from the play queue, or deleting playlists. Off, "
@@ -9367,11 +9384,11 @@ msgstr ""
 "γίνονται αμέσως· η διαγραφή ενός αρχείου από τον δίσκο ζητά πάντα "
 "επιβεβαίωση."
 
-#: modules/gui/qt/qt.cpp:229
+#: modules/gui/qt/qt.cpp:231
 msgid "set the options for qml debugger"
 msgstr "ορισμός των επιλογών για τον αποσφαλματωτή qml"
 
-#: modules/gui/qt/qt.cpp:230
+#: modules/gui/qt/qt.cpp:232
 msgid ""
 "set the options for qml debugger (see http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications)"
@@ -9379,7 +9396,7 @@ msgstr ""
 "ορισμός των επιλογών για τον αποσφαλματωτή qml (δείτε http://doc.qt.io/qt-5/"
 "qtquick-debugging.html#starting-applications)"
 
-#: modules/gui/qt/qt.cpp:250
+#: modules/gui/qt/qt.cpp:252
 msgid ""
 "Show the playback controls in fullscreen when the mouse moves. Off, only the "
 "keyboard shows them (the I key). The skins read it for their fullscreen "
@@ -9390,14 +9407,14 @@ msgstr ""
 "(πλήκτρο I). Οι προσόψεις το χρησιμοποιούν επίσης για τον ελεγκτή πλήρους "
 "οθόνης τους."
 
-#: modules/gui/qt/qt.cpp:257
+#: modules/gui/qt/qt.cpp:259
 msgid ""
 "What a key of VLC (seek, volume, pause, speed...) shows in full screen: the "
 "controls; a thin progress line with a small message (the time and what the "
 "key did); or that message alone."
 msgstr "Τι εμφανίζει ένα πλήκτρο του VLC (μετάβαση, ένταση, παύση, ταχύτητα...) σε πλήρη οθόνη: τα στοιχεία ελέγχου· μια λεπτή γραμμή προόδου με ένα μικρό μήνυμα (ο χρόνος και τι έκανε το πλήκτρο)· ή μόνο αυτό το μήνυμα."
 
-#: modules/gui/qt/qt.cpp:273
+#: modules/gui/qt/qt.cpp:275
 msgid ""
 "Display the cover art of the audio playing in the player (the cone in the "
 "compact view). Off, a plain picture takes its place, which also prevents "
@@ -9407,7 +9424,7 @@ msgstr ""
 "στη συμπαγή προβολή). Όταν είναι απενεργοποιημένο, τη θέση του παίρνει μια "
 "απλή εικόνα, κάτι που αποτρέπει επίσης το κάψιμο της οθόνης."
 
-#: modules/gui/qt/qt.cpp:297
+#: modules/gui/qt/qt.cpp:299
 msgid ""
 "This option allows the interface to be shown and raised automatically when a "
 "video/audio playback starts, or never."
@@ -9415,11 +9432,11 @@ msgstr ""
 "Αυτή η επιλογή επιτρέπει στη διεπαφή να εμφανίζεται και να έρχεται αυτόματα "
 "στο προσκήνιο όταν ξεκινά η αναπαραγωγή βίντεο/ήχου, ή ποτέ."
 
-#: modules/gui/qt/qt.cpp:300
+#: modules/gui/qt/qt.cpp:302
 msgid "Enable window titlebar"
 msgstr "Ενεργοποίηση γραμμής τίτλου παραθύρου"
 
-#: modules/gui/qt/qt.cpp:301
+#: modules/gui/qt/qt.cpp:303
 msgid ""
 "This option enables the title bar. Disabling it will remove the titlebar and "
 "move window buttons within the interface (Client Side Decoration)"
@@ -9428,31 +9445,31 @@ msgstr ""
 "τη γραμμή τίτλου και μεταφέρει τα κουμπιά του παραθύρου μέσα στη διεπαφή "
 "(Client Side Decoration)"
 
-#: modules/gui/qt/qt.cpp:305
+#: modules/gui/qt/qt.cpp:307
 msgid "Show the menu bar"
 msgstr "Εμφάνιση της γραμμής μενού"
 
-#: modules/gui/qt/qt.cpp:306
+#: modules/gui/qt/qt.cpp:308
 msgid "This option displays the classic menu bar"
 msgstr "Αυτή η επιλογή εμφανίζει την κλασική γραμμή μενού"
 
-#: modules/gui/qt/qt.cpp:308
+#: modules/gui/qt/qt.cpp:310
 msgid "Pin video controls"
 msgstr "Καρφίτσωμα στοιχείων ελέγχου βίντεο"
 
-#: modules/gui/qt/qt.cpp:309
+#: modules/gui/qt/qt.cpp:311
 msgid "Place video controls above and below the video instead of above"
 msgstr ""
 "Τοποθέτηση των στοιχείων ελέγχου βίντεο επάνω και κάτω από το βίντεο αντί "
 "για επάνω του"
 
-#: modules/gui/qt/qt.cpp:312
+#: modules/gui/qt/qt.cpp:314
 msgid "Show the frame at the hovered position above the seek bar"
 msgstr ""
 "Εμφάνιση του καρέ της θέσης όπου βρίσκεται ο δείκτης, πάνω από τη γραμμή "
 "προόδου"
 
-#: modules/gui/qt/qt.cpp:314
+#: modules/gui/qt/qt.cpp:316
 msgid ""
 "Mark on the seek bar where the lines of the subtitle shown are, when it "
 "comes from a subtitle file"
@@ -9460,11 +9477,11 @@ msgstr ""
 "Σήμανση στη γραμμή προόδου των θέσεων των γραμμών του εμφανιζόμενου "
 "υποτίτλου, όταν προέρχεται από αρχείο υποτίτλων"
 
-#: modules/gui/qt/qt.cpp:319
+#: modules/gui/qt/qt.cpp:321
 msgid "Select Qt video integration backend"
 msgstr "Επιλογή συστήματος ενσωμάτωσης βίντεο του Qt"
 
-#: modules/gui/qt/qt.cpp:320
+#: modules/gui/qt/qt.cpp:322
 msgid ""
 "Select Qt video integration backend. Use with care, the interface may not "
 "start if an incompatible compositor is selected"
@@ -9472,11 +9489,11 @@ msgstr ""
 "Επιλογή συστήματος ενσωμάτωσης βίντεο του Qt. Χρησιμοποιήστε το με προσοχή· "
 "η διεπαφή μπορεί να μην ξεκινήσει αν επιλεγεί ασύμβατος συνθέτης"
 
-#: modules/gui/qt/qt.cpp:322
+#: modules/gui/qt/qt.cpp:324
 msgid "Use smooth scrolling in Flickable based views"
 msgstr "Ομαλή κύλιση στις προβολές που βασίζονται σε Flickable"
 
-#: modules/gui/qt/qt.cpp:323
+#: modules/gui/qt/qt.cpp:325
 msgid ""
 "Deactivating this option will disable smooth scrolling in Flickable based "
 "views (such as the Play Queue). This option is only respected with a scroll "
@@ -9487,23 +9504,23 @@ msgstr ""
 "επιλογή ισχύει μόνο με χειριστή κύλισης· δείτε την επιλογή `qt-use-scroll-"
 "handler`."
 
-#: modules/gui/qt/qt.cpp:326
+#: modules/gui/qt/qt.cpp:328
 msgid "Use Kirigami scroll handler for Flickable based views"
 msgstr ""
 "Χρήση του χειριστή κύλισης Kirigami για τις προβολές που βασίζονται σε "
 "Flickable"
 
-#: modules/gui/qt/qt.cpp:327
+#: modules/gui/qt/qt.cpp:329
 msgid "Using Kirigami scroll handler may improve scrolling behavior."
 msgstr ""
 "Η χρήση του χειριστή κύλισης Kirigami μπορεί να βελτιώσει τη συμπεριφορά της "
 "κύλισης."
 
-#: modules/gui/qt/qt.cpp:329
+#: modules/gui/qt/qt.cpp:331
 msgid "Safe area for the user interface"
 msgstr "Ασφαλής περιοχή για τη διεπαφή χρήστη"
 
-#: modules/gui/qt/qt.cpp:330
+#: modules/gui/qt/qt.cpp:332
 msgid ""
 "Sets the safe area percentage between 0.0 and 100 when you want to ensure "
 "the visibility of the user interface on a constrained viewport"
@@ -9512,21 +9529,21 @@ msgstr ""
 "εξασφαλίσετε την ορατότητα της διεπαφής χρήστη σε περιορισμένη περιοχή "
 "προβολής"
 
-#: modules/gui/qt/qt.cpp:334
+#: modules/gui/qt/qt.cpp:336
 msgid "Print Qt's important internal messages"
 msgstr "Εμφάνιση των σημαντικών εσωτερικών μηνυμάτων του Qt"
 
-#: modules/gui/qt/qt.cpp:335
+#: modules/gui/qt/qt.cpp:337
 msgid "Enable Qt's all own messaging categories except the debug category."
 msgstr ""
 "Ενεργοποίηση όλων των κατηγοριών μηνυμάτων του Qt εκτός από την κατηγορία "
 "αποσφαλμάτωσης."
 
-#: modules/gui/qt/qt.cpp:337
+#: modules/gui/qt/qt.cpp:339
 msgid "Hide the window on close"
 msgstr "Απόκρυψη του παραθύρου κατά το κλείσιμο"
 
-#: modules/gui/qt/qt.cpp:338
+#: modules/gui/qt/qt.cpp:340
 msgid ""
 "Instead of closing the application, hide the window. This setting is only "
 "applicable when system tray icon is enabled."
@@ -9534,12 +9551,12 @@ msgstr ""
 "Απόκρυψη του παραθύρου αντί για κλείσιμο της εφαρμογής. Αυτή η ρύθμιση "
 "ισχύει μόνο όταν είναι ενεργοποιημένο το εικονίδιο στην περιοχή ειδοποιήσεων."
 
-#: modules/gui/qt/qt.cpp:340
+#: modules/gui/qt/qt.cpp:342
 msgid "Enable backdrop blur filter for the main window if possible"
 msgstr ""
 "Ενεργοποίηση φίλτρου θολώματος φόντου για το κύριο παράθυρο, αν είναι δυνατό"
 
-#: modules/gui/qt/qt.cpp:341
+#: modules/gui/qt/qt.cpp:343
 msgid ""
 "If backdrop blur filter is available, use translucency in the backgrounds of "
 "certain parts of the user interface instead of a solid color. This setting "
@@ -9549,11 +9566,11 @@ msgstr ""
 "στο φόντο ορισμένων τμημάτων της διεπαφής χρήστη αντί για συμπαγές χρώμα. "
 "Αυτή η ρύθμιση μειώνει την αναγνωσιμότητα του κειμένου."
 
-#: modules/gui/qt/qt.cpp:344
+#: modules/gui/qt/qt.cpp:346
 msgid "Enable picture-in-picture (PiP) mode"
 msgstr "Ενεργοποίηση λειτουργίας εικόνας μέσα σε εικόνα (PiP)"
 
-#: modules/gui/qt/qt.cpp:345
+#: modules/gui/qt/qt.cpp:347
 msgid ""
 "Picture-in-picture mode allows playing video contained in a smaller area so "
 "that the interface remains usable."
@@ -9561,7 +9578,7 @@ msgstr ""
 "Η λειτουργία εικόνας μέσα σε εικόνα επιτρέπει την αναπαραγωγή βίντεο σε "
 "μικρότερη περιοχή, ώστε η διεπαφή να παραμένει χρησιμοποιήσιμη."
 
-#: modules/gui/qt/qt.cpp:348
+#: modules/gui/qt/qt.cpp:350
 msgid ""
 "Adjusts the accent color, special values are 'default' and 'system' "
 "(requires Qt 6.6) ."
@@ -9569,27 +9586,27 @@ msgstr ""
 "Προσαρμόζει το χρώμα έμφασης· ειδικές τιμές είναι οι 'default' και 'system' "
 "(απαιτεί Qt 6.6) ."
 
-#: modules/gui/qt/qt.cpp:354
+#: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"
 msgstr "Τελευταίο κανάλι που παρακολουθήθηκε"
 
-#: modules/gui/qt/qt.cpp:355
+#: modules/gui/qt/qt.cpp:357
 msgid "Channel list"
 msgstr "Λίστα καναλιών"
 
-#: modules/gui/qt/qt.cpp:360
+#: modules/gui/qt/qt.cpp:362
 msgid "Zoom the interface in"
 msgstr "Μεγέθυνση διεπαφής"
 
-#: modules/gui/qt/qt.cpp:361
+#: modules/gui/qt/qt.cpp:363
 msgid "Zoom the interface out"
 msgstr "Σμίκρυνση διεπαφής"
 
-#: modules/gui/qt/qt.cpp:472
+#: modules/gui/qt/qt.cpp:474
 msgid "Check for VLC Redesign updates"
 msgstr "Έλεγχος για ενημερώσεις του VLC Redesign"
 
-#: modules/gui/qt/qt.cpp:473
+#: modules/gui/qt/qt.cpp:475
 msgid ""
 "Look for a new release of VLC Redesign on GitHub at startup, at most once a "
 "day."
@@ -9597,11 +9614,11 @@ msgstr ""
 "Αναζήτηση νέας έκδοσης του VLC Redesign στο GitHub κατά την εκκίνηση, το "
 "πολύ μία φορά την ημέρα."
 
-#: modules/gui/qt/qt.cpp:477
+#: modules/gui/qt/qt.cpp:479
 msgid "Resume at"
 msgstr "Συνέχιση από"
 
-#: modules/gui/qt/qt.cpp:478
+#: modules/gui/qt/qt.cpp:480
 msgid ""
 "Seconds into the media of the command line where playback continues, after "
 "an update."
@@ -9657,7 +9674,7 @@ msgstr "Επαναφορά"
 msgid "Don't restore"
 msgstr "Χωρίς επαναφορά"
 
-#: modules/gui/qt/util/redesign_updater.cpp:250
+#: modules/gui/qt/util/redesign_updater.cpp:251
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
@@ -9665,29 +9682,29 @@ msgstr ""
 "Η ενημέρωση δεν είναι υπογεγραμμένη από τον εκδότη αυτού του αντιγράφου "
 "(%1), γι' αυτό δεν χρησιμοποιήθηκε."
 
-#: modules/gui/qt/util/redesign_updater.cpp:532
+#: modules/gui/qt/util/redesign_updater.cpp:551
 msgid "%1 (later)"
 msgstr "%1 (αργότερα)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:534
+#: modules/gui/qt/util/redesign_updater.cpp:553
 msgid "%1 (soon)"
 msgstr "%1 (σύντομα)"
 
-#: modules/gui/qt/util/redesign_updater.cpp:731
+#: modules/gui/qt/util/redesign_updater.cpp:750
 msgid "This build cannot check for updates."
 msgstr "Αυτή η έκδοση δεν μπορεί να ελέγξει για ενημερώσεις."
 
-#: modules/gui/qt/util/redesign_updater.cpp:748
+#: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Δεν ήταν δυνατή η σύνδεση με το GitHub. Ελέγξτε τη σύνδεσή σας και δοκιμάστε "
 "ξανά."
 
-#: modules/gui/qt/util/redesign_updater.cpp:765
+#: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr "Το GitHub έστειλε μια μη αναμενόμενη απάντηση (%1)."
 
-#: modules/gui/qt/util/redesign_updater.cpp:893
+#: modules/gui/qt/util/redesign_updater.cpp:912
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
@@ -9695,52 +9712,52 @@ msgstr ""
 "Αυτή η ενημέρωση δεν είναι υπογεγραμμένη από το VLC Redesign, επομένως δεν "
 "χρησιμοποιήθηκε. Κατεβάστε την από τη σελίδα της έκδοσης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:915
-#: modules/gui/qt/util/redesign_updater.cpp:956
+#: modules/gui/qt/util/redesign_updater.cpp:934
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 "Λείπει το άθροισμα ελέγχου της ενημέρωσης· κατεβάστε την από τη σελίδα της "
 "έκδοσης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:930
-#: modules/gui/qt/util/redesign_updater.cpp:1002
+#: modules/gui/qt/util/redesign_updater.cpp:949
+#: modules/gui/qt/util/redesign_updater.cpp:1021
 msgid "The download failed. Check your connection and try again."
 msgstr "Η λήψη απέτυχε. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1015
+#: modules/gui/qt/util/redesign_updater.cpp:1036
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Η ενημέρωση δεν αντιστοιχεί στο άθροισμα ελέγχου της, γι' αυτό δεν "
 "χρησιμοποιήθηκε."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1037
+#: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Η ενημέρωση δεν είναι σε μορφή που αναγνωρίζει αυτή η έκδοση."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1040
-#: modules/gui/qt/util/redesign_updater.cpp:1064
-#: modules/gui/qt/util/redesign_updater.cpp:1075
-#: modules/gui/qt/util/redesign_updater.cpp:1081
-#: modules/gui/qt/util/redesign_updater.cpp:1355
+#: modules/gui/qt/util/redesign_updater.cpp:1058
+#: modules/gui/qt/util/redesign_updater.cpp:1082
+#: modules/gui/qt/util/redesign_updater.cpp:1093
+#: modules/gui/qt/util/redesign_updater.cpp:1099
+#: modules/gui/qt/util/redesign_updater.cpp:1360
 msgid "The update is damaged."
 msgstr "Η ενημέρωση είναι κατεστραμμένη."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1045
-#: modules/gui/qt/util/redesign_updater.cpp:1352
+#: modules/gui/qt/util/redesign_updater.cpp:1063
+#: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Η ενημέρωση δεν προορίζεται για αυτή την έκδοση."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1054
-#: modules/gui/qt/util/redesign_updater.cpp:1091
-#: modules/gui/qt/util/redesign_updater.cpp:1100
-#: modules/gui/qt/util/redesign_updater.cpp:1112
-#: modules/gui/qt/util/redesign_updater.cpp:1116
-#: modules/gui/qt/util/redesign_updater.cpp:1348
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
 msgid "The update can't be written in %1."
 msgstr "Δεν είναι δυνατή η εγγραφή της ενημέρωσης στο %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1056
+#: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
@@ -9749,38 +9766,37 @@ msgstr ""
 "ενημέρωση δεν μπορεί να χρησιμοποιηθεί: ενημερώστε με το πρόγραμμα "
 "εγκατάστασης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1086
+#: modules/gui/qt/util/redesign_updater.cpp:1104
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 "Η ενημέρωση είναι κατεστραμμένη: ένα αρχείο δεν αντιστοιχεί στο άθροισμα "
 "ελέγχου του."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1249
-#: modules/gui/qt/util/redesign_updater.cpp:1416
+#: modules/gui/qt/util/redesign_updater.cpp:1264
+#: modules/gui/qt/util/redesign_updater.cpp:1418
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 "Δεν ήταν δυνατή η έναρξη της ενημέρωσης. Θα γίνει νέα προσπάθεια την επόμενη "
 "φορά."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1276
+#: modules/gui/qt/util/redesign_updater.cpp:1291
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 "Η λήψη απέτυχε. Δοκιμάστε ξανά ή κατεβάστε την από τη σελίδα της έκδοσης."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1289
+#: modules/gui/qt/util/redesign_updater.cpp:1305
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 "Το πρόγραμμα εγκατάστασης που λήφθηκε δεν αντιστοιχεί στο άθροισμα ελέγχου "
 "του, γι' αυτό δεν εκτελέστηκε."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1301
-#: modules/gui/qt/util/redesign_updater.cpp:1309
-#: modules/gui/qt/util/redesign_updater.cpp:1325
+#: modules/gui/qt/util/redesign_updater.cpp:1317
+#: modules/gui/qt/util/redesign_updater.cpp:1331
 msgid "The installer couldn't be saved to %1."
 msgstr "Δεν ήταν δυνατή η αποθήκευση του προγράμματος εγκατάστασης στο %1."
 
-#: modules/gui/qt/util/redesign_updater.cpp:1396
-#: modules/gui/qt/util/redesign_updater.cpp:1434
+#: modules/gui/qt/util/redesign_updater.cpp:1398
+#: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."
 msgstr "Δεν ήταν δυνατή η εκκίνηση του προγράμματος εγκατάστασης."
 
@@ -9819,43 +9835,43 @@ msgstr "Το %1 αναπαράγει τώρα κάτι άλλο."
 msgid "%1 couldn't play the video."
 msgstr "Το %1 δεν μπόρεσε να αναπαραγάγει το βίντεο."
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:63
+#: modules/gui/qt/util/subtitle_preferences.cpp:64
 msgid "Asturian"
 msgstr "Αστουριανά"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:65
+#: modules/gui/qt/util/subtitle_preferences.cpp:66
 msgid "Central Kurdish"
 msgstr "Κεντρικά Κουρδικά"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:66
+#: modules/gui/qt/util/subtitle_preferences.cpp:67
 msgid "Montenegrin"
 msgstr "Μαυροβουνιακά"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:70
+#: modules/gui/qt/util/subtitle_preferences.cpp:71
 msgid "Dari"
 msgstr "Ντάρι"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:72
+#: modules/gui/qt/util/subtitle_preferences.cpp:73
 msgid "Cantonese"
 msgstr "Καντονέζικα"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:73
+#: modules/gui/qt/util/subtitle_preferences.cpp:74
 msgid "Standard Moroccan Tamazight"
 msgstr "Τυπικά Ταμαζίτ Μαρόκου"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:74
+#: modules/gui/qt/util/subtitle_preferences.cpp:75
 msgid "Portuguese (Brazil)"
 msgstr "Πορτογαλικά (Βραζιλίας)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:75
+#: modules/gui/qt/util/subtitle_preferences.cpp:76
 msgid "Chinese (Traditional)"
 msgstr "Κινεζικά (Παραδοσιακά)"
 
-#: modules/gui/qt/util/subtitle_preferences.cpp:76
+#: modules/gui/qt/util/subtitle_preferences.cpp:77
 msgid "Spanish (Latin America)"
 msgstr "Ισπανικά (Λατινικής Αμερικής)"
 
-#: modules/gui/qt/widgets/native/filepicker.cpp:69
+#: modules/gui/qt/widgets/native/filepicker.cpp:72
 msgid "Images (*.png *.jpg *.jpeg *.bmp)"
 msgstr "Εικόνες (*.png *.jpg *.jpeg *.bmp)"
 
@@ -9980,7 +9996,7 @@ msgstr "Ασφαλές 128 bit (ή υψηλότερο)"
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr "Ασφαλές 256 bit (εξαίρεση κρυπτογραφήσεων 128 bit)"
 
-#: modules/misc/iptv/iptv.cpp:835
+#: modules/misc/iptv/iptv.cpp:950
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
@@ -9989,7 +10005,7 @@ msgstr ""
 "και των λογαριασμών IPTV σας, με τον οδηγό προγράμματός τους. Όταν είναι "
 "ανενεργό, δεν φορτώνεται τίποτα από αυτά."
 
-#: modules/misc/iptv/iptv.cpp:840
+#: modules/misc/iptv/iptv.cpp:955
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr "Κανάλια και οδηγός προγράμματος ζωντανής τηλεόρασης (IPTV)"
 

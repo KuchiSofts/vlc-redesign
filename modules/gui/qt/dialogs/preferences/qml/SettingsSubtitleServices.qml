@@ -30,7 +30,21 @@ SettingsSectionTitle {
     property var _initial: ({})
     property bool _addOpen: false
 
+    // The services are read (their keys from the keystore) and their rows
+    // made when the page shows them: every opening of Settings, on any
+    // page, paid for them
+    property bool _begun: false
     function begin() {
+        _begun = false
+        states = ({})
+        _initial = ({})
+        if (visible)
+            _load()
+    }
+    onVisibleChanged: if (visible && !_begun) _load()
+
+    function _load() {
+        _begun = true
         const all = {}
         const initial = {}
         for (const service of SubtitleFinder.services) {
@@ -194,7 +208,7 @@ SettingsSectionTitle {
     }
 
     Repeater {
-        model: SubtitleFinder.services
+        model: root._begun ? SubtitleFinder.services : []
         delegate: Column {
             id: serviceRow
             required property var modelData
@@ -409,7 +423,8 @@ SettingsSectionTitle {
     }
 
     // The services removed, to bring back
-    readonly property var _removed: SubtitleFinder.services.filter(s => states[s.id] && states[s.id].removed === true)
+    readonly property var _removed: !_begun ? []
+        : SubtitleFinder.services.filter(s => states[s.id] && states[s.id].removed === true)
     Flow {
         width: parent.width
         visible: root._removed.length > 0

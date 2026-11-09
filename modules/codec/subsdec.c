@@ -38,6 +38,7 @@
 #include <vlc_plugin.h>
 #include <vlc_codec.h>
 #include <vlc_charset.h>
+#include <vlc_configuration.h>
 
 #include "subs_charset.h"
 #include <vlc_xml.h>
@@ -212,6 +213,15 @@ typedef struct
      * track and the preferred subtitle languages as hints */
     bool                b_detect;
     char               *psz_langs[3];
+
+    /* right-to-left lines written for players that lay them out left to
+     * right (FixRtlPunctuation): set right when the text is laid out from
+     * its own direction; how many of them start with their punctuation and
+     * how many end with it so far */
+    bool                b_rtl_fix;
+    unsigned            i_rtl_lead;
+    unsigned            i_rtl_trail;
+    bool                b_rtl_fixed;
 } decoder_sys_t;
 
 
@@ -342,7 +352,153 @@ static int OpenDecoder( vlc_object_t *p_this )
 
     p_sys->i_align = var_InheritInteger( p_dec, "subsdec-align" );
 
+    /* the text renderer's paragraph direction: forced left to right, such
+     * lines show as their files meant; automatic (the default) or right to
+     * left, they are set right */
+    p_sys->b_rtl_fix = config_GetType( "freetype-text-direction" ) == 0
+                    || var_InheritInteger( p_dec, "freetype-text-direction" ) != 0;
+
     return VLC_SUCCESS;
+}
+
+/*****************************************************************************
+ * FixRtlPunctuation: Hebrew, Arabic and Persian subtitles written for players
+ * that lay every line out left to right
+ *****************************************************************************
+ * Many sites (Hebrew ones above all) put a line's final punctuation first
+ * and its dialogue dash last (".כדי להשיב", "?מה-"), so that a left-to-right
+ * layout shows them where a reader expects them. Laid out from the line's own
+ * direction, as here, they show at the wrong end: they are moved back. A line
+ * that starts with a single mark (".", "?", "!", ",") and ends with none is
+ * such a line in any file; one that starts with "..." or only ends with a
+ * dash may be either, and is moved when most of the file's lines so far start
+ * with their punctuation.
+ *****************************************************************************/
+static bool IsRtlLetter( uint32_t c )
+{
+    return ( c >= 0x0590 && c <= 0x08FF ) || ( c >= 0xFB1D && c <= 0xFDFF )
+        || ( c >= 0xFE70 && c <= 0xFEFC );
+}
+
+static bool IsEndMark( char c )
+{
+    return c == '.' || c == ',' || c == '!' || c == '?' || c == ':' || c == ';';
+}
+
+/* the end of the markup at the start of a line (spaces, <i>, {\an8}) */
+static const char *SkipLeadingMarkup( const char *s, const char *e )
+{
+    for( ;; )
+    {
+        while( s < e && ( *s == ' ' || *s == '\t' ) )
+            s++;
+        const char close = s < e && *s == '<' ? '>' : s < e && *s == '{' ? '}' : 0;
+        if( !close )
+            return s;
+        const char *end = memchr( s, close, e - s );
+        if( end == NULL )
+            return s;
+        s = end + 1;
+    }
+}
+
+/* the start of the markup at the end of a line (spaces, </i>, \r) */
+static const char *SkipTrailingMarkup( const char *s, const char *e )
+{
+    for( ;; )
+    {
+        while( e > s && ( e[-1] == ' ' || e[-1] == '\t' || e[-1] == '\r' ) )
+            e--;
+        const char open = e > s && e[-1] == '>' ? '<' : e > s && e[-1] == '}' ? '{' : 0;
+        if( !open )
+            return e;
+        const char *p = e - 1;
+        while( p > s && *p != open )
+            p--;
+        if( *p != open )
+            return e;
+        e = p;
+    }
+}
+
+static void FixRtlLine( decoder_t *p_dec, char *line, char *line_end )
+{
+    decoder_sys_t *p_sys = p_dec->p_sys;
+    char *s = (char *)SkipLeadingMarkup( line, line_end );
+    char *e = (char *)SkipTrailingMarkup( s, line_end );
+    if( e - s < 2 )
+        return;
+
+    bool rtl = false;
+    for( const char *p = s; p < e && !rtl; )
+    {
+        uint32_t c;
+        ssize_t n = vlc_towc( p, &c );
+        if( n <= 0 )
+            return; /* (not UTF-8: left alone) */
+        rtl = IsRtlLetter( c );
+        p += n;
+    }
+    if( !rtl )
+        return;
+
+    /* the marks at its start, the dashes at its end */
+    size_t lead = 0, dots = 0, trail = 0;
+    while( s + lead < e && IsEndMark( s[lead] ) )
+        dots += s[lead++] == '.';
+    while( e - trail > s + lead && e[-1 - (ptrdiff_t)trail] == '-' )
+        trail++;
+    const bool ends_with_mark = IsEndMark( e[-1 - (ptrdiff_t)trail] );
+
+    if( lead > 0 )
+        p_sys->i_rtl_lead++;
+    if( IsEndMark( e[-1] ) )
+        p_sys->i_rtl_trail++;
+
+    /* written right (a dialogue dash first, the mark last), or nothing to move */
+    if( *s == '-' || ends_with_mark || ( lead == 0 && trail == 0 ) )
+        return;
+    const bool sure = lead > 0 && ( dots < lead || lead <= 2 );
+    const bool file_says = p_sys->i_rtl_lead >= 3
+                        && p_sys->i_rtl_lead > 2 * p_sys->i_rtl_trail;
+    if( !sure && !file_says )
+        return;
+
+    /* dashes + middle + marks (each run in the order it reads) */
+    const size_t len = e - s, mid = len - lead - trail;
+    char *tmp = malloc( len );
+    if( tmp == NULL )
+        return;
+    size_t o = 0;
+    for( size_t i = 0; i < trail; i++ )
+        tmp[o++] = e[-1 - (ptrdiff_t)i];
+    memcpy( &tmp[o], s + lead, mid );
+    o += mid;
+    for( size_t i = 0; i < lead; i++ )
+        tmp[o++] = s[lead - 1 - i];
+    memcpy( s, tmp, len );
+    free( tmp );
+
+    if( !p_sys->b_rtl_fixed )
+    {
+        p_sys->b_rtl_fixed = true;
+        msg_Dbg( p_dec, "right-to-left lines written for left-to-right "
+                        "players: their punctuation moved back" );
+    }
+}
+
+static void FixRtlPunctuation( decoder_t *p_dec, char *psz )
+{
+    if( !( (decoder_sys_t *)p_dec->p_sys )->b_rtl_fix || psz == NULL )
+        return;
+    for( char *line = psz; *line; )
+    {
+        char *end = strchr( line, '\n' );
+        if( end == NULL )
+            end = line + strlen( line );
+        FixRtlLine( p_dec, line, end );
+        line = *end ? end + 1 : end;
+    }
 }
 
 /****************************************************************************
@@ -530,6 +686,7 @@ static subpicture_t *ParseText( decoder_t *p_dec, block_t *p_block )
     subtext_updater_sys_t *p_spu_sys = p_spu->updater.sys;
 
     int i_inline_align = -1;
+    FixRtlPunctuation( p_dec, psz_subtitle );
     p_spu_sys->region.p_segments = ParseSubtitles( &i_inline_align, psz_subtitle );
     free( psz_subtitle );
     p_spu_sys->region.b_absolute = false;

@@ -74,6 +74,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   - **Slow starts still get subtitles.** A film opened from the file manager while the app starts, or from a slow
     server, used to get no automatic subtitles when its picture took more than a moment to come; the search now
     waits for the picture.
+  - **Hebrew and Arabic punctuation in its place.** Many subtitle sites write a line's final mark first and its
+    dialogue dash last (".כדי להשיב", "?מה-") for players that lay every line out left to right; laid out right to
+    left they showed at the wrong end. Such lines are now put right ("כדי להשיב.", "-מה?"), and correct files
+    are left as they are (Text direction set to left to right keeps them as written).
   - The same on the Samsung TV app and Android.
 - Android: no crash on Android TV boxes and Android 5 at the start, in Home, in the update and when a key opens the
   options early; on Android 5.1 the player no longer waits for a media library that can't start (dead keys, the

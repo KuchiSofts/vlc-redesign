@@ -180,7 +180,10 @@ FocusScope {
             model: Math.ceil(root.gridWidth / (1800 * root.pxPerSec)) + 2
             Item {
                 required property int index
-                readonly property real time: Math.floor(root.leftTime / 1800) * 1800 + index * 1800
+                // (counted from the origin, a local midnight: on the clock's
+                // half hours in every time zone, UTC+5:45 or +12:45 too)
+                readonly property real time: root.origin + Math.floor((root.leftTime - root.origin) / 1800) * 1800
+                                             + index * 1800
                 x: (time - root.origin) * root.pxPerSec
                 width: 1800 * root.pxPerSec
                 height: timeline.height

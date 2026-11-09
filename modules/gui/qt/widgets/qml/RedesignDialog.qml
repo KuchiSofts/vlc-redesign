@@ -251,21 +251,59 @@ T.Popup {
             }
         }
 
-        // "Frame 124": padding 22 / 20, 20 between its items
-        Item {
+        // "Frame 124": padding 22 / 20, 20 between its items. In a window
+        // too low for what it holds (a small window, a large interface
+        // size), it scrolls: its items were squeezed under the buttons
+        Flickable {
+            id: bodyView
+
             Layout.fillWidth: true
             Layout.fillHeight: true
             implicitHeight: root.bodyHeight >= 0 ? root.bodyHeight
                                                  : body.implicitHeight + 2 * root.bodyVerticalPadding
+
+            // the least its items need: those that take the height left (a
+            // list, which scrolls by itself) a few rows, the others their own
+            readonly property real _needed: {
+                let needed = 0
+                let shown = 0
+                for (let i = 0; i < body.children.length; ++i) {
+                    const item = body.children[i]
+                    if (!item.visible)
+                        continue
+                    let own = 0
+                    if (item.Layout.minimumHeight > 0)
+                        own = item.Layout.minimumHeight
+                    else if (item.Layout.fillHeight)
+                        own = Math.min(VLCStyle.dp(96, VLCStyle.scale), Math.max(0, item.implicitHeight))
+                    else
+                        own = item.Layout.preferredHeight > 0 ? item.Layout.preferredHeight
+                                                              : Math.max(0, item.implicitHeight)
+                    // (a Repeater and the like take no room)
+                    if (own <= 0 && !item.Layout.fillHeight)
+                        continue
+                    ++shown
+                    needed += own
+                }
+                return needed + Math.max(0, shown - 1) * body.spacing + 2 * root.bodyVerticalPadding
+            }
+
+            contentWidth: width
+            contentHeight: Math.max(height, Math.ceil(_needed))
+            interactive: contentHeight > height
+            clip: interactive
+            boundsBehavior: Flickable.StopAtBounds
+
+            T.ScrollBar.vertical: Widgets.ScrollBarExt { visible: bodyView.interactive }
 
             ColumnLayout {
                 id: body
 
                 x: root.bodyHorizontalPadding
                 y: root.bodyVerticalPadding
-                width: parent.width - 2 * x
-                height: root.bodyHeight >= 0 ? Math.min(implicitHeight, parent.height - 2 * y)
-                                             : parent.height - 2 * y
+                width: bodyView.width - 2 * x
+                height: root.bodyHeight >= 0 ? Math.min(implicitHeight, bodyView.contentHeight - 2 * y)
+                                             : bodyView.contentHeight - 2 * y
                 spacing: VLCStyle.dp(20, VLCStyle.scale)
             }
         }

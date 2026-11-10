@@ -23,8 +23,7 @@ import QtQuick
 Behavior {
     id: behavior
 
-    // FIXME: Making this property `required` causes weird issues with Qt 6.2 when repeater is involved:
-    property bool delayedEnabled: false // modifying `enabled` is not permitted, this property should be used instead
+    required property bool delayedEnabled // modifying `enabled` is not permitted, this property should be used instead
 
     // false until created, by the Binding itself (`enabled` also set to
     // false from here was a change behind its back)

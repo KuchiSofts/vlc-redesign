@@ -31506,12 +31506,8 @@ msgstr ""
 "ашиглах боломжтой хэвээр үлдээнэ."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Онцлох өнгийг тохируулна, тусгай утгууд нь 'default' болон 'system' (Qt 6.6 "
-"шаардлагатай) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Онцлох өнгийг тохируулна, тусгай утгууд нь 'default' болон 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

@@ -31507,12 +31507,8 @@ msgstr ""
 "சிறிய பகுதிக்குள் இயக்க அனுமதிக்கிறது."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"உச்சரிப்பு நிறத்தைச் சரிசெய்கிறது, சிறப்பு மதிப்புகள் 'default' மற்றும் 'system' (Qt "
-"6.6 தேவை) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "உச்சரிப்பு நிறத்தைச் சரிசெய்கிறது, சிறப்பு மதிப்புகள் 'default' மற்றும் 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

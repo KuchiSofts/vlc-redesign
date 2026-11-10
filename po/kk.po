@@ -31618,12 +31618,8 @@ msgstr ""
 "береді, осылайша интерфейсті пайдалана беруге болады."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Акцент түсін реттейді, арнайы мәндер — 'default' және 'system' (Qt 6.6 "
-"қажет) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Акцент түсін реттейді, арнайы мәндер — 'default' және 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

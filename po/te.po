@@ -31319,12 +31319,8 @@ msgstr ""
 "అనుమతిస్తుంది."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"యాస రంగును సర్దుబాటు చేస్తుంది, ప్రత్యేక విలువలు 'default' మరియు 'system' (Qt 6.6 "
-"అవసరం) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "యాస రంగును సర్దుబాటు చేస్తుంది, ప్రత్యేక విలువలు 'default' మరియు 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

@@ -31337,10 +31337,8 @@ msgid ""
 msgstr "子母畫面模式可讓影片在較小的區域中播放，讓介面保持可用。"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr "調整輔色，特殊值為 'default' 與 'system' (需要 Qt 6.6)。"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "調整輔色，特殊值為 'default' 與 'system'。"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

@@ -31830,12 +31830,8 @@ msgstr ""
 "ionas gur féidir an comhéadan a úsáid fós."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Coigeartaíonn sé an dath béime; is iad 'default' agus 'system' na luachanna "
-"speisialta (teastaíonn Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Coigeartaíonn sé an dath béime; is iad 'default' agus 'system' na luachanna speisialta."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

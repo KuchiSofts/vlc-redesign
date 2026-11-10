@@ -32655,12 +32655,8 @@ msgstr ""
 "pichona per que l'interfàcia demòre utilizabla."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Ajusta la color d'accent, las valors especialas son 'default' e 'system' "
-"(necessita Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Ajusta la color d'accent, las valors especialas son 'default' e 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

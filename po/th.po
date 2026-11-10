@@ -31331,10 +31331,8 @@ msgid ""
 msgstr "โหมดภาพซ้อนภาพช่วยให้เล่นวีดิทัศน์ในพื้นที่ที่เล็กลง เพื่อให้ยังใช้ส่วนติดต่อได้"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr "ปรับสีเน้น ค่าพิเศษคือ 'default' และ 'system' (ต้องใช้ Qt 6.6)"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "ปรับสีเน้น ค่าพิเศษคือ 'default' และ 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

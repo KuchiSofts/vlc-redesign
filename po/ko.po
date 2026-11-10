@@ -32039,11 +32039,8 @@ msgstr ""
 "수 있게 합니다."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"강조 색을 조정합니다. 특수 값은 'default'와 'system'입니다(Qt 6.6 필요)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "강조 색을 조정합니다. 특수 값은 'default'와 'system'입니다."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

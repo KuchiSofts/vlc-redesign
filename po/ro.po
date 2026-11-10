@@ -32383,12 +32383,8 @@ msgstr ""
 "încât interfața să rămână utilizabilă."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Ajustează culoarea de accent; valorile speciale sunt 'default' și 'system' "
-"(necesită Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Ajustează culoarea de accent; valorile speciale sunt 'default' și 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

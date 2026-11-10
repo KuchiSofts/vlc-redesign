@@ -32491,12 +32491,8 @@ msgstr ""
 "czemu interfejs pozostaje dostępny."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Dostosowuje kolor akcentu; wartości specjalne to 'default' i 'system' "
-"(wymaga Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Dostosowuje kolor akcentu; wartości specjalne to 'default' i 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

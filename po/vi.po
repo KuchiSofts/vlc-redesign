@@ -32516,12 +32516,8 @@ msgstr ""
 "diện vẫn dùng được."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Điều chỉnh màu nhấn, các giá trị đặc biệt là 'default' và 'system' (cần Qt "
-"6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Điều chỉnh màu nhấn, các giá trị đặc biệt là 'default' và 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

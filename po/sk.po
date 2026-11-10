@@ -32612,12 +32612,8 @@ msgstr ""
 "rozhranie zostane použiteľné."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Upraví farbu zvýraznenia, špeciálne hodnoty sú 'default' a 'system' "
-"(vyžaduje Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Upraví farbu zvýraznenia, špeciálne hodnoty sú 'default' a 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

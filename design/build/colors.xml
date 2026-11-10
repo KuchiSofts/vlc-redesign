@@ -61,8 +61,8 @@
     <color name="vlc_color_light_bg_a4">#FFABABAA</color>
     <!-- Light of Dark/BG/A5. -->
     <color name="vlc_color_light_bg_a5">#FFB5B5B4</color>
-    <!-- Light of the Home folder cards. -->
-    <color name="vlc_color_light_bg_folder_card">#FFABABAA</color>
+    <!-- Light of the Home folder cards (lighter than the page, as the covers beside them). -->
+    <color name="vlc_color_light_bg_folder_card">#FFDEDEDE</color>
     <!-- Light of Dark/FG/1. -->
     <color name="vlc_color_light_fg_1">#FF2E2E2E</color>
     <!-- Light of Dark/FG/2. -->

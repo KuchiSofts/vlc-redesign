@@ -28,6 +28,16 @@ What is being worked on, updated as it changes (2026-11-10):
   that isn't full (seen at both widths).
   Open, low: menus' translucency (V010, the design's 95 %), "Unknown Artist" untranslated (D12, the library's own
   name), the dash icon of Delete (D21, the design's remove glyph), no New playlist button in the empty state (D09).
+- 🟡 **Every option does something, with the remote too** (the owner, 10 Nov: "not one fault in 0.6"). Android TV
+  Settings done: all 12 pages walked with the remote's keys alone, about 170 focus stops each pressed, on the TV
+  emulator in Hebrew and checked again in the signed build in English. Fixed: the crash on Controls › Remote
+  access, the two panes' focus rules (the page follows the sidebar, in and out land where they should, nothing
+  leaks to the other pane or the close button), sub-pages, sheets that started on their title, alerts without a
+  focus frame, the number picker, the colour picker (its words, its selection), links on a TV without a browser,
+  the sleep timer's number pad in Hebrew. 164 unit tests pass. Checked and left as they are: sliders (Left and
+  Right, not OK), the history switch's two forced companions and the bookmark markers that go with their buttons
+  (VideoLAN's rules). Next: the library pages, the player and Live TV's windows the same way, then the phone and
+  tablet layouts, the desktop and the Samsung TV app.
 - 🟢 **Interface size, the same on every app** (the owner, 10 Nov; desktop): Settings › Interface › Window ›
   *Interface size*: Automatic (N %), 100, 110, 125, 150, 175, 200 %, applied at once; the one setting of the scale
   (VLC's kept factor migrates to the nearest choice, the zoom keys step through the choices). Automatic follows the

@@ -31881,12 +31881,8 @@ msgstr ""
 "ئەوەی ڕووکارەکە بەکارهێنراو بمێنێتەوە."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"ڕەنگی جەختکردنەوە ڕێکدەخات، بەها تایبەتەکان 'default' و 'system' ن (پێویستی "
-"بە Qt 6.6 هەیە) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "ڕەنگی جەختکردنەوە ڕێکدەخات، بەها تایبەتەکان 'default' و 'system' ن."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

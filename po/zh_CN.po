@@ -31576,10 +31576,8 @@ msgid ""
 msgstr "画中画模式可在较小的区域内播放视频，以便界面保持可用。"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr "调整强调色，特殊值为 'default' 和 'system' (需要 Qt 6.6)。"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "调整强调色，特殊值为 'default' 和 'system'。"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

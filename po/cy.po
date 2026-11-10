@@ -31823,12 +31823,8 @@ msgstr ""
 "modd defnyddio'r rhyngwyneb o hyd."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Yn addasu'r lliw acen, y gwerthoedd arbennig yw 'default' a 'system' (angen "
-"Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Yn addasu'r lliw acen, y gwerthoedd arbennig yw 'default' a 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

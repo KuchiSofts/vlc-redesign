@@ -31983,10 +31983,8 @@ msgstr ""
 "પિક્ચર-ઇન-પિક્ચર સ્થિતિ નાના વિસ્તારમાં વિડિઓ વગાડવા દે છે જેથી ઇન્ટરફેસ વાપરી શકાય."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr "એક્સેન્ટ રંગ ગોઠવે છે, ખાસ કિંમતો 'default' અને 'system' છે (Qt 6.6 જરૂરી) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "એક્સેન્ટ રંગ ગોઠવે છે, ખાસ કિંમતો 'default' અને 'system' છે."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

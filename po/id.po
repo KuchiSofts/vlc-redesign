@@ -32114,12 +32114,8 @@ msgstr ""
 "sehingga antarmuka tetap dapat digunakan."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Menyesuaikan warna aksen, nilai khusus adalah 'default' dan 'system' "
-"(memerlukan Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Menyesuaikan warna aksen, nilai khusus adalah 'default' dan 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

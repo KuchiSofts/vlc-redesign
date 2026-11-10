@@ -31337,12 +31337,8 @@ msgstr ""
 "قابلِ استعمال رہے۔"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"نمایاں رنگ ایڈجسٹ کرتا ہے، خاص قدریں 'default' اور 'system' ہیں (Qt 6.6 "
-"درکار) ۔"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "نمایاں رنگ ایڈجسٹ کرتا ہے، خاص قدریں 'default' اور 'system' ہیں۔"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

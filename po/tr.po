@@ -32509,12 +32509,8 @@ msgstr ""
 "küçük bir alanda oynatılmasını sağlar."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Vurgu rengini ayarlar, özel değerler 'default' ve 'system' değerleridir (Qt "
-"6.6 gerekir) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Vurgu rengini ayarlar, özel değerler 'default' ve 'system' değerleridir."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

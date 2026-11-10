@@ -31622,12 +31622,8 @@ msgstr ""
 "koppelvlak bruikbaar bly."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Verstel die aksentkleur; spesiale waardes is 'default' en 'system' (vereis "
-"Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Verstel die aksentkleur; spesiale waardes is 'default' en 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

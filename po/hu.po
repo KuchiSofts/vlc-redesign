@@ -32549,12 +32549,8 @@ msgstr ""
 "használható marad."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Beállítja a kiemelőszínt; különleges értékek: 'default' és 'system' (Qt 6.6 "
-"szükséges) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Beállítja a kiemelőszínt; különleges értékek: 'default' és 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

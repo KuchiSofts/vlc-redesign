@@ -31525,11 +31525,8 @@ msgstr ""
 "שמיש."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"מתאים את צבע ההדגשה, הערכים המיוחדים הם 'default' ו־'system' (נדרש Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "מתאים את צבע ההדגשה, הערכים המיוחדים הם 'default' ו־'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

@@ -31564,12 +31564,8 @@ msgstr ""
 "استفاده بماند."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"رنگ تأکیدی را تنظیم می‌کند؛ مقادیر ویژه 'default' و 'system' هستند (نیاز به "
-"Qt 6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "رنگ تأکیدی را تنظیم می‌کند؛ مقادیر ویژه 'default' و 'system' هستند."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

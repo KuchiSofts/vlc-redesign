@@ -31999,12 +31999,8 @@ msgstr ""
 "lugha airson 's gun gabh an eadar-aghaidh a chleachdadh fhathast."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Gleusaidh seo an dath soillearachaidh, 's e 'default' agus 'system' na "
-"luachan sònraichte (feumaidh seo Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Gleusaidh seo an dath soillearachaidh, 's e 'default' agus 'system' na luachan sònraichte."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

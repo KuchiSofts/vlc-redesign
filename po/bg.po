@@ -32281,12 +32281,8 @@ msgstr ""
 "малка област, така че интерфейсът да остане използваем."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Настройва акцентния цвят; специалните стойности са 'default' и 'system' "
-"(изисква Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Настройва акцентния цвят; специалните стойности са 'default' и 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

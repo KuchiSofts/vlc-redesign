@@ -31407,11 +31407,8 @@ msgstr ""
 "වාදනය කිරීමට ඉඩ දෙයි."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"අවධාරණ වර්ණය සීරු මාරු කරයි, විශේෂ අගයන් 'default' සහ 'system' වේ (Qt 6.6 අවශ්‍යයි) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "අවධාරණ වර්ණය සීරු මාරු කරයි, විශේෂ අගයන් 'default' සහ 'system' වේ."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

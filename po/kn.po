@@ -32291,12 +32291,8 @@ msgstr ""
 "ಇದರಿಂದ ಸಂಪರ್ಕಸಾಧನ ಬಳಕೆಗೆ ಲಭ್ಯವಿರುತ್ತದೆ."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"ಉಚ್ಚಾರಣಾ ಬಣ್ಣವನ್ನು ಹೊಂದಿಸುತ್ತದೆ, ವಿಶೇಷ ಮೌಲ್ಯಗಳು 'default' ಮತ್ತು 'system' (Qt 6.6 "
-"ಅಗತ್ಯವಿದೆ)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "ಉಚ್ಚಾರಣಾ ಬಣ್ಣವನ್ನು ಹೊಂದಿಸುತ್ತದೆ, ವಿಶೇಷ ಮೌಲ್ಯಗಳು 'default' ಮತ್ತು 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

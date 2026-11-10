@@ -32956,12 +32956,8 @@ msgstr ""
 "μικρότερη περιοχή, ώστε η διεπαφή να παραμένει χρησιμοποιήσιμη."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Προσαρμόζει το χρώμα έμφασης· ειδικές τιμές είναι οι 'default' και 'system' "
-"(απαιτεί Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Προσαρμόζει το χρώμα έμφασης· ειδικές τιμές είναι οι 'default' και 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

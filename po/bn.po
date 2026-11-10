@@ -31916,11 +31916,8 @@ msgstr ""
 "ব্যবহারযোগ্য থাকে।"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"অ্যাকসেন্ট রং সমন্বয় করে, বিশেষ মানগুলো হলো 'default' ও 'system' (Qt 6.6 প্রয়োজন)।"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "অ্যাকসেন্ট রং সমন্বয় করে, বিশেষ মানগুলো হলো 'default' ও 'system'।"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

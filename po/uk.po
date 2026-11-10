@@ -32495,12 +32495,8 @@ msgstr ""
 "щоб інтерфейсом можна було користуватися далі."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Налаштовує акцентний колір; спеціальні значення: 'default' і 'system' "
-"(потрібен Qt 6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Налаштовує акцентний колір; спеціальні значення: 'default' і 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

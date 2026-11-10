@@ -31637,10 +31637,8 @@ msgstr ""
 "प्रयोगयोग्य रहन्छ।"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr "एक्सेन्ट रङ मिलाउँछ, विशेष मानहरू 'default' र 'system' हुन् (Qt 6.6 चाहिन्छ) ।"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "एक्सेन्ट रङ मिलाउँछ, विशेष मानहरू 'default' र 'system' हुन्।"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

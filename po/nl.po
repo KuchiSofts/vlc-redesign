@@ -32551,12 +32551,8 @@ msgstr ""
 "afgespeeld, zodat de interface bruikbaar blijft."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Past de accentkleur aan; speciale waarden zijn 'default' en 'system' "
-"(vereist Qt 6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Past de accentkleur aan; speciale waarden zijn 'default' en 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

@@ -31336,10 +31336,8 @@ msgstr ""
 "ਤਸਵੀਰ-ਵਿੱਚ-ਤਸਵੀਰ ਮੋਡ ਵਿਡੀਓ ਨੂੰ ਇੱਕ ਛੋਟੇ ਖੇਤਰ ਵਿੱਚ ਚਲਾਉਣ ਦਿੰਦਾ ਹੈ, ਤਾਂ ਜੋ ਇੰਟਰਫੇਸ ਵਰਤਣਯੋਗ ਰਹੇ।"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr "ਐਕਸੈਂਟ ਰੰਗ ਬਦਲਦਾ ਹੈ, ਖਾਸ ਮੁੱਲ ਹਨ 'default' ਅਤੇ 'system' (Qt 6.6 ਲੋੜੀਂਦਾ ਹੈ)।"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "ਐਕਸੈਂਟ ਰੰਗ ਬਦਲਦਾ ਹੈ, ਖਾਸ ਮੁੱਲ ਹਨ 'default' ਅਤੇ 'system'।"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

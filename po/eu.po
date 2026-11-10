@@ -32734,12 +32734,8 @@ msgstr ""
 "ahalbidetzen du, interfazea erabilgarri egon dadin."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Nabarmentze-kolorea doitzen du; balio bereziak 'default' eta 'system' dira "
-"(Qt 6.6 behar du) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Nabarmentze-kolorea doitzen du; balio bereziak 'default' eta 'system' dira."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

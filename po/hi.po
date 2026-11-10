@@ -31399,11 +31399,8 @@ msgstr ""
 "बना रहे।"
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"एक्सेंट रंग समायोजित करता है, विशेष मान 'default' और 'system' हैं (Qt 6.6 आवश्यक)।"
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "एक्सेंट रंग समायोजित करता है, विशेष मान 'default' और 'system' हैं।"
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

@@ -24,6 +24,7 @@ To come back from a skin, start VLC once with `--intf=qt` (for example from a sh
 
 | Option | Choices / default | What it does | VLC option |
 |---|---|---|---|
+| **Interface size** | Dropdown: *Automatic (N %)* / *100 %* / *110 %* / *125 %* / *150 %* / *175 %* / *200 %*. Default: *Automatic*. | How large the pages, texts and controls are drawn; applies at once. *Automatic* picks the size that suits the screen the window is on: 100 % when the system already scales that screen, larger only on a dense screen the system does not scale. The zoom keys step through the same choices. Windows, dialogs and menus stay inside the screen at every size and scroll when they are taller than the window. New in 0.6.0. | `redesign/interface-size` (0 = Automatic) |
 | **Play video inside main window** | Toggle. Default: on. | On: the video plays inside the main window. Off: each video opens in a separate window. Applies to the next video. | `embedded-video` |
 | **Resize window to fit video** | Dropdown: *Never* / *Always*. Default: *Never*. | *Always*: the window resizes to the video's own size when a video starts (never larger than the screen). *Never*: the window keeps the size you gave it and the video fits in it. | `qt-video-autoresize` |
 | **Remember window size and position** | Toggle. Default: on. | Opens the window where it was, at the size it had, when VLC was last closed. | `redesign/remember-window-geometry` (interface setting) |

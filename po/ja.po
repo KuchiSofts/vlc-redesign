@@ -34334,9 +34334,8 @@ msgid "Extra verbose media library logs"
 msgstr "メディアライブラリの詳細なログ"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "ネットワーク共有が見つかりません"
+msgstr "ネットワーク共有を検出"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

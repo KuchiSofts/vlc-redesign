@@ -34741,9 +34741,8 @@ msgid "Extra verbose media library logs"
 msgstr "Besonders ausführliche Protokolle der Medienbibliothek"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Keine Netzwerkfreigaben gefunden"
+msgstr "Netzwerkfreigaben erkennen"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

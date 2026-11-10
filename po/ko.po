@@ -34059,9 +34059,8 @@ msgid "Extra verbose media library logs"
 msgstr "미디어 라이브러리 상세 로그"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "네트워크 공유를 찾을 수 없습니다"
+msgstr "네트워크 공유 검색"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

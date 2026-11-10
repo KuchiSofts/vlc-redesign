@@ -34119,9 +34119,8 @@ msgid "Extra verbose media library logs"
 msgstr "Extra detaljerade loggar för mediabiblioteket"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Inga nätverksresurser hittades"
+msgstr "Upptäck nätverksdelningar"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

@@ -185,7 +185,10 @@ MainViewLoader {
                 title: model.title || qsTr("Unknown Title")
                 // The design: the artist under a regular title (Inter 16,
                 // #969696 and #6B6B6B), covers with a radius of 12
-                subtitle: model.main_artist ? model.main_artist : (model.duration?.formatHMS() ?? "--:--")
+                // (the artist, else the duration once it is known: "--:--" under
+                // every card of media not read yet looked unfinished)
+                subtitle: model.main_artist ? model.main_artist
+                          : (model.duration?.valid() ? model.duration.formatHMS() : "")
                 titleTopMargin: gridView.titleTopMargin
                 subtitleTopMargin: gridView.subtitleTopMargin
                 pictureRadius: root.compactMargins ? VLCStyle.dp(12, VLCStyle.scale) : VLCStyle.gridCover_radius
@@ -348,7 +351,10 @@ MainViewLoader {
 
             cover: VLCStyle.noArtAlbumCover // TODO: better fallback image
 
-            text: qsTr("No media found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No media found\nPlease try adding sources")
 
             Navigation.parentItem: root
         }

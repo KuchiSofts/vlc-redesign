@@ -254,7 +254,10 @@ MainViewLoader {
 
             focus: true
 
-            text: qsTr("No video found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No video found\nPlease try adding sources")
 
             cover: VLCStyle.noArtVideoCover
 

@@ -61,6 +61,8 @@ MainViewLoader {
     // The grid keeps the 20px side margins of the video grids (rows of the
     // home page), instead of the responsive margins of the base view
     property bool compactMargins: false
+    // Home's rows: the design's card sizes at the design's own page width
+    property bool designWidthWins: false
 
     property bool reuseItems: true
 
@@ -142,6 +144,7 @@ MainViewLoader {
             // Figma home "Frame 39": cover 200, 20, title 19, 10, artist
             // 19 (268: 18 + 18 with the 1 + 1 the helper adds), gap 20
             fixedPictureWidth: root.compactMargins
+            designWidthWins: root.designWidthWins
             horizontalSpacing: root.compactMargins ? VLCStyle.dp(20, VLCStyle.scale) : VLCStyle.column_spacing
             verticalSpacing: root.compactMargins ? VLCStyle.dp(40, VLCStyle.scale) : VLCStyle.column_spacing
             titleTopMargin: root.compactMargins ? VLCStyle.dp(20, VLCStyle.scale) : VLCStyle.gridItemTitle_topMargin

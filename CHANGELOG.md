@@ -53,6 +53,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   Home's rows, which scroll sideways, keep the design's card sizes at the design's page width.
 - A row or a grid with fewer cards than a row holds keeps the design's card size: three music cards were grown
   beside an empty half row, and Home's music cards were 220 instead of the design's 200 in the design's own window.
+- Android TV: Live TV shows its channels as the desktop's cards (the logo on a 16:9 tile, the channel's number, what
+  is on now and how far it is), as many in a row as the screen and the interface size hold; the header's button
+  switches to the list and back, with the remote too, and the page opens on the channel you watched.
 - Empty pages and a search without results show the page's icon, large and bare, instead of the old grey box.
 - The search field has a clear button while it holds text. Tracks shows its count and its Sort menu in the header.
 - Menus keep a small margin from the window's edge (the page menu's corner and shadow were cut by it).
@@ -168,6 +171,24 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   error pages are its failure; the preferred and second subtitle language are always searched first; on Android
   TV, TV Sources opened with the remote has its tab focused and one Back closes it; a phone's Settings shows only
   its own line under the #72 setting. Memory after 50 rounds of every page: 187 → 171 MB.
+- Android TV, Settings with the remote: opening Controls › Remote access no longer closes the app. The page follows
+  the row the remote is on in the sidebar; Left or Right into a page lands on its first row, and back on the
+  sidebar's row of that page; Down on the last row, and Left or Right on a row with nothing beside it, stay where
+  they are (they jumped to the other side of the window or up to the close button). The accent colours and the
+  choices of a row are reached at once (the row itself was a stop that did nothing), and the theme row is gone from
+  the TV, which has one look. A sub-page (Remote access) takes the focus when it opens and gives it back to its row
+  on Back; a slider keeps Left and Right at its ends. Only the window in use shows the focus frame, the title bar's
+  menu has an edge and a focused row that can be seen from the sofa, and the last row of a page no longer stands
+  on the window's edge.
+- Android TV, dialogs with the remote: a confirmation, the update's offer and the other sheets start on a button
+  (Cancel when there is one), not on their title, where OK did nothing; alerts show the focus frame; the number
+  picker has its row's title, is as wide as its wheel and takes the number on OK; the colour picker shows which
+  colour the remote is on, and its words follow the interface's language on every device (they were English).
+  The sleep timer's number pad reads 1 2 3 in Hebrew and Arabic too.
+- Android TV without a browser: "Get a free key", "Create a free account", the update's page and the catalog's
+  suggestion form show the address to open on a phone or a computer (with a QR code where the page has one); the
+  TV only showed "You don't have an app that can do this". The update dialog's "open in the browser" no longer
+  closes the app where nothing opens links.
 - Online subtitles: a service that answers an error page, a browser check (Cloudflare and the like), nothing or a
   JSON error shows as that service's failure, with its message, instead of "nothing found", and such a page is
   never saved as a subtitle. A search always finishes (a service that answered a byte at a time kept it searching),

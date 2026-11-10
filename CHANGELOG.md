@@ -42,6 +42,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
+- Music's Artists, Albums and Genres and the Recent page use the cards of Home and Videos (the design's sizes, type
+  and margins; rows that fill the page), and every list (Tracks, the list views) the design's type from the page's
+  margin, its columns at most 1200 wide. Tracks no longer has a Disc column. The page of the side bar's Network
+  entry is named Network.
+- The cards of a row that fills the page grow in gradually beside the design's own page width (no jump of their
+  size one pixel outside it).
 - The first window is sized from the screen: 16:9, about two thirds of it (1280 × 720 on Full HD as before, larger
   on a 1440p, 4K or ultra-wide screen, never more than nine tenths of a small one), larger with a larger interface
   size. A window whose saved place no longer fits (a monitor unplugged, another resolution, a taskbar moved) opens
@@ -64,6 +70,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Live TV: Update downloads the guide again (it kept a guide younger than the refresh period, so a guide whose
+  programmes had ended stayed blank), and a guide with nothing for the hours shown says so with an Update button.
+  The TV header stays on one line in a 1024 wide window; a channel's name has more room beside the guide.
+- Settings: a label is never cut with an ellipsis at a large interface size or in a long translation: it wraps and
+  its row grows. About, What's new, dialog bodies and the Settings pages fade at the edge they continue under.
+- Light theme: Home's folder cards are as light as the covers beside them. A selected card's highlight follows its
+  rounded corners; a grid ends with the page's margin under its last row; a search with no result offers no Browse.
 - Open Recent, the Recent page, Ctrl+1 to Ctrl+0 and Recent of the library beside the video list the last played
   first (they showed the oldest of the history, and never what was just played once it held more than ten). The
   Recent page has the header of the library's pages, and its side bar entry shows it is open.

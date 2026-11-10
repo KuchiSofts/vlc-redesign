@@ -12,6 +12,11 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 What is being worked on, updated as it changes (2026-11-10):
 
+- 🟢 **Screenshot pass of the desktop, second round** (10 Nov): Artists/Albums/Genres/Recent on the redesign's cards,
+  lists in the design's type (max 1200 wide), the TV guide's Update + empty state (D08), TV header at 1024, Settings
+  labels that wrap, the scroll fade of dialogs, light folder cards, the cards' growth ramp beside the design width.
+  Each seen in an after-shot (`shots-060/desktop/defects.md`). Open: Network's cards (D07), the old empty-state
+  picture (V005), menus' translucency (V010), the search field's clear button (V012).
 - 🟢 **Interface size, the same on every app** (the owner, 10 Nov; desktop): Settings › Interface › Window ›
   *Interface size*: Automatic (N %), 100, 110, 125, 150, 175, 200 %, applied at once; the one setting of the scale
   (VLC's kept factor migrates to the nearest choice, the zoom keys step through the choices). Automatic follows the

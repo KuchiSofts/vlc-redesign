@@ -442,6 +442,7 @@ qml_modules += {
         '../../widgets/qml/LanguagePicker.qml',
         '../../widgets/qml/RedesignDialogHeading.qml',
         '../../widgets/qml/RedesignInfoRow.qml',
+        '../../widgets/qml/ScrollHint.qml',
         '../../widgets/qml/RedesignSectionTitle.qml',
         '../../widgets/qml/RedesignTextArea.qml',
         '../../widgets/qml/CSDMouseStealer.qml',

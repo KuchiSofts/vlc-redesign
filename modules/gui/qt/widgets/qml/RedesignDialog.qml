@@ -294,7 +294,13 @@ T.Popup {
             clip: interactive
             boundsBehavior: Flickable.StopAtBounds
 
+            // (a body that scrolls says so: it fades under the edge it goes
+            // on under)
             T.ScrollBar.vertical: Widgets.ScrollBarExt { visible: bodyView.interactive }
+            Widgets.ScrollHint {
+                view: bodyView
+                surface: root.cardColor
+            }
 
             ColumnLayout {
                 id: body

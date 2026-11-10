@@ -312,8 +312,9 @@ Widgets.PageExt {
                 model: visible ? Iptv.channelModel : null
                 clip: true
                 focus: visible
-                readonly property real cardWidth: root.px(196)
                 readonly property real gap: root.px(20)
+                // (the rows end at the page's margin, as every grid's)
+                readonly property real cardWidth: VLCStyle.redesign.gridCardWidth(root.px(196), gap, width)
                 cellWidth: cardWidth + gap
                 cellHeight: cardWidth * 9 / 16 + root.px(14 + 19 + 4 + 15) + gap
                 bottomMargin: root.px(20)

@@ -210,7 +210,8 @@ Widgets.PageExt {
 
                 text: qsTr("Folders")
 
-                topPadding: 0
+                // (the page's margin under the header's line, as the other pages)
+                topPadding: VLCStyle.dp(20, VLCStyle.scale)
 
                 anchors.left: parent.left
                 anchors.right: parent.right

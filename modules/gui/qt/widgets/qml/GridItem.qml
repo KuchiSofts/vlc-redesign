@@ -434,5 +434,14 @@ T.ItemDelegate {
                 id: subtitleTxtMouseHandler
             }
         }
+
+        // (takes the room of a line that is not there: a card without an
+        // artist had its title pushed down from the picture, unlike the
+        // cards beside it)
+        Item {
+            visible: root.titleBoxHeight > 0
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
     }
 }

@@ -464,6 +464,7 @@ MainViewLoader {
             hint: qsTr("Create a playlist with files or add media from the library")
 
             cover: VLCStyle.noArtAlbumCover
+            iconName: "playlist"
         }
     }
 }

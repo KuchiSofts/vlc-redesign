@@ -60,8 +60,10 @@ QtObject{
     // between the margins, five video cards exactly). There the design's
     // sizes win, a row that has room left too (seven music cards of 200):
     // the growth is for the other widths.
-    // (VLCStyle.redesign.cardWidth: the growth comes in over the 200 beside
-    // that width, without a jump)
+    // (A grid always fills its rows, at the design's window too: seven
+    // artists of 200 left 140 empty before the margin there. Only Home's
+    // rows, which scroll sideways, keep the design's size at that width:
+    // VLCStyle.redesign.cardWidth.)
 
     property var maxNbItemPerRow
     readonly property int nbItemPerRow: {
@@ -98,7 +100,7 @@ QtObject{
         return _resizing ? basePictureWidth + Math.floor(Math.max(0, width - basePictureWidth) / 8) * 8 : width
     }
     readonly property int cellWidth: fixedPictureWidth
-        ? _stepped(VLCStyle.redesign.cardWidth(basePictureWidth, _filledWidth, availableWidth))
+        ? _stepped(Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth))))
         : _stepped(_filledWidth)
     readonly property int cellHeight: (basePictureHeight / basePictureWidth) * cellWidth + textHeight
 

@@ -131,7 +131,7 @@ FocusScope {
         clip: true
         focus: true
         model: root.shown
-        readonly property real cardWidth: root.px(150)
+        readonly property real cardWidth: VLCStyle.redesign.gridCardWidth(root.px(150), root.px(20), width)
         cellWidth: cardWidth + root.px(20)
         cellHeight: cardWidth * 1.5 + root.px(14 + 19 + 20)
         cacheBuffer: cellHeight * 2

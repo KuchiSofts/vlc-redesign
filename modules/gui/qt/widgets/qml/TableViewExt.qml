@@ -134,7 +134,10 @@ ListViewExt {
     //       the delegate (such as, hovering over the header). As `clip: true` adjusts both the scene graph
     //       viewport, and qt quick event delivery agent. Having a control as header and blocking the events
     //       events reaching beneath is not a good behavior, as currently done here.
-    property color headerColor: (interactive && (headerPositioning !== ListView.InlineHeader)) ? colorContext.bg.primary : "transparent"
+    // (the page's own colour under the pinned column names: a grey band
+    // ran from the side bar to the window's edge, past the page's margins)
+    property color headerColor: (interactive && (headerPositioning !== ListView.InlineHeader))
+                                ? VLCStyle.redesign.color(VLCStyle.redesign.windowBackground) : "transparent"
     property int headerTopPadding: 0
 
     property real rowHeight: VLCStyle.tableRow_height

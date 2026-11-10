@@ -132,10 +132,17 @@ T.Pane {
     contentItem: ColumnLayout {
         spacing: VLCStyle.margin_xxsmall
 
-        Layout.minimumWidth: Math.min(Math.max(noContentInfoColumn.implicitWidth,
+        // Card: the count and its five buttons always fit (the panel was as wide as its empty state's words: in
+        // Hebrew, shorter, the count had no room at all beside the buttons)
+        readonly property real _cardNeed: !root.card ? 0
+            : Math.ceil(cardCountBrief.advanceWidth) + 5 * VLCStyle.dp(32, VLCStyle.scale) + 5 * cardHeader.spacing
+              + cardHeader.Layout.leftMargin + cardHeader.Layout.rightMargin
+
+        Layout.minimumWidth: Math.max(_cardNeed,
+                                      Math.min(Math.max(noContentInfoColumn.implicitWidth,
                                                headerColumn.titleWidth ),
                                       /* Minimum width should not be too large, we rely on elision otherwise: */
-                                      Window.width / 3) + (headerColumn.Layout.leftMargin + headerColumn.Layout.rightMargin)
+                                      Window.width / 3) + (headerColumn.Layout.leftMargin + headerColumn.Layout.rightMargin))
 
         readonly property ListView listView: listView
 
@@ -201,6 +208,11 @@ T.Pane {
                     id: cardCountMetrics
                     font: cardCount.font
                     text: cardCount._full
+                }
+                TextMetrics {
+                    id: cardCountBrief
+                    font: cardCount.font
+                    text: cardCount._count
                 }
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft

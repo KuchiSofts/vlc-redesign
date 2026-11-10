@@ -190,13 +190,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   this hour; it says so only while a source is being read ("No guide for this channel" otherwise). On the
   desktop, Android and the Samsung TV app.
 - The Queue's count is never cut beside its buttons ("No ite…" at the panel's own width): the count alone where
-  the length does not fit.
+  the length does not fit, and the panel is never narrower than the count and its buttons need (in Hebrew it was
+  as narrow as its shorter words: the count did not show at all).
+- Translations: Estonian by its volunteer on Weblate, and "Discover network shares" in the complete languages (the
+  merge with VideoLAN had left it with another text's translation, so it showed in English).
+- Android phones: a Settings page whose title is too long for the bar ("Network Connections & Securi…") shows the
+  page's short name.
 - Android TV, Live TV: the Cards / List button is always in the header (it was missing when the page was opened
   before the sources were read); the remote stays on its channel while a source updates and the list is made
   again (it was thrown to the title bar's menu); in TV Sources, Left and Right keep to their row (the end of a
   source's buttons led up to a tab of the window). In a Hebrew or Arabic interface a channel's name and a
-  programme's title keep their own direction ("Friends!", "CNN (US)"), and the sidebar has its margin from the
-  screen's edge as in the other languages.
+  programme's title keep their own direction ("Friends!", "CNN (US)"; the Samsung TV app too), and the sidebar has
+  its margin from the screen's edge as in the other languages.
 - Android TV without a browser: "Get a free key", "Create a free account", the update's page and the catalog's
   suggestion form show the address to open on a phone or a computer (with a QR code where the page has one); the
   TV only showed "You don't have an app that can do this". The update dialog's "open in the browser" no longer

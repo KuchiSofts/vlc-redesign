@@ -15,8 +15,16 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟢 **Screenshot pass of the desktop, second round** (10 Nov): Artists/Albums/Genres/Recent on the redesign's cards,
   lists in the design's type (max 1200 wide), the TV guide's Update + empty state (D08), TV header at 1024, Settings
   labels that wrap, the scroll fade of dialogs, light folder cards, the cards' growth ramp beside the design width.
-  Each seen in an after-shot (`shots-060/desktop/defects.md`). Open: Network's cards (D07), the old empty-state
-  picture (V005), menus' translucency (V010), the search field's clear button (V012).
+  Each seen in an after-shot (`shots-060/desktop/defects.md`).
+- 🟢 **Screenshot pass of the desktop, third round** (10 Nov): every grid fills its rows at every width (Artists at
+  1920 left 140 px empty; one helper, `VLCStyle.redesign.gridCardWidth`, the TV grids included), the guide's line of
+  now ends with the grid, Network's cards and heading from the page's margin (D07, V006), the bare-icon empty state
+  (V005), the search field's clear button (V012), menus clear of the window's edge (V011), the header on one line
+  at 200 % (D18), Tracks' count and Sort, What's new's English notes left to right in Hebrew (D13), Home's music
+  cards without an artist (V001). The player captured with a real film at 100 % and 200 %, English and Hebrew: the
+  Languages panel fades where it scrolls and stays under the window's bar. VideoLAN merged up to `7712870d59`.
+  Open, low: menus' translucency (V010, the design's 95 %), "Unknown Artist" untranslated (D12, the library's own
+  name), the dash icon of Delete (D21, the design's remove glyph), no New playlist button in the empty state (D09).
 - 🟢 **Interface size, the same on every app** (the owner, 10 Nov; desktop): Settings › Interface › Window ›
   *Interface size*: Automatic (N %), 100, 110, 125, 150, 175, 200 %, applied at once; the one setting of the scale
   (VLC's kept factor migrates to the nearest choice, the zoom keys step through the choices). Automatic follows the

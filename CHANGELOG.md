@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `2eba4cdf90` (2026-11-09).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `7712870d59` (2026-11-10).
 
 **Contents:** [Unreleased](#unreleased) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -48,6 +48,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   entry is named Network.
 - The cards of a row that fills the page grow in gradually beside the design's own page width (no jump of their
   size one pixel outside it).
+- Every grid ends its rows at the page's margin at every window width, the design's own too: Artists, Albums,
+  Genres, the Network folders and Live TV's channel and film grids (whole cards, grown by a third at most). Only
+  Home's rows, which scroll sideways, keep the design's card sizes at the design's page width.
+- Empty pages and a search without results show the page's icon, large and bare, instead of the old grey box.
+- The search field has a clear button while it holds text. Tracks shows its count and its Sort menu in the header.
+- Menus keep a small margin from the window's edge (the page menu's corner and shadow were cut by it).
 - The first window is sized from the screen: 16:9, about two thirds of it (1280 × 720 on Full HD as before, larger
   on a 1440p, 4K or ultra-wide screen, never more than nine tenths of a small one), larger with a larger interface
   size. A window whose saved place no longer fits (a monitor unplugged, another resolution, a taskbar moved) opens
@@ -70,6 +76,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Online subtitles for videos played from the network (a link, a share, UPnP/DLNA): on Android the search, manual
+  and automatic, now works for them as it does on the desktop, where a video opened from a link is searched by its
+  name and, when the server allows reading parts of the file, by its hash
+  ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), reported by [@Elshepl](https://github.com/Elshepl)).
+- Live TV's guide: the line of now ends with the last channel's row (it ran on to the window's bottom under a short
+  list), and the time scroll bar shows while the time moves instead of sitting under the grid as a stray mark.
+- A 1920 wide window at 200 % no longer breaks the page header into two lines when one holds it.
+- Home: a music card without an artist keeps its title right under the picture, as the cards beside it.
+- Network: the Folders heading and its cards start at the page's margin, under the header as on the other pages.
+- Settings in Hebrew at 200 %: the Theme choice shows "System" whole. What's new in a right-to-left language: the
+  English notes read left to right with their bullets on the left.
+- The Languages panel of the player fades where it scrolls (a row of buttons looked cut by its footer) and stays
+  under the window's bar in a small window.
 - Live TV: Update downloads the guide again (it kept a guide younger than the refresh period, so a guide whose
   programmes had ended stayed blank), and a guide with nothing for the hours shown says so with an Update button.
   The TV header stays on one line in a 1024 wide window; a channel's name has more room beside the guide.
@@ -176,6 +195,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   coordinates, portrait, ultra-wide and tiny screens).
 - Tests, in `unit-tests.sh` under ASan and UBSan: the Live TV service with a fake network (`iptv-service`), the
   parsers against malformed and huge input (`parsers-fuzz`: 69 parsers), and more checks in the existing ones.
+- VideoLAN's master merged up to `7712870d59` (2026-11-10, 5 commits): the pages assign their content item
+  (`contentItem:`; `PageExt` reads a page's own item either way, so the redesign's pages with plain children keep
+  their header, sort and keyboard path), the Qt dependency files are always rewritten (ported to
+  `buildsystem/rules.am`), the old HTTP access no longer sends its own User-Agent and Referrer, two fixes of VLC's
+  own macOS interface (not used by the redesign).
 - VideoLAN's master merged up to `2eba4cdf90` (4 commits): MKV's "mkv-seek-percent" made obsolete, an error path
   of the Linux EGL/GBM display, two fixes of VLC's own macOS interface (not used by the redesign).
 - The interface's HTTP client follows redirects itself with one set of rules on every system, and on Windows uses

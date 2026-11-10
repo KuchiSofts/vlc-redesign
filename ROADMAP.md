@@ -41,6 +41,10 @@ automatic subtitles tested with real downloads, and the same Subtitles panel on 
   choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
   ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF): desktop, Android (phones, tablets, TV)
   and the Samsung TV app
+- ✅ Interface size (the owner: "detect the app size from the screen, not tiny, and let me change it"): Settings ›
+  Interface › Window › *Interface size*: Automatic, 100 to 200 %, applied at once; every window, dialog, menu and
+  popup opens inside its screen and scrolls when it is taller than the window; rows and grids of cards fill the
+  page's width with whole cards at every window size; empty pages show the page's icon
 - ✅ Stability (the owner: "search every line and code and improve stablity and app loading speed and memory
   leak"), in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded,
   stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread free of

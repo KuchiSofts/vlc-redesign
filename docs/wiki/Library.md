@@ -134,7 +134,7 @@ it is:
 
 ## The header: search, sort and views
 
-Home, Videos, Network, Playlists, Recent and the folders share one header:
+Home, Videos, Music's pages, Network, Playlists, Recent and the folders share one header:
 
 - **Back** and **Next** arrows, then the address of the page as breadcrumbs (each part opens its place).
 - The count of items (*42 items*).
@@ -144,12 +144,16 @@ Home, Videos, Network, Playlists, Recent and the folders share one header:
   shows an arrow up or down. The library starts on **Title A-Z**; Home's sections keep the newest first. An order
   you pick stays.
 - **List/Grid**: *Grid View* or *List View*.
-- **Search**: looks through the page as you type. <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> opens it. *No media
-  matches the search* when nothing does.
+- **Search**: looks through the page as you type. <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> opens it; the **×**
+  at its end empties it. *No results* when nothing matches.
 - **⋯** (more): *Open media* — *File…*, *Folder…*, *Disc…*, *Network stream…*, *Capture device…*, *Convert…*,
   *Stream…* — and **Add folder to library…**. In a folder, *Add File* and *Add Folder* come first.
 
 In a narrow window, the count, Sort, the view, Search and ⋯ move under the address.
+
+The cards of a page fill its width: as many whole cards as fit at the design's size, grown by up to a third so
+that each row ends at the page's margin; a wider window gets more cards in a row. A page with nothing to show (no
+playlists yet, a search without results) says so under the page's icon.
 
 ## Media folders
 

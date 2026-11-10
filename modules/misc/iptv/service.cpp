@@ -999,7 +999,7 @@ void Service::changed(const char* what)
     m_host.notify(event);
 }
 
-void Service::refreshSources(const QStringList& ids, bool guides)
+void Service::refreshSources(const QStringList& ids, bool guides, bool force)
 {
     // every playlist first (each source's channels show as they come), then
     // each guide read once for the channels of all of them: one source at a
@@ -1057,7 +1057,7 @@ void Service::refreshSources(const QStringList& ids, bool guides)
     }
     if (guides && !m_quit && !done.isEmpty())
     {
-        loadGuides(true, done);
+        loadGuides(true, done, force);
         rebuild();
     }
     for (const QString& id : std::as_const(done))
@@ -1226,7 +1226,7 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
     return true;
 }
 
-void Service::loadGuides(bool download, const QStringList& onlySources)
+void Service::loadGuides(bool download, const QStringList& onlySources, bool force)
 {
     // what to read: the guides of every source, and the keys of every
     // channel (a guide of one source may hold channels of another)
@@ -1271,7 +1271,10 @@ void Service::loadGuides(bool download, const QStringList& onlySources)
         const qint64 age = ageOf(path);
         QString error;
         const bool mine = onlySources.isEmpty() || onlySources.contains(w.sourceId);
-        if (download && mine && (age < 0 || refreshHours <= 0 || age > qint64(refreshHours) * 3600 - 600))
+        // (asked for by the user: downloaded again whatever its age, but
+        // for the one of the last minute: Update pressed twice)
+        if (download && mine && (age < 0 || refreshHours <= 0 || age > qint64(refreshHours) * 3600 - 600
+                                 || (force && age > 60)))
         {
             progress(w.sourceId, QStringLiteral("guide"), 0, 0);
             if (!m_host.download(asUrl(w.url), path, &error, kGuideMaxBytes, kIdleSecs,
@@ -2777,7 +2780,7 @@ QJsonObject Service::request(const QJsonObject& r)
                     ids << s.id;
         }
         if (!ids.isEmpty())
-            post([this, ids]() { refreshSources(ids, true); });
+            post([this, ids]() { refreshSources(ids, true, true); });
         return out;
     }
     return QJsonObject { { QStringLiteral("error"), QStringLiteral("unknown request") } };

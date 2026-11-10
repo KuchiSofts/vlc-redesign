@@ -235,6 +235,11 @@ Widgets.PageLoader {
                 id: recentView
 
                 focus: true
+                // Home's cards for the same media (Continue Watching: 316 x
+                // 178, 20 apart), not small squares that crop the videos
+                compactMargins: true
+                gridCoverWidth: VLCStyle.dp(316, VLCStyle.scale)
+                gridCoverHeight: VLCStyle.dp(178, VLCStyle.scale)
 
                 anchors.fill: parent
 

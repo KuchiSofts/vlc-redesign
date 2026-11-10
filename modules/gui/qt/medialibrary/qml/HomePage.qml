@@ -412,12 +412,9 @@ Widgets.PageExt {
                 // end their row at the page's margin: 200 in the design)
                 readonly property real baseCardSize: VLCStyle.dp(200, VLCStyle.scale)
                 // (the design's size at the design's own page width, as the rows)
-                readonly property bool _atDesignWidth:
-                    Math.abs(width - leftMargin - rightMargin - VLCStyle.dp(1660, VLCStyle.scale))
-                    <= VLCStyle.dp(8, VLCStyle.scale)
-                readonly property real cardSize: _atDesignWidth ? baseCardSize : Math.max(baseCardSize,
-                    Math.min(Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
-                             Math.round(baseCardSize * 1.35)))
+                readonly property real cardSize: VLCStyle.redesign.cardWidth(baseCardSize,
+                    Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
+                    width - leftMargin - rightMargin)
 
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -483,9 +480,11 @@ Widgets.PageExt {
                             width: foldersRow.cardSize
                             height: foldersRow.cardSize
                             radius: VLCStyle.dp(12, VLCStyle.scale)
+                            // (light: lighter than the page as the covers of
+                            // the rows above it, not a darker grey beside them)
                             color: folderCard.hovered
-                                   ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
-                                   : VLCStyle.redesign.color("#1E1E1E", "#ababaa")
+                                   ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#ececec")
+                                   : VLCStyle.redesign.color("#1E1E1E", "#dedede")
                             // the card the keys are on
                             border.width: folderCard.activeFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
                             border.color: VLCStyle.redesign.focusColor

@@ -48,6 +48,7 @@ Widgets.GridItem {
     subtitle: model?.duration?.formatHMS() ?? ""
     pictureWidth: VLCStyle.gridCover_video_width
     pictureHeight: VLCStyle.gridCover_video_height
+    redesign: redesignTitle
     titleFontFamily: redesignTitle ? VLCStyle.redesign.fontFamily : ""
     titleFontWeight: redesignTitle ? Font.Normal : Font.DemiBold
     // The design dims the videos already watched (Figma: #969696, #6B6B6B

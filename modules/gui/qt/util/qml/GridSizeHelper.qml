@@ -60,9 +60,8 @@ QtObject{
     // between the margins, five video cards exactly). There the design's
     // sizes win, a row that has room left too (seven music cards of 200):
     // the growth is for the other widths.
-    property int designWidth: VLCStyle.dp(1660, VLCStyle.scale)
-    // (a few pixels around it: the page of a 1920 wide window is 1663 here)
-    readonly property bool _atDesignWidth: Math.abs(availableWidth - designWidth) <= VLCStyle.dp(8, VLCStyle.scale)
+    // (VLCStyle.redesign.cardWidth: the growth comes in over the 200 beside
+    // that width, without a jump)
 
     property var maxNbItemPerRow
     readonly property int nbItemPerRow: {
@@ -99,8 +98,7 @@ QtObject{
         return _resizing ? basePictureWidth + Math.floor(Math.max(0, width - basePictureWidth) / 8) * 8 : width
     }
     readonly property int cellWidth: fixedPictureWidth
-        ? (_atDesignWidth ? basePictureWidth
-           : _stepped(Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth)))))
+        ? _stepped(VLCStyle.redesign.cardWidth(basePictureWidth, _filledWidth, availableWidth))
         : _stepped(_filledWidth)
     readonly property int cellHeight: (basePictureHeight / basePictureWidth) * cellWidth + textHeight
 

@@ -59,19 +59,27 @@ T.ItemDelegate {
     property alias fillMode: picture.fillMode
 
     property alias title: titleLabel.text
-    property int titleFontPixelSize: VLCStyle.fontSize_normal
-    property string titleFontFamily: ""
-    property int titleFontWeight: Font.DemiBold
-    property color titleColor: theme.fg.primary
-    property color selectedTitleColor: theme.fg.highlight
+    // The card of the redesign (Home's and Videos' cards): the name in the
+    // design's type (Inter 16, regular, the secondary text colour) under a
+    // picture of radius 12, the line under it 13 in the dim colour. The
+    // pages of the music, Recent and the network take it with this.
+    property bool redesign: false
+    readonly property bool _dark: theme.palette?.isDark ?? true
+    property int titleFontPixelSize: redesign ? VLCStyle.dp(16, VLCStyle.scale) : VLCStyle.fontSize_normal
+    property string titleFontFamily: redesign ? VLCStyle.redesign.fontFamily : ""
+    property int titleFontWeight: redesign ? Font.Normal : Font.DemiBold
+    property color titleColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, undefined, _dark)
+                                        : theme.fg.primary
+    property color selectedTitleColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d", _dark)
+                                                : theme.fg.highlight
     property alias subtitle: subtitleTxt.text
-    property color subtitleColor: theme.fg.secondary
-    property int subtitleFontPixelSize: 0
-    property string subtitleFontFamily: ""
+    property color subtitleColor: redesign ? VLCStyle.redesign.color("#6B6B6B", undefined, _dark) : theme.fg.secondary
+    property int subtitleFontPixelSize: redesign ? VLCStyle.dp(13, VLCStyle.scale) : 0
+    property string subtitleFontFamily: redesign ? VLCStyle.redesign.fontFamily : ""
     // Text boxes of the design (0: the line height of the font): the
     // baselines of Inter in them
-    property int titleBoxHeight: 0
-    property int subtitleBoxHeight: 0
+    property int titleBoxHeight: redesign ? VLCStyle.dp(19, VLCStyle.scale) : 0
+    property int subtitleBoxHeight: redesign ? VLCStyle.dp(16, VLCStyle.scale) : 0
     property alias subtitleVisible: subtitleTxt.visible
     property alias playCoverShowPlay: picture.playCoverShowPlay
     property alias implicitPlayCoverShowPlay: picture.implicitPlayCoverShowPlay
@@ -281,6 +289,9 @@ T.ItemDelegate {
 
         enabled: theme.initialized
 
+        // (the redesign's card: the highlight follows the card's corners)
+        radius: root.redesign ? Math.min(picture.radius, VLCStyle.dp(12, VLCStyle.scale)) + selectedBorderWidth : 0
+
         //don't show the backgroud unless selected
         color: root.selected ?  theme.bg.highlight : theme.bg.primary
         border.color: visualFocus ? theme.visualFocus : Qt.alpha(theme.visualFocus, 0.0)
@@ -393,7 +404,7 @@ T.ItemDelegate {
             visible: text !== ""
             text: root.subtitle
             elide: Text.ElideRight
-            color: root.selected
+            color: (root.selected && !root.redesign)
                 ? theme.fg.highlight
                 : root.subtitleColor
             font.pixelSize: root.subtitleFontPixelSize > 0 ? root.subtitleFontPixelSize : VLCStyle.fontSize_normal

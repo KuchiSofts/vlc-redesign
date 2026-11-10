@@ -191,6 +191,7 @@ MainViewLoader {
                           : (model.duration?.valid() ? model.duration.formatHMS() : "")
                 titleTopMargin: gridView.titleTopMargin
                 subtitleTopMargin: gridView.subtitleTopMargin
+                redesign: root.compactMargins
                 pictureRadius: root.compactMargins ? VLCStyle.dp(12, VLCStyle.scale) : VLCStyle.gridCover_radius
                 titleFontWeight: Font.Normal
                 titleFontFamily: VLCStyle.redesign.fontFamily

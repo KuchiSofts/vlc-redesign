@@ -44,6 +44,8 @@ Widgets.ExpandGridView {
     leftMargin: (fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) - extraMargin : VLCStyle.layout_left_margin) + leftPadding
     rightMargin: (fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) - extraMargin : VLCStyle.layout_right_margin) + rightPadding
     topMargin: fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) : 0
+    // (the last row ends with the page's margin, not on the window's edge)
+    bottomMargin: fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) : 0
 
     // Aliases
 

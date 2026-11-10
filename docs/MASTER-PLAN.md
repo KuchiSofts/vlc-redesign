@@ -60,10 +60,10 @@ What is being worked on, updated as it changes (2026-11-10):
   cause). Removed: the settings file rewritten at each change of page, the subtitle services read at every
   opening of Settings, a system call per control made. No gain shows in the numbers (they are within the noise);
   resizing the window costs more since the cards grow with it (a longest wait of 50-57 ms, 6-9 ms before).
-- 🟡 **0.6.0, a full release of every app** (the owner, 9 Nov: the work planned as 0.5.9 is a big improvement for
-  every version, so it ships as 0.6.0 with every package): branch `release/0.6.0` (`feature/stability-0.5.9` +
-  `feature/fs-controls-72` + the subtitle work below; VideoLAN merged to `aa58853d86`), built and tested together on
-  Windows, then Linux, macOS and ARM64 on GitHub; Android (versionCode 13106000) and the Samsung TV app at 0.6.0 too.
+- ✅ **0.6.0** published 2026-11-11 (a full release of every app, with every package; VideoLAN merged to `fb39292a88`): the
+  work planned as 0.5.9 (the stability round, #72's keys without the controls, the subtitle work below, the
+  interface size) with Android TV gone through option by option with the remote; Windows x64 and ARM64, Linux and
+  macOS, Android (versionCode 13106000) and the Samsung TV app at 0.6.0 together. Next: 0.6.1, an update release.
 - 🟢 **Automatic subtitles with a real film** (every app; the owner's film and its YTS folder): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for

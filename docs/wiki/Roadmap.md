@@ -10,51 +10,29 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-08, 0.5.8 published).
+Updated as the work moves (last: 2026-11-11, 0.6.0 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.8 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.8 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.8 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.8 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.5.8 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.6.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.0 and after
+## Next: 0.6.1 and after
 
-**0.6.0** is a full release of every app, with every package and installer: the round of stability, smarter
-automatic subtitles tested with real downloads, and the same Subtitles panel on every device, made since 0.5.8:
+**0.6.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+with a build to try):
 
-- ✅ In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
-  choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
-  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF): desktop, Android (phones, tablets, TV)
-  and the Samsung TV app
-- ✅ Interface size (the owner: "detect the app size from the screen, not tiny, and let me change it"): Settings ›
-  Interface › Window › *Interface size*: Automatic, 100 to 200 %, applied at once; every window, dialog, menu and
-  popup opens inside its screen and scrolls when it is taller than the window; rows and grids of cards fill the
-  page's width with whole cards at every window size; empty pages show the page's icon
-- ✅ Stability (the owner: "search every line and code and improve stablity and app loading speed and memory
-  leak"), in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV bounded,
-  stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread free of
-  network and disk work, no QML warning left; the desktop starts faster (window 0.60 → 0.48 s), memory soaked
-- ✅ Automatic subtitles tested with a real film and real downloads, in every app: a film opened as the app starts
-  gets them too; a site's advert or the forced lines beside the video no longer stop the search; the video's own
-  Subs folder is used; Hebrew and Arabic punctuation written for left-to-right players shows in its place
-- ✅ Online subtitles for videos played from the network (a link, SMB, NFS, UPnP/DLNA) on Android, manual and
-  automatic, as on the desktop ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), @Elshepl); the
-  Samsung TV app too
-- ✅ The Subtitles panel the same on every device: the desktop's two columns (the languages and their subtitles),
-  the search in it and the timing; on the Samsung TV app with the remote; on Android (phones, tablets, TV) opened
-  above its button as on the desktop
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page
-- ✅ Android installs next to VLC for Android (it was refused before), and Android TV in Hebrew and Arabic is
-  mirrored everywhere, its focus where it should be
-- 🟡 The release: the three apps together, built and tested on every platform
+- 🔨 Every option answers, with the remote too: after Android TV's Settings, Live TV and player, the same walk
+  through the phone and tablet layouts, the desktop and the Samsung TV app
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

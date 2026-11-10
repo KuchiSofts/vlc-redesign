@@ -32,8 +32,24 @@ T.ToolBar {
     required property SearchCtx search
     required property SortCtx sort
 
+    // what one line needs beside the action: the arrows (24 12 24 10), the
+    // title, the count, the tools at their narrowest (a search of 120; sort,
+    // view and more where the page sorts: 132) and the gaps of 20; an address of several crumbs
+    // keeps the room of the design (680)
+    readonly property real _lineNeeds: (crumbs && crumbs.length > 1)
+        ? VLCStyle.dp(680, VLCStyle.scale)
+        : VLCStyle.dp(70 + 120 + 60, VLCStyle.scale) + (sort.available ? VLCStyle.dp(132, VLCStyle.scale) : 0)
+          + titleAdvance.advanceWidth
+          + (itemCount >= 0 ? countLabel.implicitWidth : 0)
     readonly property bool compact: width < VLCStyle.dp(760, VLCStyle.scale) ||
-        (actionLoader.active && availableWidth < actionLoader.implicitWidth + VLCStyle.dp(680, VLCStyle.scale))
+        (actionLoader.active && availableWidth < actionLoader.implicitWidth + _lineNeeds)
+    TextMetrics {
+        id: titleAdvance
+        text: root.breadcrumb
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
+        font.weight: Font.DemiBold
+    }
     // compact: the group at the right of the design (count, sort, view,
     // search, more) under the address; an action of buttons gets a row of
     // its own
@@ -382,6 +398,9 @@ T.ToolBar {
             Widgets.ListLabel {
                 id: titleLabel
                 Layout.fillWidth: true
+                // (a short title is never the one squeezed: the search field
+                // gives way first)
+                Layout.minimumWidth: Math.min(Math.ceil(implicitWidth), VLCStyle.dp(160, VLCStyle.scale))
                 Layout.fillHeight: true
                 visible: !crumbRow.visible
                 text: root.breadcrumb

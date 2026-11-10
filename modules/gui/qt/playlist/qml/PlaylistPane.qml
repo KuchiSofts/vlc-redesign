@@ -184,15 +184,23 @@ T.Pane {
             Layout.leftMargin: VLCStyle.dp(18, VLCStyle.scale)
             Layout.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
             Layout.bottomMargin: VLCStyle.dp(6, VLCStyle.scale)
-            spacing: VLCStyle.dp(4, VLCStyle.scale)
+            // (2 apart: at the panel's own width "No items" was cut to "No ite…" beside the five buttons)
+            spacing: VLCStyle.dp(2, VLCStyle.scale)
 
             Text {
+                id: cardCount
+
                 Layout.fillWidth: true
-                text: {
-                    const count = root.model.count
-                    if (count === 0)
-                        return qsTr("No items")
-                    return qsTr("%1 item", "%1 items", count).arg(count) + " - " + root.model.duration.formatLong()
+                // the count and the length; the count alone where both do not fit (never a word cut in half)
+                readonly property string _count: root.model.count === 0 ? qsTr("No items")
+                                                 : qsTr("%1 item", "%1 items", root.model.count).arg(root.model.count)
+                readonly property string _full: root.model.count === 0 ? _count
+                                                : _count + " - " + root.model.duration.formatLong()
+                text: cardCountMetrics.advanceWidth <= width ? _full : _count
+                TextMetrics {
+                    id: cardCountMetrics
+                    font: cardCount.font
+                    text: cardCount._full
                 }
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft

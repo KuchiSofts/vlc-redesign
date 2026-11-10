@@ -56,6 +56,12 @@ QtObject{
     // gets more cards in a row, not larger ones. Where the cards fit
     // exactly (the design's own window), they are the design's.
     readonly property real maxGrowth: 1.35
+    // The width of the page in the design's own window (1920 wide: 1660
+    // between the margins, five video cards exactly). There the design's
+    // sizes win, a row that has room left too (seven music cards of 200):
+    // the growth is for the other widths.
+    property int designWidth: VLCStyle.dp(1660, VLCStyle.scale)
+    readonly property bool _atDesignWidth: Math.abs(availableWidth - designWidth) <= VLCStyle.dp(2, VLCStyle.scale)
 
     property var maxNbItemPerRow
     readonly property int nbItemPerRow: {
@@ -76,7 +82,8 @@ QtObject{
     // NOTE: Responsive cell sizing based on available width
     readonly property int _filledWidth: (availableWidth + horizontalSpacing) / nbItemPerRow - horizontalSpacing
     readonly property int cellWidth: fixedPictureWidth
-        ? Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth)))
+        ? (_atDesignWidth ? basePictureWidth
+           : Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth))))
         : _filledWidth
     readonly property int cellHeight: (basePictureHeight / basePictureWidth) * cellWidth + textHeight
 

@@ -15,8 +15,9 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟢 **Interface size, the same on every app** (the owner, 10 Nov; desktop): Settings › Interface › Window ›
   *Interface size*: Automatic (N %), 100, 110, 125, 150, 175, 200 %, applied at once; the one setting of the scale
   (VLC's kept factor migrates to the nearest choice, the zoom keys step through the choices). Automatic follows the
-  screen of the window (`util/screen_fit.cpp`, the rule of the Android and TV apps on the screen's width in scaled
-  pixels, plus dense screens left unscaled). Checked on Windows at a simulated 1280 × 720 and 960 × 540 screen
+  screen of the window (`util/screen_fit.cpp`): 100 % whenever the system scales the screen or its density is
+  ordinary (the owner, 10 Nov: a small screen never gets a larger interface), more only for a dense screen
+  reported unscaled. Checked on Windows at a simulated 1280 × 720 and 960 × 540 screen
   (QT_SCALE_FACTOR) and 2560 × 1440; Linux and macOS wait for their builds.
 - 🟢 **Windows and dialogs inside the screen** (desktop): the first window from the screen, a saved geometry that
   no longer fits corrected, every dialog and separate window fitted into its screen when it shows, the dialogs'

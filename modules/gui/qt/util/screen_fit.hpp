@@ -32,19 +32,19 @@ namespace ScreenFit
 // pixels).
 inline constexpr int interfaceSizes[] = { 100, 110, 125, 150, 175, 200 };
 
-// The size Automatic finds for a screen, in percent: 100 on a usual desktop
-// (the system already scales the screen: Windows, macOS, Wayland give its
-// size in scaled pixels, and that scale is not applied twice), more on a
-// screen that is small in those pixels, or dense and left unscaled (4K at
-// 100 % on X11). Never under 100 nor over 150.
+// The size Automatic finds for a screen, in percent: 100 whenever the system
+// already scales the screen (a device pixel ratio over 1: Windows, macOS,
+// Wayland) or the screen is of an ordinary density, whatever its size: a
+// screen small in pixels has less room, not more. Above 100 only for a
+// dense screen reported unscaled (4K at 100 % on X11), from its physical
+// size when the monitor gives one; never over 150.
 // `screenWidth` is the width of the screen in Qt's pixels, `systemScale`
 // what the interface is already multiplied by for the system's text size
-// (the logical DPI over 96: 1 where the pixels are scaled), `physical` the
-// size of the screen in millimetres (empty or absurd when the monitor does
-// not say: ignored).
-// The rule of the Android and TV apps: the page is a third finer than the
-// system's own, between 1280 and 1920 design pixels across.
-int automaticInterfaceSize(int screenWidth, double systemScale, const QSizeF &physical);
+// (the logical DPI over 96), `physical` the size of the screen in
+// millimetres (empty or absurd when the monitor does not say: ignored),
+// `devicePixelRatio` the screen's.
+int automaticInterfaceSize(int screenWidth, double systemScale, const QSizeF &physical,
+                           double devicePixelRatio = 1.0);
 
 // The choice nearest to a size in percent (a scale kept by an older
 // version, a pinch)

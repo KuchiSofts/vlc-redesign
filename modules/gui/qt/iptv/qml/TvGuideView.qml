@@ -55,6 +55,8 @@ FocusScope {
     // been answered, is the guide's empty state (the hours shown lie outside
     // what the guide holds, or the guide was read long ago)
     property int rowsWithCells: 0
+    // (counted again every ten minutes of the time scrolled)
+    readonly property int viewStep: Math.floor(leftTime / 600)
     property bool settled: false
     readonly property bool nothingToShow: settled && rowsWithCells === 0 && Iptv.channelModel.count > 0
     Timer {
@@ -295,7 +297,14 @@ FocusScope {
             ListModel { id: shown }
             property bool counted: false
             function count() {
-                const has = shown.count > 0
+                // (in the hours shown: the cells of the blocks beside them
+                // are kept too)
+                const from = root.leftTime, to = root.leftTime + root.gridWidth / root.pxPerSec
+                let has = false
+                for (let i = 0; i < shown.count && !has; ++i) {
+                    const p = shown.get(i)
+                    has = p.stop > from && p.start < to
+                }
                 if (has !== counted) {
                     counted = has
                     root.rowsWithCells += has ? 1 : -1
@@ -304,6 +313,10 @@ FocusScope {
             Connections {
                 target: shown
                 function onCountChanged() { row.count() }
+            }
+            Connections {
+                target: root
+                function onViewStepChanged() { row.count() }
             }
             Component.onDestruction: if (counted) root.rowsWithCells -= 1
 
@@ -631,7 +644,8 @@ FocusScope {
         spacing: root.px(14)
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: qsTr("No programmes at this time")
+            // (a text the catalogs already have, in every language)
+            text: qsTr("No guide")
             color: root.c("#969696", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontMedium

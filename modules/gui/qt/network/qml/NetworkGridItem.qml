@@ -31,6 +31,11 @@ Widgets.GridItem {
 
     pictureWidth: VLCStyle.gridCover_network_width
     pictureHeight: VLCStyle.gridCover_network_height
+    // the redesign's card (the folder cards of Home: #1E1E1E, radius 12,
+    // the name in the design's type), not a black card with a bold name
+    redesign: true
+    pictureRadius: VLCStyle.dp(12, VLCStyle.scale)
+    mediaCover.color: VLCStyle.redesign.color("#1E1E1E", "#dedede")
 
     playCoverShowPlay: {
         switch (model.type) {
@@ -56,7 +61,7 @@ Widgets.GridItem {
 
     fallbackImage: {
         return SVGColorImage.colorize(model.artworkFallback)
-                            .color1(root.colorContext.fg.primary)
+                            .color1(VLCStyle.redesign.color("#8F8F8F"))
                             .accent(root.colorContext.accent)
                             .uri()
     }
@@ -75,6 +80,11 @@ Widgets.GridItem {
             && (mrl === "vlc://nop"))
             return defaultTxt
 
+        // a folder of this computer as its path, not as a file:/// address
+        if (mrl.startsWith("file:///")) {
+            const path = mrl.substring(/^file:\/\/\/[A-Za-z]:/.test(mrl) ? 8 : 7)
+            try { return decodeURIComponent(path) } catch (e) { return path }
+        }
         return mrl || defaultTxt
     }
 

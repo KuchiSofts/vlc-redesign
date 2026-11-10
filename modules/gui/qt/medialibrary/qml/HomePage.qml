@@ -483,7 +483,7 @@ Widgets.PageExt {
                             // (light: lighter than the page as the covers of
                             // the rows above it, not a darker grey beside them)
                             color: folderCard.hovered
-                                   ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#ececec")
+                                   ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground)
                                    : VLCStyle.redesign.color("#1E1E1E", "#dedede")
                             // the card the keys are on
                             border.width: folderCard.activeFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0

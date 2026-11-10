@@ -408,7 +408,12 @@ Widgets.PageExt {
 
                 readonly property real contentLeftMargin: continueWatchingRow.contentLeftMargin
                 readonly property real contentRightMargin: continueWatchingRow.contentRightMargin
-                readonly property real cardSize: VLCStyle.dp(200, VLCStyle.scale)
+                // (as large as the cards of the music rows, which grow to
+                // end their row at the page's margin: 200 in the design)
+                readonly property real baseCardSize: VLCStyle.dp(200, VLCStyle.scale)
+                readonly property real cardSize: Math.max(baseCardSize,
+                    Math.min(Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
+                             Math.round(baseCardSize * 1.35)))
 
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -431,7 +436,7 @@ Widgets.PageExt {
                 // header opens every folder
                 interactive: false
                 readonly property int fit: Math.max(1, Math.floor((width - leftMargin - rightMargin + spacing)
-                                                                  / (cardSize + spacing)))
+                                                                  / (baseCardSize + spacing)))
 
                 model: MLFrequentFoldersModel {
                     ml: MediaLib

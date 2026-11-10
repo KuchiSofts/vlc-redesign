@@ -49,9 +49,14 @@ T.Page {
 
     property Component headerAction: null
 
-    property bool libraryHeader: false
+    // Every page has the header of the library (the arrows, the title, the
+    // count, the sort, the grid or list switch, the search field): Music's
+    // pages and Network's kept an older one, with other margins and a bold
+    // title. A page without it says so.
+    property bool libraryHeader: true
     property string libraryTitle: title
-    property int libraryItemCount: -1
+    // (the items of the page's view, unless the page counts something else)
+    property int libraryItemCount: _firstChild?.model?.count ?? -1
     // Address line of the library header (see LibraryHeader.crumbs)
     property var libraryCrumbs: null
 

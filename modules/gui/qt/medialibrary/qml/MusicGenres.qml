@@ -294,7 +294,10 @@ MainViewLoader {
         id: emptyLabelComponent
 
         Widgets.EmptyLabelButton {
-            text: qsTr("No genres found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No genres found\nPlease try adding sources")
             Navigation.parentItem: root
             cover: VLCStyle.noArtAlbumCover
         }

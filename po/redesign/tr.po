@@ -20,15 +20,16 @@ msgstr ""
 "Project-Id-Version: vlc 2.2.7\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-11-08 10:17+0000\n"
-"PO-Revision-Date: 2017-11-16 03:12+0100\n"
-"Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/yaron/vlc-trans/language/"
-"tr/)\n"
+"PO-Revision-Date: 2026-11-10 22:09+0000\n"
+"Last-Translator: KuchiSofts <kuchisofts@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/vlc-redesign/"
+"interface/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -9803,9 +9804,8 @@ msgid "Extra verbose media library logs"
 msgstr "Çok ayrıntılı ortam kitaplığı günlükleri"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Ağ paylaşımı bulunamadı"
+msgstr "Ağ paylaşımlarını keşfet"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

@@ -34,6 +34,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -9625,9 +9626,8 @@ msgid "Extra verbose media library logs"
 msgstr "更詳細的媒體櫃記錄"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "找不到網路共用"
+msgstr "探索網路共用"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

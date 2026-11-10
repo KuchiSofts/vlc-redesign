@@ -36,7 +36,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -9869,9 +9870,8 @@ msgid "Extra verbose media library logs"
 msgstr "سجلات مفصلة جدًا لمكتبة الوسائط"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "لم يُعثر على مشاركات شبكة"
+msgstr "اكتشاف مشاركات الشبكة"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

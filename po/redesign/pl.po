@@ -24,6 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
 "(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -9928,9 +9929,8 @@ msgid "Extra verbose media library logs"
 msgstr "Bardzo szczegółowy dziennik biblioteki mediów"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Nie znaleziono udziałów sieciowych"
+msgstr "Wykrywaj udziały sieciowe"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

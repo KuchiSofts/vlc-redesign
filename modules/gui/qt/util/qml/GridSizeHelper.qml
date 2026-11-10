@@ -99,9 +99,23 @@ QtObject{
     function _stepped(width) {
         return _resizing ? basePictureWidth + Math.floor(Math.max(0, width - basePictureWidth) / 8) * 8 : width
     }
-    readonly property int cellWidth: fixedPictureWidth
-        ? _stepped(Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth))))
-        : _stepped(_filledWidth)
+    // The number of cards shown (-1: not known). Fewer than a row holds:
+    // they keep the design's size, at the row's start. Three cards grown
+    // beside an empty half row filled nothing (Home's "Listen Again").
+    property int itemCount: -1
+    // Home's rows: at the design's own page width the design's sizes win
+    // (VLCStyle.redesign.cardWidth), the growth comes in beside it.
+    property bool designWidthWins: false
+    readonly property int _grownWidth: Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth)))
+    readonly property int cellWidth: {
+        if (!fixedPictureWidth)
+            return _stepped(_filledWidth)
+        if (itemCount >= 0 && itemCount < nbItemPerRow)
+            return basePictureWidth
+        if (designWidthWins)
+            return _stepped(VLCStyle.redesign.cardWidth(basePictureWidth, _filledWidth, availableWidth))
+        return _stepped(_grownWidth)
+    }
     readonly property int cellHeight: (basePictureHeight / basePictureWidth) * cellWidth + textHeight
 
     // NOTE: Find the maximum picture size for nbItemPerRow == 1, so that we downscale in most of the cases

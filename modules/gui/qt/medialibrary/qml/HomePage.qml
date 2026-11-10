@@ -331,6 +331,8 @@ Widgets.PageExt {
                 id: listenAgainRow
 
                 compactMargins: true
+                // (the design's own page: its card sizes win)
+                designWidthWins: true
                 gridCoverWidth: VLCStyle.dp(200, VLCStyle.scale)
                 gridCoverHeight: VLCStyle.dp(200, VLCStyle.scale)
 
@@ -412,9 +414,12 @@ Widgets.PageExt {
                 // end their row at the page's margin: 200 in the design)
                 readonly property real baseCardSize: VLCStyle.dp(200, VLCStyle.scale)
                 // (the design's size at the design's own page width, as the rows)
-                readonly property real cardSize: VLCStyle.redesign.cardWidth(baseCardSize,
-                    Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
-                    width - leftMargin - rightMargin)
+                // (fewer folders than the row holds keep the design's size:
+                // four grown cards beside an empty third of the row filled nothing)
+                readonly property real cardSize: count < fit ? baseCardSize
+                    : VLCStyle.redesign.cardWidth(baseCardSize,
+                        Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
+                        width - leftMargin - rightMargin)
 
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -548,6 +553,8 @@ Widgets.PageExt {
                 id: favoritesRow
 
                 compactMargins: true
+                // (the design's own page: its card sizes win)
+                designWidthWins: true
                 gridCoverWidth: VLCStyle.dp(200, VLCStyle.scale)
                 gridCoverHeight: VLCStyle.dp(200, VLCStyle.scale)
 
@@ -716,6 +723,8 @@ Widgets.PageExt {
                 id: newMusicRow
 
                 compactMargins: true
+                // (the design's own page: its card sizes win)
+                designWidthWins: true
                 gridCoverWidth: VLCStyle.dp(200, VLCStyle.scale)
                 gridCoverHeight: VLCStyle.dp(200, VLCStyle.scale)
 

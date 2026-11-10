@@ -57,6 +57,9 @@ Widgets.ExpandGridView {
 
     property alias maxNbItemPerRow: gridHelper.maxNbItemPerRow
 
+    // Home's rows keep the design's sizes at the design's own page width
+    property alias designWidthWins: gridHelper.designWidthWins
+
     // Settings
 
     nbItemPerRow: gridHelper.nbItemPerRow
@@ -78,6 +81,8 @@ Widgets.ExpandGridView {
         availableWidth: root._availableContentWidth
         fixedPictureWidth: root.fixedPictureWidth
         horizontalSpacing: root.fixedPictureWidth ? root.horizontalSpacing : VLCStyle.column_spacing
+        // (fewer cards than a row holds stay the design's size)
+        itemCount: root._count
 
         maxNbItemPerRow: basePictureWidth === basePictureHeight
                          ? VLCStyle.gridView_maxNbItemPerRow_square

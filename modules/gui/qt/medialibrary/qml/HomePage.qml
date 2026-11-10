@@ -411,7 +411,11 @@ Widgets.PageExt {
                 // (as large as the cards of the music rows, which grow to
                 // end their row at the page's margin: 200 in the design)
                 readonly property real baseCardSize: VLCStyle.dp(200, VLCStyle.scale)
-                readonly property real cardSize: Math.max(baseCardSize,
+                // (the design's size at the design's own page width, as the rows)
+                readonly property bool _atDesignWidth:
+                    Math.abs(width - leftMargin - rightMargin - VLCStyle.dp(1660, VLCStyle.scale))
+                    <= VLCStyle.dp(2, VLCStyle.scale)
+                readonly property real cardSize: _atDesignWidth ? baseCardSize : Math.max(baseCardSize,
                     Math.min(Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
                              Math.round(baseCardSize * 1.35)))
 

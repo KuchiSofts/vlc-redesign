@@ -20,31 +20,29 @@
 namespace ScreenFit
 {
 
-int automaticInterfaceSize(int screenWidth, double systemScale, const QSizeF &physical)
+int automaticInterfaceSize(int screenWidth, double systemScale, const QSizeF &physical,
+                           double devicePixelRatio)
 {
-    if (screenWidth <= 0)
+    // scaled by the system: its pixels are the size it wants them
+    if (screenWidth <= 0 || devicePixelRatio > 1.01)
         return 100;
-    // the width as the system wants it used
+    // the width the interface has once the system's text size is applied
     const double scale = systemScale > 0.25 ? systemScale : 1.0;
-    const int width = qRound(screenWidth / scale);
-
-    const int page = std::clamp(width * 4 / 3, 1280, 1920);
-    // (to 5 %: the sizes stay on whole pixels more often)
-    int percent = qRound(1920. * 100. / page / 5.) * 5;
+    const double width = screenWidth / scale;
 
     // what the monitor says of its size: a laptop panel to a large TV
     const bool sized = physical.width() >= 100. && physical.height() >= 60.
                        && physical.width() <= 3000. && physical.height() <= 2000.;
-    if (sized)
-    {
-        // pixels per inch as the interface sees them: about 96 on a desktop
-        // monitor, 110 on a laptop the system scales
-        const double density = width / (physical.width() / 25.4);
-        if (density > 150.)
-            // dense and left unscaled: the text as on a 120 dpi screen
-            percent = std::max(percent, qRound(density / 120. * 100. / 5.) * 5);
-    }
-    return std::clamp(percent, 100, 150);
+    if (!sized)
+        return 100;
+    // pixels per inch as the interface sees them: about 96 on a desktop
+    // monitor
+    const double density = width / (physical.width() / 25.4);
+    if (density <= 150.)
+        return 100;
+    // dense and left unscaled: the text as on a 120 dpi screen (to 5 %: the
+    // sizes stay on whole pixels more often)
+    return std::clamp(qRound(density / 120. * 100. / 5.) * 5, 100, 150);
 }
 
 int nearestInterfaceSize(double percent)

@@ -1032,7 +1032,8 @@ void MainCtx::updateIntfScaleFactor()
         // to another screen or the screen's settings change
         const int automatic = ScreenFit::automaticInterfaceSize(
             measured->geometry().width(),
-            measured->logicalDotsPerInch() / VLC_REFERENCE_SCALE_FACTOR, measured->physicalSize() );
+            measured->logicalDotsPerInch() / VLC_REFERENCE_SCALE_FACTOR, measured->physicalSize(),
+            measured->devicePixelRatio() );
         if (automatic != m_automaticInterfaceSize)
         {
             m_automaticInterfaceSize = automatic;

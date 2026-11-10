@@ -72,12 +72,17 @@ int main()
     CHECK(automaticInterfaceSize(1440, 1.0, {}) == 100);
     // a 4K laptop the system scales to 250 %: its pixels are already scaled
     CHECK(automaticInterfaceSize(1536, 1.0, {344, 194}) == 100);
-    // a screen small in scaled pixels: the rule of the TV and tablet apps
-    CHECK(automaticInterfaceSize(1366, 1.0, {344, 194}) == 105);
-    CHECK(automaticInterfaceSize(1280, 1.0, {}) == 115);
-    CHECK(automaticInterfaceSize(1024, 1.0, {}) == 140);
-    CHECK(automaticInterfaceSize(960, 1.0, {}) == 150); // (a TV: 960 across)
-    CHECK(automaticInterfaceSize(800, 1.0, {}) == 150);
+    // a screen small in pixels has less room, not more: as designed
+    CHECK(automaticInterfaceSize(1366, 1.0, {344, 194}) == 100);
+    CHECK(automaticInterfaceSize(1280, 1.0, {}) == 100);
+    CHECK(automaticInterfaceSize(1280, 1.0, {293, 165}) == 100);
+    CHECK(automaticInterfaceSize(1024, 1.0, {}) == 100);
+    CHECK(automaticInterfaceSize(960, 1.0, {}) == 100);
+    CHECK(automaticInterfaceSize(800, 1.0, {}) == 100);
+    // scaled by the system (a device pixel ratio over 1), dense or not
+    CHECK(automaticInterfaceSize(1920, 1.0, {344, 194}, 2.0) == 100);
+    CHECK(automaticInterfaceSize(2560, 1.0, {344, 194}, 1.5) == 100);
+    CHECK(automaticInterfaceSize(3840, 1.0, {597, 336}, 1.25) == 100);
     // 4K left at 100 % (X11 with no scale): 27 inches is 163 dpi, 15.6 is 282
     CHECK(automaticInterfaceSize(3840, 1.0, {597, 336}) == 135);
     CHECK(automaticInterfaceSize(3840, 1.0, {344, 194}) == 150);
@@ -100,6 +105,7 @@ int main()
             {
                 const int percent = automaticInterfaceSize(w, system, { mm, mm * 9 / 16 });
                 CHECK(percent >= 100 && percent <= 150 && percent % 5 == 0);
+                CHECK(automaticInterfaceSize(w, system, { mm, mm * 9 / 16 }, 2.0) == 100);
             }
 
     // ---- "Interface size": the choices ---------------------------------

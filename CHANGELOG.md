@@ -20,8 +20,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Interface size** (Settings › Interface › Window): how large the pages, texts and controls are drawn.
   *Automatic (N %)* picks the size that suits the screen the window is on and says which, then *100 %* (the design's
   own size), *110 %*, *125 %*, *150 %*, *175 %* and *200 %*. A choice applies at once, without a restart, and is
-  kept. Automatic is 100 % on a usual desktop (the system's own scaling of the screen is not applied twice), more on
-  a screen that is small in scaled pixels or dense and left unscaled (4K at 100 % on X11), never over 150 %; it is
+  kept. Automatic is 100 % whenever the system already scales the screen or the screen is of an ordinary density,
+  whatever its size (a small screen has less room, not more); it goes above only on a dense screen reported
+  unscaled (4K at 100 % on X11), from its physical size, never over 150 %; it is
   found again when the window moves to another screen or the screen's settings change. The same setting, with the
   same choices, in the Android and Samsung TV apps. It replaces the scale VLC kept: a scale you had changed becomes
   the nearest choice, the zoom keys (Ctrl + and Ctrl −) and a pinch step through the choices.
@@ -53,7 +54,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   screen at the left of or above the main one too.
 - The rows and grids of cards fill the page: as many cards as fit at the design's size, which then grow by up to a
   third so that the row ends at the page's margin (Home's rows, Videos, a folder's page, the playlists); a wider page
-  gets more cards in a row, not larger ones. At the design's own window size the cards are the design's.
+  gets more cards in a row, not larger ones. At the design's own page width (a 1920 wide window) every card has the
+  design's size, the music cards of 200 too.
 - 0.6.0, a full release of every app: a round of stability, start-up speed and memory in every app, smarter
   automatic subtitles, the Subtitles panel the same on every device, and keys in full
   screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).

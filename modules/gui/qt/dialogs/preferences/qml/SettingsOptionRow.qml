@@ -163,10 +163,11 @@ Item {
     property var labelsBaseline
     readonly property bool scaleLabel: useSlider && !!sliderScale
 
-    implicitHeight: noteHeight + (rowHeight > 0 ? px(rowHeight)
-                                  : px(10) + (useStartupVolume ? px(78) : useToggle || useColor ? px(32)
-                                              : useSlider ? (sliderScale ? px(57) : px(24))
-                                              : px(36)))
+    implicitHeight: noteHeight + Math.max(rowHeight > 0 ? px(rowHeight)
+                                          : px(10) + (useStartupVolume ? px(78) : useToggle || useColor ? px(32)
+                                                      : useSlider ? (sliderScale ? px(57) : px(24))
+                                                      : px(36)),
+                                          settingLabel.wrapped ? settingLabel.implicitHeight + px(12) : 0)
     // 30 % as the dimmed rows of the design
     opacity: available ? 1 : 0.3
     enabled: available
@@ -192,15 +193,27 @@ Item {
             // control is at 0)
             // Figma's text box: the advance of Inter 3.19 rounded up (measured
             // 16 times larger, less the unit per glyph the bundled font adds)
-            width: Math.max(0, Math.min(Math.ceil(labelExact.advanceWidth / 16
-                                                  - text.length * font.pixelSize / 2816 - 0.001),
-                                        root.width - valueArea.width - root.px(20)
-                                        - (helpIcon.visible ? helpIcon.width + labelRow.spacing : 0)))
+            // (at the design's size; at a larger interface size the text's
+            // own width: the measure sixteen times larger came out short)
+            readonly property real wanted: VLCStyle.scale === 1
+                ? Math.ceil(labelExact.advanceWidth / 16 - text.length * font.pixelSize / 2816 - 0.001)
+                : Math.ceil(implicitWidth)
+            readonly property real room: root.width - valueArea.width - root.px(20)
+                                         - (helpIcon.visible ? helpIcon.width + labelRow.spacing : 0)
+            // a label longer than its room goes on to the next lines and the
+            // row grows with it: never cut with an ellipsis
+            readonly property bool wrapped: wanted > room
+            width: Math.max(0, Math.min(wanted, room))
+            // (its lines centred on the control: the first line's baseline
+            // goes up by half of the lines after it; one anchor for both
+            // cases, switching anchors left a row's label misplaced)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                                    - (lineCount > 1 ? (implicitHeight - implicitHeight / lineCount) / 2 : 0)
             text: root.label
             color: root.c("#8F8F8F")
-            elide: Text.ElideRight
+            wrapMode: wrapped ? Text.WordWrap : Text.NoWrap
+            horizontalAlignment: Text.AlignLeft
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(14)
 
@@ -237,8 +250,6 @@ Item {
         text: root.note
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignLeft
-        maximumLineCount: 2
-        elide: Text.ElideRight
         // the warning in the error colour of the redesign (a dark red on the
         // light grey)
         color: root.noteWarning ? VLCStyle.redesign.color("#E4A580", "#7a1414") : root.c("#6B6B6B")

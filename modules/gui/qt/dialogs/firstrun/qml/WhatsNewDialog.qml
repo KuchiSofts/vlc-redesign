@@ -86,6 +86,10 @@ Widgets.RedesignDialog {
         boundsBehavior: Flickable.StopAtBounds
 
         T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+        Widgets.ScrollHint {
+            view: notesView
+            surface: root.cardColor
+        }
 
         ColumnLayout {
             id: notes

@@ -527,7 +527,9 @@ FocusScope {
                     text: root._archive ? (root.catchup.title || qsTr("Programme"))
                           : Iptv.bannerMode === 2 ? ""
                           : root._hasNow ? root.now.title
-                          : (root.channel.hasGuide ? qsTr("Loading the guide…") : qsTr("No guide for this channel"))
+                          // (while a source is being read only: a channel whose guide says nothing about
+                          // this hour kept "Loading the guide…" for good)
+                          : (root.channel.hasGuide && Iptv.busy ? qsTr("Loading the guide…") : qsTr("No guide for this channel"))
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                     color: banner.c("#FFFFFF", "#191919")

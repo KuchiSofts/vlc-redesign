@@ -101,8 +101,17 @@ MainViewLoader {
         Widgets.ExpandGridItemView {
             id: gridView_id
 
-            basePictureWidth: VLCStyle.gridCover_music_width
-            basePictureHeight: VLCStyle.gridCover_music_height
+            // the cards of the redesign (Home's music cards: 200, 20 apart,
+            // the name 20 under the cover), which fill the row as the videos'
+            basePictureWidth: VLCStyle.dp(200, VLCStyle.scale)
+            basePictureHeight: VLCStyle.dp(200, VLCStyle.scale)
+            fixedPictureWidth: true
+            horizontalSpacing: VLCStyle.dp(20, VLCStyle.scale)
+            verticalSpacing: VLCStyle.dp(40, VLCStyle.scale)
+            titleTopMargin: VLCStyle.dp(20, VLCStyle.scale)
+            titleHeight: VLCStyle.dp(18, VLCStyle.scale)
+            subtitleTopMargin: VLCStyle.dp(6, VLCStyle.scale)
+            subtitleHeight: VLCStyle.dp(16, VLCStyle.scale)
 
             focus: true
 
@@ -124,6 +133,10 @@ MainViewLoader {
 
                 pictureWidth: gridView_id.maxPictureWidth
                 pictureHeight: gridView_id.maxPictureHeight
+                redesign: true
+                pictureRadius: VLCStyle.dp(12, VLCStyle.scale)
+                titleTopMargin: gridView_id.titleTopMargin
+                subtitleTopMargin: gridView_id.subtitleTopMargin
 
                 opacity: gridView_id.expandIndex !== -1 && gridView_id.expandIndex !== audioGridItem.index ? .7 : 1
                 dragItem: albumDragItem

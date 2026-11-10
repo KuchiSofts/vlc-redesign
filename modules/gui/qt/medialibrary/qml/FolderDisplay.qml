@@ -450,7 +450,7 @@ Widgets.PageExt {
                         width: grid.cardWidth
                         height: grid.pictureHeight
                         radius: VLCStyle.dp(12, VLCStyle.scale)
-                        color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#ababaa")
+                        color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#dedede")
                                                    : VLCStyle.redesign.color("#171717", "#dedede")
 
                         // A frame of videos, the artwork of the library for songs

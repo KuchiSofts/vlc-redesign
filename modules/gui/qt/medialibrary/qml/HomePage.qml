@@ -414,7 +414,7 @@ Widgets.PageExt {
                 // (the design's size at the design's own page width, as the rows)
                 readonly property bool _atDesignWidth:
                     Math.abs(width - leftMargin - rightMargin - VLCStyle.dp(1660, VLCStyle.scale))
-                    <= VLCStyle.dp(2, VLCStyle.scale)
+                    <= VLCStyle.dp(8, VLCStyle.scale)
                 readonly property real cardSize: _atDesignWidth ? baseCardSize : Math.max(baseCardSize,
                     Math.min(Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
                              Math.round(baseCardSize * 1.35)))

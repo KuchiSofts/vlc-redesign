@@ -34549,9 +34549,8 @@ msgid "Extra verbose media library logs"
 msgstr "Çok ayrıntılı ortam kitaplığı günlükleri"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Ağ paylaşımı bulunamadı"
+msgstr "Ağ paylaşımlarını keşfet"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

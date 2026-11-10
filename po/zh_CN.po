@@ -33566,9 +33566,8 @@ msgid "Extra verbose media library logs"
 msgstr "更详细的媒体库日志"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "未找到网络共享"
+msgstr "发现网络共享"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

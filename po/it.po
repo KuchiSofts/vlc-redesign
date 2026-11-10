@@ -34785,9 +34785,8 @@ msgid "Extra verbose media library logs"
 msgstr "Registri molto dettagliati della raccolta multimediale"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Nessuna condivisione di rete trovata"
+msgstr "Rileva le condivisioni di rete"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

@@ -34529,9 +34529,8 @@ msgid "Extra verbose media library logs"
 msgstr "Дуже докладний журнал медіатеки"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Мережевих ресурсів не знайдено"
+msgstr "Виявляти мережеві ресурси"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

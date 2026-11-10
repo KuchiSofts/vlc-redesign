@@ -21923,7 +21923,7 @@ msgstr "Kasutaja"
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:462
 #: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:469
 msgid "Save password"
-msgstr "Salvesta parool"
+msgstr "Salvesta salasõna"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:63
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:37
@@ -24559,8 +24559,8 @@ msgstr "Veebipõhine kaugjuhtimine"
 msgid ""
 "Lets a web browser control VLC. Set its password in the Advanced Options."
 msgstr ""
-"Võimaldab veebibrauseril VLC-d juhtida. Määra selle parool jaotises Täpsemad "
-"valikud."
+"Võimaldab veebibrauseril VLC-d juhtida. Määra selle salasõna jaotises "
+"Täpsemad valikud."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1232
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:352
@@ -25209,7 +25209,7 @@ msgstr "Võti lükati tagasi"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:122
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
 msgid "Wrong user name or password"
-msgstr "Vale kasutajanimi või parool"
+msgstr "Vale kasutajanimi või salasõna"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
@@ -25267,7 +25267,7 @@ msgstr "Kasutajanimi"
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:526
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:538
 msgid "Password (optional)"
-msgstr "Parool (valikuline)"
+msgstr "Salasõna (kui tahad lisada)"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:361
 msgid "Email"
@@ -25486,7 +25486,7 @@ msgstr "Last.fm-i kasutajanimi"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm password"
-msgstr "Last.fm-i parool"
+msgstr "Last.fm-i salasõna"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:545
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
@@ -25685,7 +25685,7 @@ msgstr "Sinu Last.fm-i konto kasutajanimi."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:118
 msgid "The password of your Last.fm account."
-msgstr "Sinu Last.fm-i konto parool."
+msgstr "Sinu Last.fm-i konto salasõna."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:120
 msgid "The address the played tracks are sent to."
@@ -25705,7 +25705,7 @@ msgid ""
 "Set a web remote password in the Advanced Options: the remote stays locked "
 "without one."
 msgstr ""
-"Määra jaotises Täpsemad valikud veebipõhise kaugjuhtimise parool: ilma "
+"Määra jaotises Täpsemad valikud veebipõhise kaugjuhtimise salasõna: ilma "
 "selleta jääb kaugjuhtimine lukustatuks."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:298
@@ -26623,7 +26623,7 @@ msgstr "Käsitle hiireklõpse videos"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:317
 msgid "Web remote password"
-msgstr "Veebi kaugjuhtimise parool"
+msgstr "Veebist kaugjuhtimise salasõna"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:318
 msgid "Web remote address"
@@ -28153,7 +28153,7 @@ msgid ""
 "Links and passwords are kept in the keystore of VLC, never written to its "
 "log."
 msgstr ""
-"Lingid ja paroolid hoitakse VLC võtmehoidlas ega kirjutata kunagi selle "
+"Lingid ja salasõnad hoitakse VLC võtmehoidlas ega kirjutata kunagi selle "
 "logisse."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:634
@@ -28213,7 +28213,7 @@ msgstr "Logi välja"
 msgid ""
 "Passwords and keys are kept in the keystore of VLC, never written to its log."
 msgstr ""
-"Paroolid ja võtmed hoitakse VLC võtmehoidlas ega kirjutata kunagi selle "
+"Salasõnad ja võtmed hoitakse VLC võtmehoidlas ega kirjutata kunagi selle "
 "logisse."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:827
@@ -29599,9 +29599,9 @@ msgid ""
 "choose New consumer, name it (VLC Redesign) and copy its API key here, with "
 "your account's username and password."
 msgstr ""
-"Võtit veel pole? See on tasuta: registreeru saidil opensubtitles.com, ava "
-"„API consumers“, vali „New consumer“, anna sellele nimi (VLC Redesign) ja "
-"kopeeri selle API-võti siia koos oma konto kasutajanime ja parooliga."
+"Võtit veel pole? See on tasuta: registreeru saidil opensubtitles.com, ava „"
+"API consumers“, vali „New consumer“, anna sellele nimi (VLC Redesign) ja "
+"kopeeri selle API-võti siia koos oma konto kasutajanime ja salasõnaga."
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:951
 msgid "Open API consumers"
@@ -30235,7 +30235,7 @@ msgstr "Sirvimisvaade"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"
-msgstr "Võrguühiskasutusi ei leitud"
+msgstr "Ühtegi võrguketast ei leidunud"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:237
 msgid "Computer"
@@ -34023,9 +34023,8 @@ msgid "Extra verbose media library logs"
 msgstr "Meediakogu eriti üksikasjalikud logid"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Võrguühiskasutusi ei leitud"
+msgstr "Tuvasta võrgukettaid"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

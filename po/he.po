@@ -33481,9 +33481,8 @@ msgid "Extra verbose media library logs"
 msgstr "יומנים מפורטים במיוחד של ספריית המדיה"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "לא נמצאו שיתופי רשת"
+msgstr "גילוי שיתופי רשת"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

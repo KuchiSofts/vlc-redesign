@@ -80,17 +80,16 @@ Rectangle {
                     Text {
                         id: optionText
                         x: Math.max(0, (parent.width - width) / 2)
-                        // (a script Inter does not have is drawn in another
-                        // font, whose advance does not scale the same way:
-                        // "System" was cut in Hebrew at 200 %; then the width
-                        // the text itself asks for)
-                        readonly property real _exact: Math.ceil(optionExact.advanceWidth / 16
-                                                                 - text.length * font.pixelSize / 2816 - 0.001)
-                        width: Math.min(parent.width, _exact >= implicitWidth - 1 ? _exact : Math.ceil(implicitWidth))
+                        width: Math.min(parent.width, Math.ceil(optionExact.advanceWidth / 16
+                                                                - text.length * font.pixelSize / 2816 - 0.001))
                         height: parent.height
                         text: option.modelData.text
                         color: option.selected ? VLCStyle.redesign.accent : root.c("#6B6B6B")
-                        elide: Text.ElideRight
+                        // (cut only when the choice is too narrow for it: a
+                        // script Inter does not have is drawn in another font
+                        // whose advance does not scale the same way, and
+                        // "System" was cut in Hebrew at 200 % with room around it)
+                        elide: implicitWidth > parent.width ? Text.ElideRight : Text.ElideNone
                         verticalAlignment: Text.AlignTop
                         // the baseline where the design centres a line of Inter
                         topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - optionMetrics.ascent

@@ -97,6 +97,7 @@ class VideoSurface : public ViewBlockingRectangle
     // is then a second click
     Q_PROPERTY(bool doubleClickEnabled MEMBER m_doubleClickEnabled NOTIFY doubleClickEnabledChanged FINAL)
     Q_PROPERTY(PlayerController* holdSpeedPlayer READ holdSpeedPlayer WRITE setHoldSpeedPlayer NOTIFY holdSpeedPlayerChanged FINAL)
+    Q_PROPERTY(bool hovered READ hovered NOTIFY hoveredChanged FINAL)
 
 public:
     VideoSurface( QQuickItem* parent = nullptr );
@@ -107,6 +108,8 @@ public:
     PlayerController* holdSpeedPlayer() const;
     void setHoldSpeedPlayer(PlayerController *player);
 
+    bool hovered() const { return m_hovered; }
+
 protected:
     QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *) override;
 
@@ -115,7 +118,9 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+    void hoverEnterEvent(QHoverEvent *event) override;
     void hoverMoveEvent(QHoverEvent *event) override;
+    void hoverLeaveEvent(QHoverEvent *event) override;
     void mouseDoubleClickEvent(QMouseEvent *event) override;
     void mouseUngrabEvent() override;
     void keyPressEvent(QKeyEvent *event) override;
@@ -137,6 +142,7 @@ signals:
     void mouseDblClicked( int vlcButton );
     void mouseMoved( float x, float y );
     void keyPressed(int key, Qt::KeyboardModifiers modifier);
+    void hoveredChanged(bool);
 
     void videoSurfaceProviderChanged();
     void doubleClickEnabledChanged();
@@ -154,6 +160,7 @@ private:
     QPointer<PlayerController> m_holdSpeedPlayer;
     QMetaObject::Connection m_holdWindowConnection;
     bool m_doubleClickEnabled = true;
+    bool m_hovered = false;
     QPointF m_oldHoverPos;
 
     WheelToVLCConverter m_wheelEventConverter;

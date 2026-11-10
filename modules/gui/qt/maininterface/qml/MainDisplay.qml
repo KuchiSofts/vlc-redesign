@@ -169,9 +169,6 @@ FocusScope {
 
         target: null
 
-        // Qt version check in disguise, only available starting with 6.5:
-        enabled: !!scaleAxis?.activeValueChanged
-
         // Default in QPlatformTheme::defaultThemeHint is 10
         dragThreshold: ((Application.styleHints?.startDragDistance ?? 10) * 4)
 
@@ -186,13 +183,7 @@ FocusScope {
             }
         }
 
-        Component.onCompleted: {
-            if (interfaceScalePinchHandler?.scaleAxis?.activeValueChanged) {
-                scaleAxis.activeValueChanged.connect(interfaceScalePinchHandler, onScaleAxisActiveValueChanged)
-            }
-        }
-
-        function onScaleAxisActiveValueChanged(delta) {
+        scaleAxis.onActiveValueChanged: (delta) => {
             if (delta < 0.25)
                 return
 
@@ -532,14 +523,9 @@ FocusScope {
 
                         property real implicitTopLeftRadius: VLCStyle.mainView_topLeftRadius
 
-                        Component.onCompleted: {
-                            if (stackViewTopLeftRadiusRectangle.topLeftRadius !== undefined) { // TODO: Directly set when minimum Qt is 6.7
-                                stackViewTopLeftRadiusRectangle.topLeftRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.LayoutMirroring.enabled
-                                                                                                  ? 0 : stackViewTopLeftRadiusRectangle.implicitTopLeftRadius)
-                                stackViewTopLeftRadiusRectangle.topRightRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.LayoutMirroring.enabled
-                                                                                                   ? stackViewTopLeftRadiusRectangle.implicitTopLeftRadius : 0)
-                            }
-                        }
+                        // (the rounded corner is on the side bar's side: the other one right to left)
+                        topLeftRadius: LayoutMirroring.enabled ? 0 : implicitTopLeftRadius
+                        topRightRadius: LayoutMirroring.enabled ? implicitTopLeftRadius : 0
                     }
                 }
 

@@ -69,6 +69,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   list what you type in alphabetical order.
 - The welcome's Browse opens in the folder it suggests (Videos), the other folder choosers in your home folder, not
   in the folder VLC was started from.
+- Music's pages (Artists, Albums, Tracks, Genres, Playlists) and Network have the header of Home and Videos (the
+  arrows, the count, the sort, the grid or list switch, the search field): they kept an older one with a bold title
+  at other margins. Home's folder cards are as large as its music cards, a card whose media has no known length
+  shows no "--:--", and a search that finds nothing says "No results", not "Please try adding sources".
 - Home no longer says "0 items" over rows full of media while the library has none of its own (or is still read).
 - Less work on the interface's thread: changing page no longer rewrites the settings file there (each page left
   saved its unchanged sort, flushed to the disk: a hitch on a slow disk), the subtitle services of Settings are

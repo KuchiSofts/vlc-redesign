@@ -101,7 +101,7 @@ T.Control {
 
                 color: defaultDelId.selected
                     ? defaultDelId.colorContext.fg.highlight
-                    : defaultDelId.colorContext.fg.primary
+                    : VLCStyle.redesign.color("#8F8F8F")
             }
         }
     }

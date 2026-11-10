@@ -247,7 +247,9 @@ T.Pane {
                 enabled: !modelData.library || MainCtx.mediaLibraryAvailable
                 // the page shown (not the keyboard position: a folder page has
                 // none, the list would keep the last one)
+                // (Music keeps its accent while one of its pages is shown)
                 checked: index === root.matchedIndex
+                         || (depth === 0 && modelData.key === "music" && root._musicExpanded)
                 // Figma 970:4028: a folder page shows the Videos icon filled
                 contextual: modelData.asset === "video" && History.viewPath[0] === "folder"
                 // a row takes its own right click (the pane's handler below

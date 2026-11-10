@@ -276,7 +276,7 @@ private:
     void jobFailed(const char* what) noexcept;
     void startup();
     void schedule();
-    void refreshSources(const QStringList& ids, bool guides);
+    void refreshSources(const QStringList& ids, bool guides, bool force = false);
     bool loadPlaylist(const SourceConfig& cfg, bool download, SourceState& state);
     // a server of the user: its channels and guide written as the source's
     // playlist.m3u and guide.xml (false and why when it can't be asked)
@@ -298,7 +298,7 @@ private:
     // signed in to Jellyfin or Emby (kept for this run)
     bool mediaBrowserSession(const SourceConfig& cfg, QString* token, QString* userId, QString* error,
                              bool* refused);
-    void loadGuides(bool download, const QStringList& onlySources);
+    void loadGuides(bool download, const QStringList& onlySources, bool force = false);
     void rebuild();
     void updateCatalog(bool force);
     void progress(const QString& id, const QString& stage, qint64 received, qint64 total);

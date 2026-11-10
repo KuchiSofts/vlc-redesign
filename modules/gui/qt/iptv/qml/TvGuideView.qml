@@ -32,7 +32,7 @@ FocusScope {
     LayoutMirroring.enabled: false
     LayoutMirroring.childrenInherit: true
 
-    readonly property real channelWidth: px(220)
+    readonly property real channelWidth: px(260)
     readonly property real rowHeight: px(56)
     readonly property real gridWidth: Math.max(px(200), width - channelWidth - px(20))
     // Settings > TV: the hours across the guide
@@ -50,6 +50,23 @@ FocusScope {
     readonly property real leftTime: origin + timeX / pxPerSec
     readonly property int firstBlock: Math.max(0, Math.floor(timeX / (blockSecs * pxPerSec)) - 1)
     readonly property int lastBlock: Math.floor((timeX + gridWidth) / (blockSecs * pxPerSec)) + 1
+
+    // the rows in sight that show a programme: none of them, once they have
+    // been answered, is the guide's empty state (the hours shown lie outside
+    // what the guide holds, or the guide was read long ago)
+    property int rowsWithCells: 0
+    property bool settled: false
+    readonly property bool nothingToShow: settled && rowsWithCells === 0 && Iptv.channelModel.count > 0
+    Timer {
+        id: settle
+        interval: 500
+        onTriggered: root.settled = true
+    }
+    function unsettle() {
+        settled = false
+        settle.restart()
+    }
+    onTimeXChanged: if (rowsWithCells === 0) unsettle()
 
     // the programmes the rows ask for, gathered for a moment and asked at
     // once: each row asked on its own, twenty trips through the add-on's
@@ -78,6 +95,7 @@ FocusScope {
                 to = Math.max(to, r.to)
             }
         Iptv.programmes(keys, from, to, (result) => {
+            settle.restart()
             for (const key of keys) {
                 const list = result[key] || []
                 for (const r of asked[key])
@@ -104,7 +122,10 @@ FocusScope {
         }
     }
 
-    Component.onCompleted: Qt.callLater(() => root.scrollTo(Iptv.now - Iptv.guideHours * 3600 / 4, false))
+    Component.onCompleted: {
+        settle.start()
+        Qt.callLater(() => root.scrollTo(Iptv.now - Iptv.guideHours * 3600 / 4, false))
+    }
     onPxPerSecChanged: Qt.callLater(() => root.scrollTo(root.leftTime, false))
 
     NumberAnimation {
@@ -272,6 +293,19 @@ FocusScope {
             // only (a new list made every cell of every row again at each
             // block the time crossed)
             ListModel { id: shown }
+            property bool counted: false
+            function count() {
+                const has = shown.count > 0
+                if (has !== counted) {
+                    counted = has
+                    root.rowsWithCells += has ? 1 : -1
+                }
+            }
+            Connections {
+                target: shown
+                function onCountChanged() { row.count() }
+            }
+            Component.onDestruction: if (counted) root.rowsWithCells -= 1
 
             function load() {
                 const wanted = []
@@ -587,6 +621,28 @@ FocusScope {
         position: timeline.contentX / timeline.contentWidth
         onPositionChanged: if (pressed) timeline.contentX = position * timeline.contentWidth
         policy: T.ScrollBar.AlwaysOn
+    }
+
+    // nothing for the hours shown: said, with the way out
+    Column {
+        visible: root.nothingToShow
+        x: root.channelWidth + Math.round((root.gridWidth - width) / 2)
+        y: rows.y + Math.round(Math.max(0, Math.min(rows.height, rows.contentHeight) - height) / 2)
+        spacing: root.px(14)
+        Text {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: qsTr("No programmes at this time")
+            color: root.c("#969696", "#4d4d4d")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.redesign.fontMedium
+        }
+        Widgets.RedesignButton {
+            anchors.horizontalCenter: parent.horizontalCenter
+            accent: true
+            enabled: !Iptv.busy
+            text: Iptv.busy ? qsTr("Updating…") : qsTr("Update")
+            onClicked: Iptv.refresh("")
+        }
     }
 
     Text {

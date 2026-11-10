@@ -171,9 +171,7 @@ Widgets.PageExt {
     }
 
 
-    FocusScope {
-
-        anchors.fill:  parent
+    contentItem: FocusScope {
 
         MLPlaylistModel {
             id: model

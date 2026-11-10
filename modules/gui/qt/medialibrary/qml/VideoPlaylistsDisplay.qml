@@ -122,10 +122,8 @@ Widgets.PageLoader {
                 }
             }
 
-            PlaylistMediaList {
+            contentItem: PlaylistMediaList {
                 id: playlistView
-
-                anchors.fill: parent
 
                 focus: true
 

@@ -95,10 +95,8 @@ Widgets.PageLoader {
 
             title: qsTr("Continue Watching")
 
-            VideoAll {
+            contentItem: VideoAll {
                 id: continueWatching
-
-                anchors.fill: parent
 
                 focus: true
 
@@ -145,10 +143,8 @@ Widgets.PageLoader {
 
             title: qsTr("Favorites")
 
-            MediaView {
+            contentItem: MediaView {
                 focus: true
-
-                anchors.fill: parent
 
                 model: MLMediaModel {
                     favoriteOnly: true
@@ -179,10 +175,8 @@ Widgets.PageLoader {
 
             title: qsTr("New Videos")
 
-            VideoAll {
+            contentItem: VideoAll {
                 id: newVideo
-
-                anchors.fill: parent
 
                 focus: true
 
@@ -304,10 +298,8 @@ Widgets.PageLoader {
 
             title: qsTr("New Music")
 
-            MediaView {
+            contentItem: MediaView {
                 focus: true
-
-                anchors.fill: parent
 
                 model: MLAudioModel {
                     ml: MediaLib

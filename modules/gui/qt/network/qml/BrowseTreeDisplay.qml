@@ -66,10 +66,8 @@ Widgets.PageExt {
         onHomeButtonClicked: (reason) => root.homeButtonClicked(reason)
     }
 
-    MainViewLoader {
+    contentItem: MainViewLoader {
         id: loader
-
-        anchors.fill: parent
 
         isSearchable: true
 

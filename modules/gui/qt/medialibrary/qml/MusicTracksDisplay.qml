@@ -54,10 +54,7 @@ Widgets.PageExt {
         tracklistdisplay_id.positionViewAtBeginningAnimated()
     }
 
-    FocusScope {
-
-        anchors.fill: parent
-
+    contentItem: FocusScope {
         focus: true
 
         // Aliases

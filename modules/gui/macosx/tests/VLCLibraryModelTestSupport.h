@@ -63,7 +63,8 @@
                    token:(NSObject *)token;
 - (NSArray *)readCacheOnQueue:(dispatch_queue_t)queue
                   withBlock:(NSArray *(^)(void))block;
-- (NSObject *)beginCacheUpdateForGetter:(SEL)getter;
+- (NSObject *)beginCacheUpdateForGetter:(SEL)getter
+                             generation:(NSUInteger *)generation;
 - (void)performCacheWriteForGeneration:(NSUInteger)generation
                                  token:(NSObject *)token
                                 getter:(SEL)getter
@@ -104,6 +105,11 @@ VLCMediaLibraryMediaItem *VLCLibraryModelTestMediaItem(vlc_ml_media_type_t type,
 - (instancetype)initWithLibrary:(vlc_medialibrary_t *)library
                  observeEvents:(BOOL)observeEvents;
 
+// Pauses the next refresh before its token is registered.
+- (void)holdNextCacheUpdateForGetter:(SEL)getter
+                             handler:(dispatch_block_t)handler
+                   completionHandler:(dispatch_block_t)completionHandler;
+- (void)releaseCacheUpdate;
 - (void)holdNextQueryResultForGetter:(SEL)getter
                              handler:(dispatch_block_t)handler
                    completionHandler:(dispatch_block_t)completionHandler;

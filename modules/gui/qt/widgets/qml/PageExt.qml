@@ -33,9 +33,11 @@ T.Page {
     // a default [] is a binding, which every page loaded replaced)
     property var pagePrefix
 
-    //note that T.Page introduce an intermediate Item, so to access our delegate,
-    //we need to use contentChildren[0] rather than contentItem
-    readonly property Item _firstChild: contentChildren[0] ?? null
+    // The page's own item: the content item a page assigns (VideoLAN's
+    // pages since c3002b8be9), else the first child of the one T.Page
+    // makes for a page that only has children (a plain Item).
+    readonly property Item _firstChild: (contentItem && !contentItem.toString().startsWith("QQuickItem("))
+                                        ? contentItem : (contentChildren[0] ?? null)
 
     //indicates whether the subview support grid/list mode
     property bool hasGridListMode: _firstChild?.hasGridListMode ?? false

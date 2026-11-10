@@ -33,7 +33,11 @@ Widgets.PageExt {
     property alias model: tracklistdisplay_id.model
     property alias selectionModel: tracklistdisplay_id.selectionModel
 
-    property var sortModel: [
+    // (the header's count and Sort menu: the list is not the page's first
+    // child here, so the page says them itself)
+    libraryItemCount: tracklistdisplay_id.model?.count ?? -1
+
+    sortModel: [
         { text: qsTr("Title"),    criteria: "title"},
         { text: qsTr("Album"),    criteria: "album_title" },
         { text: qsTr("Artist"),   criteria: "main_artist" },

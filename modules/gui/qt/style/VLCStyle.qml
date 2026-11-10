@@ -201,6 +201,14 @@ QtObject {
             return Math.round(base + (grown - base) * share)
         }
 
+        // The width of a card of a grid whose cells are `base + gap` wide in
+        // the design, in a view `width` wide (the last gap is the margin at
+        // the row's end): whole cards only, grown to fill the row.
+        function gridCardWidth(base, gap, width) {
+            const columns = Math.max(1, Math.floor(width / (base + gap)))
+            return Math.max(base, Math.min(Math.floor(width / columns) - gap, Math.round(base * cardMaxGrowth)))
+        }
+
         function color(darkValue, lightValue, isDark = vlc_style.palette.isDark) {
             const value = _themed(darkValue, lightValue, isDark)
             if (!increaseContrast)

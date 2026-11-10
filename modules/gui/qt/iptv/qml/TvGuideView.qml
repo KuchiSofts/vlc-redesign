@@ -612,7 +612,9 @@ FocusScope {
         x: xNow - width / 2
         y: timeline.y + timeline.height - root.px(6)
         width: root.px(2)
-        height: rows.y + rows.height - y
+        // (it ends with the last channel's row: not on through the empty
+        // page under a short list)
+        height: rows.y + Math.min(rows.height, rows.contentHeight) - y
         color: VLCStyle.redesign.accent
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -633,7 +635,16 @@ FocusScope {
         size: timeline.width / timeline.contentWidth
         position: timeline.contentX / timeline.contentWidth
         onPositionChanged: if (pressed) timeline.contentX = position * timeline.contentWidth
-        policy: T.ScrollBar.AlwaysOn
+        // Shown while the time moves and while it is held, as the other
+        // scroll bars: always on, its handle (days of guide make it a dot)
+        // sat under the grid as a stray mark.
+        minimumSize: Math.min(1, root.px(48) / Math.max(1, width))
+        active: hScrollShown.running || hovered || pressed
+        Timer { id: hScrollShown; interval: 800 }
+        Connections {
+            target: timeline
+            function onContentXChanged() { hScrollShown.restart() }
+        }
     }
 
     // nothing for the hours shown: said, with the way out

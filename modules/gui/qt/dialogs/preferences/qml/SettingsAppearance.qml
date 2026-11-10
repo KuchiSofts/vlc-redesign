@@ -136,6 +136,7 @@ SettingsSectionTitle {
             anchors.rightMargin: root.px(12)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            id: directionLabel
             text: qsTr("Layout direction")
             color: root.c("#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily
@@ -149,7 +150,8 @@ SettingsSectionTitle {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             // wider for a long translation, as far as the label leaves room
-            width: Math.min(Math.max(root.px(320), neededWidth), parent.width * 0.62)
+            width: Math.min(Math.max(root.px(320), neededWidth),
+                            Math.max(parent.width * 0.62, parent.width - directionLabel.implicitWidth - root.px(12)))
             options: [{ text: qsTr("Left to right"), value: false },
                       { text: qsTr("Right to left"), value: true }]
             value: root.selectedRightToLeft
@@ -165,6 +167,7 @@ SettingsSectionTitle {
             anchors.left: parent.left
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            id: themeLabel
             text: qsTr("Theme")
             color: root.c("#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily
@@ -173,7 +176,10 @@ SettingsSectionTitle {
         SettingsSegmented {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            width: Math.min(Math.max(root.px(320), neededWidth), parent.width * 0.62)
+            // (as wide as its texts ask, up to the label: "System" was cut
+            // in Hebrew at 200 % beside a short label and an empty row)
+            width: Math.min(Math.max(root.px(320), neededWidth),
+                            Math.max(parent.width * 0.62, parent.width - themeLabel.implicitWidth - root.px(12)))
             options: root.themeChoices.map(choice => ({ text: choice.text, value: choice.index }))
             value: root.selectedTheme
             onChosen: (value) => root.chooseTheme(value)

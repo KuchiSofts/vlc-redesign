@@ -41,8 +41,9 @@ T.ToolBar {
         : VLCStyle.dp(70 + 120 + 60, VLCStyle.scale) + (sort.available ? VLCStyle.dp(132, VLCStyle.scale) : 0)
           + titleAdvance.advanceWidth
           + (itemCount >= 0 ? countLabel.implicitWidth : 0)
-    readonly property bool compact: width < VLCStyle.dp(760, VLCStyle.scale) ||
-        (actionLoader.active && availableWidth < actionLoader.implicitWidth + _lineNeeds)
+    // (two lines only when one cannot hold them: a page 700 wide, as a
+    // 1920 window at 200 %, broke its header with room to spare)
+    readonly property bool compact: availableWidth < _lineNeeds + (actionLoader.active ? actionLoader.implicitWidth : 0)
     TextMetrics {
         id: titleAdvance
         text: root.breadcrumb
@@ -572,7 +573,8 @@ T.ToolBar {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                    anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
+                    anchors.rightMargin: clearSearch.visible ? clearSearch.width + VLCStyle.dp(4, VLCStyle.scale)
+                                                             : VLCStyle.dp(8, VLCStyle.scale)
                     background: Item {}
                     padding: 0
                     leftPadding: 0
@@ -607,6 +609,38 @@ T.ToolBar {
                     }
                     Component.onDestruction: {
                         if (activeFocus) MainCtx.useGlobalShortcuts = previousGlobalShortcuts
+                    }
+                }
+
+                // empties the field (shown while it holds text)
+                MouseArea {
+                    id: clearSearch
+                    visible: searchField.text.length > 0
+                    anchors.right: parent.right
+                    anchors.rightMargin: VLCStyle.dp(4, VLCStyle.scale)
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: VLCStyle.dp(26, VLCStyle.scale)
+                    height: width
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    Accessible.role: Accessible.Button
+                    Accessible.name: qsTr("Clear")
+                    onClicked: {
+                        searchField.clear()
+                        searchField.forceActiveFocus(Qt.MouseFocusReason)
+                    }
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: VLCStyle.dp(4, VLCStyle.scale)
+                        visible: parent.containsMouse
+                        color: VLCStyle.redesign.color("#2A2A2A", "#a3a3a2", root.darkTheme)
+                    }
+                    Image {
+                        anchors.centerIn: parent
+                        width: VLCStyle.dp(16, VLCStyle.scale)
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: "qrc:///redesign/icons/close/default.svg"
                     }
                 }
 

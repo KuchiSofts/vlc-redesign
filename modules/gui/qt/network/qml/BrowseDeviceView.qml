@@ -179,6 +179,12 @@ FocusScope {
             basePictureWidth: VLCStyle.gridCover_network_width
             basePictureHeight: VLCStyle.gridCover_network_height
 
+            // (the cards from the page's margin, as every other page's:
+            // they began 20 further in, under a heading 20 further in)
+            fixedPictureWidth: true
+            horizontalSpacing: VLCStyle.dp(20, VLCStyle.scale)
+            topMargin: 0
+
             maxNbItemPerRow: 12
 
             readonly property int maximumCount: (root.maximumRows === -1)

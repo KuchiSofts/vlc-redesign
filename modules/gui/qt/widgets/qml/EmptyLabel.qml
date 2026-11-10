@@ -85,7 +85,7 @@ T.Control {
             height: width
             sourceSize: Qt.size(width, height)
             source: visible ? SVGColorImage.colorize("qrc:///redesign/icons/" + (_name || "file") + "/default.svg")
-                                           .any({ "#8F8F8F": VLCStyle.redesign.color("#6B6B6B", "#8a8a8a") }).uri()
+                                           .any({ "#8F8F8F": VLCStyle.redesign.color("#6B6B6B") }).uri()
                             : ""
         }
 

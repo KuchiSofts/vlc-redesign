@@ -360,8 +360,7 @@ libqt_plugin_la_SOURCES = \
 	widgets/native/redesign_message_box.cpp \
 	widgets/native/redesign_message_box.hpp \
 	widgets/native/searchlineedit.cpp widgets/native/searchlineedit.hpp \
-	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp \
-	widgets/native/doubleclickignoringitem.hpp
+	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp
 
 # Meta-object compilation
 

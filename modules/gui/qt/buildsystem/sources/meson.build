@@ -446,7 +446,6 @@ qt_plugin_sources = files(
     '../../widgets/native/searchlineedit.hpp',
     '../../widgets/native/viewblockingrectangle.cpp',
     '../../widgets/native/viewblockingrectangle.hpp',
-    '../../widgets/native/doubleclickignoringitem.hpp',
 )
 
 if host_system == 'windows'

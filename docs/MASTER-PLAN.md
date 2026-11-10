@@ -22,7 +22,10 @@ What is being worked on, updated as it changes (2026-11-10):
   (V005), the search field's clear button (V012), menus clear of the window's edge (V011), the header on one line
   at 200 % (D18), Tracks' count and Sort, What's new's English notes left to right in Hebrew (D13), Home's music
   cards without an artist (V001). The player captured with a real film at 100 % and 200 %, English and Hebrew: the
-  Languages panel fades where it scrolls and stays under the window's bar. VideoLAN merged up to `7712870d59`.
+  Languages panel fades where it scrolls and stays under the window's bar. VideoLAN merged up to `7712870d59`, then
+  to `fb39292a88` (Qt 6.8 required; build 29: the pages, a track's click / menu / double click and a video card's
+  double click seen, 0 QML warnings). Home's cards: the design's sizes at the design's width, no growth in a row
+  that isn't full (seen at both widths).
   Open, low: menus' translucency (V010, the design's 95 %), "Unknown Artist" untranslated (D12, the library's own
   name), the dash icon of Delete (D21, the design's remove glyph), no New playlist button in the empty state (D09).
 - 🟢 **Interface size, the same on every app** (the owner, 10 Nov; desktop): Settings › Interface › Window ›

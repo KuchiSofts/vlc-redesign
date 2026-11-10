@@ -51,6 +51,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Every grid ends its rows at the page's margin at every window width, the design's own too: Artists, Albums,
   Genres, the Network folders and Live TV's channel and film grids (whole cards, grown by a third at most). Only
   Home's rows, which scroll sideways, keep the design's card sizes at the design's page width.
+- A row or a grid with fewer cards than a row holds keeps the design's card size: three music cards were grown
+  beside an empty half row, and Home's music cards were 220 instead of the design's 200 in the design's own window.
 - Empty pages and a search without results show the page's icon, large and bare, instead of the old grey box.
 - The search field has a clear button while it holds text. Tracks shows its count and its Sort menu in the header.
 - Menus keep a small margin from the window's edge (the page menu's corner and shadow were cut by it).
@@ -195,6 +197,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   coordinates, portrait, ultra-wide and tiny screens).
 - Tests, in `unit-tests.sh` under ASan and UBSan: the Live TV service with a fake network (`iptv-service`), the
   parsers against malformed and huge input (`parsers-fuzz`: 69 parsers), and more checks in the existing ones.
+- VideoLAN's master merged up to `fb39292a88` (2026-11-10, 6 commits): Qt 6.8 is now VideoLAN's minimum too (it
+  already was the redesign's), its workarounds for older Qt are gone (the `DoubleClickIgnoringItem` wrapper of the
+  cards, the table rows, the queue rows and the small player; our changes kept on VideoLAN's handlers), the video
+  surface tells when the pointer is over it. The split build lists follow: the removed header taken out, the cache
+  generator's basic-block check always on.
 - VideoLAN's master merged up to `7712870d59` (2026-11-10, 5 commits): the pages assign their content item
   (`contentItem:`; `PageExt` reads a page's own item either way, so the redesign's pages with plain children keep
   their header, sort and keyboard path), the Qt dependency files are always rewritten (ported to

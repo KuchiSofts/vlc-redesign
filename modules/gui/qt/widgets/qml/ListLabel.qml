@@ -20,8 +20,11 @@ import VLC.Style
 
 LabelExt {
     elide: Text.ElideRight
-    font.pixelSize: VLCStyle.fontSize_normal
-    font.weight: Font.DemiBold
+    // the type of the redesign's lists (Inter 14, regular): VLC's bold
+    // white rows stood out beside Home's and Videos' cards
+    font.family: VLCStyle.redesign.fontFamily
+    font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
+    font.weight: Font.Normal
     verticalAlignment: Text.AlignVCenter
     textFormat: Text.PlainText
 }

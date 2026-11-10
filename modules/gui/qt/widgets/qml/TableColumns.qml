@@ -222,7 +222,7 @@ Item {
             text: timeDel.rowModel?.[timeDel.colModel.criteria]?.formatShort() ?? ""
             color: timeDel.selected
                 ? timeDel.colorContext.fg.highlight
-                : timeDel.colorContext.fg.primary
+                : VLCStyle.redesign.color("#8F8F8F")
         }
     }
 
@@ -275,7 +275,7 @@ Item {
 
                 color: source.selected
                     ? source.colorContext.fg.highlight
-                    : source.colorContext.fg.primary
+                    : VLCStyle.redesign.color(VLCStyle.redesign.textSecondary)
 
             }
         }
@@ -293,7 +293,7 @@ Item {
 
             color: source.selected
                 ? source.colorContext.fg.highlight
-                : source.colorContext.fg.secondary
+                : VLCStyle.redesign.color("#6B6B6B")
         }
     }
 

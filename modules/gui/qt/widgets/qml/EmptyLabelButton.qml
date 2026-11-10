@@ -73,6 +73,9 @@ EmptyLabel {
 
         width: Math.max(VLCStyle.dp(84, VLCStyle.scale), implicitWidth)
 
+        // (a search that found nothing: browsing the network is no answer)
+        visible: root.text !== qsTr("No results")
+
         focus: true
 
         text: qsTr("Browse")

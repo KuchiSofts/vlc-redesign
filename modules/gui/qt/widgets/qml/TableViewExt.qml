@@ -81,8 +81,14 @@ ListViewExt {
     property int rightPadding: 0
 
     readonly property real _extraPadding: VLCStyle.dynamicAppMargins(width)
-    property real contentLeftPadding: _extraPadding + leftPadding + VLCStyle.layout_left_margin
-    property real contentRightPadding: _extraPadding + rightPadding + VLCStyle.layout_right_margin
+    // The rows start at the page's margin (20, as the header and the grids)
+    // and are at most maxRowWidth wide: on a wide window the columns stay
+    // near each other instead of spreading with dead bands between them.
+    property real maxRowWidth: VLCStyle.dp(1200, VLCStyle.scale)
+    property real contentLeftPadding: leftPadding + VLCStyle.dp(20, VLCStyle.scale)
+    property real contentRightPadding: rightPadding + VLCStyle.dp(20, VLCStyle.scale)
+        + Math.max(0, width - leftMargin - rightMargin - leftPadding - rightPadding
+                      - VLCStyle.dp(40, VLCStyle.scale) - maxRowWidth)
 
     // These are "extra" margins because `ListView`'s own `margins` is also considered for the header.
     property real defaultHeaderExtraLeftMargin: contentLeftPadding

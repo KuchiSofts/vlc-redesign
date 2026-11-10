@@ -115,10 +115,6 @@ Widgets.TableViewExt {
     }, {
         size: 1,
 
-        model: _lineDisc
-    }, {
-        size: 1,
-
         model: _lineDuration
     }]
 

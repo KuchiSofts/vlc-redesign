@@ -1,0 +1,70 @@
+# M3 — cobertura estática de Settings, Onboarding e atalhos
+
+Estado examinado: checkout integrado `feat/m3` em `f201cd4af3` (sobre `a5db9f42c0`). Referências: 19 arquivos `Settings - *.png`, 11 `Onboarding*.png` e `Keyboard Shortcuts.png` em `build-m3/reference/export/`. Esta atualização confere código e exports, sem novo build, captura ou runtime; as provas nativas já existentes ficam em m3.md. “Ligado” significa binding ou ação para API real, condicionado ao build e à mídia/saída ativa; não afirma paridade de pixels nem execução de todo controle.
+
+## Arquitetura e alcance comum
+
+- `dialogs/dialogs/qml/SetupDialogs.qml` abre `SettingsDialog.qml` e `OnboardingDialog.qml` a pedido do `DialogsProvider`, e chama onboarding automaticamente quando `OnboardingController.needsSetup` é verdadeiro. `SettingsDialog.qml` também abre `ShortcutsDialog.qml`.
+- `SettingsDialog.qml` fornece busca, 13 categorias, rolagem, Reset category, Apply/Cancel e expansão inline de Advanced Options. O catálogo tem **121 chaves nativas candidatas**, não 121 campos garantidos: `ConfigModel::reload()` exige `config_FindConfig`, texto e tipo suportado; opções de módulos não presentes no build são omitidas. Tipos, limites e escolhas vêm do core. `SettingsPresentation` agrupa as opções confirmadas; `SettingsOptionRow` oferece boolean, escolhas, valores limitados, texto/senha e browse para pasta de gravação e arquivo de log. Uma categoria presente não demonstra cada campo do PNG.
+- Opções core e efeitos de áudio/vídeo são preparados juntos em `applyWithEffects()`: valida estado externo, junta configuração pendente, executa **uma** chamada de persistência e restaura configuração em memória e preview quando ela falha. Cancel desfaz staging e preview. EQ (preset, pré-amplificação, dez bandas, two-pass), compressor, spatializer, stereo widening e Picture (hue, brightness, contrast, saturation, gamma e Reset) ficam inline apenas com reprodução/saída e filtros disponíveis. O seletor de dispositivo usa a lista real da saída atual; sua prévia é reversível enquanto a mesma saída existe, mas não é uma preferência persistente de dispositivo.
+- Aparência e acento usam `MainCtx`/QSettings; Developer mode é uma flag **da interface** (`redesign/developer-mode`), desligada por padrão, que libera os diagnósticos avançados, sem efeito mágico no core. Last.fm usa o módulo `audioscrobbler` e opções `lastfm-*`, `scrobbler-url`, `extraintf`/`control` reais; ativação exige reinício e é indisponível quando o módulo ou as opções não existem. Idioma no Linux segue a localidade do sistema; no Windows o botão abre preferências nativas com aviso de reinício. Não há dropdown de idioma inline no Linux.
+- A aparência escura usa Inter e tokens `VLCStyle.redesign`; o tema claro tem ramificações de cor. `SettingsDialog` mantém rodapé Apply/Cancel/Reset de 63 px que não está visível nos exports e reduz a área de conteúdo. Não foi feita nova comparação de pixels nem certificação de todos os estados/alturas nesta atualização. Os PNGs de Settings têm 1078×895 px com sombra externa; onboarding tem 1114×783 px, e atalhos 1078×830 px.
+
+## Settings — mapa dos 19 exports
+
+| Export exato | Código ligado à tela | Lacuna concreta frente ao export |
+| --- | --- | --- |
+| `Settings - global.png` | Light/Dark/System, nove acentos, idioma por plataforma; avisos, update, logging/log file e Developer mode real da UI. | Linux usa idioma do sistema; Windows encaminha à preferência nativa e exige reinício. Developer mode não altera o core; disponibilidade de logger depende do build. |
+| `Settings - global-1.png` | `verbose`/`stats` entram no painel Advanced Options expandido inline, liberado por Developer mode. | O export não garante que todos os controles avançados existem no build; a seção usa só opções nativas encontradas. |
+| `Settings - interface.png` | Janela/vídeo, fullscreen, opacidade, auto-raise, minimizar, pausa, título, controles e editor de toolbar real. | Skin por arquivo, memória exata de tamanho/posição e “compact mode” do desenho não têm campo equivalente confirmado nesta tela. |
+| `Settings - interface-1.png` | Mesma categoria, mais `qt-notification` e `qt-system-tray` quando disponíveis. | Variação de scroll/densidade ainda requer comparação visual; os controles dependem das opções Qt presentes. |
+| `Settings - privacy.png` | Histórico/posição/estado, acesso à rede, limpeza real do histórico da ML; Last.fm condicional com usuário, senha mascarada e URL, e liga/desliga por `extraintf`/`control`. | “Never remember items matching” não tem regra nativa equivalente confirmada. Limpeza depende de ML; Last.fm fica indisponível sem `audioscrobbler`/opções e só ativa após reinício. Credenciais pertencem ao perfil de configuração do VLC, não a um perfil isolado desta janela. |
+| `Settings - controls.png` | Editor de atalhos, Reset all com confirmação/staging, quatro durações de salto, pausa/cliques e ações das rodas X/Y. | Inversão de direção e controle remoto/porta do export não têm equivalentes confirmados no catálogo; valores de salto são quatro opções VLC distintas. |
+| `Settings - playback.png` | Autostart, taxa, qualidade/menu/faixas, repeat/loop/random, stop/pause, `playlist-cork` e restauração da posição em Privacy. | “When playback finishes” não é dropdown único: `play-and-stop`, `play-and-pause`, repeat e loop são opções VLC separadas; “continue” está na categoria Privacy. |
+| `Settings - playback-1.png` | Continuação rolável das mesmas opções reais. | Ordem/densidade da variante não foi aprovada por comparação integral; Seeking não tem todos os controles compostos do desenho. |
+| `Settings - video.png` | Saída, fullscreen, wallpaper/on-top, deinterlace, ratio, snapshots e Picture inline com cinco ajustes e Reset. | Picture precisa vídeo/filtro `adjust` ativo; não há painel fictício quando a capacidade falta. |
+| `Settings - video-1.png` | Mesmas opções e painel Picture, distribuídos no scroll. | Ratio custom e demais campos avançados do export não têm editor composto equivalente; disponibilidade de módulos e precisão visual seguem em aberto. |
+| `Settings - audio.png` | Saída, módulo `aout`, speaker `stereo-mode`, `mix-mode`, ganho/volume, replay gain e time stretching; dispositivo da saída atual selecionável com preview/Cancel. | Escolha de dispositivo é da saída atual e não persiste como ID no perfil; sem aout/lista fica desabilitada. Volume inicial no Windows depende de `mmdevice-volume`; “night mode” não é opção isolada equivalente. |
+| `Settings - audio-1.png` | EQ/preset, pré-amplificação, dez bandas, two-pass, compressor, spatializer e stereo widening inline via efeitos nativos. | Painéis dependem de áudio ativo e filtros presentes; composição exata do desenho e alto-falantes reais não foram validados aqui. |
+| `Settings - subtitles.png` | Faixa/idioma, autodetecção, encoding e FreeType: fonte, bold, cor, opacidade, contorno e sombra. | Modo relativo/pixels do desenho não tem controle equivalente confirmado; FreeType/decodificador podem faltar no build. |
+| `Settings - subtitles-1.png` | Mesma aparência tipada e rolagem, inclusive escala/delay. | A variante visual não foi medida integralmente; campos opcionais só aparecem quando o módulo fornece config. |
+| `Settings - library.png` | ML/preparse/pastas e `one-instance`, abertura por arquivo externo e `playlist-enqueue`. | Política de artwork continua em Privacy (`metadata-network-access`), não em dropdown próprio de Library. |
+| `Settings - network.png` | Quatro cachês, timeout, HTTP proxy/senha e `gnutls-system-trust`/`gnutls-priorities`. | Não há preset agregado de buffering; TLS e proxy só aparecem se os respectivos módulos expõem a configuração. |
+| `Settings - performance.png` | Hardware decode, post-processing, skip H.264 loop filter, threads, frames atrasados, prioridade e relógio. | Rescan plugins e seleção composta de encoder/decoder do PNG não têm controle confirmado; `avcodec`/postproc podem faltar no build. |
+| `Settings - recording.png` | Pasta com browse local, formato nativo e sout display/audio/video/subtitles. | Descoberta/qualidade de cast e preset/tuning de encoding do desenho não têm opção equivalente confirmada. |
+| `Settings - extensions.png` | `ServicesDiscoveryModel`: lista real local/online, busca, install/remove quando gerenciável, loading/estado vazio; `qt-autoload-extensions`. | A fonte online/rede pode não fornecer itens; API de install/remove não devolve resultado estruturado, portanto não se afirma sucesso nem percentual de progresso. |
+
+## Onboarding — mapa dos 11 exports
+
+| Export exato | Código ligado à etapa | Diferença ou limite |
+| --- | --- | --- |
+| `Onboarding.png` | `OnboardingDialog` passo 0 e `WelcomeStep`: SVG de boas-vindas 141 px, texto, diretório sugerido por `QStandardPaths::MoviesLocation`, `FilePicker.chooseFolder`, Next; controller valida URL local, diretório legível e adiciona via `MLFoldersBaseModel`. | O export não mostra o consentimento online; a UI adiciona checkbox explícito de metadados/capas. Se não houver pasta Movies válida, mostra “No folder selected”; não inventa `~/Videos`. |
+| `Onboarding-1.png` | `ThemeStep`: três opções Light/Dark/System, nove swatches; `previewTheme()` altera `ColorSchemeModel` e o acento é pré-visualizado com rollback em Cancel. | A amostra de player é decorativa, não um player tocando; a imagem exportada mostra um player como contexto visual. |
+| `Onboarding-2.png` | `ShortcutsStep` usa `OnboardingController.activeShortcuts()` para mostrar somente atalhos `key-*` configurados; Back e Finish. | Teclas e quantidade podem diferir do exemplo; não existem valores hardcoded só para reproduzir a imagem. |
+| `Onboarding-3.png` | Mesmo `ThemeStep`, swatch coral (`accentChoices`) e preview imediato. | Equivalência de tonalidade/renderização não aferida nativamente. |
+| `Onboarding-4.png` | Mesmo `ThemeStep`, swatch amarelo e preview. | Idem. |
+| `Onboarding-5.png` | Mesmo `ThemeStep`, swatch verde e preview. | Idem. |
+| `Onboarding-6.png` | Mesmo `ThemeStep`, swatch ciano e preview. | Idem. |
+| `Onboarding-7.png` | Mesmo `ThemeStep`, swatch azul e preview. | Idem. |
+| `Onboarding-8.png` | Mesmo `ThemeStep`, swatch roxo e preview. | Idem. |
+| `Onboarding-9.png` | Mesmo `ThemeStep`, swatch rosa e preview. | Idem. |
+| `Onboarding-10.png` | Mesmo `ThemeStep`, swatch cinza e preview. | Idem. |
+
+`OnboardingController.needsSetup` depende de `qt-privacy-ask` e conclusão local. Finish só emite `completed()` depois da confirmação da pasta no modelo ou sem pasta escolhida; persiste consentimento, marcador de privacidade e tema. Skip preserva consentimento preexistente e encerra o primeiro uso; reabrir por Settings não reaplica Skip. Cancel desfaz preview e não marca concluído. A UI salva o acento no sinal `completed()`; falha do controller mantém a janela aberta com erro. m3.md registra provas anteriores de preview/Cancel/persistência de amostras de tema/acento; esta atualização não as repetiu nem estende o resultado a todos os swatches.
+
+## Keyboard Shortcuts.png
+
+`ShortcutsDialog.qml` implementa busca, seletor All Fields/Action/Hotkey/Global Hotkey, colunas e grupos, captura, limpar, substituir conflito e Reset all com confirmação. `ShortcutsModel` enumera `CONFIG_ITEM_KEY` do core e lê/grava `key-*`/`global-key-*`; Reset prepara os defaults para Save, e Cancel descarta. O modelo detecta conflito de atribuição e alteração externa, chama `config_SaveConfigFile` no Save e retorna erro em falha. Há aviso de reinício após Save. Lista, rótulos e teclas refletem a configuração instalada, não necessariamente os exemplos do PNG. Ações sem chave `global-*` não ganham um atalho global inventado: a tentativa pela coluna vazia é recusada.
+
+## Próximas provas necessárias
+
+1. Validar no runtime integrado os caminhos novos de EQ/Picture inline, expansão avançada, Last.fm quando o módulo existir e seleção/cancelamento de dispositivo em mais de uma saída. Esta atualização não adicionou prova nativa; m3.md e `evidence/m3/result.json` descrevem as verificações anteriores sem estendê-las a estes fluxos.
+2. Comparar visualmente os 19 exports Settings, 11 Onboarding e Keyboard Shortcuts em estados, scroll, foco, contraste e alturas de janela relevantes. Uma tela com controles ligados não prova fidelidade de pixels nem cobertura de todos os estados.
+3. Resolver por decisão de produto os controles do export sem equivalente nativo confirmado, antes de implementá-los. Não transformar uma configuração próxima em semântica falsa: modo relativo/pixels, regra de exclusão de histórico, preset agregado de buffering, cast/encoding avançado e layout composto de “fim da reprodução” continuam distintos das opções expostas.
+
+## Limites de disponibilidade e perfil
+
+- `config_FindConfig` filtra cada uma das 121 candidatas; FreeType, decodificador de legendas, `avcodec`, GnuTLS, logger e opções Qt/Windows só aparecem quando o build respectivo as fornece. Os filtros `equalizer`, `compressor`, `spatializer`, `stereo_widen` e `adjust` dependem de módulos presentes e de áudio/vídeo ativo. Esta inspeção não afirma que todos estão instalados no binário testado.
+- Last.fm requer `module_exists("audioscrobbler")` **e** cinco opções de configuração; sem isso a UI informa indisponibilidade. Habilitar adiciona `audioscrobbler` à lista de interfaces para o próximo início, preservando outras entradas; não executamos conexão externa nem cadastramos credenciais de teste.
+- Idioma global no Linux vem do sistema e muda após ajuste externo/reinício; o seletor nativo de idioma é oferecido somente no Windows. Um dropdown inline Linux exigiria nova decisão/infraestrutura e não foi simulado.
+- `config_SaveConfigFile` grava opções VLC no perfil da aplicação. `MainCtx.setSettingValue` mantém tema, acento e Developer mode em QSettings. Usuário/senha de Last.fm são dados sensíveis do perfil global do VLC: não há cofre, isolamento por perfil de toolbar ou migração automática. O seletor de dispositivo é apenas estado da saída atual, não um valor persistido no perfil.

@@ -1100,9 +1100,9 @@ subs::Query filmQuery()
 {
     subs::Query q;
     q.imdb = QStringLiteral("tt0133093");
-    q.title = QStringLiteral("The Matrix");
+    q.title = QStringLiteral("The Voyage");
     q.year = 1999;
-    q.fileName = QStringLiteral("The.Matrix.1999.1080p.BluRay.x264.mkv");
+    q.fileName = QStringLiteral("The.Voyage.1999.1080p.BluRay.x264.mkv");
     q.hash = QStringLiteral("8e245d9679d31e12");
     q.languages = { QStringLiteral("ar"), QStringLiteral("pt-BR"), QStringLiteral("zh-TW"), QStringLiteral("en"),
                     QStringLiteral("zh") };
@@ -1114,11 +1114,11 @@ subs::Query episodeQuery()
 {
     subs::Query q;
     q.imdb = QStringLiteral("tt0903747");
-    q.title = QStringLiteral("Breaking Bad");
+    q.title = QStringLiteral("Northern Bay");
     q.series = true;
     q.season = 2;
     q.episode = 3;
-    q.fileName = QStringLiteral("Breaking.Bad.S02E03.720p.BluRay.x264-DEMAND.mkv");
+    q.fileName = QStringLiteral("Northern.Bay.S02E03.720p.BluRay.x264-GROUPA.mkv");
     q.languages = { QStringLiteral("ar"), QStringLiteral("en"), QStringLiteral("hr"), QStringLiteral("ro") };
     q.credentials.key = QStringLiteral("my-key");
     return q;
@@ -2238,8 +2238,8 @@ std::vector<Target> makeTargets()
             });
             b.ladder("YIFY: many rows", kSmallLadder, [](long long n) {
                 return fill("<tr data-id=\"7\"><td><span class=\"label label-success\">12</span></td><td><span "
-                            "class=\"sub-lang\">English</span></td><td><a href=\"/subtitles/the-matrix-english\">"
-                            "<span class=\"text-muted\">subtitle</span> The.Matrix.1999</a></td></tr>\n", n);
+                            "class=\"sub-lang\">English</span></td><td><a href=\"/subtitles/the-voyage-english\">"
+                            "<span class=\"text-muted\">subtitle</span> The.Voyage.1999</a></td></tr>\n", n);
             });
             b.add("<tr data-id=\"1\"><a href=\"/subtitles/x\">x</a><span class=\"sub-lang\">English</span>"
                   "<span class=\"label\">99999999999999999999</span></tr>",

@@ -72,7 +72,7 @@ struct Query
     bool series = false;
     int season = -1;
     int episode = -1;
-    QString fileName;      // of the video ("The.Matrix.1999.1080p.mkv")
+    QString fileName;      // of the video ("Some.Film.1999.1080p.mkv")
     QString hash;          // OpenSubtitles hash of a local file, else empty
     qint64 size = 0;
     QStringList languages; // the user's to search, in their order (SubtitlePreferences)

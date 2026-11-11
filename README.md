@@ -17,6 +17,12 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 [![72 languages](https://img.shields.io/badge/72%20languages-1f1d1b?style=flat-square)](https://github.com/KuchiSofts/vlc-redesign/wiki/Languages)
 [![License](https://img.shields.io/badge/GPL--2.0--or--later-1f1d1b?style=flat-square)](COPYING)
 
+[![Windows build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-windows.yml?branch=main&style=flat-square&label=Windows)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml)
+[![Linux build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-linux.yml?branch=main&style=flat-square&label=Linux)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml)
+[![macOS build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-macos.yml?branch=main&style=flat-square&label=macOS)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/tests.yml?branch=main&style=flat-square&label=tests)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml)
+[![Translations](https://img.shields.io/weblate/progress/vlc-redesign?style=flat-square&label=translated)](https://hosted.weblate.org/engage/vlc-redesign/)
+
 <br>
 
 <table>
@@ -43,7 +49,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </td>
 <td align="center" valign="top">
 <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign-0.6.0-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
-<sub>phones and tablets<br>not on Google Play</sub>
+<sub>phones, tablets and Android TV<br>not on Google Play</sub>
 </td>
 </tr>
 </table>
@@ -54,7 +60,11 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 
 <a href="docs/media/tour/tour.mp4"><img src="docs/media/tour/tour.webp" alt="A 56-second tour of VLC Redesign: the welcome steps, Home with Continue Watching, frame previews on the seek bar, subtitles that learn your languages, moving and resizing subtitles, music with a waveform seek bar, the panels above the control bar, casting to a TV, themes, customizing the controls, 72 languages, the library" width="960"></a>
 
-<sub>▶ <a href="docs/media/tour/tour.mp4">Watch the tour in full quality</a> (56 s). Everything shown is the real app, playing freely licensed films and music.</sub>
+<sub>Everything shown is the real app, playing freely licensed films and music. <a href="docs/media/tour/tour.mp4">The tour in full quality</a> (56 s).</sub>
+
+<br>
+
+<a href="https://www.youtube.com/watch?v=fbzTxkARgfE"><img src="https://img.shields.io/badge/Watch%20the%20video-every%20feature%2C%20on%20every%20screen-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch the video on YouTube: VLC Media Player Redesign, every feature, on every screen"></a>
 
 <br><br>
 
@@ -70,6 +80,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 <p>
 <a href="#design-by-juxtopposed">Design</a> ·
 <a href="#features">Features</a> ·
+<a href="#the-video">Video</a> ·
 <a href="#download-and-install">Download</a> ·
 <a href="#platforms">Platforms</a> ·
 <a href="#documentation">Documentation</a> ·
@@ -186,12 +197,17 @@ TV, and bookmarks and chapters. Every option is documented in the [wiki](https:/
 
 </details>
 
-### Demo videos
+## The video
 
-One silent, captioned film per platform:
-[Windows 0.4.0](docs/media/films/vlc-redesign-0.4.0-windows.mp4) (2 min 55 s) ·
-[Linux and macOS 0.4.0](docs/media/films/vlc-redesign-0.4.0-linux-macos.mp4) (21 s) ·
-[Android](docs/media/films/vlc-redesign-0.4.0-android.mp4) (2 min 2 s, recorded before 0.5.0).
+<div align="center">
+
+<a href="https://www.youtube.com/watch?v=fbzTxkARgfE"><img src="https://img.youtube.com/vi/fbzTxkARgfE/maxresdefault.jpg" alt="VLC Media Player Redesign: every feature, on every screen (YouTube)" width="720"></a>
+
+▶ **[VLC Media Player Redesign: every feature, on every screen](https://www.youtube.com/watch?v=fbzTxkARgfE)** on the project's [YouTube channel](https://www.youtube.com/@KuchiSoft)
+
+</div>
+
+On each platform:
 
 <table>
 <tr>
@@ -216,8 +232,8 @@ SHA-256 checksums in `SHA256SUMS.txt`. The full guide is
 | **Windows 11 on ARM64** (Snapdragon PCs) | The same two packages, built natively for ARM64. Available since 0.4.1, with in-app updates since 0.5.0. [Details](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#windows-on-arm64) |
 | **Linux** x86_64 / ARM64 (glibc 2.38: Ubuntu 24.04+, Debian 13, Fedora 39+) | A .deb, .rpm, AppImage or tarball. It installs to `/opt/vlc-redesign` as `vlc-redesign`, next to your distribution's `vlc`. Live TV is an optional add-on package (.deb and .rpm). A Flatpak bundle is also attached to the release. [Which file to pick](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux) |
 | **macOS 12+** (Apple Silicon / Intel) | Drag VLC Redesign to Applications. The app is signed ad hoc, not by Apple, so open it once via *System Settings › Privacy & Security › Open Anyway*. [Details](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#macos) |
-| **Android 5.0+** (phones, tablets and Android TV) | The **APK** (`vlc-redesign-0.5.7-android.apk`). Open it on the device and allow installs from that app once. It installs alongside VLC as *VLC Media Player Redesign*. Not available on Google Play. [Details](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#android) |
-| **Samsung TVs** (Tizen 3.0, 2017 models and later) | **Juxto Media Player**, a player of its own inspired by VLC (not VLC), in the design (`Juxto-Media-Player-TV-0.5.7-source.zip`), installed from a computer with the TV in developer mode. Not in Samsung's store. [Step by step](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv) |
+| **Android 5.0+** (phones, tablets and Android TV) | The **APK** (`vlc-redesign-0.6.0-android.apk`). Open it on the device and allow installs from that app once. It installs alongside VLC as *VLC Media Player Redesign*. Not available on Google Play. [Details](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#android) |
+| **Samsung TVs** (Tizen 3.0, 2017 models and later) | **Juxto Media Player**, a player of its own inspired by VLC (not VLC), in the design (`Juxto-Media-Player-TV-0.6.0-source.zip`), installed from a computer with the TV in developer mode. Not in Samsung's store. [Step by step](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv) |
 
 > [!NOTE]
 > The Windows files are not code-signed yet (the SignPath application is still pending), so SmartScreen may warn
@@ -273,8 +289,8 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 <br>
 
 - **Based on VLC 4.0-dev**, not the stable VLC 3. Expect the occasional rough edge.
-- In-app updates are available on Windows only. Windows on ARM64 has not yet been tested by hand on an ARM64 PC,
-  and the macOS app is not yet signed by Apple.
+- Small in-app updates are on Windows; the Linux AppImage and the macOS app update with the release's full file.
+  Windows on ARM64 has not yet been tested by hand on an ARM64 PC, and the macOS app is not yet signed by Apple.
 - 72 languages cover the whole interface. In VLC's other translation catalogs (listed as partial), only VLC's own
   strings are translated.
 - Media Information, Bookmarks, Convert/Stream, Open Media (disc, capture), Messages and the other classic VLC
@@ -364,14 +380,13 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 ## Roadmap
 
-The current release is **0.6.0** (2026-11-11), a full release of every app with every installer and package: keys in
-full screen without the controls as in VLC 3, a round of stability, smarter automatic subtitles, online subtitles for network videos on Android, the same Subtitles panel on every device, an interface size
-made for the screen, and Android TV gone through option by option with the remote (on Windows the app offers a
-10.6 MB small update from 0.5.8; its files and checksums on the
-[release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.0)); the next, **0.6.1**, an update
-release, brings fixes as the issues bring them. The status of each platform and what comes after is
-tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
-[wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases are in [CHANGELOG.md](CHANGELOG.md).
+- **Now: [0.6.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.0)** (2026-11-11), a full release of
+  every app: keys in full screen without the controls, a round of stability, smarter automatic subtitles, an
+  interface size made for the screen, Android TV by the remote alone.
+- **Next: 0.6.1**, an update release of fixes.
+
+What is planned for each platform: [ROADMAP.md](ROADMAP.md) (mirrored on the
+[wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases: [CHANGELOG.md](CHANGELOG.md).
 
 ## Contributing
 
@@ -382,13 +397,6 @@ tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the
 - **Help and questions:** see [SUPPORT.md](SUPPORT.md).
 
 Everyone taking part is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
-
-[![Windows build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml)
-[![Linux build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml)
-[![macOS build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml)
-[![Tests](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml)
-
-<a href="https://hosted.weblate.org/engage/vlc-redesign/"><img src="https://hosted.weblate.org/widget/vlc-redesign/interface/svg-badge.svg" alt="Translation status"></a>
 
 ## Security
 

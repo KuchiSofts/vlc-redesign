@@ -2,8 +2,8 @@
  "movies": [
   {
    "id": 701,
-   "path": "/uploads/legendas/the-matrix-1999.zip",
-   "release_name": "The.Matrix.1999.1080p.BluRay",
+   "path": "/uploads/legendas/the-voyage-1999.zip",
+   "release_name": "The.Voyage.1999.1080p.BluRay",
    "uploader": "someone",
    "comment": "",
    "tmdb_id": 603
@@ -26,8 +26,8 @@
   },
   {
    "id": 704,
-   "path": "/uploads/legendas/the-matrix-forced.srt",
-   "release_name": "The.Matrix.1999.Forced",
+   "path": "/uploads/legendas/the-voyage-forced.srt",
+   "release_name": "The.Voyage.1999.Forced",
    "uploader": "x",
    "comment": "Forced (foreign parts)",
    "tmdb_id": 603

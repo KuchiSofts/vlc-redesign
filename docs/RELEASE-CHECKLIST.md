@@ -138,8 +138,7 @@ An update release:
 6. Push the branch to `main`, push the tag (the hook checks both).
 7. After the push (the check lists them):
    - the GitHub release: setup, zip, every `.vrdelta`, `vlc-redesign-X.Y.Z-source.tar.gz`, `SHA256SUMS.txt`,
-     `SHA256SUMS.txt.sig`, the notes from `release/release-notes.py` (with their *Source code* section), or
-     `docs/release/X.Y.Z/release-notes.md` when the version has one;
+     `SHA256SUMS.txt.sig`, the notes from `release/release-notes.py` (with their *Source code* section);
    - a reply on every issue the release fixes (what was wrong, what changed, the version, how to update), then close it;
    - an announcement in Discussions › Announcements;
    - Weblate: export the texts of the release;

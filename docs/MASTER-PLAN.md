@@ -448,7 +448,7 @@ What is being worked on, updated as it changes (2026-11-10):
   (`src/playlist/preparse.c`); accessibility (UI Automation sweep: every control named but the Settings search,
   dialogs named by their title, Tab out of multi-line fields); the 303 PNG icons removed (every one had its SVG of
   the same size; the originals stay in `design/icons`); the GPL source archive in `make-release.ps1`
-  ([SOURCE.md](SOURCE.md)); the 0.4.0 release notes drafted (`docs/release/0.4.0`). Proven on the Windows x64
+  ([SOURCE.md](SOURCE.md)); the 0.4.0 release notes drafted. Proven on the Windows x64
   build: the 7 UI tours, the IPTV parser test (Qt 6.8.3, Docker: PASS), the subtitle corpus (212/212), the
   pause/seek regressions (0 late, 0 dropped, clean quits), the border sweep, right-to-left captures.
   Details: [0.4.0-ui-audit.md](qa/0.4.0-ui-audit.md#upstream-merge-and-leftovers-branch-featureupstream-final-2026-10-29).
@@ -769,7 +769,7 @@ What comes first, and why. Each step starts when what it needs is done.
 
 - **Source:** the Figma design file `fQSxoEi1zmnD5fQacw0qGs` (a copy of the community file, same node ids): 103
   top-level nodes, 57 screens and 46 component groups, with their texts in
-  [`inventory.json`](../.specs/features/redesign/reference/inventory.json). A node opens with
+  [`inventory.json`](specs/reference/inventory.json). A node opens with
   `https://www.figma.com/design/fQSxoEi1zmnD5fQacw0qGs?node-id=<id, with - instead of :>`.
 - **Size:** the node's width × height in Figma pixels (1 px = 1 app pixel at 100 %).
 - **Implemented in:** file names under [`modules/gui/qt/`](../modules/gui/qt) (each name is unique there), checked
@@ -779,7 +779,7 @@ What comes first, and why. Each step starts when what it needs is done.
 - **Pixel:** 🟢 only where a capture was compared with the frame (section 11). Many frames have measured details in
   the code (baselines, sizes), but no full comparison yet.
 - Screens without texts in Figma are described from the coverage notes
-  ([`m3-coverage-player.md`](../.specs/features/redesign/m3-coverage-player.md)) and the code comments citing them.
+  ([`m3-coverage-player.md`](specs/m3-coverage-player.md)) and the code comments citing them.
 
 ### 5.2 Summary
 
@@ -1615,7 +1615,7 @@ and an accepted request made the TV fail after a pause in a test.
 
 - 🟡 Every quality gate green (§14): all but Hardware (no Intel or real Windows 10 here)
 - 🟢 `CHANGELOG.md`: *Unreleased* became *0.3.0* · 2026-10-25
-- 🟢 Release notes with a screenshot or GIF per highlight (docs/release/0.3.0, 13 images from the running app; the
+- 🟢 Release notes with a screenshot or GIF per highlight (13 images from the running app; the
   last changes of the changelog join them when the date is set)
 - 🟢 Wiki: casting pages, new settings rows, *Design check* (docs/wiki, in the wiki's own page names; uploaded with
   the release)
@@ -1642,7 +1642,7 @@ Tracks with checklists; a version number comes with the first published build.
   the same sizes. Tested in containers on 7 distributions and by GitHub's x86_64 and ARM64 runners (apt next to the
   system VLC, the AppImage, the .rpm in Fedora, a clip played). Not in it: the Flatpak, an updater in the app, tests
   on real desktops by hand
-- 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland; `.specs/features/redesign/evidence/`)
+- 🟢 Built and smoke-tested once before the Windows work (Docker, X11 and Wayland)
 - 🟢 The current code builds in Docker (Ubuntu 24.04, Qt 6.8.3, `linux-qt68.sh`) with no warning from the
   redesign's code (2026-10-28); `linux-bundle.sh` makes a self-contained tarball, `linux-wslg.sh` runs it through WSLg
 - 🟢 Every player-bar control (59) put in the bar, shown and clicked during playback, on X11 through WSLg with the

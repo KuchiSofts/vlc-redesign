@@ -1,6 +1,0 @@
-playing=(<'Playing'>,)
-paused_position=(<int64 46493432>,)
-fullscreen=(<true>,)
-windowed=(<false>,)
-resumed=(<'Playing'>,)
-PASS: native Wayland compositor, wl_shm video, MPRIS pause/resume and fullscreen; volume muted

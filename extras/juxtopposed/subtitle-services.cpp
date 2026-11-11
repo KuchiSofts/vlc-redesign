@@ -82,9 +82,9 @@ static Query film()
 {
     Query q;
     q.imdb = QStringLiteral("tt0133093");
-    q.title = QStringLiteral("The Matrix");
+    q.title = QStringLiteral("The Voyage");
     q.year = 1999;
-    q.fileName = QStringLiteral("The.Matrix.1999.1080p.BluRay.x264.mkv");
+    q.fileName = QStringLiteral("The.Voyage.1999.1080p.BluRay.x264.mkv");
     q.hash = QStringLiteral("8e245d9679d31e12");
     q.languages = { QStringLiteral("ar"), QStringLiteral("pt-BR"), QStringLiteral("zh-TW") };
     q.credentials.key = QStringLiteral("my-key");
@@ -95,11 +95,11 @@ static Query episode()
 {
     Query q;
     q.imdb = QStringLiteral("tt0903747");
-    q.title = QStringLiteral("Breaking Bad");
+    q.title = QStringLiteral("Northern Bay");
     q.series = true;
     q.season = 2;
     q.episode = 3;
-    q.fileName = QStringLiteral("Breaking.Bad.S02E03.720p.BluRay.x264-DEMAND.mkv");
+    q.fileName = QStringLiteral("Northern.Bay.S02E03.720p.BluRay.x264-GROUPA.mkv");
     q.languages = { QStringLiteral("ar"), QStringLiteral("en") };
     q.credentials.key = QStringLiteral("my-key");
     return q;
@@ -110,7 +110,7 @@ static Query episode()
 static void testNetworkMedia()
 {
     CHECK(namesSomething(QStringLiteral("Sintel.2010.1080p.mp4")));
-    CHECK(namesSomething(QStringLiteral("Breaking Bad S01E02.mkv")));
+    CHECK(namesSomething(QStringLiteral("Northern Bay S01E02.mkv")));
     CHECK(namesSomething(QStringLiteral("סינטל.mp4")));
     CHECK(!namesSomething(QStringLiteral("500.mp4")));
     CHECK(!namesSomething(QStringLiteral("index.m3u8")));
@@ -178,19 +178,19 @@ static void testCommon()
     CHECK(checkOf(0) == Check::NoAnswer);
     CHECK(checkOf(502) == Check::NoAnswer);
 
-    CHECK(cleanRelease(QStringLiteral(" * The.Matrix.1999 - ")) == QLatin1String("The.Matrix.1999"));
+    CHECK(cleanRelease(QStringLiteral(" * The.Voyage.1999 - ")) == QLatin1String("The.Voyage.1999"));
     // the episode named, a range, the season as a whole, another one
-    CHECK(releaseOfEpisode(QStringLiteral("Breaking.Bad.S02E03.720p"), 2, 3));
-    CHECK(releaseOfEpisode(QStringLiteral("breaking bad s2e3"), 2, 3));
-    CHECK(releaseOfEpisode(QStringLiteral("Breaking.Bad.2x03.HDTV"), 2, 3));
-    CHECK(releaseOfEpisode(QStringLiteral("Breaking.Bad.S02E01-E05"), 2, 3));
-    CHECK(releaseOfEpisode(QStringLiteral("Breaking.Bad.S02E02E03"), 2, 3));
-    CHECK(releaseOfEpisode(QStringLiteral("Breaking.Bad.S02.COMPLETE.720p"), 2, 3));
-    CHECK(!releaseOfEpisode(QStringLiteral("Breaking.Bad.S02E04.720p"), 2, 3));
-    CHECK(!releaseOfEpisode(QStringLiteral("Breaking.Bad.S01E03.720p"), 2, 3));
-    CHECK(!releaseOfEpisode(QStringLiteral("Breaking.Bad.S02E06-E09"), 2, 3));
+    CHECK(releaseOfEpisode(QStringLiteral("Northern.Bay.S02E03.720p"), 2, 3));
+    CHECK(releaseOfEpisode(QStringLiteral("northern bay s2e3"), 2, 3));
+    CHECK(releaseOfEpisode(QStringLiteral("Northern.Bay.2x03.HDTV"), 2, 3));
+    CHECK(releaseOfEpisode(QStringLiteral("Northern.Bay.S02E01-E05"), 2, 3));
+    CHECK(releaseOfEpisode(QStringLiteral("Northern.Bay.S02E02E03"), 2, 3));
+    CHECK(releaseOfEpisode(QStringLiteral("Northern.Bay.S02.COMPLETE.720p"), 2, 3));
+    CHECK(!releaseOfEpisode(QStringLiteral("Northern.Bay.S02E04.720p"), 2, 3));
+    CHECK(!releaseOfEpisode(QStringLiteral("Northern.Bay.S01E03.720p"), 2, 3));
+    CHECK(!releaseOfEpisode(QStringLiteral("Northern.Bay.S02E06-E09"), 2, 3));
     // (a film: everything)
-    CHECK(releaseOfEpisode(QStringLiteral("Breaking.Bad.S02E04"), -1, -1));
+    CHECK(releaseOfEpisode(QStringLiteral("Northern.Bay.S02E04"), -1, -1));
     // (1080p is no episode, nor x264)
     CHECK(releaseOfEpisode(QStringLiteral("Show.1080p.x264"), 2, 3));
     CHECK(!releaseOfEpisode(QStringLiteral("Show.S02E01-720p"), 2, 3));
@@ -220,10 +220,10 @@ static void testSubSource()
     CHECK(!url.toString().contains(QLatin1String("my-key"))); // (in its header)
     url = subSourceSearchUrl(q, true);
     CHECK(item(url, "searchType") == QLatin1String("text"));
-    CHECK(item(url, "q") == QLatin1String("The Matrix"));
+    CHECK(item(url, "q") == QLatin1String("The Voyage"));
     CHECK(item(url, "year") == QLatin1String("1999"));
     CHECK(item(url, "type") == QLatin1String("movie"));
-    CHECK(url.toEncoded().contains("q=The%20Matrix"));
+    CHECK(url.toEncoded().contains("q=The%20Voyage"));
     Query unknown = q;
     unknown.imdb.clear();
     CHECK(item(subSourceSearchUrl(unknown, false), "searchType") == QLatin1String("text"));
@@ -263,7 +263,7 @@ static void testSubSource()
     CHECK(results.size() == 4);
     const Result *arabic = byId(results, "subsource:9");
     CHECK(arabic && arabic->language == QLatin1String("ar"));
-    CHECK(arabic && arabic->release == QLatin1String("Breaking.Bad.S02E03.720p.BluRay.x264-DEMAND"));
+    CHECK(arabic && arabic->release == QLatin1String("Northern.Bay.S02E03.720p.BluRay.x264-GROUPA"));
     CHECK(arabic && arabic->url == QUrl(QStringLiteral("https://api.subsource.net/api/v1/subtitles/9/download")));
     CHECK(arabic && arabic->provider == QLatin1String("subsource"));
     CHECK(arabic && arabic->downloads == 340);
@@ -272,7 +272,7 @@ static void testSubSource()
     CHECK(farsi && farsi->language == QLatin1String("fa") && farsi->hearingImpaired);
     const Result *brazil = byId(results, "subsource:12");
     CHECK(brazil && brazil->language == QLatin1String("pt-BR"));
-    CHECK(brazil && brazil->release == QLatin1String("Breaking.Bad.S02E01-E03.WEB"));
+    CHECK(brazil && brazil->release == QLatin1String("Northern.Bay.S02E01-E03.WEB"));
     CHECK(brazil && arabic && brazil->rank < arabic->rank); // (rated bad)
     CHECK(byId(results, "subsource:15") && byId(results, "subsource:15")->language == QLatin1String("es-419"));
     CHECK(results.size() == 4 && !byId(results, "subsource:14"));
@@ -307,10 +307,10 @@ static void testSubDl()
     // an episode by the series' name, its season, episode and file
     url = subDlSearchUrl(episode(), true);
     CHECK(item(url, "type") == QLatin1String("tv"));
-    CHECK(item(url, "film_name") == QLatin1String("Breaking Bad"));
+    CHECK(item(url, "film_name") == QLatin1String("Northern Bay"));
     CHECK(item(url, "season") == QLatin1String("2"));
     CHECK(item(url, "episode") == QLatin1String("3"));
-    CHECK(item(url, "file_name") == QLatin1String("Breaking.Bad.S02E03.720p.BluRay.x264-DEMAND"));
+    CHECK(item(url, "file_name") == QLatin1String("Northern.Bay.S02E03.720p.BluRay.x264-GROUPA"));
     CHECK(item(url, "imdb_id").isEmpty());
     // v1: the key in the address, its own names of the parameters
     url = subDlSearchUrl(episode(), false);
@@ -333,14 +333,14 @@ static void testSubDl()
     const Result *arabic = byId(results, "subdl:3197651-3213944");
     CHECK(arabic && arabic->language == QLatin1String("ar"));
     CHECK(arabic && arabic->url == QUrl(QStringLiteral("https://dl.subdl.com/subtitle/3197651-3213944.zip")));
-    CHECK(arabic && arabic->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264-AMIABLE"));
+    CHECK(arabic && arabic->release == QLatin1String("The.Voyage.1999.1080p.BluRay.x264-RELEASE"));
     CHECK(arabic && arabic->downloads == 1200);
     const Result *brazil = byId(results, "subdl:3197652-3213945");
     CHECK(brazil && brazil->language == QLatin1String("pt-BR") && brazil->hearingImpaired);
     CHECK(byId(results, "subdl:3197653-3213946") && byId(results, "subdl:3197653-3213946")->language == QLatin1String("zh-TW"));
     // (no release: its name; "English" read from lang)
     const Result *english = byId(results, "subdl:3197655-3213947");
-    CHECK(english && english->language == QLatin1String("en") && english->release == QLatin1String("The Matrix (English)"));
+    CHECK(english && english->language == QLatin1String("en") && english->release == QLatin1String("The Voyage (English)"));
     for (const Result &r : results)
         CHECK(r.url.host() == QLatin1String("dl.subdl.com") && !r.url.path().contains(QLatin1String("..")));
     // an episode: this one, its season's pack, the range it is in
@@ -388,7 +388,7 @@ static void testOpenSubtitlesCom()
     Query byName = film();
     byName.imdb.clear();
     byName.hash.clear();
-    CHECK(item(openSubtitlesComSearchUrl(byName), "query") == QLatin1String("the matrix"));
+    CHECK(item(openSubtitlesComSearchUrl(byName), "query") == QLatin1String("the voyage"));
     byName.title.clear();
     CHECK(openSubtitlesComSearchUrl(byName).isEmpty());
     CHECK(item(openSubtitlesComCheckUrl(), "imdb_id") == QLatin1String("133093"));
@@ -398,12 +398,12 @@ static void testOpenSubtitlesCom()
     CHECK(results.size() == 4);
     const Result *brazil = byId(results, "opensubtitlescom:4567");
     CHECK(brazil && brazil->language == QLatin1String("pt-BR") && brazil->exact);
-    CHECK(brazil && brazil->downloads == 1000 && brazil->fileName == QLatin1String("The.Matrix.1999.1080p.BluRay.x264.srt"));
+    CHECK(brazil && brazil->downloads == 1000 && brazil->fileName == QLatin1String("The.Voyage.1999.1080p.BluRay.x264.srt"));
     const Result *english = byId(results, "opensubtitlescom:4568");
-    CHECK(english && english->hearingImpaired && english->release == QLatin1String("The.Matrix.1999.720p"));
+    CHECK(english && english->hearingImpaired && english->release == QLatin1String("The.Voyage.1999.720p"));
     CHECK(english && brazil && english->rank < brazil->rank);
     const Result *chinese = byId(results, "opensubtitlescom:4569");
-    CHECK(chinese && chinese->language == QLatin1String("zh") && chinese->release == QLatin1String("matrix.chs"));
+    CHECK(chinese && chinese->language == QLatin1String("zh") && chinese->release == QLatin1String("voyage.chs"));
     CHECK(byId(results, "opensubtitlescom:4570") && byId(results, "opensubtitlescom:4570")->language == QLatin1String("es-419"));
     CHECK(!byId(results, "opensubtitlescom:4571") && !byId(results, "opensubtitlescom:4572"));
     CHECK(parseOpenSubtitlesCom(readFixture("oscom-key-refused.json"), languageOf).isEmpty());
@@ -418,7 +418,7 @@ static void testOpenSubtitlesCom()
     CHECK(openSubtitlesComDownloadBody(QStringLiteral("4567")) == "{\"file_id\":4567}");
     // the link of a download: https only
     CHECK(openSubtitlesComLink(readFixture("oscom-download.json"))
-          == QUrl(QStringLiteral("https://www.opensubtitles.com/download/ABCDEF/subfile/The.Matrix.srt")));
+          == QUrl(QStringLiteral("https://www.opensubtitles.com/download/ABCDEF/subfile/The.Voyage.srt")));
     CHECK(openSubtitlesComLink(readFixture("oscom-download-http.json")).isEmpty());
     CHECK(openSubtitlesComLink("not json").isEmpty());
 }
@@ -442,7 +442,7 @@ static void testTitlovi()
     QUrl url = titloviSearchUrl(q, session);
     CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://kodi.titlovi.com/api/subtitles/search"));
     CHECK(item(url, "lang") == QLatin1String("Hrvatski|Srpski"));
-    CHECK(item(url, "query") == QLatin1String("Breaking Bad"));
+    CHECK(item(url, "query") == QLatin1String("Northern Bay"));
     CHECK(item(url, "season") == QLatin1String("2"));
     CHECK(item(url, "imdbID") == QLatin1String("tt0903747"));
     CHECK(item(url, "token") == QLatin1String("0a1b2c3d-token") && item(url, "userid") == QLatin1String("12345"));
@@ -454,10 +454,10 @@ static void testTitlovi()
     QList<Result> results = parseTitlovi(readFixture("titlovi-search.json"), q);
     CHECK(results.size() == 3);
     const Result *croatian = byId(results, "titlovi:101");
-    CHECK(croatian && croatian->language == QLatin1String("hr") && croatian->release == QLatin1String("Breaking.Bad.S02E03.720p"));
+    CHECK(croatian && croatian->language == QLatin1String("hr") && croatian->release == QLatin1String("Northern.Bay.S02E03.720p"));
     CHECK(croatian && croatian->url == QUrl(QStringLiteral("https://titlovi.com/download/?type=1&mediaid=101")));
     CHECK(byId(results, "titlovi:102") && byId(results, "titlovi:102")->language == QLatin1String("sr"));
-    CHECK(byId(results, "titlovi:103") && byId(results, "titlovi:103")->release == QLatin1String("Breaking Bad"));
+    CHECK(byId(results, "titlovi:103") && byId(results, "titlovi:103")->release == QLatin1String("Northern Bay"));
     CHECK(!byId(results, "titlovi:104") && !byId(results, "titlovi:105") && !byId(results, "titlovi:106"));
     // a film: every one of a known language and link
     CHECK(parseTitlovi(readFixture("titlovi-search.json"), film()).size() == 5);
@@ -469,9 +469,9 @@ static void testAssrt()
     q.languages = { QStringLiteral("zh-TW"), QStringLiteral("en") };
     QUrl url = assrtSearchUrl(q);
     CHECK(url.toString(QUrl::RemoveQuery) == QLatin1String("https://api.assrt.net/v1/sub/search"));
-    CHECK(item(url, "q") == QLatin1String("The Matrix 1999"));
+    CHECK(item(url, "q") == QLatin1String("The Voyage 1999"));
     CHECK(item(url, "token") == QLatin1String("my-key") && item(url, "is_file") == QLatin1String("1"));
-    CHECK(item(assrtSearchUrl(episode()), "q") == QLatin1String("Breaking Bad S02E03"));
+    CHECK(item(assrtSearchUrl(episode()), "q") == QLatin1String("Northern Bay S02E03"));
 
     QString error;
     bool refused = true;
@@ -480,7 +480,7 @@ static void testAssrt()
     CHECK(results.size() == 3);
     // the user's first language it has
     CHECK(byId(results, "assrt:6001") && byId(results, "assrt:6001")->language == QLatin1String("en"));
-    CHECK(byId(results, "assrt:6001") && byId(results, "assrt:6001")->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264"));
+    CHECK(byId(results, "assrt:6001") && byId(results, "assrt:6001")->release == QLatin1String("The.Voyage.1999.1080p.BluRay.x264"));
     const Result *traditional = byId(results, "assrt:6002");
     CHECK(traditional && traditional->language == QLatin1String("zh-TW") && traditional->release == QStringLiteral("黑客帝国"));
     CHECK(byId(results, "assrt:6004") && byId(results, "assrt:6004")->language == QLatin1String("zh"));
@@ -490,10 +490,10 @@ static void testAssrt()
 
     CHECK(item(assrtDetailUrl(QStringLiteral("k"), QStringLiteral("6001")), "id") == QLatin1String("6001"));
     const QByteArray detail = readFixture("assrt-detail.json");
-    CHECK(assrtFileOf(detail, QStringLiteral("en")).toString().endsWith(QLatin1String("The.Matrix.1999.eng.srt")));
-    CHECK(assrtFileOf(detail, QStringLiteral("zh")).toString().endsWith(QLatin1String("The.Matrix.1999.chs.srt")));
+    CHECK(assrtFileOf(detail, QStringLiteral("en")).toString().endsWith(QLatin1String("The.Voyage.1999.eng.srt")));
+    CHECK(assrtFileOf(detail, QStringLiteral("zh")).toString().endsWith(QLatin1String("The.Voyage.1999.chs.srt")));
     // (its file elsewhere is not taken: the first of its own)
-    CHECK(assrtFileOf(detail, QStringLiteral("zh-TW")).toString().endsWith(QLatin1String("The.Matrix.1999.chs.srt")));
+    CHECK(assrtFileOf(detail, QStringLiteral("zh-TW")).toString().endsWith(QLatin1String("The.Voyage.1999.chs.srt")));
     CHECK(assrtFileOf("{}", QStringLiteral("zh")).isEmpty());
     CHECK(item(assrtCheckUrl(QStringLiteral("k")), "token") == QLatin1String("k"));
 }
@@ -550,7 +550,7 @@ static void testBetaSeries()
     CHECK(results.size() == 2);
     CHECK(byId(results, "betaseries:9001") && byId(results, "betaseries:9001")->language == QLatin1String("fr"));
     CHECK(byId(results, "betaseries:9002") && byId(results, "betaseries:9002")->language == QLatin1String("en"));
-    CHECK(byId(results, "betaseries:9001") && byId(results, "betaseries:9001")->release == QLatin1String("Breaking.Bad.S02E03.720p.fr"));
+    CHECK(byId(results, "betaseries:9001") && byId(results, "betaseries:9001")->release == QLatin1String("Northern.Bay.S02E03.720p.fr"));
     CHECK(parseBetaSeries(readFixture("betaseries-bad-key.json"), &error, &refused).isEmpty());
     CHECK(refused && error == QStringLiteral("Mauvaise clé API."));
     error.clear();
@@ -569,9 +569,9 @@ static void testSubsRo()
     QString error;
     QList<Result> results = parseSubsRo(readFixture("subsro-search.json"), film(), &error);
     CHECK(error.isEmpty() && results.size() == 3);
-    const Result *matrix = byId(results, "subsro:501");
-    CHECK(matrix && matrix->language == QLatin1String("ro") && matrix->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264"));
-    CHECK(matrix && matrix->downloads == 1200);
+    const Result *voyage = byId(results, "subsro:501");
+    CHECK(voyage && voyage->language == QLatin1String("ro") && voyage->release == QLatin1String("The.Voyage.1999.1080p.BluRay.x264"));
+    CHECK(voyage && voyage->downloads == 1200);
     // an episode: its season's
     results = parseSubsRo(readFixture("subsro-search.json"), episode(), &error);
     CHECK(byId(results, "subsro:502") && !byId(results, "subsro:503") && !byId(results, "subsro:504"));
@@ -591,10 +591,10 @@ static void testNapisy24()
     const QByteArray body = napisy24Body(q, QStringLiteral("me@x"), QStringLiteral("p&w"));
     CHECK(body.contains("postAction=CheckSub") && body.contains("fh=8e245d9679d31e12") && body.contains("fs=734003200"));
     CHECK(body.contains("ua=me%40x") && body.contains("ap=p%26w") && body.contains("n24pref=1"));
-    CHECK(body.contains("fn=The.Matrix.1999.1080p.BluRay.x264.mkv"));
+    CHECK(body.contains("fn=The.Voyage.1999.1080p.BluRay.x264.mkv"));
     const Napisy24Answer found = parseNapisy24(readFixture("napisy24-found.bin"));
     CHECK(found.found && !found.loginRefused);
-    CHECK(found.imdb == QLatin1String("tt0133093") && found.title == QLatin1String("The Matrix"));
+    CHECK(found.imdb == QLatin1String("tt0133093") && found.title == QLatin1String("The Voyage"));
     CHECK(found.archive.startsWith("PK\x03\x04"));
     const Napisy24Answer refused = parseNapisy24(readFixture("napisy24-login-error.txt"));
     CHECK(refused.loginRefused && !refused.found);
@@ -613,9 +613,9 @@ static void testLegendas()
     CHECK(legendasSearchBody(episode()) == "{\"imdb_id\":\"tt0903747\",\"page\":1,\"per_page\":25,\"tv_episode\":3,\"tv_season\":2}");
     QList<Result> results = parseLegendas(readFixture("legendas-movies.json"), film());
     CHECK(results.size() == 2);
-    const Result *matrix = byId(results, "legendasnet:701");
-    CHECK(matrix && matrix->language == QLatin1String("pt-BR")
-          && matrix->url == QUrl(QStringLiteral("https://legendas.net/uploads/legendas/the-matrix-1999.zip")));
+    const Result *voyage = byId(results, "legendasnet:701");
+    CHECK(voyage && voyage->language == QLatin1String("pt-BR")
+          && voyage->url == QUrl(QStringLiteral("https://legendas.net/uploads/legendas/the-voyage-1999.zip")));
     CHECK(byId(results, "legendasnet:704") && byId(results, "legendasnet:704")->foreignOnly);
     results = parseLegendas(readFixture("legendas-tv.json"), episode());
     CHECK(results.size() == 1 && byId(results, "legendasnet:801"));
@@ -968,12 +968,12 @@ static void testYify()
     CHECK(results.size() == 5);
     const Result *hebrew = byId(results, "yify:101");
     CHECK(hebrew && hebrew->provider == QLatin1String("yify") && hebrew->language == QLatin1String("he"));
-    CHECK(hebrew && hebrew->release == QLatin1String("The.Matrix.1999.1080p.BluRay.x264-YIFY"));
-    CHECK(hebrew && hebrew->url == QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/the-matrix-1999-hebrew-yify-101.zip")));
+    CHECK(hebrew && hebrew->release == QLatin1String("The.Voyage.1999.1080p.BluRay.x264-GRPX"));
+    CHECK(hebrew && hebrew->url == QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/the-voyage-1999-hebrew-yify-101.zip")));
     CHECK(hebrew && hebrew->rank == 6. && !hebrew->hearingImpaired);
     const Result *english = byId(results, "yify:102");
     CHECK(english && english->language == QLatin1String("en") && english->hearingImpaired && english->rank == -1.5);
-    CHECK(english && english->release == QLatin1String("The Matrix 1999 720p WEB"));
+    CHECK(english && english->release == QLatin1String("The Voyage 1999 720p WEB"));
     // a link that isn't one, then its own; the rating at most 30
     const Result *arabic = byId(results, "yify:105");
     CHECK(arabic && arabic->language == QLatin1String("ar") && arabic->release == QStringLiteral("الماتريكس 1999"));
@@ -981,7 +981,7 @@ static void testYify()
     // a label without its quote, a muted label without its end: the next ones
     const Result *german = byId(results, "yify:107");
     CHECK(german && german->language == QLatin1String("de") && german->rank == 3.5);
-    CHECK(german && german->release == QLatin1String("Matrix.German")
+    CHECK(german && german->release == QLatin1String("Voyage.German")
           && german->url.path().endsWith(QLatin1String("german-yify-107b.zip")));
     CHECK(byId(results, "yify:108") && byId(results, "yify:108")->language == QLatin1String("pt-BR")
           && byId(results, "yify:108")->rank == 0.);

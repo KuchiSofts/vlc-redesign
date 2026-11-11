@@ -5,10 +5,10 @@
  "SubtitleResults": [
   {
    "Id": 101,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Hrvatski",
-   "Release": "Breaking.Bad.S02E03.720p",
+   "Release": "Northern.Bay.S02E03.720p",
    "Link": "https://titlovi.com/download/?type=1&mediaid=101",
    "Season": 2,
    "Episode": 3,
@@ -17,10 +17,10 @@
   },
   {
    "Id": 102,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Cirilica",
-   "Release": "Breaking.Bad.S02E03.HDTV",
+   "Release": "Northern.Bay.S02E03.HDTV",
    "Link": "https://titlovi.com/download/?type=1&mediaid=102",
    "Season": 2,
    "Episode": 3,
@@ -29,7 +29,7 @@
   },
   {
    "Id": 103,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Bosanski",
    "Release": "",
@@ -41,27 +41,27 @@
   },
   {
    "Id": 104,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Slovenski",
-   "Release": "Breaking.Bad.S02E04",
+   "Release": "Northern.Bay.S02E04",
    "Link": "https://titlovi.com/download/?type=1&mediaid=104",
    "Season": 2,
    "Episode": 4
   },
   {
    "Id": 105,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Makedonski",
-   "Release": "Breaking.Bad.S01E03",
+   "Release": "Northern.Bay.S01E03",
    "Link": "https://titlovi.com/download/?type=1&mediaid=105",
    "Season": 1,
    "Episode": 3
   },
   {
    "Id": 106,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Hrvatski",
    "Release": "Elsewhere",
@@ -71,7 +71,7 @@
   },
   {
    "Id": 107,
-   "Title": "Breaking Bad",
+   "Title": "Northern Bay",
    "Year": 2008,
    "Lang": "Klingon",
    "Release": "Unknown language",

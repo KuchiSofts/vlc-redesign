@@ -1,5 +1,0 @@
-[00007ffc0dba8438] main generic debug: using interface module "dbus"
-[00007ffc0dba8578] main generic debug: using interface module "hotkeys"
-[00007c1dc2d7ba78] [qt] main generic debug: using qtwayland module "qt_wayland_plugin_la_qt_wayland"
-[00007ffc0dba85c8] main generic debug: using interface module "qt"
-[00007c1d600edfe0] main vout display debug: using vout display module "wl_shm"

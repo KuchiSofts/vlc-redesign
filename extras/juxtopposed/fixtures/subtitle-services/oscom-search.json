@@ -16,14 +16,14 @@
     "from_trusted": true,
     "ai_translated": false,
     "machine_translated": false,
-    "release": "The.Matrix.1999.1080p.BluRay.x264",
+    "release": "The.Voyage.1999.1080p.BluRay.x264",
     "moviehash_match": true,
     "foreign_parts_only": false,
     "files": [
      {
       "file_id": 4567,
       "cd_number": 1,
-      "file_name": "The.Matrix.1999.1080p.BluRay.x264.srt"
+      "file_name": "The.Voyage.1999.1080p.BluRay.x264.srt"
      }
     ]
    }
@@ -40,14 +40,14 @@
     "from_trusted": false,
     "ai_translated": false,
     "machine_translated": false,
-    "release": "* The.Matrix.1999.720p *",
+    "release": "* The.Voyage.1999.720p *",
     "moviehash_match": false,
     "foreign_parts_only": false,
     "files": [
      {
       "file_id": 4568,
       "cd_number": 1,
-      "file_name": "* The.Matrix.1999.720p *.srt"
+      "file_name": "* The.Voyage.1999.720p *.srt"
      }
     ]
    }
@@ -71,7 +71,7 @@
      {
       "file_id": 4569,
       "cd_number": 1,
-      "file_name": "matrix.chs.srt"
+      "file_name": "voyage.chs.srt"
      }
     ]
    }
@@ -88,14 +88,14 @@
     "from_trusted": false,
     "ai_translated": false,
     "machine_translated": false,
-    "release": "The.Matrix.1999.LATINO",
+    "release": "The.Voyage.1999.LATINO",
     "moviehash_match": false,
     "foreign_parts_only": false,
     "files": [
      {
       "file_id": 4570,
       "cd_number": 1,
-      "file_name": "The.Matrix.1999.LATINO.srt"
+      "file_name": "The.Voyage.1999.LATINO.srt"
      }
     ]
    }

@@ -1,7 +1,0 @@
-source_sha=93c524428590416991e9a55c1746463ce493c553
-verification_sha=c56181b7dfa5e700ce44475f950f6734d25c33ce
-runner=win25-vs2026/20260925.250.1
-package_sha256=03b2071bffffe2b0547d6e4d5975658a0248bf246da5e72d8a9fb94b12540537
-exit_code=0
-coverage=native executable --version only; GUI and playback untested
-plugin_load_errors=4

@@ -5,8 +5,8 @@
    "subtitleId": 9,
    "language": "arabic",
    "releaseInfo": [
-    "Breaking.Bad.S02E03.720p.BluRay.x264-DEMAND",
-    "Breaking.Bad.S02E03.1080p"
+    "Northern.Bay.S02E03.720p.BluRay.x264-GROUPA",
+    "Northern.Bay.S02E03.1080p"
    ],
    "hearingImpaired": false,
    "rating": {
@@ -15,37 +15,37 @@
     "total": 12
    },
    "downloads": 340,
-   "link": "/subtitle/breaking-bad-second-season/arabic/9"
+   "link": "/subtitle/northern-bay-second-season/arabic/9"
   },
   {
    "subtitleId": 10,
    "language": "arabic",
    "releaseInfo": [
-    "Breaking.Bad.S02E04.720p.BluRay"
+    "Northern.Bay.S02E04.720p.BluRay"
    ],
    "hearingImpaired": false,
    "rating": {
     "total": 3
    },
-   "link": "/subtitle/breaking-bad-second-season/arabic/10"
+   "link": "/subtitle/northern-bay-second-season/arabic/10"
   },
   {
    "subtitleId": 11,
    "language": "farsi_persian",
    "releaseInfo": [
-    "Breaking.Bad.S02.COMPLETE.720p.BluRay"
+    "Northern.Bay.S02.COMPLETE.720p.BluRay"
    ],
    "hearingImpaired": true,
    "rating": {
     "total": 0
    },
-   "link": "/subtitle/breaking-bad-second-season/farsi_persian/11"
+   "link": "/subtitle/northern-bay-second-season/farsi_persian/11"
   },
   {
    "subtitleId": 12,
    "language": "brazilian_portuguese",
    "releaseInfo": [
-    "* Breaking.Bad.S02E01-E03.WEB *"
+    "* Northern.Bay.S02E01-E03.WEB *"
    ],
    "hearingImpaired": false,
    "rating": {
@@ -74,7 +74,7 @@
   {
    "subtitleId": 15,
    "language": "spanish_latin_america",
-   "releaseInfo": "Breaking.Bad.2x03.HDTV",
+   "releaseInfo": "Northern.Bay.2x03.HDTV",
    "link": "/subtitle/x/15"
   }
  ]

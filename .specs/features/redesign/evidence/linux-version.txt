@@ -1,7 +1,0 @@
-VLC version 4.0.0-dev Otto Chriek (4.0.0-dev-39363-g93c5244285)
-Compiled by ubuntu on 1a1179aef7ca (Oct 13 2026 03:32:00)
-Compiler: gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1)
-This program comes with NO WARRANTY, to the extent permitted by law.
-You may redistribute it under the terms of the GNU General Public License;
-see the file named COPYING for details.
-Written by the VideoLAN team; see the AUTHORS file.

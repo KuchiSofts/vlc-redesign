@@ -1,2 +1,0 @@
-libvlc.dll
-libvlccore.dll

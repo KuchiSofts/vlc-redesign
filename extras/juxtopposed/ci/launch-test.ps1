@@ -151,6 +151,42 @@ try {
 }
 Wait-Exit $process 20 'the interface' 'interface'
 
+# 1b. The same with a graphics driver that takes long to start: closing must
+# not wait for it (the interface once ended only when the driver had started:
+# a close that never ended on a runner without a graphics card). A build with
+# asserts simulates such a driver (VLC_REDESIGN_TEST_SLOW_WARMUP, in ms); a
+# release build ignores the variable and this is one more quit.
+$env:VLC_REDESIGN_TEST_SLOW_WARMUP = '30000'
+try {
+    $port = 4214
+    $process = Start-Vlc 'slow-driver' @('--extraintf=rc', "--rc-host=127.0.0.1:$port")
+    $watch = [Diagnostics.Stopwatch]::StartNew()
+    while ($watch.Elapsed.TotalSeconds -lt 60 -and -not $process.HasExited) {
+        $process.Refresh()
+        if ($process.MainWindowHandle -ne [IntPtr]::Zero) { break }
+        Start-Sleep -Milliseconds 100
+    }
+    Start-Sleep 3
+    try {
+        $client = New-Object Net.Sockets.TcpClient('127.0.0.1', $port)
+        $writer = New-Object IO.StreamWriter($client.GetStream())
+        $writer.Write("quit`n"); $writer.Flush()
+        Start-Sleep 1
+        $client.Close()
+    } catch {
+        Fail "rc interface (slow driver): $_"
+    }
+    Wait-Exit $process 20 'the interface, its graphics driver still starting,' 'slow-driver'
+    $log = Join-Path $work 'slow-driver.log'
+    if ((Test-Path $log) -and (Select-String -Path $log -Pattern 'warm-up did not end within' -SimpleMatch -Quiet)) {
+        Note 'ok: the slow driver was let go'
+    } else {
+        Note 'note: no slow driver simulated (a build without asserts, or no Direct3D 11 warm-up here)'
+    }
+} finally {
+    Remove-Item Env:VLC_REDESIGN_TEST_SLOW_WARMUP -ErrorAction SilentlyContinue
+}
+
 # 2. Playback: the clip to its end
 $process = Start-Vlc 'playback' @('--play-and-exit', "`"$clip`"")
 Wait-Exit $process 60 'playback of the clip' 'playback'
@@ -162,7 +198,7 @@ foreach ($line in 'Received first picture', 'EOF reached') {
 
 # 3. No QML warning in either run (a warning of a QML file names it: qrc:;
 # Qt logs it as "qt generic warning" or "qt warning: (default)", errors too)
-foreach ($name in 'interface', 'playback') {
+foreach ($name in 'interface', 'slow-driver', 'playback') {
     $log = Join-Path $work "$name.log"
     if (-not (Test-Path $log)) { Fail "no log of the $name run"; continue }
     $warnings = @(Select-String -Path $log -Pattern 'qt (generic )?(warning|error|critical).*qrc:')

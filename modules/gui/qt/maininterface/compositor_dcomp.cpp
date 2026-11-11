@@ -53,6 +53,7 @@
 
 #include <QThread>
 
+#include <atomic>
 #include <memory>
 #include <type_traits>
 
@@ -62,6 +63,9 @@ struct CompositorDirectComposition::DriverWarmUp
 {
     HMODULE library = nullptr;
     Microsoft::WRL::ComPtr<IUnknown> device;
+    // nobody waits for the device any more (the interface went on without
+    // it): the thread drops it as soon as it has it
+    std::atomic<bool> abandoned { false };
 
     ~DriverWarmUp()
     {
@@ -70,6 +74,13 @@ struct CompositorDirectComposition::DriverWarmUp
             ::FreeLibrary(library);
     }
 };
+
+namespace {
+// How long the interface waits for the speculative device when it is done
+// with it (at the first frame's end it does not wait at all; closing, this
+// long): a driver starts in about 0.2 s
+constexpr int warmUpEndMs = 1000;
+}
 
 int CompositorDirectComposition::windowEnable(const vlc_window_cfg_t *)
 {
@@ -215,6 +226,11 @@ void CompositorDirectComposition::startGraphicsDriverWarmUp()
     const auto warmUp = std::make_shared<DriverWarmUp>();
     m_driverWarmUp = warmUp;
     m_driverWarmUpThread = QThread::create([warmUp]() {
+#ifndef NDEBUG
+        // (tests: a driver that takes this many ms to start, to see that nothing waits for it)
+        if (const int slow = qEnvironmentVariableIntValue("VLC_REDESIGN_TEST_SLOW_WARMUP"))
+            QThread::msleep(slow);
+#endif
         warmUp->library = ::LoadLibraryEx(TEXT("d3d11.dll"), nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
         if (!warmUp->library)
             return;
@@ -231,6 +247,8 @@ void CompositorDirectComposition::startGraphicsDriverWarmUp()
         if (SUCCEEDED(createDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, D3D11_CREATE_DEVICE_BGRA_SUPPORT,
                                    nullptr, 0, D3D11_SDK_VERSION, &device, nullptr, nullptr)) && device)
             warmUp->device.Attach(device);
+        if (warmUp->abandoned)
+            warmUp->device.Reset();
     });
     m_driverWarmUpThread->start();
 #endif
@@ -240,12 +258,27 @@ void CompositorDirectComposition::endGraphicsDriverWarmUp()
 {
     if (m_driverWarmUpThread)
     {
-        // (logged: this wait has no limit, and a close that never ended was
-        // seen on a CI runner without a graphics card)
+        // The device is speculative: nothing needs it but a faster first
+        // frame. A driver that takes long to start (a PC without a graphics
+        // card; a close that never ended was seen on such a CI runner) must
+        // not hold the interface, least of all while it closes: the wait had
+        // no limit. After a short one the thread is let go: it drops its
+        // device when it gets it, and since it runs the code of this module,
+        // the module stays in memory until the process ends. Its QThread is
+        // never deleted (deleting a running one aborts).
         if (!m_driverWarmUpThread->isFinished())
             msg_Dbg(m_intf, "waiting for the graphics driver's warm-up to end");
-        m_driverWarmUpThread->wait();
-        delete m_driverWarmUpThread;
+        if (m_driverWarmUpThread->wait(warmUpEndMs))
+            delete m_driverWarmUpThread;
+        else
+        {
+            msg_Warn(m_intf, "the graphics driver's warm-up did not end within %d ms: let go", warmUpEndMs);
+            if (m_driverWarmUp)
+                m_driverWarmUp->abandoned = true;
+            HMODULE pinned = nullptr;
+            ::GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_PIN,
+                                 reinterpret_cast<LPCWSTR>(&warmUpEndMs), &pinned);
+        }
         m_driverWarmUpThread = nullptr;
     }
     m_driverWarmUp.reset();

@@ -30464,8 +30464,7 @@ msgstr "Dengan kunci gratis Anda sendiri · semua bahasa"
 #: modules/gui/qt/player/subtitle_providers.cpp:1680
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr ""
-"Dengan kunci gratis Anda sendiri · unggul di bahasa Arab, banyak "
-"bahasaDengan kunci gratis Anda sendiri · unggul di bahasa Arab, banyak bahasa"
+"Dengan kunci gratis Anda sendiri · unggul di bahasa Arab, banyak bahasa"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"

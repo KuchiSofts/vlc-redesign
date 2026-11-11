@@ -26034,8 +26034,7 @@ msgstr "Η σύνδεση απορρίφθηκε: ελέγξτε τα στοιχ
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:331
 msgid "Asked only when %1 is one of your subtitle languages"
 msgstr ""
-"Χρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων "
-"σαςΧρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων σας"
+"Χρησιμοποιείται μόνο όταν τα %1 είναι μία από τις γλώσσες υπότιτλων σας"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
 msgid "Your free key"

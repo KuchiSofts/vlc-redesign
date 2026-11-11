@@ -30149,8 +30149,7 @@ msgstr "Le d'eochair féin saor in aisce · gach teanga"
 #: modules/gui/qt/player/subtitle_providers.cpp:1680
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr ""
-"Le d'eochair féin saor in aisce · láidir san Araibis, go leor teangachaLe "
-"d'eochair féin saor in aisce · láidir san Araibis, go leor teangacha"
+"Le d'eochair féin saor in aisce · láidir san Araibis, go leor teangacha"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"

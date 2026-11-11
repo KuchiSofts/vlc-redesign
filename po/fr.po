@@ -31060,8 +31060,7 @@ msgstr "Avec votre propre clé gratuite · riche en arabe, de nombreuses langues
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr ""
 "Avec votre propre clé gratuite · les archives de Subscene, de nombreuses "
-"languesAvec votre propre clé gratuite · les archives de Subscene, de "
-"nombreuses langues"
+"langues"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1686
 msgid "Hebrew · movies and series"

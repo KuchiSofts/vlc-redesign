@@ -26,6 +26,7 @@
 #include <QUrl>
 #include <QFileInfo>
 #include <QProcess>
+#include <QTimer>
 
 #include <cmath>
 
@@ -111,8 +112,18 @@ static QString sysPath(vlc_sysdir_t dir, const char *name)
 }
 #endif
 
+void ConfigModel::setRescanningPlugins(bool rescanning)
+{
+    if (m_rescanningPlugins == rescanning)
+        return;
+    m_rescanningPlugins = rescanning;
+    emit rescanningPluginsChanged();
+}
+
 bool ConfigModel::rescanPlugins()
 {
+    if (m_rescanningPlugins)
+        return true;
 #ifdef _WIN32
     const QString folder = QCoreApplication::applicationDirPath();
     const QString generator = folder + QStringLiteral("/vlc-cache-gen.exe");
@@ -137,13 +148,20 @@ bool ConfigModel::rescanPlugins()
         // a crash ends with finished()
         if (error != QProcess::FailedToStart)
             return;
-        if (model)
+        if (model) {
+            model->setRescanningPlugins(false);
             model->setError(qtr("The plugins could not be rescanned."));
+        }
         process->deleteLater();
     });
     connect(process, &QProcess::finished, process,
             [model, process, plugins, started](int exitCode, QProcess::ExitStatus status) {
         process->deleteLater();
+        // (the button says "Scanning..." for a second at least: a scan of half a second was a press that
+        // seemed to do nothing)
+        if (model)
+            QTimer::singleShot(qMax<qint64>(0, 1000 - started.msecsTo(QDateTime::currentDateTime())), model.data(),
+                               [model]() { if (model) model->setRescanningPlugins(false); });
         // (the time of a file may be rounded to 2 s)
         const QFileInfo cache(plugins + QStringLiteral("/plugins.dat"));
         if (status == QProcess::NormalExit && exitCode == 0 && cache.exists()
@@ -152,6 +170,7 @@ bool ConfigModel::rescanPlugins()
         if (model)
             model->setError(qtr("The plugins could not be rescanned: the folder of VLC may need administrator rights."));
     });
+    setRescanningPlugins(true);
     process->start(generator, { QDir::toNativeSeparators(plugins) });
     return true;
 }

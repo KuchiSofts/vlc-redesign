@@ -193,26 +193,41 @@ SettingsSectionTitle {
                         root.addons.loadFromDefaultRepository()
                     }
                 }
-                SettingsButton {
-                    id: addButton
-                    objectName: "settingsInstallAddon"
-                    text: qsTr("Add")
-                    readonly property bool applicable: !!root.selectedAddon
-                        && root.selectedAddon.manageable && !root.selectedAddon.broken
-                        && root.selectedAddon.state === ServicesDiscoveryModel.STATE_NOTINSTALLED
-                    onClicked: if (applicable) root.addons.installService(addonsView.currentIndex)
-                    ToolTip.visible: hovered && !applicable
+                // Add and Remove act on the add-on that is selected: without one that fits they are greyed, not
+                // buttons that take a press and do nothing; pointing at one says what to select first (a greyed
+                // button gets no pointer: the pointer is read around it)
+                Item {
+                    width: addButton.width
+                    height: addButton.height
+                    SettingsButton {
+                        id: addButton
+                        objectName: "settingsInstallAddon"
+                        text: qsTr("Add")
+                        readonly property bool applicable: !!root.selectedAddon
+                            && root.selectedAddon.manageable && !root.selectedAddon.broken
+                            && root.selectedAddon.state === ServicesDiscoveryModel.STATE_NOTINSTALLED
+                        enabled: applicable
+                        onClicked: root.addons.installService(addonsView.currentIndex)
+                    }
+                    HoverHandler { id: addHover }
+                    ToolTip.visible: addHover.hovered && !addButton.applicable
                     ToolTip.text: qsTr("Select an add-on that is not installed")
                     ToolTip.delay: 650
                 }
-                SettingsButton {
-                    id: removeButton
-                    objectName: "settingsRemoveAddon"
-                    text: qsTr("Remove")
-                    readonly property bool applicable: !!root.selectedAddon && root.selectedAddon.manageable
-                        && root.selectedAddon.state === ServicesDiscoveryModel.STATE_INSTALLED
-                    onClicked: if (applicable) root.addons.removeService(addonsView.currentIndex)
-                    ToolTip.visible: hovered && !applicable
+                Item {
+                    width: removeButton.width
+                    height: removeButton.height
+                    SettingsButton {
+                        id: removeButton
+                        objectName: "settingsRemoveAddon"
+                        text: qsTr("Remove")
+                        readonly property bool applicable: !!root.selectedAddon && root.selectedAddon.manageable
+                            && root.selectedAddon.state === ServicesDiscoveryModel.STATE_INSTALLED
+                        enabled: applicable
+                        onClicked: root.addons.removeService(addonsView.currentIndex)
+                    }
+                    HoverHandler { id: removeHover }
+                    ToolTip.visible: removeHover.hovered && !removeButton.applicable
                     ToolTip.text: qsTr("Select an installed add-on")
                     ToolTip.delay: 650
                 }

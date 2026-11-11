@@ -454,6 +454,8 @@ Widgets.RedesignDialog {
                 id: scopePicker
 
                 objectName: "shortcutsSearchField"
+                // a press through an assistive tool opens the list, as a click does (Qt's combo box answers its keys only)
+                Accessible.onPressAction: popup.visible ? popup.close() : popup.open()
                 Layout.preferredWidth: VLCStyle.dp(200, VLCStyle.scale)
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
                 model: root.scopes

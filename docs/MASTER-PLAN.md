@@ -99,6 +99,21 @@ What is being worked on, updated as it changes (2026-11-10):
     the mini player, as wide as it (what plays is checked and focused, OK plays a row, Back closes), not the
     player's full page. In Hebrew and Arabic the card touched the window's edge (the right margin, not the
     end's). Checked on the Android TV emulator with the remote's keys, each step looked at.
+  - 🟢 **Every option answers** (2026-11-11), each control of Settings used and read back:
+    - Desktop (Windows, 14 pages, through UI Automation: a switch toggled twice, a list opened and closed, a
+      slider moved and put back, a text box given a text, a button pressed and what it opened closed again):
+      every control answers. Found and fixed on the way: the lists (60) did not open from an assistive tool, only
+      from their keys; the sliders told such tools a range of 0 to 0, so no value could be set; the start-up
+      volume choice ignored their "toggle"; a list did not tell its current choice; **Rescan plugins** showed
+      nothing when it worked (its button now reads "Scanning..." while it scans, a second at least); **Add** and
+      **Remove** of Extensions took a press and did nothing with no add-on selected (greyed now, pointing at one
+      says what to select). Not faults: the choice already taken changes nothing when pressed again.
+    - Samsung TV (the preview at the TV's size, the remote's keys): 135 controls of Settings change a setting,
+      open something or show an answer; the focus is visible and on screen on 24 pages and dialogs; no arrow is
+      held; 0 script errors.
+    - Android phone layout (emulator, taps, 12 pages): every row opens its page or its choices, or changes and
+      is put back by a second press. What the walk flagged was looked at by hand and works (Remote access and the
+      equalizer come back with Back, the shadow switch shows and hides its three rows).
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for

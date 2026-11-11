@@ -19,6 +19,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - Windows: closing never waits for a graphics driver that is slow to start (the close could hang).
 - What's new: headlines without the changelog's issue references.
+- Settings: lists, sliders and the start-up volume choice work from a screen reader.
+- Settings: Rescan plugins shows that it is scanning.
+- Settings: Add and Remove of Extensions are greyed until an add-on is selected.
 - "Unknown Artist" of the media library is translated (72 languages).
 - Subtitle services' hints: a sentence shown twice (12 languages).
 - Android: an empty Home says why and asks for access to your files.

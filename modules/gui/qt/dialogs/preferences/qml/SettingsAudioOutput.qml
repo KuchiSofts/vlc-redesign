@@ -60,6 +60,8 @@ ColumnLayout {
         ComboBox {
             id: deviceBox
             objectName: "settingsOutputDevice"
+            // a press through an assistive tool opens the list, as a click does (Qt's combo box answers its keys only)
+            Accessible.onPressAction: popup.visible ? popup.close() : popup.open()
             // as the other dropdowns of Settings (SettingsDropdown)
             Layout.preferredWidth: VLCStyle.dp(320, VLCStyle.scale)
             Layout.preferredHeight: VLCStyle.dp(36, VLCStyle.scale)

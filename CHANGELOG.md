@@ -15,6 +15,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- Work on 0.6.1 (an update release) started: fixes as the issues bring them.
+
+### Technical
+
+- **The small updates are made with bsdiff4 1.4** (already in the tag of 0.6.0, whose six small updates were made
+  and checked with it): its control triples arrive as the bytes of a BSDIFF40 file (a negative number as sign and
+  magnitude), written as the app reads them (two's complement); and the binary diff runs on a thread with a large
+  stack, since its suffix sort overflowed Python's 1 MB on `libavcodec_plugin.dll` (31 MB) from 0.5.8. The format
+  of a `.vrdelta` is unchanged: every copy from 0.2.4 on applies them.
+
 ## [0.6.0] · 2026-11-11
 
 **A full release of every app**, with every installer and package again (the .deb, .rpm and Flatpak packages too):

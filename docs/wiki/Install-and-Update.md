@@ -28,14 +28,14 @@ release: every installer and package, the .deb, .rpm and Flatpak packages too. T
 
 | File | Size | What it is |
 |---|---|---|
-| `vlc-redesign-0.6.0-win64-setup.exe` | | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
-| `vlc-redesign-0.6.0-win64.zip` | | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.6.0-winarm64-setup.exe` | | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
-| `vlc-redesign-0.6.0-winarm64.zip` | | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.6.0-delta-from-0.5.8.vrdelta` | | A small update from 0.5.8, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.6.0-delta-from-0.5.7.vrdelta`, `...-from-0.5.6.vrdelta` | | The small updates from 0.5.7 and from 0.5.6. |
-| `vlc-redesign-0.6.0-winarm64-delta-from-0.5.8.vrdelta`, `...-from-0.5.7.vrdelta`, `...-from-0.5.6.vrdelta` | | The small updates of Windows on ARM64 from 0.5.8, 0.5.7 and 0.5.6. |
-| `vlc-redesign-0.6.0-source.tar.gz` | | The source code of this release. |
+| `vlc-redesign-0.6.0-win64-setup.exe` | 60.0 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
+| `vlc-redesign-0.6.0-win64.zip` | 108.6 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
+| `vlc-redesign-0.6.0-winarm64-setup.exe` | 47.8 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.6.0-winarm64.zip` | 84.8 MB | **The portable copy for Windows 11 on ARM64.** |
+| `vlc-redesign-0.6.0-delta-from-0.5.8.vrdelta` | 10.6 MB | A small update from 0.5.8, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.6.0-delta-from-0.5.7.vrdelta`, `...-from-0.5.6.vrdelta` | 12.5 MB, 12.7 MB | The small updates from 0.5.7 and from 0.5.6. |
+| `vlc-redesign-0.6.0-winarm64-delta-from-0.5.8.vrdelta`, `...-from-0.5.7.vrdelta`, `...-from-0.5.6.vrdelta` | 9.9 MB, 11.5 MB, 11.8 MB | The small updates of Windows on ARM64 from 0.5.8, 0.5.7 and 0.5.6. |
+| `vlc-redesign-0.6.0-source.tar.gz` | 151.1 MB | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
 
@@ -73,7 +73,7 @@ PC.
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.6.0-android.apk` (120 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
+| `vlc-redesign-0.6.0-android.apk` (121 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
 updates in the app are for Windows; the AppImage on Linux and the app on macOS update themselves from the app with the
@@ -268,7 +268,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.6.0 is available* · *You have 0.5.8.* | **What's new**, **Skip**, **Update now · 12 MB** (or **Download**) |
+| *VLC Redesign 0.6.0 is available* · *You have 0.5.8.* | **What's new**, **Skip**, **Update now · 10.6 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.6.0… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.6.0…* | |
 | *VLC Redesign 0.6.0 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |

@@ -64,6 +64,8 @@ What is being worked on, updated as it changes (2026-11-10):
   work planned as 0.5.9 (the stability round, #72's keys without the controls, the subtitle work below, the
   interface size) with Android TV gone through option by option with the remote; Windows x64 and ARM64, Linux and
   macOS, Android (versionCode 13106000) and the Samsung TV app at 0.6.0 together. Next: 0.6.1, an update release.
+- 🟡 **0.6.1** started (an update release): fixes as the issues bring them. The small updates of 0.6.0 were made
+  with bsdiff4 1.4 (its control bytes converted, the diff on a large stack), 35 files on the release page.
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for

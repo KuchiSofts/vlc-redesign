@@ -115,6 +115,10 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 
 **A full release** of every app, with every installer and package:
 
+- ✅ Published with 35 files on its [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.0):
+  Windows x64 and ARM64 (installers, portable copies, small updates from 0.5.6, 0.5.7 and 0.5.8: 10.6 MB from
+  0.5.8), Linux x86_64 and ARM64 (AppImage, .deb, .rpm, Flatpak, a folder to run from), macOS (Apple Silicon and
+  Intel), the Android APK and the Samsung TV app's source, under one signed list of checksums.
 - ✅ In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
   choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
   ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF): desktop, Android (phones, tablets, TV)

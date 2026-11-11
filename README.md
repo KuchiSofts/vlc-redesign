@@ -35,7 +35,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 <td align="center" valign="top">
 <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign-0.6.0-x86_64.AppImage"><img src="https://img.shields.io/badge/AppImage-x86__64-E95420?style=for-the-badge&logo=linux&logoColor=white" alt="Linux AppImage, x86_64"></a><br>
 <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign_0.6.0_amd64.deb"><img src="https://img.shields.io/badge/.deb-Ubuntu%20%C2%B7%20Debian-E95420?style=for-the-badge" alt="Linux .deb"></a><br>
-<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign-0.6.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.5.3/vlc-redesign-0.5.3-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign-0.6.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign-0.6.0-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
 </td>
 <td align="center" valign="top">
 <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.0/vlc-redesign-0.6.0-macos-arm64.dmg"><img src="https://img.shields.io/badge/Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Apple Silicon"></a><br>
@@ -367,7 +367,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 The current release is **0.6.0** (2026-11-11), a full release of every app with every installer and package: keys in
 full screen without the controls as in VLC 3, a round of stability, smarter automatic subtitles, online subtitles for network videos on Android, the same Subtitles panel on every device, an interface size
 made for the screen, and Android TV gone through option by option with the remote (on Windows the app offers a
-small update from 0.5.8; its files and checksums on the
+10.6 MB small update from 0.5.8; its files and checksums on the
 [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.0)); the next, **0.6.1**, an update
 release, brings fixes as the issues bring them. The status of each platform and what comes after is
 tracked in [ROADMAP.md](ROADMAP.md) (mirrored on the

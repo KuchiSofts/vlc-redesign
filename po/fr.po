@@ -18874,7 +18874,7 @@ msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:548
 msgid "Unknown Artist"
-msgstr ""
+msgstr "Artiste inconnu"
 
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:690
 msgid "Unknown Album"

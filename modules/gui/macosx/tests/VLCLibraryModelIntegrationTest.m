@@ -1263,16 +1263,31 @@
     XCTAssertEqualObjects([self libraryIDsForItems:[self loadRecentHistoryForAudio:audio]], baseline);
 }
 
+- (void)loadMonitoredFolders
+{
+    VLCLibraryModelTestQueryGate * const model = self.model;
+    [self stopModelCallback];
+
+    XCTestExpectation * const dropped =
+        [self expectationForNotification:VLCLibraryModelAllCachesDropped
+                                  object:model
+                                 handler:nil];
+    XCTestExpectation * const loaded =
+        [self expectationForNotification:VLCLibraryModelListOfMonitoredFoldersUpdated
+                                  object:model
+                                 handler:nil];
+    // Clear any startup result before requesting the folder list for the test.
+    [model dropCaches];
+    (void)model.listOfMonitoredFolders;
+    [self waitForExpectations:@[ dropped, loaded ] timeout:5.];
+    XCTAssertGreaterThan(model.cachedListOfMonitoredFolders.count, (NSUInteger)0);
+}
+
 - (void)assertDroppedMonitoredFoldersRejectsPendingWrite:(BOOL)queuedWrite
 {
-    XCTestExpectation * const loaded = [self expectationForNotification:VLCLibraryModelListOfMonitoredFoldersUpdated
-                                                                 object:self.model
-                                                                handler:nil];
-    [self waitForExpectations:@[ loaded ] timeout:5.];
-    XCTAssertGreaterThan(self.model.cachedListOfMonitoredFolders.count, (NSUInteger)0);
+    [self loadMonitoredFolders];
     NSArray<VLCMediaLibraryFolderObserver *> * const previousObservers = self.model.folderObservers;
     XCTAssertGreaterThan(previousObservers.count, (NSUInteger)0);
-    [self stopModelCallback];
 
     XCTestExpectation * const captured = [self expectationWithDescription:@"Older monitored-folder result held"];
     XCTestExpectation * const processed = [self expectationWithDescription:@"Older monitored-folder write processed"];
@@ -1710,10 +1725,8 @@
 
 - (void)testReloadingMonitoredFoldersReplacesAndReleasesPreviousObservers
 {
-    XCTestExpectation * const loaded = [self expectationForNotification:VLCLibraryModelListOfMonitoredFoldersUpdated
-                                                                 object:self.model
-                                                                handler:nil];
-    [self waitForExpectations:@[ loaded ] timeout:5.];
+    [self loadMonitoredFolders];
+    VLCLibraryModelTestQueryGate * const model = self.model;
     __weak VLCMediaLibraryFolderObserver *previousObserver = nil;
     NSSet<NSURL *> *previousURLs = nil;
     @autoreleasepool {
@@ -1733,8 +1746,18 @@
     XCTestExpectation * const reloaded = [self expectationForNotification:VLCLibraryModelListOfMonitoredFoldersUpdated
                                                                    object:self.model
                                                                   handler:nil];
-    (void)self.model.listOfMonitoredFolders;
-    [self waitForExpectations:@[ reloaded ] timeout:5.];
+    // Track the fetch and write separately so a timeout identifies the stalled step.
+    XCTestExpectation * const fetched = [self expectationWithDescription:@"Monitored folder reload result fetched"];
+    XCTestExpectation * const processed = [self expectationWithDescription:@"Monitored folder reload write processed"];
+    [model holdNextCacheWriteForGetter:@selector(cachedListOfMonitoredFolders)
+                               handler:^{
+        [model releaseCacheWrite];
+        [fetched fulfill];
+    }
+                     completionHandler:^{ [processed fulfill]; }];
+    [self addTeardownBlock:^{ [model releaseCacheWrite]; }];
+    (void)model.listOfMonitoredFolders;
+    [self waitForExpectations:@[ fetched, processed, reloaded ] timeout:5.];
     XCTAssertNil(previousObserver);
     NSMutableSet<NSURL *> * const URLs = NSMutableSet.set;
     for (VLCMediaLibraryFolderObserver *observer in self.model.folderObservers)

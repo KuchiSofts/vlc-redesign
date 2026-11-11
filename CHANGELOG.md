@@ -24,6 +24,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Android TV: menus show the remote's focus line.
 - Android TV: confirmations and small forms have the design's width.
 - Android: a screen reader says whether a subtitle service or language is on.
+- Android: the feedback page reports to the project's GitHub issues, not by mail to VideoLAN.
 - Samsung TV: the catch-up mark no longer covers a channel's logo.
 
 ### Technical

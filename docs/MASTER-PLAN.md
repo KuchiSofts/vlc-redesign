@@ -68,7 +68,13 @@ What is being worked on, updated as it changes (2026-11-10):
   with bsdiff4 1.4 (its control bytes converted, the diff on a large stack), 35 files on the release page.
   - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
     prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning. Android: vlc-android
-    merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept).
+    merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept). The new
+    Windows build also on Direct3D's software adapter (Windows Sandbox, no graphics card): launch test 0
+    failures, no QML warning, Home and About drawn right.
+  - 🟢 Android feedback page (upstream's, opened after a library error): "Report a bug" opens the project's
+    GitHub issues; no mail with logs, a settings file or the library to VideoLAN's support, no VideoLAN forum
+    card; the web remote's feedback has no address either. The keys of the subtitle services and Live TV were
+    never in that settings file (kept apart under the Android keystore).
   - 🟢 Fixed (2026-11-11): What's new's headlines without issue references (a test, 30 checks); "Unknown Artist"
     translated in 72 languages; a sentence written twice in 14 texts of 12 languages; Android: Home never blank
     without access to the files, a screen reader hears a subtitle service's or language's state; Android TV: the

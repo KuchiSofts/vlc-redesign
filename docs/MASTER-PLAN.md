@@ -70,7 +70,8 @@ What is being worked on, updated as it changes (2026-11-10):
   small updates of 0.6.0 were made with bsdiff4 1.4 (its control bytes converted, the diff on a large stack).
   - 🟢 VideoLAN merged twice more at the upload, to `3494ac3b92` and then `82ca0542a1` (9 commits, all in VLC's
     own macOS interface, which the redesign does not show: folder streams, radio country counts, the grid's menu,
-    the playback state of media items).
+    the playback state of media items). After the release was built VideoLAN added `6b5f85b1d1` (artwork of the
+    macOS interface): merged for the next version.
   - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
     prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning. Android: vlc-android
     merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept). The new

@@ -91,6 +91,14 @@ What is being worked on, updated as it changes (2026-11-10):
     and a small dump, and the interface logs each step of its close.
   - 🟢 CI: Windows' first sign-in screen covered every ARM64 screenshot since at least 2026-11-08 (they never
     showed VLC); it is closed before they are taken. To look at after the next upload.
+  - 🟢 Android TV, the mini player and the queue (2026-11-11): the remote never reached the mini player. The
+    closed music player of the phone layout is under the window's edge there (no bar at the bottom), and its
+    buttons took the focus: Down from a page's last row went to Shuffle, the time, a queue row's menu, none of
+    them on screen. Closed, it takes no focus now; Down from the last row goes to the mini player's card (OK: the
+    player), Down again to its queue button, Up back to the item the focus came from. The queue is a panel over
+    the mini player, as wide as it (what plays is checked and focused, OK plays a row, Back closes), not the
+    player's full page. In Hebrew and Arabic the card touched the window's edge (the right margin, not the
+    end's). Checked on the Android TV emulator with the remote's keys, each step looked at.
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for

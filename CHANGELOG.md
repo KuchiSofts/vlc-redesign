@@ -24,6 +24,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Android: an empty Home says why and asks for access to your files.
 - Android TV: menus show the remote's focus line.
 - Android TV: confirmations and small forms have the design's width.
+- Android TV: the remote reaches the mini player and its queue button.
+- Android TV: the queue opens as a panel over the mini player, not as a full page.
 - Android: a screen reader says whether a subtitle service or language is on.
 - Android: the feedback page reports to the project's GitHub issues, not by mail to VideoLAN.
 - Samsung TV: the catch-up mark no longer covers a channel's logo.

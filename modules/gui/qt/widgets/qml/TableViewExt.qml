@@ -81,8 +81,14 @@ ListViewExt {
     property int rightPadding: 0
 
     readonly property real _extraPadding: VLCStyle.dynamicAppMargins(width)
-    property real contentLeftPadding: _extraPadding + leftPadding + VLCStyle.layout_left_margin
-    property real contentRightPadding: _extraPadding + rightPadding + VLCStyle.layout_right_margin
+    // The rows start at the page's margin (20, as the header and the grids)
+    // and are at most maxRowWidth wide: on a wide window the columns stay
+    // near each other instead of spreading with dead bands between them.
+    property real maxRowWidth: VLCStyle.dp(1200, VLCStyle.scale)
+    property real contentLeftPadding: leftPadding + VLCStyle.dp(20, VLCStyle.scale)
+    property real contentRightPadding: rightPadding + VLCStyle.dp(20, VLCStyle.scale)
+        + Math.max(0, width - leftMargin - rightMargin - leftPadding - rightPadding
+                      - VLCStyle.dp(40, VLCStyle.scale) - maxRowWidth)
 
     // These are "extra" margins because `ListView`'s own `margins` is also considered for the header.
     property real defaultHeaderExtraLeftMargin: contentLeftPadding
@@ -128,7 +134,10 @@ ListViewExt {
     //       the delegate (such as, hovering over the header). As `clip: true` adjusts both the scene graph
     //       viewport, and qt quick event delivery agent. Having a control as header and blocking the events
     //       events reaching beneath is not a good behavior, as currently done here.
-    property color headerColor: (interactive && (headerPositioning !== ListView.InlineHeader)) ? colorContext.bg.primary : "transparent"
+    // (the page's own colour under the pinned column names: a grey band
+    // ran from the side bar to the window's edge, past the page's margins)
+    property color headerColor: (interactive && (headerPositioning !== ListView.InlineHeader))
+                                ? VLCStyle.redesign.color(VLCStyle.redesign.windowBackground) : "transparent"
     property int headerTopPadding: 0
 
     property real rowHeight: VLCStyle.tableRow_height
@@ -289,12 +298,6 @@ ListViewExt {
                         required property var modelData
                         property TableHeaderDelegate _item: null
 
-                        TableHeaderDelegate.CellModel {
-                            id: cellModel
-                            colorContext:  root.colorContext
-                            colModel: modelData.model
-                        }
-
                         height: VLCStyle.tableHeaderText_height
                         width: {
                             if (!!modelData.size)
@@ -313,7 +316,8 @@ ListViewExt {
                             headerCell._item = comp.createObject(headerCell, {
                                 width:  Qt.binding(() => headerCell.width),
                                 height:  Qt.binding(() => headerCell.height),
-                                cellModel: cellModel,
+                                colorContext:  Qt.binding(() => root.colorContext),
+                                colModel: Qt.binding(() => modelData.model)
                             })
                         }
 

@@ -18,6 +18,7 @@
 #include "maininterface/compositor.hpp"
 #include "maininterface/mainctx.hpp"
 #include "qt.hpp"
+#include "util/screen_fit.hpp"
 
 #include <vlc_configuration.h>
 #include <vlc_modules.h>
@@ -257,6 +258,9 @@ const QtSettingOption qtSettingOptions[] = {
       N_("Looks for the cast devices of the local network when the Renderer menu opens.") },
     { "redesign/remember-window-geometry", 'b', 1, 0, 0, N_("Remember window size and position"),
       N_("Opens the window where it was when VLC was closed.") },
+    // (MainCtx: 0 Automatic, else a percentage; its choices below)
+    { "redesign/interface-size", 'i', 0, 0, 200, N_("Interface size"),
+      N_("How large the pages, texts and controls are drawn. Automatic picks the size that suits this screen.") },
     { "redesign/always-show-player-bar", 'b', 0, 0, 0, N_("Always show the player bar"),
       N_("Keeps the player bar at the bottom of the library while nothing plays: Play starts "
          "the play queue, or opens files when it is empty.") },
@@ -1493,6 +1497,20 @@ void ConfigModel::buildEntries()
                     for (int64_t value = 0; value < labels.size(); ++value)
                         entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(value)},
                                                          {QStringLiteral("label"), labels[value]}});
+                }
+                // Interface size: Automatic with the size found for the
+                // screen of the window, then the sizes (the same on every app)
+                if (entry.key == QLatin1String("redesign/interface-size")) {
+                    entry.bounded = false;
+                    // xgettext:no-c-format
+                    const QString automatic = qtr("Automatic (%1 %)").arg(m_ctx->automaticInterfaceSize());
+                    entry.choices.append(QVariantMap{
+                        {QStringLiteral("value"), QVariant::fromValue<int64_t>(0)},
+                        {QStringLiteral("label"), automatic}});
+                    for (int size : ScreenFit::interfaceSizes)
+                        entry.choices.append(QVariantMap{
+                            {QStringLiteral("value"), QVariant::fromValue<int64_t>(size)},
+                            {QStringLiteral("label"), QStringLiteral("%1 %").arg(size)}});
                 }
                 // Process priority: the classes of Windows by name, the
                 // usual ones first (-2 idle ... 2 high, see MainCtx)

@@ -10,6 +10,7 @@
 
 #include <QByteArray>
 #include <QList>
+#include <QPair>
 #include <QString>
 #include <QStringList>
 #include <QUrl>
@@ -17,6 +18,8 @@
 #include <functional>
 
 #include "player/subtitle_providers.hpp"
+
+class QJsonDocument;
 
 // The services asked with the user's own free key or account: the addresses
 // they are asked (built from the video) and what they answer, read here
@@ -40,6 +43,34 @@ Check checkOf(int status);
 
 // The release cleaned of the uploaders' decorations ("* x *", "- x -")
 QString cleanRelease(const QString &release);
+
+// ---------------------------------------------------------------------------
+// An answer that isn't the service's: a failure of it (shown on its line
+// with why), never "nothing found"
+
+enum class AnswerKind
+{
+    Readable,  // what the service sends: JSON (an object or an array), or its page
+    Empty,     // nothing, where something has to come
+    Page,      // an HTML page where JSON comes: an error page
+    Challenge, // a check of the browser (Cloudflare, DDoS-Guard, Sucuri, Imperva,
+               // a captcha): no answer for a program
+    Unreadable // neither JSON nor a page: a text of the server, JSON cut short
+};
+// What an answer is; json: the service answers JSON (else a page or a
+// text of its own: YIFY's, Napisy24's)
+AnswerKind answerKind(const QByteArray &body, bool json);
+// The error a JSON answer says in place of its results: its message ("?"
+// when it says none), empty when the answer has its results (an empty list
+// too: nothing found). array: the results come as an array (else as an
+// object that has key; one without it and without an error says nothing)
+QString answerError(const QJsonDocument &doc, bool array, const char *key = nullptr);
+// Whether a download is a page or a JSON error rather than a subtitle (an
+// HTML document, a check of the browser, a JSON object or array)
+bool isErrorDocument(const QByteArray &body);
+// Whether a page is YIFY's own (else an error page of a server or a proxy:
+// one without subtitles of its own is nothing found, another is a failure)
+bool isYifyPage(const QByteArray &page);
 // Whether a release is of this episode: it names it ("S01E02", "1x02",
 // "S01E01-E03"), or names no episode (the whole season); false when it names
 // another one
@@ -82,7 +113,8 @@ QUrl subDlCheckUrl(const QString &key, bool v2);
 QString openSubtitlesComCode(const QString &code); // "pt-BR" → "pt-br", "zh" → "zh-cn"
 QString languageOfOpenSubtitlesCom(const QString &code, const LanguageOf &languageOf);
 QUrl openSubtitlesComSearchUrl(const Query &query);
-QList<Result> parseOpenSubtitlesCom(const QByteArray &body, const LanguageOf &languageOf);
+// error: what it says instead of its results (answerError), when it does
+QList<Result> parseOpenSubtitlesCom(const QByteArray &body, const LanguageOf &languageOf, QString *error = nullptr);
 // The sign-in's token and the address to ask then (vip-api for its members);
 // empty when refused
 struct Session
@@ -109,7 +141,7 @@ QString languageOfTitlovi(const QString &name);      // "Cirilica" → "sr"
 QUrl titloviLoginUrl(const QString &username, const QString &password);
 Session titloviSession(const QByteArray &loginReply);
 QUrl titloviSearchUrl(const Query &query, const Session &session);
-QList<Result> parseTitlovi(const QByteArray &body, const Query &query);
+QList<Result> parseTitlovi(const QByteArray &body, const Query &query, QString *error = nullptr);
 
 // Assrt (api.assrt.net/v1): Chinese, with the user's token
 QUrl assrtSearchUrl(const Query &query);
@@ -122,9 +154,9 @@ QUrl assrtCheckUrl(const QString &key);
 
 // Jimaku (jimaku.cc/api): anime, Japanese, the key in Authorization
 QUrl jimakuSearchUrl(const Query &query);
-QString jimakuEntryId(const QByteArray &body, const Query &query);
+QString jimakuEntryId(const QByteArray &body, const Query &query, QString *error = nullptr);
 QUrl jimakuFilesUrl(const QString &entryId, const Query &query);
-QList<Result> parseJimaku(const QByteArray &body, const Query &query);
+QList<Result> parseJimaku(const QByteArray &body, const Query &query, QString *error = nullptr);
 
 // BetaSeries (api.betaseries.com): series, French; the show by its IMDb id,
 // then its episode's subtitles
@@ -145,6 +177,8 @@ struct Napisy24Answer
 {
     bool loginRefused = false;
     bool found = false;
+    // not an answer of its own ("OK-…", "login error"): a page, nothing
+    bool unreadable = false;
     QString imdb;
     QString title;
     QByteArray archive;
@@ -157,6 +191,52 @@ QByteArray legendasLoginBody(const QString &email, const QString &password);
 Session legendasSession(const QByteArray &loginReply);
 QUrl legendasSearchUrl(const Query &query);
 QByteArray legendasSearchBody(const Query &query);
-QList<Result> parseLegendas(const QByteArray &body, const Query &query);
+QList<Result> parseLegendas(const QByteArray &body, const Query &query, QString *error = nullptr);
+
+// ---------------------------------------------------------------------------
+// YIFY Subtitles (yifysubtitles.ch): its page of a film, read in one pass
+// (its time grows with the page, whatever the page is), the language of
+// each row by languageOf
+QList<Result> parseYify(const QByteArray &page, const LanguageOf &languageOf);
+
+// ---------------------------------------------------------------------------
+// A video played from the network (#73: a link, a server's file)
+
+// Whether the name in a stream's address says what it is: two letters in a
+// row in its stem, and none of the names servers give every stream ("index",
+// "master", "playlist", "stream", "video"...). "500.mp4", "index.m3u8": no;
+// the stream's title then (every app's rule)
+bool namesSomething(const QString &fileName);
+// The whole size in a Content-Range ("bytes 0-65535/1200000"), -1 when it
+// says none ("*") or isn't one
+qint64 contentRangeTotal(const QByteArray &contentRange);
+// The OpenSubtitles hash of a file of size bytes from its first and last
+// 64 KiB (the size plus their 64-bit little-endian words), empty when they
+// aren't 64 KiB each or the file is smaller
+QString openSubtitlesHashOf(qint64 size, const QByteArray &head, const QByteArray &tail);
+
+// ---------------------------------------------------------------------------
+// Languages to search (Settings > Subtitles): their list as it is kept,
+// "code" on, "-code" off, in their order. After the preferred language or the
+// second one was chosen: both on and first, the preferred before the second
+// (the second empty: none). The rest stays as it was, in its order. Every
+// app's rule: a language just chosen is searched, the preferred first
+QStringList withChosenLanguagesFirst(const QStringList &entries, const QString &preferred,
+                                     const QString &second);
+
+// ---------------------------------------------------------------------------
+// What a download comes in (with zlib, HAVE_ZLIB; without it gzip and the
+// compressed files of a zip are not opened)
+
+// Whether a file name is a subtitle's (srt, ass, ssa, vtt, sub, smi, txt)
+bool isSubtitleName(const QString &name);
+// A gzip file inflated: empty unless it is whole (its end and its CRC read)
+// and unpacks to at most limit bytes
+QByteArray gunzip(const QByteArray &data, qsizetype limit);
+// The files of a zip archive: { name, data }, through its central directory.
+// Only the subtitles are unpacked (the others have no data), at most 64 of
+// the first 1000 files, each up to 8 MiB and 16 MiB in all; a file has data
+// only when it is whole: the size and the CRC-32 the archive gives it
+QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip);
 
 } // namespace SubtitleProviders

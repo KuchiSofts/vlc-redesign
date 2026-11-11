@@ -312,8 +312,9 @@ Widgets.PageExt {
                 model: visible ? Iptv.channelModel : null
                 clip: true
                 focus: visible
-                readonly property real cardWidth: root.px(196)
                 readonly property real gap: root.px(20)
+                // (the rows end at the page's margin, as every grid's)
+                readonly property real cardWidth: VLCStyle.redesign.gridCardWidth(root.px(196), gap, width)
                 cellWidth: cardWidth + gap
                 cellHeight: cardWidth * 9 / 16 + root.px(14 + 19 + 4 + 15) + gap
                 bottomMargin: root.px(20)
@@ -481,7 +482,7 @@ Widgets.PageExt {
                 focus: active
                 source: "qrc:///qt/qml/VLC/Network/TvGuideView.qml"
                 onLoaded: {
-                    item.programmeClicked.connect((channel, programme) => root.openProgramme(channel, programme))
+                    item.programmeClicked.connect(root, (channel, programme) => root.openProgramme(channel, programme))
                     // (once: the guide opened again later stays where it is)
                     if (root.guideChannel !== "") {
                         const key = root.guideChannel

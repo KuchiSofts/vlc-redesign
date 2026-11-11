@@ -84,8 +84,8 @@ public enum VLCTokens {
         public static let lightBgA4 = VLCColor(0xABABAA, alpha: 1)
         /// Light of Dark/BG/A5.
         public static let lightBgA5 = VLCColor(0xB5B5B4, alpha: 1)
-        /// Light of the Home folder cards.
-        public static let lightBgFolderCard = VLCColor(0xABABAA, alpha: 1)
+        /// Light of the Home folder cards (lighter than the page, as the covers beside them).
+        public static let lightBgFolderCard = VLCColor(0xDEDEDE, alpha: 1)
         /// Light of Dark/FG/1.
         public static let lightFg1 = VLCColor(0x2E2E2E, alpha: 1)
         /// Light of Dark/FG/2.

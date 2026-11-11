@@ -29,7 +29,9 @@ StackViewExt {
     property string pageName: ""
 
     //path of the current page loader
-    property var pagePrefix: []
+    // (set by the PageLoader that creates it, undefined otherwise: a
+    // default [] is a binding, which every page loaded replaced)
+    property var pagePrefix
 
     //list of available pages
     property var pageModel: []
@@ -89,7 +91,7 @@ StackViewExt {
                 if (component.status === Component.Ready ) {
 
                     let pageProp = {
-                        pagePrefix:[...pagePrefix, head]
+                        pagePrefix:[...(pagePrefix ?? []), head]
                     }
                     // History stores the destination's state. Intermediate
                     // containers forward it below, without receiving the
@@ -101,7 +103,7 @@ StackViewExt {
                         }
                     }
 
-                    History.update([...pagePrefix, head])
+                    History.update([...(pagePrefix ?? []), head])
                     root.replace(null, component, pageProp)
                     found = true
                     break;

@@ -39,6 +39,9 @@ T.Control {
     default property alias contents: column.data
 
     property url cover
+    // the icon of the empty state, when it is not the one of the cover
+    property string iconName: ""
+    readonly property bool _placeholder: root.cover.toString().startsWith("qrc:///placeholder/")
 
     property alias coverWidth: cover.width
     property alias coverHeight: cover.height
@@ -66,9 +69,30 @@ T.Control {
 
         spacing: root.spacing
 
+        // The redesign's empty state: the page's icon, large and bare (the
+        // grey box with a small icon in it was the old placeholder).
+        Image {
+            readonly property string _name: {
+                if (root.iconName !== "")
+                    return root.iconName
+                const c = root.cover.toString()
+                return c.includes("artistCover") ? "artist" : c.includes("albumCover") ? "album"
+                     : c.includes("videoCover") ? "video" : ""
+            }
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: root._placeholder
+            width: VLCStyle.dp(64, VLCStyle.scale)
+            height: width
+            sourceSize: Qt.size(width, height)
+            source: visible ? SVGColorImage.colorize("qrc:///redesign/icons/" + (_name || "file") + "/default.svg")
+                                           .any({ "#8F8F8F": VLCStyle.redesign.color("#6B6B6B") }).uri()
+                            : ""
+        }
+
         ScaledImage {
             id: cover
 
+            visible: !root._placeholder
             anchors.horizontalCenter: parent.horizontalCenter
 
             width: VLCStyle.colWidth(1)

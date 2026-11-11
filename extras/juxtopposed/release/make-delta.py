@@ -151,6 +151,56 @@ def normalize(package):
     print(f'time stamps set to 0 in {count} binaries')
 
 
+def control_block(control):
+    """bsdiff4's control triples as the app reads them: three little-endian
+    i64 each. Up to 1.2 it gave a list of tuples; since 1.4 it gives the bytes
+    of a BSDIFF40 file, where a negative number has its top bit set over its
+    size (sign and magnitude) instead of being a two's complement."""
+    if isinstance(control, (bytes, bytearray, memoryview)):
+        control = bytes(control)
+        if len(control) % 24:
+            raise ValueError('bsdiff4: control block is not whole triples')
+        values = []
+        for i in range(0, len(control), 8):
+            v = int.from_bytes(control[i:i + 8], 'little')
+            values.append(-(v & (2**63 - 1)) if v >> 63 else v)
+        return struct.pack(f'<{len(values)}q', *values)
+    return b''.join(struct.pack('<qqq', *t) for t in control)
+
+
+def on_big_stack(work, *args):
+    """work(*args) on a thread with a large stack (255 MB: Python on Windows
+    takes less than 256): bsdiff4's suffix sort recurses, and on a big file
+    (libavcodec's 31 MB, from 0.5.8 to 0.6.0) it overflowed the 1 MB stack of
+    Python's main thread on Windows (the process ended with 0xC00000FD and no
+    message; 64 MB was enough for it)."""
+    import threading
+    result = {}
+
+    def run():
+        try:
+            result['value'] = work(*args)
+        except BaseException as e:      # (raised again by the caller)
+            result['error'] = e
+
+    before = threading.stack_size()
+    for megabytes in (255, 128, 64):
+        try:
+            threading.stack_size(megabytes << 20)
+            break
+        except ValueError:              # (more than this system gives a thread)
+            continue
+    try:
+        thread = threading.Thread(target=run)
+        thread.start()
+    finally:
+        threading.stack_size(before)
+    thread.join()
+    if 'error' in result:
+        raise result['error']
+    return result['value']
+
+
 def make_delta(package, new_files, old_version, old_files, version, out_path):
     import bsdiff4.core as bsdiff
     # (whatever its case: Windows has one file for Foo.dll and foo.dll, and a
@@ -168,8 +218,8 @@ def make_delta(package, new_files, old_version, old_files, version, out_path):
         entry = {'path': rel, 'size': len(data), 'sha256': sha256(data), 'offset': blobs.tell()}
         full = qcompress(data)
         if old is not None and len(data) >= PATCH_MIN:
-            control, diff, extra = bsdiff.diff(old, data)
-            parts = [qcompress(b''.join(struct.pack('<qqq', *t) for t in control)), qcompress(diff), qcompress(extra)]
+            control, diff, extra = on_big_stack(bsdiff.diff, old, data)
+            parts = [qcompress(control_block(control)), qcompress(diff), qcompress(extra)]
             if sum(map(len, parts)) < PATCH_GAIN * len(full):
                 entry.update(kind='patch', old_sha256=sha256(old), parts=[len(p) for p in parts])
                 for p in parts:

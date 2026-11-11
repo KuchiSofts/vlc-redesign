@@ -86,6 +86,10 @@ Widgets.RedesignDialog {
         boundsBehavior: Flickable.StopAtBounds
 
         T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+        Widgets.ScrollHint {
+            view: notesView
+            surface: root.cardColor
+        }
 
         ColumnLayout {
             id: notes
@@ -125,6 +129,10 @@ Widgets.RedesignDialog {
 
                             Layout.fillWidth: true
                             spacing: VLCStyle.dp(8, VLCStyle.scale)
+                            // (the notes are English: left to right, the bullet
+                            // on the left, in a right-to-left interface too)
+                            LayoutMirroring.enabled: false
+                            LayoutMirroring.childrenInherit: true
 
                             // the same font as the text: on its first line
                             Text {

@@ -30,7 +30,9 @@ public:
     Q_INVOKABLE QUrl chooseImage(const QString& title = {});
     // A color (0xRRGGBB), or -1 when cancelled
     Q_INVOKABLE int chooseColor(int initial, const QString& title = {});
-    Q_INVOKABLE QUrl chooseFolder(const QString& title = {});
+    // (opens in `start`, the user's home folder without one: not in the
+    // folder the program was started from)
+    Q_INVOKABLE QUrl chooseFolder(const QString& title = {}, const QUrl& start = {});
 private:
     MainCtx* m_ctx = nullptr;
 };

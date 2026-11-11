@@ -86,6 +86,18 @@ FocusScope {
         clip: true
         boundsBehavior: Flickable.StopAtBounds
         model: [""].concat(root.categories)
+        // The wheel of a mouse goes along the categories, as along the groups
+        // of the channels (a list across takes the horizontal wheel only: an
+        // account's many categories ran past the width out of reach)
+        WheelHandler {
+            enabled: chips.contentWidth > chips.width
+            onWheel: (event) => {
+                const delta = event.angleDelta.y !== 0 ? event.angleDelta.y : event.angleDelta.x
+                const step = chips.effectiveLayoutDirection === Qt.RightToLeft ? delta : -delta
+                chips.contentX = Math.max(chips.originX,
+                                          Math.min(chips.originX + chips.contentWidth - chips.width, chips.contentX + step))
+            }
+        }
         delegate: T.Button {
             id: chip
             required property var modelData
@@ -119,7 +131,7 @@ FocusScope {
         clip: true
         focus: true
         model: root.shown
-        readonly property real cardWidth: root.px(150)
+        readonly property real cardWidth: VLCStyle.redesign.gridCardWidth(root.px(150), root.px(20), width)
         cellWidth: cardWidth + root.px(20)
         cellHeight: cardWidth * 1.5 + root.px(14 + 19 + 20)
         cacheBuffer: cellHeight * 2

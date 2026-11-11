@@ -97,6 +97,7 @@ protected:
     bool m_hasResizeCursor = false;
 
     // the name of the media in the title ("qt-name-in-title")
+    QMetaObject::Connection m_screenConnections[3];
     QMetaObject::Connection m_titleConnection;
 
     QRect m_interfaceGeometry;

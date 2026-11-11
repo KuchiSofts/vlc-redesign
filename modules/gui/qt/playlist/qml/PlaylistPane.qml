@@ -132,10 +132,17 @@ T.Pane {
     contentItem: ColumnLayout {
         spacing: VLCStyle.margin_xxsmall
 
-        Layout.minimumWidth: Math.min(Math.max(noContentInfoColumn.implicitWidth,
+        // Card: the count and its five buttons always fit (the panel was as wide as its empty state's words: in
+        // Hebrew, shorter, the count had no room at all beside the buttons)
+        readonly property real _cardNeed: !root.card ? 0
+            : Math.ceil(cardCountBrief.advanceWidth) + 5 * VLCStyle.dp(32, VLCStyle.scale) + 5 * cardHeader.spacing
+              + cardHeader.Layout.leftMargin + cardHeader.Layout.rightMargin
+
+        Layout.minimumWidth: Math.max(_cardNeed,
+                                      Math.min(Math.max(noContentInfoColumn.implicitWidth,
                                                headerColumn.titleWidth ),
                                       /* Minimum width should not be too large, we rely on elision otherwise: */
-                                      Window.width / 3) + (headerColumn.Layout.leftMargin + headerColumn.Layout.rightMargin)
+                                      Window.width / 3) + (headerColumn.Layout.leftMargin + headerColumn.Layout.rightMargin))
 
         readonly property ListView listView: listView
 
@@ -184,15 +191,28 @@ T.Pane {
             Layout.leftMargin: VLCStyle.dp(18, VLCStyle.scale)
             Layout.rightMargin: VLCStyle.dp(12, VLCStyle.scale)
             Layout.bottomMargin: VLCStyle.dp(6, VLCStyle.scale)
-            spacing: VLCStyle.dp(4, VLCStyle.scale)
+            // (2 apart: at the panel's own width "No items" was cut to "No ite…" beside the five buttons)
+            spacing: VLCStyle.dp(2, VLCStyle.scale)
 
             Text {
+                id: cardCount
+
                 Layout.fillWidth: true
-                text: {
-                    const count = root.model.count
-                    if (count === 0)
-                        return qsTr("No items")
-                    return qsTr("%1 item", "%1 items", count).arg(count) + " - " + root.model.duration.formatLong()
+                // the count and the length; the count alone where both do not fit (never a word cut in half)
+                readonly property string _count: root.model.count === 0 ? qsTr("No items")
+                                                 : qsTr("%1 item", "%1 items", root.model.count).arg(root.model.count)
+                readonly property string _full: root.model.count === 0 ? _count
+                                                : _count + " - " + root.model.duration.formatLong()
+                text: cardCountMetrics.advanceWidth <= width ? _full : _count
+                TextMetrics {
+                    id: cardCountMetrics
+                    font: cardCount.font
+                    text: cardCount._full
+                }
+                TextMetrics {
+                    id: cardCountBrief
+                    font: cardCount.font
+                    text: cardCount._count
                 }
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -588,12 +608,16 @@ T.Pane {
 
                 anchors.centerIn: parent
 
-                visible: false
+                // The Binding sets a property of its own: visible also
+                // changes as the queue is shown or hidden, which it took
+                // for a change from elsewhere
+                property bool _shown
+                visible: _shown
                 enabled: visible
 
                 opacity: (listView.activeFocus) ? 1.0 : 0.4
 
-                Binding on visible {
+                Binding on _shown {
                     delayed: true
                     value: (listView.count === 0 && !listView.footerItem.firstItemIndicatorVisible)
                 }

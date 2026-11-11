@@ -279,13 +279,17 @@ Widgets.PageExt {
         // Figma 970:3792: rows of 406 x 32, 10 apart
         readonly property real rowWidth: VLCStyle.dp(406, VLCStyle.scale)
         readonly property real rowGap: VLCStyle.dp(10, VLCStyle.scale)
-        readonly property real cardWidth: VLCStyle.dp(316, VLCStyle.scale)
+        // (the design's card; the cards of a row grow to end it at the
+        // page's margin, by a third at most, as the other grids do)
+        readonly property real baseCardWidth: VLCStyle.dp(316, VLCStyle.scale)
+        readonly property real cardWidth: Math.max(baseCardWidth,
+            Math.min(Math.floor((width - margin + gap) / columns) - gap, Math.round(baseCardWidth * 1.35)))
         // 316 x 9 / 16: 177.75 as Figma lays the rows out (dp() would round)
         readonly property real pictureHeight: cardWidth * 9 / 16
         readonly property real gap: VLCStyle.dp(20, VLCStyle.scale)
         readonly property int columns: root._listMode
                                        ? Math.max(1, Math.floor((width - margin + rowGap) / (rowWidth + rowGap)))
-                                       : Math.max(1, Math.floor((width - margin + gap) / (cardWidth + gap)))
+                                       : Math.max(1, Math.floor((width - margin + gap) / (baseCardWidth + gap)))
 
         anchors.fill: parent
         anchors.leftMargin: margin
@@ -446,7 +450,7 @@ Widgets.PageExt {
                         width: grid.cardWidth
                         height: grid.pictureHeight
                         radius: VLCStyle.dp(12, VLCStyle.scale)
-                        color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#ababaa")
+                        color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#dedede")
                                                    : VLCStyle.redesign.color("#171717", "#dedede")
 
                         // A frame of videos, the artwork of the library for songs

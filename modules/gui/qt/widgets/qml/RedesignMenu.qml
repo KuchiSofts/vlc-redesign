@@ -54,7 +54,7 @@ T.Menu {
     // press: the click that follows closes it, not opens it again
     property double _closedAt: 0
 
-    Component.onCompleted: root.closed.connect(() => { root._closedAt = Date.now() })
+    Component.onCompleted: root.closed.connect(root, () => { root._closedAt = Date.now() })
 
     // From the click of the button that opens it: opens it (at x, y of
     // the button, else where the mouse is), or closes it
@@ -85,7 +85,9 @@ T.Menu {
                              implicitContentHeight + topPadding + bottomPadding)
 
     padding: VLCStyle.dp(4, VLCStyle.scale)
-    margins: 0
+    // (kept clear of the window's edge: the page menu's corner and shadow
+    // were cut by it)
+    margins: VLCStyle.dp(8, VLCStyle.scale)
     // Submenus open 11 px clear of their menu (Figma "menu" 6062:13354 and
     // "Profiles" 6648:20666), their rows in line with the one that opens them
     overlap: -VLCStyle.dp(11, VLCStyle.scale)

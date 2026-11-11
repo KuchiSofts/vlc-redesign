@@ -225,8 +225,8 @@ FocusScope {
 
     onReuseItemsChanged: {
         if (!reuseItems) {
-            _unusedItemList.forEach((item) => { item.destroy() })
-            _unusedItemList = []
+            // emptied in place: a new list replaced its binding
+            _unusedItemList.splice(0).forEach((item) => { item.destroy() })
         }
     }
 
@@ -715,7 +715,7 @@ FocusScope {
     function _delayRemove(id, item) {
         _delayedChildrenMap[id] = item
 
-        item.delayRemoveChanged.connect(() => {
+        item.delayRemoveChanged.connect(root, () => {
             if (id in _delayedChildrenMap && !item.delayRemove) {
                 const removed = _takeDelayedChild(id)
                 console.assert(removed === item)
@@ -813,8 +813,7 @@ FocusScope {
 
         boundsBehavior: Flickable.StopAtBounds
 
-        pixelAligned: (MainCtx.qtVersion() >= MainCtx.qtVersionCheck(6, 2, 5)) // QTBUG-103996
-                      && (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
+        pixelAligned: (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
 
         T.ScrollBar.vertical: ScrollBarExt {
             id: flickableScrollBar
@@ -858,7 +857,7 @@ FocusScope {
             }
 
             Component.onCompleted: {
-                canceled.connect(initialAction)
+                canceled.connect(this, initialAction)
             }
 
             function initialAction() {

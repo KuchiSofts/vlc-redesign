@@ -19,6 +19,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QHash>
+#include <QRegularExpression>
 #include <QSet>
 #include <QSettings>
 #include <QThread>
@@ -29,6 +30,7 @@
 #include <vlc_common.h>
 #include <vlc_configuration.h>
 #include <vlc_es.h>
+#include <vlc_interface.h>
 #include <vlc_player.h>
 #include <vlc_url.h>
 
@@ -54,6 +56,11 @@ struct Source
     QString provider; // the service it was found on
     QString folder;
     QString path;     // the local file, for whoever reads it again
+    // what tells a file beside the video that is not the film's subtitles
+    // (isPartialSubtitle): "forced" in its name, its number of cues (-1: not
+    // counted)
+    bool forced = false;
+    int cues = -1;
 };
 
 QHash<QString, Source> &sources()
@@ -93,7 +100,7 @@ bool isSubtitleFile(const QString &name)
 }
 
 bool recordSource(const QString &mrl, const QString &kind, const QString &name,
-                  const QString &provider = {})
+                  const QString &provider = {}, bool forced = false, int cues = -1)
 {
     const QString key = mrlHash(mrl);
     // Keep the provider of an online subtitle when it is found locally.
@@ -103,8 +110,81 @@ bool recordSource(const QString &mrl, const QString &kind, const QString &name,
     const QUrl url(mrl);
     const QString local = url.isLocalFile() ? url.toLocalFile() : QString();
     const QString folder = local.isEmpty() ? QString() : QFileInfo(local).absolutePath();
-    sources().insert(key, { kind, name, provider, folder, local });
+    sources().insert(key, { kind, name, provider, folder, local, forced, cues });
     return true;
+}
+
+bool isForcedName(const QString &name)
+{
+    return name.contains(QLatin1String("forced"), Qt::CaseInsensitive);
+}
+
+// The cues of a subtitle file of text (SubRip, WebVTT: "-->"; SSA/ASS:
+// "Dialogue:"), its first 4 MB read; -1 for the others (VobSub, binary)
+int countCues(const QString &path)
+{
+    const QString suffix = QFileInfo(path).suffix().toLower();
+    const bool timed = suffix == QLatin1String("srt") || suffix == QLatin1String("vtt");
+    const bool ass = suffix == QLatin1String("ass") || suffix == QLatin1String("ssa");
+    if (!timed && !ass)
+        return -1;
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly))
+        return -1;
+    QByteArray data = file.read(4 << 20);
+    // (UTF-16: its ASCII with a zero byte each)
+    if (data.count('\0') > data.size() / 4)
+        data.replace(QByteArray(1, '\0'), QByteArray());
+    return int(timed ? data.count("-->") : data.count("Dialogue:"));
+}
+
+// A subtitle file that is not the film's subtitles: the forced lines only
+// (signs, a foreign language spoken), or an advert of the site it came from
+// (an .srt named as the video that only names its site: 3 cues for 103
+// minutes). Under one cue in 5 minutes of a film of 20 minutes or more: a
+// film has hundreds (a quiet one, "All Is Lost", 0.5 a minute); a short one
+// ("Sintel", 15 minutes, 20 cues) is never judged so.
+bool isPartialSubtitle(bool forced, int cues, double minutes)
+{
+    return forced || (cues >= 0 && minutes >= 20 && cues < minutes / 5);
+}
+
+// For the hearing impaired: "English (SDH).eng.srt", "Film.en.hi.srt", "(CC)"
+bool isHearingImpairedName(const QString &name)
+{
+    static const QRegularExpression words(QStringLiteral("(^|[ ._()\\[\\]-])(sdh|hi|cc)([ ._()\\[\\]-]|$)"),
+                                          QRegularExpression::CaseInsensitiveOption);
+    return words.match(QFileInfo(name).completeBaseName()).hasMatch();
+}
+
+// The language a subtitle file's name states: its code last ("Hebrew.heb.srt",
+// "Film.en.srt"), else a language's English name ("Hebrew.srt")
+QString languageOfName(const QString &name)
+{
+    static const QRegularExpression separators(QStringLiteral("[ ._()\\[\\]-]+"));
+    static const QSet<QString> notLanguages = { "sdh", "hi", "cc", "forced", "full", "sub", "subs", "srt",
+                                                "eng-sdh", "default", "complete", "part" };
+    const QStringList words = QFileInfo(name).completeBaseName().split(separators, Qt::SkipEmptyParts);
+    if (words.isEmpty())
+        return {};
+    for (int i = words.size() - 1; i >= 0 && i >= words.size() - 3; --i)
+    {
+        const QString word = words[i].toLower();
+        if (word.size() >= 2 && word.size() <= 3 && !notLanguages.contains(word))
+        {
+            const QString code = SubtitlePreferences::normalize(word);
+            if (!code.isEmpty())
+                return code;
+        }
+    }
+    for (const QString &word : words)
+        if (word.size() >= 4 && !notLanguages.contains(word.toLower()))
+        {
+            const QString code = SubtitlePreferences::normalize(word);
+            if (!code.isEmpty())
+                return code;
+        }
+    return {};
 }
 
 } // namespace
@@ -129,6 +209,17 @@ SubtitleFinder::SubtitleFinder(qt_intf_t *intf, PlayerController *player,
     m_startTimer.setInterval(startDelayMs);
     connect(&m_startTimer, &QTimer::timeout, this, &SubtitleFinder::onStarted);
     connect(m_player, &PlayerController::inputChanged, this, &SubtitleFinder::onInputChanged);
+    // the picture (or a stream's length) came after the first look: looked
+    // at again a moment later (VLC lists the subtitles beside the file then)
+    auto lookAgain = [this]() {
+        if (m_waitingForPicture && !m_startTimer.isActive())
+            m_startTimer.start();
+    };
+    connect(m_player, &PlayerController::hasVideoOutputChanged, this, [lookAgain](bool has) {
+        if (has)
+            lookAgain();
+    });
+    connect(m_player, &PlayerController::lengthChanged, this, lookAgain);
     finderInstance() = this;
     TrackListModel *tracks = m_player->getSubtitleTracks();
     connect(tracks, &QAbstractItemModel::rowsInserted, this, &SubtitleFinder::selectAdded);
@@ -199,33 +290,122 @@ void SubtitleFinder::scanFolder()
     }
     free(paths);
 
-    auto found = std::make_shared<QList<QPair<QString, QString>>>(); // MRL, name
-    QThread *worker = QThread::create([found, folders]() {
+    struct Found
+    {
+        QString mrl;
+        QString name;
+        bool forced;
+        int cues;
+    };
+    auto found = std::make_shared<QList<Found>>();
+    // the language files of the video's own subtitle folder (a release's "Subs":
+    // "Hebrew.heb.srt", "English (SDH).eng.srt"), which VLC does not load (no
+    // video's name in theirs): only when the video is alone in its folder,
+    // so the folder is surely its own
+    auto ownFolder = std::make_shared<QList<FolderSubtitle>>();
+    // (waited for at the exit, a few seconds at most: runInBackground; its
+    // answer dropped if the finder is gone, which the worker can't tell)
+    const quint64 revision = m_revision;
+    const QString videoStem = QFileInfo(video).completeBaseName().toLower();
+    runInBackground(this, [found, ownFolder, folders, videoStem]() {
+        QThread::currentThread()->setPriority(QThread::LowPriority);
+        static const QSet<QString> videoSuffixes = { EXTENSIONS_VIDEO_CSV };
+        const QString videoFolder = QFileInfo(folders.first()).canonicalFilePath();
+        bool alone = false;
+        QSet<QString> seen; // Subs and subs are one folder on Windows and macOS
         for (const QString &folder : folders)
         {
+            const QString canonical = QFileInfo(folder).canonicalFilePath();
+            if (canonical.isEmpty() || seen.contains(canonical))
+                continue;
+            seen.insert(canonical);
             const QFileInfoList files = QDir(folder).entryInfoList(QDir::Files | QDir::Readable);
+            if (canonical == videoFolder)
+            {
+                int videos = 0;
+                for (const QFileInfo &file : files)
+                    videos += videoSuffixes.contains(file.suffix().toLower()) ? 1 : 0;
+                alone = videos == 1;
+            }
             for (const QFileInfo &file : files)
-                if (isSubtitleFile(file.fileName()))
-                    found->append({ fileMrl(file.absoluteFilePath()), file.fileName() });
+            {
+                if (!isSubtitleFile(file.fileName()))
+                    continue;
+                const bool forced = isForcedName(file.fileName());
+                const bool own = canonical != videoFolder && alone;
+                // its cues counted for the files VLC shows with the video
+                // (named after it) and those of its own folder; not every
+                // subtitle of a big folder of downloads
+                const int cues = own || file.fileName().toLower().startsWith(videoStem)
+                               ? countCues(file.absoluteFilePath()) : -1;
+                found->append({ fileMrl(file.absoluteFilePath()), file.fileName(), forced, cues });
+                if (own && !forced)
+                {
+                    const QString language = languageOfName(file.fileName());
+                    if (!language.isEmpty())
+                        ownFolder->append({ file.absoluteFilePath(), language,
+                                            isHearingImpairedName(file.fileName()), cues });
+                }
+            }
             if (found->size() > 500)
                 break;
         }
-    });
-    // (by the finished signal, as HTTP answers: dropped if the finder is
-    // gone, which the worker can't tell)
-    const quint64 revision = m_revision;
-    connect(worker, &QThread::finished, this, [this, found, revision]() {
+    }, [this, found, ownFolder, revision]() {
         if (revision != m_revision)
             return;
+        // The files found next to the videos played before go: the table
+        // keeps those of this one (at most ~500), not of every folder seen
+        // in the session. (Only this scan records them; the subtitles added
+        // or found online stay)
         bool changed = false;
-        for (const auto &file : *found)
-            changed |= recordSource(file.first, QStringLiteral("file"), file.second);
+        for (auto it = sources().begin(); it != sources().end();)
+        {
+            if (it->kind == QLatin1String("file"))
+            {
+                it = sources().erase(it);
+                changed = true;
+            }
+            else
+                ++it;
+        }
+        for (const Found &file : *found)
+            changed |= recordSource(file.mrl, QStringLiteral("file"), file.name, {}, file.forced, file.cues);
+        m_folderSubtitles = *ownFolder;
         // Each notification refreshes the subtitle-track source labels.
         if (changed)
             emit sourcesChanged();
     });
-    connect(worker, &QThread::finished, worker, &QObject::deleteLater);
-    worker->start(QThread::LowPriority);
+}
+
+double SubtitleFinder::lengthMinutes() const
+{
+    const VLCDuration length = m_player->getLength();
+    return length.valid() ? length.toSecf() / 60 : 0;
+}
+
+QString SubtitleFinder::folderSubtitle(const QString &language) const
+{
+    // the plain one first, the one for the hearing impaired else
+    QString hearingImpaired;
+    for (const FolderSubtitle &file : m_folderSubtitles)
+        if (file.language == language && !isPartialSubtitle(false, file.cues, lengthMinutes()))
+        {
+            if (!file.hearingImpaired)
+                return file.path;
+            if (hearingImpaired.isEmpty())
+                hearingImpaired = file.path;
+        }
+    return hearingImpaired;
+}
+
+void SubtitleFinder::attachFolderFile(const QString &path, bool alongside)
+{
+    const QString uri = QUrl::fromLocalFile(path).toString(QUrl::FullyEncoded);
+    if (recordSource(uri, QStringLiteral("file"), QFileInfo(path).fileName()))
+        emit sourcesChanged();
+    m_selectHash = mrlHash(uri);
+    m_selectAlongside = alongside;
+    m_player->AddAssociatedMedia(SPU_ES, uri, !alongside, false, false);
 }
 
 // VLC shows a subtitle added to a media only when none is (b_forced), so
@@ -303,11 +483,16 @@ void SubtitleFinder::onInputChanged(bool hasInput)
 {
     ++m_revision;
     m_startTimer.stop();
+    m_waitingForPicture = false;
+    m_folderSubtitles.clear();
     m_autoPending = false;
     m_queue.clear();
     m_loadingId.clear();
     m_loadedIds.clear();
     m_titleResults.clear();
+    // (a title search for the media before: its answer is dropped)
+    ++m_titleRevision;
+    m_titleBusy = false;
     // (its answers on their way, downloads too, dropped)
     m_search->reset();
     emit titleResultsChanged();
@@ -322,15 +507,29 @@ void SubtitleFinder::onInputChanged(bool hasInput)
 // it has none in the user's language
 void SubtitleFinder::onStarted()
 {
-    if (!m_player->hasVideoOutput())
-        return; // music: no subtitles to look for
+    m_waitingForPicture = false;
     // a TV channel, or a programme of its archive (the subtitles stay as
-    // the channel has them), or another live stream: no film
+    // the channel has them): no film
     if (IptvAddon::isTvUrl(m_player->getUrl().toString()))
         return;
+    // No picture yet: the app or the drive starting cold (a film opened
+    // from the file manager), a slow server. Looked at again when it comes
+    // (hasVideoOutputChanged); music never gets one
+    if (!m_player->hasVideoOutput())
+    {
+        m_waitingForPicture = true;
+        msg_Dbg(m_intf, "subtitles: no picture yet, waiting for it");
+        return;
+    }
+    // a stream: its length known first (none: a live stream, no film; it
+    // can come late from a slow server: lengthChanged)
     if (!m_player->getUrl().isLocalFile()
         && (!m_player->getLength().valid() || m_player->getLength().toSecf() <= 0))
+    {
+        m_waitingForPicture = true;
+        msg_Dbg(m_intf, "subtitles: a stream of no length (yet)");
         return;
+    }
     prepareMedia([this]() {
         const QStringList local = localLanguages();
         const QString primary = m_preferences->primary();
@@ -353,8 +552,37 @@ void SubtitleFinder::onStarted()
             attach(remembered[0], remembered[1], rememberedLanguage, true, rememberedLanguage != primary);
         // the default language: remembered, or in the media (VLC shows it, its
         // sub-language); the secondary one too when both are shown
-        const bool needPrimary = rememberedLanguage != primary && !local.contains(primary);
-        const bool needSecondary = showBoth && rememberedLanguage != secondary && !local.contains(secondary);
+        bool needPrimary = rememberedLanguage != primary && !local.contains(primary);
+        bool needSecondary = showBoth && rememberedLanguage != secondary && !local.contains(secondary);
+        // the video's own subtitle folder ("Subs") has it: shown from there,
+        // nothing searched for it (local files: whatever the online setting)
+        if (needPrimary)
+        {
+            const QString file = folderSubtitle(primary);
+            if (!file.isEmpty())
+            {
+                msg_Dbg(m_intf, "subtitles: %s from the video's folder: %s", qtu(primary),
+                        qtu(QFileInfo(file).fileName()));
+                attachFolderFile(file, false);
+                needPrimary = false;
+            }
+        }
+        if (needSecondary)
+        {
+            const QString file = folderSubtitle(secondary);
+            if (!file.isEmpty())
+            {
+                msg_Dbg(m_intf, "subtitles: %s from the video's folder: %s", qtu(secondary),
+                        qtu(QFileInfo(file).fileName()));
+                attachFolderFile(file, true);
+                needSecondary = false;
+            }
+        }
+        if (!needPrimary && !needSecondary)
+            msg_Dbg(m_intf, "subtitles: none to search (%s)",
+                    rememberedLanguage == primary ? "the one chosen before" : "the video has them");
+        else if (!searchesByItself())
+            msg_Dbg(m_intf, "subtitles: not searched by itself (the setting is off)");
         if ((!needPrimary && !needSecondary) || !searchesByItself())
         {
             if (rememberedLanguage != primary)
@@ -377,15 +605,30 @@ void SubtitleFinder::prepareMedia(std::function<void()> next)
         return;
     }
     double fps = 0;
+    // a stream's own title (and its year), for an address that names no
+    // film ("500.mp4"): the player's name joins the artist to it
+    QString title;
     {
         vlc_player_t *player = m_intf->p_player;
         vlc_player_Lock(player);
         const struct vlc_player_track *video = vlc_player_GetSelectedTrack(player, VIDEO_ES);
         if (video && video->fmt.video.i_frame_rate && video->fmt.video.i_frame_rate_base)
             fps = double(video->fmt.video.i_frame_rate) / video->fmt.video.i_frame_rate_base;
+        if (input_item_t *item = vlc_player_GetCurrentMedia(player))
+        {
+            char *meta = input_item_GetTitle(item);
+            title = qfu(meta).trimmed();
+            free(meta);
+            char *date = input_item_GetDate(item);
+            const QString year = qfu(date).left(4);
+            free(date);
+            if (!title.isEmpty() && year.size() == 4 && year.toInt() >= 1900 && year.toInt() <= 2100
+                && !title.contains(year))
+                title += QStringLiteral(" (%1)").arg(year);
+        }
         vlc_player_Unlock(player);
     }
-    m_search->setMedia(url, m_player->getName(), fps);
+    m_search->setMedia(url, !title.isEmpty() ? title : m_player->getName(), fps);
     const quint64 revision = m_revision;
     m_search->prepare([this, revision, next]() {
         if (revision == m_revision)
@@ -402,12 +645,33 @@ QStringList SubtitleFinder::localLanguages() const
     for (size_t i = 0; i < count; ++i)
     {
         const struct vlc_player_track *track = vlc_player_GetSubtitleTrackAt(player, i);
-        if (track && track->fmt.psz_language)
+        if (!track)
+            continue;
+        // A file's track: its id starts with the MD5 of its MRL, the media's
+        // own tracks' don't
+        const char *id = vlc_es_id_GetStrId(track->es_id);
+        const bool fromFile = id && strlen(id) > 33 && id[32] == '/';
+        const Source source = fromFile ? sources().value(QString::fromLatin1(id, 32)) : Source();
+        // the forced lines only, or an advert: no subtitles of the film
+        if (source.kind == QLatin1String("file") && isPartialSubtitle(source.forced, source.cues, lengthMinutes()))
         {
-            const QString language = SubtitlePreferences::normalize(qfu(track->fmt.psz_language));
-            if (!language.isEmpty())
-                languages.append(language);
+            msg_Dbg(m_intf, "subtitles: %s is not the film's subtitles (%s)", qtu(source.name),
+                    source.forced ? "forced lines" : qtu(QStringLiteral("%1 cues").arg(source.cues)));
+            continue;
         }
+        const QString language = track->fmt.psz_language
+                               ? SubtitlePreferences::normalize(qfu(track->fmt.psz_language)) : QString();
+        if (!language.isEmpty())
+        {
+            languages.append(language);
+            continue;
+        }
+        // A file of the user's beside the video (or added to it) whose name
+        // says no language ("Film.srt"): taken for the preferred language,
+        // so nothing is searched over it (every app's rule); one found
+        // online is no file of the user's
+        if (fromFile && source.kind != QLatin1String("online"))
+            languages.append(m_preferences->primary());
     }
     vlc_player_Unlock(player);
     return languages;
@@ -685,7 +949,11 @@ void SubtitleFinder::findTitle(const QString &query)
     m_titleBusy = true;
     m_titleResults.clear();
     emit titleResultsChanged();
-    m_search->findTitles(query, [this](const QVariantList &titles) {
+    // (only the answer of the last one asked is shown)
+    const quint64 revision = ++m_titleRevision;
+    m_search->findTitles(query, [this, revision](const QVariantList &titles) {
+        if (revision != m_titleRevision)
+            return;
         m_titleResults = titles;
         m_titleBusy = false;
         emit titleResultsChanged();
@@ -702,7 +970,10 @@ void SubtitleFinder::useTitle(int index)
     match.title = entry.value(QStringLiteral("label")).toString();
     match.year = entry.value(QStringLiteral("year")).toInt();
     match.series = entry.value(QStringLiteral("series")).toBool();
-    // (a download going on goes on: it is of this file all the same)
+    // (a download going on goes on: it is of this file all the same; a
+    // title search still on its way is dropped)
+    ++m_titleRevision;
+    m_titleBusy = false;
     m_titleResults.clear();
     emit titleResultsChanged();
     m_search->useMatch(match);
@@ -737,13 +1008,22 @@ void SubtitleFinder::download(const QString &id, bool alongside)
     }
     const QString language = choice->language;
     // in VLC's cache, a folder a media; the others not played for long
-    // cleaned up (no cache folder: nothing to clean up)
+    // cleaned up. Without VLC's cache folder, nowhere (never "/<folder>",
+    // at the root of the drive)
     const QString root = SubtitleSearch::cacheRoot();
+    if (root.isEmpty())
+    {
+        const QString error = qtr("The subtitle couldn't be saved.");
+        m_search->setError(error);
+        emit downloadFailed(error);
+        downloadNext();
+        return;
+    }
     const QString folder = root + QLatin1Char('/') + SubtitleSearch::folderName(m_search->mediaKey());
     m_loadingId = id;
     emit resultsChanged();
     // (its answer dropped by the search once the media changed)
-    m_search->download(id, folder, !root.isEmpty(),
+    m_search->download(id, folder, true,
                        [this, id, language, alongside](const QString &file, const QString &error) {
         m_loadingId.clear();
         if (file.isEmpty())

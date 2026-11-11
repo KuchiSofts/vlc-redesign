@@ -79,8 +79,7 @@ PopupIconToolButton {
         }
     }
 
-    // TODO: Qt bug 6.2: QTBUG-103604
-    DoubleClickIgnoringItem {
+    Item {
         anchors.fill: parent
 
         z: -1
@@ -100,8 +99,8 @@ PopupIconToolButton {
             }
 
             Component.onCompleted: {
-                wheelUpDown.connect(wheelToVLC.handle)
-                wheelLeftRight.connect(wheelToVLC.handle)
+                wheelUpDown.connect(wheelToVLC, wheelToVLC.handle)
+                wheelLeftRight.connect(wheelToVLC, wheelToVLC.handle)
             }
         }
 

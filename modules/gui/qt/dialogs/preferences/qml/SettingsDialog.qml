@@ -382,6 +382,11 @@ Dialog {
             clip: true
             boundsBehavior: Flickable.StopAtBounds
 
+            Widgets.ScrollHint {
+                view: contentFlick
+                surface: root.c("#0E0E0E")
+            }
+
             // The keyboard focus stays in sight: Tab down the page scrolls
             // to the control that takes it (one partly shown when clicked
             // is shown whole)

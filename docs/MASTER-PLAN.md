@@ -10,8 +10,81 @@ page) and the release notes. Last updated: 2026-10-25, build 195 of the `redesig
 
 ## Now
 
-What is being worked on, updated as it changes (2026-11-08):
+What is being worked on, updated as it changes (2026-11-10):
 
+- 🟢 **Screenshot pass of the desktop, second round** (10 Nov): Artists/Albums/Genres/Recent on the redesign's cards,
+  lists in the design's type (max 1200 wide), the TV guide's Update + empty state (D08), TV header at 1024, Settings
+  labels that wrap, the scroll fade of dialogs, light folder cards, the cards' growth ramp beside the design width.
+  Each seen in an after-shot (`shots-060/desktop/defects.md`).
+- 🟢 **Screenshot pass of the desktop, third round** (10 Nov): every grid fills its rows at every width (Artists at
+  1920 left 140 px empty; one helper, `VLCStyle.redesign.gridCardWidth`, the TV grids included), the guide's line of
+  now ends with the grid, Network's cards and heading from the page's margin (D07, V006), the bare-icon empty state
+  (V005), the search field's clear button (V012), menus clear of the window's edge (V011), the header on one line
+  at 200 % (D18), Tracks' count and Sort, What's new's English notes left to right in Hebrew (D13), Home's music
+  cards without an artist (V001). The player captured with a film at 100 % and 200 %, English and Hebrew: the
+  Languages panel fades where it scrolls and stays under the window's bar. VideoLAN merged up to `7712870d59`, then
+  to `fb39292a88` (Qt 6.8 required; build 29: the pages, a track's click / menu / double click and a video card's
+  double click seen, 0 QML warnings). Home's cards: the design's sizes at the design's width, no growth in a row
+  that isn't full (seen at both widths).
+  Open, low: menus' translucency (V010, the design's 95 %), "Unknown Artist" untranslated (D12, the library's own
+  name), the dash icon of Delete (D21, the design's remove glyph), no New playlist button in the empty state (D09).
+- 🟡 **Every option does something, with the remote too** (on request). Android TV
+  Settings done: all 12 pages walked with the remote's keys alone, about 170 focus stops each pressed, on the TV
+  emulator in Hebrew and checked again in the signed build in English. Fixed: the crash on Controls › Remote
+  access, the two panes' focus rules (the page follows the sidebar, in and out land where they should, nothing
+  leaks to the other pane or the close button), sub-pages, sheets that started on their title, alerts without a
+  focus frame, the number picker, the colour picker (its words, its selection), links on a TV without a browser,
+  the sleep timer's number pad in Hebrew. 164 unit tests pass. Checked and left as they are: sliders (Left and
+  Right, not OK), the history switch's two forced companions and the bookmark markers that go with their buttons
+  (VideoLAN's rules). Next: the library pages, the player and Live TV's windows the same way, then the phone and
+  tablet layouts, the desktop and the Samsung TV app.
+- 🟢 **Interface size, the same on every app** (desktop): Settings › Interface › Window ›
+  *Interface size*: Automatic (N %), 100, 110, 125, 150, 175, 200 %, applied at once; the one setting of the scale
+  (VLC's kept factor migrates to the nearest choice, the zoom keys step through the choices). Automatic follows the
+  screen of the window (`util/screen_fit.cpp`): 100 % whenever the system scales the screen or its density is
+  ordinary (a small screen never gets a larger interface), more only for a dense screen
+  reported unscaled. Checked on Windows at a simulated 1280 × 720 and 960 × 540 screen
+  (QT_SCALE_FACTOR) and 2560 × 1440; Linux and macOS wait for their builds.
+- 🟢 **Windows and dialogs inside the screen** (desktop): the first window from the screen, a saved geometry that
+  no longer fits corrected, every dialog and separate window fitted into its screen when it shows, the dialogs'
+  body scrolling in a low window. 7,688 checks of the geometry in `unit-tests.sh` (negative coordinates included);
+  a second monitor itself could not be tried on the build PC.
+- 🟡 **Dead space** (desktop, first part): the rows and grids of cards fill the page's width
+  (the cards grow by up to a third; more cards on a wider page). Still to do: empty states with an icon and an
+  action, Home's short sections side by side, the TV pages' grids, a content column for wide lists.
+- 🟢 **The six faults of the first QA pass** (desktop): Recent the newest first with the library's header, the
+  language lists, Browse's start folder, Home's "0 items".
+- 🟡 **Responsiveness** (desktop): measured with a ping of the interface's thread (the longest wait per step) and
+  a stack sampler, old build against new, twice each: pages open with 20-60 ms waits and scroll with under 20 ms,
+  Settings takes about 1 s to open the first time (0.9-1.2 s in both builds: the making of its page, not one
+  cause). Removed: the settings file rewritten at each change of page, the subtitle services read at every
+  opening of Settings, a system call per control made. No gain shows in the numbers (they are within the noise);
+  resizing the window costs more since the cards grow with it (a longest wait of 50-57 ms, 6-9 ms before).
+- ✅ **0.6.0** published 2026-11-11 (a full release of every app, with every package; VideoLAN merged to `fb39292a88`): the
+  work planned as 0.5.9 (the stability round, #72's keys without the controls, the subtitle work below, the
+  interface size) with Android TV gone through option by option with the remote; Windows x64 and ARM64, Linux and
+  macOS, Android (versionCode 13106000) and the Samsung TV app at 0.6.0 together. Next: 0.6.1, an update release.
+- 🟢 **Smarter automatic subtitles** (every app): a film opened as the
+  app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
+  longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for
+  left-to-right players shows in its place (93c03f55be, 776d5c8efa; Samsung a6aafb9, f945bcf; Android). 10/10 real
+  cases on Windows, English and Hebrew by themselves on the Samsung TV and the Android TVs.
+- 🟢 **The Subtitles panel the same on every device**: the Samsung TV app's panel rebuilt as the desktop's (2.9 % of
+  pixels differ, the fonts' drawing; 2bc9665), Android's opened above its button and being made the same.
+- 🟢 **0.5.9 stability round, second part** (desktop): no secret header to another server on a redirect (both HTTP
+  backends, 169 checks on local servers), WinHTTP's asynchronous mode (a cancel never closes a handle in use; 1,200
+  random cancels), update files synced before ready.txt, Live TV downloads that stall killed after 30 s (a logo
+  15 s), the keystore read on the worker, subtitle and updater work off the interface's thread and joined at exit,
+  the automatic guide's "TV" names, a long programme around the shorter ones it contains, a service's error page
+  shown as its failure (500 checks).
+- 🟢 **0.5.9 stability round** (on request), branch `feature/stability-0.5.9`. macOS hung at quit after an
+  HTTPS download (SecureTransport kept its lock in a cancelled thread: fixed, 39532a9441 in 0.5.8), Live TV's quit
+  bounded and its server calls cancelled (122.8 s to quit with a held call on 0.5.8), the plug-in pinned when a
+  thread is let go. Two reviews of every line (Live TV; subtitles, updater, previews) and a fuzz test of 69
+  parsers (3 overflows, 9 quadratic paths, a 16 GB XMLTV text): all fixed with tests (iptv-service,
+  parsers-fuzz). A sweep of every page with --qt-verbose: 19 kinds of QML warnings, 18 fixed. Start-up: window
+  0.6-1.1 s, settled 1.2-1.7 s (first start after an install: an antivirus scan of the new DLLs). Soaks of
+  dialogs, frame previews, TV updates and media changes.
 - 🟡 **0.5.9** started (an update release): stability, start-up and memory in every app; #72 (keys in full screen
   without the controls).
 - ✅ **0.5.8** published 2026-11-08 (an update release; VideoLAN merged to `978212a42d`): SubSource with your own free key (#70, @Elshepl); Android TV: the
@@ -1380,6 +1453,12 @@ them are in the app.
 - 🟢 *Additional command line options* (Global, advanced; new core option `extra-options`, read at every start; the
   command line wins; `--help`, `--config` and the like ignored) · checked in the app (`--no-qt-bgcone` from vlcrc)
 - 🟢 *Show controls in fullscreen* (Interface, `qt-fs-controller`, live) · in the app ⏳
+- 🟢 *When you use a shortcut in full screen* (Interface › Playback Controls, new, `qt-fs-shortcut-feedback`, live,
+  #72): *Show the controls* (default, as before) / *Show only the progress* (a 4 px accent line on the bottom edge and
+  a message at the top centre: the step of the jumps in a row and the time) / *Show only a message*; the core's OSD
+  for that key goes into the message (`intf-key-feedback`, src/video_output/video_text.c, src/player/osd.c); the
+  volume keys keep the volume indicator · checked in the app (Windows, hidden desktop: Right ×3 `+30 s`, Space
+  *Paused*, `a` *Aspect ratio: 16:9*, mouse and Tab show the bar, windowed unchanged, Hebrew)
 - 🟢 *Show cover art in the window when playing audio* (Interface, advanced, `qt-bgcone`) · checked in the app (off: the
   dark placeholder of the theme)
 - 🟢 *Show the playlist as a tree* (Interface › Playlist, `playlist-tree`, live): VLC 4's queue is flat, so the queue

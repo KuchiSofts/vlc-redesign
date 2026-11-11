@@ -146,7 +146,7 @@ T.Container {
             onItemAdded: (index, item) => {
                 if (item.enabled) root._countEnabled += 1;
 
-                item.onEnabledChanged.connect(() => {
+                item.onEnabledChanged.connect(root, () => {
                     if (root && item)
                         root._countEnabled += (item.enabled ? 1 : -1);
                 });

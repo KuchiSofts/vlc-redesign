@@ -422,10 +422,10 @@ FocusScope {
                     }
 
                     Component.onCompleted: {
-                        mouseMoved.connect(videoSurface.onMouseMove)
-                        mousePressed.connect(videoSurface.onMouseEvent)
-                        mouseReleased.connect(videoSurface.onMouseEvent)
-                        mouseDblClicked.connect(videoSurface.onMouseEvent)
+                        mouseMoved.connect(videoSurface, videoSurface.onMouseMove)
+                        mousePressed.connect(videoSurface, videoSurface.onMouseEvent)
+                        mouseReleased.connect(videoSurface, videoSurface.onMouseEvent)
+                        mouseDblClicked.connect(videoSurface, videoSurface.onMouseEvent)
                     }
 
                     Binding on cursorShape {
@@ -969,9 +969,39 @@ FocusScope {
             target: Player
             function onSubtitleTextScaleStepped(scale, shortcut) {
                 // xgettext:no-c-format
-                subtitleSizeToast.say(qsTr("Subtitle size %1%").arg(scale), shortcut)
+                const text = qsTr("Subtitle size %1%").arg(scale)
+                // the feedback of the shortcuts in full screen: its card,
+                // the one message there
+                if (shortcutFeedback.active)
+                    shortcutFeedback.say(text)
+                else
+                    subtitleSizeToast.say(text, shortcut)
             }
         }
+    }
+
+    // "When you use a shortcut in full screen" of the settings (issue #72):
+    // while it applies, a key of VLC's hotkeys shows what it did instead of
+    // the controls (the filter of the keys below), and the core draws no
+    // message of its own on the video for it (MainCtx)
+    Binding {
+        target: MainCtx
+        property: "shortcutFeedbackActive"
+        value: MainCtx.fsShortcutFeedback !== 0 && rootPlayer._fullscreen
+               && MainCtx.hasEmbededVideo && !Player.isInteractive
+    }
+
+    ShortcutFeedback {
+        id: shortcutFeedback
+        objectName: "shortcutFeedback"
+        anchors.fill: parent
+        z: 10
+        controlsVisible: controlBar.state === "visible"
+        // where the player's messages show (subtitleSizeToast): under the
+        // top bar while it shows
+        messageTop: topBar.opacity > 0.5 ? Math.max(0, topBar.y + topBar.height) : 0
+        // a key a panel took after all: as before
+        onUntouched: playerToolbarVisibilityFSM.keyboardMove()
     }
 
     Widgets.FloatingNotification {
@@ -998,9 +1028,8 @@ FocusScope {
 
         focus: true
 
-        rightPadding: VLCStyle.applicationHorizontalMargin
-        leftPadding: VLCStyle.applicationHorizontalMargin
-        bottomPadding: VLCStyle.applicationVerticalMargin + VLCStyle.margin_xsmall
+        // (its paddings: the Bindings of ControlBar, which replaced values
+        // set here as it started)
 
         textPosition: (MainCtx.pinVideoControls)
                       ? ControlBar.TimeTextPosition.LeftRightSlider
@@ -1044,7 +1073,9 @@ FocusScope {
         background: Rectangle {
             id: controlBarBackground
 
-            visible: !MainCtx.hasEmbededVideo || MainCtx.pinVideoControls || !rootPlayer.displayFadeRectangles
+            // always under the timeline in the bar (see ControlBar)
+            visible: controlBar.inlineTimeline
+                     || !MainCtx.hasEmbededVideo || MainCtx.pinVideoControls || !rootPlayer.displayFadeRectangles
 
             opacity: {
                 if (MainCtx.hasEmbededVideo && !MainCtx.pinVideoControls && !rootPlayer.displayFadeRectangles) {
@@ -1440,7 +1471,10 @@ FocusScope {
         Keys.onPressed: (event) => {
             if (Player.isInteractive)
                 interactiveAutoHideTimer.restart()
-            else
+            // in full screen with the feedback of the shortcuts: a key of
+            // the hotkeys shows what it did, not the controls (the mouse,
+            // Tab, Enter and the menu key still show them)
+            else if (!shortcutFeedback.takesKey(event))
                 playerToolbarVisibilityFSM.keyboardMove()
         }
     }

@@ -29,6 +29,7 @@
 #include "qvlcframe.hpp"
 #include "maininterface/compositor.hpp"
 #include "util/redesign_widget_theme.hpp"
+#include "util/screen_fit.hpp"
 
 void QVLCTools::saveWidgetPosition(QSettings *settings, QWidget *widget)
 {
@@ -111,25 +112,49 @@ static bool restoreWindowPositionImpl(QSettings *settings, QWindow *window)
     if (geometry.isNull())
         return false;
 
-    bool screenFound = false;
+    QScreen *saved = nullptr;
+    bool unchanged = false;
     for (auto screen: QGuiApplication::screens())
     {
         if (screen->name() == screenName)
         {
-            if (screen->geometry() != screenGeometry
-                || screen->devicePixelRatio() != screenDRP)
-            {
-                //same screen but its property has changed, don't restore the position
-                break;
-            }
-            window->setScreen(screen);
-            screenFound = true;
+            saved = screen;
+            unchanged = screen->geometry() == screenGeometry
+                        && screen->devicePixelRatio() == screenDRP;
             break;
         }
     }
-    if (!screenFound)
+    QScreen *target = saved ? saved : QGuiApplication::primaryScreen();
+    if (!target)
         return false;
 
+    // The window as it was left, where it can still be used: a monitor
+    // unplugged or set to another resolution since, a taskbar moved, a
+    // window left past an edge that is gone keep their size where it fits
+    // (they opened out of reach, or at the default size and place)
+    const QRect before = geometry;
+    if (!saved)
+    {
+        // on the main screen, in its middle
+        geometry.moveCenter(target->availableGeometry().center());
+        geometry = ScreenFit::fitted(geometry, target->availableGeometry());
+    }
+    else if (!unchanged)
+    {
+        geometry = ScreenFit::fitted(geometry, target->availableGeometry());
+    }
+    else
+    {
+        // (a window may sit across two screens: any of them will do)
+        bool reachable = false;
+        for (auto screen: QGuiApplication::screens())
+            reachable = reachable || ScreenFit::reachable(geometry, screen->availableGeometry());
+        if (!reachable)
+            geometry = ScreenFit::fitted(geometry, target->availableGeometry());
+    }
+    position += geometry.topLeft() - before.topLeft();
+
+    window->setScreen(target);
     window->setPosition(position);
     window->setGeometry(geometry);
 

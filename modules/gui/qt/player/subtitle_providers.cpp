@@ -36,10 +36,6 @@
 # include <cerrno>
 # include <cstring>
 #endif
-#ifdef HAVE_ZLIB
-# include <zlib.h>
-#endif
-
 #include <vlc_common.h>
 #include <vlc_iso_lang.h>
 #ifndef _WIN32
@@ -56,14 +52,17 @@ namespace SubtitleProviders
 namespace {
 
 constexpr qsizetype maxListBytes = 6 * 1024 * 1024;
-constexpr qsizetype maxDownloadBytes = 8 * 1024 * 1024;
-// what a download may unpack to in all (a small archive can unpack to
-// gigabytes), and how many files of an archive are looked at, and unpacked
+// a page of YIFY's (a film's, a few hundred KiB)
+constexpr qsizetype maxPageBytes = 2 * 1024 * 1024;
+// what a gzip download may unpack to (a small file can unpack to gigabytes;
+// zip archives have their own bounds, unzip())
 constexpr qsizetype maxUnpackedBytes = 16 * 1024 * 1024;
-constexpr int maxArchiveEntries = 1000;
-constexpr int maxArchiveSubtitles = 64;
 // between two requests to the same service (they ask for one at a time)
 constexpr int requestGapMs = 600;
+// The whole of a request to a service, however slowly it answers (each
+// step has its own timeout, but an answer a byte at a time would go on for
+// days): its search then ends without it
+constexpr int requestDeadlineMs = 45 * 1000;
 
 using Done = std::function<void(const QList<Result> &, const QString &, Problem)>;
 
@@ -72,6 +71,7 @@ HttpRequest makeRequest(const QUrl &url, qsizetype maxBytes = maxListBytes, int 
     HttpRequest request;
     request.url = url;
     request.timeoutMs = timeoutMs;
+    request.deadlineMs = requestDeadlineMs;
     request.maxBytes = maxBytes;
     request.headers.append(qMakePair(QByteArray("User-Agent"), userAgent()));
     return request;
@@ -82,11 +82,14 @@ bool ok(const HttpResponse &reply, qsizetype maxBytes = maxListBytes)
     return reply.error.isEmpty() && reply.status == 200 && reply.body.size() <= maxBytes;
 }
 
-// What went wrong with an answer that isn't ok()
+// What went wrong with an answer that isn't ok(). (A check of the browser
+// comes as 403 or 503: no refusal of the key, a failure)
 Problem problemOfReply(const HttpResponse &reply)
 {
     if (reply.status == 0)
         return Problem::NoAnswer;
+    if (answerKind(reply.body, false) == AnswerKind::Challenge)
+        return Problem::Failed;
     const Problem problem = problemOf(reply.status);
     return problem == Problem::None ? Problem::Failed : problem;
 }
@@ -118,6 +121,68 @@ void failed(const Done &done, const QString &name, const HttpResponse &reply, bo
 void nothing(const Done &done)
 {
     done({}, {}, Problem::None);
+}
+
+// What a Test found: as the status says, but a check of the browser (403,
+// 503), or an answer that isn't JSON where it comes, is no answer
+Check checkOfReply(const HttpResponse &reply)
+{
+    const AnswerKind kind = answerKind(reply.body, true);
+    if (kind == AnswerKind::Challenge || (reply.status == 200 && kind != AnswerKind::Readable))
+        return Check::NoAnswer;
+    return checkOf(reply.status);
+}
+
+// A request whose answer is read by parse on the worker thread of the
+// request (a list of a few MB: not on the thread of the interface; parse
+// touches nothing of it), then done(answer, what parse made) on the thread
+// of context
+template <typename T, typename Parse, typename Then>
+void askParsed(QObject *context, HttpRequest request, Parse parse, Then done)
+{
+    auto parsed = std::make_shared<T>();
+    httpRequestAsync(context, std::move(request),
+        [parsed, parse](const HttpResponse &reply) { *parsed = parse(reply); },
+        [parsed, done](const HttpResponse &reply) { done(reply, *parsed); });
+}
+
+// what a search of a service reads: its results, or why not
+struct Parsed
+{
+    QList<Result> results;
+    // what the answer is (answerKind): not the service's, it isn't read
+    AnswerKind kind = AnswerKind::Readable;
+    QString error;   // what it says instead of its results
+    bool refused = false;
+    QString id; // (of the title, the show, the entry: a first request's)
+};
+
+// An answer ok() at the HTTP level that isn't the service's results (an
+// error page, a check of the browser, nothing, JSON cut short; an error in
+// JSON; a refusal): done with that failure, on the service's line, and true.
+// "Nothing found" is only what the service says as such
+bool readFailed(const Done &done, const QString &name, const HttpResponse &reply, const Parsed &parsed)
+{
+    if (parsed.kind != AnswerKind::Readable)
+        done({}, failure(name, reply, Problem::Failed), Problem::Failed);
+    else if (parsed.refused)
+        done({}, failure(name, reply, Problem::KeyRefused), Problem::KeyRefused);
+    else if (!parsed.error.isEmpty())
+        done({}, name + QStringLiteral(": ") + parsed.error, Problem::Failed);
+    else
+        return false;
+    return true;
+}
+
+// The answer read, when it is the service's (JSON, or a page of its own)
+template <typename Read>
+Parsed readAnswer(const HttpResponse &reply, bool json, Read read)
+{
+    Parsed parsed;
+    parsed.kind = answerKind(reply.body, json);
+    if (parsed.kind == AnswerKind::Readable)
+        read(parsed);
+    return parsed;
 }
 
 // Lower case words, without accents: names compare in any script
@@ -193,9 +258,13 @@ QUrl openSubtitlesUrl(QStringList segments)
     return QUrl::fromEncoded(address);
 }
 
-void parseOpenSubtitles(const QByteArray &body, QList<Result> &results, QSet<QString> &seen)
+// (its results as an array: an object instead is an error, its message
+// returned)
+QString parseOpenSubtitles(const QByteArray &body, QList<Result> &results, QSet<QString> &seen)
 {
-    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    const QString error = answerError(doc, true);
+    for (const QJsonValue item : doc.array())
     {
         const QJsonObject o = item.toObject();
         const auto text = [&o](const char *key) { return o.value(QLatin1String(key)).toVariant().toString().trimmed(); };
@@ -235,6 +304,7 @@ void parseOpenSubtitles(const QByteArray &body, QList<Result> &results, QSet<QSt
                + (text("SubBad") == QLatin1String("1") ? -30. : 0.);
         results.append(r);
     }
+    return error;
 }
 
 struct Chain
@@ -261,18 +331,39 @@ void runOpenSubtitles(QPointer<QObject> context, std::shared_ptr<Chain> chain, D
     }
     HttpRequest request = makeRequest(chain->urls.takeFirst());
     request.headers.append(qMakePair(QByteArray("X-User-Agent"), userAgent()));
-    httpRequestAsync(context, request, [context, chain, done](const HttpResponse &reply) {
+    // (read on the worker thread, with the files seen so far: one request
+    // of the chain at a time)
+    struct Found
+    {
+        Parsed parsed;
+        QSet<QString> seen;
+    };
+    const QSet<QString> seen = chain->seen;
+    askParsed<Found>(context, request, [seen](const HttpResponse &reply) {
+        Found found;
+        found.seen = seen;
         if (ok(reply))
+            found.parsed = readAnswer(reply, true, [&](Parsed &parsed) {
+                parsed.error = parseOpenSubtitles(reply.body, parsed.results, found.seen);
+            });
+        return found;
+    }, [context, chain, done](const HttpResponse &reply, const Found &found) {
+        const QString name = QStringLiteral("OpenSubtitles");
+        if (ok(reply) && found.parsed.kind == AnswerKind::Readable && found.parsed.error.isEmpty())
         {
             ++chain->answered;
-            parseOpenSubtitles(reply.body, chain->results, chain->seen);
+            chain->results.append(found.parsed.results);
+            chain->seen = found.seen;
         }
         else if (chain->error.isEmpty())
         {
-            chain->problem = problemOfReply(reply);
+            // (its first failure: an answer that isn't one, then an error)
+            chain->problem = ok(reply) ? Problem::Failed : problemOfReply(reply);
             if (chain->problem == Problem::KeyRefused)
                 chain->problem = Problem::Failed;
-            chain->error = failure(QStringLiteral("OpenSubtitles"), reply);
+            chain->error = ok(reply) && found.parsed.kind == AnswerKind::Readable
+                               ? name + QStringLiteral(": ") + found.parsed.error
+                               : failure(name, reply);
         }
         if (chain->urls.isEmpty())
             runOpenSubtitles(context, chain, done);
@@ -392,9 +483,9 @@ void identifyByHash(QObject *context, const QString &hash, qint64 size, std::fun
     HttpRequest request = makeRequest(openSubtitlesUrl({ QStringLiteral("moviebytesize-%1").arg(size),
                                                          QStringLiteral("moviehash-") + hash }));
     request.headers.append(qMakePair(QByteArray("X-User-Agent"), userAgent()));
-    httpRequestAsync(context, request, [done](const HttpResponse &reply) {
-        done(ok(reply) ? identityOfHash(reply.body) : Identity());
-    });
+    askParsed<Identity>(context, request, [](const HttpResponse &reply) {
+        return ok(reply) ? identityOfHash(reply.body) : Identity();
+    }, [done](const HttpResponse &, const Identity &identity) { done(identity); });
 }
 
 namespace {
@@ -418,36 +509,45 @@ void searchWizdom(QObject *context, const Query &query, Done done)
     params.addQueryItem(QStringLiteral("episode"), QString::number(query.series ? std::max(query.episode, 0) : 0));
     params.addQueryItem(QStringLiteral("version"), QFileInfo(query.fileName).completeBaseName());
     url.setQuery(params);
-    httpRequestAsync(context, makeRequest(url), [done](const HttpResponse &reply) {
-        // (it answers 500 when it has nothing)
-        if (reply.error.isEmpty() && reply.status == 500)
+    askParsed<Parsed>(context, makeRequest(url), [](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&reply](Parsed &parsed) {
+            // (its results as an array: an object instead is an error)
+            const QJsonDocument doc = QJsonDocument::fromJson(reply.body);
+            parsed.error = answerError(doc, true);
+            for (const QJsonValue item : doc.array())
+            {
+                const QJsonObject o = item.toObject();
+                const QString id = o.value(QLatin1String("id")).toVariant().toString();
+                if (id.isEmpty())
+                    continue;
+                Result r;
+                r.id = QStringLiteral("wizdom:") + id;
+                r.provider = QStringLiteral("wizdom");
+                r.language = QStringLiteral("he");
+                r.release = cleanRelease(o.value(QLatin1String("versioname")).toString());
+                r.url = QUrl(QStringLiteral("https://wizdom.xyz/api/files/sub/") + id);
+                const double score = o.value(QLatin1String("score")).toDouble();
+                r.rank = std::isfinite(score) ? score * 5. : 0.;
+                parsed.results.append(r);
+            }
+        });
+    }, [done](const HttpResponse &reply, const Parsed &parsed) {
+        const QString name = QStringLiteral("Wizdom");
+        // (it answers 500 when it has nothing; not a check of the browser)
+        if (reply.error.isEmpty() && reply.status == 500 && answerKind(reply.body, false) != AnswerKind::Challenge)
         {
             nothing(done);
             return;
         }
         if (!ok(reply))
         {
-            failed(done, QStringLiteral("Wizdom"), reply);
+            failed(done, name, reply);
             return;
         }
-        QList<Result> results;
-        for (const QJsonValue item : QJsonDocument::fromJson(reply.body).array())
-        {
-            const QJsonObject o = item.toObject();
-            const QString id = o.value(QLatin1String("id")).toVariant().toString();
-            if (id.isEmpty())
-                continue;
-            Result r;
-            r.id = QStringLiteral("wizdom:") + id;
-            r.provider = QStringLiteral("wizdom");
-            r.language = QStringLiteral("he");
-            r.release = o.value(QLatin1String("versioname")).toString();
-            r.release.remove(QRegularExpression(QStringLiteral(R"(^[\s*\-:.|]+|[\s*\-:.|]+$)")));
-            r.url = QUrl(QStringLiteral("https://wizdom.xyz/api/files/sub/") + id);
-            r.rank = o.value(QLatin1String("score")).toDouble() * 5.;
-            results.append(r);
-        }
-        done(results, {}, Problem::None);
+        if (!readFailed(done, name, reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -466,9 +566,31 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
     QByteArray address("https://api.gestdown.info/shows/search/");
     address += QUrl::toPercentEncoding(query.title);
     const QUrl url = QUrl::fromEncoded(address);
-    httpRequestAsync(context, makeRequest(url), [guard, query, done](const HttpResponse &reply) {
+    // the show of that name (read on the worker thread)
+    const QString wanted = simplified(query.title);
+    askParsed<Parsed>(context, makeRequest(url), [wanted](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&reply, &wanted](Parsed &parsed) {
+            const QJsonDocument doc = QJsonDocument::fromJson(reply.body);
+            parsed.error = answerError(doc, false, "shows");
+            double best = 0;
+            for (const QJsonValue item : doc.object().value(QLatin1String("shows")).toArray())
+            {
+                const QJsonObject o = item.toObject();
+                const QString name = simplified(o.value(QLatin1String("name")).toString());
+                const double score = name == wanted ? 2. : name.startsWith(wanted) ? 1. : 0.;
+                if (score > best)
+                {
+                    best = score;
+                    parsed.id = o.value(QLatin1String("id")).toString();
+                }
+            }
+        });
+    }, [guard, query, done](const HttpResponse &reply, const Parsed &parsed) {
         if (!guard)
             return;
+        const QString name = QStringLiteral("Addic7ed");
         if (reply.error.isEmpty() && reply.status == 404)
         {
             nothing(done);
@@ -476,25 +598,12 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
         }
         if (!ok(reply))
         {
-            failed(done, QStringLiteral("Addic7ed"), reply);
+            failed(done, name, reply);
             return;
         }
-        // the show of that name
-        QString showId;
-        double best = 0;
-        const QString wanted = simplified(query.title);
-        for (const QJsonValue item : QJsonDocument::fromJson(reply.body).object()
-                                         .value(QLatin1String("shows")).toArray())
-        {
-            const QJsonObject o = item.toObject();
-            const QString name = simplified(o.value(QLatin1String("name")).toString());
-            const double score = name == wanted ? 2. : name.startsWith(wanted) ? 1. : 0.;
-            if (score > best)
-            {
-                best = score;
-                showId = o.value(QLatin1String("id")).toString();
-            }
-        }
+        if (readFailed(done, name, reply, parsed))
+            return;
+        const QString showId = parsed.id;
         if (showId.isEmpty())
         {
             nothing(done);
@@ -503,15 +612,21 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
         // the episode in each language, one after the other
         auto results = std::make_shared<QList<Result>>();
         auto languages = std::make_shared<QStringList>(query.languages.mid(0, 2));
+        // the first language that failed (an answer that isn't one, an
+        // error): the search's failure when none found anything
+        auto firstFailure = std::make_shared<std::pair<QString, Problem>>();
         // (each request keeps the chain while it runs: no cycle)
         auto next = std::make_shared<std::function<void()>>();
         const std::weak_ptr<std::function<void()>> weak = next;
-        *next = [guard, query, showId, results, languages, weak, done]() {
+        *next = [guard, query, showId, results, languages, firstFailure, weak, done]() {
             if (!guard)
                 return;
             if (languages->isEmpty())
             {
-                done(*results, {}, Problem::None);
+                if (results->isEmpty() && !firstFailure->first.isEmpty())
+                    done({}, firstFailure->first, firstFailure->second);
+                else
+                    done(*results, {}, Problem::None);
                 return;
             }
             const auto self = weak.lock();
@@ -519,33 +634,52 @@ void searchAddic7ed(QObject *context, const Query &query, Done done)
             const QUrl url(QStringLiteral("https://api.gestdown.info/subtitles/get/%1/%2/%3/%4")
                                .arg(showId).arg(query.season).arg(query.episode)
                                .arg(language.section(QLatin1Char('-'), 0, 0)));
-            httpRequestAsync(guard, makeRequest(url), [guard, language, results, self](const HttpResponse &reply) {
+            askParsed<Parsed>(guard, makeRequest(url), [language](const HttpResponse &reply) {
+                if (!ok(reply))
+                    return Parsed();
+                return readAnswer(reply, true, [&reply, &language](Parsed &parsed) {
+                const QJsonDocument doc = QJsonDocument::fromJson(reply.body);
+                parsed.error = answerError(doc, false, "matchingSubtitles");
+                QList<Result> &found = parsed.results;
+                for (const QJsonValue item : doc.object().value(QLatin1String("matchingSubtitles")).toArray())
+                {
+                    const QJsonObject o = item.toObject();
+                    const QString id = o.value(QLatin1String("subtitleId")).toString();
+                    const QString uri = o.value(QLatin1String("downloadUri")).toString();
+                    if (id.isEmpty() || !uri.startsWith(QLatin1Char('/'))
+                        || !o.value(QLatin1String("completed")).toBool(true))
+                        continue;
+                    Result r;
+                    r.id = QStringLiteral("addic7ed:") + id;
+                    r.provider = QStringLiteral("addic7ed");
+                    r.language = languageFromName(o.value(QLatin1String("language")).toString());
+                    if (r.language.isEmpty())
+                        r.language = language;
+                    r.release = o.value(QLatin1String("version")).toString();
+                    r.url = QUrl(QStringLiteral("https://api.gestdown.info") + uri);
+                    r.hearingImpaired = o.value(QLatin1String("hearingImpaired")).toBool();
+                    r.downloads = o.value(QLatin1String("downloadCount")).toInt();
+                    r.rank = std::log10(double(std::max(r.downloads, 0)) + 1.) * 3.
+                           + (o.value(QLatin1String("corrected")).toBool() ? 3. : 0.);
+                    found.append(r);
+                }
+                });
+            }, [guard, results, firstFailure, self](const HttpResponse &reply, const Parsed &parsed) {
                 if (!guard)
                     return;
-                if (ok(reply))
-                    for (const QJsonValue item : QJsonDocument::fromJson(reply.body).object()
-                                                     .value(QLatin1String("matchingSubtitles")).toArray())
-                    {
-                        const QJsonObject o = item.toObject();
-                        const QString id = o.value(QLatin1String("subtitleId")).toString();
-                        const QString uri = o.value(QLatin1String("downloadUri")).toString();
-                        if (id.isEmpty() || !uri.startsWith(QLatin1Char('/'))
-                            || !o.value(QLatin1String("completed")).toBool(true))
-                            continue;
-                        Result r;
-                        r.id = QStringLiteral("addic7ed:") + id;
-                        r.provider = QStringLiteral("addic7ed");
-                        r.language = languageFromName(o.value(QLatin1String("language")).toString());
-                        if (r.language.isEmpty())
-                            r.language = language;
-                        r.release = o.value(QLatin1String("version")).toString();
-                        r.url = QUrl(QStringLiteral("https://api.gestdown.info") + uri);
-                        r.hearingImpaired = o.value(QLatin1String("hearingImpaired")).toBool();
-                        r.downloads = o.value(QLatin1String("downloadCount")).toInt();
-                        r.rank = std::log10(double(r.downloads) + 1.) * 3.
-                               + (o.value(QLatin1String("corrected")).toBool() ? 3. : 0.);
-                        results->append(r);
-                    }
+                const QString name = QStringLiteral("Addic7ed");
+                const Done keep = [firstFailure](const QList<Result> &, const QString &error, Problem problem) {
+                    *firstFailure = { error, problem };
+                };
+                // (404: none in that language)
+                if (firstFailure->first.isEmpty() && !(reply.error.isEmpty() && reply.status == 404))
+                {
+                    if (!ok(reply))
+                        failed(keep, name, reply);
+                    else
+                        readFailed(keep, name, reply, parsed);
+                }
+                results->append(parsed.results);
                 QTimer::singleShot(requestGapMs, guard, [self]() { if (self && *self) (*self)(); });
             });
         };
@@ -564,48 +698,33 @@ void searchYify(QObject *context, const Query &query, Done done)
         return;
     }
     const QUrl url(QStringLiteral("https://yifysubtitles.ch/movie-imdb/") + query.imdb);
-    httpRequestAsync(context, makeRequest(url), [done](const HttpResponse &reply) {
+    // (in one pass, on the worker thread: its time follows the size of the
+    // page, whatever it is)
+    // (its page: a check of the browser in its place, or nothing, is a
+    // failure; a page without subtitles is nothing found)
+    askParsed<Parsed>(context, makeRequest(url, maxPageBytes), [](const HttpResponse &reply) {
+        if (!ok(reply, maxPageBytes))
+            return Parsed();
+        return readAnswer(reply, false, [&reply](Parsed &parsed) {
+            if (!isYifyPage(reply.body))
+                parsed.kind = AnswerKind::Page; // (a page, not its own)
+            else
+                parsed.results = parseYify(reply.body, languageFromName);
+        });
+    }, [done](const HttpResponse &reply, const Parsed &parsed) {
+        const QString name = QStringLiteral("YIFY");
         if (reply.error.isEmpty() && reply.status == 404)
         {
             nothing(done);
             return;
         }
-        if (!ok(reply))
+        if (!ok(reply, maxPageBytes))
         {
-            failed(done, QStringLiteral("YIFY"), reply);
+            failed(done, name, reply);
             return;
         }
-        static const QRegularExpression rowRe(QStringLiteral(R"re(<tr data-id="(\d+)">(.*?)</tr>)re"),
-                                              QRegularExpression::DotMatchesEverythingOption);
-        static const QRegularExpression ratingRe(QStringLiteral(R"re(<span class="label[^"]*">\s*(-?\d+)\s*</span>)re"));
-        static const QRegularExpression languageRe(QStringLiteral(R"re(<span class="sub-lang">([^<]+)</span>)re"));
-        static const QRegularExpression linkRe(QStringLiteral(
-            R"re(<a href="/subtitles/([A-Za-z0-9._\-]+)">\s*(?:<span class="text-muted">[^<]*</span>)?\s*([^<]*)</a>)re"));
-        const QString page = QString::fromUtf8(reply.body);
-        QList<Result> results;
-        for (QRegularExpressionMatchIterator it = rowRe.globalMatch(page); it.hasNext();)
-        {
-            const QRegularExpressionMatch row = it.next();
-            const QString cells = row.captured(2);
-            const QRegularExpressionMatch link = linkRe.match(cells);
-            const QRegularExpressionMatch language = languageRe.match(cells);
-            if (!link.hasMatch() || !language.hasMatch())
-                continue;
-            Result r;
-            r.id = QStringLiteral("yify:") + row.captured(1);
-            r.provider = QStringLiteral("yify");
-            r.language = languageFromName(language.captured(1));
-            if (r.language.isEmpty())
-                continue;
-            r.release = link.captured(2).trimmed();
-            r.url = QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/") + link.captured(1)
-                         + QStringLiteral(".zip"));
-            r.hearingImpaired = cells.contains(QLatin1String("hi-subtitle"));
-            const QRegularExpressionMatch rating = ratingRe.match(cells);
-            r.rank = rating.hasMatch() ? std::min(rating.captured(1).toDouble(), 30.) * 0.5 : 0.;
-            results.append(r);
-        }
-        done(results, {}, Problem::None);
+        if (!readFailed(done, name, reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -630,7 +749,13 @@ void subSourceSubtitles(QPointer<QObject> guard, const Query &query, const QStri
 {
     HttpRequest request = jsonRequest(subSourceSubtitlesUrl(movieId, query));
     request.headers.append(qMakePair(QByteArray("X-API-Key"), query.credentials.key.toUtf8()));
-    httpRequestAsync(guard, request, [guard, query, done](const HttpResponse &reply) {
+    askParsed<Parsed>(guard, request, [query](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&](Parsed &parsed) {
+            parsed.results = parseSubSource(reply.body, query, languageOf, &parsed.error);
+        });
+    }, [guard, done](const HttpResponse &reply, const Parsed &parsed) {
         if (!guard)
             return;
         if (!ok(reply))
@@ -638,12 +763,8 @@ void subSourceSubtitles(QPointer<QObject> guard, const Query &query, const QStri
             failed(done, QStringLiteral("SubSource"), reply, true);
             return;
         }
-        QString error;
-        const QList<Result> results = parseSubSource(reply.body, query, languageOf, &error);
-        if (!error.isEmpty())
-            done({}, QStringLiteral("SubSource: ") + error, Problem::Failed);
-        else
-            done(results, {}, Problem::None);
+        if (!readFailed(done, QStringLiteral("SubSource"), reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -657,7 +778,13 @@ void subSourceFind(QPointer<QObject> guard, const Query &query, bool byText, Don
     }
     HttpRequest request = jsonRequest(url);
     request.headers.append(qMakePair(QByteArray("X-API-Key"), query.credentials.key.toUtf8()));
-    httpRequestAsync(guard, request, [guard, query, byText, done](const HttpResponse &reply) {
+    askParsed<Parsed>(guard, request, [query](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&](Parsed &parsed) {
+            parsed.id = subSourceMovieId(reply.body, query, &parsed.error);
+        });
+    }, [guard, query, byText, done](const HttpResponse &reply, const Parsed &parsed) {
         if (!guard)
             return;
         if (!ok(reply))
@@ -665,13 +792,9 @@ void subSourceFind(QPointer<QObject> guard, const Query &query, bool byText, Don
             failed(done, QStringLiteral("SubSource"), reply, true);
             return;
         }
-        QString error;
-        const QString movieId = subSourceMovieId(reply.body, query, &error);
-        if (!error.isEmpty())
-        {
-            done({}, QStringLiteral("SubSource: ") + error, Problem::Failed);
+        const QString movieId = parsed.id;
+        if (readFailed(done, QStringLiteral("SubSource"), reply, parsed))
             return;
-        }
         // (one request a second at most: it asks for no more)
         if (movieId.isEmpty())
         {
@@ -715,7 +838,13 @@ void searchSubDl(QObject *context, const Query &query, Done done, bool v2 = true
     if (v2)
         request.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + query.credentials.key.toUtf8()));
     QPointer<QObject> guard(context);
-    httpRequestAsync(context, request, [guard, query, done, v2](const HttpResponse &reply) {
+    askParsed<Parsed>(context, request, [query](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&](Parsed &parsed) {
+            parsed.results = parseSubDl(reply.body, query, languageOf, &parsed.error);
+        });
+    }, [guard, query, done, v2](const HttpResponse &reply, const Parsed &parsed) {
         if (!guard)
             return;
         if (v2 && reply.error.isEmpty() && reply.status == 404)
@@ -728,12 +857,8 @@ void searchSubDl(QObject *context, const Query &query, Done done, bool v2 = true
             failed(done, QStringLiteral("SubDL"), reply, true);
             return;
         }
-        QString error;
-        const QList<Result> results = parseSubDl(reply.body, query, languageOf, &error);
-        if (!error.isEmpty())
-            done({}, QStringLiteral("SubDL: ") + error, Problem::Failed);
-        else
-            done(results, {}, Problem::None);
+        if (!readFailed(done, QStringLiteral("SubDL"), reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -750,6 +875,7 @@ HttpRequest openSubtitlesComRequest(const QUrl &url, const QString &key, const Q
     HttpRequest request;
     request.url = url;
     request.timeoutMs = 15000;
+    request.deadlineMs = requestDeadlineMs;
     request.maxBytes = maxListBytes;
     request.headers = {
         { "Api-Key", key.toUtf8() },
@@ -770,13 +896,21 @@ void searchOpenSubtitlesCom(QObject *context, const Query &query, Done done)
         nothing(done);
         return;
     }
-    httpRequestAsync(context, openSubtitlesComRequest(url, query.credentials.key), [done](const HttpResponse &reply) {
+    askParsed<Parsed>(context, openSubtitlesComRequest(url, query.credentials.key), [](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&reply](Parsed &parsed) {
+            parsed.results = parseOpenSubtitlesCom(reply.body, languageOf, &parsed.error);
+        });
+    }, [done](const HttpResponse &reply, const Parsed &parsed) {
+        const QString name = QStringLiteral("OpenSubtitles.com");
         if (!ok(reply))
         {
-            failed(done, QStringLiteral("OpenSubtitles.com"), reply, true);
+            failed(done, name, reply, true);
             return;
         }
-        done(parseOpenSubtitlesCom(reply.body, languageOf), {}, Problem::None);
+        if (!readFailed(done, name, reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -793,12 +927,15 @@ QHash<QString, SignedIn> &sessions()
     return map;
 }
 
-// Signs in to OpenSubtitles.com: done(session) or done({}, problem)
+// Signs in to OpenSubtitles.com: done(session) or done({}, problem). A
+// check (Test, Sign in: credentials typed, maybe never saved) signs in
+// afresh and keeps nothing: the searches only ever use a session of the
+// credentials kept
 void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
-                            std::function<void(const Session &, Problem)> done)
+                            std::function<void(const Session &, Problem)> done, bool check = false)
 {
     const auto known = sessions().constFind(QStringLiteral("opensubtitlescom"));
-    if (known != sessions().constEnd() && known->username == credentials.username)
+    if (!check && known != sessions().constEnd() && known->username == credentials.username)
     {
         done(known->session, Problem::None);
         return;
@@ -808,10 +945,10 @@ void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
     login.method = "POST";
     login.body = openSubtitlesComLoginBody(credentials.username, credentials.password);
     const QString username = credentials.username;
-    httpRequestAsync(context, login, [done, username](const HttpResponse &reply) {
+    httpRequestAsync(context, login, [done, username, check](const HttpResponse &reply) {
         if (!ok(reply))
         {
-            // (401: the account; 403: the key)
+            // (401: the account; 403: the key, unless a check of the browser)
             const Problem problem = reply.status == 401 ? Problem::LoginRefused : problemOfReply(reply);
             done({}, problem);
             return;
@@ -819,10 +956,12 @@ void openSubtitlesComSignIn(QObject *context, const Credentials &credentials,
         const Session session = openSubtitlesComSession(reply.body);
         if (session.token.isEmpty())
         {
-            done({}, Problem::LoginRefused);
+            // (no token in its JSON: refused; a page, nothing: no answer)
+            done({}, answerKind(reply.body, true) == AnswerKind::Readable ? Problem::LoginRefused : Problem::Failed);
             return;
         }
-        sessions().insert(QStringLiteral("opensubtitlescom"), { username, session });
+        if (!check)
+            sessions().insert(QStringLiteral("opensubtitlescom"), { username, session });
         done(session, Problem::None);
     });
 }
@@ -838,18 +977,19 @@ QString whoOf(const QString &providerId, const Credentials &credentials)
 }
 
 // Signs in to a service that gives a session (a token): done(session) or
-// done({}, problem); a session kept for this run is given again
+// done({}, problem); a session kept for this run is given again. A check
+// signs in afresh and keeps nothing (openSubtitlesComSignIn)
 void signIn(QObject *context, const QString &providerId, const Credentials &credentials,
-            std::function<void(const Session &, Problem)> done)
+            std::function<void(const Session &, Problem)> done, bool check = false)
 {
     if (providerId == QLatin1String("opensubtitlescom"))
     {
-        openSubtitlesComSignIn(context, credentials, done);
+        openSubtitlesComSignIn(context, credentials, done, check);
         return;
     }
     const QString who = whoOf(providerId, credentials);
     const auto known = sessions().constFind(providerId);
-    if (known != sessions().constEnd() && known->username == who)
+    if (!check && known != sessions().constEnd() && known->username == who)
     {
         done(known->session, Problem::None);
         return;
@@ -875,11 +1015,13 @@ void signIn(QObject *context, const QString &providerId, const Credentials &cred
         return;
     }
     request.method = "POST";
-    httpRequestAsync(context, request, [providerId, who, done](const HttpResponse &reply) {
+    httpRequestAsync(context, request, [providerId, who, done, check](const HttpResponse &reply) {
         if (!ok(reply))
         {
-            const Problem problem = reply.status == 401 || reply.status == 403 ? Problem::LoginRefused
-                                                                               : problemOfReply(reply);
+            // (a check of the browser, as 403: no refusal of the account)
+            const bool challenge = answerKind(reply.body, false) == AnswerKind::Challenge;
+            const Problem problem = (reply.status == 401 || reply.status == 403) && !challenge ? Problem::LoginRefused
+                                                                                               : problemOfReply(reply);
             done({}, problem);
             return;
         }
@@ -887,10 +1029,12 @@ void signIn(QObject *context, const QString &providerId, const Credentials &cred
                                                                        : legendasSession(reply.body);
         if (session.token.isEmpty())
         {
-            done({}, Problem::LoginRefused);
+            // (no token in its JSON: refused; a page, nothing: no answer)
+            done({}, answerKind(reply.body, true) == AnswerKind::Readable ? Problem::LoginRefused : Problem::Failed);
             return;
         }
-        sessions().insert(providerId, { who, session });
+        if (!check)
+            sessions().insert(providerId, { who, session });
         done(session, Problem::None);
     });
 }
@@ -938,8 +1082,13 @@ void searchTitlovi(QObject *context, const Query &query, Done done)
                 [guard, query, name, done](const Session &session, std::function<void()> again) {
         if (!guard)
             return;
-        httpRequestAsync(guard, jsonRequest(titloviSearchUrl(query, session)),
-                         [query, name, done, again](const HttpResponse &reply) {
+        askParsed<Parsed>(guard, jsonRequest(titloviSearchUrl(query, session)), [query](const HttpResponse &reply) {
+            if (!ok(reply))
+                return Parsed();
+            return readAnswer(reply, true, [&](Parsed &parsed) {
+                parsed.results = parseTitlovi(reply.body, query, &parsed.error);
+            });
+        }, [name, done, again](const HttpResponse &reply, const Parsed &parsed) {
             if (reply.error.isEmpty() && reply.status == 401 && again)
             {
                 again();
@@ -951,7 +1100,8 @@ void searchTitlovi(QObject *context, const Query &query, Done done)
                 done({}, failure(name, reply, problem), problem);
                 return;
             }
-            done(parseTitlovi(reply.body, query), {}, Problem::None);
+            if (!readFailed(done, name, reply, parsed))
+                done(parsed.results, {}, Problem::None);
         });
     });
 }
@@ -964,23 +1114,25 @@ void searchAssrt(QObject *context, const Query &query, Done done)
         nothing(done);
         return;
     }
-    httpRequestAsync(context, jsonRequest(url), [query, done](const HttpResponse &reply) {
+    // (its errors are answers too: 400 with their status)
+    const auto answered = [](const HttpResponse &reply) {
+        return reply.error.isEmpty() && !reply.body.isEmpty() && (reply.status == 200 || reply.status == 400);
+    };
+    askParsed<Parsed>(context, jsonRequest(url), [query, answered](const HttpResponse &reply) {
+        if (!answered(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&](Parsed &parsed) {
+            parsed.results = parseAssrt(reply.body, query, &parsed.error, &parsed.refused);
+        });
+    }, [done, answered](const HttpResponse &reply, const Parsed &parsed) {
         const QString name = QStringLiteral("Assrt");
-        // (its errors are answers too: 400 with their status)
-        if (!reply.error.isEmpty() || reply.body.isEmpty() || (reply.status != 200 && reply.status != 400))
+        if (!answered(reply))
         {
             failed(done, name, reply, true);
             return;
         }
-        QString error;
-        bool refused = false;
-        const QList<Result> results = parseAssrt(reply.body, query, &error, &refused);
-        if (refused)
-            done({}, failure(name, reply, Problem::KeyRefused), Problem::KeyRefused);
-        else if (!error.isEmpty())
-            done({}, name + QStringLiteral(": ") + error, Problem::Failed);
-        else
-            done(results, {}, Problem::None);
+        if (!readFailed(done, name, reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -1001,7 +1153,13 @@ void searchJimaku(QObject *context, const Query &query, Done done)
     }
     QPointer<QObject> guard(context);
     const QString name = QStringLiteral("Jimaku");
-    httpRequestAsync(context, jimakuRequest(url, query.credentials.key), [guard, query, name, done](const HttpResponse &reply) {
+    askParsed<Parsed>(context, jimakuRequest(url, query.credentials.key), [query](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&](Parsed &parsed) {
+            parsed.id = jimakuEntryId(reply.body, query, &parsed.error);
+        });
+    }, [guard, query, name, done](const HttpResponse &reply, const Parsed &parsed) {
         if (!guard)
             return;
         if (!ok(reply))
@@ -1009,7 +1167,9 @@ void searchJimaku(QObject *context, const Query &query, Done done)
             failed(done, name, reply, true);
             return;
         }
-        const QUrl files = jimakuFilesUrl(jimakuEntryId(reply.body, query), query);
+        if (readFailed(done, name, reply, parsed))
+            return;
+        const QUrl files = jimakuFilesUrl(parsed.id, query);
         if (files.isEmpty())
         {
             nothing(done);
@@ -1018,36 +1178,53 @@ void searchJimaku(QObject *context, const Query &query, Done done)
         QTimer::singleShot(requestGapMs, guard, [guard, query, name, files, done]() {
             if (!guard)
                 return;
-            httpRequestAsync(guard, jimakuRequest(files, query.credentials.key), [query, name, done](const HttpResponse &reply) {
+            askParsed<Parsed>(guard, jimakuRequest(files, query.credentials.key), [query](const HttpResponse &reply) {
+                if (!ok(reply))
+                    return Parsed();
+                return readAnswer(reply, true, [&](Parsed &parsed) {
+                    parsed.results = parseJimaku(reply.body, query, &parsed.error);
+                });
+            }, [name, done](const HttpResponse &reply, const Parsed &parsed) {
                 if (!ok(reply))
                     failed(done, name, reply, true);
-                else
-                    done(parseJimaku(reply.body, query), {}, Problem::None);
+                else if (!readFailed(done, name, reply, parsed))
+                    done(parsed.results, {}, Problem::None);
             });
         });
     });
 }
 
-// BetaSeries' answers: its errors come as 400 with their code
-bool betaSeriesFailed(const HttpResponse &reply, const Done &done)
+// BetaSeries' answers (read on the worker thread): its errors come as 400
+// with their code
+bool betaSeriesAnswered(const HttpResponse &reply)
+{
+    return reply.error.isEmpty() && (reply.status == 200 || reply.status == 400);
+}
+
+Parsed parseBetaSeriesAnswer(const HttpResponse &reply, bool show)
+{
+    if (!betaSeriesAnswered(reply))
+        return Parsed();
+    return readAnswer(reply, true, [&](Parsed &parsed) {
+        parsed.results = parseBetaSeries(reply.body, &parsed.error, &parsed.refused);
+        if (show)
+            parsed.id = betaSeriesShowId(reply.body);
+    });
+}
+
+bool betaSeriesFailed(const HttpResponse &reply, const Parsed &parsed, const Done &done)
 {
     const QString name = QStringLiteral("BetaSeries");
-    if (!reply.error.isEmpty() || (reply.status != 200 && reply.status != 400))
+    if (!betaSeriesAnswered(reply))
     {
         failed(done, name, reply, true);
         return true;
     }
-    QString error;
-    bool refused = false;
-    parseBetaSeries(reply.body, &error, &refused);
-    if (refused)
-        done({}, failure(name, reply, Problem::KeyRefused), Problem::KeyRefused);
-    else if (!error.isEmpty())
-        done({}, name + QStringLiteral(": ") + error, Problem::Failed);
-    else if (reply.status == 400)
-        nothing(done); // (no such show or episode)
-    else
+    if (readFailed(done, name, reply, parsed))
+        return true;
+    if (reply.status != 400)
         return false;
+    nothing(done); // (no such show or episode)
     return true;
 }
 
@@ -1060,10 +1237,12 @@ void searchBetaSeries(QObject *context, const Query &query, Done done)
         return;
     }
     QPointer<QObject> guard(context);
-    httpRequestAsync(context, jsonRequest(url), [guard, query, done](const HttpResponse &reply) {
-        if (!guard || betaSeriesFailed(reply, done))
+    askParsed<Parsed>(context, jsonRequest(url), [](const HttpResponse &reply) {
+        return parseBetaSeriesAnswer(reply, true);
+    }, [guard, query, done](const HttpResponse &reply, const Parsed &parsed) {
+        if (!guard || betaSeriesFailed(reply, parsed, done))
             return;
-        const QUrl episode = betaSeriesEpisodeUrl(betaSeriesShowId(reply.body), query);
+        const QUrl episode = betaSeriesEpisodeUrl(parsed.id, query);
         if (episode.isEmpty())
         {
             nothing(done);
@@ -1072,12 +1251,12 @@ void searchBetaSeries(QObject *context, const Query &query, Done done)
         QTimer::singleShot(requestGapMs, guard, [guard, episode, done]() {
             if (!guard)
                 return;
-            httpRequestAsync(guard, jsonRequest(episode), [done](const HttpResponse &reply) {
-                if (betaSeriesFailed(reply, done))
+            askParsed<Parsed>(guard, jsonRequest(episode), [](const HttpResponse &reply) {
+                return parseBetaSeriesAnswer(reply, false);
+            }, [done](const HttpResponse &reply, const Parsed &parsed) {
+                if (betaSeriesFailed(reply, parsed, done))
                     return;
-                QString error;
-                bool refused = false;
-                done(parseBetaSeries(reply.body, &error, &refused), {}, Problem::None);
+                done(parsed.results, {}, Problem::None);
             });
         });
     });
@@ -1098,7 +1277,13 @@ void searchSubsRo(QObject *context, const Query &query, Done done)
         nothing(done);
         return;
     }
-    httpRequestAsync(context, subsRoRequest(url, query.credentials.key), [query, done](const HttpResponse &reply) {
+    askParsed<Parsed>(context, subsRoRequest(url, query.credentials.key), [query](const HttpResponse &reply) {
+        if (!ok(reply))
+            return Parsed();
+        return readAnswer(reply, true, [&](Parsed &parsed) {
+            parsed.results = parseSubsRo(reply.body, query, &parsed.error);
+        });
+    }, [done](const HttpResponse &reply, const Parsed &parsed) {
         const QString name = QStringLiteral("Subs.ro");
         if (reply.error.isEmpty() && reply.status == 404)
         {
@@ -1110,12 +1295,8 @@ void searchSubsRo(QObject *context, const Query &query, Done done)
             failed(done, name, reply, true);
             return;
         }
-        QString error;
-        const QList<Result> results = parseSubsRo(reply.body, query, &error);
-        if (!error.isEmpty())
-            done({}, name + QStringLiteral(": ") + error, Problem::Failed);
-        else
-            done(results, {}, Problem::None);
+        if (!readFailed(done, name, reply, parsed))
+            done(parsed.results, {}, Problem::None);
     });
 }
 
@@ -1156,6 +1337,12 @@ void searchNapisy24(QObject *context, const Query &query, Done done)
             done({}, failure(name, reply, Problem::LoginRefused), Problem::LoginRefused);
             return;
         }
+        // (a page, a check of the browser, nothing: not one of its answers)
+        if (answer.unreadable)
+        {
+            done({}, failure(name, reply, Problem::Failed), Problem::Failed);
+            return;
+        }
         if (!answer.found)
         {
             nothing(done);
@@ -1192,7 +1379,13 @@ void searchLegendas(QObject *context, const Query &query, Done done)
         request.body = body;
         request.headers.append(qMakePair(QByteArray("Content-Type"), QByteArray("application/json")));
         request.headers.append(qMakePair(QByteArray("Authorization"), "Bearer " + session.token.toUtf8()));
-        httpRequestAsync(guard, request, [query, name, done, again](const HttpResponse &reply) {
+        askParsed<Parsed>(guard, request, [query](const HttpResponse &reply) {
+            if (!ok(reply))
+                return Parsed();
+            return readAnswer(reply, true, [&](Parsed &parsed) {
+                parsed.results = parseLegendas(reply.body, query, &parsed.error);
+            });
+        }, [name, done, again](const HttpResponse &reply, const Parsed &parsed) {
             if (reply.error.isEmpty() && reply.status == 401 && again)
             {
                 again();
@@ -1209,48 +1402,14 @@ void searchLegendas(QObject *context, const Query &query, Done done)
                 done({}, failure(name, reply, problem), problem);
                 return;
             }
-            done(parseLegendas(reply.body, query), {}, Problem::None);
+            if (!readFailed(done, name, reply, parsed))
+                done(parsed.results, {}, Problem::None);
         });
     });
 }
 
-#ifdef HAVE_ZLIB
-// inflates a gzip file (windowBits 16 + 15) or a raw deflate stream (-15);
-// empty when it unpacks to more than limit (it stops there)
-QByteArray inflateData(const QByteArray &data, int windowBits, qsizetype limit)
-{
-    z_stream stream = {};
-    if (inflateInit2(&stream, windowBits) != Z_OK)
-        return {};
-    QByteArray out;
-    out.reserve(std::min(limit, data.size() * 3));
-    stream.next_in = reinterpret_cast<Bytef *>(const_cast<char *>(data.constData()));
-    stream.avail_in = uInt(data.size());
-    char buffer[65536];
-    int status = Z_OK;
-    do
-    {
-        stream.next_out = reinterpret_cast<Bytef *>(buffer);
-        stream.avail_out = sizeof(buffer);
-        status = ::inflate(&stream, Z_NO_FLUSH);
-        if (status != Z_OK && status != Z_STREAM_END)
-            break;
-        out.append(buffer, int(sizeof(buffer) - stream.avail_out));
-        if (out.size() > limit)
-            break;
-    } while (status != Z_STREAM_END && (stream.avail_in > 0 || stream.avail_out == 0));
-    inflateEnd(&stream);
-    if (out.size() > limit)
-        return {};
-    return status == Z_STREAM_END || !out.isEmpty() ? out : QByteArray();
-}
-#endif
-
-bool isSubtitleName(const QString &name)
-{
-    static const QSet<QString> extensions = { "srt", "ass", "ssa", "vtt", "sub", "smi", "txt" };
-    return extensions.contains(QFileInfo(name).suffix().toLower());
-}
+// (gzip and zip: gunzip() and unzip(), in subtitle_services.cpp, tested by
+// themselves)
 
 bool validUtf8(const QByteArray &data)
 {
@@ -1259,65 +1418,6 @@ bool validUtf8(const QByteArray &data)
     const QString text = utf8.decode(data);
     Q_UNUSED(text);
     return !utf8.hasError();
-}
-
-// The files of a zip archive: { name, data }, through its central directory.
-// Only the subtitles are unpacked (the others have no data), each up to the
-// size it declares, and at most maxUnpackedBytes in all.
-QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
-{
-    QList<QPair<QString, QByteArray>> files;
-    qsizetype total = 0;
-    int unpackedFiles = 0;
-    const auto u16 = [&zip](qsizetype at) { return qFromLittleEndian<quint16>(zip.constData() + at); };
-    const auto u32 = [&zip](qsizetype at) { return qFromLittleEndian<quint32>(zip.constData() + at); };
-    // the end of the central directory, in the last 64 KiB
-    qsizetype end = -1;
-    for (qsizetype i = zip.size() - 22; i >= std::max<qsizetype>(0, zip.size() - 65557); --i)
-        if (u32(i) == 0x06054b50)
-        {
-            end = i;
-            break;
-        }
-    if (end < 0)
-        return files;
-    const quint16 count = u16(end + 10);
-    qsizetype at = u32(end + 16);
-    for (quint16 n = 0; n < count && n < maxArchiveEntries && at + 46 <= zip.size()
-                        && u32(at) == 0x02014b50; ++n)
-    {
-        const quint16 method = u16(at + 10);
-        const quint32 packed = u32(at + 20);
-        const quint32 unpacked = u32(at + 24);
-        const quint16 nameLength = u16(at + 28), extraLength = u16(at + 30), commentLength = u16(at + 32);
-        const quint32 local = u32(at + 42);
-        const QString name = QString::fromUtf8(zip.mid(at + 46, nameLength));
-        at += 46 + nameLength + extraLength + commentLength;
-        if (name.endsWith(QLatin1Char('/')) || name.startsWith(QLatin1String("__MACOSX")))
-            continue;
-        if (!isSubtitleName(name) || unpackedFiles >= maxArchiveSubtitles
-            || unpacked > quint32(maxDownloadBytes) || qsizetype(unpacked) > maxUnpackedBytes - total
-            || qsizetype(local) + 30 > zip.size() || u32(local) != 0x04034b50)
-        {
-            files.append({ name, QByteArray() });
-            continue;
-        }
-        const qsizetype data = local + 30 + u16(local + 26) + u16(local + 28);
-        if (data + qsizetype(packed) > zip.size())
-            continue;
-        const QByteArray raw = zip.mid(data, packed);
-        QByteArray content;
-        if (method == 0)
-            content = raw.left(unpacked);
-#ifdef HAVE_ZLIB
-        else if (method == 8)
-            content = inflateData(raw, -MAX_WBITS, qsizetype(unpacked));
-#endif
-        ++unpackedFiles;
-        total += content.size();
-        files.append({ name, content });
-    }
-    return files;
 }
 
 // The Windows code page of a language's subtitles that aren't in UTF-8
@@ -1679,8 +1779,8 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
     {
         if (!credentials.username.trimmed().isEmpty() && !credentials.password.isEmpty())
         {
-            // signed in again with these
-            forgetSession(providerId);
+            // signed in afresh with these, the session not kept (they may
+            // never be saved; the session of those kept stays)
             Credentials typed = credentials;
             typed.key = key;
             typed.username = credentials.username.trimmed();
@@ -1694,18 +1794,18 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
                     case Problem::Busy: done(Check::Busy, {}); break;
                     default: done(Check::NoAnswer, {}); break;
                 }
-            });
+            }, true);
             return;
         }
         httpRequestAsync(context, openSubtitlesComRequest(openSubtitlesComCheckUrl(), key),
-                         [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+                         [done](const HttpResponse &reply) { done(checkOfReply(reply), {}); });
         return;
     }
     if (providerId == QLatin1String("subsource"))
     {
         HttpRequest request = jsonRequest(subSourceCheckUrl());
         request.headers.append(qMakePair(QByteArray("X-API-Key"), key.toUtf8()));
-        httpRequestAsync(context, request, [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+        httpRequestAsync(context, request, [done](const HttpResponse &reply) { done(checkOfReply(reply), {}); });
         return;
     }
     if (providerId == QLatin1String("subdl"))
@@ -1719,10 +1819,10 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
             if (reply.error.isEmpty() && reply.status == 404)
             {
                 httpRequestAsync(guard, jsonRequest(subDlCheckUrl(key, false)),
-                                 [done](const HttpResponse &v1) { done(checkOf(v1.status), {}); });
+                                 [done](const HttpResponse &v1) { done(checkOfReply(v1), {}); });
                 return;
             }
-            done(checkOf(reply.status), {});
+            done(checkOfReply(reply), {});
         });
         return;
     }
@@ -1738,12 +1838,12 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
     };
     if (providerId == QLatin1String("titlovi") || providerId == QLatin1String("legendasnet"))
     {
-        forgetSession(providerId);
+        // (afresh, the session not kept: as OpenSubtitles.com's above)
         const QString who = whoOf(providerId, credentials);
         signIn(context, providerId, credentials, [done, who, checkOfSignIn](const Session &, Problem problem) {
             const Check result = checkOfSignIn(problem);
             done(result, result == Check::SignedIn ? who : QString());
-        });
+        }, true);
         return;
     }
     if (providerId == QLatin1String("napisy24"))
@@ -1757,7 +1857,7 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
         const QString who = credentials.username.trimmed();
         httpRequestAsync(context, napisy24Request(probe), [done, who](const HttpResponse &reply) {
             if (!ok(reply))
-                done(checkOf(reply.status) == Check::Works ? Check::NoAnswer : checkOf(reply.status), {});
+                done(checkOfReply(reply) == Check::Works ? Check::NoAnswer : checkOfReply(reply), {});
             else if (parseNapisy24(reply.body).loginRefused)
                 done(Check::LoginRefused, {});
             else if (reply.body.startsWith("OK"))
@@ -1772,7 +1872,7 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
         httpRequestAsync(context, jsonRequest(assrtCheckUrl(key)), [done](const HttpResponse &reply) {
             if (!reply.error.isEmpty() || (reply.status != 200 && reply.status != 400))
             {
-                done(checkOf(reply.status), {});
+                done(checkOfReply(reply), {});
                 return;
             }
             const QJsonObject answer = QJsonDocument::fromJson(reply.body).object();
@@ -1787,7 +1887,7 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
         Query probe;
         probe.title = QStringLiteral("Frieren");
         httpRequestAsync(context, jimakuRequest(jimakuSearchUrl(probe), key),
-                         [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+                         [done](const HttpResponse &reply) { done(checkOfReply(reply), {}); });
         return;
     }
     if (providerId == QLatin1String("betaseries"))
@@ -1799,13 +1899,15 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
         httpRequestAsync(context, jsonRequest(betaSeriesShowUrl(probe)), [done](const HttpResponse &reply) {
             if (!reply.error.isEmpty() || (reply.status != 200 && reply.status != 400))
             {
-                done(checkOf(reply.status), {});
+                done(checkOfReply(reply), {});
                 return;
             }
             QString error;
             bool refused = false;
             parseBetaSeries(reply.body, &error, &refused);
-            done(refused ? Check::KeyRefused : reply.status == 200 ? Check::Works : Check::NoAnswer, {});
+            done(refused ? Check::KeyRefused
+                 : reply.status == 200 && answerKind(reply.body, true) == AnswerKind::Readable ? Check::Works
+                 : Check::NoAnswer, {});
         });
         return;
     }
@@ -1814,7 +1916,7 @@ void check(QObject *context, const QString &providerId, const Credentials &crede
         Query probe;
         probe.imdb = QStringLiteral("tt0133093");
         httpRequestAsync(context, subsRoRequest(subsRoSearchUrl(probe), key),
-                         [done](const HttpResponse &reply) { done(checkOf(reply.status), {}); });
+                         [done](const HttpResponse &reply) { done(checkOfReply(reply), {}); });
         return;
     }
     done(Check::Works, {});
@@ -1908,6 +2010,18 @@ void prepareDownload(QObject *context, const Result &result, const Credentials &
         return;
     }
     Download download;
+    // the user's key, account or session go with the download of these:
+    // over HTTPS only, never in clear text (their parsers take no other
+    // link; this keeps it so whatever a result says)
+    const bool keyed = result.provider == QLatin1String("subsource") || result.provider == QLatin1String("jimaku")
+                    || result.provider == QLatin1String("subsro") || result.provider == QLatin1String("napisy24")
+                    || result.provider == QLatin1String("legendasnet");
+    if (keyed && result.url.scheme() != QLatin1String("https"))
+    {
+        download.problem = Problem::Failed;
+        done(download); // (no address: "couldn't be downloaded")
+        return;
+    }
     download.url = result.url;
     download.headers.append(qMakePair(QByteArray("User-Agent"), userAgent()));
     if (result.provider == QLatin1String("opensubtitles"))
@@ -1986,11 +2100,8 @@ QByteArray subtitleOf(const QByteArray &download, const Result &result, const QS
     }
     if (data.startsWith("\x1F\x8B"))
     {
-#ifdef HAVE_ZLIB
-        data = inflateData(data, 16 + MAX_WBITS, maxUnpackedBytes);
-#else
-        data.clear();
-#endif
+        // (whole, or nothing: a file cut short isn't saved as the subtitle)
+        data = gunzip(data, maxUnpackedBytes);
         if (data.isEmpty())
         {
             *error = qtr("The subtitle couldn't be unpacked.");

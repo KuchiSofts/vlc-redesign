@@ -296,6 +296,9 @@ Column {
                         // library), once changed
                         if (presentation.restart && model.pendingRestart)
                             notes.push(qsTr("Applies the next time VLC starts"))
+                        // what still shows the controls whatever the choice
+                        if (model.key === "qt-fs-shortcut-feedback")
+                            notes.push(qsTr("Moving the mouse or pressing Tab still shows the controls."))
                         return notes.join(" ")
                     }
                     noteWarning: webRemoteLocked

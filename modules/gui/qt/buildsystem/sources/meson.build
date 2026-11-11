@@ -278,6 +278,8 @@ qt_plugin_sources = files(
     '../../player/subtitle_cues.hpp',
     '../../player/subtitle_cues_parser.cpp',
     '../../player/subtitle_cues_parser.hpp',
+    '../../player/shortcut_feedback.cpp',
+    '../../player/shortcut_feedback.hpp',
     '../../player/subtitle_charset.c',
     '../../player/local_folder_model.cpp',
     '../../player/local_folder_model.hpp',
@@ -321,6 +323,9 @@ qt_plugin_sources = files(
     '../../util/redesign_feedback.hpp',
     '../../util/subtitle_preferences.cpp',
     '../../util/subtitle_preferences.hpp',
+    '../../util/screen_fit.cpp',
+    '../../util/screen_fit_filter.cpp',
+    '../../util/screen_fit.hpp',
     '../../player/subtitle_finder.cpp',
     '../../player/subtitle_finder.hpp',
     '../../player/subtitle_providers.cpp',
@@ -441,7 +446,6 @@ qt_plugin_sources = files(
     '../../widgets/native/searchlineedit.hpp',
     '../../widgets/native/viewblockingrectangle.cpp',
     '../../widgets/native/viewblockingrectangle.hpp',
-    '../../widgets/native/doubleclickignoringitem.hpp',
 )
 
 if host_system == 'windows'

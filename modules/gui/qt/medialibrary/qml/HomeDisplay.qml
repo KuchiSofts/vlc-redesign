@@ -95,10 +95,8 @@ Widgets.PageLoader {
 
             title: qsTr("Continue Watching")
 
-            VideoAll {
+            contentItem: VideoAll {
                 id: continueWatching
-
-                anchors.fill: parent
 
                 focus: true
 
@@ -145,10 +143,8 @@ Widgets.PageLoader {
 
             title: qsTr("Favorites")
 
-            MediaView {
+            contentItem: MediaView {
                 focus: true
-
-                anchors.fill: parent
 
                 model: MLMediaModel {
                     favoriteOnly: true
@@ -179,10 +175,8 @@ Widgets.PageLoader {
 
             title: qsTr("New Videos")
 
-            VideoAll {
+            contentItem: VideoAll {
                 id: newVideo
-
-                anchors.fill: parent
 
                 focus: true
 
@@ -223,14 +217,32 @@ Widgets.PageLoader {
 
             title: qsTr("Recent")
 
+            // the header of the library's pages (Home, Videos): the arrows,
+            // the count, the sort, the grid/list switch and the search field
+            libraryHeader: true
+            libraryItemCount: recentView.model?.count ?? -1
+            hasGridListMode: recentView.hasGridListMode
+            isSearchable: recentView.isSearchable
+            sortModel: recentView.sortModel
+
             MediaView {
+                id: recentView
+
                 focus: true
+                // Home's cards for the same media (Continue Watching: 316 x
+                // 178, 20 apart), not small squares that crop the videos
+                compactMargins: true
+                gridCoverWidth: VLCStyle.dp(316, VLCStyle.scale)
+                gridCoverHeight: VLCStyle.dp(178, VLCStyle.scale)
 
                 anchors.fill: parent
 
                 model: MLRecentMediaModel {
                     ml: MediaLib
 
+                    // the last played first
+                    sortCriteria: recentPage.sort.criteria
+                    sortOrder: recentPage.sort.order
                     searchPattern: recentPage.search.pattern
                 }
 
@@ -286,10 +298,8 @@ Widgets.PageLoader {
 
             title: qsTr("New Music")
 
-            MediaView {
+            contentItem: MediaView {
                 focus: true
-
-                anchors.fill: parent
 
                 model: MLAudioModel {
                     ml: MediaLib

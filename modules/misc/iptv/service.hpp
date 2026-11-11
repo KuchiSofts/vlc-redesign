@@ -63,6 +63,16 @@ struct Datagram
     QByteArray data;
 };
 
+// The most a download keeps (a link that is a stream, not a file, would fill
+// the disk otherwise): a playlist, a guide (XMLTV, gzip or not), a logo
+constexpr qint64 kPlaylistMaxBytes = 512LL << 20;
+constexpr qint64 kGuideMaxBytes = 2LL << 30;
+constexpr qint64 kLogoMaxBytes = 2LL << 20;
+// How long a download waits for its next bytes before it stops ("no answer"):
+// a playlist, a guide, an API's answer; a logo
+constexpr int kIdleSecs = 30;
+constexpr int kLogoIdleSecs = 15;
+
 // What VLC gives the service: downloads through its own access modules
 // (the proxy and the network settings of VLC), its keystore, its folders.
 // Implemented in iptv.cpp, the glue of the module.
@@ -70,12 +80,16 @@ struct Host
 {
     virtual ~Host() = default;
     // Saves the resource at url (http(s), file...) to path, as it is (a
-    // gzip-compressed guide stays so); false and why on an error.
-    // progress gets the bytes received and the size when known (0).
-    virtual bool download(const QString& url, const QString& path, QString* error,
+    // gzip-compressed guide stays so); false and why on an error, when it
+    // is larger than limit bytes, cut short, stopped, or when nothing came
+    // for idleSecs ("no answer"; path then keeps what it had). progress gets
+    // the bytes received and the size when known (0).
+    virtual bool download(const QString& url, const QString& path, QString* error, qint64 limit, int idleSecs,
                           const std::function<void(qint64, qint64)>& progress = {}) = 0;
-    // A small answer (an Xtream Codes API call) read into memory
-    virtual QByteArray fetch(const QString& url, QString* error, qint64 limit = 256 << 20) = 0;
+    // A small answer (an Xtream Codes API call) read into memory; empty and
+    // why on an error, or when nothing came for idleSecs ("no answer")
+    virtual QByteArray fetch(const QString& url, QString* error, qint64 limit = 256 << 20,
+                             int idleSecs = kIdleSecs) = 0;
     // The secrets of a source (its link, its password) in VLC's keystore;
     // false when there is no keystore
     virtual bool storeSecret(const QString& id, const QByteArray& secret) = 0;
@@ -117,6 +131,12 @@ struct SourceConfig
     QString password;        // (secret; NextPVR: its PIN)
     QString key;             // an API key (Jellyfin, Emby) (secret)
     QString catalogId;       // added from the catalog
+    // (in memory) the user's changes of the automatic guide: one it was
+    // looking for meanwhile does not undo them
+    quint32 autoEdits = 0;
+    // (in memory) its secrets are in VLC's keystore, not in the file (the
+    // file's "keystore"; a new source's go there unless there is none)
+    bool inKeystore = true;
     bool enabled = true;
     bool useHeaderGuides = true;   // the guides the playlist names itself
     QStringList epgOff;      // the guides turned off (of epg, the playlist's, autoEpg)
@@ -162,6 +182,26 @@ struct GuideData
     QString error;
 };
 
+// A source refreshed by itself: after its refresh period, or, when its last
+// refreshes failed (offline, a password refused), 15 minutes after the
+// last, then 30, 60... up to the period (never a sign-in every minute).
+// refreshHours 0: never.
+qint64 retryDelaySecs(int failures, int refreshHours);
+bool refreshDue(qint64 now, qint64 playlistUpdated, qint64 lastAttempt, int failures, int refreshHours);
+
+// The programmes of a list (sorted by start) on between from and to: the
+// ones that started before from and still run (a long one before shorter
+// ones too), then those starting before to; their indexes
+QVector<int> programmesBetween(const EntryList& list, qint64 from, qint64 to);
+
+// A list (sorted by start) where no two programmes overlap: where several
+// cover a moment, the shortest wins it (a long programme that contains
+// shorter ones shows around them, cut in parts with its title, its
+// description). What is on now and next, a guide's row, an archive's start
+// then follow the shorter ones in their slots. A list without overlaps is
+// returned as it is.
+EntryList withoutOverlaps(const EntryList& list);
+
 class Service
 {
 public:
@@ -196,6 +236,9 @@ private:
         qint64 expires = 0;
         // its server refused the user's sign-in (shown on its row)
         bool refused = false;
+        // its last refresh, and the ones that failed since one worked
+        qint64 lastAttempt = 0;
+        int failures = 0;
     };
     struct ChannelEntry
     {
@@ -209,7 +252,18 @@ private:
 
     // configuration
     void loadConfig();
+    // (under m_lock) the file; the keystore is not touched (storeSecrets)
     void saveConfig();
+    // The secrets of the sources kept in VLC's keystore, read on the worker
+    // as it starts (a locked keyring's prompt froze the interface when they
+    // were read as the module loaded)
+    void loadSecrets();
+    // The secrets of one source changed, to the keystore: out of m_lock (a
+    // keystore may ask the user), one source at a time (m_secretLock)
+    void storeSecrets(const QString& id);
+    // (with m_lock held) waits for loadSecrets, 10 s at most: false when they
+    // are still not read (what reads or changes a secret then fails)
+    bool secretsReady(std::unique_lock<std::mutex>& guard);
     QJsonObject sourceToJson(const SourceConfig& s, bool withSecrets) const;
     SourceConfig sourceFromJson(const QJsonObject& o) const;
     SourceConfig* findSource(const QString& id);
@@ -218,9 +272,11 @@ private:
     // the worker
     void post(Job job);
     void run();
+    // a job threw (out of memory): logged, its sources no longer busy
+    void jobFailed(const char* what) noexcept;
     void startup();
     void schedule();
-    void refreshSources(const QStringList& ids, bool guides);
+    void refreshSources(const QStringList& ids, bool guides, bool force = false);
     bool loadPlaylist(const SourceConfig& cfg, bool download, SourceState& state);
     // a server of the user: its channels and guide written as the source's
     // playlist.m3u and guide.xml (false and why when it can't be asked)
@@ -242,7 +298,7 @@ private:
     // signed in to Jellyfin or Emby (kept for this run)
     bool mediaBrowserSession(const SourceConfig& cfg, QString* token, QString* userId, QString* error,
                              bool* refused);
-    void loadGuides(bool download, const QStringList& onlySources);
+    void loadGuides(bool download, const QStringList& onlySources, bool force = false);
     void rebuild();
     void updateCatalog(bool force);
     void progress(const QString& id, const QString& stage, qint64 received, qint64 total);
@@ -283,6 +339,11 @@ private:
     QSet<QString> m_languages;
     bool m_started = false;
     qint64 m_catalogChecked = 0;
+    // the keystore's secrets read (loadSecrets), waited for with m_lock
+    bool m_secretsReady = true;
+    std::condition_variable m_secretsWait;
+    // the keystore's calls, one at a time (never with m_lock held)
+    std::mutex m_secretLock;
 
     std::mutex m_jobLock;
     std::condition_variable m_jobWait;

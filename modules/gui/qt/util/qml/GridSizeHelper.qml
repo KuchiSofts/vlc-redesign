@@ -50,6 +50,21 @@ QtObject{
     readonly property int _defaultHorizontalSpacing: VLCStyle.column_spacing
     readonly property int _spacingForCount: fixedPictureWidth ? horizontalSpacing : _defaultHorizontalSpacing
 
+    // The rows fill the page: as many cards as fit at the design's size,
+    // which then grow (their picture keeps its shape) so that the row ends
+    // at the page's margin, by this much at most. A page wider than that
+    // gets more cards in a row, not larger ones. Where the cards fit
+    // exactly (the design's own window), they are the design's.
+    readonly property real maxGrowth: 1.35
+    // The width of the page in the design's own window (1920 wide: 1660
+    // between the margins, five video cards exactly). There the design's
+    // sizes win, a row that has room left too (seven music cards of 200):
+    // the growth is for the other widths.
+    // (A grid always fills its rows, at the design's window too: seven
+    // artists of 200 left 140 empty before the margin there. Only Home's
+    // rows, which scroll sideways, keep the design's size at that width:
+    // VLCStyle.redesign.cardWidth.)
+
     property var maxNbItemPerRow
     readonly property int nbItemPerRow: {
         const _nbItemPerRow = Math.max(
@@ -58,19 +73,55 @@ QtObject{
                 (basePictureWidth + _spacingForCount)
             ), 1
         )
-
-        return maxNbItemPerRow ? Math.min(_nbItemPerRow, maxNbItemPerRow) : _nbItemPerRow
+        const _capped = maxNbItemPerRow ? Math.min(_nbItemPerRow, maxNbItemPerRow) : _nbItemPerRow
+        // (the most cards of a row holds until they would be larger than
+        // maxGrowth: a 4K or ultra-wide page)
+        const _needed = Math.ceil((availableWidth + _spacingForCount) /
+                                  (basePictureWidth * maxGrowth + _spacingForCount))
+        return Math.max(_capped, Math.min(_nbItemPerRow, _needed))
     }
 
     // NOTE: Responsive cell sizing based on available width
-    readonly property int cellWidth: fixedPictureWidth ? basePictureWidth
-        : (availableWidth + horizontalSpacing) / nbItemPerRow - horizontalSpacing
+    readonly property int _filledWidth: (availableWidth + horizontalSpacing) / nbItemPerRow - horizontalSpacing
+    // While the window is being resized the width changes at every pixel,
+    // and every card with it (each change lays the whole grid out again:
+    // the interface waited 50 ms and more at each step). The cards then
+    // grow in steps of 8, and take their exact width once the resize rests.
+    property bool _resizing: false
+    readonly property Timer _resizeRest: Timer {
+        interval: 120
+        onTriggered: _resizing = false
+    }
+    onAvailableWidthChanged: {
+        _resizing = true
+        _resizeRest.restart()
+    }
+    function _stepped(width) {
+        return _resizing ? basePictureWidth + Math.floor(Math.max(0, width - basePictureWidth) / 8) * 8 : width
+    }
+    // The number of cards shown (-1: not known). Fewer than a row holds:
+    // they keep the design's size, at the row's start. Three cards grown
+    // beside an empty half row filled nothing (Home's "Listen Again").
+    property int itemCount: -1
+    // Home's rows: at the design's own page width the design's sizes win
+    // (VLCStyle.redesign.cardWidth), the growth comes in beside it.
+    property bool designWidthWins: false
+    readonly property int _grownWidth: Math.max(basePictureWidth, Math.min(_filledWidth, Math.round(basePictureWidth * maxGrowth)))
+    readonly property int cellWidth: {
+        if (!fixedPictureWidth)
+            return _stepped(_filledWidth)
+        if (itemCount >= 0 && itemCount < nbItemPerRow)
+            return basePictureWidth
+        if (designWidthWins)
+            return _stepped(VLCStyle.redesign.cardWidth(basePictureWidth, _filledWidth, availableWidth))
+        return _stepped(_grownWidth)
+    }
     readonly property int cellHeight: (basePictureHeight / basePictureWidth) * cellWidth + textHeight
 
     // NOTE: Find the maximum picture size for nbItemPerRow == 1, so that we downscale in most of the cases
     //       formula for maxPictureWidth depended on nbItemPerRow would be:
     //       (basePictureWidth + _defaultHorizontalSpacing) * (1 + 1 / nbItemPerRow) - _defaultHorizontalSpacing
-    readonly property int maxPictureWidth: fixedPictureWidth ? basePictureWidth
+    readonly property int maxPictureWidth: fixedPictureWidth ? Math.round(basePictureWidth * maxGrowth)
         : (basePictureWidth + _defaultHorizontalSpacing) * (1 + 1 / 3) - _defaultHorizontalSpacing
     readonly property int maxPictureHeight: (basePictureHeight / basePictureWidth) * maxPictureWidth
 }

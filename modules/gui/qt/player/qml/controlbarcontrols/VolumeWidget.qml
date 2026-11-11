@@ -315,7 +315,7 @@ T.Pane {
             }
 
             Component.onCompleted: {
-                root.paintOnlyChanged.connect(_syncVolumeWithPlayer)
+                root.paintOnlyChanged.connect(volControl, _syncVolumeWithPlayer)
                 volControl._syncVolumeWithPlayer()
             }
 
@@ -515,8 +515,8 @@ T.Pane {
                     }
 
                     Component.onCompleted: {
-                        wheelUpDown.connect(wheelToVLC.handle)
-                        wheelLeftRight.connect(wheelToVLC.handle)
+                        wheelUpDown.connect(wheelToVLC, wheelToVLC.handle)
+                        wheelLeftRight.connect(wheelToVLC, wheelToVLC.handle)
                     }
                 }
             }

@@ -26,6 +26,7 @@
 #endif
 
 #include <qconfig.h>
+#include <QStyleHints>
 #include <QtPlugin>
 #include <QQuickStyle>
 
@@ -65,21 +66,12 @@ extern "C" char **environ;
 #include <QList>
 #include <QTranslator>
 
-#if __has_include(<rhi/qrhi.h>) // Qt 6.6
-#define RHI_HEADER_AVAILABLE
+
 #include <rhi/qrhi.h>
-#elif __has_include(<QtGui/private/qrhi_p.h>) && \
-      QT_VERSION >= QT_VERSION_CHECK(6, 4, 0) // `QRhi::probe()` is available since Qt 6.4
-#define RHI_HEADER_AVAILABLE
-#include <QtGui/private/qrhi_p.h>
-#include <QtGui/private/qrhigles2_p.h> // for `QRhiGles2InitParams`
-#endif
-#ifdef RHI_HEADER_AVAILABLE
 #include <QOffscreenSurface>
 #include <QThreadPool>
 #include <QThread>
 #include "util/asynctask.hpp"
-#endif
 
 #ifdef _WIN32
 #include <QOperatingSystemVersion>
@@ -104,6 +96,7 @@ extern "C" char **environ;
 #include "dialogs/extensions/extensions_manager.hpp" /* Extensions manager */
 #include "dialogs/help/help.hpp"     /* Launch Update */
 #include "util/dismiss_popup_event_filter.hpp"
+#include "util/screen_fit.hpp"
 #include "maininterface/compositor.hpp"
 #include "util/vlctick.hpp"
 #include "util/shared_input_item.hpp"
@@ -250,6 +243,13 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define QT_FULLSCREEN_LONGTEXT N_( "Show the playback controls in fullscreen when the " \
     "mouse moves. Off, only the keyboard shows them (the I key). The skins read it " \
     "for their fullscreen controller too." )
+/* What a key bound to an action shows in fullscreen (issue #72): the
+ * controls, as before, or the player's own short feedback instead
+ * (MainCtx::fsShortcutFeedback, ShortcutFeedback.qml) */
+#define QT_FS_SHORTCUT_TEXT N_( "When you use a shortcut in full screen" )
+#define QT_FS_SHORTCUT_LONGTEXT N_( "What a key of VLC (seek, volume, pause, speed...) shows " \
+    "in full screen: the controls; a thin progress line with a small message (the time " \
+    "and what the key did); or that message alone." )
 #define QT_NATIVEOPEN_TEXT N_( "Embed the file browser in open dialog" )
 
 #define FULLSCREEN_NUMBER_TEXT N_( "Define which screen fullscreen goes" )
@@ -338,7 +338,7 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define PIP_MODE_LONGTEXT N_( "Picture-in-picture mode allows playing video contained in a smaller area so that the interface remains usable." )
 
 #define ACCENT_COLOR_TEXT N_( "Accent color" )
-#define ACCENT_COLOR_LONGTEXT N_( "Adjusts the accent color, special values are 'default' and 'system' (requires Qt 6.6) ." )
+#define ACCENT_COLOR_LONGTEXT N_( "Adjusts the accent color, special values are 'default' and 'system'." )
 
 /* The keys of live TV over the video (Settings > Shortcuts, "Live TV"): they
  * win over the hotkeys only while a channel plays */
@@ -362,6 +362,10 @@ static const int i_notification_list[] =
 
 static const char *const psz_notification_list_text[] =
     { N_("Never"), N_("When minimized"), N_("Always") };
+
+static const int i_fs_shortcut_list[] = { 0, 1, 2 };
+static const char *const psz_fs_shortcut_list_text[] =
+    { N_("Show the controls"), N_("Show only the progress"), N_("Show only a message") };
 
 static const int i_raise_list[] =
     { MainCtx::RAISE_NEVER, MainCtx::RAISE_VIDEO, \
@@ -444,6 +448,12 @@ vlc_module_begin ()
               TITLE_LONGTEXT )
     add_bool( "qt-fs-controller", true, QT_FULLSCREEN_TEXT,
               QT_FULLSCREEN_LONGTEXT )
+    /* 0 the controls (as before), 1 the progress line and the message, 2
+     * the message only */
+    add_integer( "qt-fs-shortcut-feedback", 0, QT_FS_SHORTCUT_TEXT,
+                 QT_FS_SHORTCUT_LONGTEXT )
+        change_integer_range( 0, 2 )
+        change_integer_list( i_fs_shortcut_list, psz_fs_shortcut_list_text )
 
     add_string("qt-compositor", "auto", QT_COMPOSITOR_TEXT, QT_COMPOSITOR_LONGTEXT)
             change_string_list(compositor_vlc, compositor_user)
@@ -1262,7 +1272,6 @@ static void *Thread( void *obj )
         }
     };
 
-#ifdef RHI_HEADER_AVAILABLE
     // NOTE: Qt Quick does not have a cross-API RHI fallback procedure (as of Qt 6.7.1).
     //       We have to manually pick a graphics api here, since the default graphics
     //       api (Direct3D 11.2) may not be supported.
@@ -1482,24 +1491,6 @@ static void *Thread( void *obj )
             p_intf->mainSettings->sync();
         }
     }
-#else
-    if (qEnvironmentVariable("QT_QUICK_BACKEND", QStringLiteral("rhi")) == QLatin1String("rhi"))
-    {
-        if (QQuickWindow::graphicsApi() == QSGRendererInterface::OpenGL)
-        {
-            // At least set the default format without RHI probing if RHI headers are not available:
-            if (std::optional<QSurfaceFormat> format = createCompatibleOpenGLFormat())
-            {
-                QSurfaceFormat::setDefaultFormat(*format);
-            }
-            else
-            {
-                qCritical() << "Falling back to software mode...";
-                QQuickWindow::setGraphicsApi(QSGRendererInterface::Software);
-            }
-        }
-    }
-#endif
 
     // (the window title and the taskbar: the product's own name)
     app.setApplicationDisplayName( QStringLiteral(VLC_REDESIGN_NAME) );
@@ -1623,6 +1614,14 @@ static void *Thread( void *obj )
             QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
             return ThreadCleanup( p_intf, CLEANUP_ERROR );
         }
+
+        /* Whether the controls react to the pointer over them: asked of the
+         * system once. Qt asks again for each control it makes (a system
+         * call each: a tenth of the time Settings took to open). */
+        app.styleHints()->setUseHoverEffects( app.styleHints()->useHoverEffects() );
+
+        /* The dialogs and the other windows open inside their screen */
+        ScreenFit::install(&app);
 
         /* Check window type from the Qt platform back-end */
         bool known_type = true;

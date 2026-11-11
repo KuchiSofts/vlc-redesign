@@ -31,7 +31,7 @@ import VLC.Style
 Widgets.PageExt {
     id: root
 
-    property var pagePrefix: [] // behave like a Page
+    property var pagePrefix // behave like a Page (no default, see PageExt)
 
     // (its sections list what is recent: the newest first)
     defaultSortOrder: Qt.DescendingOrder
@@ -44,7 +44,9 @@ Widgets.PageExt {
     ]
 
     // Figma 6261:15078: the media of the library, counted in the header
-    libraryItemCount: _libraryMedia.count
+    // (no count while the library has none: "0 items" stood over rows full
+    // of the media played from outside its folders, and while it was read)
+    libraryItemCount: _libraryMedia.count > 0 ? _libraryMedia.count : -1
     readonly property MLMediaModel _libraryMedia: MLMediaModel { ml: MediaLib }
 
     title: qsTr("Home")
@@ -71,10 +73,14 @@ Widgets.PageExt {
     // cards (in the grid; the list keeps its height)
     readonly property real _sectionEnd: VLCStyle.dp(20 + 20 + 17, VLCStyle.scale)
     readonly property real _cardsTop: VLCStyle.dp(20, VLCStyle.scale)
-    function _rowHeight(view, cardHeight) {
+    // (the cards of a row grow to end it at the page's margin: the picture
+    // of a card `cardWidth` wide in the design, `ratio` high for its width,
+    // grows with it, and the row with the picture)
+    function _rowHeight(view, cardHeight, cardWidth, ratio) {
         if (!MainCtx.gridView)
             return view.currentItem?.contentHeight ?? view.implicitHeight
-        return _cardsTop + cardHeight + _sectionEnd
+        const grown = Math.max(0, (view.currentItem?.cellWidth ?? cardWidth) - cardWidth)
+        return _cardsTop + cardHeight + Math.round(grown * ratio) + _sectionEnd
     }
 
     function positionContentAtBeginning() {
@@ -118,17 +124,19 @@ Widgets.PageExt {
         // FIXME: make the media rows positioners consider the flickable margins when adjusting flickable `contentY`.
         bottomMargin: VLCStyle.margin_large
 
-        pixelAligned: (MainCtx.qtVersion() >= MainCtx.qtVersionCheck(6, 2, 5)) // QTBUG-103996
-                      && (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
+        pixelAligned: (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
 
-        property bool _hasMedias: true
+        // true until known (the Binding sets the inverse: a true set here
+        // with the Binding on it was a change from elsewhere for it)
+        readonly property bool _hasMedias: !_noMedias
+        property bool _noMedias
 
-        Binding on _hasMedias {
+        Binding on _noMedias {
             when: !continueWatchingRow.model.loading && !listenAgainRow.model.loading
                   && !favoritesRow.model.loading
                   && !newVideoRow.model.loading && !newMusicRow.model.loading
-            value: continueWatchingRow.visible || listenAgainRow.visible || foldersRow.visible
-                   || favoritesRow.visible || newVideoRow.visible || newMusicRow.visible
+            value: !(continueWatchingRow.visible || listenAgainRow.visible || foldersRow.visible
+                     || favoritesRow.visible || newVideoRow.visible || newMusicRow.visible)
             restoreMode: Binding.RestoreNone
         }
 
@@ -242,7 +250,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale), VLCStyle.dp(316, VLCStyle.scale), 9 / 16)
 
                 visible: model.count !== 0
 
@@ -322,6 +330,8 @@ Widgets.PageExt {
                 id: listenAgainRow
 
                 compactMargins: true
+                // (the design's own page: its card sizes win)
+                designWidthWins: true
                 gridCoverWidth: VLCStyle.dp(200, VLCStyle.scale)
                 gridCoverHeight: VLCStyle.dp(200, VLCStyle.scale)
 
@@ -330,7 +340,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale), VLCStyle.dp(200, VLCStyle.scale), 1)
 
                 visible: model.count !== 0
 
@@ -399,7 +409,16 @@ Widgets.PageExt {
 
                 readonly property real contentLeftMargin: continueWatchingRow.contentLeftMargin
                 readonly property real contentRightMargin: continueWatchingRow.contentRightMargin
-                readonly property real cardSize: VLCStyle.dp(200, VLCStyle.scale)
+                // (as large as the cards of the music rows, which grow to
+                // end their row at the page's margin: 200 in the design)
+                readonly property real baseCardSize: VLCStyle.dp(200, VLCStyle.scale)
+                // (the design's size at the design's own page width, as the rows)
+                // (fewer folders than the row holds keep the design's size:
+                // four grown cards beside an empty third of the row filled nothing)
+                readonly property real cardSize: count < fit ? baseCardSize
+                    : VLCStyle.redesign.cardWidth(baseCardSize,
+                        Math.floor((width - leftMargin - rightMargin + spacing) / fit) - spacing,
+                        width - leftMargin - rightMargin)
 
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -416,9 +435,17 @@ Widgets.PageExt {
                 spacing: VLCStyle.dp(20, VLCStyle.scale)
                 clip: true
                 boundsBehavior: Flickable.StopAtBounds
+                // As the other rows: the cards that fit the width, none cut
+                // at the edge (a narrow window showed half a card, and the
+                // wheel scrolls the page, not the row); the chevron of the
+                // header opens every folder
+                interactive: false
+                readonly property int fit: Math.max(1, Math.floor((width - leftMargin - rightMargin + spacing)
+                                                                  / (baseCardSize + spacing)))
 
                 model: MLFrequentFoldersModel {
                     ml: MediaLib
+                    limit: foldersRow.fit
                 }
 
                 // Up and Down go to the rows above and below, as from the
@@ -457,9 +484,14 @@ Widgets.PageExt {
                             width: foldersRow.cardSize
                             height: foldersRow.cardSize
                             radius: VLCStyle.dp(12, VLCStyle.scale)
+                            // (light: lighter than the page as the covers of
+                            // the rows above it, not a darker grey beside them)
                             color: folderCard.hovered
-                                   ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b")
-                                   : VLCStyle.redesign.color("#1E1E1E", "#ababaa")
+                                   // (seen under the pointer in both themes: the
+                                   // controls' hover was 4 levels from the card
+                                   // in the dark theme and a dark slab in the light)
+                                   ? VLCStyle.redesign.color("#2A2A2A", "#d0d0cf")
+                                   : VLCStyle.redesign.color("#1E1E1E", "#dedede")
                             // the card the keys are on
                             border.width: folderCard.activeFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
                             border.color: VLCStyle.redesign.focusColor
@@ -520,6 +552,8 @@ Widgets.PageExt {
                 id: favoritesRow
 
                 compactMargins: true
+                // (the design's own page: its card sizes win)
+                designWidthWins: true
                 gridCoverWidth: VLCStyle.dp(200, VLCStyle.scale)
                 gridCoverHeight: VLCStyle.dp(200, VLCStyle.scale)
 
@@ -528,7 +562,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale), VLCStyle.dp(200, VLCStyle.scale), 1)
 
                 visible: model.count !== 0
 
@@ -608,7 +642,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(217, VLCStyle.scale), VLCStyle.dp(316, VLCStyle.scale), 9 / 16)
 
                 visible: model.count !== 0
 
@@ -688,6 +722,8 @@ Widgets.PageExt {
                 id: newMusicRow
 
                 compactMargins: true
+                // (the design's own page: its card sizes win)
+                designWidthWins: true
                 gridCoverWidth: VLCStyle.dp(200, VLCStyle.scale)
                 gridCoverHeight: VLCStyle.dp(200, VLCStyle.scale)
 
@@ -696,7 +732,7 @@ Widgets.PageExt {
                 anchors.left: parent.left
                 anchors.right: parent.right
 
-                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale))
+                height: root._rowHeight(this, VLCStyle.dp(268, VLCStyle.scale), VLCStyle.dp(200, VLCStyle.scale), 1)
 
                 visible: model.count !== 0
 

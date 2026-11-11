@@ -31,6 +31,9 @@ static const Option entries[] = {
     {"interface", "skins2-last"},
     {"interface", "embedded-video"}, {"interface", "qt-video-autoresize"},
     {"interface", "qt:redesign/remember-window-geometry"},
+    // how large the interface is drawn: Automatic, 100 % ... 200 % (the
+    // same setting on every app)
+    {"interface", "qt:redesign/interface-size"},
     {"interface", "video-on-top"},
     {"interface", "qt-titlebar"}, {"interface", "qt-name-in-title"},
     {"interface", "qt-fullscreen-screennumber"},
@@ -39,6 +42,9 @@ static const Option entries[] = {
     // the mouse shows the controls in fullscreen (Player.qml), the skins
     // read it too
     {"interface", "qt-fs-controller"},
+    // what a key of the hotkeys shows in fullscreen: the controls, or the
+    // player's short feedback (ShortcutFeedback.qml, issue #72)
+    {"interface", "qt-fs-shortcut-feedback"},
     {"interface", "qt-system-tray"}, {"interface", "qt-start-minimized"},
     {"interface", "qt-notification"}, {"interface", "qt:redesign/notification-duration"},
     // the Playlist section of the design: the queue under the folders of its

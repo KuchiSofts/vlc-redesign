@@ -187,6 +187,28 @@ QtObject {
         // is the one drawn in the light theme; without one, the map above
         // turns the dark value into its light one (a dark value the map does
         // not know stays as it is). design/light-theme.md lists the decisions.
+        // The width of a card of a row that fills the page (shared with the
+        // Android and the TV apps): the design's size grown to the room of
+        // the row, by 1.35 at most. At the design's own page width (1660 of
+        // a 1920 window) the design's size wins, a row that has room left
+        // too; the growth comes in with the distance from that width, over
+        // 200: no jump of the cards one pixel beside it.
+        readonly property real cardMaxGrowth: 1.35
+        function cardWidth(base, filled, pageWidth) {
+            const grown = Math.max(base, Math.min(filled, Math.round(base * cardMaxGrowth)))
+            const away = Math.abs(pageWidth - vlc_style.dp(1660, vlc_style.scale))
+            const share = Math.min(1, away / vlc_style.dp(200, vlc_style.scale))
+            return Math.round(base + (grown - base) * share)
+        }
+
+        // The width of a card of a grid whose cells are `base + gap` wide in
+        // the design, in a view `width` wide (the last gap is the margin at
+        // the row's end): whole cards only, grown to fill the row.
+        function gridCardWidth(base, gap, width) {
+            const columns = Math.max(1, Math.floor(width / (base + gap)))
+            return Math.max(base, Math.min(Math.floor(width / columns) - gap, Math.round(base * cardMaxGrowth)))
+        }
+
         function color(darkValue, lightValue, isDark = vlc_style.palette.isDark) {
             const value = _themed(darkValue, lightValue, isDark)
             if (!increaseContrast)

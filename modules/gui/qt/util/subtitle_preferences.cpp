@@ -11,6 +11,7 @@
 #endif
 
 #include "subtitle_preferences.hpp"
+#include "player/subtitle_services.hpp"
 #include "util/language_change.hpp"
 
 #include <QCollator>
@@ -84,7 +85,12 @@ QString nativeOf(const QString &code)
     // English: its default locale says "American English"
     if (language == QLocale::English)
         return QStringLiteral("English");
-    const QString name = QLocale(language).nativeLanguageName();
+    // a language Qt has no locale data for gets the default locale, and
+    // with it "American English" as its own name (Herero, Haitian, Hiri Motu)
+    const QLocale locale(language);
+    if (locale.language() != language)
+        return {};
+    const QString name = locale.nativeLanguageName();
     // the locale's own capitalisation: "עברית", "français" -> "Français"
     return name.isEmpty() ? name : name.left(1).toUpper() + name.mid(1);
 }
@@ -433,9 +439,19 @@ void SubtitlePreferences::set(const QString &primary, const QString &secondary,
     QString second = normalize(secondary);
     if (second == first)
         second.clear();
+    const QString wasFirst = this->primary();
+    const QString wasSecond = this->secondary();
     QSettings *settings = m_intf->mainSettings;
     settings->setValue(keyPrimary, first.isEmpty() ? systemLanguage() : first);
     settings->setValue(keySecondary, second);
+    // a language just chosen is searched, the preferred first (Languages to
+    // search kept a second language turned off there, off, and a preferred
+    // one where it was)
+    const QString nowFirst = this->primary();
+    const QString nowSecond = this->secondary();
+    if (settings->contains(keySearch) && (nowFirst != wasFirst || nowSecond != wasSecond))
+        settings->setValue(keySearch, SubtitleProviders::withChosenLanguagesFirst(
+                                          settings->value(keySearch).toStringList(), nowFirst, nowSecond));
     settings->setValue(keyAutoSearch, autoSearch);
     settings->setValue(keyShowBoth, showBoth);
     settings->sync();

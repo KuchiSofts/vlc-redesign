@@ -123,6 +123,7 @@ T.Popup {
 
     // A low window: the content scrolls (laid out as when it fits)
     contentItem: Flickable {
+        id: aboutView
         // a screen reader names the dialog
         Accessible.role: Accessible.Dialog
         Accessible.name: qsTr("About VLC")
@@ -138,6 +139,10 @@ T.Popup {
         boundsBehavior: Flickable.StopAtBounds
 
         T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+        Widgets.ScrollHint {
+            view: aboutView
+            surface: VLCStyle.redesign.color("#191919", "#ABABAA", root.darkTheme)
+        }
 
         ColumnLayout {
             id: content

@@ -149,7 +149,7 @@ Item {
         onLoaded: {
             item.parent = root
             item.controller = whatsNewState
-            item.closed.connect(() => root.release(whatsNew))
+            item.closed.connect(whatsNew, () => root.release(whatsNew))
             item.open()
         }
     }
@@ -163,7 +163,7 @@ Item {
         onLoaded: {
             item.parent = root
             // opened again on the page it was left on
-            item.closed.connect(() => {
+            item.closed.connect(preferences, () => {
                 preferences.requestedCategory = preferences.item.selectedCategory
                 root.release(preferences)
             })
@@ -175,14 +175,14 @@ Item {
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/ShortcutsDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(shortcuts)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(shortcuts, () => root.release(shortcuts)); item.open() }
     }
     Loader {
         id: networkStream
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/NetworkStreamDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(networkStream)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(networkStream, () => root.release(networkStream)); item.open() }
     }
     // Closed while its playlist was still being saved: let go once it is
     Connections {
@@ -194,7 +194,7 @@ Item {
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignAboutDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(about)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(about, () => root.release(about)); item.open() }
     }
     // Report a problem (the ⋯ menu, About)
     Loader {
@@ -202,7 +202,7 @@ Item {
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignReportDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(report)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(report, () => root.release(report)); item.open() }
     }
     Connections {
         target: RedesignFeedback
@@ -217,7 +217,7 @@ Item {
         onLoaded: {
             item.parent = root
             item.currentTab = requestedTab
-            item.closed.connect(() => root.release(effects))
+            item.closed.connect(effects, () => root.release(effects))
             item.open()
         }
     }
@@ -228,21 +228,21 @@ Item {
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignGoToTimeDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(goToTime)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(goToTime, () => root.release(goToTime)); item.open() }
     }
     Loader {
         id: plugins
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignPluginsDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(plugins)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(plugins, () => root.release(plugins)); item.open() }
     }
     Loader {
         id: statistics
         anchors.fill: parent
         active: false
         source: "qrc:/qt/qml/VLC/Dialogs/RedesignStatisticsDialog.qml"
-        onLoaded: { item.parent = root; item.closed.connect(() => root.release(statistics)); item.open() }
+        onLoaded: { item.parent = root; item.closed.connect(statistics, () => root.release(statistics)); item.open() }
     }
     Loader {
         id: folderInfo
@@ -253,7 +253,7 @@ Item {
         onLoaded: {
             item.parent = root
             item.folderUrl = requestedUrl
-            item.closed.connect(() => root.release(folderInfo))
+            item.closed.connect(folderInfo, () => root.release(folderInfo))
             item.open()
         }
     }

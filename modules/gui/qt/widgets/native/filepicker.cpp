@@ -10,6 +10,7 @@
 
 #include "filepicker.hpp"
 #include <QColorDialog>
+#include <QDir>
 #include <QFileDialog>
 #include "dialogs/dialogs_provider.hpp"
 #include "maininterface/mainctx.hpp"
@@ -36,10 +37,12 @@ QVariantList FilePicker::chooseFiles(const QString& title)
     return result;
 }
 
-QUrl FilePicker::chooseFolder(const QString& title)
+QUrl FilePicker::chooseFolder(const QString& title, const QUrl& start)
 {
     const ShortcutGuard guard(m_ctx);
-    return QFileDialog::getExistingDirectoryUrl(nullptr, title, {},
+    const QUrl from = start.isLocalFile() && QDir(start.toLocalFile()).exists()
+            ? start : QUrl::fromLocalFile(QDir::homePath());
+    return QFileDialog::getExistingDirectoryUrl(nullptr, title, from,
                                                  QFileDialog::ShowDirsOnly, {"file"});
 }
 

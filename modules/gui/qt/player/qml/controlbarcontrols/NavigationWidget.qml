@@ -72,7 +72,7 @@ Templates.Pane {
 
         _applyItem(loader, item)
 
-        item.requestLockUnlockAutoHide.connect(function(lock) {
+        item.requestLockUnlockAutoHide.connect(loader, function(lock) {
             controlLayout.requestLockUnlockAutoHide(lock)
         })
     }

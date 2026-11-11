@@ -50,6 +50,7 @@ readonly property var items: ({
         "qt-video-autoresize": [qsTr("Window"), qsTr("Resize window to fit video"), "boolchoice",
                                 { false: qsTr("Never"), true: qsTr("Always") }, { info: true }],
         "redesign/remember-window-geometry": [qsTr("Window"), qsTr("Remember window size and position"), "", null, { info: false }],
+        "redesign/interface-size": [qsTr("Window"), qsTr("Interface size"), "", null, { info: true }],
         "video-on-top": [qsTr("Window"), qsTr("Keep window above other windows"), "", null, { info: true }],
         "qt-titlebar": [qsTr("Window"), qsTr("Show window decorations"), "", null, { info: true }],
         "qt-name-in-title": [qsTr("Window"), qsTr("Show the file name in the title bar"), "", null, { info: true }],
@@ -59,6 +60,11 @@ readonly property var items: ({
                             { false: qsTr("Always"), true: qsTr("In fullscreen only") }, { info: true }],
         "mouse-hide-timeout": [qsTr("Playback Controls"), qsTr("Hide after"), "slider", null, { info: false, labelsBaseline: 44, rowHeight: 57, controlTop: 1 }],
         "qt-fs-controller": [qsTr("Playback Controls"), qsTr("Show controls in fullscreen"), "", null, { info: true }],
+        // what a key of VLC shows in fullscreen (issue #72; ShortcutFeedback.qml);
+        // the line under it: SettingsOptionList
+        "qt-fs-shortcut-feedback": [qsTr("Playback Controls"), qsTr("When you use a shortcut in full screen"), "",
+                                    { 0: qsTr("Show the controls"), 1: qsTr("Show only the progress"),
+                                      2: qsTr("Show only a message") }, { info: true }],
         "qt-system-tray": [qsTr("Notifications and System Tray"), qsTr("Show a system tray icon"), "", null, { info: true }],
         "qt-start-minimized": [qsTr("Notifications and System Tray"), qsTr("Start minimized to the tray"), "", null, { info: true }],
         "qt-notification": [qsTr("Notifications and System Tray"), qsTr("Show a popup when the track changes"), "", null,

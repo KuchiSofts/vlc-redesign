@@ -33,7 +33,11 @@ Widgets.PageExt {
     property alias model: tracklistdisplay_id.model
     property alias selectionModel: tracklistdisplay_id.selectionModel
 
-    property var sortModel: [
+    // (the header's count and Sort menu: the list is not the page's first
+    // child here, so the page says them itself)
+    libraryItemCount: tracklistdisplay_id.model?.count ?? -1
+
+    sortModel: [
         { text: qsTr("Title"),    criteria: "title"},
         { text: qsTr("Album"),    criteria: "album_title" },
         { text: qsTr("Artist"),   criteria: "main_artist" },
@@ -50,10 +54,7 @@ Widgets.PageExt {
         tracklistdisplay_id.positionViewAtBeginningAnimated()
     }
 
-    FocusScope {
-
-        anchors.fill: parent
-
+    contentItem: FocusScope {
         focus: true
 
         // Aliases
@@ -95,7 +96,10 @@ Widgets.PageExt {
             anchors.centerIn: parent
             visible: !tracklistdisplay_id.model.loading && (tracklistdisplay_id.model.count <= 0)
             focus: visible
-            text: qsTr("No tracks found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No tracks found\nPlease try adding sources")
             Navigation.parentItem: root
             cover: VLCStyle.noArtAlbumCover
         }

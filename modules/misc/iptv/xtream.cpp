@@ -15,7 +15,10 @@
 #include <QTimeZone>
 #include <QUrlQuery>
 
+#include <QHash>
+
 #include <algorithm>
+#include <cmath>
 
 namespace iptv::xtream {
 
@@ -28,8 +31,11 @@ QString str(const QJsonValue& v)
         return v.toString().trimmed();
     if (v.isDouble())
     {
+        // (a whole number within a qint64, else as it is: never a cast out
+        // of range, 1e300 or more)
         const double d = v.toDouble();
-        return d == qint64(d) ? QString::number(qint64(d)) : QString::number(d);
+        return std::isfinite(d) && std::fabs(d) < 9.2e18 && d == std::trunc(d) ? QString::number(qint64(d))
+                                                                                : QString::number(d);
     }
     if (v.isBool())
         return v.toBool() ? QStringLiteral("1") : QStringLiteral("0");
@@ -59,12 +65,17 @@ QJsonArray array(const QByteArray& json)
     return out;
 }
 
-QString categoryName(const QVector<Category>& categories, const QString& id)
+// The names of the categories by their id, the first of an id that comes
+// twice (looked for in the list, a stream at a time: 300 000 films of 2 000
+// categories took seconds)
+QHash<QString, QString> categoryNames(const QVector<Category>& categories)
 {
+    QHash<QString, QString> names;
+    names.reserve(categories.size());
     for (const Category& c : categories)
-        if (c.id == id)
-            return c.name;
-    return QString();
+        if (!names.contains(c.id))
+            names.insert(c.id, c.name);
+    return names;
 }
 
 QString streamUrl(const Account& a, const char* kind, const QString& id, const QString& ext)
@@ -147,13 +158,15 @@ AccountInfo parseAccountInfo(const QByteArray& json)
     const qint64 nowUtc = num(server.value("timestamp_now"));
     const QDateTime local = QDateTime::fromString(str(server.value("time_now")),
                                                   QStringLiteral("yyyy-MM-dd HH:mm:ss"));
-    if (nowUtc > 0 && local.isValid())
+    if (nowUtc > 0 && nowUtc < (qint64(1) << 40) && local.isValid())
     {
         QDateTime asUtc = local;
         asUtc.setTimeZone(QTimeZone::utc());
         const qint64 diff = asUtc.toSecsSinceEpoch() - nowUtc;
-        // to the quarter hour: the two clocks are read a moment apart
-        info.serverOffsetSecs = int(qRound(diff / 900.0) * 900);
+        // to the quarter hour: the two clocks are read a moment apart; a
+        // zone is a day from UTC at most (a clock that is not one: none)
+        if (diff >= -26 * 3600 && diff <= 26 * 3600)
+            info.serverOffsetSecs = int(qRound64(double(diff) / 900.0) * 900);
     }
     if (!info.authenticated)
         info.error = info.status.isEmpty() ? QStringLiteral("wrong user name or password")
@@ -179,6 +192,7 @@ QVector<Channel> parseLiveStreams(const QByteArray& json, const Account& account
 {
     const QString ext = info.outputFormats.isEmpty() || info.outputFormats.contains("m3u8")
                             ? QStringLiteral("m3u8") : QStringLiteral("ts");
+    const QHash<QString, QString> groups = categoryNames(categories);
     QVector<Channel> out;
     for (const QJsonValue& v : array(json))
     {
@@ -190,7 +204,7 @@ QVector<Channel> parseLiveStreams(const QByteArray& json, const Account& account
         c.name = str(o.value("name"));
         c.logo = str(o.value("stream_icon"));
         c.tvgId = str(o.value("epg_channel_id"));
-        c.group = categoryName(categories, str(o.value("category_id")));
+        c.group = groups.value(str(o.value("category_id")));
         c.url = streamUrl(account, "live", id, ext);
         c.radio = str(o.value("stream_type")) == QLatin1String("radio_streams");
         if (num(o.value("tv_archive")) == 1)
@@ -208,6 +222,7 @@ QVector<Channel> parseLiveStreams(const QByteArray& json, const Account& account
 QVector<VodItem> parseVodStreams(const QByteArray& json, const Account& account,
                                  const QVector<Category>& categories)
 {
+    const QHash<QString, QString> groups = categoryNames(categories);
     QVector<VodItem> out;
     for (const QJsonValue& v : array(json))
     {
@@ -218,7 +233,7 @@ QVector<VodItem> parseVodStreams(const QByteArray& json, const Account& account,
             continue;
         item.name = str(o.value("name"));
         item.poster = str(o.value("stream_icon"));
-        item.category = categoryName(categories, str(o.value("category_id")));
+        item.category = groups.value(str(o.value("category_id")));
         item.extension = str(o.value("container_extension"));
         if (item.extension.isEmpty())
             item.extension = QStringLiteral("mp4");
@@ -234,6 +249,7 @@ QVector<VodItem> parseVodStreams(const QByteArray& json, const Account& account,
 
 QVector<VodItem> parseSeries(const QByteArray& json, const QVector<Category>& categories)
 {
+    const QHash<QString, QString> groups = categoryNames(categories);
     QVector<VodItem> out;
     for (const QJsonValue& v : array(json))
     {
@@ -244,7 +260,7 @@ QVector<VodItem> parseSeries(const QByteArray& json, const QVector<Category>& ca
             continue;
         item.name = str(o.value("name"));
         item.poster = str(o.value("cover"));
-        item.category = categoryName(categories, str(o.value("category_id")));
+        item.category = groups.value(str(o.value("category_id")));
         item.rating = real(o.value("rating"));
         item.added = num(o.value("last_modified"));
         item.year = str(o.value("releaseDate")).left(4).toInt();

@@ -59,19 +59,27 @@ T.ItemDelegate {
     property alias fillMode: picture.fillMode
 
     property alias title: titleLabel.text
-    property int titleFontPixelSize: VLCStyle.fontSize_normal
-    property string titleFontFamily: ""
-    property int titleFontWeight: Font.DemiBold
-    property color titleColor: theme.fg.primary
-    property color selectedTitleColor: theme.fg.highlight
+    // The card of the redesign (Home's and Videos' cards): the name in the
+    // design's type (Inter 16, regular, the secondary text colour) under a
+    // picture of radius 12, the line under it 13 in the dim colour. The
+    // pages of the music, Recent and the network take it with this.
+    property bool redesign: false
+    readonly property bool _dark: theme.palette?.isDark ?? true
+    property int titleFontPixelSize: redesign ? VLCStyle.dp(16, VLCStyle.scale) : VLCStyle.fontSize_normal
+    property string titleFontFamily: redesign ? VLCStyle.redesign.fontFamily : ""
+    property int titleFontWeight: redesign ? Font.Normal : Font.DemiBold
+    property color titleColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, undefined, _dark)
+                                        : theme.fg.primary
+    property color selectedTitleColor: redesign ? VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d", _dark)
+                                                : theme.fg.highlight
     property alias subtitle: subtitleTxt.text
-    property color subtitleColor: theme.fg.secondary
-    property int subtitleFontPixelSize: 0
-    property string subtitleFontFamily: ""
+    property color subtitleColor: redesign ? VLCStyle.redesign.color("#6B6B6B", undefined, _dark) : theme.fg.secondary
+    property int subtitleFontPixelSize: redesign ? VLCStyle.dp(13, VLCStyle.scale) : 0
+    property string subtitleFontFamily: redesign ? VLCStyle.redesign.fontFamily : ""
     // Text boxes of the design (0: the line height of the font): the
     // baselines of Inter in them
-    property int titleBoxHeight: 0
-    property int subtitleBoxHeight: 0
+    property int titleBoxHeight: redesign ? VLCStyle.dp(19, VLCStyle.scale) : 0
+    property int subtitleBoxHeight: redesign ? VLCStyle.dp(16, VLCStyle.scale) : 0
     property alias subtitleVisible: subtitleTxt.visible
     property alias playCoverShowPlay: picture.playCoverShowPlay
     property alias implicitPlayCoverShowPlay: picture.implicitPlayCoverShowPlay
@@ -190,85 +198,74 @@ T.ItemDelegate {
         hovered: root.hovered
     }
 
-    // TODO: Qt bug 6.2: QTBUG-103604
-    DoubleClickIgnoringItem {
-        anchors.fill: parent
+    DragHandler {
+        id: dragHandler
 
-        DragHandler {
-            id: dragHandler
+        acceptedDevices: PointerDevice.AllDevices & ~(PointerDevice.TouchScreen)
 
-            acceptedDevices: PointerDevice.AllDevices & ~(PointerDevice.TouchScreen)
+        target: null
 
-            target: null
-
-            grabPermissions: PointerHandler.CanTakeOverFromHandlersOfDifferentType | PointerHandler.ApprovesTakeOverByAnything
-
-            onActiveChanged: {
-                if (dragItem) {
-                    if (active && !selected) {
-                        root.itemClicked(root._modifiersOnLastPress, true)
-                    }
-
-                    if (active)
-                        dragItem.Drag.active = true
-                    else
-                        dragItem.Drag.drop()
+        onActiveChanged: {
+            if (dragItem) {
+                if (active && !selected) {
+                    root.itemClicked(root._modifiersOnLastPress, true)
                 }
-            }
-        }
 
-        TapHandler {
-            acceptedDevices: PointerDevice.AllDevices & ~(PointerDevice.TouchScreen)
-
-            acceptedButtons: Qt.RightButton | Qt.LeftButton
-
-            grabPermissions: TapHandler.CanTakeOverFromHandlersOfDifferentType | TapHandler.ApprovesTakeOverByAnything
-
-            gesturePolicy: TapHandler.ReleaseWithinBounds // TODO: Qt 6.2 bug: Use TapHandler.DragThreshold
-
-            onSingleTapped: (eventPoint, button) => {
-                initialAction()
-
-                // FIXME: The signals are messed up in this item.
-                //        Right click does not fire itemClicked?
-                if (button === Qt.RightButton)
-                    contextMenuButtonClicked(picture, eventPoint.globalPosition);
+                if (active)
+                    dragItem.Drag.active = true
                 else
-                    root.itemClicked(point.modifiers, true);
-            }
-
-            onDoubleTapped: (eventPoint, button) => {
-                if (button === Qt.LeftButton)
-                    root.itemDoubleClicked(point.modifiers)
-            }
-
-            Component.onCompleted: {
-                canceled.connect(initialAction)
-            }
-
-            function initialAction() {
-                _modifiersOnLastPress = point.modifiers
-
-                root.forceActiveFocus(Qt.MouseFocusReason)
+                    dragItem.Drag.drop()
             }
         }
+    }
 
-        DelegateTouchTapHandler {
-            delegate: root
+    TapHandler {
+        acceptedDevices: PointerDevice.AllDevices & ~(PointerDevice.TouchScreen)
 
-            onSingleTapped: (eventPoint, button) => {
-                // initial action is handled in `DelegateTouchTapHandler`
-                root.itemClicked(Qt.NoModifier, false)
-                root.itemDoubleClicked(Qt.NoModifier)
-            }
+        acceptedButtons: Qt.RightButton | Qt.LeftButton
 
-            onDoubleTapped: (eventPoint, button) => {
-                root.playClicked()
-            }
+        onSingleTapped: (eventPoint, button) => {
+            initialAction()
 
-            onContextMenuRequested: (index, globalPoint) => {
-                root.contextMenuButtonClicked(picture ?? null, globalPoint)
-            }
+            // FIXME: The signals are messed up in this item.
+            //        Right click does not fire itemClicked?
+            if (button === Qt.RightButton)
+                contextMenuButtonClicked(picture, eventPoint.globalPosition);
+            else
+                root.itemClicked(point.modifiers, true);
+        }
+
+        onDoubleTapped: (eventPoint, button) => {
+            if (button === Qt.LeftButton)
+                root.itemDoubleClicked(point.modifiers)
+        }
+
+        Component.onCompleted: {
+            canceled.connect(this, initialAction)
+        }
+
+        function initialAction() {
+            _modifiersOnLastPress = point.modifiers
+
+            root.forceActiveFocus(Qt.MouseFocusReason)
+        }
+    }
+
+    DelegateTouchTapHandler {
+        delegate: root
+
+        onSingleTapped: (eventPoint, button) => {
+            // initial action is handled in `DelegateTouchTapHandler`
+            root.itemClicked(Qt.NoModifier, false)
+            root.itemDoubleClicked(Qt.NoModifier)
+        }
+
+        onDoubleTapped: (eventPoint, button) => {
+            root.playClicked()
+        }
+
+        onContextMenuRequested: (index, globalPoint) => {
+            root.contextMenuButtonClicked(picture ?? null, globalPoint)
         }
     }
 
@@ -281,6 +278,9 @@ T.ItemDelegate {
 
         enabled: theme.initialized
 
+        // (the redesign's card: the highlight follows the card's corners)
+        radius: root.redesign ? Math.min(picture.radius, VLCStyle.dp(12, VLCStyle.scale)) + selectedBorderWidth : 0
+
         //don't show the backgroud unless selected
         color: root.selected ?  theme.bg.highlight : theme.bg.primary
         border.color: visualFocus ? theme.visualFocus : Qt.alpha(theme.visualFocus, 0.0)
@@ -288,13 +288,6 @@ T.ItemDelegate {
 
     contentItem: ColumnLayout {
         id: layout
-
-        // Raise the content item so that the handlers of the control
-        // do not handle events that are to be handled by the handlers
-        // of the content item. Raising the content item should be
-        // fine because content item is supposed to be the foreground
-        // item.
-        z: 1
 
         spacing: 0
 
@@ -393,7 +386,7 @@ T.ItemDelegate {
             visible: text !== ""
             text: root.subtitle
             elide: Text.ElideRight
-            color: root.selected
+            color: (root.selected && !root.redesign)
                 ? theme.fg.highlight
                 : root.subtitleColor
             font.pixelSize: root.subtitleFontPixelSize > 0 ? root.subtitleFontPixelSize : VLCStyle.fontSize_normal
@@ -422,6 +415,15 @@ T.ItemDelegate {
             HoverHandler {
                 id: subtitleTxtMouseHandler
             }
+        }
+
+        // (takes the room of a line that is not there: a card without an
+        // artist had its title pushed down from the picture, unlike the
+        // cards beside it)
+        Item {
+            visible: root.titleBoxHeight > 0
+            Layout.fillHeight: true
+            Layout.fillWidth: true
         }
     }
 }

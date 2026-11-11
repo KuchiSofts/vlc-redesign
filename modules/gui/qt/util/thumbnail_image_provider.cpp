@@ -67,6 +67,11 @@ QString decodeMrl(const QString &value)
 
 // Frames are small: decoding them in software keeps the GPU for the video
 constexpr int defaultWidth = 320;
+// The largest side of a frame, whatever is asked or the media says: a frame
+// is at most 2048 x 2048 (16 MiB in RGBA, 12 in RGB), not the gigabytes a
+// media of a strange shape (1 x 4096, or its aspect ratio) made of a width
+// of 320 with no bound on the height
+constexpr int maxSide = 2048;
 
 QImage toImage(vlc_object_t *obj, picture_t *picture, const QSize &requestedSize)
 {
@@ -76,11 +81,15 @@ QImage toImage(vlc_object_t *obj, picture_t *picture, const QSize &requestedSize
     if (fmtIn.i_visible_width == 0 || fmtIn.i_visible_height == 0)
         return {};
 
-    // Display size, then fit in the requested size
-    QSize size(fmtIn.i_visible_width * fmtIn.i_sar_num / fmtIn.i_sar_den,
-               fmtIn.i_visible_height);
-    QSize bound(requestedSize.width() > 0 ? requestedSize.width() : defaultWidth,
-                requestedSize.height() > 0 ? requestedSize.height() : INT_MAX);
+    // Display size (in 64 bits: a large aspect ratio doesn't wrap), then
+    // fit in the requested size, within maxSide
+    const qint64 displayWidth = qint64(fmtIn.i_visible_width) * fmtIn.i_sar_num / fmtIn.i_sar_den;
+    QSize size(int(std::clamp<qint64>(displayWidth, 0, INT_MAX)),
+               int(std::min<qint64>(fmtIn.i_visible_height, INT_MAX)));
+    if (size.isEmpty())
+        return {};
+    const QSize bound(qMin(requestedSize.width() > 0 ? requestedSize.width() : defaultWidth, maxSide),
+                      qMin(requestedSize.height() > 0 ? requestedSize.height() : maxSide, maxSide));
     size.scale(bound, Qt::KeepAspectRatio);
     if (size.isEmpty())
         return {};

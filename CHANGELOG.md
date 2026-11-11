@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `978212a42d` (2026-11-08).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `fb39292a88` (2026-11-10).
 
-**Contents:** [Unreleased](#unreleased) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,10 +15,250 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+## [0.6.0] · 2026-11-11
+
+**A full release of every app**, with every installer and package again (the .deb, .rpm and Flatpak packages too):
+keys in full screen without the controls, as in VLC 3 ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72));
+a round of stability in every app; smarter automatic subtitles; online
+subtitles for videos from the network on Android ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73)); the
+same Subtitles panel on every device; an interface size made for the screen; and Android TV gone through option by
+option with the remote alone. Android 0.6.0 (versionCode 13106000) and the Samsung TV app 0.6.0 come with it.
+VideoLAN merged to `fb39292a88`.
+
+### Added
+
+- **Interface size** (Settings › Interface › Window): how large the pages, texts and controls are drawn.
+  *Automatic (N %)* picks the size that suits the screen the window is on and says which, then *100 %* (the design's
+  own size), *110 %*, *125 %*, *150 %*, *175 %* and *200 %*. A choice applies at once, without a restart, and is
+  kept. Automatic is 100 % whenever the system already scales the screen or the screen is of an ordinary density,
+  whatever its size (a small screen has less room, not more); it goes above only on a dense screen reported
+  unscaled (4K at 100 % on X11), from its physical size, never over 150 %; it is
+  found again when the window moves to another screen or the screen's settings change. The same setting, with the
+  same choices, in the Android and Samsung TV apps. It replaces the scale VLC kept: a scale you had changed becomes
+  the nearest choice, the zoom keys (Ctrl + and Ctrl −) and a pinch step through the choices.
+- In full screen, a shortcut no longer has to show the playback controls, as in VLC 3
+  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), by [@BarbodF](https://github.com/BarbodF)'s
+  request; Fixes #72): **Settings › Interface › Playback Controls › When you use a shortcut in full screen**:
+  *Show the controls* (as before, the default), *Show only the progress* (a thin line of the progress on the bottom
+  edge, in your accent colour, with a message at the top, readable from the sofa (it grows with the screen: 24 px
+  text at 1080p): what the key did and the time, "+30 s  00:02:50 / 00:25:40"), or *Show only a message*. Every key of VLC's shortcuts counts (seek, jump, pause, speed,
+  frame step, delays, tracks, subtitle size and position, aspect ratio, zoom...): jumps in a row add up ("+1:10")
+  and say how far they really went (three jumps back at 0:05: "−5 s"),
+  the message goes 1.5 s after the last key, the volume keys show the volume indicator, and what VLC would have
+  written on the video ("Subtitle track: English", "Aspect ratio: 16:9") shows in the message instead, never both.
+  Moving the mouse or pressing Tab, Enter or the menu key still shows the controls; a key a panel uses is as before;
+  the window is unchanged. Right to left too, read out by screen readers. On the desktop; Android and the Samsung TV
+  app have the same setting.
+
 ### Changed
 
-- Work on 0.5.9 (an update release) started: a round of stability, start-up speed and memory in every app, and
-  keys in full screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
+- Music's Artists, Albums and Genres and the Recent page use the cards of Home and Videos (the design's sizes, type
+  and margins; rows that fill the page), and every list (Tracks, the list views) the design's type from the page's
+  margin, its columns at most 1200 wide. Tracks no longer has a Disc column. The page of the side bar's Network
+  entry is named Network.
+- The cards of a row that fills the page grow in gradually beside the design's own page width (no jump of their
+  size one pixel outside it).
+- Every grid ends its rows at the page's margin at every window width, the design's own too: Artists, Albums,
+  Genres, the Network folders and Live TV's channel and film grids (whole cards, grown by a third at most). Only
+  Home's rows, which scroll sideways, keep the design's card sizes at the design's page width.
+- A row or a grid with fewer cards than a row holds keeps the design's card size: three music cards were grown
+  beside an empty half row, and Home's music cards were 220 instead of the design's 200 in the design's own window.
+- Android TV: Live TV shows its channels as the desktop's cards (the logo on a 16:9 tile, the channel's number, what
+  is on now and how far it is), as many in a row as the screen and the interface size hold; the header's button
+  switches to the list and back, with the remote too, and the page opens on the channel you watched.
+- Empty pages and a search without results show the page's icon, large and bare, instead of the old grey box.
+- The search field has a clear button while it holds text. Tracks shows its count and its Sort menu in the header.
+- Menus keep a small margin from the window's edge (the page menu's corner and shadow were cut by it).
+- The first window is sized from the screen: 16:9, about two thirds of it (1280 × 720 on Full HD as before, larger
+  on a 1440p, 4K or ultra-wide screen, never more than nine tenths of a small one), larger with a larger interface
+  size. A window whose saved place no longer fits (a monitor unplugged, another resolution, a taskbar moved) opens
+  at its size where it can be reached, not out of sight or back at the default size; at the largest interface sizes
+  the window's smallest size never exceeds the screen.
+- Every dialog and window opens inside its screen: the dialogs of the interface are sized from the window and scroll
+  when it is too low for them (Open Network Stream put its name field under the buttons in a small window or at a
+  large interface size), and the windows of their own (Media Information, Messages, the advanced preferences, the
+  detached play queue...) are moved and, if larger, shrunk into the area of the screen a window may use, on a
+  screen at the left of or above the main one too.
+- The rows and grids of cards fill the page: as many cards as fit at the design's size, which then grow by up to a
+  third so that the row ends at the page's margin (Home's rows, Videos, a folder's page, the playlists); a wider page
+  gets more cards in a row, not larger ones. At the design's own page width (a 1920 wide window) every card has the
+  design's size, the music cards of 200 too.
+- 0.6.0, a full release of every app: a round of stability, start-up speed and memory in every app, smarter
+  automatic subtitles, the Subtitles panel the same on every device, and keys in full
+  screen without the controls if you choose ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
+- Live TV's catalog of free guides has EPG.team's: about 3,800 channels (Russian, Ukrainian, Israeli, Polish,
+  Turkish, Georgian, Armenian, Baltic and Western European ones and more), in every app.
+
+### Fixed
+
+- Online subtitles for videos played from the network (a link, a share, UPnP/DLNA): on Android the search, manual
+  and automatic, now works for them as it does on the desktop, where a video opened from a link is searched by its
+  name and, when the server allows reading parts of the file, by its hash
+  ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), reported by [@Elshepl](https://github.com/Elshepl)).
+- Live TV's guide: the line of now ends with the last channel's row (it ran on to the window's bottom under a short
+  list), and the time scroll bar shows while the time moves instead of sitting under the grid as a stray mark.
+- A 1920 wide window at 200 % no longer breaks the page header into two lines when one holds it.
+- Home: a music card without an artist keeps its title right under the picture, as the cards beside it.
+- Network: the Folders heading and its cards start at the page's margin, under the header as on the other pages.
+- Settings in Hebrew at 200 %: the Theme choice shows "System" whole. What's new in a right-to-left language: the
+  English notes read left to right with their bullets on the left.
+- The Languages panel of the player fades where it scrolls (a row of buttons looked cut by its footer) and stays
+  under the window's bar in a small window.
+- Live TV: Update downloads the guide again (it kept a guide younger than the refresh period, so a guide whose
+  programmes had ended stayed blank), and a guide with nothing for the hours shown says so with an Update button.
+  The TV header stays on one line in a 1024 wide window; a channel's name has more room beside the guide.
+- Settings: a label is never cut with an ellipsis at a large interface size or in a long translation: it wraps and
+  its row grows. About, What's new, dialog bodies and the Settings pages fade at the edge they continue under.
+- Light theme: Home's folder cards are as light as the covers beside them. A selected card's highlight follows its
+  rounded corners; a grid ends with the page's margin under its last row; a search with no result offers no Browse.
+- Open Recent, the Recent page, Ctrl+1 to Ctrl+0 and Recent of the library beside the video list the last played
+  first (they showed the oldest of the history, and never what was just played once it held more than ten). The
+  Recent page has the header of the library's pages, and its side bar entry shows it is open.
+- The subtitle language lists no longer say "American English" as the own name of Herero, Haitian or Hiri Motu, and
+  list what you type in alphabetical order.
+- The welcome's Browse opens in the folder it suggests (Videos), the other folder choosers in your home folder, not
+  in the folder VLC was started from.
+- Music's pages (Artists, Albums, Tracks, Genres, Playlists) and Network have the header of Home and Videos (the
+  arrows, the count, the sort, the grid or list switch, the search field): they kept an older one with a bold title
+  at other margins. Home's folder cards are as large as its music cards, a card whose media has no known length
+  shows no "--:--", and a search that finds nothing says "No results", not "Please try adding sources".
+- Home no longer says "0 items" over rows full of media while the library has none of its own (or is still read).
+- Less work on the interface's thread: changing page no longer rewrites the settings file there (each page left
+  saved its unchanged sort, flushed to the disk: a hitch on a slow disk), the subtitle services of Settings are
+  read when their page shows, not at every opening of Settings, and Qt no longer asks the system whether controls
+  react to the pointer for every control it makes.
+- Live TV's guide no longer piles up the start times of programmes that ended on the left edge of the grid (two
+  could overlap on one row). Checked with the largest free guides of the catalog (553 MB of XML, 572,000
+  programmes, 2,000 of your channels): read in 9.6 s in the background, the window answering all along.
+- Quitting VLC no longer waits for Live TV: the calls of your servers stop at once (a Jellyfin guide held by
+  its server made VLC wait 2 minutes), the network discovery too, and the add-on is kept loaded when it had to
+  let go of a download it could not stop (it would have crashed at the very end).
+- Live TV is sturdier with odd sources and servers: downloads have a size limit (a TV stream added as a playlist
+  filled the disk), answers cut short or broken no longer replace what was kept, a source that fails is tried
+  again after 15 minutes, then less often (a refused Xtream Codes account was signed in every minute), the
+  automatic guide no longer brings back a guide you removed meanwhile, and guides of many channels of one name,
+  huge names or texts, or numbers out of range are read quickly and safely.
+- Live TV: a server that stops sending no longer holds it: a download with nothing new for 30 s (a channel's logo
+  15 s) stops and is tried again later, and the other sources are still updated (one stalled playlist stopped
+  every update). A locked keyring no longer freezes VLC as it starts: your sources' passwords and keys are read in
+  the background, and only the source you changed has its secrets saved again.
+- Live TV guide: the automatic guide finds a channel with or without its "TV" ("Arte" is iptv-org's "Arte TV",
+  "Rai 1 TV" its "Rai 1"; "MTV" stays MTV), and a long programme that contains shorter ones (a film interrupted
+  by the news) shows around them: what is on now and next, the guide's rows and the descriptions follow the
+  shorter ones in their slots; where two as long overlap, the later one starts on time (a programme that runs
+  over), as on Android and the Samsung TV app; the half hours of the guide's timeline fall on the clock's half
+  hours in every time zone (in UTC+5:45 they showed :15 and :45).
+- Online subtitles: a preferred or second language you choose in Settings is searched, the preferred first (one
+  turned off in Languages to search stayed off).
+- A jump to the very start shows 00:00 on the seek bar and in the message, not "--:--".
+- Online subtitles for a video played from the network: one on a web server is recognised by its hash as a file is
+  (its first and last bytes read by range), so the subtitles made for that very file are found; a stream whose
+  address names no film ("500.mp4", "index.m3u8") is searched by its own title and year; and a subtitle file of
+  yours beside the video whose name says no language ("Film.srt") counts as your language: nothing is searched over
+  it. The same rules on Android and the Samsung TV app.
+- Automatic subtitles, smarter:
+  - **An advert or forced lines are not your subtitles.** A file beside the video that is only an advert (a few lines for a whole film), or only the forced lines ("forced" in its name), no
+    longer counts as your subtitles, so the search still runs. A short film's own small subtitle still counts.
+  - **The video's own Subs folder is used.** When the video is alone in its folder, a file in your language in its
+    Subs or Subtitles folder ("Hebrew.heb.srt", "English (SDH).eng.srt") is shown by itself, with nothing searched
+    online; the plain one comes before the one for the hearing impaired.
+  - **Slow starts still get subtitles.** A film opened from the file manager while the app starts, or from a slow
+    server, used to get no automatic subtitles when its picture took more than a moment to come; the search now
+    waits for the picture.
+  - **Hebrew and Arabic punctuation in its place.** Many subtitle sites write a line's final mark first and its
+    dialogue dash last (".כדי להשיב", "?מה-") for players that lay every line out left to right; laid out right to
+    left they showed at the wrong end. Such lines are now put right ("כדי להשיב.", "-מה?"), and correct files
+    are left as they are (Text direction set to left to right keeps them as written).
+  - The same on the Samsung TV app and Android.
+- Samsung TV app: the Subtitles panel is the desktop's own: the languages with how many subtitles each has beside
+  the subtitles of the one chosen (where each comes from, how many downloads, made for this very file), the search
+  by title in the panel, the services and what each found, the timing with its two marks, the size and position;
+  with the remote, Left and Right go between the two lists (mirrored in Hebrew and Arabic).
+- Android: no crash on Android TV boxes and Android 5 at the start, in Home, in the update and when a key opens the
+  options early; on Android 5.1 the player no longer waits for a media library that can't start (dead keys, the
+  loading cone for ever); subtitles survive a full disk or a huge download; Live TV's worker stops for good and
+  reads nothing on the main thread; a guide that fails or comes cut short keeps its channels' programmes; Addic7ed's
+  error pages are its failure; the preferred and second subtitle language are always searched first; on Android
+  TV, TV Sources opened with the remote has its tab focused and one Back closes it; a phone's Settings shows only
+  its own line under the #72 setting. Memory after 50 rounds of every page: 187 → 171 MB.
+- Android TV, Settings with the remote: opening Controls › Remote access no longer closes the app. The page follows
+  the row the remote is on in the sidebar; Left or Right into a page lands on its first row, and back on the
+  sidebar's row of that page; Down on the last row, and Left or Right on a row with nothing beside it, stay where
+  they are (they jumped to the other side of the window or up to the close button). The accent colours and the
+  choices of a row are reached at once (the row itself was a stop that did nothing), and the theme row is gone from
+  the TV, which has one look. A sub-page (Remote access) takes the focus when it opens and gives it back to its row
+  on Back; a slider keeps Left and Right at its ends. Only the window in use shows the focus frame, the title bar's
+  menu has an edge and a focused row that can be seen from the sofa, and the last row of a page no longer stands
+  on the window's edge.
+- Android TV, dialogs with the remote: a confirmation, the update's offer and the other sheets start on a button
+  (Cancel when there is one), not on their title, where OK did nothing; alerts show the focus frame; the number
+  picker has its row's title, is as wide as its wheel and takes the number on OK; the colour picker shows which
+  colour the remote is on, and its words follow the interface's language on every device (they were English).
+  The sleep timer's number pad reads 1 2 3 in Hebrew and Arabic too.
+- Live TV: the channel banner said "Loading the guide…" for good on a channel whose guide says nothing about
+  this hour; it says so only while a source is being read ("No guide for this channel" otherwise). On the
+  desktop, Android and the Samsung TV app.
+- The Queue's count is never cut beside its buttons ("No ite…" at the panel's own width): the count alone where
+  the length does not fit, and the panel is never narrower than the count and its buttons need (in Hebrew it was
+  as narrow as its shorter words: the count did not show at all).
+- Translations: Estonian by its volunteer on Weblate, and "Discover network shares" in the complete languages (the
+  merge with VideoLAN had left it with another text's translation, so it showed in English).
+- Android phones: a Settings page whose title is too long for the bar ("Network Connections & Securi…") shows the
+  page's short name.
+- Android TV, Live TV: the Cards / List button is always in the header (it was missing when the page was opened
+  before the sources were read); the remote stays on its channel while a source updates and the list is made
+  again (it was thrown to the title bar's menu); in TV Sources, Left and Right keep to their row (the end of a
+  source's buttons led up to a tab of the window). In a Hebrew or Arabic interface a channel's name and a
+  programme's title keep their own direction ("Friends!", "CNN (US)"; the Samsung TV app too), and the sidebar has
+  its margin from the screen's edge as in the other languages.
+- Android TV without a browser: "Get a free key", "Create a free account", the update's page and the catalog's
+  suggestion form show the address to open on a phone or a computer (with a QR code where the page has one); the
+  TV only showed "You don't have an app that can do this". The update dialog's "open in the browser" no longer
+  closes the app where nothing opens links.
+- Online subtitles: a service that answers an error page, a browser check (Cloudflare and the like), nothing or a
+  JSON error shows as that service's failure, with its message, instead of "nothing found", and such a page is
+  never saved as a subtitle. A search always finishes (a service that answered a byte at a time kept it searching),
+  answers of an older search or video are dropped, archives are used only whole, Test / Sign in keeps nothing,
+  and the key of a service travels over HTTPS only. Subtitle files: VobSub, SAMI and long tags read safely and
+  quickly.
+- Security: when a subtitle service or another web request of the interface is redirected to another server, your
+  API keys, password, sign-in and cookies are no longer sent there (a download that redirected elsewhere took your
+  key along), and a redirect from HTTPS to HTTP is refused.
+- The interface no longer waits on the network or the disk: the subtitle search, the subtitle files next to a video,
+  the folder Add Subtitles reads (a network share held VLC for seconds), the services' long answers and the
+  updater's work run in the background, and quitting waits for them 5 s at most.
+- Windows: quitting VLC while Live TV was asking a server can no longer crash it at the very end (the network's
+  last notice could come after the add-on was unloaded).
+- Updates: every file of an update is on the disk before it is marked ready (a power cut could leave a "ready"
+  update with files cut short); a new AppImage or installer is saved the same way.
+- Frame previews of an odd video are bounded in size; the updater checks the publisher before an update is
+  marked ready and cleans up old installers.
+- No QML warning left on any page, dialog or the player (a connection could outlive its page), the Live TV
+  guide with a source included.
+
+### Technical
+
+- Windows that fit their screen are in `util/screen_fit.cpp` (the size Automatic finds, the first window, a
+  rectangle put inside a screen, a saved geometry still reachable), tested in `unit-tests.sh` (`screen-fit`: negative
+  coordinates, portrait, ultra-wide and tiny screens).
+- Tests, in `unit-tests.sh` under ASan and UBSan: the Live TV service with a fake network (`iptv-service`), the
+  parsers against malformed and huge input (`parsers-fuzz`: 69 parsers), and more checks in the existing ones.
+- VideoLAN's master merged up to `fb39292a88` (2026-11-10, 6 commits): Qt 6.8 is now VideoLAN's minimum too (it
+  already was the redesign's), its workarounds for older Qt are gone (the `DoubleClickIgnoringItem` wrapper of the
+  cards, the table rows, the queue rows and the small player; our changes kept on VideoLAN's handlers), the video
+  surface tells when the pointer is over it. The split build lists follow: the removed header taken out, the cache
+  generator's basic-block check always on.
+- VideoLAN's master merged up to `7712870d59` (2026-11-10, 5 commits): the pages assign their content item
+  (`contentItem:`; `PageExt` reads a page's own item either way, so the redesign's pages with plain children keep
+  their header, sort and keyboard path), the Qt dependency files are always rewritten (ported to
+  `buildsystem/rules.am`), the old HTTP access no longer sends its own User-Agent and Referrer, two fixes of VLC's
+  own macOS interface (not used by the redesign).
+- VideoLAN's master merged up to `2eba4cdf90` (4 commits): MKV's "mkv-seek-percent" made obsolete, an error path
+  of the Linux EGL/GBM display, two fixes of VLC's own macOS interface (not used by the redesign).
+- The interface's HTTP client follows redirects itself with one set of rules on every system, and on Windows uses
+  WinHTTP's asynchronous mode: a request cancelled from another thread is closed by its own thread, never while a
+  call uses it. `http-request-test` (local servers on two addresses; 1,200 requests cancelled at random moments),
+  `iptv-idle` (stalled servers) and `savefile-sync-test` (what reaches the disk before a rename) are new.
 
 ## [0.5.8] · 2026-11-08
 

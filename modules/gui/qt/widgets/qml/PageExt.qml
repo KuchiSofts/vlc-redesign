@@ -29,11 +29,15 @@ T.Page {
     id: root
 
     //path of the current page loader
-    property var pagePrefix: []
+    // (set by the PageLoader that creates the page, undefined otherwise:
+    // a default [] is a binding, which every page loaded replaced)
+    property var pagePrefix
 
-    //note that T.Page introduce an intermediate Item, so to access our delegate,
-    //we need to use contentChildren[0] rather than contentItem
-    readonly property Item _firstChild: contentChildren[0] ?? null
+    // The page's own item: the content item a page assigns (VideoLAN's
+    // pages since c3002b8be9), else the first child of the one T.Page
+    // makes for a page that only has children (a plain Item).
+    readonly property Item _firstChild: (contentItem && !contentItem.toString().startsWith("QQuickItem("))
+                                        ? contentItem : (contentChildren[0] ?? null)
 
     //indicates whether the subview support grid/list mode
     property bool hasGridListMode: _firstChild?.hasGridListMode ?? false
@@ -47,9 +51,14 @@ T.Page {
 
     property Component headerAction: null
 
-    property bool libraryHeader: false
+    // Every page has the header of the library (the arrows, the title, the
+    // count, the sort, the grid or list switch, the search field): Music's
+    // pages and Network's kept an older one, with other margins and a bold
+    // title. A page without it says so.
+    property bool libraryHeader: true
     property string libraryTitle: title
-    property int libraryItemCount: -1
+    // (the items of the page's view, unless the page counts something else)
+    property int libraryItemCount: _firstChild?.model?.count ?? -1
     // Address line of the library header (see LibraryHeader.crumbs)
     property var libraryCrumbs: null
 
@@ -78,8 +87,8 @@ T.Page {
     SortCtx {
         id: _sortCtx
 
-        readonly property string _sortCriteriaKey: ["sortCriteria", ...root.pagePrefix].join("/")
-        readonly property string _sortOrderKey:  ["sortOrder", ...root.pagePrefix].join("/")
+        readonly property string _sortCriteriaKey: ["sortCriteria", ...(root.pagePrefix ?? [])].join("/")
+        readonly property string _sortOrderKey:  ["sortOrder", ...(root.pagePrefix ?? [])].join("/")
 
         available: Helpers.isArray(root.sortModel) && (root.sortModel).length > 0
         model: root.sortModel

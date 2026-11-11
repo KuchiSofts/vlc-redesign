@@ -54,7 +54,8 @@ T.Pane {
     // the background under both rows
     topInset: 0
 
-    bottomPadding: VLCStyle.margin_xsmall
+    // (no padding set here: the Bindings below set them, a value here was
+    // replaced by them as the bar started)
 
     readonly property real sliderY: _mapSlider(0).y
     property int textPosition: ControlBar.TimeTextPosition.AboveSlider
@@ -93,15 +94,13 @@ T.Pane {
 
     // Figma "Controls": the row(s) of 54, 20 from the sides (one binding
     // per property: two exclusive ones restore the value of the other)
-    Binding on topPadding {
-        value: root.inlineTimeline ? (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2 : 0
-    }
-    Binding on bottomPadding {
-        value: root.inlineTimeline
-               ? Math.max(VLCStyle.applicationVerticalMargin + VLCStyle.margin_xsmall,
-                          (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2)
-               : Math.max(VLCStyle.applicationVerticalMargin, root._rowPadding)
-    }
+    // (plain bindings: nothing else writes them, and a Binding element on
+    // them was reported as "changed from elsewhere" when the control resized)
+    topPadding: root.inlineTimeline ? (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2 : 0
+    bottomPadding: root.inlineTimeline
+                   ? Math.max(VLCStyle.applicationVerticalMargin + VLCStyle.margin_xsmall,
+                              (VLCStyle.redesign.controlHeight - VLCStyle.redesign.playHeight) / 2)
+                   : Math.max(VLCStyle.applicationVerticalMargin, root._rowPadding)
     Binding on leftPadding {
         value: Math.max(VLCStyle.applicationHorizontalMargin, VLCStyle.redesign.controlPadding)
     }
@@ -128,13 +127,9 @@ T.Pane {
         color: VLCStyle.redesign.color("#222222", "#9c9c9b", VLCStyle.palette.isDark)
     }
 
-    Binding {
-        target: root.background
-        property: "visible"
-        when: root.inlineTimeline && root.background !== null
-        value: true
-        restoreMode: Binding.RestoreBinding
-    }
+    // (the background shown with the inline timeline: by the binding of
+    // its visible in PlayerView; a Binding here took every show of the bar
+    // for a change from elsewhere, visible following its parent too)
     Binding {
         target: root.background
         property: "opacity"

@@ -64,7 +64,9 @@ T.Popup {
 
     // wide enough for the languages and the subtitles side by side
     width: Math.min(VLCStyle.dp(600, VLCStyle.scale), parent ? parent.width : VLCStyle.dp(600, VLCStyle.scale))
-    height: Math.min(VLCStyle.dp(560, VLCStyle.scale), parent ? Math.max(0, parent.height - VLCStyle.dp(48, VLCStyle.scale)) : VLCStyle.dp(560, VLCStyle.scale))
+    // (the room between the window's bar and the controls, two rows high in
+    // a small window: the panel lay over the window's bar at 200 %)
+    height: Math.min(VLCStyle.dp(560, VLCStyle.scale), parent ? Math.max(0, parent.height - VLCStyle.dp(140, VLCStyle.scale)) : VLCStyle.dp(560, VLCStyle.scale))
     padding: 0
     // see-through while the subtitles are moved or resized: they are
     // behind the menu
@@ -175,6 +177,12 @@ T.Popup {
             clip: true
             contentHeight: page.implicitHeight
             boundsBehavior: Flickable.StopAtBounds
+            // (the panel scrolls: its body fades under the edge it goes on
+            // under, where a row of buttons looked cut by the footer)
+            Widgets.ScrollHint {
+                view: scroll
+                surface: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
+            }
 
             ColumnLayout {
                 id: page

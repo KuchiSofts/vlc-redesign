@@ -169,9 +169,6 @@ FocusScope {
 
         target: null
 
-        // Qt version check in disguise, only available starting with 6.5:
-        enabled: !!scaleAxis?.activeValueChanged
-
         // Default in QPlatformTheme::defaultThemeHint is 10
         dragThreshold: ((Application.styleHints?.startDragDistance ?? 10) * 4)
 
@@ -186,13 +183,7 @@ FocusScope {
             }
         }
 
-        Component.onCompleted: {
-            if (interfaceScalePinchHandler?.scaleAxis?.activeValueChanged) {
-                scaleAxis.activeValueChanged.connect(interfaceScalePinchHandler, onScaleAxisActiveValueChanged)
-            }
-        }
-
-        function onScaleAxisActiveValueChanged(delta) {
+        scaleAxis.onActiveValueChanged: (delta) => {
             if (delta < 0.25)
                 return
 
@@ -252,7 +243,7 @@ FocusScope {
 
         Component.onCompleted: {
             if (MainCtx.useXmasCone()) {
-                MainCtx.kc_pressed.connect(voronoiSnowLoader.toggleActive)
+                MainCtx.kc_pressed.connect(voronoiSnowLoader, voronoiSnowLoader.toggleActive)
             }
         }
     }
@@ -483,17 +474,16 @@ FocusScope {
                 focus: true
 
                 anchors.fill: parent
-                anchors.leftMargin: (sidebar.visible && (VLCStyle.isScreenSmall ? (sidebar.state === "") : true)) ? sidebar.width : 0.0
+                // Prevent animating x on collapse with overlayed side navigation bar
+                // (in the binding: a Binding over it took its value for a
+                // change from elsewhere)
+                anchors.leftMargin: (VLCStyle.isScreenSmall && sidebar.state === "" && sidebar.transitioning)
+                                    ? 0.0
+                                    : (sidebar.visible && (VLCStyle.isScreenSmall ? (sidebar.state === "") : true)) ? sidebar.width : 0.0
                 anchors.rightMargin: (playlistLoader.shown && !VLCStyle.isScreenSmall)
                                      ? playlistLoader.width
                                      : 0
                 anchors.bottomMargin: g_mainDisplay.displayMargin
-
-                // Prevent animating x on collapse with overlayed side navigation bar:
-                Binding on anchors.leftMargin {
-                    when: (VLCStyle.isScreenSmall && sidebar.state === "" && sidebar.transitioning)
-                    value: 0.0
-                }
 
                 pageModel: g_mainDisplay.pageModel
 
@@ -533,14 +523,9 @@ FocusScope {
 
                         property real implicitTopLeftRadius: VLCStyle.mainView_topLeftRadius
 
-                        Component.onCompleted: {
-                            if (stackViewTopLeftRadiusRectangle.topLeftRadius !== undefined) { // TODO: Directly set when minimum Qt is 6.7
-                                stackViewTopLeftRadiusRectangle.topLeftRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.LayoutMirroring.enabled
-                                                                                                  ? 0 : stackViewTopLeftRadiusRectangle.implicitTopLeftRadius)
-                                stackViewTopLeftRadiusRectangle.topRightRadius = Qt.binding(() => stackViewTopLeftRadiusRectangle.LayoutMirroring.enabled
-                                                                                                   ? stackViewTopLeftRadiusRectangle.implicitTopLeftRadius : 0)
-                            }
-                        }
+                        // (the rounded corner is on the side bar's side: the other one right to left)
+                        topLeftRadius: LayoutMirroring.enabled ? 0 : implicitTopLeftRadius
+                        topRightRadius: LayoutMirroring.enabled ? implicitTopLeftRadius : 0
                     }
                 }
 

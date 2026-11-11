@@ -88,15 +88,17 @@ Guide parseXmltvFile(const QString& path, const GuideFilter& filter);
 // one, else the name, both folded (case, spaces, "HD"/"FHD" suffixes).
 QString guideKey(const QString& idOrName);
 
-// Reads an XMLTV guide; a gzip-compressed one (.xml.gz) is inflated
-// first. Runs for seconds on a large guide: call it on a worker thread.
+// Reads an XMLTV guide; a gzip-compressed one (.xml.gz) is read inflated.
+// A text of more than 8 MB without a '<' (what the reader would hold whole)
+// is an error, and filter.cancel stops it at once. Runs for seconds on a
+// large guide: call it on a worker thread.
 Guide parseXmltv(QIODevice& device, const GuideFilter& filter);
 Guide parseXmltv(const QByteArray& data, const GuideFilter& filter);
 
 // Whether the data is gzip-compressed, and inflates it (empty on an
 // error). limit protects against a decompression bomb.
 bool isGzip(const QByteArray& data);
-QByteArray gunzip(const QByteArray& data, qint64 limit = 1024LL * 1024 * 1024);
+QByteArray gunzip(const QByteArray& data, qint64 limit = 256LL * 1024 * 1024);
 
 // "20261025203000 +0300" -> seconds since the epoch, UTC (0 on an error)
 qint64 parseXmltvTime(QStringView text);

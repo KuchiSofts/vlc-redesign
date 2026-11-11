@@ -104,9 +104,17 @@ MainViewLoader {
         Widgets.ExpandGridItemView {
             id: artistGrid
 
-            basePictureWidth: VLCStyle.gridCover_music_width
-            basePictureHeight: VLCStyle.gridCover_music_height
-            titleTopMargin: VLCStyle.gridItemTitle_topMargin + VLCStyle.margin_xxsmall
+            // the cards of the redesign (Home's music cards: 200, 20 apart,
+            // the name 20 under the cover), which fill the row as the videos'
+            basePictureWidth: VLCStyle.dp(200, VLCStyle.scale)
+            basePictureHeight: VLCStyle.dp(200, VLCStyle.scale)
+            fixedPictureWidth: true
+            horizontalSpacing: VLCStyle.dp(20, VLCStyle.scale)
+            verticalSpacing: VLCStyle.dp(40, VLCStyle.scale)
+            titleTopMargin: VLCStyle.dp(20, VLCStyle.scale)
+            titleHeight: VLCStyle.dp(18, VLCStyle.scale)
+            subtitleTopMargin: VLCStyle.dp(6, VLCStyle.scale)
+            subtitleHeight: VLCStyle.dp(16, VLCStyle.scale)
 
             selectionModel: root.selectionModel
             model: artistModel
@@ -142,7 +150,9 @@ MainViewLoader {
 
                 title: model.name || qsTr("Unknown artist")
                 subtitle: qsTr("%1 song", "%1 songs", model.nb_tracks).arg(model.nb_tracks)
+                redesign: true
                 titleTopMargin: artistGrid.titleTopMargin
+                subtitleTopMargin: artistGrid.subtitleTopMargin
                 textAlignHCenter: true
                 dragItem: artistsDragItem
 
@@ -253,7 +263,10 @@ MainViewLoader {
         id: emptyLabelComponent
 
         Widgets.EmptyLabelButton {
-            text: qsTr("No artists found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No artists found\nPlease try adding sources")
             Navigation.parentItem: root
             cover: VLCStyle.noArtArtistCover
         }

@@ -24,6 +24,7 @@
 #include "util/keyhelper.hpp"
 #include "dialogs/systray/systray.hpp"
 #include "widgets/native/qvlcframe.hpp"
+#include "util/screen_fit.hpp"
 #include "dialogs/dialogs/dialogmodel.hpp"
 #include <QScreen>
 #include <QQmlProperty>
@@ -127,9 +128,13 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
             m_window->setOpacity( m_mainCtx->windowOpacity() );
     });
 
-    /* First run: a 16:9 window centered on the screen, within 80% of it */
+    /* First run: a 16:9 window from the screen (never tiny on a large one,
+     * never larger than a small one), at the size of the interface found
+     * for it ("Interface size": Automatic). A geometry saved wins. */
+    m_mainCtx->updateIntfScaleFactor();
     const QRect available = m_window->screen()->availableGeometry();
-    const QSize defaultSize = QSize(1280, 720).boundedTo(available.size() * 0.8);
+    const QSize defaultSize = ScreenFit::defaultWindowSize( available.size(),
+                                                            m_mainCtx->getIntfUserScaleFactor() );
     /* "Remember window size and position" of the settings */
     if( getSettings()->value( "redesign/remember-window-geometry", true ).toBool() )
         QVLCTools::restoreWindowPosition( getSettings(), m_window, defaultSize );
@@ -207,7 +212,27 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
     updateTitle();
     connect( m_mainCtx, &MainCtx::nameInTitleChanged, this, updateTitle );
 
-    connect( m_window, &QWindow::screenChanged, m_mainCtx, &MainCtx::updateIntfScaleFactor );
+    /* The screen of the window, and that screen's own settings (another
+     * resolution, another scale of the system): "Interface size" on
+     * Automatic follows them */
+    const auto followScreen = [this]()
+    {
+        disconnect( m_screenConnections[0] );
+        disconnect( m_screenConnections[1] );
+        disconnect( m_screenConnections[2] );
+        if (QScreen *current = m_window ? m_window->screen() : nullptr)
+        {
+            m_screenConnections[0] = connect( current, &QScreen::geometryChanged,
+                                              m_mainCtx, &MainCtx::updateIntfScaleFactor );
+            m_screenConnections[1] = connect( current, &QScreen::logicalDotsPerInchChanged,
+                                              m_mainCtx, &MainCtx::updateIntfScaleFactor );
+            m_screenConnections[2] = connect( current, &QScreen::physicalSizeChanged,
+                                              m_mainCtx, &MainCtx::updateIntfScaleFactor );
+        }
+        m_mainCtx->updateIntfScaleFactor();
+    };
+    connect( m_window, &QWindow::screenChanged, this, followScreen );
+    followScreen();
 
     const auto updateMinimumSize = [this]()
     {
@@ -225,7 +250,25 @@ InterfaceWindowHandler::InterfaceWindowHandler(qt_intf_t *_p_intf, MainCtx* main
         int scaledWidth = std::ceil( intfScaleFactor * width );
         int scaledHeight = std::ceil( intfScaleFactor * height );
 
-        m_window->setMinimumSize( QSize(scaledWidth, scaledHeight) );
+        // (never more than the screen holds: at the largest sizes of the
+        // interface on a small screen the window could not be made to fit)
+        QSize minimum(scaledWidth, scaledHeight);
+        if (const QScreen *current = m_window->screen())
+            minimum = minimum.boundedTo( current->availableGeometry().size() );
+        m_window->setMinimumSize( minimum );
+        // a window made larger by its smallest size (a larger interface)
+        // stays on its screen
+        if (const QScreen *current = m_window->screen())
+        {
+            if (!(m_window->windowStates() & (Qt::WindowMaximized | Qt::WindowFullScreen | Qt::WindowMinimized)))
+            {
+                const QRect now = m_window->geometry();
+                const QRect grown( now.topLeft(), now.size().expandedTo( minimum ) );
+                if (grown != now)
+                    m_window->setGeometry( ScreenFit::fitted( grown, current->availableGeometry(),
+                                                              m_window->frameMargins() ) );
+            }
+        }
     };
     connect( m_mainCtx, &MainCtx::intfScaleFactorChanged, this, updateMinimumSize );
     connect( m_mainCtx, &MainCtx::windowExtendedMarginChanged, this, updateMinimumSize );
@@ -456,6 +499,8 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
             {
                 if (m_spacePressed || takeSpace)
                 {
+                    // (the hotkeys' key: not the controls in full screen)
+                    m_mainCtx->keyHeldForHotkeys();
                     event->accept();
                     return true;
                 }
@@ -466,6 +511,9 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
                 m_spacePressed = takeSpace;
                 if (takeSpace)
                 {
+                    // played or paused as it is released, a hold speeds up:
+                    // the hotkeys' key all the same (PlayerView.qml)
+                    m_mainCtx->keyHeldForHotkeys();
                     m_spaceTapPending = true;
                     m_spaceHoldTimer.start();
                     event->accept();
@@ -613,12 +661,10 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
         event->ignore();
         return true;
     }
-#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
     case QEvent::DevicePixelRatioChange:
     {
         m_mainCtx->intfDevicePixelRatioChanged();
     }
-#endif
 
     default:
         break;

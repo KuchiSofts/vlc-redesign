@@ -64,7 +64,8 @@ Widgets.PageExt {
 
     signal browse(var tree, int reason)
 
-    title: qsTr("Browse")
+    // (the name of its side bar entry)
+    title: qsTr("Network")
 
     focus: true
 
@@ -125,21 +126,15 @@ Widgets.PageExt {
         text: qsTr("No network shares found")
     }
 
-    Flickable {
+    contentItem: Flickable {
         id: flickable
-
-        anchors.fill: parent
-
-        anchors.leftMargin: root.leftPadding
-        anchors.rightMargin: root.rightPadding
 
         T.ScrollBar.vertical: Widgets.ScrollBarExt { }
 
         flickableDirection: Flickable.AutoFlickIfNeeded
         boundsBehavior: Flickable.StopAtBounds
 
-        pixelAligned: (MainCtx.qtVersion() >= MainCtx.qtVersionCheck(6, 2, 5)) // QTBUG-103996
-                      && (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
+        pixelAligned: (Screen.pixelDensity >= VLCStyle.highPixelDensityThreshold) // no need for sub-pixel alignment with high pixel density
 
         contentWidth: column.width
         contentHeight: column.height
@@ -209,7 +204,8 @@ Widgets.PageExt {
 
                 text: qsTr("Folders")
 
-                topPadding: 0
+                // (the page's margin under the header's line, as the other pages)
+                topPadding: VLCStyle.dp(20, VLCStyle.scale)
 
                 anchors.left: parent.left
                 anchors.right: parent.right

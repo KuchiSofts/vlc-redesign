@@ -219,6 +219,25 @@ bool isVLCKeyBound( vlc_object_t *obj, int vlcKey )
     return false;
 }
 
+QString vlcKeyAction( vlc_object_t *obj, int vlcKey )
+{
+    if( vlcKey == 0 )
+        return {};
+    // in the order of the core's own table (actions.c): a key given to two
+    // actions does what the core does with it, the first one
+    for( const char* const* name = vlc_actions_get_key_names( obj ); name && *name; ++name )
+    {
+        uint_fast32_t *keycodes = nullptr;
+        const size_t count = vlc_actions_get_keycodes( obj, *name, false, &keycodes );
+        const bool bound = std::find( keycodes, keycodes + count,
+                                      static_cast<uint_fast32_t>( vlcKey ) ) != keycodes + count;
+        std::free( keycodes );
+        if( bound )
+            return QString::fromLatin1( *name );
+    }
+    return {};
+}
+
 int qtEventToVLCKey( QKeyEvent *e )
 {
     int qtk = e->key();

@@ -246,6 +246,7 @@ libqt_plugin_la_SOURCES = \
 	player/waveform.cpp player/waveform.hpp \
 	player/subtitle_cues.cpp player/subtitle_cues.hpp \
 	player/subtitle_cues_parser.cpp player/subtitle_cues_parser.hpp \
+	player/shortcut_feedback.cpp player/shortcut_feedback.hpp \
 	player/subtitle_charset.c \
 	player/local_folder_model.cpp player/local_folder_model.hpp \
 	player/sleep_timer.cpp player/sleep_timer.hpp \
@@ -275,6 +276,7 @@ libqt_plugin_la_SOURCES = \
 	util/redesign_update_key.h util/redesign_update_verify.h \
 	util/redesign_feedback.cpp util/redesign_feedback.hpp \
 	util/subtitle_preferences.cpp util/subtitle_preferences.hpp \
+	util/screen_fit.cpp util/screen_fit_filter.cpp util/screen_fit.hpp \
 	util/redesign_version.hpp \
 	util/base_model.hpp util/base_model_p.hpp util/base_model.cpp \
 	util/color_scheme_model.cpp util/color_scheme_model.hpp \
@@ -358,8 +360,7 @@ libqt_plugin_la_SOURCES = \
 	widgets/native/redesign_message_box.cpp \
 	widgets/native/redesign_message_box.hpp \
 	widgets/native/searchlineedit.cpp widgets/native/searchlineedit.hpp \
-	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp \
-	widgets/native/doubleclickignoringitem.hpp
+	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp
 
 # Meta-object compilation
 

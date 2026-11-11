@@ -127,6 +127,7 @@ QByteArray gunzip(const QByteArray& data, qint64 limit)
     zs.avail_in = uInt(data.size());
     char chunk[64 * 1024];
     int ret = Z_OK;
+    bool complete = false;   // a whole gzip member read
     while (ret != Z_STREAM_END)
     {
         zs.next_out = reinterpret_cast<Bytef*>(chunk);
@@ -136,6 +137,10 @@ QByteArray gunzip(const QByteArray& data, qint64 limit)
         {
             // several gzip members one after the other: go on with the next
             if (ret == Z_BUF_ERROR && zs.avail_in == 0)
+                break;
+            // bytes after a whole member that are no other one (zeros some
+            // servers pad with): the end of the data, not an error
+            if (complete && zs.total_out == 0)
                 break;
             out.clear();
             break;
@@ -148,6 +153,7 @@ QByteArray gunzip(const QByteArray& data, qint64 limit)
         }
         if (ret == Z_STREAM_END && zs.avail_in > 0)
         {
+            complete = true;
             inflateReset(&zs);
             ret = Z_OK;
         }
@@ -165,6 +171,7 @@ struct GunzipDevice::State
     QByteArray input;
     bool ended = false;
     bool failed = false;
+    bool complete = false;   // a whole gzip member read
 #ifdef HAVE_ZLIB
     z_stream zs{};
     bool initialized = false;
@@ -212,7 +219,8 @@ qint64 GunzipDevice::readData(char* data, qint64 maxSize)
         return 0;
     z_stream& zs = d->zs;
     zs.next_out = reinterpret_cast<Bytef*>(data);
-    zs.avail_out = uInt(qMin<qint64>(maxSize, 1 << 30));
+    const uInt room = uInt(qMin<qint64>(maxSize, 1 << 30));
+    zs.avail_out = room;
     while (zs.avail_out > 0)
     {
         if (zs.avail_in == 0)
@@ -231,16 +239,24 @@ qint64 GunzipDevice::readData(char* data, qint64 maxSize)
         if (ret == Z_STREAM_END)
         {
             // several gzip members one after the other: go on with the next
+            d->complete = true;
             inflateReset(&zs);
             continue;
         }
         if (ret != Z_OK && ret != Z_BUF_ERROR)
         {
+            // bytes after a whole member that are no other one (zeros some
+            // servers pad with): the end of the data, what came is kept
+            if (d->complete && zs.total_out == 0)
+            {
+                d->ended = true;
+                break;
+            }
             d->failed = true;
             return -1;
         }
     }
-    const qint64 produced = maxSize - zs.avail_out;
+    const qint64 produced = qint64(room - zs.avail_out);
     d->produced += produced;
     if (d->produced > d->limit)
     {
@@ -270,10 +286,74 @@ Guide parseXmltvFile(const QString& path, const GuideFilter& filter)
     return parseXmltv(file, filter);
 }
 
+namespace {
+
+// In front of the XML reader: it keeps a whole text (a run of spaces, a
+// comment) in memory, an inflated guide of 4 GB of spaces asked for 16 GB.
+// The reading fails after `longest` bytes without a '<' (no guide has a text
+// of megabytes), and stops when it is cancelled (VLC quitting), even inside
+// such a text.
+class XmlGuard : public QIODevice
+{
+public:
+    XmlGuard(QIODevice* source, const std::atomic<bool>* cancel, qint64 longest)
+        : m_source(source), m_cancel(cancel), m_longest(longest)
+    {
+    }
+    bool isSequential() const override { return true; }
+    bool atEnd() const override { return (m_ended || m_stopped) && QIODevice::atEnd(); }
+    bool cancelled() const { return m_cancelled; }
+    bool tooLong() const { return m_tooLong; }
+
+protected:
+    qint64 readData(char* data, qint64 maxSize) override
+    {
+        if (m_stopped)
+            return -1;
+        if (m_cancel && m_cancel->load())
+        {
+            m_cancelled = m_stopped = true;
+            return -1;
+        }
+        const qint64 got = m_source->read(data, maxSize);
+        if (got <= 0)
+        {
+            m_ended = true;
+            return got;
+        }
+        qint64 last = got - 1;
+        while (last >= 0 && data[last] != '<')
+            --last;
+        m_since = last >= 0 ? got - 1 - last : m_since + got;
+        if (m_since > m_longest)
+        {
+            m_tooLong = m_stopped = true;
+            return -1;
+        }
+        return got;
+    }
+    qint64 writeData(const char*, qint64) override { return -1; }
+
+private:
+    QIODevice* const m_source;
+    const std::atomic<bool>* const m_cancel;
+    const qint64 m_longest;
+    qint64 m_since = 0;
+    bool m_ended = false;
+    bool m_stopped = false;
+    bool m_cancelled = false;
+    bool m_tooLong = false;
+};
+
+}
+
 Guide parseXmltv(QIODevice& device, const GuideFilter& filter)
 {
     Guide guide;
-    QXmlStreamReader xml(&device);
+    // (8 MB at most without a '<': a text the reader would hold whole)
+    XmlGuard guarded(&device, filter.cancel, 8 << 20);
+    guarded.open(QIODevice::ReadOnly | QIODevice::Unbuffered);
+    QXmlStreamReader xml(&guarded);
     int sinceCheck = 0;
     // a guide id -> the key its programmes are kept under ("" dropped)
     QHash<QString, QString> keyOfId;
@@ -376,13 +456,19 @@ Guide parseXmltv(QIODevice& device, const GuideFilter& filter)
                     const QString text = xml.readElementText().simplified();
                     if (system == u"xmltv_ns")
                     {
+                        // (numbers of 0 to 9999 only: "2147483647" plus one
+                        // overflowed, a guide's garbage is no episode)
                         const QStringList parts = text.split(u'.');
-                        const int season = parts.value(0).section(u'/', 0, 0).trimmed().toInt() + 1;
-                        const int episode = parts.value(1).section(u'/', 0, 0).trimmed().toInt() + 1;
-                        if (!parts.value(1).trimmed().isEmpty())
-                            p.episode = parts.value(0).trimmed().isEmpty()
-                                            ? QStringLiteral("E%1").arg(episode)
-                                            : QStringLiteral("S%1E%2").arg(season).arg(episode);
+                        auto numberOf = [](const QString& part) {
+                            bool ok = false;
+                            const int n = part.section(u'/', 0, 0).trimmed().toInt(&ok);
+                            return ok && n >= 0 && n <= 9999 ? n : -1;
+                        };
+                        const int season = numberOf(parts.value(0));
+                        const int episode = numberOf(parts.value(1));
+                        if (episode >= 0)
+                            p.episode = season < 0 ? QStringLiteral("E%1").arg(episode + 1)
+                                                   : QStringLiteral("S%1E%2").arg(season + 1).arg(episode + 1);
                     }
                     else if (system.isEmpty() || system == u"onscreen" || system == u"common")
                         p.episode = text;
@@ -400,7 +486,13 @@ Guide parseXmltv(QIODevice& device, const GuideFilter& filter)
             guide.programmes[key].append(std::move(p));
         }
     }
-    if (xml.hasError() && guide.programmes.isEmpty())
+    // (cancelled, or a text too long to read: an error, the guide not kept
+    // as read whole even with the programmes before it)
+    if (guarded.cancelled())
+        guide.error = QStringLiteral("cancelled");
+    else if (guarded.tooLong())
+        guide.error = QStringLiteral("a text of the guide is too long");
+    else if (xml.hasError() && guide.programmes.isEmpty())
         guide.error = xml.errorString();
 
     // sorted, and the missing ends taken from the next start
@@ -419,15 +511,23 @@ Guide parseXmltv(QIODevice& device, const GuideFilter& filter)
 
 Guide parseXmltv(const QByteArray& data, const GuideFilter& filter)
 {
-    QByteArray xml = isGzip(data) ? gunzip(data) : data;
-    if (xml.isEmpty())
+    if (data.isEmpty())
     {
         Guide guide;
         guide.error = QStringLiteral("the guide could not be read");
         return guide;
     }
-    QBuffer buffer(&xml);
+    QBuffer buffer;
+    buffer.setData(data);
     buffer.open(QIODevice::ReadOnly);
+    // (a gzip one read inflated a piece at a time, as a file is: inflated
+    // whole first, a bomb of a few hundred kilobytes took gigabytes)
+    if (isGzip(data))
+    {
+        GunzipDevice inflated(&buffer, 1LL << 30);
+        inflated.open(QIODevice::ReadOnly);
+        return parseXmltv(inflated, filter);
+    }
     return parseXmltv(buffer, filter);
 }
 

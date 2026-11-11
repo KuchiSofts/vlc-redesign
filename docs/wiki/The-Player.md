@@ -355,6 +355,10 @@ music view or on a visualization opens the same menu.
 - **Fullscreen**, <kbd>F</kbd>, <kbd>F11</kbd> or a double-click enter it; the same, or <kbd>Esc</kbd>, leave it.
 - The bars hide after the mouse stops (*Hide after*, [Settings: Interface](Settings-Interface)) and come back when
   it moves, or with <kbd>I</kbd>.
+- A shortcut (seek, pause, speed...) shows the bars too, or, with *When you use a shortcut in full screen* in the
+  same settings, only a thin progress line and a message at the top (`+30 s  00:02:50 / 00:25:40`), or only
+  that message, as VLC 3 did ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)). The mouse and
+  <kbd>Tab</kbd> still show the bars.
 - Which screen is used: *Open fullscreen on*, in the same settings.
 - <kbd>F11</kbd> also makes the library or the music view fill the screen.
 

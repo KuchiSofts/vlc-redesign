@@ -90,12 +90,11 @@ endif
 # registered with the sources as prerequisites
 shaders/shaders.deps: Makefile
 	$(AM_V_at)$(MKDIR_P) $(@D)
-	$(AM_V_GEN){ \
+	$(AM_V_at){ \
 	  for s in $(libqt_plugin_la_SHADER_FRAG) $(libqt_plugin_la_SHADER_VERT); do \
 	    echo "$$s.qsb: $(srcdir)/$$s"; \
 	  done; \
-	} > $@.tmp && \
-	if cmp -s $@.tmp $@; then rm -f $@.tmp; else mv $@.tmp $@; fi
+	} > $@.tmp && mv $@.tmp $@
 
 BUILT_SOURCES += shaders/shaders.deps
 CLEANFILES    += shaders/shaders.deps
@@ -115,7 +114,7 @@ QML_RULES_DEPS = $(libqt_plugin_la_QML_MODULES:=/qml.deps)
 # to get the module name.
 $(QML_RULES_DEPS): Makefile
 	$(AM_V_at)$(MKDIR_P) $(@D)
-	$(AM_V_GEN){ \
+	$(AM_V_at){ \
 	  echo '$(@D)/qmldir.qrc: $(@D)/qmldir'; \
 	  echo '$(@D)/res.qrc $(@D)/qmldir: $(@D)/qml_modules.stamp'; \
 	  echo '$(@D)/qmlcachegen.rsp: $$(builddir)/$(@D)/res.qrc'; \
@@ -123,8 +122,7 @@ $(QML_RULES_DEPS): Makefile
 	  echo '$(@D)/qmlassets.cpp: $$(builddir)/$(@D)/qmldir.qrc $$(builddir)/$(@D)/res.qrc'; \
 	  echo '$(@D)/qmlassets.cpp: $$(libqml_module_$(@D)_a_QML) $$(libqml_module_$(@D)_a_Singleton_QML)'; \
 	  echo '$$(libqml_module_$(@D)_a_QML:.qml=.cpp) $$(libqml_module_$(@D)_a_Singleton_QML:.qml=.cpp): $$(builddir)/$(@D)/res.qrc'; \
-	} > $@.tmp && \
-	if cmp -s $@.tmp $@; then rm -f $@.tmp; else mv $@.tmp $@; fi
+	} > $@.tmp && mv $@.tmp $@
 
 BUILT_SOURCES += $(QML_RULES_DEPS)
 CLEANFILES += $(QML_RULES_DEPS)
@@ -181,9 +179,7 @@ cachegen_verbose_ = $(cachegen_verbose__$(AM_DEFAULT_VERBOSITY))
 cachegen_verbose_0 = @echo " CACHEGEN " $@;
 cachegen_verbose__0 = $(cachegen_verbose_0)
 
-if HAVE_QT67
 QML_CACHEGEN_EXTRA_ARGS=--validate-basic-blocks
-endif
 
 # Each .qml/.js/.mjs is compiled with its module's res.qrc as prerequisite. The
 # per-module qrc isn't derivable from the target path, so pick it out of $^.

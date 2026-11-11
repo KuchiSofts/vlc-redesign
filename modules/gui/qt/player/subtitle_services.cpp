@@ -20,9 +20,18 @@
 #include <QRegularExpression>
 #include <QSet>
 #include <QUrlQuery>
+#include <QtEndian>
 
 #include <algorithm>
+#include <array>
 #include <cmath>
+#include <cstring>
+#include <limits>
+#include <string_view>
+
+#ifdef HAVE_ZLIB
+# include <zlib.h>
+#endif
 
 namespace SubtitleProviders
 {
@@ -32,6 +41,15 @@ namespace {
 QString text(const QJsonObject &o, const char *key)
 {
     return o.value(QLatin1String(key)).toVariant().toString().trimmed();
+}
+
+// A number of an answer ("4.5", or a string of it), 0 when it isn't a
+// finite one: "nan", "inf" and "-inf" read as numbers too (a NaN rank
+// would leave the results without an order)
+double numberOf(const QJsonObject &o, const char *key)
+{
+    const double value = o.value(QLatin1String(key)).toVariant().toDouble();
+    return std::isfinite(value) ? value : 0.;
 }
 
 // The query of an address, its items in this order (some services want
@@ -62,7 +80,166 @@ QString messageOf(const QJsonObject &o)
     return error.isString() ? error.toString() : QString();
 }
 
+// The same, in every shape a service's error takes: "message", "Message"
+// (.NET), "detail" (problem details), "errmsg", "error" (a string or an
+// object), "errors" (a list of { text | message }); empty without one
+QString errorMessageOf(const QJsonObject &o)
+{
+    QString message = messageOf(o);
+    for (const char *key : { "Message", "detail", "errmsg" })
+        if (message.isEmpty())
+            message = text(o, key);
+    if (message.isEmpty())
+    {
+        const QJsonObject first = o.value(QLatin1String("errors")).toArray().at(0).toObject();
+        message = text(first, "text");
+        if (message.isEmpty())
+            message = text(first, "message");
+    }
+    // (problem details: { "title", "status" } at least)
+    if (message.isEmpty())
+        message = text(o, "title");
+    return message.left(200);
+}
+
+// Whether an object says it is an error: one of those fields, or a status
+// or a success that says no (false, or an HTTP error: 400 and above)
+bool saysError(const QJsonObject &o)
+{
+    for (const char *key : { "error", "errors", "message", "Message", "detail", "errmsg" })
+        if (o.contains(QLatin1String(key)))
+            return true;
+    const QJsonValue status = o.value(QLatin1String("status"));
+    const QJsonValue success = o.value(QLatin1String("success"));
+    return (status.isBool() && !status.toBool()) || (status.isDouble() && status.toInt() >= 400)
+        || (success.isBool() && !success.toBool());
+}
+
+bool startsWithNoCase(const QByteArray &text, qsizetype at, const char *prefix)
+{
+    const qsizetype n = qsizetype(std::strlen(prefix));
+    return at + n <= text.size() && qstrnicmp(text.constData() + at, prefix, size_t(n)) == 0;
+}
+
+// the first byte of a text that isn't a space (or a mark of UTF-8)
+qsizetype firstOf(const QByteArray &body)
+{
+    qsizetype at = body.startsWith("\xEF\xBB\xBF") ? 3 : 0;
+    while (at < body.size() && (body.at(at) == ' ' || body.at(at) == '\t' || body.at(at) == '\r' || body.at(at) == '\n'))
+        ++at;
+    return at;
+}
+
+// A check of the browser, as its pages say it (not a mention of one: a
+// page may load scripts from cdnjs.cloudflare.com)
+bool isChallenge(const QByteArray &body)
+{
+    static const char *const marks[] = {
+        "cf-chl", "cf_chl_opt", "challenge-platform", "cf-browser-verification", "<title>just a moment",
+        "attention required! | cloudflare", "enable javascript and cookies to continue",
+        "ddos-guard", "sucuri website firewall", "_incapsula_resource", "incapsula incident",
+        "g-recaptcha", "h-captcha", "hcaptcha.com/1/api", "captcha-delivery.com",
+    };
+    // (in the start of the page, where they are, as text of any case)
+    const QByteArray head = body.left(64 * 1024).toLower();
+    return std::any_of(std::begin(marks), std::end(marks), [&head](const char *mark) { return head.contains(mark); });
+}
+
+// Whether the JSON of body[at..end] is whole: its first bracket closed at its
+// last byte (JSON cut short, even just after a "}", isn't), counted in one
+// pass without reading it (its parser reads it once)
+bool endsWhole(const QByteArray &body, qsizetype at, qsizetype end)
+{
+    const char *const p = body.constData();
+    qsizetype depth = 0;
+    bool inString = false;
+    for (qsizetype i = at; i <= end; ++i)
+    {
+        const char c = p[i];
+        if (inString)
+        {
+            if (c == '\\')
+                ++i;
+            else if (c == '"')
+                inString = false;
+        }
+        else if (c == '"')
+            inString = true;
+        else if (c == '{' || c == '[')
+            ++depth;
+        else if ((c == '}' || c == ']') && --depth <= 0)
+            return depth == 0 && i == end;
+    }
+    return false;
+}
+
 } // namespace
+
+AnswerKind answerKind(const QByteArray &body, bool json)
+{
+    const qsizetype at = firstOf(body);
+    if (at >= body.size())
+        return AnswerKind::Empty;
+    if (body.at(at) == '<' && isChallenge(body))
+        return AnswerKind::Challenge;
+    if (!json)
+        return AnswerKind::Readable;
+    if (body.at(at) == '<')
+        return AnswerKind::Page;
+    // JSON: an object or an array, whole (its brackets closed at its end)
+    qsizetype end = body.size() - 1;
+    while (end > at && (body.at(end) == ' ' || body.at(end) == '\t' || body.at(end) == '\r' || body.at(end) == '\n'))
+        --end;
+    const char first = body.at(at);
+    if ((first == '{' || first == '[') && endsWhole(body, at, end))
+        return AnswerKind::Readable;
+    return AnswerKind::Unreadable;
+}
+
+QString answerError(const QJsonDocument &doc, bool array, const char *key)
+{
+    const QString unknown = QStringLiteral("?");
+    if (array)
+    {
+        if (doc.isArray())
+            return {};
+        const QString message = doc.isObject() ? errorMessageOf(doc.object()) : QString();
+        return message.isEmpty() ? unknown : message;
+    }
+    if (!doc.isObject())
+        return unknown;
+    const QJsonObject o = doc.object();
+    if (key && o.contains(QLatin1String(key)))
+        return {};
+    if (!saysError(o))
+        return {}; // (no results and no error: nothing found)
+    const QString message = errorMessageOf(o);
+    return message.isEmpty() ? unknown : message;
+}
+
+bool isYifyPage(const QByteArray &page)
+{
+    // (its name, in its title and in its own links)
+    return page.contains("YIFY") || page.contains("yifysubtitles");
+}
+
+bool isErrorDocument(const QByteArray &body)
+{
+    const qsizetype at = firstOf(body);
+    if (at >= body.size())
+        return false;
+    if (body.at(at) == '<')
+        // (an HTML document; SAMI's <SAMI> is a subtitle)
+        return startsWithNoCase(body, at, "<!doctype html") || startsWithNoCase(body, at, "<html")
+            || isChallenge(body);
+    if (body.at(at) == '{' || body.at(at) == '[')
+    {
+        // (MicroDVD's "{1}{25}…" is no JSON)
+        const QJsonDocument doc = QJsonDocument::fromJson(body);
+        return doc.isObject() || doc.isArray();
+    }
+    return false;
+}
 
 Problem problemOf(int status)
 {
@@ -210,10 +387,14 @@ QUrl subSourceSearchUrl(const Query &query, bool byText)
 
 QString subSourceMovieId(const QByteArray &body, const Query &query, QString *error)
 {
-    const QJsonObject answer = QJsonDocument::fromJson(body).object();
-    if (answer.contains(QLatin1String("error")) || !answer.value(QLatin1String("success")).toBool(true))
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    const QJsonObject answer = doc.object();
+    if (!doc.isObject() || answer.contains(QLatin1String("error")) || !answer.value(QLatin1String("success")).toBool(true))
     {
+        // (not its answer, or an error that says nothing: still an error)
         *error = messageOf(answer);
+        if (error->isEmpty())
+            *error = QStringLiteral("?");
         return {};
     }
     QString first, firstOfSeason;
@@ -496,7 +677,7 @@ QList<Result> parseSubDl(const QByteArray &body, const Query &query, const Langu
         r.hearingImpaired = o.value(QLatin1String("hi")).toBool();
         r.downloads = o.value(QLatin1String("downloads")).toVariant().toInt();
         r.rank = std::log10(double(std::max(r.downloads, 0)) + 1.) * 3.
-               + std::min(o.value(QLatin1String("rating")).toVariant().toDouble(), 10.) * 0.5;
+               + std::min(numberOf(o, "rating"), 10.) * 0.5;
         results.append(r);
     }
     return results;
@@ -583,10 +764,14 @@ QUrl openSubtitlesComSearchUrl(const Query &query)
     return withQuery(openSubtitlesComApi + QStringLiteral("subtitles"), items);
 }
 
-QList<Result> parseOpenSubtitlesCom(const QByteArray &body, const LanguageOf &languageOf)
+QList<Result> parseOpenSubtitlesCom(const QByteArray &body, const LanguageOf &languageOf, QString *error)
 {
     QList<Result> results;
-    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("data")).toArray())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    // ({"message": …} in place of its "data")
+    if (error)
+        *error = answerError(doc, false, "data");
+    for (const QJsonValue item : doc.object().value(QLatin1String("data")).toArray())
     {
         const QJsonObject a = item.toObject().value(QLatin1String("attributes")).toObject();
         // made by a machine: not offered
@@ -679,6 +864,13 @@ bool hostOf(const QUrl &url, const char *domain)
     const QLatin1String d(domain);
     return (url.scheme() == QLatin1String("https") || url.scheme() == QLatin1String("http"))
         && (host == d || host.endsWith(QLatin1Char('.') + d));
+}
+
+// The same over HTTPS only: a download asked with the user's key in its
+// headers (Jimaku's, Subs.ro's) never sends it in clear text
+bool secureHostOf(const QUrl &url, const char *domain)
+{
+    return url.scheme() == QLatin1String("https") && hostOf(url, domain);
 }
 
 QString digitsOfImdb(const QString &imdb)
@@ -775,11 +967,15 @@ QUrl titloviSearchUrl(const Query &query, const Session &session)
     return withQuery(QStringLiteral("https://kodi.titlovi.com/api/subtitles/search"), items);
 }
 
-QList<Result> parseTitlovi(const QByteArray &body, const Query &query)
+QList<Result> parseTitlovi(const QByteArray &body, const Query &query, QString *error)
 {
     QList<Result> results;
     const bool episode = query.series && query.season >= 0 && query.episode >= 0;
-    for (const QJsonValue item : QJsonDocument::fromJson(body).object().value(QLatin1String("SubtitleResults")).toArray())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    // ({"Message": …} of .NET in place of its "SubtitleResults")
+    if (error)
+        *error = answerError(doc, false, "SubtitleResults");
+    for (const QJsonValue item : doc.object().value(QLatin1String("SubtitleResults")).toArray())
     {
         const QJsonObject o = item.toObject();
         const QString id = text(o, "Id");
@@ -804,7 +1000,7 @@ QList<Result> parseTitlovi(const QByteArray &body, const Query &query)
             r.release = cleanRelease(text(o, "Title"));
         r.url = link;
         r.downloads = o.value(QLatin1String("DownloadCount")).toVariant().toInt();
-        r.rank = popularity(r.downloads) + std::min(o.value(QLatin1String("Rating")).toVariant().toDouble(), 10.) * 0.5;
+        r.rank = popularity(r.downloads) + std::min(numberOf(o, "Rating"), 10.) * 0.5;
         results.append(r);
     }
     return results;
@@ -871,7 +1067,7 @@ QList<Result> parseAssrt(const QByteArray &body, const Query &query, QString *er
         r.language = language;
         r.release = cleanRelease(release);
         r.url = withQuery(QStringLiteral("https://api.assrt.net/v1/sub/detail"), { { QStringLiteral("id"), id } });
-        r.rank = std::min(o.value(QLatin1String("vote_score")).toVariant().toDouble(), 20.) * 0.5;
+        r.rank = std::min(numberOf(o, "vote_score"), 20.) * 0.5;
         results.append(r);
     }
     return results;
@@ -943,7 +1139,7 @@ QUrl jimakuSearchUrl(const Query &query)
                      { { QStringLiteral("query"), jimakuName(query) }, { QStringLiteral("anime"), QStringLiteral("true") } });
 }
 
-QString jimakuEntryId(const QByteArray &body, const Query &query)
+QString jimakuEntryId(const QByteArray &body, const Query &query, QString *error)
 {
     const QString wanted = jimakuName(query);
     const auto simple = [](const QString &s) {
@@ -954,7 +1150,11 @@ QString jimakuEntryId(const QByteArray &body, const Query &query)
         return out;
     };
     QString first;
-    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    // ({"error": …} in place of its list)
+    if (error)
+        *error = answerError(doc, true);
+    for (const QJsonValue item : doc.array())
     {
         const QJsonObject o = item.toObject();
         const QString id = text(o, "id");
@@ -984,19 +1184,22 @@ QUrl jimakuFilesUrl(const QString &entryId, const Query &query)
     return QUrl(address);
 }
 
-QList<Result> parseJimaku(const QByteArray &body, const Query &query)
+QList<Result> parseJimaku(const QByteArray &body, const Query &query, QString *error)
 {
     Q_UNUSED(query);
     QList<Result> results;
     static const QRegularExpression unhandled(QStringLiteral(R"(\.(rar|7z)$)"), QRegularExpression::CaseInsensitiveOption);
     static const QRegularExpression whisper(QStringLiteral(R"([\[(]?whisperai[\])]?|[\[(]whisper[\])])"),
                                             QRegularExpression::CaseInsensitiveOption);
-    for (const QJsonValue item : QJsonDocument::fromJson(body).array())
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    if (error)
+        *error = answerError(doc, true);
+    for (const QJsonValue item : doc.array())
     {
         const QJsonObject o = item.toObject();
         const QString name = text(o, "name");
         const QUrl url(text(o, "url"));
-        if (name.isEmpty() || !hostOf(url, "jimaku.cc") || unhandled.match(name).hasMatch()
+        if (name.isEmpty() || !secureHostOf(url, "jimaku.cc") || unhandled.match(name).hasMatch()
             || whisper.match(name).hasMatch())
             continue;
         // (a file this small is broken)
@@ -1046,7 +1249,13 @@ QList<Result> parseBetaSeries(const QByteArray &body, QString *error, bool *refu
 {
     QList<Result> results;
     *refused = false;
-    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    if (!doc.isObject())
+    {
+        *error = QStringLiteral("?"); // (not its answer)
+        return results;
+    }
+    const QJsonObject answer = doc.object();
     const QJsonArray errors = answer.value(QLatin1String("errors")).toArray();
     if (!errors.isEmpty())
     {
@@ -1078,7 +1287,7 @@ QList<Result> parseBetaSeries(const QByteArray &body, QString *error, bool *refu
         r.fileName = text(o, "file");
         r.release = QFileInfo(r.fileName).completeBaseName();
         r.url = url;
-        r.rank = std::min(o.value(QLatin1String("quality")).toVariant().toDouble(), 5.);
+        r.rank = std::min(numberOf(o, "quality"), 5.);
         results.append(r);
     }
     return results;
@@ -1112,7 +1321,7 @@ QList<Result> parseSubsRo(const QByteArray &body, const Query &query, QString *e
         const QString title = text(o, "title");
         const QString description = text(o, "description");
         const QUrl link(text(o, "downloadLink"));
-        if (id.isEmpty() || title.isEmpty() || !hostOf(link, "subs.ro"))
+        if (id.isEmpty() || title.isEmpty() || !secureHostOf(link, "subs.ro"))
             continue;
         if (query.series && query.season >= 0)
         {
@@ -1174,6 +1383,13 @@ Napisy24Answer parseNapisy24(const QByteArray &body)
         answer.loginRefused = true;
         return answer;
     }
+    // (its answers start "OK-": 2 found, 1 the video known, 0 not; anything
+    // else, a page, nothing, is not one)
+    if (!head.startsWith(QLatin1String("OK-")))
+    {
+        answer.unreadable = true;
+        return answer;
+    }
     if (!head.startsWith(QLatin1String("OK-2")))
         return answer;
     for (const QString &part : head.split(QLatin1Char('|')).mid(1))
@@ -1228,14 +1444,26 @@ QByteArray legendasSearchBody(const Query &query)
     return QJsonDocument(o).toJson(QJsonDocument::Compact);
 }
 
-QList<Result> parseLegendas(const QByteArray &body, const Query &query)
+QList<Result> parseLegendas(const QByteArray &body, const Query &query, QString *error)
 {
     QList<Result> results;
-    const QJsonObject answer = QJsonDocument::fromJson(body).object();
+    const QJsonDocument doc = QJsonDocument::fromJson(body);
+    const QJsonObject answer = doc.object();
+    const char *const key = query.series ? "tv_shows" : "movies";
     if ((answer.contains(QLatin1String("success")) && !answer.value(QLatin1String("success")).toBool())
         || (answer.contains(QLatin1String("status")) && !answer.value(QLatin1String("status")).toBool()))
+    {
+        // its error, unless it only says it found nothing
+        static const QRegularExpression nothing(QStringLiteral("not found|no results?|nenhum|encontrad"),
+                                                QRegularExpression::CaseInsensitiveOption);
+        const QString message = errorMessageOf(answer);
+        if (error && !nothing.match(message).hasMatch())
+            *error = message.isEmpty() ? QStringLiteral("?") : message;
         return results;
-    const QJsonArray items = answer.value(query.series ? QLatin1String("tv_shows") : QLatin1String("movies")).toArray();
+    }
+    if (error)
+        *error = answerError(doc, false, key);
+    const QJsonArray items = answer.value(QLatin1String(key)).toArray();
     static const QRegularExpression pathRe(QStringLiteral(R"(^/[A-Za-z0-9._~%/\-]+$)"));
     for (const QJsonValue item : items)
     {
@@ -1262,6 +1490,421 @@ QList<Result> parseLegendas(const QByteArray &body, const Query &query)
         results.append(r);
     }
     return results;
+}
+
+// ---------------------------------------------------------------------------
+// YIFY Subtitles
+
+namespace {
+
+bool isAsciiSpace(char c)
+{
+    return c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v';
+}
+
+bool isAsciiDigit(char c)
+{
+    return c >= '0' && c <= '9';
+}
+
+qsizetype skipSpaces(const QByteArray &page, qsizetype at, qsizetype end)
+{
+    while (at < end && isAsciiSpace(page.at(at)))
+        ++at;
+    return at;
+}
+
+// where what is in [from, end), -1 when it isn't (nothing past end is read)
+qsizetype findIn(const QByteArray &page, QByteArrayView what, qsizetype from, qsizetype end)
+{
+    if (from < 0 || from >= end)
+        return -1;
+    const std::string_view range(page.constData() + from, size_t(end - from));
+    const size_t found = range.find(std::string_view(what.data(), size_t(what.size())));
+    return found == std::string_view::npos ? -1 : from + qsizetype(found);
+}
+
+bool startsAt(const QByteArray &page, qsizetype at, QByteArrayView what, qsizetype end)
+{
+    return at >= 0 && at + what.size() <= end
+        && std::memcmp(page.constData() + at, what.data(), size_t(what.size())) == 0;
+}
+
+QString textOf(const QByteArray &page, qsizetype from, qsizetype to)
+{
+    return QString::fromUtf8(page.constData() + from, to - from);
+}
+
+} // namespace
+
+// What the page's rows are, as the expressions <tr data-id="(\d+)">(.*?)</tr>,
+// then in each <a href="/subtitles/([A-Za-z0-9._\-]+)">\s*(?:<span
+// class="text-muted">[^<]*</span>)?\s*([^<]*)</a>, <span
+// class="sub-lang">([^<]+)</span> and <span class="label[^"]*">\s*(-?\d+)\s*</span>
+// read them (the test compares the two), each search going on from where
+// the one before failed: the page is read once, its time bound by its size
+// whatever it holds, not by what the expression engine optimises or gives
+// up on
+QList<Result> parseYify(const QByteArray &page, const LanguageOf &languageOf)
+{
+    static constexpr QByteArrayView rowStart("<tr data-id=\"");
+    static constexpr QByteArrayView rowEnd("</tr>");
+    static constexpr QByteArrayView linkStart("<a href=\"/subtitles/");
+    static constexpr QByteArrayView muted("<span class=\"text-muted\">");
+    static constexpr QByteArrayView spanEnd("</span>");
+    static constexpr QByteArrayView linkEnd("</a>");
+    static constexpr QByteArrayView languageStart("<span class=\"sub-lang\">");
+    static constexpr QByteArrayView ratingStart("<span class=\"label");
+    // (the quote of class=" in ratingStart)
+    static constexpr qsizetype ratingQuote = 12;
+    const auto slugChar = [](char c) {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || isAsciiDigit(c) || c == '.' || c == '_' || c == '-';
+    };
+
+    QList<Result> results;
+    qsizetype at = 0;
+    for (;;)
+    {
+        const qsizetype start = page.indexOf(rowStart, at);
+        if (start < 0)
+            break;
+        qsizetype p = start + rowStart.size();
+        const qsizetype idFrom = p;
+        while (p < page.size() && isAsciiDigit(page.at(p)))
+            ++p;
+        if (p == idFrom || !startsAt(page, p, "\">", page.size()))
+        {
+            // (not a row: the next one; none starts in its digits)
+            at = std::max(p, start + 1);
+            continue;
+        }
+        const QByteArray id = page.mid(idFrom, p - idFrom);
+        const qsizetype from = p + 2;
+        const qsizetype end = page.indexOf(rowEnd, from);
+        if (end < 0)
+            break; // (no row after this one is closed either)
+        at = end + rowEnd.size();
+
+        // its link and the release it names
+        QString slug, release;
+        for (qsizetype search = from; slug.isEmpty();)
+        {
+            const qsizetype a = findIn(page, linkStart, search, end);
+            if (a < 0)
+                break;
+            qsizetype q = a + linkStart.size();
+            const qsizetype slugFrom = q;
+            while (q < end && slugChar(page.at(q)))
+                ++q;
+            const qsizetype slugTo = q;
+            search = std::max(q, a + 1);
+            if (q == slugFrom || !startsAt(page, q, "\">", end))
+                continue;
+            q = skipSpaces(page, q + 2, end);
+            if (startsAt(page, q, muted, end))
+            {
+                qsizetype m = q + muted.size();
+                while (m < end && page.at(m) != '<')
+                    ++m;
+                // (without its end the label isn't one: the text then
+                // starts at "<span" and is not followed by </a>)
+                if (startsAt(page, m, spanEnd, end))
+                    q = skipSpaces(page, m + spanEnd.size(), end);
+            }
+            qsizetype t = q;
+            while (t < end && page.at(t) != '<')
+                ++t;
+            search = std::max(t, a + 1);
+            if (!startsAt(page, t, linkEnd, end))
+                continue;
+            slug = textOf(page, slugFrom, slugTo);
+            release = textOf(page, q, t).trimmed();
+        }
+        // its language
+        QString languageName;
+        for (qsizetype search = from; languageName.isEmpty();)
+        {
+            const qsizetype a = findIn(page, languageStart, search, end);
+            if (a < 0)
+                break;
+            const qsizetype q = a + languageStart.size();
+            qsizetype t = q;
+            while (t < end && page.at(t) != '<')
+                ++t;
+            search = std::max(t, a + 1);
+            if (t > q && startsAt(page, t, spanEnd, end))
+                languageName = textOf(page, q, t);
+        }
+        if (slug.isEmpty() || languageName.isEmpty())
+            continue;
+        Result r;
+        r.id = QStringLiteral("yify:") + QString::fromLatin1(id);
+        r.provider = QStringLiteral("yify");
+        r.language = languageOf ? languageOf(languageName) : QString();
+        if (r.language.isEmpty())
+            continue;
+        r.release = release;
+        r.url = QUrl(QStringLiteral("https://yifysubtitles.ch/subtitle/") + slug + QStringLiteral(".zip"));
+        r.hearingImpaired = findIn(page, "hi-subtitle", from, end) >= 0;
+        // its rating
+        for (qsizetype search = from;;)
+        {
+            const qsizetype a = findIn(page, ratingStart, search, end);
+            if (a < 0)
+                break;
+            qsizetype q = a + ratingStart.size();
+            while (q < end && page.at(q) != '"')
+                ++q;
+            // (one starting before this quote has it as its own quote of
+            // class=", or reaches it too: the search goes on there)
+            search = std::max(a + 1, q - ratingQuote);
+            if (!startsAt(page, q, "\">", end))
+                continue;
+            q = skipSpaces(page, q + 2, end);
+            const qsizetype numberFrom = q;
+            if (q < end && page.at(q) == '-')
+                ++q;
+            const qsizetype digitsFrom = q;
+            while (q < end && isAsciiDigit(page.at(q)))
+                ++q;
+            if (q == digitsFrom)
+                continue;
+            const qsizetype numberTo = q;
+            if (!startsAt(page, skipSpaces(page, q, end), spanEnd, end))
+                continue;
+            // (digits enough to overflow: inf, -inf; as numberOf, 0)
+            const double rating = textOf(page, numberFrom, numberTo).toDouble();
+            r.rank = std::isfinite(rating) ? std::min(rating, 30.) * 0.5 : 0.;
+            break;
+        }
+        results.append(r);
+    }
+    return results;
+}
+
+// ---------------------------------------------------------------------------
+// Archives
+
+namespace {
+
+// what one file of an archive, and all of them, may unpack to (a small
+// archive can unpack to gigabytes), and how many of its files are looked
+// at, and unpacked
+constexpr qsizetype maxArchiveFileBytes = 8 * 1024 * 1024;
+constexpr qsizetype maxArchiveBytes = 16 * 1024 * 1024;
+constexpr int maxArchiveEntries = 1000;
+constexpr int maxArchiveSubtitles = 64;
+
+// CRC-32 (ISO 3309, as zip and gzip use it)
+quint32 crc32Of(const QByteArray &data)
+{
+    static const std::array<quint32, 256> table = []() {
+        std::array<quint32, 256> t {};
+        for (quint32 i = 0; i < 256; ++i)
+        {
+            quint32 c = i;
+            for (int k = 0; k < 8; ++k)
+                c = (c & 1) ? 0xEDB88320u ^ (c >> 1) : c >> 1;
+            t[i] = c;
+        }
+        return t;
+    }();
+    quint32 crc = 0xFFFFFFFFu;
+    for (const char byte : data)
+        crc = table[(crc ^ quint8(byte)) & 0xFF] ^ (crc >> 8);
+    return crc ^ 0xFFFFFFFFu;
+}
+
+#ifdef HAVE_ZLIB
+// A gzip file (windowBits 16 + 15) or a raw deflate stream (-15), whole:
+// empty when it ends before its end, is damaged (gzip's CRC included) or
+// unpacks to more than limit (it stops there)
+QByteArray inflateWhole(const QByteArray &data, int windowBits, qsizetype limit)
+{
+    if (limit < 0 || data.size() > qsizetype(std::numeric_limits<uInt>::max()))
+        return {};
+    z_stream stream = {};
+    if (inflateInit2(&stream, windowBits) != Z_OK)
+        return {};
+    QByteArray out;
+    out.reserve(std::min<qsizetype>(limit, data.size() * 3));
+    stream.next_in = reinterpret_cast<Bytef *>(const_cast<char *>(data.constData()));
+    stream.avail_in = uInt(data.size());
+    char buffer[65536];
+    int status = Z_OK;
+    while (status == Z_OK)
+    {
+        stream.next_out = reinterpret_cast<Bytef *>(buffer);
+        stream.avail_out = sizeof(buffer);
+        status = ::inflate(&stream, Z_NO_FLUSH);
+        if (status != Z_OK && status != Z_STREAM_END)
+            break;
+        const qsizetype produced = qsizetype(sizeof(buffer) - stream.avail_out);
+        if (produced > limit - out.size())
+        {
+            status = Z_BUF_ERROR; // past the limit
+            break;
+        }
+        out.append(buffer, produced);
+        // all of it read, room left, and still not its end: cut short
+        if (status == Z_OK && stream.avail_in == 0 && stream.avail_out != 0)
+            break;
+    }
+    inflateEnd(&stream);
+    return status == Z_STREAM_END ? out : QByteArray();
+}
+#endif
+
+} // namespace
+
+bool isSubtitleName(const QString &name)
+{
+    static const QSet<QString> extensions = { "srt", "ass", "ssa", "vtt", "sub", "smi", "txt" };
+    return extensions.contains(QFileInfo(name).suffix().toLower());
+}
+
+QByteArray gunzip(const QByteArray &data, qsizetype limit)
+{
+#ifdef HAVE_ZLIB
+    return inflateWhole(data, 16 + MAX_WBITS, limit);
+#else
+    Q_UNUSED(data);
+    Q_UNUSED(limit);
+    return {};
+#endif
+}
+
+QList<QPair<QString, QByteArray>> unzip(const QByteArray &zip)
+{
+    QList<QPair<QString, QByteArray>> files;
+    qsizetype total = 0;
+    int unpackedFiles = 0;
+    const auto u16 = [&zip](qsizetype at) { return qFromLittleEndian<quint16>(zip.constData() + at); };
+    const auto u32 = [&zip](qsizetype at) { return qFromLittleEndian<quint32>(zip.constData() + at); };
+    // the end of the central directory, in the last 64 KiB
+    qsizetype end = -1;
+    for (qsizetype i = zip.size() - 22; i >= std::max<qsizetype>(0, zip.size() - 65557); --i)
+        if (u32(i) == 0x06054b50)
+        {
+            end = i;
+            break;
+        }
+    if (end < 0)
+        return files;
+    const quint16 count = u16(end + 10);
+    qsizetype at = u32(end + 16);
+    for (quint16 n = 0; n < count && n < maxArchiveEntries && at + 46 <= zip.size()
+                        && u32(at) == 0x02014b50; ++n)
+    {
+        const quint16 method = u16(at + 10);
+        const quint32 crc = u32(at + 16);
+        const quint32 packed = u32(at + 20);
+        const quint32 unpacked = u32(at + 24);
+        const quint16 nameLength = u16(at + 28), extraLength = u16(at + 30), commentLength = u16(at + 32);
+        const quint32 local = u32(at + 42);
+        const QString name = QString::fromUtf8(zip.mid(at + 46, nameLength));
+        at += 46 + nameLength + extraLength + commentLength;
+        if (name.endsWith(QLatin1Char('/')) || name.startsWith(QLatin1String("__MACOSX")))
+            continue;
+        // What unpacking it costs, counted whatever comes of it (a file that
+        // fails its CRC was inflated all the same: a thousand names of one
+        // such file would inflate it a thousand times): the bytes it reads
+        // or makes, the larger
+        const qsizetype cost = std::max(qsizetype(packed), qsizetype(unpacked));
+        if (!isSubtitleName(name) || unpackedFiles >= maxArchiveSubtitles
+            || qsizetype(unpacked) > maxArchiveFileBytes || cost > maxArchiveBytes - total
+            || qsizetype(local) + 30 > zip.size() || u32(local) != 0x04034b50)
+        {
+            files.append({ name, QByteArray() });
+            continue;
+        }
+        const qsizetype data = qsizetype(local) + 30 + u16(local + 26) + u16(local + 28);
+        if (data + qsizetype(packed) > zip.size())
+            continue;
+        ++unpackedFiles;
+        total += cost;
+        QByteArray content;
+        if (method == 0)
+        {
+            // (stored: its two sizes are one)
+            if (packed == unpacked)
+                content = zip.mid(data, packed);
+        }
+#ifdef HAVE_ZLIB
+        else if (method == 8)
+        {
+            // (read where it is: no copy of it)
+            const QByteArray raw = QByteArray::fromRawData(zip.constData() + data, qsizetype(packed));
+            content = inflateWhole(raw, -MAX_WBITS, qsizetype(unpacked));
+        }
+#endif
+        // whole, or nothing: the size and the CRC-32 the archive gives it
+        // (a file cut short, or one whose sizes lie, is not a subtitle)
+        if (content.size() != qsizetype(unpacked) || crc32Of(content) != crc)
+            content.clear();
+        files.append({ name, content });
+    }
+    return files;
+}
+
+QStringList withChosenLanguagesFirst(const QStringList &entries, const QString &preferred,
+                                     const QString &second)
+{
+    QStringList out;
+    if (!preferred.isEmpty())
+        out.append(preferred);
+    if (!second.isEmpty() && second != preferred)
+        out.append(second);
+    for (const QString &entry : entries)
+    {
+        const QString code = entry.startsWith(QLatin1Char('-')) ? entry.mid(1) : entry;
+        if (code.isEmpty() || code == preferred || code == second)
+            continue;
+        if (!out.contains(code) && !out.contains(QLatin1Char('-') + code))
+            out.append(entry);
+    }
+    return out;
+}
+
+bool namesSomething(const QString &fileName)
+{
+    QString stem = fileName;
+    static const QRegularExpression extension(QStringLiteral("\\.[A-Za-z0-9]{2,5}$"));
+    stem.remove(extension);
+    static const QRegularExpression generic(
+        QStringLiteral("^(index|master|playlist|manifest|chunklist|stream|video|media|movie|file|play|watch|get|download)$"),
+        QRegularExpression::CaseInsensitiveOption);
+    if (generic.match(stem).hasMatch())
+        return false;
+    for (qsizetype i = 0; i + 1 < stem.size(); ++i)
+        if (stem.at(i).isLetter() && stem.at(i + 1).isLetter())
+            return true;
+    return false;
+}
+
+qint64 contentRangeTotal(const QByteArray &contentRange)
+{
+    const QByteArray value = contentRange.trimmed();
+    const qsizetype slash = value.lastIndexOf('/');
+    if (!value.toLower().startsWith("bytes") || slash < 0)
+        return -1;
+    bool ok = false;
+    const qint64 total = value.mid(slash + 1).trimmed().toLongLong(&ok);
+    return ok && total >= 0 ? total : -1;
+}
+
+QString openSubtitlesHashOf(qint64 size, const QByteArray &head, const QByteArray &tail)
+{
+    constexpr qsizetype chunk = 65536;
+    if (size < chunk || head.size() != chunk || tail.size() != chunk)
+        return {};
+    quint64 hash = quint64(size);
+    for (qsizetype i = 0; i < chunk; i += 8)
+    {
+        hash += qFromLittleEndian<quint64>(head.constData() + i);
+        hash += qFromLittleEndian<quint64>(tail.constData() + i);
+    }
+    return QStringLiteral("%1").arg(hash, 16, 16, QLatin1Char('0'));
 }
 
 } // namespace SubtitleProviders

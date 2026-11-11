@@ -205,9 +205,11 @@ T.Button {
                     const matches = all.filter(e => e.name.toLowerCase().includes(query)
                                                     || e.native.toLowerCase().includes(query)
                                                     || e.code.toLowerCase() === query)
-                    // those starting with it first
+                    // those starting with it first, each group by name (a
+                    // sort that only tells the groups apart left them mixed)
                     matches.sort((a, b) => (b.name.toLowerCase().startsWith(query) ? 1 : 0)
-                                           - (a.name.toLowerCase().startsWith(query) ? 1 : 0))
+                                           - (a.name.toLowerCase().startsWith(query) ? 1 : 0)
+                                           || a.name.localeCompare(b.name))
                     return (root.allowNone && root.noneText.toLowerCase().includes(query) ? first : []).concat(matches)
                 }
 

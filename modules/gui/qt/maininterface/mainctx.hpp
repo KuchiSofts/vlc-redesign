@@ -38,6 +38,8 @@
 #include <atomic>
 #include <memory>
 
+#include "player/shortcut_feedback.hpp"
+
 Q_MOC_INCLUDE( "dialogs/toolbar/controlbar_profile_model.hpp" )
 Q_MOC_INCLUDE( "util/csdbuttonmodel.hpp" )
 Q_MOC_INCLUDE( "playlist/playlist_controller.hpp" )
@@ -118,6 +120,10 @@ class MainCtx : public QObject
     Q_PROPERTY(bool showRemainingTime READ isShowRemainingTime WRITE setShowRemainingTime NOTIFY showRemainingTimeChanged FINAL)
     Q_PROPERTY(VLCVarChoiceModel* extraInterfaces READ getExtraInterfaces CONSTANT FINAL)
     Q_PROPERTY(double intfScaleFactor READ getIntfScaleFactor NOTIFY intfScaleFactorChanged FINAL)
+    // "Interface size" of the settings: 0 Automatic, else a percentage of
+    // the design's size; and what Automatic finds for the window's screen
+    Q_PROPERTY(int interfaceSize READ interfaceSize NOTIFY interfaceSizeChanged FINAL)
+    Q_PROPERTY(int automaticInterfaceSize READ automaticInterfaceSize NOTIFY automaticInterfaceSizeChanged FINAL)
     Q_PROPERTY(bool mediaLibraryAvailable READ hasMediaLibrary CONSTANT FINAL)
     Q_PROPERTY(MediaLib* mediaLibrary READ getMediaLibrary CONSTANT FINAL)
     Q_PROPERTY(bool gridView READ hasGridView WRITE setGridView NOTIFY gridViewChanged FINAL)
@@ -161,6 +167,15 @@ class MainCtx : public QObject
     // "Show controls in fullscreen" of the settings (qt-fs-controller): the
     // mouse shows them in fullscreen
     Q_PROPERTY(bool fullscreenControls READ fullscreenControls NOTIFY fullscreenControlsChanged FINAL)
+    // "When you use a shortcut in full screen" of the settings
+    // (qt-fs-shortcut-feedback, issue #72): 0 a key shows the controls, as
+    // before; 1 a thin progress line and a short message instead
+    // (ShortcutFeedback.qml); 2 the message only
+    Q_PROPERTY(int fsShortcutFeedback READ fsShortcutFeedback NOTIFY fsShortcutFeedbackChanged FINAL)
+    // Set by the player while that feedback applies (full screen, a video,
+    // no menu of a disc): a key the hotkeys get then gives shortcutFeedback(),
+    // and the core does not draw its own message for it (src/player/osd.c)
+    Q_PROPERTY(bool shortcutFeedbackActive READ shortcutFeedbackActive WRITE setShortcutFeedbackActive NOTIFY shortcutFeedbackActiveChanged FINAL)
     // "Show the playlist as a tree" (playlist-tree): the queue under the
     // folders of its media (VLC 4's queue is flat: headings, not branches)
     Q_PROPERTY(bool playlistTree READ playlistTree NOTIFY playlistTreeChanged FINAL)
@@ -274,6 +289,22 @@ public:
     };
     Q_ENUM(OsType)
 
+    // What a key shows in full screen with fsShortcutFeedback (the kinds of
+    // shortcutfeedback::Kind, player/shortcut_feedback.hpp)
+    enum ShortcutKind
+    {
+        SHORTCUT_NONE = shortcutfeedback::None,
+        SHORTCUT_CONTROLS = shortcutfeedback::Controls,
+        SHORTCUT_SEEK = shortcutfeedback::Seek,
+        SHORTCUT_POSITION = shortcutfeedback::Position,
+        SHORTCUT_PLAYPAUSE = shortcutfeedback::PlayPause,
+        SHORTCUT_FRAME = shortcutfeedback::Frame,
+        SHORTCUT_RATE = shortcutfeedback::Rate,
+        SHORTCUT_VOLUME = shortcutfeedback::Volume,
+        SHORTCUT_MESSAGE = shortcutfeedback::Message,
+    };
+    Q_ENUM(ShortcutKind)
+
     //what should the main view display
     //multiple modes may be enabled, priority applies across modes
     //minimal > player > medialib
@@ -295,6 +326,8 @@ public:
     inline bool isShowRemainingTime() const  { return m_showRemainingTime; }
     inline double getIntfScaleFactor() const { return m_intfScaleFactor; }
     Q_INVOKABLE inline double getIntfUserScaleFactor() const { return m_intfUserScaleFactor; }
+    inline int interfaceSize() const { return m_interfaceSize; }
+    inline int automaticInterfaceSize() const { return m_automaticInterfaceSize; }
     inline int CSDBorderSize() const { return 10; }
     inline double getMinIntfUserScaleFactor() const { return MIN_INTF_USER_SCALE_FACTOR; }
     inline double getMaxIntfUserScaleFactor() const { return MAX_INTF_USER_SCALE_FACTOR; }
@@ -351,6 +384,9 @@ public:
     int mouseHideTimeout() const { return m_mouseHideTimeout; }
     int fsSensitivity() const { return m_fsSensitivity; }
     bool fullscreenControls() const { return m_fullscreenControls; }
+    int fsShortcutFeedback() const { return m_fsShortcutFeedback; }
+    bool shortcutFeedbackActive() const { return m_shortcutFeedbackActive; }
+    void setShortcutFeedbackActive(bool active);
     bool playlistTree() const { return m_playlistTree; }
     int doubleClickAction() const { return m_doubleClickAction; }
     // where the volume meter shows: 0 by the direction of the language,
@@ -370,6 +406,17 @@ public:
 
     // no hotkey of VLC takes the key: the interface may (Q, L of the onboarding)
     Q_INVOKABLE bool isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // What the key shows in full screen with fsShortcutFeedback: the kind
+    // (ShortcutKind) of the action of VLC the hotkeys give it, as the core
+    // maps it (the key-* options); SHORTCUT_NONE for a key of no action
+    Q_INVOKABLE int shortcutKind(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
+    // Counts the keys given to the hotkeys (sent, or held for later: a tap
+    // of Space plays or pauses as it is released, a hold speeds up): the
+    // player knows whether a key it saw went there, or to a panel
+    Q_INVOKABLE int hotkeySerial() const { return m_hotkeySerial; }
+    void keyHeldForHotkeys() { ++m_hotkeySerial; }
+    // A speed as the feedback writes it: "1.5x" (a multiplication sign)
+    Q_INVOKABLE QString shortcutRateText(double rate) const;
     // The action of live TV the key has in the shortcuts ("channel-up",
     // "channel-down", "previous", "list", "info"), "" none
     Q_INVOKABLE QString tvKeyAction(Qt::Key key, Qt::KeyboardModifiers modifiers) const;
@@ -403,15 +450,6 @@ public:
                                                                         unsigned char minor,
                                                                         unsigned char patch)
                                                                        { return QT_VERSION_CHECK(major, minor, patch); }
-
-    Q_INVOKABLE static /*constexpr*/ inline bool qtQuickControlRejectsHoverEvents() {
-        // QTBUG-100543
-        return (QT_VERSION < QT_VERSION_CHECK(6, 3, 0) && QT_VERSION >= QT_VERSION_CHECK(6, 2, 5)) ||
-               (QT_VERSION < QT_VERSION_CHECK(6, 4, 0) && QT_VERSION >= QT_VERSION_CHECK(6, 3, 1)) ||
-               (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0));
-    }
-
-    Q_INVOKABLE QJSValue urlListToMimeData(const QJSValue& array);
 
     Q_INVOKABLE static void setFiltersChildMouseEvents(QQuickItem *item, bool enable)
     {
@@ -607,6 +645,10 @@ protected:
 
     /* Flags */
     double               m_intfUserScaleFactor = 1.;
+    int                  m_interfaceSize = 0; /// "Interface size": 0 Automatic, else percent
+    int                  m_automaticInterfaceSize = 100; /// what Automatic finds for the screen
+    bool                 m_interfaceScaleForced = false; /// --qt-interface-scale
+    bool                 m_interfaceScaleDismissed = false; /// a size was chosen since
     double               m_intfScaleFactor = 1.;
     int                  i_notificationSetting = 0; /// Systray Notifications
     bool                 b_hideAfterCreation = false; /// --qt-start-minimized
@@ -666,6 +708,17 @@ protected:
     int m_mouseHideTimeout = 1000;
     int m_fsSensitivity = 3;
     bool m_fullscreenControls = true;
+    int m_fsShortcutFeedback = 0;
+    bool m_shortcutFeedbackActive = false;
+    int m_hotkeySerial = 0;
+    // the jumps of the keys pressed in a row ("+30 s")
+    shortcutfeedback::SeekSum m_seekSum;
+    // The kind (ShortcutKind) of an action of VLC ("jump+short") now: the
+    // arrows of a 360 degrees video turn it (the picture shows it)
+    int shortcutKindOf(const QString &action) const;
+    // A key sent to the hotkeys with the feedback on: shortcutFeedback(), and
+    // no message of the core on the video for a moment
+    void giveShortcutFeedback(int vlcKey);
     bool m_playlistTree = false;
     int m_doubleClickAction = 1;
     int m_volumeMeterPosition = 0;
@@ -734,6 +787,8 @@ public slots:
     void setLyricsMode( bool );
     void incrementIntfUserScaleFactor( bool increment);
     void setIntfUserScaleFactor( double );
+    /// "Interface size": 0 Automatic, else one of its percentages; kept
+    void setInterfaceSize( int percent );
     void setHasToolbarMenu( bool );
 
     void setPinVideoControls( bool );
@@ -803,6 +858,8 @@ signals:
     void requestInterfaceMinimized();
 
     void intfScaleFactorChanged();
+    void interfaceSizeChanged();
+    void automaticInterfaceSizeChanged();
     void intfDevicePixelRatioChanged();
     // the language of the interface changed: texts made once (models, menus,
     // dialogs) are made again; qsTr() bindings are retranslated by the engine
@@ -835,6 +892,16 @@ signals:
     void mouseHideTimeoutChanged();
     void fsSensitivityChanged();
     void fullscreenControlsChanged();
+    void fsShortcutFeedbackChanged();
+    void shortcutFeedbackActiveChanged();
+    // A key went to the hotkeys while shortcutFeedbackActive: its kind
+    // (ShortcutKind), its action of VLC ("jump+short") and a text: the step
+    // of the jumps in a row for a seek ("+30 s", "" when it can't seek), the
+    // name of the action for a frame step or a message
+    void shortcutFeedback(int kind, const QString &action, const QString &text);
+    // The message the core did not draw on the video meanwhile ("Subtitle
+    // track: English", "Aspect ratio: 16:9"), in the interface's language
+    void shortcutMessage(const QString &text);
     void playlistTreeChanged();
     void doubleClickActionChanged();
     void volumeMeterPositionChanged();

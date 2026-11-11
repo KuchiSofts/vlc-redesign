@@ -107,9 +107,14 @@ private:
     void loadTarget(const MLItemId& target);
     void loadUrlTarget(const QUrl& target);
     void refreshTargets(const Target& initial);
-    void scanFolder(const QUrl& folder);
+    // The subtitle (or audio) files of folder, read on a worker thread (a
+    // folder of a slow drive or of the network holds nothing up), with its
+    // media files too when media; busy meanwhile, then they replace the
+    // files found before (those chosen stay) and match()
+    void scanFolder(const QUrl& folder, bool media = false);
     // a subtitle file, or an audio file in audio
     bool accepts(const QString& filename) const;
+    static bool accepts(const QString& filename, bool audio);
     bool m_audio = false;
     QUrl m_folder;
     QPointer<MediaLib> m_ml;

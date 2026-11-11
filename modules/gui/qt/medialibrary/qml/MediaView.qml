@@ -61,6 +61,8 @@ MainViewLoader {
     // The grid keeps the 20px side margins of the video grids (rows of the
     // home page), instead of the responsive margins of the base view
     property bool compactMargins: false
+    // Home's rows: the design's card sizes at the design's own page width
+    property bool designWidthWins: false
 
     property bool reuseItems: true
 
@@ -142,6 +144,7 @@ MainViewLoader {
             // Figma home "Frame 39": cover 200, 20, title 19, 10, artist
             // 19 (268: 18 + 18 with the 1 + 1 the helper adds), gap 20
             fixedPictureWidth: root.compactMargins
+            designWidthWins: root.designWidthWins
             horizontalSpacing: root.compactMargins ? VLCStyle.dp(20, VLCStyle.scale) : VLCStyle.column_spacing
             verticalSpacing: root.compactMargins ? VLCStyle.dp(40, VLCStyle.scale) : VLCStyle.column_spacing
             titleTopMargin: root.compactMargins ? VLCStyle.dp(20, VLCStyle.scale) : VLCStyle.gridItemTitle_topMargin
@@ -185,9 +188,13 @@ MainViewLoader {
                 title: model.title || qsTr("Unknown Title")
                 // The design: the artist under a regular title (Inter 16,
                 // #969696 and #6B6B6B), covers with a radius of 12
-                subtitle: model.main_artist ? model.main_artist : (model.duration?.formatHMS() ?? "--:--")
+                // (the artist, else the duration once it is known: "--:--" under
+                // every card of media not read yet looked unfinished)
+                subtitle: model.main_artist ? model.main_artist
+                          : (model.duration?.valid() ? model.duration.formatHMS() : "")
                 titleTopMargin: gridView.titleTopMargin
                 subtitleTopMargin: gridView.subtitleTopMargin
+                redesign: root.compactMargins
                 pictureRadius: root.compactMargins ? VLCStyle.dp(12, VLCStyle.scale) : VLCStyle.gridCover_radius
                 titleFontWeight: Font.Normal
                 titleFontFamily: VLCStyle.redesign.fontFamily
@@ -348,7 +355,10 @@ MainViewLoader {
 
             cover: VLCStyle.noArtAlbumCover // TODO: better fallback image
 
-            text: qsTr("No media found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No media found\nPlease try adding sources")
 
             Navigation.parentItem: root
         }

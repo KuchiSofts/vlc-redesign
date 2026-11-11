@@ -32,8 +32,25 @@ T.ToolBar {
     required property SearchCtx search
     required property SortCtx sort
 
-    readonly property bool compact: width < VLCStyle.dp(760, VLCStyle.scale) ||
-        (actionLoader.active && availableWidth < actionLoader.implicitWidth + VLCStyle.dp(680, VLCStyle.scale))
+    // what one line needs beside the action: the arrows (24 12 24 10), the
+    // title, the count, the tools at their narrowest (a search of 120; sort,
+    // view and more where the page sorts: 132) and the gaps of 20; an address of several crumbs
+    // keeps the room of the design (680)
+    readonly property real _lineNeeds: (crumbs && crumbs.length > 1)
+        ? VLCStyle.dp(680, VLCStyle.scale)
+        : VLCStyle.dp(70 + 120 + 60, VLCStyle.scale) + (sort.available ? VLCStyle.dp(132, VLCStyle.scale) : 0)
+          + titleAdvance.advanceWidth
+          + (itemCount >= 0 ? countLabel.implicitWidth : 0)
+    // (two lines only when one cannot hold them: a page 700 wide, as a
+    // 1920 window at 200 %, broke its header with room to spare)
+    readonly property bool compact: availableWidth < _lineNeeds + (actionLoader.active ? actionLoader.implicitWidth : 0)
+    TextMetrics {
+        id: titleAdvance
+        text: root.breadcrumb
+        font.family: VLCStyle.redesign.fontFamily
+        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
+        font.weight: Font.DemiBold
+    }
     // compact: the group at the right of the design (count, sort, view,
     // search, more) under the address; an action of buttons gets a row of
     // its own
@@ -382,6 +399,9 @@ T.ToolBar {
             Widgets.ListLabel {
                 id: titleLabel
                 Layout.fillWidth: true
+                // (a short title is never the one squeezed: the search field
+                // gives way first)
+                Layout.minimumWidth: Math.min(Math.ceil(implicitWidth), VLCStyle.dp(160, VLCStyle.scale))
                 Layout.fillHeight: true
                 visible: !crumbRow.visible
                 text: root.breadcrumb
@@ -553,7 +573,8 @@ T.ToolBar {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
-                    anchors.rightMargin: VLCStyle.dp(8, VLCStyle.scale)
+                    anchors.rightMargin: clearSearch.visible ? clearSearch.width + VLCStyle.dp(4, VLCStyle.scale)
+                                                             : VLCStyle.dp(8, VLCStyle.scale)
                     background: Item {}
                     padding: 0
                     leftPadding: 0
@@ -588,6 +609,38 @@ T.ToolBar {
                     }
                     Component.onDestruction: {
                         if (activeFocus) MainCtx.useGlobalShortcuts = previousGlobalShortcuts
+                    }
+                }
+
+                // empties the field (shown while it holds text)
+                MouseArea {
+                    id: clearSearch
+                    visible: searchField.text.length > 0
+                    anchors.right: parent.right
+                    anchors.rightMargin: VLCStyle.dp(4, VLCStyle.scale)
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: VLCStyle.dp(26, VLCStyle.scale)
+                    height: width
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    Accessible.role: Accessible.Button
+                    Accessible.name: qsTr("Clear")
+                    onClicked: {
+                        searchField.clear()
+                        searchField.forceActiveFocus(Qt.MouseFocusReason)
+                    }
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: VLCStyle.dp(4, VLCStyle.scale)
+                        visible: parent.containsMouse
+                        color: VLCStyle.redesign.color("#2A2A2A", "#a3a3a2", root.darkTheme)
+                    }
+                    Image {
+                        anchors.centerIn: parent
+                        width: VLCStyle.dp(16, VLCStyle.scale)
+                        height: width
+                        sourceSize: Qt.size(width, height)
+                        source: "qrc:///redesign/icons/close/default.svg"
                     }
                 }
 

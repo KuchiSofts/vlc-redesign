@@ -5,6 +5,7 @@
  *       modules/gui/qt/player/subtitle_cues_parser.cpp -o subtitle-cues-parser && ./subtitle-cues-parser
  */
 #include "modules/gui/qt/player/subtitle_cues_parser.hpp"
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <string>
@@ -14,6 +15,25 @@ using subtitlecues::parse;
 static int failures = 0;
 #define CHECK(condition) do { if (!(condition)) { \
     std::fprintf(stderr, "FAIL line %d: %s\n", __LINE__, #condition); ++failures; } } while (0)
+
+static std::string repeated(const std::string &part, size_t times)
+{
+    std::string out;
+    out.reserve(part.size() * times);
+    for (size_t i = 0; i < times; ++i)
+        out += part;
+    return out;
+}
+
+// how long parse() takes over a file, in ms (and its cues)
+static long long timedParse(const std::string &bytes, size_t *count = nullptr)
+{
+    const auto start = std::chrono::steady_clock::now();
+    const auto cues = parse(bytes);
+    if (count)
+        *count = cues.size();
+    return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
+}
 
 int main()
 {
@@ -167,11 +187,51 @@ int main()
                 break;
         }
     }
+    // Times past 100000 hours are none; VobSub's delays add up within twice
+    // that (the fuzz test's file: 2563 delays of 999999999 hours made the sum
+    // overflow an int64, undefined behaviour the sanitizer stops at)
+    {
+        CHECK(parse("id:\ntimestamp:\n" + repeated("delay: 999999999:59:59:999\n", 2563)).empty());
+        const int64_t maxMs = int64_t(100000) * 3600 * 1000;
+        const std::string vobSub = "# VobSub index file, v7 (do not modify this line!)\nid: en, index: 0\n";
+        const auto later = parse(vobSub + repeated("delay: 99999:59:59:999\n", 3000)
+                                 + "timestamp: 00:00:01:000, filepos: 0\n");
+        CHECK(later.size() == 1 && later[0].startMs == maxMs + 1000);
+        CHECK(parse(vobSub + repeated("delay: -99999:59:59:999\n", 3000)
+                    + "timestamp: 00:00:01:000, filepos: 0\n").empty());
+        CHECK(parse("1\n100001:00:00,000 --> 100001:00:01,000\nX\n").empty());
+        const auto most = parse("1\n99999:00:00,000 --> 99999:00:01,000\nX\n");
+        CHECK(most.size() == 1 && most[0].startMs == int64_t(99999) * 3600 * 1000);
+        CHECK(parse("1\n999999999:00,000 --> 999999999:01,000\nX\n").empty()); // (minutes, past it)
+        // (a frame rate below 1 a second: VLC's 25)
+        CHECK(parse("{999999999}{999999999}x\n", 1e-300).size() == 1);
+    }
+    // Read once, whatever the file holds (milliseconds; these took seconds,
+    // their time growing with the square of the file)
+    {
+        size_t count = 0;
+        // SAMI: many SYNC, then </BODY> or none (each SYNC looked for it to
+        // the end of the file)
+        const std::string sync = "<SYNC Start=1000><P>Hi\n";
+        CHECK(timedParse("<SAMI><BODY>" + repeated(sync, 12000), &count) < 2000 && count > 0);
+        CHECK(timedParse("<SAMI><BODY>" + repeated(sync, 12000) + "</BODY></SAMI>", &count) < 2000 && count > 0);
+        // a cue of 1 MB of '<', or of '{', never closed (each looked for
+        // its end to the end of the cue)
+        const std::string head = "1\n00:00:01,000 --> 00:00:02,000\n";
+        CHECK(timedParse(head + std::string(1 << 20, '<') + "\n", &count) < 2000 && count == 1);
+        CHECK(timedParse(head + std::string(1 << 20, '{') + "\n", &count) < 2000 && count == 1);
+        CHECK(timedParse(head + repeated("<a", 1 << 19) + ">\n", &count) < 2000 && count == 1);
+        // (and still what it was: a tag of less than 256 bytes goes, a
+        // longer one stays)
+        const auto tags = parse(head + "<i>a</i> <" + std::string(300, 'x') + "> {\\b1}b\n");
+        CHECK(tags.size() == 1 && tags[0].text.substr(0, 4) == "a <x");
+    }
 
     if (failures) {
         std::fprintf(stderr, "%d failure(s)\n", failures);
         return EXIT_FAILURE;
     }
-    std::puts("PASS: SRT, WebVTT, ASS/SSA, MicroDVD, SubViewer/SBV, SAMI, VobSub idx, UTF-16, sorting, rejects");
+    std::puts("PASS: SRT, WebVTT, ASS/SSA, MicroDVD, SubViewer/SBV, SAMI, VobSub idx, UTF-16, sorting, rejects, "
+              "times and delays in range, one pass over SAMI and open tags");
     return EXIT_SUCCESS;
 }

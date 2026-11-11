@@ -109,8 +109,14 @@ MainViewLoader {
         Widgets.ExpandGridItemView {
             id: gridView_id
 
-            basePictureWidth: VLCStyle.gridCover_video_width
-            basePictureHeight: VLCStyle.gridCover_video_width / 2
+            // cards of the videos' width (316, 20 apart) that fill the row,
+            // the name on the picture: two huge cards a row in a small window
+            // or at a large interface size, before
+            basePictureWidth: VLCStyle.dp(316, VLCStyle.scale)
+            basePictureHeight: VLCStyle.dp(158, VLCStyle.scale)
+            fixedPictureWidth: true
+            horizontalSpacing: VLCStyle.dp(20, VLCStyle.scale)
+            verticalSpacing: VLCStyle.dp(20, VLCStyle.scale)
             titleHeight: 0
             subtitleHeight: 0
 
@@ -135,6 +141,8 @@ MainViewLoader {
                 pictureHeight: gridView_id.maxPictureHeight
 
                 image: model.cover || ""
+                redesign: true
+                pictureRadius: VLCStyle.dp(12, VLCStyle.scale)
                 cacheImage: true // for this view, we generate custom covers, cache it
 
                 fallbackImage: VLCStyle.noArtAlbumCover
@@ -160,7 +168,7 @@ MainViewLoader {
                     Rectangle {
                         anchors.fill: parent
 
-                        radius: VLCStyle.gridCover_radius
+                        radius: VLCStyle.dp(12, VLCStyle.scale)
 
                         gradient: Gradient {
                             GradientStop { position: 0.0; color: Qt.rgba(0, 0, 0, 0.3) }
@@ -175,8 +183,9 @@ MainViewLoader {
                         T.Label {
                             width: overlay.width
                             elide: Text.ElideRight
-                            font.pixelSize: VLCStyle.fontSize_large
-                            font.weight: Font.DemiBold
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
+                            font.weight: Font.Medium
                             text: model.name || qsTr("Unknown genre")
                             color: "white"
                             horizontalAlignment: Text.AlignHCenter
@@ -185,6 +194,8 @@ MainViewLoader {
                         Widgets.CaptionLabel {
                             width: overlay.width
                             text: qsTr("%1 Track", "%1 Tracks", model.nb_tracks).arg(model.nb_tracks)
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                             opacity: .7
                             color: "white"
                             horizontalAlignment: Text.AlignHCenter
@@ -294,7 +305,10 @@ MainViewLoader {
         id: emptyLabelComponent
 
         Widgets.EmptyLabelButton {
-            text: qsTr("No genres found\nPlease try adding sources")
+            // (a search that finds nothing says so: "try adding sources" stood
+            // under a search of a full library)
+            text: (root.model?.searchPattern ?? "") !== "" ? qsTr("No results")
+                  : qsTr("No genres found\nPlease try adding sources")
             Navigation.parentItem: root
             cover: VLCStyle.noArtAlbumCover
         }

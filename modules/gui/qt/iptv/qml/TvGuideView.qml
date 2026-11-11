@@ -32,7 +32,7 @@ FocusScope {
     LayoutMirroring.enabled: false
     LayoutMirroring.childrenInherit: true
 
-    readonly property real channelWidth: px(220)
+    readonly property real channelWidth: px(260)
     readonly property real rowHeight: px(56)
     readonly property real gridWidth: Math.max(px(200), width - channelWidth - px(20))
     // Settings > TV: the hours across the guide
@@ -50,6 +50,25 @@ FocusScope {
     readonly property real leftTime: origin + timeX / pxPerSec
     readonly property int firstBlock: Math.max(0, Math.floor(timeX / (blockSecs * pxPerSec)) - 1)
     readonly property int lastBlock: Math.floor((timeX + gridWidth) / (blockSecs * pxPerSec)) + 1
+
+    // the rows in sight that show a programme: none of them, once they have
+    // been answered, is the guide's empty state (the hours shown lie outside
+    // what the guide holds, or the guide was read long ago)
+    property int rowsWithCells: 0
+    // (counted again every ten minutes of the time scrolled)
+    readonly property int viewStep: Math.floor(leftTime / 600)
+    property bool settled: false
+    readonly property bool nothingToShow: settled && rowsWithCells === 0 && Iptv.channelModel.count > 0
+    Timer {
+        id: settle
+        interval: 500
+        onTriggered: root.settled = true
+    }
+    function unsettle() {
+        settled = false
+        settle.restart()
+    }
+    onTimeXChanged: if (rowsWithCells === 0) unsettle()
 
     // the programmes the rows ask for, gathered for a moment and asked at
     // once: each row asked on its own, twenty trips through the add-on's
@@ -78,6 +97,7 @@ FocusScope {
                 to = Math.max(to, r.to)
             }
         Iptv.programmes(keys, from, to, (result) => {
+            settle.restart()
             for (const key of keys) {
                 const list = result[key] || []
                 for (const r of asked[key])
@@ -104,7 +124,10 @@ FocusScope {
         }
     }
 
-    Component.onCompleted: Qt.callLater(() => root.scrollTo(Iptv.now - Iptv.guideHours * 3600 / 4, false))
+    Component.onCompleted: {
+        settle.start()
+        Qt.callLater(() => root.scrollTo(Iptv.now - Iptv.guideHours * 3600 / 4, false))
+    }
     onPxPerSecChanged: Qt.callLater(() => root.scrollTo(root.leftTime, false))
 
     NumberAnimation {
@@ -180,7 +203,10 @@ FocusScope {
             model: Math.ceil(root.gridWidth / (1800 * root.pxPerSec)) + 2
             Item {
                 required property int index
-                readonly property real time: Math.floor(root.leftTime / 1800) * 1800 + index * 1800
+                // (counted from the origin, a local midnight: on the clock's
+                // half hours in every time zone, UTC+5:45 or +12:45 too)
+                readonly property real time: root.origin + Math.floor((root.leftTime - root.origin) / 1800) * 1800
+                                             + index * 1800
                 x: (time - root.origin) * root.pxPerSec
                 width: 1800 * root.pxPerSec
                 height: timeline.height
@@ -260,13 +286,39 @@ FocusScope {
             width: ListView.view.width
             height: root.rowHeight
 
-            // the programmes of the blocks asked, by start
-            property var programmes: []
-            property var _blocks: ({})
+            // the programmes of the blocks asked, by start (both set as the
+            // row is made, and again for another channel: no initial binding,
+            // which each of these assignments would overwrite)
+            property var programmes
+            property var _blocks
             // the ones of the blocks in sight, as cells: changed at its ends
             // only (a new list made every cell of every row again at each
             // block the time crossed)
             ListModel { id: shown }
+            property bool counted: false
+            function count() {
+                // (in the hours shown: the cells of the blocks beside them
+                // are kept too)
+                const from = root.leftTime, to = root.leftTime + root.gridWidth / root.pxPerSec
+                let has = false
+                for (let i = 0; i < shown.count && !has; ++i) {
+                    const p = shown.get(i)
+                    has = p.stop > from && p.start < to
+                }
+                if (has !== counted) {
+                    counted = has
+                    root.rowsWithCells += has ? 1 : -1
+                }
+            }
+            Connections {
+                target: shown
+                function onCountChanged() { row.count() }
+            }
+            Connections {
+                target: root
+                function onViewStepChanged() { row.count() }
+            }
+            Component.onDestruction: if (counted) root.rowsWithCells -= 1
 
             function load() {
                 const wanted = []
@@ -335,7 +387,14 @@ FocusScope {
                 if (model.hasGuide)
                     Qt.callLater(load)
             }
-            Component.onCompleted: if (model.hasGuide) load()
+            Component.onCompleted: {
+                if (!programmes)
+                    programmes = []
+                if (!_blocks)
+                    _blocks = {}
+                if (model.hasGuide)
+                    load()
+            }
             Connections {
                 target: root
                 function onFirstBlockChanged() { if (row.model.hasGuide) row.load() }
@@ -474,9 +533,12 @@ FocusScope {
                             // (no clip of its own: its texts are cut to its width,
                             // a clip each kept the cells from being drawn together)
                             contentItem: Item {
-                                visible: cell.width > root.px(28)
                                 // the text stays in sight while its start is
-                                // left of the grid
+                                // left of the grid; a programme that ended
+                                // left of it shows none (a Text 0 wide is not
+                                // elided but drawn whole: the times of past
+                                // programmes piled up on the grid's edge)
+                                visible: cell.width - inset > root.px(28)
                                 readonly property real inset: Math.max(0, root.timeX - cell.x)
                                 Column {
                                     id: texts
@@ -550,7 +612,9 @@ FocusScope {
         x: xNow - width / 2
         y: timeline.y + timeline.height - root.px(6)
         width: root.px(2)
-        height: rows.y + rows.height - y
+        // (it ends with the last channel's row: not on through the empty
+        // page under a short list)
+        height: rows.y + Math.min(rows.height, rows.contentHeight) - y
         color: VLCStyle.redesign.accent
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -571,7 +635,39 @@ FocusScope {
         size: timeline.width / timeline.contentWidth
         position: timeline.contentX / timeline.contentWidth
         onPositionChanged: if (pressed) timeline.contentX = position * timeline.contentWidth
-        policy: T.ScrollBar.AlwaysOn
+        // Shown while the time moves and while it is held, as the other
+        // scroll bars: always on, its handle (days of guide make it a dot)
+        // sat under the grid as a stray mark.
+        minimumSize: Math.min(1, root.px(48) / Math.max(1, width))
+        active: hScrollShown.running || hovered || pressed
+        Timer { id: hScrollShown; interval: 800 }
+        Connections {
+            target: timeline
+            function onContentXChanged() { hScrollShown.restart() }
+        }
+    }
+
+    // nothing for the hours shown: said, with the way out
+    Column {
+        visible: root.nothingToShow
+        x: root.channelWidth + Math.round((root.gridWidth - width) / 2)
+        y: rows.y + Math.round(Math.max(0, Math.min(rows.height, rows.contentHeight) - height) / 2)
+        spacing: root.px(14)
+        Text {
+            anchors.horizontalCenter: parent.horizontalCenter
+            // (a text the catalogs already have, in every language)
+            text: qsTr("No guide")
+            color: root.c("#969696", "#4d4d4d")
+            font.family: VLCStyle.redesign.fontFamily
+            font.pixelSize: VLCStyle.redesign.fontMedium
+        }
+        Widgets.RedesignButton {
+            anchors.horizontalCenter: parent.horizontalCenter
+            accent: true
+            enabled: !Iptv.busy
+            text: Iptv.busy ? qsTr("Updating…") : qsTr("Update")
+            onClicked: Iptv.refresh("")
+        }
     }
 
     Text {

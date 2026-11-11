@@ -46,6 +46,7 @@
 #include "util/renderer_manager.hpp"
 #include "util/csdbuttonmodel.hpp"
 #include "util/subtitle_preferences.hpp"
+#include "util/screen_fit.hpp"
 
 #include "util/vlchotkeyconverter.hpp"
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
@@ -92,9 +93,7 @@
 
 #include <QOperatingSystemVersion>
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
 #include <QStyleHints>
-#endif
 
 #ifdef _WIN32
 #include <QFileInfo>
@@ -130,6 +129,9 @@ static int IntfBossCB( vlc_object_t *p_this, const char *psz_variable,
 static int IntfRaiseMainCB( vlc_object_t *p_this, const char *psz_variable,
                            vlc_value_t old_val, vlc_value_t new_val,
                            void *param );
+static int KeyFeedbackTextCB( vlc_object_t *p_this, const char *psz_variable,
+                              vlc_value_t old_val, vlc_value_t new_val,
+                              void *param );
 
 const QEvent::Type MainCtx::ToolbarsNeedRebuild =
         (QEvent::Type)QEvent::registerEventType();
@@ -198,7 +200,6 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     menuStyle->setParent(qApp);
     qApp->installEventFilter(menuStyle);
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
     connect(m_colorScheme, &ColorSchemeModel::currentChanged, qGuiApp, [colorScheme = m_colorScheme]() {
         QStyleHints *const styleHints = qGuiApp->styleHints();
         if (unlikely(!styleHints))
@@ -221,7 +222,6 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
 
         styleHints->setColorScheme(scheme);
     });
-#endif
 
     m_sort = new SortCtx(this);
     m_search = new SearchCtx(this);
@@ -257,6 +257,14 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     vlc_object_t *instance = VLC_OBJECT(vlc_object_instance(p_intf));
     var_Create(instance, "intf-volume-meter", VLC_VAR_BOOL);
     var_SetBool(instance, "intf-volume-meter", true);
+
+    /* "When you use a shortcut in full screen" (issue #72): until the time
+     * of intf-key-feedback (set as a key is sent, giveShortcutFeedback), the
+     * player gives its messages to the interface instead of drawing them on
+     * the video (src/player/osd.c) */
+    var_Create(instance, "intf-key-feedback", VLC_VAR_INTEGER);
+    var_Create(instance, "intf-key-feedback-text", VLC_VAR_STRING);
+    var_AddCallback(instance, "intf-key-feedback-text", KeyFeedbackTextCB, this);
 
     /* Get the available interfaces */
     m_extraInterfaces = new VLCVarChoiceModel(VLC_OBJECT(p_intf->intf), "intf-add", this);
@@ -392,6 +400,9 @@ MainCtx::~MainCtx()
 {
     /* no meter any more: the volume's message on the video again */
     var_SetBool(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-volume-meter", false);
+    /* nor the feedback of the keys: the core's messages, at once */
+    var_SetInteger(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-key-feedback", 0);
+    var_DelCallback(VLC_OBJECT(vlc_object_instance(p_intf)), "intf-key-feedback-text", KeyFeedbackTextCB, this);
 
     /* The hotkeys left are dropped; an action still running ends first (as
      * the callbacks it may call go below) */
@@ -416,7 +427,6 @@ MainCtx::~MainCtx()
 
     settings->beginGroup("MainWindow");
     settings->setValue( "ShowRemainingTime", m_showRemainingTime );
-    settings->setValue( "interface-scale", QString::number( m_intfUserScaleFactor ) );
 
     /* Save playlist state */
     settings->setValue( "playqueue-panel-docked", m_playqueuePanel->m_docked );
@@ -627,6 +637,7 @@ void MainCtx::loadPrefs(const bool callSignals)
     loadFromVLCOption(m_mouseHideTimeout, "mouse-hide-timeout", &MainCtx::mouseHideTimeoutChanged);
     loadFromVLCOption(m_fsSensitivity, "qt-fs-sensitivity", &MainCtx::fsSensitivityChanged);
     loadFromVLCOption(m_fullscreenControls, "qt-fs-controller", &MainCtx::fullscreenControlsChanged);
+    loadFromVLCOption(m_fsShortcutFeedback, "qt-fs-shortcut-feedback", &MainCtx::fsShortcutFeedbackChanged);
     loadFromVLCOption(m_playlistTree, "playlist-tree", &MainCtx::playlistTreeChanged);
     loadFromVLCOption(m_showErrorDialogs, "qt-error-dialogs", &MainCtx::showErrorDialogsChanged);
 
@@ -710,6 +721,32 @@ void MainCtx::loadPrefs(const bool callSignals)
     vlc::playlist::Media::setHistoryFilter( QRegularExpression(
         getSettings()->value( "redesign/recentplay-filter" ).toString(),
         QRegularExpression::CaseInsensitiveOption ) );
+
+    /* "Interface size" of the settings: Automatic (0, the size found for
+     * the screen), or a percentage of the design's size. The one setting of
+     * the scale: the factor an older version kept (always, 1 when it was
+     * never changed) becomes the nearest choice, once. */
+    int interfaceSize;
+    if (getSettings()->contains( "redesign/interface-size" ))
+        interfaceSize = getSettings()->value( "redesign/interface-size", 0 ).toInt();
+    else
+    {
+        const double kept = getSettings()->value( "MainWindow/interface-scale", 1.0 ).toDouble();
+        interfaceSize = std::fabs( kept - 1.0 ) < 0.005 ? 0 : ScreenFit::nearestInterfaceSize( kept * 100. );
+        getSettings()->setValue( "redesign/interface-size", interfaceSize );
+    }
+    if (interfaceSize != 0)
+        interfaceSize = ScreenFit::nearestInterfaceSize( interfaceSize );
+    const bool sizeChanged = interfaceSize != m_interfaceSize;
+    m_interfaceSize = interfaceSize;
+    /* (--qt-interface-scale on the command line: that factor, as it is) */
+    const auto forcedScaleFactor = var_InheritFloat(p_intf, "qt-interface-scale");
+    m_interfaceScaleForced = forcedScaleFactor != -1 && !m_interfaceScaleDismissed;
+    if (m_interfaceScaleForced)
+        m_intfUserScaleFactor = forcedScaleFactor;
+    updateIntfScaleFactor();
+    if (sizeChanged && callSignals)
+        emit interfaceSizeChanged();
 }
 
 void MainCtx::loadFromSettingsImpl(const bool callSignals)
@@ -751,15 +788,6 @@ void MainCtx::loadFromSettingsImpl(const bool callSignals)
     const auto colorSchemeIndex = getSettings()->value( "MainWindow/color-scheme-index", 0 ).toInt();
     m_colorScheme->setCurrentIndex(colorSchemeIndex);
 
-    /* user interface scale factor */
-    auto userIntfScaleFactor = var_InheritFloat(p_intf, "qt-interface-scale");
-    if (userIntfScaleFactor == -1)
-        userIntfScaleFactor = getSettings()->value( "MainWindow/interface-scale", 1.0).toDouble();
-    if (m_intfUserScaleFactor != userIntfScaleFactor)
-    {
-        m_intfUserScaleFactor = userIntfScaleFactor;
-        updateIntfScaleFactor();
-    }
 }
 
 void MainCtx::reloadPrefs()
@@ -817,7 +845,116 @@ void MainCtx::sendHotkey(Qt::Key key , Qt::KeyboardModifiers modifiers)
 {
     QKeyEvent event(QEvent::KeyPress, key, modifiers );
     int vlckey = qtEventToVLCKey(&event);
+    // the player knows the key it saw went to the hotkeys (PlayerView.qml)
+    ++m_hotkeySerial;
+    if (m_shortcutFeedbackActive)
+        giveShortcutFeedback(vlckey);
     postHotkey(vlckey);
+}
+
+void MainCtx::setShortcutFeedbackActive(bool active)
+{
+    if (active == m_shortcutFeedbackActive)
+        return;
+    m_shortcutFeedbackActive = active;
+    m_seekSum.reset();
+    // out of full screen: the core's messages on the video again at once
+    if (!active)
+        var_SetInteger(vlc_object_instance(p_intf), "intf-key-feedback", 0);
+    emit shortcutFeedbackActiveChanged();
+}
+
+int MainCtx::shortcutKindOf(const QString &action) const
+{
+    const int kind = shortcutfeedback::kindOf(action.toStdString());
+    // the arrows turn a 360 degrees video (VLC's player): the picture shows
+    // it, the controls show as before
+    if (action.startsWith(QLatin1String("nav-")) && kind != shortcutfeedback::Controls)
+    {
+        PlayerController *player = p_intf->p_mainPlayerController;
+        const SharedVOutThread vout = player ? player->getVout() : SharedVOutThread();
+        if (vout && var_GetBool(vout.get(), "viewpoint-changeable"))
+            return shortcutfeedback::Controls;
+    }
+    return kind;
+}
+
+int MainCtx::shortcutKind(Qt::Key key, Qt::KeyboardModifiers modifiers) const
+{
+    QKeyEvent event(QEvent::KeyPress, key, modifiers);
+    return shortcutKindOf(vlcKeyAction(VLC_OBJECT(p_intf), qtEventToVLCKey(&event)));
+}
+
+QString MainCtx::shortcutRateText(double rate) const
+{
+    return qfu(shortcutfeedback::rateText(rate).c_str());
+}
+
+void MainCtx::giveShortcutFeedback(int vlcKey)
+{
+    using namespace shortcutfeedback;
+    const QString action = vlcKeyAction(VLC_OBJECT(p_intf), vlcKey);
+    const int kind = shortcutKindOf(action);
+    // the controls (as before), or the volume: the window's meter shows it
+    // (VolumeMeter.qml; the core has no message for it with the meter)
+    if (kind == None || kind == Controls || kind == Volume)
+    {
+        m_seekSum.reset();
+        return;
+    }
+
+    QString text;
+    PlayerController *player = p_intf->p_mainPlayerController;
+    if (kind == Seek)
+    {
+        const int64_t sizes[4] = { var_InheritInteger(p_intf, "extrashort-jump-size"),
+                                   var_InheritInteger(p_intf, "short-jump-size"),
+                                   var_InheritInteger(p_intf, "medium-jump-size"),
+                                   var_InheritInteger(p_intf, "long-jump-size") };
+        // (a live stream doesn't jump: the time only)
+        const int64_t seconds = player && player->isSeekable()
+                                ? jumpSeconds(action.toStdString(), sizes) : 0;
+        if (seconds != 0)
+        {
+            // how far the jumps really go (within the media), not the sum of
+            // the keys: at 0:05, three jumps back say -5 s, not -30 s
+            // (no time known yet: the sum of the keys, as nothing else is)
+            const VLCTime time = player->getTime();
+            const VLCDuration length = player->getLength();
+            const int64_t nowMs = MS_FROM_VLC_TICK(vlc_tick_now());
+            const int64_t sum = time.valid()
+                ? m_seekSum.add(seconds, nowMs, time.asMilliseconds(),
+                                length.valid() ? length.asMilliseconds() : 0)
+                : m_seekSum.add(seconds, nowMs);
+            /* xgettext: The step of a jump in seconds shown in full screen
+             * ("+10 s"); a minute and more are written 1:10 */
+            // xgettext:no-c-format
+            const QString format = qtr("%1 s");
+            text = qfu(stepText(sum, format.toStdString()).c_str());
+        }
+        else
+            m_seekSum.reset();
+    }
+    else
+    {
+        m_seekSum.reset();
+        // the action's name in the shortcuts, until (or without) the core's
+        // message for it
+        if (kind == Frame || kind == Message)
+        {
+            const QByteArray option = QByteArrayLiteral("key-") + action.toLatin1();
+            const module_config_t *item = config_FindConfig(option.constData());
+            if (item && item->psz_text)
+                text = qfut(item->psz_text);
+        }
+    }
+
+    /* The core draws none of its messages on the video for a moment
+     * (src/player/osd.c): the feedback is the one message. Set before the
+     * key goes (its action may run at once in the hotkeys' thread). */
+    var_SetInteger(vlc_object_instance(p_intf), "intf-key-feedback",
+                   vlc_tick_now() + VLC_TICK_FROM_MS(feedbackMs));
+    emit shortcutFeedback(kind, action, text);
 }
 
 double MainCtx::windowLuminance(QQuickWindow *window, const QRectF &area) const
@@ -878,16 +1015,30 @@ void MainCtx::postHotkey(int vlcKey)
 
 void MainCtx::updateIntfScaleFactor()
 {
-    auto newValue = m_intfUserScaleFactor;
-    if (QWindow* window = p_intf->p_compositor ? p_intf->p_compositor->interfaceMainWindow() : nullptr)
+    // the screen of the window (the main one until there is a window)
+    QWindow* window = p_intf->p_compositor ? p_intf->p_compositor->interfaceMainWindow() : nullptr;
+    QScreen* screen = window ? window->screen() : nullptr;
+    // the system's own text size: 1 where it scales the pixels themselves
+    double systemScale = 1.;
+    if (screen)
+        systemScale = screen->logicalDotsPerInch() / VLC_REFERENCE_SCALE_FACTOR;
+    if (QScreen* measured = screen ? screen : QGuiApplication::primaryScreen())
     {
-        QScreen* screen = window->screen();
-        if (screen)
+        // "Interface size", Automatic: found again when the window moves
+        // to another screen or the screen's settings change
+        const int automatic = ScreenFit::automaticInterfaceSize(
+            measured->geometry().width(),
+            measured->logicalDotsPerInch() / VLC_REFERENCE_SCALE_FACTOR, measured->physicalSize(),
+            measured->devicePixelRatio() );
+        if (automatic != m_automaticInterfaceSize)
         {
-            qreal dpi = screen->logicalDotsPerInch();
-            newValue = m_intfUserScaleFactor * dpi / VLC_REFERENCE_SCALE_FACTOR;
+            m_automaticInterfaceSize = automatic;
+            emit automaticInterfaceSizeChanged();
         }
     }
+    if (!m_interfaceScaleForced)
+        m_intfUserScaleFactor = (m_interfaceSize != 0 ? m_interfaceSize : m_automaticInterfaceSize) / 100.;
+    const auto newValue = m_intfUserScaleFactor * systemScale;
 
     const int FACTOR_RESOLUTION = 100;
     if ( static_cast<int>(m_intfScaleFactor * FACTOR_RESOLUTION)
@@ -913,19 +1064,36 @@ void MainCtx::setHasAcrylicSurface(const bool v)
 
 void MainCtx::incrementIntfUserScaleFactor(bool increment)
 {
-    if (increment)
-        setIntfUserScaleFactor(m_intfUserScaleFactor + 0.1);
-    else
-        setIntfUserScaleFactor(m_intfUserScaleFactor - 0.1);
+    // the zoom keys: the next choice of "Interface size"
+    setInterfaceSize( ScreenFit::steppedInterfaceSize( qRound(m_intfUserScaleFactor * 100.), increment ) );
 }
 
 void MainCtx::setIntfUserScaleFactor(double newValue)
 {
-    const auto value = qBound(getMinIntfUserScaleFactor(), newValue, getMaxIntfUserScaleFactor());
-    if (qFuzzyCompare(value, m_intfUserScaleFactor))
+    // (a pinch, the classic preferences) a choice of "Interface size": the
+    // nearest, the next one for a change too small to reach it
+    const int current = qRound(m_intfUserScaleFactor * 100.);
+    const double wanted = qBound(getMinIntfUserScaleFactor(), newValue, getMaxIntfUserScaleFactor()) * 100.;
+    if (std::fabs(wanted - current) < 2.)
         return;
-    m_intfUserScaleFactor = value;
+    int size = ScreenFit::nearestInterfaceSize( wanted );
+    if (size == current)
+        size = ScreenFit::steppedInterfaceSize( current, wanted > current );
+    setInterfaceSize( size );
+}
+
+void MainCtx::setInterfaceSize(int percent)
+{
+    const int size = percent == 0 ? 0 : ScreenFit::nearestInterfaceSize( percent );
+    // chosen: no more the factor of the command line
+    const bool changed = size != m_interfaceSize || m_interfaceScaleForced;
+    m_interfaceScaleForced = false;
+    m_interfaceScaleDismissed = true;
+    m_interfaceSize = size;
+    getSettings()->setValue( "redesign/interface-size", size );
     updateIntfScaleFactor();
+    if (changed)
+        emit interfaceSizeChanged();
 }
 
 void MainCtx::setHasToolbarMenu( bool hasToolbarMenu )
@@ -1151,60 +1319,6 @@ void MainCtx::setVideoSurfaceProvider(VideoSurfaceProvider* videoSurfaceProvider
     emit hasEmbededVideoChanged(m_videoSurfaceProvider && m_videoSurfaceProvider->hasVideoEmbed());
 }
 
-QJSValue MainCtx::urlListToMimeData(const QJSValue &array) {
-    // NOTE: Due to a Qt regression since 17318c4
-    //       (Nov 11, 2022), it is not possible to
-    //       use RFC-2483 compliant string here.
-    //       This regression was later corrected by
-    //       c25f53b (Jul 31, 2024).
-    // NOTE: Qt starts supporting string list since
-    //       17318c4, so starting from 6.5.0 a string
-    //       list can be used which is not affected
-    //       by the said issue. For Qt versions below
-    //       6.5.0, use byte array which is used as is
-    //       by Qt.
-    assert(array.property("length").toInt() > 0);
-
-    QJSEngine* const engine = qjsEngine(this);
-    assert(engine);
-
-    QJSValue data;
-#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
-    QString string;
-    for (int i = 0; i < array.property(QStringLiteral("length")).toInt(); ++i)
-    {
-        QString decodedUrl;
-        const QJSValue element = array.property(i);
-        if (element.isUrl())
-            // QJSValue does not have `toUrl()`
-            decodedUrl = QJSManagedValue(element, engine).toUrl().toString(QUrl::FullyEncoded);
-        else if (element.isString())
-            // If the element is string, we assume it is already encoded
-            decodedUrl = element.toString();
-        else if (element.isVariant())
-        {
-            const QVariant variant = element.toVariant();
-            if (variant.typeId() == QMetaType::QUrl)
-                decodedUrl = variant.toUrl().toString(QUrl::FullyEncoded);
-            else if (variant.typeId() == QMetaType::QString)
-                decodedUrl = variant.toString();
-            else
-                Q_UNREACHABLE();
-        }
-        else
-            Q_UNREACHABLE(); // Assertion failure in debug builds
-        string += decodedUrl + QStringLiteral("\r\n");
-    }
-    string.chop(2);
-    data = engine->toScriptValue(string);
-#else
-    data = array;
-#endif
-    QJSValue ret = engine->newObject();
-    ret.setProperty(QStringLiteral("text/uri-list"), data);
-    return ret;
-}
-
 VideoSurfaceProvider* MainCtx::getVideoSurfaceProvider() const
 {
     return m_videoSurfaceProvider;
@@ -1359,6 +1473,22 @@ static int IntfShowCB( vlc_object_t *, const char *,
     qt_intf_t *p_intf = (qt_intf_t *)param;
     p_intf->p_mi->emitShow();
 
+    return VLC_SUCCESS;
+}
+
+/*****************************************************************************
+ * KeyFeedbackTextCB: the message the player gave instead of drawing it on
+ * the video, for a key fed back in full screen (src/player/osd.c). From any
+ * thread: shown in the interface's.
+ *****************************************************************************/
+static int KeyFeedbackTextCB( vlc_object_t *, const char *,
+                              vlc_value_t, vlc_value_t new_val, void *param )
+{
+    MainCtx *ctx = static_cast<MainCtx *>( param );
+    const QString text = qfu( new_val.psz_string ? new_val.psz_string : "" ).trimmed();
+    if( !text.isEmpty() )
+        QMetaObject::invokeMethod( ctx, [ctx, text]() { emit ctx->shortcutMessage( text ); },
+                                   Qt::QueuedConnection );
     return VLC_SUCCESS;
 }
 
@@ -1609,6 +1739,8 @@ bool MainCtx::takeSizeKey(int vlcKey, bool playerKeys)
         const int step = subtitleScaleStep(p_intf, vlcKey);
         if (step != 2)
         {
+            // a key of an action of VLC: its size is its feedback
+            ++m_hotkeySerial;
             player->stepSubtitleTextScale(step, true, vlcKey);
             return true;
         }
@@ -1693,6 +1825,30 @@ QColor MainCtx::systemAccent() const
 
 void MainCtx::setSettingValue(const QString &key, const QVariant &value)
 {
+    // A value that is already kept is not set again: QSettings then writes
+    // the whole file once more, flushed to the disk, on the interface's
+    // thread. Every page left set its sort that way (a hitch at each change
+    // of page on a slow disk). A number or a switch is read back as text.
+    if (settings->contains(key))
+    {
+        const QVariant kept = settings->value(key);
+        bool same = kept == value;
+        if (!same && kept.typeId() == QMetaType::QString)
+        {
+            switch (value.typeId())
+            {
+            case QMetaType::Bool: case QMetaType::Int: case QMetaType::UInt:
+            case QMetaType::LongLong: case QMetaType::ULongLong: case QMetaType::Double:
+            case QMetaType::QString:
+                same = kept.toString() == value.toString();
+                break;
+            default:
+                break;
+            }
+        }
+        if (same)
+            return;
+    }
     settings->setValue(key, value);
     emit settingValueChanged(key);
 }

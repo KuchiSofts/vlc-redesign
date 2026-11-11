@@ -18,34 +18,34 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-08, 0.5.8 published).
+Updated as the work moves (last: 2026-11-11, 0.6.0 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.5.8 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.5.8 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.5.8 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.5.8 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.5.8 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.5.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.6.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.5.9 and after
+## Next: 0.6.1 and after
 
-**0.5.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🔨 In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
-  choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
-  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF)
+- 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
+  visits of each page
+- 🔨 Every option answers, with the remote too: after Android TV's Settings, Live TV and player, the same walk
+  through the phone and tablet layouts, the desktop and the Samsung TV app
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
 - 📋 The subtitle services with keys and accounts tried with real keys (SubSource, SubDL, OpenSubtitles.com and the
   seven others)
-- 📋 Android TV: after the TV sources close, the remote's focus goes back to the page (not the title bar's ⋯)
 - 📋 Linux: the first update of the AppImage from the app, checked from one version to the next on real desktops
 - 📋 Samsung TV: a USB drive played on a real TV (the folders of the TV's own storage are checked)
 - 📋 Android TV: tests on more TV boxes (Google TV, Fire TV)
@@ -110,6 +110,37 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.6.0 (2026-11-11)
+
+**A full release** of every app, with every installer and package:
+
+- ✅ In full screen, keys and the remote seek, change the volume or pause without showing the controls, if you
+  choose (a slim progress line and the time, or a short message instead), as in VLC 3, in every app
+  ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72), @BarbodF): desktop, Android (phones, tablets, TV)
+  and the Samsung TV app
+- ✅ Interface size: Settings › Interface › Window › *Interface size*: Automatic, 100 to 200 %, applied at once;
+  every window, dialog, menu and popup opens inside its screen and scrolls when it is taller than the window; rows
+  and grids of cards fill the page's width with whole cards at every window size; empty pages show the page's icon
+- ✅ Stability, in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV
+  bounded, stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread
+  free of network and disk work, no QML warning left; the desktop starts faster (window 0.60 → 0.48 s)
+- ✅ Automatic subtitles, in every app: a film opened as the app starts
+  gets them too; a site's advert or the forced lines beside the video no longer stop the search; the video's own
+  Subs folder is used; Hebrew and Arabic punctuation written for left-to-right players shows in its place
+- ✅ Online subtitles for videos played from the network (a link, SMB, NFS, UPnP/DLNA) on Android, manual and
+  automatic, as on the desktop ([#73](https://github.com/KuchiSofts/vlc-redesign/issues/73), @Elshepl); the
+  Samsung TV app too
+- ✅ The Subtitles panel the same on every device: the desktop's two columns (the languages and their subtitles),
+  the search in it and the timing; on the Samsung TV app with the remote; on Android (phones, tablets, TV) opened
+  above its button as on the desktop
+- ✅ Android TV with the remote alone: every option of Settings pressed (about 170), the page follows the sidebar,
+  dialogs start on a button, the number and colour pickers work with the arrows, a link shows its address where
+  there is no browser; Live TV as the desktop's cards (or a list), its Cards / List button always there
+- ✅ Android installs next to VLC for Android (it was refused before), and Android TV in Hebrew and Arabic is
+  mirrored everywhere, its focus where it should be; a channel's name and a programme's title keep their own
+  direction there and on the Samsung TV app
+- ✅ VideoLAN's master merged to `fb39292a88` (Qt 6.8 required from now on)
 
 ### 0.5.8 (2026-11-08)
 

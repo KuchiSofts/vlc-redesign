@@ -85,7 +85,11 @@ Rectangle {
                         height: parent.height
                         text: option.modelData.text
                         color: option.selected ? VLCStyle.redesign.accent : root.c("#6B6B6B")
-                        elide: Text.ElideRight
+                        // (cut only when the choice is too narrow for it: a
+                        // script Inter does not have is drawn in another font
+                        // whose advance does not scale the same way, and
+                        // "System" was cut in Hebrew at 200 % with room around it)
+                        elide: implicitWidth > parent.width ? Text.ElideRight : Text.ElideNone
                         verticalAlignment: Text.AlignTop
                         // the baseline where the design centres a line of Inter
                         topPadding: height / 2 + VLCStyle.redesign.centeredBaseline(font.pixelSize) - optionMetrics.ascent

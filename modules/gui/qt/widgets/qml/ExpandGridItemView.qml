@@ -44,6 +44,8 @@ Widgets.ExpandGridView {
     leftMargin: (fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) - extraMargin : VLCStyle.layout_left_margin) + leftPadding
     rightMargin: (fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) - extraMargin : VLCStyle.layout_right_margin) + rightPadding
     topMargin: fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) : 0
+    // (the last row ends with the page's margin, not on the window's edge)
+    bottomMargin: fixedPictureWidth ? VLCStyle.dp(20, VLCStyle.scale) : 0
 
     // Aliases
 
@@ -54,6 +56,9 @@ Widgets.ExpandGridView {
     property alias subtitleHeight: gridHelper.subtitleHeight
 
     property alias maxNbItemPerRow: gridHelper.maxNbItemPerRow
+
+    // Home's rows keep the design's sizes at the design's own page width
+    property alias designWidthWins: gridHelper.designWidthWins
 
     // Settings
 
@@ -76,6 +81,8 @@ Widgets.ExpandGridView {
         availableWidth: root._availableContentWidth
         fixedPictureWidth: root.fixedPictureWidth
         horizontalSpacing: root.fixedPictureWidth ? root.horizontalSpacing : VLCStyle.column_spacing
+        // (fewer cards than a row holds stay the design's size)
+        itemCount: root._count
 
         maxNbItemPerRow: basePictureWidth === basePictureHeight
                          ? VLCStyle.gridView_maxNbItemPerRow_square

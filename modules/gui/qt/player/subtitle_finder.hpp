@@ -177,6 +177,26 @@ private:
     void selectAdded();
     QStringList localLanguages() const;
     bool loadedLanguage(const QString &language) const;
+    // the media's length in minutes (0: not known)
+    double lengthMinutes() const;
+    // a file of the video's own subtitle folder in that language ("" if none)
+    QString folderSubtitle(const QString &language) const;
+    // that file added to the media and shown (alongside: with the one shown)
+    void attachFolderFile(const QString &path, bool alongside);
+
+    // the language files of the video's own subtitle folder (a release's "Subs"),
+    // found by scanFolder()
+    struct FolderSubtitle
+    {
+        QString path;
+        QString language;
+        bool hearingImpaired;
+        int cues;
+    };
+    QList<FolderSubtitle> m_folderSubtitles;
+    // onStarted() came before the picture (or a stream's length): it looks
+    // again when that comes
+    bool m_waitingForPicture = false;
 
     qt_intf_t *m_intf;
     PlayerController *m_player;
@@ -191,6 +211,9 @@ private:
     QStringList m_loadedIds;
     QVariantList m_titleResults;
     bool m_titleBusy = false;
+    // the title search going on: the answers of one before it (another
+    // name typed, another media, a title chosen) are dropped
+    quint64 m_titleRevision = 0;
     QString m_selectHash; // the file whose track is to be shown
     bool m_selectAlongside = false;
     // downloads waiting for the one going on: { id, alongside }

@@ -67,7 +67,8 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟡 **0.6.1** started (an update release): fixes as the issues bring them. The small updates of 0.6.0 were made
   with bsdiff4 1.4 (its control bytes converted, the diff on a large stack), 35 files on the release page.
   - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
-    prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning.
+    prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning. Android: vlc-android
+    merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept).
   - 🟢 Fixed (2026-11-11): What's new's headlines without issue references (a test, 30 checks); "Unknown Artist"
     translated in 72 languages; a sentence written twice in 14 texts of 12 languages; Android: Home never blank
     without access to the files, a screen reader hears a subtitle service's or language's state; Android TV: the

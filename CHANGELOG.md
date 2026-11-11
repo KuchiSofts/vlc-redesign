@@ -29,6 +29,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - Merged VideoLAN's master up to `623d7b9092`: two Qt patches for Direct3D 11 on Windows 7.
+- Android: merged VideoLAN's vlc-android up to `14a7422459` (Play all for video folders).
 - CI: a start that does not end keeps its evidence (log, threads, a small dump); the ARM64 screenshots show VLC.
 - The steps of closing the interface are in the debug log.
 - What's new's text rules have a test (`extras/juxtopposed/whats-new.cpp`).

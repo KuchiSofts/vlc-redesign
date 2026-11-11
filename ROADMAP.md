@@ -18,29 +18,27 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-11, 0.6.0 published).
+Updated as the work moves (last: 2026-11-12, 0.6.1 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.0 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.0 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.0 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.0 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.6.1 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.1 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.1 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.1 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.1 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.1 and after
+## Next: 0.6.2 and after
 
-**0.6.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.2** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page
-- 🔨 Every option answers, with the remote too: after Android TV's Settings, Live TV and player, the same walk
-  through the phone and tablet layouts, the desktop and the Samsung TV app
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -110,6 +108,29 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.6.1 (2026-11-12)
+
+**An update release** of fixes (the installers, the portable copies and what the apps update from; the Linux
+packages stay on 0.6.0):
+
+- ✅ Published on its [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.1), under one
+  signed list of checksums; the apps update themselves to it (on Windows a small update of 7.2 MB from 0.6.0)
+- ✅ Windows: closing never waits for a graphics driver that is slow to start (the close could hang)
+- ✅ Every option answers: each control of Settings used and read back on the desktop (14 pages), the Samsung TV app
+  (on a TV too), and the phone and tablet layouts of Android. On the desktop the lists, the sliders and the
+  start-up volume choice now work from a screen reader, *Rescan plugins* shows that it is scanning, and *Add* and
+  *Remove* of Extensions are greyed until an add-on is selected
+- ✅ Android TV: the remote reaches the mini player and its queue button; the queue opens as a panel over the mini
+  player
+- ✅ Android: an empty Home says why and asks for access to your files; a screen reader says whether a subtitle
+  service or language is on; the feedback page reports to the project's GitHub issues
+- ✅ Samsung TV: the catch-up mark no longer covers a channel's logo; a guide download that is cancelled stops at
+  once
+- ✅ Translations: "Unknown Artist" in 72 languages, a sentence shown twice in 12 languages, one Hebrew word for a
+  playlist in every app
+- ✅ What's new shows headlines without the changelog's issue references
+- ✅ VideoLAN's VLC merged to `82ca0542a1`, VLC for Android to `14a7422459`
 
 ### 0.6.0 (2026-11-11)
 

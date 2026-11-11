@@ -64,8 +64,13 @@ What is being worked on, updated as it changes (2026-11-10):
   work planned as 0.5.9 (the stability round, #72's keys without the controls, the subtitle work below, the
   interface size) with Android TV gone through option by option with the remote; Windows x64 and ARM64, Linux and
   macOS, Android (versionCode 13106000) and the Samsung TV app at 0.6.0 together. Next: 0.6.1, an update release.
-- 🟡 **0.6.1** started (an update release): fixes as the issues bring them. The small updates of 0.6.0 were made
-  with bsdiff4 1.4 (its control bytes converted, the diff on a large stack), 35 files on the release page.
+- ✅ **0.6.1** published 2026-11-12 (an update release of fixes; VideoLAN merged to `82ca0542a1`): Windows x64 and
+  ARM64 (installers, portable copies, small updates from 0.6.0), Linux (AppImage, a folder to run from), macOS,
+  Android (versionCode 13106010) and the Samsung TV app's source. Next: 0.6.2, fixes as the issues bring them. The
+  small updates of 0.6.0 were made with bsdiff4 1.4 (its control bytes converted, the diff on a large stack).
+  - 🟢 VideoLAN merged twice more at the upload, to `3494ac3b92` and then `82ca0542a1` (9 commits, all in VLC's
+    own macOS interface, which the redesign does not show: folder streams, radio country counts, the grid's menu,
+    the playback state of media items).
   - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
     prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning. Android: vlc-android
     merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept). The new

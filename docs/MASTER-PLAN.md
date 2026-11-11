@@ -66,6 +66,21 @@ What is being worked on, updated as it changes (2026-11-10):
   macOS, Android (versionCode 13106000) and the Samsung TV app at 0.6.0 together. Next: 0.6.1, an update release.
 - 🟡 **0.6.1** started (an update release): fixes as the issues bring them. The small updates of 0.6.0 were made
   with bsdiff4 1.4 (its control bytes converted, the diff on a large stack), 35 files on the release page.
+  - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
+    prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning.
+  - 🟢 Fixed (2026-11-11): What's new's headlines without issue references (a test, 30 checks); "Unknown Artist"
+    translated in 72 languages; a sentence written twice in 14 texts of 12 languages; Android: Home never blank
+    without access to the files, a screen reader hears a subtitle service's or language's state; Android TV: the
+    focus line in menus, alerts at the design's width; Samsung TV: the catch-up mark clear of the logo (measured:
+    16 × 12 px over it in Hebrew before, 12 px clear in both directions after).
+  - 🟡 **A close that never ends** on CI's ARM64 install test ("the interface did not end within 20 s", twice on
+    2026-11-11, passes on a re-run): not reproduced in 81 local runs (the published 0.6.0 at 11 moments of its
+    start, on one core at low priority, and 60 times in a Windows Sandbox without a graphics card). No fix made
+    without its cause: the test now keeps the stuck process's log, thread waits and a small dump, and the
+    interface logs each step of its close. Lead to check with that evidence: `unloadGUI()` waits without a limit
+    for the graphics driver's warm-up thread.
+  - 🟢 CI: Windows' first sign-in screen covered every ARM64 screenshot since at least 2026-11-08 (they never
+    showed VLC); it is closed before they are taken. To look at after the next upload.
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for

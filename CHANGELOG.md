@@ -5,7 +5,7 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `fb39292a88` (2026-11-10).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `623d7b9092` (2026-11-11).
 
 **Contents:** [Unreleased](#unreleased) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
@@ -15,11 +15,23 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-### Changed
+### Fixed
 
-- Work on 0.6.1 (an update release) started: fixes as the issues bring them.
+- What's new: headlines without the changelog's issue references.
+- "Unknown Artist" of the media library is translated (72 languages).
+- Subtitle services' hints: a sentence shown twice (12 languages).
+- Android: an empty Home says why and asks for access to your files.
+- Android TV: menus show the remote's focus line.
+- Android TV: confirmations and small forms have the design's width.
+- Android: a screen reader says whether a subtitle service or language is on.
+- Samsung TV: the catch-up mark no longer covers a channel's logo.
 
 ### Technical
+
+- Merged VideoLAN's master up to `623d7b9092`: two Qt patches for Direct3D 11 on Windows 7.
+- CI: a start that does not end keeps its evidence (log, threads, a small dump); the ARM64 screenshots show VLC.
+- The steps of closing the interface are in the debug log.
+- What's new's text rules have a test (`extras/juxtopposed/whats-new.cpp`).
 
 - **The small updates are made with bsdiff4 1.4** (already in the tag of 0.6.0, whose six small updates were made
   and checked with it): its control triples arrive as the bytes of a BSDIFF40 file (a negative number as sign and

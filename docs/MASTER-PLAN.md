@@ -108,9 +108,15 @@ What is being worked on, updated as it changes (2026-11-10):
       nothing when it worked (its button now reads "Scanning..." while it scans, a second at least); **Add** and
       **Remove** of Extensions took a press and did nothing with no add-on selected (greyed now, pointing at one
       says what to select). Not faults: the choice already taken changes nothing when pressed again.
-    - Samsung TV (the preview at the TV's size, the remote's keys): 135 controls of Settings change a setting,
-      open something or show an answer; the focus is visible and on screen on 24 pages and dialogs; no arrow is
-      held; 0 script errors.
+    - Samsung TV (the preview at the TV's size, then the same build on the real TV, the remote's keys): 135
+      controls of Settings change a setting, open something or show an answer; the focus is visible and on
+      screen on 24 pages and dialogs; no arrow is held; a video with its subtitles and a live channel play; 0
+      script errors. Found on the way: a guide download cancelled from inside its own reading went on to the
+      file's end and told its end (its test passed only while inflating took more than 30 ms: it failed on a
+      faster run); fixed, and the test fails on the code as it was.
+    - Android tablet layout (emulator, the two panes: the list of pages and the page, 12 pages): 161 rows answer.
+      What the walk flagged was looked at by hand and works (the bookmark buttons switch greys and frees the row
+      that depends on it, the audio language opens its list, Advanced Options unfolds).
     - Android phone layout (emulator, taps, 12 pages): every row opens its page or its choices, or changes and
       is put back by a second press. What the walk flagged was looked at by hand and works (Remote access and the
       equalizer come back with Back, the shadow switch shows and hides its three rows).

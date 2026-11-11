@@ -893,9 +893,13 @@ static void Close( vlc_object_t *p_this )
     if (p_intf)
     {
         //cleanup the interface
+        /* (the steps of a close are logged: a close that never ends, seen on
+         * a CI runner, shows where it stopped) */
+        msg_Dbg( p_intf, "closing: the interface thread is asked to unload" );
         QMetaObject::invokeMethod( p_intf->p_mi, [p_intf] () {
             ThreadCleanup(p_intf, CLEANUP_INTF_CLOSED);
         }, Qt::BlockingQueuedConnection);
+        msg_Dbg( p_intf, "closing: the interface is unloaded" );
 
         bool shutdown = false;
         //mutex scope
@@ -1724,16 +1728,21 @@ static void *ThreadCleanup( qt_intf_t *p_intf, CleanupReason cleanupReason )
             open_state = OPEN_STATE_INIT;
     }
 
+    msg_Dbg( p_intf, "unloading: started (%s)",
+             cleanupReason == CLEANUP_INTF_CLOSED ? "the interface is closed"
+             : cleanupReason == CLEANUP_APP_TERMINATED ? "the application ended" : "an error" );
     if ( p_intf->p_mi )
         emit p_intf->p_mi->interfaceUnloading();
 
     if ( p_intf->p_compositor )
     {
+        msg_Dbg( p_intf, "unloading: the window's content" );
         if (cleanupReason == CLEANUP_INTF_CLOSED)
             p_intf->p_compositor->unloadGUI();
         else // CLEANUP_APP_TERMINATED
             p_intf->p_compositor->destroyMainInterface();
     }
+    msg_Dbg( p_intf, "unloading: the dialogs and the main context" );
 
     /* */
     ExtensionsManager::killInstance();

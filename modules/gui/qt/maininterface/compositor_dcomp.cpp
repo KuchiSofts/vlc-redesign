@@ -240,6 +240,10 @@ void CompositorDirectComposition::endGraphicsDriverWarmUp()
 {
     if (m_driverWarmUpThread)
     {
+        // (logged: this wait has no limit, and a close that never ended was
+        // seen on a CI runner without a graphics card)
+        if (!m_driverWarmUpThread->isFinished())
+            msg_Dbg(m_intf, "waiting for the graphics driver's warm-up to end");
         m_driverWarmUpThread->wait();
         delete m_driverWarmUpThread;
         m_driverWarmUpThread = nullptr;

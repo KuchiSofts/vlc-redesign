@@ -87,6 +87,16 @@ else { Fail 'the Live TV add-on was not installed (component "livetv")' }
 $failures += $LASTEXITCODE
 
 # 4. Screenshots: the main window, About (Shift+F1, GlobalShortcuts.qml)
+# Windows' own first sign-in screen ("Choose privacy settings for your
+# device") covers the whole desktop of the runner: the screenshots showed it
+# and never VLC. Nobody answers it there, so its host is ended first.
+$firstSignIn = @(Get-Process WWAHost, UserOOBEBroker -ErrorAction SilentlyContinue)
+if ($firstSignIn) {
+    $names = ($firstSignIn | ForEach-Object Name | Sort-Object -Unique) -join ', '
+    $firstSignIn | Stop-Process -Force -ErrorAction SilentlyContinue
+    Start-Sleep 2
+    Note "note: Windows' first sign-in screen closed ($names)"
+}
 Add-Type -AssemblyName System.Drawing, System.Windows.Forms
 Add-Type @'
 using System;

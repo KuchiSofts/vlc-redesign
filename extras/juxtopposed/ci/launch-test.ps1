@@ -77,9 +77,49 @@ function Start-Vlc([string]$name, [string[]]$arguments) {
     return $process
 }
 
-function Wait-Exit($process, [int]$seconds, [string]$what) {
+# What a process that does not end was doing, before it is ended: the last
+# lines of its log, how its threads wait, and a small dump (the stacks of
+# its threads and its modules, no memory) beside the crash dumps, which the
+# workflow keeps. On CI only: a dump stays on no one's PC.
+function Save-Stuck($process, [string]$name) {
+    $log = Join-Path $work "$name.log"
+    if (Test-Path $log) {
+        Note "  the last lines of $name.log:"
+        Get-Content $log -Tail 8 | ForEach-Object { Note "    $_" }
+    }
+    try {
+        $process.Refresh()
+        $waits = $process.Threads | Group-Object { "$($_.ThreadState) $(if ($_.ThreadState -eq 'Wait') { $_.WaitReason })".Trim() } |
+            ForEach-Object { "$($_.Count) $($_.Name)" }
+        Note "  threads: $($process.Threads.Count) ($($waits -join ', '))"
+    } catch { Note "  threads: not read ($_)" }
+    if (-not $env:CI) { return }
+    try {
+        if (-not ('Stuck.Dump' -as [type])) {
+            Add-Type -Namespace Stuck -Name Dump -MemberDefinition @'
+[DllImport("dbghelp.dll", SetLastError = true)]
+public static extern bool MiniDumpWriteDump(IntPtr process, uint id, Microsoft.Win32.SafeHandles.SafeFileHandle file,
+                                            uint type, IntPtr exception, IntPtr stream, IntPtr callback);
+'@
+        }
+        $dumps = Join-Path $work 'dumps'
+        New-Item -ItemType Directory -Force $dumps | Out-Null
+        $path = Join-Path $dumps "stuck-$name.dmp"
+        $file = [IO.File]::Create($path)
+        try {
+            # MiniDumpWithUnloadedModules | MiniDumpWithThreadInfo
+            $done = [Stuck.Dump]::MiniDumpWriteDump($process.Handle, [uint32]$process.Id, $file.SafeFileHandle,
+                                                    0x1020, [IntPtr]::Zero, [IntPtr]::Zero, [IntPtr]::Zero)
+        } finally { $file.Dispose() }
+        if ($done) { Note "  dump: dumps\stuck-$name.dmp ($([int]((Get-Item $path).Length / 1KB)) KB)" }
+        else { Note "  dump: not written (error $([Runtime.InteropServices.Marshal]::GetLastWin32Error()))" }
+    } catch { Note "  dump: not written ($_)" }
+}
+
+function Wait-Exit($process, [int]$seconds, [string]$what, [string]$name) {
     if (-not $process.WaitForExit($seconds * 1000)) {
         Fail "$what did not end within $seconds s"
+        if ($name) { Save-Stuck $process $name }
         try { $process.Kill() } catch { }
         return
     }
@@ -109,11 +149,11 @@ try {
 } catch {
     Fail "rc interface: $_"
 }
-Wait-Exit $process 20 'the interface'
+Wait-Exit $process 20 'the interface' 'interface'
 
 # 2. Playback: the clip to its end
 $process = Start-Vlc 'playback' @('--play-and-exit', "`"$clip`"")
-Wait-Exit $process 60 'playback of the clip'
+Wait-Exit $process 60 'playback of the clip' 'playback'
 $log = Join-Path $work 'playback.log'
 foreach ($line in 'Received first picture', 'EOF reached') {
     if ((Test-Path $log) -and (Select-String -Path $log -Pattern $line -SimpleMatch -Quiet)) { Note "ok: $line" }

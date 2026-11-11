@@ -17493,7 +17493,7 @@ msgstr ""
 
 #: modules/demux/playlist/playlist.c:128
 msgid "WPL playlist import"
-msgstr "ייבוא רשימות השמעה מסוג WPL"
+msgstr "ייבוא רשימות נגינה מסוג WPL"
 
 #: modules/demux/playlist/podcast.c:249 modules/demux/playlist/podcast.c:253
 #: modules/demux/playlist/podcast.c:269 modules/demux/playlist/podcast.c:345
@@ -21978,7 +21978,7 @@ msgstr "קובצי תמונה"
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:64
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:1652
 msgid "Playlist Files"
-msgstr "קובצי רשימות השמעה"
+msgstr "קובצי רשימות נגינה"
 
 #: modules/gui/qt/dialogs/dialogs_provider.hpp:65
 msgid "Subtitle Files"

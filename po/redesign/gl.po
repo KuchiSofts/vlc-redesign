@@ -6770,6 +6770,10 @@ msgstr "Restaurar"
 msgid "Maximize"
 msgstr "Maximizar"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Non hai resultados"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Vista baleira"
@@ -7120,6 +7124,14 @@ msgstr ""
 "Non se atopou ningún medio\n"
 "Tente engadir fontes"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Non se atopou ningún álbum\n"
+"Tente engadir fontes"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7141,6 +7153,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Número de pistas"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7167,12 +7183,24 @@ msgstr "Ano de publicación"
 msgid "Album Title"
 msgstr "Título do álbum"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Xénero descoñecido"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "%1 pista"
 msgstr[1] "%1 pistas"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Non se atopou ningún xénero\n"
+"Tente engadir fontes"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7183,6 +7211,14 @@ msgstr "Nova lista de reprodución"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Accións da lista de reprodución"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Non se atopou ningunha pista\n"
+"Tente engadir fontes"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7252,6 +7288,14 @@ msgstr ""
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Non se atopou ningún vídeo\n"
+"Tente engadir fontes"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7991,6 +8035,10 @@ msgstr "Quitar da biblioteca multimedia"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Engadir á biblioteca multimedia"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Recurso compartido descoñecido"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9199,10 +9247,6 @@ msgstr "Quitar os elementos seleccionados"
 msgid "Add files to the queue"
 msgstr "Engadir ficheiros á cola"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Non hai resultados"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Aínda non hai contido"
@@ -9465,12 +9509,8 @@ msgstr ""
 "para que a interface siga sendo utilizábel."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Axusta a cor de realce; os valores especiais son «default» e «system» "
-"(require Qt 6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Axusta a cor de realce; os valores especiais son «default» e «system»."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

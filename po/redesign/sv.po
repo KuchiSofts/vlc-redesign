@@ -39,17 +39,15 @@ msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-11-09 23:01+0000\n"
-"PO-Revision-Date: 2026-11-10 22:09+0000\n"
-"Last-Translator: bittin1ddc447d824349b2 "
-"<bittin1ddc447d824349b2@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/vlc-redesign/"
-"interface/sv/>\n"
+"PO-Revision-Date: 2017-09-23 19:54+0000\n"
+"Last-Translator: A. Regnander <anton_r_3@hotmail.com>\n"
+"Language-Team: Swedish (http://www.transifex.com/yaron/vlc-trans/language/"
+"sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -6776,6 +6774,10 @@ msgstr "Återställ"
 msgid "Maximize"
 msgstr "Maximera"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Inga resultat"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Tom vy"
@@ -7123,6 +7125,14 @@ msgstr ""
 "Inga media hittades\n"
 "Försök lägga till källor"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Inga album hittades\n"
+"Försök lägga till källor"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7144,6 +7154,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Antal spår"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7170,12 +7184,24 @@ msgstr "Utgivningsår"
 msgid "Album Title"
 msgstr "Albumtitel"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Okänd genre"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "%1 spår"
 msgstr[1] "%1 spår"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Inga genrer hittades\n"
+"Försök lägga till källor"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7186,6 +7212,14 @@ msgstr "Ny spellista"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Spellisteåtgärder"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Inga spår hittades\n"
+"Försök lägga till källor"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7254,6 +7288,14 @@ msgstr "Skapa en spellista med filer eller lägg till media från biblioteket"
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "Url"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Ingen video hittades\n"
+"Försök lägga till källor"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7986,6 +8028,10 @@ msgstr "Ta bort från mediabiblioteket"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Lägg till i mediabiblioteket"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Okänd resurs"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9193,10 +9239,6 @@ msgstr "Ta bort valda objekt"
 msgid "Add files to the queue"
 msgstr "Lägg till filer i kön"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Inga resultat"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Inget innehåll än"
@@ -9449,12 +9491,8 @@ msgstr ""
 "gränssnittet förblir användbart."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Justerar accentfärgen, specialvärdena är 'default' och 'system' (kräver Qt "
-"6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Justerar accentfärgen, specialvärdena är 'default' och 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

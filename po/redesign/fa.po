@@ -6682,6 +6682,10 @@ msgstr "بازیابی"
 msgid "Maximize"
 msgstr "بزرگ کردن"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "نتیجه‌ای نیست"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "نمای خالی"
@@ -7023,6 +7027,14 @@ msgstr ""
 "هیچ رسانه‌ای یافت نشد\n"
 "لطفاً منبعی اضافه کنید"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"هیچ آلبومی یافت نشد\n"
+"لطفاً منبعی اضافه کنید"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7043,6 +7055,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "تعداد قطعه‌ها"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7068,11 +7084,23 @@ msgstr "سال انتشار"
 msgid "Album Title"
 msgstr "عنوان آلبوم"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "سبک نامشخص"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "%1 قطعه"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"هیچ سبکی یافت نشد\n"
+"لطفاً منبعی اضافه کنید"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7083,6 +7111,14 @@ msgstr "فهرست پخش جدید"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "عملیات فهرست پخش"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"هیچ قطعه‌ای یافت نشد\n"
+"لطفاً منبعی اضافه کنید"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7149,6 +7185,14 @@ msgstr "یک فهرست پخش با پرونده‌ها بسازید یا رسا
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "نشانی"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"هیچ ویدئویی یافت نشد\n"
+"لطفاً منبعی اضافه کنید"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7877,6 +7921,10 @@ msgstr "حذف از کتابخانهٔ رسانه"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "افزودن به کتابخانهٔ رسانه"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "اشتراک نامشخص"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9076,10 +9124,6 @@ msgstr "حذف موارد انتخاب‌شده"
 msgid "Add files to the queue"
 msgstr "افزودن پرونده‌ها به صف"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "نتیجه‌ای نیست"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "هنوز محتوایی نیست"
@@ -9327,12 +9371,8 @@ msgstr ""
 "استفاده بماند."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"رنگ تأکیدی را تنظیم می‌کند؛ مقادیر ویژه 'default' و 'system' هستند (نیاز به "
-"Qt 6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "رنگ تأکیدی را تنظیم می‌کند؛ مقادیر ویژه 'default' و 'system' هستند."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

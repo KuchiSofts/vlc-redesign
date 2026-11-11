@@ -40,8 +40,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -6853,6 +6852,10 @@ msgstr "Restaurer"
 msgid "Maximize"
 msgstr "Agrandir"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Aucun résultat"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Vue vide"
@@ -7208,6 +7211,14 @@ msgstr ""
 "Aucun média trouvé\n"
 "Essayez d'ajouter des sources"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Aucun album trouvé\n"
+"Essayez d'ajouter des sources"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7229,6 +7240,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Nombre de pistes"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7255,12 +7270,24 @@ msgstr "Année de sortie"
 msgid "Album Title"
 msgstr "Titre de l'album"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Genre inconnu"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "%1 piste"
 msgstr[1] "%1 pistes"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Aucun genre trouvé\n"
+"Essayez d'ajouter des sources"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7271,6 +7298,14 @@ msgstr "Nouvelle liste de lecture"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Actions de la liste de lecture"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Aucune piste trouvée\n"
+"Essayez d'ajouter des sources"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7342,6 +7377,14 @@ msgstr ""
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Aucune vidéo trouvée\n"
+"Essayez d'ajouter des sources"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -8086,6 +8129,10 @@ msgstr "Retirer de la médiathèque"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Ajouter à la médiathèque"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Partage inconnu"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9303,10 +9350,6 @@ msgstr "Retirer les éléments sélectionnés"
 msgid "Add files to the queue"
 msgstr "Ajouter des fichiers à la file"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Aucun résultat"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Aucun contenu pour l'instant"
@@ -9574,12 +9617,8 @@ msgstr ""
 "afin que l'interface reste utilisable."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Ajuste la couleur d'accentuation ; les valeurs spéciales sont 'default' et "
-"'system' (nécessite Qt 6.6)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Ajuste la couleur d'accentuation ; les valeurs spéciales sont 'default' et 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

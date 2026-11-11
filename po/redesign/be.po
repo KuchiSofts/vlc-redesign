@@ -6765,6 +6765,10 @@ msgstr "Аднавіць"
 msgid "Maximize"
 msgstr "Разгарнуць"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Няма вынікаў"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Пусты выгляд"
@@ -7108,6 +7112,14 @@ msgstr ""
 "Медыя не знойдзена\n"
 "Паспрабуйце дадаць крыніцы"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Альбомы не знойдзены\n"
+"Паспрабуйце дадаць крыніцы"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7131,6 +7143,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Колькасць дарожак"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7159,6 +7175,10 @@ msgstr "Год выпуску"
 msgid "Album Title"
 msgstr "Назва альбома"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Невядомы жанр"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
@@ -7167,6 +7187,14 @@ msgstr[0] "%1 дарожка"
 msgstr[1] "%1 дарожкі"
 msgstr[2] "%1 дарожак"
 msgstr[3] "%1 дарожак"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Жанры не знойдзены\n"
+"Паспрабуйце дадаць крыніцы"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7177,6 +7205,14 @@ msgstr "Новы плэйліст"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Дзеянні з плэйлістам"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Дарожкі не знойдзены\n"
+"Паспрабуйце дадаць крыніцы"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7249,6 +7285,14 @@ msgstr "Стварыце плэйліст з файламі або дадайц�
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Відэа не знойдзена\n"
+"Паспрабуйце дадаць крыніцы"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7991,6 +8035,10 @@ msgstr "Выдаліць з медыятэкі"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Дадаць у медыятэку"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Невядомы рэсурс"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9200,10 +9248,6 @@ msgstr "Выдаліць абраныя элементы"
 msgid "Add files to the queue"
 msgstr "Дадаць файлы ў чаргу"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Няма вынікаў"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Пакуль няма змесціва"
@@ -9457,12 +9501,8 @@ msgstr ""
 "каб інтэрфейсам можна было карыстацца."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Задае акцэнтны колер; спецыяльныя значэнні — 'default' і 'system' "
-"(патрабуецца Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Задае акцэнтны колер; спецыяльныя значэнні — 'default' і 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

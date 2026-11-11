@@ -36,8 +36,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -6733,6 +6732,10 @@ msgstr "استعادة"
 msgid "Maximize"
 msgstr "تكبير"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "لا توجد نتائج"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "عرض فارغ"
@@ -7078,6 +7081,14 @@ msgstr ""
 "لم يُعثر على وسائط\n"
 "حاول إضافة مصادر"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"لم يُعثر على ألبومات\n"
+"حاول إضافة مصادر"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7103,6 +7114,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "عدد المقطوعات"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7133,6 +7148,10 @@ msgstr "سنة الإصدار"
 msgid "Album Title"
 msgstr "عنوان الألبوم"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "صنف غير معروف"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
@@ -7144,6 +7163,14 @@ msgstr[3] "%1 مقطوعات"
 msgstr[4] "%1 مقطوعةً"
 msgstr[5] "%1 مقطوعة"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"لم يُعثر على أصناف\n"
+"حاول إضافة مصادر"
+
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
 msgid "New playlist"
@@ -7153,6 +7180,14 @@ msgstr "قائمة تشغيل جديدة"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "إجراءات قائمة التشغيل"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"لم يُعثر على مقطوعات\n"
+"حاول إضافة مصادر"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7229,6 +7264,14 @@ msgstr "أنشئ قائمة تشغيل من ملفات أو أضف وسائط م
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "عنوان URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"لم يُعثر على فيديو\n"
+"حاول إضافة مصادر"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7980,6 +8023,10 @@ msgstr "إزالة من مكتبة الوسائط"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "إضافة إلى مكتبة الوسائط"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "مشاركة غير معروفة"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9183,10 +9230,6 @@ msgstr "إزالة العناصر المحددة"
 msgid "Add files to the queue"
 msgstr "إضافة ملفات إلى قائمة الانتظار"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "لا توجد نتائج"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "لا يوجد محتوى بعد"
@@ -9432,11 +9475,8 @@ msgstr ""
 "للاستخدام."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"يضبط لون التمييز، والقيمتان الخاصتان هما 'default' و'system' (يتطلب Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "يضبط لون التمييز، والقيمتان الخاصتان هما 'default' و'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

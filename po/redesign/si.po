@@ -6639,6 +6639,10 @@ msgstr "ප්‍රතිස්ථාපනය කරන්න"
 msgid "Maximize"
 msgstr "උපරිම කරන්න"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "ප්‍රතිඵල නැත"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "හිස් දසුන"
@@ -6978,6 +6982,14 @@ msgstr ""
 "මාධ්‍ය හමු නොවීය\n"
 "කරුණාකර මූලාශ්‍ර එක් කිරීමට උත්සාහ කරන්න"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"ඇල්බම හමු නොවීය\n"
+"කරුණාකර මූලාශ්‍ර එක් කිරීමට උත්සාහ කරන්න"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -6999,6 +7011,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "ගීත ගණන"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7025,12 +7041,24 @@ msgstr "නිකුත් කළ වර්ෂය"
 msgid "Album Title"
 msgstr "ඇල්බම මාතෘකාව"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "නොදන්නා ප්‍රභේදය"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "ගීත %1"
 msgstr[1] "ගීත %1"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"ප්‍රභේද හමු නොවීය\n"
+"කරුණාකර මූලාශ්‍ර එක් කිරීමට උත්සාහ කරන්න"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7041,6 +7069,14 @@ msgstr "නව ධාවන ලැයිස්තුව"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "ධාවන ලැයිස්තු ක්‍රියා"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"ගීත හමු නොවීය\n"
+"කරුණාකර මූලාශ්‍ර එක් කිරීමට උත්සාහ කරන්න"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7109,6 +7145,14 @@ msgstr "ගොනු සමඟ ධාවන ලැයිස්තුවක් �
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"වීඩියෝ හමු නොවීය\n"
+"කරුණාකර මූලාශ්‍ර එක් කිරීමට උත්සාහ කරන්න"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7840,6 +7884,10 @@ msgstr "මාධ්‍ය පුස්තකාලයෙන් ඉවත් ක
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "මාධ්‍ය පුස්තකාලයට එක් කරන්න"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "නොදන්නා බෙදාගැනීම"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9034,10 +9082,6 @@ msgstr "තෝරාගත් අයිතම ඉවත් කරන්න"
 msgid "Add files to the queue"
 msgstr "පෝලිමට ගොනු එක් කරන්න"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "ප්‍රතිඵල නැත"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "තවම අන්තර්ගතයක් නැත"
@@ -9280,11 +9324,8 @@ msgstr ""
 "වාදනය කිරීමට ඉඩ දෙයි."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"අවධාරණ වර්ණය සීරු මාරු කරයි, විශේෂ අගයන් 'default' සහ 'system' වේ (Qt 6.6 අවශ්‍යයි) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "අවධාරණ වර්ණය සීරු මාරු කරයි, විශේෂ අගයන් 'default' සහ 'system' වේ."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

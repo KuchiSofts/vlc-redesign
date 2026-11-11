@@ -6790,6 +6790,10 @@ msgstr "Leheneratu"
 msgid "Maximize"
 msgstr "Maximizatu"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Emaitzarik ez"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Ikuspegi hutsa"
@@ -7140,6 +7144,14 @@ msgstr ""
 "Ez da multimediarik aurkitu\n"
 "Saiatu iturburuak gehitzen"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Ez da albumik aurkitu\n"
+"Saiatu iturburuak gehitzen"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7161,6 +7173,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Pista kopurua"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7187,12 +7203,24 @@ msgstr "Argitalpen-urtea"
 msgid "Album Title"
 msgstr "Albumaren titulua"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Genero ezezaguna"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "Pista %1"
 msgstr[1] "%1 pista"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Ez da generorik aurkitu\n"
+"Saiatu iturburuak gehitzen"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7203,6 +7231,14 @@ msgstr "Erreprodukzio-zerrenda berria"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Erreprodukzio-zerrendaren ekintzak"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Ez da pistarik aurkitu\n"
+"Saiatu iturburuak gehitzen"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7273,6 +7309,14 @@ msgstr ""
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URLa"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Ez da bideorik aurkitu\n"
+"Saiatu iturburuak gehitzen"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -8011,6 +8055,10 @@ msgstr "Kendu multimedia liburutegitik"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Gehitu multimedia liburutegira"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Partekatze ezezaguna"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9223,10 +9271,6 @@ msgstr "Kendu hautatutako elementuak"
 msgid "Add files to the queue"
 msgstr "Gehitu fitxategiak ilarara"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Emaitzarik ez"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Oraindik ez dago edukirik"
@@ -9489,12 +9533,8 @@ msgstr ""
 "ahalbidetzen du, interfazea erabilgarri egon dadin."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Nabarmentze-kolorea doitzen du; balio bereziak 'default' eta 'system' dira "
-"(Qt 6.6 behar du) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Nabarmentze-kolorea doitzen du; balio bereziak 'default' eta 'system' dira."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

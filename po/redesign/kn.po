@@ -6709,6 +6709,10 @@ msgstr "ಮರುಸ್ಥಾಪಿಸಿ"
 msgid "Maximize"
 msgstr "ಗರಿಷ್ಠಗೊಳಿಸಿ"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "ಫಲಿತಾಂಶಗಳಿಲ್ಲ"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "ಖಾಲಿ ನೋಟ"
@@ -7051,6 +7055,14 @@ msgstr ""
 "ಯಾವುದೇ ಮಾಧ್ಯಮ ಕಂಡುಬಂದಿಲ್ಲ\n"
 "ದಯವಿಟ್ಟು ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"ಯಾವುದೇ ಆಲ್ಬಮ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ\n"
+"ದಯವಿಟ್ಟು ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7071,6 +7083,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "ಟ್ರ್ಯಾಕ್‌ಗಳ ಸಂಖ್ಯೆ"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7096,11 +7112,23 @@ msgstr "ಬಿಡುಗಡೆ ವರ್ಷ"
 msgid "Album Title"
 msgstr "ಆಲ್ಬಮ್ ಶೀರ್ಷಿಕೆ"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "ಅಪರಿಚಿತ ಶೈಲಿ"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
 msgid_plural "%1 Tracks"
 msgstr[0] "%1 ಟ್ರ್ಯಾಕ್‌ಗಳು"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"ಯಾವುದೇ ಶೈಲಿಗಳು ಕಂಡುಬಂದಿಲ್ಲ\n"
+"ದಯವಿಟ್ಟು ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7111,6 +7139,14 @@ msgstr "ಹೊಸ ಪ್ಲೇಪಟ್ಟಿ"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "ಪ್ಲೇಪಟ್ಟಿ ಕ್ರಿಯೆಗಳು"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"ಯಾವುದೇ ಟ್ರ್ಯಾಕ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ\n"
+"ದಯವಿಟ್ಟು ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7177,6 +7213,14 @@ msgstr "ಕಡತಗಳೊಂದಿಗೆ ಪ್ಲೇಪಟ್ಟಿಯನ್�
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "Url"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"ಯಾವುದೇ ವೀಡಿಯೊ ಕಂಡುಬಂದಿಲ್ಲ\n"
+"ದಯವಿಟ್ಟು ಮೂಲಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -7904,6 +7948,10 @@ msgstr "ಮಾಧ್ಯಮ ಭಂಡಾರದಿಂದ ತೆಗೆದುಹಾ�
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "ಮಾಧ್ಯಮ ಭಂಡಾರಕ್ಕೆ ಸೇರಿಸಿ"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "ಅಪರಿಚಿತ ಹಂಚಿಕೆ"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9103,10 +9151,6 @@ msgstr "ಆಯ್ಕೆಮಾಡಿದ ಐಟಂಗಳನ್ನು ತೆಗೆ�
 msgid "Add files to the queue"
 msgstr "ಸರತಿಗೆ ಕಡತಗಳನ್ನು ಸೇರಿಸಿ"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "ಫಲಿತಾಂಶಗಳಿಲ್ಲ"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "ಇನ್ನೂ ಯಾವುದೇ ವಿಷಯವಿಲ್ಲ"
@@ -9358,12 +9402,8 @@ msgstr ""
 "ಇದರಿಂದ ಸಂಪರ್ಕಸಾಧನ ಬಳಕೆಗೆ ಲಭ್ಯವಿರುತ್ತದೆ."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"ಉಚ್ಚಾರಣಾ ಬಣ್ಣವನ್ನು ಹೊಂದಿಸುತ್ತದೆ, ವಿಶೇಷ ಮೌಲ್ಯಗಳು 'default' ಮತ್ತು 'system' (Qt 6.6 "
-"ಅಗತ್ಯವಿದೆ)."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "ಉಚ್ಚಾರಣಾ ಬಣ್ಣವನ್ನು ಹೊಂದಿಸುತ್ತದೆ, ವಿಶೇಷ ಮೌಲ್ಯಗಳು 'default' ಮತ್ತು 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

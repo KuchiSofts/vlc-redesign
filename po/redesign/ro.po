@@ -6805,6 +6805,10 @@ msgstr "Restaurează"
 msgid "Maximize"
 msgstr "Maximizează"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Niciun rezultat"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Vizualizare goală"
@@ -7151,6 +7155,14 @@ msgstr ""
 "Nu s-au găsit fișiere media\n"
 "Încercați să adăugați surse"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Nu s-au găsit albume\n"
+"Încercați să adăugați surse"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7173,6 +7185,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Număr de piese"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7200,6 +7216,10 @@ msgstr "Anul lansării"
 msgid "Album Title"
 msgstr "Titlul albumului"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Gen necunoscut"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
@@ -7207,6 +7227,14 @@ msgid_plural "%1 Tracks"
 msgstr[0] "%1 piesă"
 msgstr[1] "%1 piese"
 msgstr[2] "%1 de piese"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Nu s-au găsit genuri\n"
+"Încercați să adăugați surse"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7217,6 +7245,14 @@ msgstr "Listă de redare nouă"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Acțiuni pentru lista de redare"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Nu s-au găsit piese\n"
+"Încercați să adăugați surse"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7288,6 +7324,14 @@ msgstr ""
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Nu s-a găsit niciun video\n"
+"Încercați să adăugați surse"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -8028,6 +8072,10 @@ msgstr "Elimină din biblioteca media"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Adaugă în biblioteca media"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Partajare necunoscută"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9240,10 +9288,6 @@ msgstr "Elimină elementele selectate"
 msgid "Add files to the queue"
 msgstr "Adaugă fișiere în coadă"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Niciun rezultat"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Încă nu există conținut"
@@ -9508,12 +9552,8 @@ msgstr ""
 "încât interfața să rămână utilizabilă."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Ajustează culoarea de accent; valorile speciale sunt 'default' și 'system' "
-"(necesită Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Ajustează culoarea de accent; valorile speciale sunt 'default' și 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

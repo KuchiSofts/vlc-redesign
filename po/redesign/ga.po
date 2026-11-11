@@ -6849,6 +6849,10 @@ msgstr "Athchóirigh"
 msgid "Maximize"
 msgstr "Uasmhéadaigh"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Gan torthaí"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Amharc folamh"
@@ -7198,6 +7202,14 @@ msgstr ""
 "Níor aimsíodh meáin\n"
 "Bain triail as foinsí a chur leis"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Níor aimsíodh albaim\n"
+"Bain triail as foinsí a chur leis"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7222,6 +7234,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Líon na rianta"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7251,6 +7267,10 @@ msgstr "Bliain eisiúna"
 msgid "Album Title"
 msgstr "Teideal an albaim"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Seánra anaithnid"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
@@ -7261,6 +7281,14 @@ msgstr[2] "%1 rian"
 msgstr[3] "%1 rian"
 msgstr[4] "%1 rian"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Níor aimsíodh seánraí\n"
+"Bain triail as foinsí a chur leis"
+
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
 msgid "New playlist"
@@ -7270,6 +7298,14 @@ msgstr "Seinnliosta nua"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Gníomhartha seinnliosta"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Níor aimsíodh rianta\n"
+"Bain triail as foinsí a chur leis"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7349,6 +7385,14 @@ msgstr "Cruthaigh seinnliosta le comhaid nó cuir meáin leis ón leabharlann"
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Níor aimsíodh físeán\n"
+"Bain triail as foinsí a chur leis"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -8101,6 +8145,10 @@ msgstr "Bain den leabharlann meán"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Cuir leis an leabharlann meán"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Comhroinnt anaithnid"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9320,10 +9368,6 @@ msgstr "Bain na míreanna roghnaithe"
 msgid "Add files to the queue"
 msgstr "Cuir comhaid leis an scuaine"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Gan torthaí"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Gan ábhar fós"
@@ -9590,12 +9634,8 @@ msgstr ""
 "ionas gur féidir an comhéadan a úsáid fós."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Coigeartaíonn sé an dath béime; is iad 'default' agus 'system' na luachanna "
-"speisialta (teastaíonn Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Coigeartaíonn sé an dath béime; is iad 'default' agus 'system' na luachanna speisialta."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

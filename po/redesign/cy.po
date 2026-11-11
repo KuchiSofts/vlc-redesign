@@ -6789,6 +6789,10 @@ msgstr "Adfer"
 msgid "Maximize"
 msgstr "Mwyhau"
 
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
+msgid "No results"
+msgstr "Dim canlyniadau"
+
 #: modules/gui/qt/widgets/qml/EmptyLabel.qml:55
 msgid "Empty view"
 msgstr "Golwg wag"
@@ -7136,6 +7140,14 @@ msgstr ""
 "Ni chanfuwyd cyfryngau\n"
 "Ceisiwch ychwanegu ffynonellau"
 
+#: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:301
+msgid ""
+"No albums found\n"
+"Please try adding sources"
+msgstr ""
+"Ni chanfuwyd albymau\n"
+"Ceisiwch ychwanegu ffynonellau"
+
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:619
@@ -7159,6 +7171,10 @@ msgstr "%1 - %2 - %3 - %4"
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:942
 msgid "#"
 msgstr "#"
+
+#: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:78
+msgid "Tracks Count"
+msgstr "Nifer y Traciau"
 
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:144
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:45
@@ -7187,6 +7203,10 @@ msgstr "Blwyddyn Rhyddhau"
 msgid "Album Title"
 msgstr "Teitl yr Albwm"
 
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
+msgid "Unknown genre"
+msgstr "Genre anhysbys"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:187
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:75
 msgid "%1 Track"
@@ -7195,6 +7215,14 @@ msgstr[0] "%1 Trac"
 msgstr[1] "%1 Drac"
 msgstr[2] "%1 Trac"
 msgstr[3] "%1 Trac"
+
+#: modules/gui/qt/medialibrary/qml/MusicGenres.qml:297
+msgid ""
+"No genres found\n"
+"Please try adding sources"
+msgstr ""
+"Ni chanfuwyd genres\n"
+"Ceisiwch ychwanegu ffynonellau"
 
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:70
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:73
@@ -7205,6 +7233,14 @@ msgstr "Rhestr chwarae newydd"
 #: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:87
 msgid "Playlist actions"
 msgstr "Gweithredoedd y rhestr chwarae"
+
+#: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:98
+msgid ""
+"No tracks found\n"
+"Please try adding sources"
+msgstr ""
+"Ni chanfuwyd traciau\n"
+"Ceisiwch ychwanegu ffynonellau"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -7278,6 +7314,14 @@ msgstr ""
 #: modules/gui/qt/network/qml/BrowseTreeDisplay.qml:266
 msgid "Url"
 msgstr "URL"
+
+#: modules/gui/qt/medialibrary/qml/VideoAll.qml:257
+msgid ""
+"No video found\n"
+"Please try adding sources"
+msgstr ""
+"Ni chanfuwyd fideos\n"
+"Ceisiwch ychwanegu ffynonellau"
 
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:132
 #: modules/gui/qt/medialibrary/qml/PlaylistGridDisplay.qml:77
@@ -8023,6 +8067,10 @@ msgstr "Tynnu o'r llyfrgell cyfryngau"
 #: modules/gui/qt/network/qml/BrowseTreeHeader.qml:107
 msgid "Add to medialibrary"
 msgstr "Ychwanegu i'r llyfrgell cyfryngau"
+
+#: modules/gui/qt/network/qml/NetworkGridItem.qml:64
+msgid "Unknown share"
+msgstr "Rhan anhysbys"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9236,10 +9284,6 @@ msgstr "Tynnu'r eitemau a ddewiswyd"
 msgid "Add files to the queue"
 msgstr "Ychwanegu ffeiliau i'r ciw"
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
-msgid "No results"
-msgstr "Dim canlyniadau"
-
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:635
 msgid "No content yet"
 msgstr "Dim cynnwys eto"
@@ -9496,12 +9540,8 @@ msgstr ""
 "modd defnyddio'r rhyngwyneb o hyd."
 
 #: modules/gui/qt/qt.cpp:350
-msgid ""
-"Adjusts the accent color, special values are 'default' and 'system' "
-"(requires Qt 6.6) ."
-msgstr ""
-"Yn addasu'r lliw acen, y gwerthoedd arbennig yw 'default' a 'system' (angen "
-"Qt 6.6) ."
+msgid "Adjusts the accent color, special values are 'default' and 'system'."
+msgstr "Yn addasu'r lliw acen, y gwerthoedd arbennig yw 'default' a 'system'."
 
 #: modules/gui/qt/qt.cpp:356
 msgid "Last channel watched"

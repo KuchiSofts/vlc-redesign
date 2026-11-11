@@ -129,7 +129,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ Stability, in every app: every line of the newest code reviewed, the parsers fuzzed, quitting and Live TV
   bounded, stalled servers stopped, no secret header sent to another server on a redirect, the interface's thread
   free of network and disk work, no QML warning left; the desktop starts faster (window 0.60 → 0.48 s)
-- ✅ Automatic subtitles, in every app: a film opened as the app starts
+- ✅ Smarter automatic subtitles in every app: a film opened as the app starts
   gets them too; a site's advert or the forced lines beside the video no longer stop the search; the video's own
   Subs folder is used; Hebrew and Arabic punctuation written for left-to-right players shows in its place
 - ✅ Online subtitles for videos played from the network (a link, SMB, NFS, UPnP/DLNA) on Android, manual and

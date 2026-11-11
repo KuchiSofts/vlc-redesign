@@ -169,7 +169,8 @@ VideoLAN merged to `fb39292a88`.
   yours beside the video whose name says no language ("Film.srt") counts as your language: nothing is searched over
   it. The same rules on Android and the Samsung TV app.
 - Automatic subtitles, smarter:
-  - **An advert or forced lines are not your subtitles.** A file beside the video that is only an advert (a few lines for a whole film), or only the forced lines ("forced" in its name), no
+  - **An advert or forced lines are not your subtitles.** A file beside the video that is only an advert (a few
+    lines for a whole film), or only the forced lines ("forced" in its name), no
     longer counts as your subtitles, so the search still runs. A short film's own small subtitle still counts.
   - **The video's own Subs folder is used.** When the video is alone in its folder, a file in your language in its
     Subs or Subtitles folder ("Hebrew.heb.srt", "English (SDH).eng.srt") is shown by itself, with nothing searched

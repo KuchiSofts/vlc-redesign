@@ -140,7 +140,7 @@ int countCues(const QString &path)
 
 // A subtitle file that is not the film's subtitles: the forced lines only
 // (signs, a foreign language spoken), or an advert of the site it came from
-// (an .srt named as the video that only names its site: 3 cues for 103
+// (an .srt named as the video that only names the site: 3 cues for 103
 // minutes). Under one cue in 5 minutes of a film of 20 minutes or more: a
 // film has hundreds (a quiet one, "All Is Lost", 0.5 a minute); a short one
 // ("Sintel", 15 minutes, 20 cues) is never judged so.

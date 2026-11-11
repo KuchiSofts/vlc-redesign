@@ -28,7 +28,7 @@ What is being worked on, updated as it changes (2026-11-10):
   that isn't full (seen at both widths).
   Open, low: menus' translucency (V010, the design's 95 %), "Unknown Artist" untranslated (D12, the library's own
   name), the dash icon of Delete (D21, the design's remove glyph), no New playlist button in the empty state (D09).
-- 🟡 **Every option does something, with the remote too** (on request). Android TV
+- 🟡 **Every option does something, with the remote too**. Android TV
   Settings done: all 12 pages walked with the remote's keys alone, about 170 focus stops each pressed, on the TV
   emulator in Hebrew and checked again in the signed build in English. Fixed: the crash on Controls › Remote
   access, the two panes' focus rules (the page follows the sidebar, in and out land where they should, nothing
@@ -69,8 +69,8 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for
-  left-to-right players shows in its place (93c03f55be, 776d5c8efa; Samsung a6aafb9, f945bcf; Android). 10/10 real
-  cases on Windows, English and Hebrew by themselves on the Samsung TV and the Android TVs.
+  left-to-right players shows in its place (93c03f55be, 776d5c8efa; Samsung a6aafb9, f945bcf; Android). 10/10 test
+  cases on Windows, English and Hebrew by themselves on a Samsung TV and Android TVs.
 - 🟢 **The Subtitles panel the same on every device**: the Samsung TV app's panel rebuilt as the desktop's (2.9 % of
   pixels differ, the fonts' drawing; 2bc9665), Android's opened above its button and being made the same.
 - 🟢 **0.5.9 stability round, second part** (desktop): no secret header to another server on a redirect (both HTTP
@@ -79,7 +79,8 @@ What is being worked on, updated as it changes (2026-11-10):
   15 s), the keystore read on the worker, subtitle and updater work off the interface's thread and joined at exit,
   the automatic guide's "TV" names, a long programme around the shorter ones it contains, a service's error page
   shown as its failure (500 checks).
-- 🟢 **0.5.9 stability round** (on request), branch `feature/stability-0.5.9`. macOS hung at quit after an
+- 🟢 **0.5.9 stability round** (every line reviewed: stability, loading speed,
+  memory, bugs), branch `feature/stability-0.5.9`. macOS hung at quit after an
   HTTPS download (SecureTransport kept its lock in a cancelled thread: fixed, 39532a9441 in 0.5.8), Live TV's quit
   bounded and its server calls cancelled (122.8 s to quit with a held call on 0.5.8), the plug-in pinned when a
   thread is let go. Two reviews of every line (Live TV; subtitles, updater, previews) and a fuzz test of 69
@@ -91,7 +92,8 @@ What is being worked on, updated as it changes (2026-11-10):
   without the controls).
 - ✅ **0.5.8** published 2026-11-08 (an update release; VideoLAN merged to `978212a42d`): SubSource with your own free key (#70, @Elshepl); Android TV: the
   focus after the TV sources close; Weblate has the TV menu's texts.
-- 🟡 **Subtitle services** (on request; the spec shared
+- 🟡 **Subtitle services** (more free services, each one turned on, off or removed
+  in Settings; the spec shared
   by the three apps): on the desktop, branch `feature/subtitle-services`. SubSource, SubDL and OpenSubtitles.com in
   the online search with the user's free key (player/subtitle_services.cpp: their requests and answers by
   themselves, 263 checks with saved answers in unit-tests.sh, both waves; the refusals recorded from the services with a
@@ -103,12 +105,14 @@ What is being worked on, updated as it changes (2026-11-10):
   Wizdom, Addic7ed, YIFY; the keyed ones turn on when their key is tested. The library's OpenSubtitles.com form
   uses the same key. 27 texts in the 72 languages. Checked on the hidden desktop (Sintel he+en, the unnamed
   VID_20241108_201500.mp4 → Breakin' (1984), a guess; wrong keys → Key refused live); the live answers of the
-  keyed services wait for their keys. Wave 2 (on request): Titlovi, Assrt, Jimaku, BetaSeries, Subs.ro, Napisy24 and
+  keyed services wait for their keys. Wave 2 (services with a login: their key, user name and password
+  in Settings): Titlovi, Assrt, Jimaku, BetaSeries, Subs.ro, Napisy24 and
   Legendas.net from Bazarr's providers (each checked live with made-up credentials: their refusals are the
   fixtures, and Test / Sign in showed Key refused or Wrong user name or password for each on the hidden desktop),
   signed-in sessions kept for the run; Napisy24 needs an account (no anonymous answer: "login error"), so its
   detail line says so; Ktuvit didn't answer. VideoLAN merged to f94b611735 (2 commits). Next: Android and Samsung.
-- 🟡 **Live TV sources** (on request; the spec
+- 🟡 **Live TV sources** (free guides and free channel lists, and the big paid
+  services with a login or a key; the spec
   shared by the three apps): on the desktop, branch `feature/tv-sources` (after `feature/subtitle-services`).
   Accounts: Jellyfin and Emby (sign-in by user or API key, channels and 7 days of guide, the stream resolved at play
   time through PlaybackInfo: direct, else HLS, else the transcode), Tvheadend (Basic/Digest), NextPVR (PIN session),
@@ -129,11 +133,12 @@ What is being worked on, updated as it changes (2026-11-10):
   iptv-epg.org's guide attached, 7 of 34 with a guide, Undo removed it; Guide Id… wins over the list's id; Find a
   Guide on the made-up list finds nothing. Translations: 43 texts × 72 languages. Next: Android and Samsung.
 - ✅ **Release 0.5.7** published 2026-11-08 ([v0.5.7](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.5.7),
-  23 files; Android PR #3 and tag v0.5.7; the Samsung source 0.5.7) (on request): an update release. Online
+  23 files; Android PR #3 and tag v0.5.7; the Samsung source 0.5.7): an update release. Online
   subtitles in every app (#67) with every free service asked for any file; Live TV in the library next to the
   video; hold for 2× (#64 → #66); Hide UI fixes (#65); the Android Live TV bar on a phone held upright; every
   platform at 0.5.7 in platforms.yml before the build (About's "Also on"), the wiki's Platforms page too.
-- 🟡 **Every subtitle service, every file** (on request): the four free services answered
+- 🟡 **Every subtitle service, every file** (all the free subtitle services, in
+  every app): the four free services answered
   (checked live: The Matrix on each); YIFY and Wizdom were skipped when the name didn't identify the video, so the
   OpenSubtitles fingerprint answer now names it (identityOfHash: the majority title, a guess otherwise) on the
   desktop, Android and the Samsung TV app, and each service's count shows under the search's title. Podnapisi is
@@ -141,7 +146,8 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟢 **"Also on" in About**: 0.5.6's line named 0.5.5 for the other platforms (platforms.yml was updated after
   the build). `release-check.py --release X.Y.Z` now fails until every platform in platforms.yml is at X.Y.Z, and
   docs/RELEASE-CHECKLIST.md says so (version, date and next of each platform, before the build).
-- 🟡 **#67, online subtitles in every app** (on request, and how to get the OpenSubtitles key free): the desktop's search (subtitle_search.cpp,
+- 🟡 **#67, online subtitles in every app** (every app on every
+  platform, and how to get the OpenSubtitles key free): the desktop's search (subtitle_search.cpp,
   subtitle_providers.cpp) ported to Android (OnlineSubtitles.kt, RdOnlineSubtitlesSheet, the automatic search, the
   settings, OnlineSubtitlesTest 11/11; on the Android 16 emulator: Elephants Dream 30 found, one loaded in sync and
   back on replay, Sintel's English loaded by itself; KuchiSofts/vlc-redesign-android#2) and to the Samsung TV app
@@ -1774,7 +1780,7 @@ phone and TV layouts need frames of their own (decision 6).
   script, Live TV, the app's own update check (0.5.1)
 - 🟢 Tested: the automatic tour on phone and tablet emulators, a real phone (0.5.0 and 0.5.1 rounds:
   start-up, playback of 12 formats, 5.1 audio mixed down to stereo, About, links), TalkBack reads the switches
-- 🟢 A real tablet: a tablet (2026-11-02: portrait and landscape, Hebrew and English, playback,
+- 🟢 A real tablet (2026-11-02: portrait and landscape, Hebrew and English, playback,
   every switch, Customize Player by drag and drop)
 - 🟢 Android TV / Google TV layout (remote control): the dark palette, Inter and the accent focus frame (0.5.2);
   every page in the design with the remote (0.5.3): the welcome, Settings, the video and music players, details,

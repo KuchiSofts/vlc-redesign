@@ -17,6 +17,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Windows: closing never waits for a graphics driver that is slow to start (the close could hang).
 - What's new: headlines without the changelog's issue references.
 - "Unknown Artist" of the media library is translated (72 languages).
 - Subtitle services' hints: a sentence shown twice (12 languages).

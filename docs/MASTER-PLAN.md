@@ -80,12 +80,15 @@ What is being worked on, updated as it changes (2026-11-10):
     without access to the files, a screen reader hears a subtitle service's or language's state; Android TV: the
     focus line in menus, alerts at the design's width; Samsung TV: the catch-up mark clear of the logo (measured:
     16 × 12 px over it in Hebrew before, 12 px clear in both directions after).
-  - 🟡 **A close that never ends** on CI's ARM64 install test ("the interface did not end within 20 s", twice on
-    2026-11-11, passes on a re-run): not reproduced in 81 local runs (the published 0.6.0 at 11 moments of its
-    start, on one core at low priority, and 60 times in a Windows Sandbox without a graphics card). No fix made
-    without its cause: the test now keeps the stuck process's log, thread waits and a small dump, and the
-    interface logs each step of its close. Lead to check with that evidence: `unloadGUI()` waits without a limit
-    for the graphics driver's warm-up thread.
+  - 🟢 **A close that never ends** on CI's ARM64 install test ("the interface did not end within 20 s", twice on
+    2026-11-11, passes on a re-run): not reproduced as it is in 81 local runs (the published 0.6.0 at 11 moments
+    of its start, on one core at low priority, and 60 times in a Windows Sandbox without a graphics card). Found
+    and fixed: closing waited without a limit for the thread that starts the graphics driver early
+    (`endGraphicsDriverWarmUp()`); with a driver simulated to take 30 s (`VLC_REDESIGN_TEST_SLOW_WARMUP`, builds
+    with asserts) the close was stuck for 27 s, and now ends in 1.0 s at three moments of the start: the thread
+    is let go after 1 s (it drops its device, the module stays loaded). The launch test has that step. Whether
+    this was the runner's case is seen at the next CI runs: the test keeps a stuck process's log, thread waits
+    and a small dump, and the interface logs each step of its close.
   - 🟢 CI: Windows' first sign-in screen covered every ARM64 screenshot since at least 2026-11-08 (they never
     showed VLC); it is closed before they are taken. To look at after the next upload.
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the

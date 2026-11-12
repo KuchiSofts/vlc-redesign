@@ -147,8 +147,14 @@ if (Test-Path "$Package\.update") { Remove-Item "$Package\.update" -Recurse -For
 $now = Get-Date
 $stamp = Get-Date -Year $now.Year -Month $now.Month -Day $now.Day -Hour $now.Hour -Minute $now.Minute `
     -Second ($now.Second - $now.Second % 2) -Millisecond 0
+# (a file just copied may be held a moment by the antivirus scanning it: tried again for up to 30 s)
 Get-ChildItem $Package -Recurse -File | Where-Object { $_.FullName -notlike "*\portable\*" } |
-    ForEach-Object { $_.LastWriteTime = $stamp }
+    ForEach-Object {
+        for ($try = 1; ; $try++) {
+            try { $_.LastWriteTime = $stamp; break }
+            catch { if ($try -ge 60) { throw }; Start-Sleep -Milliseconds 500 }
+        }
+    }
 # An ARM64 vlc-cache-gen only runs on ARM64 Windows. Made elsewhere, the
 # package has no cache: an unzipped copy (or a per-user install) makes it
 # at its first start, which takes a few seconds longer; an install for

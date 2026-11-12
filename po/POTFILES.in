@@ -783,6 +783,7 @@ modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml
+modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml
 modules/gui/qt/dialogs/preferences/qml/SettingsToggle.qml

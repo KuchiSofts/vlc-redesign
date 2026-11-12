@@ -137,7 +137,9 @@ if release:
     for part in re.findall(r'(?ms)^  - id: .*?(?=^  - id: |\Z)', platforms):
         pid = re.match(r'  - id: (\S+)', part).group(1)
         ver = re.search(r'(?m)^\s+version: ([0-9.]+)\s*$', part)
-        if ver and ver.group(1) != release:
+        # (a platform with no change in this version joins its release later: "follows: <release>")
+        follows = re.search(r'(?m)^\s+follows: ([0-9.]+)\s*$', part)
+        if ver and ver.group(1) != release and not (follows and follows.group(1) == release):
             behind.append('%s at %s' % (pid, ver.group(1)))
     check(not behind, 'platforms.yml: every platform at %s' % release,
           '%s; set version, date and next of each, then render.py' % ', '.join(behind))

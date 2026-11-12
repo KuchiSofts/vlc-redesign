@@ -132,7 +132,9 @@ function Save-Screen([string]$name) {
 $vlc = Join-Path $InstallDir 'vlc.exe'
 $port = 4213
 $process = Start-Process -FilePath $vlc -PassThru -ArgumentList @(
-    '--no-qt-privacy-ask', '--aout=dummy', '--extraintf=rc', "--rc-host=127.0.0.1:$port",
+    # (--rc-quiet: no console of the remote-control interface, which stood in front of VLC's window in the
+    # screenshots; it is asked over its port only)
+    '--no-qt-privacy-ask', '--aout=dummy', '--extraintf=rc', '--rc-quiet', "--rc-host=127.0.0.1:$port",
     '--verbose=2', '--file-logging', "--logfile=`"$(Join-Path $work 'about.log')`"")
 $watch = [Diagnostics.Stopwatch]::StartNew()
 while ($watch.Elapsed.TotalSeconds -lt 60 -and -not $process.HasExited -and $process.MainWindowHandle -eq [IntPtr]::Zero) {

@@ -78,7 +78,9 @@ What is being worked on, updated as it changes (2026-11-10):
     updated over 0.6.0 on a real phone; the Samsung app's round on a real TV. After publishing: the signature of
     the list is good, GitHub's digests of the 21 files equal it, and a fresh copy of 0.6.0 found 0.6.1, took the
     small update and restarted itself as 0.6.1 (495 files, the folder equal to the package).
-- 🟡 **0.6.2** started (an update release): fixes as the issues bring them. An Indonesian translation from Weblate
+- ✅ **0.6.2** published 2026-11-12 (an update release: #81 on Windows, Linux and macOS; the Android app
+  and the Samsung TV app stay at 0.6.1, "follows: 0.6.2" in platforms.yml: the Android APK joins this release when its fix is ready). Next: 0.6.3 (#81 in the Android app).
+  Before it: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.
   - 🟡 #81 (2026-11-12, @decider07): .m4a songs whose picture is a video track were listed under Videos; no way

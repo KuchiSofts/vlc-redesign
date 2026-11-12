@@ -114,8 +114,9 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 **An update release** of fixes (the installers, the portable copies and what the apps update from; the Linux
 packages stay on 0.6.0):
 
-- ✅ Published on its [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.1), under one
-  signed list of checksums; the apps update themselves to it (on Windows a small update of 7.2 MB from 0.6.0)
+- ✅ Published with 23 files on its [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.1),
+  under one signed list of checksums; the apps update themselves to it (on Windows a small update of 7.2 MB from
+  0.6.0, checked from a fresh copy of 0.6.0: it restarted itself as 0.6.1)
 - ✅ Windows: closing never waits for a graphics driver that is slow to start (the close could hang)
 - ✅ Every option answers: each control of Settings used and read back on the desktop (14 pages), the Samsung TV app
   (on a TV too), and the phone and tablet layouts of Android. On the desktop the lists, the sliders and the

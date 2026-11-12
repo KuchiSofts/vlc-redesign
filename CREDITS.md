@@ -78,6 +78,7 @@ Thank you to everyone who tested, reported and translated:
   - On [Weblate](https://hosted.weblate.org/projects/vlc-redesign/):
     - Priit Jõerüüt: Estonian.
     - bittin: Swedish.
+    - Arif Budiman: Indonesian.
 
 ## VLC
 

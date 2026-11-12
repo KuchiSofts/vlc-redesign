@@ -97,6 +97,16 @@ if ($firstSignIn) {
     Start-Sleep 2
     Note "note: Windows' first sign-in screen closed ($names)"
 }
+# With that screen gone Windows opens the Start menu, over VLC's window (the screenshots of 0.6.1 showed the Start
+# menu, VLC behind it). Its host is ended: Windows starts it again by itself, closed.
+function Close-StartMenu {
+    $menu = @(Get-Process StartMenuExperienceHost -ErrorAction SilentlyContinue)
+    if ($menu) {
+        $menu | Stop-Process -Force -ErrorAction SilentlyContinue
+        Start-Sleep 2
+    }
+}
+Close-StartMenu
 Add-Type -AssemblyName System.Drawing, System.Windows.Forms
 Add-Type @'
 using System;
@@ -131,6 +141,7 @@ while ($watch.Elapsed.TotalSeconds -lt 60 -and -not $process.HasExited -and $pro
 }
 if ($process.MainWindowHandle -ne [IntPtr]::Zero) {
     Start-Sleep 4
+    Close-StartMenu
     # (Alt pressed and released lets this process bring the window forward)
     [Input]::Key(0x12, $false); [Input]::Key(0x12, $true)
     $null = [Input]::SetForegroundWindow($process.MainWindowHandle)

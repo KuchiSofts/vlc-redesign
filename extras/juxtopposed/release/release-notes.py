@@ -98,7 +98,19 @@ android = table([('Phones, tablets and Android TV (Android 5.0+; ARM64, ARMv7, x
 WIKI = 'https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update'
 HEAD = '| What | File | Size | SHA-256 |\n|---|---|---|---|\n'
 others = ''
-if linux:
+# (the last full release, read here too: an update release has no .deb, .rpm or Flatpak of its own, and its Linux
+# paragraph named this version's, files that were never made)
+_full_p = os.path.join(ROOT, 'platforms.yml')
+_full_m = re.search(r'^\s+full:\s*(\S+)', open(_full_p, encoding='utf-8').read(), re.M) if os.path.exists(_full_p) else None
+linux_full = _full_m.group(1) if _full_m else ''
+if linux and linux_full and linux_full != V:
+    others += ('\n### Linux\n\n' + HEAD + '\n'.join(linux) +
+               '\n\nThe AppImage: `chmod +x` it and run it; it updates itself from the app (from 0.5.2). The folder: '
+               'unpack it and run `vlc-redesign/vlc`. The .deb, .rpm and Flatpak packages are those of '
+               "[%s](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v%s): they install next to the "
+               "distribution's own `vlc`. Every way, step by step: [Install and update](%s#linux).\n"
+               % (linux_full, linux_full, WIKI))
+elif linux:
     others += ('\n### Linux\n\n' + HEAD + '\n'.join(linux) +
                "\n\nThe .deb and .rpm install next to the distribution's own `vlc` (in `/opt/vlc-redesign`, the command "
                '`vlc-redesign`); the Live TV add-on is its own package, installed with it or left out. For example: '

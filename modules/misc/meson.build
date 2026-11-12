@@ -59,6 +59,7 @@ if medialibrary_dep.found()
             'medialibrary/entities.cpp',
             'medialibrary/Thumbnailer.cpp',
             'medialibrary/medialibrary.h',
+            'medialibrary/cover_track.h',
             'medialibrary/fs/device.h',
             'medialibrary/fs/device.cpp',
             'medialibrary/fs/directory.h',

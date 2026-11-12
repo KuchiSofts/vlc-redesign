@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-11 22:28+0000\n"
+"POT-Creation-Date: 2026-11-12 04:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3811,7 +3811,7 @@ msgstr ""
 #: src/libvlc-module.c:1362 src/video_output/vout_intf.c:327
 #: modules/gui/macosx/menus/VLCMainMenu.m:437
 #: modules/gui/macosx/menus/VLCMainMenu.m:529
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:176
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:177
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:167
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:40
 #: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
@@ -3898,8 +3898,8 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:518
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:104
 #: modules/gui/macosx/windows/VLCHelpWindowController.m:60
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:174
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:259
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:175
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:260
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:335
 #: modules/gui/qt/dialogs/sout/sout.cpp:97
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:651
@@ -3920,8 +3920,8 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:517
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:97
 #: modules/gui/macosx/windows/VLCHelpWindowController.m:61
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:173
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:256
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:174
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:257
 #: modules/gui/qt/maininterface/qml/LocalTopbar.qml:211
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:36
 #: modules/gui/qt/player/qml/CompactLibrary.qml:674
@@ -3954,7 +3954,7 @@ msgstr ""
 #: src/libvlc-module.c:1388
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:361
 #: modules/gui/macosx/panels/VLCVideoEffectsWindowController.m:383
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:152
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:153
 #: modules/spu/common.h:32 modules/spu/marq.c:133 modules/spu/rss.c:182
 msgid "Position"
 msgstr ""
@@ -4197,7 +4197,7 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:422
 #: modules/gui/macosx/menus/VLCMainMenu.m:512
 #: modules/gui/macosx/menus/VLCMainMenu.m:521
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:236
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:237
 #: modules/gui/macosx/windows/controlsbar/VLCMainWindowControlsBar.m:112
 #: modules/gui/qt/maininterface/qml/VolumeMeter.qml:188
 #: modules/gui/qt/player/qml/controlbarcontrols/VolumeWidget.qml:150
@@ -17542,12 +17542,12 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:1720
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:100
 #: modules/gui/macosx/playqueue/VLCPlayQueueMenuController.m:80
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:132
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:159
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:133
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:160
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:165
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:167
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:592
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:161
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:166
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:168
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:594
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:513
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:166
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:146
@@ -18572,11 +18572,11 @@ msgstr ""
 #: modules/gui/macosx/menus/VLCMainMenu.m:1728
 #: modules/gui/macosx/menus/VLCMainMenu.m:1729
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:102
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:161
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:162
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:169
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:171
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:584
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:163
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:170
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:172
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:586
 #: modules/gui/qt/menus/menus.cpp:597 modules/gui/qt/menus/menus.cpp:814
 msgid "Pause"
 msgstr ""
@@ -18626,7 +18626,7 @@ msgid "Shuffle"
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:113
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:257
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:258
 msgid "Go to previous item"
 msgstr ""
 
@@ -18635,7 +18635,7 @@ msgid "Toggle Play/Pause"
 msgstr ""
 
 #: modules/gui/macosx/menus/VLCStatusBarIcon.m:115
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:260
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:261
 msgid "Go to next item"
 msgstr ""
 
@@ -18693,7 +18693,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:396
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:463
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:837
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:361
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:369
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:85
 #: modules/gui/qt/player/qml/TracksMenu.qml:578
 #: modules/gui/qt/player/qml/TracksPageAudio.qml:129
@@ -18842,6 +18842,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:288
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:290
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:223
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:108
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:438
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:992
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:106
@@ -19917,7 +19918,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:784
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:807
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:821
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:353
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:361
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
 msgstr ""
@@ -20479,70 +20480,70 @@ msgstr ""
 msgid "VLC Debug Log (%s).txt"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:135
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:136
 msgid "Backward"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:136
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:137
 msgid "Seek backward"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:139
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:140
 msgid "Forward"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:140
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:141
 msgid "Seek forward"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:143
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:144
 msgid "Jump backwards"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:144
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:145
 msgid "Jump backwards in current item"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:147
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:148
 msgid "Jump forwards"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:148
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:149
 msgid "Jump forwards in current item"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:151
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:152
 #: modules/gui/qt/player/qml/LibraryMiniPlayer.qml:132
 msgid "Playback position"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:154
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:155
 msgid "Enter fullscreen"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:178
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:179
 msgid "Muted"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:180
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:181
 msgid "Unmuted"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:200
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:201
 msgid "Jump forward"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:203
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:204
 msgid "Jump backward"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:230
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:508
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:510
 #, c-format
 msgid "Volume: %i %%"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:231
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:232
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:216
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:196
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:198
@@ -20559,12 +20560,12 @@ msgstr ""
 msgid "Volume"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:242
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:248
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:243
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:249
 msgid "Playback time"
 msgstr ""
 
-#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:549
+#: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:551
 msgid "No current item"
 msgstr ""
 
@@ -21210,6 +21211,7 @@ msgid "Videos"
 msgstr ""
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:49
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:205
 msgid "Folders"
 msgstr ""
@@ -22456,10 +22458,12 @@ msgid "Choose a Media Folder to get started with"
 msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:127
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:119
 msgid "No folder selected"
 msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:110
 msgid "Remove the folder"
 msgstr ""
 
@@ -24450,7 +24454,7 @@ msgid "All VLC options"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:836
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:359
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:367
 msgid "Reset all settings"
 msgstr ""
 
@@ -24643,28 +24647,28 @@ msgstr ""
 msgid "Choose a log file"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:351
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:359
 msgid "Open configurations folder"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:352
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
 msgid "Shows the folder of the settings of VLC."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:360
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:368
 msgid "Puts every setting of VLC back to its default."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:376
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:384
 msgid "Rescan plugins"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:378
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:386
 #: modules/gui/qt/menus/custom_menus.cpp:141
 msgid "Scanning..."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:378
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:386
 msgid "Rescan"
 msgstr ""
 
@@ -25817,6 +25821,7 @@ msgid "Removes the recently played items of the media library."
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:119
 msgid "Media library unavailable"
 msgstr ""
 
@@ -25826,6 +25831,26 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:92
 msgid "Recently played items will be removed from the media library."
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:33
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:34
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:60
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr ""
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:63
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
@@ -28257,22 +28282,6 @@ msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
-msgstr ""
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr ""
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr ""
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr ""
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58

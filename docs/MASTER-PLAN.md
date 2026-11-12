@@ -81,6 +81,10 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟡 **0.6.2** started (an update release): fixes as the issues bring them. An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.
+  - 🟡 #81 (2026-11-12, @decider07): .m4a songs whose picture is a video track were listed under Videos; no way
+    to take a library folder out. Desktop fixed (cover_track.h in the media library module; Settings › Library
+    lists the folders with Remove), checked in Windows Sandbox. To check: Android (phone, tablet, TV) and the
+    Samsung TV app, the same songs.
   - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
     prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning. Android: vlc-android
     merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept). The new

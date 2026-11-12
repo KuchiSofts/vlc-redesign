@@ -23,6 +23,7 @@
 #endif
 
 #include "medialibrary.h"
+#include "cover_track.h"
 
 #include <vlc_image.h>
 #include <vlc_hash.h>
@@ -138,10 +139,26 @@ void MetadataExtractor::populateItem( medialibrary::parser::IItem& item, input_i
 
     item.setDuration( MS_FROM_VLC_TICK(inputItem->i_duration) );
 
+    // VLC Redesign: a song's picture kept as a video track is its cover, not
+    // a video (cover_track.h): it is not handed on as a track, so the file is
+    // a song for the media library
+    bool hasAudioTrack = false;
+    for ( auto i = 0u; i < inputItem->es_vec.size; ++i )
+        if ( inputItem->es_vec.data[i].es.i_cat == AUDIO_ES )
+            hasAudioTrack = true;
+
     for ( auto i = 0u; i < inputItem->es_vec.size; ++i )
     {
         medialibrary::parser::IItem::Track t;
         const es_format_t *p_es = &inputItem->es_vec.data[i].es;
+
+        if ( p_es->i_cat == VIDEO_ES )
+        {
+            char codec[4];
+            vlc_fourcc_to_char( p_es->i_codec, codec );
+            if ( redesign_cover::isCoverTrack( inputItem->psz_uri, codec, hasAudioTrack ) )
+                continue;
+        }
 
         switch ( p_es->i_cat )
         {

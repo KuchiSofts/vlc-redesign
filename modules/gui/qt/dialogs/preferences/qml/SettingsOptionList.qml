@@ -338,6 +338,14 @@ Column {
                 sourceComponent: SettingsPrivacyActions { width: root.width }
             }
 
+            // the folders of the media library, under its switch (issue #81)
+            Loader {
+                width: parent.width
+                active: parent.visible && root.category === "library" && root.search.length === 0
+                        && model.key === "media-library-enabled"
+                sourceComponent: SettingsLibraryFolders { width: root.width }
+            }
+
             // Open configurations folder, Reset all settings: after the
             // advanced rows of Diagnostics in the design
             Loader {

@@ -17,6 +17,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- Songs whose picture is stored as a video track (.m4a and others) are listed as music, not as videos ([#81](https://github.com/KuchiSofts/vlc-redesign/issues/81), by @decider07).
+- Settings › Library lists the library's folders, each with Remove, and Add folder ([#81](https://github.com/KuchiSofts/vlc-redesign/issues/81)).
 - Indonesian: the interface size's texts (Arif Budiman, on Weblate).
 
 ### Technical

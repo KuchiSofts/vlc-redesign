@@ -56,6 +56,8 @@ Thank you to everyone who tested, reported and translated:
     ([#30](https://github.com/KuchiSofts/vlc-redesign/issues/30)).
   - [@SHR1F](https://github.com/SHR1F): the grey strips after a restart in full screen
     ([#48](https://github.com/KuchiSofts/vlc-redesign/issues/48)).
+  - [@decider07](https://github.com/decider07): songs listed as videos, and the library's folders
+    ([#81](https://github.com/KuchiSofts/vlc-redesign/issues/81)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up

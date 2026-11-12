@@ -15,12 +15,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- make-release: a file the antivirus holds a moment after its copy is tried again.
+
 ## [0.6.2] · 2026-11-12
 
 An update release: songs whose picture is stored as a video track are listed as music, not as videos, and
 Settings › Library lists the library's folders with Remove and Add folder (#81), on Windows, Linux and macOS.
-The Android app stays at 0.6.1 until its own fix joins this release; the Samsung TV app never had
-the bug and stays at 0.6.1.
+The Android app has the same fix (its media library built with it, in the same release); the Samsung TV
+app never had the bug and stays at 0.6.1.
 
 ### Fixed
 

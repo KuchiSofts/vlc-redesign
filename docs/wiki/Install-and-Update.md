@@ -31,11 +31,11 @@ update release: the apps update themselves to it. The .deb, .rpm and Flatpak pac
 |---|---|---|
 | `vlc-redesign-0.6.2-win64-setup.exe` | 60.0 MB | **The installer.** Recommended: no administrator rights, a Start menu entry, file types, small updates. Every release has it, update releases too: a copy installed for every user updates with it. |
 | `vlc-redesign-0.6.2-win64.zip` | 108.6 MB | **The portable copy**: unzip anywhere and run `vlc.exe`. |
-| `vlc-redesign-0.6.2-winarm64-setup.exe` | 47.8 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
+| `vlc-redesign-0.6.2-winarm64-setup.exe` | 47.9 MB | **The installer for Windows 11 on ARM64** (see [Windows on ARM64](#windows-on-arm64)). |
 | `vlc-redesign-0.6.2-winarm64.zip` | 84.8 MB | **The portable copy for Windows 11 on ARM64.** |
-| `vlc-redesign-0.6.2-delta-from-0.6.0.vrdelta` | 7.2 MB | A small update from 0.6.0, used by the app itself (see [Small updates](#small-updates)). |
-| `vlc-redesign-0.6.2-delta-from-0.5.8.vrdelta`, `...-from-0.5.7.vrdelta` | 10.7 MB, 12.6 MB | The small updates from 0.5.8 and from 0.5.7. |
-| `vlc-redesign-0.6.2-winarm64-delta-from-0.6.0.vrdelta`, `...-from-0.5.8.vrdelta`, `...-from-0.5.7.vrdelta` | 6.6 MB, 10.2 MB, 11.7 MB | The small updates of Windows on ARM64 from 0.6.0, 0.5.8 and 0.5.7. |
+| `vlc-redesign-0.6.2-delta-from-0.6.1.vrdelta` | 4.4 MB | A small update from 0.6.1, used by the app itself (see [Small updates](#small-updates)). |
+| `vlc-redesign-0.6.2-delta-from-0.6.0.vrdelta`, `...-from-0.5.8.vrdelta` | 7.3 MB, 10.9 MB | The small updates from 0.6.0 and from 0.5.8. |
+| `vlc-redesign-0.6.2-winarm64-delta-from-0.6.1.vrdelta`, `...-from-0.6.0.vrdelta`, `...-from-0.5.8.vrdelta` | 4.3 MB, 6.8 MB, 10.3 MB | The small updates of Windows on ARM64 from 0.6.1, 0.6.0 and 0.5.8. |
 | `vlc-redesign-0.6.2-source.tar.gz` | 122.0 MB | The source code of this release. |
 | `SHA256SUMS.txt` | | The SHA-256 of every file of the release, to check a download. |
 | `SHA256SUMS.txt.sig` | | The signature of `SHA256SUMS.txt`: from 0.4.0 on, the app installs only an update whose list is signed. |
@@ -74,7 +74,7 @@ PC.
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.6.1-android.apk` (120 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
+| `vlc-redesign-0.6.2-android.apk` (120 MB) | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
 updates in the app are for Windows; the AppImage on Linux and the app on macOS update themselves from the app with the
@@ -84,7 +84,7 @@ release's full file (from 0.5.6); the other Linux packages are updated by instal
 
 | File | What it is |
 |---|---|
-| `Juxto-Media-Player-TV-0.6.1-source.zip` | **Juxto Media Player**: the app's source and its install guide (see [Samsung TV](#samsung-tv)). |
+| `Juxto-Media-Player-TV-0.6.2-source.zip` | **Juxto Media Player**: the app's source and its install guide (see [Samsung TV](#samsung-tv)). |
 
 > **Good to know.** Windows SmartScreen may warn about an unknown publisher the first time, because the releases are
 > not code-signed yet: see
@@ -269,7 +269,7 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 | Card | Buttons |
 |---|---|
-| *VLC Redesign 0.6.2 is available* · *You have 0.6.1.* | **What's new**, **Skip**, **Update now · 7.2 MB** (or **Download**) |
+| *VLC Redesign 0.6.2 is available* · *You have 0.6.2.* | **What's new**, **Skip**, **Update now · 4.4 MB** (or **Download**) |
 | *Downloading VLC Redesign 0.6.2… 40%* · *Only what changed: keep watching, it's checked in the background.* | **×** (cancels) |
 | *Preparing VLC Redesign 0.6.2…* | |
 | *VLC Redesign 0.6.2 is ready* · *It takes a few seconds: restart now, or it's done when you close VLC Redesign.* | **Restart now**, **Later** |
@@ -438,7 +438,7 @@ delete those too to remove everything.
 VLC Media Player Redesign for Android is a separate app: VLC for Android with the design
 ([source](https://github.com/KuchiSofts/vlc-redesign-android)). It is not on Google Play.
 
-1. On the phone, download `vlc-redesign-0.6.1-android.apk` from the
+1. On the phone, download `vlc-redesign-0.6.2-android.apk` from the
    [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
 2. Open it. Android asks once to allow installing apps from your browser (or file manager): allow it, then *Install*.
 3. The app is *VLC Media Player Redesign* (package `org.kuchisofts.vlcredesign`). It installs **beside** VLC from
@@ -449,8 +449,8 @@ so Android accepts it as an update. Uninstall it like any app.
 
 **Android TV and Google TV.** The same APK has the TV layout, driven by the remote. A TV has no browser to download
 it: install a file manager or the *Downloader* app from the TV's store, open the APK's link there (the latest
-release's `vlc-redesign-0.6.1-android.apk`) and install it, allowing installs from that app once. From a computer
-with the TV in developer mode, `adb install vlc-redesign-0.6.1-android.apk` does the same. The app shows on the
+release's `vlc-redesign-0.6.2-android.apk`) and install it, allowing installs from that app once. From a computer
+with the TV in developer mode, `adb install vlc-redesign-0.6.2-android.apk` does the same. The app shows on the
 TV's home screen.
 
 ## Samsung TV
@@ -464,7 +464,7 @@ designer's pixel cat).
 Samsung TVs install apps from Samsung's store, or from a computer when the TV is in developer mode. The app is
 not in the store, so it is installed from a computer, once (about 20 minutes):
 
-1. Download `Juxto-Media-Player-TV-0.6.1-source.zip` from the
+1. Download `Juxto-Media-Player-TV-0.6.2-source.zip` from the
    [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest) and unzip it.
 2. Install [Tizen Studio](https://developer.tizen.org/development/tizen-studio/download) and, in its Package
    Manager (*Extension SDK*), **Samsung Certificate Extension** and **TV Extensions**.

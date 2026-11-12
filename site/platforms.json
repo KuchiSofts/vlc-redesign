@@ -151,10 +151,10 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Android 0.6.1",
-      "version": "0.6.1",
+      "bar": "Android 0.6.2",
+      "version": "0.6.2",
       "date": "2026-11-12",
-      "next": "0.6.2",
+      "next": "0.6.3",
       "os": "android",
       "requires": "Android 5.0 or later",
       "notes": "One APK for phones, tablets and Android TV (ARM64, ARMv7, x86, x86_64), beside VLC; not on Google Play",
@@ -163,8 +163,8 @@
       "downloads": [
         {
           "label": "APK",
-          "file": "vlc-redesign-0.6.1-android.apk",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.1/vlc-redesign-0.6.1-android.apk"
+          "file": "vlc-redesign-0.6.2-android.apk",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.2/vlc-redesign-0.6.2-android.apk"
         }
       ]
     },
@@ -178,7 +178,7 @@
       "bar": "Samsung TV 0.6.1",
       "version": "0.6.1",
       "date": "2026-11-12",
-      "next": "0.6.2",
+      "next": "0.6.3",
       "os": "tizen",
       "requires": "Tizen 3.0 (2017 models) or later, installed from a computer in developer mode",
       "notes": "A player of its own inspired by VLC, in the design (the TV plays the video); the source with an install guide",

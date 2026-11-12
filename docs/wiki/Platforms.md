@@ -21,8 +21,8 @@ The study behind the order, with the evidence from VideoLAN's build system:
 | **[Linux](#linux)** | **Released** | **0.6.2** (2026-11-12) | 0.6.3 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
 | **[macOS](#macos)** | **Released** | **0.6.2** (2026-11-12) | 0.6.3 | macOS 12 Monterey, Apple Silicon or Intel |
 | **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.6.2** (2026-11-12) | 0.6.3 | Windows 11 on ARM64 |
-| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.6.1** (2026-11-12) | 0.6.2 | Android 5.0 or later |
-| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.6.1** (2026-11-12) | 0.6.2 | Tizen 3.0 (2017 models) or later |
+| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.6.2** (2026-11-12) | 0.6.3 | Android 5.0 or later |
+| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.6.1** (2026-11-12) | 0.6.3 | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
@@ -158,7 +158,7 @@ Home in the light theme. Click for the MP4.</sub>
 | **Version** | 0.6.2, 2026-11-12 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.2)); 0.5.0 was the first for Android. Next: 0.6.3 |
 | **Needs** | Android 5.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
-| **Files** | `vlc-redesign-0.6.1-android.apk` (ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
+| **Files** | `vlc-redesign-0.6.2-android.apk` (ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
 
 The clips below were recorded on the Android emulator, before the first release. All of them, with captions:
 [Feature tour: Android](Feature-Tour#android).

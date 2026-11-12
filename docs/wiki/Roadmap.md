@@ -18,9 +18,9 @@ Updated as the work moves (last: 2026-11-12, 0.6.2 published).
 | **Windows on ARM64** | ✅ released 0.6.2 | ██████████ 100 % | a run by hand on a real ARM64 PC |
 | **Linux** (x86_64, ARM64) | ✅ released 0.6.2 | ██████████ 100 % | the Flatpak on Flathub |
 | **macOS** (Apple Silicon, Intel) | ✅ released 0.6.2 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.1 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Android** (phones) | ✅ released 0.6.2 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.2 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.2 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
@@ -29,8 +29,6 @@ Updated as the work moves (last: 2026-11-12, 0.6.2 published).
 **0.6.3** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🔨 [#81](https://github.com/KuchiSofts/vlc-redesign/issues/81) in the Android app: its media library built by us with
-  the same fix (VideoLAN's ready-made one has the bug); the APK then joins the 0.6.2 release
 
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page

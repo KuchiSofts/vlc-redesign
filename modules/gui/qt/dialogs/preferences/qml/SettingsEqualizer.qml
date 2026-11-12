@@ -48,6 +48,8 @@ ColumnLayout {
         ComboBox {
             id: presetBox
             objectName: "settingsEqualizerPreset"
+            // a press through an assistive tool opens the list, as a click does (Qt's combo box answers its keys only)
+            Accessible.onPressAction: popup.visible ? popup.close() : popup.open()
             Layout.preferredWidth: VLCStyle.dp(319, VLCStyle.scale)
             model: root.effects.presets
             textRole: "name"

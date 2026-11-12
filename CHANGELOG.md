@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `fb39292a88` (2026-11-10).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `82ca0542a1` (2026-11-11).
 
-**Contents:** [Unreleased](#unreleased) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,11 +15,40 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-### Changed
+## [0.6.1] · 2026-11-12
 
-- Work on 0.6.1 (an update release) started: fixes as the issues bring them.
+An update release of fixes: closing on Windows never waits for a slow graphics driver, every control of Settings
+answers (from a screen reader too), the remote of an Android TV reaches the mini player and its queue, and small
+fixes on Android and the Samsung TV app.
+
+### Fixed
+
+- Windows: closing never waits for a graphics driver that is slow to start (the close could hang).
+- What's new: headlines without the changelog's issue references.
+- Settings: lists, sliders and the start-up volume choice work from a screen reader.
+- Settings: Rescan plugins shows that it is scanning.
+- Settings: Add and Remove of Extensions are greyed until an add-on is selected.
+- "Unknown Artist" of the media library is translated (72 languages).
+- Subtitle services' hints: a sentence shown twice (12 languages).
+- Android: an empty Home says why and asks for access to your files.
+- Android TV: menus show the remote's focus line.
+- Android TV: confirmations and small forms have the design's width.
+- Android TV: the remote reaches the mini player and its queue button.
+- Android TV: the queue opens as a panel over the mini player, not as a full page.
+- Android: a screen reader says whether a subtitle service or language is on.
+- Android: the feedback page reports to the project's GitHub issues, not by mail to VideoLAN.
+- Samsung TV: the catch-up mark no longer covers a channel's logo.
+- Samsung TV: a guide download that is cancelled stops at once.
+- Hebrew: one word for a playlist in every app.
 
 ### Technical
+
+- Merged VideoLAN's master up to `82ca0542a1`: two Qt patches for Direct3D 11 on Windows 7, nine changes to VLC's
+  own macOS interface.
+- Android: merged VideoLAN's vlc-android up to `14a7422459` (Play all for video folders).
+- CI: a start that does not end keeps its evidence (log, threads, a small dump); the ARM64 screenshots show VLC.
+- The steps of closing the interface are in the debug log.
+- What's new's text rules have a test (`extras/juxtopposed/whats-new.cpp`).
 
 - **The small updates are made with bsdiff4 1.4** (already in the tag of 0.6.0, whose six small updates were made
   and checked with it): its control triples arrive as the bytes of a BSDIFF40 file (a negative number as sign and

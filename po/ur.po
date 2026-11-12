@@ -17713,7 +17713,7 @@ msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:548
 msgid "Unknown Artist"
-msgstr ""
+msgstr "نامعلوم فنکار"
 
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:690
 msgid "Unknown Album"

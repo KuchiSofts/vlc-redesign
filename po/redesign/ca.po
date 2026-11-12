@@ -8195,8 +8195,7 @@ msgstr "Amb la vostra pròpia clau gratuïta · fort en àrab, molts idiomes"
 #: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr ""
-"Amb la vostra pròpia clau gratuïta · l'arxiu de Subscene, molts idiomesAmb "
-"la vostra pròpia clau gratuïta · l'arxiu de Subscene, molts idiomes"
+"Amb la vostra pròpia clau gratuïta · l'arxiu de Subscene, molts idiomes"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1686
 msgid "Hebrew · movies and series"

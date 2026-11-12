@@ -144,6 +144,9 @@ ColumnLayout {
         snapMode: T.Slider.SnapAlways
         focusPolicy: Qt.StrongFocus
         Accessible.name: root.label
+        // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
+        readonly property real minimumValue: from
+        readonly property real maximumValue: to
         Binding on value {
             when: !slider.pressed
             value: root.modelValue

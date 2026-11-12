@@ -34,6 +34,8 @@ qt_plugin_sources = files(
     '../../dialogs/preferences/config_model.cpp',
     '../../dialogs/firstrun/onboarding.cpp',
     '../../dialogs/firstrun/whats_new.cpp',
+    '../../dialogs/firstrun/whats_new_text.cpp',
+    '../../dialogs/firstrun/whats_new_text.hpp',
     '../../maininterface/dialog_types.cpp',
     '../../dialogs/native_dialogs.cpp',
     '../../dialogs/preferences/config_model.hpp',

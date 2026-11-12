@@ -82,6 +82,8 @@ Rectangle {
             Accessible.checkable: true
             Accessible.checked: selected
             Accessible.onPressAction: picked()
+            // (a checkable control is also "toggled" by assistive tools: that did nothing)
+            Accessible.onToggleAction: picked()
         }
 
         Option {
@@ -95,6 +97,7 @@ Rectangle {
             Accessible.checkable: true
             Accessible.checked: selected
             Accessible.onPressAction: picked()
+            Accessible.onToggleAction: picked()
             // The field: 10 px after the label (where the design puts it, or
             // 6 px after a longer label, keeping 60 px for the value), 2 px
             // from the other sides

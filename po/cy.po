@@ -18026,7 +18026,7 @@ msgstr ""
 
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:548
 msgid "Unknown Artist"
-msgstr ""
+msgstr "Artist anhysbys"
 
 #: modules/gui/macosx/library/VLCLibraryDataTypes.m:690
 msgid "Unknown Album"
@@ -30158,9 +30158,7 @@ msgstr "Gyda'ch allwedd am ddim eich hun · pob iaith"
 #: modules/gui/qt/player/subtitle_providers.cpp:1680
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr ""
-"Gyda'ch allwedd am ddim eich hun · cryf ar gyfer Arabeg, llawer o "
-"ieithoeddGyda'ch allwedd am ddim eich hun · cryf ar gyfer Arabeg, llawer o "
-"ieithoedd"
+"Gyda'ch allwedd am ddim eich hun · cryf ar gyfer Arabeg, llawer o ieithoedd"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"

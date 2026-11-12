@@ -3850,8 +3850,7 @@ msgstr "Chaidh an clàradh a-steach a dhiùltadh: thoir sùil air"
 msgid "Asked only when %1 is one of your subtitle languages"
 msgstr ""
 "Cha chuirear ceist air ach nuair a bhios %1 am measg cànain nam fo-thiotalan "
-"agadCha chuirear ceist air ach nuair a bhios %1 am measg cànain nam fo-"
-"thiotalan agad"
+"agad"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:358
 msgid "Your free key"
@@ -8319,14 +8318,12 @@ msgstr "Leis an iuchair an-asgaidh agad fhèin · a h-uile cànan"
 #: modules/gui/qt/player/subtitle_providers.cpp:1680
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr ""
-"Leis an iuchair an-asgaidh agad fhèin · làidir san Arabais, iomadh cànanLeis "
-"an iuchair an-asgaidh agad fhèin · làidir san Arabais, iomadh cànan"
+"Leis an iuchair an-asgaidh agad fhèin · làidir san Arabais, iomadh cànan"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1683
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr ""
-"Leis an iuchair an-asgaidh agad fhèin · tasglann Subscene, iomadh cànanLeis "
-"an iuchair an-asgaidh agad fhèin · tasglann Subscene, iomadh cànan"
+"Leis an iuchair an-asgaidh agad fhèin · tasglann Subscene, iomadh cànan"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1686
 msgid "Hebrew · movies and series"

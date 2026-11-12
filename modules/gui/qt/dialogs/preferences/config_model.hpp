@@ -37,6 +37,8 @@ class ConfigModel : public QAbstractListModel
     Q_PROPERTY(QString search READ search WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(bool dirty READ dirty NOTIFY dirtyChanged)
     Q_PROPERTY(QString error READ error NOTIFY errorChanged)
+    // While the plugins are scanned again ("Rescan plugins"): its button says so
+    Q_PROPERTY(bool rescanningPlugins READ rescanningPlugins NOTIFY rescanningPluginsChanged)
     Q_PROPERTY(QStringList categories READ categories NOTIFY categoriesChanged)
     // Changes with every staged value: for the bindings reading valueFor()
     Q_PROPERTY(int revision READ revision NOTIFY revisionChanged)
@@ -85,6 +87,7 @@ public:
     Q_INVOKABLE QString displayPath(const QString &path) const;
     // Regenerates the cache of the plugins (vlc-cache-gen) for the next start
     Q_INVOKABLE bool rescanPlugins();
+    bool rescanningPlugins() const { return m_rescanningPlugins; }
     // The folder of vlcrc in the file manager
     Q_INVOKABLE bool openConfigFolder();
     // Every option of VLC and every setting of the interface to its default
@@ -114,6 +117,7 @@ signals:
     void searchChanged();
     void dirtyChanged();
     void errorChanged();
+    void rescanningPluginsChanged();
     void categoriesChanged();
     void revisionChanged();
 
@@ -179,6 +183,7 @@ private:
     // The texts of the rows in the language of the interface
     void retranslate();
     void setError(const QString &error);
+    void setRescanningPlugins(bool rescanning);
     // A setting as the user knows it (its name), for the messages
     QString displayName(const QString &key) const;
     // The value VLC runs with: the one it started with for a setting
@@ -196,6 +201,7 @@ private:
     QVector<Entry> m_entries;
     QVector<int> m_rows;
     int m_revision = 0;
+    bool m_rescanningPlugins = false;
     QElapsedTimer m_loaded;
 };
 

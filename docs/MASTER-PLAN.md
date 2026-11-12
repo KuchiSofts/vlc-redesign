@@ -64,8 +64,67 @@ What is being worked on, updated as it changes (2026-11-10):
   work planned as 0.5.9 (the stability round, #72's keys without the controls, the subtitle work below, the
   interface size) with Android TV gone through option by option with the remote; Windows x64 and ARM64, Linux and
   macOS, Android (versionCode 13106000) and the Samsung TV app at 0.6.0 together. Next: 0.6.1, an update release.
-- 🟡 **0.6.1** started (an update release): fixes as the issues bring them. The small updates of 0.6.0 were made
-  with bsdiff4 1.4 (its control bytes converted, the diff on a large stack), 35 files on the release page.
+- ✅ **0.6.1** published 2026-11-12 (an update release of fixes; VideoLAN merged to `82ca0542a1`): Windows x64 and
+  ARM64 (installers, portable copies, small updates from 0.6.0), Linux (AppImage, a folder to run from), macOS,
+  Android (versionCode 13106010) and the Samsung TV app's source. Next: 0.6.2, fixes as the issues bring them. The
+  small updates of 0.6.0 were made with bsdiff4 1.4 (its control bytes converted, the diff on a large stack).
+  - 🟢 VideoLAN merged twice more at the upload, to `3494ac3b92` and then `82ca0542a1` (9 commits, all in VLC's
+    own macOS interface, which the redesign does not show: folder streams, radio country counts, the grid's menu,
+    the playback state of media items).
+  - 🟢 VideoLAN merged to `623d7b9092` (2026-11-11, 2 commits: Qt patches for Direct3D 11 on Windows 7; a new
+    prebuilt contrib archive). Windows x64 built, launch test passed, no QML warning. Android: vlc-android
+    merged to `14a7422459` (3 commits; one conflict in the video grid's folder menu, both sides kept). The new
+    Windows build also on Direct3D's software adapter (Windows Sandbox, no graphics card): launch test 0
+    failures, no QML warning, Home and About drawn right.
+  - 🟢 Android feedback page (upstream's, opened after a library error): "Report a bug" opens the project's
+    GitHub issues; no mail with logs, a settings file or the library to VideoLAN's support, no VideoLAN forum
+    card; the web remote's feedback has no address either. The keys of the subtitle services and Live TV were
+    never in that settings file (kept apart under the Android keystore).
+  - 🟢 Fixed (2026-11-11): What's new's headlines without issue references (a test, 30 checks); "Unknown Artist"
+    translated in 72 languages; a sentence written twice in 14 texts of 12 languages; Android: Home never blank
+    without access to the files, a screen reader hears a subtitle service's or language's state; Android TV: the
+    focus line in menus, alerts at the design's width; Samsung TV: the catch-up mark clear of the logo (measured:
+    16 × 12 px over it in Hebrew before, 12 px clear in both directions after).
+  - 🟢 **A close that never ends** on CI's ARM64 install test ("the interface did not end within 20 s", twice on
+    2026-11-11, passes on a re-run): not reproduced as it is in 81 local runs (the published 0.6.0 at 11 moments
+    of its start, on one core at low priority, and 60 times in a Windows Sandbox without a graphics card). Found
+    and fixed: closing waited without a limit for the thread that starts the graphics driver early
+    (`endGraphicsDriverWarmUp()`); with a driver simulated to take 30 s (`VLC_REDESIGN_TEST_SLOW_WARMUP`, builds
+    with asserts) the close was stuck for 27 s, and now ends in 1.0 s at three moments of the start: the thread
+    is let go after 1 s (it drops its device, the module stays loaded). The launch test has that step. Whether
+    this was the runner's case is seen at the next CI runs: the test keeps a stuck process's log, thread waits
+    and a small dump, and the interface logs each step of its close.
+  - 🟢 CI: Windows' first sign-in screen covered every ARM64 screenshot since at least 2026-11-08 (they never
+    showed VLC); it is closed before they are taken. To look at after the next upload.
+  - 🟢 Android TV, the mini player and the queue (2026-11-11): the remote never reached the mini player. The
+    closed music player of the phone layout is under the window's edge there (no bar at the bottom), and its
+    buttons took the focus: Down from a page's last row went to Shuffle, the time, a queue row's menu, none of
+    them on screen. Closed, it takes no focus now; Down from the last row goes to the mini player's card (OK: the
+    player), Down again to its queue button, Up back to the item the focus came from. The queue is a panel over
+    the mini player, as wide as it (what plays is checked and focused, OK plays a row, Back closes), not the
+    player's full page. In Hebrew and Arabic the card touched the window's edge (the right margin, not the
+    end's). Checked on the Android TV emulator with the remote's keys, each step looked at.
+  - 🟢 **Every option answers** (2026-11-11), each control of Settings used and read back:
+    - Desktop (Windows, 14 pages, through UI Automation: a switch toggled twice, a list opened and closed, a
+      slider moved and put back, a text box given a text, a button pressed and what it opened closed again):
+      every control answers. Found and fixed on the way: the lists (60) did not open from an assistive tool, only
+      from their keys; the sliders told such tools a range of 0 to 0, so no value could be set; the start-up
+      volume choice ignored their "toggle"; a list did not tell its current choice; **Rescan plugins** showed
+      nothing when it worked (its button now reads "Scanning..." while it scans, a second at least); **Add** and
+      **Remove** of Extensions took a press and did nothing with no add-on selected (greyed now, pointing at one
+      says what to select). Not faults: the choice already taken changes nothing when pressed again.
+    - Samsung TV (the preview at the TV's size, then the same build on the real TV, the remote's keys): 135
+      controls of Settings change a setting, open something or show an answer; the focus is visible and on
+      screen on 24 pages and dialogs; no arrow is held; a video with its subtitles and a live channel play; 0
+      script errors. Found on the way: a guide download cancelled from inside its own reading went on to the
+      file's end and told its end (its test passed only while inflating took more than 30 ms: it failed on a
+      faster run); fixed, and the test fails on the code as it was.
+    - Android tablet layout (emulator, the two panes: the list of pages and the page, 12 pages): 161 rows answer.
+      What the walk flagged was looked at by hand and works (the bookmark buttons switch greys and frees the row
+      that depends on it, the audio language opens its list, Advanced Options unfolds).
+    - Android phone layout (emulator, taps, 12 pages): every row opens its page or its choices, or changes and
+      is put back by a second press. What the walk flagged was looked at by hand and works (Remote access and the
+      equalizer come back with Back, the shadow switch shows and hides its three rows).
 - 🟢 **Smarter automatic subtitles** (every app): a film opened as the
   app starts gets them (the check waits for the picture), a site's advert or forced lines beside the video no
   longer stop the search, the video's own Subs folder is used, Hebrew and Arabic punctuation written for

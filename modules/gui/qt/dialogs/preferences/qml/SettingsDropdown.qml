@@ -29,6 +29,10 @@ T.ComboBox {
     T.ToolTip.text: displayText
     T.ToolTip.delay: 650
     focusPolicy: Qt.StrongFocus
+    // a press through an assistive tool opens the list, as a click does (Qt's combo box answers its keys only)
+    Accessible.onPressAction: popup.visible ? popup.close() : popup.open()
+    // (its name is the setting's: the choice it shows is told with it)
+    Accessible.description: displayText
     font.family: VLCStyle.redesign.fontFamily
     font.pixelSize: px(14)
 

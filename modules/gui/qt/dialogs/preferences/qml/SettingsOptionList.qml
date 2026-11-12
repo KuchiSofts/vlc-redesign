@@ -374,7 +374,8 @@ Column {
                 sourceComponent: SettingsActionRow {
                     width: root.width
                     label: qsTr("Rescan plugins")
-                    buttonText: qsTr("Rescan")
+                    // (while it scans the button says so: a press answered nothing that could be seen)
+                    buttonText: root.settingsModel.rescanningPlugins ? qsTr("Scanning...") : qsTr("Rescan")
                     onClicked: root.settingsModel.rescanPlugins()
                 }
             }

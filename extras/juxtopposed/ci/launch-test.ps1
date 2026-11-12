@@ -77,9 +77,49 @@ function Start-Vlc([string]$name, [string[]]$arguments) {
     return $process
 }
 
-function Wait-Exit($process, [int]$seconds, [string]$what) {
+# What a process that does not end was doing, before it is ended: the last
+# lines of its log, how its threads wait, and a small dump (the stacks of
+# its threads and its modules, no memory) beside the crash dumps, which the
+# workflow keeps. On CI only: a dump stays on no one's PC.
+function Save-Stuck($process, [string]$name) {
+    $log = Join-Path $work "$name.log"
+    if (Test-Path $log) {
+        Note "  the last lines of $name.log:"
+        Get-Content $log -Tail 8 | ForEach-Object { Note "    $_" }
+    }
+    try {
+        $process.Refresh()
+        $waits = $process.Threads | Group-Object { "$($_.ThreadState) $(if ($_.ThreadState -eq 'Wait') { $_.WaitReason })".Trim() } |
+            ForEach-Object { "$($_.Count) $($_.Name)" }
+        Note "  threads: $($process.Threads.Count) ($($waits -join ', '))"
+    } catch { Note "  threads: not read ($_)" }
+    if (-not $env:CI) { return }
+    try {
+        if (-not ('Stuck.Dump' -as [type])) {
+            Add-Type -Namespace Stuck -Name Dump -MemberDefinition @'
+[DllImport("dbghelp.dll", SetLastError = true)]
+public static extern bool MiniDumpWriteDump(IntPtr process, uint id, Microsoft.Win32.SafeHandles.SafeFileHandle file,
+                                            uint type, IntPtr exception, IntPtr stream, IntPtr callback);
+'@
+        }
+        $dumps = Join-Path $work 'dumps'
+        New-Item -ItemType Directory -Force $dumps | Out-Null
+        $path = Join-Path $dumps "stuck-$name.dmp"
+        $file = [IO.File]::Create($path)
+        try {
+            # MiniDumpWithUnloadedModules | MiniDumpWithThreadInfo
+            $done = [Stuck.Dump]::MiniDumpWriteDump($process.Handle, [uint32]$process.Id, $file.SafeFileHandle,
+                                                    0x1020, [IntPtr]::Zero, [IntPtr]::Zero, [IntPtr]::Zero)
+        } finally { $file.Dispose() }
+        if ($done) { Note "  dump: dumps\stuck-$name.dmp ($([int]((Get-Item $path).Length / 1KB)) KB)" }
+        else { Note "  dump: not written (error $([Runtime.InteropServices.Marshal]::GetLastWin32Error()))" }
+    } catch { Note "  dump: not written ($_)" }
+}
+
+function Wait-Exit($process, [int]$seconds, [string]$what, [string]$name) {
     if (-not $process.WaitForExit($seconds * 1000)) {
         Fail "$what did not end within $seconds s"
+        if ($name) { Save-Stuck $process $name }
         try { $process.Kill() } catch { }
         return
     }
@@ -109,11 +149,47 @@ try {
 } catch {
     Fail "rc interface: $_"
 }
-Wait-Exit $process 20 'the interface'
+Wait-Exit $process 20 'the interface' 'interface'
+
+# 1b. The same with a graphics driver that takes long to start: closing must
+# not wait for it (the interface once ended only when the driver had started:
+# a close that never ended on a runner without a graphics card). A build with
+# asserts simulates such a driver (VLC_REDESIGN_TEST_SLOW_WARMUP, in ms); a
+# release build ignores the variable and this is one more quit.
+$env:VLC_REDESIGN_TEST_SLOW_WARMUP = '30000'
+try {
+    $port = 4214
+    $process = Start-Vlc 'slow-driver' @('--extraintf=rc', "--rc-host=127.0.0.1:$port")
+    $watch = [Diagnostics.Stopwatch]::StartNew()
+    while ($watch.Elapsed.TotalSeconds -lt 60 -and -not $process.HasExited) {
+        $process.Refresh()
+        if ($process.MainWindowHandle -ne [IntPtr]::Zero) { break }
+        Start-Sleep -Milliseconds 100
+    }
+    Start-Sleep 3
+    try {
+        $client = New-Object Net.Sockets.TcpClient('127.0.0.1', $port)
+        $writer = New-Object IO.StreamWriter($client.GetStream())
+        $writer.Write("quit`n"); $writer.Flush()
+        Start-Sleep 1
+        $client.Close()
+    } catch {
+        Fail "rc interface (slow driver): $_"
+    }
+    Wait-Exit $process 20 'the interface, its graphics driver still starting,' 'slow-driver'
+    $log = Join-Path $work 'slow-driver.log'
+    if ((Test-Path $log) -and (Select-String -Path $log -Pattern 'warm-up did not end within' -SimpleMatch -Quiet)) {
+        Note 'ok: the slow driver was let go'
+    } else {
+        Note 'note: no slow driver simulated (a build without asserts, or no Direct3D 11 warm-up here)'
+    }
+} finally {
+    Remove-Item Env:VLC_REDESIGN_TEST_SLOW_WARMUP -ErrorAction SilentlyContinue
+}
 
 # 2. Playback: the clip to its end
 $process = Start-Vlc 'playback' @('--play-and-exit', "`"$clip`"")
-Wait-Exit $process 60 'playback of the clip'
+Wait-Exit $process 60 'playback of the clip' 'playback'
 $log = Join-Path $work 'playback.log'
 foreach ($line in 'Received first picture', 'EOF reached') {
     if ((Test-Path $log) -and (Select-String -Path $log -Pattern $line -SimpleMatch -Quiet)) { Note "ok: $line" }
@@ -122,7 +198,7 @@ foreach ($line in 'Received first picture', 'EOF reached') {
 
 # 3. No QML warning in either run (a warning of a QML file names it: qrc:;
 # Qt logs it as "qt generic warning" or "qt warning: (default)", errors too)
-foreach ($name in 'interface', 'playback') {
+foreach ($name in 'interface', 'slow-driver', 'playback') {
     $log = Join-Path $work "$name.log"
     if (-not (Test-Path $log)) { Fail "no log of the $name run"; continue }
     $warnings = @(Select-String -Path $log -Pattern 'qt (generic )?(warning|error|critical).*qrc:')

@@ -8169,8 +8169,7 @@ msgstr "Avou vosse prôpe clé a gråtis · foirt e arabe, bråmint des lingaedj
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr ""
 "Avou vosse prôpe clé a gråtis · l' årtchive di Subscene, bråmint des "
-"lingaedjesAvou vosse prôpe clé a gråtis · l' årtchive di Subscene, bråmint "
-"des lingaedjes"
+"lingaedjes"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:1686
 msgid "Hebrew · movies and series"

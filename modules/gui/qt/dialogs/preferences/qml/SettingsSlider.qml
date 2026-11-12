@@ -21,6 +21,10 @@ T.Slider {
     property real labelsBaseline: px(4 + 45)
     // The first and last labels from the ends of the track
     property real labelsInset: 0
+    // (Qt reads a slider's range for assistive tools from these two names, which its own Slider does not have:
+    // the range was told as 0 to 0, and no value could be set from such a tool)
+    readonly property real minimumValue: from
+    readonly property real maximumValue: to
 
     function px(value) { return VLCStyle.dp(value, VLCStyle.scale) }
     function c(value) { return VLCStyle.redesign.color(value) }

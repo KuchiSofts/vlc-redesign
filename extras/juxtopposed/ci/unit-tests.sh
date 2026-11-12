@@ -7,8 +7,9 @@
 # playlists, guides and Xtream answers (fixtures/), the subtitle cues of the
 # seek bar, the subtitle services asked with the user's key or account (their
 # addresses and answers, fixtures/subtitle-services), and the encoding
-# detection of text subtitles (the corpus); and what a shortcut shows in
-# full screen (the kinds of the actions, the jumps added up, their texts).
+# detection of text subtitles (the corpus); what a shortcut shows in
+# full screen (the kinds of the actions, the jumps added up, their texts);
+# and the headlines "What's new" makes of a changelog.
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
 # with g++, Qt 6 Core, zlib and Python 3:
 #   sh extras/juxtopposed/ci/unit-tests.sh
@@ -34,6 +35,12 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/screen-fit.cpp modules/gui/qt/util/screen_fit.cpp \
     $(pkg-config --libs Qt6Core) -o "$out/screen-fit"
 "$out/screen-fit"
+
+echo "== What's new (the headlines of a changelog: no issue references, a long lead's colon, whole words)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/whats-new.cpp modules/gui/qt/dialogs/firstrun/whats_new_text.cpp \
+    $(pkg-config --libs Qt6Core) -o "$out/whats-new"
+"$out/whats-new"
 
 echo "== Live TV parsers"
 # (Qt's own allocations are not ours: only the parsers' leaks count; a

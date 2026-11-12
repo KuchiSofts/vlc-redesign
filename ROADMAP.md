@@ -37,6 +37,10 @@ Updated as the work moves (last: 2026-11-12, 0.6.1 published).
 **0.6.2** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 🔨 [#81](https://github.com/KuchiSofts/vlc-redesign/issues/81): songs with a picture track listed as videos, and
+  the library's folders in Settings: fixed on the desktop (a build to try in its pull request); Android and the
+  Samsung TV app checked next
+
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

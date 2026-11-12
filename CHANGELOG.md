@@ -22,7 +22,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - Merged VideoLAN's master up to `6b5f85b1d1` (artwork of VLC's own macOS interface).
-- CI: the ARM64 screenshots are taken with the Start menu closed.
+- CI: the ARM64 screenshots show VLC's window (the Start menu closed, no console over it).
 - The notes of an update release name only its own Linux files.
 
 ## [0.6.1] · 2026-11-12

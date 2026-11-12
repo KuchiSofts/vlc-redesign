@@ -9,6 +9,8 @@
 # status: released | beta | in-progress | planned | research | later
 # version, date: the latest published version and its day (none yet: leave out)
 # next: the version being prepared
+# follows: a version whose release this platform joins later (its files are added to that release when
+#   its own fix is ready): until then it stays at "version", and the release check accepts it
 # full: the last full release (every package); an update release
 #   (docs/RELEASE-CHECKLIST.md) publishes the portable copies, the Windows
 #   installers and what the apps update from, so a download marked
@@ -28,9 +30,9 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.6.1
+    version: 0.6.2
     date: 2026-11-12
-    next: 0.6.2
+    next: 0.6.3
     full: 0.6.0
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
@@ -47,9 +49,9 @@ platforms:
     name: Linux
     short: Linux
     status: released
-    version: 0.6.1
+    version: 0.6.2
     date: 2026-11-12
-    next: 0.6.2
+    next: 0.6.3
     full: 0.6.0
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
@@ -80,9 +82,9 @@ platforms:
     name: macOS
     short: macOS
     status: released
-    version: 0.6.1
+    version: 0.6.2
     date: 2026-11-12
-    next: 0.6.2
+    next: 0.6.3
     full: 0.6.0
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
@@ -99,9 +101,9 @@ platforms:
     name: Windows on ARM64
     short: Windows ARM64
     status: released
-    version: 0.6.1
+    version: 0.6.2
     date: 2026-11-12
-    next: 0.6.2
+    next: 0.6.3
     full: 0.6.0
     os: windows-arm64
     requires: Windows 11 on ARM64
@@ -121,6 +123,7 @@ platforms:
     version: 0.6.1
     date: 2026-11-12
     next: 0.6.2
+    follows: 0.6.2
     full: 0.6.0
     os: android
     requires: Android 5.0 or later
@@ -138,6 +141,7 @@ platforms:
     version: 0.6.1
     date: 2026-11-12
     next: 0.6.2
+    follows: 0.6.2
     full: 0.6.0
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode

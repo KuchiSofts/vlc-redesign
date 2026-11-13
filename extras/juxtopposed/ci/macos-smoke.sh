@@ -335,17 +335,22 @@ if grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null; t
     note "ok: a playlist opened from Finder played its clip"
 else
     fail "a playlist opened from Finder (open -a) did not play (see finder.log)"
+    # where its threads wait (finder-sample.txt)
+    stuck_pid=$(pgrep -f "$work/finder.log" | head -n 1)
+    [ -n "$stuck_pid" ] && sample "$stuck_pid" 3 -file "$work/finder-sample.txt" > /dev/null 2>&1 || true
     # (which part failed: the open of a launch, or any open: the same file
     # sent to the copy now running)
+    opens=$(grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true)
+    note "note: opens that reached the app at the launch: ${opens:-0}"
     open -a "$app" "$list" > "$work/finder-again.out" 2>&1 || true
     for _ in $(seq 1 15); do
-        grep -q 'files opened by the system' "$work/finder.log" 2>/dev/null && break
+        [ "$(grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true)" -gt "${opens:-0}" ] && break
         sleep 1
     done
-    if grep -q 'files opened by the system' "$work/finder.log" 2>/dev/null; then
-        note "note: the second open (to the running copy) reached the app: only the launch's open is lost"
+    if [ "$(grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true)" -gt "${opens:-0}" ]; then
+        note "note: the second open (to the running copy) reached the app"
     else
-        note "note: no open reached the app, not even one to the running copy"
+        note "note: the second open (to the running copy) did not reach the app"
     fi
 fi
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true

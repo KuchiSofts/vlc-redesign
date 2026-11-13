@@ -11,8 +11,6 @@ if build_vlc and (host_system != 'darwin' or have_osx) and not have_win_store an
         vlc_deps += corefoundation_dep
         if have_osx
             vlc_deps += dependency('Cocoa', required: true)
-            # the files of a launch from Finder (Apple events)
-            vlc_deps += dependency('CoreServices', required: true)
         endif
     elif host_system == 'windows'
         vlc_sources += ['winvlc.c', 'winvlc_message.c']

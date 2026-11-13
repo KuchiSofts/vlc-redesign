@@ -35,87 +35,13 @@
 #include <string.h>
 
 #import <CoreFoundation/CoreFoundation.h>
-#import <CoreServices/CoreServices.h>
 #import <Cocoa/Cocoa.h>
-
-#include <stdatomic.h>
 
 #ifdef HAVE_BREAKPAD
 #import <Breakpad/Breakpad.h>
 #endif
 
 #include "../lib/libvlc_internal.h"
-
-/*
- * The files of a launch from Finder (a double click, "Open With", a drop on
- * the Dock icon) come as an "open documents" Apple event, which can come while
- * LibVLC starts, before an interface takes such events: it was lost (#84,
- * #85). Such an event is kept here, then given to the handler in place once
- * the application has finished launching (the interface's, or AppKit's).
- */
-static AppleEvent *kept_events;
-static size_t kept_count;
-static AEEventHandlerUPP keep_handler;
-static _Atomic(libvlc_instance_t *) launch_vlc;
-
-static OSErr KeepOpenDocuments(const AppleEvent *event, AppleEvent *reply,
-                               SRefCon refcon)
-{
-    (void) reply; (void) refcon;
-
-    AppleEvent *events = realloc(kept_events, (kept_count + 1) * sizeof (*events));
-    if (events == NULL)
-        return memFullErr;
-    kept_events = events;
-    if (AEDuplicateDesc(event, &kept_events[kept_count]) != noErr)
-        return errAEEventNotHandled;
-    kept_count++;
-    return noErr;
-}
-
-static void GiveKeptDocuments(void)
-{
-    AEEventHandlerUPP handler = NULL;
-    SRefCon refcon = NULL;
-    if (kept_count == 0
-     || AEGetEventHandler(kCoreEventClass, kAEOpenDocuments, &handler, &refcon, false) != noErr
-     || handler == NULL || handler == keep_handler)
-        return;
-
-    libvlc_instance_t *vlc = atomic_load(&launch_vlc);
-    if (vlc != NULL)
-        vlc_object_Log(VLC_OBJECT(vlc->p_libvlc_int), VLC_MSG_DBG, "main",
-                       __FILE__, __LINE__, __func__,
-                       "files opened by the system during the start: "
-                       "%zu event(s), given to the interface", kept_count);
-    for (size_t i = 0; i < kept_count; i++)
-    {
-        AppleEvent reply;
-        AEInitializeDesc(&reply);
-        InvokeAEEventHandlerUPP(&kept_events[i], &reply, refcon, handler);
-        AEDisposeDesc(&reply);
-        AEDisposeDesc(&kept_events[i]);
-    }
-    free(kept_events);
-    kept_events = NULL;
-    kept_count = 0;
-}
-
-static void KeepLaunchDocuments(void)
-{
-    keep_handler = NewAEEventHandlerUPP(KeepOpenDocuments);
-    AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments, keep_handler, 0, false);
-    @autoreleasepool {
-        [[NSNotificationCenter defaultCenter]
-            addObserverForName:NSApplicationDidFinishLaunchingNotification
-                        object:nil
-                         queue:nil
-                    usingBlock:^(NSNotification *notification) {
-                        (void) notification;
-                        GiveKeptDocuments();
-                    }];
-    }
-}
 
 struct vlc_context {
     libvlc_instance_t *vlc;
@@ -149,7 +75,6 @@ static void vlc_terminate(void *data)
 
     /* Release the libvlc instance to clean up the interfaces. */
     dispatch_async(context->intf_queue, ^{
-        atomic_store(&launch_vlc, NULL);
         libvlc_release(context->vlc);
         context->vlc = NULL;
         vlc_sem_post(&context->wait_quit);
@@ -291,9 +216,6 @@ int main(int i_argc, const char *ppsz_argv[])
     dispatch_resume(sigIntSource);
     dispatch_resume(sigTermSource);
 
-    /* the files of a launch from Finder, from now on */
-    KeepLaunchDocuments();
-
     /* Handle parameters */
     const char **argv = calloc(i_argc + 2, sizeof (argv[0]));
     if (argv == NULL)
@@ -365,7 +287,6 @@ int main(int i_argc, const char *ppsz_argv[])
             return;
         }
 
-        atomic_store(&launch_vlc, vlc);
         libvlc_SetExitHandler(vlc->p_libvlc_int, vlc_terminate, &context);
         libvlc_set_app_id(vlc, "org.VideoLAN.VLC", PACKAGE_VERSION, PACKAGE_NAME);
         libvlc_set_user_agent(vlc, "VLC media player", "VLC/"PACKAGE_VERSION);

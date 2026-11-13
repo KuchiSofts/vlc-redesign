@@ -84,8 +84,10 @@ endif
 libqt_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(QT_LDFLAGS) $(GC_SECTIONS_LDFLAGS)
 if HAVE_OSX
 # (-lobjc: maininterface/macos_titlebar.cpp messages AppKit from C++;
-# CoreServices: util/mac_open_documents.cpp takes Apple events)
-libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa -lobjc -Wl,-framework,CoreServices -Wl,-framework,CoreFoundation
+# CoreServices: util/mac_open_documents.cpp takes Apple events;
+# CoreGraphics: qt.cpp asks for a window server session)
+libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa -lobjc -Wl,-framework,CoreServices -Wl,-framework,CoreFoundation \
+	-Wl,-framework,CoreGraphics
 endif
 
 if HAVE_X

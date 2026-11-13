@@ -729,6 +729,8 @@ static void *ThreadCleanup( qt_intf_t *p_intf, CleanupReason cleanupReason );
 #ifdef Q_OS_MAC
 /* Used to abort the app.exec() on OSX after libvlc_Quit is called */
 #include <CoreFoundation/CFRunLoop.h>
+/* (the check that Qt can work, below) */
+#include <CoreGraphics/CGSession.h>
 #endif
 
 /* Open Interface */
@@ -739,7 +741,22 @@ static int OpenInternal( qt_intf_t *p_intf )
         return VLC_EGENERIC;
 #endif
 
-#if (_POSIX_SPAWN >= 0) && (!defined(__APPLE__) || TARGET_OS_OSX)
+#if defined(__APPLE__) && TARGET_OS_OSX
+    /* Check if QApplication works: on macOS, where a window server session
+     * is. Not by vlc-qt-check: its QApplication checks in with
+     * LaunchServices before VLC does, which then takes it for the app being
+     * launched and gives it the launch's Apple event: the files of a launch
+     * from Finder were lost (#84, #85). */
+    {
+        CFDictionaryRef session = CGSessionCopyCurrentDictionary();
+        if (session == NULL)
+        {
+            msg_Dbg(p_intf, "Qt check failed (no window server session). Skipping.");
+            return VLC_EGENERIC;
+        }
+        CFRelease(session);
+    }
+#elif (_POSIX_SPAWN >= 0) && !defined(__APPLE__)
     /* Check if QApplication works */
     /* Note: Disabled on iOS/tvOS/visionOS as process spawning is not allowed */
     char *path = config_GetSysPath(VLC_PKG_LIBEXEC_DIR, "vlc-qt-check");
@@ -1148,10 +1165,11 @@ static void *Thread( void *obj )
     QuitSpy quitSpy(&app, p_intf);
 
 #ifdef Q_OS_MACOS
-    /* Files opened from Finder: Apple events, which Qt makes QFileOpenEvents
-     * (util/file_open_spy.hpp, #84); played once the playlist exists. The
-     * one of a launch was lost: the app takes that event itself
-     * (util/mac_open_documents.hpp, #85) */
+    /* Files opened from Finder: Apple events, which the app takes itself
+     * (util/mac_open_documents.hpp) or Qt makes QFileOpenEvents
+     * (util/file_open_spy.hpp); played once the playlist exists (#84, #85).
+     * Those of a launch reach this process since no helper is started before
+     * it (the check that Qt works, OpenInternal) */
     const QPointer<FileOpenSpy> fileOpenSpy = new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
         if (!p_intf->p_mainPlaylistController)
             return false;

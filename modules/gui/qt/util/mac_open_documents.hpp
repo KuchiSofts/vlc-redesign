@@ -15,13 +15,13 @@
 
 #include <functional>
 
-/* The files of a launch from Finder ("Open With", a double click, a drop on
- * the Dock icon) come as an "open documents" Apple event. Qt turns those that
- * come once the app runs into QFileOpenEvents, but the one of the launch was
- * lost (#84, #85): the app takes that event itself from before its window
- * exists to the end, and gives each file to `sink`, on the main thread. Files
- * that come before a sink is set are kept for it. Nothing elsewhere than on
- * macOS. */
+/* The files opened from Finder ("Open With", a double click, a drop on the
+ * Dock icon) come as an "open documents" Apple event, the launch's one too.
+ * The app takes that event itself, from before its window exists to the
+ * end, whoever (AppKit, Qt) would take it otherwise, and gives each file to
+ * `sink`, on the main thread; each step is in the debug log (#84, #85).
+ * Files that come before a sink is set are kept for it. Nothing elsewhere
+ * than on macOS. */
 namespace MacOpenDocuments
 {
 /* (again, when AppKit could have put its own handler back: harmless) */

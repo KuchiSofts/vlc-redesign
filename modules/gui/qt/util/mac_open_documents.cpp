@@ -29,12 +29,9 @@
 #include <CoreServices/CoreServices.h>
 #include <CoreFoundation/CoreFoundation.h>
 
-#include <crt_externs.h>
-
 #include <QByteArray>
 #include <QDebug>
 #include <QList>
-#include <QStringList>
 
 #include <utility>
 
@@ -162,11 +159,6 @@ void MacOpenDocuments::install()
         CFNotificationCenterAddObserver(center, &observing, didFinishLaunching,
                                         CFSTR("NSApplicationDidFinishLaunchingNotification"),
                                         nullptr, CFNotificationSuspensionBehaviorDeliverImmediately);
-        QStringList args;
-        char **argv = *_NSGetArgv();
-        for (int i = 1, argc = *_NSGetArgc(); i < argc; ++i)
-            args << QString::fromLocal8Bit(argv[i]);
-        qDebug("Apple events: the process arguments: %s", qUtf8Printable(args.join(QLatin1Char(' '))));
         installHandler("at the start");
         return;
     }

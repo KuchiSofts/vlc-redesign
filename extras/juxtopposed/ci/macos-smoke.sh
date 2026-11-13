@@ -339,7 +339,9 @@ t0=$(date '+%Y-%m-%d %H:%M:%S')
 open -a "$app" "$list" > "$work/finder.out" 2>&1 || fail "open -a: $(head -n 1 "$work/finder.out")"
 for _ in $(seq 1 30); do played && break; sleep 1; done
 finder_pid=$(pgrep -f "$exe" | head -n 1)
+launch_played=
 if played; then
+    launch_played=1
     note "ok: a playlist opened from Finder (the app not running) played its clip"
 else
     fail "a playlist opened from Finder (the app not running) did not play (see finder.log)"
@@ -358,12 +360,13 @@ fi
 # the way the opens came (util/mac_open_documents.cpp, util/file_open_spy.hpp)
 grep -E 'Apple events:|a file open event|files opened by the system' "$work/finder.log" 2>/dev/null \
     | head -n 20 | while IFS= read -r line; do note "note: finder.log: $line"; done
-# what the system did with the opens (LaunchServices, AppKit)
+# what the system did with the launch's open (LaunchServices: the process it
+# gave the file to, finder-system.log)
 log show --start "$t0" --info --debug --style compact \
     --predicate 'process == "launchservicesd" OR process == "lsd" OR subsystem == "com.apple.launchservices" OR process == "'"$app_name"'"' \
     > "$work/finder-system.log" 2>&1 || true
-grep -iE 'odoc|aevt|apple ?event|check.?in' "$work/finder-system.log" 2>/dev/null | head -n 25 \
-    | while IFS= read -r line; do note "note: system: $line"; done
+[ -n "$launch_played" ] || grep -iE 'odoc|aevt|apple ?event|check.?in' "$work/finder-system.log" 2>/dev/null \
+    | head -n 25 | while IFS= read -r line; do note "note: system: $line"; done
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
 if [ -n "$finder_pid" ]; then
     for _ in $(seq 1 30); do kill -0 "$finder_pid" 2>/dev/null || break; sleep 1; done

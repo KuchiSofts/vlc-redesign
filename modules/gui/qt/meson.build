@@ -30,8 +30,10 @@ qt6_dep = dependency('qt6',
 # need to help moc find them. It's needed for QtQml/ module registration.
 if host_machine.system() == 'darwin'
     # maininterface/macos_titlebar.cpp messages AppKit from C++;
-    # util/mac_open_documents.cpp takes Apple events
-    qt_link_args += ['-framework', 'AppKit', '-lobjc', '-framework', 'CoreServices', '-framework', 'CoreFoundation']
+    # util/mac_open_documents.cpp takes Apple events; qt.cpp asks for a
+    # window server session
+    qt_link_args += ['-framework', 'AppKit', '-lobjc', '-framework', 'CoreServices', '-framework', 'CoreFoundation',
+                     '-framework', 'CoreGraphics']
 endif
 if host_machine.system() == 'darwin' and qt6_dep.found()
     qt_libdir = qt6_dep.get_variable(pkgconfig: 'libdir', configtool: '-query QT_INSTALL_LIBS')

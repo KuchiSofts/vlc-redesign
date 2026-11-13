@@ -335,6 +335,18 @@ if grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null; t
     note "ok: a playlist opened from Finder played its clip"
 else
     fail "a playlist opened from Finder (open -a) did not play (see finder.log)"
+    # (which part failed: the open of a launch, or any open: the same file
+    # sent to the copy now running)
+    open -a "$app" "$list" > "$work/finder-again.out" 2>&1 || true
+    for _ in $(seq 1 15); do
+        grep -q 'files opened by the system' "$work/finder.log" 2>/dev/null && break
+        sleep 1
+    done
+    if grep -q 'files opened by the system' "$work/finder.log" 2>/dev/null; then
+        note "note: the second open (to the running copy) reached the app: only the launch's open is lost"
+    else
+        note "note: no open reached the app, not even one to the running copy"
+    fi
 fi
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
 finder_pid=$(pgrep -f "$work/finder.log" | head -n 1)

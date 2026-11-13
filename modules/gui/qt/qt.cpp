@@ -1147,6 +1147,8 @@ static void *Thread( void *obj )
     new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
         if (!p_intf->p_mainPlaylistController)
             return false;
+        msg_Dbg( p_intf, "files opened by the system: %lld, the first %s", (long long)files.size(),
+                 qtu( files.first().toUrl().toString() ) );
         p_intf->p_mainPlaylistController->append(files, true);
         return true;
     });

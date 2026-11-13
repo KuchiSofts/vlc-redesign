@@ -97,6 +97,23 @@ if (-not $SkipBuild) {
 }
 if (-not (Test-Path "$Package\vlc.exe")) { throw "No package in $Package" }
 
+# A release is built without asserts (build.sh's release mode: --disable-debug,
+# NDEBUG). A failed assert shows a message box that waits for a click, and on a
+# close it held the interface forever (0.6.3). -Quick reuses the volume's
+# configure, which was a debug one: 0.5.8 to 0.6.2 shipped such builds. The
+# names of the source files whose asserts are compiled in are in the Qt
+# plugin (as UTF-16, _wassert's): a release has none of its own .cpp files.
+$qtPlugin = "$Package\plugins\gui\libqt_plugin.dll"
+if (Test-Path $qtPlugin) {
+    $text = [System.Text.Encoding]::Unicode.GetString([System.IO.File]::ReadAllBytes($qtPlugin))
+    $asserted = [regex]::Matches($text, '[\x20-\x7e]*modules/gui/qt/[\x20-\x7e]*?\.cpp') |
+        ForEach-Object { $_.Value -replace '^.*modules/gui/qt/', '' } | Sort-Object -Unique
+    if ($asserted.Count -gt 0) {
+        throw ("The Qt plugin keeps the asserts of $($asserted.Count) files ($(($asserted | Select-Object -First 3) -join ', '), ...): " +
+               "not a release build. Package the Windows build workflow's artifact (-SkipBuild -Package <it>) or build without -Quick.")
+    }
+}
+
 New-Item -ItemType Directory -Force $Dist | Out-Null
 $name = "vlc-redesign-$Version-$platform"
 

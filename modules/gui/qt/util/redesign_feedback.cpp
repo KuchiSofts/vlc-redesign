@@ -52,7 +52,15 @@ QString installType()
     if (QFileInfo::exists(QCoreApplication::applicationDirPath() + QStringLiteral("/unins000.exe")))
         return QStringLiteral("Installer (setup.exe)");
     return QStringLiteral("Portable zip");
+#elif defined(Q_OS_MACOS)
+    return QStringLiteral("macOS app (.dmg)");
 #else
+    if (qEnvironmentVariableIsSet("APPIMAGE"))
+        return QStringLiteral("Linux AppImage");
+    // a package puts the program under /usr (deb, rpm) or /app (Flatpak)
+    if (qEnvironmentVariableIsSet("FLATPAK_ID")
+        || QCoreApplication::applicationDirPath().startsWith(QLatin1String("/usr/")))
+        return QStringLiteral("Linux package (deb, rpm or Flatpak)");
     return QStringLiteral("Built from source");
 #endif
 }

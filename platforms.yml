@@ -30,9 +30,9 @@ platforms:
     name: Windows
     short: Windows
     status: released
-    version: 0.6.2
-    date: 2026-11-12
-    next: 0.6.3
+    version: 0.6.3
+    date: 2026-11-13
+    next: 0.6.4
     full: 0.6.0
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
@@ -49,9 +49,9 @@ platforms:
     name: Linux
     short: Linux
     status: released
-    version: 0.6.2
-    date: 2026-11-12
-    next: 0.6.3
+    version: 0.6.3
+    date: 2026-11-13
+    next: 0.6.4
     full: 0.6.0
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
@@ -82,9 +82,9 @@ platforms:
     name: macOS
     short: macOS
     status: released
-    version: 0.6.2
-    date: 2026-11-12
-    next: 0.6.3
+    version: 0.6.3
+    date: 2026-11-13
+    next: 0.6.4
     full: 0.6.0
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
@@ -101,9 +101,9 @@ platforms:
     name: Windows on ARM64
     short: Windows ARM64
     status: released
-    version: 0.6.2
-    date: 2026-11-12
-    next: 0.6.3
+    version: 0.6.3
+    date: 2026-11-13
+    next: 0.6.4
     full: 0.6.0
     os: windows-arm64
     requires: Windows 11 on ARM64
@@ -120,9 +120,9 @@ platforms:
     name: Android (phones, tablets, TV)
     short: Android
     status: released
-    version: 0.6.2
-    date: 2026-11-12
-    next: 0.6.3
+    version: 0.6.3
+    date: 2026-11-13
+    next: 0.6.4
     full: 0.6.0
     os: android
     requires: Android 5.0 or later
@@ -139,7 +139,8 @@ platforms:
     status: released
     version: 0.6.1
     date: 2026-11-12
-    next: 0.6.3
+    next: 0.6.4
+    follows: 0.6.3
     full: 0.6.0
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode

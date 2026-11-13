@@ -18,23 +18,23 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-12, 0.6.2 published).
+Updated as the work moves (last: 2026-11-13, 0.6.3 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.2 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.2 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.2 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.2 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.2 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.2 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.2 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Windows x64** | ✅ released 0.6.3 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.3 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.3 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.3 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.3 and after
+## Next: 0.6.4 and after
 
-**0.6.3** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
 
@@ -109,6 +109,19 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.6.3 (2026-11-13)
+
+**An update release** (the installers, the portable copies and what the apps update from; the Linux packages stay on
+0.6.0):
+
+- ✅ macOS: files opened from Finder or dropped on the Dock icon play
+  ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84), [#85](https://github.com/KuchiSofts/vlc-redesign/issues/85),
+  @xITmasterx); Report a problem and Suggest an idea in the Help menu
+- ✅ A faster start: the window is up about 0.2 s sooner
+- ✅ Screen readers name every text field and settings toggle; outside text is always shown as plain text
+- ✅ Android: no crash in Hindi when adding items already in a playlist; Korean texts fixed
+- ✅ VideoLAN's VLC merged to `189bf59e34`; the Samsung TV app is unchanged (0.6.1)
 
 ### 0.6.2 (2026-11-12)
 

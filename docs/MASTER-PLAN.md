@@ -82,8 +82,12 @@ What is being worked on, updated as it changes (2026-11-10):
   0.6.2 with the same fix: VideoLAN's media library built here with it, buildsystem/redesign/MEDIALIBRARY.md;
   the Samsung TV app never had the bug, it stays at 0.6.1). Checked: CI 18 green, a fresh 0.6.1 copy updated
   itself to 0.6.2 (423 files), 0.6.1 -> 0.6.2 on the Android emulator, the signed list's digests.
-- 🟡 **0.6.3** started.. Next: 0.6.3 (#81 in the Android app).
-  Before it: An Indonesian translation from Weblate
+- ✅ **0.6.3** 2026-11-13 (an update release): macOS opens files from Finder and the Dock (#84, #85: Qt's
+  QFileOpenEvent reached nobody; util/file_open_spy.hpp, a unit test, and step 6 of CI's macOS smoke test opens an
+  .m3u the way Finder does); the start about 0.2 s sooner (the fonts read in the background for every language);
+  screen-reader names; the bug form for every system; VideoLAN merged to 189bf59e34. Android 0.6.3 (Hindi crash,
+  Korean texts, check_string_formats.py). Samsung unchanged (0.6.1). Next: 0.6.4.
+- Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.
   - 🟡 #81 (2026-11-12, @decider07): .m4a songs whose picture is a video track were listed under Videos; no way

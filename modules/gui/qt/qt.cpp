@@ -127,6 +127,9 @@ extern "C" char **environ;
 # include <QMenuBar>
 # include <vlc_intf_strings.h>
 # include "util/file_open_spy.hpp"
+# include "menus/menus.hpp"
+# include <QPointer>
+# include <functional>
 # include "util/redesign_feedback.hpp"
 # include <QDesktopServices>
 # include <QWindow>
@@ -1364,6 +1367,17 @@ static void *Thread( void *obj )
             }
         }
 
+#ifdef Q_OS_MACOS
+        // Metal, Qt's own choice on a Mac: before Qt's software renderer,
+        // which does not show the video (#89: once OpenGL failed there, the
+        // video stayed black at every start)
+        {
+            QRhiMetalInitParams params;
+            if (QRhi::probe(QRhi::Metal, &params))
+                return {QSGRendererInterface::Metal, false};
+        }
+#endif
+
         // TODO: Investigate if using Vulkan makes sense on Windows.
         // TODO: Investigate if it makes sense to try D3D12 when probing D3D11 failed.
 
@@ -1412,7 +1426,10 @@ static void *Thread( void *obj )
 
         const QVariant graphicsApiValue = p_intf->mainSettings->value(graphicsApiKey);
         // settings value can be string (ini file), do not use `typeId()`:
-        if (graphicsApiValue.isValid() && Q_LIKELY(graphicsApiValue.canConvert<int>()))
+        // (Qt's software renderer, kept from a start whose probe failed once,
+        // is probed again now, not used at every start: it shows no video)
+        if (graphicsApiValue.isValid() && Q_LIKELY(graphicsApiValue.canConvert<int>())
+            && graphicsApiValue.toInt() != QSGRendererInterface::Software)
         {
 
             //some part of the probing needs to be executed on the GUI thread and some part will be ran in a background thread,
@@ -1715,27 +1732,56 @@ static void *Thread( void *obj )
 #undef QTSTYLE_KEY
 
 #ifdef Q_OS_MACOS
-    /* The menu bar at the top of the screen: the window keeps the
-     * redesign's own menus. Its actions have no shortcut (the QML ones
-     * would become ambiguous): About, Settings and Quit go to the
-     * application menu by their roles, where Cmd+, and Cmd+Q are the
-     * system's. Destroyed after ThreadCleanup, before the QApplication. */
+    /* The menu bar at the top of the screen (#88): the menus of the
+     * window's ⋯ menu (Media, Playback, Audio, Video, Subtitle, Tools,
+     * View, Help), as a Mac user expects them up here. Their actions have
+     * no shortcut (the QML ones would become ambiguous; Cmd+H is the
+     * system's Hide): About, Settings and Quit go to the application menu
+     * by their roles, where Cmd+, and Cmd+Q are the system's, and no other
+     * item goes there by its name. The menus go with the interface (their
+     * lists are the player's), before ThreadCleanup's teardown. */
     std::unique_ptr<QMenuBar> macMenuBar;
-    if( !p_intf->b_isDialogProvider )
+    if( !p_intf->b_isDialogProvider && p_intf->p_mi )
     {
         macMenuBar = std::make_unique<QMenuBar>( nullptr ); // parentless: the global one
-        QMenu *media = macMenuBar->addMenu( qtr( "&Media" ) );
-        media->addAction( qtr( "Open &File..." ), []() { THEDP->simpleOpenDialog(); } );
-        media->addAction( qtr( "Open &Network Stream..." ), []() { THEDP->openNetDialog(); } );
-        QAction *about = media->addAction( qfut( I_MENU_ABOUT ), []() { THEDP->aboutDialog(); } );
-        about->setMenuRole( QAction::AboutRole );
-        QAction *prefs = media->addAction( qtr( "&Preferences" ), []() { THEDP->prefsDialog(); } );
-        prefs->setMenuRole( QAction::PreferencesRole );
-        prefs->setShortcut( QKeySequence::Preferences );
-        QAction *quit = media->addAction( qtr( "Quit" ), []() { THEDP->quit(); } );
-        quit->setMenuRole( QAction::QuitRole );
-        QMenu *help = macMenuBar->addMenu( qtr( "&Help" ) );
-        help->addAction( qtr( "&Help" ), []() { THEDP->helpDialog(); } );
+        static const std::function<void( QMenu * )> settle = []( QMenu *menu ) {
+            for( QAction *action : menu->actions() )
+            {
+                if( action->menuRole() == QAction::TextHeuristicRole )
+                    action->setMenuRole( QAction::NoRole );
+                if( action->menuRole() != QAction::PreferencesRole )
+                    action->setShortcut( QKeySequence() );
+                else
+                    action->setShortcut( QKeySequence::Preferences );
+                if( QMenu *sub = action->menu() )
+                    settle( sub );
+            }
+        };
+        QList<QPointer<QMenu>> menus;
+        const auto addMenu = [&]( const QString &title, void (*fill)( qt_intf_t *, QMenu * ) ) {
+            QMenu *menu = macMenuBar->addMenu( title );
+            fill( p_intf, menu );
+            menus.append( menu );
+            return menu;
+        };
+        QMenu *media = addMenu( qtr( "&Media" ), &VLCMenuBar::FileMenu );
+        for( QAction *action : media->actions() )
+            if( action->text() == qtr( "&Quit" ) )
+                action->setMenuRole( QAction::QuitRole );
+        addMenu( qtr( "P&layback" ), []( qt_intf_t *intf, QMenu *menu ) { VLCMenuBar::NavigMenu( intf, menu ); } );
+        addMenu( qtr( "&Audio" ), &VLCMenuBar::AudioMenu );
+        addMenu( qtr( "&Video" ), &VLCMenuBar::VideoMenu );
+        addMenu( qtr( "Subti&tle" ), []( qt_intf_t *intf, QMenu *menu ) { VLCMenuBar::SubtitleMenu( intf, menu ); } );
+        addMenu( qtr( "Tool&s" ), &VLCMenuBar::ToolsMenu );
+        QMenu *view = addMenu( qtr( "V&iew" ), &VLCMenuBar::ViewMenu );
+        /* (its checks follow the window: made again each time it opens) */
+        QObject::connect( view, &QMenu::aboutToShow, view, [p_intf, view]() {
+            if( !p_intf->p_mi )
+                return;
+            VLCMenuBar::ViewMenu( p_intf, view );
+            settle( view );
+        } );
+        QMenu *help = addMenu( qtr( "&Help" ), &VLCMenuBar::HelpMenu );
         /* the ⋯ menu's forms: a Mac user looks for them up here (#84) */
         static const auto feedback = []() -> RedesignFeedback * {
             for( QWindow *window : QGuiApplication::topLevelWindows() )
@@ -1751,6 +1797,12 @@ static void *Thread( void *obj )
         help->addAction( qtr( "Report a problem" ), []() {
             if( RedesignFeedback *f = feedback() )
                 f->openReport();
+        } );
+        for( QMenu *menu : menus )
+            settle( menu );
+        QObject::connect( p_intf->p_mi, &MainCtx::interfaceUnloading, macMenuBar.get(), [menus]() {
+            for( const QPointer<QMenu> &menu : menus )
+                delete menu.data();
         } );
     }
 #endif

@@ -17,7 +17,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [0.6.3] · 2026-11-13
 
-An update release: on macOS, files opened from Finder or the Dock play (#84, #85), and the start is faster,
+An update release: on macOS, files opened from Finder or the Dock play (#84, #85), the menu bar has every menu (#88) and
+video shows again after a failed graphics check (#89); the start is faster,
 on Windows, Linux and macOS. The Android app has its own fixes; the Samsung TV app is unchanged (0.6.1).
 
 ### Fixed
@@ -26,13 +27,15 @@ on Windows, Linux and macOS. The Android app has its own fixes; the Samsung TV a
 - Screen readers name every text field and settings toggle.
 - Subtitle languages: Move and Remove keep the keyboard focus on the list.
 - Closing never hangs on an internal check's message box (a media library check left on in release builds).
+- macOS: video shows again after a start whose graphics check failed (Metal is used before the software renderer) ([#89](https://github.com/KuchiSofts/vlc-redesign/issues/89)).
+- Customize Player: Languages and tracks keeps its place while customizing, also when the media has nothing to choose ([#87](https://github.com/KuchiSofts/vlc-redesign/issues/87)).
 - Android: no crash in Hindi when adding items already in a playlist.
 - Android: Korean texts show the remote access code, names and numbers again.
 
 ### Changed
 
 - Faster start: the window is up about 0.2 s sooner.
-- macOS: Report a problem and Suggest an idea in the Help menu.
+- macOS: the menu bar has the full menus: Media, Playback, Audio, Video, Subtitle, Tools, View and Help ([#88](https://github.com/KuchiSofts/vlc-redesign/issues/88)), with Report a problem and Suggest an idea in Help.
 
 ### Technical
 

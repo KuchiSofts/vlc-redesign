@@ -117,7 +117,9 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 
 - ✅ macOS: files opened from Finder or dropped on the Dock icon play
   ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84), [#85](https://github.com/KuchiSofts/vlc-redesign/issues/85),
-  @xITmasterx); Report a problem and Suggest an idea in the Help menu
+  @xITmasterx); the menu bar has every menu ([#88](https://github.com/KuchiSofts/vlc-redesign/issues/88)); video shows again
+  after a failed graphics check ([#89](https://github.com/KuchiSofts/vlc-redesign/issues/89)); Customize Player keeps a
+  hidden button's place ([#87](https://github.com/KuchiSofts/vlc-redesign/issues/87))
 - ✅ A faster start: the window is up about 0.2 s sooner
 - ✅ Screen readers name every text field and settings toggle; outside text is always shown as plain text
 - ✅ Android: no crash in Hindi when adding items already in a playlist; Korean texts fixed

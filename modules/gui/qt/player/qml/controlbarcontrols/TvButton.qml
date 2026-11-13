@@ -20,9 +20,9 @@ RedesignIconButton {
     id: root
     readonly property bool _available: Iptv.enabled
     iconSource: "qrc:///redesign/icons/tv/default.svg"
-    implicitWidth: _available ? VLCStyle.dp(30, VLCStyle.scale) : 0
+    implicitWidth: (_available || VLCStyle.customizing) ? VLCStyle.dp(30, VLCStyle.scale) : 0
     enabled: _available
-    opacity: _available ? 1 : 0
+    opacity: (_available || VLCStyle.customizing) ? 1 : 0
     checked: _available && Iptv.playing
     onClicked: {
         if (Iptv.playing) {

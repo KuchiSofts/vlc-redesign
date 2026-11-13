@@ -87,7 +87,7 @@ What is being worked on, updated as it changes (2026-11-10):
   .m3u the way Finder does); the start about 0.2 s sooner (the fonts read in the background for every language);
   screen-reader names; the bug form for every system; macOS (#87, #88, #89, @xITmasterx): the full menu bar from
   VLCMenuBar's menus, Metal before Qt's software renderer and a cached "software" probed again, hidden buttons keep
-  their place while customizing; VideoLAN merged to 558c37b0e4. Android 0.6.3 (Hindi crash,
+  their place while customizing; VideoLAN merged to 914c465b0c. Android 0.6.3 (Hindi crash,
   Korean texts, check_string_formats.py). Samsung unchanged (0.6.1). Next: 0.6.4.
   The close that never ended on CI's ARM64 runner (since 0.6.1): its dump showed an assert's message box
   (mlthreadpool.cpp, `assert(task)`): files that include <cassert> before config.h kept their asserts in

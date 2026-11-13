@@ -319,49 +319,50 @@ done
 if [ "$appearance" = Dark ]; then set_appearance dark; else set_appearance light; fi
 note "note: $app_name screenshots in $work"
 
-# 6. A playlist opened as Finder opens it (#84): LaunchServices sends the
-# file as an Apple event, not as an argument (util/file_open_spy.hpp); the
-# clip it lists is opened
+# 6. A playlist opened as Finder opens it (#84, #85): LaunchServices sends
+# the file as an Apple event, not as an argument (util/mac_open_documents.cpp,
+# util/file_open_spy.hpp); the clip it lists is opened. The app is launched
+# as Finder launches it, without arguments (`open --args` makes a launch
+# without the file): the log and the remote control come from the settings
+# file, put back as it was afterwards
 list="$work/finder list.m3u"
 printf '#EXTM3U\n#EXTINF:2,Moving bar\nclip.y4m\n' > "$list"
-open -n -a "$app" "$list" --args --verbose=2 --file-logging --logfile="$work/finder.log" \
-    --no-qt-privacy-ask --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy \
-    > "$work/finder.out" 2>&1 || fail "open -a: $(head -n 1 "$work/finder.out")"
-for _ in $(seq 1 30); do
-    grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null && break
-    sleep 1
-done
-if grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null; then
-    note "ok: a playlist opened from Finder played its clip"
+rc_dir="$HOME/Library/Preferences/org.kuchisofts.vlcredesign"
+mkdir -p "$rc_dir"
+rc_saved=
+if [ -f "$rc_dir/vlcrc" ]; then cp "$rc_dir/vlcrc" "$work/vlcrc.saved"; rc_saved=1; fi
+printf '\nfile-logging=1\nlogfile=%s\nlog-verbose=2\nverbose=2\nqt-privacy-ask=0\nextraintf=rc\nrc-host=127.0.0.1:%s\naout=dummy\n' \
+    "$work/finder.log" "$port" >> "$rc_dir/vlcrc"
+played() { grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null; }
+opened() { grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true; }
+open -a "$app" "$list" > "$work/finder.out" 2>&1 || fail "open -a: $(head -n 1 "$work/finder.out")"
+for _ in $(seq 1 30); do played && break; sleep 1; done
+finder_pid=$(pgrep -f "$exe" | head -n 1)
+if played; then
+    note "ok: a playlist opened from Finder (the app not running) played its clip"
 else
-    fail "a playlist opened from Finder (open -a) did not play (see finder.log)"
+    fail "a playlist opened from Finder (the app not running) did not play (see finder.log)"
     # where its threads wait (finder-sample.txt)
-    stuck_pid=$(pgrep -f "$work/finder.log" | head -n 1)
-    [ -n "$stuck_pid" ] && sample "$stuck_pid" 3 -file "$work/finder-sample.txt" > /dev/null 2>&1 || true
-    # (which part failed: the open of a launch, or any open: the same file
-    # sent to the copy now running)
-    opens=$(grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true)
-    note "note: opens that reached the app at the launch: ${opens:-0}"
-    open -a "$app" "$list" > "$work/finder-again.out" 2>&1 || true
-    for _ in $(seq 1 15); do
-        [ "$(grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true)" -gt "${opens:-0}" ] && break
-        sleep 1
-    done
-    if [ "$(grep -c 'files opened by the system' "$work/finder.log" 2>/dev/null || true)" -gt "${opens:-0}" ]; then
-        note "note: the second open (to the running copy) reached the app"
-    else
-        note "note: the second open (to the running copy) did not reach the app"
-    fi
+    [ -n "$finder_pid" ] && sample "$finder_pid" 3 -file "$work/finder-sample.txt" > /dev/null 2>&1 || true
+fi
+# the same file opened in the copy now running
+opens=$(opened)
+open -a "$app" "$list" > "$work/finder-again.out" 2>&1 || true
+for _ in $(seq 1 15); do [ "$(opened)" -gt "${opens:-0}" ] && break; sleep 1; done
+if [ "$(opened)" -gt "${opens:-0}" ]; then
+    note "ok: a playlist opened from Finder (the app running) was taken"
+else
+    fail "a playlist opened from Finder (the app running) did not reach the app"
 fi
 # the way the opens came (util/mac_open_documents.cpp, util/file_open_spy.hpp)
 grep -E 'Apple events:|a file open event|files opened by the system' "$work/finder.log" 2>/dev/null \
     | head -n 20 | while IFS= read -r line; do note "note: finder.log: $line"; done
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
-finder_pid=$(pgrep -f "$work/finder.log" | head -n 1)
 if [ -n "$finder_pid" ]; then
     for _ in $(seq 1 30); do kill -0 "$finder_pid" 2>/dev/null || break; sleep 1; done
     kill -9 "$finder_pid" 2>/dev/null || true
 fi
+if [ -n "$rc_saved" ]; then cp "$work/vlcrc.saved" "$rc_dir/vlcrc"; else rm -f "$rc_dir/vlcrc"; fi
 
 # No crash
 reports_after=$(ls ~/Library/Logs/DiagnosticReports 2>/dev/null | sort)

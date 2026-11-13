@@ -112,6 +112,7 @@ FocusScope {
             }
             contentItem: Text {
                 id: chipText
+                textFormat: Text.PlainText
                 text: chip.modelData === "" ? qsTr("All") : chip.modelData
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -154,7 +155,7 @@ FocusScope {
                     height: width * 1.5
                     radius: root.px(12)
                     color: root.c("#171717", "#dedede")
-                    clip: true
+                    // (no clip: the cropped image stays in its box, and a clip per poster breaks the batching)
                     Image {
                         anchors.fill: parent
                         source: card.modelData.poster ? "image://iptvlogo/" + encodeURIComponent(card.modelData.poster) : ""
@@ -179,6 +180,7 @@ FocusScope {
                 Text {
                     y: poster.height + root.px(14)
                     width: posters.cardWidth
+                    textFormat: Text.PlainText
                     text: card.modelData.name
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
@@ -214,6 +216,7 @@ FocusScope {
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
+                textFormat: Text.PlainText
                 text: root.series.name ?? ""
                 color: root.c("#C6C6C6", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
@@ -245,6 +248,7 @@ FocusScope {
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
                     elide: Text.ElideRight
+                    textFormat: Text.PlainText
                     text: qsTr("S%1 E%2").arg(episode.modelData.season).arg(episode.modelData.number)
                           + "   " + episode.modelData.title
                     color: episode.hovered ? VLCStyle.redesign.accent : root.c(VLCStyle.redesign.textSecondary, "#4d4d4d")

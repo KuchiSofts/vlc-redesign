@@ -100,6 +100,7 @@ SettingsSectionTitle {
                     spacing: root.px(2)
                     Text {
                         width: parent.width
+                        textFormat: Text.PlainText
                         text: addonRow.name
                         color: addonRow.selected ? root.c("#EAEAEA") : root.c("#8F8F8F")
                         elide: Text.ElideRight
@@ -109,6 +110,7 @@ SettingsSectionTitle {
                     }
                     Text {
                         width: parent.width
+                        textFormat: Text.PlainText
                         text: addonRow.summary || addonRow.author
                         color: root.c("#6B6B6B")
                         elide: Text.ElideRight

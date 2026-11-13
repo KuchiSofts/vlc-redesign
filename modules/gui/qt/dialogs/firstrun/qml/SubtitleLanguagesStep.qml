@@ -187,6 +187,7 @@ Item {
             rightPadding: toggle.mirrored ? 60 : 0
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
+            textFormat: Text.PlainText
             text: toggle.text
             color: VLCStyle.redesign.color("#b4b4b4", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily

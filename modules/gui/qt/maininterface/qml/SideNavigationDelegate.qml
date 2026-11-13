@@ -229,6 +229,7 @@ T.ItemDelegate {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
+            textFormat: Text.PlainText
             text: control.text
 
             // from the start of the row (the right in a right to left

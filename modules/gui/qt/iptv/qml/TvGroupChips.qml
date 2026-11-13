@@ -87,6 +87,7 @@ ListView {
         }
         contentItem: Text {
             id: chipText
+            textFormat: Text.PlainText
             text: chip.modelData.count > 0 && chip.modelData.name !== "favorites"
                   ? chip.modelData.label + "  " + chip.modelData.count : chip.modelData.label
             horizontalAlignment: Text.AlignHCenter

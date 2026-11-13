@@ -210,6 +210,7 @@ Item {
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                                     - (lineCount > 1 ? (implicitHeight - implicitHeight / lineCount) / 2 : 0)
+            textFormat: Text.PlainText
             text: root.label
             color: root.c("#8F8F8F")
             wrapMode: wrapped ? Text.WordWrap : Text.NoWrap
@@ -347,6 +348,7 @@ Item {
                         anchors.rightMargin: root.px(14 + 24 + 10)
                         anchors.baseline: parent.verticalCenter
                         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                        textFormat: Text.PlainText
                         text: languageControl._name
                         color: root.c("#8F8F8F")
                         font.family: VLCStyle.redesign.fontFamily

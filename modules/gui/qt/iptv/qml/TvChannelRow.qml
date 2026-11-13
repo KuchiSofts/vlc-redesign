@@ -81,6 +81,7 @@ T.ItemDelegate {
             anchors.verticalCenter: parent.verticalCenter
             width: root.px(root.compact ? 34 : 44)
             horizontalAlignment: Text.AlignRight
+            textFormat: Text.PlainText
             text: root.model.number > 0 ? root.model.number : ""
             color: root.c("#6B6B6B", "#5a5a59")
             font.family: VLCStyle.redesign.fontFamily
@@ -111,6 +112,7 @@ T.ItemDelegate {
 
             Text {
                 width: parent.width
+                textFormat: Text.PlainText
                 text: root.model.name ?? ""
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -129,6 +131,7 @@ T.ItemDelegate {
                 Text {
                     width: Math.min(implicitWidth, parent.width - (bar.visible ? bar.width + parent.spacing : 0))
                     anchors.verticalCenter: parent.verticalCenter
+                    textFormat: Text.PlainText
                     text: root._hasNow ? root.model.nowTitle
                                        : (root.model.hasGuide ? "" : qsTr("No guide"))
                     elide: Text.ElideRight
@@ -162,6 +165,7 @@ T.ItemDelegate {
             Text {
                 width: parent.width
                 visible: !root.compact && Iptv.showDescriptions && text !== ""
+                textFormat: Text.PlainText
                 text: (root.model.nowDescription ?? "").replace(/\s+/g, " ")
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -183,6 +187,7 @@ T.ItemDelegate {
 
             Text {
                 width: parent.width
+                textFormat: Text.PlainText
                 text: qsTr("Next at %1").arg(Iptv.timeText(root.model.nextStart ?? 0))
                 horizontalAlignment: Text.AlignLeft
                 elide: Text.ElideRight
@@ -192,6 +197,7 @@ T.ItemDelegate {
             }
             Text {
                 width: parent.width
+                textFormat: Text.PlainText
                 text: root.model.nextTitle ?? ""
                 horizontalAlignment: Text.AlignLeft
                 elide: Text.ElideRight

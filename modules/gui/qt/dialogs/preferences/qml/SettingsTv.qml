@@ -77,6 +77,7 @@ Column {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             elide: Text.ElideRight
+            textFormat: Text.PlainText
             text: qsTr("The guides give their programmes in: %1").arg(Iptv.guideLanguages.join(", "))
             color: root.c("#6B6B6B")
             font.family: VLCStyle.redesign.fontFamily

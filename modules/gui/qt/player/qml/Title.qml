@@ -42,6 +42,9 @@ T.Label {
         colorSet: ColorContext.Window
     }
 
+    // the title of the media (from a playlist, a stream, a file's tags): drawn as typed, never as HTML
+    textFormat: Text.PlainText
+
     width: centerWithinBounds ? Math.max(0, Math.min(rightLimit - leftLimit, implicitWidth)) : implicitWidth
     // centred in its parent, kept between the limits on both sides (the
     // wider side is on the right in a right to left bar)

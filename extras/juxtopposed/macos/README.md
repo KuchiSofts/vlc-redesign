@@ -207,7 +207,10 @@ Checked, nothing to change:
   the Qt interface has nothing on macOS (Windows has its SMTC).
 - 🔴 The video in the window (CompositorPlatform's `NSView`), VideoToolbox decoding, HDR, AirPlay audio, the
   audio devices of `auhal`.
-- 🔴 The dock menu, opening files from Finder while running (`QFileOpenEvent`), drag and drop on the dock icon.
+- ✅ Opening files from Finder (a double click, *Open With*, a drop on the Dock icon), at launch and while running:
+  their `QFileOpenEvent`s are played (`util/file_open_spy.hpp`, #84; tested by `file-open-spy.cpp` in CI). 🟡 To
+  confirm on a real Mac.
+- 🔴 The dock menu.
 - 🔴 Signed and notarized releases (decision 3). (The in-app update is done, from 0.5.5: above.)
 - 🔴 Pixel check of every frame (Retina: the 2× assets), dark and light with the system appearance (the smoke
   test's screenshots `main-light.png`, `main-dark.png`, `about.png` are the first look).

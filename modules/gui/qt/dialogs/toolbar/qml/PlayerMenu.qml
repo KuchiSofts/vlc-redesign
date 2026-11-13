@@ -50,6 +50,7 @@ Controls.Popup {
                     radius: VLCStyle.dp(6, VLCStyle.scale)
                 }
                 contentItem: Text {
+                    textFormat: Text.PlainText
                     text: modelData
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font.family: VLCStyle.redesign.fontFamily

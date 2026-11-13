@@ -43,6 +43,7 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: VLCStyle.dp(7, VLCStyle.scale)
         width: Math.min(implicitWidth, parent.width * 0.45)
+        textFormat: Text.PlainText
         text: root.label
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignLeft

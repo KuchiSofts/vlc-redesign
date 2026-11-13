@@ -225,6 +225,7 @@ Item {
                         width: parent.width
                         y: root.px(320 + 33)
                         horizontalAlignment: Text.AlignHCenter
+                        textFormat: Text.PlainText
                         text: root.names[column.index]
                         color: root.c("#6B6B6B")
                         font.family: VLCStyle.redesign.fontFamily

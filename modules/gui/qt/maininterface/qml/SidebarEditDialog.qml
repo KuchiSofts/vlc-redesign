@@ -222,6 +222,7 @@ Widgets.RedesignDialog {
                 anchors.right: up.left
                 anchors.rightMargin: root.px(12)
                 anchors.verticalCenter: parent.verticalCenter
+                textFormat: Text.PlainText
                 text: row.title
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft

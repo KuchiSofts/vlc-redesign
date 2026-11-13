@@ -194,6 +194,7 @@ Controls.Popup {
                         }
                     }
                     contentItem: Text {
+                        textFormat: Text.PlainText
                         text: row.text
                         color: root.c("#8F8F8F", "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily

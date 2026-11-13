@@ -55,6 +55,7 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
+            textFormat: Text.PlainText
             text: root.text
             color: root.accent ? VLCStyle.redesign.accent : VLCStyle.redesign.color("#8F8F8F", undefined, root._dark)
             font.family: VLCStyle.redesign.fontFamily

@@ -82,6 +82,9 @@ T.SpinBox {
     contentItem: TextInput {
         id: textInput
 
+        // (it takes the focus while a value is typed: the box's name, not an unnamed "edit")
+        Accessible.name: control.Accessible.name
+
         // NOTE: This is required for InterfaceWindowHandler::applyKeyEvent.
         property bool visualFocus: control.activeFocus
 

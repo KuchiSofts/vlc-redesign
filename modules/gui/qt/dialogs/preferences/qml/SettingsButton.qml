@@ -47,6 +47,7 @@ T.Button {
             width: Math.min(parent.width, Math.ceil(labelExact.advanceWidth / 16
                                                     - text.length * font.pixelSize / 2816 - 0.001))
             height: parent.height
+            textFormat: Text.PlainText
             text: root.text
             font: root.font
             color: root.destructive ? root.c("#E15032") : root.c("#8F8F8F")

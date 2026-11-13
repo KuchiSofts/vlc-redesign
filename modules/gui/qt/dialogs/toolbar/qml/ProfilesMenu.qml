@@ -85,6 +85,7 @@ Controls.Popup {
                     Text {
                         width: parent.width - 2 * VLCStyle.dp(36, VLCStyle.scale)
                         height: parent.height
+                        textFormat: Text.PlainText
                         text: name
                         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                         elide: Text.ElideRight

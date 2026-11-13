@@ -138,7 +138,23 @@ T.Button {
                 leftPadding: VLCStyle.dp(10, VLCStyle.scale)
                 rightPadding: VLCStyle.dp(10, VLCStyle.scale)
                 placeholderText: qsTr("Search a language")
+                // (the placeholder is not its name: a screen reader read an unnamed "edit")
+                Accessible.name: placeholderText
                 placeholderTextColor: root.mutedColor
+                // (the Templates field draws no placeholder: the empty box said nothing)
+                Text {
+                    x: search.leftPadding
+                    width: search.width - search.leftPadding - search.rightPadding
+                    height: search.height
+                    visible: search.text.length === 0 && search.preeditText.length === 0
+                    textFormat: Text.PlainText
+                    text: search.placeholderText
+                    color: search.placeholderTextColor
+                    font: search.font
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                }
                 color: root.textColor
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.fontSize
@@ -234,6 +250,7 @@ T.Button {
                         spacing: VLCStyle.dp(8, VLCStyle.scale)
                         Text {
                             Layout.leftMargin: VLCStyle.dp(8, VLCStyle.scale)
+                            textFormat: Text.PlainText
                             text: item.modelData.name
                             color: item.modelData.code === root.code ? VLCStyle.redesign.accent : root.textColor
                             font.family: VLCStyle.redesign.fontFamily
@@ -245,6 +262,7 @@ T.Button {
                         Text {
                             Layout.fillWidth: true
                             visible: item.modelData.native !== "" && item.modelData.native !== item.modelData.name
+                            textFormat: Text.PlainText
                             text: item.modelData.native
                             color: root.mutedColor
                             font.family: VLCStyle.redesign.fontFamily

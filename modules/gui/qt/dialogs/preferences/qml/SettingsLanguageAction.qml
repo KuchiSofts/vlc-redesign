@@ -55,6 +55,7 @@ Item {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.topMargin: VLCStyle.dp(14, VLCStyle.scale)
+        textFormat: Text.PlainText
         text: qsTr("System language (%1)").arg(Qt.locale().name)
         color: root.dark ? "#8c8c8c" : "#555555"
         font.family: VLCStyle.redesign.fontFamily

@@ -38,6 +38,7 @@ Rectangle {
         width: root.valueStart - root.px(12) - root.px(4)
         anchors.baseline: parent.verticalCenter
         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, parent.height)
+        textFormat: Text.PlainText
         text: root.label
         color: root.c("#6B6B6B")
         font.family: VLCStyle.redesign.fontFamily

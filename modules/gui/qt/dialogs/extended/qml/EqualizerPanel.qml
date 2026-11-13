@@ -59,6 +59,7 @@ ExpandPanel {
 
             contentItem: Text {
                 id: presetName
+                textFormat: Text.PlainText
                 text: presetOption.modelData.name
                 color: root.c("#8F8F8F")
                 font: presetBox.font

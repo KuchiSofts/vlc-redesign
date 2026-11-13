@@ -87,6 +87,9 @@ Popup {
         TextInput {
             id: keyInput
             focus: true
+            // (it has the focus while a key is awaited: a screen reader reads what to do)
+            Accessible.role: Accessible.EditableText
+            Accessible.name: message.text
             width: 1
             height: 1
             opacity: 0

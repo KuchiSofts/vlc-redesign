@@ -200,6 +200,7 @@ FocusScope {
                 }
 
                 Accessible.searchEdit: true
+                Accessible.name: placeholderText
 
                 //ideally we should use Keys.onShortcutOverride but it doesn't
                 //work with TextField before 5.13 see QTBUG-68711

@@ -105,6 +105,7 @@ Dialog {
     header: T.Label {
         // a popup does not inherit the mirroring of the window (right to left)
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+        textFormat: Text.PlainText
         text: control.title
         visible: control.title
         elide: Label.ElideRight

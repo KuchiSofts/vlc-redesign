@@ -104,6 +104,9 @@ Flickable {
             delegate: Text {
                 id: lyricDelegate
 
+                // (the lyrics come from the file: shown as written, never as HTML)
+                textFormat: Text.PlainText
+
                 required property int index
                 required property timedText modelData
 

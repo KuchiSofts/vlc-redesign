@@ -253,6 +253,7 @@ Controls.Popup {
                     Accessible.role: Accessible.Link
                     Accessible.name: text
                     contentItem: Text {
+                        textFormat: Text.PlainText
                         text: policyLink.text
                         color: VLCStyle.redesign.accent
                         font.family: VLCStyle.redesign.fontFamily

@@ -119,6 +119,8 @@ Controls.Popup {
                 }
                 contentItem: TextInput {
                     z: 2
+                    // (it takes the focus while minutes are typed: the box's name, not an unnamed "edit")
+                    Accessible.name: durationInput.Accessible.name
                     text: durationInput.textFromValue(durationInput.value, durationInput.locale)
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
@@ -164,6 +166,7 @@ Controls.Popup {
                         radius: VLCStyle.dp(6, VLCStyle.scale)
                     }
                     contentItem: Text {
+                        textFormat: Text.PlainText
                         text: parent.text
                         color: VLCStyle.redesign.color("#c6c6c6", "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
@@ -207,6 +210,7 @@ Controls.Popup {
                 color: VLCStyle.redesign.accent
             }
             contentItem: Text {
+                textFormat: Text.PlainText
                 text: parent.text
                 color: "#161616"
                 font.family: VLCStyle.redesign.fontFamily

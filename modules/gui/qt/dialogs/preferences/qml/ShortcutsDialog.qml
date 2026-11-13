@@ -436,7 +436,11 @@ Widgets.RedesignDialog {
                         id: searchMetrics
                         font: searchField.font
                     }
+                    // (what the field is for, read by a screen reader: its drawn placeholder)
+                    Accessible.role: Accessible.EditableText
+                    Accessible.name: searchPlaceholder.text
                     Text {
+                        id: searchPlaceholder
                         y: searchField.topPadding
                         width: parent.width
                         visible: searchField.length === 0
@@ -475,6 +479,7 @@ Widgets.RedesignDialog {
                 }
                 contentItem: Text {
                     id: scopeText
+                    textFormat: Text.PlainText
                     text: scopePicker.displayText
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
                     font: scopePicker.font
@@ -509,6 +514,7 @@ Widgets.RedesignDialog {
                     rightPadding: mirrored ? VLCStyle.dp(12, VLCStyle.scale) : 0
                     highlighted: scopePicker.highlightedIndex === index
                     contentItem: Text {
+                        textFormat: Text.PlainText
                         text: modelData.label
                         color: index === scopePicker.currentIndex ? VLCStyle.redesign.accent
                                                                   : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")

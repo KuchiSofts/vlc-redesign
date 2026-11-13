@@ -170,6 +170,7 @@ SettingsSectionTitle {
             }
             contentItem: Text {
                 id: showLabel
+                textFormat: Text.PlainText
                 text: showButton.text
                 color: root.c("#8F8F8F")
                 font.family: VLCStyle.redesign.fontFamily
@@ -196,6 +197,7 @@ SettingsSectionTitle {
         }
         contentItem: Text {
             id: linkLabel
+            textFormat: Text.PlainText
             text: link.text
             color: VLCStyle.redesign.accent
             font.family: VLCStyle.redesign.fontFamily
@@ -256,6 +258,7 @@ SettingsSectionTitle {
                     spacing: root.px(2)
                     Text {
                         width: parent.width
+                        textFormat: Text.PlainText
                         text: serviceRow.service.name
                         color: root.c("#8F8F8F")
                         font.family: VLCStyle.redesign.fontFamily

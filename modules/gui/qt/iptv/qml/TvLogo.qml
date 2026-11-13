@@ -23,7 +23,8 @@ Rectangle {
 
     radius: VLCStyle.dp(6, VLCStyle.scale)
     color: VLCStyle.redesign.color("#171717", undefined, _dark)
-    clip: true
+    // (no clip: the logo fits inside its margins and the initials are centred, and a clip in every row of a
+    // channel list breaks the batching of the scene graph)
 
     Image {
         id: image
@@ -45,6 +46,7 @@ Rectangle {
         anchors.centerIn: parent
         visible: !image.hasLogo
         // "Channel 12 HD" -> "C1", "BBC One" -> "BO"
+        textFormat: Text.PlainText
         text: root.name.replace(/^[A-Za-z]{2,3}\s*[:|]\s+/, "").split(/\s+/).filter(w => w.length > 0)
                   .slice(0, 2).map(w => w.charAt(0).toUpperCase()).join("")
         color: VLCStyle.redesign.color("#6B6B6B", undefined, root._dark)

@@ -89,6 +89,7 @@ Item {
                         anchors.baseline: parent.verticalCenter
                         // centred in the 33 of the heading (odd)
                         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, root.px(33))
+                        textFormat: Text.PlainText
                         text: modelData.label || ""
                         color: root.c("#6B6B6B")
                         font.family: VLCStyle.redesign.fontFamily
@@ -147,6 +148,7 @@ Item {
                                 elide: Text.ElideRight
                                 anchors.baseline: parent.verticalCenter
                                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                                textFormat: Text.PlainText
                                 text: modelData.label || ""
                                 color: entry.current ? root.c("#EAEAEA") : root.c("#8F8F8F")
                                 font.family: VLCStyle.redesign.fontFamily

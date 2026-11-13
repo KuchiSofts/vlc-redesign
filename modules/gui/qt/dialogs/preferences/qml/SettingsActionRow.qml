@@ -42,6 +42,7 @@ Item {
             elide: Text.ElideRight
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            textFormat: Text.PlainText
             text: root.label
             color: root.c("#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily

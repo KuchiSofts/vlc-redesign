@@ -107,6 +107,7 @@ T.Slider {
                 // the labels 10 px under the handle, on the baseline of the design
                 anchors.baseline: parent.top
                 anchors.baselineOffset: root.labelsBaseline
+                textFormat: Text.PlainText
                 text: modelData.text
                 color: root.c("#6B6B6B")
                 font.family: VLCStyle.redesign.fontFamily

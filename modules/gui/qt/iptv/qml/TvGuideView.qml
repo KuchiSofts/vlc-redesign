@@ -435,6 +435,7 @@ FocusScope {
                         width: root.px(32)
                         anchors.verticalCenter: parent.verticalCenter
                         horizontalAlignment: Text.AlignRight
+                        textFormat: Text.PlainText
                         text: row.model.number > 0 ? row.model.number : ""
                         color: root.c("#6B6B6B", "#5a5a59")
                         font.family: VLCStyle.redesign.fontFamily
@@ -455,6 +456,7 @@ FocusScope {
                         anchors.leftMargin: root.px(10)
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
+                        textFormat: Text.PlainText
                         text: row.model.name
                         elide: Text.ElideRight
                         color: channelCell.hovered || row.model.current ? VLCStyle.redesign.accent
@@ -548,6 +550,7 @@ FocusScope {
                                     spacing: root.px(3)
                                     Text {
                                         width: parent.width
+                                        textFormat: Text.PlainText
                                         text: cell.modelData.title
                                         elide: Text.ElideRight
                                         horizontalAlignment: Text.AlignLeft
@@ -565,6 +568,7 @@ FocusScope {
                                                 - (archivedMark.visible ? archivedMark.width + parent.spacing : 0)
                                                 - (reminderMark.visible ? reminderMark.width + parent.spacing : 0)))
                                             elide: Text.ElideRight
+                                            textFormat: Text.PlainText
                                             text: Iptv.timeText(cell.modelData.start)
                                                   + (cell.modelData.episode ? "  ·  " + cell.modelData.episode : "")
                                             color: root.c("#6B6B6B", "#5a5a59")

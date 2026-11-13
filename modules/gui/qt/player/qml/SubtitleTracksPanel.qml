@@ -338,6 +338,7 @@ ColumnLayout {
         Layout.fillWidth: true
         visible: asked.length > 0 && (SubtitleFinder.state === SubtitleFinder.Ready
                                       || SubtitleFinder.state === SubtitleFinder.NotFound)
+        textFormat: Text.PlainText
         text: asked.map(s => s.error !== "" ? s.name + " –" : s.name + " " + s.count).join("  ·  ")
         color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
         font.family: VLCStyle.redesign.fontFamily
@@ -372,7 +373,22 @@ ColumnLayout {
             leftPadding: VLCStyle.dp(12, VLCStyle.scale)
             rightPadding: VLCStyle.dp(12, VLCStyle.scale)
             placeholderText: qsTr("Title of the movie or series")
+            Accessible.name: placeholderText
             placeholderTextColor: VLCStyle.redesign.color("#5a5a5a", "#6b6b6b")
+            // (the Templates field draws no placeholder: the empty box said nothing)
+            Text {
+                x: titleField.leftPadding
+                width: titleField.width - titleField.leftPadding - titleField.rightPadding
+                height: titleField.height
+                visible: titleField.text.length === 0 && titleField.preeditText.length === 0
+                textFormat: Text.PlainText
+                text: titleField.placeholderText
+                color: titleField.placeholderTextColor
+                font: titleField.font
+                elide: Text.ElideRight
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
+            }
             color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -491,6 +507,7 @@ ColumnLayout {
                 visible: variantList.count === 0
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
+                textFormat: Text.PlainText
                 text: SubtitleFinder.state === SubtitleFinder.Identifying || SubtitleFinder.state === SubtitleFinder.Searching
                       ? qsTr("Looking for subtitles…")
                       : root._anyChecked || root._languages.length ? "" : qsTr("No subtitles yet")
@@ -595,6 +612,7 @@ ColumnLayout {
         Controls.Label {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignLeft
+            textFormat: Text.PlainText
             text: lookRow.title
             elide: Text.ElideRight
             color: VLCStyle.redesign.color("#969696", "#4d4d4d")
@@ -651,6 +669,7 @@ ColumnLayout {
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Controls.Label {
+            textFormat: Text.PlainText
             text: parent.text
             color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
@@ -778,6 +797,7 @@ ColumnLayout {
                 spacing: 0
                 Text {
                     Layout.fillWidth: true
+                    textFormat: Text.PlainText
                     text: row.text
                     color: row.highlighted || row.checked
                            ? VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")

@@ -39,6 +39,7 @@ ColumnLayout {
             font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
         }
         Controls.Label {
+            textFormat: Text.PlainText
             text: qsTr("%1 ms").arg((Player.subtitleDelayMS >= 0 ? "+" : "") + Player.subtitleDelayMS)
             color: VLCStyle.redesign.color("#969696", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
@@ -130,6 +131,7 @@ ColumnLayout {
             }
             Controls.Label {
                 Layout.fillWidth: true
+                textFormat: Text.PlainText
                 text: root.presets && root.presets.label ?
                       qsTr("Applies to episodes of %1").arg(root.presets.label) :
                       qsTr("Play a local episode to save its track and timing choices.")
@@ -173,6 +175,7 @@ ColumnLayout {
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Controls.Label {
+            textFormat: Text.PlainText
             text: parent.text
             color: parent.enabled ? VLCStyle.redesign.color("#EAEAEA", "#2e2e2e") : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily

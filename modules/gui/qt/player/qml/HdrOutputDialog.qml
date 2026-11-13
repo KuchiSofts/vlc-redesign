@@ -59,6 +59,7 @@ Controls.Popup {
                 anchors.rightMargin: root.px(16 + 24 + 10)
                 height: parent.height
                 horizontalAlignment: Text.AlignLeft
+                textFormat: Text.PlainText
                 text: output.selectedIndex >= 0 ? output.choices[output.selectedIndex].label : qsTr("HDR unavailable")
                 color: root.c("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
@@ -146,6 +147,7 @@ Controls.Popup {
                                 }
                             }
                             contentItem: Text {
+                                textFormat: Text.PlainText
                                 text: choice.modelData.label
                                 opacity: row.enabled ? 1 : 0.45
                                 color: root.c("#8F8F8F", "#2e2e2e")

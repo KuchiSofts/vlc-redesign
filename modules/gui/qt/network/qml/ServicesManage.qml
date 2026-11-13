@@ -121,7 +121,10 @@ Widgets.PageExt {
                             Widgets.CaptionLabel {
                                 color: servicesView.colorContext.fg.primary
                                 textFormat: Text.StyledText
-                                text: model.author ? qsTr("by <b>%1</b>").arg(model.author) : qsTr("by <b>Unknown</b>")
+                                // (the author comes from the online catalogue: escaped, never drawn as HTML)
+                                text: model.author ? qsTr("by <b>%1</b>").arg(String(model.author).replace(/&/g, "&amp;")
+                                                                                   .replace(/</g, "&lt;").replace(/>/g, "&gt;"))
+                                                   : qsTr("by <b>Unknown</b>")
                                 topPadding: VLCStyle.margin_xxxsmall
                                 width: parent.width
                             }

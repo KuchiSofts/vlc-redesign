@@ -22,7 +22,9 @@
 #      checked with the key the app carries (verify-test.c with this Mac's
 #      Security framework: good, and bad once changed), then the image's app
 #      staged next to a copy and swapped in by the app's own
-#      Resources/vlc-redesign-update.sh, as the updater does.
+#      Resources/vlc-redesign-update.sh, as the updater does;
+#   6. a playlist opened as Finder opens it (open -a: an Apple event, #84),
+#      its clip opened.
 # A crash report of the app (~/Library/Logs/DiagnosticReports) fails it.
 # NO_IPTV=1: a build made without the Live TV add-on (macos-build.sh -t).
 #
@@ -316,6 +318,30 @@ done
 # the Mac's own appearance again
 if [ "$appearance" = Dark ]; then set_appearance dark; else set_appearance light; fi
 note "note: $app_name screenshots in $work"
+
+# 6. A playlist opened as Finder opens it (#84): LaunchServices sends the
+# file as an Apple event, not as an argument (util/file_open_spy.hpp); the
+# clip it lists is opened
+list=$work/finder list.m3u
+printf '#EXTM3U\n#EXTINF:2,Moving bar\nclip.y4m\n' > "$list"
+open -n -a "$app" "$list" --args --verbose=2 --file-logging --logfile="$work/finder.log" \
+    --no-qt-privacy-ask --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy \
+    > "$work/finder.out" 2>&1 || fail "open -a: $(head -n 1 "$work/finder.out")"
+for _ in $(seq 1 30); do
+    grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null && break
+    sleep 1
+done
+if grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null; then
+    note "ok: a playlist opened from Finder played its clip"
+else
+    fail "a playlist opened from Finder (open -a) did not play (see finder.log)"
+fi
+printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
+finder_pid=$(pgrep -f "$work/finder.log" | head -n 1)
+if [ -n "$finder_pid" ]; then
+    for _ in $(seq 1 30); do kill -0 "$finder_pid" 2>/dev/null || break; sleep 1; done
+    kill -9 "$finder_pid" 2>/dev/null || true
+fi
 
 # No crash
 reports_after=$(ls ~/Library/Logs/DiagnosticReports 2>/dev/null | sort)

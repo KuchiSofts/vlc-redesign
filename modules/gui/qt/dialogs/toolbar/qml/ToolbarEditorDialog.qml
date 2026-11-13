@@ -307,6 +307,7 @@ Controls.Popup {
                     }
                     contentItem: Text {
                         id: cancelLabel
+                        textFormat: Text.PlainText
                         text: cancelButton.text
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily
@@ -365,6 +366,7 @@ Controls.Popup {
                     }
                     contentItem: Text {
                         id: saveLabel
+                        textFormat: Text.PlainText
                         text: saveButton.text
                         color: saveButton.enabled ? VLCStyle.redesign.accent
                                                   : VLCStyle.redesign.color("#4C4C4C", "#8e8e8d")
@@ -490,6 +492,7 @@ Controls.Popup {
             Widgets.RedesignDialogHeading {
                 LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
                 LayoutMirroring.childrenInherit: true
+                plain: true
                 text: qsTr("Delete %1?").arg(deleteConfirmation.profileName)
                 description: qsTr("Its layout and its settings go with it.")
             }

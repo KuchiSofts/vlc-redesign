@@ -15,6 +15,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- macOS: files opened from Finder or dropped on the Dock icon play ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84)).
+- Screen readers name every text field and settings toggle.
+- Subtitle languages: Move and Remove keep the keyboard focus on the list.
+
+### Changed
+
+- Faster start: the window is up about 0.2 s sooner.
+- macOS: Report a problem and Suggest an idea in the Help menu.
+
 ### Technical
 
 - make-release: a file the antivirus holds a moment after its copy is tried again.

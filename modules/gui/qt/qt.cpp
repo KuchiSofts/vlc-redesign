@@ -126,6 +126,10 @@ extern "C" char **environ;
 #ifdef Q_OS_MACOS
 # include <QMenuBar>
 # include <vlc_intf_strings.h>
+# include "util/file_open_spy.hpp"
+# include "util/redesign_feedback.hpp"
+# include <QDesktopServices>
+# include <QWindow>
 #endif
 
 #ifndef X_DISPLAY_MISSING
@@ -944,6 +948,12 @@ static inline void registerMetaTypes()
 static void *Thread( void *obj )
 {
     qt_intf_t *p_intf = (qt_intf_t *)obj;
+    // (the start-up's steps in the log, from here: where a slow start goes)
+    const vlc_tick_t threadStart = vlc_tick_now();
+    const auto startupStep = [p_intf, threadStart]( const char *step ) {
+        msg_Dbg( p_intf, "startup: %s after %" PRId64 " ms", step,
+                 MS_FROM_VLC_TICK( vlc_tick_now() - threadStart ) );
+    };
 
     auto vlcQtMessageHandler = VlcQtMessageHandlerRegisterer{VLC_OBJECT(p_intf)};
 
@@ -1076,6 +1086,7 @@ static void *Thread( void *obj )
     /* Start the QApplication here */
     QApplication app( argc, argv );
     app.setProperty("initialStyle", app.style()->name());
+    startupStep( "the application made" );
 
     {
         // Install custom translator:
@@ -1127,6 +1138,17 @@ static void *Thread( void *obj )
     };
     QuitSpy quitSpy(&app, p_intf);
 
+#ifdef Q_OS_MACOS
+    /* Files opened from Finder: Apple events, which Qt makes QFileOpenEvents
+     * (util/file_open_spy.hpp, #84); played once the playlist exists */
+    new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
+        if (!p_intf->p_mainPlaylistController)
+            return false;
+        p_intf->p_mainPlaylistController->append(files, true);
+        return true;
+    });
+#endif
+
     registerMetaTypes();
 
     //app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
@@ -1164,29 +1186,23 @@ static void *Thread( void *obj )
         }
     }
 
-    /* The first text in a script Inter does not draw (Hebrew, Arabic,
-     * Chinese...) has Qt read every font of the system for the scripts it
-     * covers: about 0.2 s of the start in such a language of the interface.
-     * The fonts are read on a thread of the pool meanwhile (QFontDatabase
-     * is thread-safe), while the interface is created. Not in the other
-     * languages: the fonts read take memory (~15 MB) that only a name in
-     * such a script needs (the first one holds the interface that long) */
-    {
-        const QLocale::Script script = QLocale().script();
-        if( script != QLocale::LatinScript && script != QLocale::CyrillicScript
-            && script != QLocale::GreekScript && script != QLocale::AnyScript )
+    /* The first text Qt looks for in other fonts (a script Inter does not
+     * draw: Hebrew, Arabic, Chinese...; a character the icon font has not)
+     * has it read every font of the system: 0.3 s to over a second of the
+     * start (measured: the interface's items made in 490 ms, 150 ms with
+     * the fonts already read), in every language, as the interface asks
+     * for it while it is made. The fonts are read on a thread of the pool
+     * meanwhile (QFontDatabase is thread-safe), while the window and its
+     * graphics are created. */
+    QThreadPool::globalInstance()->start([]() {
+        const QStringList families = QFontDatabase::families();
+        for( const QString &family : families )
         {
-            QThreadPool::globalInstance()->start([]() {
-                const QStringList families = QFontDatabase::families();
-                for( const QString &family : families )
-                {
-                    if( QCoreApplication::closingDown() )
-                        return;
-                    QFontDatabase::writingSystems( family );
-                }
-            });
+            if( QCoreApplication::closingDown() )
+                return;
+            QFontDatabase::writingSystems( family );
         }
-    }
+    });
 
     /* All the settings are in the .conf/.ini style */
 #ifdef _WIN32
@@ -1510,6 +1526,7 @@ static void *Thread( void *obj )
     DialogErrorModel::getInstance( p_intf );
     VLCDialogModel::getInstance( p_intf );
 
+    startupStep( "the settings, fonts and translations ready" );
     /* Initialize the Dialog Provider and the Main Input Manager */
     DialogsProvider::getInstance( p_intf );
     p_intf->p_mainPlayerController = new PlayerController(p_intf);
@@ -1596,6 +1613,7 @@ static void *Thread( void *obj )
                              });
         };
 
+        startupStep( "the main context made" );
         bool ret = false;
         do {
             p_intf->p_compositor.reset(compositorFactory.createCompositor());
@@ -1619,6 +1637,20 @@ static void *Thread( void *obj )
             return ThreadCleanup( p_intf, CLEANUP_ERROR );
         }
 
+        startupStep( "the main window made" );
+        if( auto *quickWindow = qobject_cast<QQuickWindow *>( p_intf->p_compositor->interfaceMainWindow() ) )
+        {
+            // (from the render thread: the log only)
+            auto firstFrame = std::make_shared<QMetaObject::Connection>();
+            *firstFrame = QObject::connect( quickWindow, &QQuickWindow::frameSwapped, quickWindow,
+                                            [firstFrame, startupStep]() {
+                if( !*firstFrame )
+                    return;
+                QObject::disconnect( *firstFrame );
+                *firstFrame = {};
+                startupStep( "the first frame shown" );
+            }, Qt::DirectConnection );
+        }
         /* Whether the controls react to the pointer over them: asked of the
          * system once. Qt asks again for each control it makes (a system
          * call each: a tenth of the time Settings took to open). */
@@ -1704,6 +1736,22 @@ static void *Thread( void *obj )
         quit->setMenuRole( QAction::QuitRole );
         QMenu *help = macMenuBar->addMenu( qtr( "&Help" ) );
         help->addAction( qtr( "&Help" ), []() { THEDP->helpDialog(); } );
+        /* the ⋯ menu's forms: a Mac user looks for them up here (#84) */
+        static const auto feedback = []() -> RedesignFeedback * {
+            for( QWindow *window : QGuiApplication::topLevelWindows() )
+                if( auto *f = window->findChild<RedesignFeedback *>() )
+                    return f;
+            return nullptr;
+        };
+        help->addSeparator();
+        help->addAction( qtr( "Suggest an idea" ), []() {
+            if( RedesignFeedback *f = feedback() )
+                QDesktopServices::openUrl( QUrl( f->ideaUrl() ) );
+        } );
+        help->addAction( qtr( "Report a problem" ), []() {
+            if( RedesignFeedback *f = feedback() )
+                f->openReport();
+        } );
     }
 #endif
 

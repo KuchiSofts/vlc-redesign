@@ -30,6 +30,7 @@ Button {
     }
     contentItem: Label {
         id: label
+        textFormat: Text.PlainText
         text: control.text
         color: !control.enabled ? VLCStyle.redesign.color("#666666", "#7c7c7b")
                : control.primary ? VLCStyle.redesign.accent

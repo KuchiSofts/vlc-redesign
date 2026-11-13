@@ -88,6 +88,7 @@ Column {
                 anchors.right: removeButton.left
                 anchors.rightMargin: root.px(12)
                 anchors.verticalCenter: parent.verticalCenter
+                textFormat: Text.PlainText
                 text: folderRow.display_url
                 // (the folder's own name at the end stays in sight)
                 elide: Text.ElideMiddle

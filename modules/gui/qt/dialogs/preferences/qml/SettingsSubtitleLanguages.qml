@@ -31,6 +31,32 @@ SettingsSectionTitle {
     // those on (the default one always): the services of a language follow
     readonly property var searchOn: searchRows.filter(row => row.on || row.code === primary).map(row => row.code)
 
+    // The rows on screen follow searchRows in place (moved, changed, added, removed): a new model
+    // would make every row again, and the keyboard's or the screen reader's focus would be lost
+    ListModel { id: rowModel }
+    onSearchRowsChanged: {
+        const rows = searchRows
+        for (let i = 0; i < rows.length; ++i) {
+            let found = -1
+            for (let k = i; k < rowModel.count; ++k) {
+                if (rowModel.get(k).code === rows[i].code) {
+                    found = k
+                    break
+                }
+            }
+            if (found < 0) {
+                rowModel.insert(i, { code: rows[i].code, on: rows[i].on })
+                continue
+            }
+            if (found !== i)
+                rowModel.move(found, i, 1)
+            if (rowModel.get(i).on !== rows[i].on)
+                rowModel.setProperty(i, "on", rows[i].on)
+        }
+        if (rowModel.count > rows.length)
+            rowModel.remove(rows.length, rowModel.count - rows.length)
+    }
+
     function begin() {
         primary = SubtitlePreferences.primary
         secondary = SubtitlePreferences.secondary
@@ -87,6 +113,12 @@ SettingsSectionTitle {
         const rows = searchRows.slice()
         rows.splice(index, 1)
         searchRows = rows
+        // the row with the focus is gone: the focus goes to the row now in its place (or the one above),
+        // never back to the window
+        // (the preferred language alone: none of its controls takes it, Add a language does)
+        const next = languageRepeater.itemAt(Math.min(index, languageRepeater.count - 1))
+        if (!next || !next.takeFocus())
+            addLanguage.forceActiveFocus(Qt.TabFocusReason)
     }
     function _add(code) {
         if (!code)
@@ -171,9 +203,10 @@ SettingsSectionTitle {
     Item {
         width: parent.width
         height: root.px(46)
-        Label { text: qsTr("Find subtitles online when a video has none in these languages") }
+        Label { id: autoSearchLabel; text: qsTr("Find subtitles online when a video has none in these languages") }
         SettingsToggle {
             objectName: "settingsSubtitleAutoSearch"
+            Accessible.name: autoSearchLabel.text
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             on: root.autoSearch
@@ -185,9 +218,10 @@ SettingsSectionTitle {
         width: parent.width
         height: root.px(46)
         opacity: root.secondary !== "" ? 1 : 0.4
-        Label { text: qsTr("Show both languages at once (dual subtitles)") }
+        Label { id: showBothLabel; text: qsTr("Show both languages at once (dual subtitles)") }
         SettingsToggle {
             objectName: "settingsSubtitleShowBoth"
+            Accessible.name: showBothLabel.text
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             enabled: root.secondary !== ""
@@ -210,19 +244,31 @@ SettingsSectionTitle {
         font.weight: Font.Medium
     }
     Repeater {
-        model: root.searchRows
+        id: languageRepeater
+        model: rowModel
         delegate: Item {
             id: languageRow
-            required property var modelData
+            required property string code
+            required property bool on
             required property int index
-            readonly property bool preferred: modelData.code === root.primary
+            readonly property bool preferred: code === root.primary
+            // the focus on the first control of the row that can take it
+            function takeFocus() {
+                for (const item of [removeButton, rowToggle, downButton, upButton]) {
+                    if (item.enabled) {
+                        item.forceActiveFocus(Qt.TabFocusReason)
+                        return true
+                    }
+                }
+                return false
+            }
             readonly property string languageName: {
                 void SubtitlePreferences.languages
-                const name = SubtitlePreferences.name(modelData.code)
-                const own = SubtitlePreferences.nativeName(modelData.code)
+                const name = SubtitlePreferences.name(languageRow.code)
+                const own = SubtitlePreferences.nativeName(languageRow.code)
                 return own !== "" && own !== name ? name + " · " + own : name
             }
-            objectName: "settingsSearchLanguage_" + modelData.code
+            objectName: "settingsSearchLanguage_" + languageRow.code
             width: root.width
             height: root.px(46)
             Text {
@@ -230,8 +276,9 @@ SettingsSectionTitle {
                 anchors.right: languageControls.left
                 anchors.rightMargin: root.px(12)
                 anchors.verticalCenter: parent.verticalCenter
+                textFormat: Text.PlainText
                 text: languageRow.languageName
-                color: languageRow.modelData.on || languageRow.preferred ? root.c("#8F8F8F") : root.c("#5F5F5F")
+                color: languageRow.on || languageRow.preferred ? root.c("#8F8F8F") : root.c("#5F5F5F")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
                 elide: Text.ElideRight
@@ -243,24 +290,36 @@ SettingsSectionTitle {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: root.px(4)
                 IconButton {
-                    objectName: "settingsSearchLanguageUp_" + languageRow.modelData.code
+                    id: upButton
+                    objectName: "settingsSearchLanguageUp_" + languageRow.code
                     anchors.verticalCenter: parent.verticalCenter
                     iconSource: "qrc:///redesign/icons/chevron-down/default.svg"
                     iconRotation: 180
                     description: qsTr("Move up")
                     enabled: languageRow.index > 0
-                    onClicked: root._move(languageRow.index, -1)
+                    onClicked: {
+                        root._move(languageRow.index, -1)
+                        // (at the top it is off, and its focus would be lost: the other arrow takes it)
+                        if (!enabled)
+                            downButton.forceActiveFocus(Qt.TabFocusReason)
+                    }
                 }
                 IconButton {
-                    objectName: "settingsSearchLanguageDown_" + languageRow.modelData.code
+                    id: downButton
+                    objectName: "settingsSearchLanguageDown_" + languageRow.code
                     anchors.verticalCenter: parent.verticalCenter
                     iconSource: "qrc:///redesign/icons/chevron-down/default.svg"
                     description: qsTr("Move down")
                     enabled: languageRow.index < root.searchRows.length - 1
-                    onClicked: root._move(languageRow.index, 1)
+                    onClicked: {
+                        root._move(languageRow.index, 1)
+                        if (!enabled)
+                            upButton.forceActiveFocus(Qt.TabFocusReason)
+                    }
                 }
                 IconButton {
-                    objectName: "settingsSearchLanguageRemove_" + languageRow.modelData.code
+                    id: removeButton
+                    objectName: "settingsSearchLanguageRemove_" + languageRow.code
                     anchors.verticalCenter: parent.verticalCenter
                     iconSource: SVGColorImage.colorize("qrc:///redesign/duo/close.svg").color1(root.c("#8F8F8F")).uri()
                     description: qsTr("Remove")
@@ -271,10 +330,11 @@ SettingsSectionTitle {
                 }
                 Item { width: root.px(8); height: 1 }
                 SettingsToggle {
-                    objectName: "settingsSearchLanguageToggle_" + languageRow.modelData.code
+                    id: rowToggle
+                    objectName: "settingsSearchLanguageToggle_" + languageRow.code
                     anchors.verticalCenter: parent.verticalCenter
                     enabled: !languageRow.preferred
-                    on: languageRow.modelData.on || languageRow.preferred
+                    on: languageRow.on || languageRow.preferred
                     Accessible.name: languageRow.languageName
                     onSwitched: (on) => root._setRow(languageRow.index, on)
                 }
@@ -301,9 +361,10 @@ SettingsSectionTitle {
     Item {
         width: parent.width
         height: root.px(46)
-        Label { text: qsTr("Every other language too") }
+        Label { id: everyLanguageLabel; text: qsTr("Every other language too") }
         SettingsToggle {
             objectName: "settingsSearchEveryLanguage"
+            Accessible.name: everyLanguageLabel.text
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             on: root.everyLanguage

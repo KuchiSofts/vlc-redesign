@@ -10,6 +10,7 @@
 #define VLC_QT_FILE_OPEN_SPY_HPP
 
 #include <QCoreApplication>
+#include <QDebug>
 #include <QFileOpenEvent>
 #include <QMetaObject>
 #include <QObject>
@@ -48,6 +49,7 @@ public:
         // a link of a scheme the app opens (vlc://...) or a file
         const QUrl url = open->url().isValid() && !open->url().isEmpty()
                          ? open->url() : QUrl::fromLocalFile(open->file());
+        qDebug("a file open event: %s", qUtf8Printable(url.toString()));
         add(url);
         return true;
     }

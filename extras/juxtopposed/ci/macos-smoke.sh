@@ -353,6 +353,9 @@ else
         note "note: the second open (to the running copy) did not reach the app"
     fi
 fi
+# the way the opens came (util/mac_open_documents.cpp, util/file_open_spy.hpp)
+grep -E 'Apple events:|a file open event|files opened by the system' "$work/finder.log" 2>/dev/null \
+    | head -n 20 | while IFS= read -r line; do note "note: finder.log: $line"; done
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
 finder_pid=$(pgrep -f "$work/finder.log" | head -n 1)
 if [ -n "$finder_pid" ]; then

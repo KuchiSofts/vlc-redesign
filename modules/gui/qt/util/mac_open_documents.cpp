@@ -29,13 +29,36 @@
 #include <CoreServices/CoreServices.h>
 #include <CoreFoundation/CoreFoundation.h>
 
+#include <crt_externs.h>
+
 #include <QByteArray>
+#include <QDebug>
 #include <QList>
+#include <QStringList>
 
 #include <utility>
 
 namespace
 {
+
+OSErr openDocuments(const AppleEvent *event, AppleEvent *, SRefCon);
+
+AEEventHandlerUPP handlerUpp()
+{
+    static const AEEventHandlerUPP handler = NewAEEventHandlerUPP(openDocuments);
+    return handler;
+}
+
+/* whose handler takes the open-documents event now (for the log) */
+const char *currentHandler()
+{
+    AEEventHandlerUPP handler = nullptr;
+    SRefCon refcon = 0;
+    if (AEGetEventHandler(kCoreEventClass, kAEOpenDocuments, &handler, &refcon, false) != noErr
+        || handler == nullptr)
+        return "none";
+    return handler == handlerUpp() ? "ours" : "another";
+}
 
 std::function<void(const QUrl &)> &sink()
 {
@@ -61,17 +84,26 @@ void deliver(const QUrl &url)
 OSErr openDocuments(const AppleEvent *event, AppleEvent *, SRefCon)
 {
     AEDescList list;
-    if (AEGetParamDesc(event, keyDirectObject, typeAEList, &list) != noErr)
+    const OSErr listErr = AEGetParamDesc(event, keyDirectObject, typeAEList, &list);
+    if (listErr != noErr)
+    {
+        qDebug("Apple events: an open-documents event without a list (%d)", int(listErr));
         return errAEDescNotFound;
+    }
     long count = 0;
     if (AECountItems(&list, &count) != noErr)
         count = 0;
+    qDebug("Apple events: an open-documents event of %ld file(s)", count);
     for (long i = 1; i <= count; ++i)
     {
         AEKeyword keyword;
         AEDesc item;
-        if (AEGetNthDesc(&list, i, typeFileURL, &keyword, &item) != noErr)
+        const OSErr itemErr = AEGetNthDesc(&list, i, typeFileURL, &keyword, &item);
+        if (itemErr != noErr)
+        {
+            qDebug("Apple events: file %ld is not a file URL (%d)", i, int(itemErr));
             continue;
+        }
         const Size size = AEGetDescDataSize(&item);
         QByteArray data(int(size), Qt::Uninitialized);
         const bool read = size > 0 && AEGetDescData(&item, data.data(), size) == noErr;
@@ -86,10 +118,12 @@ OSErr openDocuments(const AppleEvent *event, AppleEvent *, SRefCon)
     return noErr;
 }
 
-void installHandler()
+void installHandler(const char *when)
 {
-    static const AEEventHandlerUPP handler = NewAEEventHandlerUPP(openDocuments);
-    AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments, handler, 0, false);
+    const char *before = currentHandler();
+    const OSErr err = AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments, handlerUpp(), 0, false);
+    qDebug("Apple events: the open-documents handler installed %s (it was %s; %d)",
+           when, before, int(err));
 }
 
 /* AppKit puts its own handlers in place as the launch ends: Apple's advice is
@@ -97,7 +131,20 @@ void installHandler()
 void willFinishLaunching(CFNotificationCenterRef, void *, CFStringRef,
                          const void *, CFDictionaryRef)
 {
-    installHandler();
+    installHandler("as the launch ends");
+}
+
+void didFinishLaunching(CFNotificationCenterRef, void *, CFStringRef,
+                        const void *, CFDictionaryRef info)
+{
+    // (false: the system launched the app to open documents)
+    const void *value = info ? CFDictionaryGetValue(info, CFSTR("NSApplicationLaunchIsDefaultLaunchKey"))
+                             : nullptr;
+    const char *defaultLaunch = "unknown";
+    if (value && CFGetTypeID(value) == CFBooleanGetTypeID())
+        defaultLaunch = CFBooleanGetValue(static_cast<CFBooleanRef>(value)) ? "yes" : "no";
+    qDebug("Apple events: the launch finished (a default launch: %s; the handler: %s)",
+           defaultLaunch, currentHandler());
 }
 
 } // namespace
@@ -108,12 +155,22 @@ void MacOpenDocuments::install()
     if (!observing)
     {
         observing = true;
-        CFNotificationCenterAddObserver(CFNotificationCenterGetLocalCenter(), &observing,
-                                        willFinishLaunching,
+        CFNotificationCenterRef center = CFNotificationCenterGetLocalCenter();
+        CFNotificationCenterAddObserver(center, &observing, willFinishLaunching,
                                         CFSTR("NSApplicationWillFinishLaunchingNotification"),
                                         nullptr, CFNotificationSuspensionBehaviorDeliverImmediately);
+        CFNotificationCenterAddObserver(center, &observing, didFinishLaunching,
+                                        CFSTR("NSApplicationDidFinishLaunchingNotification"),
+                                        nullptr, CFNotificationSuspensionBehaviorDeliverImmediately);
+        QStringList args;
+        char **argv = *_NSGetArgv();
+        for (int i = 1, argc = *_NSGetArgc(); i < argc; ++i)
+            args << QString::fromLocal8Bit(argv[i]);
+        qDebug("Apple events: the process arguments: %s", qUtf8Printable(args.join(QLatin1Char(' '))));
+        installHandler("at the start");
+        return;
     }
-    installHandler();
+    installHandler("again");
 }
 
 void MacOpenDocuments::setSink(std::function<void(const QUrl &)> s)

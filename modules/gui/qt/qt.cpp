@@ -1087,6 +1087,11 @@ static void *Thread( void *obj )
     QApplication::setAttribute( Qt::AA_DontCheckOpenGLContextThreadAffinity );
     QQuickWindow::setDefaultAlphaBuffer(true);
 
+#ifdef Q_OS_MACOS
+    // before the application is made (util/mac_open_documents.hpp)
+    MacOpenDocuments::install();
+#endif
+
     /* Start the QApplication here */
     QApplication app( argc, argv );
     app.setProperty("initialStyle", app.style()->name());
@@ -1147,7 +1152,6 @@ static void *Thread( void *obj )
      * (util/file_open_spy.hpp, #84); played once the playlist exists. The
      * one of a launch was lost: the app takes that event itself
      * (util/mac_open_documents.hpp, #85) */
-    MacOpenDocuments::install();
     const QPointer<FileOpenSpy> fileOpenSpy = new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
         if (!p_intf->p_mainPlaylistController)
             return false;

@@ -322,7 +322,7 @@ note "note: $app_name screenshots in $work"
 # 6. A playlist opened as Finder opens it (#84): LaunchServices sends the
 # file as an Apple event, not as an argument (util/file_open_spy.hpp); the
 # clip it lists is opened
-list=$work/finder list.m3u
+list="$work/finder list.m3u"
 printf '#EXTM3U\n#EXTINF:2,Moving bar\nclip.y4m\n' > "$list"
 open -n -a "$app" "$list" --args --verbose=2 --file-logging --logfile="$work/finder.log" \
     --no-qt-privacy-ask --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy \

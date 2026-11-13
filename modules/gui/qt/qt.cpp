@@ -127,6 +127,7 @@ extern "C" char **environ;
 # include <QMenuBar>
 # include <vlc_intf_strings.h>
 # include "util/file_open_spy.hpp"
+# include "util/mac_open_documents.hpp"
 # include "menus/menus.hpp"
 # include <QPointer>
 # include <functional>
@@ -1143,8 +1144,11 @@ static void *Thread( void *obj )
 
 #ifdef Q_OS_MACOS
     /* Files opened from Finder: Apple events, which Qt makes QFileOpenEvents
-     * (util/file_open_spy.hpp, #84); played once the playlist exists */
-    new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
+     * (util/file_open_spy.hpp, #84); played once the playlist exists. The
+     * one of a launch was lost: the app takes that event itself
+     * (util/mac_open_documents.hpp, #85) */
+    MacOpenDocuments::install();
+    const QPointer<FileOpenSpy> fileOpenSpy = new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
         if (!p_intf->p_mainPlaylistController)
             return false;
         msg_Dbg( p_intf, "files opened by the system: %lld, the first %s", (long long)files.size(),
@@ -1152,6 +1156,13 @@ static void *Thread( void *obj )
         p_intf->p_mainPlaylistController->append(files, true);
         return true;
     });
+    MacOpenDocuments::setSink([fileOpenSpy](const QUrl &url) {
+        if (fileOpenSpy)
+            fileOpenSpy->add(url);
+    });
+    // (once more as the event loop starts, should AppKit have put its own
+    // handler back after the notification of the launch's end)
+    QTimer::singleShot(0, &app, []() { MacOpenDocuments::install(); });
 #endif
 
     registerMetaTypes();
@@ -1813,6 +1824,9 @@ static void *Thread( void *obj )
     app.exec();
 
     msg_Dbg( p_intf, "QApp exec() finished" );
+#ifdef Q_OS_MACOS
+    MacOpenDocuments::setSink(nullptr);
+#endif
 
     return ThreadCleanup( p_intf, CLEANUP_APP_TERMINATED );
 }

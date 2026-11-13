@@ -48,12 +48,17 @@ public:
         // a link of a scheme the app opens (vlc://...) or a file
         const QUrl url = open->url().isValid() && !open->url().isEmpty()
                          ? open->url() : QUrl::fromLocalFile(open->file());
-        if (!url.isEmpty())
-        {
-            m_pending.append(url);
-            queueFlush(0);
-        }
+        add(url);
         return true;
+    }
+
+    /* a file to open that came another way (util/mac_open_documents.hpp) */
+    void add(const QUrl &url)
+    {
+        if (url.isEmpty())
+            return;
+        m_pending.append(url);
+        queueFlush(0);
     }
 
 private:

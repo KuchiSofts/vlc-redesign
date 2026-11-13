@@ -87,6 +87,10 @@ What is being worked on, updated as it changes (2026-11-10):
   .m3u the way Finder does); the start about 0.2 s sooner (the fonts read in the background for every language);
   screen-reader names; the bug form for every system; VideoLAN merged to 189bf59e34. Android 0.6.3 (Hindi crash,
   Korean texts, check_string_formats.py). Samsung unchanged (0.6.1). Next: 0.6.4.
+  The close that never ended on CI's ARM64 runner (since 0.6.1): its dump showed an assert's message box
+  (mlthreadpool.cpp, `assert(task)`): files that include <cassert> before config.h kept their asserts in
+  release builds (29 files). The Qt module passes -DNDEBUG in such builds; ThreadRunner changes its task
+  lists under its lock and skips a stale entry; VideoLAN's ThreadRunner test runs in unit-tests.sh.
 - Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.

@@ -25,6 +25,7 @@ on Windows, Linux and macOS. The Android app has its own fixes; the Samsung TV a
 - macOS: files opened from Finder or dropped on the Dock icon play ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84), [#85](https://github.com/KuchiSofts/vlc-redesign/issues/85)).
 - Screen readers name every text field and settings toggle.
 - Subtitle languages: Move and Remove keep the keyboard focus on the list.
+- Closing never hangs on an internal check's message box (a media library check left on in release builds).
 - Android: no crash in Hindi when adding items already in a playlist.
 - Android: Korean texts show the remote access code, names and numbers again.
 

@@ -128,6 +128,11 @@ void ThreadRunner::processQueueLocked(const QString& queueName)
                 delete task;
         },
         [this, queueName](quint64, const Ctx&){
+             // the task lists are changed below: under m_lock, as everywhere
+             // else (taken first, as runOnThread() does, then the queue's)
+             QMutexLocker locker(&m_lock);
+             if (m_shuttingDown)
+                 return;
              QMutexLocker lock(&m_serialTaskLock);
              processQueueLocked(queueName);
         });
@@ -148,6 +153,14 @@ void ThreadRunner::destroy()
         const QObject* object = taskIt.key();
         quint64 key = taskIt.value();
         auto task = m_runningTasks.value(key, nullptr);
+        if (!task)
+        {
+            // (an entry left without its task: nothing to cancel)
+            taskIt = m_objectTasks.erase(taskIt);
+            if (m_objectTasks.count(object) == 0)
+                disconnect(object, &QObject::destroyed, this, &ThreadRunner::runOnThreadTargetDestroyed);
+            continue;
+        }
         if (tryTake(task))
         {
             delete task;
@@ -236,7 +249,11 @@ void ThreadRunner::runOnThreadTargetDestroyed(QObject * object)
         for (auto taskId : m_objectTasks.values(object))
         {
             auto task = m_runningTasks.value(taskId, nullptr);
-            assert(task);
+            // (an entry left without its task: only the entry goes. It was
+            // an assert, live in release builds, whose message box held the
+            // interface's close forever on a CI runner)
+            if (!task)
+                continue;
             bool removed = tryTake(task);
             if (removed)
                 delete task;

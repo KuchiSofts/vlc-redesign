@@ -1464,6 +1464,9 @@ AS_IF([test "${enable_debug}" != "no"], [
 ], [
   AC_DEFINE(NDEBUG)
 ])
+dnl (C++ files that include <cassert> before config.h, as Qt's headers do, still
+dnl need it: the Qt module passes -DNDEBUG itself in a build without asserts)
+AM_CONDITIONAL([HAVE_NDEBUG], [test "${enable_debug}" = "no"])
 
 dnl
 dnl  Profiling

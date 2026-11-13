@@ -47,6 +47,19 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Gui) \
     extras/juxtopposed/file-open-spy.cpp $(pkg-config --libs Qt6Gui) -o "$out/file-open-spy"
 "$out/file-open-spy"
 
+echo "== the media library's task runner (VideoLAN's test: tasks, queues, cancels, objects destroyed while they wait)"
+moc=$(pkg-config --variable=libexecdir Qt6Core 2>/dev/null)/moc
+[ -x "$moc" ] || moc=/usr/lib/qt6/libexec/moc
+mkdir -p "$out/thread-runner"
+"$moc" modules/gui/qt/medialibrary/mlthreadpool.hpp -o "$out/thread-runner/moc_mlthreadpool.cpp"
+"$moc" modules/gui/qt/tests/test_thread_runner.cpp -o "$out/thread-runner/test_thread_runner.moc"
+g++ -std=c++17 -O1 -Wall $san -fPIC -I. -I"$out/thread-runner" -Imodules/gui/qt/medialibrary \
+    $(pkg-config --cflags Qt6Core Qt6Test) \
+    modules/gui/qt/tests/test_thread_runner.cpp modules/gui/qt/medialibrary/mlthreadpool.cpp \
+    "$out/thread-runner/moc_mlthreadpool.cpp" \
+    $(pkg-config --libs Qt6Core Qt6Test) -o "$out/thread-runner/test"
+"$out/thread-runner/test" -silent
+
 echo "== Cover tracks (a song's picture kept as a video track is its cover, not a video)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/cover-track.cpp -o "$out/cover-track"
 "$out/cover-track"

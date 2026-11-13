@@ -41196,3 +41196,31 @@ msgstr "Contrôles temporels"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Liste du gestionnaire de médias"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Installer des services"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Installation"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Désinstallation"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "Aucune information disponible"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "par <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "par <b>Inconnu</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Note : %1/5  Téléchargements : %2"

@@ -936,6 +936,7 @@ modules/gui/qt/network/qml/DiscoverDisplay.qml
 modules/gui/qt/network/qml/DiscoverUrlDisplay.qml
 modules/gui/qt/network/qml/NetworkGridItem.qml
 modules/gui/qt/network/qml/ServicesHomeDisplay.qml
+modules/gui/qt/network/qml/ServicesManage.qml
 modules/gui/qt/player/control_list_filter.cpp
 modules/gui/qt/player/control_list_filter.hpp
 modules/gui/qt/player/favorite_state.cpp

@@ -44187,3 +44187,31 @@ msgstr ""
 #, fuzzy
 #~ msgid "Telnet Interface host"
 #~ msgstr "Control interfaces"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Install services"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Installing"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Uninstalling"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "No information available"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "by <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "by <b>Unknown</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Score: %1/5  Downloads: %2"

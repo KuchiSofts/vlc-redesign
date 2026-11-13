@@ -39493,3 +39493,31 @@ msgstr "בקרת זמנים"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "רשימת מנהל המדיה"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "התקנת שירותים"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "מתקין"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "מסיר"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "אין מידע זמין"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "מאת <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "מאת <b>לא ידוע</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "דירוג: %1/5  הורדות: %2"

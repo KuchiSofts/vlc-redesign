@@ -41003,3 +41003,31 @@ msgstr "Tijdsbediening"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Mediabeheerlijst"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Diensten installeren"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Bezig met installeren"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Bezig met verwijderen"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "Geen informatie beschikbaar"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "door <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "door <b>Onbekend</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Score: %1/5  Downloads: %2"

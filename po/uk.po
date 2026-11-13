@@ -40870,3 +40870,31 @@ msgstr "Керування часом"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Список медіаменеджеру"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Встановлення служб"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Встановлення"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Видалення"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "Немає даних"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "автор: <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "автор: <b>невідомий</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Оцінка: %1/5  Завантаження: %2"

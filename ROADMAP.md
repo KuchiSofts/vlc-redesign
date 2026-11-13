@@ -123,7 +123,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ A faster start: the window is up about 0.2 s sooner
 - ✅ Screen readers name every text field and settings toggle; outside text is always shown as plain text
 - ✅ Android: no crash in Hindi when adding items already in a playlist; Korean texts fixed
-- ✅ VideoLAN's VLC merged to `b3cd1f93fc`; the Samsung TV app is unchanged (0.6.1)
+- ✅ VideoLAN's VLC merged to `d41ee85d49`; the Samsung TV app is unchanged (0.6.1)
 
 ### 0.6.2 (2026-11-12)
 

@@ -5,15 +5,34 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `914c465b0c` (2026-11-13).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `270e1d0d40` (2026-11-14).
 
-**Contents:** [Unreleased](#unreleased) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [Unreleased]
+## [0.6.5] · 2026-11-14
+
+An update release: Android gets the computer's options it lacked (nearly 40 settings, the queue's Sort and Add files,
+Export Playlist, the check for updates in About, the computer's keys), and every app now updates from the newest
+release made for it. Windows, Linux and macOS are rebuilt with that; the Samsung TV app (0.6.1) is unchanged.
+
+### Added
+
+- Android: nearly 40 settings of the computer it lacked (playback, subtitles, audio, network, video, privacy).
+- Android: Sort and Add files for the queue, Export Playlist, Secondary subtitle delay.
+- Android: the sleep timer can pause instead of stopping.
+- Android: About checks for updates, suggests an idea and reports a problem.
+- Android: the computer's keys for the four skips, snapshot, record and sync by ear.
+- Bug report: Android and the Samsung TV app as kinds of copy.
+
+### Fixed
+
+- Updates: a release for some systems only is no longer offered to the others and no longer hides the last one of
+  this system.
+- Android: subtitle files beside a video open in the preferred language.
 
 ### Technical
 

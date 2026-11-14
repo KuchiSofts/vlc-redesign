@@ -32,7 +32,7 @@ T.Popup {
     width: parent ? Math.min(parent.width - 2 * VLCStyle.dp(24, VLCStyle.scale), VLCStyle.dp(600, VLCStyle.scale))
                   : VLCStyle.dp(600, VLCStyle.scale)
     height: parent ? Math.min(parent.height - 2 * VLCStyle.dp(24, VLCStyle.scale), implicitHeight) : implicitHeight
-    implicitHeight: content.implicitHeight + topPadding + bottomPadding
+    implicitHeight: content.implicitHeight + aboutButtons.implicitHeight + aboutColumn.spacing + topPadding + bottomPadding
     padding: VLCStyle.dp(28, VLCStyle.scale)
     modal: true
     focus: true
@@ -121,9 +121,10 @@ T.Popup {
         lineHeight: 1.3
     }
 
-    // A low window: the content scrolls (laid out as when it fits)
-    contentItem: Flickable {
-        id: aboutView
+    // A low window: the text scrolls (laid out as when it fits), the buttons
+    // stay under it (they scrolled with it, under the fade of its edge)
+    contentItem: ColumnLayout {
+        id: aboutColumn
         // a screen reader names the dialog
         Accessible.role: Accessible.Dialog
         Accessible.name: qsTr("About VLC")
@@ -131,298 +132,306 @@ T.Popup {
         // a popup does not inherit the mirroring of the window (right to left)
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true
+        spacing: VLCStyle.dp(22, VLCStyle.scale)
 
-        contentWidth: width
-        contentHeight: content.implicitHeight
-        clip: contentHeight > height
-        interactive: contentHeight > height
-        boundsBehavior: Flickable.StopAtBounds
+        Flickable {
+            id: aboutView
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.preferredHeight: content.implicitHeight
 
-        T.ScrollBar.vertical: Widgets.ScrollBarExt { }
-        Widgets.ScrollHint {
-            view: aboutView
-            surface: VLCStyle.redesign.color("#191919", "#ABABAA", root.darkTheme)
-        }
+            contentWidth: width
+            contentHeight: content.implicitHeight
+            clip: contentHeight > height
+            interactive: contentHeight > height
+            boundsBehavior: Flickable.StopAtBounds
 
-        ColumnLayout {
-            id: content
-            width: parent.width
-            spacing: VLCStyle.dp(18, VLCStyle.scale)
-
-            // The app, its version and its updates. The button beside the
-            // name while the name, its badge and the version line fit beside
-            // it, else under them (a long translation of the button: German
-            // cut the name to "VLC ...")
-            GridLayout {
-                id: header
-                Layout.fillWidth: true
-                columnSpacing: VLCStyle.dp(18, VLCStyle.scale)
-                rowSpacing: VLCStyle.dp(12, VLCStyle.scale)
-                readonly property real _textWidth: Math.max(titleText.implicitWidth + VLCStyle.dp(10, VLCStyle.scale)
-                                                            + platformBadge.implicitWidth,
-                                                            versionText.implicitWidth)
-                readonly property bool _wide: width - VLCStyle.dp(64, VLCStyle.scale) - 2 * columnSpacing
-                                             - updateButton.implicitWidth >= _textWidth
-                columns: _wide ? 3 : 2
-
-                Image {
-                    Layout.row: 0
-                    Layout.column: 0
-                    Layout.rowSpan: header._wide ? 1 : 2
-                    Layout.alignment: Qt.AlignTop
-                    Layout.preferredWidth: VLCStyle.dp(64, VLCStyle.scale)
-                    Layout.preferredHeight: VLCStyle.dp(64, VLCStyle.scale)
-                    source: "qrc:///redesign/welcome.svg"
-                    sourceSize: Qt.size(width, height)
-                    smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
-                    fillMode: Image.PreserveAspectFit
-                    Accessible.ignored: true
-                }
-
-                ColumnLayout {
-                    Layout.row: 0
-                    Layout.column: 1
-                    Layout.fillWidth: true
-                    spacing: VLCStyle.dp(2, VLCStyle.scale)
-
-                    RowLayout {
-                        Layout.fillWidth: true
-                        spacing: VLCStyle.dp(10, VLCStyle.scale)
-
-                        // The name as wide as it is, cut only when the column
-                        // (the room left by the button) has none left beside
-                        // the badge, which keeps its width; the room left
-                        // stays at the end (a second item filling the row
-                        // shared the room with the name and cut it)
-                        Text {
-                            id: titleText
-                            Layout.fillWidth: true
-                            Layout.maximumWidth: implicitWidth
-                            // the whole name on two lines rather than cut
-                            // (VLC Media Player / Redesign beside the badge)
-                            wrapMode: Text.WordWrap
-                            maximumLineCount: 2
-                            elide: Text.ElideRight
-                            horizontalAlignment: Text.AlignLeft
-                            text: "VLC Media Player Redesign" // (a name: not translated)
-                            color: root.textPrimary
-                            font.family: VLCStyle.redesign.fontFamily
-                            font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
-                            font.weight: Font.Light
-                        }
-                        // The system this copy is made for (the same version
-                        // exists for several), the one it runs on in its tooltip
-                        Rectangle {
-                            id: platformBadge
-                            // (beside the first line of the name)
-                            Layout.alignment: Qt.AlignTop
-                            Layout.topMargin: VLCStyle.dp(9, VLCStyle.scale)
-                            Layout.minimumWidth: implicitWidth
-                            implicitWidth: platformText.implicitWidth + VLCStyle.dp(16, VLCStyle.scale)
-                            implicitHeight: VLCStyle.dp(20, VLCStyle.scale)
-                            radius: height / 2
-                            // (the light theme: a light pill, the dark one
-                            // kept its dark text unreadable on it)
-                            color: VLCStyle.redesign.color("#262626", "#dedede", root.darkTheme)
-                            border.width: 1
-                            border.color: VLCStyle.redesign.windowBorder
-                            Accessible.role: Accessible.StaticText
-                            Accessible.name: RedesignUpdater.platformName
-                            Text {
-                                id: platformText
-                                anchors.centerIn: parent
-                                text: RedesignUpdater.platformName
-                                color: root.textPrimary
-                                font.family: VLCStyle.redesign.fontFamily
-                                font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
-                                font.weight: Font.Medium
-                            }
-                            HoverHandler { id: platformHover }
-                            T.ToolTip.visible: platformHover.hovered
-                            T.ToolTip.text: RedesignUpdater.platformDetails
-                            T.ToolTip.delay: 650
-                        }
-                    }
-                    Text {
-                        id: versionText
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignLeft
-                        text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
-                        color: root.textMuted
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                        HoverHandler { id: versionHover }
-                        T.ToolTip.visible: versionHover.hovered && versionText.truncated
-                        T.ToolTip.text: versionText.text
-                        T.ToolTip.delay: 650
-                    }
-                    Text {
-                        id: updateText
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                        horizontalAlignment: Text.AlignLeft
-                        HoverHandler { id: updateHover }
-                        T.ToolTip.visible: updateHover.hovered && updateText.truncated
-                        T.ToolTip.text: updateText.text
-                        T.ToolTip.delay: 650
-                        visible: text.length > 0
-                        color: RedesignUpdater.state === RedesignUpdater.Failed ? "#e15033" : VLCStyle.redesign.accent
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
-                        text: {
-                            switch (RedesignUpdater.state) {
-                            case RedesignUpdater.Checking: return qsTr("Checking for updates…")
-                            case RedesignUpdater.UpToDate: return qsTr("You have the latest version")
-                            case RedesignUpdater.Available: return qsTr("Version %1 is available").arg(RedesignUpdater.latestVersion)
-                            case RedesignUpdater.Downloading:
-                                return qsTr("Downloading the update… %1%").arg(Math.round(RedesignUpdater.progress * 100))
-                            case RedesignUpdater.Preparing: return qsTr("Preparing the update…")
-                            case RedesignUpdater.Ready: return qsTr("Version %1 is ready: restart to finish").arg(RedesignUpdater.latestVersion)
-                            case RedesignUpdater.Failed: return RedesignUpdater.errorText
-                            default: return ""
-                            }
-                        }
-                    }
-                    // the card shown after an update, open again at any time
-                    Link {
-                        Layout.topMargin: VLCStyle.dp(2, VLCStyle.scale)
-                        text: qsTr("What's new in %1").arg(RedesignUpdater.currentVersion)
-                        onActivated: {
-                            root.close()
-                            DialogsProvider.whatsNewDialog()
-                        }
-                    }
-                }
-
-                Widgets.RedesignButton {
-                    id: updateButton
-                    Layout.row: header._wide ? 0 : 1
-                    Layout.column: header._wide ? 2 : 1
-                    Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-                    accent: RedesignUpdater.state === RedesignUpdater.Available || RedesignUpdater.state === RedesignUpdater.Ready
-                    text: RedesignUpdater.state === RedesignUpdater.Ready ? qsTr("Restart now")
-                          : RedesignUpdater.state === RedesignUpdater.Available
-                            ? (RedesignUpdater.canInstall ? qsTr("Update now") : qsTr("Download"))
-                            : qsTr("Check for updates")
-                    enabled: RedesignUpdater.state !== RedesignUpdater.Checking
-                             && RedesignUpdater.state !== RedesignUpdater.Downloading
-                             && RedesignUpdater.state !== RedesignUpdater.Preparing
-                    onClicked: {
-                        if (RedesignUpdater.state === RedesignUpdater.Ready)
-                            RedesignUpdater.restartNow()
-                        else if (RedesignUpdater.state !== RedesignUpdater.Available)
-                            RedesignUpdater.check(true)
-                        else if (RedesignUpdater.canInstall)
-                            RedesignUpdater.install()
-                        else
-                            RedesignUpdater.openReleasePage()
-                    }
-                }
-            }
-
-            // The design credit (CC BY 4.0), first and in full
-            Rectangle {
-                Layout.fillWidth: true
-                implicitHeight: designColumn.implicitHeight + 2 * VLCStyle.dp(18, VLCStyle.scale)
-                radius: VLCStyle.dp(10, VLCStyle.scale)
-                color: VLCStyle.redesign.color("#0E0E0E", "#c2c2c1", root.darkTheme)
-
-                ColumnLayout {
-                    id: designColumn
-                    x: VLCStyle.dp(18, VLCStyle.scale)
-                    y: VLCStyle.dp(18, VLCStyle.scale)
-                    width: parent.width - 2 * x
-                    spacing: VLCStyle.dp(8, VLCStyle.scale)
-
-                    Text {
-                        Layout.fillWidth: true
-                        wrapMode: Text.WordWrap
-                        horizontalAlignment: Text.AlignLeft
-                        textFormat: Text.StyledText
-                        text: qsTr("Interface designed by <font color=\"%1\">Juxtopposed</font>").arg(VLCStyle.redesign.accent)
-                        color: root.textPrimary
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
-                        font.weight: Font.Medium
-                    }
-                    Body {
-                        text: qsTr("Every screen comes from the \"VLC Redesign (Community)\" Figma file, licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn.")
-                    }
-                    Flow {
-                        Layout.fillWidth: true
-                        spacing: VLCStyle.dp(18, VLCStyle.scale)
-                        Link { text: qsTr("YouTube channel"); url: "https://www.youtube.com/@juxtopposed" }
-                        Link { text: qsTr("The redesign video"); url: "https://www.youtube.com/watch?v=ERFeOgqk324" }
-                        Link { text: qsTr("Figma file"); url: "https://www.figma.com/community/file/1691465999134370980" }
-                        Link { text: qsTr("Website"); url: "https://juxtopposed.com" }
-                        Link { text: qsTr("CC BY 4.0"); url: "https://creativecommons.org/licenses/by/4.0/" }
-                    }
-                }
+            T.ScrollBar.vertical: Widgets.ScrollBarExt { }
+            Widgets.ScrollHint {
+                view: aboutView
+                surface: VLCStyle.redesign.color("#191919", "#ABABAA", root.darkTheme)
             }
 
             ColumnLayout {
-                Layout.fillWidth: true
-                spacing: VLCStyle.dp(6, VLCStyle.scale)
+                id: content
+                width: parent.width
+                spacing: VLCStyle.dp(18, VLCStyle.scale)
 
-                CreditText {
-                    prefix: qsTr("First implementation by")
-                    linkText: "MrDouglax"
-                    url: "https://github.com/SrDouglax/JuxtopposedVLC"
-                }
-                CreditText {
-                    prefix: qsTr("Built on VLC media player by")
-                    linkText: qsTr("the VideoLAN team and contributors")
-                    url: "https://www.videolan.org/"
-                }
-                // The other platforms, from the copy of platforms.yml built
-                // into this release (nothing is fetched)
-                Body {
-                    visible: RedesignUpdater.alsoOn.length > 0
-                    color: root.textMuted
-                    text: qsTr("Also on: %1").arg(RedesignUpdater.alsoOn)
-                }
-                // The forms of the GitHub repository (as in the ⋯ menu)
-                Flow {
+                // The app, its version and its updates. The button beside the
+                // name while the name, its badge and the version line fit beside
+                // it, else under them (a long translation of the button: German
+                // cut the name to "VLC ...")
+                GridLayout {
+                    id: header
                     Layout.fillWidth: true
-                    Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
-                    spacing: VLCStyle.dp(18, VLCStyle.scale)
-                    Link { text: qsTr("Suggest an idea"); url: RedesignFeedback.ideaUrl() }
-                    Link {
-                        text: qsTr("Report a problem")
-                        onActivated: {
-                            root.close()
-                            RedesignFeedback.openReport()
+                    columnSpacing: VLCStyle.dp(18, VLCStyle.scale)
+                    rowSpacing: VLCStyle.dp(12, VLCStyle.scale)
+                    readonly property real _textWidth: Math.max(titleText.implicitWidth + VLCStyle.dp(10, VLCStyle.scale)
+                                                                + platformBadge.implicitWidth,
+                                                                versionText.implicitWidth)
+                    readonly property bool _wide: width - VLCStyle.dp(64, VLCStyle.scale) - 2 * columnSpacing
+                                                 - updateButton.implicitWidth >= _textWidth
+                    columns: _wide ? 3 : 2
+
+                    Image {
+                        Layout.row: 0
+                        Layout.column: 0
+                        Layout.rowSpan: header._wide ? 1 : 2
+                        Layout.alignment: Qt.AlignTop
+                        Layout.preferredWidth: VLCStyle.dp(64, VLCStyle.scale)
+                        Layout.preferredHeight: VLCStyle.dp(64, VLCStyle.scale)
+                        source: "qrc:///redesign/welcome.svg"
+                        sourceSize: Qt.size(width, height)
+                        smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
+                        fillMode: Image.PreserveAspectFit
+                        Accessible.ignored: true
+                    }
+
+                    ColumnLayout {
+                        Layout.row: 0
+                        Layout.column: 1
+                        Layout.fillWidth: true
+                        spacing: VLCStyle.dp(2, VLCStyle.scale)
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: VLCStyle.dp(10, VLCStyle.scale)
+
+                            // The name as wide as it is, cut only when the column
+                            // (the room left by the button) has none left beside
+                            // the badge, which keeps its width; the room left
+                            // stays at the end (a second item filling the row
+                            // shared the room with the name and cut it)
+                            Text {
+                                id: titleText
+                                Layout.fillWidth: true
+                                Layout.maximumWidth: implicitWidth
+                                // the whole name on two lines rather than cut
+                                // (VLC Media Player / Redesign beside the badge)
+                                wrapMode: Text.WordWrap
+                                maximumLineCount: 2
+                                elide: Text.ElideRight
+                                horizontalAlignment: Text.AlignLeft
+                                text: "VLC Media Player Redesign" // (a name: not translated)
+                                color: root.textPrimary
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: VLCStyle.dp(28, VLCStyle.scale)
+                                font.weight: Font.Light
+                            }
+                            // The system this copy is made for (the same version
+                            // exists for several), the one it runs on in its tooltip
+                            Rectangle {
+                                id: platformBadge
+                                // (beside the first line of the name)
+                                Layout.alignment: Qt.AlignTop
+                                Layout.topMargin: VLCStyle.dp(9, VLCStyle.scale)
+                                Layout.minimumWidth: implicitWidth
+                                implicitWidth: platformText.implicitWidth + VLCStyle.dp(16, VLCStyle.scale)
+                                implicitHeight: VLCStyle.dp(20, VLCStyle.scale)
+                                radius: height / 2
+                                // (the light theme: a light pill, the dark one
+                                // kept its dark text unreadable on it)
+                                color: VLCStyle.redesign.color("#262626", "#dedede", root.darkTheme)
+                                border.width: 1
+                                border.color: VLCStyle.redesign.windowBorder
+                                Accessible.role: Accessible.StaticText
+                                Accessible.name: RedesignUpdater.platformName
+                                Text {
+                                    id: platformText
+                                    anchors.centerIn: parent
+                                    text: RedesignUpdater.platformName
+                                    color: root.textPrimary
+                                    font.family: VLCStyle.redesign.fontFamily
+                                    font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
+                                    font.weight: Font.Medium
+                                }
+                                HoverHandler { id: platformHover }
+                                T.ToolTip.visible: platformHover.hovered
+                                T.ToolTip.text: RedesignUpdater.platformDetails
+                                T.ToolTip.delay: 650
+                            }
+                        }
+                        Text {
+                            id: versionText
+                            Layout.fillWidth: true
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
+                            text: qsTr("Version %1 · based on VLC %2").arg(RedesignUpdater.currentVersion).arg(AboutModel.version.split(" ")[0])
+                            color: root.textMuted
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                            HoverHandler { id: versionHover }
+                            T.ToolTip.visible: versionHover.hovered && versionText.truncated
+                            T.ToolTip.text: versionText.text
+                            T.ToolTip.delay: 650
+                        }
+                        Text {
+                            id: updateText
+                            Layout.fillWidth: true
+                            elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
+                            HoverHandler { id: updateHover }
+                            T.ToolTip.visible: updateHover.hovered && updateText.truncated
+                            T.ToolTip.text: updateText.text
+                            T.ToolTip.delay: 650
+                            visible: text.length > 0
+                            color: RedesignUpdater.state === RedesignUpdater.Failed ? "#e15033" : VLCStyle.redesign.accent
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
+                            text: {
+                                switch (RedesignUpdater.state) {
+                                case RedesignUpdater.Checking: return qsTr("Checking for updates…")
+                                case RedesignUpdater.UpToDate: return qsTr("You have the latest version")
+                                case RedesignUpdater.Available: return qsTr("Version %1 is available").arg(RedesignUpdater.latestVersion)
+                                case RedesignUpdater.Downloading:
+                                    return qsTr("Downloading the update… %1%").arg(Math.round(RedesignUpdater.progress * 100))
+                                case RedesignUpdater.Preparing: return qsTr("Preparing the update…")
+                                case RedesignUpdater.Ready: return qsTr("Version %1 is ready: restart to finish").arg(RedesignUpdater.latestVersion)
+                                case RedesignUpdater.Failed: return RedesignUpdater.errorText
+                                default: return ""
+                                }
+                            }
+                        }
+                        // the card shown after an update, open again at any time
+                        Link {
+                            Layout.topMargin: VLCStyle.dp(2, VLCStyle.scale)
+                            text: qsTr("What's new in %1").arg(RedesignUpdater.currentVersion)
+                            onActivated: {
+                                root.close()
+                                DialogsProvider.whatsNewDialog()
+                            }
+                        }
+                    }
+
+                    Widgets.RedesignButton {
+                        id: updateButton
+                        Layout.row: header._wide ? 0 : 1
+                        Layout.column: header._wide ? 2 : 1
+                        Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+                        accent: RedesignUpdater.state === RedesignUpdater.Available || RedesignUpdater.state === RedesignUpdater.Ready
+                        text: RedesignUpdater.state === RedesignUpdater.Ready ? qsTr("Restart now")
+                              : RedesignUpdater.state === RedesignUpdater.Available
+                                ? (RedesignUpdater.canInstall ? qsTr("Update now") : qsTr("Download"))
+                                : qsTr("Check for updates")
+                        enabled: RedesignUpdater.state !== RedesignUpdater.Checking
+                                 && RedesignUpdater.state !== RedesignUpdater.Downloading
+                                 && RedesignUpdater.state !== RedesignUpdater.Preparing
+                        onClicked: {
+                            if (RedesignUpdater.state === RedesignUpdater.Ready)
+                                RedesignUpdater.restartNow()
+                            else if (RedesignUpdater.state !== RedesignUpdater.Available)
+                                RedesignUpdater.check(true)
+                            else if (RedesignUpdater.canInstall)
+                                RedesignUpdater.install()
+                            else
+                                RedesignUpdater.openReleasePage()
                         }
                     }
                 }
-                Body {
-                    Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
-                    color: root.textMuted
-                    font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
-                    text: qsTr("An unofficial build, not affiliated with or endorsed by VideoLAN or Juxtopposed. VLC, VLC media player and the cone logo are trademarks of VideoLAN. Free software under the GNU GPL v2 or later.")
+
+                // The design credit (CC BY 4.0), first and in full
+                Rectangle {
+                    Layout.fillWidth: true
+                    implicitHeight: designColumn.implicitHeight + 2 * VLCStyle.dp(18, VLCStyle.scale)
+                    radius: VLCStyle.dp(10, VLCStyle.scale)
+                    color: VLCStyle.redesign.color("#0E0E0E", "#c2c2c1", root.darkTheme)
+
+                    ColumnLayout {
+                        id: designColumn
+                        x: VLCStyle.dp(18, VLCStyle.scale)
+                        y: VLCStyle.dp(18, VLCStyle.scale)
+                        width: parent.width - 2 * x
+                        spacing: VLCStyle.dp(8, VLCStyle.scale)
+
+                        Text {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Text.AlignLeft
+                            textFormat: Text.StyledText
+                            text: qsTr("Interface designed by <font color=\"%1\">Juxtopposed</font>").arg(VLCStyle.redesign.accent)
+                            color: root.textPrimary
+                            font.family: VLCStyle.redesign.fontFamily
+                            font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
+                            font.weight: Font.Medium
+                        }
+                        Body {
+                            text: qsTr("Every screen comes from the \"VLC Redesign (Community)\" Figma file, licensed under CC BY 4.0. It was adapted to Qt and its icons were redrawn.")
+                        }
+                        Flow {
+                            Layout.fillWidth: true
+                            spacing: VLCStyle.dp(18, VLCStyle.scale)
+                            Link { text: qsTr("YouTube channel"); url: "https://www.youtube.com/@juxtopposed" }
+                            Link { text: qsTr("The redesign video"); url: "https://www.youtube.com/watch?v=ERFeOgqk324" }
+                            Link { text: qsTr("Figma file"); url: "https://www.figma.com/community/file/1691465999134370980" }
+                            Link { text: qsTr("Website"); url: "https://juxtopposed.com" }
+                            Link { text: qsTr("CC BY 4.0"); url: "https://creativecommons.org/licenses/by/4.0/" }
+                        }
+                    }
+                }
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: VLCStyle.dp(6, VLCStyle.scale)
+
+                    CreditText {
+                        prefix: qsTr("First implementation by")
+                        linkText: "MrDouglax"
+                        url: "https://github.com/SrDouglax/JuxtopposedVLC"
+                    }
+                    CreditText {
+                        prefix: qsTr("Built on VLC media player by")
+                        linkText: qsTr("the VideoLAN team and contributors")
+                        url: "https://www.videolan.org/"
+                    }
+                    // The other platforms, from the copy of platforms.yml built
+                    // into this release (nothing is fetched)
+                    Body {
+                        visible: RedesignUpdater.alsoOn.length > 0
+                        color: root.textMuted
+                        text: qsTr("Also on: %1").arg(RedesignUpdater.alsoOn)
+                    }
+                    // The forms of the GitHub repository (as in the ⋯ menu)
+                    Flow {
+                        Layout.fillWidth: true
+                        Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
+                        spacing: VLCStyle.dp(18, VLCStyle.scale)
+                        Link { text: qsTr("Suggest an idea"); url: RedesignFeedback.ideaUrl() }
+                        Link {
+                            text: qsTr("Report a problem")
+                            onActivated: {
+                                root.close()
+                                RedesignFeedback.openReport()
+                            }
+                        }
+                    }
+                    Body {
+                        Layout.topMargin: VLCStyle.dp(6, VLCStyle.scale)
+                        color: root.textMuted
+                        font.pixelSize: VLCStyle.dp(12, VLCStyle.scale)
+                        text: qsTr("An unofficial build, not affiliated with or endorsed by VideoLAN or Juxtopposed. VLC, VLC media player and the cone logo are trademarks of VideoLAN. Free software under the GNU GPL v2 or later.")
+                    }
                 }
             }
+        }
 
-            RowLayout {
-                Layout.fillWidth: true
-                Layout.topMargin: VLCStyle.dp(4, VLCStyle.scale)
-                spacing: VLCStyle.dp(8, VLCStyle.scale)
+        RowLayout {
+            id: aboutButtons
+            Layout.fillWidth: true
+            spacing: VLCStyle.dp(8, VLCStyle.scale)
 
-                Widgets.RedesignButton {
-                    text: qsTr("Licenses & authors")
-                    onClicked: { root.close(); DialogsProvider.nativeAboutDialog() }
-                }
-                Widgets.RedesignButton {
-                    text: qsTr("GitHub")
-                    onClicked: Qt.openUrlExternally(RedesignUpdater.repositoryUrl)
-                }
-                Item { Layout.fillWidth: true }
-                Widgets.RedesignButton {
-                    accent: true
-                    text: qsTr("Close")
-                    onClicked: root.close()
-                }
+            Widgets.RedesignButton {
+                text: qsTr("Licenses & authors")
+                onClicked: { root.close(); DialogsProvider.nativeAboutDialog() }
+            }
+            Widgets.RedesignButton {
+                text: qsTr("GitHub")
+                onClicked: Qt.openUrlExternally(RedesignUpdater.repositoryUrl)
+            }
+            Item { Layout.fillWidth: true }
+            Widgets.RedesignButton {
+                accent: true
+                text: qsTr("Close")
+                onClicked: root.close()
             }
         }
     }

@@ -30,6 +30,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Updates: GitHub's limit of requests is said as such, with when to try again.
 - Android: the tracks panel's Audio options open; a video keeps its name with a sound file added.
 - Android: a crowded player bar held upright no longer draws buttons over each other.
+- Live TV: why a source could not be loaded is said in the interface's language, without addresses.
+- Live TV: the Channels tab no longer says audio channels in Chinese.
+- What's new: this system's changes only, without the other apps' lines.
+- Android TV: the mini player shows the song's cover and artist.
 
 ## [0.6.5] · 2026-11-14
 

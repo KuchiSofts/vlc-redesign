@@ -126,6 +126,23 @@ int main()
     CHECK(!own);
     CHECK(next.size() == 1 && next[0].toMap().value(QStringLiteral("items")).toStringList()
                                   == QStringList({QStringLiteral("Work started")}));
+    // a line for another system only: not on this one's card
+    CHECK(forOtherSystem(QStringLiteral("Android: lyrics in the music player.")));
+    CHECK(forOtherSystem(QStringLiteral("**Samsung TV app:** the guide's colours.")));
+    CHECK(!forOtherSystem(QStringLiteral("Live TV: the reasons said in the language.")));
+    CHECK(!forOtherSystem(QStringLiteral("Updates: GitHub's limit of requests.")));
+    CHECK(!forOtherSystem(QStringLiteral("A sentence: with a colon far after its start, not a system's name at all.")));
+#if defined(__linux__)
+    CHECK(forOtherSystem(QStringLiteral("Windows: the installer.")));
+    CHECK(!forOtherSystem(QStringLiteral("Linux: the HTTP proxy settings.")));
+#endif
+    {
+        const QVariantList mixed = parseChangelog(QStringLiteral(
+            "## [2.0.0]\n\n### Fixed\n\n- Android: one.\n- Two for every copy.\n- Samsung TV app: three.\n"),
+            QStringLiteral("2.0.0"));
+        CHECK(mixed.size() == 1 && mixed[0].toMap().value(QStringLiteral("items")).toStringList()
+                                       == QStringList({QStringLiteral("Two for every copy")}));
+    }
     // no changelog, or none of its sections
     CHECK(parseChangelog(QString(), QStringLiteral("1.0.0")).isEmpty());
     CHECK(parseChangelog(QStringLiteral("# Changelog\n\n## [0.9.0]\n\n### Added\n\n- x\n"), QStringLiteral("1.0.0")).isEmpty());

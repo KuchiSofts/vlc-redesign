@@ -148,7 +148,13 @@ What is being worked on, updated as it changes (2026-11-10):
   (also in the 0.6.5 APK, rebuilt); the delay panel's cut labels; a video took the title of its added sound file.
   Memory: 18 rounds of open, play, panel, close on the emulator: the same file +1.3 MB over 12 rounds, Java heap flat,
   no crash. Desktop: Linux gets the HTTP proxy settings (src/posix/netconf.c, as darwin/netconf.m); the Hebrew
-  update-check messages start with a Hebrew word. 📋 Open: 231 Hebrew texts start with a Latin word (a line laid out
+  update-check messages start with a Hebrew word. Found on the TV emulator and fixed on every platform: Live TV said
+  why a source could not be loaded in the loaders' English (Android: the system's text with the server's and the
+  device's addresses; Samsung: "HTTP 0"): translated now (TvErrors, Iptv.errorText, L.errorText); the TV's
+  Channels said audio channels in Chinese (its own context "TV"); What's new on a computer listed the Android lines
+  (this system's only now); the TV mini player kept a black picture and the folder for the artist (drawn again when
+  the tags come). VideoLAN's master merged at 5ff4fb8562 (the URL query string validated; an HTTP link with a query
+  still plays). 📋 Open: 231 Hebrew texts start with a Latin word (a line laid out
   left to right: a bidi pass); Hide a cast device on a real device. Not possible on Android with libvlc 3: audio
   visualizations (Android's Visualizer needs the microphone permission), last.fm (no audioscrobbler in libvlc for
   Android), teletext, HDR output, frame step; the desktop's other video filters are not built for Android.

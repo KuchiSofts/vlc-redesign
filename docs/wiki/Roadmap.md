@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-14, 0.6.4 published).
+Updated as the work moves (last: 2026-11-14, 0.6.5 prepared: Android with the desktop's options).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -29,8 +29,9 @@ Updated as the work moves (last: 2026-11-14, 0.6.4 published).
 **0.6.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
-  visits of each page
+- 🔨 Android the same as the desktop: nearly 40 of its settings, the queue's Sort and Add files, Export Playlist, the
+  check for updates in About and the computer's keys are in 0.6.5; next: lyrics, effect presets, Hide player UI,
+  subtitle lines on the seek bar, Add Subtitles from a link, the other player bar buttons
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

@@ -123,7 +123,6 @@ platforms:
     version: 0.6.3
     date: 2026-11-13
     next: 0.6.5
-    follows: 0.6.4
     full: 0.6.0
     os: android
     requires: Android 5.0 or later
@@ -141,7 +140,6 @@ platforms:
     version: 0.6.1
     date: 2026-11-12
     next: 0.6.5
-    follows: 0.6.4
     full: 0.6.0
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode

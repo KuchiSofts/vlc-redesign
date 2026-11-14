@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Release notes: an update release without the Android app no longer says Android updates with its file.
+
 ## [0.6.4] · 2026-11-14
 
 An update release: macOS gets every feature of Windows: the media keys and Now Playing, the Dock menu, global

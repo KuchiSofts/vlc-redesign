@@ -122,7 +122,14 @@ What is being worked on, updated as it changes (2026-11-10):
   subtitle-service passwords (DPAPI; the Keychain would ask again after every update of an ad-hoc-signed app),
   the acrylic blur (DirectComposition), small updates (macOS downloads the whole disk image). The launch test
   checks the Now Playing line, the Dock menu, two global hotkeys registered, Now Playing while the clip plays and
-  the three options
+  the three options.
+  Published 2026-11-14 (tag v0.6.4 = 6762f298b2, PR #90 merged as 06093cd885), packaged from the PR's CI build
+  (its tree = the tag's): the 23 files on GitHub have the digests of the signed list; the small update from 0.6.3
+  is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
+  Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
+  not offered 0.6.3 while 0.6.4 is the latest.
+- 🟡 **0.6.5** started: fixes as the issues bring them. 📋 Android: the update check looks past a latest release
+  without an APK (the releases list, the newest with `vlc-redesign-<tag>-android.apk`).
 - Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.

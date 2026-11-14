@@ -154,10 +154,13 @@ _p = os.path.join(ROOT, 'platforms.yml')
 _full = re.search(r'^\s+full:\s*(\S+)', open(_p, encoding='utf-8').read(), re.M) if os.path.exists(_p) else None
 full = _full.group(1) if _full else ''
 if full and full != V:
+    # (only the apps whose files are in this release: 0.6.4 had no APK and still named Android)
+    movers = [n for n, t in (('the Linux AppImage', linux), ('macOS', macos), ('Android', android)) if t]
+    movers = ', '.join(movers[:-1]) + ' and ' + movers[-1] if len(movers) > 1 else ''.join(movers)
     update_note = ('\n**An update release:** the apps update themselves to it (Windows with the small updates above, '
-                   'or the installer for a copy installed for every user; the Linux AppImage, macOS and Android with '
-                   'their files below). The .deb, .rpm and Flatpak packages are those of [%s](https://github.com/'
-                   'KuchiSofts/vlc-redesign/releases/tag/v%s).\n' % (full, full))
+                   'or the installer for a copy installed for every user%s). The .deb, .rpm and Flatpak packages are '
+                   'those of [%s](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v%s).\n'
+                   % ('; %s with their files below' % movers if movers else '', full, full))
 # a paragraph of its own under the header, when written (what the release is about, in two lines)
 intro_path = os.path.join(dist, 'release-intro-%s.md' % version)
 intro = open(intro_path, encoding='utf-8').read().strip() + '\n\n' if os.path.exists(intro_path) else ''

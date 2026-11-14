@@ -18,23 +18,23 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-14, 0.6.5 prepared: Android with the desktop's options).
+Updated as the work moves (last: 2026-11-14, 0.6.5 released).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.4 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.4 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.4 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.3 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Windows x64** | ✅ released 0.6.5 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.5 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.5 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.5 and after
+## Next: 0.6.6 and after
 
-**0.6.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
 - 🔨 Android the same as the desktop: nearly 40 of its settings, the queue's Sort and Add files, Export Playlist, the
@@ -109,6 +109,16 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.6.5 (2026-11-14)
+
+**An update release** (the installers, the portable copies and what the apps update from; the Linux packages stay on
+0.6.0; the Samsung TV app on 0.6.1):
+
+- ✅ Android with the desktop's options: nearly 40 settings, the queue's Sort and Add files, Export Playlist, the check
+  for updates in About, the computer's keys ([Android #10](https://github.com/KuchiSofts/vlc-redesign-android/pull/10))
+- ✅ Updates: the newest release of this system, not GitHub's latest one
+  ([#91](https://github.com/KuchiSofts/vlc-redesign/pull/91))
 
 ### 0.6.4 (2026-11-14)
 

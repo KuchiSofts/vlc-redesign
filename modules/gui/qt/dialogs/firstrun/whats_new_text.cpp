@@ -32,6 +32,28 @@ QString plainText(QString text)
 
 } // namespace
 
+bool forOtherSystem(const QString& bullet)
+{
+    QString text = bullet;
+    text.remove(QLatin1String("**"));
+    const int colon = text.indexOf(QLatin1Char(':'));
+    if (colon <= 0 || colon > 40)
+        return false;
+    const QString lead = text.left(colon).trimmed();
+    static const QStringList others = {
+        QStringLiteral("Android"), QStringLiteral("Android TV"), QStringLiteral("Android tablet"),
+        QStringLiteral("Samsung TV"), QStringLiteral("Samsung TV app"), QStringLiteral("Samsung"),
+#if defined(_WIN32)
+        QStringLiteral("macOS"), QStringLiteral("Linux"),
+#elif defined(__APPLE__)
+        QStringLiteral("Windows"), QStringLiteral("Linux"),
+#else
+        QStringLiteral("Windows"), QStringLiteral("macOS"),
+#endif
+    };
+    return others.contains(lead, Qt::CaseInsensitive);
+}
+
 QString headline(const QString& bullet)
 {
     // "(#72, by @someone's request; Fixes #72)": brackets that name an issue,
@@ -113,7 +135,7 @@ QVariantList parseChangelog(const QString& changelog, const QString& version, bo
     // a bullet of a bullet: its lines are not the headline's
     bool nested = false;
     const auto flush = [&]() {
-        if (group >= 0 && !bullet.isEmpty()) {
+        if (group >= 0 && !bullet.isEmpty() && !forOtherSystem(bullet)) {
             const QString text = headline(bullet);
             if (!text.isEmpty())
                 items[group].append(text);

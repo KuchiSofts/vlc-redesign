@@ -19,6 +19,7 @@
 #include <QDir>
 #include <QFile>
 #include <QSaveFile>
+#include <QLocale>
 #include <QSysInfo>
 #include <QFileInfo>
 #include <QJsonArray>
@@ -791,6 +792,23 @@ void RedesignUpdater::check(bool manual)
             return;
         if (!response.error.isEmpty() || response.status == 0) {
             setState(Failed, qtr("Couldn't reach GitHub. Check your connection and try again."));
+            return;
+        }
+        // GitHub answers a network that asked too often (60 an hour without
+        // an account, shared by every device behind one address) with 403
+        // and no requests left, or 429: when it can be asked again, not an
+        // "unexpected answer"
+        if (response.status == 429 || (response.status == 403
+                && response.header("x-ratelimit-remaining").trimmed() == "0")) {
+            bool ok = false;
+            const qint64 reset = response.header("x-ratelimit-reset").trimmed().toLongLong(&ok);
+            msg_Dbg(m_intf, "update check: GitHub's limit of requests reached (%d)", response.status);
+            if (ok && reset > QDateTime::currentSecsSinceEpoch())
+                setState(Failed, qtr("GitHub was asked too often from this network. Try again after %1.")
+                                     .arg(QLocale().toString(QDateTime::fromSecsSinceEpoch(reset).time(),
+                                                             QLocale::ShortFormat)));
+            else
+                setState(Failed, qtr("GitHub was asked too often from this network. Try again later."));
             return;
         }
         onRelease(response.status, response.body);

@@ -1987,9 +1987,9 @@ vlc_module_begin ()
     add_obsolete_string( "http-ca" ) /* since 3.0.0 */
     add_obsolete_string( "http-crl" ) /* since 3.0.0 */
 
-#if defined(_WIN32) || defined(__APPLE__)
-    /* (on macOS too: its own proxy before the one of the system,
-     * src/darwin/netconf.m) */
+#if defined(_WIN32) || defined(__APPLE__) || (defined(__unix__) && !defined(__ANDROID__))
+    /* (on macOS and Linux too: its own proxy before the one of the system,
+     * src/darwin/netconf.m, src/posix/netconf.c) */
     add_string( "http-proxy", NULL, PROXY_TEXT, PROXY_LONGTEXT )
     add_password("http-proxy-pwd", NULL, PROXY_PASS_TEXT, PROXY_PASS_LONGTEXT)
 #else

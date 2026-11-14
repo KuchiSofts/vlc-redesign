@@ -256,6 +256,10 @@ public:
     Q_INVOKABLE void setChannelGuide(const QString& key, const QString& guideId);
     // the page of the project's discussions to suggest a source
     Q_INVOKABLE QString suggestionUrl() const;
+    // why a source or a guide could not be loaded (the module's short
+    // reason: "no answer", "no channels"...) in the interface's language;
+    // sentence: its first letter a capital (a line of its own)
+    Q_INVOKABLE QString errorText(const QString& reason, bool sentence = false) const;
 
     Q_INVOKABLE void play(const QString& key);
     Q_INVOKABLE void playCatchup(const QString& key, qint64 start, qint64 stop, const QString& title);

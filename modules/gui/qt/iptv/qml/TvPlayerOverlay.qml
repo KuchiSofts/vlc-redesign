@@ -768,7 +768,7 @@ FocusScope {
                 Repeater {
                     model: [root.canBrowse ? "←  →   " + qsTr("Programs") : "",
                             bannerKeys._up !== "" || bannerKeys._down !== ""
-                            ? [bannerKeys._up, bannerKeys._down].filter(k => k !== "").join(" / ") + "   " + qsTr("Channels") : ""]
+                            ? [bannerKeys._up, bannerKeys._down].filter(k => k !== "").join(" / ") + "   " + qsTr("Channels", "TV") : ""]
                     Text {
                         required property string modelData
                         anchors.right: parent.right
@@ -816,7 +816,7 @@ FocusScope {
                 }
                 BarButton {
                     iconName: "lists"
-                    tip: qsTr("Channels")
+                    tip: qsTr("Channels", "TV")
                     active: root.listOpen
                     onClicked: root.openList()
                 }

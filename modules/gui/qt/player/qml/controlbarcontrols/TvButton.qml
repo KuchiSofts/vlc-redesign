@@ -32,6 +32,6 @@ RedesignIconButton {
             MainCtx.playerView = false
         }
     }
-    description: Iptv.playing ? qsTr("Channels") : qsTr("TV")
+    description: Iptv.playing ? qsTr("Channels", "TV") : qsTr("TV")
     AccessibleCompat.id: "tvButton"
 }

@@ -31659,7 +31659,7 @@ msgstr "לא ניתן היה להתחבר ל־GitHub. בדוק את החיבור
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
-msgstr "GitHub החזיר תשובה לא צפויה (%1)."
+msgstr "השירות GitHub החזיר תשובה לא צפויה (%1)."
 
 #: modules/gui/qt/util/redesign_updater.cpp:912
 msgid ""
@@ -39521,3 +39521,76 @@ msgstr "מאת <b>לא ידוע</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "דירוג: %1/5  הורדות: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "השירות GitHub קיבל יותר מדי בקשות מהרשת הזו. נסה שוב אחרי %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "השירות GitHub קיבל יותר מדי בקשות מהרשת הזו. נסה שוב מאוחר יותר."
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "השרת לא ענה"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "לא ניתן היה להגיע לשרת"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "בוטל"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "הוא גדול מדי"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "לא ניתן לשמור אותו במכשיר הזה"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "זו אינה רשימת השמעה מסוג M3U"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "אין בו ערוצים"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "לא ניתן היה לקרוא את המדריך"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "השרת סירב לתת גישה (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "לא נמצא דבר בכתובת הזו (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "השרת ענה בשגיאה (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "השרת לא שלח דבר"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "הוא הגיע קטוע"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "לא ניתן היה לקרוא את רשימת הערוצים"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "הקישור הזה הוא שידור יחיד, לא רשימת ערוצים"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "ערוצים"

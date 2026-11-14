@@ -399,7 +399,7 @@ Widgets.RedesignDialog {
                                                                                      .arg((sourceRow.s.received / 1048576).toFixed(1))
                                                                                 : qsTr("Updating the channels…"))
                               : sourceRow.s.refused ? qsTr("Sign-in refused: check it")
-                              : sourceRow.s.error ? sourceRow.s.error
+                              : sourceRow.s.error ? Iptv.errorText(sourceRow.s.error, true)
                               : sourceRow.s.updated > 0 ? qsTr("Updated %1 at %2").arg(Iptv.dayText(sourceRow.s.updated))
                                                                              .arg(Iptv.timeText(sourceRow.s.updated))
                               : ""
@@ -970,7 +970,7 @@ Widgets.RedesignDialog {
                                 textFormat: Text.PlainText
                                 text: guideLine.modelData.host + "  ·  "
                                       + (!guideLine.modelData.enabled ? qsTr("Off")
-                                         : guideLine.modelData.error ? guideLine.modelData.error
+                                         : guideLine.modelData.error ? Iptv.errorText(guideLine.modelData.error)
                                          : qsTr("%1 programme", "%1 programmes", guideLine.modelData.programmes)
                                                .arg(guideLine.modelData.programmes))
                                       + "  ·  " + (guideLine.modelData.own ? qsTr("Added by you")

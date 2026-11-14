@@ -29,6 +29,12 @@ constexpr int maxHeadlineLength = 140;
 // headline still long, its remarks in brackets. Cut between two words.
 QString headline(const QString& bullet);
 
+// A bullet for another system only: its lead before the colon names the
+// Android app, the Samsung TV app or another computer system than this
+// one's ("Android: ...", "Samsung TV app: ...", "macOS: ..." on Windows).
+// The card leaves it out; the full notes keep it.
+bool forOtherSystem(const QString& bullet);
+
 // The headlines of the "## [version]" section of a changelog, else of
 // "## [Unreleased]" (a build between two releases); ownSection: the version
 // has its own.

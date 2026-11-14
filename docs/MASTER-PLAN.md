@@ -136,10 +136,28 @@ What is being worked on, updated as it changes (2026-11-10):
   resumes the last queue or opens files); 🟢 Ignored file extensions (added to the browser's and libvlc's own); 🟢 a
   default Subtitle delay; 🟢 the welcome's Subtitle languages step; 🟢 Keyboard Shortcuts (the player's 34 keys in
   VLC's words); 🟢 Hide a cast device / Show hidden devices (to see on a device with a cast target: the emulator has
-  none); 🟢 Add Audio Tracks; the update check reads the 10 newest releases. Fixed on the way: a subtitle opened while
-  another was on is chosen; the Hebrew "Height" typo; the link error's bidi in Hebrew and Arabic. 📋 Next: the desktop's
-  rate-limit message for GitHub's 403/429 (both apps), the Audio delay panel's cut labels on a phone held upright,
-  lyrics, effect presets, the player bar's other buttons, clone a profile.
+  none); 🟢 Add Audio Tracks; the update check reads the 10 newest releases; 🟢 effect presets (RdEffectPresets: save,
+  apply, update, rename, delete); 🟢 Lyrics in the music player's menu (an .lrc beside the song, else its ID3
+  SYLT/USLT: RdLyrics; synchronized lines in the accent, a tap goes there); 🟢 Customize Player: Stop, Snapshot,
+  Effects, A-B repeat, chapters, shuffle, information, Add bookmark, Save Playlist, Favorite (the library started and
+  the media added when needed), the long jumps; Clone of a profile, New from the default bar; a bar held upright
+  shares its width instead of drawing buttons over each other; 🟢 Repeat (Off, One, All) in Playback › Order;
+  🟢 Size values (Relative, Pixels) for the subtitles; 🟢 GitHub's rate limit said as such (403/429, both apps,
+  checked with a local server on the desktop). Fixed on the way: a subtitle opened while another was on is chosen;
+  the Hebrew "Height" typo; the link error's bidi in Hebrew and Arabic; the tracks panel's Audio options never opened
+  (also in the 0.6.5 APK, rebuilt); the delay panel's cut labels; a video took the title of its added sound file.
+  Memory: 18 rounds of open, play, panel, close on the emulator: the same file +1.3 MB over 12 rounds, Java heap flat,
+  no crash. Desktop: Linux gets the HTTP proxy settings (src/posix/netconf.c, as darwin/netconf.m); the Hebrew
+  update-check messages start with a Hebrew word. Found on the TV emulator and fixed on every platform: Live TV said
+  why a source could not be loaded in the loaders' English (Android: the system's text with the server's and the
+  device's addresses; Samsung: "HTTP 0"): translated now (TvErrors, Iptv.errorText, L.errorText); the TV's
+  Channels said audio channels in Chinese (its own context "TV"); What's new on a computer listed the Android lines
+  (this system's only now); the TV mini player kept a black picture and the folder for the artist (drawn again when
+  the tags come). VideoLAN's master merged at 5ff4fb8562 (the URL query string validated; an HTTP link with a query
+  still plays). 📋 Open: 231 Hebrew texts start with a Latin word (a line laid out
+  left to right: a bidi pass); Hide a cast device on a real device. Not possible on Android with libvlc 3: audio
+  visualizations (Android's Visualizer needs the microphone permission), last.fm (no audioscrobbler in libvlc for
+  Android), teletext, HDR output, frame step; the desktop's other video filters are not built for Android.
 - 🟢 **0.6.5** published 2026-11-14 (tag v0.6.5 = c063173289, PR #91 merged as c553d63018; Android PR #10 merged as
   6c8b2f8bf7, tag v0.6.5 = 0943525f1): 26 files, GitHub's digests = the signed list. Caught before it shipped: the
   desktop's update check asked for 30 releases, 1.4 MB of JSON over the request's 1 MB limit ("GitHub sent an

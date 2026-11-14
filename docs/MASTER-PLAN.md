@@ -100,8 +100,8 @@ What is being worked on, updated as it changes (2026-11-10):
   0.6.2, made with -Quick here, were debug builds; make-release now refuses a Qt plugin that keeps asserts.
   Checked after publishing: the 22 files on GitHub have the digests of the signed list; issues #84, #85, #87,
   #88 and #89 answered and closed.
-- 🟡 **0.6.4** started. 🔨 macOS with every feature of Windows (owner, 2026-11-14), branch
-  `feature/macos-parity`: `maininterface/mac_integration.mm` (Objective-C++, ARC) gives what Windows has in its
+- 🟢 **0.6.4** (2026-11-14, an update release of the desktop; Android stays on 0.6.3, Samsung on 0.6.1): macOS
+  with every feature of Windows (owner, 2026-11-14), PR #90 (branch `feature/macos-parity`): `maininterface/mac_integration.mm` (Objective-C++, ARC) gives what Windows has in its
   taskbar and media keys (mainctx_win32.cpp): Now Playing and MPRemoteCommandCenter (play, pause, stop, previous,
   next, skip by the short jump, seek, repeat, shuffle; title, artist, album, artwork, length, time, rate), the Dock
   menu (Play / Pause, Stop, Previous, Next, Mute). The global hotkeys, which the Shortcuts dialog offered on macOS

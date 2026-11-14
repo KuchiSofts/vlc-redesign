@@ -18,28 +18,25 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-14, 0.6.3 published).
+Updated as the work moves (last: 2026-11-14, 0.6.4 released).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.3 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.3 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.3 | ██████████ 100 % | tests on a Mac by hand |
+| **Windows x64** | ✅ released 0.6.4 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.4 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.4 | ██████████ 100 % | tests on a Mac by hand |
 | **Android** (phones) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
 | **Android** (tablets) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
 | **Android TV** | ✅ released 0.6.3 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.4 and after
+## Next: 0.6.5 and after
 
-**0.6.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🔨 macOS with every feature of Windows: the media keys and Now Playing, the Dock menu (the taskbar's buttons),
-  global hotkeys, Show in folder in Finder, Process priority, VLC's own HTTP proxy and adding the files opened from Finder to the
-  playlist, the graphics processors in the bug report
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
@@ -111,6 +108,16 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.6.4 (2026-11-14)
+
+**An update release** (the installers, the portable copies and what the apps update from; the Linux packages stay on
+0.6.0; Android stays on 0.6.3, the Samsung TV app on 0.6.1):
+
+- ✅ macOS with every feature of Windows: the media keys and Now Playing, the Dock menu (the taskbar's buttons),
+  global hotkeys, Show in folder in Finder, Process priority, VLC's own HTTP proxy, adding the files opened from
+  Finder to the playlist, Show VLC Redesign from the menu bar icon and the Dock, casting on macOS 15
+  ([#90](https://github.com/KuchiSofts/vlc-redesign/pull/90))
 
 ### 0.6.3 (2026-11-13)
 

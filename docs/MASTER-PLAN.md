@@ -109,7 +109,9 @@ What is being worked on, updated as it changes (2026-11-10):
   Carbon on the main queue, no Accessibility right needed; the key of a character found in the keyboard layout
   of now with UCKeyTranslate; the media keys left to Now Playing). The tray icon (the menu bar's on macOS) gets
   *Show VLC Redesign* while the window is hidden, and a click on the Dock icon shows it (Qt's applicationStateChanged
-  of each reopen; the launch's own skipped). Also: *Show in folder* with `open -R`; *Process priority* on
+  of each reopen; the launch's own skipped). The local network of macOS 15 (what the firewall rule is on Windows):
+  `NSLocalNetworkUsageDescription` and `NSBonjourServices` (the services of bonjour.m, Chromecast among them) in
+  the Info.plist (macos/make-info-plist.py). Also: *Show in folder* with `open -R`; *Process priority* on
   macOS (Idle = the background state of Darwin, Above normal / High = an NSProcessInfo activity: no App Nap,
   latency critical; no Below normal: macOS can't take a lowered nice back); `http-proxy`/`http-proxy-pwd` on macOS
   before the system's proxy (src/darwin/netconf.m, as win32/netconf.c); `playlist-enqueue` on macOS for the files

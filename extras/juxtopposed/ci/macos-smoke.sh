@@ -94,6 +94,13 @@ else
     fail "no app icon (CFBundleIconFile \"$icon\")"
 fi
 note "bundle: $(plist CFBundleIdentifier) $(plist CFBundleShortVersionString), macOS $(plist LSMinimumSystemVersion) or later"
+# the local network of macOS 15 (casting, the network's servers): the reason
+# shown, and the Bonjour service of the Chromecasts
+if [ -n "$(plist NSLocalNetworkUsageDescription)" ] && plist NSBonjourServices | grep -q '_googlecast._tcp'; then
+    note "ok: the local network asked for (casting)"
+else
+    fail "no NSLocalNetworkUsageDescription or NSBonjourServices (casting on macOS 15)"
+fi
 # the translations (po/, as in the Windows package)
 translations=$(find "$contents/Resources/share/locale" -name 'vlc.mo' 2>/dev/null | wc -l | tr -d ' ')
 [ "$translations" -ge 20 ] && note "ok: $translations translations" || fail "only $translations translations in Resources/share/locale"

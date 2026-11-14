@@ -120,6 +120,7 @@ libqt_plugin_la_SOURCES = \
 	maininterface/interface_window_handler.hpp \
 	maininterface/macos_titlebar.cpp \
 	maininterface/macos_titlebar.hpp \
+	maininterface/mac_integration.hpp \
 	maininterface/live_settings.cpp \
 	maininterface/live_settings.hpp \
 	maininterface/mainctx.cpp \

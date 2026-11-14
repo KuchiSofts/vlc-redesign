@@ -95,6 +95,17 @@ def main():
             schemes.append(url)
     info['CFBundleURLTypes'] = schemes
 
+    # The local network (macOS 15 asks for it): casting to a TV (Chromecast
+    # through Bonjour, DLNA through UPnP) and the servers of the network, as
+    # the firewall rule does on Windows; the Bonjour services VLC browses
+    # (modules/services_discovery/bonjour.m)
+    info.setdefault('NSLocalNetworkUsageDescription',
+                    'VLC wants to find the TVs and media servers of your local network, to play to them '
+                    'and from them as requested by the user.')
+    info.setdefault('NSBonjourServices', [
+        '_googlecast._tcp', '_ftp._tcp', '_smb._tcp', '_nfs._tcp', '_sftp-ssh._tcp',
+        '_webdav._tcp', '_webdavs._tcp', '_ndi._tcp'])
+
     for key, value in list(info.items()):
         if isinstance(value, str) and key.endswith('UsageDescription'):
             info[key] = value.replace('VLC wants', NAME + ' wants')

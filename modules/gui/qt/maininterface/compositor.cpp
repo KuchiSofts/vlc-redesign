@@ -24,6 +24,10 @@
 #include "interface_window_handler.hpp"
 #include "mainui.hpp"
 
+#ifdef Q_OS_MACOS
+#include "mac_integration.hpp"
+#endif
+
 #ifdef _WIN32
 #include "mainctx_win32.hpp"
 #include "compositor_dcomp.hpp"
@@ -335,6 +339,9 @@ bool CompositorVideo::commonGUICreateImpl(QWindow* window, CompositorVideo::Flag
     m_taskbarWidget = std::make_unique<WinTaskbarWidget>(m_intf, window);
     qApp->installNativeEventFilter(m_taskbarWidget.get());
 #endif
+#ifdef Q_OS_MACOS
+    m_macIntegration = std::make_unique<MacIntegration>(m_intf, window);
+#endif
     m_ui = std::make_unique<MainUI>(m_intf, m_mainCtx, window);
     return true;
 }
@@ -409,6 +416,9 @@ void CompositorVideo::commonGUIDestroy()
 #ifdef _WIN32
     qApp->removeNativeEventFilter(m_taskbarWidget.get());
     m_taskbarWidget.reset();
+#endif
+#ifdef Q_OS_MACOS
+    m_macIntegration.reset();
 #endif
     m_interfaceWindowHandler.reset();
     m_mainCtx = nullptr;

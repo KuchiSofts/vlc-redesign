@@ -29,6 +29,11 @@
 #ifdef _WIN32
 # include <windows.h>
 # include <dxgi1_6.h>
+#else
+# include <dlfcn.h>
+#endif
+#ifdef Q_OS_MACOS
+# include "maininterface/mac_integration.hpp"
 #endif
 
 #include "dialogs/preferences/interface_language.hpp"
@@ -129,7 +134,13 @@ QString revision()
     const QString text = QString::fromUtf8(changeset()).trimmed();
     return text.compare(QLatin1String("unknown"), Qt::CaseInsensitive) == 0 ? QString() : text;
 #else
-    return {};
+    // (libvlc is in the process: the program links it)
+    using Changeset = const char *(*)(void);
+    const auto changeset = reinterpret_cast<Changeset>(dlsym(RTLD_DEFAULT, "libvlc_get_changeset"));
+    if (!changeset)
+        return {};
+    const QString text = QString::fromUtf8(changeset()).trimmed();
+    return text.compare(QLatin1String("unknown"), Qt::CaseInsensitive) == 0 ? QString() : text;
 #endif
 }
 
@@ -204,6 +215,11 @@ void graphics(QStringList &adapters, QList<Output> &outputs)
     FreeLibrary(dxgi);
     if (adapters.isEmpty())
         adapters = software;
+#elif defined(Q_OS_MACOS)
+    // the graphics processors of Metal, and which screens show HDR
+    adapters = mac_platform::graphicsAdapters();
+    for (const auto &screen : mac_platform::screensHdr())
+        outputs.append({ screen.first, screen.second });
 #else
     Q_UNUSED(adapters);
     Q_UNUSED(outputs);

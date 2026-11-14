@@ -192,7 +192,16 @@ void VLCSystray::update()
     }
     m_menu->clear();
 
-#ifndef Q_OS_MAC
+#ifdef Q_OS_MAC
+    /* Show VLC once hidden (started with only this icon, closed to it), as
+     * on Windows; hiding it is the system's (the application menu, ⌘H) */
+    if( m_ctx->interfaceVisibility() == QWindow::Hidden )
+    {
+        m_menu->addAction( qtr( "Sho&w %1" ).arg( QStringLiteral( VLC_REDESIGN_NAME ) ),
+                           this, &VLCSystray::showUpdateMenu );
+        m_menu->addSeparator();
+    }
+#else
     /* Hide / Show VLC and cone */
     if( m_ctx->interfaceVisibility() != QWindow::Hidden )
     {

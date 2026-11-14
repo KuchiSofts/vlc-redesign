@@ -1987,7 +1987,9 @@ vlc_module_begin ()
     add_obsolete_string( "http-ca" ) /* since 3.0.0 */
     add_obsolete_string( "http-crl" ) /* since 3.0.0 */
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(__APPLE__)
+    /* (on macOS too: its own proxy before the one of the system,
+     * src/darwin/netconf.m) */
     add_string( "http-proxy", NULL, PROXY_TEXT, PROXY_LONGTEXT )
     add_password("http-proxy-pwd", NULL, PROXY_PASS_TEXT, PROXY_PASS_LONGTEXT)
 #else
@@ -2205,6 +2207,10 @@ vlc_module_begin ()
         change_volatile ()
     add_bool( "one-instance-when-started-from-file", true,
               ONEINSTANCEWHENSTARTEDFROMFILE_TEXT, NULL )
+#endif
+#if defined(_WIN32) || defined(HAVE_DBUS) || defined(__OS2__) || defined(__APPLE__)
+    /* (macOS gives the files opened from Finder to the running app itself:
+     * the Qt interface adds them to the playlist, modules/gui/qt/qt.cpp) */
     add_bool( "playlist-enqueue", false, PLAYLISTENQUEUE_TEXT,
               PLAYLISTENQUEUE_LONGTEXT )
 #endif

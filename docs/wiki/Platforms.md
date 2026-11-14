@@ -1,9 +1,9 @@
 # Platforms
 
-VLC Redesign **0.6.3** is released for five platforms together: **Windows 10 (version 1809 or later) and Windows 11,
+VLC Redesign **0.6.4** is released for five platforms together: **Windows 10 (version 1809 or later) and Windows 11,
 64-bit** (x64), **Windows 11 on ARM64**, **Linux** (x86_64 and ARM64), **macOS** (Apple Silicon
-and Intel) and **Android** (phones, tablets and Android TV: a separate app), and Samsung TVs get **Juxto Media
-Player**, a player of its own in the design. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
+and Intel) and **Android** (phones, tablets and Android TV: a separate app, 0.6.3 unchanged in 0.6.4), and Samsung TVs
+get **Juxto Media Player** (0.6.1), a player of its own in the design. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
 The status of each platform is kept in one file,
@@ -17,12 +17,12 @@ The study behind the order, with the evidence from VideoLAN's build system:
 
 | Platform | Status | Latest version | Next | Needs |
 |---|---|---|---|---|
-| **[Windows](#windows)** | **Released** | **0.6.3** (2026-11-13) | 0.6.4 | Windows 10 (1809) or 11, 64-bit |
-| **[Linux](#linux)** | **Released** | **0.6.3** (2026-11-13) | 0.6.4 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **[macOS](#macos)** | **Released** | **0.6.3** (2026-11-13) | 0.6.4 | macOS 12 Monterey, Apple Silicon or Intel |
-| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.6.3** (2026-11-13) | 0.6.4 | Windows 11 on ARM64 |
-| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.6.3** (2026-11-13) | 0.6.4 | Android 5.0 or later |
-| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.6.1** (2026-11-12) | 0.6.4 | Tizen 3.0 (2017 models) or later |
+| **[Windows](#windows)** | **Released** | **0.6.4** (2026-11-14) | 0.6.5 | Windows 10 (1809) or 11, 64-bit |
+| **[Linux](#linux)** | **Released** | **0.6.4** (2026-11-14) | 0.6.5 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
+| **[macOS](#macos)** | **Released** | **0.6.4** (2026-11-14) | 0.6.5 | macOS 12 Monterey, Apple Silicon or Intel |
+| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.6.4** (2026-11-14) | 0.6.5 | Windows 11 on ARM64 |
+| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.6.3** (2026-11-13) | 0.6.5 | Android 5.0 or later |
+| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.6.1** (2026-11-12) | 0.6.5 | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
@@ -35,9 +35,9 @@ version from its first published build.
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.6.3, 2026-11-13 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.3)). Next: 0.6.4 |
+| **Version** | 0.6.4, 2026-11-14 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.4)). Next: 0.6.5 |
 | **Needs** | Windows 10 (version 1809, build 17763, or later) or Windows 11, 64-bit. No graphics card needed |
-| **Files** | `vlc-redesign-0.6.3-win64-setup.exe` (installer) and `vlc-redesign-0.6.3-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
+| **Files** | `vlc-redesign-0.6.4-win64-setup.exe` (installer) and `vlc-redesign-0.6.4-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
 
 - **64-bit only**, Windows 10 from version 1809: the interface is built on Qt 6.8, which needs it. The installer
   refuses an older Windows, and `vlc.exe` on one says *This version of VLC media player needs Windows 10 version
@@ -50,7 +50,8 @@ version from its first published build.
   TV ([TV compatibility](TV-Compatibility)).
 - **Still to do:** tests on Intel graphics, on Windows 10 on real PCs and on screens of different scales;
   code-signed releases (waiting for SignPath's approval), so that SmartScreen no longer warns.
-- **Small updates in the app and the signed `SHA256SUMS.txt` are for Windows only.**
+- **Small updates in the app (only the files that changed) are for Windows**; the AppImage on Linux and the app on
+  macOS update themselves with the whole new file. `SHA256SUMS.txt`, signed by the project, covers every platform.
 - **On Windows 11 ARM64**, take the native ARM64 build: [below](#windows-on-arm64). The x64 installer runs there
   too (it accepts any x64-compatible Windows), but Windows emulates it, which is slower.
 
@@ -61,9 +62,9 @@ The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.6.3, 2026-11-13 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.3)); 0.4.0 was the first for Linux. Next: 0.6.4 |
+| **Version** | 0.6.4, 2026-11-14 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.4)); 0.4.0 was the first for Linux. Next: 0.6.5 |
 | **Needs** | glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **Files** | x86_64: `vlc-redesign-0.6.3-x86_64.AppImage` (with its `.zsync`) and `vlc-redesign-0.6.3-linux-x86_64.tar.xz`; ARM64: `vlc-redesign-0.6.3-aarch64.AppImage` and `vlc-redesign-0.6.3-linux-aarch64.tar.xz`. The .deb, .rpm (with the Live TV add-on) and Flatpak packages come with it: 0.6.0 is a full release. Which one and how: [Install and update: Linux](Install-and-Update#linux) |
+| **Files** | x86_64: `vlc-redesign-0.6.4-x86_64.AppImage` (with its `.zsync`) and `vlc-redesign-0.6.4-linux-x86_64.tar.xz`; ARM64: `vlc-redesign-0.6.4-aarch64.AppImage` and `vlc-redesign-0.6.4-linux-aarch64.tar.xz`. The .deb, .rpm (with the Live TV add-on) and Flatpak packages come with it: 0.6.0 is a full release. Which one and how: [Install and update: Linux](Install-and-Update#linux) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/linux.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About with Linux x86_64 AppImage, Settings in the dark theme, Home in the light theme" width="960"></a>
 
@@ -80,8 +81,8 @@ Home in the light theme. Click for the MP4.</sub>
   `vlc-redesign-livetv` (leave its file out, or remove it later: `sudo apt remove vlc-redesign-livetv`,
   `sudo dnf remove vlc-redesign-livetv`); the AppImage and the folder carry it, and *Settings › General › Live TV
   (IPTV) add-on* turns it off. Building from the source: `./configure --disable-iptv` leaves it out.
-- **Updates:** no update in the app on Linux; install the new version's package (apt and dnf replace the older
-  one), or take the new AppImage or folder.
+- **Updates:** the AppImage updates itself from the app (the new AppImage put in its place); the .deb, .rpm and the
+  folder are updated with the new version's package (apt and dnf replace the older one).
 - **Tested:** in clean containers on 7 distributions (`linux-pkg-test.sh`: install, files and libraries, a UI tour
   under Xvfb, removal): Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch with the AppImage; apt refuses the
   .deb on Ubuntu 22.04 and Debian 12, as it should. GitHub's x86_64 and ARM64 runners build the packages and test
@@ -102,9 +103,9 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.6.3, 2026-11-13 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.3)); 0.4.0 was the first for macOS. Next: 0.6.4 |
+| **Version** | 0.6.4, 2026-11-14 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.4)); 0.4.0 was the first for macOS. Next: 0.6.5 |
 | **Needs** | macOS 12 Monterey or later, Apple Silicon or Intel |
-| **Files** | `vlc-redesign-0.6.3-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.6.3-macos-x86_64.dmg` (Intel). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
+| **Files** | `vlc-redesign-0.6.4-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.6.4-macos-x86_64.dmg` (Intel). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/macos.png"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home" width="960"></a>
 
@@ -117,25 +118,34 @@ Home in the light theme. Click for the MP4.</sub>
   Mac apps; full screen in its own Space, tiling and resizing from every edge work. *Show window decorations* in
   Settings brings the separate title bar back. A minimal menu bar sits at the top of the screen, and ⌘ reaches VLC's
   shortcuts.
+- **The same features as Windows** (from 0.6.4): the
+  media keys, the Touch Bar, headphones and Control Center's *Now Playing* play, pause, go to the previous or next
+  item, jump and seek, and Now Playing shows the title, artist, album, artwork and time (what Windows does with its
+  media keys); the Dock menu has Play / Pause, Stop, Previous, Next and Mute (Windows: the buttons of the taskbar
+  thumbnail); the global hotkeys work from any app; *Show in folder* opens Finder with the file selected; *Process priority*, VLC's own *HTTP proxy* and
+  *Add to the playlist instead of replacing it* are in Settings; the bug report names the graphics processors and
+  the HDR screens.
 - **Signing.** The app is signed ad hoc, not by Apple, until there is an Apple developer account: the first time,
   macOS refuses to open it, and you allow it once (*System Settings › Privacy & Security › Open Anyway*, or
   right-click › *Open* on macOS 12 to 14).
-- **Updates:** no update in the app on macOS; download the new disk image and replace the app.
+- **Updates:** from 0.5.5 the app updates itself with the release's disk image for this Mac, checked against the
+  signed `SHA256SUMS.txt` ([Install and update: macOS](Install-and-Update#macos)).
 - **Tested:** GitHub's Macs build both architectures and run a launch test on each: every binary signed, the icon,
   100 translations, the About badge (*macOS Apple Silicon* / *macOS Intel*), the designer's credit, the Live TV
   add-on loaded, headless playback to the end, the Qt interface for 10 seconds playing a clip, one unified title bar
   (the traffic lights), a clean quit, no QML warning and no crash report. It has not been run by hand on a Mac yet.
-- **Missing:** signing and notarization by Apple; tests by hand on a Mac; media keys and Now Playing; the video in
-  the window and VideoToolbox checked on a Mac; an updater in the app; the pixel check of every frame.
+- **Missing:** signing and notarization by Apple; tests by hand on a Mac; the video in the window and VideoToolbox
+  checked on a Mac; small updates (only the files that changed: the whole disk image is downloaded); the pixel
+  check of every frame.
 
 ## Windows on ARM64
 
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.6.3, 2026-11-13 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.3)); 0.4.1 was the first for Windows on ARM64. Next: 0.6.4 |
+| **Version** | 0.6.4, 2026-11-14 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.4)); 0.4.1 was the first for Windows on ARM64. Next: 0.6.5 |
 | **Needs** | Windows 11 on ARM64 (Snapdragon PCs) |
-| **Files** | `vlc-redesign-0.6.3-winarm64-setup.exe` (installer) and `vlc-redesign-0.6.3-winarm64.zip` (portable): [Install and update: Windows on ARM64](Install-and-Update#windows-on-arm64) |
+| **Files** | `vlc-redesign-0.6.4-winarm64-setup.exe` (installer) and `vlc-redesign-0.6.4-winarm64.zip` (portable): [Install and update: Windows on ARM64](Install-and-Update#windows-on-arm64) |
 
 - **Native:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged; it is not the
   x64 build under emulation. Video goes through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL).
@@ -155,7 +165,7 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | **Released** in 0.5.0: an APK on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/latest), not on Google Play; how to install: [Install and update](Install-and-Update#android) |
-| **Version** | 0.6.3, 2026-11-13 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.3)); 0.5.0 was the first for Android. Next: 0.6.4 |
+| **Version** | 0.6.3, 2026-11-13 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.3)); 0.5.0 was the first for Android; unchanged in 0.6.4. Next: 0.6.5 |
 | **Needs** | Android 5.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
 | **Files** | `vlc-redesign-0.6.3-android.apk` (ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
@@ -189,7 +199,7 @@ The clips below were recorded on the Android emulator, before the first release.
 | | |
 |---|---|
 | **Status** | **Released** in 0.5.3: *Juxto Media Player* (named so from 0.5.6), the app's source with its install guide on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.1) |
-| **Version** | 0.6.1, 2026-11-12 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.1)); unchanged in 0.6.2 and 0.6.3. Next: 0.6.4 |
+| **Version** | 0.6.1, 2026-11-12 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.1)); unchanged in 0.6.2, 0.6.3 and 0.6.4. Next: 0.6.5 |
 | **Needs** | Tizen 3.0 (2017 models) or later, installed from a computer with the TV in developer mode |
 | **Files** | `Juxto-Media-Player-TV-0.6.1-source.zip`: [Install and update: Samsung TV](Install-and-Update#samsung-tv) |
 | **What it is** | A player of its own for Samsung TVs, inspired by VLC, in the design: the library (USB drives and the TV's storage), the player with subtitles from the internet, Live TV with the guide, 17 languages, right to left. The TV's own player plays the video. |

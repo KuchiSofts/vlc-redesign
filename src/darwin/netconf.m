@@ -25,7 +25,9 @@
 #endif
 
 #include <vlc_common.h>
+#include <vlc_configuration.h>
 #include <vlc_network.h>
+#include <vlc_url.h>
 
 #import <Foundation/Foundation.h>
 
@@ -38,8 +40,45 @@
 #include <CoreServices/CoreServices.h>
 #endif
 
+/* The proxy of VLC's settings ("http-proxy", with "http-proxy-pwd" when it
+ * names no password of its own), as on Windows; NULL when there is none */
+static char *OwnProxy(void)
+{
+    char *proxy = config_GetPsz("http-proxy");
+    if (proxy == NULL || *proxy == '\0') {
+        free(proxy);
+        return NULL;
+    }
+
+    char *proxy_pwd = config_GetPsz("http-proxy-pwd");
+    if (proxy_pwd == NULL || *proxy_pwd == '\0') {
+        free(proxy_pwd);
+        return proxy;
+    }
+
+    vlc_url_t parsed;
+    if (vlc_UrlParse(&parsed, proxy) < 0) {
+        vlc_UrlClean(&parsed);
+        free(proxy);
+        free(proxy_pwd);
+        return NULL;
+    }
+    if (parsed.psz_password == NULL)
+        parsed.psz_password = proxy_pwd;
+
+    char *proxy_url = vlc_uri_compose(&parsed);
+    vlc_UrlClean(&parsed);
+    free(proxy_pwd);
+    free(proxy);
+    return proxy_url;
+}
+
 char *vlc_getProxyUrl(const char *url)
 {
+    char *own = OwnProxy();
+    if (own != NULL)
+        return own;
+
     if (url == NULL) {
         return NULL;
     }

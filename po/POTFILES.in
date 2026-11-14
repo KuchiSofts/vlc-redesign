@@ -354,6 +354,7 @@ modules/control/dbus/dbus.c
 modules/control/dbus/dbus_root.c
 modules/control/dummy.c
 modules/control/gestures.c
+modules/control/globalhotkeys/macosx.c
 modules/control/globalhotkeys/win32.c
 modules/control/globalhotkeys/xcb.c
 modules/control/hotkeys.c

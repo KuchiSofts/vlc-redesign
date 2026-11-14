@@ -467,6 +467,14 @@ if host_system == 'windows'
     )
 endif
 
+if host_system == 'darwin'
+    # Now Playing, the media keys, the Dock menu, the process priority
+    qt_plugin_sources += files(
+        '../../maininterface/mac_integration.mm',
+        '../../maininterface/mac_integration.hpp',
+    )
+endif
+
 if (x11_dep.found() and
     xcb_dep.found() and
     xcb_damage_dep.found() and

@@ -25,12 +25,12 @@ The presets, in milliseconds:
 
 ## Proxy
 
-*(This section appears on Windows only: VLC has these options only there.)*
+*(This section appears on Windows and, from 0.6.4, on macOS; Linux follows the proxy of its desktop.)*
 
 | Option | Choices / default | What it does | VLC option |
 |---|---|---|---|
-| **HTTP proxy** | Text field. Default: empty; the field then reads *System proxy*. | The proxy VLC connects through for HTTP and HTTPS, in the form `http://[user@]myproxy.mydomain:myport/`. Set it when the proxy is one Windows does not know. Empty, VLC uses the proxy of Windows (below). *Changed in 0.3.1: before, an empty field meant no proxy.* | `http-proxy` |
-| **HTTP proxy password** | Password field. Default: empty. | The password of the proxy set above, if it asks for one. It is added to the proxy address when the address does not hold one already. It is not used with the proxy of Windows. | `http-proxy-pwd` |
+| **HTTP proxy** | Text field. Default: empty; the field then reads *System proxy*. | The proxy VLC connects through for HTTP and HTTPS, in the form `http://[user@]myproxy.mydomain:myport/`. Set it when the proxy is one the system does not know. Empty, VLC uses the proxy of Windows or of macOS (below). *Changed in 0.3.1: before, an empty field meant no proxy.* | `http-proxy` |
+| **HTTP proxy password** | Password field. Default: empty. | The password of the proxy set above, if it asks for one. It is added to the proxy address when the address does not hold one already. It is not used with the proxy of the system. | `http-proxy-pwd` |
 
 **The proxy of Windows.** While *HTTP proxy* is empty, VLC reads the manual proxy of Windows (**Settings → Network &
 internet → Proxy → Manual proxy setup**, the same as *Internet Options → Connections → LAN settings*) each time it
@@ -46,6 +46,10 @@ opens an HTTP or HTTPS connection, so a change in Windows applies without restar
 - **Automatic configuration is not followed:** *Automatically detect settings* and *Use setup script* (a PAC file)
   are ignored; VLC uses only the manual proxy. If your network needs a setup script, type the proxy it gives you in
   *HTTP proxy*.
+
+**The proxy of macOS.** While *HTTP proxy* is empty, VLC reads the proxies of **System Settings → Network →
+(the network) → Details → Proxies** each time it opens a connection: the web proxy (HTTP) for `http` addresses, the
+secure web proxy (HTTPS) for `https` ones, the RTSP and FTP proxies for theirs.
 
 ## Security
 

@@ -7,7 +7,7 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `914c465b0c` (2026-11-13).
 
-**Contents:** [Unreleased](#unreleased) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,9 +15,30 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+## [0.6.4] · 2026-11-14
+
+An update release: macOS gets every feature of Windows: the media keys and Now Playing, the Dock menu, global
+hotkeys, Process priority, its own HTTP proxy, Show in folder in Finder and casting on macOS 15. Windows and Linux
+are rebuilt with them; Android (0.6.3) and the Samsung TV app (0.6.1) are unchanged.
+
+### Added
+
+- macOS: media keys and Control Center's Now Playing (title, artwork, time, seeking).
+- macOS: Dock menu with Play / Pause, Stop, Previous, Next and Mute.
+- macOS: Process priority, VLC's own HTTP proxy and "Add to the playlist instead of replacing it" in Settings.
+- macOS: Show in folder selects the file in Finder.
+- macOS: the menu bar icon has Show VLC Redesign, and the Dock icon shows a hidden window.
+- macOS: casting asks for the local network with its reason (macOS 15 and later).
+- Bug report: the graphics processors and HDR screens on macOS, VLC's revision on macOS and Linux.
+
+### Fixed
+
+- macOS: global hotkeys work from any app (the keys set did nothing).
+
 ### Technical
 
 - Releases: the Windows packages are made from the Windows workflow's release build (docs/RELEASE-CHECKLIST.md).
+- macOS launch test: Now Playing, the remote commands, the Dock menu, two global hotkeys and the new options checked.
 
 ## [0.6.3] · 2026-11-13
 

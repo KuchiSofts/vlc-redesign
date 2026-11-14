@@ -269,7 +269,10 @@ Column {
                     // window by themselves (that option alone, VLC's
                     // system_Configure): adding them to the queue applies
                     // when either sends them there
+                    // (macOS sends them to the running app itself: no
+                    // option for it)
                     available: (model.key !== "playlist-enqueue"
+                                || !root.settingsModel.hasOption("one-instance")
                                 || !!(root.settingsModel.revision, root.settingsModel.valueFor("one-instance"))
                                 || !!(root.settingsModel.revision,
                                       root.settingsModel.valueFor("one-instance-when-started-from-file")))
@@ -374,11 +377,13 @@ Column {
                 }
             }
 
-            // "Rescan plugins" ends Smooth Playback in the design
+            // "Rescan plugins" ends Smooth Playback in the design (not on
+            // macOS: the cache is in the signed app, made with it)
             Loader {
                 width: parent.width
                 active: parent.visible && root.category === "performance" && root.search.length === 0
                         && root.filterMode !== "advanced" && model.key === "redesign/process-priority"
+                        && Qt.platform.os !== "osx" && Qt.platform.os !== "macos"
                 sourceComponent: SettingsActionRow {
                     width: root.width
                     label: qsTr("Rescan plugins")

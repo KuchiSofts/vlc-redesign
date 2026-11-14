@@ -1175,7 +1175,13 @@ static void *Thread( void *obj )
             return false;
         msg_Dbg( p_intf, "files opened by the system: %lld, the first %s", (long long)files.size(),
                  qtu( files.first().toUrl().toString() ) );
-        p_intf->p_mainPlaylistController->append(files, true);
+        /* "Add to the playlist instead of replacing it" of the settings, as
+         * on Windows: then added after what plays; played when nothing does
+         * (a launch from Finder plays its files) */
+        const bool enqueue = var_InheritBool( p_intf, "playlist-enqueue" )
+                             && p_intf->p_mainPlayerController
+                             && p_intf->p_mainPlayerController->isStarted();
+        p_intf->p_mainPlaylistController->append(files, !enqueue);
         return true;
     });
     MacOpenDocuments::setSink([fileOpenSpy](const QUrl &url) {

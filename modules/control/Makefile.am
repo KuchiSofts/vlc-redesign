@@ -57,6 +57,13 @@ if HAVE_XCB_KEYSYMS
 control_PLUGINS += libxcb_hotkeys_plugin.la
 endif
 
+# the global-key-* options on macOS (RegisterEventHotKey, as on Windows)
+libmacosx_hotkeys_plugin_la_SOURCES = control/globalhotkeys/macosx.c
+libmacosx_hotkeys_plugin_la_LDFLAGS = $(AM_LDFLAGS) -Wl,-framework,Carbon -Wl,-framework,CoreFoundation
+if HAVE_OSX
+control_PLUGINS += libmacosx_hotkeys_plugin.la
+endif
+
 libntservice_plugin_la_SOURCES = control/ntservice.c
 libwin_hotkeys_plugin_la_SOURCES = control/globalhotkeys/win32.c
 libwin_msg_plugin_la_SOURCES = control/win_msg.c

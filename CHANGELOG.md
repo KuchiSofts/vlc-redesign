@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Releases: the Windows packages are made from the Windows workflow's release build (docs/RELEASE-CHECKLIST.md).
+
 ## [0.6.3] · 2026-11-13
 
 An update release: on macOS, files opened from Finder or the Dock play (#84, #85), the menu bar has every menu (#88) and

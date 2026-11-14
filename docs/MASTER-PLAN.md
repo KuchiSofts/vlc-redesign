@@ -82,10 +82,13 @@ What is being worked on, updated as it changes (2026-11-10):
   0.6.2 with the same fix: VideoLAN's media library built here with it, buildsystem/redesign/MEDIALIBRARY.md;
   the Samsung TV app never had the bug, it stays at 0.6.1). Checked: CI 18 green, a fresh 0.6.1 copy updated
   itself to 0.6.2 (423 files), 0.6.1 -> 0.6.2 on the Android emulator, the signed list's digests.
-- ✅ **0.6.3** 2026-11-13 (an update release): macOS opens files from Finder and the Dock (#84, #85: Qt's
-  QFileOpenEvent reached nobody; util/file_open_spy.hpp, a unit test, and step 6 of CI's macOS smoke test opens an
-  .m3u the way Finder does); the start about 0.2 s sooner (the fonts read in the background for every language);
-  screen-reader names; the bug form for every system; macOS (#87, #88, #89, @xITmasterx): the full menu bar from
+- ✅ **0.6.3** 2026-11-13, published 2026-11-14 (an update release): macOS opens files from Finder and the Dock
+  (#84, #85: Qt's QFileOpenEvent reached nobody, util/file_open_spy.hpp and a unit test; and the files of a
+  launch went to vlc-qt-check: started before VLC checked in with LaunchServices, it was taken for the app
+  being launched and got its open-documents event. On macOS the check that Qt works is now a window server
+  session (CGSessionCopyCurrentDictionary), and util/mac_open_documents.cpp takes the event itself, each step in
+  the debug log. Step 6 of CI's macOS smoke test opens an .m3u as Finder does, the app closed and running); the
+  start about 0.2 s sooner (the fonts read in the background for every language); screen-reader names; the bug form for every system; macOS (#87, #88, #89, @xITmasterx): the full menu bar from
   VLCMenuBar's menus, Metal before Qt's software renderer and a cached "software" probed again, hidden buttons keep
   their place while customizing; VideoLAN merged to 914c465b0c. Android 0.6.3 (Hindi crash,
   Korean texts, check_string_formats.py). Samsung unchanged (0.6.1). Next: 0.6.4.
@@ -93,6 +96,11 @@ What is being worked on, updated as it changes (2026-11-10):
   (mlthreadpool.cpp, `assert(task)`): files that include <cassert> before config.h kept their asserts in
   release builds (29 files). The Qt module passes -DNDEBUG in such builds; ThreadRunner changes its task
   lists under its lock and skips a stale entry; VideoLAN's ThreadRunner test runs in unit-tests.sh.
+  The Windows files of 0.6.3 are packaged from CI's release build (make-release -SkipBuild): those of 0.5.8 to
+  0.6.2, made with -Quick here, were debug builds; make-release now refuses a Qt plugin that keeps asserts.
+  Checked after publishing: the 22 files on GitHub have the digests of the signed list; issues #84, #85, #87,
+  #88 and #89 answered and closed.
+- 🟡 **0.6.4** started.
 - Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.

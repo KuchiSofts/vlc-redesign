@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-13, 0.6.3 published).
+Updated as the work moves (last: 2026-11-14, 0.6.3 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -28,7 +28,6 @@ Updated as the work moves (last: 2026-11-13, 0.6.3 published).
 
 **0.6.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
-
 
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page

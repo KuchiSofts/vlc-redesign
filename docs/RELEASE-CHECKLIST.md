@@ -114,8 +114,10 @@ signing key, a new Android version-code scheme, or users who have no updater mus
 An update release:
 1. `platforms.yml`: `version` the new one, `full:` stays the last full release (its .deb, .rpm, Flatpak and the
    Samsung source keep linking there: `full_only: yes`); `render.py` (README's buttons, the table, the website).
-2. `make-release.ps1 -Update` (x64, then `-Arch aarch64`): the installer and the zip; small updates from every
-   release since `full:`, each checked by applying it.
+2. `make-release.ps1 -Update -SkipBuild -Package <folder>` (x64, then `-Arch aarch64`): the installer and the
+   zip; small updates from every release since `full:`, each checked by applying it. `<folder>` holds the Windows
+   workflow's artifact of the pull request (`vlc-redesign-win64-<sha>`, `vlc-redesign-winarm64-<sha>`): a release
+   build. A local `-Quick` build is a debug one, and make-release refuses a Qt plugin that keeps asserts.
 3. The Linux AppImages and the disk images from the pull request's CI artifacts (not the .deb, .rpm, Flatpak);
    the APK; `SHA256SUMS.txt` of all of them, signed.
 4. `release-notes.py`: under Windows it says it is an update release, with the last full release's link.

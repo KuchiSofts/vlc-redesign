@@ -2800,7 +2800,7 @@ msgstr "הטובה ביותר הזמינה"
 #: src/libvlc-module.c:711
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
 msgid "Full HD (1080p)"
-msgstr "HD מלא (1080p)"
+msgstr "איכות HD מלאה (1080p)"
 
 #: src/libvlc-module.c:711
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:131
@@ -19164,7 +19164,7 @@ msgstr "איפוס"
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1334
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1356
 msgid "RMS/peak"
-msgstr "RMS/שיא"
+msgstr "רמת RMS/שיא"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:250
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1313
@@ -21797,8 +21797,7 @@ msgstr "מה הדיווח מכיל"
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:57
 msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
-msgstr ""
-"GitHub ייפתח עם הפרטים האלה ממולאים. דבר לא נשלח עד שתגיש את הדיווח שם."
+msgstr "האתר GitHub ייפתח עם הפרטים האלה ממולאים. דבר לא נשלח עד שתגיש את הדיווח שם."
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
 msgid "Report"
@@ -22564,7 +22563,7 @@ msgstr "הרחב הגדרות"
 
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:26
 msgid "RMS / Peak"
-msgstr "RMS / שיא"
+msgstr "רמת RMS / שיא"
 
 #: modules/gui/qt/dialogs/extended/qml/FilterPanel.qml:30
 msgid ": 1"
@@ -22773,31 +22772,27 @@ msgstr "בחר תיקייה להוספה לספריית המדיה"
 msgid ""
 "<i>VLC will automatically switch to dark mode accordingly with system "
 "settings</i>"
-msgstr "<i>VLC יעבור אוטומטית למצב כהה בהתאם להגדרות המערכת</i>"
+msgstr "<i>הנגן VLC יעבור אוטומטית למצב כהה בהתאם להגדרות המערכת</i>"
 
 #: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:208
 msgid "<i>VLC will automatically use light mode</i>"
-msgstr "<i>VLC ישתמש אוטומטית במצב בהיר</i>"
+msgstr "<i>הנגן VLC ישתמש אוטומטית במצב בהיר</i>"
 
 #: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:211
 msgid "<i>VLC will automatically use dark mode</i>"
-msgstr "<i>VLC ישתמש אוטומטית במצב כהה</i>"
+msgstr "<i>הנגן VLC ישתמש אוטומטית במצב כהה</i>"
 
 #: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:225
 msgid ""
 "<i>VLC will use a modern layout with no menubar or pinned controls but with "
 "client-side decoration</i>"
-msgstr ""
-"<i>VLC ישתמש בפריסה מודרנית ללא שורת תפריטים או פקדים מוצמדים, אך עם עיטור "
-"חלון מצד הלקוח</i>"
+msgstr "<i>הנגן VLC ישתמש בפריסה מודרנית ללא שורת תפריטים או פקדים מוצמדים, אך עם עיטור חלון מצד הלקוח</i>"
 
 #: modules/gui/qt/dialogs/firstrun/firstrunwizard.cpp:228
 msgid ""
 "<i>VLC will use a classic layout with a menubar and pinned controls but with "
 "no client-side decoration</i>"
-msgstr ""
-"<i>VLC ישתמש בפריסה קלסית עם שורת תפריטים ופקדים מוצמדים, אך ללא עיטור חלון "
-"מצד הלקוח</i>"
+msgstr "<i>הנגן VLC ישתמש בפריסה קלסית עם שורת תפריטים ופקדים מוצמדים, אך ללא עיטור חלון מצד הלקוח</i>"
 
 #: modules/gui/qt/dialogs/firstrun/onboarding.cpp:48
 msgid "Could not add the media folder: %1"
@@ -22968,9 +22963,7 @@ msgid ""
 "VLC is a free and open source cross-platform multimedia player and framework "
 "that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and "
 "various streaming protocols."
-msgstr ""
-"VLC הוא נגן ומסגרת מולטימדיה חופשיים, בקוד פתוח וחוצי פלטפורמות, שמנגנים את "
-"רוב קובצי המולטימדיה וגם תקליטורי DVD,‏ Audio CD,‏ VCD ופרוטוקולי הזרמה שונים."
+msgstr "תוכנת VLC היא נגן ומסגרת מולטימדיה חופשיים, בקוד פתוח וחוצי פלטפורמות, שמנגנים את רוב קובצי המולטימדיה וגם תקליטורי DVD,‏ Audio CD,‏ VCD ופרוטוקולי הזרמה שונים."
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:94
 msgid "Choose a Media Folder to get started with"
@@ -24175,7 +24168,7 @@ msgstr "לא ניתן היה לפתוח את תיקיית התצורה."
 
 #: modules/gui/qt/dialogs/preferences/config_model_audioscrobbler.cpp:257
 msgid "Last.fm is unavailable in this VLC installation."
-msgstr "Last.fm אינו זמין בהתקנה זו של VLC."
+msgstr "השירות Last.fm אינו זמין בהתקנה זו של VLC."
 
 #: modules/gui/qt/dialogs/preferences/config_model_effects.cpp:128
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:554
@@ -24495,7 +24488,7 @@ msgstr "קיצור זה אינו זמין."
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:437
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:465
 msgid "This key combination cannot be used by VLC."
-msgstr "VLC אינו יכול להשתמש בצירוף מקשים זה."
+msgstr "צירוף מקשים זה אינו זמין לשימוש ב־VLC."
 
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:568
 msgid ""
@@ -24622,7 +24615,7 @@ msgstr "שימוש בצבע ההדגשה של המערכת"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:287
 msgid "VLC follows the system language."
-msgstr "VLC פועל בשפת המערכת."
+msgstr "הנגן VLC פועל בשפת המערכת."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:22
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:583
@@ -28052,11 +28045,11 @@ msgstr "%1 MB"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:91
 msgid "VLC Redesign %1 is up to date"
-msgstr "VLC Redesign %1 מעודכן"
+msgstr "הגרסה VLC Redesign %1 מעודכנת"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:92
 msgid "VLC Redesign %1 is available"
-msgstr "VLC Redesign %1 זמין"
+msgstr "הגרסה VLC Redesign %1 זמינה"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:94
 msgid "Downloading VLC Redesign %1… %2%"
@@ -28068,7 +28061,7 @@ msgstr "מכין את VLC Redesign %1…"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:97
 msgid "VLC Redesign %1 is ready"
-msgstr "VLC Redesign %1 מוכן"
+msgstr "הגרסה VLC Redesign %1 מוכנה"
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:98
 msgid "Couldn't update"
@@ -28084,7 +28077,7 @@ msgstr "רק מה שהשתנה: אפשר להמשיך לצפות, הבדיקה �
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:150
 msgid "VLC Redesign will close, update and open again where you were."
-msgstr "VLC Redesign ייסגר, יתעדכן וייפתח שוב בדיוק איפה שהיית."
+msgstr "הנגן VLC Redesign ייסגר, יתעדכן וייפתח שוב בדיוק איפה שהיית."
 
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:152
 msgid ""
@@ -28215,7 +28208,7 @@ msgstr "החיפוש ב־OpenSubtitles נכשל. בדוק את מפתח ה־API 
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:184
 msgid "OpenSubtitles returned an invalid search response."
-msgstr "OpenSubtitles החזיר תשובת חיפוש לא תקינה."
+msgstr "השירות OpenSubtitles החזיר תשובת חיפוש לא תקינה."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:200
 msgid "Enter your API key and OpenSubtitles account credentials to download."
@@ -28227,7 +28220,7 @@ msgstr "ההתחברות ל־OpenSubtitles נכשלה. בדוק את פרטי ה
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:220
 msgid "OpenSubtitles returned an invalid login session."
-msgstr "OpenSubtitles החזיר הפעלת התחברות לא תקינה."
+msgstr "השירות OpenSubtitles החזיר הפעלת התחברות לא תקינה."
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:231
 #: modules/gui/qt/player/subtitle_providers.cpp:1962
@@ -28237,7 +28230,7 @@ msgstr "ההורדה מ־OpenSubtitles נכשלה. בדוק את המכסה של
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:241
 #: modules/gui/qt/player/subtitle_providers.cpp:1973
 msgid "OpenSubtitles did not return a valid subtitle download link."
-msgstr "OpenSubtitles לא החזיר קישור תקין להורדת הכתוביות."
+msgstr "השירות OpenSubtitles לא החזיר קישור תקין להורדת הכתוביות."
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
 #: modules/gui/qt/player/subtitle_search.cpp:848
@@ -29807,7 +29800,7 @@ msgstr "לא ניתן היה לעדכן את המועדף הזה."
 
 #: modules/gui/qt/player/hdr_output.cpp:40
 msgid "Windows offers no way for a player to send this format to a display."
-msgstr "Windows אינה מאפשרת לנגן לשלוח פורמט זה לצג."
+msgstr "מערכת Windows אינה מאפשרת לנגן לשלוח פורמט זה לצג."
 
 #: modules/gui/qt/player/hdr_output.cpp:42
 msgid "This renderer does not expose this output format."
@@ -29956,7 +29949,7 @@ msgstr "אין כתוביות בארכיון."
 #: modules/gui/qt/player/subtitle_providers.cpp:2153
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
-msgstr "OpenSubtitles שומר כתוביות אלה למנויים המשלמים שלו. בחר כתוביות אחרות."
+msgstr "השירות OpenSubtitles שומר כתוביות אלה למנויים המשלמים שלו. בחר כתוביות אחרות."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:2159
 msgid "The subtitle is empty."
@@ -30558,7 +30551,7 @@ msgstr "התקדמות"
 
 #: modules/gui/qt/player/qml/HdrOutputDialog.qml:62
 msgid "HDR unavailable"
-msgstr "HDR אינו זמין"
+msgstr "תצוגת HDR אינה זמינה"
 
 #: modules/gui/qt/player/qml/HideUIAction.qml:26
 msgid "Show player UI"
@@ -31170,7 +31163,7 @@ msgstr "הפעלת VLC עם סמל בשורת המשימות בלבד"
 
 #: modules/gui/qt/qt.cpp:188
 msgid "VLC will start with just an icon in your taskbar."
-msgstr "VLC יופעל עם סמל בשורת המשימות בלבד."
+msgstr "הנגן VLC יופעל עם סמל בשורת המשימות בלבד."
 
 #: modules/gui/qt/qt.cpp:197
 msgid "Show playing item name in window title"
@@ -31623,7 +31616,7 @@ msgstr "לשחזר את תור הנגינה?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:88
 msgid "VLC Redesign closed unexpectedly on %1. Restore the play queue it had?"
-msgstr "VLC Redesign נסגר באופן בלתי צפוי ב־%1. לשחזר את תור הנגינה שהיה בו?"
+msgstr "הנגן VLC Redesign נסגר באופן בלתי צפוי ב־%1. לשחזר את תור הנגינה שהיה בו?"
 
 #: modules/gui/qt/util/model_recovery_agent.hpp:90
 msgctxt "play queue"
@@ -31946,12 +31939,12 @@ msgstr "מספר רצועה בסדר יורד"
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:88
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:89
 msgid "URI Ascending"
-msgstr "URI בסדר עולה"
+msgstr "לפי URI בסדר עולה"
 
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:88
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:89
 msgid "URI Descending"
-msgstr "URI בסדר יורד"
+msgstr "לפי URI בסדר יורד"
 
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:90
 msgid "Disc Number Ascending"
@@ -39035,11 +39028,11 @@ msgstr "כתובת מתווך ה־HTTP"
 
 #: modules/gui/qt/dialogs/preferences/sprefs_input.ui:306
 msgid "HTTP (default)"
-msgstr "HTTP (בררת מחדל)"
+msgstr "פרוטוקול HTTP (בררת מחדל)"
 
 #: modules/gui/qt/dialogs/preferences/sprefs_input.ui:319
 msgid "RTP over RTSP (TCP)"
-msgstr "RTP על גבי RTSP (TCP)"
+msgstr "פרוטוקול RTP על גבי RTSP (TCP)"
 
 #: modules/gui/qt/dialogs/preferences/sprefs_input.ui:334
 msgid "Live555 stream transport"

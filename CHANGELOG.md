@@ -15,6 +15,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- About: in a low window its buttons stay under the scrolling text.
+- Hebrew and Arabic: texts that began with a Latin word read from the right (desktop and Android).
+- Android: the texts European Portuguese and Traditional Chinese still had in English.
+
 ### Technical
 
 - Version 0.6.7 started (VLC_REDESIGN_VERSION).

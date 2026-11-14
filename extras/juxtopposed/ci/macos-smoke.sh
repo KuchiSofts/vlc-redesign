@@ -11,7 +11,9 @@
 #      interface, video and audio outputs;
 #   2. the Qt interface: the app started, still running after 10 s, the
 #      unified title bar on its window (the traffic lights in the top bar),
-#      then asked to quit over the rc interface; no QML warning in its log;
+#      Now Playing, the media keys and the Dock menu, two global hotkeys
+#      registered with macOS, then asked to quit over the rc interface; no
+#      QML warning in its log; the options macOS has as Windows (-H);
 #   3. the Qt interface playing the clip (reported, not counted: a CI Mac
 #      may have no GPU for the video);
 #   4. screenshots, not counted (kept with the logs): the main window in
@@ -180,6 +182,14 @@ elif [ -f "$contents/Frameworks/plugins/libiptv_plugin.dylib" ]; then
 else
     note "ok: no Live TV add-on (NO_IPTV)"
 fi
+# the settings Windows has that macOS has too: VLC's own proxy (before the
+# system's, src/darwin/netconf.m) and adding the files opened from Finder
+# to the playlist
+options=$("$exe" --intf=dummy --no-qt-privacy-ask -H 2>/dev/null || true)
+for option in http-proxy http-proxy-pwd playlist-enqueue; do
+    echo "$options" | grep -qE -- "--$option[ =,]" && note "ok: the option $option" \
+        || fail "no option $option on macOS"
+done
 
 # A clip VLC reads without a decoder: 2 s of 320 x 240 YUV 4:2:0 at 25 fps
 # (Y4M), a bar moving across it
@@ -236,7 +246,9 @@ has headless 'EOF reached' && note "ok: EOF reached" || fail "headless: the clip
 
 # 2. The Qt interface
 port=4212
-start interface --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy
+# (two global hotkeys: a function key, a letter of the keyboard layout)
+start interface --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy \
+    --global-key-play-pause=Ctrl+Alt+F9 --global-key-stop=Ctrl+Alt+s
 sleep 10
 if kill -0 $pid 2>/dev/null; then
     note "ok: the Qt interface still runs after 10 s"
@@ -258,6 +270,26 @@ else
 fi
 grep -E 'Qt check failed|cannot start any interface' "$work/interface.log" "$work/interface.out" \
     && fail "Qt did not start"
+# what Windows has in its taskbar and media keys (maininterface/
+# mac_integration.mm): Now Playing, the remote commands, the Dock menu
+if line=$(grep -m 1 'macOS: Now Playing and' "$work/interface.log"); then
+    note "ok: ${line#*macOS: }"
+    case "$line" in
+        *"the Dock menu: "*Stop*Mute*) ;;
+        *) fail "the Dock menu is not complete ($line)" ;;
+    esac
+else
+    fail "no Now Playing, media keys and Dock menu (mac_integration.mm)"
+fi
+# the global hotkeys (modules/control/globalhotkeys/macosx.c), as on Windows
+if line=$(grep -m 1 'global hotkeys registered with macOS' "$work/interface.log"); then
+    case "$line" in
+        *"2 global hotkeys registered with macOS (of 2)"*) note "ok: ${line#*debug: }" ;;
+        *) fail "not every global hotkey was registered ($line)" ;;
+    esac
+else
+    fail "no global hotkeys on macOS (macosx_hotkeys)"
+fi
 printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || fail "rc interface: no answer"
 wait_exit $pid 30
 code=$?
@@ -275,6 +307,9 @@ wait_exit $pid 60
 code=$?
 if [ $code = 0 ] && has playback 'Received first picture'; then
     note "ok: the Qt interface played the clip"
+    # Now Playing told the system (Control Center, the media keys)
+    has playback 'macOS: Now Playing: playing' && note "ok: Now Playing showed the clip playing" \
+        || fail "Now Playing was not told the clip plays"
 else
     note "note: the Qt interface did not play the clip (exit code $code; a CI Mac may have no GPU)"
 fi

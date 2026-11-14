@@ -50,7 +50,8 @@ version from its first published build.
   TV ([TV compatibility](TV-Compatibility)).
 - **Still to do:** tests on Intel graphics, on Windows 10 on real PCs and on screens of different scales;
   code-signed releases (waiting for SignPath's approval), so that SmartScreen no longer warns.
-- **Small updates in the app and the signed `SHA256SUMS.txt` are for Windows only.**
+- **Small updates in the app (only the files that changed) are for Windows**; the AppImage on Linux and the app on
+  macOS update themselves with the whole new file. `SHA256SUMS.txt`, signed by the project, covers every platform.
 - **On Windows 11 ARM64**, take the native ARM64 build: [below](#windows-on-arm64). The x64 installer runs there
   too (it accepts any x64-compatible Windows), but Windows emulates it, which is slower.
 
@@ -80,8 +81,8 @@ Home in the light theme. Click for the MP4.</sub>
   `vlc-redesign-livetv` (leave its file out, or remove it later: `sudo apt remove vlc-redesign-livetv`,
   `sudo dnf remove vlc-redesign-livetv`); the AppImage and the folder carry it, and *Settings › General › Live TV
   (IPTV) add-on* turns it off. Building from the source: `./configure --disable-iptv` leaves it out.
-- **Updates:** no update in the app on Linux; install the new version's package (apt and dnf replace the older
-  one), or take the new AppImage or folder.
+- **Updates:** the AppImage updates itself from the app (the new AppImage put in its place); the .deb, .rpm and the
+  folder are updated with the new version's package (apt and dnf replace the older one).
 - **Tested:** in clean containers on 7 distributions (`linux-pkg-test.sh`: install, files and libraries, a UI tour
   under Xvfb, removal): Ubuntu 24.04 and 26.04, Debian 13, Fedora 41 and 43, Arch with the AppImage; apt refuses the
   .deb on Ubuntu 22.04 and Debian 12, as it should. GitHub's x86_64 and ARM64 runners build the packages and test
@@ -117,16 +118,25 @@ Home in the light theme. Click for the MP4.</sub>
   Mac apps; full screen in its own Space, tiling and resizing from every edge work. *Show window decorations* in
   Settings brings the separate title bar back. A minimal menu bar sits at the top of the screen, and ⌘ reaches VLC's
   shortcuts.
+- **The same features as Windows** (from 0.6.4): the
+  media keys, the Touch Bar, headphones and Control Center's *Now Playing* play, pause, go to the previous or next
+  item, jump and seek, and Now Playing shows the title, artist, album, artwork and time (what Windows does with its
+  media keys); the Dock menu has Play / Pause, Stop, Previous, Next and Mute (Windows: the buttons of the taskbar
+  thumbnail); the global hotkeys work from any app; *Show in folder* opens Finder with the file selected; *Process priority*, VLC's own *HTTP proxy* and
+  *Add to the playlist instead of replacing it* are in Settings; the bug report names the graphics processors and
+  the HDR screens.
 - **Signing.** The app is signed ad hoc, not by Apple, until there is an Apple developer account: the first time,
   macOS refuses to open it, and you allow it once (*System Settings › Privacy & Security › Open Anyway*, or
   right-click › *Open* on macOS 12 to 14).
-- **Updates:** no update in the app on macOS; download the new disk image and replace the app.
+- **Updates:** from 0.5.5 the app updates itself with the release's disk image for this Mac, checked against the
+  signed `SHA256SUMS.txt` ([Install and update: macOS](Install-and-Update#macos)).
 - **Tested:** GitHub's Macs build both architectures and run a launch test on each: every binary signed, the icon,
   100 translations, the About badge (*macOS Apple Silicon* / *macOS Intel*), the designer's credit, the Live TV
   add-on loaded, headless playback to the end, the Qt interface for 10 seconds playing a clip, one unified title bar
   (the traffic lights), a clean quit, no QML warning and no crash report. It has not been run by hand on a Mac yet.
-- **Missing:** signing and notarization by Apple; tests by hand on a Mac; media keys and Now Playing; the video in
-  the window and VideoToolbox checked on a Mac; an updater in the app; the pixel check of every frame.
+- **Missing:** signing and notarization by Apple; tests by hand on a Mac; the video in the window and VideoToolbox
+  checked on a Mac; small updates (only the files that changed: the whole disk image is downloaded); the pixel
+  check of every frame.
 
 ## Windows on ARM64
 

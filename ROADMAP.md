@@ -37,6 +37,9 @@ Updated as the work moves (last: 2026-11-14, 0.6.3 published).
 **0.6.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 🔨 macOS with every feature of Windows: the media keys and Now Playing, the Dock menu (the taskbar's buttons),
+  global hotkeys, Show in folder in Finder, Process priority, VLC's own HTTP proxy and adding the files opened from Finder to the
+  playlist, the graphics processors in the bug report
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

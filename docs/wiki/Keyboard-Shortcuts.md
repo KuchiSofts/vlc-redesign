@@ -261,7 +261,9 @@ resets the size.
    **Search Keyboard Shortcuts...** at the top. The list next to the search chooses where to look: *All Fields*,
    *Action*, *Hotkey* or *Global Hotkey*.
 3. Click the **Hotkey** field (works while VLC Redesign has the focus) or the **Global Hotkey** field (works from any
-   program; empty by default). The window asks *Press a key combination to add to …* (*Esc cancels*).
+   program; empty by default; on Windows, Linux with X11 and, from 0.6.4, macOS, where a key another app holds is
+   skipped and the media keys stay the system's Now Playing). The window asks *Press a key combination to add to …*
+   (*Esc cancels*).
 4. Press the keys. An action can have several keys; each shows apart in the field.
 5. **Save**. The keys work at once, without a restart.
 

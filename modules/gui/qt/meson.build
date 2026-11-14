@@ -31,9 +31,10 @@ qt6_dep = dependency('qt6',
 if host_machine.system() == 'darwin'
     # maininterface/macos_titlebar.cpp messages AppKit from C++;
     # util/mac_open_documents.cpp takes Apple events; qt.cpp asks for a
-    # window server session
+    # window server session; maininterface/mac_integration.mm: Now Playing
+    # (MediaPlayer) and the graphics processors (Metal)
     qt_link_args += ['-framework', 'AppKit', '-lobjc', '-framework', 'CoreServices', '-framework', 'CoreFoundation',
-                     '-framework', 'CoreGraphics']
+                     '-framework', 'CoreGraphics', '-framework', 'MediaPlayer', '-framework', 'Metal']
 endif
 if host_machine.system() == 'darwin' and qt6_dep.found()
     qt_libdir = qt6_dep.get_variable(pkgconfig: 'libdir', configtool: '-query QT_INSTALL_LIBS')
@@ -406,6 +407,8 @@ if qt6_dep.found()
         'include_directories' : qt_include_dir,
         'c_args' : qt_extra_flags,
         'cpp_args' : [qt_extra_flags, qt_cppargs],
+        # (maininterface/mac_integration.mm: ARC)
+        'objcpp_args' : [qt_extra_flags, qt_cppargs, '-fobjc-arc'],
         'link_args' : qt_link_args,
         'link_with' : qmllibs,
         'plugin_dir' : 'gui',

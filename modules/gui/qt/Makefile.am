@@ -85,9 +85,10 @@ libqt_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(QT_LDFLAGS) $(GC_SECTIONS_LDFLAGS)
 if HAVE_OSX
 # (-lobjc: maininterface/macos_titlebar.cpp messages AppKit from C++;
 # CoreServices: util/mac_open_documents.cpp takes Apple events;
-# CoreGraphics: qt.cpp asks for a window server session)
+# CoreGraphics: qt.cpp asks for a window server session; MediaPlayer, Metal:
+# maininterface/mac_integration.mm, Now Playing and the graphics processors)
 libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa -lobjc -Wl,-framework,CoreServices -Wl,-framework,CoreFoundation \
-	-Wl,-framework,CoreGraphics
+	-Wl,-framework,CoreGraphics -Wl,-framework,MediaPlayer -Wl,-framework,Metal
 endif
 
 if HAVE_X
@@ -118,6 +119,13 @@ libqt_plugin_la_CPPFLAGS += -DQT_HAS_GTK
 endif
 
 include $(srcdir)/buildsystem/sources.am
+if HAVE_OSX
+# Now Playing, the media keys, the Dock menu and the process priority of
+# macOS (Objective-C++, with ARC; the tag of libtool as for skins2)
+libqt_plugin_la_SOURCES += maininterface/mac_integration.mm
+libqt_plugin_la_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_CFLAGS) $(CXXFLAGS_qt) -fPIC -fobjc-arc
+libqt_plugin_la_LIBTOOLFLAGS = --tag=CXX
+endif
 include $(srcdir)/buildsystem/moc.am
 if HAVE_WIN32
 

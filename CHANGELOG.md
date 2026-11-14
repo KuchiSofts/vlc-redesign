@@ -15,9 +15,22 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- macOS: media keys and Control Center's Now Playing (title, artwork, time, seeking).
+- macOS: Dock menu with Play / Pause, Stop, Previous, Next and Mute.
+- macOS: Process priority, VLC's own HTTP proxy and "Add to the playlist instead of replacing it" in Settings.
+- macOS: Show in folder selects the file in Finder.
+- Bug report: the graphics processors and HDR screens on macOS, VLC's revision on macOS and Linux.
+
+### Fixed
+
+- macOS: global hotkeys work from any app (the keys set did nothing).
+
 ### Technical
 
 - Releases: the Windows packages are made from the Windows workflow's release build (docs/RELEASE-CHECKLIST.md).
+- macOS launch test: Now Playing, the remote commands, the Dock menu, two global hotkeys and the new options checked.
 
 ## [0.6.3] · 2026-11-13
 

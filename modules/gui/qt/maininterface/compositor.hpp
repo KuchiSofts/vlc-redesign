@@ -43,6 +43,7 @@ class VideoWindowHandler;
 class VideoSurfaceProvider;
 class InterfaceWindowHandler;
 class WinTaskbarWidget;
+class MacIntegration;
 class MainUI;
 class QQmlEngine;
 class QQmlComponent;
@@ -232,6 +233,10 @@ protected:
     std::unique_ptr<VideoSurfaceProvider> m_videoSurfaceProvider;
 #ifdef _WIN32
     std::unique_ptr<WinTaskbarWidget> m_taskbarWidget;
+#endif
+#ifdef Q_OS_MACOS
+    // Now Playing, the media keys and the Dock menu (the taskbar of Windows)
+    std::unique_ptr<MacIntegration> m_macIntegration;
 #endif
 
     WindowEffectsModule* m_windowEffectsModule = nullptr;

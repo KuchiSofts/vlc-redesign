@@ -95,9 +95,12 @@
 
 #include <QStyleHints>
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(Q_OS_MACOS)
 #include <QFileInfo>
 #include <QProcess>
+#endif
+#ifdef Q_OS_MACOS
+#include "mac_integration.hpp"
 #endif
 
 #include <QDesktopServices>
@@ -667,6 +670,10 @@ void MainCtx::loadPrefs(const bool callSignals)
             applied = priority;
         }
     }
+#elif defined(Q_OS_MACOS)
+    /* the same on macOS: the background state of Darwin, or an activity that
+     * keeps VLC at full speed (mac_integration.mm) */
+    mac_platform::setProcessPriority( getSettings()->value( "redesign/process-priority", 0 ).toInt() );
 #endif
 
     /* "Always show the player bar" of the settings */
@@ -1210,6 +1217,12 @@ void MainCtx::showInFileManager(const QUrl &fileMRL) const
         if (explorer.startDetached())
             return;
     }
+#elif defined(Q_OS_MACOS)
+    // Finder opens the folder with the file selected, as Explorer does
+    const QString path = fileMRL.toLocalFile();
+    if (QFileInfo::exists(path)
+        && QProcess::startDetached(QStringLiteral("/usr/bin/open"), { QStringLiteral("-R"), path }))
+        return;
 #endif
     QDesktopServices::openUrl(folderMRL(fileMRL));
 }

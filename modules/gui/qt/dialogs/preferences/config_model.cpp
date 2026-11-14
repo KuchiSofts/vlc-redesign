@@ -1513,12 +1513,17 @@ void ConfigModel::buildEntries()
                             {QStringLiteral("label"), QStringLiteral("%1 %").arg(size)}});
                 }
                 // Process priority: the classes of Windows by name, the
-                // usual ones first (-2 idle ... 2 high, see MainCtx)
+                // usual ones first (-2 idle ... 2 high, see MainCtx); macOS
+                // has no lower one a program can take back but its idle
+                // (background) state
                 if (entry.key == QLatin1String("redesign/process-priority")) {
                     entry.bounded = false;
                     const struct { int64_t value; const char *label; } priorities[] = {
                         { 0, N_("Normal") }, { 1, N_("Above normal") }, { 2, N_("High") },
-                        { -1, N_("Below normal") }, { -2, N_("Idle") } };
+#ifndef __APPLE__
+                        { -1, N_("Below normal") },
+#endif
+                        { -2, N_("Idle") } };
                     for (const auto &priority : priorities)
                         entry.choices.append(QVariantMap{{QStringLiteral("value"), QVariant::fromValue(priority.value)},
                                                          {QStringLiteral("label"), qtr(priority.label)}});

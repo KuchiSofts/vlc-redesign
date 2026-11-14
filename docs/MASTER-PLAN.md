@@ -100,7 +100,25 @@ What is being worked on, updated as it changes (2026-11-10):
   0.6.2, made with -Quick here, were debug builds; make-release now refuses a Qt plugin that keeps asserts.
   Checked after publishing: the 22 files on GitHub have the digests of the signed list; issues #84, #85, #87,
   #88 and #89 answered and closed.
-- 🟡 **0.6.4** started.
+- 🟡 **0.6.4** started. 🔨 macOS with every feature of Windows (owner, 2026-11-14), branch
+  `feature/macos-parity`: `maininterface/mac_integration.mm` (Objective-C++, ARC) gives what Windows has in its
+  taskbar and media keys (mainctx_win32.cpp): Now Playing and MPRemoteCommandCenter (play, pause, stop, previous,
+  next, skip by the short jump, seek, repeat, shuffle; title, artist, album, artwork, length, time, rate), the Dock
+  menu (Play / Pause, Stop, Previous, Next, Mute). The global hotkeys, which the Shortcuts dialog offered on macOS
+  with nothing behind them: `modules/control/globalhotkeys/macosx.c` (autorun as win32.c; RegisterEventHotKey of
+  Carbon on the main queue, no Accessibility right needed; the key of a character found in the keyboard layout
+  of now with UCKeyTranslate; the media keys left to Now Playing). Also: *Show in folder* with `open -R`; *Process priority* on
+  macOS (Idle = the background state of Darwin, Above normal / High = an NSProcessInfo activity: no App Nap,
+  latency critical; no Below normal: macOS can't take a lowered nice back); `http-proxy`/`http-proxy-pwd` on macOS
+  before the system's proxy (src/darwin/netconf.m, as win32/netconf.c); `playlist-enqueue` on macOS for the files
+  of Finder (qt.cpp's FileOpenSpy sink: added while something plays); the bug report's GPUs (Metal) and HDR
+  screens, VLC's revision by dlsym on macOS and Linux. *Rescan plugins* stays off on macOS (its cache is in the
+  signed app). Left as the systems differ: one-instance (macOS gives the files to the running app itself), the
+  volume keys (system-wide on macOS), the casting firewall rule (macOS asks by itself), the sealing of the
+  subtitle-service passwords (DPAPI; the Keychain would ask again after every update of an ad-hoc-signed app),
+  the acrylic blur (DirectComposition), small updates (macOS downloads the whole disk image). The launch test
+  checks the Now Playing line, the Dock menu, two global hotkeys registered, Now Playing while the clip plays and
+  the three options
 - Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.
@@ -1832,8 +1850,9 @@ Started 2026-10-28 (branch `feature/macos`); the analysis, decisions and what is
 - 🟡 Menu bar (a minimal native one: About, Preferences, Quit, open, help), a unified title bar (the traffic lights
   in the redesign's top bar, `macos_titlebar.cpp`), ⌘
   hotkeys reach VLC as `Command+`, the CJK fonts of the interface language, the updater shows the release page and
-  only for a release with this Mac's disk image (all in code, not run on a Mac); 🔴 media keys, Now Playing,
-  VideoToolbox and the video in the window checked, the dock menu, in-app updates
+  only for a release with this Mac's disk image (all in code, not run on a Mac); 🟡 0.6.4: media keys, Now Playing
+  and the Dock menu (mac_integration.mm, checked by the launch test); 🔴 VideoToolbox and the video in the window
+  checked on a Mac, small updates
 - 🔴 Pixel check of every frame
 
 ### Windows on ARM64

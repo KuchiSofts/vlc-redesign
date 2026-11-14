@@ -178,8 +178,9 @@ static const Option entries[] = {
     {"performance", "avcodec-threads"},
     {"performance", "drop-late-frames"},
     {"performance", "high-priority"},
-#ifdef _WIN32
-    // (applied with SetPriorityClass: MainCtx::loadPrefs)
+#if defined(_WIN32) || defined(__APPLE__)
+    // (applied with SetPriorityClass, on macOS with the background state of
+    // Darwin or an activity: MainCtx::loadPrefs)
     {"performance", "qt:redesign/process-priority"},
 #endif
     {"performance", "sout-transcode-venc"}, {"performance", "codec"},

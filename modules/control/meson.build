@@ -52,6 +52,17 @@ if xcb_dep.found() and xcb_keysyms_dep.found()
     }
 endif
 
+# macOS hotkeys (the global-key-* options, as on Windows and X11)
+if have_osx
+    vlc_modules += {
+        'name' : 'macosx_hotkeys',
+        'sources' : files('globalhotkeys/macosx.c'),
+        'dependencies' : [corefoundation_dep,
+                          declare_dependency(link_args: ['-framework', 'Carbon'])],
+        'plugin_dir' : 'control',
+    }
+endif
+
 # libvlc_motion
 vlc_motion_deps = []
 vlc_motion_cflags = []

@@ -65,8 +65,12 @@ namespace {
 
 // The newest releases (not only GitHub's "latest"): a release made for some
 // systems only (0.6.4 had no Android app) must not hide the last one of this
-// system, nor be offered to it (onRelease picks the newest with its package)
-const char releasesApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REPO "/releases?per_page=30";
+// system, nor be offered to it (onRelease picks the newest with its package).
+// Ten are plenty and keep the answer small: a release's notes and its files
+// make 70 KB of JSON (30 releases were 1.4 MB, over the old 1 MB limit:
+// "GitHub sent an unexpected answer (200)" in 0.6.5's first build)
+const char releasesApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REPO "/releases?per_page=10";
+const qint64 releasesMaxBytes = 8 * 1024 * 1024;
 const char latestReleasePage[] = VLC_REDESIGN_REPO_URL "/releases/latest";
 const char keyLastCheck[] = "redesign/update-last-check";
 const char keySkipped[] = "redesign/update-skip";
@@ -780,7 +784,7 @@ void RedesignUpdater::check(bool manual)
     if (!testApi().isEmpty())
         url = testApi();
 #endif
-    httpRequestAsync(this, githubRequest(url, 1024 * 1024, 20000),
+    httpRequestAsync(this, githubRequest(url, releasesMaxBytes, 20000),
                      [this](const HttpResponse &response) {
         // (an update staged before became Ready meanwhile: it stays so)
         if (m_state != Checking)

@@ -128,7 +128,16 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.6** (Android, branch `feature/android-066`, every item checked on the emulator): 🟢 subtitle lines on the
+- 🟡 **0.6.7** started. 📋 Open: About in a low window (1024x768 Mac, a small window): its buttons scroll with
+  the text under the fade (as before 0.6.6); keep them under the scrolling part as RedesignDialog does. The Hebrew
+  bidi pass (231 texts starting with a Latin word); Hide a cast device on a real device.
+- 🟢 **0.6.6** published 2026-11-14 21:36 UTC with every app (29 files: Windows x64 and ARM64, Linux, macOS, the APK,
+  the Samsung TV app's source zip; GitHub's digests = the signed list, the published signature checked). Tag v0.6.6 =
+  5a11ea7da7 (PR #92 merged as 09f750c190; its CI artifacts from the merge commit, the same tree); Android #11 merged
+  as e02a29e59c, its tag v0.6.6 = ba705137c4 (APK 13106060, the same certificate, installed over 0.6.5 on the
+  emulator). Samsung TV 0.6.6 (Live TV reasons) installed and run on a real TV. The macOS arm64 job failed once on a
+  GNU mirror (gettext 404/500): run again, 0 failures on both Macs. Small update from 0.6.5: 6.7 MB (ARM64 5.9 MB),
+  applied to 0.6.5 and compared. Before that (Android, branch `feature/android-066`, every item checked on the emulator): 🟢 subtitle lines on the
   seek bar (RdSeekCueMarks); 🟢 Add Subtitles › From Link (HTTPS only, 20 MB, the app's own folder, chosen and kept as
   a file opened); 🟢 On-Screen Messages: Show feedback for shortcuts and its duration (RdOsd; notices always show);
   🟢 Increase text contrast (the desktop's colours through the `-highdr` resource qualifier, set by the setting and

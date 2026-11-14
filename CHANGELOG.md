@@ -21,6 +21,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Android: Show feedback for shortcuts and its duration, a default subtitle delay.
 - Android: Increase text contrast, Always show the player bar, Ignored file extensions.
 - Android: the welcome's Subtitle languages step, Keyboard Shortcuts, Hide a cast device.
+- Android: effect presets, lyrics in the music player, Repeat and subtitle size in pixels in Settings.
+- Android: the player bar's other buttons (Stop, Snapshot, Favorite, long jumps...) and Clone of a profile.
+- Linux: the HTTP proxy settings, as on Windows and macOS.
+
+### Fixed
+
+- Updates: GitHub's limit of requests is said as such, with when to try again.
+- Android: the tracks panel's Audio options open; a video keeps its name with a sound file added.
+- Android: a crowded player bar held upright no longer draws buttons over each other.
 
 ## [0.6.5] · 2026-11-14
 

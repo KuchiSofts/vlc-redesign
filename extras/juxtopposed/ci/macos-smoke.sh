@@ -26,7 +26,10 @@
 #      staged next to a copy and swapped in by the app's own
 #      Resources/vlc-redesign-update.sh, as the updater does;
 #   6. a playlist opened as Finder opens it (open -a: an Apple event, #84),
-#      its clip opened.
+#      its clip opened;
+#   7. memory: the Qt interface changing media every 0.6 s for SOAK_SECS
+#      (240), its RSS and threads sampled; the trend after the warm-up is
+#      reported, a growth of more than 64 MB fails it (a leak).
 # A crash report of the app (~/Library/Logs/DiagnosticReports) fails it.
 # NO_IPTV=1: a build made without the Live TV add-on (macos-build.sh -t).
 #
@@ -416,6 +419,67 @@ if [ -n "$finder_pid" ]; then
     kill -9 "$finder_pid" 2>/dev/null || true
 fi
 if [ -n "$rc_saved" ]; then cp "$work/vlcrc.saved" "$rc_dir/vlcrc"; else rm -f "$rc_dir/vlcrc"; fi
+
+# 7. Memory: the Qt interface going from one copy of the clip to the next every
+# 0.6 s (each a new input, its decoder and video output), as the Windows and
+# Linux soaks (memsoak.py, linsoak.sh); the RSS after the first minute (the
+# warm-up: caches, the library) compared, first half with second half
+soak=${SOAK_SECS:-240}
+for n in 2 3; do cp "$clip" "$work/clip$n.y4m"; done
+port=4215
+start soak --extraintf=rc --rc-host=127.0.0.1:$port --aout=dummy --loop \
+    "$clip" "$work/clip2.y4m" "$work/clip3.y4m"
+soak_pid=$pid
+sleep 8
+samples=()
+threads=()
+changes=0
+# (one connection to the rc interface: a fifo read by nc)
+rm -f "$work/rc.fifo"; mkfifo "$work/rc.fifo"
+nc 127.0.0.1 $port < "$work/rc.fifo" > /dev/null 2>&1 &
+nc_pid=$!
+# (nc gone, a write would end the script)
+trap '' PIPE
+if exec 3>"$work/rc.fifo"; then
+    t0=$SECONDS
+    last=-10
+    while [ $((SECONDS - t0)) -lt $soak ] && kill -0 $soak_pid 2>/dev/null; do
+        echo next >&3
+        changes=$((changes + 1))
+        if [ $((SECONDS - t0 - last)) -ge 10 ]; then
+            last=$((SECONDS - t0))
+            [ $last -ge 60 ] && samples+=("$(ps -o rss= -p $soak_pid | tr -d ' ')") \
+                && threads+=("$(ps -M -p $soak_pid | tail -n +2 | wc -l | tr -d ' ')")
+        fi
+        sleep 0.6
+    done
+    echo quit >&3
+    exec 3>&-
+    sleep 1; kill $nc_pid 2>/dev/null || true
+else
+    fail "memory soak: no rc interface"
+fi
+trap - PIPE
+wait_exit $soak_pid 30
+code=$?
+if [ ${#samples[@]} -ge 4 ]; then
+    half=$(( ${#samples[@]} / 2 ))
+    read -r a b ta tb <<< "$(python3 -c '
+import sys
+s = [int(x) for x in sys.argv[2].split()]; t = [int(x) for x in sys.argv[3].split()]; h = int(sys.argv[1])
+print("%.1f %.1f %.1f %.1f" % (sum(s[:h]) / h / 1024, sum(s[h:]) / (len(s) - h) / 1024, sum(t[:h]) / h, sum(t[h:]) / (len(t) - h)))
+' $half "${samples[*]}" "${threads[*]}")"
+    growth=$(python3 -c "print('%.1f' % ($b - $a))")
+    line="memory over $changes media changes: $a MB -> $b MB after the warm-up ($growth MB), threads $ta -> $tb"
+    if python3 -c "import sys; sys.exit(0 if $b - $a > 64 else 1)"; then
+        fail "$line (a leak)"
+    else
+        note "ok: $line"
+    fi
+else
+    fail "memory soak: too few samples (${#samples[@]}; the app ended early?)"
+fi
+[ $code = 0 ] && note "ok: the soak's interface quit (exit code 0)" || fail "the soak's interface: exit code $code"
 
 # No crash
 reports_after=$(ls ~/Library/Logs/DiagnosticReports 2>/dev/null | sort)

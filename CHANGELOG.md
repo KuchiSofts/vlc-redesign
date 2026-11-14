@@ -24,6 +24,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - Version 0.6.7 started (VLC_REDESIGN_VERSION).
+- macOS CI: a memory soak of the Qt interface (media changes every 0.6 s, a growth over 64 MB fails it).
 
 ## [0.6.6] · 2026-11-14
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-14 02:15+0000\n"
+"POT-Creation-Date: 2026-11-14 02:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26261,18 +26261,19 @@ msgid "Login:pass"
 msgstr ""
 
 #: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr ""
-
-#: modules/gui/qt/dialogs/systray/systray.cpp:206
+#: modules/gui/qt/dialogs/systray/systray.cpp:215
 msgid "Sho&w %1"
 msgstr ""
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:218
+#: modules/gui/qt/dialogs/systray/systray.cpp:209
+msgid "&Hide %1 in taskbar"
+msgstr ""
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:227
 msgid "&Open Media"
 msgstr ""
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:222
+#: modules/gui/qt/dialogs/systray/systray.cpp:231
 #: modules/gui/qt/menus/menus.cpp:237 modules/gui/qt/qt.cpp:1810
 msgid "&Quit"
 msgstr ""

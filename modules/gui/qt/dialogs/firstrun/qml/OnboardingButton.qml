@@ -40,6 +40,7 @@ Controls.Button {
             x: control.floorText ? Math.floor((parent.width - width) / 2) : (parent.width - width) / 2
             width: Math.ceil(exactMetrics.advanceWidth / 16 - text.length * font.pixelSize / 2816 - 0.001)
             height: parent.height
+            textFormat: Text.PlainText
             text: control.text
             color: !control.enabled ? VLCStyle.redesign.color("#666666", "#7c7c7b")
                  : control.primary ? "#161616" : VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")

@@ -428,6 +428,10 @@ Widgets.RedesignDialog {
 
         property string placeholderText
 
+        // (its placeholder is drawn below, so a screen reader is told what it is for)
+        Accessible.role: Accessible.EditableText
+        Accessible.name: placeholderText
+
         anchors.fill: parent
         // from the start of the field (the right in a right to left layout)
         horizontalAlignment: TextInput.AlignLeft

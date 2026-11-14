@@ -252,6 +252,7 @@ Item {
                                     Text {
                                         anchors.fill: parent
 
+                                        textFormat: Text.PlainText
                                         text: root.previewHost ? "" : repeater.getMetric(index).text
                                         verticalAlignment: Text.AlignVCenter
                                         font.pixelSize: VLCStyle.fontSize_xxlarge

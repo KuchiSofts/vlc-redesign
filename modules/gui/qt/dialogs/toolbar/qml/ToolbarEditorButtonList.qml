@@ -244,6 +244,7 @@ Flickable {
                     Text {
                         id: label
                         width: parent.width
+                        textFormat: Text.PlainText
                         text: PlayerControlbarControls.paletteText[item.modelData] ?? (item.entry.text ?? "")
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                         font.family: VLCStyle.redesign.fontFamily

@@ -137,6 +137,7 @@ Widgets.RedesignDialog {
         Text {
             anchors.centerIn: parent
             visible: pluginList.count === 0
+            textFormat: Text.PlainText
             text: qsTr("No plugin matches \"%1\"").arg(search.text)
             color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily
@@ -191,6 +192,7 @@ Widgets.RedesignDialog {
                     spacing: VLCStyle.dp(10, VLCStyle.scale)
                     Text {
                         Layout.fillWidth: true
+                        textFormat: Text.PlainText
                         text: card.title
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
@@ -209,6 +211,7 @@ Widgets.RedesignDialog {
                 Text {
                     Layout.fillWidth: true
                     visible: text !== ""
+                    textFormat: Text.PlainText
                     text: card.summary
                     wrapMode: Text.Wrap
                     horizontalAlignment: Text.AlignLeft
@@ -218,7 +221,11 @@ Widgets.RedesignDialog {
                 }
                 Text {
                     Layout.fillWidth: true
-                    text: card.url !== "" ? "<a href=\"%1\">%2</a> · %3".arg(card.url).arg(card.url).arg(card.fileName)
+                    // (escaped: the address and the file name come from the extension, not from us)
+                    function escaped(s) {
+                        return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+                    }
+                    text: card.url !== "" ? "<a href=\"%1\">%2</a> · %3".arg(escaped(card.url)).arg(escaped(card.url)).arg(escaped(card.fileName))
                                           : card.fileName
                     textFormat: card.url !== "" ? Text.StyledText : Text.PlainText
                     linkColor: VLCStyle.redesign.accent

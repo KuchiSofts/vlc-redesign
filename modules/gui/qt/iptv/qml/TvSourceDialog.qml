@@ -348,6 +348,7 @@ Widgets.RedesignDialog {
                         width: parent.width
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
+                            textFormat: Text.PlainText
                             text: sourceRow.s.name
                             elide: Text.ElideRight
                             width: Math.min(implicitWidth, parent.width * 0.5)
@@ -358,6 +359,7 @@ Widgets.RedesignDialog {
                         }
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
+                            textFormat: Text.PlainText
                             text: root._kindName(sourceRow.s.kind) + " · " + sourceRow.s.host
                             color: root.c("#6B6B6B", "#4d4d4d")
                             font.family: VLCStyle.redesign.fontFamily
@@ -392,6 +394,7 @@ Widgets.RedesignDialog {
                         width: parent.width
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
+                        textFormat: Text.PlainText
                         text: sourceRow.s.busy ? (sourceRow.s.stage === "guide" ? qsTr("Updating the guide… %1 MB")
                                                                                      .arg((sourceRow.s.received / 1048576).toFixed(1))
                                                                                 : qsTr("Updating the channels…"))
@@ -824,11 +827,13 @@ Widgets.RedesignDialog {
         spacing: VLCStyle.dp(12, VLCStyle.scale)
 
         Widgets.RedesignDialogHeading {
+            plain: true
             text: qsTr("The guide of %1").arg(root._channelGuide ? root._channelGuide.name : "")
             description: qsTr("The id the guides give this channel. Yours comes first; leave it empty to use the one of its list or the one found for it.")
         }
         Text {
             Layout.fillWidth: true
+            textFormat: Text.PlainText
             text: qsTr("Its list: %1").arg(root._channelGuide && root._channelGuide.own ? root._channelGuide.own : qsTr("none"))
                   + "  ·  " + qsTr("Found for it: %1").arg(root._channelGuide && root._channelGuide.auto
                                                            ? root._channelGuide.auto : qsTr("none"))
@@ -898,6 +903,7 @@ Widgets.RedesignDialog {
                             anchors.right: headActions.left
                             anchors.rightMargin: root.px(12)
                             anchors.verticalCenter: parent.verticalCenter
+                            textFormat: Text.PlainText
                             text: guideRow.s.name + "  ·  " + (guideRow.s.kind === "schedulesdirect"
                                       ? qsTr("A guide for the channels of every source")
                                       : qsTr("Guide for %1 of %2 channels").arg(guideRow.s.withGuide).arg(guideRow.s.channels))
@@ -961,6 +967,7 @@ Widgets.RedesignDialog {
                                 anchors.right: lineActions.left
                                 anchors.rightMargin: root.px(12)
                                 anchors.verticalCenter: parent.verticalCenter
+                                textFormat: Text.PlainText
                                 text: guideLine.modelData.host + "  ·  "
                                       + (!guideLine.modelData.enabled ? qsTr("Off")
                                          : guideLine.modelData.error ? guideLine.modelData.error
@@ -1190,6 +1197,7 @@ Widgets.RedesignDialog {
                         spacing: root.px(4)
                         Text {
                             width: parent.width
+                            textFormat: Text.PlainText
                             text: card.modelData.name
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignLeft
@@ -1200,6 +1208,7 @@ Widgets.RedesignDialog {
                         }
                         Text {
                             width: parent.width
+                            textFormat: Text.PlainText
                             text: card.modelData.description || ""
                             wrapMode: Text.WordWrap
                             maximumLineCount: 2

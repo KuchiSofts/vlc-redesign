@@ -159,6 +159,7 @@ ColumnLayout {
                 x: LayoutMirroring.enabled ? parent.width - width - root.px(16) : root.px(16)
                 width: parent.width - root.px(16) - root.px(16 + 24 + 10)
                 height: parent.height
+                textFormat: Text.PlainText
                 text: field.text
                 color: root.c("#8F8F8F", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
@@ -345,6 +346,7 @@ ColumnLayout {
 
                         contentItem: Text {
                             id: rowText
+                            textFormat: Text.PlainText
                             text: row.label
                             color: row.kind === "new" ? root.c("#6B6B6B", "#6b6b6b") : root.c("#8F8F8F", "#2e2e2e")
                             font.family: VLCStyle.redesign.fontFamily
@@ -552,6 +554,7 @@ ColumnLayout {
         Widgets.RedesignDialogHeading {
             LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             LayoutMirroring.childrenInherit: true
+            plain: true
             text: qsTr("Delete %1?").arg(deleteConfirmation.name)
             description: qsTr("The effects in use stay as they are.")
         }

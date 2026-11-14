@@ -688,6 +688,7 @@ FocusScope {
                 Layout.fillHeight: true
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
                 visible: root._crumbs.length < 2
+                textFormat: Text.PlainText
                 text: root._crumbs.length > 0 ? root._crumbs[0].title : ""
                 elide: Text.ElideRight
                 // (from the right in a right to left layout)
@@ -737,6 +738,7 @@ FocusScope {
                 Text {
                     Layout.minimumWidth: Math.min(implicitWidth, VLCStyle.dp(130, VLCStyle.scale))
                     Layout.maximumWidth: implicitWidth
+                    textFormat: Text.PlainText
                     text: root._crumbs.length > 0 ? root._crumbs[root._crumbs.length - 1].title : ""
                     elide: Text.ElideRight
                     // Dimmed: the parents are the ones to click
@@ -921,6 +923,8 @@ FocusScope {
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
                 placeholderText: qsTr("Search")
+                // (the placeholder is not its name: a screen reader read an unnamed "edit")
+                Accessible.name: placeholderText
                 placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
                 horizontalAlignment: TextInput.AlignLeft
                 verticalAlignment: TextInput.AlignVCenter
@@ -1113,6 +1117,7 @@ FocusScope {
                         id: sectionTitle
                         width: parent.width - chevron.width - VLCStyle.dp(10, VLCStyle.scale)
                         height: parent.height
+                        textFormat: Text.PlainText
                         text: homeSection.modelData.title
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
@@ -1488,6 +1493,7 @@ FocusScope {
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
                     // (the words of the TV page)
+                    textFormat: Text.PlainText
                     text: Iptv.playerModel.search !== "" ? qsTr("No channel matches the search")
                           : Iptv.playerModel.group === "favorites" ? qsTr("No favorite channel yet: right-click a channel to add it")
                           : Iptv.playerModel.group === "recent" ? qsTr("No channel watched yet")
@@ -1912,6 +1918,7 @@ FocusScope {
                     id: rowMetrics
                     font: rowText.font
                 }
+                textFormat: Text.PlainText
                 text: libraryRow.label
                 elide: Text.ElideMiddle
                 horizontalAlignment: Text.AlignLeft
@@ -1977,6 +1984,7 @@ FocusScope {
         Accessible.name: description
 
         contentItem: Text {
+            textFormat: Text.PlainText
             text: crumb.text
             elide: Text.ElideMiddle
             font.family: VLCStyle.redesign.fontFamily

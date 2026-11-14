@@ -65,6 +65,7 @@ ColumnLayout {
                 rightPadding: presetBox.mirrored ? 12 : 0
                 horizontalAlignment: Text.AlignLeft
                 elide: Text.ElideRight
+                textFormat: Text.PlainText
                 text: presetBox.displayText || qsTr("Custom")
                 color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
                 verticalAlignment: Text.AlignVCenter
@@ -126,7 +127,7 @@ ColumnLayout {
                 text: root.expanded ? qsTr("Close Equalizer") : qsTr("Open Equalizer")
                 onClicked: root.expanded = !root.expanded
                 background: Item {}
-                contentItem: Label { text: parent.text; color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
+                contentItem: Label { textFormat: Text.PlainText; text: parent.text; color: VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"); font.pixelSize: VLCStyle.dp(14, VLCStyle.scale) }
             }
             RowLayout {
                 id: bandsRow

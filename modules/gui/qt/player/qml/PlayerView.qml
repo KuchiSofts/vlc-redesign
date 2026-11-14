@@ -1208,6 +1208,7 @@ FocusScope {
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 width: Math.min(implicitWidth, rootPlayer.width - VLCStyle.dp(90, VLCStyle.scale))
+                textFormat: Text.PlainText
                 text: castSubtitleNote.text
                 elide: Text.ElideRight
                 color: VLCStyle.redesign.color("#EAEAEA", "#2e2e2e")
@@ -1284,6 +1285,7 @@ FocusScope {
                 Layout.maximumWidth: rootPlayer.width - VLCStyle.dp(96, VLCStyle.scale)
                 visible: text !== ""
                 // (a file without a title: its name, as the window says it)
+                textFormat: Text.PlainText
                 text: Player.title !== "" ? Player.title : Player.name
                 color: VLCStyle.redesign.color("#B8B8B8", "#2e2e2e")
                 font.family: VLCStyle.redesign.fontFamily
@@ -1416,6 +1418,7 @@ FocusScope {
                 }
                 contentItem: Text {
                     id: stopText
+                    textFormat: Text.PlainText
                     text: parent.text
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter

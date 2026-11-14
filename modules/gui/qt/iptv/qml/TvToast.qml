@@ -77,6 +77,7 @@ Rectangle {
         Text {
             anchors.verticalCenter: parent.verticalCenter
             width: Math.min(implicitWidth, root.parent ? root.parent.width - root.px(200) : implicitWidth)
+            textFormat: Text.PlainText
             text: root.text
             elide: Text.ElideRight
             color: VLCStyle.redesign.color("#C6C6C6", undefined, root._dark)

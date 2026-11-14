@@ -124,8 +124,12 @@ static int Add( services_discovery_t *p_sd, const uint32_t disk_mask )
         if ( !(disk_mask & mask) )
             continue;
 
+        // a drive whose volume can't be read (a card reader or a disc drive with nothing in it, a
+        // network drive offline) is left out: the others are still listed (one such drive used to
+        // fail the whole module, and no drive was listed at all)
         input_item_t *item = CreateInput( 'A' + i );
-        if (unlikely( !item )) return VLC_ENOMEM;
+        if ( item == NULL )
+            continue;
 
         if ( p_sys->items[i] )
         {

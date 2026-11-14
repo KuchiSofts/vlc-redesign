@@ -248,6 +248,7 @@ ColumnLayout {
                                     colorChoices.close()
                             }
                             contentItem: Text {
+                                textFormat: Text.PlainText
                                 text: colorChoice.modelData.name
                                 color: root.c("#8F8F8F")
                                 font.family: VLCStyle.redesign.fontFamily
@@ -387,6 +388,7 @@ ColumnLayout {
         }
         contentItem: Text {
             id: choiceText
+            textFormat: Text.PlainText
             text: choiceBox.displayText
             color: root.c("#6B6B6B")
             font: choiceBox.font
@@ -412,6 +414,7 @@ ColumnLayout {
     // its tooltip; at the start of the row, right to left too
     component OptionLabel: Text {
         id: optionLabel
+        textFormat: Text.PlainText
         text: root.label
         color: root.c("#6B6B6B")
         font.family: VLCStyle.redesign.fontFamily

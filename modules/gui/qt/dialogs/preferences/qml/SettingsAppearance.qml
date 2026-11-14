@@ -14,8 +14,13 @@ SettingsSectionTitle {
     property int selectedTheme: 0
     property int initialTheme: 0
     // a color, or "system": Follow the Windows accent color
-    property string selectedAccent: VLCStyle.redesign.accentChoice
-    property string initialAccent: VLCStyle.redesign.accentChoice
+    // (set once here and by begin(): a binding would be dropped by begin() with a warning)
+    property string selectedAccent
+    property string initialAccent
+    Component.onCompleted: {
+        selectedAccent = VLCStyle.redesign.accentChoice
+        initialAccent = selectedAccent
+    }
     property string selectedLanguage: "auto"
     property string initialLanguage: "auto"
     property bool selectedRightToLeft: false
@@ -263,6 +268,7 @@ SettingsSectionTitle {
             anchors.rightMargin: root.px(20)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+            textFormat: Text.PlainText
             text: followAccentToggle.label
             color: root.c("#8F8F8F")
             font.family: VLCStyle.redesign.fontFamily

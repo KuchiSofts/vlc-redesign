@@ -78,9 +78,22 @@ What is being worked on, updated as it changes (2026-11-10):
     updated over 0.6.0 on a real phone; the Samsung app's round on a real TV. After publishing: the signature of
     the list is good, GitHub's digests of the 21 files equal it, and a fresh copy of 0.6.0 found 0.6.1, took the
     small update and restarted itself as 0.6.1 (495 files, the folder equal to the package).
-- ✅ **0.6.2** published 2026-11-12 (an update release: #81 on Windows, Linux and macOS; the Android app
-  and the Samsung TV app stay at 0.6.1, "follows: 0.6.2" in platforms.yml: the Android APK joins this release when its fix is ready). Next: 0.6.3 (#81 in the Android app).
-  Before it: An Indonesian translation from Weblate
+- ✅ **0.6.2** published 2026-11-12 (an update release: #81 on Windows, Linux and macOS; the Android app at
+  0.6.2 with the same fix: VideoLAN's media library built here with it, buildsystem/redesign/MEDIALIBRARY.md;
+  the Samsung TV app never had the bug, it stays at 0.6.1). Checked: CI 18 green, a fresh 0.6.1 copy updated
+  itself to 0.6.2 (423 files), 0.6.1 -> 0.6.2 on the Android emulator, the signed list's digests.
+- ✅ **0.6.3** 2026-11-13 (an update release): macOS opens files from Finder and the Dock (#84, #85: Qt's
+  QFileOpenEvent reached nobody; util/file_open_spy.hpp, a unit test, and step 6 of CI's macOS smoke test opens an
+  .m3u the way Finder does); the start about 0.2 s sooner (the fonts read in the background for every language);
+  screen-reader names; the bug form for every system; macOS (#87, #88, #89, @xITmasterx): the full menu bar from
+  VLCMenuBar's menus, Metal before Qt's software renderer and a cached "software" probed again, hidden buttons keep
+  their place while customizing; VideoLAN merged to 914c465b0c. Android 0.6.3 (Hindi crash,
+  Korean texts, check_string_formats.py). Samsung unchanged (0.6.1). Next: 0.6.4.
+  The close that never ended on CI's ARM64 runner (since 0.6.1): its dump showed an assert's message box
+  (mlthreadpool.cpp, `assert(task)`): files that include <cassert> before config.h kept their asserts in
+  release builds (29 files). The Qt module passes -DNDEBUG in such builds; ThreadRunner changes its task
+  lists under its lock and skips a stale entry; VideoLAN's ThreadRunner test runs in unit-tests.sh.
+- Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.
   - 🟡 #81 (2026-11-12, @decider07): .m4a songs whose picture is a video track were listed under Videos; no way

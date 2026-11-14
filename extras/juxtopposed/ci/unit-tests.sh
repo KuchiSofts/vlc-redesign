@@ -42,6 +42,24 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     $(pkg-config --libs Qt6Core) -o "$out/whats-new"
 "$out/whats-new"
 
+echo "== files opened from Finder (macOS's open events reach the playlist, the ones of a launch too)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Gui) \
+    extras/juxtopposed/file-open-spy.cpp $(pkg-config --libs Qt6Gui) -o "$out/file-open-spy"
+"$out/file-open-spy"
+
+echo "== the media library's task runner (VideoLAN's test: tasks, queues, cancels, objects destroyed while they wait)"
+moc=$(pkg-config --variable=libexecdir Qt6Core 2>/dev/null)/moc
+[ -x "$moc" ] || moc=/usr/lib/qt6/libexec/moc
+mkdir -p "$out/thread-runner"
+"$moc" modules/gui/qt/medialibrary/mlthreadpool.hpp -o "$out/thread-runner/moc_mlthreadpool.cpp"
+"$moc" modules/gui/qt/tests/test_thread_runner.cpp -o "$out/thread-runner/test_thread_runner.moc"
+g++ -std=c++17 -O1 -Wall $san -fPIC -I. -I"$out/thread-runner" -Imodules/gui/qt/medialibrary \
+    $(pkg-config --cflags Qt6Core Qt6Test) \
+    modules/gui/qt/tests/test_thread_runner.cpp modules/gui/qt/medialibrary/mlthreadpool.cpp \
+    "$out/thread-runner/moc_mlthreadpool.cpp" \
+    $(pkg-config --libs Qt6Core Qt6Test) -o "$out/thread-runner/test"
+"$out/thread-runner/test" -silent
+
 echo "== Cover tracks (a song's picture kept as a video track is its cover, not a video)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/cover-track.cpp -o "$out/cover-track"
 "$out/cover-track"
@@ -124,4 +142,10 @@ g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-c
 
 echo "== subtitle encodings"
 python3 extras/juxtopposed/subtitle-charset-test.py --cc "gcc $san"
+
+echo "== outside text is never drawn as HTML (QML textFormat)"
+python3 extras/juxtopposed/qml-plaintext-check.py
+
+echo "== every text field and settings toggle has an accessible name"
+python3 extras/juxtopposed/qml-a11y-name-check.py
 echo "all passed"

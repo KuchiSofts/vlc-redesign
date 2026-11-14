@@ -65,6 +65,12 @@ libqt_plugin_la_CPPFLAGS = $(AM_CPPFLAGS) $(CPPFLAGS_qt) \
 	-I$(builddir)/dialogs/preferences \
 	-I$(builddir)/dialogs/sout \
 	-I$(builddir)/dialogs/vlm
+if HAVE_NDEBUG
+# config.h defines it too, but a file that includes <cassert> first (through a
+# Qt header) kept its asserts: one failed while the interface closed and its
+# message box held the close forever
+libqt_plugin_la_CPPFLAGS += -DNDEBUG=1
+endif
 
 libqt_plugin_la_CXXFLAGS = $(AM_CXXFLAGS) $(QT_CFLAGS) $(CXXFLAGS_qt) -fPIC
 libqt_plugin_la_LIBADD = $(vlc_qt_libs)
@@ -77,8 +83,11 @@ libqt_plugin_la_LIBADD += -latomic
 endif
 libqt_plugin_la_LDFLAGS = $(AM_LDFLAGS) $(QT_LDFLAGS) $(GC_SECTIONS_LDFLAGS)
 if HAVE_OSX
-# (-lobjc: maininterface/macos_titlebar.cpp messages AppKit from C++)
-libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa -lobjc
+# (-lobjc: maininterface/macos_titlebar.cpp messages AppKit from C++;
+# CoreServices: util/mac_open_documents.cpp takes Apple events;
+# CoreGraphics: qt.cpp asks for a window server session)
+libqt_plugin_la_LDFLAGS += -Wl,-framework,Cocoa -lobjc -Wl,-framework,CoreServices -Wl,-framework,CoreFoundation \
+	-Wl,-framework,CoreGraphics
 endif
 
 if HAVE_X

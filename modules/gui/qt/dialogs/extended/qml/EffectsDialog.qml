@@ -155,6 +155,7 @@ T.Popup {
                 contentItem: Text {
                     id: closeLabel
                     horizontalAlignment: Text.AlignLeft
+                    textFormat: Text.PlainText
                     text: parent.text
                     color: root.c(VLCStyle.redesign.textSecondary)
                     font.family: VLCStyle.redesign.fontFamily
@@ -202,6 +203,7 @@ T.Popup {
                         }
                     }
                     contentItem: Text {
+                        textFormat: Text.PlainText
                         text: tabButton.modelData
                         color: root.currentTab === index ? VLCStyle.redesign.accent : root.c(VLCStyle.redesign.textMuted)
                         font.family: VLCStyle.redesign.fontFamily
@@ -285,6 +287,7 @@ T.Popup {
                         onClicked: root.openNative(2)
                         background: Rectangle { color: root.c(VLCStyle.redesign.controlBackground); radius: VLCStyle.dp(6, VLCStyle.scale) }
                         contentItem: Text {
+                            textFormat: Text.PlainText
                             text: parent.text
                             color: root.c(VLCStyle.redesign.textPrimary)
                             font.family: VLCStyle.redesign.fontFamily
@@ -337,6 +340,7 @@ T.Popup {
                     border.color: parent.visualFocus ? VLCStyle.redesign.focusColor : root.c(VLCStyle.redesign.windowBorder)
                 }
                 contentItem: Text {
+                    textFormat: Text.PlainText
                     text: parent.text
                     color: root.c(VLCStyle.redesign.textSecondary)
                     font.family: VLCStyle.redesign.fontFamily
@@ -363,6 +367,7 @@ T.Popup {
                 }
                 background: Rectangle { color: parent.enabled ? VLCStyle.redesign.accent : root.c(VLCStyle.redesign.controlBackground); radius: VLCStyle.dp(5, VLCStyle.scale) }
                 contentItem: Text {
+                    textFormat: Text.PlainText
                     text: parent.text
                     color: parent.enabled ? "#0E0E0E" : root.c(VLCStyle.redesign.textDisabled)
                     font.family: VLCStyle.redesign.fontFamily

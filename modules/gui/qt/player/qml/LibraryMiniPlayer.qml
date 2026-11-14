@@ -205,6 +205,7 @@ T.Control {
             y: video.y + root._frameHeight + VLCStyle.dp(20 + 4, VLCStyle.scale)
             width: parent.width - 2 * x
             height: VLCStyle.dp(19, VLCStyle.scale)
+            textFormat: Text.PlainText
             text: Player.name
             color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
             elide: Text.ElideRight
@@ -255,6 +256,7 @@ T.Control {
                         anchors.verticalCenter: parent.verticalCenter
                         width: Math.min(implicitWidth, VLCStyle.dp(120, VLCStyle.scale))
                         height: VLCStyle.dp(19, VLCStyle.scale)
+                        textFormat: Text.PlainText
                         text: detail.modelData.label
                         color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
                         elide: Text.ElideRight

@@ -30,6 +30,7 @@ T.Button {
 
     contentItem: Text {
         id: buttonText
+        textFormat: Text.PlainText
         text: button.text
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

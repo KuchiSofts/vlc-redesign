@@ -139,6 +139,7 @@ Item {
                     y: 142
                     topPadding: 15 - themeLabelMetrics.ascent
                     width: parent.width
+                    textFormat: Text.PlainText
                     text: modelData.title
                     color: VLCStyle.redesign.color("#8f8f8f", "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily

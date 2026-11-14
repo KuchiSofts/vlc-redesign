@@ -23,6 +23,7 @@ Controls.ItemDelegate {
         color: root.hovered ? VLCStyle.redesign.color("#252525", "#9c9c9b") : "transparent"
     }
     contentItem: Text {
+        textFormat: Text.PlainText
         text: MainCtx.minimalView ? qsTr("Show player UI") : qsTr("Hide player UI")
         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
         font.family: VLCStyle.redesign.fontFamily

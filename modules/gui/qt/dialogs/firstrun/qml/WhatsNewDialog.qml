@@ -112,6 +112,7 @@ Widgets.RedesignDialog {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideRight
+                        textFormat: Text.PlainText
                         text: root.groupTitle(group.modelData.kind)
                         color: root.textPrimary
                         font.family: VLCStyle.redesign.fontFamily
@@ -164,6 +165,7 @@ Widgets.RedesignDialog {
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignLeft
                         wrapMode: Text.WordWrap
+                        textFormat: Text.PlainText
                         text: qsTr("And %1 more", "And %1 more", group.modelData.more).arg(group.modelData.more)
                         color: root.textMuted
                         font.family: VLCStyle.redesign.fontFamily

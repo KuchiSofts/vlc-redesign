@@ -83,6 +83,7 @@ Rectangle {
                         width: Math.min(parent.width, Math.ceil(optionExact.advanceWidth / 16
                                                                 - text.length * font.pixelSize / 2816 - 0.001))
                         height: parent.height
+                        textFormat: Text.PlainText
                         text: option.modelData.text
                         color: option.selected ? VLCStyle.redesign.accent : root.c("#6B6B6B")
                         // (cut only when the choice is too narrow for it: a

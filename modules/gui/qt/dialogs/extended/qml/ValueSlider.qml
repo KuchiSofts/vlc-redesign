@@ -60,6 +60,7 @@ ColumnLayout {
             anchors.rightMargin: root.px(10)
             anchors.baseline: parent.verticalCenter
             anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, parent.height)
+            textFormat: Text.PlainText
             text: root.label
             color: root.c("#6B6B6B")
             font.family: VLCStyle.redesign.fontFamily

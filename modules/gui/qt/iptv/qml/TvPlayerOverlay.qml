@@ -423,6 +423,7 @@ FocusScope {
                         id: bannerNumber
                         visible: text !== ""
                         anchors.verticalCenter: parent.verticalCenter
+                        textFormat: Text.PlainText
                         text: root.channel.number > 0 ? root.channel.number : ""
                         color: banner.c("#EAEAEA", "#191919")
                         font.family: VLCStyle.redesign.fontFamily
@@ -435,6 +436,7 @@ FocusScope {
                         anchors.verticalCenter: parent.verticalCenter
                         width: Math.min(implicitWidth, parent.width - (bannerNumber.visible ? bannerNumber.width + parent.spacing : 0)
                                         - (bannerStar.visible ? bannerStar.width + root.px(6) : 0))
+                        textFormat: Text.PlainText
                         text: root.channel.name ?? ""
                         elide: Text.ElideRight
                         horizontalAlignment: Text.AlignLeft
@@ -459,6 +461,7 @@ FocusScope {
                 Text {
                     width: parent.width
                     visible: text !== ""
+                    textFormat: Text.PlainText
                     text: root.channel.group ?? ""
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
@@ -512,6 +515,7 @@ FocusScope {
                     Text {
                         id: bannerPillText
                         anchors.centerIn: parent
+                        textFormat: Text.PlainText
                         text: bannerPill.label
                         color: bannerPill.live ? "#0E0E0E" : banner.c("#EAEAEA", "#191919")
                         font.family: VLCStyle.redesign.fontFamily
@@ -524,6 +528,7 @@ FocusScope {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width - (bannerPill.visible ? bannerPill.width + parent.spacing : 0)
+                    textFormat: Text.PlainText
                     text: root._archive ? (root.catchup.title || qsTr("Programme"))
                           : Iptv.bannerMode === 2 ? ""
                           : root._hasNow ? root.now.title
@@ -618,6 +623,7 @@ FocusScope {
                 visible: Iptv.showDescriptions && !root._archive && Iptv.bannerMode !== 2
                          && (root.browse === 0 ? (root.now.description ?? "") : root._browseDescription) !== ""
                 topPadding: root.px(6)
+                textFormat: Text.PlainText
                 text: (root.browse === 0 ? (root.now.description ?? "") : root._browseDescription).replace(/\s+/g, " ")
                 wrapMode: Text.WordWrap
                 maximumLineCount: 2
@@ -662,6 +668,7 @@ FocusScope {
                     width: parent.width - bannerNextKey.width - parent.spacing
                     height: root.px(20)
                     verticalAlignment: Text.AlignVCenter
+                    textFormat: Text.PlainText
                     text: Iptv.timeText(root.next.start ?? 0) + "  " + (root.next.title ?? "")
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
@@ -766,6 +773,7 @@ FocusScope {
                         required property string modelData
                         anchors.right: parent.right
                         visible: modelData !== ""
+                        textFormat: Text.PlainText
                         text: modelData
                         color: banner.c("#6B6B6B")
                         font.family: VLCStyle.redesign.fontFamily
@@ -927,6 +935,7 @@ FocusScope {
                 anchors.verticalCenter: parent.verticalCenter
                 horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideRight
+                textFormat: Text.PlainText
                 text: Iptv.playerModel.group === "" ? qsTr("All Channels")
                       : Iptv.playerModel.group === "favorites" ? qsTr("Favorites")
                       : Iptv.playerModel.group === "recent" ? qsTr("Recently Watched")

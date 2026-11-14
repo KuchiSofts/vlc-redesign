@@ -211,7 +211,9 @@ FocusScope {
 
                 Widgets.MenuCaption {
                     topPadding: VLCStyle.margin_normal
-                    text: "<b>" + qsTr("File Name:") + "</b> " + root.model.fileName
+                    // (a file's name may hold < > & on Linux and macOS: escaped, never drawn as HTML)
+                    text: "<b>" + qsTr("File Name:") + "</b> "
+                          + String(root.model.fileName ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
                     width: parent.width
                     horizontalAlignment: Text.AlignLeft
                     color: theme.fg.secondary
@@ -222,14 +224,21 @@ FocusScope {
 
                     readonly property string folderMRL: MainCtx.folderMRL(root.model?.mrl ?? "")
 
+                    // (a path may hold < > & ' on Linux and macOS: escaped, never drawn as HTML)
+                    function escaped(s) {
+                        return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+                                              .replace(/'/g, "&#39;").replace(/"/g, "&quot;")
+                    }
+
                     text: {
                         if (!!folderMRL)
                             return "<b>%1</b> <a href='%2'>%3</a>"
                                         .arg(qsTr("Folder:"))
-                                        .arg(folderMRL)
-                                        .arg(MainCtx.displayMRL(folderMRL))
+                                        // (the address: its quote encoded as a URL does; < > are already)
+                                        .arg(folderMRL.replace(/'/g, "%27").replace(/</g, "%3C").replace(/>/g, "%3E"))
+                                        .arg(escaped(MainCtx.displayMRL(folderMRL)))
 
-                        return "<b>" + qsTr("Path:") + "</b> " + root.model.display_mrl
+                        return "<b>" + qsTr("Path:") + "</b> " + escaped(root.model.display_mrl)
                     }
 
                     linkColor: theme.fg.link

@@ -150,6 +150,7 @@ T.Popup {
                             Layout.preferredWidth: implicitWidth
                             Layout.minimumWidth: 0
                             elide: Text.ElideRight
+                            textFormat: Text.PlainText
                             text: modelData.title
                             color: root.currentTab === modelData.tab ? VLCStyle.redesign.accent
                                                                      : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
@@ -433,6 +434,7 @@ T.Popup {
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Text {
+            textFormat: Text.PlainText
             text: parent.text
             color: parent.selected ? VLCStyle.redesign.accent : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             verticalAlignment: Text.AlignVCenter
@@ -459,6 +461,7 @@ T.Popup {
             radius: VLCStyle.dp(4, VLCStyle.scale)
         }
         contentItem: Text {
+            textFormat: Text.PlainText
             text: parent.text
             color: parent.checked ? VLCStyle.redesign.accent : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             verticalAlignment: Text.AlignVCenter
@@ -521,6 +524,7 @@ T.Popup {
                 anchors.leftMargin: VLCStyle.dp(40, VLCStyle.scale)
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
+                textFormat: Text.PlainText
                 text: parent.parent.text
                 color: VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#4d4d4d")
                 elide: Text.ElideRight
@@ -547,6 +551,7 @@ T.Popup {
         spacing: VLCStyle.dp(4, VLCStyle.scale)
 
         Text {
+            textFormat: Text.PlainText
             text: title
             color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
             Layout.fillWidth: true

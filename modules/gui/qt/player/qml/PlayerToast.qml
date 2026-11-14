@@ -49,6 +49,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: keysLabel.visible ? -root.px(9) : 0
         width: Math.min(implicitWidth, root.parent ? root.parent.width - root.px(72) : implicitWidth)
+        textFormat: Text.PlainText
         text: root.heldText || root.text
         elide: Text.ElideRight
         color: "#C6C6C6"

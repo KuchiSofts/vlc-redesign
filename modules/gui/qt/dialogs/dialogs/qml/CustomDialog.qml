@@ -66,6 +66,8 @@ ModalDialog {
 
     contentItem: Text {
         // a popup does not inherit the mirroring of the window (right to left)
+        // (VLC's own messages, from its modules: some are written as HTML)
+        textFormat: Text.AutoText
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         focus: false
         font.pixelSize: VLCStyle.fontSize_normal

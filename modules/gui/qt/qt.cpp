@@ -126,6 +126,14 @@ extern "C" char **environ;
 #ifdef Q_OS_MACOS
 # include <QMenuBar>
 # include <vlc_intf_strings.h>
+# include "util/file_open_spy.hpp"
+# include "util/mac_open_documents.hpp"
+# include "menus/menus.hpp"
+# include <QPointer>
+# include <functional>
+# include "util/redesign_feedback.hpp"
+# include <QDesktopServices>
+# include <QWindow>
 #endif
 
 #ifndef X_DISPLAY_MISSING
@@ -721,6 +729,8 @@ static void *ThreadCleanup( qt_intf_t *p_intf, CleanupReason cleanupReason );
 #ifdef Q_OS_MAC
 /* Used to abort the app.exec() on OSX after libvlc_Quit is called */
 #include <CoreFoundation/CFRunLoop.h>
+/* (the check that Qt can work, below) */
+#include <CoreGraphics/CGSession.h>
 #endif
 
 /* Open Interface */
@@ -731,7 +741,22 @@ static int OpenInternal( qt_intf_t *p_intf )
         return VLC_EGENERIC;
 #endif
 
-#if (_POSIX_SPAWN >= 0) && (!defined(__APPLE__) || TARGET_OS_OSX)
+#if defined(__APPLE__) && TARGET_OS_OSX
+    /* Check if QApplication works: on macOS, where a window server session
+     * is. Not by vlc-qt-check: its QApplication checks in with
+     * LaunchServices before VLC does, which then takes it for the app being
+     * launched and gives it the launch's Apple event: the files of a launch
+     * from Finder were lost (#84, #85). */
+    {
+        CFDictionaryRef session = CGSessionCopyCurrentDictionary();
+        if (session == NULL)
+        {
+            msg_Dbg(p_intf, "Qt check failed (no window server session). Skipping.");
+            return VLC_EGENERIC;
+        }
+        CFRelease(session);
+    }
+#elif (_POSIX_SPAWN >= 0) && !defined(__APPLE__)
     /* Check if QApplication works */
     /* Note: Disabled on iOS/tvOS/visionOS as process spawning is not allowed */
     char *path = config_GetSysPath(VLC_PKG_LIBEXEC_DIR, "vlc-qt-check");
@@ -944,6 +969,12 @@ static inline void registerMetaTypes()
 static void *Thread( void *obj )
 {
     qt_intf_t *p_intf = (qt_intf_t *)obj;
+    // (the start-up's steps in the log, from here: where a slow start goes)
+    const vlc_tick_t threadStart = vlc_tick_now();
+    const auto startupStep = [p_intf, threadStart]( const char *step ) {
+        msg_Dbg( p_intf, "startup: %s after %" PRId64 " ms", step,
+                 MS_FROM_VLC_TICK( vlc_tick_now() - threadStart ) );
+    };
 
     auto vlcQtMessageHandler = VlcQtMessageHandlerRegisterer{VLC_OBJECT(p_intf)};
 
@@ -1073,9 +1104,15 @@ static void *Thread( void *obj )
     QApplication::setAttribute( Qt::AA_DontCheckOpenGLContextThreadAffinity );
     QQuickWindow::setDefaultAlphaBuffer(true);
 
+#ifdef Q_OS_MACOS
+    // before the application is made (util/mac_open_documents.hpp)
+    MacOpenDocuments::install();
+#endif
+
     /* Start the QApplication here */
     QApplication app( argc, argv );
     app.setProperty("initialStyle", app.style()->name());
+    startupStep( "the application made" );
 
     {
         // Install custom translator:
@@ -1127,6 +1164,29 @@ static void *Thread( void *obj )
     };
     QuitSpy quitSpy(&app, p_intf);
 
+#ifdef Q_OS_MACOS
+    /* Files opened from Finder: Apple events, which the app takes itself
+     * (util/mac_open_documents.hpp) or Qt makes QFileOpenEvents
+     * (util/file_open_spy.hpp); played once the playlist exists (#84, #85).
+     * Those of a launch reach this process since no helper is started before
+     * it (the check that Qt works, OpenInternal) */
+    const QPointer<FileOpenSpy> fileOpenSpy = new FileOpenSpy(&app, [p_intf](const QVariantList &files) {
+        if (!p_intf->p_mainPlaylistController)
+            return false;
+        msg_Dbg( p_intf, "files opened by the system: %lld, the first %s", (long long)files.size(),
+                 qtu( files.first().toUrl().toString() ) );
+        p_intf->p_mainPlaylistController->append(files, true);
+        return true;
+    });
+    MacOpenDocuments::setSink([fileOpenSpy](const QUrl &url) {
+        if (fileOpenSpy)
+            fileOpenSpy->add(url);
+    });
+    // (once more as the event loop starts, should AppKit have put its own
+    // handler back after the notification of the launch's end)
+    QTimer::singleShot(0, &app, []() { MacOpenDocuments::install(); });
+#endif
+
     registerMetaTypes();
 
     //app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
@@ -1164,29 +1224,23 @@ static void *Thread( void *obj )
         }
     }
 
-    /* The first text in a script Inter does not draw (Hebrew, Arabic,
-     * Chinese...) has Qt read every font of the system for the scripts it
-     * covers: about 0.2 s of the start in such a language of the interface.
-     * The fonts are read on a thread of the pool meanwhile (QFontDatabase
-     * is thread-safe), while the interface is created. Not in the other
-     * languages: the fonts read take memory (~15 MB) that only a name in
-     * such a script needs (the first one holds the interface that long) */
-    {
-        const QLocale::Script script = QLocale().script();
-        if( script != QLocale::LatinScript && script != QLocale::CyrillicScript
-            && script != QLocale::GreekScript && script != QLocale::AnyScript )
+    /* The first text Qt looks for in other fonts (a script Inter does not
+     * draw: Hebrew, Arabic, Chinese...; a character the icon font has not)
+     * has it read every font of the system: 0.3 s to over a second of the
+     * start (measured: the interface's items made in 490 ms, 150 ms with
+     * the fonts already read), in every language, as the interface asks
+     * for it while it is made. The fonts are read on a thread of the pool
+     * meanwhile (QFontDatabase is thread-safe), while the window and its
+     * graphics are created. */
+    QThreadPool::globalInstance()->start([]() {
+        const QStringList families = QFontDatabase::families();
+        for( const QString &family : families )
         {
-            QThreadPool::globalInstance()->start([]() {
-                const QStringList families = QFontDatabase::families();
-                for( const QString &family : families )
-                {
-                    if( QCoreApplication::closingDown() )
-                        return;
-                    QFontDatabase::writingSystems( family );
-                }
-            });
+            if( QCoreApplication::closingDown() )
+                return;
+            QFontDatabase::writingSystems( family );
         }
-    }
+    });
 
     /* All the settings are in the .conf/.ini style */
 #ifdef _WIN32
@@ -1348,6 +1402,17 @@ static void *Thread( void *obj )
             }
         }
 
+#ifdef Q_OS_MACOS
+        // Metal, Qt's own choice on a Mac: before Qt's software renderer,
+        // which does not show the video (#89: once OpenGL failed there, the
+        // video stayed black at every start)
+        {
+            QRhiMetalInitParams params;
+            if (QRhi::probe(QRhi::Metal, &params))
+                return {QSGRendererInterface::Metal, false};
+        }
+#endif
+
         // TODO: Investigate if using Vulkan makes sense on Windows.
         // TODO: Investigate if it makes sense to try D3D12 when probing D3D11 failed.
 
@@ -1396,7 +1461,10 @@ static void *Thread( void *obj )
 
         const QVariant graphicsApiValue = p_intf->mainSettings->value(graphicsApiKey);
         // settings value can be string (ini file), do not use `typeId()`:
-        if (graphicsApiValue.isValid() && Q_LIKELY(graphicsApiValue.canConvert<int>()))
+        // (Qt's software renderer, kept from a start whose probe failed once,
+        // is probed again now, not used at every start: it shows no video)
+        if (graphicsApiValue.isValid() && Q_LIKELY(graphicsApiValue.canConvert<int>())
+            && graphicsApiValue.toInt() != QSGRendererInterface::Software)
         {
 
             //some part of the probing needs to be executed on the GUI thread and some part will be ran in a background thread,
@@ -1510,6 +1578,7 @@ static void *Thread( void *obj )
     DialogErrorModel::getInstance( p_intf );
     VLCDialogModel::getInstance( p_intf );
 
+    startupStep( "the settings, fonts and translations ready" );
     /* Initialize the Dialog Provider and the Main Input Manager */
     DialogsProvider::getInstance( p_intf );
     p_intf->p_mainPlayerController = new PlayerController(p_intf);
@@ -1596,6 +1665,7 @@ static void *Thread( void *obj )
                              });
         };
 
+        startupStep( "the main context made" );
         bool ret = false;
         do {
             p_intf->p_compositor.reset(compositorFactory.createCompositor());
@@ -1619,6 +1689,20 @@ static void *Thread( void *obj )
             return ThreadCleanup( p_intf, CLEANUP_ERROR );
         }
 
+        startupStep( "the main window made" );
+        if( auto *quickWindow = qobject_cast<QQuickWindow *>( p_intf->p_compositor->interfaceMainWindow() ) )
+        {
+            // (from the render thread: the log only)
+            auto firstFrame = std::make_shared<QMetaObject::Connection>();
+            *firstFrame = QObject::connect( quickWindow, &QQuickWindow::frameSwapped, quickWindow,
+                                            [firstFrame, startupStep]() {
+                if( !*firstFrame )
+                    return;
+                QObject::disconnect( *firstFrame );
+                *firstFrame = {};
+                startupStep( "the first frame shown" );
+            }, Qt::DirectConnection );
+        }
         /* Whether the controls react to the pointer over them: asked of the
          * system once. Qt asks again for each control it makes (a system
          * call each: a tenth of the time Settings took to open). */
@@ -1683,27 +1767,78 @@ static void *Thread( void *obj )
 #undef QTSTYLE_KEY
 
 #ifdef Q_OS_MACOS
-    /* The menu bar at the top of the screen: the window keeps the
-     * redesign's own menus. Its actions have no shortcut (the QML ones
-     * would become ambiguous): About, Settings and Quit go to the
-     * application menu by their roles, where Cmd+, and Cmd+Q are the
-     * system's. Destroyed after ThreadCleanup, before the QApplication. */
+    /* The menu bar at the top of the screen (#88): the menus of the
+     * window's ⋯ menu (Media, Playback, Audio, Video, Subtitle, Tools,
+     * View, Help), as a Mac user expects them up here. Their actions have
+     * no shortcut (the QML ones would become ambiguous; Cmd+H is the
+     * system's Hide): About, Settings and Quit go to the application menu
+     * by their roles, where Cmd+, and Cmd+Q are the system's, and no other
+     * item goes there by its name. The menus go with the interface (their
+     * lists are the player's), before ThreadCleanup's teardown. */
     std::unique_ptr<QMenuBar> macMenuBar;
-    if( !p_intf->b_isDialogProvider )
+    if( !p_intf->b_isDialogProvider && p_intf->p_mi )
     {
         macMenuBar = std::make_unique<QMenuBar>( nullptr ); // parentless: the global one
-        QMenu *media = macMenuBar->addMenu( qtr( "&Media" ) );
-        media->addAction( qtr( "Open &File..." ), []() { THEDP->simpleOpenDialog(); } );
-        media->addAction( qtr( "Open &Network Stream..." ), []() { THEDP->openNetDialog(); } );
-        QAction *about = media->addAction( qfut( I_MENU_ABOUT ), []() { THEDP->aboutDialog(); } );
-        about->setMenuRole( QAction::AboutRole );
-        QAction *prefs = media->addAction( qtr( "&Preferences" ), []() { THEDP->prefsDialog(); } );
-        prefs->setMenuRole( QAction::PreferencesRole );
-        prefs->setShortcut( QKeySequence::Preferences );
-        QAction *quit = media->addAction( qtr( "Quit" ), []() { THEDP->quit(); } );
-        quit->setMenuRole( QAction::QuitRole );
-        QMenu *help = macMenuBar->addMenu( qtr( "&Help" ) );
-        help->addAction( qtr( "&Help" ), []() { THEDP->helpDialog(); } );
+        static const std::function<void( QMenu * )> settle = []( QMenu *menu ) {
+            for( QAction *action : menu->actions() )
+            {
+                if( action->menuRole() == QAction::TextHeuristicRole )
+                    action->setMenuRole( QAction::NoRole );
+                if( action->menuRole() != QAction::PreferencesRole )
+                    action->setShortcut( QKeySequence() );
+                else
+                    action->setShortcut( QKeySequence::Preferences );
+                if( QMenu *sub = action->menu() )
+                    settle( sub );
+            }
+        };
+        QList<QPointer<QMenu>> menus;
+        const auto addMenu = [&]( const QString &title, void (*fill)( qt_intf_t *, QMenu * ) ) {
+            QMenu *menu = macMenuBar->addMenu( title );
+            fill( p_intf, menu );
+            menus.append( menu );
+            return menu;
+        };
+        QMenu *media = addMenu( qtr( "&Media" ), &VLCMenuBar::FileMenu );
+        for( QAction *action : media->actions() )
+            if( action->text() == qtr( "&Quit" ) )
+                action->setMenuRole( QAction::QuitRole );
+        addMenu( qtr( "P&layback" ), []( qt_intf_t *intf, QMenu *menu ) { VLCMenuBar::NavigMenu( intf, menu ); } );
+        addMenu( qtr( "&Audio" ), &VLCMenuBar::AudioMenu );
+        addMenu( qtr( "&Video" ), &VLCMenuBar::VideoMenu );
+        addMenu( qtr( "Subti&tle" ), []( qt_intf_t *intf, QMenu *menu ) { VLCMenuBar::SubtitleMenu( intf, menu ); } );
+        addMenu( qtr( "Tool&s" ), &VLCMenuBar::ToolsMenu );
+        QMenu *view = addMenu( qtr( "V&iew" ), &VLCMenuBar::ViewMenu );
+        /* (its checks follow the window: made again each time it opens) */
+        QObject::connect( view, &QMenu::aboutToShow, view, [p_intf, view]() {
+            if( !p_intf->p_mi )
+                return;
+            VLCMenuBar::ViewMenu( p_intf, view );
+            settle( view );
+        } );
+        QMenu *help = addMenu( qtr( "&Help" ), &VLCMenuBar::HelpMenu );
+        /* the ⋯ menu's forms: a Mac user looks for them up here (#84) */
+        static const auto feedback = []() -> RedesignFeedback * {
+            for( QWindow *window : QGuiApplication::topLevelWindows() )
+                if( auto *f = window->findChild<RedesignFeedback *>() )
+                    return f;
+            return nullptr;
+        };
+        help->addSeparator();
+        help->addAction( qtr( "Suggest an idea" ), []() {
+            if( RedesignFeedback *f = feedback() )
+                QDesktopServices::openUrl( QUrl( f->ideaUrl() ) );
+        } );
+        help->addAction( qtr( "Report a problem" ), []() {
+            if( RedesignFeedback *f = feedback() )
+                f->openReport();
+        } );
+        for( QMenu *menu : menus )
+            settle( menu );
+        QObject::connect( p_intf->p_mi, &MainCtx::interfaceUnloading, macMenuBar.get(), [menus]() {
+            for( const QPointer<QMenu> &menu : menus )
+                delete menu.data();
+        } );
     }
 #endif
 
@@ -1711,6 +1846,9 @@ static void *Thread( void *obj )
     app.exec();
 
     msg_Dbg( p_intf, "QApp exec() finished" );
+#ifdef Q_OS_MACOS
+    MacOpenDocuments::setSink(nullptr);
+#endif
 
     return ThreadCleanup( p_intf, CLEANUP_APP_TERMINATED );
 }

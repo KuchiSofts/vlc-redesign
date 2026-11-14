@@ -53,6 +53,7 @@ T.ComboBox {
 
     contentItem: Text {
         id: valueText
+        textFormat: Text.PlainText
         text: root.displayText
         color: root.c("#8F8F8F")
         font: root.font
@@ -102,6 +103,7 @@ T.ComboBox {
 
         contentItem: Text {
             id: optionText
+            textFormat: Text.PlainText
             text: option.modelData[root.textRole] !== undefined ? option.modelData[root.textRole] : option.modelData
             color: root.c("#8F8F8F")
             font: root.font

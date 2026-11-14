@@ -122,7 +122,9 @@ T.Page {
     on_FirstChildChanged: {
         if (!_firstChild)
             return
-        _firstChild.Navigation.parentItem = root
+        // (a page that sets its own parent keeps it)
+        if (!_firstChild.Navigation.parentItem)
+            _firstChild.Navigation.parentItem = root
         _firstChild.Navigation.upItem = root.header
     }
 

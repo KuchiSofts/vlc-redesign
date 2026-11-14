@@ -418,6 +418,7 @@ Widgets.PageExt {
                         anchors.leftMargin: grid.rowGap
                         anchors.right: parent.right
                         height: parent.height
+                        textFormat: Text.PlainText
                         text: card.model.name
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideMiddle
@@ -513,6 +514,7 @@ Widgets.PageExt {
                         y: picture.height + VLCStyle.dp(20, VLCStyle.scale)
                         width: grid.cardWidth
                         height: VLCStyle.dp(19, VLCStyle.scale)
+                        textFormat: Text.PlainText
                         text: card.model.name
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideRight

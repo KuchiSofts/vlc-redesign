@@ -70,6 +70,7 @@ Widgets.PageExt {
                     height: VLCStyle.dp(32, VLCStyle.scale)
                     width: parent.width * .6
                     placeholderText: qsTr("Paste or write the URL here")
+                    Accessible.name: placeholderText
                     selectByMouse: true
 
                     onAccepted: {

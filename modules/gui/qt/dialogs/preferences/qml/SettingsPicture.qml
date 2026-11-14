@@ -50,6 +50,7 @@ SettingsSectionTitle {
                 ToolTip.visible: adjustmentHover.hovered && adjustmentLabel.truncated
                 ToolTip.text: adjustmentLabel.text
                 ToolTip.delay: 650
+                textFormat: Text.PlainText
                 text: row.modelData.title
                 color: root.c("#8F8F8F")
                 font.family: VLCStyle.redesign.fontFamily

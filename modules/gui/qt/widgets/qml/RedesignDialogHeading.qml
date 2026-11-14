@@ -24,6 +24,13 @@ ColumnLayout {
     // lines, else it is cut
     property bool headingWraps: false
     property bool darkTheme: VLCStyle.palette.isDark
+    // the title and its suffix hold outside data (a media's or a channel's name): escaped here, drawn as
+    // typed (false: the caller escapes them itself, or they are the app's own words)
+    property bool plain: false
+
+    function _escaped(s) {
+        return root.plain ? String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : s
+    }
 
     Layout.fillWidth: true
     spacing: VLCStyle.dp(5, VLCStyle.scale)
@@ -60,10 +67,10 @@ ColumnLayout {
         lineHeight: root.headingWraps ? lineHeightPx : 1.0
         Layout.preferredHeight: root.headingWraps && lineCount > 1 ? implicitHeight : Math.ceil(lineHeightPx)
         textFormat: Text.StyledText
-        text: root.suffix === "" ? root.text
-                                 : "%1 <font color=\"%2\">%3</font>".arg(root.text)
+        text: root.suffix === "" ? root._escaped(root.text)
+                                 : "%1 <font color=\"%2\">%3</font>".arg(root._escaped(root.text))
                                        .arg(VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", root.darkTheme))
-                                       .arg(root.suffix)
+                                       .arg(root._escaped(root.suffix))
         color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root.darkTheme)
         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
     }
@@ -75,6 +82,8 @@ ColumnLayout {
         wrapMode: Text.Wrap
         elide: Text.ElideNone
         Layout.preferredHeight: lineCount > 1 ? implicitHeight : Math.ceil(lineHeightPx)
+        // (a programme's subtitle, a message, a link typed: as typed)
+        textFormat: Text.PlainText
         text: root.description
         color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", root.darkTheme)
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

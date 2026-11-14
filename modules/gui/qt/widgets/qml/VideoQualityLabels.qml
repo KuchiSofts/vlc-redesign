@@ -48,6 +48,7 @@ Row {
             padding: VLCStyle.margin_xxxsmall
 
             visible: index < root.labels.length
+            textFormat: Text.PlainText
             text: index >= root.labels.length ? "" :  root.labels[index]
 
             font.pixelSize: VLCStyle.fontSize_normal

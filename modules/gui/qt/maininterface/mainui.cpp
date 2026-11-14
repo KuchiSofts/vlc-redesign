@@ -262,7 +262,11 @@ bool MainUI::setup(QQmlEngine* engine)
     engine->addImageProvider(QLatin1String(RedesignIconProvider::providerId), new RedesignIconProvider());
     engine->addUrlInterceptor(new RedesignIconInterceptor(m_mainCtx, engine));
 
+    // (the start-up's steps in the log: where a slow start spends its time)
+    const vlc_tick_t loadStart = vlc_tick_now();
     m_component  = new QQmlComponent(engine, QStringLiteral("qrc:/qt/qml/VLC/MainInterface/MainInterface.qml"), QQmlComponent::PreferSynchronous, engine);
+    msg_Dbg(m_intf, "startup: the interface's QML loaded in %" PRId64 " ms",
+            MS_FROM_VLC_TICK(vlc_tick_now() - loadStart));
     if (m_component->isLoading())
     {
         msg_Warn(m_intf, "component is still loading");
@@ -289,8 +293,10 @@ QQuickItem* MainUI::createRootItem()
 
     assert(m_component);
 
+    const vlc_tick_t createStart = vlc_tick_now();
     QObject* rootObject = m_component->create();
-
+    msg_Dbg(m_intf, "startup: the interface's items made in %" PRId64 " ms",
+            MS_FROM_VLC_TICK(vlc_tick_now() - createStart));
     if (m_component->isError())
     {
         for(auto& error: m_component->errors())

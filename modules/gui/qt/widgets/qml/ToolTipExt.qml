@@ -78,6 +78,7 @@ T.ToolTip {
     contentItem: Text {
         id: contentText
 
+        textFormat: Text.PlainText
         text: control.text
         font: control.font
         wrapMode: textMetrics.width > maxContentWidth ? Text.WordWrap : Text.NoWrap

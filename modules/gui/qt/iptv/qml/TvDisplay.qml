@@ -370,6 +370,7 @@ Widgets.PageExt {
                                 anchors.top: parent.top
                                 anchors.margins: root.px(10)
                                 visible: card.model.number > 0
+                                textFormat: Text.PlainText
                                 text: card.model.number
                                 color: root.c("#6B6B6B", "#5a5a59")
                                 font.family: VLCStyle.redesign.fontFamily
@@ -423,6 +424,7 @@ Widgets.PageExt {
                             anchors.left: parent.left
                             y: picture.height + root.px(14)
                             width: channelGrid.cardWidth
+                            textFormat: Text.PlainText
                             text: card.model.name
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignLeft
@@ -436,6 +438,7 @@ Widgets.PageExt {
                             anchors.top: cardName.bottom
                             anchors.topMargin: root.px(4)
                             width: channelGrid.cardWidth
+                            textFormat: Text.PlainText
                             text: card.model.nowTitle
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignLeft
@@ -453,6 +456,7 @@ Widgets.PageExt {
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
                 visible: root.view === "channels" && Iptv.channelsLoaded && Iptv.channelModel.count === 0
+                textFormat: Text.PlainText
                 text: Iptv.channelModel.search !== "" ? qsTr("No channel matches the search")
                       : Iptv.channelModel.group === "favorites" ? qsTr("No favorite channel yet: right-click a channel to add it")
                       : Iptv.channelModel.group === "recent" ? qsTr("No channel watched yet")

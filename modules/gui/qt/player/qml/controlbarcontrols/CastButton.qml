@@ -284,6 +284,7 @@ RedesignIconButton {
                     rightPadding: displayHere.mirrored ? VLCStyle.dp(58, VLCStyle.scale) : 0
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
+                    textFormat: Text.PlainText
                     text: displayHere.text
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
@@ -405,6 +406,7 @@ RedesignIconButton {
                     // (a device's name in Latin letters on the side where
                     // reading starts in Hebrew too, under its Hebrew rows)
                     horizontalAlignment: Text.AlignLeft
+                    textFormat: Text.PlainText
                     text: row.name
                     color: row.selected ? VLCStyle.redesign.accent
                                         : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")

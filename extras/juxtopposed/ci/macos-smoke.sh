@@ -22,7 +22,9 @@
 #      checked with the key the app carries (verify-test.c with this Mac's
 #      Security framework: good, and bad once changed), then the image's app
 #      staged next to a copy and swapped in by the app's own
-#      Resources/vlc-redesign-update.sh, as the updater does.
+#      Resources/vlc-redesign-update.sh, as the updater does;
+#   6. a playlist opened as Finder opens it (open -a: an Apple event, #84),
+#      its clip opened.
 # A crash report of the app (~/Library/Logs/DiagnosticReports) fails it.
 # NO_IPTV=1: a build made without the Live TV add-on (macos-build.sh -t).
 #
@@ -316,6 +318,61 @@ done
 # the Mac's own appearance again
 if [ "$appearance" = Dark ]; then set_appearance dark; else set_appearance light; fi
 note "note: $app_name screenshots in $work"
+
+# 6. A playlist opened as Finder opens it (#84, #85): LaunchServices sends
+# the file as an Apple event, not as an argument (util/mac_open_documents.cpp,
+# util/file_open_spy.hpp); the clip it lists is opened. The app is launched
+# as Finder launches it, without arguments (`open --args` makes a launch
+# without the file): the log and the remote control come from the settings
+# file, put back as it was afterwards
+list="$work/finder list.m3u"
+printf '#EXTM3U\n#EXTINF:2,Moving bar\nclip.y4m\n' > "$list"
+rc_dir="$HOME/Library/Preferences/org.kuchisofts.vlcredesign"
+mkdir -p "$rc_dir"
+rc_saved=
+if [ -f "$rc_dir/vlcrc" ]; then cp "$rc_dir/vlcrc" "$work/vlcrc.saved"; rc_saved=1; fi
+printf '\nfile-logging=1\nlogfile=%s\nlog-verbose=2\nverbose=2\nqt-privacy-ask=0\nextraintf=rc\nrc-host=127.0.0.1:%s\naout=dummy\n' \
+    "$work/finder.log" "$port" >> "$rc_dir/vlcrc"
+played() { grep -q 'clip.y4m'"'"' successfully opened' "$work/finder.log" 2>/dev/null; }
+opened() { grep -c 'files opened by the system:' "$work/finder.log" 2>/dev/null || true; }
+t0=$(date '+%Y-%m-%d %H:%M:%S')
+open -a "$app" "$list" > "$work/finder.out" 2>&1 || fail "open -a: $(head -n 1 "$work/finder.out")"
+for _ in $(seq 1 30); do played && break; sleep 1; done
+finder_pid=$(pgrep -f "$exe" | head -n 1)
+launch_played=
+if played; then
+    launch_played=1
+    note "ok: a playlist opened from Finder (the app not running) played its clip"
+else
+    fail "a playlist opened from Finder (the app not running) did not play (see finder.log)"
+    # where its threads wait (finder-sample.txt)
+    [ -n "$finder_pid" ] && sample "$finder_pid" 3 -file "$work/finder-sample.txt" > /dev/null 2>&1 || true
+fi
+# the same file opened in the copy now running
+opens=$(opened)
+open -a "$app" "$list" > "$work/finder-again.out" 2>&1 || true
+for _ in $(seq 1 15); do [ "$(opened)" -gt "${opens:-0}" ] && break; sleep 1; done
+if [ "$(opened)" -gt "${opens:-0}" ]; then
+    note "ok: a playlist opened from Finder (the app running) was taken"
+else
+    fail "a playlist opened from Finder (the app running) did not reach the app"
+fi
+# the way the opens came (util/mac_open_documents.cpp, util/file_open_spy.hpp)
+grep -E 'Apple events:|a file open event|files opened by the system' "$work/finder.log" 2>/dev/null \
+    | head -n 20 | while IFS= read -r line; do note "note: finder.log: $line"; done
+# what the system did with the launch's open (LaunchServices: the process it
+# gave the file to, finder-system.log)
+log show --start "$t0" --info --debug --style compact \
+    --predicate 'process == "launchservicesd" OR process == "lsd" OR subsystem == "com.apple.launchservices" OR process == "'"$app_name"'"' \
+    > "$work/finder-system.log" 2>&1 || true
+[ -n "$launch_played" ] || grep -iE 'odoc|aevt|apple ?event|check.?in' "$work/finder-system.log" 2>/dev/null \
+    | head -n 25 | while IFS= read -r line; do note "note: system: $line"; done
+printf 'quit\n' | nc -w 2 127.0.0.1 $port > /dev/null 2>&1 || true
+if [ -n "$finder_pid" ]; then
+    for _ in $(seq 1 30); do kill -0 "$finder_pid" 2>/dev/null || break; sleep 1; done
+    kill -9 "$finder_pid" 2>/dev/null || true
+fi
+if [ -n "$rc_saved" ]; then cp "$work/vlcrc.saved" "$rc_dir/vlcrc"; else rm -f "$rc_dir/vlcrc"; fi
 
 # No crash
 reports_after=$(ls ~/Library/Logs/DiagnosticReports 2>/dev/null | sort)

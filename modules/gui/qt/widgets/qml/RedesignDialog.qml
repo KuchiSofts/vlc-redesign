@@ -195,6 +195,7 @@ T.Popup {
                         anchors.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
                         anchors.right: closeButton.visible ? closeButton.left : parent.right
                         height: parent.height
+                        textFormat: Text.PlainText
                         text: root.title
                         color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
                         font.family: VLCStyle.redesign.fontFamily
@@ -378,6 +379,7 @@ T.Popup {
                 x: (parent.width - width) / 2
                 width: Math.ceil(exactMetrics.advanceWidth / 16 - text.length * font.pixelSize / 2816 - 0.001)
                 height: parent.height
+                textFormat: Text.PlainText
                 text: button.text
                 verticalAlignment: Text.AlignTop
                 color: (button.accent && button.enabled) ? VLCStyle.redesign.accent

@@ -247,6 +247,7 @@ Item {
 
                     contentItem: Text {
                         id: detailsText
+                        textFormat: Text.PlainText
                         text: detailsBtn.text
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter

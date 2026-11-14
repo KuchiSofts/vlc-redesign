@@ -94,6 +94,7 @@ ColumnLayout {
                     radius: VLCStyle.dp(5, VLCStyle.scale)
                 }
                 contentItem: Text {
+                    textFormat: Text.PlainText
                     text: sectionButton.modelData
                     color: root.section === sectionButton.index ? VLCStyle.redesign.accent : root.c(VLCStyle.redesign.textMuted)
                     font.family: VLCStyle.redesign.fontFamily

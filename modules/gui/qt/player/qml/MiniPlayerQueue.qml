@@ -253,6 +253,7 @@ Item {
                     anchors.right: timeText.left
                     anchors.rightMargin: VLCStyle.dp(16, VLCStyle.scale)
                     height: parent.height
+                    textFormat: Text.PlainText
                     text: queueRow.title
                     color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
                     elide: Text.ElideRight

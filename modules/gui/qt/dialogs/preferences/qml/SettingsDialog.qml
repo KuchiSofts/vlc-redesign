@@ -292,6 +292,7 @@ Dialog {
                 anchors.right: closeButton.left
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
+                textFormat: Text.PlainText
                 text: searchField.text.length > 0 ? qsTr("Search results")
                       : root.titles[root.selectedCategory] || qsTr("Settings")
                 color: root.c("#969696")
@@ -675,6 +676,7 @@ Dialog {
                              && !developerMode.visible
                              && !lastfm.visible && !shortcutsSection.visible && !sidebarSection.visible
                              && !inlineEffects.visible && !extensions.visible
+                    textFormat: Text.PlainText
                     text: searchField.text.length > 0
                           ? qsTr("No matching settings")
                           : qsTr("No settings are available for this category on this VLC installation")

@@ -186,6 +186,7 @@ MainViewLoader {
                             font.family: VLCStyle.redesign.fontFamily
                             font.pixelSize: VLCStyle.dp(18, VLCStyle.scale)
                             font.weight: Font.Medium
+                            textFormat: Text.PlainText
                             text: model.name || qsTr("Unknown genre")
                             color: "white"
                             horizontalAlignment: Text.AlignHCenter

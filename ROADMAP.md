@@ -18,27 +18,25 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-12, 0.6.2 published).
+Updated as the work moves (last: 2026-11-13, 0.6.3 published).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.2 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.2 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.2 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.2 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.1 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Windows x64** | ✅ released 0.6.3 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.3 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.3 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.3 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.1 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.3 and after
+## Next: 0.6.4 and after
 
-**0.6.3** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🔨 [#81](https://github.com/KuchiSofts/vlc-redesign/issues/81) in the Android app: its media library built by us with
-  the same fix (VideoLAN's ready-made one has the bug); the APK then joins the 0.6.2 release
 
 - 🔨 Android the same as the desktop: its options and defaults, two subtitle languages at once, smoother first
   visits of each page
@@ -112,6 +110,21 @@ Android and Swift files made from them and a check on every pull request that th
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
 
+### 0.6.3 (2026-11-13)
+
+**An update release** (the installers, the portable copies and what the apps update from; the Linux packages stay on
+0.6.0):
+
+- ✅ macOS: files opened from Finder or dropped on the Dock icon play
+  ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84), [#85](https://github.com/KuchiSofts/vlc-redesign/issues/85),
+  @xITmasterx); the menu bar has every menu ([#88](https://github.com/KuchiSofts/vlc-redesign/issues/88)); video shows again
+  after a failed graphics check ([#89](https://github.com/KuchiSofts/vlc-redesign/issues/89)); Customize Player keeps a
+  hidden button's place ([#87](https://github.com/KuchiSofts/vlc-redesign/issues/87))
+- ✅ A faster start: the window is up about 0.2 s sooner
+- ✅ Screen readers name every text field and settings toggle; outside text is always shown as plain text
+- ✅ Android: no crash in Hindi when adding items already in a playlist; Korean texts fixed
+- ✅ VideoLAN's VLC merged to `914c465b0c`; the Samsung TV app is unchanged (0.6.1)
+
 ### 0.6.2 (2026-11-12)
 
 **An update release** (the installers, the portable copies and what the apps update from; the Linux packages stay on
@@ -119,7 +132,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 
 - ✅ Songs whose picture is stored as a video track are listed as music, not as videos
   ([#81](https://github.com/KuchiSofts/vlc-redesign/issues/81), @decider07): Windows, Linux and macOS; the Samsung TV
-  app never had it; the Android app joins this release when its own fix is ready (it stays at 0.6.1 until then)
+  app never had it; the Android app has it too: its media library is built here with the fix (VideoLAN's has the bug)
 - ✅ Settings › Library lists the library's folders, each with Remove, and Add folder (#81)
 - ✅ Indonesian: the interface size's texts (from Weblate)
 - ✅ VideoLAN's VLC merged to `6b5f85b1d1`

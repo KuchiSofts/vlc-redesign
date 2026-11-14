@@ -63,6 +63,7 @@ Widgets.RedesignDialog {
         Text {
             id: labelText
             Layout.preferredWidth: row.labelWidth
+            textFormat: Text.PlainText
             text: row.label
             color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
             font.family: VLCStyle.redesign.fontFamily

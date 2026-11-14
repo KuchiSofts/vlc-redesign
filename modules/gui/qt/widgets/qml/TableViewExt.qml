@@ -322,6 +322,7 @@ ListViewExt {
                         }
 
                         Text {
+                            textFormat: Text.PlainText
                             text: (root.model.sortOrder === Qt.AscendingOrder) ? "▼" : "▲"
                             visible: root.model.sortCriteria === modelData.model.criteria
                             font.pixelSize: VLCStyle.fontSize_normal

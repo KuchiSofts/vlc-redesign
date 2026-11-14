@@ -22,21 +22,24 @@ body:
       options:
         - Installer (setup.exe)
         - Portable zip
+        - macOS app (.dmg)
+        - Linux AppImage
+        - Linux package (deb, rpm or Flatpak)
         - Built from source
     validations:
       required: true
   - type: input
     id: windows
     attributes:
-      label: Windows version
-      placeholder: "Windows 11 24H2"
+      label: Operating system and version
+      placeholder: "Windows 11 24H2, macOS 26.1, Ubuntu 24.04"
     validations:
       required: true
   - type: textarea
     id: environment
     attributes:
       label: System information
-      description: "⋯ menu → Report a problem fills this in: versions, Windows, graphics, screens, theme. No personal data."
+      description: "⋯ menu → Report a problem (on macOS: Help → Report a problem) fills this in: versions, system, graphics, screens, theme. No personal data."
       render: text
   - type: textarea
     id: what

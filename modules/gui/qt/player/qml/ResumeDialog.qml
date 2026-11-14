@@ -177,6 +177,7 @@ FocusScope {
         Accessible.name: text
 
         contentItem: Text {
+            textFormat: Text.PlainText
             text: button.text
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

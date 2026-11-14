@@ -263,6 +263,7 @@ T.Pane {
                     // within the tab (a longer name, a translation, elided)
                     width: Math.min(implicitWidth, tab.width - VLCStyle.dp(18 + 8 + 8, VLCStyle.scale))
                     elide: Text.ElideRight
+                    textFormat: Text.PlainText
                     text: tab.text
                     color: tab.current || tab.hovered ? VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                                                       : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
@@ -316,6 +317,7 @@ T.Pane {
             }
             Text {
                 Layout.fillWidth: true
+                textFormat: Text.PlainText
                 text: row.label
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft

@@ -138,6 +138,7 @@ T.TabButton {
 
             visible: showText
 
+            textFormat: Text.PlainText
             text: control.text
 
             verticalAlignment: Text.AlignVCenter

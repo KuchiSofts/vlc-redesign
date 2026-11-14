@@ -54,6 +54,7 @@ T.RoundButton {
     }
 
     contentItem: Text {
+        textFormat: Text.PlainText
         text: control.text
         font: control.font
         color: theme.fg.primary

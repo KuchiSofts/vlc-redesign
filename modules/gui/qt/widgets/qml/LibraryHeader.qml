@@ -158,11 +158,11 @@ T.ToolBar {
     // sort menu of VLC lists it after the orders): a separator, then "Do not
     // group videos", "Group by name" and "Group by folder"
     readonly property bool _videoGrouping: root.sortMenu instanceof SortMenuVideo
-    property var _groupingItems: []
+    property var _groupingItems // (an array once made: a [] here is a binding the function would drop)
 
     function _updateGroupingItems() {
         // (removeItem destroys the item)
-        for (const item of _groupingItems)
+        for (const item of (_groupingItems ?? []))
             sortOptions.removeItem(item)
         _groupingItems = []
         if (!_videoGrouping)
@@ -363,6 +363,7 @@ T.ToolBar {
                             // SemiBold #969696; text boxes of 19
                             contentItem: Text {
                                 id: crumbText
+                                textFormat: Text.PlainText
                                 text: crumb.text
                                 elide: Text.ElideMiddle
                                 font.family: VLCStyle.redesign.fontFamily
@@ -586,6 +587,8 @@ T.ToolBar {
                     verticalAlignment: TextInput.AlignTop
                     topPadding: root._topPadding(height, font.pixelSize, searchMetrics.ascent)
                     placeholderText: qsTr("Search")
+                    // (the placeholder is not its name: a screen reader read an unnamed "edit")
+                    Accessible.name: placeholderText
                     placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled,
                                                                   "#929291", root.darkTheme)
                     color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted,

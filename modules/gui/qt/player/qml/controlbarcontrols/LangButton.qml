@@ -37,9 +37,11 @@ RedesignIconButton {
                                                                  && Player.videoTracks.count > 0))
                                       && !Iptv.playing)
                                      || Player.subtitleTracks.count > 0 || Player.audioTracks.count > 1
-    implicitWidth: _offered ? VLCStyle.dp(30, VLCStyle.scale) : 0
+    // (while the player is customized it keeps its place, dimmed: else a
+    // button just added to the bar showed as an empty space, #87)
+    implicitWidth: (_offered || VLCStyle.customizing) ? VLCStyle.dp(30, VLCStyle.scale) : 0
     enabled: _offered
-    opacity: _offered ? 1 : 0
+    opacity: (_offered || VLCStyle.customizing) ? 1 : 0
     id: root
 
     // Proprerties

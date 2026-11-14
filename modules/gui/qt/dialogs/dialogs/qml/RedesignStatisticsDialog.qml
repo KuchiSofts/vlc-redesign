@@ -55,6 +55,7 @@ Widgets.RedesignDialog {
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
         LayoutMirroring.childrenInherit: true
         headingWraps: true
+        plain: true
         text: Player.isStarted && Player.name !== "" ? Player.name : qsTr("Nothing is playing")
         description: !stats.collecting
                      ? qsTr("Statistics are not collected. Turn them on to see them for the next media played.")

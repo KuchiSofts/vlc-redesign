@@ -877,6 +877,46 @@ void IptvAddon::catalog(const QJSValue& done)
     });
 }
 
+QString IptvAddon::errorText(const QString& reason, bool sentence) const
+{
+    // (the reasons of modules/misc/iptv; one it does not know is shown as
+    // it is)
+    static const QRegularExpression answered(QStringLiteral("^the server answered (\\d\\d\\d)$"));
+    static const QHash<QString, const char*> texts {
+        { QStringLiteral("no answer"), N_("the server did not answer") },
+        { QStringLiteral("cannot be reached"), N_("the server could not be reached") },
+        { QStringLiteral("cancelled"), N_("cancelled") },
+        { QStringLiteral("too large"), N_("it is too large") },
+        { QStringLiteral("empty answer"), N_("the server sent nothing") },
+        { QStringLiteral("cut short"), N_("it came cut short") },
+        { QStringLiteral("cannot be saved"), N_("it cannot be saved on this device") },
+        { QStringLiteral("the guide could not be written"), N_("it cannot be saved on this device") },
+        { QStringLiteral("not an M3U playlist"), N_("it is not an M3U playlist") },
+        { QStringLiteral("no channels"), N_("it has no channels") },
+        { QStringLiteral("the playlist is empty"), N_("it has no channels") },
+        { QStringLiteral("the server has no TV channels"), N_("it has no channels") },
+        { QStringLiteral("the guide could not be read"), N_("the guide could not be read") },
+        { QStringLiteral("a text of the guide is too long"), N_("the guide could not be read") },
+        { QStringLiteral("the list of channels could not be read"), N_("the list of channels could not be read") },
+        { QStringLiteral("this link is a single stream, not a list of channels"),
+          N_("this link is a single stream, not a list of channels") },
+    };
+    QString text = reason;
+    const QRegularExpressionMatch m = answered.match(reason);
+    if (m.hasMatch())
+    {
+        const int code = m.captured(1).toInt();
+        text = (code == 401 || code == 403) ? qtr("the server refused access (%1)").arg(code)
+             : (code == 404 || code == 410) ? qtr("nothing was found at this address (%1)").arg(code)
+                                            : qtr("the server answered with an error (%1)").arg(code);
+    }
+    else if (const auto it = texts.constFind(reason); it != texts.constEnd())
+        text = qtr(it.value());
+    if (sentence && !text.isEmpty())
+        text[0] = text[0].toUpper();
+    return text;
+}
+
 QString IptvAddon::suggestionUrl() const
 {
     // as "Suggest an idea" (RedesignFeedback): a new discussion of the

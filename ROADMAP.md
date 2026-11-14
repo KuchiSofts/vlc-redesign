@@ -38,8 +38,10 @@ Updated as the work moves (last: 2026-11-14, 0.6.5 published).
 with a build to try):
 
 - 🔨 Android the same as the desktop: nearly 40 of its settings, the queue's Sort and Add files, Export Playlist, the
-  check for updates in About and the computer's keys are in 0.6.5; next: lyrics, effect presets, Hide player UI,
-  subtitle lines on the seek bar, Add Subtitles from a link, the other player bar buttons
+  check for updates in About and the computer's keys are in 0.6.5; done for 0.6.6: lyrics, effect presets, subtitle
+  lines on the seek bar, Add Subtitles from a link, Add Audio Tracks, the other player bar buttons and Clone,
+  Increase text contrast, Always show the player bar, the welcome's subtitle languages, Keyboard Shortcuts
+- 🔨 Linux: the HTTP proxy settings, as on Windows and macOS; the update check says GitHub's limit of requests
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

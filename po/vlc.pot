@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-14 02:20+0000\n"
+"POT-Creation-Date: 2026-11-14 18:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -912,10 +912,6 @@ msgstr ""
 #: src/input/es_out.c:4728 modules/access/jack.c:66
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:214
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:100
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
-#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgid "Channels"
 msgstr ""
 
@@ -26513,55 +26509,119 @@ msgstr ""
 msgid "Schedule: "
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:949
-msgid "This channel cannot be played"
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
 msgstr ""
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:989
+msgid "This channel cannot be played"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:1029
 msgid "This programme is older than the channel's archive"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:990
+#: modules/gui/qt/iptv/iptv_addon.cpp:1030
 msgid "This programme has not started yet"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:991
+#: modules/gui/qt/iptv/iptv_addon.cpp:1031
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1015
+#: modules/gui/qt/iptv/iptv_addon.cpp:1055
 msgid "The guide does not say what is on"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1065
+#: modules/gui/qt/iptv/iptv_addon.cpp:1105
 msgid "No channel %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1267
+#: modules/gui/qt/iptv/iptv_addon.cpp:1307
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1270
+#: modules/gui/qt/iptv/iptv_addon.cpp:1310
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1270 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1310 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1278
+#: modules/gui/qt/iptv/iptv_addon.cpp:1318
 msgid "Today"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1280
+#: modules/gui/qt/iptv/iptv_addon.cpp:1320
 msgid "Tomorrow"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1282
+#: modules/gui/qt/iptv/iptv_addon.cpp:1322
 msgid "Yesterday"
 msgstr ""
 
@@ -26623,6 +26683,14 @@ msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] ""
 msgstr[1] ""
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
@@ -30936,109 +31004,117 @@ msgstr ""
 msgid "Don't restore"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:251
+#: modules/gui/qt/util/redesign_updater.cpp:278
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:551
+#: modules/gui/qt/util/redesign_updater.cpp:578
 msgid "%1 (later)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:553
+#: modules/gui/qt/util/redesign_updater.cpp:580
 msgid "%1 (soon)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:750
+#: modules/gui/qt/util/redesign_updater.cpp:777
 msgid "This build cannot check for updates."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:767
+#: modules/gui/qt/util/redesign_updater.cpp:794
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:784
+#: modules/gui/qt/util/redesign_updater.cpp:807
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:811
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:858
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:912
+#: modules/gui/qt/util/redesign_updater.cpp:988
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:934
-#: modules/gui/qt/util/redesign_updater.cpp:975
+#: modules/gui/qt/util/redesign_updater.cpp:1010
+#: modules/gui/qt/util/redesign_updater.cpp:1051
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:949
-#: modules/gui/qt/util/redesign_updater.cpp:1021
+#: modules/gui/qt/util/redesign_updater.cpp:1025
+#: modules/gui/qt/util/redesign_updater.cpp:1097
 msgid "The download failed. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1036
+#: modules/gui/qt/util/redesign_updater.cpp:1112
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1055
+#: modules/gui/qt/util/redesign_updater.cpp:1131
 msgid "The update isn't in a format this version knows."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1058
-#: modules/gui/qt/util/redesign_updater.cpp:1082
-#: modules/gui/qt/util/redesign_updater.cpp:1093
-#: modules/gui/qt/util/redesign_updater.cpp:1099
-#: modules/gui/qt/util/redesign_updater.cpp:1360
+#: modules/gui/qt/util/redesign_updater.cpp:1134
+#: modules/gui/qt/util/redesign_updater.cpp:1158
+#: modules/gui/qt/util/redesign_updater.cpp:1169
+#: modules/gui/qt/util/redesign_updater.cpp:1175
+#: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The update is damaged."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1063
-#: modules/gui/qt/util/redesign_updater.cpp:1357
+#: modules/gui/qt/util/redesign_updater.cpp:1139
+#: modules/gui/qt/util/redesign_updater.cpp:1433
 msgid "The update isn't for this version."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
+#: modules/gui/qt/util/redesign_updater.cpp:1148
+#: modules/gui/qt/util/redesign_updater.cpp:1185
+#: modules/gui/qt/util/redesign_updater.cpp:1194
+#: modules/gui/qt/util/redesign_updater.cpp:1204
+#: modules/gui/qt/util/redesign_updater.cpp:1209
+#: modules/gui/qt/util/redesign_updater.cpp:1429
 msgid "The update can't be written in %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1074
+#: modules/gui/qt/util/redesign_updater.cpp:1150
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1104
+#: modules/gui/qt/util/redesign_updater.cpp:1180
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1264
-#: modules/gui/qt/util/redesign_updater.cpp:1418
+#: modules/gui/qt/util/redesign_updater.cpp:1340
+#: modules/gui/qt/util/redesign_updater.cpp:1494
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1291
+#: modules/gui/qt/util/redesign_updater.cpp:1367
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1305
+#: modules/gui/qt/util/redesign_updater.cpp:1381
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1317
-#: modules/gui/qt/util/redesign_updater.cpp:1331
+#: modules/gui/qt/util/redesign_updater.cpp:1393
+#: modules/gui/qt/util/redesign_updater.cpp:1407
 msgid "The installer couldn't be saved to %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1398
-#: modules/gui/qt/util/redesign_updater.cpp:1436
+#: modules/gui/qt/util/redesign_updater.cpp:1474
+#: modules/gui/qt/util/redesign_updater.cpp:1512
 msgid "The installer couldn't be started."
 msgstr ""
 

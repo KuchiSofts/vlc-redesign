@@ -78,7 +78,7 @@ Widgets.PageExt {
             SettingsSegmented {
                 Layout.preferredWidth: Math.max(VLCStyle.dp(200, VLCStyle.scale), neededWidth)
                 Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
-                options: [{ text: qsTr("Channels"), value: "channels" },
+                options: [{ text: qsTr("Channels", "TV"), value: "channels" },
                           { text: qsTr("Guide"), value: "guide" }]
                          .concat(root._hasFilms ? [{ text: qsTr("Films"), value: "movies" }] : [])
                          .concat(root._hasSeries ? [{ text: qsTr("Series"), value: "series" }] : [])
@@ -258,7 +258,7 @@ Widgets.PageExt {
                            : qsTr("Updating the channels of %1…").arg(_busySource.name)
                 }
                 if (_failed)
-                    return qsTr("%1 could not be loaded: %2").arg(_failed.name).arg(_failed.error)
+                    return qsTr("%1 could not be loaded: %2").arg(_failed.name).arg(Iptv.errorText(_failed.error))
                 return ""
             }
             color: _busySource ? root.c("#6B6B6B", "#4d4d4d") : root.c("#e15033", "#b03a22")

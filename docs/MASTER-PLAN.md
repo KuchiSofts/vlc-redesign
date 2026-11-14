@@ -128,9 +128,15 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.7** started. 📋 Open: About in a low window (1024x768 Mac, a small window): its buttons scroll with
-  the text under the fade (as before 0.6.6); keep them under the scrolling part as RedesignDialog does. The Hebrew
-  bidi pass (231 texts starting with a Latin word); Hide a cast device on a real device.
+- 🟡 **0.6.7** started. 🔨 About in a low window (1024x768 Mac, a small window): its buttons scrolled with the
+  text under the fade; the dialog is a column now (the text scrolls, the buttons stay under it); qmllint clean, to
+  see on screen (the Windows build was stopped by the system for low memory). 🟢 The bidi pass: the texts whose first
+  letter is Latin (the 231 counted every catalog; 34 are in the interface): 29 Hebrew and 2 Arabic on the desktop,
+  10 Hebrew and 4 Arabic on Android (Arabic's headphone virtualization was half English); Android's European
+  Portuguese had 29 texts and 5 plurals in English, Traditional Chinese 8. Soaks of the published 0.6.6: Windows,
+  ~1200 media changes, private 290 -> 294 MB after the warm-up (about 3 KB a change, the driver's), handles and
+  threads down; Linux AppImage in a container, 1489 changes, RSS 414 -> 430 MB in steps then flat, open files and
+  threads flat, quit cleanly. 📋 Open: Hide a cast device on a real device; Weblate export (token).
 - 🟢 **0.6.6** published 2026-11-14 21:36 UTC with every app (29 files: Windows x64 and ARM64, Linux, macOS, the APK,
   the Samsung TV app's source zip; GitHub's digests = the signed list, the published signature checked). Tag v0.6.6 =
   5a11ea7da7 (PR #92 merged as 09f750c190; its CI artifacts from the merge commit, the same tree); Android #11 merged

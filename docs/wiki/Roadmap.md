@@ -29,7 +29,9 @@ Updated as the work moves (last: 2026-11-14, 0.6.6 published, 0.6.7 started).
 **0.6.7** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 📋 About in a low window: its buttons stay under the scrolling text (they scrolled with it)
+- 🔨 About in a low window: its buttons stay under the scrolling text (they scrolled with it); to see on screen
+- ✅ Hebrew and Arabic texts that began with a Latin word read from the right; the Android texts European
+  Portuguese and Traditional Chinese still had in English
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

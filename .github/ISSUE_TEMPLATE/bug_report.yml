@@ -11,7 +11,7 @@ body:
     id: version
     attributes:
       label: VLC Redesign version
-      description: "⋯ menu → About VLC shows it, e.g. 0.2.0"
+      description: "⋯ menu → About VLC shows it (on Android: More → About), e.g. 0.2.0"
       placeholder: "0.2.0"
     validations:
       required: true
@@ -25,6 +25,8 @@ body:
         - macOS app (.dmg)
         - Linux AppImage
         - Linux package (deb, rpm or Flatpak)
+        - Android app (APK)
+        - Samsung TV app
         - Built from source
     validations:
       required: true
@@ -32,7 +34,7 @@ body:
     id: windows
     attributes:
       label: Operating system and version
-      placeholder: "Windows 11 24H2, macOS 26.1, Ubuntu 24.04"
+      placeholder: "Windows 11 24H2, macOS 26.1, Ubuntu 24.04, Android 14"
     validations:
       required: true
   - type: textarea

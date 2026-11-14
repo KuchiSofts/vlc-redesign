@@ -15,6 +15,21 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- Android: nearly 40 settings of the computer it lacked (playback, subtitles, audio, network, video, privacy).
+- Android: Sort and Add files for the queue, Export Playlist, Secondary subtitle delay.
+- Android: the sleep timer can pause instead of stopping.
+- Android: About checks for updates, suggests an idea and reports a problem.
+- Android: the computer's keys for the four skips, snapshot, record and sync by ear.
+- Bug report: Android and the Samsung TV app as kinds of copy.
+
+### Fixed
+
+- Updates: a release for some systems only is no longer offered to the others and no longer hides the last one of
+  this system.
+- Android: subtitle files beside a video open in the preferred language.
+
 ### Technical
 
 - Release notes: an update release without the Android app no longer says Android updates with its file.

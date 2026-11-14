@@ -128,8 +128,27 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.5** started: fixes as the issues bring them. 📋 Android: the update check looks past a latest release
-  without an APK (the releases list, the newest with `vlc-redesign-<tag>-android.apk`).
+- 🟡 **0.6.5** (owner 2026-11-14: every app with every option, working, fast, no leak): Android takes the computer's
+  options it lacked (the 0.6.0 parity table, `parity-android-060.md`), Android PR on `feature/parity-065`:
+  - 🟢 Update check: the releases list, the newest with `vlc-redesign-<tag>-android.apk` (8 tests); the desktop's
+    updater too (`redesign_updater.cpp`: the newest release with this system's package; the latest alone offered
+    an Android-only release to Windows and Linux).
+  - 🟢 About: Check for updates, Also on (a copy of `site/platforms.json`), Suggest an idea, Report a problem (the
+    bug form filled in, cut to a QR code's size for a TV without a browser), Source code = this app's repository.
+  - 🟢 Settings, checked one by one on the emulator: Playback (default speed, menu language, default audio and
+    subtitle tracks, stop after each item, scrub thumbnail, .mkv files, pause on the last frame), Subtitles (enable,
+    folders, outline thickness, shadow angle, text direction, alignment, filename time and place), Audio (spatial
+    mode, output gain, Dolby Surround, resampling), Network (ciphers, timeout, cast port), Video (aspect ratio,
+    snapshots: folder, prefix, format, size, numbering, preview; recordings folder), Controls (very short and medium
+    skips), General (layout direction, system accent on Android 12+), Privacy (never remember items matching).
+  - 🟢 Player: queue Sort and Add files, Export Playlist, sleep timer Pause playback, Secondary subtitle delay,
+    keys Shift/Alt/Ctrl/Ctrl+Alt arrows, Shift+S, Shift+R, Shift+H/J/K.
+  - 🟢 Fix: with subtitle files of two languages beside a video, the first file's language was chosen, not the
+    preferred one (libvlc 3 gives those tracks no language in the media's list).
+  - Not possible with libvlc 3 for Android (no change of the audio filters from the app, no crop, no frame step):
+    pitch shift, chorus/flanger, karaoke, crop, next/previous frame. 📋 Next: lyrics, effect presets, Hide player
+    UI, subtitle lines on the seek bar, Add Subtitles from a link, the onboarding's subtitle languages, the player
+    bar's other buttons, Always show the player bar, Increase text contrast.
 - Earlier, during 0.6.2 and 0.6.3: An Indonesian translation from Weblate
   (Arif Budiman) is in; CI's ARM64 screenshots are taken with the Start menu closed (the 0.6.1 ones showed it over
   VLC's window); the notes of an update release name only its own Linux files.

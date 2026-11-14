@@ -63,7 +63,10 @@
 
 namespace {
 
-const char latestReleaseApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REPO "/releases/latest";
+// The newest releases (not only GitHub's "latest"): a release made for some
+// systems only (0.6.4 had no Android app) must not hide the last one of this
+// system, nor be offered to it (onRelease picks the newest with its package)
+const char releasesApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REPO "/releases?per_page=30";
 const char latestReleasePage[] = VLC_REDESIGN_REPO_URL "/releases/latest";
 const char keyLastCheck[] = "redesign/update-last-check";
 const char keySkipped[] = "redesign/update-skip";
@@ -119,6 +122,25 @@ const char installerSuffix[] = "-aarch64.AppImage";
 const char installerSuffix[] = "-x86_64.AppImage";
 # endif
 #endif
+
+// Whether a release carries this build's package: its installer (Windows),
+// its AppImage (Linux) or its disk image (macOS) of this architecture
+bool hasOwnPackage(const QJsonObject &release)
+{
+#if defined(_WIN32) || defined(__linux__)
+    const QLatin1String suffix(installerSuffix);
+#elif defined(__APPLE__)
+    const QLatin1String suffix(ownPackageSuffix);
+#else
+    return false;
+#endif
+#if defined(_WIN32) || defined(__linux__) || defined(__APPLE__)
+    for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray())
+        if (asset.toObject().value(QLatin1String("name")).toString().endsWith(suffix, Qt::CaseInsensitive))
+            return true;
+    return false;
+#endif
+}
 
 #ifndef NDEBUG
 // for testing updates against a local server, not GitHub (debug builds only)
@@ -751,9 +773,9 @@ void RedesignUpdater::check(bool manual)
         return;
     }
     setState(Checking);
-    msg_Dbg(m_intf, "update check (%s): asking GitHub for the latest release",
+    msg_Dbg(m_intf, "update check (%s): asking GitHub for its releases",
             manual ? "asked" : "daily");
-    QString url = QString::fromLatin1(latestReleaseApi);
+    QString url = QString::fromLatin1(releasesApi);
 #ifndef NDEBUG
     if (!testApi().isEmpty())
         url = testApi();
@@ -778,7 +800,37 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
         setState(UpToDate);
         return;
     }
-    const QJsonObject release = QJsonDocument::fromJson(body).object();
+    const QJsonDocument document = QJsonDocument::fromJson(body);
+    QJsonObject release;
+    if (document.isArray()) {
+        // the list of releases: the newest published one that carries this
+        // build's package (a draft, a pre-release or a release for the other
+        // systems only is passed over)
+        QString newest;
+        for (const QJsonValue value : document.array()) {
+            const QJsonObject candidate = value.toObject();
+            if (candidate.value(QLatin1String("draft")).toBool()
+                || candidate.value(QLatin1String("prerelease")).toBool() || !hasOwnPackage(candidate))
+                continue;
+            QString version = candidate.value(QLatin1String("tag_name")).toString();
+            if (version.startsWith('v'))
+                version = version.mid(1);
+            if (!version.isEmpty() && (newest.isEmpty() || versionLess(newest, version))) {
+                newest = version;
+                release = candidate;
+            }
+        }
+        if (status == 200 && release.isEmpty()) {
+            // nothing of this system published yet
+            msg_Dbg(m_intf, "update check: no release for this system among the newest");
+            m_intf->mainSettings->setValue(keyLastCheck, QDateTime::currentDateTimeUtc().toString(Qt::ISODate));
+            setState(UpToDate);
+            return;
+        }
+    } else {
+        // one release (a local test server, or GitHub's answer of old)
+        release = document.object();
+    }
     const QString tag = release.value(QLatin1String("tag_name")).toString();
     if (status != 200 || tag.isEmpty()) {
         setState(Failed, qtr("GitHub sent an unexpected answer (%1).").arg(status));
@@ -855,6 +907,8 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
         return;
     }
 #endif
+    msg_Dbg(m_intf, "update check: the newest release for this system is %s (this copy: %s)",
+            qtu(m_latestVersion), qtu(currentVersion()));
     setState(versionLess(currentVersion(), m_latestVersion) ? Available : UpToDate);
 }
 

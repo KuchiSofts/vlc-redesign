@@ -13,6 +13,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Android: subtitle lines on the seek bar, Add Subtitles from a link, Add Audio Tracks.
+- Android: Show feedback for shortcuts and its duration, a default subtitle delay.
+- Android: Increase text contrast, Always show the player bar, Ignored file extensions.
+- Android: the welcome's Subtitle languages step, Keyboard Shortcuts, Hide a cast device.
+
 ## [0.6.5] · 2026-11-14
 
 An update release: Android gets the computer's options it lacked (nearly 40 settings, the queue's Sort and Add files,
@@ -33,6 +42,7 @@ release made for it. Windows, Linux and macOS are rebuilt with that; the Samsung
 - Updates: a release for some systems only is no longer offered to the others and no longer hides the last one of
   this system.
 - Android: subtitle files beside a video open in the preferred language.
+- Android: the tracks panel's Audio options (Audio delay) open again.
 
 ### Technical
 

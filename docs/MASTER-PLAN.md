@@ -128,7 +128,25 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.5** (owner 2026-11-14: every app with every option, working, fast, no leak): Android takes the computer's
+- 🟡 **0.6.6** (Android, branch `feature/android-066`, every item checked on the emulator): 🟢 subtitle lines on the
+  seek bar (RdSeekCueMarks); 🟢 Add Subtitles › From Link (HTTPS only, 20 MB, the app's own folder, chosen and kept as
+  a file opened); 🟢 On-Screen Messages: Show feedback for shortcuts and its duration (RdOsd; notices always show);
+  🟢 Increase text contrast (the desktop's colours through the `-highdr` resource qualifier, set by the setting and
+  cleared on HDR screens; Android 8+); 🟢 Always show the player bar (the mini player idle: "Nothing is playing", Play
+  resumes the last queue or opens files); 🟢 Ignored file extensions (added to the browser's and libvlc's own); 🟢 a
+  default Subtitle delay; 🟢 the welcome's Subtitle languages step; 🟢 Keyboard Shortcuts (the player's 34 keys in
+  VLC's words); 🟢 Hide a cast device / Show hidden devices (to see on a device with a cast target: the emulator has
+  none); 🟢 Add Audio Tracks; the update check reads the 10 newest releases. Fixed on the way: a subtitle opened while
+  another was on is chosen; the Hebrew "Height" typo; the link error's bidi in Hebrew and Arabic. 📋 Next: the desktop's
+  rate-limit message for GitHub's 403/429 (both apps), the Audio delay panel's cut labels on a phone held upright,
+  lyrics, effect presets, the player bar's other buttons, clone a profile.
+- 🟢 **0.6.5** published 2026-11-14 (tag v0.6.5 = c063173289, PR #91 merged as c553d63018; Android PR #10 merged as
+  6c8b2f8bf7, tag v0.6.5 = 0943525f1): 26 files, GitHub's digests = the signed list. Caught before it shipped: the
+  desktop's update check asked for 30 releases, 1.4 MB of JSON over the request's 1 MB limit ("GitHub sent an
+  unexpected answer (200)" in the macOS smoke test's About): now 10 releases and 8 MB; checked against GitHub with the
+  debug build ("the newest release for this system is 0.6.4"). The Android APK was rebuilt with the Audio options fix.
+  The smoke test's "dark" screenshot is light on CI's Macs (0.6.4's too): the runner's appearance does not change.
+- 🟢 **0.6.5** (owner 2026-11-14: every app with every option, working, fast, no leak): Android takes the computer's
   options it lacked (the 0.6.0 parity table, `parity-android-060.md`), Android PR on `feature/parity-065`:
   - 🟢 Update check: the releases list, the newest with `vlc-redesign-<tag>-android.apk` (8 tests); the desktop's
     updater too (`redesign_updater.cpp`: the newest release with this system's package; the latest alone offered

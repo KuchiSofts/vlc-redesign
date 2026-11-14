@@ -194,7 +194,8 @@ fi
 # to the playlist
 options=$("$exe" --intf=dummy --no-qt-privacy-ask -H 2>/dev/null || true)
 for option in http-proxy http-proxy-pwd playlist-enqueue; do
-    echo "$options" | grep -qE -- "--$option[ =,]" && note "ok: the option $option" \
+    # (a here-string: with pipefail, grep -q leaving early fails the echo)
+    grep -qE -- "--$option[ =,]" <<< "$options" && note "ok: the option $option" \
         || fail "no option $option on macOS"
 done
 

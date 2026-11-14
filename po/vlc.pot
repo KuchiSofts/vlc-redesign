@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-14 16:03+0000\n"
+"POT-Creation-Date: 2026-11-14 18:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -912,10 +912,6 @@ msgstr ""
 #: src/input/es_out.c:4728 modules/access/jack.c:66
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:214
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:100
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
-#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgid "Channels"
 msgstr ""
 
@@ -26513,55 +26509,119 @@ msgstr ""
 msgid "Schedule: "
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:949
-msgid "This channel cannot be played"
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
 msgstr ""
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:989
+msgid "This channel cannot be played"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:1029
 msgid "This programme is older than the channel's archive"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:990
+#: modules/gui/qt/iptv/iptv_addon.cpp:1030
 msgid "This programme has not started yet"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:991
+#: modules/gui/qt/iptv/iptv_addon.cpp:1031
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1015
+#: modules/gui/qt/iptv/iptv_addon.cpp:1055
 msgid "The guide does not say what is on"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1065
+#: modules/gui/qt/iptv/iptv_addon.cpp:1105
 msgid "No channel %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1267
+#: modules/gui/qt/iptv/iptv_addon.cpp:1307
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1270
+#: modules/gui/qt/iptv/iptv_addon.cpp:1310
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1270 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1310 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1278
+#: modules/gui/qt/iptv/iptv_addon.cpp:1318
 msgid "Today"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1280
+#: modules/gui/qt/iptv/iptv_addon.cpp:1320
 msgid "Tomorrow"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1282
+#: modules/gui/qt/iptv/iptv_addon.cpp:1322
 msgid "Yesterday"
 msgstr ""
 
@@ -26623,6 +26683,14 @@ msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] ""
 msgstr[1] ""
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390

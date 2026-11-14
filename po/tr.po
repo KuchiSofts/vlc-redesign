@@ -40949,3 +40949,11 @@ msgstr "<b>Bilinmeyen</b> tarafından"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "Puan: %1/5  İndirme: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub bu ağdan çok fazla istek aldı. %1 sonra yeniden deneyin."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub bu ağdan çok fazla istek aldı. Daha sonra yeniden deneyin."

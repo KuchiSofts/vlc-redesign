@@ -39835,3 +39835,11 @@ msgstr "autor: <b>neznámý</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "Hodnocení: %1/5  Stažení: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub dostal z této sítě příliš mnoho požadavků. Zkuste to znovu po %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub dostal z této sítě příliš mnoho požadavků. Zkuste to znovu později."

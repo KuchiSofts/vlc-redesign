@@ -39378,3 +39378,11 @@ msgstr "作者：<b>未知</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "評分：%1/5  下載次數：%2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "此網路向 GitHub 發出的要求過多。請在 %1 之後重試。"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "此網路向 GitHub 發出的要求過多。請稍後重試。"

@@ -9501,7 +9501,7 @@ msgstr "לא ניתן היה להתחבר ל־GitHub. בדוק את החיבור
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
-msgstr "GitHub החזיר תשובה לא צפויה (%1)."
+msgstr "השירות GitHub החזיר תשובה לא צפויה (%1)."
 
 #: modules/gui/qt/util/redesign_updater.cpp:912
 msgid ""

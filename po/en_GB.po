@@ -44215,3 +44215,11 @@ msgstr "by <b>Unknown</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "Score: %1/5  Downloads: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub was asked too often from this network. Try again after %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub was asked too often from this network. Try again later."

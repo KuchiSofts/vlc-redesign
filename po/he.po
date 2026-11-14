@@ -31659,7 +31659,7 @@ msgstr "לא ניתן היה להתחבר ל־GitHub. בדוק את החיבור
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
-msgstr "GitHub החזיר תשובה לא צפויה (%1)."
+msgstr "השירות GitHub החזיר תשובה לא צפויה (%1)."
 
 #: modules/gui/qt/util/redesign_updater.cpp:912
 msgid ""
@@ -39521,3 +39521,11 @@ msgstr "מאת <b>לא ידוע</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "דירוג: %1/5  הורדות: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "השירות GitHub קיבל יותר מדי בקשות מהרשת הזו. נסה שוב אחרי %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "השירות GitHub קיבל יותר מדי בקשות מהרשת הזו. נסה שוב מאוחר יותר."

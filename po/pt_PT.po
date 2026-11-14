@@ -41024,3 +41024,11 @@ msgstr "por <b>Desconhecido</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "Classificação: %1/5  Transferências: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "O GitHub recebeu demasiados pedidos desta rede. Tente novamente depois das %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "O GitHub recebeu demasiados pedidos desta rede. Tente novamente mais tarde."

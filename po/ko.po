@@ -40377,3 +40377,11 @@ msgstr "제작자: <b>알 수 없음</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "평점: %1/5  다운로드: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "이 네트워크에서 GitHub에 너무 많이 요청했습니다. %1 이후에 다시 시도하세요."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "이 네트워크에서 GitHub에 너무 많이 요청했습니다. 나중에 다시 시도하세요."

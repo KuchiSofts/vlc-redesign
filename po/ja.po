@@ -40698,3 +40698,11 @@ msgstr "作成者: <b>不明</b>"
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
 msgstr "評価: %1/5  ダウンロード数: %2"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "このネットワークから GitHub への問い合わせが多すぎます。%1 以降にもう一度お試しください。"
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "このネットワークから GitHub への問い合わせが多すぎます。しばらくしてからもう一度お試しください。"

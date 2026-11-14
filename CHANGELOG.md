@@ -21,6 +21,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - macOS: Dock menu with Play / Pause, Stop, Previous, Next and Mute.
 - macOS: Process priority, VLC's own HTTP proxy and "Add to the playlist instead of replacing it" in Settings.
 - macOS: Show in folder selects the file in Finder.
+- macOS: the menu bar icon has Show VLC Redesign, and the Dock icon shows a hidden window.
 - Bug report: the graphics processors and HDR screens on macOS, VLC's revision on macOS and Linux.
 
 ### Fixed

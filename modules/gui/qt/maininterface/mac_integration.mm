@@ -44,9 +44,12 @@
 #include <QAction>
 #include <QElapsedTimer>
 #include <QFileInfo>
+#include <QGuiApplication>
 #include <QMenu>
 #include <QUrl>
+#include <QWindow>
 
+#include "maininterface/mainctx.hpp"
 #include "player/player_controller.hpp"
 #include "playlist/playlist_controller.hpp"
 #include "util/vlctick.hpp"
@@ -398,6 +401,24 @@ MacIntegration::MacIntegration(qt_intf_t *intf, QWindow *window)
     connect(playlist, &PlaylistController::countChanged, this, [p]() { p->updateDockMenu(); });
     connect(playlist, &PlaylistController::hasNextChanged, this, [p]() { p->updateDockMenu(); });
     connect(playlist, &PlaylistController::hasPrevChanged, this, [p]() { p->updateDockMenu(); });
+
+    // A click on the Dock icon shows the window when it is hidden (started
+    // with only the menu bar icon, closed to it), as the taskbar button
+    // does on Windows. (Qt tells each click as the application active; the
+    // launch's own activation is not one)
+    bool launchPending = qGuiApp->applicationState() != Qt::ApplicationActive;
+    connect(qGuiApp, &QGuiApplication::applicationStateChanged, this,
+            [intf, launchPending](Qt::ApplicationState state) mutable {
+        if (state != Qt::ApplicationActive)
+            return;
+        if (launchPending) {
+            launchPending = false;
+            return;
+        }
+        MainCtx *const ctx = intf->p_mi;
+        if (ctx && ctx->interfaceVisibility() == QWindow::Hidden)
+            emit ctx->setInterfaceVisibible(true, true);
+    });
 
     d->updateMeta();
     QStringList items;

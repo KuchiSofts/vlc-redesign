@@ -49,7 +49,7 @@ To come back from a skin, start VLC once with `--intf=qt` (for example from a sh
 
 | Option | Choices / default | What it does | VLC option |
 |---|---|---|---|
-| **Show a system tray icon** | Toggle. Default: on. | A VLC icon in the notification area of the taskbar, with a menu for basic playback control. It appears or goes at once. | `qt-system-tray` |
+| **Show a system tray icon** | Toggle. Default: on. | A VLC icon in the notification area of the taskbar (on macOS, in the menu bar), with a menu for basic playback control and, while the window is hidden, *Show VLC Redesign* (on macOS a click on the Dock icon shows it too). It appears or goes at once. | `qt-system-tray` |
 | **Start minimized to the tray** | Toggle. Default: off. | VLC starts with only its tray icon, without showing its window. | `qt-start-minimized` |
 | **Show a popup when the track changes** | Dropdown: *Never* / *When minimized* / *Always*. Default: *When minimized*. | A notification with the artist and title when the playing item changes. *When minimized*: only while the window is minimized or hidden. Needs the tray icon. | `qt-notification` (0, 1, 2) |
 | **Popup duration** | Slider 0 s to 10 s, in steps of 0.5 s. Default: 3 s. | How long the track-change popup stays on screen. | `redesign/notification-duration` (interface setting, ms) |

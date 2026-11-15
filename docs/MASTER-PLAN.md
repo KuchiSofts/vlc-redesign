@@ -128,9 +128,11 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.7** started. 🔨 About in a low window (1024x768 Mac, a small window): its buttons scrolled with the
-  text under the fade; the dialog is a column now (the text scrolls, the buttons stay under it); qmllint clean, to
-  see on screen (the Windows build was stopped by the system for low memory). 🟢 The bidi pass: the texts whose first
+- 🟡 **0.6.7** started. 🟢 About in a low window (1024x768 Mac, a small window): its buttons scrolled with the
+  text under the fade; the dialog is a column now (the text scrolls, the buttons stay under it): seen on PR #93's
+  1024x768 Mac, the three buttons whole under the text. 🟢 The macOS smoke has a memory soak (step 7: media
+  changes every 0.6 s for 4 minutes): Intel 152.6 -> 153.1 MB, Apple Silicon 211.9 -> 212.0 MB over ~375 changes,
+  threads flat. 🟢 The bidi pass: the texts whose first
   letter is Latin (the 231 counted every catalog; 34 are in the interface): 29 Hebrew and 2 Arabic on the desktop,
   10 Hebrew and 4 Arabic on Android (Arabic's headphone virtualization was half English); Android's European
   Portuguese had 29 texts and 5 plurals in English, Traditional Chinese 8. Soaks of the published 0.6.6: Windows,

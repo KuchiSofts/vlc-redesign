@@ -19446,7 +19446,7 @@ msgstr ""
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:270
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:221
 msgid "Headphone virtualization"
-msgstr "virtualization السماعة"
+msgstr "المحاكاة الافتراضية لسماعات الرأس"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:277
 msgid "Volume normalization"
@@ -20085,7 +20085,7 @@ msgstr ""
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:744
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1105
 msgid "XSPF playlist"
-msgstr "XSPF قائمة التشغيل"
+msgstr "قائمة تشغيل XSPF"
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:749
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1106

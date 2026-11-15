@@ -129,7 +129,7 @@ What is being worked on, updated as it changes (2026-11-10):
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
 - 🟡 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
-  the Android More page; VideoLAN merged to `728ab921c2` (the MPEG audio demuxer's ID3 chapter bounds check, its
+  the Android More page; VideoLAN merged to `ed6d4aa119` (the MPEG audio demuxer's ID3 chapter bounds check, its
   own macOS interface, Meson options). Windows, ARM64, Linux,
   macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.6.9`, nothing of it changed).
   - 🟢 Reported 2026-11-15: pointing at the sidebar's edge resized it without a press. 0.6.8 gave the

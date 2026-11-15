@@ -590,8 +590,9 @@ What is being worked on, updated as it changes (2026-11-10):
     too* went nowhere, now goes round to the first row; opened from the keyboard the first row has the keyboard.
     With the fake Chromecast chosen, the switch is greyed and skipped, with its note. Opened with the mouse,
     arrows stay VLC's hotkeys until Tab (the interface's rule: keys go to an item with visual focus).
-  - 🔴 Quit: 2 of 10 tour runs hit `assert(medialib)` in `MLBaseModel::setMl` on quit (a binding gives the models
-    a null `MediaLib` while the interface goes down; debug builds show the CRT assert dialog and never exit).
+  - 🟢 Quit: 2 of 10 tour runs hit `assert(medialib)` in `MLBaseModel::setMl` on quit (a binding gives the models
+    a null `MediaLib` while the interface goes down; debug builds show the CRT assert dialog and never exit). Fixed
+    2026-10-30 (`f633907cb6`: the model keeps the library it has); every later quit test exits cleanly.
     46 plain quits (window close, rc quit, `--vout=dummy`, `QT_QUICK_BACKEND=software`, after the library pages,
     light theme) all exited 0. A full dump is kept locally (not in the repository).
   - 🟢 DLNA live channels (`96287f0157`): a restarted picture goes on in the same stream (one stream per channel,
@@ -834,8 +835,9 @@ What is being worked on, updated as it changes (2026-11-10):
   - 🟢 Soaks flat: 1 h of playback, 300 channel switches, 800 dialog openings (levels off at +5 MB), 203 page
     switches, 40 theme switches (memory, handles, GDI/USER, threads). Idle CPU ~0 % (0.08–0.23 %); paused 0.9 %
     is upstream's 80 ms redisplay (left). Zapping ~0.95 s is the provider's network (network caching changes nothing).
-  - ⚪ Open: Page Up/Down (and the digits) of the TV banner may be taken by VLC's hotkeys while a channel plays
-    (seen with posted keys only); the guide's fast scroll still keeps the render thread busy.
+  - 🟢 Page Up/Down and the digits of the TV banner win over VLC's hotkeys while a channel plays (0.4.0,
+    `MainCtx.keysBeforeHotkeys`, checked with real keys). ⚪ Open: the guide's fast scroll still keeps the render
+    thread busy (−25 % above).
 - 🟢 **Casting (2026-10-25, build 202, fake Chromecast)**: a click on the casting screen plays or pauses (it did
   nothing), a double click toggles fullscreen, the wheel changes the volume (it did nothing); a subtitle changed
   while casting is noted in the top corner where reading starts ("Subtitles on the TV: …", 72 languages). Taking the
@@ -935,13 +937,13 @@ count the 🟢 among the marked lines of their part of section 9.
 
 | Program            | Platforms                                  | Code base                               | Status                      |
 |--------------------|--------------------------------------------|-----------------------------------------|-----------------------------|
-| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.4.0                     |
-| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 built, not in 0.4.0       |
-| Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.4.0                     |
-| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.4.0                     |
-| Android            | Android 5+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
+| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.6.8                     |
+| Desktop            | Windows 11 ARM64                           | same                                    | 🟢 0.6.8 (since 0.4.1)       |
+| Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.6.8                     |
+| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.6.8                     |
+| Android            | Android 5+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | 🟢 0.6.8 (APK on GitHub)     |
 | Casting            | DLNA TVs (Samsung, LG, Sony…), Chromecast  | part of the desktop program             | 🟢 works on a real TV        |
-| TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | ⚪ track                     |
+| TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | 🟢 0.6.8 (source zip)        |
 | iPhone, iPad, TV   | iOS, iPadOS, tvOS                          | fork of VLC for iOS                     | ⚪ track                     |
 
 The desktop program has version numbers; each other platform gets its own when its first build is published
@@ -985,12 +987,12 @@ What comes first, and why. Each step starts when what it needs is done.
 | 1  | Finish the 0.3.x items (§8): the 6 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
 | 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
-| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.4.0 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
+| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; every version since, 0.6.8 on 2026-11-15) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟢     |
 | 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
 | 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); every icon an SVG from Figma, drawn sharp at every scale and zoom (2026-10-29); left: the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
-| 7  | Linux, then macOS, then Windows ARM64 (macOS started 2026-10-28: build script and CI, first run after the push) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟡     |
-| 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
-| 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
+| 7  | Linux, then macOS, then Windows ARM64 (all three released since 0.4.x, built and tested by CI) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟢     |
+| 8  | Android (phones, tablets, Android TV; APK on GitHub since 0.5.0)      | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🟢     |
+| 9  | Samsung TV receiver (source zip with each release since 0.5.3)        | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🟢     |
 | 10 | iPhone, iPad, Apple TV                                                | step 8, decision 3              | Same approach as Android, reusing its screens                        | 🔴     |
 
 ## 5. Design, frame by frame

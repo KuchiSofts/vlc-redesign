@@ -139,8 +139,19 @@ What is being worked on, updated as it changes (2026-11-10):
     right to left), the accent line shows on the handle, a drag still resizes (259 → 319 → 216, the minimum), a
     sweep after the drags changes nothing; qmllint clean. ⚪ Right to left the handle sits on the card's edge, about
     8 px from the mirror of the left-to-right place (beside the card): works, not yet symmetric.
-  - 🟡 Android More page: Edit Sidebar's title sat 6 dp left of the other rows (its icon 18 dp, theirs 24 dp):
-    the icon now in a 24 dp inset (rd_ic_sidebar_row).
+  - 🟢 Android More page: Edit Sidebar's title sat 6 dp left of the other rows (its icon 18 dp, theirs 24 dp):
+    the icon now in a 24 dp inset (rd_ic_sidebar_row); the seven titles start at the same pixel (200–202). Its
+    dialog said "Drag a page by its handle" (the desktop's text) over rows that move by arrows only: its own
+    text "Move a page with the arrows…" in every language (the second sentence kept from each translation), and
+    the list starts under the title (24 dp, was 20). Seen on the emulator (Android commit c305cc429).
+  - 🟢 The published 0.6.8 APK on the phone emulator (API 34), 2026-11-15: installed over 0.6.3 (What's new
+    0.6.8 shown), cold start 0.68–0.88 s (1.46 s the first after the install), warm 0.06–0.15 s. phonewalk.py
+    over the 12 Settings pages: 178 rows answer, 41 left out on purpose (erase, sign out, language…); its 6
+    "nothing" and 4 "not put back" are the segmented choices (direction, theme, snapshot format, subtitle size
+    unit: a second press keeps the choice, and the dump has no colours; after Right to left the page is
+    mirrored and the walk's places are off), checked by hand: Left to right and Dark/Light switch at once, Show
+    bookmark buttons goes off and on again (flagged since 0.6.1, a false alarm). The light theme's grey
+    (#C2C2C1) is the design's `light_bg_b1`.
 - 🟢 **0.6.8** published 2026-11-15 from PR #94 (merged as e9b5e5677d, tag v0.6.8 = fbea24f075, the CI build's tree)
   and Android #13 (merged as 7229f9aac6, tag 2451ed2f0), every app (33 files: Windows x64 and ARM64 with the small
   updates from 0.6.0–0.6.7, all 16 applied and compared; Linux; macOS; the APK, installed over 0.6.7; the Samsung TV

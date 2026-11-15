@@ -128,7 +128,18 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.7** started. 🟢 About in a low window (1024x768 Mac, a small window): its buttons scrolled with the
+- 🟡 **0.6.8** started. From the Discussions (answered 2026-11-15): 📋 Delete File From System moves the file to the
+  Recycle Bin / Trash (QFile::moveToTrash; it was QFile::remove), Android 11+ the system trash (#46); 📋 `.lrc` lyrics
+  next to the song on the desktop (it reads only an MP3's ID3 SYLT; Android reads `.lrc` since 0.6.6) (#60); 📋 the
+  sidebar's resize edge visible on hover: resizing works and is kept (`navigation-panel-width`, seen on 0.6.7), but
+  the handle is a bare ~5 px strip about 13 px right of the card, found only by a scan (#45).
+- 🟢 **0.6.7** published 2026-11-15 07:15 UTC (30 files: Windows x64 and ARM64, Linux, macOS, the APK; Samsung TV
+  stays 0.6.6; GitHub's digests = the signed list, the published signature checked). Tag v0.6.7 = 56742259fa (PR #93
+  merged as e97e878058, the same tree as the CI build); Android #12 merged as 43d29282eb, tag v0.6.7 = 91166d2932.
+  Small update from 0.6.6: 3.8 MB (ARM64 4.5 MB), each of the 14 applied and compared; pe-check 0 on both, the
+  package scan 0. Hide a cast device checked on a real phone through its settings (the row went, "Show 1
+  hidden device" brought it back; nothing cast). Weblate catalogs exported (2137 texts, 156k strings).
+  🟢 About in a low window (1024x768 Mac, a small window): its buttons scrolled with the
   text under the fade; the dialog is a column now (the text scrolls, the buttons stay under it): seen on PR #93's
   1024x768 Mac, the three buttons whole under the text. 🟢 The macOS smoke has a memory soak (step 7: media
   changes every 0.6 s for 4 minutes): Intel 152.6 -> 153.1 MB, Apple Silicon 211.9 -> 212.0 MB over ~375 changes,
@@ -138,7 +149,7 @@ What is being worked on, updated as it changes (2026-11-10):
   Portuguese had 29 texts and 5 plurals in English, Traditional Chinese 8. Soaks of the published 0.6.6: Windows,
   ~1200 media changes, private 290 -> 294 MB after the warm-up (about 3 KB a change, the driver's), handles and
   threads down; Linux AppImage in a container, 1489 changes, RSS 414 -> 430 MB in steps then flat, open files and
-  threads flat, quit cleanly. 📋 Open: Hide a cast device on a real device; Weblate export (token).
+  threads flat, quit cleanly.
 - 🟢 **0.6.6** published 2026-11-14 21:36 UTC with every app (29 files: Windows x64 and ARM64, Linux, macOS, the APK,
   the Samsung TV app's source zip; GitHub's digests = the signed list, the published signature checked). Tag v0.6.6 =
   5a11ea7da7 (PR #92 merged as 09f750c190; its CI artifacts from the merge commit, the same tree); Android #11 merged

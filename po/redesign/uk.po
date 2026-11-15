@@ -4268,6 +4268,10 @@ msgstr "Повертає всі параметри VLC до типових зн�
 msgid "Rescan plugins"
 msgstr "Повторно сканувати модулі"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "Сканування..."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "Сканувати"
@@ -5323,6 +5327,22 @@ msgstr "Очистити історію відтворення?"
 msgid "Recently played items will be removed from the media library."
 msgstr "Нещодавно відтворені елементи буде вилучено з медіатеки."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "Не вдалося додати цю теку до бібліотеки: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "Медіатека"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "Додати теку"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "Додати теку до медіатеки"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "Програма"
@@ -5527,13 +5547,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "Скинути все"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "С&ховати медіаплеєр %1 панелі завдань"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "&Показати медіапрогравач %1"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "С&ховати медіаплеєр %1 панелі завдань"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5708,6 +5728,66 @@ msgstr "Видалити профіль"
 msgid "Its layout and its settings go with it."
 msgstr "Його компонування та параметри буде видалено разом із ним."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "сервер не відповів"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "не вдалося з'єднатися із сервером"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "скасовано"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "завеликий розмір"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "сервер нічого не надіслав"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "отримано не повністю"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "не вдається зберегти на цьому пристрої"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "це не список відтворення M3U"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "у ньому немає каналів"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "не вдалося прочитати програму передач"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "не вдалося прочитати список каналів"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "це посилання — один потік, а не список каналів"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "сервер відмовив у доступі (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "за цією адресою нічого не знайдено (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "сервер відповів помилкою (%1)"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "Цей канал не можна відтворити"
@@ -5821,6 +5901,11 @@ msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "Архів: останній %1 день"
 msgstr[1] "Архів: останні %1 дні"
 msgstr[2] "Архів: останні %1 днів"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "Канали"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7459,22 +7544,6 @@ msgstr "Немає медіа, що відповідають пошуку"
 msgid "No media in this folder"
 msgstr "У цій теці немає медіа"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "Додати теку"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "Додати теку до медіатеки"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "Не вдалося додати цю теку до бібліотеки: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "Медіатека"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7765,10 +7834,6 @@ msgstr "У цій теці немає файлів субтитрів: вибе�
 msgid "Search for cast devices"
 msgstr "Шукати пристрої трансляції"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "Сканування..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "Вийти наприкінці черги відтворення"
@@ -8032,9 +8097,41 @@ msgstr "Вилучити з медіатеки"
 msgid "Add to medialibrary"
 msgstr "Додати до медіатеки"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "Вставте або введіть URL тут"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "Невідомий ресурс"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Встановлення служб"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "автор: <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "автор: <b>невідомий</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Встановлення"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Видалення"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "Немає даних"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Оцінка: %1/5  Завантаження: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9611,6 +9708,14 @@ msgstr "Ця збірка не може перевіряти оновлення.
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Не вдалося зв’язатися з GitHub. Перевірте з’єднання й спробуйте ще раз."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub отримав забагато запитів із цієї мережі. Спробуйте після %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub отримав забагато запитів із цієї мережі. Спробуйте пізніше."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

@@ -4296,6 +4296,10 @@ msgstr "Rimet tos les apontiaedjes di VLC a leu prémetowe valixhance."
 msgid "Rescan plugins"
 msgstr "Ricweri les tchôkes-divins"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "Analijhaedje..."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "Ricweri"
@@ -5352,6 +5356,22 @@ msgstr "Vûdî l' istwere do djouwaedje?"
 msgid "Recently played items will be removed from the media library."
 msgstr "Les elemints djouwés dierinnmint seront oistés del livreye di media."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "Nén moyén d' radjouter ci ridant ci al livreye: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "Livreye di media"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "Radjouter on ridant"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "Radjouter on ridant al livreye di media"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "Programe"
@@ -5553,13 +5573,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "Rimete tot a zero"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "&Catchî l' djouweu d' media %1 dins l' bår des bezognes"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "&Mostrer l' djouweu d' media %1"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&Catchî l' djouweu d' media %1 dins l' bår des bezognes"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5738,6 +5758,70 @@ msgstr "Disfacer l' profil"
 msgid "Its layout and its settings go with it."
 msgstr "Si adjinçmint et ses apontiaedjes s' è vont avou."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr ""
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "Ci canå ci n' pout nén esse djouwé"
@@ -5848,6 +5932,14 @@ msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "Rivey: li dierin %1 djoû"
 msgstr[1] "Rivey: les dierins %1 djoûs"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7489,22 +7581,6 @@ msgstr "Nou media ni corespond å cweraedje"
 msgid "No media in this folder"
 msgstr "Nou media dins ç' ridant ci"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "Radjouter on ridant"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "Radjouter on ridant al livreye di media"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "Nén moyén d' radjouter ci ridant ci al livreye: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "Livreye di media"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7795,10 +7871,6 @@ msgstr ""
 msgid "Search for cast devices"
 msgstr "Cweri des éndjins di difuzaedje"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "Analijhaedje..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "Cwiter al fén del rote a djouwer"
@@ -8063,9 +8135,41 @@ msgstr "Oister del livreye di media"
 msgid "Add to medialibrary"
 msgstr "Radjouter al livreye di media"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "Aclapez ou scrijhoz l' URL chal"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "Pårtaedje nén cnoxhou"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr ""
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9655,6 +9759,14 @@ msgstr "Ciste modêye ci n' sait nén cweri des metaedjes a djoû."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Nén moyén d' esse raloyî a GitHub. Verifyîz vosse raloyaedje et rsayîz."
+
+#: modules/gui/qt/util/redesign_updater.cpp:807
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:811
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr ""
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

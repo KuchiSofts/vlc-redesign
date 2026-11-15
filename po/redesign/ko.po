@@ -4201,6 +4201,10 @@ msgstr "VLC의 모든 설정을 기본값으로 되돌립니다."
 msgid "Rescan plugins"
 msgstr "플러그인 다시 검색"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "검색 중..."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "다시 검색"
@@ -5256,6 +5260,22 @@ msgstr "재생 기록을 지울까요?"
 msgid "Recently played items will be removed from the media library."
 msgstr "최근 재생한 항목이 미디어 라이브러리에서 제거됩니다."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "이 폴더를 라이브러리에 추가할 수 없습니다: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "미디어 라이브러리"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "폴더 추가"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "미디어 라이브러리에 폴더 추가"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "앱"
@@ -5454,13 +5474,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "모두 초기화"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "작업표시줄에서 %1 숨기기(&H)"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 보이기(&W)"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "작업표시줄에서 %1 숨기기(&H)"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5634,6 +5654,66 @@ msgstr "프로필 삭제"
 msgid "Its layout and its settings go with it."
 msgstr "레이아웃과 설정도 함께 삭제됩니다."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "서버가 응답하지 않았습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "서버에 연결할 수 없습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "취소됨"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "크기가 너무 큽니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "서버가 아무것도 보내지 않았습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "일부만 받아졌습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "이 기기에 저장할 수 없습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "M3U 재생 목록이 아닙니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "채널이 없습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "편성표를 읽을 수 없습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "채널 목록을 읽을 수 없습니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "이 링크는 채널 목록이 아니라 단일 스트림입니다"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "서버가 접근을 거부했습니다 (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "이 주소에서 아무것도 찾을 수 없습니다 (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "서버가 오류로 응답했습니다 (%1)"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "이 채널을 재생할 수 없습니다"
@@ -5739,6 +5819,11 @@ msgstr[0] "%1일"
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "다시보기: 지난 %1일"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "채널"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7332,22 +7417,6 @@ msgstr "검색과 일치하는 미디어가 없습니다"
 msgid "No media in this folder"
 msgstr "이 폴더에 미디어가 없습니다"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "폴더 추가"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "미디어 라이브러리에 폴더 추가"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "이 폴더를 라이브러리에 추가할 수 없습니다: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "미디어 라이브러리"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7628,10 +7697,6 @@ msgstr "이 폴더에 자막 파일이 없습니다. 위에서 다른 폴더를 
 msgid "Search for cast devices"
 msgstr "캐스트 장치 검색"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "검색 중..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "재생 대기열이 끝나면 종료"
@@ -7895,9 +7960,41 @@ msgstr "미디어 라이브러리에서 제거"
 msgid "Add to medialibrary"
 msgstr "미디어 라이브러리에 추가"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "여기에 URL을 붙여넣거나 입력하세요"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "알 수 없는 공유"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "서비스 설치"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "제작자: <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "제작자: <b>알 수 없음</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "설치 중"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "제거 중"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "정보 없음"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "평점: %1/5  다운로드: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9452,6 +9549,14 @@ msgstr "이 빌드에서는 업데이트를 확인할 수 없습니다."
 #: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub에 연결할 수 없습니다. 연결을 확인하고 다시 시도하세요."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "이 네트워크에서 GitHub에 너무 많이 요청했습니다. %1 이후에 다시 시도하세요."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "이 네트워크에서 GitHub에 너무 많이 요청했습니다. 나중에 다시 시도하세요."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

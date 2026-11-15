@@ -4178,6 +4178,10 @@ msgstr "מחזיר כל הגדרה של VLC לברירת המחדל שלה."
 msgid "Rescan plugins"
 msgstr "סרוק תוספים מחדש"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "מתבצעת סריקה…"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "סרוק מחדש"
@@ -5233,6 +5237,22 @@ msgstr "לנקות את היסטוריית הנגינה?"
 msgid "Recently played items will be removed from the media library."
 msgstr "הפריטים שנוגנו לאחרונה יוסרו מספריית המדיה."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "לא ניתן היה להוסיף תיקייה זו לספרייה: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "ספריית המדיה"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "הוסף תיקייה"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "הוסף תיקייה לספריית המדיה"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "יישום"
@@ -5440,13 +5460,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "אפס הכול"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "&הסתרת %1 בשורת המשימות"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "ה&צגת %1"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&הסתרת %1 בשורת המשימות"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5620,6 +5640,66 @@ msgstr "מחיקת פרופיל"
 msgid "Its layout and its settings go with it."
 msgstr "הפריסה וההגדרות שלו יימחקו יחד איתו."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "השרת לא ענה"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "לא ניתן היה להגיע לשרת"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "בוטל"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "הוא גדול מדי"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "השרת לא שלח דבר"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "הוא הגיע קטוע"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "לא ניתן לשמור אותו במכשיר הזה"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "זו אינה רשימת השמעה מסוג M3U"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "אין בו ערוצים"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "לא ניתן היה לקרוא את המדריך"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "לא ניתן היה לקרוא את רשימת הערוצים"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "הקישור הזה הוא שידור יחיד, לא רשימת ערוצים"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "השרת סירב לתת גישה (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "לא נמצא דבר בכתובת הזו (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "השרת ענה בשגיאה (%1)"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "אי אפשר לנגן את הערוץ הזה"
@@ -5737,6 +5817,11 @@ msgstr[0] "ארכיון: יום %1 אחורה"
 msgstr[1] "ארכיון: %1 ימים אחורה"
 msgstr[2] "ארכיון: %1 ימים אחורה"
 msgstr[3] "ארכיון: %1 ימים אחורה"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "ערוצים"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7371,22 +7456,6 @@ msgstr "אין מדיה שתואמת לחיפוש"
 msgid "No media in this folder"
 msgstr "אין מדיה בתיקייה זו"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "הוסף תיקייה"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "הוסף תיקייה לספריית המדיה"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "לא ניתן היה להוסיף תיקייה זו לספרייה: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "ספריית המדיה"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7679,10 +7748,6 @@ msgstr "אין קובץ כתוביות בתיקייה זו: בחר תיקייה 
 msgid "Search for cast devices"
 msgstr "חפש התקני שידור"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "מתבצעת סריקה…"
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "צא בסיום תור הנגינה"
@@ -7946,9 +8011,41 @@ msgstr "הסר מספריית המדיה"
 msgid "Add to medialibrary"
 msgstr "הוסף לספריית המדיה"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "הדבק או הקלד את הכתובת כאן"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "שיתוף לא ידוע"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "התקנת שירותים"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "מאת <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "מאת <b>לא ידוע</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "מתקין"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "מסיר"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "אין מידע זמין"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "דירוג: %1/5  הורדות: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9495,6 +9592,14 @@ msgstr "גרסה זו אינה יכולה לבדוק אם יש עדכונים."
 #: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "לא ניתן היה להתחבר ל־GitHub. בדוק את החיבור ונסה שוב."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "השירות GitHub קיבל יותר מדי בקשות מהרשת הזו. נסה שוב אחרי %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "השירות GitHub קיבל יותר מדי בקשות מהרשת הזו. נסה שוב מאוחר יותר."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

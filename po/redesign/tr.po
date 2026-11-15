@@ -4270,6 +4270,10 @@ msgstr "VLC'nin tüm ayarlarını varsayılan değerlerine döndürür."
 msgid "Rescan plugins"
 msgstr "Eklentileri yeniden tara"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "Taranıyor..."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "Yeniden tara"
@@ -5325,6 +5329,22 @@ msgstr "Oynatma geçmişi temizlensin mi?"
 msgid "Recently played items will be removed from the media library."
 msgstr "Son oynatılan ögeler ortam kitaplığından kaldırılacak."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "Bu klasör kitaplığa eklenemedi: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "Ortam kitaplığı"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "Klasör ekle"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "Ortam kitaplığına klasör ekle"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "Uygulama"
@@ -5527,13 +5547,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "Tümünü sıfırla"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "%1 görev çu&buğunda görüntülenmesin"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 &görüntülensin"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "%1 görev çu&buğunda görüntülenmesin"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5708,6 +5728,66 @@ msgstr "Profili Sil"
 msgid "Its layout and its settings go with it."
 msgstr "Yerleşimi ve ayarları da onunla birlikte silinir."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "sunucu yanıt vermedi"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "sunucuya ulaşılamadı"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "iptal edildi"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "boyutu çok büyük"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "sunucu hiçbir şey göndermedi"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "eksik geldi"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "bu cihaza kaydedilemiyor"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "bir M3U oynatma listesi değil"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "hiç kanal yok"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "kılavuz okunamadı"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "kanal listesi okunamadı"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "bu bağlantı tek bir yayın, kanal listesi değil"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "sunucu erişimi reddetti (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "bu adreste hiçbir şey bulunamadı (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "sunucu bir hatayla yanıt verdi (%1)"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "Bu kanal oynatılamıyor"
@@ -5817,6 +5897,11 @@ msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "Geriye dönük: son %1 gün"
 msgstr[1] "Geriye dönük: son %1 gün"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "Kanallar"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7443,22 +7528,6 @@ msgstr "Aramayla eşleşen ortam yok"
 msgid "No media in this folder"
 msgstr "Bu klasörde ortam yok"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "Klasör ekle"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "Ortam kitaplığına klasör ekle"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "Bu klasör kitaplığa eklenemedi: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "Ortam kitaplığı"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7744,10 +7813,6 @@ msgstr "Bu klasörde altyazı dosyası yok: yukarıdan başka bir klasör seçin
 msgid "Search for cast devices"
 msgstr "Yayın aygıtlarını ara"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "Taranıyor..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "Oynatma kuyruğunun sonunda çık"
@@ -8011,9 +8076,41 @@ msgstr "Ortam kitaplığından kaldır"
 msgid "Add to medialibrary"
 msgstr "Ortam kitaplığına ekle"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "URL'yi buraya yapıştırın ya da yazın"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "Bilinmeyen paylaşım"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Hizmetleri yükle"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "<b>%1</b> tarafından"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "<b>Bilinmeyen</b> tarafından"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Yükleniyor"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Kaldırılıyor"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "Bilgi yok"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Puan: %1/5  İndirme: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9585,6 +9682,14 @@ msgstr "Bu derleme güncellemeleri denetleyemez."
 #: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub'a ulaşılamadı. Bağlantınızı denetleyip yeniden deneyin."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub bu ağdan çok fazla istek aldı. %1 sonra yeniden deneyin."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub bu ağdan çok fazla istek aldı. Daha sonra yeniden deneyin."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

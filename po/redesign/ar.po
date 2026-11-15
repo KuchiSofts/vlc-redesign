@@ -4207,6 +4207,10 @@ msgstr "يعيد كل إعدادات VLC إلى قيمها الافتراضية.
 msgid "Rescan plugins"
 msgstr "إعادة فحص الوحدات"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "جارٍ الفحص..."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "إعادة الفحص"
@@ -5262,6 +5266,22 @@ msgstr "هل تريد مسح سجل التشغيل؟"
 msgid "Recently played items will be removed from the media library."
 msgstr "ستُزال العناصر التي شُغّلت مؤخرًا من مكتبة الوسائط."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "تعذّرت إضافة هذا المجلد إلى المكتبة: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "مكتبة الوسائط"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "إضافة مجلد"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "إضافة مجلد إلى مكتبة الوسائط"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "التطبيق"
@@ -5475,13 +5495,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "إعادة تعيين الكل"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "&إخفاء مشغل الوسائط %1 من شريط المهام"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "إ&ظهار مشغل الوسائط %1"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&إخفاء مشغل الوسائط %1 من شريط المهام"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5655,6 +5675,66 @@ msgstr "حذف ملف التعريف"
 msgid "Its layout and its settings go with it."
 msgstr "سيُحذف تخطيطه وإعداداته معه."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "لم يستجب الخادم"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "تعذّر الوصول إلى الخادم"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "أُلغي"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "حجمه كبير جدًا"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "لم يرسل الخادم شيئًا"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "وصل ناقصًا"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "لا يمكن حفظه على هذا الجهاز"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "هذه ليست قائمة تشغيل M3U"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "لا يحتوي على قنوات"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "تعذّرت قراءة الدليل"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "تعذّرت قراءة قائمة القنوات"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "هذا الرابط بث واحد، وليس قائمة قنوات"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "رفض الخادم الوصول (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "لم يُعثر على شيء في هذا العنوان (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "ردّ الخادم بخطأ (%1)"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "لا يمكن تشغيل هذه القناة"
@@ -5780,6 +5860,11 @@ msgstr[2] "إعادة المشاهدة: آخر %1 يوم"
 msgstr[3] "إعادة المشاهدة: آخر %1 أيام"
 msgstr[4] "إعادة المشاهدة: آخر %1 يومًا"
 msgstr[5] "إعادة المشاهدة: آخر %1 يوم"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "القنوات"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7441,22 +7526,6 @@ msgstr "لا توجد وسائط تطابق البحث"
 msgid "No media in this folder"
 msgstr "لا توجد وسائط في هذا المجلد"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "إضافة مجلد"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "إضافة مجلد إلى مكتبة الوسائط"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "تعذّرت إضافة هذا المجلد إلى المكتبة: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "مكتبة الوسائط"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7757,10 +7826,6 @@ msgstr "لا يوجد ملف ترجمة في هذا المجلد: اختر مج�
 msgid "Search for cast devices"
 msgstr "البحث عن أجهزة البث"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "جارٍ الفحص..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "الإنهاء عند نهاية قائمة الانتظار"
@@ -8024,9 +8089,41 @@ msgstr "إزالة من مكتبة الوسائط"
 msgid "Add to medialibrary"
 msgstr "إضافة إلى مكتبة الوسائط"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "الصق عنوان URL هنا أو اكتبه"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "مشاركة غير معروفة"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "تثبيت الخدمات"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "بواسطة <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "بواسطة <b>غير معروف</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "جارٍ التثبيت"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "جارٍ إلغاء التثبيت"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "لا تتوفر معلومات"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "التقييم: %1/5  التنزيلات: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9585,6 +9682,14 @@ msgstr "لا يستطيع هذا الإصدار التحقق من وجود تح�
 #: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "تعذّر الوصول إلى GitHub. تحقق من اتصالك وأعد المحاولة."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "تلقّى GitHub طلبات كثيرة جدًا من هذه الشبكة. حاول مجددًا بعد %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "تلقّى GitHub طلبات كثيرة جدًا من هذه الشبكة. حاول مجددًا لاحقًا."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

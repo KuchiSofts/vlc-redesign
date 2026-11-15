@@ -4326,6 +4326,10 @@ msgstr "Setzt alle Einstellungen von VLC auf ihre Standardwerte zurück."
 msgid "Rescan plugins"
 msgstr "Plugins neu einlesen"
 
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "Suche läuft..."
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
 msgstr "Neu einlesen"
@@ -5382,6 +5386,22 @@ msgid "Recently played items will be removed from the media library."
 msgstr ""
 "Die zuletzt gespielten Einträge werden aus der Medienbibliothek entfernt."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "Dieser Ordner konnte nicht zur Bibliothek hinzugefügt werden: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "Medienbibliothek"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "Ordner hinzufügen"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "Ordner zur Medienbibliothek hinzufügen"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "App"
@@ -5583,13 +5603,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "Alle zurücksetzen"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "&%1 in die Taskleiste minimieren"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 anzei&gen"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&%1 in die Taskleiste minimieren"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5768,6 +5788,66 @@ msgstr "Profil löschen"
 msgid "Its layout and its settings go with it."
 msgstr "Sein Layout und seine Einstellungen werden mitgelöscht."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server did not answer"
+msgstr "der Server hat nicht geantwortet"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server could not be reached"
+msgstr "der Server ist nicht erreichbar"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "cancelled"
+msgstr "abgebrochen"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is too large"
+msgstr "es ist zu groß"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server sent nothing"
+msgstr "der Server hat nichts gesendet"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it came cut short"
+msgstr "es kam unvollständig an"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it cannot be saved on this device"
+msgstr "es kann auf diesem Gerät nicht gespeichert werden"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it is not an M3U playlist"
+msgstr "es ist keine M3U-Wiedergabeliste"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "it has no channels"
+msgstr "es enthält keine Sender"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the guide could not be read"
+msgstr "das Fernsehprogramm konnte nicht gelesen werden"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the list of channels could not be read"
+msgstr "die Senderliste konnte nicht gelesen werden"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "this link is a single stream, not a list of channels"
+msgstr "dieser Link ist ein einzelner Stream, keine Senderliste"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server refused access (%1)"
+msgstr "der Server hat den Zugriff verweigert (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "nothing was found at this address (%1)"
+msgstr "unter dieser Adresse wurde nichts gefunden (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp
+msgid "the server answered with an error (%1)"
+msgstr "der Server hat mit einem Fehler geantwortet (%1)"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "Dieser Sender kann nicht abgespielt werden"
@@ -5879,6 +5959,11 @@ msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "Replay: der letzte %1 Tag"
 msgstr[1] "Replay: die letzten %1 Tage"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml
+msgctxt "TV"
+msgid "Channels"
+msgstr "Sender"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7529,22 +7614,6 @@ msgstr "Keine Medien entsprechen der Suche"
 msgid "No media in this folder"
 msgstr "Keine Medien in diesem Ordner"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "Ordner hinzufügen"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "Ordner zur Medienbibliothek hinzufügen"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "Dieser Ordner konnte nicht zur Bibliothek hinzugefügt werden: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "Medienbibliothek"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7833,10 +7902,6 @@ msgstr "Keine Untertiteldatei in diesem Ordner: Wählen Sie oben einen anderen."
 msgid "Search for cast devices"
 msgstr "Nach Übertragungsgeräten suchen"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "Suche läuft..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "Am Ende der Warteschlange beenden"
@@ -8100,9 +8165,41 @@ msgstr "Aus Medienbibliothek entfernen"
 msgid "Add to medialibrary"
 msgstr "Zur Medienbibliothek hinzufügen"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "URL hier einfügen oder eingeben"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "Unbekannte Freigabe"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Dienste installieren"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "von <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>Unknown</b>"
+msgstr "von <b>Unbekannt</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Installing"
+msgstr "Wird installiert"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "Uninstalling"
+msgstr "Wird deinstalliert"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml
+msgid "No information available"
+msgstr "Keine Informationen verfügbar"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Bewertung: %1/5  Downloads: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9694,6 +9791,14 @@ msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "GitHub ist nicht erreichbar. Prüfen Sie Ihre Verbindung und versuchen Sie es "
 "erneut."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub wurde von diesem Netzwerk zu oft angefragt. Versuche es nach %1 erneut."
+
+#: modules/gui/qt/util/redesign_updater.cpp
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub wurde von diesem Netzwerk zu oft angefragt. Versuche es später erneut."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

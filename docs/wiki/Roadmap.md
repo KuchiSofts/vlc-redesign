@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-15, 0.6.7 released).
+Updated as the work moves (last: 2026-11-15, 0.6.7 published, 0.6.8 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -29,6 +29,11 @@ Updated as the work moves (last: 2026-11-15, 0.6.7 released).
 **0.6.8** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 📋 Delete File From System moves the file to the Recycle Bin (the Trash on macOS and Linux, the system trash on
+  Android 11+) ([#46](https://github.com/KuchiSofts/vlc-redesign/discussions/46))
+- 📋 Lyrics from an `.lrc` file next to the song on Windows, Linux and macOS, as on Android
+  ([#60](https://github.com/KuchiSofts/vlc-redesign/discussions/60))
+- 📋 The sidebar's resize edge visible when pointed at ([#45](https://github.com/KuchiSofts/vlc-redesign/discussions/45))
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

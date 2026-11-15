@@ -19,17 +19,15 @@ msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-11-09 23:01+0000\n"
-"PO-Revision-Date: 2026-11-11 12:51+0000\n"
-"Last-Translator: amir ranjbar "
-"<amir.ranjbar727@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Persian <https://hosted.weblate.org/projects/vlc-redesign/"
-"interface/fa/>\n"
+"PO-Revision-Date: 2017-02-06 13:43+0000\n"
+"Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
+"Language-Team: Persian (http://www.transifex.com/yaron/vlc-trans/language/"
+"fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: include/vlc_config_cat.h:43 src/libvlc-module.c:2181
 #: modules/gui/qt/menus/menus.cpp:908
@@ -3011,15 +3009,13 @@ msgstr "پنجره را در همان جایی باز می‌کند که هنگ�
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr "اندازهٔ واسط"
+msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
 msgstr ""
-"صفحه‌ها، متن‌ها و کنترل‌ها با چه اندازه‌ای ترسیم می‌شوند. حالت خودکار اندازه‌ای را "
-"انتخاب می‌کند که مناسب این صفحه‌نمایش است."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3078,12 +3074,10 @@ msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
 msgstr ""
-"محلی که میزان صدا هنگام تغییر نمایش داده می‌شود (با چرخ ماوس، کلیدها یا بی‌صدا "
-"کردن). خودکار: در سمت راست، و در زبان‌های راست‌به‌چپ در سمت چپ است."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr "خودکار|سمت راست|سمت چپ|گوشه بالا راست|گوشه بالا چپ"
+msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3424,7 +3418,7 @@ msgstr "کادر"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr "خودکار (%1 %)"
+msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -4222,6 +4216,10 @@ msgstr "همهٔ تنظیمات VLC را به حالت پیش‌فرض برمی�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:376
 msgid "Rescan plugins"
 msgstr "پویش دوبارهٔ افزایه‌ها"
+
+#: modules/gui/qt/menus/custom_menus.cpp:141
+msgid "Scanning..."
+msgstr "در حال پویش..."
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:377
 msgid "Rescan"
@@ -5278,6 +5276,22 @@ msgstr "تاریخچهٔ پخش پاک شود؟"
 msgid "Recently played items will be removed from the media library."
 msgstr "موارد پخش‌شدهٔ اخیر از کتابخانهٔ رسانه حذف می‌شوند."
 
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
+msgid "Could not add this folder to the library: %1"
+msgstr "این پوشه به کتابخانه افزوده نشد: %1"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
+msgid "Media library"
+msgstr "کتابخانهٔ رسانه"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
+msgid "Add folder"
+msgstr "افزودن پوشه"
+
+#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
+msgid "Add folder to media library"
+msgstr "افزودن پوشه به کتابخانهٔ رسانه"
+
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:18
 msgid "App"
 msgstr "برنامه"
@@ -5476,13 +5490,13 @@ msgstr ""
 msgid "Reset all"
 msgstr "بازنشانی همه"
 
-#: modules/gui/qt/dialogs/systray/systray.cpp:200
-msgid "&Hide %1 in taskbar"
-msgstr "&پنهان کردن پخش‌کنندهٔ رسانهٔ %1 در نوار وظیفه"
-
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "&نمایش پخش‌کنندهٔ رسانهٔ %1"
+
+#: modules/gui/qt/dialogs/systray/systray.cpp:200
+msgid "&Hide %1 in taskbar"
+msgstr "&پنهان کردن پخش‌کنندهٔ رسانهٔ %1 در نوار وظیفه"
 
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
 #: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
@@ -5656,6 +5670,70 @@ msgstr "حذف نمایه"
 msgid "Its layout and its settings go with it."
 msgstr "چیدمان و تنظیمات آن هم حذف می‌شوند."
 
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr ""
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
 msgstr "این کانال قابل پخش نیست"
@@ -5761,6 +5839,14 @@ msgstr[0] "%1 روز"
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] "بازپخش: %1 روز گذشته"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7363,22 +7449,6 @@ msgstr "هیچ رسانه‌ای با جستجو منطبق نیست"
 msgid "No media in this folder"
 msgstr "این پوشه رسانه‌ای ندارد"
 
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:43
-msgid "Add folder"
-msgstr "افزودن پوشه"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:46
-msgid "Add folder to media library"
-msgstr "افزودن پوشه به کتابخانهٔ رسانه"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:54
-msgid "Could not add this folder to the library: %1"
-msgstr "این پوشه به کتابخانه افزوده نشد: %1"
-
-#: modules/gui/qt/medialibrary/qml/LibrarySourceButton.qml:55
-msgid "Media library"
-msgstr "کتابخانهٔ رسانه"
-
 #: modules/gui/qt/medialibrary/qml/OpenMediaButton.qml:58
 #: modules/gui/qt/player/qml/CompactLibrary.qml:644
 #: modules/gui/qt/player/qml/controlbarcontrols/OpenButton.qml:31
@@ -7660,10 +7730,6 @@ msgstr "این پوشه پروندهٔ زیرنویس ندارد: پوشهٔ د�
 msgid "Search for cast devices"
 msgstr "جستجوی دستگاه‌های پخش"
 
-#: modules/gui/qt/menus/custom_menus.cpp:141
-msgid "Scanning..."
-msgstr "در حال پویش..."
-
 #: modules/gui/qt/menus/menus.cpp:221 modules/gui/qt/menus/menus.cpp:939
 msgid "Quit at the end of play queue"
 msgstr "خروج در پایان صف پخش"
@@ -7928,9 +7994,41 @@ msgstr "حذف از کتابخانهٔ رسانه"
 msgid "Add to medialibrary"
 msgstr "افزودن به کتابخانهٔ رسانه"
 
+#: modules/gui/qt/network/qml/DiscoverUrlDisplay.qml:73
+msgid "Paste or write the URL here"
+msgstr "نشانی را اینجا بچسبانید یا بنویسید"
+
 #: modules/gui/qt/network/qml/NetworkGridItem.qml:64
 msgid "Unknown share"
 msgstr "اشتراک نامشخص"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr ""
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr ""
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -9487,6 +9585,14 @@ msgstr "این نسخه نمی‌تواند به‌روزرسانی‌ها را 
 #: modules/gui/qt/util/redesign_updater.cpp:767
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "دسترسی به GitHub ممکن نشد. اتصال خود را بررسی کنید و دوباره تلاش کنید."
+
+#: modules/gui/qt/util/redesign_updater.cpp:807
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:811
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr ""
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."

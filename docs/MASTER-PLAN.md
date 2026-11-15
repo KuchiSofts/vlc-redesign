@@ -155,6 +155,10 @@ What is being worked on, updated as it changes (2026-11-10):
   scan) and an accent line while pointed at or dragged: the drag measured from x 220 to 227, the line seen while
   pressed and while pointed at (the hover hook answers once loaded from an ASR-excluded folder: 1,640 line pixels
   on hover, none away) (#45). Samsung TV: no file deletion (its lyrics came in 0.6.8 too).
+  Speed of the published package against 0.6.7, same PC, hidden desktop, rc (playperf.py, 2026-11-15): 35 formats
+  all play, the first second of playback reached in a median 1.33–1.36 s for both (rc time is whole seconds);
+  seeks to the middle of 1080p, 4K H.264, 4K HEVC 10-bit and a 70-minute file 0.21 s for both, playing on. The one
+  "stopped after the seek" was the test file: 6 s of video under a 30 s subtitle track (0.6.7 the same).
 - 🟢 **0.6.7** published 2026-11-15 07:15 UTC (30 files: Windows x64 and ARM64, Linux, macOS, the APK; Samsung TV
   stays 0.6.6; GitHub's digests = the signed list, the published signature checked). Tag v0.6.7 = 56742259fa (PR #93
   merged as e97e878058, the same tree as the CI build); Android #12 merged as 43d29282eb, tag v0.6.7 = 91166d2932.

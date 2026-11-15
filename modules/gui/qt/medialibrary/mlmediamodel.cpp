@@ -21,7 +21,38 @@
 
 #include "mlmediamodel.hpp"
 #include "mlhelper.hpp"
+#include <QDir>
 #include <QFile>
+
+#ifdef _WIN32
+#include <windows.h>
+#include <shellapi.h>
+#endif
+
+namespace {
+
+// Whether the file's drive has a Recycle Bin. A network share has none, and
+// Windows would then delete the file for good without a word, so it is asked
+// first. Elsewhere QFile::moveToTrash fails by itself when there is no trash.
+bool hasTrash(const QString &localPath)
+{
+#ifdef _WIN32
+    const std::wstring path = QDir::toNativeSeparators(localPath).toStdWString();
+    wchar_t root[MAX_PATH + 1];
+    if (!GetVolumePathNameW(path.c_str(), root, MAX_PATH + 1))
+        return false;
+    if (GetDriveTypeW(root) == DRIVE_REMOTE)
+        return false;
+    SHQUERYRBINFO info = {};
+    info.cbSize = sizeof(info);
+    return SUCCEEDED(SHQueryRecycleBinW(root, &info));
+#else
+    Q_UNUSED(localPath);
+    return true;
+#endif
+}
+
+}
 
 MLMediaModel::MLMediaModel(QObject *par)
     : MLBaseModel(par)
@@ -83,18 +114,22 @@ bool MLMediaModel::getPermissions(const MLMedia* media) const
     return folderPermissions & QFileDevice::WriteUser;
 }
 
-void MLMediaModel::deleteFileFromSource(const QModelIndex &index)
+bool MLMediaModel::deleteFileFromSource(const QModelIndex &index, bool toTrash)
 {
     const auto media = static_cast<MLMedia *>(item(index.row()));
+    if (!media)
+        return false;
     QString mrl = media->mrl();
 
     QUrl fileUrl(mrl);
     QString localPath = fileUrl.toLocalFile();
+    if (localPath.isEmpty())
+        return false;
 
-    QFile file(localPath);
-    bool removed = file.remove();
+    const bool removed = toTrash ? (hasTrash(localPath) && QFile::moveToTrash(localPath))
+                                 : QFile::remove(localPath);
     if (!removed)
-        return;
+        return false;
 
     QUrl parentUrl = getParentURL(index);
     QString parentUrlString = parentUrl.toString();
@@ -104,6 +139,7 @@ void MLMediaModel::deleteFileFromSource(const QModelIndex &index)
                               {
                                   vlc_ml_reload_folder(ml, qtu(parentUrlString));
                               });
+    return true;
 }
 
 vlc_ml_sorting_criteria_t MLMediaModel::nameToCriteria(QByteArray name) const

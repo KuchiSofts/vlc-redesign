@@ -40971,3 +40971,19 @@ msgstr "це посилання — один потік, а не список к
 msgctxt "TV"
 msgid "Channels"
 msgstr "Канали"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Перемістити цей файл до кошика?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Перемістити цей файл до кошика?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Не вдається перемістити цей файл до кошика. Видалити його назавжди?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Не вдається перемістити цей файл до кошика. Видалити його назавжди?"

@@ -41022,3 +41022,19 @@ msgstr "bu bağlantı tek bir yayın, kanal listesi değil"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Kanallar"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Bu dosya Geri Dönüşüm Kutusu'na taşınsın mı?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Bu dosya Çöp Sepeti'ne taşınsın mı?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Bu dosya Geri Dönüşüm Kutusu'na taşınamıyor. Kalıcı olarak silinsin mi?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Bu dosya Çöp Sepeti'ne taşınamıyor. Kalıcı olarak silinsin mi?"

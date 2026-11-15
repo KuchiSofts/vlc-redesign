@@ -264,14 +264,22 @@ Widgets.RedesignContextMenu {
     }
 
     function deleteFileFromSource(dataList, options, indexes) {
-        // asked even without the confirmations: the file is gone for good
-        let confirm = DialogsProvider.questionDialog(qsTr("Are you sure you want to delete this file?"),
-                                                     qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel"));
+        // to the Recycle Bin (the Trash on macOS and Linux), asked even
+        // without the confirmations
+        const windows = (Qt.platform.os === "windows")
+        if (!DialogsProvider.questionDialog(windows ? qsTr("Move this file to the Recycle Bin?")
+                                                    : qsTr("Move this file to the Trash?"),
+                                            qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel")))
+            return
 
-        if (confirm) {
-            model.deleteFileFromSource(indexes[0]);
-            console.log("File Deleted !!");
-        }
+        if (model.deleteFileFromSource(indexes[0], true))
+            return
+
+        // its drive has no trash (a network share...): for good only with a second yes
+        if (DialogsProvider.questionDialog(windows ? qsTr("This file can't be moved to the Recycle Bin. Delete it permanently?")
+                                                   : qsTr("This file can't be moved to the Trash. Delete it permanently?"),
+                                           qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel")))
+            model.deleteFileFromSource(indexes[0], false)
     }
 
     function showInformationAvailable(dataList, options, indexes) {

@@ -40426,3 +40426,19 @@ msgstr "den här länken är en enda ström, inte en kanallista"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Kanaler"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Flytta den här filen till Papperskorgen?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Flytta den här filen till Papperskorgen?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Den här filen kan inte flyttas till Papperskorgen. Radera den permanent?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Den här filen kan inte flyttas till Papperskorgen. Radera den permanent?"

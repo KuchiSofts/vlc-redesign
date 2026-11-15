@@ -39827,3 +39827,19 @@ msgstr "此链接是单个流，而不是频道列表"
 msgctxt "TV"
 msgid "Channels"
 msgstr "频道"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "要将此文件移到回收站吗？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "要将此文件移到废纸篓吗？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "无法将此文件移到回收站。要永久删除吗？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "无法将此文件移到废纸篓。要永久删除吗？"

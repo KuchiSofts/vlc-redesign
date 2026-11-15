@@ -41097,3 +41097,19 @@ msgstr "esta ligação é uma única transmissão, não uma lista de canais"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Canais"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Mover este ficheiro para a Reciclagem?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Mover este ficheiro para o Lixo?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Não é possível mover este ficheiro para a Reciclagem. Eliminá-lo permanentemente?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Não é possível mover este ficheiro para o Lixo. Eliminá-lo permanentemente?"

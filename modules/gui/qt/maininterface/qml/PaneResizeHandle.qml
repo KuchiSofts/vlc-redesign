@@ -63,6 +63,28 @@ Item {
         color: theme.separator
     }
 
+    // The edge that resizes the pane, shown while the pointer is on it or
+    // drags it: without it, it is a bare strip nobody finds (#45)
+    Rectangle {
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            horizontalCenter: resizeHandle.horizontalCenter
+            topMargin: VLCStyle.dp(8, VLCStyle.scale)
+            bottomMargin: VLCStyle.dp(8, VLCStyle.scale)
+        }
+
+        width: VLCStyle.dp(2, VLCStyle.scale)
+        radius: width / 2
+        color: theme.accent
+        visible: resizeHandle.visible && opacity > 0
+        opacity: (resizeHandle.containsMouse || resizeHandle.pressed) ? 1.0 : 0.0
+
+        Behavior on opacity {
+            NumberAnimation { duration: VLCStyle.duration_short; easing.type: Easing.OutQuad }
+        }
+    }
+
     Widgets.HorizontalResizeHandle {
         id: resizeHandle
 

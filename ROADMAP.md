@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-068-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-069-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,30 +18,25 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-15, 0.6.7 published, 0.6.8 started).
+Updated as the work moves (last: 2026-11-15, 0.6.8 released).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.7 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.7 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.7 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.7 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.7 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.7 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.7 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.6.8 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.6.8 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.6.8 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.8 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.6.8 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.8 and after
+## Next: 0.6.9 and after
 
-**0.6.8** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.6.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 📋 Delete File From System moves the file to the Recycle Bin (the Trash on macOS and Linux, the system trash on
-  Android 11+) ([#46](https://github.com/KuchiSofts/vlc-redesign/discussions/46))
-- 📋 Lyrics from an `.lrc` file next to the song on Windows, Linux and macOS, as on Android
-  ([#60](https://github.com/KuchiSofts/vlc-redesign/discussions/60))
-- 📋 The sidebar's resize edge visible when pointed at ([#45](https://github.com/KuchiSofts/vlc-redesign/discussions/45))
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -111,6 +106,18 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.6.8 (2026-11-15)
+
+**An update release** from the ideas of the Discussions, on every app:
+
+- ✅ Delete File From System moves the file to the Recycle Bin (the Trash on macOS and Linux)
+  ([#46](https://github.com/KuchiSofts/vlc-redesign/discussions/46), [#94](https://github.com/KuchiSofts/vlc-redesign/pull/94));
+  on Android 11+ a deleted media file goes to the system trash ([Android #13](https://github.com/KuchiSofts/vlc-redesign-android/pull/13))
+- ✅ Lyrics from an `.lrc` file next to the song on Windows, Linux and macOS, and in the Samsung TV app's music view
+  ([#60](https://github.com/KuchiSofts/vlc-redesign/discussions/60))
+- ✅ The sidebar's resize edge shows itself when pointed at and is easier to grab
+  ([#45](https://github.com/KuchiSofts/vlc-redesign/discussions/45))
 
 ### 0.6.7 (2026-11-15)
 

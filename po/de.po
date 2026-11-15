@@ -41286,3 +41286,19 @@ msgstr "dieser Link ist ein einzelner Stream, keine Senderliste"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Sender"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Diese Datei in den Papierkorb verschieben?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Diese Datei in den Papierkorb verschieben?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Diese Datei kann nicht in den Papierkorb verschoben werden. Endgültig löschen?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Diese Datei kann nicht in den Papierkorb verschoben werden. Endgültig löschen?"

@@ -40771,3 +40771,19 @@ msgstr "このリンクは単一のストリームで、チャンネル一覧で
 msgctxt "TV"
 msgid "Channels"
 msgstr "チャンネル"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "このファイルをごみ箱に移動しますか？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "このファイルをごみ箱に移動しますか？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "このファイルはごみ箱に移動できません。完全に削除しますか？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "このファイルはごみ箱に移動できません。完全に削除しますか？"

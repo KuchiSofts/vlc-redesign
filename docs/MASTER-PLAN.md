@@ -128,11 +128,20 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.8** started. From the Discussions (answered 2026-11-15): 📋 Delete File From System moves the file to the
-  Recycle Bin / Trash (QFile::moveToTrash; it was QFile::remove), Android 11+ the system trash (#46); 📋 `.lrc` lyrics
-  next to the song on the desktop (it reads only an MP3's ID3 SYLT; Android reads `.lrc` since 0.6.6) (#60); 📋 the
-  sidebar's resize edge visible on hover: resizing works and is kept (`navigation-panel-width`, seen on 0.6.7), but
-  the handle is a bare ~5 px strip about 13 px right of the card, found only by a scan (#45).
+- 🟡 **0.6.8** released from PR #94 and Android #13 (2026-11-15), every app: the Samsung TV app joins with the `.lrc`
+  lyrics in its music view (lyrics.js + test, the column beside the cover, mirrored right to left; preview scenes
+  music-lyrics, -side, -he seen; its USB drives can't be filled from here, so no real-TV run of it). Linux's trash
+  checked in the build container: `~/.local/share/Trash/files` with its `.trashinfo`. From the Discussions (answered 2026-11-15): 🟢 Delete File From System moves the file to the
+  Recycle Bin / Trash (QFile::moveToTrash; it was QFile::remove; a drive without a Recycle Bin, where Windows would
+  delete silently, asks before a permanent delete): seen on Windows, the file in the Recycle Bin with its location,
+  Videos 402 -> 401. Android 11+: the system trash (RdTrash, MediaStore IS_TRASHED), seen on the Android 14 emulator:
+  the file renamed `.trashed-<30 days>-`, and a file MediaStore did not know asked "can't be moved to the trash,
+  delete it permanently?" then deleted; the confirmation's button reads Delete, not Delete forever (#46).
+  🟢 `.lrc` lyrics next to the song on the desktop (player/lrc_parser + unit test; it read only an MP3's ID3 SYLT):
+  seen on Windows, the lines in order, Hebrew right to left, the current one highlighted and moving (#60).
+  🟢 The sidebar's resize edge: 8 dp to grab (was a bare 4 px strip about 13 px right of the card, found only by a
+  scan) and an accent line while pointed at or dragged: the drag measured from x 220 to 227, the line seen while
+  pressed (the hidden desktop's hover hook did not answer) (#45). Samsung TV: no file deletion and no lyrics.
 - 🟢 **0.6.7** published 2026-11-15 07:15 UTC (30 files: Windows x64 and ARM64, Linux, macOS, the APK; Samsung TV
   stays 0.6.6; GitHub's digests = the signed list, the published signature checked). Tag v0.6.7 = 56742259fa (PR #93
   merged as e97e878058, the same tree as the CI build); Android #12 merged as 43d29282eb, tag v0.6.7 = 91166d2932.

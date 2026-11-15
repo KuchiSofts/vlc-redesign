@@ -41009,3 +41009,19 @@ msgstr "ten link to pojedynczy strumień, a nie lista kanałów"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Kanały"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Przenieść ten plik do Kosza?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Przenieść ten plik do Kosza?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Nie można przenieść tego pliku do Kosza. Usunąć go trwale?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Nie można przenieść tego pliku do Kosza. Usunąć go trwale?"

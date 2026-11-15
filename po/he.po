@@ -39587,3 +39587,19 @@ msgstr "הקישור הזה הוא שידור יחיד, לא רשימת ערוצ
 msgctxt "TV"
 msgid "Channels"
 msgstr "ערוצים"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "להעביר את הקובץ לסל המיחזור?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "להעביר את הקובץ לפח האשפה?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "לא ניתן להעביר את הקובץ לסל המיחזור. למחוק אותו לצמיתות?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "לא ניתן להעביר את הקובץ לפח האשפה. למחוק אותו לצמיתות?"

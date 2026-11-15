@@ -40053,3 +40053,19 @@ msgstr "هذا الرابط بث واحد، وليس قائمة قنوات"
 msgctxt "TV"
 msgid "Channels"
 msgstr "القنوات"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "هل تريد نقل هذا الملف إلى سلة المحذوفات؟"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "هل تريد نقل هذا الملف إلى سلة المهملات؟"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "تعذّر نقل هذا الملف إلى سلة المحذوفات. هل تريد حذفه نهائيًا؟"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "تعذّر نقل هذا الملف إلى سلة المهملات. هل تريد حذفه نهائيًا؟"

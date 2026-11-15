@@ -153,7 +153,8 @@ What is being worked on, updated as it changes (2026-11-10):
   seen on Windows, the lines in order, Hebrew right to left, the current one highlighted and moving (#60).
   🟢 The sidebar's resize edge: 8 dp to grab (was a bare 4 px strip about 13 px right of the card, found only by a
   scan) and an accent line while pointed at or dragged: the drag measured from x 220 to 227, the line seen while
-  pressed (the hidden desktop's hover hook did not answer) (#45). Samsung TV: no file deletion and no lyrics.
+  pressed and while pointed at (the hover hook answers once loaded from an ASR-excluded folder: 1,640 line pixels
+  on hover, none away) (#45). Samsung TV: no file deletion (its lyrics came in 0.6.8 too).
 - 🟢 **0.6.7** published 2026-11-15 07:15 UTC (30 files: Windows x64 and ARM64, Linux, macOS, the APK; Samsung TV
   stays 0.6.6; GitHub's digests = the signed list, the published signature checked). Tag v0.6.7 = 56742259fa (PR #93
   merged as e97e878058, the same tree as the CI build); Android #12 merged as 43d29282eb, tag v0.6.7 = 91166d2932.

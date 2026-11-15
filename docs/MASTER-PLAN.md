@@ -128,7 +128,10 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.8** started. From the Discussions (answered 2026-11-15): 🟢 Delete File From System moves the file to the
+- 🟡 **0.6.8** released from PR #94 and Android #13 (2026-11-15), every app: the Samsung TV app joins with the `.lrc`
+  lyrics in its music view (lyrics.js + test, the column beside the cover, mirrored right to left; preview scenes
+  music-lyrics, -side, -he seen; its USB drives can't be filled from here, so no real-TV run of it). Linux's trash
+  checked in the build container: `~/.local/share/Trash/files` with its `.trashinfo`. From the Discussions (answered 2026-11-15): 🟢 Delete File From System moves the file to the
   Recycle Bin / Trash (QFile::moveToTrash; it was QFile::remove; a drive without a Recycle Bin, where Windows would
   delete silently, asks before a permanent delete): seen on Windows, the file in the Recycle Bin with its location,
   Videos 402 -> 401. Android 11+: the system trash (RdTrash, MediaStore IS_TRASHED), seen on the Android 14 emulator:

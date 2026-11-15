@@ -128,9 +128,21 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.8** released from PR #94 and Android #13 (2026-11-15), every app: the Samsung TV app joins with the `.lrc`
+- 🟡 **0.6.9** started.
+- 🟢 **0.6.8** published 2026-11-15 from PR #94 (merged as e9b5e5677d, tag v0.6.8 = fbea24f075, the CI build's tree)
+  and Android #13 (merged as 7229f9aac6, tag 2451ed2f0), every app (33 files: Windows x64 and ARM64 with the small
+  updates from 0.6.0–0.6.7, all 16 applied and compared; Linux; macOS; the APK, installed over 0.6.7; the Samsung TV
+  app's zip). The update from 0.6.7 is 7.7 MB (ARM64 7.1 MB): the interface library and the 20 catalogs changed.
+  Checked after the release commit: Android's trash on a real phone (API 37): the file renamed
+  `.trashed-<30 days>-`, the list updated (a file pushed by adb stays `is_pending` for its owner and is invisible to
+  the app until scanned: a test-setup trap, the "can't be moved, delete permanently?" question came then). The TV
+  lyrics on the real test TV (a silent song and its `.lrc` pushed to its own Music folder, opened by the remote's OK):
+  the lit line right, centred, gone on the next song. Soaks: Windows 20 min ~2000 changes flat at the end; Linux 15
+  min 1493 changes, the same as 0.6.7, quit in 1 s; Android 48 rounds, heaps flat, 0 crashes; macOS flat. The TV
+  app's zips of 0.5.7, 0.5.8, 0.6.0, 0.6.1 and 0.6.6 replaced by cleaned ones (invented titles, neutral group tags;
+  their releases' lists re-signed, notes' hashes updated). The Samsung TV app joins with the `.lrc`
   lyrics in its music view (lyrics.js + test, the column beside the cover, mirrored right to left; preview scenes
-  music-lyrics, -side, -he seen; its USB drives can't be filled from here, so no real-TV run of it). Linux's trash
+  music-lyrics, -side, -he seen). Linux's trash
   checked in the build container: `~/.local/share/Trash/files` with its `.trashinfo`. From the Discussions (answered 2026-11-15): 🟢 Delete File From System moves the file to the
   Recycle Bin / Trash (QFile::moveToTrash; it was QFile::remove; a drive without a Recycle Bin, where Windows would
   delete silently, asks before a permanent delete): seen on Windows, the file in the Recycle Bin with its location,
@@ -141,7 +153,8 @@ What is being worked on, updated as it changes (2026-11-10):
   seen on Windows, the lines in order, Hebrew right to left, the current one highlighted and moving (#60).
   🟢 The sidebar's resize edge: 8 dp to grab (was a bare 4 px strip about 13 px right of the card, found only by a
   scan) and an accent line while pointed at or dragged: the drag measured from x 220 to 227, the line seen while
-  pressed (the hidden desktop's hover hook did not answer) (#45). Samsung TV: no file deletion and no lyrics.
+  pressed and while pointed at (the hover hook answers once loaded from an ASR-excluded folder: 1,640 line pixels
+  on hover, none away) (#45). Samsung TV: no file deletion (its lyrics came in 0.6.8 too).
 - 🟢 **0.6.7** published 2026-11-15 07:15 UTC (30 files: Windows x64 and ARM64, Linux, macOS, the APK; Samsung TV
   stays 0.6.6; GitHub's digests = the signed list, the published signature checked). Tag v0.6.7 = 56742259fa (PR #93
   merged as e97e878058, the same tree as the CI build); Android #12 merged as 43d29282eb, tag v0.6.7 = 91166d2932.

@@ -18,7 +18,7 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-15, 0.6.8 released).
+Updated as the work moves (last: 2026-11-15, 0.6.8 published, 0.6.9 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|

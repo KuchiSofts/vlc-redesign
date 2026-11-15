@@ -128,7 +128,9 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.9** started.
+- 🟡 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
+  the Android More page; VideoLAN merged to `1a34ae0f11` (its own macOS interface only). Windows, ARM64, Linux,
+  macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.6.9`, nothing of it changed).
   - 🟢 Reported 2026-11-15: pointing at the sidebar's edge resized it without a press. 0.6.8 gave the
     resize handle `hoverEnabled` (its accent line, #45), and a MouseArea with hover sends `positionChanged` for
     every move: HorizontalResizeHandle resized on each one from a press point never set (each pass +a few px; the

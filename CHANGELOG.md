@@ -29,8 +29,9 @@ macOS and Android; the Samsung TV app stays 0.6.8.
 ### Technical
 
 - Version 0.6.9 started (VLC_REDESIGN_VERSION).
-- VideoLAN's master merged to `1a34ae0f11` (its macOS interface's synchronized lyrics and hotkeys; not the Qt
-  interface the apps use).
+- VideoLAN's master merged to `728ab921c2`: the MPEG audio demuxer checks that an ID3 chapter's ID leaves room for
+  its times (a read past the frame); its macOS interface's lyrics and hotkeys (not the Qt interface the apps use);
+  Meson options.
 
 ## [0.6.8] · 2026-11-15
 

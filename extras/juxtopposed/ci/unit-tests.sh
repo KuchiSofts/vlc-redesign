@@ -42,6 +42,12 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     $(pkg-config --libs Qt6Core) -o "$out/whats-new"
 "$out/whats-new"
 
+echo "== .lrc lyrics beside a song (the times, the offset, the encodings, the form the player reads, the file)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/lrc-parser.cpp modules/gui/qt/player/lrc_parser.cpp \
+    $(pkg-config --libs Qt6Core) -o "$out/lrc-parser"
+"$out/lrc-parser"
+
 echo "== files opened from Finder (macOS's open events reach the playlist, the ones of a launch too)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Gui) \
     extras/juxtopposed/file-open-spy.cpp $(pkg-config --libs Qt6Gui) -o "$out/file-open-spy"

@@ -40450,3 +40450,19 @@ msgstr "이 링크는 채널 목록이 아니라 단일 스트림입니다"
 msgctxt "TV"
 msgid "Channels"
 msgstr "채널"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "이 파일을 휴지통으로 이동할까요?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "이 파일을 휴지통으로 이동할까요?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "이 파일을 휴지통으로 이동할 수 없습니다. 영구적으로 삭제할까요?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "이 파일을 휴지통으로 이동할 수 없습니다. 영구적으로 삭제할까요?"

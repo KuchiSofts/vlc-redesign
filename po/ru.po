@@ -40984,3 +40984,19 @@ msgstr "эта ссылка — один поток, а не список кан
 msgctxt "TV"
 msgid "Channels"
 msgstr "Каналы"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Переместить этот файл в корзину?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Переместить этот файл в корзину?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Не удаётся переместить этот файл в корзину. Удалить его безвозвратно?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Не удаётся переместить этот файл в корзину. Удалить его безвозвратно?"

@@ -41212,3 +41212,19 @@ msgstr "este enlace es una sola transmisión, no una lista de canales"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Canales"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "¿Mover este archivo a la papelera de reciclaje?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "¿Mover este archivo a la papelera?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Este archivo no se puede mover a la papelera de reciclaje. ¿Eliminarlo definitivamente?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Este archivo no se puede mover a la papelera. ¿Eliminarlo definitivamente?"

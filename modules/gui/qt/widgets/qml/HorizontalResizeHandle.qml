@@ -38,6 +38,8 @@ MouseArea {
 
     cursorShape: Qt.SplitHCursor
     width: VLCStyle.resizeHandleWidth
+    // (containsMouse: the pane shows where it can be dragged)
+    hoverEnabled: true
     acceptedButtons: Qt.LeftButton
     preventStealing: true
 

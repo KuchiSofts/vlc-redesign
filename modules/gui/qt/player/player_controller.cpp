@@ -25,6 +25,7 @@
 #include "player_controller.hpp"
 #include "player_controller_p.hpp"
 #include "player/subtitle_finder.hpp"
+#include "player/lrc_parser.hpp"
 #include "iptv/iptv_addon.hpp"
 #include "maininterface/compositor.hpp"   /* videoTakesOpenGL */
 #include "util/shared_input_item.hpp"
@@ -232,7 +233,7 @@ void PlayerControllerPrivate::UpdateMeta( input_item_t *p_item )
             if (!psz_sylt_data)
                 psz_sylt_data = vlc_meta_GetExtra( p_item->p_meta, "uslt-data" );
 
-            if (psz_sylt_data != NULL)
+            if (psz_sylt_data != NULL && !m_lyricsFromLrc)
             {
                 QByteArray newRaw( psz_sylt_data );
                 const auto hash = qHash(newRaw);
@@ -290,6 +291,32 @@ PlayerControllerPrivate::syltLyrics() const
         }
     }
     return *m_syltLyrics;
+}
+
+void PlayerControllerPrivate::loadLrcLyrics()
+{
+    Q_Q(PlayerController);
+
+    m_lyricsFromLrc = false;
+    if (!m_url.isLocalFile())
+        return;
+    const QString path = Lrc::besideFile(m_url.toLocalFile());
+    if (path.isEmpty())
+        return;
+    QFile file(path);
+    if (file.size() > Lrc::maxFileSize || !file.open(QIODevice::ReadOnly))
+        return;
+    const QList<Lrc::Line> lines = Lrc::parse(Lrc::decode(file.readAll()));
+    if (lines.isEmpty())
+        return;
+
+    QByteArray raw = Lrc::toSylt(lines);
+    const auto hash = qHash(raw);
+    m_syltRaw = qMakePair(std::move(raw), hash);
+    m_syltLyrics.reset();
+    m_lyricsFromLrc = true;
+    emit q->hasLyricsChanged(true);
+    emit q->syltLyricsChanged();
 }
 
 void PlayerControllerPrivate::UpdateInfo( input_item_t *p_item )
@@ -411,6 +438,7 @@ static  void on_player_current_media_changed(vlc_player_t *, input_item_t *new_m
 
             that->m_syltRaw.reset();
             that->m_syltLyrics.reset();
+            that->m_lyricsFromLrc = false;
             that->m_currentLyricIndex = -1;
             emit that->q_func()->hasLyricsChanged(false);
             emit that->q_func()->syltLyricsChanged();
@@ -427,6 +455,7 @@ static  void on_player_current_media_changed(vlc_player_t *, input_item_t *new_m
 
         that->m_syltRaw.reset();
         that->m_syltLyrics.reset();
+        that->m_lyricsFromLrc = false;
         that->m_currentLyricIndex = -1;
         emit q->hasLyricsChanged(false);
         emit q->syltLyricsChanged();
@@ -438,6 +467,7 @@ static  void on_player_current_media_changed(vlc_player_t *, input_item_t *new_m
         that->UpdateInfo( newMediaPtr.get() );
         that->UpdateName( newMediaPtr.get() );
         that->m_url = vlc::wrap_cptr( input_item_GetURI( newMediaPtr.get() ) ).get();
+        that->loadLrcLyrics();
 
         {
             vlc_player_locker lock{ that->m_player };
@@ -554,6 +584,7 @@ static void on_player_state_changed(vlc_player_t *, enum vlc_player_state state,
             {
                 that->m_syltRaw.reset();
                 that->m_syltLyrics.reset();
+                that->m_lyricsFromLrc = false;
                 that->m_currentLyricIndex = -1;
                 emit q->hasLyricsChanged( false );
                 emit q->syltLyricsChanged();

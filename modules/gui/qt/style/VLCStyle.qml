@@ -261,7 +261,8 @@ QtObject {
     readonly property double margin_xlarge: MainCtx.dp(32, scale);
     readonly property double margin_xxlarge: MainCtx.dp(36, scale);
 
-    readonly property real resizeHandleWidth: (scrollBarInteractingSize / 2)
+    // (8 dp: the gap beside the sidebar's card, easy to take; 4 was hard to find)
+    readonly property real resizeHandleWidth: scrollBarInteractingSize
 
     readonly property real touchHandlerMargin: margin_large
 

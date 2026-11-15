@@ -39908,3 +39908,19 @@ msgstr "tento odkaz je jediný stream, ne seznam kanálů"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Kanály"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Přesunout tento soubor do Koše?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Přesunout tento soubor do Koše?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Tento soubor nelze přesunout do Koše. Smazat ho natrvalo?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Tento soubor nelze přesunout do Koše. Smazat ho natrvalo?"

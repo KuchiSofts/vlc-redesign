@@ -70,6 +70,9 @@ public:
     // UpdateMeta) into a list of TimedText entries. The cache is
     // invalidated when m_syltRaw changes.
     QList<TimedText> syltLyrics() const;
+    // The lyrics of an .lrc beside the local file playing (m_url), taken
+    // before the ones the file carries (as on Android)
+    void loadLrcLyrics();
     void onArtFetchEnded(input_item_t *, bool fetched);
 
     // SMPTE Timer
@@ -219,6 +222,7 @@ public:
 
     mutable std::optional<QPair<QByteArray, size_t>> m_syltRaw;
     mutable std::optional<QList<TimedText>> m_syltLyrics;
+    bool m_lyricsFromLrc = false;
     int m_currentLyricIndex = -1;
 };
 

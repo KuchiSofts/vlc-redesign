@@ -39451,3 +39451,19 @@ msgstr "此連結是單一串流，而不是頻道清單"
 msgctxt "TV"
 msgid "Channels"
 msgstr "頻道"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "要將此檔案移至資源回收筒嗎？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "要將此檔案移至垃圾桶嗎？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "無法將此檔案移至資源回收筒。要永久刪除嗎？"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "無法將此檔案移至垃圾桶。要永久刪除嗎？"

@@ -41328,3 +41328,19 @@ msgstr "questo link è un singolo flusso, non un elenco di canali"
 msgctxt "TV"
 msgid "Channels"
 msgstr "Canali"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Spostare questo file nel Cestino?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Spostare questo file nel Cestino?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Impossibile spostare questo file nel Cestino. Eliminarlo definitivamente?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Impossibile spostare questo file nel Cestino. Eliminarlo definitivamente?"

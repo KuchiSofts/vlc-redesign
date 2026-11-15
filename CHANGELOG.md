@@ -15,9 +15,22 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- Lyrics from an `.lrc` file next to the song, as on Android ([#60](https://github.com/KuchiSofts/vlc-redesign/discussions/60)).
+
+### Changed
+
+- Delete File From System moves the file to the Recycle Bin (the Trash on macOS and Linux), and on Android 11+ to
+  the system trash ([#46](https://github.com/KuchiSofts/vlc-redesign/discussions/46)).
+- The sidebar's resize edge shows itself when pointed at and is easier to grab ([#45](https://github.com/KuchiSofts/vlc-redesign/discussions/45)).
+
 ### Technical
 
 - Version 0.6.8 started (VLC_REDESIGN_VERSION).
+- A drive with no Recycle Bin (a network share) is asked about before a permanent delete; the `.lrc` parser has
+  its unit test (times, offset, encodings).
+- Android: a deletion of several files ran once per file selected.
 
 ## [0.6.7] · 2026-11-15
 

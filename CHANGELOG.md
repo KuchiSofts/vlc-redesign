@@ -20,6 +20,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - About: in a low window its buttons stay under the scrolling text.
 - Hebrew and Arabic: texts that began with a Latin word read from the right (desktop and Android).
 - Android: the texts European Portuguese and Traditional Chinese still had in English.
+- Android: a video opened from another app while a song plays is the one played (it played the song).
 
 ### Technical
 

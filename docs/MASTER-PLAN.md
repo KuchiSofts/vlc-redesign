@@ -129,6 +129,18 @@ What is being worked on, updated as it changes (2026-11-10):
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
 - 🟡 **0.6.9** started.
+  - 🟢 Reported 2026-11-15: pointing at the sidebar's edge resized it without a press. 0.6.8 gave the
+    resize handle `hoverEnabled` (its accent line, #45), and a MouseArea with hover sends `positionChanged` for
+    every move: HorizontalResizeHandle resized on each one from a press point never set (each pass +a few px; the
+    sidebar, the side panel and the artists list). Reproduced on the 0.6.8 package (hidden desktop, hover hook,
+    moves only: the edge 216 → 259 px). Fixed: only a pressed drag resizes. The Equalizer's bands and Edit
+    Sidebar's rows, the other hover areas with a move handler, already checked `pressed`. Seen on the fixed build
+    (hidden desktop, hover hook): two hover sweeps over the edge leave it in place (259 px, left to right; 1399 px,
+    right to left), the accent line shows on the handle, a drag still resizes (259 → 319 → 216, the minimum), a
+    sweep after the drags changes nothing; qmllint clean. ⚪ Right to left the handle sits on the card's edge, about
+    8 px from the mirror of the left-to-right place (beside the card): works, not yet symmetric.
+  - 🟡 Android More page: Edit Sidebar's title sat 6 dp left of the other rows (its icon 18 dp, theirs 24 dp):
+    the icon now in a 24 dp inset (rd_ic_sidebar_row).
 - 🟢 **0.6.8** published 2026-11-15 from PR #94 (merged as e9b5e5677d, tag v0.6.8 = fbea24f075, the CI build's tree)
   and Android #13 (merged as 7229f9aac6, tag 2451ed2f0), every app (33 files: Windows x64 and ARM64 with the small
   updates from 0.6.0–0.6.7, all 16 applied and compared; Linux; macOS; the APK, installed over 0.6.7; the Samsung TV

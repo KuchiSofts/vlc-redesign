@@ -15,6 +15,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Moving the pointer over a pane's edge no longer resizes it.** Since 0.6.8 the sidebar, the side panel and the
+  artists list grew a little each time the pointer passed over their edge; only a drag resizes them again.
+
 ### Technical
 
 - Version 0.6.9 started (VLC_REDESIGN_VERSION).

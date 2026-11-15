@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-14 22:58+0000\n"
+"POT-Creation-Date: 2026-11-15 07:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7204,12 +7204,25 @@ msgstr ""
 msgid "Delete File From System"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:268
-msgid "Are you sure you want to delete this file?"
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
+msgid "Move this file to the Recycle Bin?"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
+msgid "Move this file to the Trash?"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:272
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:281
 msgid "Delete file"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
+msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39

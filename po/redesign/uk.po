@@ -7494,13 +7494,25 @@ msgstr "Додати до списку відтворення лише з ауд
 msgid "Delete File From System"
 msgstr "Видалити файл із системи"
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:268
-msgid "Are you sure you want to delete this file?"
-msgstr "Справді видалити цей файл?"
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Перемістити цей файл до кошика?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Перемістити цей файл до кошика?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
 msgstr "Видалення файлу"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Не вдається перемістити цей файл до кошика. Видалити його назавжди?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Не вдається перемістити цей файл до кошика. Видалити його назавжди?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"

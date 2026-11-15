@@ -7504,13 +7504,25 @@ msgstr "Toevoegen aan afspeellijst met alleen audio"
 msgid "Delete File From System"
 msgstr "Bestand van systeem verwijderen"
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:268
-msgid "Are you sure you want to delete this file?"
-msgstr "Weet u zeker dat u dit bestand wilt verwijderen?"
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Dit bestand naar de Prullenbak verplaatsen?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Dit bestand naar de Prullenbak verplaatsen?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
 msgstr "Bestand verwijderen"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Dit bestand kan niet naar de Prullenbak worden verplaatst. Definitief verwijderen?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Dit bestand kan niet naar de Prullenbak worden verplaatst. Definitief verwijderen?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"

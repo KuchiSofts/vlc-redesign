@@ -7543,13 +7543,25 @@ msgstr "Añadir a una lista solo de audio"
 msgid "Delete File From System"
 msgstr "Eliminar archivo del sistema"
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:268
-msgid "Are you sure you want to delete this file?"
-msgstr "¿Seguro que desea eliminar este archivo?"
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "¿Mover este archivo a la papelera de reciclaje?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "¿Mover este archivo a la papelera?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
 msgstr "Eliminar archivo"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Este archivo no se puede mover a la papelera de reciclaje. ¿Eliminarlo definitivamente?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Este archivo no se puede mover a la papelera. ¿Eliminarlo definitivamente?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"

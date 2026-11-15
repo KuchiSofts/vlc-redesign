@@ -7367,13 +7367,25 @@ msgstr "오디오 전용 재생목록에 추가"
 msgid "Delete File From System"
 msgstr "시스템에서 파일 삭제"
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:268
-msgid "Are you sure you want to delete this file?"
-msgstr "이 파일을 삭제할까요?"
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "이 파일을 휴지통으로 이동할까요?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "이 파일을 휴지통으로 이동할까요?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
 msgstr "파일 삭제"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "이 파일을 휴지통으로 이동할 수 없습니다. 영구적으로 삭제할까요?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "이 파일을 휴지통으로 이동할 수 없습니다. 영구적으로 삭제할까요?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"

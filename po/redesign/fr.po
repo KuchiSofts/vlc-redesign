@@ -7585,13 +7585,25 @@ msgstr "Ajouter à une liste de lecture audio"
 msgid "Delete File From System"
 msgstr "Supprimer le fichier du système"
 
-#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:268
-msgid "Are you sure you want to delete this file?"
-msgstr "Voulez-vous vraiment supprimer ce fichier ?"
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Recycle Bin?"
+msgstr "Placer ce fichier dans la corbeille ?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "Move this file to the Trash?"
+msgstr "Placer ce fichier dans la corbeille ?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
 msgstr "Supprimer le fichier"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Impossible de placer ce fichier dans la corbeille. Le supprimer définitivement ?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Impossible de placer ce fichier dans la corbeille. Le supprimer définitivement ?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"

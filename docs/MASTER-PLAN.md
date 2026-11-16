@@ -128,7 +128,16 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.2** (2026-11-16): an update release of three fixes found after 0.7.1 (Windows, ARM64, Linux,
+- 🟡 **0.7.3** started.
+- 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
+  Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
+  1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2
+  (About: Version 0.7.2, Also on: every other program 0.7.2, Samsung TV 0.6.8); the package scan 0 in both Windows
+  zips; both Macs of the CI: Report a problem opens its card, 0 failures, and the System theme's arrows without a
+  box (light and dark). Soaks of this build before it: Windows 30 minutes of six songs looping at four times the
+  speed, 283 -> 285 MB on average, at most 314, handles and threads down, no warning of the interface; Android (the
+  0.7.1 APK) ten minutes of the same songs with Repeat all, 136 to 161 MB, flat, no crash.
+- 🟢 **0.7.2** (2026-11-16): an update release of three fixes found after 0.7.1 (Windows, ARM64, Linux,
   macOS; Android with no change of its own, as its update check reads only the latest release; the Samsung TV app
   stays 0.6.8, `follows: 0.7.2`).
   - 🟡 **System theme on macOS and Linux:** the screenshots of the Mac's launch test showed a grey box behind

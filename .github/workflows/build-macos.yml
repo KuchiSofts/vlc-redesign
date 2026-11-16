@@ -73,12 +73,44 @@ jobs:
           path: build-macos-${{ matrix.arch }}/qt
           key: qt-6.8.3-macos-shadertools-${{ matrix.arch }}
 
+      # The compiler's cache: VLC's own way on macOS (env.build.sh takes the
+      # wrappers of VLC_CCACHE_BINS_PATH). A commit that changed a few files
+      # compiles those only: the build was the hour of every release (the
+      # Intel runner: 70 minutes). A new cache each week (a key is written
+      # once; the runs of the week start from it).
+      - name: Week of the compiler cache
+        id: week
+        run: echo "week=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache the compiler's output
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ~/Library/Caches/ccache
+          key: ccache-macos-${{ matrix.arch }}-${{ steps.week.outputs.week }}
+          restore-keys: ccache-macos-${{ matrix.arch }}-
+
       - name: Tools
         run: |
           xcodebuild -version
+          # (never a reason to fail: without it, the compilers as before)
+          if brew install ccache > /dev/null 2>&1 || command -v ccache > /dev/null; then
+            mkdir -p "$RUNNER_TEMP/ccache-bin"
+            ln -sf "$(command -v ccache)" "$RUNNER_TEMP/ccache-bin/cc"
+            ln -sf "$(command -v ccache)" "$RUNNER_TEMP/ccache-bin/c++"
+            echo "VLC_CCACHE_BINS_PATH=$RUNNER_TEMP/ccache-bin" >> "$GITHUB_ENV"
+            ccache --set-config=max_size=3G
+            ccache --zero-stats > /dev/null
+            ccache --version | head -n 1
+          else
+            echo "::notice::ccache not installed: a full compile"
+          fi
 
       - name: Build
         run: bash extras/juxtopposed/macos-build.sh -a ${{ matrix.arch }} -b "$BUILD_DIR" -o "$OUT_DIR"
+
+      - name: Compiler cache used
+        if: always()
+        run: command -v ccache > /dev/null && ccache --show-stats || true
 
       - name: Upload the disk image
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7

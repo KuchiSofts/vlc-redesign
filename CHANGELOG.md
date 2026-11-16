@@ -37,6 +37,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   0.82 MB (the nine of 0.6.9 took 25 minutes for each architecture). `apply-delta.py` copies unchanged blocks.
 - `release-check.py`: VideoLAN's commits made after the commit being uploaded are named, not a stop.
 - `release-notes.py`: one table of the files of each system, no SHA-256 column.
+- The macOS build keeps the compiler's output from one run to the next (ccache, VLC's own
+  `VLC_CCACHE_BINS_PATH`): it was the hour every release waited for.
 - `publish-release.py`: a release from a pull request whose checks passed, in one command (its builds, both
   Windows packages, the checksums and their signature, the notes; with `--publish` the tag, the merge, the draft,
   its digests against the signed list, the release).

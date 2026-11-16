@@ -147,6 +147,8 @@ What is being worked on, updated as it changes (2026-11-10):
     Windows packages, the checksums and their signature, the notes; `--publish`: the tag, the merge, the draft, the
     digests, the release). Written; it refuses a pull request whose checks have not passed (seen). Its first whole
     run is the release of 0.6.10.
+  - 🟡 CI: the macOS build with a compiler cache (ccache through VLC's `VLC_CCACHE_BINS_PATH`, a key a week): the
+    Intel runner's 70 minutes were the wait of every release. The first run fills it; the next ones tell the gain.
 - 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
   `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons

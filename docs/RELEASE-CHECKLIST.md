@@ -116,8 +116,8 @@ signing key, a new Android version-code scheme, or users who have no updater mus
 **Few files, quick to make** (the owner's rule, 2026-11-16): a release page names, for each system, its installer or
 package and its portable copy, then the source, `SHA256SUMS.txt` and its signature, and **one** small update
 (`.vrdelta`) for each Windows architecture, from the release before it. Never one for every older version again
-(0.6.9 had 18, half an hour of packaging): from 0.6.10 on the app finds its own way to the newest release through
-the ones between (0.6.10 → 0.6.11 → 0.6.12), each step checked against the signed `SHA256SUMS.txt` of its release.
+(0.6.9 had 18, half an hour of packaging): from 0.7.0 on the app finds its own way to the newest release through
+the ones between (0.7.0 → 0.7.1 → 0.7.2), each step checked against the signed `SHA256SUMS.txt` of its release.
 A copy of 0.6.8 or older (its updater takes one small update only) updates with the installer once. The notes are
 short: what changed, one table of the files, no hash column (`release-notes.py`).
 

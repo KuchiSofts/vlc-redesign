@@ -7,13 +7,18 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `6bdf37de8e` (2026-11-15).
 
-**Contents:** [Unreleased](#unreleased) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [Unreleased]
+## [0.7.0] · 2026-11-16
+
+A full release. Updates on Windows are smaller and smarter: a release carries one small update, and a copy that is
+several versions behind takes the ones between by itself. About no longer shows an error of the daily update check.
+Windows, Linux (the .deb, .rpm and Flatpak packages again, with everything since 0.6.0), macOS and Android; the
+Samsung TV app stays 0.6.8.
 
 ### Changed
 
@@ -32,7 +37,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
-- Version 0.6.10 started (VLC_REDESIGN_VERSION).
+- The version prepared as 0.6.10 is 0.7.0 (VLC_REDESIGN_VERSION).
 - The updater finds a way of small updates through the newest fifteen releases (`findSteps`: the lightest one),
   checks each against the signed `SHA256SUMS.txt` of its own release and stages them in order
   (`stageBegin`, `stageStep`, `stageFinish`); a way heavier than the installer, or none, is the installer as before.
@@ -73,7 +78,7 @@ macOS and Android; the Samsung TV app stays 0.6.8.
   its times (a read past the frame); its macOS interface's lyrics, hotkeys and sidebar titles (not the Qt interface the apps use);
   Meson options. Its three newer commits (`b607e73df3`, `cffc1352cd`: the simple channel mixer's 5.1 LFE;
   `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` from `RoundButton`) came during the builds and go
-  into 0.6.10, after their own build and tests.
+  into 0.7.0, after their own build and tests.
 
 ## [0.6.8] · 2026-11-15
 

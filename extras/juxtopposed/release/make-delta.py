@@ -12,9 +12,9 @@
       release before this one (the newest older zip in <dist>): the files
       that changed, as binary patches, the files that went away, and the
       SHA-256 of every new file. The app checks and applies it
-      (modules/gui/qt/util/redesign_updater.cpp), and from 0.6.10 on finds its
-      way to the newest release through the ones between them (0.6.10 ->
-      0.6.11 -> 0.6.12): ONE small update a release, whatever version a copy
+      (modules/gui/qt/util/redesign_updater.cpp), and from 0.7.0 on finds its
+      way to the newest release through the ones between them (0.7.0 ->
+      0.7.1 -> 0.7.2): ONE small update a release, whatever version a copy
       has, not one for every older version (0.6.9 carried nine of them for
       each architecture, half an hour to make).
       --platform winarm64: from the vlc-redesign-<old>-winarm64.zip files, to
@@ -23,7 +23,7 @@
       --keep N: from the N latest earlier releases instead (default 1);
       --since V: from every earlier release from V on. Only for a release
       that must reach copies whose updater can't follow the way (before
-      0.6.10): each one more is a file on the release page.
+      0.7.0): each one more is a file on the release page.
 
 The .vrdelta format (all integers little-endian):
   "VRDELTA1", u32 header length, the header (UTF-8 JSON), then the data.

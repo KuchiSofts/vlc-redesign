@@ -29,7 +29,7 @@ class QJsonArray;
 // (vlc-redesign-<new>-delta-from-<old>.vrdelta, see
 // extras/juxtopposed/release/make-delta.py): only the files that changed,
 // as binary patches. This version finds its way to the newest through the
-// releases between them (0.6.10 -> 0.6.11 -> 0.6.12; a release up to 0.6.9
+// releases between them (0.7.0 -> 0.7.1 -> 0.7.2; a release up to 0.6.9
 // also carries small updates from older ones, taken when shorter). When
 // there is a way and VLC's folder is writable (an installed copy for the
 // user, or a portable one), its small updates are downloaded in the
@@ -122,7 +122,7 @@ public:
 
     // An update is staged under <appDir>/.update/staged from one small update
     // (.vrdelta) or several in a row, each from the version the one before it
-    // gives (0.6.10 -> 0.6.11 -> 0.6.12: a release carries the small update
+    // gives (0.7.0 -> 0.7.1 -> 0.7.2: a release carries the small update
     // from the release before it only). stageBegin empties the folder;
     // stageStep writes the files of one .vrdelta, each checked against its
     // SHA-256 (a file of a step before it is read from the staged folder, the

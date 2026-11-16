@@ -939,7 +939,7 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
 
 // The small updates from this version to the newest (m_latestVersion). Every
 // release names, in its files, the versions it has a small update from
-// (…-delta-from-<version>.vrdelta): from 0.6.10 on the release before it
+// (…-delta-from-<version>.vrdelta): from 0.7.0 on the release before it
 // only, up to 0.6.9 every release since the last full one. The lightest way
 // through them is taken; none leaves m_steps empty (the installer then).
 void RedesignUpdater::findSteps(const QJsonArray &releases)

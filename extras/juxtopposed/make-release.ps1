@@ -21,7 +21,7 @@
 # -Version is given. -Update makes an update release (docs/RELEASE-CHECKLIST.md,
 # "An update release"): the portable zip, the installer and ONE small update,
 # from the release before it (the app finds its way to the newest release
-# through the ones between, from 0.6.10 on; the installer for a copy in
+# through the ones between, from 0.7.0 on; the installer for a copy in
 # Program Files or one with no way). -Quick only rebuilds what changed; -SkipBuild packages
 # the existing -Package folder as it is; -Signed packages a folder whose
 # binaries are signed already (the signed package of the Windows build
@@ -247,7 +247,7 @@ function Get-ReleaseFiles([string]$p) {
 }
 
 # The small update from the release before this one (one file: the app finds
-# its way to the newest release through the ones between, from 0.6.10 on),
+# its way to the newest release through the ones between, from 0.7.0 on),
 # checked by applying it to that release and comparing every file with this
 # package
 & $python "$PSScriptRoot\release\make-delta.py" deltas $Package $Version $Dist --keep 1 --platform $platform

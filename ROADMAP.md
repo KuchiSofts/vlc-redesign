@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-0610-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-071-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,27 +18,25 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-16, 0.6.9 published, 0.6.10 started).
+Updated as the work moves (last: 2026-11-16, 0.7.0 released).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.6.9 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.6.9 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.6.9 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.6.9 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.6.9 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.6.9 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.6.9 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Windows x64** | ✅ released 0.7.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.7.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.7.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.7.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.7.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.7.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.7.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.6.10 and after
+## Next: 0.7.1 and after
 
-**0.6.10** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.7.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- ✅ Smaller, smarter updates on Windows: one small update a release, and a copy several versions behind takes the
-  ones between by itself (0.8 MB where 0.6.9's was 4.0 MB); a release page with few files and short notes
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -108,6 +106,15 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.7.0 (2026-11-16)
+
+**A full release** (the .deb, .rpm and Flatpak packages again; the Samsung TV app stays 0.6.8):
+
+- ✅ Smaller, smarter updates on Windows: one small update a release (0.8 MB where 0.6.9's was 4.0 MB), and a copy
+  several versions behind takes the ones between by itself, each checked against its own release's signature
+- ✅ A release page with few files and short notes; a release made with one command
+- ✅ About no longer shows an error of the daily update check
 
 ### 0.6.9 (2026-11-15)
 

@@ -128,6 +128,10 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
+- 🟡 **0.7.0** (2026-11-16): the version prepared as 0.6.10, named 0.7.0 at its release. A full release (the updater
+  itself changed: docs/RELEASE-CHECKLIST.md): `full: 0.7.0`, the .deb, .rpm and Flatpak again, the first since 0.6.0.
+  Windows, ARM64, Linux, macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.7.0`). A copy of 0.6.9
+  finds `…-0.7.0-delta-from-0.6.9.vrdelta` as before; from 0.7.0 on a copy follows the way of small updates.
 - 🟡 **Simple, quick releases** (the rule of 2026-11-16: few files on a release page, a release quick to make,
   updates smart, small and secure):
   - 🟢 One small update a release (from the release before) instead of one for every older version (0.6.9: 18
@@ -146,7 +150,7 @@ What is being worked on, updated as it changes (2026-11-10):
   - 🟡 One command for the rest of a release: `publish-release.py --pr N` (the pull request's builds, both
     Windows packages, the checksums and their signature, the notes; `--publish`: the tag, the merge, the draft, the
     digests, the release). Written; it refuses a pull request whose checks have not passed (seen). Its first whole
-    run is the release of 0.6.10.
+    run is the release of 0.7.0.
   - 🟡 CI: the macOS build with a compiler cache (ccache through VLC's `VLC_CCACHE_BINS_PATH`, a key a week): the
     Intel runner's 70 minutes were the wait of every release. The first run fills it; the next ones tell the gain.
 - 🟢 About and the daily check (seen in the first dark screenshot of the macOS launch test: "GitHub was asked too
@@ -156,7 +160,7 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟢 The new build's memory (the updater's new code in it), 15 minutes of clips on the hidden desktop: private
   bytes 305 → 324 → 319 MB (rising, then falling in the last quarter, as 0.6.8's 284 → 301), handles, GDI and
   threads level, a clean quit.
-- 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
+- 🟢 **0.6.10** (the name 0.7.0 had while it was made): VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
   `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons
   as before). 🟡 The macOS smoke test's "dark" screenshot
@@ -169,7 +173,7 @@ What is being worked on, updated as it changes (2026-11-10):
   plugins.dat each copy's own); on that updated copy two hover sweeps leave the sidebar's edge at 259 px, the line
   shows on the handle, a drag widens it to 319 and back. Small update from 0.6.8: 4.0 MB (ARM64 4.4 MB). VideoLAN
   moved four times during the builds; the release stops at `ed6d4aa119` (decided: release the tested tree, the newer
-  commits into 0.6.10; the tag pushed past the release check's VideoLAN line only). The APK (13106090, the release
+  commits into 0.7.0; the tag pushed past the release check's VideoLAN line only). The APK (13106090, the release
   key) installed over 0.6.8 on the emulator, What's new 0.6.9 shown. The Samsung TV app stays 0.6.8.
 - 🟢 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
   the Android More page; VideoLAN merged to `ed6d4aa119` (the MPEG audio demuxer's ID3 chapter bounds check, its

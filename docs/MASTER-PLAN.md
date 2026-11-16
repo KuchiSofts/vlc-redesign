@@ -128,7 +128,9 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.2** started.
+- 🟡 **0.7.2** (2026-11-16): an update release of three fixes found after 0.7.1 (Windows, ARM64, Linux,
+  macOS; Android with no change of its own, as its update check reads only the latest release; the Samsung TV app
+  stays 0.6.8, `follows: 0.7.2`).
   - 🟡 **System theme on macOS and Linux:** the screenshots of the Mac's launch test showed a grey box behind
     the library's arrows, and the Linux build in a container the same with the System theme (Windows: none, its
     theme provider leaves the colours to VLC's palettes). The generic system palette gave a tool button at rest

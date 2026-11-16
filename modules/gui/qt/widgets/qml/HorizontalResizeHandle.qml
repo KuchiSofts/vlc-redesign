@@ -57,6 +57,10 @@ MouseArea {
     }
 
     onPositionChanged: {
+        // with hoverEnabled the pointer passing over moves it too: only a
+        // drag (pressed, from the point it was pressed at) resizes
+        if (!pressed)
+            return
         const f = atRight ? 1 : -1
         const delta = mouseX - _previousX
         root.requestedWidth = Helpers.clamp(

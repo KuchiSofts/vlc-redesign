@@ -128,7 +128,33 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.9** started.
+- 🟡 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
+  the Android More page; VideoLAN merged to `ed6d4aa119` (the MPEG audio demuxer's ID3 chapter bounds check, its
+  own macOS interface, Meson options). Windows, ARM64, Linux,
+  macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.6.9`, nothing of it changed).
+  - 🟢 Reported 2026-11-15: pointing at the sidebar's edge resized it without a press. 0.6.8 gave the
+    resize handle `hoverEnabled` (its accent line, #45), and a MouseArea with hover sends `positionChanged` for
+    every move: HorizontalResizeHandle resized on each one from a press point never set (each pass +a few px; the
+    sidebar, the side panel and the artists list). Reproduced on the 0.6.8 package (hidden desktop, hover hook,
+    moves only: the edge 216 → 259 px). Fixed: only a pressed drag resizes. The Equalizer's bands and Edit
+    Sidebar's rows, the other hover areas with a move handler, already checked `pressed`. Seen on the fixed build
+    (hidden desktop, hover hook): two hover sweeps over the edge leave it in place (259 px, left to right; 1399 px,
+    right to left), the accent line shows on the handle, a drag still resizes (259 → 319 → 216, the minimum), a
+    sweep after the drags changes nothing; qmllint clean. ⚪ Right to left the handle sits on the card's edge, about
+    8 px from the mirror of the left-to-right place (beside the card): works, not yet symmetric.
+  - 🟢 Android More page: Edit Sidebar's title sat 6 dp left of the other rows (its icon 18 dp, theirs 24 dp):
+    the icon now in a 24 dp inset (rd_ic_sidebar_row); the seven titles start at the same pixel (200–202). Its
+    dialog said "Drag a page by its handle" (the desktop's text) over rows that move by arrows only: its own
+    text "Move a page with the arrows…" in every language (the second sentence kept from each translation), and
+    the list starts under the title (24 dp, was 20). Seen on the emulator (Android commit c305cc429).
+  - 🟢 The published 0.6.8 APK on the phone emulator (API 34), 2026-11-15: installed over 0.6.3 (What's new
+    0.6.8 shown), cold start 0.68–0.88 s (1.46 s the first after the install), warm 0.06–0.15 s. phonewalk.py
+    over the 12 Settings pages: 178 rows answer, 41 left out on purpose (erase, sign out, language…); its 6
+    "nothing" and 4 "not put back" are the segmented choices (direction, theme, snapshot format, subtitle size
+    unit: a second press keeps the choice, and the dump has no colours; after Right to left the page is
+    mirrored and the walk's places are off), checked by hand: Left to right and Dark/Light switch at once, Show
+    bookmark buttons goes off and on again (flagged since 0.6.1, a false alarm). The light theme's grey
+    (#C2C2C1) is the design's `light_bg_b1`.
 - 🟢 **0.6.8** published 2026-11-15 from PR #94 (merged as e9b5e5677d, tag v0.6.8 = fbea24f075, the CI build's tree)
   and Android #13 (merged as 7229f9aac6, tag 2451ed2f0), every app (33 files: Windows x64 and ARM64 with the small
   updates from 0.6.0–0.6.7, all 16 applied and compared; Linux; macOS; the APK, installed over 0.6.7; the Samsung TV
@@ -155,6 +181,10 @@ What is being worked on, updated as it changes (2026-11-10):
   scan) and an accent line while pointed at or dragged: the drag measured from x 220 to 227, the line seen while
   pressed and while pointed at (the hover hook answers once loaded from an ASR-excluded folder: 1,640 line pixels
   on hover, none away) (#45). Samsung TV: no file deletion (its lyrics came in 0.6.8 too).
+  Speed of the published package against 0.6.7, same PC, hidden desktop, rc (playperf.py, 2026-11-15): 35 formats
+  all play, the first second of playback reached in a median 1.33–1.36 s for both (rc time is whole seconds);
+  seeks to the middle of 1080p, 4K H.264, 4K HEVC 10-bit and a 70-minute file 0.21 s for both, playing on. The one
+  "stopped after the seek" was the test file: 6 s of video under a 30 s subtitle track (0.6.7 the same).
 - 🟢 **0.6.7** published 2026-11-15 07:15 UTC (30 files: Windows x64 and ARM64, Linux, macOS, the APK; Samsung TV
   stays 0.6.6; GitHub's digests = the signed list, the published signature checked). Tag v0.6.7 = 56742259fa (PR #93
   merged as e97e878058, the same tree as the CI build); Android #12 merged as 43d29282eb, tag v0.6.7 = 91166d2932.
@@ -590,8 +620,9 @@ What is being worked on, updated as it changes (2026-11-10):
     too* went nowhere, now goes round to the first row; opened from the keyboard the first row has the keyboard.
     With the fake Chromecast chosen, the switch is greyed and skipped, with its note. Opened with the mouse,
     arrows stay VLC's hotkeys until Tab (the interface's rule: keys go to an item with visual focus).
-  - 🔴 Quit: 2 of 10 tour runs hit `assert(medialib)` in `MLBaseModel::setMl` on quit (a binding gives the models
-    a null `MediaLib` while the interface goes down; debug builds show the CRT assert dialog and never exit).
+  - 🟢 Quit: 2 of 10 tour runs hit `assert(medialib)` in `MLBaseModel::setMl` on quit (a binding gives the models
+    a null `MediaLib` while the interface goes down; debug builds show the CRT assert dialog and never exit). Fixed
+    2026-10-30 (`f633907cb6`: the model keeps the library it has); every later quit test exits cleanly.
     46 plain quits (window close, rc quit, `--vout=dummy`, `QT_QUICK_BACKEND=software`, after the library pages,
     light theme) all exited 0. A full dump is kept locally (not in the repository).
   - 🟢 DLNA live channels (`96287f0157`): a restarted picture goes on in the same stream (one stream per channel,
@@ -834,8 +865,9 @@ What is being worked on, updated as it changes (2026-11-10):
   - 🟢 Soaks flat: 1 h of playback, 300 channel switches, 800 dialog openings (levels off at +5 MB), 203 page
     switches, 40 theme switches (memory, handles, GDI/USER, threads). Idle CPU ~0 % (0.08–0.23 %); paused 0.9 %
     is upstream's 80 ms redisplay (left). Zapping ~0.95 s is the provider's network (network caching changes nothing).
-  - ⚪ Open: Page Up/Down (and the digits) of the TV banner may be taken by VLC's hotkeys while a channel plays
-    (seen with posted keys only); the guide's fast scroll still keeps the render thread busy.
+  - 🟢 Page Up/Down and the digits of the TV banner win over VLC's hotkeys while a channel plays (0.4.0,
+    `MainCtx.keysBeforeHotkeys`, checked with real keys). ⚪ Open: the guide's fast scroll still keeps the render
+    thread busy (−25 % above).
 - 🟢 **Casting (2026-10-25, build 202, fake Chromecast)**: a click on the casting screen plays or pauses (it did
   nothing), a double click toggles fullscreen, the wheel changes the volume (it did nothing); a subtitle changed
   while casting is noted in the top corner where reading starts ("Subtitles on the TV: …", 72 languages). Taking the
@@ -935,13 +967,13 @@ count the 🟢 among the marked lines of their part of section 9.
 
 | Program            | Platforms                                  | Code base                               | Status                      |
 |--------------------|--------------------------------------------|-----------------------------------------|-----------------------------|
-| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.4.0                     |
-| Desktop            | Windows 11 ARM64                           | same                                    | 🔴 built, not in 0.4.0       |
-| Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.4.0                     |
-| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.4.0                     |
-| Android            | Android 5+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | ⚪ track                     |
+| Desktop            | Windows 10/11 x64                          | VLC 4 + Qt 6.8/QML (`vlc-redesign`)     | 🟢 0.6.8                     |
+| Desktop            | Windows 11 ARM64                           | same                                    | 🟢 0.6.8 (since 0.4.1)       |
+| Desktop            | Linux x86_64, ARM64                        | same                                    | 🟢 0.6.8                     |
+| Desktop            | macOS 12+ (Apple Silicon, Intel)           | same                                    | 🟢 0.6.8                     |
+| Android            | Android 5+ phones, tablets, Android TV     | fork of VLC for Android (Kotlin)        | 🟢 0.6.8 (APK on GitHub)     |
 | Casting            | DLNA TVs (Samsung, LG, Sony…), Chromecast  | part of the desktop program             | 🟢 works on a real TV        |
-| TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | ⚪ track                     |
+| TV receiver        | Samsung Tizen TVs (2017+)                  | Tizen web app                           | 🟢 0.6.8 (source zip)        |
 | iPhone, iPad, TV   | iOS, iPadOS, tvOS                          | fork of VLC for iOS                     | ⚪ track                     |
 
 The desktop program has version numbers; each other platform gets its own when its first build is published
@@ -985,12 +1017,12 @@ What comes first, and why. Each step starts when what it needs is done.
 | 1  | Finish the 0.3.x items (§8): the 6 lines in the app ⏳                 | —                               | Mostly done: finishing costs less than switching                    | 🟡     |
 | 2  | Figma references exported, capture script, pixel check of 103 frames  | step 1 (screens stable)         | "Pixel for pixel" needs proof; capturing moving screens is wasted    | 🟢     |
 | 3  | Community setup: in-app *Suggest an idea* / *Report a problem* (13.12), hub, Discussions, board | decisions 1 and 9 | Feedback must land in the right place before the announcement | 🟡 |
-| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; 0.4.0 next) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟡     |
+| 4  | Release 0.3.0 and announce it (0.3.0 and 0.3.1 out 2026-10-25; every version since, 0.6.8 on 2026-11-15) | quality gates, steps 1 and 3 | Users get the fixes; the community side is ready for them        | 🟢     |
 | 5  | `platforms.yml`, platform bar, website (built 2026-10-28; Pages to enable) | step 3                     | In place before a second platform exists, so it shows everywhere     | 🟡     |
 | 6  | Design tokens exported (`design/`: tokens, icons, fonts) — `design-1.0` and its CI check in (2026-10-28); every icon an SVG from Figma, drawn sharp at every scale and zoom (2026-10-29); left: the sync workflow to the sister repositories, the §6 differences | step 2 (values checked) | Every other platform reads them; no copying errors | 🟡 |
-| 7  | Linux, then macOS, then Windows ARM64 (macOS started 2026-10-28: build script and CI, first run after the push) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟡     |
-| 8  | Android                                                               | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🔴     |
-| 9  | Samsung TV receiver                                                   | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🔴     |
+| 7  | Linux, then macOS, then Windows ARM64 (all three released since 0.4.x, built and tested by CI) | CI; decision 3 for macOS        | Same code base: the cheapest new platforms first                     | 🟢     |
+| 8  | Android (phones, tablets, Android TV; APK on GitHub since 0.5.0)      | step 6, decision 6              | The largest new audience (phones and Android TV)                     | 🟢     |
+| 9  | Samsung TV receiver (source zip with each release since 0.5.3)        | step 6, decision 5              | Builds on the casting work and the real-TV testing                   | 🟢     |
 | 10 | iPhone, iPad, Apple TV                                                | step 8, decision 3              | Same approach as Android, reusing its screens                        | 🔴     |
 
 ## 5. Design, frame by frame

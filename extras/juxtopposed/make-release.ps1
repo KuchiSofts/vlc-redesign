@@ -19,10 +19,10 @@
 # in -Dist: make the x64 and the ARM64 ones, then sign the last one written.
 # The version comes from modules/gui/qt/util/redesign_version.hpp unless
 # -Version is given. -Update makes an update release (docs/RELEASE-CHECKLIST.md,
-# "An update release"): the portable zip, the installer and small updates from
-# every release since the last full one (-FullVersion, else platforms.yml's
-# "full:"), so every copy updates from the app (the installer for a copy in
-# Program Files or older than the small updates). -Quick only rebuilds what changed; -SkipBuild packages
+# "An update release"): the portable zip, the installer and ONE small update,
+# from the release before it (the app finds its way to the newest release
+# through the ones between, from 0.6.10 on; the installer for a copy in
+# Program Files or one with no way). -Quick only rebuilds what changed; -SkipBuild packages
 # the existing -Package folder as it is; -Signed packages a folder whose
 # binaries are signed already (the signed package of the Windows build
 # workflow, docs/code-signing.md): never built, its binaries never changed.
@@ -37,7 +37,7 @@ param(
     [string]$Package,
     [string]$Dist = "$env:USERPROFILE\source\vlc-redesign-dist",
     [switch]$Quick,
-    # an update release: the portable zip, the installer, the small updates since the last full release
+    # an update release: the portable zip, the installer, the small update from the release before it
     [switch]$Update,
     # the last full release (with installers); default: platforms.yml "full:"
     [string]$FullVersion,
@@ -246,10 +246,11 @@ function Get-ReleaseFiles([string]$p) {
         ForEach-Object { $_.Name })
 }
 
-# Small updates from the latest releases, each checked by applying it to
-# the old release and comparing every file with this package
-$since = @(if ($Update) { '--since', $FullVersion })
-& $python "$PSScriptRoot\release\make-delta.py" deltas $Package $Version $Dist --keep 3 --platform $platform @since
+# The small update from the release before this one (one file: the app finds
+# its way to the newest release through the ones between, from 0.6.10 on),
+# checked by applying it to that release and comparing every file with this
+# package
+& $python "$PSScriptRoot\release\make-delta.py" deltas $Package $Version $Dist --keep 1 --platform $platform
 if ($LASTEXITCODE) { throw "make-delta deltas failed ($LASTEXITCODE)" }
 $deltas = @(Get-ChildItem $Dist -Filter "vlc-redesign-$Version$($deltaInfix[$platform])-delta-from-*.vrdelta" | ForEach-Object { $_.Name })
 foreach ($d in $deltas) {

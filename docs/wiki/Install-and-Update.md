@@ -279,16 +279,20 @@ updates** in **⋯ → About VLC**. When one is out, a card offers it:
 
 ### What happens
 
-- **A small update** (a copy installed for you, or a portable copy): only the files that changed since your version,
-  many of them as binary patches. The `.vrdelta` file is downloaded in the background, checked against the release's
-  `SHA256SUMS.txt`, and every new file is checked against its own SHA-256. **Restart now** puts it in place in about
-  two seconds and opens VLC Redesign again on what was playing, where it was; **Later** puts it in place when you
-  close VLC Redesign. Your `portable` folder is never touched.
+- **A small update** (a copy installed for you, or a portable copy): only what changed, as binary patches. A release
+  carries one small update, from the release before it; from 0.6.10 on, a copy that is several versions behind
+  takes the ones between, one after the other, by itself, and restarts once (0.6.10 → 0.6.11 → 0.6.12). Each
+  `.vrdelta` file is downloaded in the background and checked against the signed `SHA256SUMS.txt` of its own
+  release, and every new file is checked against its own SHA-256. **Restart now** puts it in place in about two
+  seconds and opens VLC Redesign again on what was playing, where it was; **Later** puts it in place when you close
+  VLC Redesign. Your `portable` folder is never touched.
 - **If anything goes wrong** (a file held by another program, for example), every file goes back as it was and the
   update is tried again next time. If a file of VLC Redesign was changed since it was installed, the card says the
   small update can't be used: update with the installer (**Release page**).
-- **The installer** is used when no small update fits: a version more than three releases behind (or older than
-  0.2.4), or a copy installed for everyone. The card then says *VLC Redesign will close, update and open again where
+- **The installer** is used when no small update fits: a copy installed for everyone, a version with no way of
+  small updates to the newest (more than fourteen releases behind; a copy of 0.6.8 or older, whose updater takes
+  one small update only, when the newest release is 0.6.10 or later), or a way that weighs more than the installer.
+  The card then says *VLC Redesign will close, update and open again where
   you were.* The installer is downloaded, checked against its checksum, and run without questions; it reopens VLC
   Redesign where you were.
 - **Download** (a portable copy with no small update to take): opens the release page.

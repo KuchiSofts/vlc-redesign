@@ -67,10 +67,15 @@ namespace {
 // The newest releases (not only GitHub's "latest"): a release made for some
 // systems only (0.6.4 had no Android app) must not hide the last one of this
 // system, nor be offered to it (onRelease picks the newest with its package).
-// Ten are plenty and keep the answer small: a release's notes and its files
-// make 70 KB of JSON (30 releases were 1.4 MB, over the old 1 MB limit:
-// "GitHub sent an unexpected answer (200)" in 0.6.5's first build)
-const char releasesApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REPO "/releases?per_page=10";
+// Fifteen keep the answer small (a release's notes and its files made 70 KB
+// of JSON up to 0.6.9, about a third of it since: 30 releases were 1.4 MB,
+// over the old 1 MB limit: "GitHub sent an unexpected answer (200)" in
+// 0.6.5's first build) and are the way a copy finds from its version to the
+// newest: a release carries the small update from the release before it only
+// (findSteps), so a copy fourteen releases behind still updates with them.
+const char releasesApi[] = "https://api.github.com/repos/" VLC_REDESIGN_REPO "/releases?per_page=15";
+// (a way through more releases than this is no small update anymore)
+[[maybe_unused]] constexpr int maxUpdateSteps = 14;
 const qint64 releasesMaxBytes = 8 * 1024 * 1024;
 const char latestReleasePage[] = VLC_REDESIGN_REPO_URL "/releases/latest";
 const char keyLastCheck[] = "redesign/update-last-check";
@@ -704,7 +709,12 @@ bool RedesignUpdater::appFolderWritable() const
 bool RedesignUpdater::smallUpdate() const
 {
     // (one that failed is not tried again: the installer then)
-    return !m_deltaFailed && !m_deltaUrl.isEmpty() && !m_sumsUrl.isEmpty() && appFolderWritable();
+    if (m_deltaFailed || m_steps.isEmpty() || !appFolderWritable())
+        return false;
+    // a long way that weighs more than the installer: the installer, for a
+    // copy that can run it (a portable one has the small updates only)
+    return !(m_installerSize > 0 && m_deltaSize > m_installerSize && !m_installerUrl.isEmpty()
+             && !m_sumsUrl.isEmpty() && isInstalledCopy());
 }
 
 bool RedesignUpdater::canInstall() const
@@ -824,7 +834,9 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     }
     const QJsonDocument document = QJsonDocument::fromJson(body);
     QJsonObject release;
+    QJsonArray releases;
     if (document.isArray()) {
+        releases = document.array();
         // the list of releases: the newest published one that carries this
         // build's package (a draft, a pre-release or a release for the other
         // systems only is passed over)
@@ -852,6 +864,7 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     } else {
         // one release (a local test server, or GitHub's answer of old)
         release = document.object();
+        releases.append(release);
     }
     const QString tag = release.value(QLatin1String("tag_name")).toString();
     if (status != 200 || tag.isEmpty()) {
@@ -867,16 +880,8 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     m_installerUrl.clear();
     m_installerName.clear();
     m_installerSize = 0;
-    m_deltaUrl.clear();
-    m_deltaName.clear();
-    m_deltaSize = 0;
     m_sumsUrl.clear();
     m_sigUrl.clear();
-#ifdef _WIN32
-    // the small update from this very version, if the release has one
-    const QString deltaName = QStringLiteral("vlc-redesign-%1%2-delta-from-%3.vrdelta")
-                                  .arg(m_latestVersion, QLatin1String(deltaInfix), currentVersion());
-#endif
 #ifdef __APPLE__
     bool ownPackage = false;
 #endif
@@ -897,10 +902,6 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_installerUrl = url;
             m_installerName = name;
             m_installerSize = size;
-        } else if (name.compare(deltaName, Qt::CaseInsensitive) == 0) {
-            m_deltaUrl = url;
-            m_deltaName = name;
-            m_deltaSize = size;
         }
 #elif defined(__linux__)
         else if (name.endsWith(QLatin1String(installerSuffix), Qt::CaseInsensitive)) {
@@ -931,7 +932,111 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
 #endif
     msg_Dbg(m_intf, "update check: the newest release for this system is %s (this copy: %s)",
             qtu(m_latestVersion), qtu(currentVersion()));
+    // the small updates that lead to it, if there is a way
+    findSteps(releases);
     setState(versionLess(currentVersion(), m_latestVersion) ? Available : UpToDate);
+}
+
+// The small updates from this version to the newest (m_latestVersion). Every
+// release names, in its files, the versions it has a small update from
+// (…-delta-from-<version>.vrdelta): from 0.6.10 on the release before it
+// only, up to 0.6.9 every release since the last full one. The lightest way
+// through them is taken; none leaves m_steps empty (the installer then).
+void RedesignUpdater::findSteps(const QJsonArray &releases)
+{
+    m_steps.clear();
+    m_deltaSize = 0;
+#ifdef _WIN32
+    const QString current = currentVersion();
+    if (!versionLess(current, m_latestVersion))
+        return;
+    QList<UpdateStep> edges;
+    for (const QJsonValue value : releases) {
+        const QJsonObject release = value.toObject();
+        if (release.value(QLatin1String("draft")).toBool() || release.value(QLatin1String("prerelease")).toBool())
+            continue;
+        QString version = release.value(QLatin1String("tag_name")).toString();
+        if (version.startsWith('v'))
+            version = version.mid(1);
+        // (the releases after this version, up to the newest of this system)
+        if (version.isEmpty() || !versionLess(current, version) || versionLess(m_latestVersion, version))
+            continue;
+        // (the x64 name has no platform: "-winarm64-delta-from-" never
+        // starts with it)
+        const QString prefix = QStringLiteral("vlc-redesign-%1%2-delta-from-")
+                                   .arg(version, QLatin1String(deltaInfix));
+        const QLatin1String suffix(".vrdelta");
+        QString sums, signature;
+        QList<UpdateStep> found;
+        for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray()) {
+            const QJsonObject a = asset.toObject();
+            const QString name = a.value(QLatin1String("name")).toString();
+            const QString url = a.value(QLatin1String("browser_download_url")).toString();
+            if (!trustedUrl(url))
+                continue;
+            if (name.compare(QLatin1String(sumsName), Qt::CaseInsensitive) == 0) {
+                sums = url;
+            } else if (name.compare(QLatin1String(sumsSignatureName), Qt::CaseInsensitive) == 0) {
+                signature = url;
+            } else if (name.startsWith(prefix, Qt::CaseInsensitive) && name.endsWith(suffix, Qt::CaseInsensitive)) {
+                UpdateStep step;
+                step.from = name.mid(prefix.size(), name.size() - prefix.size() - suffix.size());
+                step.version = version;
+                step.url = url;
+                step.name = name;
+                step.size = a.value(QLatin1String("size")).toInteger();
+                // from this version or a later one, older than its release
+                if (!step.from.isEmpty() && step.size > 0 && !versionLess(step.from, current)
+                    && versionLess(step.from, version))
+                    found.append(step);
+            }
+        }
+        // (nothing is used without the release's checksums)
+        if (sums.isEmpty())
+            continue;
+        for (UpdateStep &step : found) {
+            step.sumsUrl = sums;
+            step.sigUrl = signature;
+            edges.append(step);
+        }
+    }
+    // The versions in their order, each reached by its lightest small
+    // update from a version reached before it
+    std::stable_sort(edges.begin(), edges.end(), [](const UpdateStep &a, const UpdateStep &b) {
+        return versionLess(a.version, b.version);
+    });
+    struct Way { qint64 size; int edge; };
+    QMap<QString, Way> reached;
+    reached.insert(current, { 0, -1 });
+    for (int i = 0; i < edges.size(); ++i) {
+        const auto from = reached.constFind(edges[i].from);
+        if (from == reached.constEnd())
+            continue;
+        const qint64 size = from->size + edges[i].size;
+        const auto to = reached.constFind(edges[i].version);
+        if (to == reached.constEnd() || size < to->size)
+            reached.insert(edges[i].version, { size, i });
+    }
+    const auto end = reached.constFind(m_latestVersion);
+    if (end == reached.constEnd() || end->edge < 0)
+        return;
+    const qint64 total = end->size;
+    QList<UpdateStep> steps;
+    for (QString version = m_latestVersion; version != current && steps.size() <= maxUpdateSteps; ) {
+        const UpdateStep &step = edges[reached.value(version).edge];
+        steps.prepend(step);
+        version = step.from;
+    }
+    if (steps.size() > maxUpdateSteps)
+        return;
+    m_steps = steps;
+    m_deltaSize = total;
+    msg_Dbg(m_intf, "update check: %d small update(s) lead to %s (%lld KB)", int(m_steps.size()),
+            qtu(m_latestVersion), static_cast<long long>(total / 1024));
+#else
+    // (small updates are Windows': Linux and macOS replace their package)
+    Q_UNUSED(releases);
+#endif
 }
 
 void RedesignUpdater::openReleasePage()
@@ -949,7 +1054,8 @@ void RedesignUpdater::skipThisVersion()
 
 void RedesignUpdater::dismiss()
 {
-    if (m_state == Preparing)
+    // (nor between two small updates, while one is written)
+    if (m_state == Preparing || m_staging)
         return;
     if (m_state == Downloading) {
         // the download stops (its answer is dropped): the update stays
@@ -975,34 +1081,44 @@ void RedesignUpdater::install()
     setProgress(0);
     setState(Downloading);
     // Nothing is used unless it matches the checksum published with it
-    if (smallUpdate())
-        withChecksum(m_deltaName, [this](const QString &sha) { downloadDelta(sha); });
-    else
-        withChecksum(m_installerName, [this](const QString &sha) { downloadInstaller(sha); });
+    if (smallUpdate()) {
+        // the small updates in their order, each with the checksums of its
+        // own release
+        m_removed = std::make_shared<QMap<QString, QString>>();
+        const UpdateStep first = m_steps.first();
+        withChecksum(first.name, first.version, first.sumsUrl, first.sigUrl,
+                     [this](const QString &sha) { downloadStep(0, 0, sha); });
+    } else {
+        withChecksum(m_installerName, m_latestVersion, m_sumsUrl, m_sigUrl,
+                     [this](const QString &sha) { downloadInstaller(sha); });
+    }
 }
 
-void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(const QString &)> next)
+// The SHA-256 of a file of the release of `version`, from that release's
+// SHA256SUMS.txt (sumsUrl) once its signature (sigUrl) is checked
+void RedesignUpdater::withChecksum(const QString &assetName, const QString &version, const QString &sumsUrl,
+                                   const QString &sigUrl, std::function<void(const QString &)> next)
 {
     const quint64 attempt = m_attempt;
-    const bool signedRelease = signatureRequired(m_latestVersion);
+    const bool signedRelease = signatureRequired(version);
     const QString unsignedError = qtr("This update isn't signed by VLC Redesign, so it wasn't used. "
                                       "Download it from the release page instead.");
     if (signedRelease) {
-        if (m_sigUrl.isEmpty()) {
-            msg_Warn(m_intf, "update to %s: the release has no %s", qtu(m_latestVersion), sumsSignatureName);
+        if (sigUrl.isEmpty()) {
+            msg_Warn(m_intf, "update to %s: the release has no %s", qtu(version), sumsSignatureName);
             setState(Failed, unsignedError);
             return;
         }
         // The signed checksums name the files of one version: never those
         // of another (signed) release published under this one's tag
-        if (!assetName.startsWith(QStringLiteral("vlc-redesign-%1-").arg(m_latestVersion), Qt::CaseInsensitive)) {
-            msg_Warn(m_intf, "update to %s: %s is not a file of that version", qtu(m_latestVersion), qtu(assetName));
+        if (!assetName.startsWith(QStringLiteral("vlc-redesign-%1-").arg(version), Qt::CaseInsensitive)) {
+            msg_Warn(m_intf, "update to %s: %s is not a file of that version", qtu(version), qtu(assetName));
             setState(Failed, unsignedError);
             return;
         }
     }
-    m_cancel = httpRequestAsync(this, githubRequest(m_sumsUrl, 64 * 1024, 30000),
-                                [this, attempt, assetName, next, signedRelease,
+    m_cancel = httpRequestAsync(this, githubRequest(sumsUrl, 64 * 1024, 30000),
+                                [this, attempt, assetName, version, sigUrl, next, signedRelease,
                                  unsignedError](const HttpResponse &response) {
         if (attempt != m_attempt)
             return; // cancelled
@@ -1016,8 +1132,8 @@ void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(
         }
         // Nothing of the checksums is used before their signature is checked
         const QByteArray sums = response.body;
-        m_cancel = httpRequestAsync(this, githubRequest(m_sigUrl, 4096, 30000),
-                                    [this, attempt, assetName, next, sums,
+        m_cancel = httpRequestAsync(this, githubRequest(sigUrl, 4096, 30000),
+                                    [this, attempt, assetName, version, next, sums,
                                      unsignedError](const HttpResponse &signature) {
             if (attempt != m_attempt)
                 return; // cancelled
@@ -1027,11 +1143,11 @@ void RedesignUpdater::withChecksum(const QString &assetName, std::function<void(
             }
             if (signature.status != 200 || !goodSignature(sums, signature.body)) {
                 msg_Warn(m_intf, "update to %s: %s doesn't carry a good signature (HTTP %d, %d bytes)",
-                         qtu(m_latestVersion), sumsName, signature.status, int(signature.body.size()));
+                         qtu(version), sumsName, signature.status, int(signature.body.size()));
                 setState(Failed, unsignedError);
                 return;
             }
-            msg_Dbg(m_intf, "update to %s: %s signed by the release key", qtu(m_latestVersion), sumsName);
+            msg_Dbg(m_intf, "update to %s: %s signed by the release key", qtu(version), sumsName);
             useChecksums(sums, assetName, next);
         });
     });
@@ -1078,18 +1194,24 @@ static std::function<void(qint64, qint64)> progressTo(RedesignUpdater *updater, 
     };
 }
 
-void RedesignUpdater::downloadDelta(const QString &expectedSha256)
+// One small update of the way (m_steps[index]; `before`: the bytes of the
+// ones before it, for the progress): downloaded, checked against its
+// checksum and written next to the files in place, then the next one, or
+// the update is ready
+void RedesignUpdater::downloadStep(int index, qint64 before, const QString &expectedSha256)
 {
     const quint64 attempt = m_attempt;
-    HttpRequest request = githubRequest(m_deltaUrl, std::max<qint64>(m_deltaSize, 1) + 4 * 1024 * 1024,
+    const UpdateStep step = m_steps.value(index);
+    const qint64 total = std::max<qint64>(m_deltaSize, 1);
+    HttpRequest request = githubRequest(step.url, std::max<qint64>(step.size, 1) + 4 * 1024 * 1024,
                                         downloadStepMs);
     request.deadlineMs = downloadDeadlineMs;
-    request.progress = progressTo(this, m_deltaSize, [this, attempt](double p) {
+    request.progress = progressTo(this, step.size, [this, attempt, before, total, size = step.size](double p) {
         if (attempt == m_attempt)
-            setProgress(p);
+            setProgress(std::min(1.0, (before + p * size) / total));
     });
     m_cancel = httpRequestAsync(this, std::move(request),
-                                [this, attempt, expectedSha256](const HttpResponse &response) {
+                                [this, attempt, index, before, step, expectedSha256](const HttpResponse &response) {
         if (attempt != m_attempt)
             return; // cancelled
         m_cancel = {};
@@ -1097,7 +1219,14 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
             setState(Failed, qtr("The download failed. Check your connection and try again."));
             return;
         }
-        setState(Preparing);
+        const bool first = index == 0;
+        const bool last = index + 1 >= m_steps.size();
+        // (the last one: "Preparing"; one before it is written while the
+        // download goes on being shown, and can't be stopped meanwhile)
+        if (last)
+            setState(Preparing);
+        else
+            m_staging = true;
         // Checked and written on a worker thread: the interface stays
         // responsive; waited for at the exit, a few seconds at most
         // (runInBackground: a staging cut there leaves no ready.txt). Its
@@ -1106,26 +1235,54 @@ void RedesignUpdater::downloadDelta(const QString &expectedSha256)
         const QByteArray delta = response.body;
         const QString dir = appDir();
         const QString version = m_latestVersion;
-        runInBackground(this, [error, delta, expectedSha256, dir, version]() {
+        const std::shared_ptr<QMap<QString, QString>> removed = m_removed;
+        runInBackground(this, [error, delta, expectedSha256, dir, version, step, first, last, removed]() {
             QThread::currentThread()->setPriority(QThread::LowPriority);
-            if (sha256Hex(delta) != expectedSha256)
+            if (sha256Hex(delta) != expectedSha256) {
                 *error = qtr("The update doesn't match its checksum, so it wasn't used.");
-            else // (its programs' publisher checked there, before ready.txt)
-                *error = stageDelta(delta, dir, version);
-        }, [this, error]() {
-            if (error->isEmpty()) {
+                return;
+            }
+            if (first)
+                *error = stageBegin(dir);
+            if (error->isEmpty())
+                *error = stageStep(delta, dir, step.from, step.version, *removed);
+            // (its programs' publisher checked there, before ready.txt)
+            if (error->isEmpty() && last)
+                *error = stageFinish(dir, version, *removed);
+        }, [this, error, index, before, step, last]() {
+            m_staging = false;
+            if (!error->isEmpty()) {
+                // the installer next time ("Update now" again), not the same
+                // small updates
+                m_deltaFailed = true;
+                setState(Failed, *error);
+                return;
+            }
+            if (last) {
                 setState(Ready);
                 return;
             }
-            // the installer next time ("Update now" again), not the same
-            // small update
-            m_deltaFailed = true;
-            setState(Failed, *error);
+            const UpdateStep next = m_steps.value(index + 1);
+            const qint64 done = before + step.size;
+            withChecksum(next.name, next.version, next.sumsUrl, next.sigUrl,
+                         [this, index, done](const QString &sha) { downloadStep(index + 1, done, sha); });
         });
     });
 }
 
-QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir, const QString &version)
+QString RedesignUpdater::stageBegin(const QString &dir)
+{
+    const QString work = dir + QStringLiteral("/.update");
+    const QString staged = work + QStringLiteral("/staged");
+    QFile::remove(work + QStringLiteral("/ready.txt"));
+    QDir(staged).removeRecursively();
+    if (!QDir().mkpath(staged))
+        return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
+    return {};
+}
+
+QString RedesignUpdater::stageStep(const QByteArray &delta, const QString &dir, const QString &from,
+                                   const QString &to, QMap<QString, QString> &removed)
 {
     if (delta.size() < 12 || !delta.startsWith("VRDELTA1"))
         return qtr("The update isn't in a format this version knows.");
@@ -1134,17 +1291,14 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
         return qtr("The update is damaged.");
     const QJsonObject header = QJsonDocument::fromJson(delta.mid(12, headerSize)).object();
     if (header.value(QLatin1String("format")).toInt() != 1
-        || header.value(QLatin1String("to")).toString() != version
-        || header.value(QLatin1String("from")).toString() != QLatin1String(VLC_REDESIGN_VERSION))
+        || header.value(QLatin1String("to")).toString() != to
+        || header.value(QLatin1String("from")).toString() != from)
         return qtr("The update isn't for this version.");
     const char *blobs = delta.constData() + 12 + headerSize;
     const qsizetype available = delta.size() - 12 - headerSize;
 
-    const QString work = dir + QStringLiteral("/.update");
-    const QString staged = work + QStringLiteral("/staged");
-    QFile::remove(work + QStringLiteral("/ready.txt"));
-    QDir(staged).removeRecursively();
-    if (!QDir().mkpath(staged))
+    const QString staged = dir + QStringLiteral("/.update/staged");
+    if (!QFileInfo(staged).isDir())
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
 
     const QString changed = qtr("A file of VLC Redesign was changed since it was installed, so the small "
@@ -1156,12 +1310,16 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
         const qint64 offset = file.value(QLatin1String("offset")).toInteger(-1);
         if (!safeRelativePath(path) || size < 0)
             return qtr("The update is damaged.");
+        const QString target = staged + QLatin1Char('/') + path;
         QByteArray data;
         if (file.value(QLatin1String("kind")).toString() == QLatin1String("patch")) {
-            QFile oldFile(dir + QLatin1Char('/') + path);
+            // (the file of the version this step starts from: the one a
+            // step before it wrote, else the one in place)
+            QFile oldFile(QFileInfo::exists(target) ? target : dir + QLatin1Char('/') + path);
             if (!oldFile.open(QIODevice::ReadOnly))
                 return changed;
             const QByteArray old = oldFile.readAll();
+            oldFile.close();
             if (sha256Hex(old) != file.value(QLatin1String("old_sha256")).toString())
                 return changed;
             const QJsonArray parts = file.value(QLatin1String("parts")).toArray();
@@ -1178,19 +1336,32 @@ QString RedesignUpdater::stageDelta(const QByteArray &delta, const QString &dir,
         }
         if (data.size() != size || sha256Hex(data) != file.value(QLatin1String("sha256")).toString())
             return qtr("The update is damaged: a file doesn't match its checksum.");
-        const QString target = staged + QLatin1Char('/') + path;
         QDir().mkpath(QFileInfo(target).absolutePath());
         // (on the disk before ready.txt names the update complete)
         if (!writeDurably(target, data))
             return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
+        // (a file a step before this one took away is back)
+        removed.remove(path.toLower());
     }
 
-    QStringList removed;
-    for (const QJsonValue value : header.value(QLatin1String("removed")).toArray())
-        if (safeRelativePath(value.toString()))
-            removed.append(value.toString());
+    for (const QJsonValue value : header.value(QLatin1String("removed")).toArray()) {
+        const QString path = value.toString();
+        if (!safeRelativePath(path))
+            continue;
+        removed.insert(path.toLower(), path);
+        // (a file a step before this one wrote is not of the newest version)
+        QFile::remove(staged + QLatin1Char('/') + path);
+    }
+    return {};
+}
+
+QString RedesignUpdater::stageFinish(const QString &dir, const QString &version,
+                                     const QMap<QString, QString> &removed)
+{
+    const QString work = dir + QStringLiteral("/.update");
+    const QString staged = work + QStringLiteral("/staged");
     // (lines of '\n': the helper reads it as text, CRLF or not)
-    if (!writeDurably(work + QStringLiteral("/removed.txt"), removed.join('\n').toUtf8()))
+    if (!writeDurably(work + QStringLiteral("/removed.txt"), QStringList(removed.values()).join('\n').toUtf8()))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     // Its programs from the publisher of this copy, before the update is
     // complete: VLC closed (or stopped) while they are checked leaves no

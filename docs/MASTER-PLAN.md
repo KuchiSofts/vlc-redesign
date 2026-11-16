@@ -128,6 +128,23 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
+- 🟡 **Simple, quick releases** (the rule of 2026-11-16: few files on a release page, a release quick to make,
+  updates smart, small and secure):
+  - 🟢 One small update a release (from the release before) instead of one for every older version (0.6.9: 18
+    files, 25 minutes of bsdiff for each architecture). The app finds its way to the newest release through the
+    ones between (`findSteps`, the lightest way among the newest 15 releases), each step checked against its own
+    release's signed checksums, staged in order, one restart. Seen on Windows (a debug build, a local test server,
+    two test releases): the six requests in order (checksums, signature, update, twice), the second patch applied
+    to the file the first staged, a file added then removed left out, one removed then added back kept, the copy
+    opened again with the expected files; a wrong signature on the second step and a changed update file each
+    refused, no `ready.txt`, the copy untouched. A copy of 0.6.8 or older takes the installer once.
+  - 🟢 The update itself: 0.82 MB where 0.6.9's was 4.0 MB (413 binaries changed by 9 or 10 bytes, their version
+    and checksum, and 291 of them went whole for being under 64 KB): a direct patch for a file that kept its size,
+    made in 48 s.
+  - 🟢 Release notes: one table, 54 lines where 0.6.9's were 102. The release check lets pass what VideoLAN
+    pushed after the commit was made.
+  - 🟡 One command for the rest of a release (the artifacts, both Windows packages, the checksums, the tag, the
+    draft, the digests): `release.py`.
 - 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
   `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons

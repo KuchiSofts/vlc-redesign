@@ -15,9 +15,28 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- **Smaller, smarter updates on Windows.** A release now carries one small update, from the version before it, and
+  a copy that is several versions behind takes the ones between by itself, one after the other, with one restart.
+  The same update is a fifth of the size (0.8 MB where 0.6.9's was 4.0 MB): a file that only changed its version
+  number is no longer sent whole.
+- **A release page with few files**: no more list of a small update for every older version (0.6.9 had 18), and
+  short notes with one table of the downloads.
+
 ### Technical
 
 - Version 0.6.10 started (VLC_REDESIGN_VERSION).
+- The updater finds a way of small updates through the newest fifteen releases (`findSteps`: the lightest one),
+  checks each against the signed `SHA256SUMS.txt` of its own release and stages them in order
+  (`stageBegin`, `stageStep`, `stageFinish`); a way heavier than the installer, or none, is the installer as before.
+  Checked on Windows against a local test server: two updates in a row put in place with one restart, a wrong
+  signature and a changed update file each refused with nothing installed.
+- `make-delta.py`: one small update (from the release before), a file that kept its size and changed in a few
+  places gets its patch without bsdiff's suffix sort, small files are patched too: 0.6.8 to 0.6.9 in 48 s and
+  0.82 MB (the nine of 0.6.9 took 25 minutes for each architecture). `apply-delta.py` copies unchanged blocks.
+- `release-check.py`: VideoLAN's commits made after the commit being uploaded are named, not a stop.
+- `release-notes.py`: one table of the files of each system, no SHA-256 column.
 - VideoLAN's master merged to `c13b3f29cd`: the simple channel mixer sets the 5.1 output's LFE only when it is
   there; `PlayCover` (the play button over a cover) and `ButtonExt` derive from `RoundButton`.
 - The macOS launch test switches the Mac to dark mode through System Events for its dark screenshot (the

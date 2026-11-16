@@ -18,6 +18,10 @@ def quncompress(block):
     return data
 
 
+BLOCK = 4096
+ZEROS = bytes(BLOCK)
+
+
 def bspatch(old, control, diff, extra, size):
     new = bytearray(size)
     newpos = oldpos = di = ei = 0
@@ -25,10 +29,22 @@ def bspatch(old, control, diff, extra, size):
         x, y, z = struct.unpack_from('<qqq', control, i)
         if x < 0 or y < 0 or newpos + x + y > size:
             raise ValueError('corrupt patch')
-        # x bytes: the old ones plus the difference
-        for k in range(x):
-            o = old[oldpos + k] if 0 <= oldpos + k < len(old) else 0
-            new[newpos + k] = (diff[di + k] + o) & 0xFF
+        # x bytes: the old ones plus the difference (a block of the old file
+        # with no difference is copied as it is: most of them, and a byte at
+        # a time took a minute for the Qt plugin's 58 MB)
+        for k in range(0, x, BLOCK):
+            n = min(BLOCK, x - k)
+            d = diff[di + k:di + k + n]
+            if 0 <= oldpos + k and oldpos + k + n <= len(old):
+                o = old[oldpos + k:oldpos + k + n]
+                if d == ZEROS[:n]:
+                    new[newpos + k:newpos + k + n] = o
+                else:
+                    new[newpos + k:newpos + k + n] = bytes((a + b) & 0xFF for a, b in zip(d, o))
+            else:
+                for j in range(n):
+                    o = old[oldpos + k + j] if 0 <= oldpos + k + j < len(old) else 0
+                    new[newpos + k + j] = (d[j] + o) & 0xFF
         newpos += x
         oldpos += x
         di += x

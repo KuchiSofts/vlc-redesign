@@ -186,16 +186,28 @@ check(not unlisted, 'Translations: po/POTFILES.in lists every file of the redesi
 # --- VideoLAN -----------------------------------------------------------------------
 if not offline:
     subprocess.run(['git', '-C', ROOT, 'fetch', '-q', 'origin', 'master'], capture_output=True, timeout=300)
-behind = git('rev-list', '--count', 'HEAD..' + UPSTREAM)
+# VideoLAN's master as it was when the commit being uploaded was made: what it pushed after that did not exist
+# when this was prepared, built and tested, and doesn't stop it (0.6.9 was stopped four times in one day, a
+# round of CI each: VideoLAN pushes all day). Those commits are named, and are the first thing of the next upload.
+head_time = git('log', '-1', '--format=%ct', 'HEAD')
+behind = git('rev-list', '--count', '--before=%s' % head_time, 'HEAD..' + UPSTREAM) if head_time else None
 if behind is None:
     check(False, "VideoLAN's master", 'cannot read %s' % UPSTREAM)
 else:
     head_up = git('rev-parse', '--short=10', UPSTREAM)
-    check(behind == '0', "VideoLAN's master merged", '%s commits behind %s: merge, build, test' % (behind, head_up))
+    check(behind == '0', "VideoLAN's master merged",
+          '%s commits of before this commit are not in it (up to %s): merge, build, test' % (behind, head_up))
+    newer = git('rev-list', '--count', 'HEAD..' + UPSTREAM)
+    if behind == '0' and newer not in (None, '0'):
+        print('  note VideoLAN pushed %s commits after this commit was made (now at %s): '
+              'merge them right after this upload' % (newer, head_up))
     if behind == '0':
-        merged = [git('rev-parse', '--short=10', UPSTREAM), git('rev-parse', '--short', UPSTREAM)]
+        # (the commit of VideoLAN this one holds: its master, or where the two part)
+        base = git('merge-base', 'HEAD', UPSTREAM)
+        merged = [base[:10], git('rev-parse', '--short', base)] if base else []
         check(any(h and h in read('CHANGELOG.md') + read('docs/MASTER-PLAN.md') for h in merged),
-              'The merged VideoLAN commit is written down', 'name %s in the changelog or the plan' % head_up)
+              'The merged VideoLAN commit is written down',
+              'name %s in the changelog or the plan' % (base[:10] if base else head_up))
 
 # --- issues and credits ----------------------------------------------------------
 roadmap = read('ROADMAP.md') + read('docs/MASTER-PLAN.md')
@@ -241,8 +253,9 @@ if os.path.exists(private):
     check(target in text, 'The owner\'s detailed roadmap (outside the repository) names %s' % target, private)
 
 if release:
-    todo += ['GitHub release v%s: a full release: setup, zip, every .vrdelta and every package; an update release: '
-             'the setups, the zips, every .vrdelta, the AppImages, the disk images, the APK (docs/RELEASE-CHECKLIST.md); '
+    todo += ['GitHub release v%s: a full release: setup, zip and every package; an update release: the setups, the '
+             'zips, the AppImages, the disk images, the APK; both with ONE small update (.vrdelta) for each Windows '
+             'architecture, from the release before (docs/RELEASE-CHECKLIST.md); '
              'always the source, SHA256SUMS.txt and SHA256SUMS.txt.sig' % release,
              'Announce %s in Discussions › Announcements' % release,
              'Weblate: weblate-sync.py export --upstream <merged VideoLAN commit>',

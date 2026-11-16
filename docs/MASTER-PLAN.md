@@ -128,11 +128,24 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.0** (2026-11-16): the version prepared as 0.6.10, named 0.7.0 at its release. A full release (the updater
+- 🟡 **0.7.1** started.
+- 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =
+  ed6b0bccc2, PR #98 merged as c8a655c373, Android #15 as 0f596f2602, tag 660d922d8; the CI build 39767a8ff8, the
+  tag and main share one tree). The first release made by `publish-release.py`: the pull request's 18 checks, its
+  builds and their checksums, both Windows packages (pe-check 0), the signed list, the notes, then the tag, the
+  merge, the draft's digests against the list, the release and its signature again: no step by hand. The notes
+  published without the changelog's Technical part (the script does so from now on). Small update from 0.6.9: 2.4
+  MB (ARM64 1.8 MB), each applied to 0.6.9 and compared. After publishing: a copy of 0.6.9 (the old updater) on
+  the hidden desktop found 0.7.0, took the small update from GitHub and opened again: About says 0.7.0, 770 of
+  771 files = the package (plugins.dat each copy's own). The APK (13107000, the release key) installed over 0.6.9
+  on the emulator, What's new 0.7.0 shown. The package scan for private names: 0 in both Windows zips. The macOS
+  build with the compiler cache: 97.6 % of 8,100 compiles from it, the Apple Silicon build 46 → 22 minutes (the
+  Intel one filled its cache in this run).
+- 🟢 **0.7.0** (2026-11-16): the version prepared as 0.6.10, named 0.7.0 at its release. A full release (the updater
   itself changed: docs/RELEASE-CHECKLIST.md): `full: 0.7.0`, the .deb, .rpm and Flatpak again, the first since 0.6.0.
   Windows, ARM64, Linux, macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.7.0`). A copy of 0.6.9
   finds `…-0.7.0-delta-from-0.6.9.vrdelta` as before; from 0.7.0 on a copy follows the way of small updates.
-- 🟡 **Simple, quick releases** (the rule of 2026-11-16: few files on a release page, a release quick to make,
+- 🟢 **Simple, quick releases** (the rule of 2026-11-16: few files on a release page, a release quick to make,
   updates smart, small and secure):
   - 🟢 One small update a release (from the release before) instead of one for every older version (0.6.9: 18
     files, 25 minutes of bsdiff for each architecture). The app finds its way to the newest release through the
@@ -147,12 +160,13 @@ What is being worked on, updated as it changes (2026-11-10):
     made in 48 s.
   - 🟢 Release notes: one table, 54 lines where 0.6.9's were 102. The release check lets pass what VideoLAN
     pushed after the commit was made.
-  - 🟡 One command for the rest of a release: `publish-release.py --pr N` (the pull request's builds, both
+  - 🟢 One command for the rest of a release: `publish-release.py --pr N` (the pull request's builds, both
     Windows packages, the checksums and their signature, the notes; `--publish`: the tag, the merge, the draft, the
-    digests, the release). Written; it refuses a pull request whose checks have not passed (seen). Its first whole
-    run is the release of 0.7.0.
-  - 🟡 CI: the macOS build with a compiler cache (ccache through VLC's `VLC_CCACHE_BINS_PATH`, a key a week): the
-    Intel runner's 70 minutes were the wait of every release. The first run fills it; the next ones tell the gain.
+    digests, the release). It refuses a pull request whose checks have not passed (seen). 0.7.0 was made with
+    it, from the builds to the published release.
+  - 🟢 CI: the macOS build with a compiler cache (ccache through VLC's `VLC_CCACHE_BINS_PATH`, a key a week): the
+    Intel runner's 70 minutes were the wait of every release. The first run fills it; the next one took 97.6 % of its
+    compiles from it: 46 → 22 minutes on Apple Silicon.
 - 🟢 About and the daily check (seen in the first dark screenshot of the macOS launch test: "GitHub was asked too
   often from this network" in red, on a runner that asked for nothing): About shows a failed check only when it was
   asked for, as the banner. Seen on Windows against a local server that answers 500: the daily check's request,

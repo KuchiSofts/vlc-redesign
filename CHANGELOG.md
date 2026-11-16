@@ -17,7 +17,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 An update release of fixes, from four reports of one day: the music player's texts stay readable over a bright
 cover, lyrics without times show as a page, Repeat one has its own icon, and Reverse scroll direction turns the
-volume wheel round too. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
+volume wheel round too. With VideoLAN's latest work, among it VLC 3.0's volume slider as a control of Customize
+Player. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
+
+### Added
+
+- **Classic Volume**: VLC 3.0's volume slider, a control of Customize Player (from VideoLAN).
 
 ### Fixed
 
@@ -38,7 +43,10 @@ volume wheel round too. Windows, Linux, macOS and Android; the Samsung TV app st
 - `qt-wheel-reverse`: one option for every plain wheel of the player (`WheelToVLCConverter`); the core's
   "Position control reversed" of an older configuration is moved to it at the start.
 - macOS: Now Playing is told the repeat and shuffle modes; the launch test clicks Help › Report a problem.
-- VideoLAN's master merged (493793a33a).
+- VideoLAN's master merged (289ac2b8ee, [#105](https://github.com/KuchiSofts/vlc-redesign/issues/105)): 29 commits, nine files met ours. VLC 3.0's
+  slider (`VOLUME_LEGACY`) is saved as 0x51 here: its 0x2B is the redesign's Settings button in every saved
+  profile. The default profiles keep the design's volume control; the slider's two texts are in the 20 complete
+  languages.
 - Version 0.7.1 started (VLC_REDESIGN_VERSION).
 - `release-notes.py` leaves the Technical part of the changelog out of a release's notes (a link to it instead)
   and says which copies follow the way of small updates (0.7.0 and later).

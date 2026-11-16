@@ -110,6 +110,10 @@ public:
 
         // Live TV (its add-on), saved in the profiles by this id
         TV_BUTTON = 0x50,
+        // VLC 3.0's volume slider, VideoLAN's 0x2B: the redesign saves its
+        // Settings button by that id (SETTINGS_BUTTON, below), so this one
+        // has an id of its own, after the redesign's
+        VOLUME_LEGACY = 0x51,
 
         // Use a reserved ID without changing persisted control identifiers.
         SETTINGS_BUTTON = RESERVED_0X2B,
@@ -140,7 +144,9 @@ public:
 
     static_assert(RESERVED_0X1F == 0x1F, "missaligned");
     static_assert(RESERVED_0X2B == 0x2B, "missaligned");
-    static_assert(HDR_BUTTON == 0x2C && DIVIDER_WIDGET == 0x34, "persisted control IDs changed");
+    static_assert(SETTINGS_BUTTON == 0x2B && HDR_BUTTON == 0x2C && DIVIDER_WIDGET == 0x34,
+                  "persisted control IDs changed");
+    static_assert(VOLUME_LEGACY == 0x51, "persisted control IDs changed");
     static_assert(RESERVED_0X3F == 0x3F, "missaligned");
 
     // Basic functionality:

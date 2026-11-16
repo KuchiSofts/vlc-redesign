@@ -44,7 +44,7 @@ These rows set what the mouse does on the video (and on the card shown while cas
 | **Double click on the video** | Dropdown: *Nothing* / *Toggle fullscreen*. Default: *Toggle fullscreen*. | What a double click does. With *Toggle fullscreen*, a single click waits for Windows' double-click time before it plays or pauses, so a double click does not also pause. With *Nothing*, a click acts at once. | `redesign/double-click-action` (interface setting, 0 / 1) |
 | **Scroll wheel** | Dropdown: *Nothing* / *Volume* / *Seek*. Default: *Volume*. | What the vertical mouse wheel does over the video. | `hotkeys-y-wheel-mode` (−1 / 0 / 2) |
 | **Horizontal scroll** | Dropdown: *Nothing* / *Volume* / *Seek*. Default: *Seek*. | What a horizontal scroll (a tilting wheel, a touchpad swipe) does over the video. | `hotkeys-x-wheel-mode` (−1 / 0 / 2) |
-| **Reverse scroll direction** | Toggle. Default: off. | The wheels set to *Seek* go backwards when turned forwards. Only seeking is reversed, never the volume. While neither wheel seeks, the toggle keeps its state and applies as soon as one is set to *Seek*. | both wheel options (*Seek* stored as 3 instead of 2) |
+| **Reverse scroll direction** | Toggle. Default: off. | The wheel works the other way round for all it does in the player: the volume (over the player and over the volume control), seeking and the seek bar, the speed button. A wheel with a key held (<kbd>Ctrl</kbd>+wheel...) is a shortcut and stays as it is, and so does a drag on a touch screen. Until 0.7.0 it reversed only a wheel set to *Seek*; that setting is carried over. | `qt-wheel-reverse` |
 
 ## Remotes
 
@@ -69,7 +69,7 @@ These rows set what the mouse does on the video (and on the card shown while cas
   password**, then close Settings. From a phone on the same network, open `http://<PC address>:8080`, leave the
   user name empty and type the password. Windows Firewall may ask to allow VLC the first time.
 - **Seeking with the wheel:** set **Scroll wheel** to *Seek*; with a touchpad, **Reverse scroll direction** often
-  feels more natural.
+  feels more natural (it turns the volume wheel round too).
 - **Accidental pauses** when clicking to focus the window: set **Single click on the video** to *Nothing*.
 
 ---

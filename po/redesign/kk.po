@@ -1716,6 +1716,101 @@ msgstr "Медиа кітапханаға қосу"
 msgid "Remove from Favorites"
 msgstr "Таңдаулылардан алып тастау"
 
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:527
+#: modules/gui/qt/player/qml/CompactLibrary.qml:420
+msgid "Favorites"
+msgstr "Таңдаулылар"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+msgid "History"
+msgstr "Тарих"
+
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:448
+msgid "Movies"
+msgstr "Фильмдер"
+
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:521
+msgid "Shows"
+msgstr "Шоулар"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
+#: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
+#: modules/gui/qt/network/standardpathmodel.cpp:152
+#: modules/gui/qt/player/qml/CompactLibrary.qml:92
+#: modules/gui/qt/player/qml/CompactLibrary.qml:213
+#: modules/gui/qt/player/qml/CompactLibrary.qml:308
+msgid "Videos"
+msgstr "Бейнелер"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:280
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
+#: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
+#: modules/gui/qt/player/qml/CompactLibrary.qml:316
+#: modules/gui/qt/player/qml/CompactLibrary.qml:532
+msgid "Artists"
+msgstr "Орындаушылар"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:281
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
+#: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
+#: modules/gui/qt/player/qml/CompactLibrary.qml:315
+#: modules/gui/qt/player/qml/CompactLibrary.qml:531
+msgid "Albums"
+msgstr "Альбомдар"
+
+#: modules/gui/qt/player/qml/CompactLibrary.qml:214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:314
+#: modules/gui/qt/player/qml/CompactLibrary.qml:530
+msgid "Songs"
+msgstr "Әндер"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:283
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
+#: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
+#: modules/gui/qt/player/qml/CompactLibrary.qml:317
+#: modules/gui/qt/player/qml/CompactLibrary.qml:533
+msgid "Genres"
+msgstr "Жанрлар"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:276
+#: modules/gui/qt/maininterface/navigationmodel.cpp:284
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
+#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:54
+#: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
+#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
+#: modules/gui/qt/player/qml/CompactLibrary.qml:96
+#: modules/gui/qt/player/qml/CompactLibrary.qml:311
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
+msgid "Playlists"
+msgstr "Ойнату тізімдері"
+
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:188
 #: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:57
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
@@ -1725,6 +1820,18 @@ msgstr "Таңдаулылардан алып тастау"
 #: modules/gui/qt/player/qml/controlbarcontrols/LibraryButton.qml:23
 msgid "Library"
 msgstr "Кітапхана"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:1278
+msgid "Today"
+msgstr "Бүгін"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:1282
+msgid "Yesterday"
+msgstr "Кеше"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:91
+msgid "Clear playback history?"
+msgstr "Ойнату тарихын тазарту керек пе?"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:297
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1424
@@ -2010,21 +2117,6 @@ msgstr "Бұл бума табылмады."
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:63
 msgid "Modified"
 msgstr "Өзгертілген"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
-#: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
-#: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
-#: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:92
-#: modules/gui/qt/player/qml/CompactLibrary.qml:213
-#: modules/gui/qt/player/qml/CompactLibrary.qml:308
-msgid "Videos"
-msgstr "Бейнелер"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:210
@@ -4518,12 +4610,6 @@ msgstr "Толық бейнебеттегі басқару элементтер�
 msgid "Fullscreen controls sensitivity"
 msgstr "Толық бейнебеттегі басқару элементтерінің сезімталдығы"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
-msgid "History"
-msgstr "Тарих"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/misc/iptv/iptv.cpp:949
 msgid "Live TV (IPTV) add-on"
@@ -5302,10 +5388,6 @@ msgstr "Медиа кітапханадан жақында ойнатылған 
 msgid "Media library unavailable"
 msgstr "Медиа кітапхана қолжетімсіз"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:91
-msgid "Clear playback history?"
-msgstr "Ойнату тарихын тазарту керек пе?"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:92
 msgid "Recently played items will be removed from the media library."
 msgstr "Жақында ойнатылған элементтер медиа кітапханадан жойылады."
@@ -5579,14 +5661,6 @@ msgstr "Ең қарапайым стиль"
 msgid "Classic Style"
 msgstr "Классикалық стиль"
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:448
-msgid "Movies"
-msgstr "Фильмдер"
-
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:521
-msgid "Shows"
-msgstr "Шоулар"
-
 #: modules/gui/qt/dialogs/toolbar/defaults.cpp:673
 msgid "Work"
 msgstr "Жұмыс"
@@ -5811,17 +5885,9 @@ msgstr[0] "%1 сағ"
 msgid "%1 h %2 min"
 msgstr "%1 сағ %2 мин"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1278
-msgid "Today"
-msgstr "Бүгін"
-
 #: modules/gui/qt/iptv/iptv_addon.cpp:1280
 msgid "Tomorrow"
 msgstr "Ертең"
-
-#: modules/gui/qt/iptv/iptv_addon.cpp:1282
-msgid "Yesterday"
-msgstr "Кеше"
 
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
@@ -5960,14 +6026,6 @@ msgstr "Арналар жүктелуде…"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1495
 msgid "No channels"
 msgstr "Арналар жоқ"
-
-#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:527
-#: modules/gui/qt/player/qml/CompactLibrary.qml:420
-msgid "Favorites"
-msgstr "Таңдаулылар"
 
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:31
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:930
@@ -6587,57 +6645,6 @@ msgstr "LTR"
 #: modules/gui/qt/maininterface/navigationmodel.cpp:264
 msgid "MC"
 msgstr "MC"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:276
-#: modules/gui/qt/maininterface/navigationmodel.cpp:284
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
-#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:54
-#: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
-#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:96
-#: modules/gui/qt/player/qml/CompactLibrary.qml:311
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
-msgid "Playlists"
-msgstr "Ойнату тізімдері"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:280
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
-#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
-#: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:316
-#: modules/gui/qt/player/qml/CompactLibrary.qml:532
-msgid "Artists"
-msgstr "Орындаушылар"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:281
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
-#: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:315
-#: modules/gui/qt/player/qml/CompactLibrary.qml:531
-msgid "Albums"
-msgstr "Альбомдар"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:283
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
-#: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:317
-#: modules/gui/qt/player/qml/CompactLibrary.qml:533
-msgid "Genres"
-msgstr "Жанрлар"
 
 #: modules/gui/qt/maininterface/navigationmodel.cpp:290
 msgid "Discover"
@@ -8331,6 +8338,10 @@ msgstr "Қасиеттер"
 msgid "Languages and tracks"
 msgstr "Тілдер және жолшықтар"
 
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
+msgid "Classic Volume"
+msgstr ""
+
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
 msgstr "Шарлау тақтасы"
@@ -8671,13 +8682,6 @@ msgstr "Дыбыс деңгейі %1%"
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "Көрнекі бейнелеуді таңдау үшін дыбысты ойнатыңыз."
-
-#: modules/gui/qt/player/qml/CompactLibrary.qml:214
-#: modules/gui/qt/player/qml/CompactLibrary.qml:215
-#: modules/gui/qt/player/qml/CompactLibrary.qml:314
-#: modules/gui/qt/player/qml/CompactLibrary.qml:530
-msgid "Songs"
-msgstr "Әндер"
 
 #: modules/gui/qt/player/qml/CompactLibrary.qml:752
 msgid "More"
@@ -9379,6 +9383,18 @@ msgid ""
 msgstr ""
 "qml жөндеушісінің параметрлерін орнату (http://doc.qt.io/qt-5/qtquick-"
 "debugging.html#starting-applications қараңыз)"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr ""
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""

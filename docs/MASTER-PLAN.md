@@ -167,6 +167,25 @@ What is being worked on, updated as it changes (2026-11-10):
     behind the player, its texts readable, nothing in the log. Its version and "What's new" at the release.
   - 🟢 Checked besides, on the test copy: the light theme (its white veil, as before), a right to left layout (the
     headings of the search read "כללי ‹ מראה"), no warning of the interface in the logs of seven runs.
+  - 🟢 **#105, the weekly upstream sync:** VideoLAN pushed 29 commits while 0.7.1 was being released (to
+    289ac2b8ee); they met our changes in nine files of the Qt interface. Merged into 0.7.1 rather than after it (a
+    commit made after them must have them: the release check), built and tried again. What they bring: VLC 3.0's
+    volume slider as a control (`VolumeWidgetLegacy.qml`, `VOLUME_LEGACY`), its colours option
+    (`qt-slider-colours`), slider fixes, the lyrics button hidden for a song without lyrics (ours already was),
+    and VideoLAN's own macOS interface (History; not in our apps). Resolved: the build lists in buildsystem/ (ours)
+    get the three new files; the default profiles keep the design's volume control (VideoLAN's switched to the
+    slider); our music view stays (theirs changed one line we already have). **A trap caught:** VideoLAN's slider
+    takes id 0x2B, the redesign's Settings button in every saved profile: it is 0x51 here, after Live TV (0x50).
+    Our volume widget gives the slider the five parts it draws again (VideoLAN's aliases); the design's value box
+    stays out of it (it writes its own), and under it the widget takes VLC's model: the value is the volume, in a
+    straight line to the maximum volume (the design's control keeps its curve). Found by trying it: on the design's
+    curve the triangle was filled to 65 % at 90 %, and VideoLAN's gradient put its colour stops past the end (a
+    warning; clamped in effects_image_provider.cpp, as it was for a maximum volume of 100 %). Its track is known
+    once the control is complete (reading the background in a binding made it at once: a binding loop). In Customize Player it is **Classic Volume** (VideoLAN's "Volume Widget
+    (Legacy)" was cut in two lines), translated in the 20 complete languages with its option's title. Seen: in the
+    palette, dragged into the bar: at 110 % of 200 % it is filled to 55 %, green to 100 % then yellow; its tooltip
+    reads the volume under the pointer, the design's box "110 %" over the design's control; a click and the wheel
+    move both together. No warning of the interface in the log.
   - 📋 Samsung TV: its music view dims every cover to 70 % and its title is the design's grey: the same rule
     there, in the TV app's next version.
 - 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =

@@ -63,7 +63,7 @@ controls: they show in a bar that has them, but the palette does not offer them.
 | **Playback Speed** | yes | Shows the speed (*1x*). A click opens the speed popup (see [Speed](#speed)); the wheel over it changes the speed. |
 | **Previous Frame**, **Next Frame** | yes | Step one picture back or forward (playback pauses). |
 | **A-B Loop** | yes | Loops a part of the media (see [A-B loop](#a-b-loop)). |
-| **Repeat** | yes | Cycles *Off*, *Repeat all*, *Repeat one*. Lit while on; its tooltip reads *Repeat one* in that mode. |
+| **Repeat** | yes | Cycles *Off*, *Repeat all*, *Repeat one*. Lit while on; *Repeat one* shows a 1 between the arrows, and the tooltip names the mode that is on. |
 | **Shuffle** | yes | Plays the queue in random order. Lit while on. |
 | **Record** | yes | Records what plays to a file; in the accent colour while recording. Where recordings go: [Settings: Recording](Settings-Recording). |
 | **Snapshot** | yes | Saves the current picture as an image. Where and in which format: [Settings: Video](Settings-Video). |
@@ -333,8 +333,8 @@ See [Library](Library) and [Live TV](Live-TV).
 |---|---|---|
 | Click | Play / pause. | *Single click on the video*: Play / Pause or Nothing ([Settings: Controls](Settings-Controls)) |
 | Double-click | Fullscreen. | *Double click on the video*: Nothing or Toggle fullscreen |
-| Wheel | Volume. | *Scroll wheel*: Nothing, Volume or Seek |
-| Horizontal wheel (or a touchpad swipe) | Seek. | *Horizontal scroll*: Nothing, Volume or Seek; *Reverse scroll direction* reverses seeking |
+| Wheel | Volume. | *Scroll wheel*: Nothing, Volume or Seek; *Reverse scroll direction* turns it round |
+| Horizontal wheel (or a touchpad swipe) | Seek. | *Horizontal scroll*: Nothing, Volume or Seek; *Reverse scroll direction* turns it round |
 | <kbd>Ctrl</kbd>+wheel | Subtitles larger or smaller, 25 % to 500 %, with a short *Subtitle size* message; <kbd>Ctrl</kbd>+<kbd>0</kbd> back to 100 %. Elsewhere in the window, <kbd>Ctrl</kbd>+wheel zooms the interface. | [Keyboard shortcuts](Keyboard-Shortcuts#subtitles): *Scale up/down subtitles text* |
 | Right-click | The player's menu (below). | |
 
@@ -373,7 +373,11 @@ music view or on a visualization opens the same menu.
   dark grey (the more readable of the two) over a bright cover. The light theme keeps the colours of its design.
 - **Lyrics.** A song with synchronized lyrics in its tags shows the current line under the title. The **Lyrics**
   button opens all of them next to the cover; they follow the song. Scrolling them stops the following, and
-  *Sync lyrics to playback* starts it again.
+  *Sync lyrics to playback* starts it again. Lyrics without times (a plain text in the file) show as a page, a
+  line at a time with no line picked out, and *Sync lyrics to playback* moves the page with the song, from its top
+  to its end.
+- **The backdrop.** The cover, blurred, fills the music view behind the texts. In the dark theme it is drawn as it
+  is, and dimmed only as much as the texts over it need to stay readable when the cover is bright.
 - **Visualizer.** A visualization is chosen in [Settings: Audio](Settings-Audio) (*Visualizer*): *Disabled*,
   Spectrometer, Scope, Spectrum, Waveform, VU meter, then the other visualizations of the build (Goom...). While a
   song shows one, a **Visualizer** button above the controls changes it or turns it off.

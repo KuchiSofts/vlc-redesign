@@ -1690,6 +1690,101 @@ msgstr "미디어 라이브러리에 추가"
 msgid "Remove from Favorites"
 msgstr "즐겨찾기에서 제거"
 
+#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:527
+#: modules/gui/qt/player/qml/CompactLibrary.qml:420
+msgid "Favorites"
+msgstr "즐겨찾기"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
+msgid "History"
+msgstr "기록"
+
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:448
+msgid "Movies"
+msgstr "영화"
+
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:521
+msgid "Shows"
+msgstr "시리즈"
+
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
+#: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
+#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
+#: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
+#: modules/gui/qt/network/standardpathmodel.cpp:152
+#: modules/gui/qt/player/qml/CompactLibrary.qml:92
+#: modules/gui/qt/player/qml/CompactLibrary.qml:213
+#: modules/gui/qt/player/qml/CompactLibrary.qml:308
+msgid "Videos"
+msgstr "비디오"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:280
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
+#: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
+#: modules/gui/qt/player/qml/CompactLibrary.qml:316
+#: modules/gui/qt/player/qml/CompactLibrary.qml:532
+msgid "Artists"
+msgstr "아티스트"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:281
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
+#: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
+#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
+#: modules/gui/qt/player/qml/CompactLibrary.qml:315
+#: modules/gui/qt/player/qml/CompactLibrary.qml:531
+msgid "Albums"
+msgstr "앨범"
+
+#: modules/gui/qt/player/qml/CompactLibrary.qml:214
+#: modules/gui/qt/player/qml/CompactLibrary.qml:215
+#: modules/gui/qt/player/qml/CompactLibrary.qml:314
+#: modules/gui/qt/player/qml/CompactLibrary.qml:530
+msgid "Songs"
+msgstr "노래"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:283
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
+#: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
+#: modules/gui/qt/player/qml/CompactLibrary.qml:317
+#: modules/gui/qt/player/qml/CompactLibrary.qml:533
+msgid "Genres"
+msgstr "장르"
+
+#: modules/gui/qt/maininterface/navigationmodel.cpp:276
+#: modules/gui/qt/maininterface/navigationmodel.cpp:284
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
+#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
+#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
+#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:54
+#: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
+#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
+#: modules/gui/qt/player/qml/CompactLibrary.qml:96
+#: modules/gui/qt/player/qml/CompactLibrary.qml:311
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
+msgid "Playlists"
+msgstr "재생목록"
+
 #: modules/gui/macosx/library/VLCLibraryTableCellView.m:188
 #: modules/gui/macosx/library/VLCLibraryMediaGroupDescriptor.m:57
 #: modules/gui/macosx/library/video-library/VLCLibraryVideoDataSource.m:536
@@ -1699,6 +1794,18 @@ msgstr "즐겨찾기에서 제거"
 #: modules/gui/qt/player/qml/controlbarcontrols/LibraryButton.qml:23
 msgid "Library"
 msgstr "라이브러리"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:1278
+msgid "Today"
+msgstr "오늘"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:1282
+msgid "Yesterday"
+msgstr "어제"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:91
+msgid "Clear playback history?"
+msgstr "재생 기록을 지울까요?"
 
 #: modules/gui/macosx/panels/VLCAudioEffectsWindowController.m:297
 #: modules/gui/qt/dialogs/extended/extended_panels.cpp:1424
@@ -1981,21 +2088,6 @@ msgstr "이 폴더를 찾을 수 없습니다."
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:63
 msgid "Modified"
 msgstr "수정한 날짜"
-
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:66
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:34
-#: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
-#: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
-#: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
-#: modules/gui/qt/network/standardpathmodel.cpp:152
-#: modules/gui/qt/player/qml/CompactLibrary.qml:92
-#: modules/gui/qt/player/qml/CompactLibrary.qml:213
-#: modules/gui/qt/player/qml/CompactLibrary.qml:308
-msgid "Videos"
-msgstr "비디오"
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:210
@@ -4464,12 +4556,6 @@ msgstr "전체화면 컨트롤 불투명도"
 msgid "Fullscreen controls sensitivity"
 msgstr "전체화면 컨트롤 감도"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:99
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:100
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:101
-msgid "History"
-msgstr "기록"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:103
 #: modules/misc/iptv/iptv.cpp:949
 msgid "Live TV (IPTV) add-on"
@@ -5248,10 +5334,6 @@ msgstr "미디어 라이브러리에서 최근 재생한 항목을 제거합니�
 msgid "Media library unavailable"
 msgstr "미디어 라이브러리를 사용할 수 없음"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:91
-msgid "Clear playback history?"
-msgstr "재생 기록을 지울까요?"
-
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPrivacyActions.qml:92
 msgid "Recently played items will be removed from the media library."
 msgstr "최근 재생한 항목이 미디어 라이브러리에서 제거됩니다."
@@ -5522,14 +5604,6 @@ msgstr "가장 단순한 스타일"
 msgid "Classic Style"
 msgstr "클래식 스타일"
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:448
-msgid "Movies"
-msgstr "영화"
-
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:521
-msgid "Shows"
-msgstr "시리즈"
-
 #: modules/gui/qt/dialogs/toolbar/defaults.cpp:673
 msgid "Work"
 msgstr "업무"
@@ -5748,17 +5822,9 @@ msgstr[0] "%1시간"
 msgid "%1 h %2 min"
 msgstr "%1시간 %2분"
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1278
-msgid "Today"
-msgstr "오늘"
-
 #: modules/gui/qt/iptv/iptv_addon.cpp:1280
 msgid "Tomorrow"
 msgstr "내일"
-
-#: modules/gui/qt/iptv/iptv_addon.cpp:1282
-msgid "Yesterday"
-msgstr "어제"
 
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:732
@@ -5894,14 +5960,6 @@ msgstr "채널 불러오는 중…"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1495
 msgid "No channels"
 msgstr "채널 없음"
-
-#: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:146
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:527
-#: modules/gui/qt/player/qml/CompactLibrary.qml:420
-msgid "Favorites"
-msgstr "즐겨찾기"
 
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:31
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:930
@@ -6508,57 +6566,6 @@ msgstr "LTR"
 #: modules/gui/qt/maininterface/navigationmodel.cpp:264
 msgid "MC"
 msgstr "MC"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:276
-#: modules/gui/qt/maininterface/navigationmodel.cpp:284
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
-#: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
-#: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:54
-#: modules/gui/qt/medialibrary/qml/VideoDisplay.qml:53
-#: modules/gui/qt/medialibrary/qml/VideoPlaylistsDisplay.qml:62
-#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:98
-#: modules/gui/qt/player/qml/CompactLibrary.qml:96
-#: modules/gui/qt/player/qml/CompactLibrary.qml:311
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaylistsButton.qml:31
-msgid "Playlists"
-msgstr "재생목록"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:280
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
-#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:234
-#: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
-#: modules/gui/qt/player/qml/CompactLibrary.qml:316
-#: modules/gui/qt/player/qml/CompactLibrary.qml:532
-msgid "Artists"
-msgstr "아티스트"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:281
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
-#: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
-#: modules/gui/qt/medialibrary/qml/MusicArtist.qml:404
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
-#: modules/gui/qt/player/qml/CompactLibrary.qml:315
-#: modules/gui/qt/player/qml/CompactLibrary.qml:531
-msgid "Albums"
-msgstr "앨범"
-
-#: modules/gui/qt/maininterface/navigationmodel.cpp:283
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
-#: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
-#: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
-#: modules/gui/qt/player/qml/CompactLibrary.qml:317
-#: modules/gui/qt/player/qml/CompactLibrary.qml:533
-msgid "Genres"
-msgstr "장르"
 
 #: modules/gui/qt/maininterface/navigationmodel.cpp:290
 msgid "Discover"
@@ -8242,6 +8249,10 @@ msgid "Languages and tracks"
 msgstr "언어 및 트랙"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "클래식 볼륨"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
 msgstr "탐색 상자"
 
@@ -8579,13 +8590,6 @@ msgstr "볼륨 %1%"
 #: modules/gui/qt/player/qml/AudioVisualizationDialog.qml:211
 msgid "Play audio to select a visualization."
 msgstr "시각화를 선택하려면 오디오를 재생하세요."
-
-#: modules/gui/qt/player/qml/CompactLibrary.qml:214
-#: modules/gui/qt/player/qml/CompactLibrary.qml:215
-#: modules/gui/qt/player/qml/CompactLibrary.qml:314
-#: modules/gui/qt/player/qml/CompactLibrary.qml:530
-msgid "Songs"
-msgstr "노래"
 
 #: modules/gui/qt/player/qml/CompactLibrary.qml:752
 msgid "More"
@@ -9280,6 +9284,18 @@ msgid ""
 msgstr ""
 "QML 디버거 옵션 설정 (http://doc.qt.io/qt-5/qtquick-debugging.html#starting-"
 "applications 참조)"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "클래식 볼륨 슬라이더의 색상 지정"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""

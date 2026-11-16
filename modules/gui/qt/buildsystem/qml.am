@@ -358,6 +358,7 @@ libqml_module_playercontrols_a_QML = \
 	player/qml/controlbarcontrols/TeletextColorButton.qml \
 	player/qml/controlbarcontrols/TeletextWidget.qml \
 	player/qml/controlbarcontrols/VolumeWidget.qml \
+	player/qml/controlbarcontrols/VolumeWidgetLegacy.qml \
 	player/qml/controlbarcontrols/Fallback.qml
 # Used from VLC.Player: qmlcachegen only sees a module's own singletons
 # through other modules' qmldir, so it cannot live in VLC.Player.

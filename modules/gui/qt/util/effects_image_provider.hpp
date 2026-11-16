@@ -36,7 +36,8 @@ public:
         RectDropShadow = 1,
         RoundedRectDropShadow,
         DoubleRoundedRectDropShadow,
-        ArtworkBlur
+        ArtworkBlur,
+        VolumeSliderGradient
     };
     Q_ENUM(Effect)
 

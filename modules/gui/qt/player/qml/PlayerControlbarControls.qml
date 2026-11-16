@@ -58,6 +58,9 @@ QtObject {
         { id: ControlListModel.CHAPTER_PREVIOUS_BUTTON, file: "ChapterPreviousButton.qml", label: VLCIcons.dvd_prev, text: qsTr("Previous chapter") },
         { id: ControlListModel.CHAPTER_NEXT_BUTTON, file: "ChapterNextButton.qml", label: VLCIcons.dvd_next, text: qsTr("Next chapter") },
         { id: ControlListModel.VOLUME, file: "VolumeWidget.qml", label: VLCIcons.volume_high, icon: "qrc:///redesign/volume-high.svg", text: qsTr("Volume") },
+        // VLC 3.0's slider (VideoLAN's "Volume Widget (Legacy)"): a name of the
+        // palette's kind, which fits its two lines
+        { id: ControlListModel.VOLUME_LEGACY, file: "VolumeWidgetLegacy.qml", label: VLCIcons.volume_high, icon: "qrc:///redesign/volume-high.svg", text: qsTr("Classic Volume") },
         { id: ControlListModel.NAVIGATION_BOX, file: "NavigationBoxButton.qml", label: VLCIcons.ic_fluent_arrow_move, text: qsTr("Navigation Box") },
         { id: ControlListModel.NAVIGATION_BUTTONS, file: "NavigationWidget.qml", label: VLCIcons.dvd_menu, text: qsTr("Navigation") },
         { id: ControlListModel.DVD_MENUS_BUTTON, file: "DvdMenuButton.qml", label: VLCIcons.dvd_menu, text: qsTr("DVD menus") },
@@ -127,7 +130,7 @@ QtObject {
         // the bar's own controls, which the design's palette leaves out
         // (they are on every bar): a button removed can come back
         ControlListModel.PLAY_BUTTON, ControlListModel.PREVIOUS_BUTTON, ControlListModel.NEXT_BUTTON,
-        ControlListModel.VOLUME, ControlListModel.LANG_BUTTON, ControlListModel.EXTENDED_BUTTON,
+        ControlListModel.VOLUME, ControlListModel.VOLUME_LEGACY, ControlListModel.LANG_BUTTON, ControlListModel.EXTENDED_BUTTON,
         ControlListModel.PLAYLIST_BUTTON, ControlListModel.FULLSCREEN_BUTTON, ControlListModel.ATOB_BUTTON,
         ControlListModel.FRAME_PREV_BUTTON, ControlListModel.FRAME_NEXT_BUTTON, ControlListModel.MENU_BUTTON
     ].concat(Iptv.enabled ? [ControlListModel.TV_BUTTON] : [])  // Live TV, while its add-on is on

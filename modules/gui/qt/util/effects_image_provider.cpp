@@ -25,7 +25,11 @@
 #include <QImageReader>
 #include <QFileInfo>
 #include <QQmlFile>
+#include <QBitmap>
+#include <QPixmap>
+#include <QLinearGradient>
 
+#include <algorithm>
 #include <memory>
 
 #include "fast_gaussian_blur_template.h"
@@ -37,6 +41,104 @@ class IEffect
 public:
     virtual QImage generate(const QSize& size) const = 0;
     virtual ~IEffect() = default;
+};
+
+class VolumeSliderGradientEffect : public IEffect
+{
+/* This work is derived from Amarok's work under GPLv2+
+    - Mark Kretschmann
+    - Gábor Lehel
+   */
+
+    static constexpr int PADDINGL = 0;   // px
+    static constexpr int PADDINGR = 0;   // px
+    static constexpr int SOUNDMIN = 0;   // %
+
+    const int maximum; // %
+    const QString sliderColors;
+    const bool muted;
+
+public:
+    explicit VolumeSliderGradientEffect(const QVariantMap& setting)
+        : maximum(setting[QStringLiteral("maximum")].toInt())
+        , sliderColors(setting[QStringLiteral("sliderColors")].toString())
+        , muted(setting[QStringLiteral("muted")].toBool())
+    {
+
+    }
+
+    QImage generate(const QSize& size) const override
+    {
+        // This is carried over from VLC 3.0's `SoundSlider`, in file
+        // `input_slider.cpp`, only with minor changes applied:
+
+        QImage insideImage;
+
+        {
+            QImageReader insideImageReader(QStringLiteral(":/misc/volume-slider-inside.svg"));
+            insideImageReader.setScaledSize(size);
+            insideImage = insideImageReader.read();
+        }
+        assert(!insideImage.isNull());
+
+        const QBitmap mask = QPixmap::fromImage(insideImage).createMaskFromColor(QColor(0, 255, 255) /* Cyan */,
+                                                                                 Qt::MaskInColor);
+
+        QPixmap pixGradient( size );
+
+        /* Gradient building from the preferences */
+        QLinearGradient gradient( PADDINGL, 2, size.width() - PADDINGR, 2 );
+
+        QStringList colorList = sliderColors.split( ';' );
+
+        /* Fill with 255 if the list is too short */
+        if( colorList.count() < 12 )
+            for( int i = colorList.count(); i < 12; i++)
+                colorList.append( "255" );
+
+        /* Regular colors */
+#define c(i) colorList.at(i).toInt()
+
+#define add_color(gradient, range, c1, c2, c3) \
+        gradient.setColorAt( range, QColor( c(c1), c(c2), c(c3) ) );
+
+        /* Desaturated colors */
+#define desaturate(c) c.setHsvF( c.hueF(), 0.2 , 0.5, 1.0 )
+#define add_desaturated_color(gradient, range, c1, c2, c3) \
+        foo = QColor( c(c1), c(c2), c(c3) );\
+            desaturate( foo ); gradient.setColorAt( range, foo );\
+
+#define add_colors(gradient, range, c1, c2, c3) \
+        if (!muted) { \
+            add_color( gradient, range, c1, c2, c3 ) \
+        } else { \
+            add_desaturated_color( gradient, range, c1, c2, c3 ) \
+        }
+
+        float f_mid_point = ( 100.0 / maximum );
+        QColor foo;
+        add_colors( gradient, 0.0, 0, 1, 2 );
+        // (inside the gradient: a maximum volume of 100 % puts 100 % at its
+        // end, and Qt refuses a stop after it)
+        add_colors( gradient, std::clamp( f_mid_point - 0.05f, 0.f, 1.f ), 3, 4, 5 );
+        add_colors( gradient, std::clamp( f_mid_point + 0.05f, 0.f, 1.f ), 6, 7, 8 );
+        add_colors( gradient, 1.0, 9, 10, 11 );
+
+        {
+            QPainter painter;
+
+            painter.begin( &pixGradient );
+            painter.setPen( Qt::NoPen );
+            painter.setBrush( gradient );
+            painter.drawRect( pixGradient.rect() );
+
+            painter.end();
+
+            pixGradient.setMask( mask );
+        }
+
+        return pixGradient.toImage();
+    }
 };
 
 class RectDropShadowEffect : public IEffect
@@ -324,6 +426,8 @@ QImage EffectsImageProvider::requestImage(const QString &id, QSize *size, const 
 
         case EffectsImageProvider::ArtworkBlur:
             effect = std::make_unique<ArtworkBlurEffect>(queryToVariantMap(query));
+        case EffectsImageProvider::VolumeSliderGradient:
+            effect = std::make_unique<VolumeSliderGradientEffect>(queryToVariantMap(query));
             break;
 
         default:

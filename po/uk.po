@@ -40987,3 +40987,11 @@ msgstr "Не вдається перемістити цей файл до кош
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Не вдається перемістити цей файл до кошика. Видалити його назавжди?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Класична гучність"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Задати кольори класичного регулятора гучності"

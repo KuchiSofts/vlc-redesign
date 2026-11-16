@@ -41120,3 +41120,11 @@ msgstr "Dit bestand kan niet naar de Prullenbak worden verplaatst. Definitief ve
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Dit bestand kan niet naar de Prullenbak worden verplaatst. Definitief verwijderen?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Klassiek volume"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "De kleuren van de klassieke volumeschuif instellen"

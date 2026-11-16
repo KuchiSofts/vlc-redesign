@@ -8,11 +8,16 @@
  *****************************************************************************/
 #pragma once
 
+#include <QList>
+#include <QMap>
 #include <QObject>
 #include <QString>
 #include <QTimer>
 
 #include <functional>
+#include <memory>
+
+class QJsonArray;
 
 #include "qt.hpp"
 
@@ -20,12 +25,15 @@
 // which offers the official VLC). Checks the latest release at startup
 // (option redesign-update-check, at most once a day) or on request.
 //
-// A release carries small updates from its predecessors
+// A release carries one small update, from the release before it
 // (vlc-redesign-<new>-delta-from-<old>.vrdelta, see
 // extras/juxtopposed/release/make-delta.py): only the files that changed,
-// most of them as binary patches. When one starts from this version and
-// VLC's folder is writable (an installed copy for the user, or a portable
-// one), it is downloaded in the background, checked against the release's
+// as binary patches. This version finds its way to the newest through the
+// releases between them (0.7.0 -> 0.7.1 -> 0.7.2; a release up to 0.6.9
+// also carries small updates from older ones, taken when shorter). When
+// there is a way and VLC's folder is writable (an installed copy for the
+// user, or a portable one), its small updates are downloaded in the
+// background, each checked against its own release's signed
 // SHA256SUMS.txt, and the new files are written next to the old ones
 // (<folder>/.update/staged), each checked against its SHA-256, on a worker
 // thread. vlc-redesign-update.exe then puts them in place once VLC has
@@ -112,11 +120,21 @@ public:
     // a < b, comparing "1.2.3" or "v1.2.3-beta.1" like semantic versions
     static bool versionLess(const QString &a, const QString &b);
 
-    // Writes the files of a .vrdelta under <appDir>/.update/staged, each
-    // checked against its SHA-256, the files it removes in removed.txt, the
+    // An update is staged under <appDir>/.update/staged from one small update
+    // (.vrdelta) or several in a row, each from the version the one before it
+    // gives (0.7.0 -> 0.7.1 -> 0.7.2: a release carries the small update
+    // from the release before it only). stageBegin empties the folder;
+    // stageStep writes the files of one .vrdelta, each checked against its
+    // SHA-256 (a file of a step before it is read from the staged folder, the
+    // others from the application's) and keeps the files it removes in
+    // `removed` (lower-case path -> path); stageFinish writes removed.txt, the
     // helper that puts them in place, and the version in ready.txt (last).
-    // Returns an error, empty on success.
-    static QString stageDelta(const QByteArray &delta, const QString &appDir, const QString &version);
+    // Each returns an error, empty on success.
+    static QString stageBegin(const QString &appDir);
+    static QString stageStep(const QByteArray &delta, const QString &appDir, const QString &from,
+                             const QString &to, QMap<QString, QString> &removed);
+    static QString stageFinish(const QString &appDir, const QString &version,
+                               const QMap<QString, QString> &removed);
 
 public slots:
     // manual: show "up to date" and errors too, ignore a skipped version
@@ -139,10 +157,23 @@ private:
     void setState(State state, const QString &error = {});
     void setProgress(double progress);
     void onRelease(int status, const QByteArray &body);
-    void withChecksum(const QString &assetName, std::function<void(const QString &)> next);
+    // One small update on the way from this version to the newest: a
+    // release's .vrdelta and that release's signed checksums
+    struct UpdateStep {
+        QString from;       // the version it applies to
+        QString version;    // the version it gives
+        QString url;
+        QString name;
+        qint64 size = 0;
+        QString sumsUrl;
+        QString sigUrl;
+    };
+    void findSteps(const QJsonArray &releases);
+    void downloadStep(int index, qint64 before, const QString &expectedSha256);
+    void withChecksum(const QString &assetName, const QString &version, const QString &sumsUrl,
+                      const QString &sigUrl, std::function<void(const QString &)> next);
     void useChecksums(const QByteArray &sums, const QString &assetName,
                       const std::function<void(const QString &)> &next);
-    void downloadDelta(const QString &expectedSha256);
     void downloadInstaller(const QString &expectedSha256);
     void launchInstaller(const QString &path);
     bool launchHelper(bool relaunch);
@@ -165,6 +196,8 @@ private:
     bool m_verifyingStaged = false;
     // the small update failed in this session: the installer instead
     bool m_deltaFailed = false;
+    // a small update is being written (between two downloads): not stopped
+    bool m_staging = false;
     // whether the folder of vlc.exe takes the update: -1 until checked
     mutable int m_writable = -1;
     // the download going on (the answers of one cancelled are dropped),
@@ -179,9 +212,12 @@ private:
     QString m_installerUrl;
     QString m_installerName;
     qint64 m_installerSize = 0;
-    QString m_deltaUrl;
-    QString m_deltaName;
+    // the small updates from this version to the newest, in their order
+    // (empty: none, the installer then), and their size together
+    QList<UpdateStep> m_steps;
     qint64 m_deltaSize = 0;
+    // the files the small updates of this download take away (stageStep)
+    std::shared_ptr<QMap<QString, QString>> m_removed;
     QString m_sumsUrl;
     // its signature (SHA256SUMS.txt.sig), from the first signed release on
     QString m_sigUrl;

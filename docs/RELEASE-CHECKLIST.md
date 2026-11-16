@@ -39,7 +39,9 @@ python extras/juxtopposed/release/release-check.py --release 0.4.0  # the releas
 ## Before every upload
 
 1. Merge VideoLAN's master (`git fetch origin master`), build, and test what it touched: the controls of the bar,
-   the dialogs, playback, the library, a UI tour without QML warnings. Write down the merged commit.
+   the dialogs, playback, the library, a UI tour without QML warnings. Write down the merged commit. What VideoLAN
+   pushes **after** the commit being uploaded was made doesn't stop that upload (the check names those commits):
+   they are merged first thing after it. (0.6.9 was stopped four times in a day, a round of CI each.)
 2. New or changed texts: a new file with texts goes into `po/POTFILES.in`; `potgen` (xgettext, plus the `.ui`
    forms of `extras/juxtopposed/translations/ui-pot.py` merged by `msgcat --use-first`), `msgmerge` for every
    catalog, translate the 72 languages, `msgfmt -c` for all, then
@@ -100,7 +102,7 @@ Program Files, which the small update can't write, and a copy older than the sma
 
 | | Full release | Update release |
 |---|---|---|
-| Windows x64 / ARM64 | installer, portable zip, small updates (3 latest) | installer, portable zip, small updates **from every version since the last full release** |
+| Windows x64 / ARM64 | installer, portable zip, **one** small update (from the release before) | the same |
 | Linux | AppImage (+ .zsync), .deb, .rpm, Flatpak, tar.xz | AppImage (+ .zsync), tar.xz |
 | macOS | disk images | disk images (the app updates itself from them, from 0.5.5) |
 | Android | APK | APK |
@@ -111,16 +113,30 @@ When the change needs a full release: the installer or the updater itself change
 signing key, a new Android version-code scheme, or users who have no updater must get the version (macOS before
 0.5.5, .deb, .rpm, Flatpak).
 
+**Few files, quick to make** (the owner's rule, 2026-11-16): a release page names, for each system, its installer or
+package and its portable copy, then the source, `SHA256SUMS.txt` and its signature, and **one** small update
+(`.vrdelta`) for each Windows architecture, from the release before it. Never one for every older version again
+(0.6.9 had 18, half an hour of packaging): from 0.7.0 on the app finds its own way to the newest release through
+the ones between (0.7.0 → 0.7.1 → 0.7.2), each step checked against the signed `SHA256SUMS.txt` of its release.
+A copy of 0.6.8 or older (its updater takes one small update only) updates with the installer once. The notes are
+short: what changed, one table of the files, no hash column (`release-notes.py`).
+
+**One command** once the pull request's checks have passed:
+`python extras/juxtopposed/release/publish-release.py --pr N --apk <the signed APK>` does steps 2 to 4 below and
+stops with the files and the notes ready to look at; with `--publish` it also tags the commit, merges the pull
+request, uploads a draft, compares every file's digest on GitHub with the signed list and publishes. It refuses a
+pull request whose checks have not all passed, or whose build is not of this commit's tree.
+
 An update release:
 1. `platforms.yml`: `version` the new one, `full:` stays the last full release (its .deb, .rpm, Flatpak and the
    Samsung source keep linking there: `full_only: yes`); `render.py` (README's buttons, the table, the website).
 2. `make-release.ps1 -Update -SkipBuild -Package <folder>` (x64, then `-Arch aarch64`): the installer and the
-   zip; small updates from every release since `full:`, each checked by applying it. `<folder>` holds the Windows
+   zip; the small update from the release before, checked by applying it (about a minute). `<folder>` holds the Windows
    workflow's artifact of the pull request (`vlc-redesign-win64-<sha>`, `vlc-redesign-winarm64-<sha>`): a release
    build. A local `-Quick` build is a debug one, and make-release refuses a Qt plugin that keeps asserts.
 3. The Linux AppImages and the disk images from the pull request's CI artifacts (not the .deb, .rpm, Flatpak);
    the APK; `SHA256SUMS.txt` of all of them, signed.
-4. `release-notes.py`: under Windows it says it is an update release, with the last full release's link.
+4. `release-notes.py`: one table of the files; it names the last full release for the .deb, .rpm and Flatpak.
 5. Everything else as for a release (below): changelog, roadmap, plan, wiki (its file tables: the Windows
    installers of this version, the distribution packages from the full release), issues.
 
@@ -139,7 +155,7 @@ An update release:
    uncommitted changes or the tag names another commit.
 6. Push the branch to `main`, push the tag (the hook checks both).
 7. After the push (the check lists them):
-   - the GitHub release: setup, zip, every `.vrdelta`, `vlc-redesign-X.Y.Z-source.tar.gz`, `SHA256SUMS.txt`,
+   - the GitHub release: setup, zip, the small update of each Windows architecture, `vlc-redesign-X.Y.Z-source.tar.gz`, `SHA256SUMS.txt`,
      `SHA256SUMS.txt.sig`, the notes from `release/release-notes.py` (with their *Source code* section);
    - a reply on every issue the release fixes (what was wrong, what changed, the version, how to update), then close it;
    - an announcement in Discussions › Announcements;

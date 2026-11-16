@@ -330,9 +330,18 @@ qml_warnings playback | head -n 20 | sed 's/^/note: /' | tee -a "$result"
 # appearance (the System theme follows macOS), then About from the
 # application menu
 appearance=$(defaults read -g AppleInterfaceStyle 2>/dev/null || true)
+# (System Events switches the running system and tells every app; the
+# defaults key alone changed nothing: "main-dark.png" was light until 0.6.9)
 set_appearance() {
-    if [ "$1" = dark ]; then defaults write -g AppleInterfaceStyle Dark
-    else defaults delete -g AppleInterfaceStyle 2>/dev/null || true; fi
+    if [ "$1" = dark ]; then on=true; else on=false; fi
+    if ! osascript -e "tell application \"System Events\" to tell appearance preferences to set dark mode to $on" \
+            > /dev/null 2>&1; then
+        if [ "$1" = dark ]; then defaults write -g AppleInterfaceStyle Dark
+        else defaults delete -g AppleInterfaceStyle 2>/dev/null || true; fi
+    fi
+    sleep 2
+    now=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode' 2>/dev/null)
+    note "note: macOS appearance for the $1 screenshot: dark mode ${now:-unknown}"
 }
 app_name=$(basename "$exe")
 for look in light dark; do

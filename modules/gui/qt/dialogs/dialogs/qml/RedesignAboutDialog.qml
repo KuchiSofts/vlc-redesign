@@ -287,7 +287,11 @@ T.Popup {
                                     return qsTr("Downloading the update… %1%").arg(Math.round(RedesignUpdater.progress * 100))
                                 case RedesignUpdater.Preparing: return qsTr("Preparing the update…")
                                 case RedesignUpdater.Ready: return qsTr("Version %1 is ready: restart to finish").arg(RedesignUpdater.latestVersion)
-                                case RedesignUpdater.Failed: return RedesignUpdater.errorText
+                                // (the daily check's own failure is not news: offline at
+                                // the start, or GitHub asked too often from this network,
+                                // showed here in red to someone who asked for nothing.
+                                // As the banner: only a check that was asked for)
+                                case RedesignUpdater.Failed: return RedesignUpdater.manual ? RedesignUpdater.errorText : ""
                                 default: return ""
                                 }
                             }

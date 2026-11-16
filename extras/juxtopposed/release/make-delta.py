@@ -8,17 +8,22 @@
       byte for byte, from one release to the next.
 
   python make-delta.py deltas <package> <version> <dist> [--keep N] [--since V] [--platform win64|winarm64]
-      For each of the N latest earlier releases whose zip is in <dist>
-      (default 3, from 0.2.4 on: the first that applies them), writes <dist>/vlc-redesign-<version>-delta-from-<old>.vrdelta:
-      the files that changed (a binary patch when it's much smaller), the
-      files that went away, and the SHA-256 of every new file. The app checks
-      and applies it (modules/gui/qt/util/redesign_updater.cpp).
+      Writes <dist>/vlc-redesign-<version>-delta-from-<old>.vrdelta from the
+      release before this one (the newest older zip in <dist>): the files
+      that changed, as binary patches, the files that went away, and the
+      SHA-256 of every new file. The app checks and applies it
+      (modules/gui/qt/util/redesign_updater.cpp), and from 0.7.0 on finds its
+      way to the newest release through the ones between them (0.7.0 ->
+      0.7.1 -> 0.7.2): ONE small update a release, whatever version a copy
+      has, not one for every older version (0.6.9 carried nine of them for
+      each architecture, half an hour to make).
       --platform winarm64: from the vlc-redesign-<old>-winarm64.zip files, to
       vlc-redesign-<version>-winarm64-delta-from-<old>.vrdelta (win64, the
       default, keeps the name without the platform).
-      --since V: from every earlier release from V on (an update release:
-      V is the last full release, so every copy installed since it updates
-      in place; at least the N latest all the same).
+      --keep N: from the N latest earlier releases instead (default 1);
+      --since V: from every earlier release from V on. Only for a release
+      that must reach copies whose updater can't follow the way (before
+      0.7.0): each one more is a file on the release page.
 
 The .vrdelta format (all integers little-endian):
   "VRDELTA1", u32 header length, the header (UTF-8 JSON), then the data.
@@ -37,8 +42,13 @@ import hashlib, io, json, os, re, struct, sys, zipfile, zlib
 # (.update/: the working folder of the app's own updater, if a package
 # folder was run before it was packed; the app refuses a delta that names it)
 SKIP = re.compile(r'^(portable/|\.update/|plugins/plugins\.dat$)|\.old-', re.I)
-PATCH_MIN = 64 * 1024        # smaller files go whole
 PATCH_GAIN = 0.6             # a patch only if it's under 60 % of the whole file
+# A binary keeps its size and changes in a few places at every release (the
+# version in its resources, their time, its checksum: 9 or 10 bytes in each
+# of 413 files from 0.6.8 to 0.6.9). Such a file gets its patch without
+# bsdiff's suffix sort: the difference to add to the whole old file.
+STAMP_BLOCK = 4096
+STAMP_BLOCKS = 64            # at most so many blocks that differ; more: bsdiff
 FIRST_APPLIER = '0.2.4'      # older releases can't apply a delta: they get the installer
 
 
@@ -201,6 +211,25 @@ def on_big_stack(work, *args):
     return result['value']
 
 
+def stamp_patch(old, data):
+    """bsdiff's three parts (one control triple: the whole file, nothing
+    extra, no seek) for a file that kept its size and changed in a few blocks
+    only; None when it changed more."""
+    if len(old) != len(data):
+        return None
+    diff = bytearray(len(data))
+    blocks = 0
+    for i in range(0, len(data), STAMP_BLOCK):
+        a, b = old[i:i + STAMP_BLOCK], data[i:i + STAMP_BLOCK]
+        if a == b:
+            continue
+        blocks += 1
+        if blocks > STAMP_BLOCKS:
+            return None
+        diff[i:i + len(b)] = bytes((y - x) & 0xFF for x, y in zip(a, b))
+    return [(len(data), 0, 0)], bytes(diff), b''
+
+
 def make_delta(package, new_files, old_version, old_files, version, out_path):
     import bsdiff4.core as bsdiff
     # (whatever its case: Windows has one file for Foo.dll and foo.dll, and a
@@ -217,8 +246,10 @@ def make_delta(package, new_files, old_version, old_files, version, out_path):
             continue                       # same code: the file in place stays
         entry = {'path': rel, 'size': len(data), 'sha256': sha256(data), 'offset': blobs.tell()}
         full = qcompress(data)
-        if old is not None and len(data) >= PATCH_MIN:
-            control, diff, extra = on_big_stack(bsdiff.diff, old, data)
+        if old is not None:
+            # (a small file too: the 300 plugins under 64 KB went whole for
+            # their 9 bytes of version, 3 of the 4 MB of 0.6.9's update)
+            control, diff, extra = stamp_patch(old, data) or on_big_stack(bsdiff.diff, old, data)
             parts = [qcompress(control_block(control)), qcompress(diff), qcompress(extra)]
             if sum(map(len, parts)) < PATCH_GAIN * len(full):
                 entry.update(kind='patch', old_sha256=sha256(old), parts=[len(p) for p in parts])
@@ -262,7 +293,7 @@ if __name__ == '__main__':
     if len(sys.argv) >= 3 and sys.argv[1] == 'normalize':
         normalize(sys.argv[2])
     elif len(sys.argv) >= 5 and sys.argv[1] == 'deltas':
-        keep = int(sys.argv[sys.argv.index('--keep') + 1]) if '--keep' in sys.argv else 3
+        keep = int(sys.argv[sys.argv.index('--keep') + 1]) if '--keep' in sys.argv else 1
         platform = sys.argv[sys.argv.index('--platform') + 1] if '--platform' in sys.argv else 'win64'
         if platform not in ('win64', 'winarm64'):
             sys.exit(f'Unknown platform {platform} (win64 or winarm64)')

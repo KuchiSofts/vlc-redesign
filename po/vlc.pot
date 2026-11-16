@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-15 07:41+0000\n"
+"POT-Creation-Date: 2026-11-16 03:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31019,117 +31019,118 @@ msgstr ""
 msgid "Don't restore"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:278
+#: modules/gui/qt/util/redesign_updater.cpp:283
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:578
+#: modules/gui/qt/util/redesign_updater.cpp:583
 msgid "%1 (later)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:580
+#: modules/gui/qt/util/redesign_updater.cpp:585
 msgid "%1 (soon)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:777
+#: modules/gui/qt/util/redesign_updater.cpp:787
 msgid "This build cannot check for updates."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:794
+#: modules/gui/qt/util/redesign_updater.cpp:804
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:858
+#: modules/gui/qt/util/redesign_updater.cpp:871
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:988
+#: modules/gui/qt/util/redesign_updater.cpp:1104
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1010
-#: modules/gui/qt/util/redesign_updater.cpp:1051
+#: modules/gui/qt/util/redesign_updater.cpp:1126
+#: modules/gui/qt/util/redesign_updater.cpp:1167
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1025
-#: modules/gui/qt/util/redesign_updater.cpp:1097
+#: modules/gui/qt/util/redesign_updater.cpp:1141
+#: modules/gui/qt/util/redesign_updater.cpp:1219
 msgid "The download failed. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1112
+#: modules/gui/qt/util/redesign_updater.cpp:1242
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1131
-msgid "The update isn't in a format this version knows."
-msgstr ""
-
-#: modules/gui/qt/util/redesign_updater.cpp:1134
-#: modules/gui/qt/util/redesign_updater.cpp:1158
-#: modules/gui/qt/util/redesign_updater.cpp:1169
-#: modules/gui/qt/util/redesign_updater.cpp:1175
-#: modules/gui/qt/util/redesign_updater.cpp:1436
-msgid "The update is damaged."
-msgstr ""
-
-#: modules/gui/qt/util/redesign_updater.cpp:1139
-#: modules/gui/qt/util/redesign_updater.cpp:1433
-msgid "The update isn't for this version."
-msgstr ""
-
-#: modules/gui/qt/util/redesign_updater.cpp:1148
-#: modules/gui/qt/util/redesign_updater.cpp:1185
-#: modules/gui/qt/util/redesign_updater.cpp:1194
-#: modules/gui/qt/util/redesign_updater.cpp:1204
-#: modules/gui/qt/util/redesign_updater.cpp:1209
-#: modules/gui/qt/util/redesign_updater.cpp:1429
+#: modules/gui/qt/util/redesign_updater.cpp:1280
+#: modules/gui/qt/util/redesign_updater.cpp:1302
+#: modules/gui/qt/util/redesign_updater.cpp:1342
+#: modules/gui/qt/util/redesign_updater.cpp:1365
+#: modules/gui/qt/util/redesign_updater.cpp:1375
+#: modules/gui/qt/util/redesign_updater.cpp:1380
+#: modules/gui/qt/util/redesign_updater.cpp:1600
 msgid "The update can't be written in %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1150
+#: modules/gui/qt/util/redesign_updater.cpp:1288
+msgid "The update isn't in a format this version knows."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:1291
+#: modules/gui/qt/util/redesign_updater.cpp:1312
+#: modules/gui/qt/util/redesign_updater.cpp:1327
+#: modules/gui/qt/util/redesign_updater.cpp:1333
+#: modules/gui/qt/util/redesign_updater.cpp:1607
+msgid "The update is damaged."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:1296
+#: modules/gui/qt/util/redesign_updater.cpp:1604
+msgid "The update isn't for this version."
+msgstr ""
+
+#: modules/gui/qt/util/redesign_updater.cpp:1304
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1180
+#: modules/gui/qt/util/redesign_updater.cpp:1338
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1340
-#: modules/gui/qt/util/redesign_updater.cpp:1494
+#: modules/gui/qt/util/redesign_updater.cpp:1511
+#: modules/gui/qt/util/redesign_updater.cpp:1665
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1367
+#: modules/gui/qt/util/redesign_updater.cpp:1538
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1381
+#: modules/gui/qt/util/redesign_updater.cpp:1552
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1393
-#: modules/gui/qt/util/redesign_updater.cpp:1407
+#: modules/gui/qt/util/redesign_updater.cpp:1564
+#: modules/gui/qt/util/redesign_updater.cpp:1578
 msgid "The installer couldn't be saved to %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1474
-#: modules/gui/qt/util/redesign_updater.cpp:1512
+#: modules/gui/qt/util/redesign_updater.cpp:1645
+#: modules/gui/qt/util/redesign_updater.cpp:1683
 msgid "The installer couldn't be started."
 msgstr ""
 

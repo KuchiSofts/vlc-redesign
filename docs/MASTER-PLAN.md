@@ -128,12 +128,44 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
+- 🟡 **0.7.0** (2026-11-16): the version prepared as 0.6.10, named 0.7.0 at its release. A full release (the updater
+  itself changed: docs/RELEASE-CHECKLIST.md): `full: 0.7.0`, the .deb, .rpm and Flatpak again, the first since 0.6.0.
+  Windows, ARM64, Linux, macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.7.0`). A copy of 0.6.9
+  finds `…-0.7.0-delta-from-0.6.9.vrdelta` as before; from 0.7.0 on a copy follows the way of small updates.
+- 🟡 **Simple, quick releases** (the rule of 2026-11-16: few files on a release page, a release quick to make,
+  updates smart, small and secure):
+  - 🟢 One small update a release (from the release before) instead of one for every older version (0.6.9: 18
+    files, 25 minutes of bsdiff for each architecture). The app finds its way to the newest release through the
+    ones between (`findSteps`, the lightest way among the newest 15 releases), each step checked against its own
+    release's signed checksums, staged in order, one restart. Seen on Windows (a debug build, a local test server,
+    two test releases): the six requests in order (checksums, signature, update, twice), the second patch applied
+    to the file the first staged, a file added then removed left out, one removed then added back kept, the copy
+    opened again with the expected files; a wrong signature on the second step and a changed update file each
+    refused, no `ready.txt`, the copy untouched. A copy of 0.6.8 or older takes the installer once.
+  - 🟢 The update itself: 0.82 MB where 0.6.9's was 4.0 MB (413 binaries changed by 9 or 10 bytes, their version
+    and checksum, and 291 of them went whole for being under 64 KB): a direct patch for a file that kept its size,
+    made in 48 s.
+  - 🟢 Release notes: one table, 54 lines where 0.6.9's were 102. The release check lets pass what VideoLAN
+    pushed after the commit was made.
+  - 🟡 One command for the rest of a release: `publish-release.py --pr N` (the pull request's builds, both
+    Windows packages, the checksums and their signature, the notes; `--publish`: the tag, the merge, the draft, the
+    digests, the release). Written; it refuses a pull request whose checks have not passed (seen). Its first whole
+    run is the release of 0.7.0.
+  - 🟡 CI: the macOS build with a compiler cache (ccache through VLC's `VLC_CCACHE_BINS_PATH`, a key a week): the
+    Intel runner's 70 minutes were the wait of every release. The first run fills it; the next ones tell the gain.
+- 🟢 About and the daily check (seen in the first dark screenshot of the macOS launch test: "GitHub was asked too
+  often from this network" in red, on a runner that asked for nothing): About shows a failed check only when it was
+  asked for, as the banner. Seen on Windows against a local server that answers 500: the daily check's request,
+  About without a line; Check for updates, the line in red.
+- 🟢 The new build's memory (the updater's new code in it), 15 minutes of clips on the hidden desktop: private
+  bytes 305 → 324 → 319 MB (rising, then falling in the last quarter, as 0.6.8's 284 → 301), handles, GDI and
+  threads level, a clean quit.
+- 🟢 **0.6.10** (the name 0.7.0 had while it was made): VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
-  `RoundButton`: every button of the redesign to look at after the merge). ⚪ The macOS smoke test's "dark" screenshot
+  `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons
+  as before). 🟡 The macOS smoke test's "dark" screenshot
   has been light since at least 0.6.6: `defaults write -g AppleInterfaceStyle Dark` does not switch the running
-  system (its menu bar stays light in the shot); System Events' appearance preferences would. ⚪ Right to left, the
-  sidebar's resize handle sits on the card's edge, about 8 px from the mirror of its left-to-right place.
+  system (its menu bar stays light in the shot): now System Events' appearance preferences, the mode it got noted.
 - 🟢 **0.6.9** published 2026-11-16 00:19 UTC (34 files; tag v0.6.9 = 10e7160c5b, PR #96 merged as ccc880b0e2, Android
   #14 as 224e85c776, tag e287314bc; the three CI builds, the tag and main share the tree 09192da27e): every file's
   digest on GitHub = the signed list; the public signature good; the in-app update 0.6.8 -> 0.6.9 on the hidden
@@ -141,7 +173,7 @@ What is being worked on, updated as it changes (2026-11-10):
   plugins.dat each copy's own); on that updated copy two hover sweeps leave the sidebar's edge at 259 px, the line
   shows on the handle, a drag widens it to 319 and back. Small update from 0.6.8: 4.0 MB (ARM64 4.4 MB). VideoLAN
   moved four times during the builds; the release stops at `ed6d4aa119` (decided: release the tested tree, the newer
-  commits into 0.6.10; the tag pushed past the release check's VideoLAN line only). The APK (13106090, the release
+  commits into 0.7.0; the tag pushed past the release check's VideoLAN line only). The APK (13106090, the release
   key) installed over 0.6.8 on the emulator, What's new 0.6.9 shown. The Samsung TV app stays 0.6.8.
 - 🟢 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
   the Android More page; VideoLAN merged to `ed6d4aa119` (the MPEG audio demuxer's ID3 chapter bounds check, its
@@ -155,8 +187,8 @@ What is being worked on, updated as it changes (2026-11-10):
     Sidebar's rows, the other hover areas with a move handler, already checked `pressed`. Seen on the fixed build
     (hidden desktop, hover hook): two hover sweeps over the edge leave it in place (259 px, left to right; 1399 px,
     right to left), the accent line shows on the handle, a drag still resizes (259 → 319 → 216, the minimum), a
-    sweep after the drags changes nothing; qmllint clean. ⚪ Right to left the handle sits on the card's edge, about
-    8 px from the mirror of the left-to-right place (beside the card): works, not yet symmetric.
+    sweep after the drags changes nothing; qmllint clean. Right to left the handle answers 1-7 px left of the card's
+    edge, the mirror of its left-to-right place (1-7 px right of it).
   - 🟢 Android More page: Edit Sidebar's title sat 6 dp left of the other rows (its icon 18 dp, theirs 24 dp):
     the icon now in a 24 dp inset (rd_ic_sidebar_row); the seven titles start at the same pixel (200–202). Its
     dialog said "Drag a page by its handle" (the desktop's text) over rows that move by arrows only: its own

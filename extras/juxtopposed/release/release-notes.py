@@ -43,6 +43,16 @@ m = re.search(r'^## \[%s\][^\n]*\n(.*?)(?=^## \[|\Z)' % re.escape(version), chan
 if not m:
     sys.exit('CHANGELOG.md has no section for %s' % version)
 section = m.group(1).strip()
+# The notes are for the people who use the apps: what changed for them. The Technical part of the section (how it
+# was made, for developers) stays in the changelog, a link away (0.6.9's notes: 102 lines; the owner's rule of
+# 2026-11-16: short).
+heading = re.search(r'^## \[%s\]([^\n]*)' % re.escape(version), changelog, re.M).group(0)
+anchor = re.sub(r'[^a-z0-9 -]', '', heading[3:].lower()).replace(' ', '-')
+section, technical = re.subn(r'^### Technical\n.*?(?=^### |\Z)', '', section, flags=re.S | re.M)
+section = section.strip()
+if technical:
+    section += ('\n\nEverything else, for developers: the [changelog]'
+                '(https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md#%s).' % anchor)
 # the anchors of the changelog point into the file: into the repository here
 section = re.sub(r'\]\(#', '](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md#', section)
 
@@ -110,8 +120,10 @@ update_line = '**Already have it?** The app updates itself: *About › Check for
 if small.get('x64'):
     old, mb = sorted(small['x64'])[-1]
     arm = sorted(small['ARM64'])[-1][1] if small.get('ARM64') else ''
-    update_line += (' On Windows that is a small update: %s from %s%s; a copy further behind takes the ones between, '
-                    'one after the other, by itself.' % (mb, old, ' (ARM64: %s)' % arm if arm else ''))
+    # (the way through several releases: the updater of 0.7.0 and later; an older copy takes the installer once)
+    update_line += (' On Windows that is a small update: %s from %s%s. A copy that is several versions behind takes '
+                    'the small updates between, one after the other, by itself (from 0.7.0 on; an older copy updates '
+                    'with the installer once).' % (mb, old, ' (ARM64: %s)' % arm if arm else ''))
 
 # An update release (docs/RELEASE-CHECKLIST.md: platforms.yml "full:" names an earlier version): the distribution
 # packages stay those of the last full release

@@ -129,7 +129,9 @@ What is being worked on, updated as it changes (2026-11-10):
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
 - 🟡 **0.7.1** (2026-11-16): the four reports of the day after 0.7.0, all from one Mac (#100 to #103), and
-  what they show on the other programs.
+  what they show on the other programs. An update release (`full: 0.7.0`): Windows, ARM64, Linux, macOS and
+  Android; the Samsung TV app stays 0.6.8 (`follows: 0.7.1`) until its own change is tried on a TV. The README's
+  Flatpak button still named 0.6.0: it names 0.7.0, the last full release.
   - 🟢 **Texts over a bright cover** (#100, #101). The music view draws the cover blurred behind its texts with no
     tint in the dark theme (the design), so white lyrics and the title sat on a white sky. The backdrop now dims
     itself by the brightness of the cover's bright parts (the tenth brightest of 144 areas of the cover as drawn:

@@ -274,8 +274,10 @@ static int updatePalette(vlc_qt_theme_provider_t* obj)
         // VLC Redesign: a tool button at rest has no background and no
         // border, as in VLC's own palettes (and the tab buttons below): the
         // system's button colour drew a box behind every icon of the bars
-        // with the System theme (the library's arrows on macOS and Linux)
+        // with the System theme (the library's arrows on macOS and Linux:
+        // disabled while there is no page to go back to, the same box)
         setQtColor(obj, CS, VQTC_SECTION_BG, VQTC_NAME_PRIMARY, VQTC_STATE_NORMAL, buttonBgNormal);
+        setQtColor(obj, CS, VQTC_SECTION_BG, VQTC_NAME_PRIMARY, VQTC_STATE_DISABLED, buttonBgNormal);
 
         setQtColor(obj, CS, VQTC_SECTION_FG, VQTC_NAME_SECONDARY, VQTC_STATE_NORMAL, secondaryTextButton);
 

@@ -132,7 +132,10 @@ What is being worked on, updated as it changes (2026-11-10):
   - 🟡 **System theme on macOS and Linux:** the screenshots of the Mac's launch test showed a grey box behind
     the library's arrows, and the Linux build in a container the same with the System theme (Windows: none, its
     theme provider leaves the colours to VLC's palettes). The generic system palette gave a tool button at rest
-    the system's opaque button colour; now transparent, as VLC's palettes and the tab buttons. To see in this
+    the system's opaque button colour, at rest and disabled (the arrows while there is no page to go back
+    to); now transparent in both, as VLC's palettes and the tab buttons. Seen in the Linux build of the pull request
+    in a container: the sort and grid icons lost their box at once, the arrows (disabled) only with the second
+    change. To see in this
     pull request's macOS screenshots (main-light, main-dark: the System theme).
 - 🟢 **0.7.1** published 2026-11-16 18:57 UTC (18 files: 16 and the signed list; tag v0.7.1 = 59865f9cdd, PR #104 merged as
   13c13dbac6, Android #16 as 791903909f, tag 002cb0988; the CI build dbc9e8dfff, the tag and main share one tree).

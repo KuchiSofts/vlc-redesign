@@ -24,6 +24,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **A release page with few files**: no more list of a small update for every older version (0.6.9 had 18), and
   short notes with one table of the downloads.
 
+### Fixed
+
+- **About no longer shows an error of the daily update check.** Offline at the start, or GitHub asked too often
+  from the network, About showed a red line to someone who asked for nothing; only a check you start shows its
+  result there, as the banner does.
+
 ### Technical
 
 - Version 0.6.10 started (VLC_REDESIGN_VERSION).

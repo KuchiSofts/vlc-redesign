@@ -149,6 +149,13 @@ What is being worked on, updated as it changes (2026-11-10):
     run is the release of 0.6.10.
   - 🟡 CI: the macOS build with a compiler cache (ccache through VLC's `VLC_CCACHE_BINS_PATH`, a key a week): the
     Intel runner's 70 minutes were the wait of every release. The first run fills it; the next ones tell the gain.
+- 🟢 About and the daily check (seen in the first dark screenshot of the macOS launch test: "GitHub was asked too
+  often from this network" in red, on a runner that asked for nothing): About shows a failed check only when it was
+  asked for, as the banner. Seen on Windows against a local server that answers 500: the daily check's request,
+  About without a line; Check for updates, the line in red.
+- 🟢 The new build's memory (the updater's new code in it), 15 minutes of clips on the hidden desktop: private
+  bytes 305 → 324 → 319 MB (rising, then falling in the last quarter, as 0.6.8's 284 → 301), handles, GDI and
+  threads level, a clean quit.
 - 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
   `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons

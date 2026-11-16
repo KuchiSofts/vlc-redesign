@@ -6300,6 +6300,18 @@
           ],
           "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/default.svg",
           "sha256": "4b4a1d958e8c35fbd0c5a76dfb627b4c41018ad6cf260cf08b87d1d645bf0964"
+        },
+        {
+          "state": "one",
+          "scale": 1,
+          "format": "svg",
+          "file": "svg/glyphs/repeat/one.svg",
+          "size": [
+            24,
+            24
+          ],
+          "source": "modules/gui/qt/pixmaps/redesign/icons/repeat/one.svg",
+          "sha256": "dfdce6e088b585089b69168d2cbe1936bdfcf30d8536b880ee1307092e39e848"
         }
       ]
     },

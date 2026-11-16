@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class VLCTrackingView;
 @protocol VLCMediaLibraryItemProtocol;
 @class VLCInputItem;
+@class VLCLibraryMarkUnplayedButton;
 @class VLCLibraryRepresentedItem;
 
 extern NSString * const VLCLibraryTableCellViewIdentifier;
@@ -52,9 +53,12 @@ typedef NS_ENUM(NSUInteger, VLCLibraryTableCellImageAspectRatio) {
 @property (readwrite, weak) IBOutlet NSTextField *primaryTitleTextField;
 @property (readwrite, weak) IBOutlet VLCImageView *representedImageView;
 @property (readwrite, weak) IBOutlet NSButton *playInstantlyButton;
+@property (readwrite, weak, nullable) IBOutlet NSTextField *audioMediaTypeIndicator;
+@property (readwrite, weak, nullable) IBOutlet VLCLibraryMarkUnplayedButton *markUnplayedButton;
 
 @property (readwrite, nonatomic) VLCLibraryTableCellDetailMode detailMode;
 @property (readwrite, nonatomic) VLCLibraryTableCellImageAspectRatio representedImageAspectRatio;
+@property (readwrite, nonatomic) BOOL showsMarkUnplayedButton;
 @property (readwrite, strong, nonatomic) VLCLibraryRepresentedItem *representedItem;
 @property (readwrite, strong, nonatomic) VLCInputItem *representedInputItem;
 @property (readwrite, nonatomic) NSUInteger representedVideoLibrarySection;

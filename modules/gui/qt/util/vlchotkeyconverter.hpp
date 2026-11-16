@@ -40,6 +40,16 @@ public:
 public:
     Q_INVOKABLE Qt::Orientations getWheelOrientation(int x, int y);
 
+    /**
+     * "Reverse scroll direction" (Settings, Controls, Mouse: the option
+     * qt-wheel-reverse): every plain wheel the other way round, whatever it
+     * does here (the volume, seeking, the speed). A wheel with a modifier is
+     * a shortcut that names its direction, and a drag on a touch screen is
+     * not a wheel: both as they are.
+     */
+    static void setReversed(bool reversed);
+    Q_INVOKABLE bool reversed() const;
+
 signals:
     /**
      * @param vlcKey the VLC hotkey representation
@@ -76,6 +86,8 @@ public slots:
                           const bool inverted = false);
 
 private:
+    void handleWheel(const QWheelEvent* e, bool reversible);
+
     QPoint m_scrollAmount = {};
     Qt::KeyboardModifiers m_modifiers = {};
     Qt::MouseButtons m_buttons = {};

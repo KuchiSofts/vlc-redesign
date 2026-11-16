@@ -128,7 +128,70 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.1** started.
+- 🟡 **0.7.1** (2026-11-16): the four reports of the day after 0.7.0, all from one Mac (#100 to #103), and
+  what they show on the other programs. An update release (`full: 0.7.0`): Windows, ARM64, Linux, macOS and
+  Android; the Samsung TV app stays 0.6.8 (`follows: 0.7.1`) until its own change is tried on a TV. The README's
+  Flatpak button still named 0.6.0: it names 0.7.0, the last full release.
+  - 🟢 **Texts over a bright cover** (#100, #101). The music view draws the cover blurred behind its texts with no
+    tint in the dark theme (the design), so white lyrics and the title sat on a white sky. The backdrop now dims
+    itself by the brightness of the cover's bright parts (the tenth brightest of 144 areas of the cover as drawn:
+    `MainCtx::imageBrightParts`, from `grabToImage` of the cover, any source and renderer), to where white reads
+    at 4.5:1 (a luminance of 0.183), and no further: a dark cover is drawn as before (measured 0.011: no tint; a
+    cover with a white sky 0.837: tint 0.50). The title's colour is measured again once the dimming settled.
+    Seen on the test copy: bright, medium and dark covers, with and without lyrics.
+  - 🟢 **Lyrics without times** (#101). An ID3 USLT text comes as one entry at 0: it was the "current line"
+    from the start (the whole text bold, the view centred on its middle, "Sync lyrics to playback" with nothing to
+    follow). It is a page now: a line an entry, half a line between two verses, no current line, no seek on a
+    click, and "Sync lyrics to playback" moves the page with the song (its top at the start, its end at the end,
+    a line at a time). Timed lyrics (an .lrc, SYLT) are as before. `syltLyrics()` returned through an empty value
+    when the lyrics went while a view still read them: an empty list now.
+  - 🟢 **Repeat one** (#102). The button showed the icon of Repeat all for it: only the tooltip told them apart,
+    and "Repeat" seemed to repeat one song at random. Its own icon (the arrows and a 1), and the tooltips name
+    the mode that is on (Repeat, Repeat all, Repeat one), on the queue's button too. Checked with three songs:
+    Repeat all goes 1, 2, 3, 1; Repeat one stays. macOS: Now Playing is told the repeat and shuffle modes (it
+    was left at "off"). Android has the two icons already.
+  - 🟢 **Reverse scroll direction** (#103) was the core's "Position control reversed" of a wheel that seeks:
+    the volume wheel never turned round, nor the wheel over the seek bar. One option of the interface now
+    (`qt-wheel-reverse`), for every plain wheel of the player (the video, the music view, the volume, the seek
+    bar, the speed), in `WheelToVLCConverter`; a wheel with a modifier (a shortcut that names its direction) and
+    a drag on a touch screen are left as they are. A configuration with the old value is moved at the start
+    (seen: `hotkeys-x-wheel-mode=3` became 2 with `qt-wheel-reverse=1`). Checked: the volume over the player and
+    over its control, the seek bar, the option kept after a restart.
+  - 🟡 **macOS: Help › Report a problem and Suggest an idea** did nothing: the menu bar looked for the object
+    among the windows' children, where it never is. `RedesignFeedback::instance()`. The launch test of the CI
+    clicks the item and looks for its line in the log (a Mac is needed: checked there).
+  - 🟢 **A Settings search names the page of each group** ("General › Appearance", "Subtitles › Appearance"):
+    two groups had the same title, and "Text color" did not say it is the subtitles' (#100).
+  - 🟢 Android: the same rule for the veil over the blurred cover (`RdBackdrop`, 40 % at least as before, up to
+    54 % over a white cover; 5 unit tests). Seen on the emulator in the dark theme: the test song's bright cover
+    behind the player, its texts readable, nothing in the log. Its version and "What's new" at the release.
+  - 🟢 Checked besides, on the test copy: the light theme (its white veil, as before), a right to left layout (the
+    headings of the search read "כללי ‹ מראה"), no warning of the interface in the logs of seven runs.
+  - 🟢 **#105, the weekly upstream sync:** VideoLAN pushed 29 commits while 0.7.1 was being released (to
+    289ac2b8ee); they met our changes in nine files of the Qt interface. Merged into 0.7.1 rather than after it (a
+    commit made after them must have them: the release check), built and tried again. What they bring: VLC 3.0's
+    volume slider as a control (`VolumeWidgetLegacy.qml`, `VOLUME_LEGACY`), its colours option
+    (`qt-slider-colours`), slider fixes, the lyrics button hidden for a song without lyrics (ours already was),
+    and VideoLAN's own macOS interface (History; not in our apps). Resolved: the build lists in buildsystem/ (ours)
+    get the three new files; the default profiles keep the design's volume control (VideoLAN's switched to the
+    slider); our music view stays (theirs changed one line we already have). **A trap caught:** VideoLAN's slider
+    takes id 0x2B, the redesign's Settings button in every saved profile: it is 0x51 here, after Live TV (0x50).
+    Our volume widget gives the slider the five parts it draws again (VideoLAN's aliases); the design's value box
+    stays out of it (it writes its own), and under it the widget takes VLC's model: the value is the volume, in a
+    straight line to the maximum volume (the design's control keeps its curve). Found by trying it: on the design's
+    curve the triangle was filled to 65 % at 90 %, and VideoLAN's gradient put its colour stops past the end (a
+    warning; clamped in effects_image_provider.cpp, as it was for a maximum volume of 100 %). Its track is known
+    once the control is complete (reading the background in a binding made it at once: a binding loop). In Customize Player it is **Classic Volume** (VideoLAN's "Volume Widget
+    (Legacy)" was cut in two lines), translated in the 20 complete languages with its option's title. Seen: in the
+    palette, dragged into the bar: at 110 % of 200 % it is filled to 55 %, green to 100 % then yellow; its tooltip
+    reads the volume under the pointer, the design's box "110 %" over the design's control; a click and the wheel
+    move both together. No warning of the interface in the log.
+    The release was then stopped once more, by one VideoLAN commit (b970733b26, two lines of the VA-API filters)
+    dated an hour before the merge commit and pushed three hours after it: the check counted the commits dated
+    before the one uploaded. It now reads the reflog of `origin/master` (when each fetch brought what), so a
+    commit that reaches this PC after the uploaded one was made is a note, as intended; b970733b26 merged too.
+  - 📋 Samsung TV: its music view dims every cover to 70 % and its title is the design's grey: the same rule
+    there, in the TV app's next version.
 - 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =
   ed6b0bccc2, PR #98 merged as c8a655c373, Android #15 as 0f596f2602, tag 660d922d8; the CI build 39767a8ff8, the
   tag and main share one tree). The first release made by `publish-release.py`: the pull request's 18 checks, its

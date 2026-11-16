@@ -139,7 +139,7 @@ The icons of the Figma "Icon" component set (42:356), exported as PNG, one folde
 | `wrench` | <img src="png/wrench/default.png" height="24" alt="wrench default"> `default` | 24 x 24 |
 | `zoom` | <img src="png/zoom/default.png" height="24" alt="zoom default"> `default` | 24 x 24 |
 
-## glyphs-svg (`svg/glyphs/`, 116 icons, 224 files)
+## glyphs-svg (`svg/glyphs/`, 116 icons, 225 files)
 
 SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG state (design/tools/icon_svgs.py; its report icon_svgs_report.md compares them with the PNGs). 24 x 24 unless noted, Figma's colours of each state. The app draws these, at the size shown; it ships no PNG of them.
 
@@ -230,7 +230,7 @@ SVG sources of the glyphs, from the same Figma symbols (42:356), one per PNG sta
 | `record` | <img src="svg/glyphs/record/active.svg" height="24" alt="record active"> `active` <img src="svg/glyphs/record/default.svg" height="24" alt="record default"> `default` | 24 x 24 |
 | `refresh` | <img src="svg/glyphs/refresh/default.svg" height="24" alt="refresh default"> `default` | 24 x 24 |
 | `remove` | <img src="svg/glyphs/remove/default.svg" height="24" alt="remove default"> `default` | 24 x 24 |
-| `repeat` | <img src="svg/glyphs/repeat/active.svg" height="24" alt="repeat active"> `active` <img src="svg/glyphs/repeat/default.svg" height="24" alt="repeat default"> `default` | 24 x 24 |
+| `repeat` | <img src="svg/glyphs/repeat/active.svg" height="24" alt="repeat active"> `active` <img src="svg/glyphs/repeat/default.svg" height="24" alt="repeat default"> `default` <img src="svg/glyphs/repeat/one.svg" height="24" alt="repeat one"> `one` | 24 x 24 |
 | `replay` | <img src="svg/glyphs/replay/default.svg" height="24" alt="replay default"> `default` | 24 x 24 |
 | `right-sidebar` | <img src="svg/glyphs/right-sidebar/default.svg" height="24" alt="right-sidebar default"> `default` | 24 x 24 |
 | `save` | <img src="svg/glyphs/save/default.svg" height="24" alt="save default"> `default` | 24 x 24 |

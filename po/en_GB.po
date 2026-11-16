@@ -44304,3 +44304,11 @@ msgstr "This file can't be moved to the Recycle Bin. Delete it permanently?"
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "This file can't be moved to the Trash. Delete it permanently?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Classic Volume"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Define the colours of the legacy volume slider"

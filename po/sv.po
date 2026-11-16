@@ -40442,3 +40442,11 @@ msgstr "Den här filen kan inte flyttas till Papperskorgen. Radera den permanent
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Den här filen kan inte flyttas till Papperskorgen. Radera den permanent?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Klassisk volym"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Ange färgerna för det klassiska volymreglaget"

@@ -14,6 +14,8 @@
 
 #include "live_settings.hpp"
 
+#include "util/vlchotkeyconverter.hpp"
+
 #include <vlc_actions.h>
 #include <vlc_interface.h>
 #include <vlc_player.h>
@@ -129,6 +131,25 @@ QByteArray hotkeyBindings(vlc_object_t *obj, bool global)
     return bindings;
 }
 
+// "Reverse scroll direction" before 0.7.1: the core's "Position control
+// reversed" (3) of the wheels that seek, and nothing for the volume (#103).
+// Moved once to the interface's option, which turns every plain wheel
+// round: the wheels seek the plain way (2) again, or they would be reversed
+// twice. True when a wheel was moved (the key map is to be made again).
+bool moveWheelReverse()
+{
+    bool moved = false;
+    for (const char *wheel : { "hotkeys-x-wheel-mode", "hotkeys-y-wheel-mode" })
+        if (config_GetInt(wheel) == 3)
+        {
+            config_PutInt(wheel, 2);
+            moved = true;
+        }
+    if (moved)
+        config_PutInt("qt-wheel-reverse", 1);
+    return moved;
+}
+
 } // namespace
 
 LiveSettings::LiveSettings(qt_intf_t *intf)
@@ -136,6 +157,9 @@ LiveSettings::LiveSettings(qt_intf_t *intf)
 {
     // what VLC started with
     vlc_object_t *obj = VLC_OBJECT(p_intf);
+    if (moveWheelReverse())
+        vlc_actions_reload(obj);
+    WheelToVLCConverter::setReversed(var_InheritBool(obj, "qt-wheel-reverse"));
     m_log = logOptions(obj);
     m_interfaces = backgroundInterfaces(obj);
     for (const QString &chain : m_interfaces)
@@ -241,6 +265,8 @@ void LiveSettings::reloadInterfaces()
 void LiveSettings::reloadHotkeys()
 {
     vlc_object_t *obj = VLC_OBJECT(p_intf);
+    // Reverse scroll direction: from the next turn of a wheel
+    WheelToVLCConverter::setReversed(var_InheritBool(obj, "qt-wheel-reverse"));
     const QByteArray hotkeys = hotkeyBindings(obj, false);
     const QByteArray globalHotkeys = hotkeyBindings(obj, true);
     if (hotkeys == m_hotkeys && globalHotkeys == m_globalHotkeys)

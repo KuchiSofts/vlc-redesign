@@ -308,7 +308,7 @@ readonly property var items: ({
         "redesign/double-click-action": [qsTr("Mouse"), qsTr("Double click on the video"), "", null, { info: false }],
         "hotkeys-y-wheel-mode": [qsTr("Mouse"), qsTr("Scroll wheel"), "", null, { info: false }],
         "hotkeys-x-wheel-mode": [qsTr("Mouse"), qsTr("Horizontal scroll"), "", null, { info: false }],
-        "x-wheel-reverse": [qsTr("Mouse"), qsTr("Reverse scroll direction"), "", null, { info: false }],
+        "qt-wheel-reverse": [qsTr("Mouse"), qsTr("Reverse scroll direction"), "", null, { info: false }],
         // the web interface starts and stops at once, starts again on
         // another port, password, address
         "x-web-remote": [qsTr("Remotes"), qsTr("Web remote control"), "", null, { info: false }],

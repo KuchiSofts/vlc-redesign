@@ -39843,3 +39843,11 @@ msgstr "无法将此文件移到回收站。要永久删除吗？"
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "无法将此文件移到废纸篓。要永久删除吗？"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "经典音量"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "定义经典音量滑块的颜色"

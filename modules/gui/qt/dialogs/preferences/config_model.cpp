@@ -500,6 +500,13 @@ QString ConfigModel::keyAt(int visibleRow) const
     return m_entries[m_rows[visibleRow]].key;
 }
 
+QString ConfigModel::categoryAt(int visibleRow) const
+{
+    if (visibleRow < 0 || visibleRow >= m_rows.size())
+        return {};
+    return m_entries[m_rows[visibleRow]].category;
+}
+
 QString ConfigModel::labelAt(int visibleRow) const
 {
     if (visibleRow < 0 || visibleRow >= m_rows.size())
@@ -636,8 +643,6 @@ QVariant ConfigModel::readValue(const Entry &entry)
         return config_GetInt("freetype-shadow-opacity") != 0;
     if (entry.key == QLatin1String(subBackgroundKey))
         return QVariant::fromValue<int64_t>(config_GetInt("freetype-background-opacity") != 0 ? 1 : 0);
-    if (entry.key == QLatin1String(wheelReverseKey))
-        return config_GetInt("hotkeys-y-wheel-mode") == 3 || config_GetInt("hotkeys-x-wheel-mode") == 3;
     if (entry.key == QLatin1String(webRemoteKey)) {
         char *interfaces = config_GetPsz("extraintf");
         const bool http = hasHttp(QString::fromUtf8(interfaces ? interfaces : ""));
@@ -733,13 +738,10 @@ int ConfigModel::indexOfKey(const QString &key) const
 }
 
 // Remember the playback position: Continue where you left off is not Never.
-// Reverse scroll direction: the wheels that seek go backwards (VLC reverses
-// seeking only). Web remote control: the http interface is loaded.
+// Web remote control: the http interface is loaded.
 void ConfigModel::syncDerived()
 {
     const int position = indexOfKey(QStringLiteral("restore-playback-pos"));
-    const int wheelY = indexOfKey(QStringLiteral("hotkeys-y-wheel-mode"));
-    const int wheelX = indexOfKey(QStringLiteral("hotkeys-x-wheel-mode"));
     const int extra = indexOfKey(QStringLiteral("extraintf"));
     const int filters = indexOfKey(QStringLiteral("audio-filter"));
     for (int i = 0; i < m_entries.size(); ++i) {
@@ -750,16 +752,6 @@ void ConfigModel::syncDerived()
         if (entry.key == QLatin1String(rememberPositionKey) && position >= 0) {
             entry.current = m_entries[position].current.toLongLong() != 0;
             entry.staged = m_entries[position].staged.toLongLong() != 0;
-        } else if (entry.key == QLatin1String(wheelReverseKey) && wheelY >= 0 && wheelX >= 0) {
-            const QVariant &y = m_entries[wheelY].staged, &x = m_entries[wheelX].staged;
-            const QVariant &cy = m_entries[wheelY].current, &cx = m_entries[wheelX].current;
-            // with no wheel seeking, the toggle keeps the state chosen
-            if (y.toLongLong() >= 2 || x.toLongLong() >= 2)
-                entry.staged = y.toLongLong() == 3 || x.toLongLong() == 3;
-            if (cy.toLongLong() >= 2 || cx.toLongLong() >= 2)
-                entry.current = cy.toLongLong() == 3 || cx.toLongLong() == 3;
-            else
-                entry.current = entry.staged;
         } else if (entry.key.startsWith(QLatin1String(filterPrefix)) && filters >= 0) {
             const QString module = entry.key.mid(int(strlen(filterPrefix)));
             entry.current = listHas(m_entries[filters].current, module);
@@ -863,20 +855,6 @@ bool ConfigModel::setDerived(int index, const QVariant &value)
         return setValue(QStringLiteral("restore-playback-pos"),
                         QVariant::fromValue<int64_t>(on ? (position ? position : 1) : 0));
     }
-    if (entry.key == QLatin1String(wheelReverseKey)) {
-        const bool wasDirty = dirty();
-        entry.staged = on;
-        notifyEntry(index);
-        for (const char *wheel : { "hotkeys-y-wheel-mode", "hotkeys-x-wheel-mode" }) {
-            const qlonglong mode = valueFor(QLatin1String(wheel)).toLongLong();
-            if (mode >= 2)
-                setValue(QLatin1String(wheel), QVariant::fromValue<int64_t>(on ? 3 : 2));
-        }
-        syncDerived();
-        if (wasDirty != dirty())
-            emit dirtyChanged();
-        return true;
-    }
     if (entry.key.startsWith(QLatin1String(filterPrefix)))
         return setFilter(entry.key.mid(int(strlen(filterPrefix))), on);
     if (entry.key == QLatin1String(fetchMetadataKey))
@@ -970,13 +948,12 @@ bool ConfigModel::setValue(const QString &key, const QVariant &value)
             setError(qtr("%1: this value can not be used.").arg(displayName(key)));
             return false;
         }
-        // Seek on a wheel: backwards when Reverse scroll direction is on
+        // Seek on a wheel: 2 always. "Reverse scroll direction" is the
+        // interface's own option now (qt-wheel-reverse, every plain wheel),
+        // not the core's "Position control reversed" (3) on top of it
         if ((key == QLatin1String("hotkeys-y-wheel-mode") || key == QLatin1String("hotkeys-x-wheel-mode"))
-            && normalized.toLongLong() >= 2) {
-            const int reverse = indexOfKey(QLatin1String(wheelReverseKey));
-            if (reverse >= 0)
-                normalized = QVariant::fromValue<int64_t>(m_entries[reverse].staged.toBool() ? 3 : 2);
-        }
+            && normalized.toLongLong() >= 2)
+            normalized = QVariant::fromValue<int64_t>(2);
         const bool wasDirty = dirty();
         entry.staged = normalized;
         notifyEntry(i);
@@ -1189,21 +1166,8 @@ void ConfigModel::addCombinedEntries()
         m_entries.insert(recent + 1, entry);
     }
 
-    // "Reverse scroll direction" after the wheels
-    const int wheelY = indexOf("hotkeys-y-wheel-mode");
-    const int wheelX = indexOf("hotkeys-x-wheel-mode");
-    if (wheelY >= 0 && wheelX >= 0)
-    {
-        Entry entry = combined(wheelReverseKey, m_entries[wheelX].category, qtr("Reverse scroll direction"),
-                               qtr("The wheels that seek go backwards when turned forwards."), {});
-        entry.type = QStringLiteral("boolean");
-        entry.proxyFor = m_entries[wheelY].key;
-        entry.original = false;
-        entry.current = m_entries[wheelY].current.toLongLong() == 3
-                        || m_entries[wheelX].current.toLongLong() == 3;
-        entry.staged = entry.current;
-        m_entries.insert(std::max(wheelY, wheelX) + 1, entry);
-    }
+    // ("Reverse scroll direction" after the wheels: the option
+    // qt-wheel-reverse of the catalog, an entry as any other)
 
     // "Web remote control" before its port: the http interface
     const int port = indexOf("http-port");

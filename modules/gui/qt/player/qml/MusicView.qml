@@ -47,6 +47,9 @@ FocusScope {
     ArtworkBackdrop {
         id: blurredBackground
         coverItem: centerContent.coverImage
+        // the title's colour is chosen for the backdrop as shown: once more
+        // when its dimming changed (the last step of its animation counts)
+        onTintStrengthChanged: centerContent.measureTitleBackdrop()
     }
 
     AudioContent {

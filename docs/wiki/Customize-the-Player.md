@@ -88,6 +88,7 @@ The palette lists the 31 items of the design, in its order, then **Cast to TV**,
 | **Play** | Play / pause. |
 | **Previous**, **Next** | The previous or next media of the queue. |
 | **Volume** | The volume slider and the mute button. |
+| **Classic Volume** | VLC 3.0's volume slider: a triangle filled from green to red, with the volume written over it, and the mute button. Its colours: the option *qt-slider-colours* (twelve numbers, four colours). |
 | **Languages and tracks** | The subtitles, audio and video tracks panel. |
 | **Effects** | The audio and video effects panel. |
 | **Play Queue** | Shows or hides the queue card. |

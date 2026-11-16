@@ -46,6 +46,14 @@ T.Pane {
     readonly property real _fullvolpos: designPosition(1)
     readonly property real _maxvolpos: _maxvol / 100
 
+    // VLC's legacy slider (VolumeWidgetLegacy.qml) draws its own track: a
+    // triangle filled in a straight line to the maximum volume, its colours
+    // and its "%" placed for a value that is the volume. The slider then
+    // goes to the maximum volume, its value the volume (VLC's model); the
+    // design's curve below is for the design's track
+    readonly property bool _classic: !volControl.designTrack
+    on_ClassicChanged: volControl._syncVolumeWithPlayer()
+
     // Figma "volume": the fill (px of 86) drawn for each state of the
     // design, 0 to 200 % (its maximum volume); a maximum other than 200 %
     // stretches the states over its range
@@ -62,8 +70,11 @@ T.Pane {
         return qsTr("%1 %").arg(Math.round(volume * 100))
     }
 
-    // the drawn position (0 to 1) of a volume (1 = 100 %)
+    // the drawn position (0 to 1) of a volume (1 = 100 %); the volume
+    // itself on the legacy slider
     function designPosition(volume) {
+        if (_classic)
+            return volume
         const d = volume * 100 * 200 / _maxvol
         const t = _designFill
         if (d <= 0)
@@ -77,8 +88,11 @@ T.Pane {
         return 1
     }
 
-    // the volume (1 = 100 %) of a drawn position
+    // the volume (1 = 100 %) of a drawn position (the value of the slider:
+    // the volume itself on the legacy slider)
     function designVolume(position) {
+        if (_classic)
+            return position
         const px = position * _designWidth
         const t = _designFill
         if (px <= 0)
@@ -93,6 +107,16 @@ T.Pane {
         }
         return d / 100 * _maxvol / 200
     }
+
+    // the parts VLC's legacy slider (VolumeWidgetLegacy.qml) draws again
+    property alias slider: volControl
+    property alias button: volumeBtn
+    property alias tickMark: tickmark
+    property alias mouseArea: sliderMouseArea
+    property alias toolTipVisibilityBinding: toolTipVisibilityBinding
+
+    // TODO: Check if with Qt 7, it is access it via `slider.PointingToolTipAttached`:
+    readonly property Widgets.PointingToolTipAttached sliderPointingToolTip: volControl.Widgets.PointingToolTipAttached
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -201,7 +225,13 @@ T.Pane {
             color: root.sliderColor
 
             handleWidth: 0
+            // (VLC's legacy slider, VolumeWidgetLegacy.qml, puts its own in
+            // place: the value box of the design is then left out). Known
+            // once the control is complete: a binding reading the background
+            // made it at once, while its own bindings read this one (a loop)
+            property bool designTrack: true
             background: Item {
+                id: designBackground
                 implicitWidth: VLCStyle.redesign.volumeWidth
                 implicitHeight: VLCStyle.redesign.volumeHeight
                 width: volControl.availableWidth
@@ -251,9 +281,10 @@ T.Pane {
                 }
             }
 
-            // the drawn position of the design (see designPosition)
+            // the drawn position of the design (see designPosition); the
+            // volume on the legacy slider, to the maximum volume
             from: 0
-            to: 1
+            to: root._classic ? root._maxvolpos : 1
             opacity: _player.muted ? 0.5 : 1
 
             enabled: !root.paintOnly // disables event handling depending on this
@@ -315,6 +346,7 @@ T.Pane {
             }
 
             Component.onCompleted: {
+                volControl.designTrack = (volControl.background === designBackground)
                 root.paintOnlyChanged.connect(volControl, _syncVolumeWithPlayer)
                 volControl._syncVolumeWithPlayer()
             }
@@ -327,8 +359,13 @@ T.Pane {
             }
 
             // the value of the design (Figma "audio value", 2245:9805) in
-            // place of the pointing tooltip
-            Widgets.PointingToolTipAttached.visible: false
+            // place of the pointing tooltip. VLC's legacy slider
+            // (VolumeWidgetLegacy.qml) turns this off and shows its own
+            Binding on Widgets.PointingToolTipAttached.visible {
+                id: toolTipVisibilityBinding
+                when: true
+                value: false
+            }
 
             // a change by the wheel or the keys shows the value a moment
             Timer {
@@ -357,7 +394,7 @@ T.Pane {
                 height: VLCStyle.dp(37, VLCStyle.scale)
                 padding: 0
                 closePolicy: T.Popup.NoAutoClose
-                visible: !root.paintOnly && root.visible
+                visible: volControl.designTrack && !root.paintOnly && root.visible
                          && (volControl.hovered || volControl.pressed || volControl.visualFocus || valueTimer.running)
                 background: Rectangle {
                     color: VLCStyle.redesign.color("#0F0F0F", "#c2c2c1")
@@ -481,6 +518,10 @@ T.Pane {
 
                         if (wheel.inverted)
                             delta = -delta
+                        // Reverse scroll direction (as the wheel in steps
+                        // below, in WheelToVLCConverter)
+                        if (wheelToVLC.reversed() && wheel.modifiers === Qt.NoModifier)
+                            delta = -delta
                         volControl.value += 0.001 * delta
                     }
                     else
@@ -492,7 +533,10 @@ T.Pane {
                 function adjustVolume(mouse) {
                     mouse.accepted = true
 
-                    const volume = root.designVolume(mouse.x / width)
+                    // (the place clicked, 0 to 1 of the track: the volume
+                    // of that place, in a straight line on the legacy slider)
+                    const place = mouse.x / width
+                    const volume = root._classic ? place * root._maxvolpos : root.designVolume(place)
 
                     if (volume < 0.25)
                         volControl.value = 0
@@ -501,7 +545,7 @@ T.Pane {
                     else if (volume < 1.125 || root._maxvol <= 100)
                         volControl.value = root._fullvolpos
                     else
-                        volControl.value = 1
+                        volControl.value = volControl.to
                 }
 
                 WheelToVLCConverter {

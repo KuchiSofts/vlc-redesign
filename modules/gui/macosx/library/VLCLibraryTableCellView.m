@@ -31,6 +31,7 @@
 #import "library/VLCLibraryController.h"
 #import "library/VLCLibraryDataTypes.h"
 #import "library/VLCLibraryImageCache.h"
+#import "library/VLCLibraryMarkUnplayedButton.h"
 #import "library/VLCLibraryModel.h"
 #import "library/VLCLibraryRepresentedItem.h"
 
@@ -46,8 +47,12 @@
 NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewIdentifier";
 
 @interface VLCLibraryTableCellView ()
+{
+    VLCImageViewContentGravity _mediaArtworkContentGravity;
+}
 
 @property (readwrite, strong) IBOutlet NSLayoutConstraint *representedImageAspectRatioConstraint;
+@property (readwrite, nonatomic) BOOL audioArtworkLayout;
 
 @end
 
@@ -55,6 +60,14 @@ NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewId
 
 - (void)awakeFromNib
 {
+    NSAssert(self.representedImageAspectRatioConstraint != nil, @"Artwork aspect-ratio constraint must be connected");
+    if (self.audioMediaTypeIndicator != nil) {
+        // The video nib starts with a widescreen constraint.
+        _representedImageAspectRatio = VLCLibraryTableCellImageAspectRatioVideo;
+    }
+    _mediaArtworkContentGravity = self.representedImageView.contentGravity;
+    self.markUnplayedButton.target = self;
+    self.markUnplayedButton.action = @selector(markAsUnplayed:);
     [self prepareForReuse];
 
     if (@available(macOS 26.0, *)) {
@@ -72,9 +85,18 @@ NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewId
 - (void)prepareForReuse
 {
     [super prepareForReuse];
+    _representedItem = nil;
+    _representedInputItem = nil;
+    self.showsMarkUnplayedButton = NO;
+    self.markUnplayedButton.image = nil;
+    self.markUnplayedButton.toolTip = nil;
+    self.markUnplayedButton.accessibilityLabel = nil;
     self.detailMode = VLCLibraryTableCellDetailModePrimaryDetail;
-    self.representedImageAspectRatio = VLCLibraryTableCellImageAspectRatioSquare;
+    if (self.audioMediaTypeIndicator == nil) {
+        self.representedImageAspectRatio = VLCLibraryTableCellImageAspectRatioSquare;
+    }
     self.representedImageView.image = nil;
+    self.audioArtworkLayout = NO;
     self.primaryTitleTextField.hidden = YES;
     self.secondaryTitleTextField.hidden = YES;
     self.singlePrimaryTitleTextField.hidden = YES;
@@ -107,13 +129,53 @@ NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewId
     NSLayoutConstraint * const newConstraint =
         [self.representedImageView.widthAnchor
             constraintEqualToAnchor:self.representedImageView.heightAnchor
-                        multiplier:multiplier];
+                         multiplier:multiplier];
     newConstraint.priority = previousConstraint.priority;
     newConstraint.identifier = previousConstraint.identifier;
 
     previousConstraint.active = NO;
     newConstraint.active = YES;
     self.representedImageAspectRatioConstraint = newConstraint;
+}
+
+- (void)setAudioArtworkLayout:(BOOL)audio
+{
+    _audioArtworkLayout = audio;
+    self.audioMediaTypeIndicator.hidden = !audio;
+    if (self.audioMediaTypeIndicator != nil) {
+        self.representedImageAspectRatio = audio
+            ? VLCLibraryTableCellImageAspectRatioSquare
+            : VLCLibraryTableCellImageAspectRatioVideo;
+    }
+    self.representedImageView.contentGravity = audio
+        ? VLCImageViewContentGravityResizeAspect
+        : _mediaArtworkContentGravity;
+}
+
+- (void)setShowsMarkUnplayedButton:(BOOL)showsMarkUnplayedButton
+{
+    NSAssert(!showsMarkUnplayedButton || self.markUnplayedButton != nil,
+             @"Mark as Unplayed button must be connected when enabled");
+    _showsMarkUnplayedButton = showsMarkUnplayedButton;
+    [self updateMarkUnplayedButton];
+}
+
+- (void)updateMarkUnplayedButton
+{
+    self.markUnplayedButton.hidden = YES;
+    if (!self.showsMarkUnplayedButton ||
+        ![self.representedItem.item isKindOfClass:VLCMediaLibraryMediaItem.class]) {
+        return;
+    }
+
+    VLCMediaLibraryMediaItem * const currentItem =
+        [VLCMediaLibraryMediaItem mediaItemForLibraryID:self.representedItem.item.libraryID];
+    if (currentItem.lastPlayedDate <= 0) {
+        return;
+    }
+
+    [self.markUnplayedButton configureForMediaType:currentItem.mediaType];
+    self.markUnplayedButton.hidden = NO;
 }
 
 - (void)setRepresentedItem:(VLCLibraryRepresentedItem *)representedItem
@@ -123,6 +185,7 @@ NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewId
 
     id<VLCMediaLibraryItemProtocol> const actualItem = representedItem.item;
     NSAssert(actualItem != nil, @"Should not update nil represented item!");
+    self.audioArtworkLayout = actualItem.firstMediaItem.mediaType == VLC_ML_MEDIA_TYPE_AUDIO;
 
     self.trackingView.viewToHide = self.playInstantlyButton;
     self.playInstantlyButton.action = @selector(playMediaItemInstantly:);
@@ -146,12 +209,15 @@ NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewId
         self.singlePrimaryTitleTextField.hidden = NO;
         self.singlePrimaryTitleTextField.stringValue = actualItem.displayString;
     }
+    [self updateMarkUnplayedButton];
 }
 
 - (void)setRepresentedInputItem:(VLCInputItem *)representedInputItem
 {
     _representedInputItem = representedInputItem;
     _representedItem = nil; // Reset and ensure the change is obvious
+    self.audioArtworkLayout = NO;
+    [self updateMarkUnplayedButton];
 
     self.singlePrimaryTitleTextField.hidden = NO;
     self.singlePrimaryTitleTextField.stringValue = _representedInputItem.name;
@@ -212,6 +278,19 @@ NSString * const VLCLibraryTableCellViewIdentifier = @"VLCLibraryTableCellViewId
 - (void)playMediaItemInstantly:(id)sender
 {
     [self.representedItem play];
+}
+
+- (void)markAsUnplayed:(id)sender
+{
+    id<VLCMediaLibraryItemProtocol> const item = self.representedItem.item;
+    if (!self.showsMarkUnplayedButton || self.markUnplayedButton.hidden ||
+        ![item isKindOfClass:VLCMediaLibraryMediaItem.class]) {
+        return;
+    }
+
+    if ([(VLCMediaLibraryMediaItem *)item markAsUnplayed] == VLC_SUCCESS) {
+        self.markUnplayedButton.hidden = YES;
+    }
 }
 
 - (void)playInputItemInstantly:(id)sender

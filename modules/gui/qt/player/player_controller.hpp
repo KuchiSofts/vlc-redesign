@@ -185,6 +185,8 @@ public:
     Q_PROPERTY(TimedText currentLyric READ getCurrentLyric NOTIFY currentLyricChanged FINAL)
     Q_PROPERTY(bool hasLyrics READ hasLyrics NOTIFY hasLyricsChanged FINAL)
     Q_PROPERTY(QList<TimedText> syltLyrics READ getSyltLyrics NOTIFY syltLyricsChanged FINAL)
+    // false for lyrics without times (a plain text): no current line
+    Q_PROPERTY(bool lyricsTimed READ lyricsTimed NOTIFY syltLyricsChanged FINAL)
     Q_PROPERTY(int currentLyricIndex READ getCurrentLyricIndex NOTIFY currentLyricIndexChanged FINAL)
 
     //title/chapters/menu
@@ -475,6 +477,7 @@ public slots:
     TimedText getCurrentLyric() const;
     bool hasLyrics() const;
     QList<TimedText> getSyltLyrics() const;
+    bool lyricsTimed() const;
     int getCurrentLyricIndex() const;
 
     //Renderer

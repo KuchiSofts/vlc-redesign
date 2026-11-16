@@ -70,6 +70,8 @@
         <file alias="wait2.svg">pixmaps/misc/wait2.svg</file>
         <file alias="wait3.svg">pixmaps/misc/wait3.svg</file>
         <file alias="wait4.svg">pixmaps/misc/wait4.svg</file>
+        <file alias="volume-slider-inside.svg">pixmaps/misc/volume-slider-inside.svg</file>
+        <file alias="volume-slider-outside.svg">pixmaps/misc/volume-slider-outside.svg</file>
     </qresource>
     <qresource prefix="/sd">
         <file alias="capture-card.svg">pixmaps/sd/capture-card.svg</file>
@@ -303,6 +305,7 @@
         <file alias="icons/folder/large.svg">pixmaps/redesign/icons/folder/large.svg</file>
         <file alias="icons/repeat/default.svg">pixmaps/redesign/icons/repeat/default.svg</file>
         <file alias="icons/repeat/active.svg">pixmaps/redesign/icons/repeat/active.svg</file>
+        <file alias="icons/repeat/one.svg">pixmaps/redesign/icons/repeat/one.svg</file>
         <file alias="icons/shuffle/default.svg">pixmaps/redesign/icons/shuffle/default.svg</file>
         <file alias="icons/shuffle/active.svg">pixmaps/redesign/icons/shuffle/active.svg</file>
         <file alias="icons/right-sidebar/default.svg">pixmaps/redesign/icons/right-sidebar/default.svg</file>

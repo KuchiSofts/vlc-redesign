@@ -42,6 +42,11 @@ public:
     // opens the card (SetupDialogs.qml)
     Q_INVOKABLE void openReport() { emit reportRequested(); }
 
+    // The one of the interface (made by MainUI, a singleton of QML), for
+    // what is not QML: the macOS menu bar's Help menu. Null before the
+    // interface is loaded and after it is gone.
+    static RedesignFeedback *instance();
+
 signals:
     void reportRequested();
 

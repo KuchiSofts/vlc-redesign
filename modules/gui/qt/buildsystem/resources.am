@@ -97,6 +97,7 @@ libqt_plugin_la_RES = \
 	pixmaps/redesign/icons/folder/large.svg \
 	pixmaps/redesign/icons/repeat/default.svg \
 	pixmaps/redesign/icons/repeat/active.svg \
+	pixmaps/redesign/icons/repeat/one.svg \
 	pixmaps/redesign/icons/shuffle/default.svg \
 	pixmaps/redesign/icons/shuffle/active.svg \
 	pixmaps/redesign/icons/right-sidebar/default.svg \
@@ -514,6 +515,8 @@ libqt_plugin_la_RES = \
 	pixmaps/menu/volume-muted.svg \
 	pixmaps/misc/cone.svg \
 	pixmaps/misc/new_indicator.svg \
+	pixmaps/misc/volume-slider-inside.svg \
+	pixmaps/misc/volume-slider-outside.svg \
 	pixmaps/misc/theme_dark.svg \
 	pixmaps/misc/theme_daynight.svg \
 	pixmaps/misc/theme_light.svg \

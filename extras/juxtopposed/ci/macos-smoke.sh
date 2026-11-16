@@ -19,7 +19,8 @@
 #   4. screenshots, not counted (kept with the logs): the main window in
 #      the light and the dark appearance of macOS (the System theme follows
 #      it), and About opened from the application menu (System Events: the
-#      runner may refuse the accessibility).
+#      runner may refuse the accessibility). Help › Report a problem is
+#      clicked the same way, and counted when it could be: its card opens.
 #   5. the update in place (with a disk image): the release's checksums
 #      checked with the key the app carries (verify-test.c with this Mac's
 #      Security framework: good, and bad once changed), then the image's app
@@ -354,6 +355,27 @@ for look in light dark; do
         sleep 1
         screencapture -x "$work/main-$look.png" 2>/dev/null && note "screenshot: main-$look.png" \
             || note "note: no screenshot of the $look window (screen recording refused)"
+        if [ $look = light ]; then
+            # Help › Report a problem (qt.cpp): the item did nothing until
+            # 0.7.1, its object was looked for where it never is. Counted
+            # when System Events could click it: the card opens then.
+            if osascript -e "tell application \"System Events\" to tell (first process whose unix id is $pid) to click menu item \"Report a problem\" of menu 1 of menu bar item \"Help\" of menu bar 1" \
+                    > "$work/report.out" 2>&1; then
+                sleep 3
+                screencapture -x "$work/report.png" 2>/dev/null && note "screenshot: report.png"
+                if has "main-$look" 'macOS: Help menu: Report a problem (no interface yet)'; then
+                    fail "Help › Report a problem found no interface to open its card in"
+                elif has "main-$look" 'macOS: Help menu: Report a problem'; then
+                    note "ok: Help › Report a problem opened its card"
+                else
+                    fail "Help › Report a problem did nothing"
+                fi
+                # (the card closed: the dark run starts from the main window)
+                osascript -e "tell application \"System Events\" to key code 53" > /dev/null 2>&1 || true
+            else
+                note "note: Help › Report a problem not clicked (System Events: $(head -n 1 "$work/report.out"))"
+            fi
+        fi
         if [ $look = dark ]; then
             # About: the first item of the application menu (qt.cpp)
             if osascript -e "tell application \"System Events\" to tell (first process whose unix id is $pid) to click menu item 1 of menu 1 of menu bar item 2 of menu bar 1" \

@@ -41038,3 +41038,11 @@ msgstr "Bu dosya Geri Dönüşüm Kutusu'na taşınamıyor. Kalıcı olarak sili
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Bu dosya Çöp Sepeti'ne taşınamıyor. Kalıcı olarak silinsin mi?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Klasik ses düzeyi"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Klasik ses düzeyi kaydırıcısının renklerini belirle"

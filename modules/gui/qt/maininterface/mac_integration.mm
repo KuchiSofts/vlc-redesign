@@ -204,6 +204,28 @@ struct MacIntegration::Private
             l->setRandom(((MPChangeShuffleModeCommandEvent *)event).shuffleType != MPShuffleTypeOff);
             return MPRemoteCommandHandlerStatusSuccess;
         });
+        updateOrder();
+    }
+
+    // Repeat and shuffle as they are now: what the system shows, and what a
+    // remote counts its next mode from (left at "off", it never knew, #102)
+    void updateOrder()
+    {
+        MPRemoteCommandCenter *center = MPRemoteCommandCenter.sharedCommandCenter;
+        MPRepeatType repeat = MPRepeatTypeOff;
+        switch (playlist->getRepeatMode()) {
+        case PlaylistController::PLAYBACK_REPEAT_ALL:
+            repeat = MPRepeatTypeAll;
+            break;
+        case PlaylistController::PLAYBACK_REPEAT_CURRENT:
+            repeat = MPRepeatTypeOne;
+            break;
+        default:
+            break;
+        }
+        center.changeRepeatModeCommand.currentRepeatType = repeat;
+        center.changeShuffleModeCommand.currentShuffleType = playlist->isRandom() ? MPShuffleTypeItems
+                                                                                  : MPShuffleTypeOff;
     }
 
     void unsubscribe()
@@ -401,6 +423,8 @@ MacIntegration::MacIntegration(qt_intf_t *intf, QWindow *window)
     connect(playlist, &PlaylistController::countChanged, this, [p]() { p->updateDockMenu(); });
     connect(playlist, &PlaylistController::hasNextChanged, this, [p]() { p->updateDockMenu(); });
     connect(playlist, &PlaylistController::hasPrevChanged, this, [p]() { p->updateDockMenu(); });
+    connect(playlist, &PlaylistController::repeatModeChanged, this, [p]() { p->updateOrder(); });
+    connect(playlist, &PlaylistController::randomChanged, this, [p]() { p->updateOrder(); });
 
     // A click on the Dock icon shows the window when it is hidden (started
     // with only the menu bar icon, closed to it), as the taskbar button

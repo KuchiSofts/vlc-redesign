@@ -64,7 +64,7 @@ T.Slider {
         if (toolTipFollowsMouse && hoverHandler.hovered)
             return  hoverHandler.point.position.x
 
-        return (handle.x + handle.width / 2) // handle center
+        return handle ? (handle.x + handle.width / 2) : 0.0 // handle center
     }
 
     // find position under given x, can be used with Slider::valueAt()
@@ -72,7 +72,7 @@ T.Slider {
     function positionAt(x) {
         // taken from qt sources QQuickSlider.cpp
         // TODO: support vertical slider
-        const hw = control.handle.width
+        const hw = control.handle?.width ?? 0
         const offset = control.leftPadding + hw / 2
         const extend = control.availableWidth - hw
         return (x - offset) / extend
@@ -136,12 +136,9 @@ T.Slider {
         target: background
     }
 
-    Widgets.PointingToolTipAttached.pos: Qt.point(control._tooltipX, control.handle.height / 2)
+    Widgets.PointingToolTipAttached.pos: Qt.point(control._tooltipX, (control.handle?.height ?? 0) / 2)
     Widgets.PointingToolTipAttached.visible: (hoverHandler.hovered || control.visualFocus || control.pressed)
     Widgets.PointingToolTipAttached.text: {
-        if (!Widgets.PointingToolTipAttached.instance?.visible)
-            return ""
-
         // position is only measured till half of handle width
         // pos.x may go beyond the position at the edges
         const p = Helpers.clamp(control.positionAt(Widgets.PointingToolTipAttached.instance.pos.x), 0.0, 1.0)

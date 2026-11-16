@@ -47,6 +47,11 @@ MouseArea {
     // how bright the artwork is (MainCtx.imageLuminance), for the texts over
     // its backdrop; -1 until measured
     property real artLuminance: -1
+    // (measured again when the backdrop changed under the title: its
+    // dimming settled, MusicView.qml)
+    function measureTitleBackdrop() {
+        luminanceTimer.restart()
+    }
     // measured once the blurred backdrop is drawn: the strip just above the
     // title, as shown (the backdrop it is drawn over)
     Timer {

@@ -30,6 +30,7 @@
 #include <QApplication>
 #include <QQuickItem>
 #include <QColor>
+#include <QImage>
 #include <QRectF>
 #include <QMargins>
 #include <QTimer>
@@ -201,6 +202,7 @@ class MainCtx : public QObject
     Q_PROPERTY(MainInterfaceModes mainInterfaceModes READ getMainInterfaceModes NOTIFY mainInterfaceModesChanged FINAL)
     Q_PROPERTY(MainInterfaceMode effectiveMainInterfaceMode READ getEffectiveMainInterfaceMode NOTIFY mainInterfaceModesChanged FINAL)
     Q_PROPERTY(MainInterfaceMode initialEffectiveMainInterfaceMode READ getInitialEffectiveMainInterfaceMode CONSTANT FINAL)
+    Q_PROPERTY(QString volumeSliderColors READ volumeSliderColors CONSTANT FINAL)
 
     //Property to get Operating System info
     Q_PROPERTY(OsType osName READ getOSName CONSTANT)
@@ -438,6 +440,10 @@ public:
     // window as shown (in its coordinates): what a text drawn there is over,
     // to choose a readable colour; -1 when it can't be read
     Q_INVOKABLE double windowLuminance(QQuickWindow *window, const QRectF &area) const;
+    // How bright the bright parts of a picture are (the same luminance, of
+    // the tenth of its areas that is the brightest), for the texts over a
+    // backdrop made of it; -1 for no picture
+    Q_INVOKABLE double imageBrightParts(const QImage &image) const;
 
     Q_INVOKABLE static inline void setCursor(Qt::CursorShape cursor) { QApplication::setOverrideCursor(QCursor(cursor)); }
     Q_INVOKABLE static inline void restoreCursor(void) { QApplication::restoreOverrideCursor(); }
@@ -586,6 +592,8 @@ public:
     MainInterfaceMode getEffectiveMainInterfaceMode() const;
 
     MainInterfaceMode getInitialEffectiveMainInterfaceMode() const { return m_initialEffectiveMainInterfaceMode; }
+
+    Q_INVOKABLE QString volumeSliderColors() const;
 
     Q_INVOKABLE static double dp(const double px, const double scale);
     Q_INVOKABLE double dp(const double px) const;

@@ -41228,3 +41228,11 @@ msgstr "Este archivo no se puede mover a la papelera de reciclaje. ¿Eliminarlo 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Este archivo no se puede mover a la papelera. ¿Eliminarlo definitivamente?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Volumen clásico"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Definir los colores del control de volumen clásico"

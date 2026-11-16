@@ -34,6 +34,7 @@
 #include "mainctx.hpp"
 
 #include <algorithm>
+#include <array>
 #ifdef _WIN32
 # include <windows.h>
 #endif
@@ -997,6 +998,36 @@ double MainCtx::windowLuminance(QQuickWindow *window, const QRectF &area) const
     return luminance;
 }
 
+double MainCtx::imageBrightParts(const QImage &image) const
+{
+    if (image.isNull())
+        return -1;
+    // areas of the picture, not its pixels: what a wide blur leaves of them
+    constexpr int side = 12;
+    const QImage small = image.scaled(side, side, Qt::IgnoreAspectRatio, Qt::SmoothTransformation)
+                              .convertToFormat(QImage::Format_RGB32);
+    const auto linear = [](int channel) {
+        const double c = channel / 255.0;
+        return c <= 0.04045 ? c / 12.92 : std::pow((c + 0.055) / 1.055, 2.4);
+    };
+    std::array<double, side * side> areas;
+    size_t count = 0;
+    for (int y = 0; y < small.height(); ++y)
+    {
+        const QRgb *line = reinterpret_cast<const QRgb *>(small.constScanLine(y));
+        for (int x = 0; x < small.width() && count < areas.size(); ++x)
+            areas[count++] = 0.2126 * linear(qRed(line[x])) + 0.7152 * linear(qGreen(line[x]))
+                           + 0.0722 * linear(qBlue(line[x]));
+    }
+    if (count == 0)
+        return -1;
+    // the 90th of 100: a few highlights do not count, a bright tenth does
+    const size_t nth = std::min(count - 1, count * 9 / 10);
+    std::nth_element(areas.begin(), areas.begin() + nth, areas.begin() + count);
+    msg_Dbg(p_intf, "bright parts of the artwork: %.3f", areas[nth]);
+    return areas[nth];
+}
+
 bool MainCtx::isHotkeyFree(Qt::Key key, Qt::KeyboardModifiers modifiers) const
 {
     QKeyEvent event(QEvent::KeyPress, key, modifiers );
@@ -1919,6 +1950,16 @@ void MainCtx::setAttachedToolTip(QObject *toolTip)
         obj->deleteLater();
     }, Qt::QueuedConnection);
 #endif
+}
+
+QString MainCtx::volumeSliderColors() const
+{
+    const auto sliderColors = var_InheritString(p_intf, "qt-slider-colours");
+
+    if (Q_UNLIKELY(!sliderColors))
+        return {};
+
+    return QString::fromUtf8(vlc::wrap_cptr(sliderColors).get());
 }
 
 MainCtx::MainInterfaceMode MainCtx::getEffectiveMainInterfaceMode() const {

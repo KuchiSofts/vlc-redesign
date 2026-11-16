@@ -23,9 +23,15 @@ import VLC.Util
 RedesignIconButton {
     id: repeatBtn
     checked: MainPlaylistController.repeatMode !== PlaylistController.PLAYBACK_REPEAT_NONE
-    iconSource: checked ? "qrc:///redesign/icons/repeat/active.svg" : "qrc:///redesign/icons/repeat/default.svg"
+    // Off, the whole queue, the one item: three looks (the one item had the
+    // queue's icon: nothing told them apart but the tooltip, #102)
+    iconSource: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
+                ? "qrc:///redesign/icons/repeat/one.svg"
+                : checked ? "qrc:///redesign/icons/repeat/active.svg" : "qrc:///redesign/icons/repeat/default.svg"
     onClicked: MainPlaylistController.toggleRepeatMode()
+    // what is on now, as the icon shows it
     description: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
-                 ? qsTr("Repeat one") : qsTr("Repeat")
+                 ? qsTr("Repeat one")
+                 : checked ? qsTr("Repeat all") : qsTr("Repeat")
     AccessibleCompat.id: "loopButton"
 }

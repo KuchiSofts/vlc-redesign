@@ -128,7 +128,7 @@ Some rows of the design are not a single VLC option. They read and write the opt
 | Playback › Repeat | `repeat` (One) and `loop` (All) |
 | Playback › When playback finishes | `play-and-exit` |
 | Playback › Seek precisely | `input-fast-seek`, inverted |
-| Controls › Reverse scroll direction | `hotkeys-y-wheel-mode` and `hotkeys-x-wheel-mode` (Seek stored as 3 instead of 2) |
+| Controls › Reverse scroll direction | `qt-wheel-reverse` (until 0.7.0: `hotkeys-y-wheel-mode` and `hotkeys-x-wheel-mode`, Seek stored as 3 instead of 2; moved at the first start) |
 | Controls › Web remote control | `http` in `extraintf` |
 | Privacy › Submit played tracks to last.fm | `audioscrobbler` in `extraintf` (removed from `control` too when turned off) |
 | Interface › Use a custom skin | `intf` (`skins2`) |

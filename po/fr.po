@@ -41313,3 +41313,11 @@ msgstr "Impossible de placer ce fichier dans la corbeille. Le supprimer définit
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Impossible de placer ce fichier dans la corbeille. Le supprimer définitivement ?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Volume classique"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Définir les couleurs du curseur de volume classique"

@@ -149,6 +149,7 @@ static const Option entries[] = {
     {"controls", "mouse-pause-policy"}, {"controls", "qt:redesign/double-click-action"},
     {"controls", "hotkeys-y-wheel-mode"},
     {"controls", "hotkeys-x-wheel-mode"},
+    {"controls", "qt-wheel-reverse"},
     {"controls", "http-port"},
     {"controls", "mouse-events"}, {"controls", "http-password"},
     {"controls", "http-host"}, {"controls", "qt-disable-volume-keys"},

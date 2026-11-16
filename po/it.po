@@ -41344,3 +41344,11 @@ msgstr "Impossibile spostare questo file nel Cestino. Eliminarlo definitivamente
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml
 msgid "This file can't be moved to the Trash. Delete it permanently?"
 msgstr "Impossibile spostare questo file nel Cestino. Eliminarlo definitivamente?"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
+msgid "Classic Volume"
+msgstr "Volume classico"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Definisci i colori del cursore del volume classico"

@@ -98,6 +98,8 @@ public:
     Q_INVOKABLE bool audioscrobblerEnabled() const;
     Q_INVOKABLE bool setAudioscrobblerEnabled(bool enabled);
     Q_INVOKABLE QString keyAt(int visibleRow) const;
+    // The page of a row (the model lists every page in a search)
+    Q_INVOKABLE QString categoryAt(int visibleRow) const;
     // The text of VLC for a row (its name, its help): what the search looks
     // in, besides the labels of the design the view shows
     Q_INVOKABLE QString labelAt(int visibleRow) const;
@@ -140,7 +142,9 @@ private:
     static constexpr const char *seekPreciseKey = "x-seek-precise";
     static constexpr const char *customSkinKey = "x-custom-skin";
     static constexpr const char *rememberPositionKey = "x-remember-position";
-    static constexpr const char *wheelReverseKey = "x-wheel-reverse";
+    // (an option of the interface, not a stand-in: every plain wheel the
+    // other way round, WheelToVLCConverter)
+    static constexpr const char *wheelReverseKey = "qt-wheel-reverse";
     static constexpr const char *webRemoteKey = "x-web-remote";
     // "x-filter:<module>": the module is in the audio filters
     static constexpr const char *filterPrefix = "x-filter:";

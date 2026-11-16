@@ -128,7 +128,22 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
+- 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
+  simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
+  `RoundButton`: every button of the redesign to look at after the merge). ⚪ The macOS smoke test's "dark" screenshot
+  has been light since at least 0.6.6: `defaults write -g AppleInterfaceStyle Dark` does not switch the running
+  system (its menu bar stays light in the shot); System Events' appearance preferences would. ⚪ Right to left, the
+  sidebar's resize handle sits on the card's edge, about 8 px from the mirror of its left-to-right place.
+- 🟢 **0.6.9** published 2026-11-16 00:19 UTC (34 files; tag v0.6.9 = 10e7160c5b, PR #96 merged as ccc880b0e2, Android
+  #14 as 224e85c776, tag e287314bc; the three CI builds, the tag and main share the tree 09192da27e): every file's
+  digest on GitHub = the signed list; the public signature good; the in-app update 0.6.8 -> 0.6.9 on the hidden
+  desktop (About › Check for updates › Update now › Restart now: About says 0.6.9; 770 of 771 files = the package,
+  plugins.dat each copy's own); on that updated copy two hover sweeps leave the sidebar's edge at 259 px, the line
+  shows on the handle, a drag widens it to 319 and back. Small update from 0.6.8: 4.0 MB (ARM64 4.4 MB). VideoLAN
+  moved four times during the builds; the release stops at `ed6d4aa119` (decided: release the tested tree, the newer
+  commits into 0.6.10; the tag pushed past the release check's VideoLAN line only). The APK (13106090, the release
+  key) installed over 0.6.8 on the emulator, What's new 0.6.9 shown. The Samsung TV app stays 0.6.8.
+- 🟢 **0.6.9** (update release, 2026-11-15): the pane-edge fault of 0.6.8 and
   the Android More page; VideoLAN merged to `ed6d4aa119` (the MPEG audio demuxer's ID3 chapter bounds check, its
   own macOS interface, Meson options). Windows, ARM64, Linux,
   macOS and Android; the Samsung TV app stays 0.6.8 (`follows: 0.6.9`, nothing of it changed).

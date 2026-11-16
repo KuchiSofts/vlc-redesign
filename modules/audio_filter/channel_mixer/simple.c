@@ -159,6 +159,10 @@ static void DoWork_5_x_to_4_0( filter_t * p_filter,  block_t * p_in_buf, block_t
 static void DoWork_7_x_to_5_x( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
     float *p_dest = (float *)p_out_buf->p_buffer;
     const float *p_src = (const float *)p_in_buf->p_buffer;
+    bool in_lfe = (p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE) != 0;
+    bool out_lfe = (p_filter->fmt_out.audio.i_physical_channels & AOUT_CHAN_LFE) != 0;
+    int stride = 7 + in_lfe;
+
     for( int i = p_in_buf->i_nb_samples; i--; )
     {
         *p_dest++ = p_src[0];
@@ -166,20 +170,17 @@ static void DoWork_7_x_to_5_x( filter_t * p_filter,  block_t * p_in_buf, block_t
         *p_dest++ = (p_src[2] + p_src[4]) * 0.5f;
         *p_dest++ = (p_src[3] + p_src[5]) * 0.5f;
         *p_dest++ = p_src[6];
-
-        p_src += 7;
-
-        if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE &&
-            p_filter->fmt_out.audio.i_physical_channels & AOUT_CHAN_LFE )
-            *p_dest++ = *p_src++;
-        else if( p_filter->fmt_in.audio.i_physical_channels & AOUT_CHAN_LFE ) p_src++;
+        if( out_lfe )
+            *(p_dest++) = in_lfe ? p_src[7] : 0.f;
+        p_src += stride;
     }
 }
 
 static void DoWork_6_1_to_5_x( filter_t * p_filter,  block_t * p_in_buf, block_t * p_out_buf ) {
-    VLC_UNUSED(p_filter);
     float *p_dest = (float *)p_out_buf->p_buffer;
     const float *p_src = (const float *)p_in_buf->p_buffer;
+    bool out_lfe = (p_filter->fmt_out.audio.i_physical_channels & AOUT_CHAN_LFE) != 0;
+
     for( int i = p_in_buf->i_nb_samples; i--; )
     {
         *p_dest++ = p_src[0];
@@ -187,11 +188,9 @@ static void DoWork_6_1_to_5_x( filter_t * p_filter,  block_t * p_in_buf, block_t
         *p_dest++ = (p_src[2] + p_src[4]) * 0.5f;
         *p_dest++ = (p_src[3] + p_src[4]) * 0.5f;
         *p_dest++ = p_src[5];
-
+        if( out_lfe )
+            *(p_dest++) = p_src[6]; // input always has LFE here
         p_src += 6;
-
-        /* We always have LFE here */
-        *p_dest++ = *p_src++;
     }
 }
 

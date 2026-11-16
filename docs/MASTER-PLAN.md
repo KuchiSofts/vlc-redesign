@@ -133,8 +133,7 @@ What is being worked on, updated as it changes (2026-11-10):
   `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons
   as before). 🟡 The macOS smoke test's "dark" screenshot
   has been light since at least 0.6.6: `defaults write -g AppleInterfaceStyle Dark` does not switch the running
-  system (its menu bar stays light in the shot): now System Events' appearance preferences, the mode it got noted. ⚪ Right to left, the
-  sidebar's resize handle sits on the card's edge, about 8 px from the mirror of its left-to-right place.
+  system (its menu bar stays light in the shot): now System Events' appearance preferences, the mode it got noted.
 - 🟢 **0.6.9** published 2026-11-16 00:19 UTC (34 files; tag v0.6.9 = 10e7160c5b, PR #96 merged as ccc880b0e2, Android
   #14 as 224e85c776, tag e287314bc; the three CI builds, the tag and main share the tree 09192da27e): every file's
   digest on GitHub = the signed list; the public signature good; the in-app update 0.6.8 -> 0.6.9 on the hidden
@@ -156,8 +155,8 @@ What is being worked on, updated as it changes (2026-11-10):
     Sidebar's rows, the other hover areas with a move handler, already checked `pressed`. Seen on the fixed build
     (hidden desktop, hover hook): two hover sweeps over the edge leave it in place (259 px, left to right; 1399 px,
     right to left), the accent line shows on the handle, a drag still resizes (259 → 319 → 216, the minimum), a
-    sweep after the drags changes nothing; qmllint clean. ⚪ Right to left the handle sits on the card's edge, about
-    8 px from the mirror of the left-to-right place (beside the card): works, not yet symmetric.
+    sweep after the drags changes nothing; qmllint clean. Right to left the handle answers 1-7 px left of the card's
+    edge, the mirror of its left-to-right place (1-7 px right of it).
   - 🟢 Android More page: Edit Sidebar's title sat 6 dp left of the other rows (its icon 18 dp, theirs 24 dp):
     the icon now in a 24 dp inset (rd_ic_sidebar_row); the seven titles start at the same pixel (200–202). Its
     dialog said "Drag a page by its handle" (the desktop's text) over rows that move by arrows only: its own

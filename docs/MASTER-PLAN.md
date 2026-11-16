@@ -160,8 +160,11 @@ What is being worked on, updated as it changes (2026-11-10):
     clicks the item and looks for its line in the log (a Mac is needed: checked there).
   - 🟢 **A Settings search names the page of each group** ("General › Appearance", "Subtitles › Appearance"):
     two groups had the same title, and "Text color" did not say it is the subtitles' (#100).
-  - 🟡 Android: the same rule for the veil over the blurred cover (`RdBackdrop`, 40 % at least as before, up to
-    54 % over a white cover; unit tests). To build and try.
+  - 🟢 Android: the same rule for the veil over the blurred cover (`RdBackdrop`, 40 % at least as before, up to
+    54 % over a white cover; 5 unit tests). Seen on the emulator in the dark theme: the test song's bright cover
+    behind the player, its texts readable, nothing in the log. Its version and "What's new" at the release.
+  - 🟢 Checked besides, on the test copy: the light theme (its white veil, as before), a right to left layout (the
+    headings of the search read "כללי ‹ מראה"), no warning of the interface in the logs of seven runs.
   - 📋 Samsung TV: its music view dims every cover to 70 % and its title is the design's grey: the same rule
     there, in the TV app's next version.
 - 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =

@@ -18,7 +18,7 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-16, 0.7.1 released).
+Updated as the work moves (last: 2026-11-16, 0.7.1 published, 0.7.2 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -37,7 +37,8 @@ Updated as the work moves (last: 2026-11-16, 0.7.1 released).
 **0.7.2** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 📋 Samsung TV: the same rule for the texts over a bright cover in its music view
+- 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
+  desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

@@ -128,7 +128,21 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.1** (2026-11-16): the four reports of the day after 0.7.0, all from one Mac (#100 to #103), and
+- 🟡 **0.7.2** started.
+  - 🟡 **System theme on macOS and Linux:** the screenshots of the Mac's launch test showed a grey box behind
+    the library's arrows, and the Linux build in a container the same with the System theme (Windows: none, its
+    theme provider leaves the colours to VLC's palettes). The generic system palette gave a tool button at rest
+    the system's opaque button colour; now transparent, as VLC's palettes and the tab buttons. To see in this
+    pull request's macOS screenshots (main-light, main-dark: the System theme).
+- 🟢 **0.7.1** published 2026-11-16 18:57 UTC (18 files: 16 and the signed list; tag v0.7.1 = 59865f9cdd, PR #104 merged as
+  13c13dbac6, Android #16 as 791903909f, tag 002cb0988; the CI build dbc9e8dfff, the tag and main share one tree).
+  An update release: Windows, ARM64, Linux, macOS and Android. Small update from 0.7.0: 4.4 MB (ARM64 3.6 MB).
+  After publishing: a copy of 0.7.0 on the hidden desktop found 0.7.1, took the small update from GitHub and
+  opened again on 0.7.1 (About: Version 0.7.1, Also on: every other program 0.7.1, Samsung TV 0.6.8). The package
+  scan for private names: 0 in both Windows zips. Both Macs of the CI: Help › Report a problem opens its card.
+  The APK (13107010, the release key) installed over 0.7.0 on the emulator, What's new 0.7.1 shown. Issues #100
+  to #103 and #105 answered and closed.
+- 🟢 **0.7.1** (2026-11-16): the four reports of the day after 0.7.0, all from one Mac (#100 to #103), and
   what they show on the other programs. An update release (`full: 0.7.0`): Windows, ARM64, Linux, macOS and
   Android; the Samsung TV app stays 0.6.8 (`follows: 0.7.1`) until its own change is tried on a TV. The README's
   Flatpak button still named 0.6.0: it names 0.7.0, the last full release.
@@ -157,7 +171,7 @@ What is being worked on, updated as it changes (2026-11-10):
     a drag on a touch screen are left as they are. A configuration with the old value is moved at the start
     (seen: `hotkeys-x-wheel-mode=3` became 2 with `qt-wheel-reverse=1`). Checked: the volume over the player and
     over its control, the seek bar, the option kept after a restart.
-  - 🟡 **macOS: Help › Report a problem and Suggest an idea** did nothing: the menu bar looked for the object
+  - 🟢 **macOS: Help › Report a problem and Suggest an idea** did nothing: the menu bar looked for the object
     among the windows' children, where it never is. `RedesignFeedback::instance()`. The launch test of the CI
     clicks the item and looks for its line in the log (a Mac is needed: checked there).
   - 🟢 **A Settings search names the page of each group** ("General › Appearance", "Subtitles › Appearance"):
@@ -190,8 +204,14 @@ What is being worked on, updated as it changes (2026-11-10):
     dated an hour before the merge commit and pushed three hours after it: the check counted the commits dated
     before the one uploaded. It now reads the reflog of `origin/master` (when each fetch brought what), so a
     commit that reaches this PC after the uploaded one was made is a note, as intended; b970733b26 merged too.
-  - 📋 Samsung TV: its music view dims every cover to 70 % and its title is the design's grey: the same rule
-    there, in the TV app's next version.
+  - 🟢 Samsung TV: read again, nothing to change. Its music view has the cover and the backdrop in its page and
+    styles, but its library passes no cover to the player: the backdrop is black, the grey title reads at 7:1 and
+    the lyrics are white on black. The rule belongs to the day the TV app shows covers (a to-do of the roadmap).
+  - 📋 Seen while measuring, in 0.7.0 as well: the app takes 100 to 140 MB more for a few seconds when the music
+    view switches between its lyrics layout and the plain one (a song with lyrics after one without, or back;
+    the lyrics view off: none), and gives it back (no growth over ten minutes of six songs in a loop,
+    each sample back at 250 to 290 MB). To look at in 0.7.2: the column's animation, the cover decoded again
+    at each size, the blurred backdrop drawn live meanwhile.
 - 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =
   ed6b0bccc2, PR #98 merged as c8a655c373, Android #15 as 0f596f2602, tag 660d922d8; the CI build 39767a8ff8, the
   tag and main share one tree). The first release made by `publish-release.py`: the pull request's 18 checks, its

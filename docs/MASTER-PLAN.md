@@ -186,6 +186,10 @@ What is being worked on, updated as it changes (2026-11-10):
     palette, dragged into the bar: at 110 % of 200 % it is filled to 55 %, green to 100 % then yellow; its tooltip
     reads the volume under the pointer, the design's box "110 %" over the design's control; a click and the wheel
     move both together. No warning of the interface in the log.
+    The release was then stopped once more, by one VideoLAN commit (b970733b26, two lines of the VA-API filters)
+    dated an hour before the merge commit and pushed three hours after it: the check counted the commits dated
+    before the one uploaded. It now reads the reflog of `origin/master` (when each fetch brought what), so a
+    commit that reaches this PC after the uploaded one was made is a note, as intended; b970733b26 merged too.
   - 📋 Samsung TV: its music view dims every cover to 70 % and its title is the design's grey: the same rule
     there, in the TV app's next version.
 - 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =

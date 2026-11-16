@@ -43,10 +43,13 @@ Player. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
 - `qt-wheel-reverse`: one option for every plain wheel of the player (`WheelToVLCConverter`); the core's
   "Position control reversed" of an older configuration is moved to it at the start.
 - macOS: Now Playing is told the repeat and shuffle modes; the launch test clicks Help › Report a problem.
-- VideoLAN's master merged (289ac2b8ee, [#105](https://github.com/KuchiSofts/vlc-redesign/issues/105)): 29 commits, nine files met ours. VLC 3.0's
+- VideoLAN's master merged (b970733b26, [#105](https://github.com/KuchiSofts/vlc-redesign/issues/105)): 30 commits, nine files met ours. VLC 3.0's
   slider (`VOLUME_LEGACY`) is saved as 0x51 here: its 0x2B is the redesign's Settings button in every saved
   profile. The default profiles keep the design's volume control; the slider's two texts are in the 20 complete
   languages.
+- `release-check.py`: VideoLAN's commits that block an upload are those this PC had fetched when the commit was
+  made (the reflog of `origin/master`), not those dated before it: a commit dated an hour before 0.7.1's merge
+  and pushed three hours after it stopped the release.
 - Version 0.7.1 started (VLC_REDESIGN_VERSION).
 - `release-notes.py` leaves the Technical part of the changelog out of a release's notes (a link to it instead)
   and says which copies follow the way of small updates (0.7.0 and later).

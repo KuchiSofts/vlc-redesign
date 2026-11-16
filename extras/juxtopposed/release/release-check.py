@@ -190,7 +190,17 @@ if not offline:
 # when this was prepared, built and tested, and doesn't stop it (0.6.9 was stopped four times in one day, a
 # round of CI each: VideoLAN pushes all day). Those commits are named, and are the first thing of the next upload.
 head_time = git('log', '-1', '--format=%ct', 'HEAD')
-behind = git('rev-list', '--count', '--before=%s' % head_time, 'HEAD..' + UPSTREAM) if head_time else None
+# What this PC had fetched of it then, from the reflog of the remote branch (each fetch is written there with its
+# time): a commit's date is when it was written, not when VideoLAN pushed it (b970733b26 was dated an hour before
+# 0.7.1's merge commit and pushed three hours after it). Without a reflog (another clone), the commits dated before.
+known = None
+if head_time:
+    known = git('rev-parse', '-q', '--verify',
+                '%s@{%s}' % (UPSTREAM, git('log', '-1', '--format=%ci', 'HEAD')))
+if known:
+    behind = git('rev-list', '--count', 'HEAD..' + known)
+else:
+    behind = git('rev-list', '--count', '--before=%s' % head_time, 'HEAD..' + UPSTREAM) if head_time else None
 if behind is None:
     check(False, "VideoLAN's master", 'cannot read %s' % UPSTREAM)
 else:

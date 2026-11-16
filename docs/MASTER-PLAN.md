@@ -143,8 +143,10 @@ What is being worked on, updated as it changes (2026-11-10):
     made in 48 s.
   - 🟢 Release notes: one table, 54 lines where 0.6.9's were 102. The release check lets pass what VideoLAN
     pushed after the commit was made.
-  - 🟡 One command for the rest of a release (the artifacts, both Windows packages, the checksums, the tag, the
-    draft, the digests): `release.py`.
+  - 🟡 One command for the rest of a release: `publish-release.py --pr N` (the pull request's builds, both
+    Windows packages, the checksums and their signature, the notes; `--publish`: the tag, the merge, the draft, the
+    digests, the release). Written; it refuses a pull request whose checks have not passed (seen). Its first whole
+    run is the release of 0.6.10.
 - 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
   `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons

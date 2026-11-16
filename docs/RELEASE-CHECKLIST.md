@@ -121,6 +121,12 @@ the ones between (0.6.10 → 0.6.11 → 0.6.12), each step checked against the s
 A copy of 0.6.8 or older (its updater takes one small update only) updates with the installer once. The notes are
 short: what changed, one table of the files, no hash column (`release-notes.py`).
 
+**One command** once the pull request's checks have passed:
+`python extras/juxtopposed/release/publish-release.py --pr N --apk <the signed APK>` does steps 2 to 4 below and
+stops with the files and the notes ready to look at; with `--publish` it also tags the commit, merges the pull
+request, uploads a draft, compares every file's digest on GitHub with the signed list and publishes. It refuses a
+pull request whose checks have not all passed, or whose build is not of this commit's tree.
+
 An update release:
 1. `platforms.yml`: `version` the new one, `full:` stays the last full release (its .deb, .rpm, Flatpak and the
    Samsung source keep linking there: `full_only: yes`); `render.py` (README's buttons, the table, the website).

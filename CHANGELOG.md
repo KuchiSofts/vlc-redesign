@@ -20,6 +20,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Version 0.6.10 started (VLC_REDESIGN_VERSION).
 - VideoLAN's master merged to `c13b3f29cd`: the simple channel mixer sets the 5.1 output's LFE only when it is
   there; `PlayCover` (the play button over a cover) and `ButtonExt` derive from `RoundButton`.
+- The macOS launch test switches the Mac to dark mode through System Events for its dark screenshot (the
+  defaults key it set changed nothing: the "dark" screenshot was light) and notes the mode it got.
 
 ## [0.6.9] · 2026-11-15
 

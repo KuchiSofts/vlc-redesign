@@ -130,9 +130,10 @@ What is being worked on, updated as it changes (2026-11-10):
   not offered 0.6.3 while 0.6.4 is the latest.
 - 🟡 **0.6.10** started: VideoLAN's three commits that came during 0.6.9's builds (`b607e73df3`, `cffc1352cd`: the
   simple channel mixer's 5.1 LFE; `c13b3f29cd`: the Qt interface's `PlayCover` and `ButtonExt` derive from
-  `RoundButton`: every button of the redesign to look at after the merge). ⚪ The macOS smoke test's "dark" screenshot
+  `RoundButton`: seen on Windows: the play cover on hover, its accent when pointed at, a click plays; About's buttons
+  as before). 🟡 The macOS smoke test's "dark" screenshot
   has been light since at least 0.6.6: `defaults write -g AppleInterfaceStyle Dark` does not switch the running
-  system (its menu bar stays light in the shot); System Events' appearance preferences would. ⚪ Right to left, the
+  system (its menu bar stays light in the shot): now System Events' appearance preferences, the mode it got noted. ⚪ Right to left, the
   sidebar's resize handle sits on the card's edge, about 8 px from the mirror of its left-to-right place.
 - 🟢 **0.6.9** published 2026-11-16 00:19 UTC (34 files; tag v0.6.9 = 10e7160c5b, PR #96 merged as ccc880b0e2, Android
   #14 as 224e85c776, tag e287314bc; the three CI builds, the tag and main share the tree 09192da27e): every file's

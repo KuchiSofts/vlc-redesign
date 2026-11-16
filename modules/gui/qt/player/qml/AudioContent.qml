@@ -128,6 +128,8 @@ MouseArea {
             enabled: false
 
             NumberAnimation {
+                id: widthAnimation
+
                 duration: VLCStyle.duration_long
 
                 easing.type: Easing.InOutSine
@@ -161,6 +163,11 @@ MouseArea {
 
                 contentItem: LyricsFlickable {
                     id: lyricsFlickable
+
+                    // the layer of its fading edges once the column is open
+                    // (made at each width of the opening, a texture a frame,
+                    // it took some 150 MB for a few seconds)
+                    fadingEdgeLayering: !widthAnimation.running
 
                     onPlayerPositionChangeRequested: (time) => {
                         Player.setTime(time)
@@ -199,9 +206,39 @@ MouseArea {
 
         Item {
             id: coverItem
+            // The rows under it, those that will show (from the media and the
+            // layout, not from their place, which comes from this size): the
+            // slot of the current line when the lyrics are not beside the
+            // cover, the lyrics button, Sync lyrics to playback beside them.
+            // A fixed 170 left them too little when the window's height is
+            // what limits the cover: the lyrics button was pushed out and
+            // hidden, in both layouts, and nothing else shows or hides the
+            // lyrics.
+            readonly property real _rowsBelow: {
+                const lyrics = Player.hasLyrics
+                const beside = musicView.lyricsLayoutActive
+                let h = 0
+                if (lyrics && !beside)
+                    h += lyricsLabel.Layout.preferredHeight + lyricsLabel.Layout.topMargin
+                if (lyrics && Player.videoTracks.count === 0)
+                    h += audioControls.implicitHeight + audioControls.Layout.topMargin
+                if (beside)
+                    h += syncToPlaybackCheckBox.implicitHeight + syncToPlaybackCheckBox.Layout.topMargin
+                return h
+            }
+            // The title takes a third of the height left under the cover
+            // (albumLabel), the rows the rest: they fit when what is left
+            // is 1.5 times them (and their margin). 170 as the design has it
+            // at least.
+            readonly property real _roomBelow: Math.max(VLCStyle.dp(170, VLCStyle.scale),
+                albumLabel.Layout.preferredHeight
+                + Math.max(1.5 * _rowsBelow, VLCStyle.margin_large + _rowsBelow) + VLCStyle.margin_xsmall)
+            // (the height of the place the column is centred in: beside the
+            // lyrics, the right side starts margin_large lower)
+            readonly property real _placeHeight: leftSideParent.visible ? rightSideParent.height : centerContent.height
             readonly property real side: Math.max(0, Math.min(
                 VLCStyle.dp(738, VLCStyle.scale),
-                centerContent.height - VLCStyle.dp(170, VLCStyle.scale),
+                _placeHeight - _roomBelow,
                 (musicView.lyricsLayoutActive ? rightSideParent.width : centerContent.width)
                     - VLCStyle.dp(48, VLCStyle.scale)))
             // Figma: 738 x 737

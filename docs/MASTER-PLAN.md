@@ -137,6 +137,19 @@ What is being worked on, updated as it changes (2026-11-10):
     in a container: the sort and grid icons lost their box at once, the arrows (disabled) only with the second
     change. To see in this
     pull request's macOS screenshots (main-light, main-dark: the System theme).
+  - 🟢 **The lyrics button hid** (found while measuring the memory of the music view): the cover left a fixed
+    170 px under it, and the title takes a third of what is left, so with the current line under the title (the
+    lyrics not beside the cover), or with Sync lyrics to playback beside them, the row of the lyrics button did not
+    fit when the window's height limits the cover, and hid itself: at 1600 x 900 with the bar, the lyrics could not
+    be shown again (no menu or key does it). The cover now leaves the room of the rows that will show (from the
+    media and the layout, not their place), measured in the place the column is centred in (beside the lyrics it
+    starts margin_large lower: Sync lyrics to playback went half under the bar at 1280 x 720). Tried at 1280 x 720,
+    1600 x 900 and 1920 x 1080, the lyrics beside the cover and not: the button and the rows in view each time, no
+    warning of the interface.
+  - 🟢 **The memory taken for a moment by the music view** (the to-do of 0.7.1): only when the lyrics column opens
+    (closing it: nothing). The layer of its fading edges is the size of the column, and the column grows over
+    300 ms: a new texture a frame, freed later by the driver. The layer now waits for the column to be open: the
+    same opening 237 -> 284 MB (was 230 -> 377), back in three seconds as before.
 - 🟢 **0.7.1** published 2026-11-16 18:57 UTC (18 files: 16 and the signed list; tag v0.7.1 = 59865f9cdd, PR #104 merged as
   13c13dbac6, Android #16 as 791903909f, tag 002cb0988; the CI build dbc9e8dfff, the tag and main share one tree).
   An update release: Windows, ARM64, Linux, macOS and Android. Small update from 0.7.0: 4.4 MB (ARM64 3.6 MB).
@@ -210,11 +223,11 @@ What is being worked on, updated as it changes (2026-11-10):
   - 🟢 Samsung TV: read again, nothing to change. Its music view has the cover and the backdrop in its page and
     styles, but its library passes no cover to the player: the backdrop is black, the grey title reads at 7:1 and
     the lyrics are white on black. The rule belongs to the day the TV app shows covers (a to-do of the roadmap).
-  - 📋 Seen while measuring, in 0.7.0 as well: the app takes 100 to 140 MB more for a few seconds when the music
+  - 🟢 Seen while measuring, in 0.7.0 as well: the app takes 100 to 140 MB more for a few seconds when the music
     view switches between its lyrics layout and the plain one (a song with lyrics after one without, or back;
     the lyrics view off: none), and gives it back (no growth over ten minutes of six songs in a loop,
-    each sample back at 250 to 290 MB). To look at in 0.7.2: the column's animation, the cover decoded again
-    at each size, the blurred backdrop drawn live meanwhile.
+    each sample back at 250 to 290 MB). Found and cut to a third in 0.7.2: the layer of the lyrics' fading edges,
+    made again at each width while the column opened (see 0.7.2 above).
 - 🟢 **0.7.0** published 2026-11-16 06:36 UTC (28 files where 0.6.9 had 34: 26 and the signed list; tag v0.7.0 =
   ed6b0bccc2, PR #98 merged as c8a655c373, Android #15 as 0f596f2602, tag 660d922d8; the CI build 39767a8ff8, the
   tag and main share one tree). The first release made by `publish-release.py`: the pull request's 18 checks, its

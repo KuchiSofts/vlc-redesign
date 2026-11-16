@@ -18,11 +18,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **macOS and Linux, System theme: no box behind the icons of the bars** (the library's arrows among them).
+- **Music player: the lyrics button stays in a smaller window**: it was hidden for lack of room, and nothing else
+  shows or hides the lyrics.
+- **Music player: opening the lyrics takes a third of the memory it took for a moment.**
 
 ### Technical
 
-- `systempalettethemeprovider.cpp`: a tool button at rest is transparent, as in VLC's own palettes; the system's
-  button colour stays for hover, focus and press.
+- `systempalettethemeprovider.cpp`: a tool button at rest or disabled is transparent, as in VLC's own palettes; the
+  system's button colour stays for hover, focus and press.
+- `AudioContent.qml`: the cover leaves the room of the rows that will show under it (the current line, the lyrics
+  button, Sync lyrics to playback), measured in the place it is centred in, not a fixed 170 px.
+- `LyricsFlickable.qml`: the layer of the fading edges waits for the lyrics column to be open (a texture a frame
+  while it opened: 230 to 377 MB for three seconds, now 237 to 284).
 - Version 0.7.2 started (VLC_REDESIGN_VERSION).
 
 ## [0.7.1] · 2026-11-16

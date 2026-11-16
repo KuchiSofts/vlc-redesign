@@ -29,6 +29,8 @@ Updated as the work moves (last: 2026-11-16, 0.6.9 published, 0.6.10 started).
 **0.6.10** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- ✅ Smaller, smarter updates on Windows: one small update a release, and a copy several versions behind takes the
+  ones between by itself (0.8 MB where 0.6.9's was 4.0 MB); a release page with few files and short notes
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

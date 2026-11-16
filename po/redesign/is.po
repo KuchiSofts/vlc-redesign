@@ -3367,15 +3367,6 @@ msgstr "Muna staðsetningu í afspilun"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Leyfir VLC að halda áfram með miðilinn þar sem frá var horfið."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Snúa við skrunstefnu"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Hjólin sem spóla fara afturábak þegar þeim er snúið fram."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5018,6 +5009,11 @@ msgstr "Skrunhjól"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Lárétt skrun"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Snúa við skrunstefnu"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9675,11 +9671,11 @@ msgstr "Þessi útgáfa getur ekki leitað að uppfærslum."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Ekki náðist í GitHub. Athugaðu tenginguna og reyndu aftur."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9710,6 +9706,15 @@ msgstr "Niðurhalið mistókst. Athugaðu tenginguna og reyndu aftur."
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Uppfærslan passar ekki við gátsummu sína og var því ekki notuð."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Ekki er hægt að skrifa uppfærsluna í %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Uppfærslan er ekki á sniði sem þessi útgáfa þekkir."
@@ -9726,15 +9731,6 @@ msgstr "Uppfærslan er skemmd."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Uppfærslan er ekki fyrir þessa útgáfu."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Ekki er hægt að skrifa uppfærsluna í %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

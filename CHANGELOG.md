@@ -15,8 +15,25 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Music player: the title and the lyrics stay readable over a bright cover** (#100, #101).
+- **Lyrics without times show as a page that moves with the song** (#101).
+- **Repeat one has its own icon** (#102).
+- **Reverse scroll direction turns the volume wheel round too** (#103).
+- **macOS: Help › Report a problem and Suggest an idea open again** (#100).
+- **A Settings search names the page of each group it finds** (#100).
+
 ### Technical
 
+- The music backdrop dims by the brightness of the cover's bright parts (`MainCtx::imageBrightParts`, white text
+  at 4.5:1), only as much as needed: a dark cover stays as the design draws it.
+- Lyrics without times (an ID3 USLT text) become a line an entry with no current line (`Player.lyricsTimed`);
+  `syltLyrics()` no longer reads an empty value when the lyrics go.
+- `qt-wheel-reverse`: one option for every plain wheel of the player (`WheelToVLCConverter`); the core's
+  "Position control reversed" of an older configuration is moved to it at the start.
+- macOS: Now Playing is told the repeat and shuffle modes; the launch test clicks Help › Report a problem.
+- VideoLAN's master merged (493793a33a).
 - Version 0.7.1 started (VLC_REDESIGN_VERSION).
 - `release-notes.py` leaves the Technical part of the changelog out of a release's notes (a link to it instead)
   and says which copies follow the way of small updates (0.7.0 and later).

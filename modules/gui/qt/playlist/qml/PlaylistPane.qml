@@ -277,7 +277,10 @@ T.Pane {
                 Navigation.rightItem: cardHeader.mirrored ? cardSort : cardShuffle
                 text: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
                       ? VLCIcons.repeat_one : VLCIcons.repeat_all
-                description: qsTr("Repeat")
+                // (what is on now, as the control bar's button says it)
+                description: MainPlaylistController.repeatMode === PlaylistController.PLAYBACK_REPEAT_CURRENT
+                             ? qsTr("Repeat one")
+                             : checked ? qsTr("Repeat all") : qsTr("Repeat")
                 checked: MainPlaylistController.repeatMode !== PlaylistController.PLAYBACK_REPEAT_NONE
                 onClicked: MainPlaylistController.toggleRepeatMode()
             }

@@ -3397,16 +3397,6 @@ msgstr "Pamatovat si pozici přehrávání"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Umožní VLC pokračovat v médiu tam, kde jste přestali."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Obrátit směr posouvání"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr ""
-"Kolečka, která posouvají přehrávání, při otočení dopředu posouvají zpět."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5052,6 +5042,11 @@ msgstr "Kolečko myši"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Vodorovné posouvání"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Obrátit směr posouvání"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9763,6 +9758,15 @@ msgstr "Stahování selhalo. Zkontrolujte připojení a zkuste to znovu."
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Aktualizace neodpovídá svému kontrolnímu součtu, proto nebyla použita."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Aktualizaci nelze zapsat do %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Aktualizace není ve formátu, který tato verze zná."
@@ -9779,15 +9783,6 @@ msgstr "Aktualizace je poškozená."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Aktualizace není pro tuto verzi."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Aktualizaci nelze zapsat do %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

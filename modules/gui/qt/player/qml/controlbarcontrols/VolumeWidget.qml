@@ -481,6 +481,10 @@ T.Pane {
 
                         if (wheel.inverted)
                             delta = -delta
+                        // Reverse scroll direction (as the wheel in steps
+                        // below, in WheelToVLCConverter)
+                        if (wheelToVLC.reversed() && wheel.modifiers === Qt.NoModifier)
+                            delta = -delta
                         volControl.value += 0.001 * delta
                     }
                     else

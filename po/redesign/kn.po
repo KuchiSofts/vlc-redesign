@@ -3366,15 +3366,6 @@ msgstr "ಪ್ಲೇಬ್ಯಾಕ್ ಸ್ಥಾನವನ್ನು ನೆನ�
 msgid "Lets VLC continue the media where you left off."
 msgstr "ನೀವು ನಿಲ್ಲಿಸಿದಲ್ಲಿಂದ ಮಾಧ್ಯಮವನ್ನು ಮುಂದುವರಿಸಲು VLC ಗೆ ಅನುಮತಿಸುತ್ತದೆ."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "ಸ್ಕ್ರಾಲ್ ದಿಕ್ಕನ್ನು ಹಿಮ್ಮುಖಗೊಳಿಸಿ"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "ಸರಿಸುವ ಚಕ್ರಗಳನ್ನು ಮುಂದಕ್ಕೆ ತಿರುಗಿಸಿದಾಗ ಅವು ಹಿಂದಕ್ಕೆ ಸರಿಸುತ್ತವೆ."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5014,6 +5005,11 @@ msgstr "ಸ್ಕ್ರಾಲ್ ಚಕ್ರ"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "ಅಡ್ಡ ಸ್ಕ್ರಾಲ್"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "ಸ್ಕ್ರಾಲ್ ದಿಕ್ಕನ್ನು ಹಿಮ್ಮುಖಗೊಳಿಸಿ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9628,11 +9624,11 @@ msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "GitHub ಅನ್ನು ತಲುಪಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9663,6 +9659,15 @@ msgstr "ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ. ನಿಮ್
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "ನವೀಕರಣವು ಅದರ ಚೆಕ್‌ಸಮ್‌ಗೆ ಹೊಂದುತ್ತಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು ಬಳಸಲಾಗಿಲ್ಲ."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "ನವೀಕರಣವನ್ನು %1 ನಲ್ಲಿ ಬರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "ನವೀಕರಣವು ಈ ಆವೃತ್ತಿಗೆ ತಿಳಿದಿರುವ ಸ್ವರೂಪದಲ್ಲಿಲ್ಲ."
@@ -9679,15 +9684,6 @@ msgstr "ನವೀಕರಣ ಹಾನಿಗೊಳಗಾಗಿದೆ."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "ನವೀಕರಣವು ಈ ಆವೃತ್ತಿಗಾಗಿ ಅಲ್ಲ."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "ನವೀಕರಣವನ್ನು %1 ನಲ್ಲಿ ಬರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

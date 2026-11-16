@@ -3355,15 +3355,6 @@ msgstr "Ghi nhớ vị trí phát"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Cho phép VLC phát tiếp phương tiện từ chỗ bạn đã dừng."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Đảo chiều cuộn"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Con lăn dùng để tua sẽ tua lùi khi lăn về phía trước."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5008,6 +4999,11 @@ msgstr "Con lăn chuột"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Cuộn ngang"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Đảo chiều cuộn"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9639,11 +9635,11 @@ msgstr "Bản dựng này không thể kiểm tra bản cập nhật."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Không thể kết nối tới GitHub. Hãy kiểm tra kết nối và thử lại."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9676,6 +9672,15 @@ msgstr "Tải xuống thất bại. Hãy kiểm tra kết nối và thử lại.
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Bản cập nhật không khớp với mã kiểm tra nên không được dùng."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Không thể ghi bản cập nhật vào %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Bản cập nhật có định dạng mà phiên bản này không nhận biết được."
@@ -9692,15 +9697,6 @@ msgstr "Bản cập nhật bị hỏng."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Bản cập nhật không dành cho phiên bản này."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Không thể ghi bản cập nhật vào %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

@@ -3411,16 +3411,6 @@ msgstr "Si rsovni del plaece do djouwaedje"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Lait VLC continuwer l' media la ki vos l' avoz leyî."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Rivier l' sinse do disfilaedje"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr ""
-"Les coxhlets ki bodjèt dins l' tins rmoennèt cwand on les toûne en avant."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5073,6 +5063,11 @@ msgstr "Coxhlet"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Disfilaedje coûtchî"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Rivier l' sinse do disfilaedje"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9772,11 +9767,11 @@ msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Nén moyén d' esse raloyî a GitHub. Verifyîz vosse raloyaedje et rsayîz."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9811,6 +9806,15 @@ msgstr ""
 "Li metaedje a djoû ni corespond nén a s' sone di controle, adon i n' a nén "
 "stî eployî."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Li metaedje a djoû n' pout nén esse scrît dins %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr ""
@@ -9828,15 +9832,6 @@ msgstr "Li metaedje a djoû est crombe."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Li metaedje a djoû n' est nén po ciste modêye ci."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Li metaedje a djoû n' pout nén esse scrît dins %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

@@ -18,6 +18,7 @@
 #include <QGuiApplication>
 #include <QList>
 #include <QPoint>
+#include <QPointer>
 #include <QScreen>
 #include <QStringList>
 #include <QSysInfo>
@@ -236,10 +237,19 @@ QString optionString(qt_intf_t *intf, const char *name, const char *fallback)
 
 } // namespace
 
+// (a QPointer: null again once MainUI deletes it)
+static QPointer<RedesignFeedback> s_feedback;
+
 RedesignFeedback::RedesignFeedback(qt_intf_t *intf, QObject *parent)
     : QObject(parent)
     , m_intf(intf)
 {
+    s_feedback = this;
+}
+
+RedesignFeedback *RedesignFeedback::instance()
+{
+    return s_feedback.data();
 }
 
 QString RedesignFeedback::reportText(int colorScheme, bool darkTheme, const QString &accent) const

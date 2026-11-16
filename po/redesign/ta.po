@@ -3366,15 +3366,6 @@ msgstr "இயக்க நிலையை நினைவில் வை"
 msgid "Lets VLC continue the media where you left off."
 msgstr "நீங்கள் விட்ட இடத்திலிருந்து ஊடகத்தைத் தொடர VLC-ஐ அனுமதிக்கிறது."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "உருட்டும் திசையைத் தலைகீழாக்கு"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "தாவும் சக்கரங்கள் முன்னோக்கித் திருப்பும்போது பின்னோக்கிச் செல்லும்."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5021,6 +5012,11 @@ msgstr "உருள் சக்கரம்"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "கிடைமட்ட உருட்டல்"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "உருட்டும் திசையைத் தலைகீழாக்கு"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9671,11 +9667,11 @@ msgstr "இந்த உருவாக்கத்தால் புதுப�
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub-ஐ அடைய முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயலவும்."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9709,6 +9705,15 @@ msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "புதுப்பிப்பு அதன் சரிபார்ப்புத் தொகையுடன் பொருந்தவில்லை, எனவே அது பயன்படுத்தப்படவில்லை."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "புதுப்பிப்பை %1-இல் எழுத முடியாது."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "புதுப்பிப்பு இந்தப் பதிப்புக்குத் தெரிந்த வடிவத்தில் இல்லை."
@@ -9725,15 +9730,6 @@ msgstr "புதுப்பிப்பு சேதமடைந்துள�
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "புதுப்பிப்பு இந்தப் பதிப்புக்கானது அல்ல."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "புதுப்பிப்பை %1-இல் எழுத முடியாது."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

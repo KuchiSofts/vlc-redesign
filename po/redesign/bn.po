@@ -3332,15 +3332,6 @@ msgstr "প্লেব্যাকের অবস্থান মনে রা
 msgid "Lets VLC continue the media where you left off."
 msgstr "আপনি যেখানে থেমেছিলেন সেখান থেকে VLC-কে মিডিয়া চালিয়ে যেতে দেয়।"
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "স্ক্রলের দিক উল্টান"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "সিক করার হুইলগুলো সামনে ঘোরালে পেছনে যায়।"
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -4979,6 +4970,11 @@ msgstr "স্ক্রল হুইল"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "আনুভূমিক স্ক্রল"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "স্ক্রলের দিক উল্টান"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9599,11 +9595,11 @@ msgstr "এই বিল্ড আপডেট খুঁজতে পারে �
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub-এ পৌঁছানো যায়নি। আপনার সংযোগ যাচাই করে আবার চেষ্টা করুন।"
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9634,6 +9630,15 @@ msgstr "ডাউনলোড ব্যর্থ হয়েছে। আপন
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "আপডেটটি তার চেকসামের সাথে মেলেনি, তাই এটি ব্যবহার করা হয়নি।"
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "%1-এ আপডেটটি লেখা যাচ্ছে না।"
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "আপডেটটি এমন ফরম্যাটে আছে যা এই সংস্করণ চেনে না।"
@@ -9650,15 +9655,6 @@ msgstr "আপডেটটি ক্ষতিগ্রস্ত।"
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "আপডেটটি এই সংস্করণের জন্য নয়।"
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "%1-এ আপডেটটি লেখা যাচ্ছে না।"
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

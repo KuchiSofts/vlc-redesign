@@ -258,6 +258,12 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 #define QT_FS_SHORTCUT_LONGTEXT N_( "What a key of VLC (seek, volume, pause, speed...) shows " \
     "in full screen: the controls; a thin progress line with a small message (the time " \
     "and what the key did); or that message alone." )
+/* Settings, Controls, Mouse (issue #103): the wheel of the mouse the other
+ * way round for all it does in the player (WheelToVLCConverter). It was the
+ * core's "Position control reversed" of a wheel that seeks, and nothing for
+ * the volume. (No longer text: the name says it, and it is the text the
+ * Settings row has in every language.) */
+#define QT_WHEEL_REVERSE_TEXT N_( "Reverse scroll direction" )
 #define QT_NATIVEOPEN_TEXT N_( "Embed the file browser in open dialog" )
 
 #define FULLSCREEN_NUMBER_TEXT N_( "Define which screen fullscreen goes" )
@@ -462,6 +468,7 @@ vlc_module_begin ()
                  QT_FS_SHORTCUT_LONGTEXT )
         change_integer_range( 0, 2 )
         change_integer_list( i_fs_shortcut_list, psz_fs_shortcut_list_text )
+    add_bool( "qt-wheel-reverse", false, QT_WHEEL_REVERSE_TEXT, nullptr )
 
     add_string("qt-compositor", "auto", QT_COMPOSITOR_TEXT, QT_COMPOSITOR_LONGTEXT)
             change_string_list(compositor_vlc, compositor_user)
@@ -1823,20 +1830,21 @@ static void *Thread( void *obj )
             settle( view );
         } );
         QMenu *help = addMenu( qtr( "&Help" ), &VLCMenuBar::HelpMenu );
-        /* the ⋯ menu's forms: a Mac user looks for them up here (#84) */
-        static const auto feedback = []() -> RedesignFeedback * {
-            for( QWindow *window : QGuiApplication::topLevelWindows() )
-                if( auto *f = window->findChild<RedesignFeedback *>() )
-                    return f;
-            return nullptr;
-        };
+        /* the ⋯ menu's forms: a Mac user looks for them up here (#84). The
+         * one object of the interface: it is MainUI's, not a child of a
+         * window, where it was looked for and never found (both items did
+         * nothing: #100 to #102) */
         help->addSeparator();
         help->addAction( qtr( "Suggest an idea" ), []() {
-            if( RedesignFeedback *f = feedback() )
+            if( RedesignFeedback *f = RedesignFeedback::instance() )
                 QDesktopServices::openUrl( QUrl( f->ideaUrl() ) );
         } );
-        help->addAction( qtr( "Report a problem" ), []() {
-            if( RedesignFeedback *f = feedback() )
+        help->addAction( qtr( "Report a problem" ), [p_intf]() {
+            RedesignFeedback *f = RedesignFeedback::instance();
+            /* (the launch test clicks the item and looks for this line,
+             * ci/macos-smoke.sh) */
+            msg_Dbg( p_intf, "macOS: Help menu: Report a problem%s", f ? "" : " (no interface yet)" );
+            if( f )
                 f->openReport();
         } );
         for( QMenu *menu : menus )

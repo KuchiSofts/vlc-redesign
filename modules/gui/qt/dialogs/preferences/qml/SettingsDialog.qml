@@ -60,6 +60,15 @@ Dialog {
         performance: qsTr("Performance Settings"), recording: qsTr("Recording, Casting & Streaming Out"),
         tv: qsTr("Live TV")
     })
+    // The names of the pages as the sidebar lists them, by their key: a
+    // search names the page of each group it finds (SettingsOptionList)
+    readonly property var categoryNames: {
+        const names = {}
+        for (const entry of sidebar.entries)
+            if (entry.key)
+                names[entry.key] = entry.label
+        return names
+    }
 
     function openSettings(category) {
         selectedCategory = category || "general"
@@ -431,6 +440,10 @@ Dialog {
                 SettingsAppearance {
                     id: appearance
                     width: parent.width
+                    // (in a search, with its page as the groups of the list)
+                    text: searchField.text.length > 0 && root.categoryNames["general"]
+                          ? root.categoryNames["general"] + " › " + qsTr("Appearance")
+                          : qsTr("Appearance")
                     visible: searchField.text.length === 0
                              ? root.selectedCategory === "general"
                              : root.searchMatches([qsTr("Appearance"), qsTr("Theme"), qsTr("Accent color"),
@@ -531,6 +544,7 @@ Dialog {
                         width: parent.width
                         settingsModel: config
                         subtitleLanguages: subtitleLanguages
+                        categoryNames: root.categoryNames
                         category: root.selectedCategory
                         search: searchField.text
                         filterMode: searchField.text.length ? "all" : "basic"

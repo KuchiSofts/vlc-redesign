@@ -3330,15 +3330,6 @@ msgstr "재생 위치 기억"
 msgid "Lets VLC continue the media where you left off."
 msgstr "중단한 위치부터 미디어를 이어서 재생합니다."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "스크롤 방향 반대로"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "탐색용 휠을 앞으로 돌리면 뒤로 이동합니다."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -4977,6 +4968,11 @@ msgstr "스크롤 휠"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "가로 스크롤"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "스크롤 방향 반대로"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9597,6 +9593,15 @@ msgstr "다운로드에 실패했습니다. 연결을 확인하고 다시 시도
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "업데이트가 체크섬과 일치하지 않아 사용하지 않았습니다."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "%1에 업데이트를 쓸 수 없습니다."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "이 버전에서 인식할 수 없는 형식의 업데이트입니다."
@@ -9613,15 +9618,6 @@ msgstr "업데이트가 손상되었습니다."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "이 버전용 업데이트가 아닙니다."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "%1에 업데이트를 쓸 수 없습니다."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

@@ -3394,15 +3394,6 @@ msgstr "Oynatma konumu hatırlansın"
 msgid "Lets VLC continue the media where you left off."
 msgstr "VLC'nin ortamı kaldığınız yerden sürdürmesini sağlar."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Kaydırma yönü ters çevrilsin"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Konum değiştiren tekerlekler ileri çevrildiğinde geri sarar."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5046,6 +5037,11 @@ msgstr "Kaydırma tekerleği"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Yatay kaydırma"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Kaydırma yönü ters çevrilsin"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9731,6 +9727,15 @@ msgstr "İndirme başarısız oldu. Bağlantınızı denetleyip yeniden deneyin.
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Güncelleme sağlama toplamıyla eşleşmediği için kullanılmadı."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Güncelleme %1 konumuna yazılamıyor."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Güncelleme bu sürümün tanıdığı bir biçimde değil."
@@ -9747,15 +9752,6 @@ msgstr "Güncelleme hasarlı."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Güncelleme bu sürüm için değil."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Güncelleme %1 konumuna yazılamıyor."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

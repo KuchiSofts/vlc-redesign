@@ -3394,15 +3394,6 @@ msgstr "Muista toistokohta"
 msgid "Lets VLC continue the media where you left off."
 msgstr "VLC jatkaa mediaa siitä, mihin jäit."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Käänteinen vierityssuunta"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Kelaavat rullat siirtävät taaksepäin, kun niitä pyöritetään eteenpäin."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5047,6 +5038,11 @@ msgstr "Hiiren rulla"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Vaakavieritys"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Käänteinen vierityssuunta"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9704,11 +9700,11 @@ msgstr "Tämä koontiversio ei voi tarkistaa päivityksiä."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubiin ei saatu yhteyttä. Tarkista yhteys ja yritä uudelleen."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9740,6 +9736,15 @@ msgstr "Lataus epäonnistui. Tarkista yhteys ja yritä uudelleen."
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Päivitys ei vastaa tarkistussummaansa, joten sitä ei käytetty."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Päivitystä ei voi kirjoittaa kohteeseen %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Päivitys ei ole muodossa, jonka tämä versio tuntee."
@@ -9756,15 +9761,6 @@ msgstr "Päivitys on vahingoittunut."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Päivitys ei ole tälle versiolle."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Päivitystä ei voi kirjoittaa kohteeseen %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

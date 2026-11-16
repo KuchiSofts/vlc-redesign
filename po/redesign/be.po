@@ -3377,15 +3377,6 @@ msgstr "Запамінаць пазіцыю прайгравання"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Дазваляе VLC працягваць медыя з месца, дзе вы спыніліся."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Адваротны кірунак пракруткі"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Колцы, што перамотваюць, перамотваюць назад, калі іх круціць наперад."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5028,6 +5019,11 @@ msgstr "Колца пракруткі"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Гарызантальная пракрутка"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Адваротны кірунак пракруткі"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9731,11 +9727,11 @@ msgstr "Гэта зборка не можа правяраць абнаўлен�
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Не ўдалося звязацца з GitHub. Праверце злучэнне і паспрабуйце зноў."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9767,6 +9763,15 @@ msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 "Абнаўленне не адпавядае сваёй кантрольнай суме, таму яно не выкарыстана."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Немагчыма запісаць абнаўленне ў %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Абнаўленне ў фармаце, невядомым гэтай версіі."
@@ -9783,15 +9788,6 @@ msgstr "Абнаўленне пашкоджана."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Абнаўленне не для гэтай версіі."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Немагчыма запісаць абнаўленне ў %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

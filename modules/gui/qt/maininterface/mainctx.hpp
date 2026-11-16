@@ -30,6 +30,7 @@
 #include <QApplication>
 #include <QQuickItem>
 #include <QColor>
+#include <QImage>
 #include <QRectF>
 #include <QMargins>
 #include <QTimer>
@@ -438,6 +439,10 @@ public:
     // window as shown (in its coordinates): what a text drawn there is over,
     // to choose a readable colour; -1 when it can't be read
     Q_INVOKABLE double windowLuminance(QQuickWindow *window, const QRectF &area) const;
+    // How bright the bright parts of a picture are (the same luminance, of
+    // the tenth of its areas that is the brightest), for the texts over a
+    // backdrop made of it; -1 for no picture
+    Q_INVOKABLE double imageBrightParts(const QImage &image) const;
 
     Q_INVOKABLE static inline void setCursor(Qt::CursorShape cursor) { QApplication::setOverrideCursor(QCursor(cursor)); }
     Q_INVOKABLE static inline void restoreCursor(void) { QApplication::restoreOverrideCursor(); }

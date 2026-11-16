@@ -303,6 +303,7 @@
         <file alias="icons/folder/large.svg">pixmaps/redesign/icons/folder/large.svg</file>
         <file alias="icons/repeat/default.svg">pixmaps/redesign/icons/repeat/default.svg</file>
         <file alias="icons/repeat/active.svg">pixmaps/redesign/icons/repeat/active.svg</file>
+        <file alias="icons/repeat/one.svg">pixmaps/redesign/icons/repeat/one.svg</file>
         <file alias="icons/shuffle/default.svg">pixmaps/redesign/icons/shuffle/default.svg</file>
         <file alias="icons/shuffle/active.svg">pixmaps/redesign/icons/shuffle/active.svg</file>
         <file alias="icons/right-sidebar/default.svg">pixmaps/redesign/icons/right-sidebar/default.svg</file>

@@ -3415,15 +3415,6 @@ msgstr "Gogoratu erreprodukzio-posizioa"
 msgid "Lets VLC continue the media where you left off."
 msgstr "VLCri multimedia utzi zenuen lekutik jarraitzea ahalbidetzen dio."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Alderantzikatu korritzearen norabidea"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Bilatzeko gurpilak atzerantz doaz aurrerantz biratzean."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5070,6 +5061,11 @@ msgstr "Korritze-gurpila"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Korritze horizontala"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Alderantzikatu korritzearen norabidea"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9765,11 +9761,11 @@ msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "Ezin izan da GitHub-era iritsi. Egiaztatu zure konexioa eta saiatu berriro."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9801,6 +9797,15 @@ msgstr "Deskargak huts egin du. Egiaztatu zure konexioa eta saiatu berriro."
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Eguneratzea ez dator bat bere kontrol-baturarekin, eta ez da erabili."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Eguneratzea ezin da hemen idatzi: %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Eguneratzea ez dago bertsio honek ezagutzen duen formatu batean."
@@ -9817,15 +9822,6 @@ msgstr "Eguneratzea hondatuta dago."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Eguneratzea ez da bertsio honetarako."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Eguneratzea ezin da hemen idatzi: %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

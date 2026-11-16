@@ -3390,15 +3390,6 @@ msgstr "Zapamiętuj pozycję odtwarzania"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Pozwala VLC wznowić odtwarzanie od miejsca, w którym przerwano."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Odwróć kierunek przewijania"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Kółka służące do przewijania działają odwrotnie: obrót do przodu cofa."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5043,6 +5034,11 @@ msgstr "Kółko przewijania"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Przewijanie poziome"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Odwróć kierunek przewijania"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9784,6 +9780,15 @@ msgstr "Pobieranie nie powiodło się. Sprawdź połączenie i spróbuj ponownie
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Aktualizacja nie zgadza się z sumą kontrolną, więc jej nie użyto."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Nie można zapisać aktualizacji w %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Aktualizacja ma format nieznany tej wersji."
@@ -9800,15 +9805,6 @@ msgstr "Aktualizacja jest uszkodzona."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Ta aktualizacja nie jest przeznaczona dla tej wersji."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Nie można zapisać aktualizacji w %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

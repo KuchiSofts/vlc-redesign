@@ -3383,15 +3383,6 @@ msgstr "Ойнату орнын есте сақтау"
 msgid "Lets VLC continue the media where you left off."
 msgstr "VLC медианы сіз тоқтаған жерден жалғастыра алады."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Айналдыру бағытын кері ауыстыру"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Ойнату орнын ауыстыратын дөңгелектер алға бұрғанда артқа жылжытады."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5031,6 +5022,11 @@ msgstr "Айналдыру дөңгелегі"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Көлденең айналдыру"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Айналдыру бағытын кері ауыстыру"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9672,11 +9668,11 @@ msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 "GitHub-қа қосылу мүмкін болмады. Қосылымыңызды тексеріп, қайталап көріңіз."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9709,6 +9705,15 @@ msgstr "Жүктеп алу сәтсіз аяқталды. Қосылымыңы�
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Жаңарту бақылау сомасына сәйкес келмейді, сондықтан ол қолданылмады."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Жаңартуды %1 ішіне жазу мүмкін емес."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Жаңарту бұл нұсқа білмейтін пішімде."
@@ -9725,15 +9730,6 @@ msgstr "Жаңарту зақымдалған."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Жаңарту бұл нұсқаға арналмаған."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Жаңартуды %1 ішіне жазу мүмкін емес."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

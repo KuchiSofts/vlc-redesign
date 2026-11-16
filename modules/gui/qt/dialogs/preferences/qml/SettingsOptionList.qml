@@ -32,6 +32,11 @@ Column {
     // The subtitle languages (SettingsSubtitleLanguages): the Preferred
     // language row picks their default one
     property var subtitleLanguages: null
+    // The names of the pages (the sidebar's), by their key: a search lists
+    // the rows of every page, and names the page of each group before its
+    // title ("Subtitles > Appearance"; two pages have an "Appearance", and
+    // "Text color" alone did not say it is the subtitles', issue #100)
+    property var categoryNames: ({})
     // Reset all settings was clicked (the dialog confirms it)
     signal resetAllRequested()
     readonly property int count: optionsRepeater.count
@@ -120,6 +125,11 @@ Column {
             readonly property int previousVisible: root.previousShownRows[index] ?? -1
             readonly property string previousSection: previousVisible >= 0
                 ? presentationData.entry(root.settingsModel.keyAt(previousVisible), "").section : ""
+            // (in a search: the group of another page starts with its title too)
+            readonly property bool pageChanged: root.search.length > 0 && previousVisible >= 0
+                && root.settingsModel.categoryAt(previousVisible) !== (model.category ?? "")
+            readonly property string pageName: root.search.length > 0
+                ? (root.categoryNames[model.category ?? ""] ?? "") : ""
 
             // Section title of the design: Inter Medium 16 #C6C6C6, 10 px
             // above and below, 20 px after the previous section
@@ -127,7 +137,7 @@ Column {
                 id: sectionTitle
                 visible: !root.hideSectionHeadings
                          && (root.filterMode !== "advanced" || !!presentation.heading)
-                         && (previousVisible < 0 || presentation.section !== previousSection)
+                         && (previousVisible < 0 || presentation.section !== previousSection || pageChanged)
                 width: parent.width
                 // whole pixels: the rows below stay on the pixel grid
                 height: visible ? VLCStyle.dp(previousVisible < 0 ? 39 : 59, VLCStyle.scale) : 0
@@ -136,7 +146,10 @@ Column {
                 topPadding: Math.round(VLCStyle.redesign.textBaseline(VLCStyle.dp(previousVisible < 0 ? 10 : 30, VLCStyle.scale),
                                                                       font.pixelSize)) - titleMetrics.ascent
                 FontMetrics { id: titleMetrics; font: sectionTitle.font }
-                text: presentation.section
+                text: pageName.length > 0 && presentation.section.length > 0
+                      ? pageName + " › " + presentation.section
+                      : pageName.length > 0 ? pageName : presentation.section
+                textFormat: Text.PlainText
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
                 color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
@@ -193,7 +206,8 @@ Column {
                                   ? "none" : model.value
                     choices: {
                         const labels = presentation.choiceLabels
-                        // Wheels: Seek is backwards (3) when Reverse scroll direction is on
+                        // Wheels: the core's "reversed" seek (3, of a config from
+                        // before 0.7.1 until it is moved) reads as Seek too
                         const setting = (model.key ?? "").replace(/^x-mirror:/, "")
                         // Figma "EQ presets" (2372:8487): None (the equalizer
                         // off), then the presets with their curve

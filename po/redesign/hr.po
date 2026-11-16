@@ -3377,15 +3377,6 @@ msgstr "Zapamti položaj izvođenja"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Omogućuje VLC-u da nastavi medij ondje gdje ste stali."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Obrni smjer pomicanja"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Kotačići koji premotavaju idu unatrag kada se okreću naprijed."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5029,6 +5020,11 @@ msgstr "Kotačić za pomicanje"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Vodoravno pomicanje"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Obrni smjer pomicanja"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9720,11 +9716,11 @@ msgstr "Ova inačica ne može provjeravati ažuriranja."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Nije moguće pristupiti GitHubu. Provjerite vezu i pokušajte ponovno."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9757,6 +9753,15 @@ msgstr "Preuzimanje nije uspjelo. Provjerite vezu i pokušajte ponovno."
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Ažuriranje ne odgovara svojem kontrolnom zbroju, pa nije korišteno."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Ažuriranje nije moguće zapisati u %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Ažuriranje nije u formatu koji ova inačica poznaje."
@@ -9773,15 +9778,6 @@ msgstr "Ažuriranje je oštećeno."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Ažuriranje nije za ovu inačicu."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Ažuriranje nije moguće zapisati u %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

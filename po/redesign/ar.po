@@ -3341,15 +3341,6 @@ msgstr "تذكّر موضع التشغيل"
 msgid "Lets VLC continue the media where you left off."
 msgstr "يتيح لـ VLC متابعة الوسائط من حيث توقفت."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "عكس اتجاه التمرير"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "تُرجِع عجلات التنقل التشغيل إلى الخلف عند تدويرها إلى الأمام."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -4983,6 +4974,11 @@ msgstr "عجلة التمرير"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "التمرير الأفقي"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "عكس اتجاه التمرير"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9730,6 +9726,15 @@ msgstr "فشل التنزيل. تحقق من اتصالك وأعد المحاو�
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "لا يطابق التحديث مجموعه الاختباري، لذا لم يُستخدم."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "تتعذّر كتابة التحديث في %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "التحديث بصيغة لا يعرفها هذا الإصدار."
@@ -9746,15 +9751,6 @@ msgstr "التحديث تالف."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "التحديث ليس لهذا الإصدار."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "تتعذّر كتابة التحديث في %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

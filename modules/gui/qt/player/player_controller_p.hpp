@@ -222,6 +222,9 @@ public:
 
     mutable std::optional<QPair<QByteArray, size_t>> m_syltRaw;
     mutable std::optional<QList<TimedText>> m_syltLyrics;
+    // whether the lines have their times (set by syltLyrics(): a plain text
+    // has none, shown as a page with no current line)
+    mutable bool m_lyricsTimed = true;
     bool m_lyricsFromLrc = false;
     int m_currentLyricIndex = -1;
 };

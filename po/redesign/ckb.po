@@ -3365,15 +3365,6 @@ msgstr "لەبیرکردنی شوێنی لێدان"
 msgid "Lets VLC continue the media where you left off."
 msgstr "ڕێگە بە VLC دەدات ڕەنگاڵەکە لەو شوێنەوە بەردەوام بکات کە لێی وەستایت."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "پێچەوانەکردنەوەی ئاراستەی گێڕان"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "ئەو چەرخانەی دەگوازنەوە بۆ دواوە دەڕۆن کاتێک بۆ پێشەوە دەسووڕێنرێن."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5017,6 +5008,11 @@ msgstr "چەرخی گێڕان"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "گێڕانی ئاسۆیی"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "پێچەوانەکردنەوەی ئاراستەی گێڕان"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9677,11 +9673,11 @@ msgstr "ئەم بنیاتە ناتوانێت بۆ نوێکارییەکان بپ�
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "نەگەیشتە GitHub. پەیوەندییەکەت بپشکنە و دووبارە هەوڵبدەرەوە."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9713,6 +9709,15 @@ msgstr "داگرتن سەرکەوتوو نەبوو. پەیوەندییەکەت �
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "نوێکارییەکە لەگەڵ checksumـەکەی ناگونجێت، بۆیە بەکارنەهێنرا."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "نوێکارییەکە لە %1 دا نانووسرێت."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "نوێکارییەکە بە فۆرماتێک نییە کە ئەم وەشانە بیناسێت."
@@ -9729,15 +9734,6 @@ msgstr "نوێکارییەکە تێکچووە."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "نوێکارییەکە بۆ ئەم وەشانە نییە."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "نوێکارییەکە لە %1 دا نانووسرێت."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

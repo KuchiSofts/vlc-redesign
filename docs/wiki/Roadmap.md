@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-16, 0.7.0 published, 0.7.1 started).
+Updated as the work moves (last: 2026-11-16, 0.7.0 published; 0.7.1: the fixes of issues #100 to #103 in testing).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -29,6 +29,10 @@ Updated as the work moves (last: 2026-11-16, 0.7.0 published, 0.7.1 started).
 **0.7.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 🟡 The music player's title and lyrics readable over a bright cover, lyrics without times as a page that
+  moves with the song, an icon of its own for Repeat one, Reverse scroll direction for the volume wheel too, and
+  on macOS Help › Report a problem (issues #100 to #103): fixed on Windows, Linux, macOS and Android, in testing
+- 📋 Samsung TV: the same rule for the texts over a bright cover in its music view
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

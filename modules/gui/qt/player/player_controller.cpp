@@ -269,7 +269,11 @@ PlayerControllerPrivate::syltLyrics() const
     {
         QList<TimedText> lyrics;
 
-        if (m_syltRaw)
+        // (no lyrics: an empty list. The empty optional was read below when
+        // a binding ran between the lyrics going and their view)
+        if (!m_syltRaw)
+            return lyrics;
+
         {
             assert(!m_syltRaw->first.isEmpty());
             const QString sylt = QString::fromUtf8(m_syltRaw->first);
@@ -286,6 +290,42 @@ PlayerControllerPrivate::syltLyrics() const
                 const vlc_tick_t time =
                     VLC_TICK_FROM_MS( entry.first( sep ).toLongLong() );
                 lyrics.push_back( TimedText( entry.sliced( sep + 1 ).toString(), VLCTime( time ) ) );
+            }
+
+            // Lyrics without times: a file's plain text comes as one entry
+            // at 0 (ID3 USLT), and nothing tells the line sung now. That one
+            // entry was the "current line" from the start: the whole text in
+            // bold, the view centred on its middle (#101). A page instead:
+            // a line an entry (an empty one between the verses), no current
+            // line, and the view moves with the playback (LyricsFlickable)
+            m_lyricsTimed = false;
+            for (const TimedText &line : std::as_const( lyrics ))
+                if (line.time().toVLCTick() != lyrics.constFirst().time().toVLCTick())
+                {
+                    m_lyricsTimed = true;
+                    break;
+                }
+            if (!m_lyricsTimed)
+            {
+                QList<TimedText> page;
+                for (const TimedText &entry : std::as_const( lyrics ))
+                {
+                    QString text = entry.text();
+                    text.replace( QLatin1String( "\r\n" ), QLatin1String( "\n" ) );
+                    text.replace( QLatin1Char( '\r' ), QLatin1Char( '\n' ) );
+                    const auto lines = QStringView( text ).split( QLatin1Char( '\n' ) );
+                    for (const QStringView &line : lines)
+                    {
+                        const QString trimmed = line.trimmed().toString();
+                        // one empty line between two verses, none first
+                        if (trimmed.isEmpty() && (page.isEmpty() || page.constLast().text().isEmpty()))
+                            continue;
+                        page.push_back( TimedText( trimmed, entry.time() ) );
+                    }
+                }
+                while (!page.isEmpty() && page.constLast().text().isEmpty())
+                    page.removeLast();
+                lyrics = std::move( page );
             }
             m_syltLyrics = std::move( lyrics );
         }
@@ -2487,7 +2527,8 @@ void PlayerController::updateTime(vlc_tick_t system_now, bool forceUpdate)
         int currentIndex = -1;
         const vlc_tick_t currentTime = d->m_time.toVLCTick();
 
-        for (int i = 0; i < lyrics.size(); ++i)
+        // (lyrics without times have no current line)
+        for (int i = 0; d->m_lyricsTimed && i < lyrics.size(); ++i)
         {
             if ((lyrics[i].time().toVLCTick() - 1) > currentTime)
                 break;
@@ -2947,6 +2988,14 @@ QList<TimedText> PlayerController::getSyltLyrics() const
 {
     Q_D(const PlayerController);
     return d->syltLyrics();
+}
+
+bool PlayerController::lyricsTimed() const
+{
+    Q_D(const PlayerController);
+    // (known once the lines are read)
+    d->syltLyrics();
+    return d->m_lyricsTimed;
 }
 
 int PlayerController::getCurrentLyricIndex() const

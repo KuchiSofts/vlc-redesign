@@ -3385,15 +3385,6 @@ msgstr "Ingat posisi pemutaran"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Memungkinkan VLC melanjutkan media dari posisi terakhir Anda."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Balikkan arah gulir"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Roda yang menggeser posisi akan mundur saat diputar ke depan."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5038,6 +5029,11 @@ msgstr "Roda gulir"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Gulir horizontal"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Balikkan arah gulir"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9668,11 +9664,11 @@ msgstr "Build ini tidak dapat memeriksa pembaruan."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "Tidak dapat menghubungi GitHub. Periksa koneksi Anda dan coba lagi."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9704,6 +9700,15 @@ msgstr "Unduhan gagal. Periksa koneksi Anda dan coba lagi."
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "Pembaruan tidak cocok dengan checksum-nya, sehingga tidak digunakan."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Pembaruan tidak dapat ditulis di %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Pembaruan tidak dalam format yang dikenali versi ini."
@@ -9720,15 +9725,6 @@ msgstr "Pembaruan rusak."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Pembaruan ini bukan untuk versi ini."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Pembaruan tidak dapat ditulis di %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

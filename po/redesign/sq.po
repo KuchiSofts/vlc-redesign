@@ -3392,15 +3392,6 @@ msgstr "Mbaj mend pozicionin e luajtjes"
 msgid "Lets VLC continue the media where you left off."
 msgstr "Lejon VLC të vazhdojë median aty ku e latë."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "Përmbys drejtimin e lëvizjes"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "Rrotat që kërkojnë në kohë lëvizin prapa kur rrotullohen përpara."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -5046,6 +5037,11 @@ msgstr "Rrota e lëvizjes"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "Lëvizja horizontale"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "Përmbys drejtimin e lëvizjes"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9726,11 +9722,11 @@ msgstr "Ky ndërtim nuk mund të kontrollojë për përditësime."
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub nuk u arrit. Kontrolloni lidhjen tuaj dhe provoni sërish."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9764,6 +9760,15 @@ msgstr ""
 "Përditësimi nuk përputhet me shumën e tij të kontrollit, prandaj nuk u "
 "përdor."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "Përditësimi nuk mund të shkruhet në %1."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "Përditësimi nuk është në një format që e njeh ky version."
@@ -9780,15 +9785,6 @@ msgstr "Përditësimi është i dëmtuar."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "Përditësimi nuk është për këtë version."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "Përditësimi nuk mund të shkruhet në %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

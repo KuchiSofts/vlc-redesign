@@ -12,7 +12,11 @@
 #include <vlc_actions.h>
 
 #include <algorithm>
+#include <atomic>
 #include <cstdlib>
+
+// "Reverse scroll direction": one for the interface, read by each converter
+static std::atomic<bool> s_wheelReversed { false };
 
 /***************************************************************************
  * Hotkeys converters
@@ -283,7 +287,22 @@ Qt::Orientations WheelToVLCConverter::getWheelOrientation(int x, int y)
     return Qt::Orientations{};
 }
 
+void WheelToVLCConverter::setReversed(bool reversed)
+{
+    s_wheelReversed.store(reversed);
+}
+
+bool WheelToVLCConverter::reversed() const
+{
+    return s_wheelReversed.load();
+}
+
 void WheelToVLCConverter::wheelEvent( const QWheelEvent* e )
+{
+    handleWheel(e, true);
+}
+
+void WheelToVLCConverter::handleWheel( const QWheelEvent* e, bool reversible )
 {
     if (!e)
         return;
@@ -310,6 +329,12 @@ void WheelToVLCConverter::wheelEvent( const QWheelEvent* e )
         else if (preliminaryOrientation == Qt::Horizontal)
             p.setX(-p.x());
     }
+    // Reverse scroll direction: the plain wheel, up for down and left for
+    // right (it was the core's "Position control reversed" of a wheel that
+    // seeks: the volume never turned round, #103)
+    if (reversible && s_wheelReversed.load()
+        && (e->modifiers() & ~Qt::KeyboardModifiers(Qt::KeypadModifier)) == Qt::NoModifier)
+        p = -p;
     p += m_scrollAmount;
 
     if (p.isNull())
@@ -380,7 +405,8 @@ void WheelToVLCConverter::customWheelEvent(const QPoint& pixelDelta,
                                            const bool inverted)
 {
     QWheelEvent event({}, {}, pixelDelta, angleDelta, buttons, modifiers, Qt::ScrollPhase::NoScrollPhase, inverted);
-    wheelEvent(&event);
+    // (a drag on a touch screen, TouchWheelHandler.qml: not a wheel to reverse)
+    handleWheel(&event, false);
 }
 
 QString VLCKeyToString( unsigned val, bool locale )

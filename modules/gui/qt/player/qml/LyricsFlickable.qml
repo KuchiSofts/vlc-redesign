@@ -47,7 +47,24 @@ Flickable {
 
     signal playerPositionChangeRequested(vlcTime time)
 
+    // Lyrics without times (a file's plain text): a page with no current
+    // line. "Sync lyrics to playback" moves it with the playback then, its
+    // top at the start and its end at the end (#101)
+    readonly property bool timed: Player.lyricsTimed
+    // moved a line at a time, not at each change of the position (the view
+    // would be drawn again all through the song)
+    readonly property real _pageStep: VLCStyle.fontSize_xlarge * 2
+
     function snapToCurrentLyric() {
+        if (!timed) {
+            const range = Math.max(0, lyricsFlickable.contentHeight - lyricsFlickable.height)
+            const target = Math.round(range * Math.max(0, Math.min(1, Player.position)))
+            if (Math.abs(target - lyricsFlickable.contentY) >= Math.min(_pageStep, range)
+                || target === 0 || target === Math.round(range))
+                lyricsFlickable.contentY = target
+            return
+        }
+
         const idx = Player.currentLyricIndex
         if (idx < 0)
             return
@@ -91,6 +108,16 @@ Flickable {
         }
     }
 
+    Connections {
+        target: Player
+        enabled: lyricsSyncToPlayback && !lyricsFlickable.timed
+        function onPositionChanged() {
+            lyricsFlickable.snapToCurrentLyric()
+        }
+    }
+
+    onTimedChanged: scheduleSnapToCurrentLyric()
+
     Column {
         id: lyricsColumn
 
@@ -110,13 +137,18 @@ Flickable {
                 required property int index
                 required property timedText modelData
 
-                readonly property bool isCurrent: index === Player.currentLyricIndex
+                readonly property bool isCurrent: lyricsFlickable.timed && index === Player.currentLyricIndex
+                // a page without times: every line as readable as the next
+                readonly property bool emphasized: isCurrent || !lyricsFlickable.timed
 
                 anchors.left: parent.left
                 anchors.right: parent.right
-                height: (index === (lyricsRepeater.count - 1))
+                // (the last line of timed lyrics can be centred in the view;
+                // the empty line between two verses of a page: half a line)
+                height: (lyricsFlickable.timed && index === (lyricsRepeater.count - 1))
                     ? Math.max(implicitHeight, lyricsFlickable.height / 2)
-                    : implicitHeight
+                    : (!lyricsFlickable.timed && text.length === 0) ? Math.round(implicitHeight / 2)
+                                                                    : implicitHeight
                 padding: VLCStyle.margin_small
 
                 text: modelData.text
@@ -131,7 +163,7 @@ Flickable {
                 font.weight: isCurrent ? Font.Bold : Font.Normal
 
                 color: lyricsFlickable.colorContext.fg.primary
-                opacity: isCurrent ? 1.0 : 0.45
+                opacity: emphasized ? 1.0 : 0.45
                 scale: isCurrent ? 1.0 : (VLCStyle.fontSize_large / VLCStyle.fontSize_xlarge)
 
                 Behavior on scale {
@@ -148,6 +180,8 @@ Flickable {
                 }
 
                 TapHandler {
+                    // (a line without a time has nowhere to seek to)
+                    enabled: lyricsFlickable.timed
                     onTapped: {
                         lyricsFlickable.playerPositionChangeRequested(lyricDelegate.modelData.time)
                     }

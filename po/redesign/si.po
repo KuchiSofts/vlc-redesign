@@ -3311,15 +3311,6 @@ msgstr "ධාවන පිහිටීම මතක තබා ගන්න"
 msgid "Lets VLC continue the media where you left off."
 msgstr "ඔබ නතර කළ තැනින් මාධ්‍යය දිගටම කරගෙන යාමට VLC හට ඉඩ දෙයි."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "අනුචලන දිශාව ප්‍රතිලෝම කරන්න"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "ඉදිරියට කරකවන විට පිහිටීම මාරු කරන රෝද පසුපසට යයි."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -4945,6 +4936,11 @@ msgstr "අනුචලන රෝදය"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "තිරස් අනුචලනය"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "අනුචලන දිශාව ප්‍රතිලෝම කරන්න"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9548,11 +9544,11 @@ msgstr "මෙම නිකුතුවට යාවත්කාලීන සඳ
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHub වෙත ළඟා විය නොහැකි විය. ඔබේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9583,6 +9579,15 @@ msgstr "බාගැනීම අසමත් විය. ඔබේ සම්බ�
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "යාවත්කාලීනය එහි චෙක්සම් අගයට නොගැළපෙන නිසා, එය භාවිත නොකෙරිණි."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "යාවත්කාලීනය %1 තුළ ලිවිය නොහැක."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "යාවත්කාලීනය මෙම අනුවාදය දන්නා ආකෘතියක නොවේ."
@@ -9599,15 +9604,6 @@ msgstr "යාවත්කාලීනය හානි වී ඇත."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "යාවත්කාලීනය මෙම අනුවාදය සඳහා නොවේ."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "යාවත්කාලීනය %1 තුළ ලිවිය නොහැක."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

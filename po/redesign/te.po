@@ -3305,15 +3305,6 @@ msgstr "ప్లేబ్యాక్ స్థానాన్ని గుర�
 msgid "Lets VLC continue the media where you left off."
 msgstr "మీరు ఆపిన చోటు నుండి VLC మాధ్యమాన్ని కొనసాగించేలా చేస్తుంది."
 
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
-#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
-msgid "Reverse scroll direction"
-msgstr "స్క్రోల్ దిశను తిరగవేయి"
-
-#: modules/gui/qt/dialogs/preferences/config_model.cpp:1198
-msgid "The wheels that seek go backwards when turned forwards."
-msgstr "జరిపే చక్రాలు ముందుకు తిప్పినప్పుడు వెనుకకు జరుపుతాయి."
-
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 msgid "Web remote control"
@@ -4937,6 +4928,11 @@ msgstr "స్క్రోల్ చక్రం"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:310
 msgid "Horizontal scroll"
 msgstr "అడ్డు స్క్రోల్"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp:1197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:311
+msgid "Reverse scroll direction"
+msgstr "స్క్రోల్ దిశను తిరగవేయి"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:314
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:315
@@ -9536,11 +9532,11 @@ msgstr "ఈ బిల్డ్ నవీకరణల కోసం తనిఖ�
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr "GitHubను చేరుకోలేకపోయింది. మీ అనుసంధానాన్ని తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి."
 
-#: modules/gui/qt/util/redesign_updater.cpp:807
+#: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:811
+#: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
@@ -9571,6 +9567,15 @@ msgstr "దింపుకోలు విఫలమైంది. మీ అన�
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr "నవీకరణ దాని చెక్‌సమ్‌కు సరిపోలలేదు, కాబట్టి అది వాడబడలేదు."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1072
+#: modules/gui/qt/util/redesign_updater.cpp:1109
+#: modules/gui/qt/util/redesign_updater.cpp:1118
+#: modules/gui/qt/util/redesign_updater.cpp:1128
+#: modules/gui/qt/util/redesign_updater.cpp:1133
+#: modules/gui/qt/util/redesign_updater.cpp:1353
+msgid "The update can't be written in %1."
+msgstr "నవీకరణను %1లో రాయలేము."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1055
 msgid "The update isn't in a format this version knows."
 msgstr "నవీకరణ ఈ రూపాంతరానికి తెలిసిన ఆకృతిలో లేదు."
@@ -9587,15 +9592,6 @@ msgstr "నవీకరణ పాడైంది."
 #: modules/gui/qt/util/redesign_updater.cpp:1357
 msgid "The update isn't for this version."
 msgstr "ఈ నవీకరణ ఈ రూపాంతరం కోసం కాదు."
-
-#: modules/gui/qt/util/redesign_updater.cpp:1072
-#: modules/gui/qt/util/redesign_updater.cpp:1109
-#: modules/gui/qt/util/redesign_updater.cpp:1118
-#: modules/gui/qt/util/redesign_updater.cpp:1128
-#: modules/gui/qt/util/redesign_updater.cpp:1133
-#: modules/gui/qt/util/redesign_updater.cpp:1353
-msgid "The update can't be written in %1."
-msgstr "నవీకరణను %1లో రాయలేము."
 
 #: modules/gui/qt/util/redesign_updater.cpp:1074
 msgid ""

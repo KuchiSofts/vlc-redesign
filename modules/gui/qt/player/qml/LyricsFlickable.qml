@@ -27,6 +27,9 @@ Flickable {
     property bool lyricsSyncToPlayback: true
     property bool animationsEnabled: true
     property bool fadingEdgeEnabled: true
+    // the layer the fading edges are drawn with: off while the view's size
+    // changes on every frame (a new texture each time), the edges plain then
+    property bool fadingEdgeLayering: true
 
     readonly property ColorContext colorContext: ColorContext {
         colorSet: ColorContext.View
@@ -198,6 +201,9 @@ Flickable {
         anchors.fill: parent
 
         backgroundColor: "transparent"
+        // (its own rule, a layer for a background that is not opaque: always
+        // here, so only when the view's size is settled)
+        useLayering: lyricsFlickable.fadingEdgeLayering && effectCompatible
 
         sourceItem: lyricsFlickable.contentItem
 

@@ -15,6 +15,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Compact mode without a video shows the cone** (the window was empty).
+- **Turning off last.fm no longer shows an error or freezes** (a VideoLAN fault: its thread unlocked twice and kept
+  running).
+
 ### Technical
 
 - Version 0.7.3 started (VLC_REDESIGN_VERSION).

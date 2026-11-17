@@ -137,6 +137,17 @@ What is being worked on, updated as it changes (2026-11-10):
     open files 69 -> 42; the only warning the container's "C" locale. macOS, the launch test of the CI: 370 and
     378 media changes, 211.3 -> 211.4 MB (Apple Silicon) and 150.8 -> 151.2 MB (Intel). Android (the APK on the
     emulator): ten minutes of the same songs with Repeat all, 136 to 161 MB, no crash. No growth on any of them.
+  - 🟢 **Every on/off option of Settings, one by one** (desktop, 2026-11-17; qa tool setsweep.py: each switched
+    through UI Automation, Settings closed, the saved settings compared, switched back, compared again, the debug
+    build's assertion box looked for after each step). Found and fixed: *Start in compact mode* switched the
+    window to an empty view (MinimalView.qml: the cone's size was read from itself, 0; it now has its own, at
+    most half the view; the menu's Hide UI leaves it); *Submit played tracks to last.fm* switched off hit an
+    assertion in VideoLAN's module (audioscrobbler.c: the thread, stopped while idle, left only its wait, unlocked
+    a second time and went on to a handshake: an error box without a username, a wait that never ended, and
+    Close() with it, with one; `goto out` now; still the same in VideoLAN's master). Expected and left: Night mode
+    keeps the values it replaced (to put them back), a keyed subtitle service switched on without its key opens
+    as off (it needs the key first). Skipped by the sweep (they move the window under it; tried by hand): window
+    decorations, compact mode, the tray and one-instance options.
 - 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
   Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
   1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2

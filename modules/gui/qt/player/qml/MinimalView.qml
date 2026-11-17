@@ -105,17 +105,22 @@ FocusScope {
         focus: visible
 
         Image {
-            // drawn at the size shown (an SVG: sharp at any scale and zoom)
-            sourceSize: Qt.size(width, height)
             id: logo
+
+            // a size of its own, at most half the view: the size was read
+            // from the image's, itself the size shown (a loop that stayed at
+            // 0: an empty window in compact mode)
+            readonly property real side: Math.min(parent.width / 2, parent.height / 2, VLCStyle.dp(256, VLCStyle.scale))
+            // drawn at the size shown (an SVG: sharp at any scale and zoom)
+            sourceSize: Qt.size(side, side)
 
             source: MainCtx.useXmasCone()
                     ? "qrc:///logo/vlc48-xmas.png"
                     : "qrc:///redesign/logo.svg"
 
             anchors.centerIn: parent
-            width: Math.min(parent.width / 2, sourceSize.width)
-            height: Math.min(parent.height / 2, sourceSize.height)
+            width: side
+            height: side
             fillMode: Image.PreserveAspectFit
             smooth: true
             visible: MainCtx.bgCone

@@ -185,6 +185,8 @@ signals:
 
 private:
     static void onMediaLibraryEvent( void* data, const vlc_ml_event_t* event );
+    // Once: the songs an older version listed as videos read again (#111)
+    void reparseSongsListedAsVideos();
 
 private:
     qt_intf_t* m_intf;

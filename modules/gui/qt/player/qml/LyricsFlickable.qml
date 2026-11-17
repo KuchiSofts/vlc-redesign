@@ -51,8 +51,9 @@ Flickable {
     signal playerPositionChangeRequested(vlcTime time)
 
     // Lyrics without times (a file's plain text): a page with no current
-    // line. "Sync lyrics to playback" moves it with the playback then, its
-    // top at the start and its end at the end (#101)
+    // line. "Sync lyrics to playback" moves it with the playback then, the
+    // middle of the view at the part of the lyrics the part played gives:
+    // its top at the start, its end as the last half page is sung (#101, #109)
     readonly property bool timed: Player.lyricsTimed
     // moved a line at a time, not at each change of the position (the view
     // would be drawn again all through the song)
@@ -61,7 +62,19 @@ Flickable {
     function snapToCurrentLyric() {
         if (!timed) {
             const range = Math.max(0, lyricsFlickable.contentHeight - lyricsFlickable.height)
-            const target = Math.round(range * Math.max(0, Math.min(1, Player.position)))
+            // the middle of the view where the song is (its part played, of
+            // the lyrics): the lines sung are about there, the end is shown
+            // as its last half page is sung (#109; the page's top there kept
+            // the lines sung near the top, the end at the very last moment)
+            const sung = lyricsFlickable.contentHeight * Math.max(0, Math.min(1, Player.position))
+            let target = Math.round(Math.max(0, Math.min(range, sung - lyricsFlickable.height / 2)))
+            // within a step of an end, the end itself: moved a step at a
+            // time, the page stayed short of its last lines as the song
+            // ended
+            if (range - target < _pageStep)
+                target = Math.round(range)
+            else if (target < _pageStep)
+                target = 0
             if (Math.abs(target - lyricsFlickable.contentY) >= Math.min(_pageStep, range)
                 || target === 0 || target === Math.round(range))
                 lyricsFlickable.contentY = target

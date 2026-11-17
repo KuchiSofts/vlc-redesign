@@ -325,7 +325,7 @@ Item {
                 anchors.fill: parent
                 code: String(root.settingValue ?? "")
                 onPicked: (code) => root.commit(code)
-                Accessible.name: root.accessibleLabel
+                label: root.accessibleLabel
                 background: Rectangle {
                     radius: root.px(6)
                     color: root.c("#090909")

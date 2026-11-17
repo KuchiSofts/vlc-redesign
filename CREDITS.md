@@ -59,7 +59,9 @@ Thank you to everyone who tested, reported and translated:
   - [@decider07](https://github.com/decider07): songs listed as videos, and the library's folders
     ([#81](https://github.com/KuchiSofts/vlc-redesign/issues/81)).
   - [@xITmasterx](https://github.com/xITmasterx): playlists not opened from Finder on macOS
-    ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84)).
+    ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84)), lyrics without times out of step with the song
+    ([#109](https://github.com/KuchiSofts/vlc-redesign/issues/109)), and the wheel at the end of the queue changing
+    the volume ([#113](https://github.com/KuchiSofts/vlc-redesign/issues/113)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up
@@ -76,6 +78,8 @@ Thank you to everyone who tested, reported and translated:
     service for its Arabic subtitles ([#70](https://github.com/KuchiSofts/vlc-redesign/issues/70)).
   - [@BarbodF](https://github.com/BarbodF): keys in full screen that don't reveal the controls, as in VLC 3
     ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
+  - [@Sagarsantra1](https://github.com/Sagarsantra1): episodes grouped by their show and played in order
+    ([#108](https://github.com/KuchiSofts/vlc-redesign/issues/108)).
 - **Translations:**
   - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
     ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).

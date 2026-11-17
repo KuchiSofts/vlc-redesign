@@ -25,13 +25,33 @@
 // VLC includes
 #include "qt.hpp"
 
+#include <QRegularExpression>
+
+// The library names a group of videos by the start their names share: the
+// episodes of a show give "My Show S01E" (S01E01, S01E02...), "Show
+// 1x0" or "Show Episode ". Shown as the show's name, without what is left of
+// an episode's number (#108); a name with nothing else stays as it is
+static QString showName(const QString &name)
+{
+    static const QRegularExpression marker(
+        QStringLiteral("(?:^|[\\s._\\-(\\[])(?:S\\d{0,2}(?:\\s*E\\d{0,3})?|Season\\s*\\d*|\\d{1,2}x\\d{0,3}"
+                       "|E(?:p(?:isode)?)?\\.?\\s*\\d{0,4}|Part\\s*\\d*)$"),
+        QRegularExpression::CaseInsensitiveOption);
+    static const QRegularExpression tail(QStringLiteral("[\\s._\\-\\x{2013}\\x{2014}(\\[]+$"));
+    QString shown = name;
+    shown.remove(marker);
+    shown.remove(tail);
+    shown = shown.trimmed();
+    return shown.isEmpty() ? name : shown;
+}
+
 //-------------------------------------------------------------------------------------------------
 // Ctor / dtor
 //-------------------------------------------------------------------------------------------------
 
 MLGroup::MLGroup(const vlc_ml_group_t * data)
     : MLItem(MLItemId(data->i_id, VLC_ML_PARENT_GROUP))
-    , m_title(qfu(data->psz_name))
+    , m_title(showName(qfu(data->psz_name)))
     , m_duration(data->i_duration)
     , m_date(QDateTime::fromSecsSinceEpoch(data->i_creation_date))
     , m_count(data->i_nb_total_media)

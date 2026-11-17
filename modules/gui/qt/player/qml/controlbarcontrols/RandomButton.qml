@@ -26,5 +26,9 @@ RedesignIconButton {
     iconSource: checked ? "qrc:///redesign/icons/shuffle/active.svg" : "qrc:///redesign/icons/shuffle/default.svg"
     onClicked: MainPlaylistController.toggleRandom()
     description: qsTr("Shuffle")
+    // (on or off, said with the name, as Android does: a ToolButton exposes its
+    // checked state only when checkable, which would undo the binding,
+    // and Qt gives a description to UI Automation's FullDescription only)
+    Accessible.name: description + ", " + (checked ? qsTr("On") : qsTr("Off"))
     AccessibleCompat.id: "randomButton"
 }

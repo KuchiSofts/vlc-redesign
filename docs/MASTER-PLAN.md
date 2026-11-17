@@ -128,7 +128,64 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.3** started.
+- 🟡 **0.7.3** (2026-11-17): an update release of #108, #109 and the faults found by trying every option of
+  Settings (Windows, ARM64, Linux, macOS, Android; the Samsung TV app stays 0.6.8, `follows: 0.7.3`).
+  - 🟢 **Memory of 0.7.2 on every desktop system** (after its release, 2026-11-17): Windows, 30 minutes of six songs
+    looping at four times the speed (covers bright and dark, lyrics timed, plain and none: the music view changes
+    its layout at each song): 283 -> 285 MB on average, at most 314, handles 2591 -> 2380, threads 176 -> 139.
+    Linux, the released AppImage in a container (Xvfb, the same songs, 30 minutes): it grows to about 385 MB in
+    three minutes and stays near 395 MB from the fifteenth to the thirtieth (394 at the end), threads 126 -> 99,
+    open files 69 -> 42; the only warning the container's "C" locale. macOS, the launch test of the CI: 370 and
+    378 media changes, 211.3 -> 211.4 MB (Apple Silicon) and 150.8 -> 151.2 MB (Intel). Android (the APK on the
+    emulator): ten minutes of the same songs with Repeat all, 136 to 161 MB, no crash. No growth on any of them.
+  - 🟢 **Every on/off option of Settings, one by one** (desktop, 2026-11-17; qa tool setsweep.py: each switched
+    through UI Automation, Settings closed, the saved settings compared, switched back, compared again, the debug
+    build's assertion box looked for after each step). Found and fixed: *Start in compact mode* switched the
+    window to an empty view (MinimalView.qml: the cone's size was read from itself, 0; it now has its own, at
+    most half the view; the menu's Hide UI leaves it); *Submit played tracks to last.fm* switched off hit an
+    assertion in VideoLAN's module (audioscrobbler.c: the thread, stopped while idle, left only its wait, unlocked
+    a second time and went on to a handshake: an error box without a username, a wait that never ended, and
+    Close() with it, with one; `goto out` now; still the same in VideoLAN's master). Expected and left: Night mode
+    keeps the values it replaced (to put them back), a keyed subtitle service switched on without its key opens
+    as off (it needs the key first). Skipped by the sweep (they move the window under it; tried by hand): window
+    decorations, compact mode, the tray and one-instance options.
+  - 🟢 **Every drop-down list of Settings** (setsweep.py --combos: opened, another row picked, saved, the first one
+    picked again): 46 change their option and come back. Left as they are: the visualizer keeps its last effect and
+    post-processing its last level while off (unused while off), the language pickers (a list of their own),
+    Interface size (scales the window under the sweep; it works). The rows of the lists had no name for an
+    assistive tool (an ItemDelegate takes it from its `text`, never set as the rows draw their own): named in
+    SettingsDropdown, ComboBoxExt, the shortcut scope picker, the subtitle associations, folder cards, artist
+    rows and TV episodes; the language pickers were named by their value only (now the setting, the language as
+    the description). *Default optical drive* listed drives on Windows only: Linux now lists /dev/sr*.
+  - 🟢 **Controls an assistive tool cannot name** (noname.py: the 7 views of the sidebar, the 13 pages of Settings,
+    the music player): none, but the two password fields (last.fm, proxy), named in QML and by Qt (its sources
+    read: qaccessiblequickitem.cpp gives `Accessible.name`, the Windows bridge passes it); the managed UIA client
+    reads no name for a password field.
+  - 🟢 **#109 (macOS 0.7.2): lyrics without times, no highlight, not at their end as the song ends.** The song's
+    lyrics are plain text in its tags (no times: no line can be the one sung; a timed .lrc beside it, or SYLT, gives
+    the highlight). Their page moved a step at a time with the song and stayed up to a step short of its end
+    (LyricsFlickable.qml: within a step of an end, the end itself). Android showed them still: they now move with
+    the song the same way (RdLyricsSheet.followPage, paused 4 s after a touch).
+  - 🟢 **#108: episodes grouped by show.** It was there (Videos › sort menu › Group by name; VideoLAN's library
+    groups by the start of the names, Android by default): tried with eleven episode files (S01E01, 1x03, Episode
+    1/2/10 and a film): three groups and the film. Two faults: a group was named by the shared start ("My Show
+    S01E", "Other Show Episode"): shown as the show's name now (MLGroup showName on the desktop, RdShowName on
+    Android, bound in the cards as their item changes); the library sorts titles as text (Episode 1, 10, 2): a
+    group's videos by title are in their natural order now, in the group and when it is played or queued
+    (naturalCompare in mlhelper.cpp, MLVideoModel's loader, medialib.cpp; RdNaturalOrder on Android, in getAll
+    and the provider's pages; unit tests RdShowNameTest and RdNaturalOrderTest; the patterns run on the emulator's
+    own runtime, as ICU's regex differs). Android's medialibrary is the prebuilt package of Maven: the change lives
+    in the app.
+  - 🟢 **#113 (macOS): the wheel at the end of the queue changed the volume.** The music view turns any wheel it
+    gets into the volume; a list at its end (or too short to scroll) does not take the wheel, which went on to it.
+    The queue's card takes every wheel now (`wheelEnabled`, as the lyrics' pane), and the library beside the player
+    a wheel its lists leave (20 notches over the queue: the volume kept; over the cover: changed). Also: the bar's
+    on/off buttons (Shuffle, Record, the queue, the right sidebar, the library) say their state with their name
+    ("Shuffle, On", as Android): a ToolButton exposes checked only when checkable (that would undo the binding to
+    the player), and Qt gives a description to UI Automation's FullDescription only. Found by a sweep of the bar's
+    buttons, each clicked and looked at: all of them do what they show; the main menu's 13 items too.
+  - 📋 **#111** (the list views: room under the header, the covers) and **#112** (the library's folders as a place of
+    their own, in the design) arrived while 0.7.3 was built: next, in 0.7.4's roadmap.
 - 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
   Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
   1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2

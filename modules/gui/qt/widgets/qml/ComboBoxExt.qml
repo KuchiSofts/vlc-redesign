@@ -64,6 +64,8 @@ T.ComboBox {
         // (the text under the one of the box: from its start)
         leftPadding: mirrored ? padding : control.leftPadding
         rightPadding: mirrored ? control.rightPadding : padding
+        // (the row draws its own text: the name an assistive tool reads)
+        Accessible.name: contentItem.text
         contentItem: Widgets.ListLabel {
             text: control.textRole ? (Helpers.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
             color: control.color

@@ -25,6 +25,9 @@ T.Button {
     // a choice of no language at all ("None"), for a secondary language
     property bool allowNone: false
     property string noneText: qsTr("None")
+    // the setting it picks for: the name an assistive tool reads, the
+    // language told with it (without one, the language is the name)
+    property string label: ""
     signal picked(string code)
 
     // the colours of the place it is in
@@ -51,7 +54,8 @@ T.Button {
     implicitHeight: VLCStyle.dp(44, VLCStyle.scale)
     focusPolicy: Qt.StrongFocus
     Accessible.role: Accessible.ComboBox
-    Accessible.name: _name
+    Accessible.name: label !== "" ? label : _name
+    Accessible.description: label !== "" ? _name : ""
 
     onClicked: {
         popup.open()

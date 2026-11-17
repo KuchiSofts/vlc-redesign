@@ -78,6 +78,7 @@ Item {
                 width: 320
                 height: 46
                 code: root.primary
+                label: qsTr("Default language")
                 fontSize: 15
                 fieldColor: VLCStyle.redesign.color("#090909", "#dedede")
                 borderColor: VLCStyle.redesign.color("#191919", "#ababaa")
@@ -98,6 +99,7 @@ Item {
                 height: 46
                 code: root.secondary
                 allowNone: true
+                label: qsTr("Second language (when there are none)")
                 fontSize: 15
                 fieldColor: VLCStyle.redesign.color("#090909", "#dedede")
                 borderColor: VLCStyle.redesign.color("#191919", "#ababaa")

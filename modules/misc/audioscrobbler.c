@@ -701,8 +701,12 @@ static void *Run(void *data)
         {
             if (vlc_sem_trywait(&p_sys->dead) == 0)
             {
+                /* the thread ends: "break" left only this wait, unlocked
+                 * the lock a second time and went on to a handshake (an
+                 * error box when turned off; a wait that never ended, and
+                 * Close() with it, once a username was set) */
                 vlc_mutex_unlock(&p_sys->lock);
-                break;
+                goto out;
             }
 
             vlc_cond_wait(&p_sys->wait, &p_sys->lock);

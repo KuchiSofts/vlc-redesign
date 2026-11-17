@@ -77,3 +77,39 @@ QString getFirstSymbol(const QString &str)
         ret = str[0].toUpper();
     return ret;
 }
+
+int naturalCompare(const QString &a, const QString &b)
+{
+    // (by hand: QCollator's numeric mode needs ICU, which a build may lack)
+    qsizetype i = 0, j = 0;
+    while (i < a.size() && j < b.size())
+    {
+        if (a[i].isDigit() && b[j].isDigit())
+        {
+            // a run of digits each: the shorter number (without its leading
+            // zeros) is the smaller, then digit by digit
+            qsizetype si = i, sj = j;
+            while (si < a.size() && a[si] == u'0') ++si;
+            while (sj < b.size() && b[sj] == u'0') ++sj;
+            qsizetype ei = si, ej = sj;
+            while (ei < a.size() && a[ei].isDigit()) ++ei;
+            while (ej < b.size() && b[ej].isDigit()) ++ej;
+            if (ei - si != ej - sj)
+                return (ei - si) < (ej - sj) ? -1 : 1;
+            const int digits = QStringView(a).mid(si, ei - si).compare(QStringView(b).mid(sj, ej - sj));
+            if (digits != 0)
+                return digits;
+            i = ei;
+            j = ej;
+            continue;
+        }
+        const QChar ca = a[i].toCaseFolded(), cb = b[j].toCaseFolded();
+        if (ca != cb)
+            return ca < cb ? -1 : 1;
+        ++i;
+        ++j;
+    }
+    if (i < a.size() || j < b.size())
+        return i < a.size() ? 1 : -1;
+    return QString::compare(a, b, Qt::CaseInsensitive);
+}

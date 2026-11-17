@@ -117,4 +117,9 @@ QString urlToDisplayString(const QUrl &url);
 QUrl getParentURLFromURL(const QString &);
 QString getFirstSymbol(const QString &);
 
+// Titles in their natural order: the numbers in them as numbers, "Episode 2"
+// before "Episode 10" (the library's order puts 10 first), the rest without
+// case (#108). <0, 0, >0 as QString::compare
+int naturalCompare(const QString &a, const QString &b);
+
 #endif // MLHELPER_HPP

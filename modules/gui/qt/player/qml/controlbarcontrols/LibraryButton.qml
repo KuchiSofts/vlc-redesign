@@ -21,6 +21,10 @@ RedesignIconButton {
     // button leaves it for the player
     checked: _hasPlayer ? rootPlayer.libraryVisible : !MainCtx.playerView
     description: qsTr("Library")
+    // (shown or not, said with the name, as Android does: a ToolButton exposes its
+    // checked state only when checkable, which would undo the binding,
+    // and Qt gives a description to UI Automation's FullDescription only)
+    Accessible.name: description + ", " + (checked ? qsTr("On") : qsTr("Off"))
     AccessibleCompat.id: "barLibraryButton"
 
     onClicked: {

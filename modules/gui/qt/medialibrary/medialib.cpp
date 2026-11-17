@@ -50,6 +50,17 @@ MediaLib::~MediaLib()
     m_runner->destroy();
 }
 
+// The videos of a group (the episodes of a show), played or queued in their
+// natural order: "Episode 2" before "Episode 10", as the group shows them (#108)
+static void sortGroupNaturally(const MLItemId &itemId, std::vector<const vlc_ml_media_t *> &media)
+{
+    if (itemId.type != VLC_ML_PARENT_GROUP)
+        return;
+    std::stable_sort(media.begin(), media.end(), [](const vlc_ml_media_t *a, const vlc_ml_media_t *b) {
+        return naturalCompare(qfu(a->psz_title), qfu(b->psz_title)) < 0;
+    });
+}
+
 static void convertMLItemToPlaylistMedias(vlc_medialibrary_t* ml, const MLItemId & itemId, const QStringList &options, QVector<vlc::playlist::Media>& medias)
 {
     //invalid item
@@ -70,8 +81,12 @@ static void convertMLItemToPlaylistMedias(vlc_medialibrary_t* ml, const MLItemId
             return;
 
         auto mediaRange = ml_range_iterate<vlc_ml_media_t>( media_list );
-        std::transform(mediaRange.begin(), mediaRange.end(), std::back_inserter(medias), [&](vlc_ml_media_t& m) {
-            SharedInputItem item(vlc_ml_get_input_item( ml, m.i_id ), false);
+        std::vector<const vlc_ml_media_t *> ordered;
+        for (const vlc_ml_media_t &m : mediaRange)
+            ordered.push_back(&m);
+        sortGroupNaturally(itemId, ordered);
+        std::transform(ordered.begin(), ordered.end(), std::back_inserter(medias), [&](const vlc_ml_media_t *m) {
+            SharedInputItem item(vlc_ml_get_input_item( ml, m->i_id ), false);
             return vlc::playlist::Media(item.get(), options);
         });
     }
@@ -371,8 +386,12 @@ void MediaLib::mlInputItem(const QVector<MLItemId>& itemIdVector, QJSValue callb
                 if (list == nullptr)
                     continue;
 
+                std::vector<const vlc_ml_media_t *> ordered;
                 for (const vlc_ml_media_t & media : ml_range_iterate<vlc_ml_media_t>(list))
-                    ctx.items.emplace_back(vlc_ml_get_input_item(ml, media.i_id), false);
+                    ordered.push_back(&media);
+                sortGroupNaturally(mlId, ordered);
+                for (const vlc_ml_media_t *media : ordered)
+                    ctx.items.emplace_back(vlc_ml_get_input_item(ml, media->i_id), false);
             }
         }
     },

@@ -192,6 +192,7 @@ SettingsSectionTitle {
             height: root.px(40)
             code: root.secondary
             allowNone: true
+            label: qsTr("Second language (when there are none in the preferred one)")
             onPicked: (code) => {
                 root.secondary = code === root.primary ? "" : code
                 if (root.secondary === "")

@@ -513,6 +513,9 @@ Widgets.RedesignDialog {
                     leftPadding: mirrored ? 0 : VLCStyle.dp(12, VLCStyle.scale)
                     rightPadding: mirrored ? VLCStyle.dp(12, VLCStyle.scale) : 0
                     highlighted: scopePicker.highlightedIndex === index
+                    // (the row draws its own text: the name an assistive tool reads)
+                    Accessible.name: modelData.label
+                    Accessible.selected: index === scopePicker.currentIndex
                     contentItem: Text {
                         textFormat: Text.PlainText
                         text: modelData.label

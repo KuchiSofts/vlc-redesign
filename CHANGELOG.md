@@ -7,16 +7,44 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `6bdf37de8e` (2026-11-15).
 
-**Contents:** [Unreleased](#unreleased) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [Unreleased]
+## [0.7.3] · 2026-11-17
+
+An update release: episodes grouped by their show's name and played in order, lyrics without times that follow the
+song to their last line, the wheel at the end of the queue no longer changing the volume, compact mode and turning
+off last.fm fixed, every choice of the lists named for screen readers. Windows, Linux, macOS and Android; the Samsung
+TV app stays 0.6.8.
+
+### Changed
+
+- **Episodes grouped by their show's name, in order** (#108): Videos › Group by name shows "My Show", not
+  "My Show S01E", and plays Episode 2 before Episode 10 (Windows, Linux, macOS, Android).
+
+### Fixed
+
+- **Lyrics without times follow the song to their last line** (#109); on Android they now move with the song too.
+- **Compact mode without a video shows the cone** (the window was empty).
+- **Turning off last.fm no longer shows an error or freezes** (a VideoLAN fault: its thread unlocked twice and kept
+  running).
+- **Screen readers name every choice of the drop-down lists** and say which setting a language picker sets.
+- **Linux: Default optical drive lists the computer's drives** (/dev/sr0, /dev/sr1...).
+- **Scrolling past the end of the queue no longer changes the volume** (#113), nor in the library beside the player.
+- **Screen readers hear whether Shuffle, Record, the queue and the library are on.**
+- **Android: What's new no longer shows an old list in other languages.**
 
 ### Technical
 
+- `LyricsFlickable.qml`: lyrics without times keep the middle of the view at the part of the lyrics the part played
+  gives (their end shown as the last half page is sung).
+- `mlgroup.cpp`, `mlvideomodel.cpp`, `medialib.cpp`, `mlhelper.cpp`: a group's name without what is left of an
+  episode's number; its videos by title in their natural order (`naturalCompare`), in the group and when played.
+- Every on/off option, drop-down list and number field of Settings tried one by one (91, 46, 12): each saves and
+  comes back.
 - Version 0.7.3 started (VLC_REDESIGN_VERSION).
 
 ## [0.7.2] · 2026-11-16

@@ -20,6 +20,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Compact mode without a video shows the cone** (the window was empty).
 - **Turning off last.fm no longer shows an error or freezes** (a VideoLAN fault: its thread unlocked twice and kept
   running).
+- **Screen readers name every choice of the drop-down lists** and say which setting a language picker sets.
+- **Linux: Default optical drive lists the computer's drives** (/dev/sr0, /dev/sr1...).
 
 ### Technical
 

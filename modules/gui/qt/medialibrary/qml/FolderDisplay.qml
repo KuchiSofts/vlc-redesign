@@ -326,6 +326,8 @@ Widgets.PageExt {
             width: grid.cellWidth
             height: grid.cellHeight
             padding: 0
+            // (the card draws its own name: the one an assistive tool reads)
+            Accessible.name: card.model?.name ?? ""
 
             // Figma 970:3792: the row under the pointer has no background
             // (its name in the accent, its picture darkened with the play)

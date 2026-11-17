@@ -148,6 +148,18 @@ What is being worked on, updated as it changes (2026-11-10):
     keeps the values it replaced (to put them back), a keyed subtitle service switched on without its key opens
     as off (it needs the key first). Skipped by the sweep (they move the window under it; tried by hand): window
     decorations, compact mode, the tray and one-instance options.
+  - 🟢 **Every drop-down list of Settings** (setsweep.py --combos: opened, another row picked, saved, the first one
+    picked again): 46 change their option and come back. Left as they are: the visualizer keeps its last effect and
+    post-processing its last level while off (unused while off), the language pickers (a list of their own),
+    Interface size (scales the window under the sweep; it works). The rows of the lists had no name for an
+    assistive tool (an ItemDelegate takes it from its `text`, never set as the rows draw their own): named in
+    SettingsDropdown, ComboBoxExt, the shortcut scope picker, the subtitle associations, folder cards, artist
+    rows and TV episodes; the language pickers were named by their value only (now the setting, the language as
+    the description). *Default optical drive* listed drives on Windows only: Linux now lists /dev/sr*.
+  - 🟢 **Controls an assistive tool cannot name** (noname.py: the 7 views of the sidebar, the 13 pages of Settings,
+    the music player): none, but the two password fields (last.fm, proxy), named in QML and by Qt (its sources
+    read: qaccessiblequickitem.cpp gives `Accessible.name`, the Windows bridge passes it); the managed UIA client
+    reads no name for a password field.
 - 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
   Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
   1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2

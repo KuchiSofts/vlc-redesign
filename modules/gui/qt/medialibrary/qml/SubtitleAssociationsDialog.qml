@@ -337,6 +337,9 @@ Widgets.RedesignDialog {
             leftPadding: VLCStyle.dp(12, VLCStyle.scale)
             rightPadding: VLCStyle.dp(12, VLCStyle.scale)
             highlighted: dropdown.highlightedIndex === index
+            // (the row draws its own text: the name an assistive tool reads)
+            Accessible.name: contentItem.text
+            Accessible.selected: index === dropdown.currentIndex
 
             contentItem: CenteredText {
                 text: modelData[dropdown.textRole] !== undefined ? modelData[dropdown.textRole] : modelData

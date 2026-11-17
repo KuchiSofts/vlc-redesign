@@ -30,6 +30,7 @@
 # include <windows.h>
 #endif
 
+#include <QDir>
 #include <QFontDatabase>
 #include <QGuiApplication>
 #include <QLocale>
@@ -357,6 +358,20 @@ QVariantList opticalDriveChoices(const QString &current)
         const QString drive = QString(QChar('A' + i)) + QLatin1Char(':');
         choices.append(choice(drive, drive));
         listed = listed || drive.compare(current, Qt::CaseInsensitive) == 0;
+    }
+#elif defined(__linux__)
+    // the SCSI CD-ROM devices of the kernel (/dev/sr0, /dev/sr1...), as
+    // the default of VLC (/dev/sr0)
+    QStringList names = QDir(QStringLiteral("/dev")).entryList({ QStringLiteral("sr[0-9]*") },
+                                                              QDir::System | QDir::Files);
+    std::sort(names.begin(), names.end(), [](const QString &a, const QString &b) {
+        return a.size() != b.size() ? a.size() < b.size() : a < b;
+    });
+    for (const QString &name : names)
+    {
+        const QString drive = QStringLiteral("/dev/") + name;
+        choices.append(choice(drive, drive));
+        listed = listed || drive == current;
     }
 #endif
     if (!listed)

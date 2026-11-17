@@ -68,6 +68,8 @@ T.ItemDelegate {
     hoverEnabled: true
 
     Accessible.onPressAction: root.itemClicked()
+    // (the row draws its own name: the one an assistive tool reads)
+    Accessible.name: root.model?.name ? root.model.name : qsTr("Unknown artist")
 
     Component.onCompleted: {
         // Qt Quick AbstractButton sets a cursor for itself, unset it so that if the view has

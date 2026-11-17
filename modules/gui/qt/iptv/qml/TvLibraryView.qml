@@ -239,11 +239,14 @@ FocusScope {
                 width: ListView.view.width
                 height: root.px(48)
                 onClicked: Iptv.playUrl(modelData.url, (root.series.name ?? "") + " – " + modelData.title)
+                // (the row draws its own text: the name an assistive tool reads)
+                Accessible.name: episodeText.text
                 background: Rectangle {
                     radius: root.px(6)
                     color: episode.hovered ? root.c("#151515", "#b5b5b4") : "transparent"
                 }
                 contentItem: Text {
+                    id: episodeText
                     leftPadding: root.px(12)
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft

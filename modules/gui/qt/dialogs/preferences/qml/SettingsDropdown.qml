@@ -85,6 +85,11 @@ T.ComboBox {
 
         readonly property bool chosen: index === root.currentIndex
 
+        // (not drawn, the row has its own text: the name an assistive tool
+        // reads, with the one chosen)
+        text: optionText.text
+        Accessible.selected: option.chosen
+
         width: ListView.view ? ListView.view.width : root.width
         implicitHeight: root.px(44)
         highlighted: root.highlightedIndex === index

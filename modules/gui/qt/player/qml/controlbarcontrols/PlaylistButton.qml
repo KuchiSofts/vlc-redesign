@@ -34,6 +34,10 @@ RedesignIconButton {
     checked: MainCtx.playqueuePanel.visible
 
     description: qsTr("Play Queue")
+    // (open or not, said with the name, as Android does: a ToolButton exposes its
+    // checked state only when checkable, which would undo the binding,
+    // and Qt gives a description to UI Automation's FullDescription only)
+    Accessible.name: description + ", " + (checked ? qsTr("On") : qsTr("Off"))
 
     AccessibleCompat.id: "playqueueButton"
 }

@@ -128,7 +128,8 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.4** started: #111 and #112, both from @xITmasterx.
+- 🟡 **0.7.4** (2026-11-17): an update release of #111 and #112, both from @xITmasterx (Windows, ARM64, Linux,
+  macOS, Android; the Samsung TV app stays 0.6.8, `follows: 0.7.4`).
   - 🟢 **#112, Folders** (built and tried on Windows): a Folders row in the sidebar after Music opens the library's
     folders (FolderDisplay without a folder, LocalFolderModel `roots`); each opens its folder page, as the design's
     Videos page does ("Shows", "The Wand", "S01"). Tried: the empty page ("The library has no folders yet"), Add

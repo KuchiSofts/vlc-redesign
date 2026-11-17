@@ -37,6 +37,10 @@ Updated as the work moves (last: 2026-11-17, 0.7.3 released).
 **0.7.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 📋 The list views (songs, albums) as the design draws them: room under the header, the covers shown
+  ([#111](https://github.com/KuchiSofts/vlc-redesign/issues/111))
+- 📋 The library's folders as a place of their own, for videos and music, as in the design
+  ([#112](https://github.com/KuchiSofts/vlc-redesign/issues/112))
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
@@ -115,6 +119,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 
 - ✅ Episodes grouped by their show's name and played in order (#108)
 - ✅ Lyrics without times follow the song to their last line (#109)
+- ✅ The wheel at the end of the queue no longer changes the volume (#113)
 - ✅ Compact mode without a video shows the cone; turning off last.fm no longer errs or freezes
 - ✅ Screen readers name every choice of the lists; Linux lists its optical drives
 - ✅ Android: What's new no longer shows an old list in other languages

@@ -16,8 +16,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ## [0.7.3] · 2026-11-17
 
 An update release: episodes grouped by their show's name and played in order, lyrics without times that follow the
-song to their last line, compact mode and turning off last.fm fixed, every choice of the lists named for screen
-readers. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
+song to their last line, the wheel at the end of the queue no longer changing the volume, compact mode and turning
+off last.fm fixed, every choice of the lists named for screen readers. Windows, Linux, macOS and Android; the Samsung
+TV app stays 0.6.8.
 
 ### Changed
 
@@ -32,6 +33,8 @@ readers. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
   running).
 - **Screen readers name every choice of the drop-down lists** and say which setting a language picker sets.
 - **Linux: Default optical drive lists the computer's drives** (/dev/sr0, /dev/sr1...).
+- **Scrolling past the end of the queue no longer changes the volume** (#113), nor in the library beside the player.
+- **Screen readers hear whether Shuffle, Record, the queue and the library are on.**
 - **Android: What's new no longer shows an old list in other languages.**
 
 ### Technical

@@ -176,6 +176,16 @@ What is being worked on, updated as it changes (2026-11-10):
     and the provider's pages; unit tests RdShowNameTest and RdNaturalOrderTest; the patterns run on the emulator's
     own runtime, as ICU's regex differs). Android's medialibrary is the prebuilt package of Maven: the change lives
     in the app.
+  - 🟢 **#113 (macOS): the wheel at the end of the queue changed the volume.** The music view turns any wheel it
+    gets into the volume; a list at its end (or too short to scroll) does not take the wheel, which went on to it.
+    The queue's card takes every wheel now (`wheelEnabled`, as the lyrics' pane), and the library beside the player
+    a wheel its lists leave (20 notches over the queue: the volume kept; over the cover: changed). Also: the bar's
+    on/off buttons (Shuffle, Record, the queue, the right sidebar, the library) say their state with their name
+    ("Shuffle, On", as Android): a ToolButton exposes checked only when checkable (that would undo the binding to
+    the player), and Qt gives a description to UI Automation's FullDescription only. Found by a sweep of the bar's
+    buttons, each clicked and looked at: all of them do what they show; the main menu's 13 items too.
+  - 📋 **#111** (the list views: room under the header, the covers) and **#112** (the library's folders as a place of
+    their own, in the design) arrived while 0.7.3 was built: next, in 0.7.4's roadmap.
 - 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
   Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
   1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2

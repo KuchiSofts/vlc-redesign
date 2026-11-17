@@ -59,8 +59,9 @@ Thank you to everyone who tested, reported and translated:
   - [@decider07](https://github.com/decider07): songs listed as videos, and the library's folders
     ([#81](https://github.com/KuchiSofts/vlc-redesign/issues/81)).
   - [@xITmasterx](https://github.com/xITmasterx): playlists not opened from Finder on macOS
-    ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84)), and lyrics without times out of step with the song
-    ([#109](https://github.com/KuchiSofts/vlc-redesign/issues/109)).
+    ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84)), lyrics without times out of step with the song
+    ([#109](https://github.com/KuchiSofts/vlc-redesign/issues/109)), and the wheel at the end of the queue changing
+    the volume ([#113](https://github.com/KuchiSofts/vlc-redesign/issues/113)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up

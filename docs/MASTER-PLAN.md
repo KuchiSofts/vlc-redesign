@@ -128,7 +128,33 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.3** (2026-11-17): an update release of #108, #109 and the faults found by trying every option of
+- 🟡 **0.7.4** (2026-11-17): an update release of #111 and #112, both from @xITmasterx (Windows, ARM64, Linux,
+  macOS, Android; the Samsung TV app stays 0.6.8, `follows: 0.7.4`).
+  - 🟢 **#112, Folders** (built and tried on Windows): a Folders row in the sidebar after Music opens the library's
+    folders (FolderDisplay without a folder, LocalFolderModel `roots`); each opens its folder page, as the design's
+    Videos page does ("Shows", "The Wand", "S01"). Tried: the empty page ("The library has no folders yet"), Add
+    folder to library from its menu (the page fills at once), a folder and its subfolder ("Folders ▸ media ▸
+    shows", the first part back to Folders), list view, the light theme; no QML warning. The Android app already
+    walks folders: its Network tab lists the device's storage folder by folder.
+  - 🟢 **#111, Home's lists** (built and tried): room under each section's title in list view, songs with their
+    own covers (VLCThumbnail.artwork as the folder page), "--:--" for a length not read yet, a video over the
+    pictures of the video lists (the note stood there).
+  - 🟢 **#111, songs under New Videos** (built and tried): songs indexed before 0.6.2 (#81) stayed videos, the
+    library reads a file again only when it changes. Once, each video whose file is a song's kind has its type set
+    to Unknown and back: the library then reads it again (Media::setType queues a refresh) and gives it the type
+    of its tracks. Tried as users meet it: a library indexed by 0.6.0 (videotrack.m4a a video), the copy updated
+    to this build: the song became a song (album track, its album), the real video stayed. Trap: a database edited
+    by hand into "a video with an album" makes the library's asserts stop the app (a state no version makes).
+    Android: tried with forceRescan on the emulator: forceRescan keeps every media's type, the song stayed a
+    video, so not shipped; Android needs a change in its own media library build (a refresh per media), rare
+    there (only songs whose picture is a video track).
+- 🟢 **0.7.3** published 2026-11-17 11:31 local (16 files; tag v0.7.3 on 6a95b5f21e, PR #110 merged as
+  c88de11ebd, the CI build 9a447240bc with the same tree; Android tag v0.7.3 = 068d625e67, PR #18 merged as
+  bb02063598, APK 13107030). Small update from 0.7.2: 2.6 MB (ARM64 1.7 MB). After publishing: the copy of 0.7.2
+  took the small update from GitHub and opened on 0.7.3 (About: Version 0.7.3, Also on: every other program 0.7.3,
+  Samsung TV 0.6.8); the package scan 0 in both Windows zips; #108, #109 and #113 answered and closed. Weblate
+  rebased on the merge, unlocked; a Swedish string by a volunteer waits there for its own commit.
+- 🟢 **0.7.3** (2026-11-17): an update release of #108, #109 and the faults found by trying every option of
   Settings (Windows, ARM64, Linux, macOS, Android; the Samsung TV app stays 0.6.8, `follows: 0.7.3`).
   - 🟢 **Memory of 0.7.2 on every desktop system** (after its release, 2026-11-17): Windows, 30 minutes of six songs
     looping at four times the speed (covers bright and dark, lyrics timed, plain and none: the music view changes

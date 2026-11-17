@@ -131,6 +131,7 @@ Widgets.TableViewExt {
         showCriterias: (listView_id.sortModel === listView_id._modelSmall)
 
         criteriaCover: "thumbnail"
+        titleHeaderIcon: VLCIcons.topbar_video
 
         titleCover_height: listView_id.coverHeight
         titleCover_width: listView_id.coverWidth

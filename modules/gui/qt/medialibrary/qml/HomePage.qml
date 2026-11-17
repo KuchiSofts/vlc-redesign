@@ -231,7 +231,9 @@ Widgets.PageExt {
 
             Widgets.ViewHeader {
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
-                bottomPadding: 0
+                // (the list's column header: room under the title, as the grid's
+                // cards have; it stood against it, #111)
+                bottomPadding: MainCtx.gridView ? 0 : VLCStyle.dp(12, VLCStyle.scale)
                 visible: continueWatchingRow.visible
                 text: qsTr("Continue Watching")
                 view: continueWatchingRow
@@ -315,7 +317,9 @@ Widgets.PageExt {
 
             Widgets.ViewHeader {
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
-                bottomPadding: 0
+                // (the list's column header: room under the title, as the grid's
+                // cards have; it stood against it, #111)
+                bottomPadding: MainCtx.gridView ? 0 : VLCStyle.dp(12, VLCStyle.scale)
                 visible: listenAgainRow.visible
                 text: qsTr("Listen Again")
                 view: listenAgainRow
@@ -538,7 +542,9 @@ Widgets.PageExt {
 
             Widgets.ViewHeader {
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
-                bottomPadding: 0
+                // (the list's column header: room under the title, as the grid's
+                // cards have; it stood against it, #111)
+                bottomPadding: MainCtx.gridView ? 0 : VLCStyle.dp(12, VLCStyle.scale)
                 visible: favoritesRow.visible
                 text: qsTr("Favorites")
                 view: favoritesRow
@@ -624,7 +630,9 @@ Widgets.PageExt {
 
             Widgets.ViewHeader {
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
-                bottomPadding: 0
+                // (the list's column header: room under the title, as the grid's
+                // cards have; it stood against it, #111)
+                bottomPadding: MainCtx.gridView ? 0 : VLCStyle.dp(12, VLCStyle.scale)
                 text: qsTr("New Videos")
                 visible: newVideoRow.visible
                 view: newVideoRow
@@ -708,7 +716,9 @@ Widgets.PageExt {
 
             Widgets.ViewHeader {
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
-                bottomPadding: 0
+                // (the list's column header: room under the title, as the grid's
+                // cards have; it stood against it, #111)
+                bottomPadding: MainCtx.gridView ? 0 : VLCStyle.dp(12, VLCStyle.scale)
                 text: qsTr("New Music")
                 visible: newMusicRow.visible
                 view: newMusicRow

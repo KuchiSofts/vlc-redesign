@@ -21,6 +21,8 @@
 #include "playlist/playlist_controller.hpp"
 #include "util/shared_input_item.hpp"
 #include "dialogs/dialogs_provider.hpp"
+// (the kinds of a song's file, as the library module's parser reads them)
+#include "../../../misc/medialibrary/cover_track.h"
 
 #include <algorithm>
 #include <random>
@@ -28,6 +30,7 @@
 
 #include <QDir>
 #include <QQmlEngine>
+#include <QSettings>
 
 #include <vlc_url.h>
 
@@ -43,6 +46,55 @@ MediaLib::MediaLib(qt_intf_t *_intf, vlc::playlist::PlaylistController* playlist
     m_event_cb.reset( vlc_ml_event_register_callback( m_ml, MediaLib::onMediaLibraryEvent,
                                                       this ) );
     m_runner = new ThreadRunner();
+    reparseSongsListedAsVideos();
+}
+
+// VLC Redesign: songs whose picture is a video track were videos for the
+// library before 0.6.2 (#81; its parser skips that track since,
+// cover_track.h). The library reads a file again only when it changes: the
+// songs it had then stayed videos, under Videos and Home's New Videos
+// (#111). Once, each video whose file is a song's kind is read again: the
+// library reads a media again when its type goes from Unknown to another
+// (Media::setType), and then gives it the type of its tracks (a song: read
+// in full, its album and artist). A real video stays one.
+void MediaLib::reparseSongsListedAsVideos()
+{
+    static const char key[] = "redesign/ml-songs-as-videos-reread";
+    QSettings* settings = m_intf->mainSettings;
+    if (settings == nullptr || settings->value(key, false).toBool())
+        return;
+    settings->setValue(key, true);
+    qt_intf_t* intf = m_intf;
+    runOnMLThread(this,
+    //ML thread
+    [intf](vlc_medialibrary_t* ml) {
+        vlc_ml_query_params_t query = vlc_ml_query_params_create();
+        ml_unique_ptr<vlc_ml_media_list_t> list(vlc_ml_list_video_media(ml, &query));
+        if (list == nullptr)
+        {
+            msg_Warn(intf, "songs listed as videos: the videos could not be listed");
+            return;
+        }
+        std::vector<int64_t> ids;
+        for (const vlc_ml_media_t& media : ml_range_iterate<vlc_ml_media_t>(list))
+        {
+            if (media.p_files == nullptr)
+                continue;
+            for (const vlc_ml_file_t& file : ml_range_iterate<vlc_ml_file_t>(media.p_files))
+                if (file.i_type == VLC_ML_FILE_TYPE_MAIN && redesign_cover::isAudioName(file.psz_mrl))
+                {
+                    ids.push_back(media.i_id);
+                    break;
+                }
+        }
+        size_t failed = 0;
+        for (const int64_t id : ids)
+            if (vlc_ml_media_set_type(ml, id, VLC_ML_MEDIA_TYPE_UNKNOWN) != VLC_SUCCESS
+                || vlc_ml_media_set_type(ml, id, VLC_ML_MEDIA_TYPE_VIDEO) != VLC_SUCCESS)
+                ++failed;
+        msg_Dbg(intf, "songs listed as videos: %zu of %zu videos read again (%zu failed)",
+                ids.size(), list->i_nb_items, failed);
+    });
 }
 
 MediaLib::~MediaLib()

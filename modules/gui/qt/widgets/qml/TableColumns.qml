@@ -33,6 +33,12 @@ Item {
 
     // NOTE: That's useful when we want to enforce a cover criteria for the titleDelegate.
     property string criteriaCover: "cover"
+    // function (rowModel) -> string: the cover of a row when a role alone
+    // doesn't give it (a song's own artwork when the library has none)
+    property var coverProvider: null
+    // the glyph over the pictures' column: a song's cover by default, a video
+    // for the lists of videos (#111: the note stood over Home's New Videos)
+    property string titleHeaderIcon: VLCIcons.album_cover
 
     property int fillMode: Image.PreserveAspectFit
 
@@ -101,7 +107,8 @@ Item {
                 pictureWidth: width
                 pictureHeight: height
 
-                source: titleDel.rowModel?.[root.criteriaCover] ?? ""
+                source: root.coverProvider ? root.coverProvider(titleDel.rowModel)
+                                           : (titleDel.rowModel?.[root.criteriaCover] ?? "")
 
                 fallbackImageSource: titleDel.colModel.placeHolder || VLCStyle.noArtAlbumCover
 
@@ -157,7 +164,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: VLCStyle.icon_tableHeader
 
-                text: VLCIcons.album_cover
+                text: root.titleHeaderIcon
                 color: titleHeadDel.colorContext.fg.secondary
             }
 
@@ -219,7 +226,14 @@ Item {
             anchors.centerIn: parent
 
             horizontalAlignment: Text.AlignHCenter
-            text: timeDel.rowModel?.[timeDel.colModel.criteria]?.formatShort() ?? ""
+            // (a length under a second in a library is one not read yet: "0ms"
+            // stood in the list, #111)
+            text: {
+                const t = timeDel.rowModel?.[timeDel.colModel.criteria]
+                if (!t)
+                    return ""
+                return t.valid() && t.isSubSecond() ? "--:--" : t.formatShort()
+            }
             color: timeDel.selected
                 ? timeDel.colorContext.fg.highlight
                 : VLCStyle.redesign.color("#8F8F8F")

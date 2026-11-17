@@ -45,7 +45,9 @@ T.ItemDelegate {
     // current page has the filled one in the accent
     readonly property string iconSetName: ({
         "home": "home", "video": "videos", "music": "songs", "network": "streaming",
-        "playlists": "playlist", "recent": "recent", "add": "add", "tv": "tv"
+        "playlists": "playlist", "recent": "recent", "add": "add", "tv": "tv",
+        // the Folders row and the pinned folders
+        "folder": "folder"
     })[referenceIconName] ?? ""
     readonly property bool _useIconSet: iconSetName.length > 0 && VLCStyle.palette.isDark
 
@@ -176,7 +178,7 @@ T.ItemDelegate {
                         return "qrc:///redesign/icons/" + control.iconSetName + "/"
                                + (referenceIcon._twoTone ? "active-grey"
                                   : control.checked ? "active"
-                                  : control.contextual && control.iconSetName === "videos" ? "selected"
+                                  : control.contextual && (control.iconSetName === "videos" || control.iconSetName === "folder") ? "selected"
                                   : "default") + ".svg"
                     if (control.imageSource.toString().length === 0)
                         return ""

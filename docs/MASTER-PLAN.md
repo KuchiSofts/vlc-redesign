@@ -129,6 +129,14 @@ What is being worked on, updated as it changes (2026-11-10):
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
 - 🟡 **0.7.3** started.
+  - 🟢 **Memory of 0.7.2 on every desktop system** (after its release, 2026-11-17): Windows, 30 minutes of six songs
+    looping at four times the speed (covers bright and dark, lyrics timed, plain and none: the music view changes
+    its layout at each song): 283 -> 285 MB on average, at most 314, handles 2591 -> 2380, threads 176 -> 139.
+    Linux, the released AppImage in a container (Xvfb, the same songs, 30 minutes): it grows to about 385 MB in
+    three minutes and stays near 395 MB from the fifteenth to the thirtieth (394 at the end), threads 126 -> 99,
+    open files 69 -> 42; the only warning the container's "C" locale. macOS, the launch test of the CI: 370 and
+    378 media changes, 211.3 -> 211.4 MB (Apple Silicon) and 150.8 -> 151.2 MB (Intel). Android (the APK on the
+    emulator): ten minutes of the same songs with Repeat all, 136 to 161 MB, no crash. No growth on any of them.
 - 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
   Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
   1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2

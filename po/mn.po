@@ -23652,13 +23652,13 @@ msgstr "VLC-г хаахад байсан байрлалд нь цонхыг нэ
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Харагдах байдлын хэмжээ"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Хуудас, бичвэр, удирдлагууд ямар хэмжээтэй зурагдах вэ. Автомат энэ дэлгэцэд тохирох хэмжээг сонгоно."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -23716,11 +23716,11 @@ msgstr "Дууны хэмжээний хэрэгсэл"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Дууны хэмжээ өөрчлөгдөхөд хаана харагдах (дугуй, товчлуурууд, дуугүй). Автомат: баруун талд, баруунаас зүүн тийш бичдэг хэлэнд зүүн талд."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Автомат|Баруун тал|Зүүн тал|Баруун дээд булан|Зүүн дээд булан"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -24084,7 +24084,7 @@ msgstr "Хайрцаг"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Автомат (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -33292,6 +33292,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Хэрэглэгчийн нэр тохируулах эсвэл audioscrobbler нэмэлтийг идэвхгүй болгоод VLC-г дахин эхлүүлнэ үү.\n"
+"Бүртгэл нээхийн тулд https://www.last.fm/join/ хаягаар зочилно уу."
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -33484,9 +33486,8 @@ msgid "Extra verbose media library logs"
 msgstr "Медиа сангийн нэмэлт дэлгэрэнгүй бүртгэл"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Сүлжээний хуваалцсан хавтас олдсонгүй"
+msgstr "Сүлжээний хуваалцсан хавтсуудыг илрүүлэх"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
@@ -39518,3 +39519,151 @@ msgstr "Цаг удирдлага"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Дамжуулга зохицуулагчийн жагсаалт"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr "сервер хариу өгсөнгүй"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr "сервертэй холбогдож чадсангүй"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr "цуцлагдсан"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr "хэт том байна"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr "сервер юу ч илгээсэнгүй"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr "бүрэн бус ирсэн"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr "үүнийг энэ төхөөрөмж дээр хадгалах боломжгүй"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr "энэ M3U тоглуулах жагсаалт биш"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr "сувгууд алга"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr "хөтөлбөрийг уншиж чадсангүй"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr "сувгийн жагсаалтыг уншиж чадсангүй"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr "энэ холбоос нэг урсгал, сувгийн жагсаалт биш"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr "сервер хандалтаас татгалзлаа (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr "энэ хаягаар юу ч олдсонгүй (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr "сервер алдаатай хариу өглөө (%1)"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr "Сувгууд"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
+msgid "Move this file to the Recycle Bin?"
+msgstr "Энэ файлыг Хогийн саванд зөөх үү?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
+msgid "Move this file to the Trash?"
+msgstr "Энэ файлыг Хогийн саванд зөөх үү?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Энэ файлыг Хогийн саванд зөөх боломжгүй. Бүрмөсөн устгах уу?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Энэ файлыг Хогийн саванд зөөх боломжгүй. Бүрмөсөн устгах уу?"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Санд одоохондоо хавтас алга"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Үйлчилгээ суулгах"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "зохиогч: <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr "зохиогч: <b>Үл мэдэгдэх</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr "Суулгаж байна"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr "Устгаж байна"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr "Мэдээлэл алга"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Үнэлгээ: %1/5  Татсан: %2"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
+msgid "Classic Volume"
+msgstr "Сонгодог дууны хэмжээ"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Дууны хэмжээний сонгодог гулсуурын өнгийг тодорхойлох"
+
+#: modules/gui/qt/util/redesign_updater.cpp:817
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "Энэ сүлжээнээс GitHub-аас хэт олон удаа асуусан байна. %1-ийн дараа дахин оролдоно уу."
+
+#: modules/gui/qt/util/redesign_updater.cpp:821
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "Энэ сүлжээнээс GitHub-аас хэт олон удаа асуусан байна. Дараа дахин оролдоно уу."
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Дууны хэмжээний сонгодог гулсуурын өнгийг тодорхойлох\n"
+"';'-ээр тусгаарласан 12 тоог зааж\n"
+"Анхдагч: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Өөр хувилбар: '30;30;50;40;40;100;50;50;160;150;150;255'"

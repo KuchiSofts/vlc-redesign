@@ -3185,13 +3185,13 @@ msgstr "Fosglaidh e an uinneag far an robh i nuair a chaidh VLC a dhùnadh."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Meud na h-eadar-aghaidh"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Dè cho mòr 's a thèid na duilleagan, na teacsaichean is na h-uidheaman-smachd a tharraing. Taghaidh Fèin-obrachail am meud a fhreagras air an sgrìn seo."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3254,11 +3254,11 @@ msgstr "Widget àirde na fuaime"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Càite an nochd àirde na fuaime nuair a dh'atharraicheas i (a' chuibhle, na h-iuchraichean, mùchadh). Fèin-obrachail: air an taobh deas, air an taobh chlì ann an cànan o dheas gu clì."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Fèin-obrachail|An taobh deas|An taobh clì|An oisean gu h-àrd air an taobh deas|An oisean gu h-àrd air an taobh chlì"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3610,7 +3610,7 @@ msgstr "Bogsa"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Fèin-obrachail (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5900,67 +5900,67 @@ msgstr "Falbhaidh a co-dhealbhachd 's a roghainnean còmhla rithe."
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "cha do fhreagair am frithealaiche"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "cha b' urrainn dhuinn am frithealaiche a ruigsinn"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "chaidh a sguir dheth"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "tha e ro mhòr"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "cha do chuir am frithealaiche dad"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "thàinig e gu neo-iomlan"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "cha ghabh a shàbhaladh air an uidheam seo"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "chan e liosta-chluich M3U a th' ann"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "chan eil seanail sam bith ann"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "cha b' urrainn dhuinn an treòraiche a leughadh"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "cha b' urrainn dhuinn liosta nan seanailean a leughadh"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "'s e sruth singilte a tha sa cheangal seo, chan e liosta sheanailean"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "dhiùlt am frithealaiche inntrigeadh (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "cha deach dad a lorg aig an t-seòladh seo (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "fhreagair am frithealaiche le mearachd (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -6080,7 +6080,7 @@ msgstr[3] "Coimhead air ais: na %1 là mu dheireadh"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Seanailean"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7672,11 +7672,11 @@ msgstr "Sguab às am faidhle on t-siostam"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "A bheil thu airson am faidhle seo a ghluasad dhan bhiona ath-chuairteachaidh?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "A bheil thu airson am faidhle seo a ghluasad dhan sgudal?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7684,11 +7684,11 @@ msgstr "Sguab às am faidhle"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Cha ghabh am faidhle seo a ghluasad dhan bhiona ath-chuairteachaidh. A bheil thu airson a sguabadh às gu buan?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Cha ghabh am faidhle seo a ghluasad dhan sgudal. A bheil thu airson a sguabadh às gu buan?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7730,7 +7730,7 @@ msgstr "Chan eil meadhan a' freagairt ris an lorg"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
 msgid "The library has no folders yet"
-msgstr ""
+msgstr "Chan eil pasgan sam bith san leabhar-lann fhathast"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8310,31 +8310,31 @@ msgstr "Co-roinneadh neo-aithnichte"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Stàlaich seirbheisean"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "le <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "le <b>Neo-aithnichte</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "Ga stàladh"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "Ga dhì-stàladh"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "Chan eil fiosrachadh ri fhaighinn"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Sgòr: %1/5  Luchdaidhean a-nuas: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8587,7 +8587,7 @@ msgstr "Cànanan is tracaichean"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Àirde na fuaime chlasaigeach"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9649,7 +9649,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Suidhich dathan an t-sleamhnachain chlasaigich airson àirde na fuaime"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9658,6 +9658,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Suidhich dathan an t-sleamhnachain chlasaigich airson àirde na fuaime\n"
+"Leis na 12 àireamhan air an sgaradh le ';'\n"
+"'S e seo a' bhun-roghainn: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Roghainn eile: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9959,11 +9963,11 @@ msgstr ""
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "Chaidh iarrtas a chur gu GitHub ro thric on lìonra seo. Feuch ris a-rithist às dèidh %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "Chaidh iarrtas a chur gu GitHub ro thric on lìonra seo. Feuch ris a-rithist an ceann tamaill."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -10264,6 +10268,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Suidhich ainm-cleachdaiche no cuir am plugan audioscrobbler à comas, is ath-thòisich VLC.\n"
+"Tadhail air https://www.last.fm/join/ airson cunntas fhaighinn."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -10313,9 +10319,8 @@ msgid "Extra verbose media library logs"
 msgstr "Logaichean briathrach a bharrachd airson leabhar-lann nam meadhanan"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Cha deach co-roinneadh lìonraidh a lorg"
+msgstr "Rùraich co-roinntean lìonraidh"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

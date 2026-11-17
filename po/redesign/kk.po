@@ -3130,13 +3130,13 @@ msgstr "Терезені VLC жабылған кездегі орнында аш
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Интерфейс өлшемі"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Беттер, мәтіндер және басқару элементтері қандай өлшеммен салынады. Автоматты осы экранға сай өлшемді таңдайды."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3198,11 +3198,11 @@ msgstr "Дыбыс деңгейі виджеті"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Дыбыс деңгейі өзгергенде қай жерде көрсетіледі (дөңгелек, пернелер, дыбысты өшіру). Автоматты: оң жақта, оңнан солға жазылатын тілде сол жақта."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Автоматты|Оң жақта|Сол жақта|Жоғарғы оң бұрышта|Жоғарғы сол бұрышта"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3536,7 +3536,7 @@ msgstr "Қорапша"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Автоматты (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5785,67 +5785,67 @@ msgstr "Оның орналасуы мен баптаулары да жойыл�
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "сервер жауап бермеді"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "серверге қосылу мүмкін болмады"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "бас тартылды"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "ол тым үлкен"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "сервер ештеңе жібермеді"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "ол толық келмеді"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "оны осы құрылғыда сақтау мүмкін емес"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "бұл M3U ойнату тізімі емес"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "онда арналар жоқ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "бағдарлама кестесін оқу мүмкін болмады"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "арналар тізімін оқу мүмкін болмады"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "бұл сілтеме арналар тізімі емес, бір ағын"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "сервер қатынаудан бас тартты (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "бұл мекенжайдан ештеңе табылмады (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "сервер қатемен жауап берді (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5951,7 +5951,7 @@ msgstr[0] "Мұрағаттан көру: соңғы %1 күн"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Арналар"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7460,11 +7460,11 @@ msgstr "Файлды жүйеден жою"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "Бұл файлды Қоқыс жәшігіне жылжыту керек пе?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "Бұл файлды Қоқыс шелегіне жылжыту керек пе?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7472,11 +7472,11 @@ msgstr "Файлды жою"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Бұл файлды Қоқыс жәшігіне жылжыту мүмкін емес. Оны біржола өшіру керек пе?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Бұл файлды Қоқыс шелегіне жылжыту мүмкін емес. Оны біржола өшіру керек пе?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7518,7 +7518,7 @@ msgstr "Іздеуге сәйкес медиа жоқ"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
 msgid "The library has no folders yet"
-msgstr ""
+msgstr "Кітапханада әлі қалталар жоқ"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8079,31 +8079,31 @@ msgstr "Белгісіз ортақ ресурс"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Қызметтерді орнату"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "авторы: <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "авторы: <b>Беймәлім</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "Орнатылуда"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "Өшірілуде"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "Ақпарат жоқ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Бағасы: %1/5  Жүктеулер: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8344,7 +8344,7 @@ msgstr "Тілдер және жолшықтар"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Классикалық дыбыс деңгейі"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9390,7 +9390,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Классикалық дыбыс деңгейі жүгірткісінің түстерін анықтау"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9399,6 +9399,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Классикалық дыбыс деңгейі жүгірткісінің түстерін анықтау\n"
+"';' арқылы бөлінген 12 санды көрсету арқылы\n"
+"Әдепкі: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Балама: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9690,11 +9694,11 @@ msgstr ""
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "Бұл желіден GitHub-қа тым жиі сұрау жіберілді. %1 кейін қайталап көріңіз."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "Бұл желіден GitHub-қа тым жиі сұрау жіберілді. Кейінірек қайталап көріңіз."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -9983,6 +9987,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Пайдаланушы атын орнатыңыз немесе audioscrobbler плагинін сөндіріп, VLC-ді қайта іске қосыңыз.\n"
+"Тіркелгі ашу үшін https://www.last.fm/join/ сайтына өтіңіз."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -10030,9 +10036,8 @@ msgid "Extra verbose media library logs"
 msgstr "Медиа кітапхананың өте толық журналдары"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Желілік ортақ ресурстар табылмады"
+msgstr "Желілік ортақ ресурстарды табу"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

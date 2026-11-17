@@ -3133,13 +3133,13 @@ msgstr "Yn agor y ffenestr lle'r oedd hi pan gaewyd VLC."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Maint y rhyngwyneb"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Pa mor fawr y caiff y tudalennau, y testunau a'r rheolyddion eu lluniadu. Mae Awtomatig yn dewis y maint sy'n gweddu i'r sgrin hon."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3199,11 +3199,11 @@ msgstr "Teclyn Uchder Sain"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Ble mae'r uchder sain yn ymddangos pan fydd yn newid (yr olwyn, y bysellau, distewi). Awtomatig: ar yr ochr dde, ar y chwith mewn iaith o'r dde i'r chwith."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Awtomatig|Ochr dde|Ochr chwith|Cornel dde uchaf|Cornel chwith uchaf"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3542,7 +3542,7 @@ msgstr "Blwch"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Awtomatig (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5807,67 +5807,67 @@ msgstr "Mae ei gynllun a'i osodiadau'n mynd gydag ef."
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "ni atebodd y gweinydd"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "nid oedd modd cyrraedd y gweinydd"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "wedi'i ddiddymu"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "mae'n rhy fawr"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "nid anfonodd y gweinydd ddim byd"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "daeth yn anghyflawn"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "nid oes modd ei gadw ar y ddyfais hon"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "nid yw'n rhestr chwarae M3U"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "nid oes ganddo sianeli"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "nid oedd modd darllen y canllaw"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "nid oedd modd darllen y rhestr sianeli"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "mae'r ddolen hon yn un ffrwd, nid rhestr sianeli"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "gwrthododd y gweinydd fynediad (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "ni chafwyd dim yn y cyfeiriad hwn (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "atebodd y gweinydd gyda gwall (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5986,7 +5986,7 @@ msgstr[3] "Dal i fyny: y %1 diwrnod diwethaf"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Sianeli"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7536,11 +7536,11 @@ msgstr "Dileu'r Ffeil o'r System"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "Symud y ffeil hon i'r Bin Ailgylchu?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "Symud y ffeil hon i'r Sbwriel?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7548,11 +7548,11 @@ msgstr "Dileu ffeil"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Nid oes modd symud y ffeil hon i'r Bin Ailgylchu. Ei dileu'n barhaol?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Nid oes modd symud y ffeil hon i'r Sbwriel. Ei dileu'n barhaol?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7594,7 +7594,7 @@ msgstr "Does dim cyfryngau'n cyfateb i'r chwiliad"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
 msgid "The library has no folders yet"
-msgstr ""
+msgstr "Nid oes gan y llyfrgell ffolderi eto"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8169,31 +8169,31 @@ msgstr "Rhan anhysbys"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Gosod gwasanaethau"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "gan <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "gan <b>Anhysbys</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "Yn gosod"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "Yn dadosod"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "Dim gwybodaeth ar gael"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Sgôr: %1/5  Llwythi i lawr: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8439,7 +8439,7 @@ msgstr "Ieithoedd a thraciau"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Uchder Sain Clasurol"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9488,7 +9488,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Diffinio lliwiau'r llithrydd uchder sain clasurol"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9497,6 +9497,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Diffinio lliwiau'r llithrydd uchder sain clasurol\n"
+"Drwy roi'r 12 rhif wedi'u gwahanu gan ';'\n"
+"Y rhagosodiad yw '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Gallai dewis arall fod '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9786,11 +9790,11 @@ msgstr "Methu cyrraedd GitHub. Gwiriwch eich cysylltiad a cheisiwch eto."
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "Gofynnwyd i GitHub yn rhy aml o'r rhwydwaith hwn. Rhowch gynnig arall ar ôl %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "Gofynnwyd i GitHub yn rhy aml o'r rhwydwaith hwn. Rhowch gynnig arall yn nes ymlaen."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -10084,6 +10088,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Gosodwch enw defnyddiwr neu analluogi'r ategyn audioscrobbler, ac ailgychwyn VLC.\n"
+"Ewch i https://www.last.fm/join/ i gael cyfrif."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -10132,9 +10138,8 @@ msgid "Extra verbose media library logs"
 msgstr "Logiau manwl iawn y llyfrgell cyfryngau"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Ni chanfuwyd rhannau rhwydwaith"
+msgstr "Darganfod cyfrannau rhwydwaith"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

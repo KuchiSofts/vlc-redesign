@@ -24957,13 +24957,13 @@ msgstr "Ανοίγει το παράθυρο εκεί που βρισκόταν 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Μέγεθος διεπαφής"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Πόσο μεγάλες σχεδιάζονται οι σελίδες, τα κείμενα και τα στοιχεία ελέγχου. Το Αυτόματα επιλέγει το μέγεθος που ταιριάζει σε αυτή την οθόνη."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -25024,11 +25024,11 @@ msgstr "Στοιχείο έντασης"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Πού εμφανίζεται η ένταση όταν αλλάζει (ο τροχός, τα πλήκτρα, η σίγαση). Αυτόματα: στη δεξιά πλευρά, στην αριστερή σε γλώσσα που γράφεται από δεξιά προς αριστερά."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Αυτόματα|Δεξιά πλευρά|Αριστερή πλευρά|Επάνω δεξιά γωνία|Επάνω αριστερή γωνία"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -25405,7 +25405,7 @@ msgstr "Πλαίσιο"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Αυτόματα (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -34797,6 +34797,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Ορίστε όνομα χρήστη ή απενεργοποιήστε το πρόσθετο audioscrobbler και επανεκκινήστε το VLC.\n"
+"Επισκεφθείτε το https://www.last.fm/join/ για να αποκτήσετε λογαριασμό."
 
 #: modules/misc/fingerprinter.c:84
 #, fuzzy
@@ -35015,9 +35017,8 @@ msgid "Extra verbose media library logs"
 msgstr "Πολύ αναλυτικά αρχεία καταγραφής της βιβλιοθήκης πολυμέσων"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Δεν βρέθηκαν κοινόχρηστοι φάκελοι δικτύου"
+msgstr "Εντοπισμός κοινόχρηστων δικτύου"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
@@ -41543,3 +41544,151 @@ msgstr "Έλεγχος χρόνου"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Λίστα διαχειριστή πολυμέσων"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr "ο διακομιστής δεν απάντησε"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr "δεν ήταν δυνατή η σύνδεση με τον διακομιστή"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr "ακυρώθηκε"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr "είναι πολύ μεγάλο"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr "ο διακομιστής δεν έστειλε τίποτα"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr "έφτασε ελλιπές"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr "δεν μπορεί να αποθηκευτεί σε αυτή τη συσκευή"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr "δεν είναι λίστα αναπαραγωγής M3U"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr "δεν έχει κανάλια"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr "δεν ήταν δυνατή η ανάγνωση του οδηγού προγράμματος"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr "δεν ήταν δυνατή η ανάγνωση της λίστας καναλιών"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr "αυτός ο σύνδεσμος είναι μία ροή, όχι λίστα καναλιών"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr "ο διακομιστής αρνήθηκε την πρόσβαση (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr "δεν βρέθηκε τίποτα σε αυτή τη διεύθυνση (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr "ο διακομιστής απάντησε με σφάλμα (%1)"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr "Κανάλια"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
+msgid "Move this file to the Recycle Bin?"
+msgstr "Μετακίνηση αυτού του αρχείου στον Κάδο Ανακύκλωσης;"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
+msgid "Move this file to the Trash?"
+msgstr "Μετακίνηση αυτού του αρχείου στον Κάδο;"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Αυτό το αρχείο δεν μπορεί να μετακινηθεί στον Κάδο Ανακύκλωσης. Οριστική διαγραφή;"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Αυτό το αρχείο δεν μπορεί να μετακινηθεί στον Κάδο. Οριστική διαγραφή;"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Η βιβλιοθήκη δεν έχει ακόμη φακέλους"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Εγκατάσταση υπηρεσιών"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "από <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr "από <b>Άγνωστο</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr "Εγκατάσταση"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr "Απεγκατάσταση"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr "Δεν υπάρχουν διαθέσιμες πληροφορίες"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Βαθμολογία: %1/5  Λήψεις: %2"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
+msgid "Classic Volume"
+msgstr "Κλασική ένταση ήχου"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Ορισμός των χρωμάτων του κλασικού ρυθμιστικού έντασης"
+
+#: modules/gui/qt/util/redesign_updater.cpp:817
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "Έγιναν πάρα πολλά αιτήματα στο GitHub από αυτό το δίκτυο. Δοκιμάστε ξανά μετά τις %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp:821
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "Έγιναν πάρα πολλά αιτήματα στο GitHub από αυτό το δίκτυο. Δοκιμάστε ξανά αργότερα."
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Ορισμός των χρωμάτων του κλασικού ρυθμιστικού έντασης\n"
+"Δίνοντας τους 12 αριθμούς χωρισμένους με ';'\n"
+"Προεπιλογή: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Μια εναλλακτική μπορεί να είναι '30;30;50;40;40;100;50;50;160;150;150;255'"

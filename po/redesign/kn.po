@@ -3118,13 +3118,13 @@ msgstr "VLC ಮುಚ್ಚಿದಾಗ ಕಿಟಕಿ ಎಲ್ಲಿತ್ತ
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "ಸಂಪರ್ಕಸಾಧನದ ಗಾತ್ರ"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "ಪುಟಗಳು, ಪಠ್ಯಗಳು ಮತ್ತು ನಿಯಂತ್ರಣಗಳನ್ನು ಎಷ್ಟು ದೊಡ್ಡದಾಗಿ ಚಿತ್ರಿಸಲಾಗುತ್ತದೆ. ಸ್ವಯಂಚಾಲಿತ ಈ ಪರದೆಗೆ ಹೊಂದುವ ಗಾತ್ರವನ್ನು ಆರಿಸುತ್ತದೆ."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3182,11 +3182,11 @@ msgstr "ವಾಲ್ಯೂಮ್ ವಿಜೆಟ್"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "ವಾಲ್ಯೂಮ್ ಬದಲಾದಾಗ ಅದು ಎಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ (ಚಕ್ರ, ಕೀಲಿಗಳು, ಮ್ಯೂಟ್). ಸ್ವಯಂಚಾಲಿತ: ಬಲಭಾಗದಲ್ಲಿ, ಬಲದಿಂದ ಎಡಕ್ಕೆ ಬರೆಯುವ ಭಾಷೆಯಲ್ಲಿ ಎಡಭಾಗದಲ್ಲಿ."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "ಸ್ವಯಂಚಾಲಿತ|ಬಲಭಾಗ|ಎಡಭಾಗ|ಮೇಲಿನ ಬಲ ಮೂಲೆ|ಮೇಲಿನ ಎಡ ಮೂಲೆ"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3520,7 +3520,7 @@ msgstr "ಪೆಟ್ಟಿಗೆ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "ಸ್ವಯಂಚಾಲಿತ (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5765,67 +5765,67 @@ msgstr "ಅದರ ವಿನ್ಯಾಸ ಮತ್ತು ಸಿದ್ಧತೆಗ
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "ಸರ್ವರ್ ಉತ್ತರಿಸಲಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "ಸರ್ವರ್ ಅನ್ನು ತಲುಪಲಾಗಲಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "ಇದು ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "ಸರ್ವರ್ ಏನನ್ನೂ ಕಳುಹಿಸಲಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "ಇದು ಅಪೂರ್ಣವಾಗಿ ಬಂದಿದೆ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "ಇದನ್ನು ಈ ಸಾಧನದಲ್ಲಿ ಉಳಿಸಲಾಗುವುದಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "ಇದು M3U ಪ್ಲೇಪಟ್ಟಿ ಅಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "ಇದರಲ್ಲಿ ಯಾವುದೇ ಚಾನಲ್‌ಗಳಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಓದಲಾಗಲಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "ಚಾನಲ್‌ಗಳ ಪಟ್ಟಿಯನ್ನು ಓದಲಾಗಲಿಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "ಈ ಕೊಂಡಿ ಒಂದೇ ಸ್ಟ್ರೀಮ್, ಚಾನಲ್‌ಗಳ ಪಟ್ಟಿಯಲ್ಲ"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "ಸರ್ವರ್ ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಿತು (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "ಈ ವಿಳಾಸದಲ್ಲಿ ಏನೂ ಕಂಡುಬಂದಿಲ್ಲ (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "ಸರ್ವರ್ ದೋಷದೊಂದಿಗೆ ಉತ್ತರಿಸಿತು (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5931,7 +5931,7 @@ msgstr[0] "ಕ್ಯಾಚ್-ಅಪ್: ಕಳೆದ %1 ದಿನಗಳು"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "ಚಾನಲ್‌ಗಳು"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7432,11 +7432,11 @@ msgstr "ಸಿಸ್ಟಮ್‌ನಿಂದ ಕಡತವನ್ನು ಅಳಿ�
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "ಈ ಕಡತವನ್ನು ಮರುಬಳಕೆ ಬುಟ್ಟಿಗೆ ಸರಿಸಬೇಕೆ?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "ಈ ಕಡತವನ್ನು ಕಸದಬುಟ್ಟಿಗೆ ಸರಿಸಬೇಕೆ?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7444,11 +7444,11 @@ msgstr "ಕಡತವನ್ನು ಅಳಿಸಿ"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "ಈ ಕಡತವನ್ನು ಮರುಬಳಕೆ ಬುಟ್ಟಿಗೆ ಸರಿಸಲಾಗುವುದಿಲ್ಲ. ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಬೇಕೆ?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "ಈ ಕಡತವನ್ನು ಕಸದಬುಟ್ಟಿಗೆ ಸರಿಸಲಾಗುವುದಿಲ್ಲ. ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಬೇಕೆ?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7490,7 +7490,7 @@ msgstr "ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಮಾಧ್ಯಮ 
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
 msgid "The library has no folders yet"
-msgstr ""
+msgstr "ಭಂಡಾರದಲ್ಲಿ ಇನ್ನೂ ಯಾವುದೇ ಕೋಶಗಳಿಲ್ಲ"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8050,31 +8050,31 @@ msgstr "ಅಪರಿಚಿತ ಹಂಚಿಕೆ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "ಸೇವೆಗಳನ್ನು ಅನುಸ್ಥಾಪಿಸಿ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "<b>%1</b> ಅವರಿಂದ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "<b>ಅಪರಿಚಿತ</b> ಅವರಿಂದ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "ಅನುಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "ಅಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "ಅಂಕ: %1/5  ಡೌನ್‌ಲೋಡ್‌ಗಳು: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8317,7 +8317,7 @@ msgstr "ಭಾಷೆಗಳು ಮತ್ತು ಟ್ರ್ಯಾಕ್‌ಗಳ�
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "ಕ್ಲಾಸಿಕ್ ವಾಲ್ಯೂಮ್"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9355,7 +9355,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "ಕ್ಲಾಸಿಕ್ ವಾಲ್ಯೂಮ್ ಸ್ಲೈಡರ್‌ನ ಬಣ್ಣಗಳನ್ನು ನಿರ್ಧರಿಸಿ"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9364,6 +9364,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"ಕ್ಲಾಸಿಕ್ ವಾಲ್ಯೂಮ್ ಸ್ಲೈಡರ್‌ನ ಬಣ್ಣಗಳನ್ನು ನಿರ್ಧರಿಸಿ\n"
+"';' ಇಂದ ಬೇರ್ಪಡಿಸಿದ 12 ಸಂಖ್ಯೆಗಳನ್ನು ನೀಡುವ ಮೂಲಕ\n"
+"ಪೂರ್ವನಿಯೋಜಿತ: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"ಪರ್ಯಾಯ: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9646,11 +9650,11 @@ msgstr ""
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "ಈ ಜಾಲಬಂಧದಿಂದ GitHub ಅನ್ನು ತುಂಬಾ ಸಲ ಕೇಳಲಾಗಿದೆ. %1 ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "ಈ ಜಾಲಬಂಧದಿಂದ GitHub ಅನ್ನು ತುಂಬಾ ಸಲ ಕೇಳಲಾಗಿದೆ. ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -9934,6 +9938,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಹೊಂದಿಸಿ ಅಥವಾ audioscrobbler ಪ್ಲಗಿನ್ ಅನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ, ಮತ್ತು VLC ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ.\n"
+"ಖಾತೆ ಪಡೆಯಲು https://www.last.fm/join/ ಗೆ ಭೇಟಿ ನೀಡಿ."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -9980,9 +9986,8 @@ msgid "Extra verbose media library logs"
 msgstr "ಮಾಧ್ಯಮ ಭಂಡಾರದ ಹೆಚ್ಚುವರಿ ವಿವರವಾದ ಲಾಗ್‌ಗಳು"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "ಯಾವುದೇ ಜಾಲಬಂಧ ಹಂಚಿಕೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ"
+msgstr "ಜಾಲಬಂಧ ಹಂಚಿಕೆಗಳನ್ನು ಪತ್ತೆಹಚ್ಚಿ"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

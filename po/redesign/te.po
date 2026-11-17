@@ -3065,13 +3065,13 @@ msgstr "VLC మూసినప్పుడు కిటికీ ఎక్కడ
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "అంతరవర్తి పరిమాణం"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "పేజీలు, పాఠ్యాలు, నియంత్రణలు ఎంత పెద్దగా గీయబడతాయి. స్వయంచాలకం ఈ తెరకు సరిపోయే పరిమాణాన్ని ఎంచుకుంటుంది."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3128,11 +3128,11 @@ msgstr "శబ్ద విడ్జెట్"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "శబ్దం మారినప్పుడు అది ఎక్కడ కనిపిస్తుంది (చక్రం, కీలు, నిశ్శబ్దం). స్వయంచాలకం: కుడి వైపున, కుడి నుండి ఎడమకు రాసే భాషలో ఎడమ వైపున."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "స్వయంచాలకం|కుడి వైపు|ఎడమ వైపు|పై కుడి మూల|పై ఎడమ మూల"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3456,7 +3456,7 @@ msgstr "పెట్టె"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "స్వయంచాలకం (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5689,67 +5689,67 @@ msgstr "దాని లేఅవుట్ మరియు అమరికలు
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "సర్వర్ సమాధానం ఇవ్వలేదు"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "సర్వర్‌ను చేరుకోలేకపోయాం"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "రద్దు చేయబడింది"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "ఇది చాలా పెద్దది"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "సర్వర్ ఏమీ పంపలేదు"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "ఇది అసంపూర్ణంగా వచ్చింది"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "దీన్ని ఈ పరికరంలో సేవ్ చేయలేము"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "ఇది M3U ప్లేజాబితా కాదు"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "ఇందులో ఛానళ్లు ఏవీ లేవు"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "గైడ్‌ను చదవలేకపోయాం"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "ఛానళ్ల జాబితాను చదవలేకపోయాం"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "ఈ లింక్ ఒకే స్ట్రీమ్, ఛానళ్ల జాబితా కాదు"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "సర్వర్ ప్రాప్యతను తిరస్కరించింది (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "ఈ చిరునామాలో ఏమీ కనబడలేదు (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "సర్వర్ దోషంతో సమాధానం ఇచ్చింది (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5859,7 +5859,7 @@ msgstr[1] "క్యాచ్-అప్: గత %1 రోజులు"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "ఛానళ్లు"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7353,11 +7353,11 @@ msgstr "దస్త్రాన్ని వ్యవస్థ నుండి 
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "ఈ ఫైల్‌ను రీసైకిల్ బిన్‌కు తరలించాలా?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "ఈ ఫైల్‌ను చెత్తబుట్టకు తరలించాలా?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7365,11 +7365,11 @@ msgstr "దస్త్రాన్ని తొలగించు"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "ఈ ఫైల్‌ను రీసైకిల్ బిన్‌కు తరలించలేము. దీన్ని శాశ్వతంగా తొలగించాలా?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "ఈ ఫైల్‌ను చెత్తబుట్టకు తరలించలేము. దీన్ని శాశ్వతంగా తొలగించాలా?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7411,7 +7411,7 @@ msgstr "శోధనకు ఏ మాధ్యమమూ సరిపోలలే
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
 msgid "The library has no folders yet"
-msgstr ""
+msgstr "లైబ్రరీలో ఇంకా సంచయాలు లేవు"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -7974,31 +7974,31 @@ msgstr "తెలియని షేర్"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "సేవలను స్థాపించు"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "<b>%1</b> రూపొందించినది"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "<b>తెలియని</b> వారు రూపొందించినది"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "స్థాపిస్తోంది"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "తొలగిస్తోంది"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "సమాచారం అందుబాటులో లేదు"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "స్కోరు: %1/5  దింపుకోళ్లు: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8233,7 +8233,7 @@ msgstr "భాషలు మరియు ట్రాక్‌లు"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "సాంప్రదాయ శబ్దం"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9269,7 +9269,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "సాంప్రదాయ శబ్ద స్లైడర్ రంగులను నిర్వచించు"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9278,6 +9278,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"సాంప్రదాయ శబ్ద స్లైడర్ రంగులను నిర్వచించు\n"
+"';' తో వేరుచేసిన 12 సంఖ్యలను ఇవ్వడం ద్వారా\n"
+"అప్రమేయం: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"ప్రత్యామ్నాయం: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9554,11 +9558,11 @@ msgstr "GitHubను చేరుకోలేకపోయింది. మీ �
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "ఈ నెట్‌వర్క్ నుండి GitHub‌ను చాలాసార్లు అడిగారు. %1 తర్వాత మళ్లీ ప్రయత్నించండి."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "ఈ నెట్‌వర్క్ నుండి GitHub‌ను చాలాసార్లు అడిగారు. తర్వాత మళ్లీ ప్రయత్నించండి."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -9839,6 +9843,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"వాడుకరి పేరును అమర్చండి లేదా audioscrobbler ప్లగిన్‌ను నిలిపివేసి, VLC‌ను పునఃప్రారంభించండి.\n"
+"ఖాతా కోసం https://www.last.fm/join/ ను సందర్శించండి."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
@@ -9885,9 +9891,8 @@ msgid "Extra verbose media library logs"
 msgstr "అదనపు వివరణాత్మక మాధ్యమ లైబ్రరీ లాగ్‌లు"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "నెట్‌వర్క్ షేర్లు ఏవీ కనబడలేదు"
+msgstr "నెట్‌వర్క్ భాగస్వామ్యాలను కనుగొను"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

@@ -34,6 +34,10 @@ T.Pane {
     readonly property bool darkTheme: VLCStyle.palette.isDark
 
     padding: 0
+    // a wheel its lists don't take (at their ends, or too short to scroll)
+    // stays in the card: under it the music view turns any wheel into the
+    // volume (#113; the lyrics' pane does the same)
+    wheelEnabled: true
 
     implicitWidth: VLCStyle.dp(400, VLCStyle.scale)
 

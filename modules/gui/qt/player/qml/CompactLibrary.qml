@@ -59,6 +59,16 @@ FocusScope {
     // (made when first opened: maybe while a channel plays)
     Component.onCompleted: root._openedWhileTv()
 
+    // A wheel its lists don't take (at their ends, or too short to scroll)
+    // stays in the panel: under it the music view turns any wheel into the
+    // volume (#113). Under every other child: the lists get it first
+    MouseArea {
+        z: -1
+        anchors.fill: parent
+        acceptedButtons: Qt.NoButton
+        onWheel: (wheel) => { wheel.accepted = true }
+    }
+
     function _clearSearch() {
         for (const model of _searchedModels) {
             if (model && model.searchPattern !== undefined)

@@ -7577,6 +7577,10 @@ msgstr "Закачване в страничната лента"
 msgid "No media matches the search"
 msgstr "Няма медии, отговарящи на търсенето"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Няма медии в тази папка"
@@ -10052,6 +10056,13 @@ msgstr "Номер на диска (низходящо)"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Включване на приставките Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

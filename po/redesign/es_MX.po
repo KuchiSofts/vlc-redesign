@@ -7610,6 +7610,10 @@ msgstr "Fijar en la barra lateral"
 msgid "No media matches the search"
 msgstr "Ningún medio coincide con la búsqueda"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "No hay medios en esta carpeta"
@@ -10095,6 +10099,13 @@ msgstr "Número de disco descendente"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Habilitar complementos Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

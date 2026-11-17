@@ -7546,6 +7546,10 @@ msgstr "Ամրացնել կողային վահանակին"
 msgid "No media matches the search"
 msgstr "Որոնմանը համապատասխանող մեդիա չկա"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Այս պանակում մեդիա չկա"
@@ -10014,6 +10018,13 @@ msgstr "Սկավառակի համար՝ նվազման կարգով"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Միացնել Lua պլագինները"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

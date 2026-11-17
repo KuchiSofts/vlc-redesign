@@ -7602,6 +7602,10 @@ msgstr "Fijar en la barra lateral"
 msgid "No media matches the search"
 msgstr "Ningún medio coincide con la búsqueda"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "La biblioteca aún no tiene carpetas"
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "No hay medios en esta carpeta"
@@ -9494,6 +9498,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Definir los colores del control de volumen clásico\n"
+"Indicando los 12 números separados por ';'\n"
+"El valor predeterminado es '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Una alternativa puede ser '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -10086,6 +10094,15 @@ msgstr "Número de disco descendente"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Habilitar complementos Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Establezca un nombre de usuario o desactive el complemento audioscrobbler y reinicie VLC.\n"
+"Visite https://www.last.fm/join/ para obtener una cuenta."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

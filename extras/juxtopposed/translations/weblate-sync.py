@@ -146,7 +146,14 @@ def export(args):
         lheader, lentries = read(os.path.join(PO, lang + '.po'))
         have = {e.key: e for e in lentries}
         out = [have.get(e.key, e) for e in pot]
-        write(os.path.join(OUT, lang + '.po'), lheader, out)
+        # The header Weblate wrote stays: it names the volunteer who
+        # translated last (the full catalog's is VideoLAN's, years old)
+        dest = os.path.join(OUT, lang + '.po')
+        if os.path.exists(dest):
+            wheader = read(dest)[0]
+            if wheader is not None and 'weblate' in wheader.text().lower():
+                lheader = wheader
+        write(dest, lheader, out)
     print('%d texts, %d languages: %s' % (len(pot), len(langs), ' '.join(langs)))
     print('Weblate strings: %d' % (len(pot) * (len(langs) + 1)))
 

@@ -7563,6 +7563,10 @@ msgstr "Замацаваць на бакавой панэлі"
 msgid "No media matches the search"
 msgstr "Няма медыя, што адпавядаюць пошуку"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "У гэтай папцы няма медыя"
@@ -10032,6 +10036,13 @@ msgstr "Нумар дыска па змяншэнні"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Уключыць модулі Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

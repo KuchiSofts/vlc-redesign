@@ -7488,6 +7488,10 @@ msgstr "ಪಕ್ಕಪಟ್ಟಿಗೆ ಪಿನ್ ಮಾಡಿ"
 msgid "No media matches the search"
 msgstr "ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಮಾಧ್ಯಮ ಹೊಂದುತ್ತಿಲ್ಲ"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "ಈ ಕೋಶದಲ್ಲಿ ಯಾವುದೇ ಮಾಧ್ಯಮವಿಲ್ಲ"
@@ -9923,6 +9927,13 @@ msgstr "ಡಿಸ್ಕ್ ಸಂಖ್ಯೆ ಅವರೋಹಣ"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Lua ಪ್ಲಗಿನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

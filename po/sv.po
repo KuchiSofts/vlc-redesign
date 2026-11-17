@@ -33912,6 +33912,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Ange ett användarnamn eller inaktivera insticksmodulen audioscrobbler och starta om VLC.\n"
+"Besök https://www.last.fm/join/ för att skaffa ett konto."
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -40450,3 +40452,19 @@ msgstr "Klassisk volym"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "Ange färgerna för det klassiska volymreglaget"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Biblioteket har inga mappar än"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Definiera färgerna för det äldre volymreglaget\n"
+"Genom att ange de 12 talen separerade med ett ”;”\n"
+"Standard är '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Ett alternativ kan vara '30;30;50;40;40;100;50;50;160;150;150;255'"

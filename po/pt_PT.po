@@ -34382,6 +34382,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Defina um nome de utilizador ou desative o plugin audioscrobbler e reinicie o VLC.\n"
+"Visite https://www.last.fm/join/ para criar uma conta."
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -34596,9 +34598,8 @@ msgid "Extra verbose media library logs"
 msgstr "Registos muito detalhados da biblioteca multimédia"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Nenhuma partilha de rede encontrada"
+msgstr "Descobrir partilhas de rede"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
@@ -41121,3 +41122,19 @@ msgstr "Volume clássico"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "Definir as cores do controlo de volume clássico"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "A biblioteca ainda não tem pastas"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Definir as cores do controlo de volume clássico\n"
+"Indicando os 12 números separados por ';'\n"
+"A predefinição é '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Uma alternativa pode ser '30;30;50;40;40;100;50;50;160;150;150;255'"

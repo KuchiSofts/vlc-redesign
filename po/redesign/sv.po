@@ -7559,6 +7559,10 @@ msgstr "Fäst i sidofältet"
 msgid "No media matches the search"
 msgstr "Inga media matchar sökningen"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Biblioteket har inga mappar än"
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Inga media i den här mappen"
@@ -10020,6 +10024,15 @@ msgstr "Skivnummer fallande"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Aktivera Lua-insticksmoduler"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Ange ett användarnamn eller inaktivera insticksmodulen audioscrobbler och starta om VLC.\n"
+"Besök https://www.last.fm/join/ för att skaffa ett konto."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

@@ -7608,6 +7608,10 @@ msgstr "Penjar a la barra laterala"
 msgid "No media matches the search"
 msgstr "Cap de mèdia correspond pas a la recèrca"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Cap de mèdia dins aqueste dorsièr"
@@ -10107,6 +10111,13 @@ msgstr "Numèro de disc descreissent"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Activar los moduls Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

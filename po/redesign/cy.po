@@ -7592,6 +7592,10 @@ msgstr "Pinio i'r Bar Ochr"
 msgid "No media matches the search"
 msgstr "Does dim cyfryngau'n cyfateb i'r chwiliad"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "Does dim cyfryngau yn y ffolder hon"
@@ -10073,6 +10077,13 @@ msgstr "Rhif Disg yn Ddisgynnol"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Galluogi ategion Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

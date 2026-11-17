@@ -7590,6 +7590,10 @@ msgstr "Закрепить на боковой панели"
 msgid "No media matches the search"
 msgstr "Нет медиафайлов, соответствующих поиску"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "В медиатеке пока нет папок"
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "В этой папке нет медиафайлов"
@@ -9488,6 +9492,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Задать цвета классического регулятора громкости\n"
+"Укажите 12 чисел, разделённых символом ';'\n"
+"По умолчанию: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Возможный вариант: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -10067,6 +10075,15 @@ msgstr "Номер диска по убыванию"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Включить модули Lua"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Укажите имя пользователя или отключите модуль audioscrobbler и перезапустите VLC.\n"
+"Создать учётную запись можно на https://www.last.fm/join/"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

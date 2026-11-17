@@ -61,7 +61,14 @@ Flickable {
     function snapToCurrentLyric() {
         if (!timed) {
             const range = Math.max(0, lyricsFlickable.contentHeight - lyricsFlickable.height)
-            const target = Math.round(range * Math.max(0, Math.min(1, Player.position)))
+            let target = Math.round(range * Math.max(0, Math.min(1, Player.position)))
+            // within a step of an end, the end itself: moved a step at a
+            // time, the page stayed short of its last lines as the song
+            // ended (#109)
+            if (range - target < _pageStep)
+                target = Math.round(range)
+            else if (target < _pageStep)
+                target = 0
             if (Math.abs(target - lyricsFlickable.contentY) >= Math.min(_pageStep, range)
                 || target === 0 || target === Math.round(range))
                 lyricsFlickable.contentY = target

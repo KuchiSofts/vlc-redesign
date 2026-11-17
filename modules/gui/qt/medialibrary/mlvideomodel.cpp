@@ -18,6 +18,11 @@
 
 #include "mlvideomodel.hpp"
 
+#include <algorithm>
+#include <iterator>
+
+#include "mlhelper.hpp"
+
 MLVideoModel::MLVideoModel(QObject* parent)
     : MLMediaModel(parent)
 {
@@ -184,10 +189,23 @@ MLVideoModel::Loader::load(vlc_medialibrary_t* ml, const vlc_ml_query_params_t* 
 
     int64_t id = m_parent.id;
 
+    // The videos of a group (the episodes of a show) by title: in their
+    // natural order, "Episode 2" before "Episode 10" (#108). All of them read
+    // and sorted here, the page asked for cut out of them (a group is small)
+    const bool natural = id > 0 && m_parent.type == VLC_ML_PARENT_GROUP
+                         && (queryParams->i_sort == VLC_ML_SORTING_ALPHA
+                             || queryParams->i_sort == VLC_ML_SORTING_DEFAULT);
+    vlc_ml_query_params_t all = *queryParams;
+    if (natural)
+    {
+        all.i_offset = 0;
+        all.i_nbResults = 0;
+    }
+
     if (id <= 0)
         list.reset(vlc_ml_list_video_media(ml, queryParams));
     else
-        list.reset(vlc_ml_list_video_of(ml, queryParams, m_parent.type, id));
+        list.reset(vlc_ml_list_video_of(ml, natural ? &all : queryParams, m_parent.type, id));
 
     if (list == nullptr)
         return {};
@@ -197,6 +215,23 @@ MLVideoModel::Loader::load(vlc_medialibrary_t* ml, const vlc_ml_query_params_t* 
     for (const vlc_ml_media_t & media : ml_range_iterate<vlc_ml_media_t>(list))
     {
         result.emplace_back(std::make_unique<MLVideo>( &media));
+    }
+
+    if (natural)
+    {
+        const bool desc = queryParams->b_desc;
+        std::stable_sort(result.begin(), result.end(), [desc](const auto &a, const auto &b) {
+            const int c = naturalCompare(static_cast<const MLVideo *>(a.get())->title(),
+                                         static_cast<const MLVideo *>(b.get())->title());
+            return desc ? c > 0 : c < 0;
+        });
+        const size_t from = std::min<size_t>(queryParams->i_offset, result.size());
+        const size_t to = queryParams->i_nbResults == 0
+                          ? result.size() : std::min<size_t>(from + queryParams->i_nbResults, result.size());
+        std::vector<std::unique_ptr<MLItem>> page;
+        page.reserve(to - from);
+        std::move(result.begin() + from, result.begin() + to, std::back_inserter(page));
+        return page;
     }
 
     return result;

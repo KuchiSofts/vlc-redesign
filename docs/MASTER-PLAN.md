@@ -160,6 +160,21 @@ What is being worked on, updated as it changes (2026-11-10):
     the music player): none, but the two password fields (last.fm, proxy), named in QML and by Qt (its sources
     read: qaccessiblequickitem.cpp gives `Accessible.name`, the Windows bridge passes it); the managed UIA client
     reads no name for a password field.
+  - 🟢 **#109 (macOS 0.7.2): lyrics without times, no highlight, not at their end as the song ends.** The song's
+    lyrics are plain text in its tags (no times: no line can be the one sung; a timed .lrc beside it, or SYLT, gives
+    the highlight). Their page moved a step at a time with the song and stayed up to a step short of its end
+    (LyricsFlickable.qml: within a step of an end, the end itself). Android showed them still: they now move with
+    the song the same way (RdLyricsSheet.followPage, paused 4 s after a touch).
+  - 🟢 **#108: episodes grouped by show.** It was there (Videos › sort menu › Group by name; VideoLAN's library
+    groups by the start of the names, Android by default): tried with eleven episode files (S01E01, 1x03, Episode
+    1/2/10 and a film): three groups and the film. Two faults: a group was named by the shared start ("My Show
+    S01E", "Other Show Episode"): shown as the show's name now (MLGroup showName on the desktop, RdShowName on
+    Android, bound in the cards as their item changes); the library sorts titles as text (Episode 1, 10, 2): a
+    group's videos by title are in their natural order now, in the group and when it is played or queued
+    (naturalCompare in mlhelper.cpp, MLVideoModel's loader, medialib.cpp; RdNaturalOrder on Android, in getAll
+    and the provider's pages; unit tests RdShowNameTest and RdNaturalOrderTest; the patterns run on the emulator's
+    own runtime, as ICU's regex differs). Android's medialibrary is the prebuilt package of Maven: the change lives
+    in the app.
 - 🟢 **0.7.2** published 2026-11-17 00:32 local (18 files; tag v0.7.2 = e350e2cd3e, PR #106 merged as e81200c869,
   Android #17 as a2d819f9ae; the CI build eb1c47a37b, the tag and main share one tree). Small update from 0.7.1:
   1.7 MB (ARM64 1.2 MB). After publishing: the copy of 0.7.1 took the small update from GitHub and opened on 0.7.2

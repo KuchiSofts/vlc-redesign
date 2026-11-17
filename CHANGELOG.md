@@ -15,7 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- **Episodes grouped by their show's name, in order** (#108): Videos › Group by name shows "My Show", not
+  "My Show S01E", and plays Episode 2 before Episode 10 (Windows, Linux, macOS, Android).
+
 ### Fixed
+
+- **Lyrics without times reach their last line as the song ends** (#109); on Android they now move with the song too.
 
 - **Compact mode without a video shows the cone** (the window was empty).
 - **Turning off last.fm no longer shows an error or freezes** (a VideoLAN fault: its thread unlocked twice and kept

@@ -178,7 +178,7 @@ T.ItemDelegate {
                         return "qrc:///redesign/icons/" + control.iconSetName + "/"
                                + (referenceIcon._twoTone ? "active-grey"
                                   : control.checked ? "active"
-                                  : control.contextual && control.iconSetName === "videos" ? "selected"
+                                  : control.contextual && (control.iconSetName === "videos" || control.iconSetName === "folder") ? "selected"
                                   : "default") + ".svg"
                     if (control.imageSource.toString().length === 0)
                         return ""

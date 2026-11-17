@@ -66,54 +66,45 @@ Widgets.PageExt {
         }
         return urls
     }
-    // Number of the folders of the path that make the library folder holding
-    // it (0: outside the library)
+    // Number of the folders of the path above the library folder holding it,
+    // or that it is (-1: outside the library). The address starts at the page
+    // of the library's folders, as the design's starts at the page listing
+    // them ("Videos ▸ Shows ▸ The Wand ▸ S01"): "Folders ▸ media ▸ shows",
+    // the library folder's own name first (#112)
     readonly property int _rootDepth: {
-        let best = 0
+        let best = -1
         for (let i = 0; i < libraryFolderUrls.count; ++i) {
             const entry = libraryFolderUrls.objectAt(i)
             if (!entry)
                 continue
             const parts = decodeURIComponent(String(entry.url).replace(/^file:\/\/\/?/, ""))
                               .split("/").filter(part => part.length > 0)
-            if (parts.length >= _parts.length || parts.length <= best)
+            // (the deepest one, when one is inside another)
+            if (parts.length === 0 || parts.length > _parts.length || parts.length - 1 <= best)
                 continue
             if (parts.every((part, j) => part.toLowerCase() === _parts[j].toLowerCase()))
-                best = parts.length
+                best = parts.length - 1
         }
         return best
     }
-    // The section of the design's address: "Videos" (or "Music" when the
-    // folder holds songs and no video)
-    readonly property bool _musicFolder: {
-        let audio = false
-        for (let i = 0; i < folderModel.count; ++i) {
-            const url = String(folderModel.data(folderModel.index(i, 0), LocalFolderModel.UrlRole))
-            if (/\.(3gp|asf|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|vob|webm|wmv)$/i.test(url))
-                return false
-            if (/\.(aac|aiff?|alac|ape|flac|m4a|mka|mp3|oga|ogg|opus|wav|wma)$/i.test(url))
-                audio = true
-        }
-        return audio
-    }
-    readonly property bool _inLibrary: _rootDepth > 0
+    readonly property bool _inLibrary: _rootDepth >= 0
     readonly property int _shown: _inLibrary ? _parts.length - _rootDepth : Math.min(3, _parts.length)
-    readonly property string _section: _musicFolder ? qsTr("Music") : qsTr("Videos")
     readonly property var _crumbs: _libraryRoots ? [qsTr("Folders")]
-                                                 : (_inLibrary ? [_section] : []).concat(_parts.slice(-_shown))
+                                                 : (_inLibrary ? [qsTr("Folders")] : []).concat(_parts.slice(-_shown))
     readonly property string _path: _crumbs.join("  \u25B8  ")
 
     title: _path
     hasGridListMode: true
 
     readonly property bool _listMode: !MainCtx.gridView
-    libraryCrumbs: _crumbs
+    // (the library's folders: a page of the sidebar, its title as Videos' is)
+    libraryCrumbs: _libraryRoots ? null : _crumbs
     onLibraryCrumbClicked: (index) => {
         // (the library's folders: the page shown)
         if (_libraryRoots)
             return
         if (_inLibrary && index === 0) {
-            History.push([_musicFolder ? "music" : "video"], Qt.MouseFocusReason)
+            History.push(["folders"], Qt.MouseFocusReason)
             return
         }
         // Folder of the crumb: the path up to it

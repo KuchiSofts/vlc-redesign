@@ -250,8 +250,10 @@ T.Pane {
                 // (Music keeps its accent while one of its pages is shown)
                 checked: index === root.matchedIndex
                          || (depth === 0 && modelData.key === "music" && root._musicExpanded)
-                // Figma 970:4028: a folder page shows the Videos icon filled
-                contextual: modelData.asset === "video" && History.viewPath[0] === "folder"
+                // Figma 970:4028: a folder page shows the icon of the page
+                // listing the folders filled in grey; the design's Videos,
+                // here Folders (#112)
+                contextual: modelData.key === "folders" && History.viewPath[0] === "folder"
                 // a row takes its own right click (the pane's handler below
                 // only gets the empty part): Unpin for a pin
                 TapHandler {

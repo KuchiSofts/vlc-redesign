@@ -35,7 +35,7 @@ QtObject {
         { key: "music", title: qsTr("Music"), uri: ["music"], icon: VLCIcons.topbar_music, asset: "music", library: true },
         // the library's folders, the way through them (#112: the design's
         // Videos page; videos and songs)
-        { key: "folders", title: qsTr("Folders"), uri: ["folders"], icon: VLCIcons.folder, asset: "folder", library: true },
+        { key: "folders", title: qsTr("Folders"), uri: ["folders"], icon: VLCIcons.ic_fluent_folder_open_24_regular, asset: "folder", library: true },
         { key: "network", title: qsTr("Network"), uri: ["network"], icon: VLCIcons.topbar_network, asset: "network" },
         { key: "tv", title: qsTr("TV"), uri: ["tv"], icon: "", asset: "tv", addon: true },
         // every playlist (the page lists songs ones too, see VideoPlaylistsDisplay)
@@ -81,7 +81,7 @@ QtObject {
                        key: _pinKey(p), title: String(p.title || ""), pin: p,
                        uri: p.kind === "folder" ? ["folder"] : ["video", "playlists", "list"],
                        props: p.kind === "folder" ? { folderUrl: p.url } : null,
-                       icon: p.kind === "folder" ? VLCIcons.folder : VLCIcons.playlist,
+                       icon: p.kind === "folder" ? VLCIcons.ic_fluent_folder_open_24_regular : VLCIcons.playlist,
                        asset: p.kind === "folder" ? "folder" : "playlists",
                        library: p.kind === "playlist"
                    }))

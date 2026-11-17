@@ -36,6 +36,9 @@ Item {
     // function (rowModel) -> string: the cover of a row when a role alone
     // doesn't give it (a song's own artwork when the library has none)
     property var coverProvider: null
+    // the glyph over the pictures' column: a song's cover by default, a video
+    // for the lists of videos (#111: the note stood over Home's New Videos)
+    property string titleHeaderIcon: VLCIcons.album_cover
 
     property int fillMode: Image.PreserveAspectFit
 
@@ -161,7 +164,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: VLCStyle.icon_tableHeader
 
-                text: VLCIcons.album_cover
+                text: root.titleHeaderIcon
                 color: titleHeadDel.colorContext.fg.secondary
             }
 

@@ -64,13 +64,17 @@ void MediaLib::reparseSongsListedAsVideos()
     if (settings == nullptr || settings->value(key, false).toBool())
         return;
     settings->setValue(key, true);
+    qt_intf_t* intf = m_intf;
     runOnMLThread(this,
     //ML thread
-    [](vlc_medialibrary_t* ml) {
+    [intf](vlc_medialibrary_t* ml) {
         vlc_ml_query_params_t query = vlc_ml_query_params_create();
         ml_unique_ptr<vlc_ml_media_list_t> list(vlc_ml_list_video_media(ml, &query));
         if (list == nullptr)
+        {
+            msg_Warn(intf, "songs listed as videos: the videos could not be listed");
             return;
+        }
         std::vector<int64_t> ids;
         for (const vlc_ml_media_t& media : ml_range_iterate<vlc_ml_media_t>(list))
         {
@@ -83,9 +87,13 @@ void MediaLib::reparseSongsListedAsVideos()
                     break;
                 }
         }
+        size_t failed = 0;
         for (const int64_t id : ids)
-            if (vlc_ml_media_set_type(ml, id, VLC_ML_MEDIA_TYPE_UNKNOWN) == VLC_SUCCESS)
-                vlc_ml_media_set_type(ml, id, VLC_ML_MEDIA_TYPE_VIDEO);
+            if (vlc_ml_media_set_type(ml, id, VLC_ML_MEDIA_TYPE_UNKNOWN) != VLC_SUCCESS
+                || vlc_ml_media_set_type(ml, id, VLC_ML_MEDIA_TYPE_VIDEO) != VLC_SUCCESS)
+                ++failed;
+        msg_Dbg(intf, "songs listed as videos: %zu of %zu videos read again (%zu failed)",
+                ids.size(), list->i_nb_items, failed);
     });
 }
 

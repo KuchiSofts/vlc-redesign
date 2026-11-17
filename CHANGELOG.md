@@ -22,14 +22,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **Home's lists** (#111): room under each section's title, songs with their own covers, "--:--" for a length not
-  read yet instead of "0ms".
+  read yet instead of "0ms", a video icon over the lists of videos.
 - **Songs an older version listed as videos are read again, once** (#111): they leave Videos and New Videos.
 
 ### Technical
 
 - Version 0.7.4 started (VLC_REDESIGN_VERSION).
 - The folder page without a folder lists the library's folders (LocalFolderModel `roots`, looked at on the
-  thread pool); the Folders row and pinned folders take the icon set's filled folder when shown.
+  thread pool); the Folders row and pinned folders take the icon set's filled folder when shown. A folder page's
+  address starts at Folders ("Folders ▸ media ▸ shows", the library folder's own name included; the first part
+  opens Folders), and the Folders row shows its grey filled folder there, as the design's Videos did. The sidebar's
+  folder rows take an icon that exists (VLCIcons.folder did not: a QML warning with every pinned folder).
+- TableColumns.titleHeaderIcon: the video lists show a video over their pictures' column.
 - MediaLib::reparseSongsListedAsVideos: once (`redesign/ml-songs-as-videos-reread`), each video whose file is a
   song's kind (cover_track.h) has its type set to Unknown and back, which makes the library read it again and
   give it the type of its tracks.

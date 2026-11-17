@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-17 08:11+0000\n"
+"POT-Creation-Date: 2026-11-17 11:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -846,8 +846,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/open/open_panels.cpp:518
 #: modules/gui/qt/dialogs/open/open_panels.cpp:531
 #: modules/gui/qt/dialogs/open/open_panels.cpp:555
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:256
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:282
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:269
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:295
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:218
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:233
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
@@ -1257,7 +1257,7 @@ msgstr ""
 #: src/input/meta.c:66
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:57
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:58
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:116
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:133
 #: modules/gui/qt/playlist/playlist_controller_p.hpp:86 modules/mux/avi.c:50
 msgid "Date"
 msgstr ""
@@ -1507,7 +1507,6 @@ msgstr ""
 #: modules/gui/qt/maininterface/navigationmodel.cpp:279
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:35
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
 #: modules/gui/qt/network/standardpathmodel.cpp:151
 #: modules/gui/qt/player/qml/CompactLibrary.qml:103
@@ -8435,7 +8434,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:29
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:42
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:37
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:40
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:103
 #: modules/gui/qt/player/qml/CompactLibrary.qml:105
 #: modules/gui/qt/player/qml/CompactLibrary.qml:323
@@ -10097,7 +10096,7 @@ msgid "Warnings"
 msgstr ""
 
 #: modules/access/rist.h:98
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:148
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:165
 #: modules/logger/file.c:225
 msgid "Info"
 msgstr ""
@@ -17586,7 +17585,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:146
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:210
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:75
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:179
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:34
 #: modules/gui/qt/menus/menus.cpp:814
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:870
@@ -17647,7 +17646,7 @@ msgstr ""
 #: modules/gui/macosx/library/VLCLibraryTableViewDelegate.m:133
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:44
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:186
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:203
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 msgid "Remove from Favorites"
@@ -17681,7 +17680,7 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:940
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:144
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:543
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:549
 #: modules/gui/qt/player/qml/CompactLibrary.qml:430
 msgid "Favorites"
 msgstr ""
@@ -17726,7 +17725,6 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/VideoGroupDisplay.qml:40
 #: modules/gui/qt/medialibrary/qml/VideoAllSubDisplay.qml:84
 #: modules/gui/qt/medialibrary/qml/VideoListDisplay.qml:90
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:81
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:239
 #: modules/gui/qt/network/standardpathmodel.cpp:152
 #: modules/gui/qt/player/qml/CompactLibrary.qml:102
@@ -17824,7 +17822,7 @@ msgstr ""
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:42
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:53
@@ -17901,7 +17899,7 @@ msgstr ""
 #: modules/gui/macosx/playqueue/VLCPlayQueueSortingMenuController.m:52
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:43
 #: modules/gui/qt/medialibrary/qml/MediaView.qml:82
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:269
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:282
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:57
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:254
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:422
@@ -18027,7 +18025,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:315
 #: modules/gui/qt/dialogs/sout/sout.cpp:98
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:99
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:192
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:209
 #: modules/gui/qt/menus/menus.cpp:973
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Stream"
@@ -19216,7 +19214,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:243
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:352
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:365
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:117
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:134
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:111
 #: modules/gui/qt/network/qml/BrowseDeviceView.qml:247
 #: modules/gui/qt/network/qml/BrowseDeviceView.qml:273
@@ -19752,7 +19750,7 @@ msgid "Ban Folder"
 msgstr ""
 
 #: modules/gui/macosx/preferences/VLCMediaLibraryFolderManagementController.m:99
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:126
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:143
 msgid "Add Folder"
 msgstr ""
 
@@ -19855,7 +19853,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:122
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:31
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:36
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:39
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:68
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:291
 #: modules/gui/qt/player/qml/CompactLibrary.qml:104
@@ -21479,7 +21477,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:29
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:119
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:202
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:219
 msgid "Show in File Explorer"
 msgstr ""
 
@@ -21507,6 +21505,9 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:69
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLibraryFolders.qml:49
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:38
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:92
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:93
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:205
 msgid "Folders"
 msgstr ""
@@ -23201,7 +23202,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:57
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:114
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:198
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:215
 msgid "Add to Playlist"
 msgstr ""
 
@@ -26335,7 +26336,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/sout/convert.cpp:48
 #: modules/gui/qt/dialogs/sout/convert.cpp:106
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:105
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:194
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:211
 #: modules/gui/qt/menus/menus.cpp:971 modules/gui/qt/menus/qml/MainMenu.qml:83
 msgid "Convert"
 msgstr ""
@@ -26898,7 +26899,7 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:45
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:458
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:187
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:204
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:874
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:84
@@ -27785,7 +27786,7 @@ msgid "Re-check"
 msgstr ""
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:44
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:218
 #: modules/gui/qt/player/qml/CompactLibrary.qml:107
 #: modules/gui/qt/player/qml/CompactLibrary.qml:322
@@ -27793,7 +27794,7 @@ msgid "Recent"
 msgstr ""
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:305
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:307
 msgid "Add item"
 msgstr ""
 
@@ -27803,7 +27804,7 @@ msgid "Edit Sidebar…"
 msgstr ""
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:137
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:154
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr ""
@@ -27846,7 +27847,7 @@ msgid "Maximize"
 msgstr ""
 
 #: modules/gui/qt/widgets/qml/EmptyLabelButton.qml:77
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:360
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:374
 #: modules/gui/qt/medialibrary/qml/MusicAlbums.qml:316
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:268
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:311
@@ -28131,26 +28132,26 @@ msgid "Unknown artist"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:96
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:236
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:238
 #: modules/gui/qt/player/qml/ResumeDialog.qml:148
 #: modules/gui/qt/player/qml/CompactLibrary.qml:427
 msgid "Continue Watching"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:176
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:628
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:636
 #: modules/gui/qt/player/qml/CompactLibrary.qml:431
 msgid "New Videos"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:266
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:320
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:324
 #: modules/gui/qt/player/qml/CompactLibrary.qml:428
 msgid "Listen Again"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:299
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:712
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:722
 #: modules/gui/qt/player/qml/CompactLibrary.qml:432
 msgid "New Music"
 msgstr ""
@@ -28169,7 +28170,7 @@ msgstr ""
 msgid "Alphabetic"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:393
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:397
 #: modules/gui/qt/player/qml/CompactLibrary.qml:429
 msgid "Frequently Visited Folders"
 msgstr ""
@@ -28178,13 +28179,13 @@ msgstr ""
 msgid "Media view"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:188
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:201
 #: modules/gui/qt/playlist/qml/PlaylistDelegate.qml:317
-#: modules/gui/qt/widgets/qml/TableColumns.qml:47
+#: modules/gui/qt/widgets/qml/TableColumns.qml:53
 msgid "Unknown Title"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/MediaView.qml:361
+#: modules/gui/qt/medialibrary/qml/MediaView.qml:375
 msgid ""
 "No media found\n"
 "Please try adding sources"
@@ -28199,7 +28200,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:70
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:192
 #: modules/gui/qt/widgets/qml/DragItem.qml:617
-#: modules/gui/qt/widgets/qml/TableColumns.qml:75
+#: modules/gui/qt/widgets/qml/TableColumns.qml:81
 msgid "%1 track"
 msgid_plural "%1 tracks"
 msgstr[0] ""
@@ -28429,36 +28430,36 @@ msgid "Prev"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:181
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:198
 msgid "Mark as Unwatched"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:82
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:182
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:199
 msgid "Mark as Watched"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:110
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:196
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:213
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:54
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:891
 msgid "Add to Queue"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:126
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:223
 msgid "Go to Source"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:134
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:220
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:237
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:58
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:899
 msgid "Add Subtitle Tracks"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:140
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:222
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:239
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:63
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:93
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:903
@@ -28466,7 +28467,7 @@ msgid "Add Audio Tracks"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:146
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:224
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:241
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:70
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:31
 msgid "Properties & Metadata"
@@ -28525,37 +28526,41 @@ msgstr ""
 msgid "Indexing Medias (%1%)"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:115
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:132
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:96
 msgid "Unwatched First"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:124
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:141
 msgid "Add File"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:128
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:145
 msgid "Edit Subtitle Tracks"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:130
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:147
 msgid "Edit Audio Tracks"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:133
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:150
 msgid "Resync"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:138
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:155
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Pin to Sidebar"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:568
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:586
 msgid "No media matches the search"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:569
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr ""
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:588
 msgid "No media in this folder"
 msgstr ""
 
@@ -28648,7 +28653,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:43
-#: modules/gui/qt/widgets/qml/TableColumns.qml:77
+#: modules/gui/qt/widgets/qml/TableColumns.qml:83
 msgid "%1 video"
 msgid_plural "%1 videos"
 msgstr[0] ""

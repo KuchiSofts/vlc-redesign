@@ -131,7 +131,10 @@ What is being worked on, updated as it changes (2026-11-10):
 - 🟡 **0.7.5** started. Owner 11-17: translations and everything checked before a release, one update for all
   of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
   pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).
-  Open: the ~50 languages at 98 % lack 40 texts each (machine translations of the 0.6/0.7 texts).
+  Then (owner: "yes"): the 53 languages at 98 % completed (40 texts each, 2,100 entries in each catalog's own
+  words, checked for %1/<b>/the five "|" choices/the URL before writing): all 72 Weblate languages at 100 %;
+  msgfmt -c on every catalog; po_safety: 4,336 entries, the only flags Khmer's zero-width spaces (VideoLAN's km.po
+  has 34,780).
 - 🟢 **0.7.4** published 2026-11-17 15:59 local (16 files; tag v0.7.4 on 8905c5b527, PR #115 merged as
   f92832d2b0; Android tag v0.7.4 = bd399e20b, PR #19 merged as 8079cd79ac, APK 13107040). After publishing: a copy
   of 0.7.3 took the small update from GitHub and opened on 0.7.4 (About: every program 0.7.4, Samsung TV 0.6.8;

@@ -17,9 +17,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
-- **Translations:** the 19 complete languages at 100 % again (the Folders page, last.fm's missing username, the
-  classic volume slider's colours); Portuguese (Portugal) no longer reads "No network shares found" for "Discover
-  network shares". Swedish from a volunteer on Weblate.
+- **Translations: all 72 languages of Weblate at 100 %.** The 19 complete ones lacked three texts (the Folders page,
+  last.fm's missing username, the classic volume slider's colours), 53 more lacked forty (Live TV's reasons, the
+  Recycle Bin questions, the services page, the interface size, the volume indicator's place and others).
+  Portuguese (Portugal) no longer reads "No network shares found" for "Discover network shares". Swedish from a
+  volunteer on Weblate.
 
 ### Technical
 

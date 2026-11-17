@@ -65,6 +65,10 @@ SideNavigationPane {
             name: "mlsettings",
             url: "qrc:///qt/qml/VLC/MediaLibrary/MLFoldersSettings.qml"
         }, {
+            // The library's folders (#112): the folder page without a folder
+            name: "folders",
+            url: "qrc:///qt/qml/VLC/MediaLibrary/FolderDisplay.qml"
+        }, {
             // A local folder, from the home page and the compact library
             name: "folder",
             url: "qrc:///qt/qml/VLC/MediaLibrary/FolderDisplay.qml",

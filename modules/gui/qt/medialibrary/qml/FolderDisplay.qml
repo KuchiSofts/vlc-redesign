@@ -25,10 +25,15 @@ import VLC.Network as Network
 // Media of a local folder in the library (Figma "Player - library grid":
 // "Videos ▸ Shows ▸ The Wand ▸ S01", 15 items, frames in a grid). Opened
 // with History.push(["folder"], { folderUrl: url }).
+// Without a folder: the folders of the library, the start of the way through
+// them (#112; the design's Videos page lists them, "Shows", "Films",
+// "Anime"): the Folders row of the sidebar, History.push(["folders"]).
 Widgets.PageExt {
     id: root
 
     property url folderUrl
+
+    readonly property bool _libraryRoots: String(folderUrl) === ""
 
     // The folders of the path
     readonly property var _parts: decodeURIComponent(String(folderUrl).replace(/^file:\/\/\/?/, ""))
@@ -45,6 +50,21 @@ Widgets.PageExt {
         delegate: QtObject {
             required property var url
         }
+        // (a folder replaced by another leaves the count as it was)
+        property int revision: 0
+        onObjectAdded: ++revision
+        onObjectRemoved: ++revision
+    }
+    // their URLs, the rows of the page without a folder
+    readonly property var _libraryRootUrls: {
+        void libraryFolderUrls.revision
+        let urls = []
+        for (let i = 0; i < libraryFolderUrls.count; ++i) {
+            const entry = libraryFolderUrls.objectAt(i)
+            if (entry)
+                urls.push(String(entry.url))
+        }
+        return urls
     }
     // Number of the folders of the path that make the library folder holding
     // it (0: outside the library)
@@ -79,7 +99,8 @@ Widgets.PageExt {
     readonly property bool _inLibrary: _rootDepth > 0
     readonly property int _shown: _inLibrary ? _parts.length - _rootDepth : Math.min(3, _parts.length)
     readonly property string _section: _musicFolder ? qsTr("Music") : qsTr("Videos")
-    readonly property var _crumbs: (_inLibrary ? [_section] : []).concat(_parts.slice(-_shown))
+    readonly property var _crumbs: _libraryRoots ? [qsTr("Folders")]
+                                                 : (_inLibrary ? [_section] : []).concat(_parts.slice(-_shown))
     readonly property string _path: _crumbs.join("  \u25B8  ")
 
     title: _path
@@ -88,6 +109,9 @@ Widgets.PageExt {
     readonly property bool _listMode: !MainCtx.gridView
     libraryCrumbs: _crumbs
     onLibraryCrumbClicked: (index) => {
+        // (the library's folders: the page shown)
+        if (_libraryRoots)
+            return
         if (_inLibrary && index === 0) {
             History.push([_musicFolder ? "music" : "video"], Qt.MouseFocusReason)
             return
@@ -107,7 +131,9 @@ Widgets.PageExt {
     // Figma: the more button at the end of the header, the "folder context
     // menu" of this folder then the other open actions
     headerAction: Component {
-        OpenMediaButton { iconOnly: true; libraryFolder: true; folderActions: root._folderActions }
+        // (the library's folders: Add folder to library… first, no folder of
+        // the page for the folder's rows)
+        OpenMediaButton { iconOnly: true; libraryFolder: true; folderActions: root._libraryRoots ? [] : root._folderActions }
     }
     isSearchable: true
     // Figma "Sorting Options": "Unwatched First" by default
@@ -262,6 +288,7 @@ Widgets.PageExt {
         id: folderModel
 
         folder: root.folderUrl
+        roots: root._libraryRoots ? root._libraryRootUrls : []
         ml: MainCtx.mediaLibraryAvailable ? MainCtx.mediaLibrary : null
         searchPattern: root.search.pattern
         sortCriteria: root.sort.criteria !== "" ? root.sort.criteria : "unwatched"
@@ -566,7 +593,8 @@ Widgets.PageExt {
             wrapMode: Text.WordWrap
             visible: grid.count === 0
             text: folderModel.searchPattern !== "" ? qsTr("No media matches the search")
-                                                   : qsTr("No media in this folder")
+                                                   : root._libraryRoots ? qsTr("The library has no folders yet")
+                                                                        : qsTr("No media in this folder")
             color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: VLCStyle.redesign.fontMedium

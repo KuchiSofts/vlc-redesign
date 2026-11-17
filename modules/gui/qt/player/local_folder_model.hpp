@@ -10,6 +10,7 @@
 #endif
 
 #include <QAbstractListModel>
+#include <QStringList>
 #include <QUrl>
 #include <QVector>
 
@@ -26,6 +27,9 @@ class LocalFolderModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QUrl folder READ folder WRITE setFolder NOTIFY folderChanged FINAL)
+    // Without a folder: these folders as the rows (the library's folders,
+    // the page of its own of FolderDisplay, #112)
+    Q_PROPERTY(QStringList roots READ roots WRITE setRoots NOTIFY rootsChanged FINAL)
     Q_PROPERTY(QUrl parentFolder READ parentFolder NOTIFY folderChanged FINAL)
     Q_PROPERTY(QString folderName READ folderName NOTIFY folderChanged FINAL)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
@@ -63,6 +67,8 @@ public:
 
     QUrl folder() const { return m_folder; }
     void setFolder(const QUrl& folder);
+    QStringList roots() const { return m_roots; }
+    void setRoots(const QStringList& roots);
     QUrl parentFolder() const;
     QString folderName() const;
     QString searchPattern() const { return m_searchPattern; }
@@ -94,6 +100,7 @@ public slots:
 
 signals:
     void folderChanged();
+    void rootsChanged();
     void countChanged();
     void searchPatternChanged();
     void sortChanged();
@@ -133,6 +140,8 @@ private:
     void startListing();
     void onListed(const QVector<Entry>& entries);
     static QVector<Entry> listFolder(const QString& path);
+    // the folders of these paths that are there
+    static QVector<Entry> listRoots(const QStringList& paths);
 
     // The folder as last listed, and the rows shown (indexes in it): the
     // search and the sort work on it, without listing the folder again
@@ -146,6 +155,7 @@ private:
     // Changes with each listing: older answers of the library are dropped
     quint64 m_generation = 0;
     QUrl m_folder;
+    QStringList m_roots;
     QString m_searchPattern;
     QString m_sortCriteria = QStringLiteral("name");
     Qt::SortOrder m_sortOrder = Qt::AscendingOrder;

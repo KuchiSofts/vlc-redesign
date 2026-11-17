@@ -91,6 +91,21 @@ void LocalFolderModel::setFolder(const QUrl& folder)
     startListing();
 }
 
+void LocalFolderModel::setRoots(const QStringList& roots)
+{
+    if (roots == m_roots)
+        return;
+    m_roots = roots;
+    emit rootsChanged();
+    // (shown only without a folder)
+    if (m_folder.isLocalFile())
+        return;
+    m_entries.clear();
+    ++m_generation;
+    updateRows();
+    startListing();
+}
+
 QUrl LocalFolderModel::parentFolder() const
 {
     if (!m_folder.isLocalFile())
@@ -158,16 +173,28 @@ void LocalFolderModel::startListing()
         m_relist = true;
         return;
     }
-    if (!m_folder.isLocalFile())
+    // without a folder, the roots (the local ones: a folder of the network
+    // has no page of this kind)
+    const QString path = m_folder.isLocalFile() ? m_folder.toLocalFile() : QString();
+    QStringList roots;
+    if (path.isEmpty())
+        for (const QString& root : m_roots)
+        {
+            const QUrl url(root);
+            if (url.isLocalFile())
+                roots.push_back(url.toLocalFile());
+        }
+    if (path.isEmpty() && roots.isEmpty())
     {
         onListed({});
         return;
     }
     m_listing = true;
-    const QString path = m_folder.toLocalFile();
     const std::shared_ptr<Guard> guard = m_guard;
-    QThreadPool::globalInstance()->start([guard, path]() {
-        const QVector<Entry> entries = listFolder(path);
+    // (a folder of a network drive that does not answer would freeze the
+    // interface: even the roots are looked at on the pool)
+    QThreadPool::globalInstance()->start([guard, path, roots]() {
+        const QVector<Entry> entries = path.isEmpty() ? listRoots(roots) : listFolder(path);
         std::lock_guard<std::mutex> lock(guard->lock);
         if (LocalFolderModel* model = guard->model)
             QMetaObject::invokeMethod(model, [model, entries]() {
@@ -202,6 +229,32 @@ QVector<LocalFolderModel::Entry> LocalFolderModel::listFolder(const QString& pat
         entry.mrl = mrl;
         entry.url = coreUrl(filePath, mrl);
         entry.isFolder = isFolder;
+        entry.modified = info.lastModified().toMSecsSinceEpoch();
+        entries.push_back(std::move(entry));
+    }
+    return entries;
+}
+
+QVector<LocalFolderModel::Entry> LocalFolderModel::listRoots(const QStringList& paths)
+{
+    QVector<Entry> entries;
+    QSet<QString> seen;
+    for (const QString& path : paths)
+    {
+        // (a folder of the library ends with a slash)
+        const QFileInfo info(QDir::cleanPath(path));
+        const QString filePath = info.absoluteFilePath();
+        if (!info.isDir() || seen.contains(filePath))
+            continue;
+        seen.insert(filePath);
+        const QString mrl = coreMrl(filePath);
+        Entry entry;
+        // A drive root has no name: "C:" rather than nothing (folderName)
+        entry.name = info.fileName().isEmpty() ? QDir::toNativeSeparators(filePath).remove(QLatin1Char('\\'))
+                                               : info.fileName();
+        entry.mrl = mrl;
+        entry.url = coreUrl(filePath, mrl);
+        entry.isFolder = true;
         entry.modified = info.lastModified().toMSecsSinceEpoch();
         entries.push_back(std::move(entry));
     }

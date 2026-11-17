@@ -33,6 +33,9 @@ QtObject {
         { key: "home", title: qsTr("Home"), uri: ["home"], icon: VLCIcons.home, asset: "home" },
         { key: "video", title: qsTr("Videos"), uri: ["video", "all"], icon: VLCIcons.topbar_video, asset: "video", library: true },
         { key: "music", title: qsTr("Music"), uri: ["music"], icon: VLCIcons.topbar_music, asset: "music", library: true },
+        // the library's folders, the way through them (#112: the design's
+        // Videos page; videos and songs)
+        { key: "folders", title: qsTr("Folders"), uri: ["folders"], icon: VLCIcons.folder, asset: "folder", library: true },
         { key: "network", title: qsTr("Network"), uri: ["network"], icon: VLCIcons.topbar_network, asset: "network" },
         { key: "tv", title: qsTr("TV"), uri: ["tv"], icon: "", asset: "tv", addon: true },
         // every playlist (the page lists songs ones too, see VideoPlaylistsDisplay)

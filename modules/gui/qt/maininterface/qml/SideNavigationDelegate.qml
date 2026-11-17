@@ -45,7 +45,9 @@ T.ItemDelegate {
     // current page has the filled one in the accent
     readonly property string iconSetName: ({
         "home": "home", "video": "videos", "music": "songs", "network": "streaming",
-        "playlists": "playlist", "recent": "recent", "add": "add", "tv": "tv"
+        "playlists": "playlist", "recent": "recent", "add": "add", "tv": "tv",
+        // the Folders row and the pinned folders
+        "folder": "folder"
     })[referenceIconName] ?? ""
     readonly property bool _useIconSet: iconSetName.length > 0 && VLCStyle.palette.isDark
 

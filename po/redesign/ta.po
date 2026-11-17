@@ -3118,13 +3118,13 @@ msgstr "VLC மூடப்பட்டபோது சாளரம் இரு
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "இடைமுகப்பின் அளவு"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "பக்கங்கள், உரைகள், கட்டுப்பாடுகள் எவ்வளவு பெரிதாக வரையப்படுகின்றன. தானாக இந்தத் திரைக்குப் பொருத்தமான அளவைத் தேர்ந்தெடுக்கும்."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3181,11 +3181,11 @@ msgstr "ஒலியளவுக் கருவி"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "ஒலியளவு மாறும்போது அது எங்கே தெரியும் (சக்கரம், விசைகள், ஒலியடக்கம்). தானாக: வலது பக்கத்தில், வலமிருந்து இடமாக எழுதும் மொழியில் இடது பக்கத்தில்."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "தானாக|வலது பக்கம்|இடது பக்கம்|மேல் வலது மூலை|மேல் இடது மூலை"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3523,7 +3523,7 @@ msgstr "பெட்டி"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "தானாக (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5775,67 +5775,67 @@ msgstr "அதன் தளவமைப்பும் அமைப்புக�
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "சேவையகம் பதிலளிக்கவில்லை"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "சேவையகத்தை அடைய முடியவில்லை"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "ரத்து செய்யப்பட்டது"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "இது மிகப் பெரியது"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "சேவையகம் எதையும் அனுப்பவில்லை"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "இது முழுமையில்லாமல் வந்தது"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "இதை இந்தச் சாதனத்தில் சேமிக்க முடியாது"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "இது M3U இயக்கப்பட்டியல் அல்ல"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "இதில் அலைவரிசைகள் எதுவும் இல்லை"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "நிகழ்ச்சி வழிகாட்டியைப் படிக்க முடியவில்லை"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "அலைவரிசைகளின் பட்டியலைப் படிக்க முடியவில்லை"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "இந்த இணைப்பு ஒரே ஓடை, அலைவரிசைகளின் பட்டியல் அல்ல"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "சேவையகம் அணுகலை மறுத்தது (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "இந்த முகவரியில் எதுவும் கிடைக்கவில்லை (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "சேவையகம் பிழையுடன் பதிலளித்தது (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5945,7 +5945,7 @@ msgstr[1] "பின்னோக்கிப் பார்வை: கடந்
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "அலைவரிசைகள்"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7466,11 +7466,11 @@ msgstr "கோப்பைக் கணினியிலிருந்து �
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "இந்தக் கோப்பை மறுசுழற்சித் தொட்டிக்கு நகர்த்தவா?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "இந்தக் கோப்பைக் குப்பைத்தொட்டிக்கு நகர்த்தவா?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7478,11 +7478,11 @@ msgstr "கோப்பை நீக்கு"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "இந்தக் கோப்பை மறுசுழற்சித் தொட்டிக்கு நகர்த்த முடியாது. நிரந்தரமாக நீக்கவா?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "இந்தக் கோப்பைக் குப்பைத்தொட்டிக்கு நகர்த்த முடியாது. நிரந்தரமாக நீக்கவா?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7521,6 +7521,10 @@ msgstr "பக்கப்பட்டியில் பொருத்து"
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "தேடலுடன் எந்த ஊடகமும் பொருந்தவில்லை"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "நூலகத்தில் இன்னும் கோப்புறைகள் இல்லை"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8085,31 +8089,31 @@ msgstr "தெரியாத பகிர்வு"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "சேவைகளை நிறுவு"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "<b>%1</b> உருவாக்கியது"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "<b>தெரியாத</b> ஒருவர் உருவாக்கியது"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "நிறுவுகிறது"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "நீக்குகிறது"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "தகவல் எதுவும் இல்லை"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "மதிப்பெண்: %1/5  பதிவிறக்கங்கள்: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8350,7 +8354,7 @@ msgstr "மொழிகளும் சுவடுகளும்"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "பழைய பாணி ஒலியளவு"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9392,7 +9396,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "பழைய பாணி ஒலியளவு நழுவியின் நிறங்களை வரையறு"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9401,6 +9405,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"பழைய பாணி ஒலியளவு நழுவியின் நிறங்களை வரையறு\n"
+"';' ஆல் பிரிக்கப்பட்ட 12 எண்களைக் குறிப்பிட்டு\n"
+"இயல்பிருப்பு: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"மாற்று: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9685,11 +9693,11 @@ msgstr "GitHub-ஐ அடைய முடியவில்லை. உங்க�
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "இந்தப் பிணையத்திலிருந்து GitHub அடிக்கடி கேட்கப்பட்டது. %1 பிறகு மீண்டும் முயலவும்."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "இந்தப் பிணையத்திலிருந்து GitHub அடிக்கடி கேட்கப்பட்டது. பிறகு மீண்டும் முயலவும்."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -9973,6 +9981,15 @@ msgstr "வட்டு எண் இறங்குவரிசை"
 msgid "Enable Lua plugins"
 msgstr "Lua செருகுநிரல்களை இயக்கு"
 
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"பயனர் பெயரை அமைக்கவும் அல்லது audioscrobbler செருகுநிரலை முடக்கி VLC-ஐ மீண்டும் தொடங்கவும்.\n"
+"கணக்கைப் பெற https://www.last.fm/join/ தளத்திற்குச் செல்லவும்."
+
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
 msgstr "பாதுகாப்பான 128-பிட் (அல்லது அதிகம்)"
@@ -10018,9 +10035,8 @@ msgid "Extra verbose media library logs"
 msgstr "கூடுதல் விவரமான ஊடக நூலகப் பதிவேடுகள்"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "பிணையப் பகிர்வுகள் எதுவும் கிடைக்கவில்லை"
+msgstr "பிணையப் பகிர்வுகளைக் கண்டறி"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

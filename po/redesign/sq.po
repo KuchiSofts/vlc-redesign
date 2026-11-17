@@ -3144,13 +3144,13 @@ msgstr "Hap dritaren aty ku ishte kur u mbyll VLC."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Madhësia e ndërfaqes"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Sa të mëdha vizatohen faqet, tekstet dhe kontrollet. Automatiku zgjedh madhësinë që i shkon këtij ekrani."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3208,11 +3208,11 @@ msgstr "Widget-i i volumit"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Ku shfaqet volumi kur ndryshon (rrota, tastet, heshtja). Automatik: në anën e djathtë, në të majtë për një gjuhë që shkruhet nga e djathta në të majtë."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automatik|Ana e djathtë|Ana e majtë|Këndi i sipërm djathtas|Këndi i sipërm majtas"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3549,7 +3549,7 @@ msgstr "Kuti"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Automatik (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5800,67 +5800,67 @@ msgstr "Paraqitja dhe cilësimet e tij fshihen bashkë me të."
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "shërbyesi nuk u përgjigj"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "shërbyesi s'u arrit"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "u anulua"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "është shumë i madh"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "shërbyesi nuk dërgoi asgjë"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "mbërriti i paplotë"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "s'mund të ruhet në këtë pajisje"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "nuk është listë luajtjeje M3U"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "nuk ka kanale"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "udhërrëfyesi s'u lexua dot"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "lista e kanaleve s'u lexua dot"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "kjo lidhje është një rrjedhë e vetme, jo listë kanalesh"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "shërbyesi e refuzoi hyrjen (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "s'u gjet gjë në këtë adresë (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "shërbyesi u përgjigj me një gabim (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5970,7 +5970,7 @@ msgstr[1] "Arkivi: %1 ditët e fundit"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Kanale"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7497,11 +7497,11 @@ msgstr "Fshi skedarin nga sistemi"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "Të kalohet kjo kartelë te Koshi i Riciklimit?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "Të kalohet kjo kartelë te Hedhurinat?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7509,11 +7509,11 @@ msgstr "Fshi skedarin"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Kjo kartelë s'mund të kalohet te Koshi i Riciklimit. Të fshihet përgjithmonë?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Kjo kartelë s'mund të kalohet te Hedhurinat. Të fshihet përgjithmonë?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7552,6 +7552,10 @@ msgstr "Fikso te shiriti anësor"
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "Asnjë media nuk përputhet me kërkimin"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Biblioteka s'ka ende dosje"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8117,31 +8121,31 @@ msgstr "Ndarje e panjohur"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Instalo shërbime"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "nga <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "nga <b>I panjohur</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "Po instalohet"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "Po çinstalohet"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "S'ka të dhëna"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Pikë: %1/5  Shkarkime: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8386,7 +8390,7 @@ msgstr "Gjuhët dhe pistat"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Volum klasik"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9436,7 +9440,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Përcaktoni ngjyrat e rrëshqitësit klasik të volumit"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9445,6 +9449,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Përcaktoni ngjyrat e rrëshqitësit klasik të volumit\n"
+"Duke dhënë 12 numrat të ndarë me ';'\n"
+"Parazgjedhja është '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Një alternativë mund të jetë '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9740,11 +9748,11 @@ msgstr "GitHub nuk u arrit. Kontrolloni lidhjen tuaj dhe provoni sërish."
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "GitHub-i u pyet shumë shpesh nga ky rrjet. Riprovoni pas %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "GitHub-i u pyet shumë shpesh nga ky rrjet. Riprovoni më vonë."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -10029,6 +10037,15 @@ msgstr "Numri i diskut në zbritje"
 msgid "Enable Lua plugins"
 msgstr "Aktivizo shtojcat Lua"
 
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Caktoni një emër përdoruesi ose çaktivizoni shtojcën audioscrobbler dhe rinisni VLC-në.\n"
+"Vizitoni https://www.last.fm/join/ për të marrë një llogari."
+
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
 msgstr "E sigurt 128 bit (ose më shumë)"
@@ -10076,9 +10093,8 @@ msgid "Extra verbose media library logs"
 msgstr "Regjistra shumë të hollësishëm të bibliotekës së medias"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Nuk u gjet asnjë ndarje rrjeti"
+msgstr "Zbulo ndarje rrjeti"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

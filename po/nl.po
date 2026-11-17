@@ -34376,6 +34376,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Stel een gebruikersnaam in of schakel de audioscrobbler-plug-in uit en start VLC opnieuw.\n"
+"Ga naar https://www.last.fm/join/ om een account aan te maken."
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -41128,3 +41130,19 @@ msgstr "Klassiek volume"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "De kleuren van de klassieke volumeschuif instellen"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "De bibliotheek heeft nog geen mappen"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"De kleuren van de klassieke volumeschuif instellen\n"
+"Door de 12 getallen op te geven, gescheiden door een ';'\n"
+"Standaard is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Een alternatief is '30;30;50;40;40;100;50;50;160;150;150;255'"

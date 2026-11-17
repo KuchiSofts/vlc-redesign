@@ -3132,13 +3132,13 @@ msgstr "Langas atveriamas ten, kur buvo uždarant VLC."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Sąsajos dydis"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Kokio dydžio piešiami puslapiai, tekstai ir valdikliai. Automatinis parenka šiam ekranui tinkamą dydį."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3196,11 +3196,11 @@ msgstr "Garsumo valdiklis"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Kur rodomas garsumas, kai jis keičiasi (ratukas, klavišai, nutildymas). Automatinis: dešinėje, kalboje, rašomoje iš dešinės į kairę, kairėje."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automatinis|Dešinėje|Kairėje|Viršutiniame dešiniajame kampe|Viršutiniame kairiajame kampe"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3538,7 +3538,7 @@ msgstr "Fonas"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Automatinis (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5796,67 +5796,67 @@ msgstr "Kartu ištrinamas jo išdėstymas ir nuostatos."
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "serveris neatsakė"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "nepavyko pasiekti serverio"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "atšaukta"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "jis per didelis"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "serveris nieko neatsiuntė"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "jis atėjo nepilnas"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "jo negalima įrašyti šiame įrenginyje"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "tai ne M3U grojaraštis"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "jame nėra kanalų"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "nepavyko perskaityti programos"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "nepavyko perskaityti kanalų sąrašo"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "ši nuoroda yra vienas srautas, o ne kanalų sąrašas"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "serveris uždraudė prieigą (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "šiuo adresu nieko nerasta (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "serveris atsakė klaida (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5970,7 +5970,7 @@ msgstr[2] "Peržiūra: paskutinių %1 dienų"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Kanalai"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7500,11 +7500,11 @@ msgstr "Ištrinti failą iš sistemos"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "Perkelti šį failą į šiukšlinę?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "Perkelti šį failą į šiukšlinę?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7512,11 +7512,11 @@ msgstr "Ištrinti failą"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Šio failo negalima perkelti į šiukšlinę. Ištrinti jį visam laikui?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Šio failo negalima perkelti į šiukšlinę. Ištrinti jį visam laikui?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7555,6 +7555,10 @@ msgstr "Prisegti prie šoninės juostos"
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "Paiešką atitinkančios medijos nėra"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Fonotekoje dar nėra aplankų"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8123,31 +8127,31 @@ msgstr "Nežinomas bendrasis aplankas"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Įdiegti paslaugas"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "autorius <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "autorius <b>Nežinoma</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "Diegiama"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "Šalinama"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "Informacijos nėra"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Įvertinimas: %1/5  Atsisiuntimai: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8385,7 +8389,7 @@ msgstr "Kalbos ir takeliai"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Klasikinis garsumas"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9430,7 +9434,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Nustatyti klasikinio garsumo slankiklio spalvas"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9439,6 +9443,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Nustatyti klasikinio garsumo slankiklio spalvas\n"
+"Nurodant 12 skaičių, atskirtų ';'\n"
+"Numatytasis: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Kitas variantas: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9724,11 +9732,11 @@ msgstr "Nepavyko pasiekti GitHub. Patikrinkite ryšį ir bandykite dar kartą."
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "Iš šio tinklo per dažnai kreiptasi į GitHub. Bandykite dar kartą po %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "Iš šio tinklo per dažnai kreiptasi į GitHub. Bandykite vėliau."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -10013,6 +10021,15 @@ msgstr "Disko numeris mažėjančiai"
 msgid "Enable Lua plugins"
 msgstr "Įgalinti Lua papildinius"
 
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Nustatykite naudotojo vardą arba išjunkite audioscrobbler papildinį ir paleiskite VLC iš naujo.\n"
+"Paskyrą galite susikurti https://www.last.fm/join/"
+
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
 msgstr "Saugus 128 bitų (arba daugiau)"
@@ -10058,9 +10075,8 @@ msgid "Extra verbose media library logs"
 msgstr "Itin išsamūs fonotekos žurnalai"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Tinklo bendrųjų aplankų nerasta"
+msgstr "Aptikti tinklo bendrinius išteklius"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

@@ -7428,6 +7428,10 @@ msgstr "사이드바에 고정"
 msgid "No media matches the search"
 msgstr "검색과 일치하는 미디어가 없습니다"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "라이브러리에 아직 폴더가 없습니다"
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "이 폴더에 미디어가 없습니다"
@@ -9296,6 +9300,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"클래식 볼륨 슬라이더의 색상 지정\n"
+"';'로 구분한 12개의 숫자로 지정합니다\n"
+"기본값은 '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"대안: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9857,6 +9865,15 @@ msgstr "디스크 번호 내림차순"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Lua 플러그인 사용하기"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"사용자 이름을 설정하거나 audioscrobbler 플러그인을 끈 다음 VLC를 다시 시작하세요.\n"
+"https://www.last.fm/join/ 에서 계정을 만들 수 있습니다."
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

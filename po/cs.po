@@ -33565,6 +33565,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Nastavte uživatelské jméno nebo vypněte zásuvný modul audioscrobbler a restartujte VLC.\n"
+"Účet si můžete založit na https://www.last.fm/join/"
 
 #: modules/misc/fingerprinter.c:84
 #, fuzzy
@@ -39932,3 +39934,19 @@ msgstr "Klasická hlasitost"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "Určit barvy klasického posuvníku hlasitosti"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Knihovna zatím nemá žádné složky"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Určit barvy klasického posuvníku hlasitosti\n"
+"Zadáním 12 čísel oddělených znakem ';'\n"
+"Výchozí je '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Alternativa může být '30;30;50;40;40;100;50;50;160;150;150;255'"

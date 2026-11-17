@@ -24661,13 +24661,13 @@ msgstr "Az ablakot ott nyitja meg, ahol a VLC bezárásakor volt."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Kezelőfelület mérete"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Mekkorák az oldalak, a szövegek és a vezérlők. Az Automatikus az ehhez a képernyőhöz illő méretet választja."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -24726,11 +24726,11 @@ msgstr "Hangerő-vezérlő"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Hol jelenik meg a hangerő, amikor változik (görgő, billentyűk, némítás). Automatikus: a jobb oldalon, jobbról balra író nyelvnél a bal oldalon."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automatikus|Jobb oldalon|Bal oldalon|Jobb felső sarokban|Bal felső sarokban"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -25099,7 +25099,7 @@ msgstr "Doboz"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Automatikus (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -34371,6 +34371,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Adjon meg egy felhasználónevet, vagy kapcsolja ki az audioscrobbler bővítményt, és indítsa újra a VLC-t.\n"
+"Fiókot a https://www.last.fm/join/ oldalon kaphat."
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -34587,9 +34589,8 @@ msgid "Extra verbose media library logs"
 msgstr "Részletesebb médiatárnaplók"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Nem található hálózati megosztás"
+msgstr "Hálózati megosztások felderítése"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
@@ -40984,3 +40985,151 @@ msgstr "Idő felügyelete"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Médiakezelési lista"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr "a kiszolgáló nem válaszolt"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr "a kiszolgáló nem érhető el"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr "megszakítva"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr "túl nagy"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr "a kiszolgáló nem küldött semmit"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr "hiányosan érkezett meg"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr "nem menthető erre az eszközre"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr "nem M3U lejátszólista"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr "nincsenek benne csatornák"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr "a műsorújság nem olvasható"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr "a csatornák listája nem olvasható"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr "ez a hivatkozás egyetlen adatfolyam, nem csatornák listája"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr "a kiszolgáló megtagadta a hozzáférést (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr "ezen a címen nem található semmi (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr "a kiszolgáló hibával válaszolt (%1)"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr "Csatornák"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
+msgid "Move this file to the Recycle Bin?"
+msgstr "Áthelyezi ezt a fájlt a Lomtárba?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
+msgid "Move this file to the Trash?"
+msgstr "Áthelyezi ezt a fájlt a Kukába?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Ez a fájl nem helyezhető át a Lomtárba. Véglegesen törli?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Ez a fájl nem helyezhető át a Kukába. Véglegesen törli?"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "A médiatárban még nincsenek mappák"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Szolgáltatások telepítése"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "készítette: <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr "készítette: <b>Ismeretlen</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr "Telepítés"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr "Eltávolítás"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr "Nincs elérhető információ"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Értékelés: %1/5  Letöltések: %2"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
+msgid "Classic Volume"
+msgstr "Klasszikus hangerő"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "A klasszikus hangerő-csúszka színeinek megadása"
+
+#: modules/gui/qt/util/redesign_updater.cpp:817
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "Erről a hálózatról túl gyakran kérdezték a GitHubot. Próbálja újra ennyi idő után: %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp:821
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "Erről a hálózatról túl gyakran kérdezték a GitHubot. Próbálja újra később."
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"A klasszikus hangerő-csúszka színeinek megadása\n"
+"A 12 szám megadásával, ';' karakterrel elválasztva\n"
+"Alapértelmezés: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Egy másik lehetőség: '30;30;50;40;40;100;50;50;160;150;150;255'"

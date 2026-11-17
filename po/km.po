@@ -24098,13 +24098,13 @@ msgstr "បើកបង្អួចនៅកន្លែងដែលវានៅ
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "ទំហំ​ចំណុចប្រទាក់"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "ទំព័រ អត្ថបទ និង​ផ្ទាំង​បញ្ជា​ត្រូវ​បាន​គូរ​ធំ​ប៉ុណ្ណា។ ស្វ័យប្រវត្តិ​ជ្រើស​ទំហំ​ដែល​សមនឹង​អេក្រង់​នេះ។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -24161,11 +24161,11 @@ msgstr "ធាតុក្រាហ្វិកកម្រិតសំឡេង
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "កន្លែង​ដែល​កម្រិត​សំឡេង​បង្ហាញ​នៅ​ពេល​វា​ផ្លាស់ប្ដូរ (កង់ គ្រាប់ចុច បិទ​សំឡេង)។ ស្វ័យប្រវត្តិ៖ នៅ​ខាងស្ដាំ នៅ​ខាងឆ្វេង​ក្នុង​ភាសា​ដែល​សរសេរ​ពី​ស្ដាំ​ទៅ​ឆ្វេង។"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "ស្វ័យប្រវត្តិ|ខាងស្ដាំ|ខាងឆ្វេង|ជ្រុង​ខាង​លើ​ស្ដាំ|ជ្រុង​ខាង​លើ​ឆ្វេង"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -24517,7 +24517,7 @@ msgstr "ប្រអប់"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "ស្វ័យប្រវត្តិ (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -33648,6 +33648,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"សូម​កំណត់​ឈ្មោះ​អ្នក​ប្រើ ឬ​បិទ​កម្មវិធី​ជំនួយ audioscrobbler ហើយ​ចាប់ផ្ដើម VLC ឡើងវិញ។\n"
+"ចូល​ទៅ https://www.last.fm/join/ ដើម្បី​បង្កើត​គណនី។"
 
 #: modules/misc/fingerprinter.c:84
 #, fuzzy
@@ -33858,9 +33860,8 @@ msgid "Extra verbose media library logs"
 msgstr "កំណត់ហេតុបណ្ណាល័យមេឌៀលម្អិតបន្ថែម"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "រកមិនឃើញការចែករំលែកបណ្ដាញទេ"
+msgstr "ស្វែងរក​ការ​ចែករំលែក​បណ្ដាញ"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
@@ -40108,3 +40109,151 @@ msgstr "ការ​គ្រប់គ្រង​ពេលវេលា"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "បញ្ជី​គ្រប់គ្រង​មេឌៀ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr "ម៉ាស៊ីនមេ​មិន​បាន​ឆ្លើយតប"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr "មិន​អាច​ភ្ជាប់​ទៅ​ម៉ាស៊ីនមេ​បាន​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr "បាន​បោះបង់"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr "វា​ធំ​ពេក"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr "ម៉ាស៊ីនមេ​មិន​បាន​ផ្ញើ​អ្វី​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr "វា​មក​មិន​ពេញលេញ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr "មិន​អាច​រក្សាទុក​វា​នៅ​លើ​ឧបករណ៍​នេះ​បាន​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr "វា​មិន​មែន​ជា​បញ្ជី​ចាក់ M3U ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr "វា​គ្មាន​ឆានែល​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr "មិន​អាច​អាន​កាលវិភាគ​កម្មវិធី​បាន​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr "មិន​អាច​អាន​បញ្ជី​ឆានែល​បាន​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr "តំណ​នេះ​ជា​ស្ទ្រីម​តែ​មួយ មិន​មែន​ជា​បញ្ជី​ឆានែល​ទេ"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr "ម៉ាស៊ីនមេ​បាន​បដិសេធ​ការ​ចូល​ប្រើ (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr "រក​មិន​ឃើញ​អ្វី​នៅ​អាសយដ្ឋាន​នេះ​ទេ (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr "ម៉ាស៊ីនមេ​បាន​ឆ្លើយតប​ដោយ​កំហុស (%1)"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr "ឆានែល"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
+msgid "Move this file to the Recycle Bin?"
+msgstr "ផ្លាស់ទី​ឯកសារ​នេះ​ទៅ​ធុង​សំរាម?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
+msgid "Move this file to the Trash?"
+msgstr "ផ្លាស់ទី​ឯកសារ​នេះ​ទៅ​ធុង​សំរាម?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "មិន​អាច​ផ្លាស់ទី​ឯកសារ​នេះ​ទៅ​ធុង​សំរាម​បាន​ទេ។ លុប​វា​ជា​អចិន្ត្រៃយ៍?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "មិន​អាច​ផ្លាស់ទី​ឯកសារ​នេះ​ទៅ​ធុង​សំរាម​បាន​ទេ។ លុប​វា​ជា​អចិន្ត្រៃយ៍?"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "បណ្ណាល័យ​មិន​ទាន់​មាន​ថត​នៅ​ឡើយ​ទេ"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "ដំឡើង​សេវា"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "ដោយ <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr "ដោយ <b>មិន​ស្គាល់</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr "កំពុង​ដំឡើង"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr "កំពុង​លុប​ការ​ដំឡើង"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr "គ្មាន​ព័ត៌មាន"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "ពិន្ទុ៖ %1/5  ការ​ទាញយក៖ %2"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
+msgid "Classic Volume"
+msgstr "កម្រិត​សំឡេង​បុរាណ"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "កំណត់​ពណ៌​របស់​គ្រាប់​រំកិល​កម្រិត​សំឡេង​បុរាណ"
+
+#: modules/gui/qt/util/redesign_updater.cpp:817
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub ត្រូវ​បាន​សួរ​ញឹកញាប់​ពេក​ពី​បណ្ដាញ​នេះ។ សូម​ព្យាយាម​ម្ដង​ទៀត​បន្ទាប់​ពី %1។"
+
+#: modules/gui/qt/util/redesign_updater.cpp:821
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub ត្រូវ​បាន​សួរ​ញឹកញាប់​ពេក​ពី​បណ្ដាញ​នេះ។ សូម​ព្យាយាម​ម្ដង​ទៀត​នៅ​ពេល​ក្រោយ។"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"កំណត់​ពណ៌​របស់​គ្រាប់​រំកិល​កម្រិត​សំឡេង​បុរាណ\n"
+"ដោយ​បញ្ជាក់​លេខ 12 ដែល​ខណ្ឌ​ដោយ ';'\n"
+"លំនាំដើម៖ '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"ជម្រើស​ផ្សេង៖ '30;30;50;40;40;100;50;50;160;150;150;255'"

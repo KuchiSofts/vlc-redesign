@@ -33280,6 +33280,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"יש להגדיר שם משתמש או להשבית את התוסף audioscrobbler ולהפעיל מחדש את VLC.\n"
+"אפשר ליצור חשבון בכתובת https://www.last.fm/join/"
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -39611,3 +39613,19 @@ msgstr "עוצמת שמע קלאסית"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "הגדרת הצבעים של מחוון עוצמת השמע הקלאסי"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "אין עדיין תיקיות בספרייה"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"הגדרת הצבעים של מחוון עוצמת השמע הקלאסי\n"
+"על ידי ציון 12 המספרים, מופרדים ב־';'\n"
+"ברירת המחדל היא '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"חלופה אפשרית: '30;30;50;40;40;100;50;50;160;150;150;255'"

@@ -3175,13 +3175,13 @@ msgstr "Obre la finestra on era quan es va tancar el VLC."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Mida de la interfície"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "La mida amb què es dibuixen les pàgines, els textos i els controls. Automàtic tria la mida adequada per a aquesta pantalla."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3244,11 +3244,11 @@ msgstr "Giny de volum"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "On es mostra el volum quan canvia (la roda, les tecles, el silenci). Automàtic: a la dreta, i a l'esquerra en una llengua de dreta a esquerra."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automàtic|A la dreta|A l'esquerra|Cantonada superior dreta|Cantonada superior esquerra"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3588,7 +3588,7 @@ msgstr "Requadre"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Automàtic (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5853,67 +5853,67 @@ msgstr "També se n'eliminaran la disposició i els paràmetres."
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "el servidor no ha respost"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "no s'ha pogut accedir al servidor"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "cancel·lat"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "és massa gran"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "el servidor no ha enviat res"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "ha arribat incomplet"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "no es pot desar en aquest dispositiu"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "no és una llista de reproducció M3U"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "no té canals"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "no s'ha pogut llegir la guia"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "no s'ha pogut llegir la llista de canals"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "aquest enllaç és un sol flux, no una llista de canals"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "el servidor ha denegat l'accés (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "no s'ha trobat res en aquesta adreça (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "el servidor ha respost amb un error (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -6023,7 +6023,7 @@ msgstr[1] "Diferit: els últims %1 dies"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Canals"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7558,11 +7558,11 @@ msgstr "Elimina el fitxer del sistema"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "Voleu moure aquest fitxer a la Paperera de reciclatge?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "Voleu moure aquest fitxer a la Paperera?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7570,11 +7570,11 @@ msgstr "Elimina el fitxer"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Aquest fitxer no es pot moure a la Paperera de reciclatge. Voleu eliminar-lo definitivament?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Aquest fitxer no es pot moure a la Paperera. Voleu eliminar-lo definitivament?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7613,6 +7613,10 @@ msgstr "Fixa a la barra lateral"
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "Cap element multimèdia coincideix amb la cerca"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "La biblioteca encara no té carpetes"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8183,31 +8187,31 @@ msgstr "Recurs compartit desconegut"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Instal·la serveis"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "per <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "per <b>Desconegut</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "S'està instal·lant"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "S'està desinstal·lant"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "No hi ha informació disponible"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Puntuació: %1/5  Baixades: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8455,7 +8459,7 @@ msgstr "Idiomes i pistes"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Volum clàssic"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9506,7 +9510,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Defineix els colors del control de volum clàssic"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9515,6 +9519,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Defineix els colors del control de volum clàssic\n"
+"Indicant els 12 nombres separats per un ';'\n"
+"El valor per defecte és '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Una alternativa pot ser '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9818,11 +9826,11 @@ msgstr ""
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "S'ha consultat GitHub massa sovint des d'aquesta xarxa. Torneu-ho a provar després de %1."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "S'ha consultat GitHub massa sovint des d'aquesta xarxa. Torneu-ho a provar més tard."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -10111,6 +10119,15 @@ msgstr "Número de disc descendent"
 msgid "Enable Lua plugins"
 msgstr "Habilita els connectors Lua"
 
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Definiu un nom d'usuari o desactiveu el connector audioscrobbler i reinicieu el VLC.\n"
+"Visiteu https://www.last.fm/join/ per obtenir un compte."
+
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
 msgstr "Segur de 128 bits (o superior)"
@@ -10158,9 +10175,8 @@ msgid "Extra verbose media library logs"
 msgstr "Registres molt detallats de la biblioteca multimèdia"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "No s'ha trobat cap recurs compartit de xarxa"
+msgstr "Descobreix recursos compartits de xarxa"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

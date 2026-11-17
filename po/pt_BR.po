@@ -34384,6 +34384,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Defina um nome de usuário ou desative o plugin audioscrobbler e reinicie o VLC.\n"
+"Acesse https://www.last.fm/join/ para criar uma conta."
 
 #: modules/misc/fingerprinter.c:84
 #, fuzzy
@@ -41140,3 +41142,19 @@ msgstr "Volume clássico"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "Definir as cores do controle de volume clássico"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "A biblioteca ainda não tem pastas"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Definir as cores do controle de volume clássico\n"
+"Informando os 12 números separados por ';'\n"
+"O padrão é '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Uma alternativa pode ser '30;30;50;40;40;100;50;50;160;150;150;255'"

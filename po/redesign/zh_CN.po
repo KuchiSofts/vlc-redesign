@@ -7342,6 +7342,10 @@ msgstr "固定到侧边栏"
 msgid "No media matches the search"
 msgstr "没有与搜索匹配的媒体"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "媒体库中还没有文件夹"
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "此文件夹中没有媒体"
@@ -9199,6 +9203,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"定义经典音量滑块的颜色\n"
+"指定以 ';' 分隔的 12 个数字\n"
+"默认值为 '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"也可以使用 '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9736,6 +9744,15 @@ msgstr "光盘编号降序"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "启用 Lua 插件"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"请设置用户名或禁用 audioscrobbler 插件，然后重新启动 VLC。\n"
+"访问 https://www.last.fm/join/ 注册账号。"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

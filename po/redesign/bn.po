@@ -3093,13 +3093,13 @@ msgstr "VLC বন্ধ করার সময় উইন্ডোটি য�
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "ইন্টারফেসের আকার"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "পৃষ্ঠা, লেখা ও নিয়ন্ত্রণগুলো কত বড় করে আঁকা হবে। স্বয়ংক্রিয় এই স্ক্রিনের জন্য উপযুক্ত আকার বেছে নেয়।"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3156,11 +3156,11 @@ msgstr "ভলিউম উইজেট"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "ভলিউম বদলালে (চাকা, কী, নিঃশব্দ) কোথায় দেখাবে। স্বয়ংক্রিয়: ডান দিকে, ডান থেকে বামে লেখা ভাষায় বাম দিকে।"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "স্বয়ংক্রিয়|ডান দিকে|বাম দিকে|উপরে ডান কোণে|উপরে বাম কোণে"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3485,7 +3485,7 @@ msgstr "বাক্স"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "স্বয়ংক্রিয় (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5731,67 +5731,67 @@ msgstr "এর লেআউট ও সেটিংসও এর সাথে ম
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "সার্ভার উত্তর দেয়নি"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "সার্ভারে পৌঁছানো যায়নি"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "বাতিল করা হয়েছে"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "এটি খুব বড়"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "সার্ভার কিছুই পাঠায়নি"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "এটি অসম্পূর্ণ এসেছে"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "এটি এই ডিভাইসে সংরক্ষণ করা যাবে না"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "এটি M3U প্লেলিস্ট নয়"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "এতে কোনো চ্যানেল নেই"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "গাইড পড়া যায়নি"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "চ্যানেলের তালিকা পড়া যায়নি"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "এই লিঙ্কটি একটি একক স্ট্রিম, চ্যানেলের তালিকা নয়"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "সার্ভার প্রবেশাধিকার প্রত্যাখ্যান করেছে (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "এই ঠিকানায় কিছু পাওয়া যায়নি (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "সার্ভার একটি ত্রুটি দিয়ে উত্তর দিয়েছে (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5901,7 +5901,7 @@ msgstr[1] "ক্যাচ-আপ: গত %1 দিন"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "চ্যানেল"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7406,11 +7406,11 @@ msgstr "সিস্টেম থেকে ফাইল মুছুন"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "এই ফাইলটি রিসাইকেল বিনে সরাবেন?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "এই ফাইলটি ট্র্যাশে সরাবেন?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7418,11 +7418,11 @@ msgstr "ফাইল মুছুন"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "এই ফাইলটি রিসাইকেল বিনে সরানো যাবে না। স্থায়ীভাবে মুছে ফেলবেন?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "এই ফাইলটি ট্র্যাশে সরানো যাবে না। স্থায়ীভাবে মুছে ফেলবেন?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7461,6 +7461,10 @@ msgstr "সাইডবারে পিন করুন"
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "অনুসন্ধানের সাথে কোনো মিডিয়া মেলেনি"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "লাইব্রেরিতে এখনও কোনো ফোল্ডার নেই"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8023,31 +8027,31 @@ msgstr "অজানা শেয়ার"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "পরিষেবা ইনস্টল করুন"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "লিখেছেন <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "লিখেছেন <b>অজানা</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "ইনস্টল করা হচ্ছে"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "আনইনস্টল করা হচ্ছে"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "কোনো তথ্য নেই"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "স্কোর: %1/5  ডাউনলোড: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8288,7 +8292,7 @@ msgstr "ভাষা ও ট্র্যাক"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "ক্লাসিক ভলিউম"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9326,7 +9330,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "ক্লাসিক ভলিউম স্লাইডারের রং নির্ধারণ করুন"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9335,6 +9339,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"ক্লাসিক ভলিউম স্লাইডারের রং নির্ধারণ করুন\n"
+"';' দিয়ে আলাদা করা ১২টি সংখ্যা দিয়ে\n"
+"ডিফল্ট: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"বিকল্প হতে পারে: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9613,11 +9621,11 @@ msgstr "GitHub-এ পৌঁছানো যায়নি। আপনার �
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "এই নেটওয়ার্ক থেকে GitHub-কে খুব বেশিবার অনুরোধ করা হয়েছে। %1 পরে আবার চেষ্টা করুন।"
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "এই নেটওয়ার্ক থেকে GitHub-কে খুব বেশিবার অনুরোধ করা হয়েছে। পরে আবার চেষ্টা করুন।"
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -9894,6 +9902,15 @@ msgstr "ডিস্ক নম্বর নিম্নক্রম"
 msgid "Enable Lua plugins"
 msgstr "Lua প্লাগইন সক্রিয় করুন"
 
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"একটি ব্যবহারকারীর নাম দিন অথবা audioscrobbler প্লাগইন বন্ধ করুন, তারপর VLC আবার চালু করুন।\n"
+"অ্যাকাউন্ট খুলতে https://www.last.fm/join/ দেখুন।"
+
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
 msgstr "নিরাপদ 128-bit (বা তার বেশি)"
@@ -9939,9 +9956,8 @@ msgid "Extra verbose media library logs"
 msgstr "মিডিয়া লাইব্রেরির অতিরিক্ত বিস্তারিত লগ"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "কোনো নেটওয়ার্ক শেয়ার পাওয়া যায়নি"
+msgstr "নেটওয়ার্ক শেয়ার খুঁজুন"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

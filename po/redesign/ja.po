@@ -7481,6 +7481,10 @@ msgstr "サイドバーに固定"
 msgid "No media matches the search"
 msgstr "検索に一致するメディアはありません"
 
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "ライブラリにはまだフォルダーがありません"
+
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
 msgstr "このフォルダーにメディアはありません"
@@ -9362,6 +9366,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"クラシック音量スライダーの色を指定\n"
+"';' で区切った 12 個の数値で指定します\n"
+"既定値は '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"別の例: '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9935,6 +9943,15 @@ msgstr "ディスク番号 (降順)"
 #: modules/lua/vlc.c:51
 msgid "Enable Lua plugins"
 msgstr "Luaプラグインの有効化"
+
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"ユーザー名を設定するか audioscrobbler プラグインを無効にして、VLC を再起動してください。\n"
+"アカウントは https://www.last.fm/join/ で作成できます。"
 
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"

@@ -33113,6 +33113,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"請設定使用者名稱或停用 audioscrobbler 外掛，然後重新啟動 VLC。\n"
+"前往 https://www.last.fm/join/ 註冊帳號。"
 
 #: modules/misc/fingerprinter.c:84
 msgid "acoustid"
@@ -39475,3 +39477,19 @@ msgstr "經典音量"
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
 msgstr "定義經典音量滑桿的色彩"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "媒體櫃中還沒有資料夾"
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"定義經典音量滑桿的色彩\n"
+"指定以 ';' 分隔的 12 個數字\n"
+"預設值為 '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"也可以使用 '30;30;50;40;40;100;50;50;160;150;150;255'"

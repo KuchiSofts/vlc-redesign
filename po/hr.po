@@ -24533,13 +24533,13 @@ msgstr "Otvara prozor ondje gdje je bio kada je VLC zatvoren."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Veličina sučelja"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Koliko se velike crtaju stranice, tekstovi i kontrole. Automatski bira veličinu koja odgovara ovom zaslonu."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -24597,11 +24597,11 @@ msgstr "Kontrola glasnoće"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Gdje se jakost zvuka prikazuje kad se promijeni (kotačić, tipke, utišavanje). Automatski: s desne strane, s lijeve u jeziku koji se piše zdesna nalijevo."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automatski|Desna strana|Lijeva strana|Gornji desni kut|Gornji lijevi kut"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -24963,7 +24963,7 @@ msgstr "Pozadina"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Automatski (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -34257,6 +34257,8 @@ msgid ""
 "VLC.\n"
 "Visit https://www.last.fm/join/ to get an account."
 msgstr ""
+"Postavite korisničko ime ili onemogućite dodatak audioscrobbler i ponovno pokrenite VLC.\n"
+"Račun možete otvoriti na https://www.last.fm/join/"
 
 #: modules/misc/fingerprinter.c:84
 #, fuzzy
@@ -34453,9 +34455,8 @@ msgid "Extra verbose media library logs"
 msgstr "Vrlo opširni zapisi medijske knjižnice"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Nije pronađeno nijedno mrežno dijeljenje"
+msgstr "Otkrivaj mrežna dijeljenja"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"
@@ -40843,3 +40844,151 @@ msgstr "Upravljanje vremenom"
 #: modules/gui/qt/dialogs/vlm/vlm.ui:193
 msgid "Media Manager List"
 msgstr "Popis medijskog upravitelja"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:886
+msgid "the server did not answer"
+msgstr "poslužitelj nije odgovorio"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:887
+msgid "the server could not be reached"
+msgstr "poslužitelj nije dostupan"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:888
+msgid "cancelled"
+msgstr "otkazano"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:889
+msgid "it is too large"
+msgstr "prevelik je"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:890
+msgid "the server sent nothing"
+msgstr "poslužitelj nije poslao ništa"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:891
+msgid "it came cut short"
+msgstr "stigao je nepotpun"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:893
+msgid "it cannot be saved on this device"
+msgstr "ne može se spremiti na ovom uređaju"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:894
+msgid "it is not an M3U playlist"
+msgstr "nije M3U popis za reprodukciju"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:897
+msgid "it has no channels"
+msgstr "nema kanala"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:898
+#: modules/gui/qt/iptv/iptv_addon.cpp:899
+msgid "the guide could not be read"
+msgstr "vodič se nije mogao pročitati"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:900
+msgid "the list of channels could not be read"
+msgstr "popis kanala nije se mogao pročitati"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:902
+msgid "this link is a single stream, not a list of channels"
+msgstr "ova poveznica je jedan stream, a ne popis kanala"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:909
+msgid "the server refused access (%1)"
+msgstr "poslužitelj je odbio pristup (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:910
+msgid "nothing was found at this address (%1)"
+msgstr "na ovoj adresi nije ništa pronađeno (%1)"
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:911
+msgid "the server answered with an error (%1)"
+msgstr "poslužitelj je odgovorio pogreškom (%1)"
+
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:81
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
+msgctxt "TV"
+msgid "Channels"
+msgstr "Kanali"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
+msgid "Move this file to the Recycle Bin?"
+msgstr "Premjestiti ovu datoteku u Koš za smeće?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
+msgid "Move this file to the Trash?"
+msgstr "Premjestiti ovu datoteku u Smeće?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
+msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
+msgstr "Ova se datoteka ne može premjestiti u Koš za smeće. Trajno je izbrisati?"
+
+#: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
+msgid "This file can't be moved to the Trash. Delete it permanently?"
+msgstr "Ova se datoteka ne može premjestiti u Smeće. Trajno je izbrisati?"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Knjižnica još nema mapa"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:30
+msgid "Install services"
+msgstr "Instaliraj usluge"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:125
+msgid "by <b>%1</b>"
+msgstr "autor: <b>%1</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:127
+msgid "by <b>Unknown</b>"
+msgstr "autor: <b>Nepoznato</b>"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:146
+msgid "Installing"
+msgstr "Instaliranje"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:148
+msgid "Uninstalling"
+msgstr "Deinstaliranje"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:163
+msgid "No information available"
+msgstr "Nema dostupnih informacija"
+
+#: modules/gui/qt/network/qml/ServicesManage.qml:172
+msgid "Score: %1/5  Downloads: %2"
+msgstr "Ocjena: %1/5  Preuzimanja: %2"
+
+#: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
+msgid "Classic Volume"
+msgstr "Klasična jakost zvuka"
+
+#: modules/gui/qt/qt.cpp:243
+msgid "Define the colors of the legacy volume slider"
+msgstr "Odredi boje klasičnog klizača jakosti zvuka"
+
+#: modules/gui/qt/util/redesign_updater.cpp:817
+msgid "GitHub was asked too often from this network. Try again after %1."
+msgstr "GitHub je prečesto upitan s ove mreže. Pokušajte ponovno nakon %1."
+
+#: modules/gui/qt/util/redesign_updater.cpp:821
+msgid "GitHub was asked too often from this network. Try again later."
+msgstr "GitHub je prečesto upitan s ove mreže. Pokušajte ponovno kasnije."
+
+#: modules/gui/qt/qt.cpp:244
+msgid ""
+"Define the colors of the legacy volume slider\n"
+"By specifying the 12 numbers separated by a ';'\n"
+"Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
+msgstr ""
+"Odredi boje klasičnog klizača jakosti zvuka\n"
+"Navođenjem 12 brojeva odvojenih znakom ';'\n"
+"Zadano je '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Alternativa može biti '30;30;50;40;40;100;50;50;160;150;150;255'"

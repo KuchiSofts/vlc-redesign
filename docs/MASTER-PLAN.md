@@ -128,7 +128,19 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.4** (2026-11-17): an update release of #111 and #112, both from @xITmasterx (Windows, ARM64, Linux,
+- 🟡 **0.7.5** started. Owner 11-17: translations and everything checked before a release, one update for all
+  of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
+  pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).
+  Then (owner: "yes"): the 53 languages at 98 % completed (40 texts each, 2,100 entries in each catalog's own
+  words, checked for %1/<b>/the five "|" choices/the URL before writing): all 72 Weblate languages at 100 %;
+  msgfmt -c on every catalog; po_safety: 4,336 entries, the only flags Khmer's zero-width spaces (VideoLAN's km.po
+  has 34,780).
+- 🟢 **0.7.4** published 2026-11-17 15:59 local (16 files; tag v0.7.4 on 8905c5b527, PR #115 merged as
+  f92832d2b0; Android tag v0.7.4 = bd399e20b, PR #19 merged as 8079cd79ac, APK 13107040). After publishing: a copy
+  of 0.7.3 took the small update from GitHub and opened on 0.7.4 (About: every program 0.7.4, Samsung TV 0.6.8;
+  the Folders row there); the package scan 0 in both Windows zips; #111 and #112 answered and closed. CI: macOS
+  Intel's disk image upload failed once on GitHub's side (ENOTFOUND), the job run again.
+- 🟢 **0.7.4** (2026-11-17): an update release of #111 and #112, both from @xITmasterx (Windows, ARM64, Linux,
   macOS, Android; the Samsung TV app stays 0.6.8, `follows: 0.7.4`).
   - 🟢 **#112, Folders** (built and tried on Windows): a Folders row in the sidebar after Music opens the library's
     folders (FolderDisplay without a folder, LocalFolderModel `roots`); each opens its folder page, as the design's

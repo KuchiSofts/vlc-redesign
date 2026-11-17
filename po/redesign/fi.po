@@ -3142,13 +3142,13 @@ msgstr "Avaa ikkunan siihen kohtaan, jossa se oli VLC:n sulkeutuessa."
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:262
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:53
 msgid "Interface size"
-msgstr ""
+msgstr "Käyttöliittymän koko"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:263
 msgid ""
 "How large the pages, texts and controls are drawn. Automatic picks the size "
 "that suits this screen."
-msgstr ""
+msgstr "Kuinka suurina sivut, tekstit ja säätimet piirretään. Automaattinen valitsee tälle näytölle sopivan koon."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:264
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:77
@@ -3208,11 +3208,11 @@ msgstr "Äänenvoimakkuuden säädin"
 msgid ""
 "Where the volume shows when it changes (the wheel, the keys, mute). "
 "Automatic: on the right side, on the left in a right-to-left language."
-msgstr ""
+msgstr "Missä äänenvoimakkuus näkyy, kun se muuttuu (rulla, näppäimet, mykistys). Automaattinen: oikealla, oikealta vasemmalle kirjoitettavassa kielessä vasemmalla."
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:277
 msgid "Automatic|Right side|Left side|Top right corner|Top left corner"
-msgstr ""
+msgstr "Automaattinen|Oikealla|Vasemmalla|Oikeassa yläkulmassa|Vasemmassa yläkulmassa"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:278
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:308
@@ -3550,7 +3550,7 @@ msgstr "Laatikko"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1506
 #, no-c-format
 msgid "Automatic (%1 %)"
-msgstr ""
+msgstr "Automaattinen (%1 %)"
 
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:1520
 msgid "Above normal"
@@ -5802,67 +5802,67 @@ msgstr "Sen asettelu ja asetukset poistetaan sen mukana."
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:886
 msgid "the server did not answer"
-msgstr ""
+msgstr "palvelin ei vastannut"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:887
 msgid "the server could not be reached"
-msgstr ""
+msgstr "palvelimeen ei saatu yhteyttä"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:888
 msgid "cancelled"
-msgstr ""
+msgstr "peruttu"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:889
 msgid "it is too large"
-msgstr ""
+msgstr "se on liian suuri"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:890
 msgid "the server sent nothing"
-msgstr ""
+msgstr "palvelin ei lähettänyt mitään"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:891
 msgid "it came cut short"
-msgstr ""
+msgstr "se saapui vajaana"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:892
 #: modules/gui/qt/iptv/iptv_addon.cpp:893
 msgid "it cannot be saved on this device"
-msgstr ""
+msgstr "sitä ei voi tallentaa tähän laitteeseen"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:894
 msgid "it is not an M3U playlist"
-msgstr ""
+msgstr "se ei ole M3U-soittolista"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:895
 #: modules/gui/qt/iptv/iptv_addon.cpp:896
 #: modules/gui/qt/iptv/iptv_addon.cpp:897
 msgid "it has no channels"
-msgstr ""
+msgstr "siinä ei ole kanavia"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:898
 #: modules/gui/qt/iptv/iptv_addon.cpp:899
 msgid "the guide could not be read"
-msgstr ""
+msgstr "ohjelmaopasta ei voitu lukea"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:900
 msgid "the list of channels could not be read"
-msgstr ""
+msgstr "kanavaluetteloa ei voitu lukea"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:902
 msgid "this link is a single stream, not a list of channels"
-msgstr ""
+msgstr "tämä linkki on yksittäinen virta, ei kanavaluettelo"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
-msgstr ""
+msgstr "palvelin esti pääsyn (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:910
 msgid "nothing was found at this address (%1)"
-msgstr ""
+msgstr "tästä osoitteesta ei löytynyt mitään (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:911
 msgid "the server answered with an error (%1)"
-msgstr ""
+msgstr "palvelin vastasi virheellä (%1)"
 
 #: modules/gui/qt/iptv/iptv_addon.cpp:949
 msgid "This channel cannot be played"
@@ -5972,7 +5972,7 @@ msgstr[1] "Jälkikatselu: viimeiset %1 päivää"
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
-msgstr ""
+msgstr "Kanavat"
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
@@ -7495,11 +7495,11 @@ msgstr "Poista tiedosto järjestelmästä"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:270
 msgid "Move this file to the Recycle Bin?"
-msgstr ""
+msgstr "Siirretäänkö tämä tiedosto roskakoriin?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:271
 msgid "Move this file to the Trash?"
-msgstr ""
+msgstr "Siirretäänkö tämä tiedosto roskakoriin?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:269
 msgid "Delete file"
@@ -7507,11 +7507,11 @@ msgstr "Poista tiedosto"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:279
 msgid "This file can't be moved to the Recycle Bin. Delete it permanently?"
-msgstr ""
+msgstr "Tätä tiedostoa ei voi siirtää roskakoriin. Poistetaanko se pysyvästi?"
 
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:280
 msgid "This file can't be moved to the Trash. Delete it permanently?"
-msgstr ""
+msgstr "Tätä tiedostoa ei voi siirtää roskakoriin. Poistetaanko se pysyvästi?"
 
 #: modules/gui/qt/medialibrary/qml/ScanProgressBar.qml:39
 msgid "Scanning %1"
@@ -7550,6 +7550,10 @@ msgstr "Kiinnitä sivupalkkiin"
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:564
 msgid "No media matches the search"
 msgstr "Mikään media ei vastaa hakua"
+
+#: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:587
+msgid "The library has no folders yet"
+msgstr "Kirjastossa ei ole vielä kansioita"
 
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:565
 msgid "No media in this folder"
@@ -8116,31 +8120,31 @@ msgstr "Tuntematon jako"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:30
 msgid "Install services"
-msgstr ""
+msgstr "Asenna palveluita"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:125
 msgid "by <b>%1</b>"
-msgstr ""
+msgstr "tekijä <b>%1</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:127
 msgid "by <b>Unknown</b>"
-msgstr ""
+msgstr "tekijä <b>Tuntematon</b>"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:146
 msgid "Installing"
-msgstr ""
+msgstr "Asennetaan"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:148
 msgid "Uninstalling"
-msgstr ""
+msgstr "Poistetaan asennusta"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:163
 msgid "No information available"
-msgstr ""
+msgstr "Tietoja ei ole saatavilla"
 
 #: modules/gui/qt/network/qml/ServicesManage.qml:172
 msgid "Score: %1/5  Downloads: %2"
-msgstr ""
+msgstr "Arvio: %1/5  Latauksia: %2"
 
 #: modules/gui/qt/player/favorite_state.cpp:94
 msgid "Could not update this favorite."
@@ -8380,7 +8384,7 @@ msgstr "Kielet ja raidat"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:63
 msgid "Classic Volume"
-msgstr ""
+msgstr "Perinteinen äänenvoimakkuus"
 
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:61
 msgid "Navigation Box"
@@ -9421,7 +9425,7 @@ msgstr ""
 
 #: modules/gui/qt/qt.cpp:243
 msgid "Define the colors of the legacy volume slider"
-msgstr ""
+msgstr "Määritä perinteisen äänenvoimakkuuden liukusäätimen värit"
 
 #: modules/gui/qt/qt.cpp:244
 msgid ""
@@ -9430,6 +9434,10 @@ msgid ""
 "Default is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "An alternative can be '30;30;50;40;40;100;50;50;160;150;150;255'"
 msgstr ""
+"Määritä perinteisen äänenvoimakkuuden liukusäätimen värit\n"
+"Antamalla 12 lukua ';'-merkillä erotettuina\n"
+"Oletus on '255;255;255;20;226;20;255;176;15;235;30;20'\n"
+"Vaihtoehto voi olla '30;30;50;40;40;100;50;50;160;150;150;255'"
 
 #: modules/gui/qt/qt.cpp:252
 msgid ""
@@ -9718,11 +9726,11 @@ msgstr "GitHubiin ei saatu yhteyttä. Tarkista yhteys ja yritä uudelleen."
 
 #: modules/gui/qt/util/redesign_updater.cpp:817
 msgid "GitHub was asked too often from this network. Try again after %1."
-msgstr ""
+msgstr "GitHubilta on kysytty liian usein tästä verkosta. Yritä uudelleen %1 jälkeen."
 
 #: modules/gui/qt/util/redesign_updater.cpp:821
 msgid "GitHub was asked too often from this network. Try again later."
-msgstr ""
+msgstr "GitHubilta on kysytty liian usein tästä verkosta. Yritä myöhemmin uudelleen."
 
 #: modules/gui/qt/util/redesign_updater.cpp:784
 msgid "GitHub sent an unexpected answer (%1)."
@@ -10004,6 +10012,15 @@ msgstr "Levyn numero laskevasti"
 msgid "Enable Lua plugins"
 msgstr "Käytä Lua-liitännäisiä"
 
+#: modules/misc/audioscrobbler.c:727
+msgid ""
+"Please set a username or disable the audioscrobbler plugin, and restart "
+"VLC.\n"
+"Visit https://www.last.fm/join/ to get an account."
+msgstr ""
+"Aseta käyttäjänimi tai poista audioscrobbler-liitännäinen käytöstä ja käynnistä VLC uudelleen.\n"
+"Tilin saat osoitteesta https://www.last.fm/join/"
+
 #: modules/misc/gnutls.c:757
 msgid "Secure 128-bit (or higher)"
 msgstr "Turvallinen 128-bittinen (tai vahvempi)"
@@ -10049,9 +10066,8 @@ msgid "Extra verbose media library logs"
 msgstr "Erittäin yksityiskohtaiset mediakirjaston lokit"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2758
-#, fuzzy
 msgid "Discover network shares"
-msgstr "Verkkojakoja ei löytynyt"
+msgstr "Etsi verkkojakoja"
 
 #: modules/misc/medialibrary/medialibrary.cpp:2761
 msgid "media library"

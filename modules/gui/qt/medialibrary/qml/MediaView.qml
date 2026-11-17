@@ -99,6 +99,19 @@ MainViewLoader {
         History.push(["player"])
     }
 
+    // The cover of a media: the library's, else a song's own artwork (a song
+    // opened from no library folder, as Listen Again shows, has no cover of
+    // the library: the placeholder stood for every one of them, #111)
+    function _coverOf(m) {
+        if (!m)
+            return ""
+        if (m.small_cover)
+            return m.small_cover
+        if (!m.isVideo && m.isLocal && m.mrl)
+            return VLCThumbnail.artwork(m.mrl)
+        return ""
+    }
+
     function _onActionAtIndex() {
         model.addAndPlay(selectionModel.selectedIndexes)
         History.push(["player"])
@@ -182,7 +195,7 @@ MainViewLoader {
 
                 fillMode: root.fillMode
 
-                image: model.small_cover ?? ""
+                image: root._coverOf(model)
                 fallbackImage: model.isVideo ? VLCStyle.noArtVideoCover : VLCStyle.noArtAlbumCover
 
                 title: model.title || qsTr("Unknown Title")
@@ -341,6 +354,7 @@ MainViewLoader {
                 titleCover_radius: root.listCoverRadius
 
                 criteriaCover: "small_cover"
+                coverProvider: (rowModel) => root._coverOf(rowModel)
 
                 showCriterias: tableView.sortModel === tableView._sortModelSmall
             }

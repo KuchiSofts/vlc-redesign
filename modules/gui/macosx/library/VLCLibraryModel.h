@@ -51,6 +51,7 @@ extern NSString * const VLCLibraryModelListOfShowsReset;
 extern NSString * const VLCLibraryModelListOfMoviesReset;
 extern NSString * const VLCLibraryModelListOfGroupsReset;
 
+extern NSString * const VLCLibraryModelMediaItemDeleted; // The notification object is the library ID as an NSNumber.
 extern NSString * const VLCLibraryModelAudioMediaItemDeleted;
 extern NSString * const VLCLibraryModelVideoMediaItemDeleted;
 extern NSString * const VLCLibraryModelRecentsMediaItemDeleted;
@@ -116,6 +117,9 @@ extern NSString * const VLCLibraryModelDiscoveryFailed;
 
 @property (readonly) size_t numberOfHistoryMedia;
 @property (readonly) NSArray <VLCMediaLibraryMediaItem *> *listOfHistoryMedia;
+
+// Up to 20 played library tracks, ranked by play count and following the current search filter.
+@property (readonly) NSArray<VLCMediaLibraryMediaItem *> *listOfMostPlayedAudioMedia;
 
 @property (readonly) size_t numberOfShows;
 @property (readonly) NSArray <VLCMediaLibraryShow *> *listOfShows;

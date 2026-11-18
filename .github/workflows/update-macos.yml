@@ -1,0 +1,60 @@
+# The update of an installed copy on macOS, as a user meets it: a released
+# version installed in /Applications from its disk image, then updated to a
+# newer release with its own helper (extras/juxtopposed/ci/macos-update-test.sh).
+# On every macOS the runners have: the build's launch test runs on one only,
+# and an update that works there failed on a newer system (#117).
+name: macOS update
+
+on:
+  workflow_dispatch:
+    inputs:
+      from:
+        description: 'The version installed (0.7.2)'
+        required: true
+        default: '0.7.2'
+      to:
+        description: 'The version it is updated to (0.7.4)'
+        required: true
+        default: '0.7.4'
+  push:
+    paths:
+      - '.github/workflows/update-macos.yml'
+      - 'extras/juxtopposed/ci/macos-update-test.sh'
+      - 'extras/juxtopposed/macos/vlc-redesign-update.sh'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-macos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    name: ${{ matrix.os }}, ${{ matrix.helper }} helper
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-26]
+        # the helper of the installed copy (what its users have), and the
+        # one of this commit (what the next release gives them)
+        helper: [installed, this]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          sparse-checkout: extras/juxtopposed
+      - name: Update an installed copy
+        run: |
+          helper=
+          [ "${{ matrix.helper }}" = this ] && helper=$PWD/extras/juxtopposed/macos/vlc-redesign-update.sh
+          bash extras/juxtopposed/ci/macos-update-test.sh \
+              "${{ inputs.from || '0.7.2' }}" "${{ inputs.to || '0.7.4' }}" "$RUNNER_TEMP/update" $helper
+      - name: Keep the logs
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: update-${{ matrix.os }}-${{ matrix.helper }}
+          path: ${{ runner.temp }}/update/*.log
+          if-no-files-found: ignore

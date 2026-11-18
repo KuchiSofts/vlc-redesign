@@ -135,6 +135,12 @@ What is being worked on, updated as it changes (2026-11-10):
   words, checked for %1/<b>/the five "|" choices/the URL before writing): all 72 Weblate languages at 100 %;
   msgfmt -c on every catalog; po_safety: 4,336 entries, the only flags Khmer's zero-width spaces (VideoLAN's km.po
   has 34,780).
+  Android (owner: "do what you think is best"; vlc-redesign-android work/0.7.5, 5ced18af6): 41 more languages
+  complete, 61 in all have every one of the app's 1,005 texts. 189-192 texts per language came word for word from
+  the desktop catalogs (%N turned into %1$s/%s/%d, escaped for Android), 60 were written per language in the
+  plural forms its file uses. The app builds (aapt2), its unit tests pass, and on the emulator the new build in
+  Danish shows them (Settings, Playback). Left to volunteers: 13 languages with almost nothing (am, ast, br, co,
+  fo, kab, lo, my, sc, sw, tt, uz; en-GB reads English).
 - 🟢 **0.7.4** published 2026-11-17 15:59 local (16 files; tag v0.7.4 on 8905c5b527, PR #115 merged as
   f92832d2b0; Android tag v0.7.4 = bd399e20b, PR #19 merged as 8079cd79ac, APK 13107040). After publishing: a copy
   of 0.7.3 took the small update from GitHub and opened on 0.7.4 (About: every program 0.7.4, Samsung TV 0.6.8;

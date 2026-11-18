@@ -40492,3 +40492,9 @@ msgstr ""
 "';'로 구분한 12개의 숫자로 지정합니다\n"
 "기본값은 '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "대안: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "이 Mac에서 업데이트를 준비할 수 없습니다. 릴리스 페이지에서 다운로드하세요."

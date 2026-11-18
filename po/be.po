@@ -41026,3 +41026,9 @@ msgstr ""
 "Пазначыўшы 12 лікаў, раздзеленых ';'\n"
 "Прадвызначана: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Іншы варыянт: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Не ўдалося падрыхтаваць абнаўленне на гэтым Mac. Сцягніце яго са старонкі выпуску."

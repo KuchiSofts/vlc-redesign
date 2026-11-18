@@ -9869,6 +9869,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "Инсталаторът не можа да бъде запазен в %1."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Актуализацията не можа да бъде подготвена на този Mac. Изтеглете я от страницата на версията."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

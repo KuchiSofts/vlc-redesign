@@ -9822,6 +9822,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "Die installeerder kon nie in %1 gestoor word nie."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Die bywerking kon nie op hierdie Mac voorberei word nie. Laai dit van die vrystellingsbladsy af."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

@@ -39897,3 +39897,9 @@ msgstr ""
 "Ved å oppgje dei 12 tala skilde med ';'\n"
 "Standard er '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Eit alternativ kan vere '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Oppdateringa kunne ikkje førebuast på denne Mac-en. Last ho ned frå utgjevingssida."

@@ -9659,6 +9659,12 @@ msgstr "බාගත් ස්ථාපකය එහි චෙක්සම් �
 msgid "The installer couldn't be saved to %1."
 msgstr "ස්ථාපකය %1 වෙත සුරැකිය නොහැකි විය."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "මෙම Mac හි යාවත්කාලීනය සූදානම් කළ නොහැකි විය. එය නිකුතු පිටුවෙන් බාගන්න."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

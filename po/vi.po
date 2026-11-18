@@ -40869,3 +40869,9 @@ msgstr ""
 "Bằng cách chỉ định 12 số được phân tách bằng ';'\n"
 "Mặc định là '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Một lựa chọn khác có thể là '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Không thể chuẩn bị bản cập nhật trên máy Mac này. Hãy tải từ trang phát hành."

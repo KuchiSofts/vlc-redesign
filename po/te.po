@@ -39513,3 +39513,9 @@ msgstr ""
 "';' తో వేరుచేసిన 12 సంఖ్యలను ఇవ్వడం ద్వారా\n"
 "అప్రమేయం: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "ప్రత్యామ్నాయం: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "ఈ Mac లో నవీకరణను సిద్ధం చేయలేకపోయాం. విడుదల పేజీ నుండి దింపుకోండి."

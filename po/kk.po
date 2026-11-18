@@ -39822,3 +39822,9 @@ msgstr ""
 "';' арқылы бөлінген 12 санды көрсету арқылы\n"
 "Әдепкі: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Балама: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Жаңартуды осы Mac-та дайындау мүмкін болмады. Оны шығарылым бетінен жүктеп алыңыз."

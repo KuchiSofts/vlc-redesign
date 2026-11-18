@@ -9663,6 +9663,12 @@ msgstr "ડાઉનલોડ કરેલું ઇન્સ્ટોલર ત
 msgid "The installer couldn't be saved to %1."
 msgstr "ઇન્સ્ટોલર %1 માં સંગ્રહી શકાયું નથી."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "આ Mac પર અપડેટ તૈયાર થઈ શક્યું નહીં. તેને રિલીઝ પાના પરથી ડાઉનલોડ કરો."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

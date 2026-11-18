@@ -41260,3 +41260,9 @@ msgstr ""
 "Zadaním 12 čísel oddelených znakom ';'\n"
 "Predvolené je '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Alternatívou môže byť '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Aktualizáciu sa na tomto Macu nepodarilo pripraviť. Stiahnite ju zo stránky vydania."

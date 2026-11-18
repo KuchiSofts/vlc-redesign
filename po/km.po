@@ -40257,3 +40257,9 @@ msgstr ""
 "ដោយ​បញ្ជាក់​លេខ 12 ដែល​ខណ្ឌ​ដោយ ';'\n"
 "លំនាំដើម៖ '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "ជម្រើស​ផ្សេង៖ '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "មិនអាចរៀបចំបច្ចុប្បន្នភាពនៅលើ Mac នេះបានទេ។ ទាញយកវាពីទំព័រចេញផ្សាយ។"

@@ -9666,6 +9666,12 @@ msgstr "डाउनलोड गरिएको स्थापनाकर्�
 msgid "The installer couldn't be saved to %1."
 msgstr "स्थापनाकर्ता %1 मा बचत गर्न सकिएन।"
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "यो Mac मा अद्यावधिक तयार गर्न सकिएन। रिलिज पृष्ठबाट डाउनलोड गर्नुहोस्।"
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

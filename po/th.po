@@ -39489,3 +39489,9 @@ msgstr ""
 "โดยระบุตัวเลข 12 ตัวคั่นด้วย ';'\n"
 "ค่าเริ่มต้นคือ '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "ทางเลือกอื่นอาจเป็น '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "ไม่สามารถเตรียมการปรับปรุงบน Mac เครื่องนี้ได้ ดาวน์โหลดจากหน้ารุ่นเผยแพร่"

@@ -9557,6 +9557,12 @@ msgstr "下载的安装程序与其校验和不匹配，因此未运行。"
 msgid "The installer couldn't be saved to %1."
 msgstr "无法将安装程序保存到 %1。"
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "无法在这台 Mac 上准备更新。请从发布页面下载。"
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

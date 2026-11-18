@@ -9571,6 +9571,12 @@ msgstr "下載的安裝程式與其總和檢查碼不符，因此未執行。"
 msgid "The installer couldn't be saved to %1."
 msgstr "無法將安裝程式儲存到 %1。"
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "無法在這台 Mac 上準備更新。請從版本發行頁面下載。"
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

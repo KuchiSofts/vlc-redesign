@@ -9895,6 +9895,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "L' astaleu n' a savou esse schapé dins %1."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "On n' a savou aprester l' metaedje a djoû so ç' Mac ci. Aberwetez-l dispoy li pådje del modêye."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

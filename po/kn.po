@@ -40814,3 +40814,9 @@ msgstr ""
 "';' ಇಂದ ಬೇರ್ಪಡಿಸಿದ 12 ಸಂಖ್ಯೆಗಳನ್ನು ನೀಡುವ ಮೂಲಕ\n"
 "ಪೂರ್ವನಿಯೋಜಿತ: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "ಪರ್ಯಾಯ: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "ಈ Mac ನಲ್ಲಿ ನವೀಕರಣವನ್ನು ಸಿದ್ಧಪಡಿಸಲಾಗಲಿಲ್ಲ. ಅದನ್ನು ಬಿಡುಗಡೆ ಪುಟದಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."

@@ -135,7 +135,20 @@ What is being worked on, updated as it changes (2026-11-10):
   away. The launch test stages an update on macOS 15 only, in a temporary folder: the "macOS update" workflow now
   installs a release in /Applications and updates it with its own helper on macOS 15 and 26, each step timed.
   VideoLAN merged up to `c48b46e97f` (16 commits, their native macOS interface and three small fixes).
-- 🟡 **0.7.5** started. Owner 11-17: translations and everything checked before a release, one update for all
+  What the workflow showed: on the CI Macs (macOS 15 and 26.7) the released helper updates 0.7.2 to 0.7.4 in ten
+  seconds, each step succeeding. So a step was blocked by something of the reporter's Mac (not known from here:
+  no Mac to try on, and the CI Macs do not ask what a user's Mac may ask), the app waited its ten minutes, and
+  "damaged" was the name of every such end. Fixed what is certain: the helper gives each step two minutes and a
+  code of its own (7 no answer, 8 the image open with no application to read), keeps the tools' own words; the
+  app closes the helper's input, logs what it said, keeps "damaged" for a broken signature, and for the rest
+  says "The update couldn't be prepared on this Mac. Download it from the release page." (72 languages) and
+  offers the download. Checks written first and seen failing: an image that never opens (exit 4 after 120 s
+  before; exit 7 after 6 s now), one whose application can't be read, one that can't be opened; all pass on
+  macOS 15 and 26, with the real update staged and swapped in. A copy of 0.7.4 or older still has the old helper:
+  where it is blocked, the update to 0.7.5 is done once from the disk image; the next log names the step.
+  Windows: built after the merge, About 0.7.5, Folders, an .mkv and a song played, no QML warning.
+- 🟡 **0.7.5** (2026-11-18): an update release (Windows, ARM64, Linux, macOS, Android; the Samsung TV app
+  stays 0.6.8, `follows: 0.7.5`). Owner 11-17: translations and everything checked before a release, one update for all
   of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
   pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).
   Then (owner: "yes"): the 53 languages at 98 % completed (40 texts each, 2,100 entries in each catalog's own

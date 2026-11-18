@@ -41,7 +41,8 @@ in the Android app. Windows, Linux, macOS and Android; the Samsung TV app stays 
 - macOS update helper (#117): each step (the image attached, its application copied, its signature checked) ends
   by itself after two minutes, with a code of its own (7 no answer in time, 8 the image open but no application
   to read in it) and the step's own words on the error output; nothing is read from the input. The app closes the
-  helper's input, waits six minutes at most, writes what the helper said in the log, and keeps "damaged" for a
+  helper's input, waits six minutes at most, writes what the helper said in the log (an error when it failed: the
+  log of a report keeps errors only), and keeps "damaged" for a
   signature that isn't intact: anything else of this kind reads "The update couldn't be prepared on this Mac.
   Download it from the release page.", and the button then offers the download. On the CI Macs (15 and 26) the
   released helper updates 0.7.2 to 0.7.4 in ten seconds: what blocked a step on the reporter's Mac is not known,

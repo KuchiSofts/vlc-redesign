@@ -1645,12 +1645,13 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
             }
         }, [this, saved]() {
             if (!saved->log.isEmpty()) {
-                // (a failure in the log of whoever reports it; a success for
+                // (a failure as an error: the log a report comes with keeps
+                // errors only, unless its details were raised; a success for
                 // the one who looks)
                 if (saved->error.isEmpty())
                     msg_Dbg(m_intf, "update to %s: %s", qtu(m_latestVersion), qtu(saved->log));
                 else
-                    msg_Warn(m_intf, "update to %s: %s", qtu(m_latestVersion), qtu(saved->log));
+                    msg_Err(m_intf, "update to %s: %s", qtu(m_latestVersion), qtu(saved->log));
             }
             // (the button then offers the download: canInstall)
             m_inPlaceFailed = m_inPlaceFailed || saved->inPlaceFailed;

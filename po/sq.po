@@ -39806,3 +39806,9 @@ msgstr ""
 "Duke dhënë 12 numrat të ndarë me ';'\n"
 "Parazgjedhja është '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Një alternativë mund të jetë '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Përditësimi s'u përgatit dot në këtë Mac. Shkarkojeni nga faqja e botimit."

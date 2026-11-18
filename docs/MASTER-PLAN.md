@@ -128,13 +128,48 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.5** started. Owner 11-17: translations and everything checked before a release, one update for all
+- 🟡 **0.7.5**, owner 11-18: "release". Before it: **#117** (@xITmasterx, macOS 26.6, 0.7.2): Check for updates
+  downloads, stays on "Preparing the update", then "The update is damaged." The app runs
+  `vlc-redesign-update.sh stage` (the image attached, its app copied next to the running one, its signature
+  checked) and waits ten minutes; every failure but two reads "damaged", and the helper's own words are thrown
+  away. The launch test stages an update on macOS 15 only, in a temporary folder: the "macOS update" workflow now
+  installs a release in /Applications and updates it with its own helper on macOS 15 and 26, each step timed.
+  VideoLAN merged up to `c48b46e97f` (16 commits, their native macOS interface and three small fixes).
+  What the workflow showed: on the CI Macs (macOS 15 and 26.7) the released helper updates 0.7.2 to 0.7.4 in ten
+  seconds, each step succeeding. So a step was blocked by something of the reporter's Mac (not known from here:
+  no Mac to try on, and the CI Macs do not ask what a user's Mac may ask), the app waited its ten minutes, and
+  "damaged" was the name of every such end. Fixed what is certain: the helper gives each step two minutes and a
+  code of its own (7 no answer, 8 the image open with no application to read), keeps the tools' own words; the
+  app closes the helper's input, logs what it said, keeps "damaged" for a broken signature, and for the rest
+  says "The update couldn't be prepared on this Mac. Download it from the release page." (72 languages) and
+  offers the download. Checks written first and seen failing: an image that never opens (exit 4 after 120 s
+  before; exit 7 after 6 s now), one whose application can't be read, one that can't be opened; all pass on
+  macOS 15 and 26, with the real update staged and swapped in. A copy of 0.7.4 or older still has the old helper:
+  where it is blocked, the update to 0.7.5 is done once from the disk image; the next log names the step.
+  Looked for the cause once more before the upload: macOS calls a mounted disk image "Removable, External"
+  (diskutil), the kind of volume an app may be asked about or refused; a probe on the CI Macs with those
+  permissions reset (tccutil) read the image all the same, a protected folder too, so nothing is proved there.
+  Taken from it: the first reading of the image is a step with its limit too (it was the shell's own, with
+  none), the shell's "Terminated: 15" for each ended watcher no longer reaches the app's log, and a failure is
+  an error in the log (the log of a report keeps errors only: a warning would not have been in it).
+  Windows: built after the merge, About 0.7.5, Folders, an .mkv and a song played, no QML warning.
+- 🟡 **0.7.5** (2026-11-18): an update release (Windows, ARM64, Linux, macOS, Android; the Samsung TV app
+  stays 0.6.8, `follows: 0.7.5`). Owner 11-17: translations and everything checked before a release, one update for all
   of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
   pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).
   Then (owner: "yes"): the 53 languages at 98 % completed (40 texts each, 2,100 entries in each catalog's own
   words, checked for %1/<b>/the five "|" choices/the URL before writing): all 72 Weblate languages at 100 %;
   msgfmt -c on every catalog; po_safety: 4,336 entries, the only flags Khmer's zero-width spaces (VideoLAN's km.po
   has 34,780).
+  Android (owner: "do what you think is best"; vlc-redesign-android work/0.7.5, 5ced18af6): 41 more languages
+  complete, 61 in all have every one of the redesign's 1,005 texts (the 1,327 that come from VLC for Android keep
+  VideoLAN's translations: none of the 61 has them all, 37 lack over a hundred, Afrikaans nearly all; seen in the
+  signed build in Welsh, where four texts of the Playback page are VLC's and English. The What's new card and the
+  release texts said "fully translated" and "complete": reworded before the release). 189-192 texts per language came word for word from
+  the desktop catalogs (%N turned into %1$s/%s/%d, escaped for Android), 60 were written per language in the
+  plural forms its file uses. The app builds (aapt2), its unit tests pass, and on the emulator the new build in
+  Danish shows them (Settings, Playback). Left to volunteers: 13 languages with almost nothing (am, ast, br, co,
+  fo, kab, lo, my, sc, sw, tt, uz; en-GB reads English).
 - 🟢 **0.7.4** published 2026-11-17 15:59 local (16 files; tag v0.7.4 on 8905c5b527, PR #115 merged as
   f92832d2b0; Android tag v0.7.4 = bd399e20b, PR #19 merged as 8079cd79ac, APK 13107040). After publishing: a copy
   of 0.7.3 took the small update from GitHub and opened on 0.7.4 (About: every program 0.7.4, Samsung TV 0.6.8;

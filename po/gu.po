@@ -40417,3 +40417,9 @@ msgstr ""
 "';' વડે અલગ કરેલી 12 સંખ્યાઓ આપીને\n"
 "મૂળભૂત: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "વિકલ્પ: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "આ Mac પર અપડેટ તૈયાર થઈ શક્યું નહીં. તેને રિલીઝ પાના પરથી ડાઉનલોડ કરો."

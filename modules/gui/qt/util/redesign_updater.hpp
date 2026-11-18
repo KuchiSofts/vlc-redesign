@@ -196,6 +196,10 @@ private:
     bool m_verifyingStaged = false;
     // the small update failed in this session: the installer instead
     bool m_deltaFailed = false;
+    // macOS: the update could not be prepared in place on this Mac in this
+    // session (a step of the helper refused or did not answer, #117): the
+    // release page's download instead
+    bool m_inPlaceFailed = false;
     // a small update is being written (between two downloads): not stopped
     bool m_staging = false;
     // whether the folder of vlc.exe takes the update: -1 until checked

@@ -9789,6 +9789,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "நிறுவியை %1-இல் சேமிக்க முடியவில்லை."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "இந்த Mac-இல் புதுப்பிப்பைத் தயார்செய்ய முடியவில்லை. வெளியீட்டுப் பக்கத்திலிருந்து பதிவிறக்கவும்."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

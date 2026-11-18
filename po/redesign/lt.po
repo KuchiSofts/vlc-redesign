@@ -9827,6 +9827,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "Nepavyko įrašyti diegimo programos į %1."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Atnaujinimo nepavyko paruošti šiame „Mac“. Atsisiųskite jį iš laidos puslapio."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

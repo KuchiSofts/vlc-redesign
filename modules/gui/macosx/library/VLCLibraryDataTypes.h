@@ -53,6 +53,8 @@ typedef NS_ENUM(NSUInteger, VLCMediaLibraryParentGroupType) {
     VLCMediaLibraryParentGroupTypeVideoLibrary,
     VLCMediaLibraryParentGroupTypeRecentlyAddedVideos,
     VLCMediaLibraryParentGroupTypeRecentlyAddedAudios,
+    VLCMediaLibraryParentGroupTypeFavoriteAudios,
+    VLCMediaLibraryParentGroupTypeMostPlayedAudios,
     VLCMediaLibraryParentGroupTypeAllFavorites, // This should be last
 };
 

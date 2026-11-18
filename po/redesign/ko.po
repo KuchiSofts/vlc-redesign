@@ -9674,6 +9674,12 @@ msgstr "다운로드한 설치 프로그램이 체크섬과 일치하지 않아 
 msgid "The installer couldn't be saved to %1."
 msgstr "설치 프로그램을 %1에 저장할 수 없습니다."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "이 Mac에서 업데이트를 준비할 수 없습니다. 릴리스 페이지에서 다운로드하세요."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

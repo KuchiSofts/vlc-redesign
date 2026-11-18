@@ -39809,3 +39809,9 @@ msgstr ""
 "Deur die 12 getalle te gee, geskei deur 'n ';'\n"
 "Verstek is '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "'n Alternatief kan wees '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Die bywerking kon nie op hierdie Mac voorberei word nie. Laai dit van die vrystellingsbladsy af."

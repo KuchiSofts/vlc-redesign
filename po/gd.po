@@ -40202,3 +40202,9 @@ msgstr ""
 "Leis na 12 àireamhan air an sgaradh le ';'\n"
 "'S e seo a' bhun-roghainn: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Roghainn eile: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Cha b' urrainn dhuinn an t-ùrachadh ullachadh air a' choimpiutair Mac seo. Luchdaich a-nuas e o dhuilleag an sgaoilidh."

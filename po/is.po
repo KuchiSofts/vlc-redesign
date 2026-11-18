@@ -39781,3 +39781,9 @@ msgstr ""
 "Með því að gefa upp 12 tölur aðskildar með ';'\n"
 "Sjálfgefið er '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Annar kostur gæti verið '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Ekki tókst að undirbúa uppfærsluna á þessum Mac. Sæktu hana af útgáfusíðunni."

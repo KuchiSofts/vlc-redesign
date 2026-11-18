@@ -40027,3 +40027,9 @@ msgstr ""
 "Trí na 12 uimhir a thabhairt, scartha le ';'\n"
 "Is é an réamhshocrú '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "D'fhéadfadh rogha eile a bheith '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Níorbh fhéidir an nuashonrú a ullmhú ar an Mac seo. Íoslódáil é ó leathanach an eisiúna."

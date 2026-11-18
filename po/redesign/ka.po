@@ -9768,6 +9768,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "ინსტალატორის შენახვა ვერ მოხერხდა აქ: %1."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "განახლების მომზადება ამ Mac-ზე ვერ მოხერხდა. ჩამოტვირთეთ გამოშვების გვერდიდან."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

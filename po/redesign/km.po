@@ -9623,6 +9623,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "មិនអាចរក្សាទុកកម្មវិធីដំឡើងទៅ %1 បានទេ។"
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "មិនអាចរៀបចំបច្ចុប្បន្នភាពនៅលើ Mac នេះបានទេ។ ទាញយកវាពីទំព័រចេញផ្សាយ។"
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

@@ -336,6 +336,14 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/library/audio-library/VLCLibraryAudioViewController.m \
 	gui/macosx/library/audio-library/VLCLibraryCollectionViewAudioGroupSupplementaryDetailView.h \
 	gui/macosx/library/audio-library/VLCLibraryCollectionViewAudioGroupSupplementaryDetailView.m \
+	gui/macosx/library/audio-library/VLCLibraryMusicCarouselContainerView.h \
+	gui/macosx/library/audio-library/VLCLibraryMusicCarouselContainerView.m \
+	gui/macosx/library/audio-library/VLCLibraryMusicCarouselDataSource.h \
+	gui/macosx/library/audio-library/VLCLibraryMusicCarouselDataSource.m \
+	gui/macosx/library/audio-library/VLCLibraryMusicCompactCarouselCollectionViewItem.h \
+	gui/macosx/library/audio-library/VLCLibraryMusicCompactCarouselCollectionViewItem.m \
+	gui/macosx/library/audio-library/VLCLibraryMusicViewController.h \
+	gui/macosx/library/audio-library/VLCLibraryMusicViewController.m \
 	gui/macosx/library/audio-library/VLCLibrarySongTableCellView.h \
 	gui/macosx/library/audio-library/VLCLibrarySongTableCellView.m \
 	gui/macosx/library/audio-library/VLCLibrarySongsTableViewSongPlayingTableCellView.h \
@@ -385,6 +393,8 @@ libmacosx_plugin_la_SOURCES = \
 	gui/macosx/library/VLCLibrarySectionedTableViewDelegate.m \
 	gui/macosx/library/search-library/VLCLibrarySearchDataSource.h \
 	gui/macosx/library/search-library/VLCLibrarySearchDataSource.m \
+	gui/macosx/library/search-library/VLCLibrarySearchOverviewController.h \
+	gui/macosx/library/search-library/VLCLibrarySearchOverviewController.m \
 	gui/macosx/library/search-library/VLCLibrarySearchProvider.h \
 	gui/macosx/library/search-library/VLCLibrarySearchProvider.m \
 	gui/macosx/library/search-library/VLCLibrarySearchViewController.h \

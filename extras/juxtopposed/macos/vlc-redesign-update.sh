@@ -13,7 +13,15 @@
 #       rename), its code signature checked whole (codesign --verify --deep
 #       --strict) and its bundle identifier compared with the running one's.
 #       Prints the copy's path. Exit codes: 2 the image can't be opened, 3 the
-#       copy can't be written, 4 the copy is damaged, 5 it is another app.
+#       copy can't be written, 4 the copy is damaged, 5 it is another app,
+#       7 a step did not answer in time, 8 the image is open but no
+#       application can be read in it.
+#       No step waits for ever (#117: one blocked on a user's Mac left the app
+#       on "Preparing the update" for the ten minutes it waited, then said
+#       "damaged"): each (the image attached, its contents listed, the copy,
+#       the signature's check) has VLC_REDESIGN_UPDATE_STEP_LIMIT seconds
+#       (120), and nothing is read from the input. What a step says when it fails goes
+#       to the error output with its name, for the app's log.
 #
 #   vlc-redesign-update.sh apply <pid> <staged.app> <VLC Redesign.app> [<argument>...]
 #       Once the process <pid> (the running VLC) has quit: the old application
@@ -28,28 +36,81 @@ set -u
 
 die() { echo "vlc-redesign-update: $2" >&2; exit "$1"; }
 
+# step <name> <command> [<argument>...]: the command, never longer than the
+# limit. Returns its exit code, 124 when it was ended for taking too long;
+# what it said is in $said (kept for the error output when it fails).
+step() {
+    name=$1
+    shift
+    said=
+    rm -f "$notes/late"
+    "$@" > "$notes/said" 2>&1 &
+    job=$!
+    # (its own input and outputs: a watcher that outlives the step must not
+    # keep the app's pipes open)
+    ( sleep "$limit"; : > "$notes/late"; kill -TERM "$job"; sleep 2; kill -KILL "$job" ) < /dev/null > /dev/null 2>&1 &
+    watcher=$!
+    wait "$job"
+    code=$?
+    kill "$watcher" 2>/dev/null
+    # (its end taken here, silently: the shell would otherwise write
+    # "Terminated: 15" for it on the error output, in the app's log)
+    wait "$watcher" 2>/dev/null
+    said=$(tail -n 6 "$notes/said" 2>/dev/null)
+    if [ -e "$notes/late" ]; then
+        echo "vlc-redesign-update: $name: no answer after $limit s" >&2
+        return 124
+    fi
+    [ $code = 0 ] || echo "vlc-redesign-update: $name: exit $code: $said" >&2
+    return $code
+}
+
 case "${1:-}" in
 stage)
     [ $# -eq 3 ] || die 1 "usage: stage <image.dmg> <app>"
+    # (nothing is typed here: a tool that asks a question gets no answer at
+    # once, not a pipe that stays open)
+    exec < /dev/null
     image=$2
     target=${3%/}
     folder=$(dirname "$target")
     staged="$folder/.vlc-redesign-update.app"
+    limit=${VLC_REDESIGN_UPDATE_STEP_LIMIT:-120}
     mount=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
-    trap 'hdiutil detach "$mount" -quiet -force >/dev/null 2>&1; rmdir "$mount" 2>/dev/null' EXIT
-    hdiutil attach -nobrowse -readonly -noautoopen -mountpoint "$mount" "$image" >/dev/null 2>&1 \
-        || die 2 "the image can't be opened"
-    source=
-    for app in "$mount"/*.app; do
-        [ -d "$app" ] && { source=$app; break; }
-    done
-    [ -n "$source" ] || die 4 "no application in the image"
+    notes=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
+    # (at the end, whatever it is: the image released, within the limit too)
+    trap 'step detach hdiutil detach "$mount" -quiet -force 2>/dev/null; rmdir "$mount" 2>/dev/null; rm -rf "$notes"' EXIT
+    step attach hdiutil attach -nobrowse -readonly -noautoopen -mountpoint "$mount" "$image"
+    case $? in
+        0) ;;
+        124) die 7 "the image did not open in time" ;;
+        *) die 2 "the image can't be opened" ;;
+    esac
+    # The first reading of the image's volume, a step too: a Mac that holds
+    # it (macOS counts a disk image as a removable volume, which an app may
+    # be asked about or refused) must not hold the helper for ever
+    step list find "$mount" -maxdepth 1 -type d -name '*.app'
+    [ $? = 124 ] && die 7 "the image's contents were not listed in time"
+    source=$(grep '\.app$' "$notes/said" 2>/dev/null | head -n 1)
+    # (open, and nothing to read in it: not a damaged update, the checksum
+    # of the image was right; what the listing said goes to the log)
+    [ -n "$source" ] && [ -d "$source" ] \
+        || die 8 "no application can be read in the image (the listing says: $(tail -n 3 "$notes/said" 2>/dev/null | tr '\n' ' '))"
     rm -rf "$staged"
-    ditto "$source" "$staged" 2>/dev/null || { rm -rf "$staged"; die 3 "the copy can't be written in $folder"; }
+    step copy ditto "$source" "$staged"
+    case $? in
+        0) ;;
+        124) rm -rf "$staged"; die 7 "the copy to $folder did not end in time" ;;
+        *) rm -rf "$staged"; die 3 "the copy can't be written in $folder" ;;
+    esac
     # (a file the system marked as downloaded would make Gatekeeper ask again)
-    xattr -dr com.apple.quarantine "$staged" 2>/dev/null
-    codesign --verify --deep --strict "$staged" >/dev/null 2>&1 \
-        || { rm -rf "$staged"; die 4 "the copy's code signature isn't intact"; }
+    step quarantine xattr -dr com.apple.quarantine "$staged" 2>/dev/null
+    step signature codesign --verify --deep --strict "$staged"
+    case $? in
+        0) ;;
+        124) rm -rf "$staged"; die 7 "the check of the copy's signature did not end in time" ;;
+        *) rm -rf "$staged"; die 4 "the copy's code signature isn't intact" ;;
+    esac
     plist=/usr/libexec/PlistBuddy
     new_id=$("$plist" -c 'Print :CFBundleIdentifier' "$staged/Contents/Info.plist" 2>/dev/null)
     own_id=$("$plist" -c 'Print :CFBundleIdentifier' "$target/Contents/Info.plist" 2>/dev/null)

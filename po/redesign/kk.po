@@ -9789,6 +9789,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "Орнатқышты %1 ішіне сақтау мүмкін болмады."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Жаңартуды осы Mac-та дайындау мүмкін болмады. Оны шығарылым бетінен жүктеп алыңыз."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

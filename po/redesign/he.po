@@ -9716,6 +9716,12 @@ msgstr "תוכנית ההתקנה שהורדה אינה תואמת לסכום ה
 msgid "The installer couldn't be saved to %1."
 msgstr "לא ניתן היה לשמור את תוכנית ההתקנה ב־%1."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "לא ניתן היה להכין את העדכון ב־Mac הזה. הורד אותו מדף הגרסה."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

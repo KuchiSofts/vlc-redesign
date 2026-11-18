@@ -55,6 +55,7 @@ NSString * const VLCLibraryModelListOfGroupsReset = @"VLCLibraryModelListOfGroup
 
 NSString * const VLCLibraryModelPlaylistAdded = @"VLCLibraryModelPlaylistAdded";
 
+NSString * const VLCLibraryModelMediaItemDeleted = @"VLCLibraryModelMediaItemDeleted";
 NSString * const VLCLibraryModelAudioMediaItemDeleted = @"VLCLibraryModelAudioMediaItemDeleted";
 NSString * const VLCLibraryModelVideoMediaItemDeleted = @"VLCLibraryModelVideoMediaItemDeleted";
 NSString * const VLCLibraryModelRecentsMediaItemDeleted = @"VLCLibraryModelRecentsMediaItemDeleted";
@@ -331,6 +332,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 @synthesize cachedGenres = _cachedGenres;
 @synthesize cachedListOfGroups = _cachedListOfGroups;
 @synthesize cachedMediaTitles = _cachedMediaTitles;
+@synthesize filterString = _filterString;
 
 + (NSUInteger)modelIndexFromModelItemNotification:(NSNotification * const)aNotification
 {
@@ -411,6 +413,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 {
     if (_p_eventCallback) {
         vlc_ml_event_unregister_callback(_p_mediaLibrary, _p_eventCallback);
+        _p_eventCallback = NULL;
     }
 }
 
@@ -649,6 +652,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), ^{
         NSDictionary<NSNumber *, NSNumber *> * const showIDs = [self showIDsByEpisodeIDForShows:shows];
         if (showIDs == nil) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedListOfShows)];
             return;
         }
         [self performCacheWriteForGeneration:generation
@@ -726,7 +730,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     if (cache == nil) {
         [self resetCachedListOfAudioMedia];
 
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             const vlc_ml_query_params_t queryParams = [self queryParams];
             return vlc_ml_count_audio_media(_p_mediaLibrary, &queryParams);
         }
@@ -738,9 +742,13 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 
 - (vlc_ml_query_params_t)queryParams
 {
-    const vlc_ml_query_params_t queryParams = { .psz_pattern = self->_filterString.length > 0 ? [self->_filterString UTF8String] : NULL, 
-                                                .i_sort = self->_sortCriteria, 
-                                                .b_desc = self->_sortDescending };
+    NSString * const filterString = self.filterString;
+    const vlc_ml_query_params_t queryParams = {
+        // UTF8String's interior pointer remains valid through this autorelease pool.
+        .psz_pattern = filterString.length > 0 ? filterString.UTF8String : NULL,
+        .i_sort = _sortCriteria,
+        .b_desc = _sortDescending,
+    };
     return queryParams;
 }
 
@@ -787,6 +795,15 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         [_cacheUpdateTokens removeObjectForKey:key];
         [_pendingCacheUpdates removeObject:key];
         return pending;
+    }
+}
+
+- (void)cancelCacheUpdateForToken:(NSObject *)token getter:(SEL)getter
+{
+    @synchronized (_cacheUpdateTokens) {
+        if ([self isCurrentCacheUpdate:token forGetter:getter]) {
+            [self invalidateCacheUpdateForGetter:getter];
+        }
     }
 }
 
@@ -874,6 +891,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         vlc_ml_media_list_t * const p_media_list = vlc_ml_list_audio_media(self->_p_mediaLibrary, &queryParams);
         NSArray * const mediaArray = [NSArray arrayFromVlcMediaList:p_media_list];
         if (mediaArray == nil) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedAudioMedia)];
             return;
         }
         vlc_ml_media_list_release(p_media_list);
@@ -906,7 +924,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     NSArray<VLCMediaLibraryArtist *> * const cache = self.cachedArtists;
     if (cache == nil) {
         [self resetCachedListOfArtists];
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             const vlc_ml_query_params_t queryParams = [self queryParams];
             return vlc_ml_count_artists(_p_mediaLibrary, &queryParams, true);
         }
@@ -971,7 +989,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     NSArray<VLCMediaLibraryAlbum *> * const cache = self.cachedAlbums;
     if (cache == nil) {
         [self resetCachedListOfAlbums];
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             const vlc_ml_query_params_t queryParams = [self queryParams];
             return vlc_ml_count_albums(_p_mediaLibrary, &queryParams);
         }
@@ -1033,7 +1051,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     NSArray<VLCMediaLibraryGenre *> * const cache = self.cachedGenres;
     if (cache == nil) {
         [self resetCachedListOfGenres];
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             const vlc_ml_query_params_t queryParams = [self queryParams];
             return vlc_ml_count_genres(_p_mediaLibrary, &queryParams);
         }
@@ -1096,7 +1114,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     if (cache == nil) {
         [self resetCachedListOfVideoMedia];
 
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             const vlc_ml_query_params_t queryParams = [self queryParams];
             return vlc_ml_count_video_media(_p_mediaLibrary, &queryParams);
         }
@@ -1118,6 +1136,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         queryParameters.psz_pattern = filterString.length > 0 ? filterString.UTF8String : NULL;
         vlc_ml_media_list_t *p_media_list = vlc_ml_list_video_media(self->_p_mediaLibrary, &queryParameters);
         if (p_media_list == NULL) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedVideoMedia)];
             return;
         }
         NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:p_media_list->i_nb_items];
@@ -1248,6 +1267,9 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 
         NSArray * const mediaArray = [NSArray arrayFromVlcMediaList:p_media_list];
         if (mediaArray == nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(nil);
+            });
             return;
         }
         vlc_ml_media_list_release(p_media_list);
@@ -1259,9 +1281,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 
 - (size_t)countOfRecentVideoMediaWithCountLimit:(size_t)countLimit
 {
+    NSString * const filterString = self.filterString;
     vlc_ml_query_params_t queryParameters = vlc_ml_query_params_create();
     queryParameters.i_nbResults = countLimit;
-    queryParameters.psz_pattern = self->_filterString.length > 0 ? self->_filterString.UTF8String : NULL;
+    queryParameters.psz_pattern = filterString.length > 0 ? filterString.UTF8String : NULL;
     return vlc_ml_count_video_history(self->_p_mediaLibrary, &queryParameters);
 }
 
@@ -1273,6 +1296,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     [self getListOfRecentMediaOfType:VLC_ML_MEDIA_TYPE_VIDEO
                       withCountLimit:_recentMediaLimit
                       withCompletion:^(NSArray * const mediaArray) {
+        if (mediaArray == nil) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedRecentMedia)];
+            return;
+        }
         [self performCacheWriteForGeneration:generation
                                        token:token
                                       getter:@selector(cachedRecentMedia)
@@ -1292,7 +1319,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     if (cache == nil) {
         [self resetCachedListOfRecentMedia];
         // Return the filtered count immediately during search, otherwise keep the startup fast path.
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             return [self countOfRecentVideoMediaWithCountLimit:_recentMediaLimit];
         }
         return _initialRecentsCount;
@@ -1317,6 +1344,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     [self getListOfRecentMediaOfType:VLC_ML_MEDIA_TYPE_AUDIO
                       withCountLimit:_recentAudioMediaLimit
                       withCompletion:^(NSArray * const mediaArray) {
+        if (mediaArray == nil) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedRecentAudioMedia)];
+            return;
+        }
         [self performCacheWriteForGeneration:generation
                                        token:token
                                       getter:@selector(cachedRecentAudioMedia)
@@ -1335,7 +1366,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     NSArray<VLCMediaLibraryMediaItem *> * const cache = self.cachedRecentAudioMedia;
     if (cache == nil) {
         [self resetCachedListOfRecentAudioMedia];
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             vlc_ml_query_params_t queryParams = [self queryParams];
             queryParams.i_nbResults = _recentAudioMediaLimit;
             return vlc_ml_count_audio_history(_p_mediaLibrary, &queryParams);
@@ -1387,11 +1418,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
             : vlc_ml_list_video_media(self->_p_mediaLibrary, &queryParams);
         NSArray * const media = [NSArray arrayFromVlcMediaList:mediaList];
         if (media == nil) {
-            @synchronized (self->_cacheUpdateTokens) {
-                if ([self isCurrentCacheUpdate:token forGetter:getter]) {
-                    [self invalidateCacheUpdateForGetter:getter];
-                }
-            }
+            [self cancelCacheUpdateForToken:token getter:getter];
             return;
         }
         vlc_ml_media_list_release(mediaList);
@@ -1523,6 +1550,26 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     return cache;
 }
 
+- (NSArray<VLCMediaLibraryMediaItem *> *)listOfMostPlayedAudioMedia
+{
+    NSString * const filterString = self.filterString;
+    const vlc_ml_query_params_t queryParams = {
+        .psz_pattern = filterString.length > 0 ? filterString.UTF8String : NULL,
+        .i_sort = VLC_ML_SORTING_PLAYCOUNT,
+        // The media library sorts play counts highest first by default.
+        .b_desc = false,
+        .i_nbResults = 20,
+    };
+    vlc_ml_media_list_t * const mediaList = vlc_ml_list_audio_media(_p_mediaLibrary, &queryParams);
+    NSArray<VLCMediaLibraryMediaItem *> * const items = [NSArray arrayFromVlcMediaList:mediaList];
+    vlc_ml_media_list_release(mediaList);
+
+    NSPredicate * const played = [NSPredicate predicateWithBlock:^BOOL(VLCMediaLibraryMediaItem *item, NSDictionary * __unused bindings) {
+        return item.playCount > 0;
+    }];
+    return [items filteredArrayUsingPredicate:played] ?: @[];
+}
+
 - (void)resetCachedListOfShows
 {
     NSUInteger generation;
@@ -1531,6 +1578,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), ^{
         vlc_ml_show_list_t * const p_show_list = vlc_ml_list_shows(self->_p_mediaLibrary, NULL);
         if (p_show_list == NULL) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedListOfShows)];
             return;
         }
         const size_t itemCount = p_show_list->i_nb_items;
@@ -1545,6 +1593,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         vlc_ml_show_list_release(p_show_list);
         NSDictionary<NSNumber *, NSNumber *> * const showIDs = [self showIDsByEpisodeIDForShows:mutableArray];
         if (showIDs == nil) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedListOfShows)];
             return;
         }
         [self performCacheWriteForGeneration:generation
@@ -1647,6 +1696,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), ^{
         vlc_ml_media_list_t * const p_movie_list = vlc_ml_list_movies(self->_p_mediaLibrary, NULL);
         if (p_movie_list == NULL) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedListOfMovies)];
             return;
         }
         const size_t itemCount = p_movie_list->i_nb_items;
@@ -1720,7 +1770,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     NSArray<VLCMediaLibraryGroup *> * const cache = self.cachedListOfGroups;
     if (cache == nil) {
         [self resetCachedListOfGroups];
-        if (_filterString.length > 0) {
+        if (self.filterString.length > 0) {
             const vlc_ml_query_params_t queryParams = [self queryParams];
             return vlc_ml_count_groups(_p_mediaLibrary, &queryParams);
         }
@@ -1752,6 +1802,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         vlc_ml_group_list_t * const p_group_list =
             vlc_ml_list_groups(self->_p_mediaLibrary, &queryParams);
         if (p_group_list == NULL) {
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedListOfGroups)];
             return;
         }
         const size_t itemCount = p_group_list->i_nb_items;
@@ -1841,6 +1892,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         vlc_ml_folder_list_t *pp_entrypoints = vlc_ml_list_entry_points(self->_p_mediaLibrary, NULL);
         if (pp_entrypoints == NULL) {
             msg_Err(getIntf(), "failed to retrieve list of monitored library folders");
+            [self cancelCacheUpdateForToken:token getter:@selector(cachedListOfMonitoredFolders)];
             return;
         }
 
@@ -1914,6 +1966,8 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 - (NSArray<id<VLCMediaLibraryItemProtocol>> *)listOfLibraryItemsOfParentType:(const VLCMediaLibraryParentGroupType)parentType
 {
     switch(parentType) {
+    case VLCMediaLibraryParentGroupTypeFavoriteAudios:
+        return self.listOfFavoriteAudioMedia;
     case VLCMediaLibraryParentGroupTypeAllFavorites:
     {
         const vlc_ml_query_params_t queryParams = [self queryParams];
@@ -1934,12 +1988,16 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         return self.listOfAudioMedia;
     case VLCMediaLibraryParentGroupTypeVideoLibrary:
         return self.listOfVideoMedia;
+    case VLCMediaLibraryParentGroupTypeRecentAudios:
+        return self.listOfRecentAudioMedia;
     case VLCMediaLibraryParentGroupTypeRecentVideos:
         return self.listOfRecentMedia;
     case VLCMediaLibraryParentGroupTypeRecentlyAddedVideos:
         return self.listOfRecentlyAddedVideoMedia;
     case VLCMediaLibraryParentGroupTypeRecentlyAddedAudios:
         return self.listOfRecentlyAddedAudioMedia;
+    case VLCMediaLibraryParentGroupTypeMostPlayedAudios:
+        return self.listOfMostPlayedAudioMedia;
     case VLCMediaLibraryParentGroupTypeUnknown:
     default:
         return nil;
@@ -1970,13 +2028,21 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     [self dropCaches];
 }
 
+- (NSString *)filterString
+{
+    @synchronized (self) {
+        return _filterString;
+    }
+}
+
 - (void)setFilterString:(NSString *)filterString
 {
-    if([filterString isEqualToString:_filterString]) {
-        return;
+    @synchronized (self) {
+        if ([filterString isEqualToString:_filterString]) {
+            return;
+        }
+        _filterString = [filterString copy];
     }
-
-    _filterString = filterString;
     [self dropCaches];
 }
 
@@ -2201,9 +2267,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
     if ([item isKindOfClass:VLCMediaLibraryAlbum.class]) {
         VLCMediaLibraryAlbum * const album = (id)item;
         VLCMediaLibraryAlbum * const previousAlbum = (id)previousItem;
+        const BOOL artistMatchChanged = self.filterString.length > 0 && ![album.artistName isEqualToString:previousAlbum.artistName];
         if (![album.title isEqualToString:previousAlbum.title] ||
             (album.numberOfPresentTracks > 0) != (previousAlbum.numberOfPresentTracks > 0) ||
-            (_filterString.length > 0 && ![album.artistName isEqualToString:previousAlbum.artistName]))
+            artistMatchChanged)
             return YES;
         switch (_sortCriteria) {
             case VLC_ML_SORTING_DEFAULT:
@@ -2246,8 +2313,9 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 
     // Media labels are lazy lookups, not snapshots of the previous search data.
     // Retain full queries where membership or sort keys cannot be compared safely.
-    return _filterString.length > 0 ||
-           (_sortCriteria != VLC_ML_SORTING_DEFAULT && _sortCriteria != VLC_ML_SORTING_ALPHA) ||
+    const BOOL customSort = _sortCriteria != VLC_ML_SORTING_DEFAULT && _sortCriteria != VLC_ML_SORTING_ALPHA;
+    return self.filterString.length > 0 ||
+           customSort ||
            ![previousItem.displayString isEqualToString:item.displayString];
 }
 
@@ -2308,7 +2376,7 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
         const BOOL reloadMain = mainCache != nil &&
             ((audio ? self->_audioCacheNeedsReload : self->_videoCacheNeedsReload) ||
              [self shouldReloadCacheForUpdatedItem:mediaItem previousItem:previousItem]);
-        const BOOL reloadRecent = recentCache != nil && self->_filterString.length > 0;
+        const BOOL reloadRecent = recentCache != nil && self.filterString.length > 0;
         if (reloadMain) {
             if (audio) {
                 self->_audioCacheNeedsReload = YES;
@@ -2383,6 +2451,10 @@ static void libraryCallback(void *p_data, const vlc_ml_event_t *p_event)
 
     const int64_t itemId = p_event->deletion.i_entity_id;
     [self refreshCachedHistoryMediaIfNeededForMediaID:@(itemId)];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.changeDelegate notifyChange:VLCLibraryModelMediaItemDeleted withObject:@(itemId)];
+    });
 
     dispatch_barrier_async(_mediaItemCacheModificationQueue,
                            ^{

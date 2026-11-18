@@ -958,6 +958,30 @@
     XCTAssertEqual([excluded setFavorite:NO], VLC_SUCCESS);
 }
 
+- (void)testFavoriteAudiosPlaybackGroupExcludesFavoriteVideo
+{
+    vlc_medialibrary_t * const library = VLCLibraryDataTypesIntegrationMediaLibrary();
+    const int64_t audioID = VLCLibraryDataTypesIntegrationFactoryAudioMediaID();
+    const int64_t videoID = VLCLibraryDataTypesIntegrationFactoryVideoMediaID();
+    const BOOL wasAudioFavorited = [VLCMediaLibraryMediaItem mediaItemForLibraryID:audioID].favorited;
+    const BOOL wasVideoFavorited = [VLCMediaLibraryMediaItem mediaItemForLibraryID:videoID].favorited;
+    [self addTeardownBlock:^{
+        vlc_ml_media_set_favorite(library, audioID, wasAudioFavorited);
+        vlc_ml_media_set_favorite(library, videoID, wasVideoFavorited);
+    }];
+    XCTAssertEqual(vlc_ml_media_set_favorite(library, audioID, true), VLC_SUCCESS);
+    XCTAssertEqual(vlc_ml_media_set_favorite(library, videoID, true), VLC_SUCCESS);
+
+    NSArray<VLCMediaLibraryMediaItem *> * const items =
+        [self.model listOfMediaItemsForParentType:VLCMediaLibraryParentGroupTypeFavoriteAudios];
+
+    XCTAssertTrue([[items valueForKey:@"libraryID"] containsObject:@(audioID)]);
+    for (VLCMediaLibraryMediaItem * const item in items) {
+        XCTAssertEqual(item.mediaType, VLC_ML_MEDIA_TYPE_AUDIO);
+        XCTAssertTrue(item.favorited);
+    }
+}
+
 - (void)testAudioLibraryParentQueryReturnsAudioMedia
 {
     NSArray<VLCMediaLibraryMediaItem *> * const media =
@@ -1596,6 +1620,29 @@
     [self assertNativeMediaDeletionForAudio:YES];
 }
 
+- (void)testNativeMediaDeletionPublishesUncachedItemIDOnMainThread
+{
+    (void)self.model;
+    vlc_medialibrary_t * const library = VLCLibraryDataTypesIntegrationMediaLibrary();
+    const int64_t libraryID = VLCLibraryDataTypesIntegrationCreateExternalMediaOfType(
+        "https://example.invalid/native-deleted-uncached-audio.mp3",
+        VLC_ML_MEDIA_TYPE_AUDIO);
+    XCTAssertGreaterThan(libraryID, (int64_t)0);
+    XCTestExpectation * const deleted =
+        [self expectationForNotification:VLCLibraryModelMediaItemDeleted
+                                  object:nil
+                                 handler:^BOOL(NSNotification *notification) {
+        if (![notification.object isEqual:@(libraryID)]) {
+            return NO;
+        }
+        XCTAssertTrue(NSThread.isMainThread);
+        return YES;
+    }];
+
+    XCTAssertEqual(vlc_ml_remove_stream(library, libraryID), VLC_SUCCESS);
+    [self waitForExpectations:@[deleted] timeout:5.];
+}
+
 - (void)testNativeVideoDeletionPublishesRemovedCachedItem
 {
     [self assertNativeMediaDeletionForAudio:NO];
@@ -1622,6 +1669,57 @@
 {
     NSArray * const expected = [self prepareHistoryForAudio:YES];
     XCTAssertEqualObjects([self libraryIDsForItems:[self loadRecentHistoryForAudio:YES]], expected);
+    NSArray<VLCMediaLibraryMediaItem *> * const parentItems =
+        [self.model listOfMediaItemsForParentType:VLCMediaLibraryParentGroupTypeRecentAudios];
+    XCTAssertEqualObjects([self libraryIDsForItems:parentItems], expected);
+}
+
+- (void)testMostPlayedAudioRanksOnlyPlayedTracksByPlayCount
+{
+    VLCLibraryModel * const model = self.model;
+    vlc_medialibrary_t * const library = VLCLibraryDataTypesIntegrationMediaLibrary();
+    const int64_t audioID = VLCLibraryDataTypesIntegrationFactoryAudioMediaID();
+    const int64_t otherAudioID = VLCLibraryDataTypesIntegrationSortingAudioAlphaMediaID();
+    const int64_t videoID = VLCLibraryDataTypesIntegrationFactoryVideoMediaID();
+    XCTAssertEqual(vlc_ml_clear_history(library, VLC_ML_HISTORY_TYPE_GLOBAL), VLC_SUCCESS);
+    XCTAssertEqual(model.listOfMostPlayedAudioMedia.count, (NSUInteger)0);
+
+    XCTAssertEqual(vlc_ml_media_set_played(library, audioID, true), VLC_SUCCESS);
+    XCTAssertEqual(vlc_ml_media_set_played(library, audioID, true), VLC_SUCCESS);
+    XCTAssertEqual(vlc_ml_media_set_played(library, otherAudioID, true), VLC_SUCCESS);
+    for (NSUInteger index = 0; index < 3; ++index) {
+        XCTAssertEqual(vlc_ml_media_set_played(library, videoID, true), VLC_SUCCESS);
+    }
+
+    NSArray<NSNumber *> * const expected = @[@(audioID), @(otherAudioID)];
+    XCTAssertEqualObjects([self libraryIDsForItems:model.listOfMostPlayedAudioMedia], expected);
+    NSArray<VLCMediaLibraryMediaItem *> * const parentItems =
+        [model listOfMediaItemsForParentType:VLCMediaLibraryParentGroupTypeMostPlayedAudios];
+    XCTAssertEqualObjects([self libraryIDsForItems:parentItems], expected);
+}
+
+- (void)testMostPlayedAudioReflectsPlaybackAndClearedHistory
+{
+    VLCLibraryModel * const model = self.model;
+    vlc_medialibrary_t * const library = VLCLibraryDataTypesIntegrationMediaLibrary();
+    const int64_t audioID = VLCLibraryDataTypesIntegrationFactoryAudioMediaID();
+    XCTestExpectation * const played =
+        [self expectationForNotification:VLCLibraryModelRecentAudioMediaListReset
+                                  object:model
+                                 handler:^BOOL(NSNotification * __unused notification) {
+            return model.listOfMostPlayedAudioMedia.firstObject.libraryID == audioID;
+        }];
+    XCTAssertEqual(vlc_ml_media_set_played(library, audioID, true), VLC_SUCCESS);
+    [self waitForExpectations:@[played] timeout:5.];
+
+    XCTestExpectation * const cleared =
+        [self expectationForNotification:VLCLibraryModelRecentAudioMediaListReset
+                                  object:model
+                                 handler:^BOOL(NSNotification * __unused notification) {
+            return model.listOfMostPlayedAudioMedia.count == 0;
+        }];
+    XCTAssertEqual(vlc_ml_clear_history_by_media_type(library, VLC_ML_MEDIA_TYPE_AUDIO), VLC_SUCCESS);
+    [self waitForExpectations:@[cleared] timeout:5.];
 }
 
 - (void)testRecentVideoHistoryReturnsMostRecentlyPlayedFirst

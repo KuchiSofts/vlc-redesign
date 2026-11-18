@@ -9830,6 +9830,12 @@ msgstr ""
 msgid "The installer couldn't be saved to %1."
 msgstr "Տեղադրիչը հնարավոր չեղավ պահել %1-ում։"
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Թարմացումը հնարավոր չեղավ նախապատրաստել այս Mac-ում։ Ներբեռնեք այն թողարկման էջից։"
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

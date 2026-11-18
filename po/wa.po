@@ -40226,3 +40226,9 @@ msgstr ""
 "Tot dnant les 12 limeros dispårtis pa on ';'\n"
 "Prémetou: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Ene ôte possibilité: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "On n' a savou aprester l' metaedje a djoû so ç' Mac ci. Aberwetez-l dispoy li pådje del modêye."

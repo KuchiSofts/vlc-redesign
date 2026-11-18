@@ -40291,3 +40291,9 @@ msgstr ""
 "';' দিয়ে আলাদা করা ১২টি সংখ্যা দিয়ে\n"
 "ডিফল্ট: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "বিকল্প হতে পারে: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "এই Mac-এ আপডেট প্রস্তুত করা যায়নি। রিলিজ পৃষ্ঠা থেকে এটি ডাউনলোড করুন।"

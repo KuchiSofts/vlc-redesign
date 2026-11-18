@@ -41261,3 +41261,9 @@ msgstr ""
 "En indicant los 12 nombres separats per un ';'\n"
 "Per defaut : '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "Una alternativa : '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "Impossible de preparar la mesa a jorn sus aqueste Mac. Telecargatz-la dempuèi la pagina de la version."

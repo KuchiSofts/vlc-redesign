@@ -39565,3 +39565,9 @@ msgstr ""
 "';' से अलग की गई 12 संख्याएँ देकर\n"
 "डिफ़ॉल्ट: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "एक विकल्प: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "इस Mac पर अपडेट तैयार नहीं किया जा सका। इसे रिलीज़ पेज से डाउनलोड करें।"

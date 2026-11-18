@@ -9710,6 +9710,12 @@ msgstr "برنامهٔ نصب بارگیری‌شده با چک‌سام خود 
 msgid "The installer couldn't be saved to %1."
 msgstr "برنامهٔ نصب در %1 ذخیره نشد."
 
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "به‌روزرسانی روی این Mac آماده نشد. آن را از صفحهٔ انتشار بارگیری کنید."
+
 #: modules/gui/qt/util/redesign_updater.cpp:1398
 #: modules/gui/qt/util/redesign_updater.cpp:1436
 msgid "The installer couldn't be started."

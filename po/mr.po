@@ -40606,3 +40606,9 @@ msgstr ""
 "';' ने वेगळे केलेले 12 अंक देऊन\n"
 "मूलभूत: '255;255;255;20;226;20;255;176;15;235;30;20'\n"
 "पर्याय: '30;30;50;40;40;100;50;50;160;150;150;255'"
+
+#: modules/gui/qt/util/redesign_updater.cpp:1635
+msgid ""
+"The update couldn't be prepared on this Mac. Download it from the release "
+"page."
+msgstr "या Mac वर अपडेट तयार करता आले नाही. ते प्रकाशन पानावरून डाउनलोड करा."

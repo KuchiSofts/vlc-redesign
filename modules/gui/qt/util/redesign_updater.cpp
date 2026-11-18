@@ -17,6 +17,7 @@
 #include <QDateTime>
 #include <QDesktopServices>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QSaveFile>
 #include <QLocale>
@@ -719,7 +720,8 @@ bool RedesignUpdater::smallUpdate() const
 
 bool RedesignUpdater::canInstall() const
 {
-    return smallUpdate() || (isInstalledCopy() && !m_installerUrl.isEmpty() && !m_sumsUrl.isEmpty());
+    return smallUpdate()
+           || (isInstalledCopy() && !m_inPlaceFailed && !m_installerUrl.isEmpty() && !m_sumsUrl.isEmpty());
 }
 
 qint64 RedesignUpdater::updateSize() const
@@ -1542,7 +1544,9 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
         // Checked and saved on a worker thread: the interface stays
         // responsive; waited for at the exit, a few seconds at most
         // (runInBackground). Its answer is dropped if the updater is gone.
-        struct Saved { QString error, path; };
+        // (log: what the macOS helper said, for the debug log; inPlace: it
+        // could not prepare the update on this Mac, the download is offered)
+        struct Saved { QString error, path, log; bool inPlaceFailed = false; };
         auto saved = std::make_shared<Saved>();
         const QByteArray body = response.body;
         const QString name = m_installerName;
@@ -1587,24 +1591,49 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 if (saved->error.isEmpty()) {
                     const QString image = saved->path;
                     const QString bundle = ownBundle();
+                    // Nothing is typed to the helper (a pipe left open is an
+                    // answer some tool could wait for); each of its steps
+                    // ends by itself after two minutes (#117: one blocked on
+                    // a user's Mac kept "Preparing the update" for the ten
+                    // minutes waited here, and the end read "damaged")
+                    QElapsedTimer taken;
+                    taken.start();
                     QProcess stage;
+                    stage.setStandardInputFile(QProcess::nullDevice());
                     stage.start(QStringLiteral("/bin/sh"), { updateScript(), QStringLiteral("stage"), image, bundle });
-                    const bool done = stage.waitForFinished(10 * 60 * 1000);
+                    const bool done = stage.waitForFinished(6 * 60 * 1000);
+                    if (!done) {
+                        stage.kill();
+                        stage.waitForFinished(2000);
+                    }
                     QFile::remove(image);
                     const QString staged = QString::fromUtf8(stage.readAllStandardOutput()).trimmed();
-                    if (!done || stage.exitStatus() != QProcess::NormalExit || stage.exitCode() != 0 || staged.isEmpty()) {
-                        if (!done)
-                            stage.kill();
-                        switch (done ? stage.exitCode() : 0) {
+                    const int code = !done ? -1 : stage.exitStatus() != QProcess::NormalExit ? -2 : stage.exitCode();
+                    // what the helper said (its steps' own words), for the log
+                    saved->log = QStringLiteral("the helper ended with %1 after %2 s: %3")
+                                     .arg(code).arg(taken.elapsed() / 1000)
+                                     .arg(QString::fromUtf8(stage.readAllStandardError()).trimmed().right(900)
+                                              .replace(QLatin1Char('\n'), QLatin1String(" | ")));
+                    if (code != 0 || staged.isEmpty()) {
+                        switch (code) {
                         case 3:
                             saved->error = qtr("The update can't be written in %1.")
                                                .arg(QDir::toNativeSeparators(QFileInfo(bundle).absolutePath()));
+                            break;
+                        case 4:
+                            // (its code signature isn't intact)
+                            saved->error = qtr("The update is damaged.");
                             break;
                         case 5:
                             saved->error = qtr("The update isn't for this version.");
                             break;
                         default:
-                            saved->error = qtr("The update is damaged.");
+                            // The image was right (its checksum, above) and
+                            // this Mac did not let it be opened, read or
+                            // copied in time: nothing of the update is
+                            // damaged. The way that always works is offered
+                            saved->error = qtr("The update couldn't be prepared on this Mac. Download it from the release page.");
+                            saved->inPlaceFailed = true;
                             break;
                         }
                     } else {
@@ -1615,6 +1644,17 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
 #endif
             }
         }, [this, saved]() {
+            if (!saved->log.isEmpty()) {
+                // (a failure as an error: the log a report comes with keeps
+                // errors only, unless its details were raised; a success for
+                // the one who looks)
+                if (saved->error.isEmpty())
+                    msg_Dbg(m_intf, "update to %s: %s", qtu(m_latestVersion), qtu(saved->log));
+                else
+                    msg_Err(m_intf, "update to %s: %s", qtu(m_latestVersion), qtu(saved->log));
+            }
+            // (the button then offers the download: canInstall)
+            m_inPlaceFailed = m_inPlaceFailed || saved->inPlaceFailed;
             if (!saved->error.isEmpty())
                 setState(Failed, saved->error);
             else

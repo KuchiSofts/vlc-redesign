@@ -38,6 +38,7 @@
 #import "library/VLCLibraryWindowToolbarDelegate.h"
 
 #import "library/audio-library/VLCLibraryAudioViewController.h"
+#import "library/audio-library/VLCLibraryMusicViewController.h"
 
 #import "library/favorites-library/VLCLibraryFavoritesViewController.h"
 
@@ -560,14 +561,13 @@ NSArray<NSString *> *defaultBookmarkedLocations()
             self.internalDisplayImage.template = YES;
         }
         self.internalMediaLibraryRequired = YES;
-        self.internalLibraryViewControllerClass = VLCLibraryAudioViewController.class;
+        self.internalLibraryViewControllerClass = VLCLibraryMusicViewController.class;
         self.internalLibraryViewControllerCreator = ^{
-            return [[VLCLibraryAudioViewController alloc] initWithLibraryWindow:VLCMain.sharedInstance.libraryWindow];
+            return [[VLCLibraryMusicViewController alloc] initWithLibraryWindow:VLCMain.sharedInstance.libraryWindow];
         };
         self.internalLibraryViewPresenter = ^(VLCLibraryAbstractSegmentViewController * const controller) {
-            [(VLCLibraryAudioViewController *)controller presentAudioView];
+            [(VLCLibraryMusicViewController *)controller presentMusicView];
         };
-        self.internalToolbarDisplayFlags = standardLibraryViewToolbarDisplayFlags;
         self.internalChildNodes = @[
             [[VLCLibraryMusicArtistSubSegment alloc] init],
             [[VLCLibraryMusicAlbumSubSegment alloc] init],
@@ -1051,7 +1051,7 @@ NSArray<NSString *> *defaultBookmarkedLocations()
     VLCMediaLibraryMediaItem * const mediaItem = (VLCMediaLibraryMediaItem *)libraryItem;
     const BOOL validMediaItem = mediaItem != nil;
     if (validMediaItem && mediaItem.mediaType == VLC_ML_MEDIA_TYPE_AUDIO) {
-        return [VLCLibrarySegment segmentWithSegmentType:VLCLibraryMusicSegmentType];
+        return [VLCLibrarySegment segmentWithSegmentType:VLCLibrarySongsMusicSubSegmentType];
     } else if (validMediaItem && mediaItem.mediaType == VLC_ML_MEDIA_TYPE_VIDEO) {
         if (mediaItem.mediaSubType == VLC_ML_MEDIA_SUBTYPE_SHOW_EPISODE) {
             return [VLCLibrarySegment segmentWithSegmentType:VLCLibraryShowsVideoSubSegmentType];
@@ -1138,12 +1138,16 @@ NSArray<NSString *> *defaultBookmarkedLocations()
 
 - (NSInteger)viewMode
 {
-    return self.internalGetViewModePreference();
+    return self.internalGetViewModePreference != nil
+        ? self.internalGetViewModePreference()
+        : VLCLibrarySmallestSentinelViewModeSegment;
 }
 
 - (void)setViewMode:(NSInteger)viewMode
 {
-    self.internalSaveViewModePreference(viewMode);
+    if (self.internalSaveViewModePreference != nil) {
+        self.internalSaveViewModePreference(viewMode);
+    }
 }
 
 - (NSUInteger)toolbarDisplayFlags

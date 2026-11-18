@@ -5,27 +5,51 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `d07ac7a224` (2026-11-17).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c48b46e97f` (2026-11-18).
 
-**Contents:** [Unreleased](#unreleased) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
-## [Unreleased]
+## [0.7.5] · 2026-11-18
+
+An update release: on macOS, an update that can't be prepared says so within minutes and offers the download, where
+it stayed on "Preparing the update" and ended as "damaged"; the redesign's texts complete in the 72 languages of
+Weblate, and in 61 languages of the Android app. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
 
 ### Fixed
 
+- **macOS: an update that can't be prepared says so within minutes and offers the download** (#117): it stayed on
+  "Preparing the update" for ten minutes, then read "The update is damaged."
 - **Translations: all 72 languages of Weblate at 100 %.** The 19 complete ones lacked three texts (the Folders page,
   last.fm's missing username, the classic volume slider's colours), 53 more lacked forty (Live TV's reasons, the
   Recycle Bin questions, the services page, the interface size, the volume indicator's place and others).
   Portuguese (Portugal) no longer reads "No network shares found" for "Discover network shares". Swedish from a
   volunteer on Weblate.
+- **Android: the redesign's texts in 61 languages**, 41 more than in 0.7.4. The texts that come from VLC for Android
+  keep VideoLAN's translations, which no language has in full.
 
 ### Technical
 
 - Version 0.7.5 started (VLC_REDESIGN_VERSION).
+- VideoLAN's master merged up to `c48b46e97f` (2026-11-18, 16 commits): its native macOS interface's Music
+  overview (not the interface of VLC Redesign), an off-by-one in the simple channel mixer, Matroska seek points,
+  the dump module's default file name.
+- CI: "macOS update" (#117): a released version installed in /Applications and updated with its own helper, on
+  macOS 15 and 26 (`extras/juxtopposed/ci/macos-update-test.sh`); the launch test staged an update on one macOS
+  only, in a temporary folder.
+- macOS update helper (#117): each step (the image attached, its contents listed, its application copied, its signature checked)
+  ends
+  by itself after two minutes, with a code of its own (7 no answer in time, 8 the image open but no application
+  to read in it) and the step's own words on the error output; nothing is read from the input. The app closes the
+  helper's input, waits six minutes at most, writes what the helper said in the log (an error when it failed: the
+  log of a report keeps errors only), and keeps "damaged" for a
+  signature that isn't intact: anything else of this kind reads "The update couldn't be prepared on this Mac.
+  Download it from the release page.", and the button then offers the download. On the CI Macs (15 and 26) the
+  released helper updates 0.7.2 to 0.7.4 in ten seconds: what blocked a step on the reporter's Mac is not known,
+  the next log will name the step.
 - weblate-sync.py export keeps the header Weblate wrote (the volunteer who translated last), instead of the full
   catalog's.
 

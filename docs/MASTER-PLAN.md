@@ -128,7 +128,21 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.5**, owner 11-18: "release". Before it: **#117** (@xITmasterx, macOS 26.6, 0.7.2): Check for updates
+- 🟡 **0.7.6** started. VideoLAN merged up to `2e9a78d148` (2 commits: their Windows installer writes the
+  install folder in quotes, their macOS interface's tests wait longer; our installer and updater already
+  quote it). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
+  Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the
+  update is taken from a .zip of the app in place of a mounted image. The 13 Android languages with almost no
+  texts of the redesign are left to volunteers; the songs an older Android version listed as videos are not
+  read again yet (desktop only).
+- 🟢 **0.7.5** published 2026-11-18 19:54 local (16 files; tag v0.7.5 on 25e10a2006, PR #118 merged as
+  a1faa91962; Android tag v0.7.5 = ce28ccacd1, PR #20 merged as 8712d40664, APK 13107050). After publishing: a
+  copy of 0.7.4 took the small update from GitHub and opened on 0.7.5 (About: every program 0.7.5, Samsung TV
+  0.6.8); the "macOS update" workflow updated an installed 0.7.2 to the published 0.7.5 with its own, old
+  helper; the package scan 0 in both Windows zips; #117 answered and left open (its cause is not known). The
+  release notes' Translations item shortened to one headline, the changelog's with it. CI: the macOS arm64
+  build was cancelled twice before it started (no runner free on GitHub's side), the third run built.
+- 🟢 **0.7.5**, owner 11-18: "release". Before it: **#117** (@xITmasterx, macOS 26.6, 0.7.2): Check for updates
   downloads, stays on "Preparing the update", then "The update is damaged." The app runs
   `vlc-redesign-update.sh stage` (the image attached, its app copied next to the running one, its signature
   checked) and waits ten minutes; every failure but two reads "damaged", and the helper's own words are thrown
@@ -153,7 +167,7 @@ What is being worked on, updated as it changes (2026-11-10):
   none), the shell's "Terminated: 15" for each ended watcher no longer reaches the app's log, and a failure is
   an error in the log (the log of a report keeps errors only: a warning would not have been in it).
   Windows: built after the merge, About 0.7.5, Folders, an .mkv and a song played, no QML warning.
-- 🟡 **0.7.5** (2026-11-18): an update release (Windows, ARM64, Linux, macOS, Android; the Samsung TV app
+- 🟢 **0.7.5** (2026-11-18): an update release (Windows, ARM64, Linux, macOS, Android; the Samsung TV app
   stays 0.6.8, `follows: 0.7.5`). Owner 11-17: translations and everything checked before a release, one update for all
   of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
   pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).

@@ -78,7 +78,12 @@ note "helper: $helper"
 # input a pipe nobody writes to, as QProcess gives it; never more than the
 # ten minutes the app waits
 started=$(seconds)
-( sleep 900 | /bin/sh -x "$helper" stage "$new_image" "$installed" > "$work/stage.out" 2> "$work/stage.log" ) &
+# (a named pipe held open by a writer that says nothing: the helper's own
+# end is what is waited for, not the writer's)
+mkfifo "$work/input"
+sleep 900 > "$work/input" &
+writer=$!
+/bin/sh -x "$helper" stage "$new_image" "$installed" < "$work/input" > "$work/stage.out" 2> "$work/stage.log" &
 job=$!
 waited=0
 while kill -0 $job 2> /dev/null && [ $waited -lt 600 ]; do
@@ -96,9 +101,8 @@ if kill -0 $job 2> /dev/null; then
 else
     wait $job
     code=$?
-    # (the exit code of the pipe's last command: the helper)
 fi
-pkill -f 'sleep 900' 2> /dev/null
+kill $writer 2> /dev/null
 staged=$(cat "$work/stage.out" 2> /dev/null)
 note "staging: exit $code after $(($(seconds) - started)) s, printed \"$staged\""
 if [ "$code" = 0 ] && [ -d "$staged" ]; then
@@ -165,6 +169,44 @@ if [ "$code" = 0 ] && [ -d "$staged" ]; then
         *.dmg) ;;
         *) [ "$now" = "$to" ] || fail "/Applications has version ${now:-none}, not $to" ;;
     esac
+fi
+
+# 4. a step that never answers, an image whose application can't be read, an
+# image that can't be opened (#117: a step blocked on a user's Mac left the
+# app on "Preparing the update" for ten minutes, then "damaged"): the helper
+# ends by itself, says which step and why. Only the helper given: the one
+# of a release before these exit codes has none of them.
+if [ -n "${4:-}" ]; then
+    # (the installed copy is gone after the swap: any application will do
+    # as the one to update, the helper only reads its identifier)
+    target=$work/blocked/VLC\ Redesign.app
+    mkdir -p "$target/Contents"
+    printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' \
+        '<plist version="1.0"><dict><key>CFBundleIdentifier</key><string>org.kuchisofts.vlcredesign</string></dict></plist>' \
+        > "$target/Contents/Info.plist"
+    fake=$work/fake
+    mkdir -p "$fake"
+    # helper_with <what hdiutil does> <expected exit> <expected words> <within seconds>
+    helper_with() {
+        printf '%s\n' '#!/bin/sh' "$1" > "$fake/hdiutil"
+        chmod 755 "$fake/hdiutil"
+        t=$(seconds)
+        PATH="$fake:$PATH" VLC_REDESIGN_UPDATE_STEP_LIMIT=5 /bin/sh "$helper" stage "$new_image" "$target" \
+            < /dev/null > "$work/blocked.out" 2> "$work/blocked.log"
+        code=$?
+        took=$(($(seconds) - t))
+        if [ $code = "$2" ] && grep -q "$3" "$work/blocked.log" && [ $took -le "$4" ]; then
+            note "ok: $5: exit $code after $took s, \"$(grep "$3" "$work/blocked.log" | head -n 1)\""
+        else
+            fail "$5: exit $code after $took s (expected $2 within $4 s, saying \"$3\")"
+            sed 's/^/  /' "$work/blocked.log" | tail -n 12
+        fi
+        [ ! -e "$(dirname "$target")/.vlc-redesign-update.app" ] || fail "$5: a staged copy is left behind"
+    }
+    helper_with 'case $1 in attach) sleep 120 ;; esac' 7 'attach' 30 "a disk image that never opens"
+    helper_with 'case $1 in attach) exit 0 ;; esac' 8 'no application' 30 "an image whose application can't be read"
+    helper_with 'case $1 in attach) echo "hdiutil: attach failed - no mountable file systems" >&2; exit 1 ;; esac' \
+        2 'no mountable file systems' 30 "an image that can't be opened"
 fi
 
 rm -rf "$installed" /Applications/.vlc-redesign-update.app /Applications/.vlc-redesign-old.app

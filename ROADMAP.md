@@ -18,7 +18,7 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-17, 0.7.4 published, 0.7.5 started).
+Updated as the work moves (last: 2026-11-18, 0.7.5 in progress: translations complete, #117).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -37,10 +37,9 @@ Updated as the work moves (last: 2026-11-17, 0.7.4 published, 0.7.5 started).
 **0.7.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 📋 The list views (songs, albums) as the design draws them: room under the header, the covers shown
-  ([#111](https://github.com/KuchiSofts/vlc-redesign/issues/111))
-- 📋 The library's folders as a place of their own, for videos and music, as in the design
-  ([#112](https://github.com/KuchiSofts/vlc-redesign/issues/112))
+- 🟡 macOS: an update that stays on "Preparing the update" and ends as "damaged"
+  ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)); the update of an installed copy tried on every macOS of the build machines
+- ✅ Every language of Weblate at 100 % (72), and 61 complete in the Android app
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

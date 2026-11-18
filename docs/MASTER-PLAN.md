@@ -128,6 +128,13 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
+- 🟡 **0.7.5**, owner 11-18: "release". Before it: **#117** (@xITmasterx, macOS 26.6, 0.7.2): Check for updates
+  downloads, stays on "Preparing the update", then "The update is damaged." The app runs
+  `vlc-redesign-update.sh stage` (the image attached, its app copied next to the running one, its signature
+  checked) and waits ten minutes; every failure but two reads "damaged", and the helper's own words are thrown
+  away. The launch test stages an update on macOS 15 only, in a temporary folder: the "macOS update" workflow now
+  installs a release in /Applications and updates it with its own helper on macOS 15 and 26, each step timed.
+  VideoLAN merged up to `c48b46e97f` (16 commits, their native macOS interface and three small fixes).
 - 🟡 **0.7.5** started. Owner 11-17: translations and everything checked before a release, one update for all
   of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
   pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).

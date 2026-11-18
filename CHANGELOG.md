@@ -17,6 +17,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **macOS: an update that can't be prepared says so within minutes and offers the download** (#117): it stayed on
+  "Preparing the update" for ten minutes, then read "The update is damaged."
 - **Translations: all 72 languages of Weblate at 100 %.** The 19 complete ones lacked three texts (the Folders page,
   last.fm's missing username, the classic volume slider's colours), 53 more lacked forty (Live TV's reasons, the
   Recycle Bin questions, the services page, the interface size, the volume indicator's place and others).
@@ -32,6 +34,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - CI: "macOS update" (#117): a released version installed in /Applications and updated with its own helper, on
   macOS 15 and 26 (`extras/juxtopposed/ci/macos-update-test.sh`); the launch test staged an update on one macOS
   only, in a temporary folder.
+- macOS update helper (#117): each step (the image attached, its application copied, its signature checked) ends
+  by itself after two minutes, with a code of its own (7 no answer in time, 8 the image open but no application
+  to read in it) and the step's own words on the error output; nothing is read from the input. The app closes the
+  helper's input, waits six minutes at most, writes what the helper said in the log, and keeps "damaged" for a
+  signature that isn't intact: anything else of this kind reads "The update couldn't be prepared on this Mac.
+  Download it from the release page.", and the button then offers the download. On the CI Macs (15 and 26) the
+  released helper updates 0.7.2 to 0.7.4 in ten seconds: what blocked a step on the reporter's Mac is not known,
+  the next log will name the step.
 - weblate-sync.py export keeps the header Weblate wrote (the volunteer who translated last), instead of the full
   catalog's.
 

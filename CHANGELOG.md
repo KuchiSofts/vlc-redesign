@@ -16,8 +16,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ## [0.7.5] · 2026-11-18
 
 An update release: on macOS, an update that can't be prepared says so within minutes and offers the download, where
-it stayed on "Preparing the update" and ended as "damaged"; every language of Weblate complete (72), and 61 complete
-in the Android app. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
+it stayed on "Preparing the update" and ended as "damaged"; the redesign's texts complete in the 72 languages of
+Weblate, and in 61 languages of the Android app. Windows, Linux, macOS and Android; the Samsung TV app stays 0.6.8.
 
 ### Fixed
 
@@ -28,6 +28,8 @@ in the Android app. Windows, Linux, macOS and Android; the Samsung TV app stays 
   Recycle Bin questions, the services page, the interface size, the volume indicator's place and others).
   Portuguese (Portugal) no longer reads "No network shares found" for "Discover network shares". Swedish from a
   volunteer on Weblate.
+- **Android: the redesign's texts in 61 languages**, 41 more than in 0.7.4. The texts that come from VLC for Android
+  keep VideoLAN's translations, which no language has in full.
 
 ### Technical
 

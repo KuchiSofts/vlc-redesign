@@ -114,7 +114,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 **An update release** (the Samsung TV app stays 0.6.8):
 
 - ✅ macOS: an update that can't be prepared says so within minutes and offers the download (#117)
-- ✅ Every language of Weblate complete (72); 61 complete in the Android app
+- ✅ The redesign's texts complete in the 72 languages of Weblate, and in 61 languages of the Android app
 - ✅ The update of an installed copy tried on macOS 15 and 26 with every build
 
 ### 0.7.4 (2026-11-17)

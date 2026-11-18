@@ -162,7 +162,10 @@ What is being worked on, updated as it changes (2026-11-10):
   msgfmt -c on every catalog; po_safety: 4,336 entries, the only flags Khmer's zero-width spaces (VideoLAN's km.po
   has 34,780).
   Android (owner: "do what you think is best"; vlc-redesign-android work/0.7.5, 5ced18af6): 41 more languages
-  complete, 61 in all have every one of the app's 1,005 texts. 189-192 texts per language came word for word from
+  complete, 61 in all have every one of the redesign's 1,005 texts (the 1,327 that come from VLC for Android keep
+  VideoLAN's translations: none of the 61 has them all, 37 lack over a hundred, Afrikaans nearly all; seen in the
+  signed build in Welsh, where four texts of the Playback page are VLC's and English. The What's new card and the
+  release texts said "fully translated" and "complete": reworded before the release). 189-192 texts per language came word for word from
   the desktop catalogs (%N turned into %1$s/%s/%d, escaped for Android), 60 were written per language in the
   plural forms its file uses. The app builds (aapt2), its unit tests pass, and on the emulator the new build in
   Danish shows them (Settings, Playback). Left to volunteers: 13 languages with almost nothing (am, ast, br, co,

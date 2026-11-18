@@ -380,8 +380,8 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 ## Roadmap
 
-- **Now: [0.7.5](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.5)** (2026-11-18): every language complete, and on macOS an update that can't be
-  prepared says so and offers the download. Before it, [0.7.4](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.4): Folders in the sidebar,
+- **Now: [0.7.5](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.5)** (2026-11-18): the redesign's texts complete in all 72 languages, and on macOS an
+  update that can't be prepared says so and offers the download. Before it, [0.7.4](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.4): Folders in the sidebar,
   Home's list view fixed, songs that older versions listed as videos read again. The last full release, with
   every package, is [0.7.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.0).
 - **Next: 0.7.6**, fixes as the issues bring them.

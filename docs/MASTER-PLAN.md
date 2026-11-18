@@ -146,6 +146,12 @@ What is being worked on, updated as it changes (2026-11-10):
   before; exit 7 after 6 s now), one whose application can't be read, one that can't be opened; all pass on
   macOS 15 and 26, with the real update staged and swapped in. A copy of 0.7.4 or older still has the old helper:
   where it is blocked, the update to 0.7.5 is done once from the disk image; the next log names the step.
+  Looked for the cause once more before the upload: macOS calls a mounted disk image "Removable, External"
+  (diskutil), the kind of volume an app may be asked about or refused; a probe on the CI Macs with those
+  permissions reset (tccutil) read the image all the same, a protected folder too, so nothing is proved there.
+  Taken from it: the first reading of the image is a step with its limit too (it was the shell's own, with
+  none), the shell's "Terminated: 15" for each ended watcher no longer reaches the app's log, and a failure is
+  an error in the log (the log of a report keeps errors only: a warning would not have been in it).
   Windows: built after the merge, About 0.7.5, Folders, an .mkv and a song played, no QML warning.
 - 🟡 **0.7.5** (2026-11-18): an update release (Windows, ARM64, Linux, macOS, Android; the Samsung TV app
   stays 0.6.8, `follows: 0.7.5`). Owner 11-17: translations and everything checked before a release, one update for all

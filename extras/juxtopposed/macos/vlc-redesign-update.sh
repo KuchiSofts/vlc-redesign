@@ -18,8 +18,9 @@
 #       application can be read in it.
 #       No step waits for ever (#117: one blocked on a user's Mac left the app
 #       on "Preparing the update" for the ten minutes it waited, then said
-#       "damaged"): each has VLC_REDESIGN_UPDATE_STEP_LIMIT seconds (120), and
-#       nothing is read from the input. What a step says when it fails goes
+#       "damaged"): each (the image attached, its contents listed, the copy,
+#       the signature's check) has VLC_REDESIGN_UPDATE_STEP_LIMIT seconds
+#       (120), and nothing is read from the input. What a step says when it fails goes
 #       to the error output with its name, for the app's log.
 #
 #   vlc-redesign-update.sh apply <pid> <staged.app> <VLC Redesign.app> [<argument>...]
@@ -52,6 +53,9 @@ step() {
     wait "$job"
     code=$?
     kill "$watcher" 2>/dev/null
+    # (its end taken here, silently: the shell would otherwise write
+    # "Terminated: 15" for it on the error output, in the app's log)
+    wait "$watcher" 2>/dev/null
     said=$(tail -n 6 "$notes/said" 2>/dev/null)
     if [ -e "$notes/late" ]; then
         echo "vlc-redesign-update: $name: no answer after $limit s" >&2
@@ -82,14 +86,16 @@ stage)
         124) die 7 "the image did not open in time" ;;
         *) die 2 "the image can't be opened" ;;
     esac
-    source=
-    for app in "$mount"/*.app; do
-        [ -d "$app" ] && { source=$app; break; }
-    done
+    # The first reading of the image's volume, a step too: a Mac that holds
+    # it (macOS counts a disk image as a removable volume, which an app may
+    # be asked about or refused) must not hold the helper for ever
+    step list find "$mount" -maxdepth 1 -type d -name '*.app'
+    [ $? = 124 ] && die 7 "the image's contents were not listed in time"
+    source=$(grep '\.app$' "$notes/said" 2>/dev/null | head -n 1)
     # (open, and nothing to read in it: not a damaged update, the checksum
-    # of the image was right; the names the folder shows go to the log,
-    # never who owns them)
-    [ -n "$source" ] || die 8 "no application can be read in the image (it shows: $(ls -a "$mount" 2>&1 | tr '\n' ' '))"
+    # of the image was right; what the listing said goes to the log)
+    [ -n "$source" ] && [ -d "$source" ] \
+        || die 8 "no application can be read in the image (the listing says: $(tail -n 3 "$notes/said" 2>/dev/null | tr '\n' ' '))"
     rm -rf "$staged"
     step copy ditto "$source" "$staged"
     case $? in

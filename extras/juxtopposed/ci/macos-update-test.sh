@@ -107,6 +107,12 @@ staged=$(cat "$work/stage.out" 2> /dev/null)
 note "staging: exit $code after $(($(seconds) - started)) s, printed \"$staged\""
 if [ "$code" = 0 ] && [ -d "$staged" ]; then
     note "ok: the update is staged ($(version_of "$staged"))"
+    # (the error output is the app's log: the commands' trace here, and
+    # nothing of the shell's own about the watchers it ended)
+    if grep -v '^+' "$work/stage.log" | grep -q -e Terminated -e Killed; then
+        fail "the helper's error output has the shell's own messages"
+        grep -v '^+' "$work/stage.log" | head -n 5 | sed 's/^/  /'
+    fi
 else
     fail "the update could not be staged"
     note "the helper's trace:"
@@ -171,8 +177,8 @@ if [ "$code" = 0 ] && [ -d "$staged" ]; then
     esac
 fi
 
-# 4. a step that never answers, an image whose application can't be read, an
-# image that can't be opened (#117: a step blocked on a user's Mac left the
+# 4. a step that never answers, an image whose application can't be read or
+# whose contents are never listed, an image that can't be opened (#117: a step blocked on a user's Mac left the
 # app on "Preparing the update" for ten minutes, then "damaged"): the helper
 # ends by itself, says which step and why. Only the helper given: the one
 # of a release before these exit codes has none of them.
@@ -205,6 +211,12 @@ if [ -n "${4:-}" ]; then
     }
     helper_with 'case $1 in attach) sleep 120 ;; esac' 7 'attach' 30 "a disk image that never opens"
     helper_with 'case $1 in attach) exit 0 ;; esac' 8 'no application' 30 "an image whose application can't be read"
+    # (the first reading of the image's volume held by the system, as for
+    # an app that is asked whether it may read a removable volume)
+    printf '%s\n' '#!/bin/sh' 'sleep 120' > "$fake/find"
+    chmod 755 "$fake/find"
+    helper_with 'case $1 in attach) exit 0 ;; esac' 7 'list' 30 "an image whose contents are never listed"
+    rm -f "$fake/find"
     helper_with 'case $1 in attach) echo "hdiutil: attach failed - no mountable file systems" >&2; exit 1 ;; esac' \
         2 'no mountable file systems' 30 "an image that can't be opened"
 fi

@@ -38,7 +38,8 @@ in the Android app. Windows, Linux, macOS and Android; the Samsung TV app stays 
 - CI: "macOS update" (#117): a released version installed in /Applications and updated with its own helper, on
   macOS 15 and 26 (`extras/juxtopposed/ci/macos-update-test.sh`); the launch test staged an update on one macOS
   only, in a temporary folder.
-- macOS update helper (#117): each step (the image attached, its application copied, its signature checked) ends
+- macOS update helper (#117): each step (the image attached, its contents listed, its application copied, its signature checked)
+  ends
   by itself after two minutes, with a code of its own (7 no answer in time, 8 the image open but no application
   to read in it) and the step's own words on the error output; nothing is read from the input. The app closes the
   helper's input, waits six minutes at most, writes what the helper said in the log (an error when it failed: the

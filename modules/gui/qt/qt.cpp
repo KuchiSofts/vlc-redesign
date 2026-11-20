@@ -98,6 +98,7 @@ extern "C" char **environ;
 #include "util/dismiss_popup_event_filter.hpp"
 #include "util/screen_fit.hpp"
 #include "maininterface/compositor.hpp"
+#include "maininterface/mainui.hpp"
 #include "util/vlctick.hpp"
 #include "util/shared_input_item.hpp"
 #include "util/vlcqtmessagehandler.hpp"
@@ -1925,6 +1926,9 @@ static void *ThreadCleanup( qt_intf_t *p_intf, CleanupReason cleanupReason )
     if ( p_intf->p_compositor &&  cleanupReason == CLEANUP_APP_TERMINATED)
     {
         p_intf->p_compositor.reset();
+
+        // the QML engines are destroyed along with the compositor
+        MainUI::clearPendingQMLTypes();
 
         delete p_intf->mainSettings;
         p_intf->mainSettings = nullptr;

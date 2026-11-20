@@ -23,6 +23,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   8.0.1, carousels of the native macOS interface, Windows XP and Vista leftovers removed; its Windows installer
   writes the install folder in quotes (VLC Redesign's own installer and updater already did).
 - Code signing: SignPath Foundation accepted the project; the setup is in place, no release is signed yet.
+- Windows installer: its version details (name, version, publisher) without trailing spaces.
 
 ## [0.7.5] · 2026-11-18
 

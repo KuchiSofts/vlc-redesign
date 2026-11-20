@@ -90,7 +90,11 @@ SignPath Foundation's conditions are at <https://signpath.org/terms>. The first 
          Where-Object { $_.VersionInfo.ProductName -ne 'VLC Redesign' -or $_.VersionInfo.ProductVersion -ne $v } |
          Select-Object Name, @{ n = 'Product'; e = { $_.VersionInfo.ProductName } }, @{ n = 'Version'; e = { $_.VersionInfo.ProductVersion } }
      ```
-   The installer already says *VLC Redesign* and its version (Inno Setup takes them from the `.iss`).
+   The installer says *VLC Redesign* and its version (Inno Setup takes them from the `.iss`). Inno Setup writes them
+   into fixed-size fields and leaves spaces after them ("VLC Redesign" and 48 spaces), which SignPath's exact check
+   refuses: `make-release.ps1` trims them with
+   [`installer/trim-version-info.py`](../extras/juxtopposed/installer/trim-version-info.py), in place (the file keeps
+   its size and every byte outside the version resource), and checks the result.
 2. **Privacy.** SignPath Foundation requires that software sending user data to services the user didn't name
    describes it in a privacy policy, shows that policy during the installation, and offers installation options to
    turn those features off. Two features are on out of the box: the update check (GitHub) and the automatic online
@@ -167,7 +171,10 @@ configurations are added by hand. In the end the SignPath project needs:
 
 - **Repository URL:** `https://github.com/KuchiSofts/vlc-redesign`.
 - **Trusted build system:** the predefined *GitHub.com*, added to the organization and linked to the project
-  ([SignPath's guide](https://docs.signpath.io/trusted-build-systems/github)). The SignPath GitHub App is optional.
+  ([SignPath's guide](https://docs.signpath.io/trusted-build-systems/github)).
+- **The SignPath GitHub App**, installed on the repository (<https://github.com/apps/signpath>, *Only select
+  repositories*: `vlc-redesign`; installed 2026-11-20). Without it every request fails with "Failed to retrieve GitHub
+  App token".
 - **Two artifact configurations**, with these slugs (the workflow uses them):
   - `package`: paste [`extras/juxtopposed/signing/artifact-configuration.xml`](../extras/juxtopposed/signing/artifact-configuration.xml)
   - `installer`: paste [`extras/juxtopposed/signing/installer-configuration.xml`](../extras/juxtopposed/signing/installer-configuration.xml)
@@ -215,6 +222,9 @@ The policy is chosen each time the workflow is started. Until `SIGNPATH_ORGANIZA
    self-signed): that is expected. A refused request says why in SignPath (for instance a product name or version
    that doesn't match: prerequisite 1).
 4. Never publish anything from a test-signing run.
+
+The first run (2026-11-20, run 44724010810) signed the package of both platforms, after the GitHub App was installed;
+the installers were refused for the spaces after their product name, which `trim-version-info.py` now removes.
 
 ### 5. A signed release
 

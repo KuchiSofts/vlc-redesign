@@ -236,6 +236,15 @@ $archDefine = @(if ($Arch -eq 'aarch64') { '/DArm64' })
 & $iscc /Q "/DAppVersion=$Version" "/DSourceDir=$((Resolve-Path $Package).Path)" "/DOutputDir=$Dist" `
     @archDefine "$PSScriptRoot\installer\vlc-redesign.iss"
 if ($LASTEXITCODE) { throw "Installer build failed ($LASTEXITCODE)" }
+# Its version strings without the spaces Inno Setup leaves after them: SignPath
+# checks the product name and version exactly (trim-version-info.py)
+$setupExe = "$Dist\vlc-redesign-$Version-$platform-setup.exe"
+& $python "$PSScriptRoot\installer\trim-version-info.py" $setupExe
+if ($LASTEXITCODE) { throw "trim-version-info failed ($LASTEXITCODE)" }
+$info = (Get-Item -LiteralPath $setupExe).VersionInfo
+if ($info.ProductName -cne 'VLC Redesign' -or $info.ProductVersion -cne $Version) {
+    throw "The installer says '$($info.ProductName)' '$($info.ProductVersion)', not 'VLC Redesign' '$Version'"
+}
 
 # The release files of one platform of this version in -Dist: zip, installer,
 # small updates (the x64 small updates have no platform in their name)

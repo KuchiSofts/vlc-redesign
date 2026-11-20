@@ -323,7 +323,13 @@ jobs:
           $version = $m.Matches[0].Groups[1].Value
           & $env:ISCC /Q "/DAppVersion=$version" "/DSourceDir=$((Resolve-Path package).Path)" "/DOutputDir=$PWD\dist" /DArm64 extras/juxtopposed/installer/vlc-redesign.iss
           if ($LASTEXITCODE) { throw "Installer build failed ($LASTEXITCODE)" }
-          "SETUP=$PWD\dist\vlc-redesign-$version-winarm64-setup.exe" >> $env:GITHUB_ENV
+          # (as make-release.ps1: the version strings without Inno Setup's spaces)
+          $setup = "$PWD\dist\vlc-redesign-$version-winarm64-setup.exe"
+          python extras/juxtopposed/installer/trim-version-info.py $setup
+          if ($LASTEXITCODE) { throw "trim-version-info failed ($LASTEXITCODE)" }
+          python extras/juxtopposed/installer/trim-version-info.py $setup --check
+          if ($LASTEXITCODE) { throw "The installer's version strings still end in spaces" }
+          "SETUP=$setup" >> $env:GITHUB_ENV
 
       - name: Keep crash dumps
         shell: pwsh

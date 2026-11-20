@@ -2188,8 +2188,11 @@ and an accepted request made the TV fail after a pause in a test.
   Second run 11-20 (44801403406): SignPath signed the package and the installer of both platforms; the release job
   refused the installers' test signature, read by Windows as `UnknownError` (untrusted root), not the `NotTrusted` it
   expected: it now takes that for test-signing when the root is the chain's one fault (tested on the run's signed
-  files: a changed byte reads HashMismatch, a file without a signature NotSigned, both refused). Next: a test-signing
-  run with it, then SignPath's review and the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it).
+  files: a changed byte reads HashMismatch, a file without a signature NotSigned, both refused; #122). Third run 11-20
+  (44809587952, from #122's branch): all ten jobs green, four requests completed. SignPath told 11-20 that the setup
+  is ready. Next: their review, then the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it). The failed
+  second run had turned README's Windows badge red: the four build badges now count only main's pushes
+  (`event=push`), and release-check refuses a badge without it.
 - 🟢 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml): the Windows build and the launch test passed on GitHub's runners with the 0.3.0 push (2026-10-25)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at

@@ -91,9 +91,9 @@ release mode) and makes in `-Dist`:
 
 ## Signed builds
 
-Signing is prepared and not active yet: the files of the releases are unsigned, and their SHA-256 is listed in
-`SHA256SUMS.txt`. The Windows files would be signed, once SignPath approves the application, through [SignPath Foundation](https://signpath.org/)'s free
-program for open-source projects. SignPath signs only what this repository's GitHub workflow built, so a package
+Signing is being set up and not active yet: the files of the releases are unsigned, and their SHA-256 is listed in
+`SHA256SUMS.txt`. The Windows files will be signed through [SignPath Foundation](https://signpath.org/)'s free
+program for open-source projects, which accepted the project on 2026-11-20. SignPath signs only what this repository's GitHub workflow built, so a package
 made on your own PC can't be signed, and builds from source stay unsigned.
 
 In the workflow, the package is built in Docker and tested, its files are signed, and `make-release.ps1 -Signed` makes

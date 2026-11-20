@@ -128,9 +128,9 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.6** started. VideoLAN merged up to `2e9a78d148` (2 commits: their Windows installer writes the
-  install folder in quotes, their macOS interface's tests wait longer; our installer and updater already
-  quote it). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
+- 🟡 **0.7.6** started. VideoLAN merged up to `956dda12b5` (2026-11-20, 23 commits: Qt use-after-free fixes,
+  VA-API, Lua extensions, ggml and nfs, macOS carousels; their Windows installer writes the install folder in
+  quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
   Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the
   update is taken from a .zip of the app in place of a mounted image. The 13 Android languages with almost no
   texts of the redesign are left to volunteers; the songs an older Android version listed as videos are not
@@ -171,11 +171,11 @@ What is being worked on, updated as it changes (2026-11-10):
   stays 0.6.8, `follows: 0.7.5`). Owner 11-17: translations and everything checked before a release, one update for all
   of it. Done so far: Weblate's Swedish (#114) merged; the 19 complete languages at 100 % (three texts each) and
   pt_PT's wrong "Discover network shares" fixed; weblate-sync.py keeps Weblate's header (the volunteer's name).
-  Then (owner: "yes"): the 53 languages at 98 % completed (40 texts each, 2,100 entries in each catalog's own
+  Then, once approved: the 53 languages at 98 % completed (40 texts each, 2,100 entries in each catalog's own
   words, checked for %1/<b>/the five "|" choices/the URL before writing): all 72 Weblate languages at 100 %;
   msgfmt -c on every catalog; po_safety: 4,336 entries, the only flags Khmer's zero-width spaces (VideoLAN's km.po
   has 34,780).
-  Android (owner: "do what you think is best"; vlc-redesign-android work/0.7.5, 5ced18af6): 41 more languages
+  Android (left to my judgement; vlc-redesign-android work/0.7.5, 5ced18af6): 41 more languages
   complete, 61 in all have every one of the redesign's 1,005 texts (the 1,327 that come from VLC for Android keep
   VideoLAN's translations: none of the 61 has them all, 37 lack over a hundred, Afrikaans nearly all; seen in the
   signed build in Welsh, where four texts of the Playback page are VLC's and English. The What's new card and the
@@ -2172,11 +2172,16 @@ and an accepted request made the TV fail after a pause in a test.
 
 ### 8.9 Quality and hardware
 
-- ⏸️ Code-signed builds — **waiting for SignPath's approval (2026-10-30): nothing signed until then**; README, wiki and the policy say the
+- 🟡 Code-signed builds: **SignPath Foundation accepted the project 2026-11-20; nothing signed until the first signed release**; README, wiki and the policy say the
   releases are not code-signed (decision 2: SignPath Foundation, free for open source): the CI jobs, the artifact
   configurations, `CODE_SIGNING_POLICY.md` and the steps (docs/code-signing.md) are ready, and every binary carries
   VLC Redesign's name and version, and the two features that go online are chosen at install (or at the first
-  start of a portable copy) with the policy linked; waiting for the user's application to SignPath
+  start of a portable copy) with the policy linked. Set up 2026-11-20: the project, its policies and the CI user
+  made by SignPath Foundation; the artifact configurations `package` and `installer` added (no `description` on
+  `<authenticode-sign>`: refused on their plan; the installer's path takes the platform, win64 or winarm64, which
+  the release job now passes); the CI user's token in the secret `SIGNPATH_API_TOKEN`, the organization and the
+  project in variables; README has its *Code signing policy* section. Next: a test-signing run, then SignPath's
+  review and the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it).
 - 🟢 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml): the Windows build and the launch test passed on GitHub's runners with the 0.3.0 push (2026-10-25)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at

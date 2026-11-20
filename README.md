@@ -236,9 +236,9 @@ SHA-256 checksums in `SHA256SUMS.txt`. The full guide is
 | **Samsung TVs** (Tizen 3.0, 2017 models and later) | **Juxto Media Player**, a player of its own inspired by VLC (not VLC), in the design (`Juxto-Media-Player-TV-0.6.8-source.zip`), installed from a computer with the TV in developer mode. Not in Samsung's store. [Step by step](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv) |
 
 > [!NOTE]
-> The Windows files are not code-signed yet (the SignPath application is still pending), so SmartScreen may warn
-> on first launch: choose *More info → Run anyway*. The app only installs updates whose file list is signed by the
-> project. See [CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md).
+> The Windows files are not code-signed yet (SignPath Foundation accepted the project, and the signing is being set
+> up), so SmartScreen may warn on first launch: choose *More info → Run anyway*. The app only installs updates whose
+> file list is signed by the project. See the [code signing policy](CODE_SIGNING_POLICY.md).
 
 <details>
 <summary><b>The Windows installer</b></summary>
@@ -425,6 +425,13 @@ media player and engine made by the VideoLAN team and a community of volunteers.
   music by [Kevin MacLeod](https://incompetech.com/) (CC BY 4.0), with covers made for this demo.
 
 Maintained by [KuchiSofts](https://github.com/KuchiSofts). Full credits are in [CREDITS.md](CREDITS.md).
+
+## Code signing policy
+
+Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
+[SignPath Foundation](https://signpath.org/). The signing is being set up: the releases published so far are not
+signed, and the notes of each release say whether its Windows files are. What is signed, the team roles and the
+privacy policy: [CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md).
 
 ## License
 

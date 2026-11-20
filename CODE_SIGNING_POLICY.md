@@ -1,7 +1,7 @@
 # Code signing policy
 
-> **Not in use yet.** No release is code-signed: the application to SignPath Foundation waits for their approval,
-> and nothing is signed until then. This is the policy the signed releases will follow.
+> **Not in use yet.** No release is code-signed yet. SignPath Foundation accepted the project on 2026-11-20 and the
+> signing is being set up; this is the policy the signed releases will follow.
 
 Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by
 [SignPath Foundation](https://signpath.org/).

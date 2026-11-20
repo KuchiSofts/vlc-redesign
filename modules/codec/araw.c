@@ -335,10 +335,10 @@ static int DecodeBlock( decoder_t *p_dec, block_t *p_block )
     if( samples == 0 )
         goto skip;
 
+    if( decoder_UpdateAudioFormat( p_dec ) )
+        goto skip;
     if( p_sys->decode != NULL )
     {
-        if( decoder_UpdateAudioFormat( p_dec ) )
-            goto skip;
         block_t *p_out = decoder_NewAudioBuffer( p_dec, samples );
         if( p_out == NULL )
             goto skip;
@@ -348,10 +348,8 @@ static int DecodeBlock( decoder_t *p_dec, block_t *p_block )
         block_Release( p_block );
         p_block = p_out;
     }
-    else
+    else // VLC_CODEC_S32N | VLC_CODEC_S16N | VLC_CODEC_U8
     {
-        if( decoder_UpdateAudioFormat( p_dec ) )
-            goto skip;
         p_block->i_nb_samples = samples;
         p_block->i_buffer = samples * (p_sys->framebits / 8);
     }
@@ -797,7 +795,7 @@ static block_t *Encode( encoder_t *enc, block_t *in )
     if( encode != NULL )
         encode( out->p_buffer, in->p_buffer, in->i_nb_samples
                                              * enc->fmt_out.audio.i_channels );
-    else {
+    else { // VLC_CODEC_S32N | VLC_CODEC_S16N | VLC_CODEC_U8
         assert( out->i_buffer >= in->i_buffer );
         memcpy( out->p_buffer, in->p_buffer, in->i_buffer );
     }

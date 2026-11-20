@@ -128,8 +128,8 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.6** started. VideoLAN merged up to `956dda12b5` (2026-11-20, 23 commits: Qt use-after-free fixes,
-  VA-API, Lua extensions, ggml and nfs, macOS carousels; their Windows installer writes the install folder in
+- 🟡 **0.7.6** started. VideoLAN merged up to `7f0d5b9562` (2026-11-20, 25 commits: Qt use-after-free fixes,
+  VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
   Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the
   update is taken from a .zip of the app in place of a mounted image. The 13 Android languages with almost no

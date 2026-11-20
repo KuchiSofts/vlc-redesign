@@ -49,7 +49,7 @@ version from its first published build.
   NVIDIA and integrated AMD graphics, and no graphics card at all (Windows Sandbox, 2 GB); casting to a real Samsung
   TV ([TV compatibility](TV-Compatibility)).
 - **Still to do:** tests on Intel graphics, on Windows 10 on real PCs and on screens of different scales;
-  code-signed releases (waiting for SignPath's approval), so that SmartScreen no longer warns.
+  code-signed releases (SignPath Foundation accepted the project; being set up), so that SmartScreen no longer warns.
 - **Small updates in the app (only the files that changed) are for Windows**; the AppImage on Linux and the app on
   macOS update themselves with the whole new file. `SHA256SUMS.txt`, signed by the project, covers every platform.
 - **On Windows 11 ARM64**, take the native ARM64 build: [below](#windows-on-arm64). The x64 installer runs there
@@ -158,7 +158,7 @@ Home in the light theme. Click for the MP4.</sub>
   the window opens, a clip plays to its end and VLC quits cleanly; the installer installs, starts, plays and
   uninstalls.
 - **Missing:** a run by hand on a real ARM64 PC (Snapdragon), with its graphics driver; code-signed releases
-  (waiting for SignPath's approval), so that SmartScreen no longer warns.
+  (SignPath Foundation accepted the project; being set up), so that SmartScreen no longer warns.
 
 ## Android
 

@@ -21,6 +21,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - VideoLAN's master merged up to `2e9a78d148` (2026-11-18, 2 commits): its Windows installer writes the install
   folder in quotes (VLC Redesign's own installer and updater already did), its native macOS interface's tests
   wait longer.
+- Code signing: SignPath Foundation accepted the project; the setup is in place, no release is signed yet.
 
 ## [0.7.5] · 2026-11-18
 

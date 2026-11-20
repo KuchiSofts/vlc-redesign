@@ -535,6 +535,7 @@ jobs:
           github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
           parameters: |
             version: "${{ env.VERSION }}"
+            platform: "${{ matrix.platform }}"
           wait-for-completion: true
           wait-for-completion-timeout-in-seconds: 10800
           output-artifact-directory: signed-setup

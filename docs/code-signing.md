@@ -5,9 +5,10 @@ for open-source projects (decision 2 of the [master plan](MASTER-PLAN.md#17-deci
 *SignPath free OSS signing*). The certificate is issued to SignPath Foundation, not to the project, and SignPath
 signs only what this repository's GitHub workflow built, after an approval by hand.
 
-**Status:** prepared, not active. The workflow skips signing until the SignPath setup below exists, and nothing has
-been applied for, submitted or published yet. The policy that users read is
-[CODE_SIGNING_POLICY.md](../CODE_SIGNING_POLICY.md).
+**Status:** being set up. SignPath Foundation accepted the project on 2026-11-20. The SignPath project, its two
+signing policies, both artifact configurations, the CI user and the GitHub secret and variables exist (steps 2 and
+3); next are a test-signing run (step 4) and SignPath's review, after which they order the release certificate.
+No release is signed yet. The policy that users read is [CODE_SIGNING_POLICY.md](../CODE_SIGNING_POLICY.md).
 
 | File                                                        | What it is                                                           |
 |-------------------------------------------------------------|----------------------------------------------------------------------|
@@ -156,10 +157,13 @@ Points to raise in the application, since SignPath Foundation decides on them:
    - The points of the previous section: the fork, the libraries, the name.
 3. Wait for the answer; SignPath may ask questions.
 
-### 2. Set up SignPath (once accepted)
+### 2. Set up SignPath (done 2026-11-20)
 
 Follow SignPath's onboarding e-mail; sign in at <https://app.signpath.io> with an account that has multi-factor
-authentication. In the end the SignPath project needs:
+authentication. The order matters: create the account, accept the invitation to the organization *VLC Redesign
+[OSS]* with it, and only then confirm the CI user's e-mail address. SignPath Foundation creates the project
+`vlc-redesign`, its GitHub.com trusted build system, the two signing policies and the CI user; the artifact
+configurations are added by hand. In the end the SignPath project needs:
 
 - **Repository URL:** `https://github.com/KuchiSofts/vlc-redesign`.
 - **Trusted build system:** the predefined *GitHub.com*, added to the organization and linked to the project
@@ -167,11 +171,13 @@ authentication. In the end the SignPath project needs:
 - **Two artifact configurations**, with these slugs (the workflow uses them):
   - `package`: paste [`extras/juxtopposed/signing/artifact-configuration.xml`](../extras/juxtopposed/signing/artifact-configuration.xml)
   - `installer`: paste [`extras/juxtopposed/signing/installer-configuration.xml`](../extras/juxtopposed/signing/installer-configuration.xml)
+  - SignPath Foundation's plan writes the signature's description itself: `<authenticode-sign>` takes no
+    `description` or `description-url` (SignPath refuses the configuration otherwise).
 - **Two signing policies**, with the slugs `test-signing` and `release-signing` (the choices of the workflow; if
   SignPath names them otherwise, change the `sign` options in `build-windows.yml`). For `release-signing`: approval
   by hand, approver KuchiSofts; origin verification on; allowed branch `main`.
 - **A CI user** that is a submitter of both policies (with origin verification, people can't be submitters), and its
-  API token. The token is shown once.
+  API token. The token is shown once; the first one, made by SignPath, is never shown (*Regenerate token*).
 - The **organization ID** (a GUID: in the address of the pages of app.signpath.io, and in the organization's
   settings) and the **project slug**.
 
@@ -185,6 +191,8 @@ In the repository's Settings → Secrets and variables → Actions:
 | Variable | `SIGNPATH_ORGANIZATION_ID`  | The organization ID      | <https://github.com/KuchiSofts/vlc-redesign/settings/variables/actions> |
 | Variable | `SIGNPATH_PROJECT_SLUG`     | The project slug         | same page |
 | Variable | `SIGNPATH_CERT_THUMBPRINT`  | The SHA-1 thumbprint of the release certificate: a release-signing run refuses an installer signed by another one | same page |
+
+Set on 2026-11-20, all but `SIGNPATH_CERT_THUMBPRINT`: the release certificate comes after SignPath's review.
 
 Or with `gh` (it asks for the token):
 

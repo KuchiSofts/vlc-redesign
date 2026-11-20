@@ -46,6 +46,6 @@ After it:
 - 📋 macOS and Windows on ARM64: a round by hand on a real Mac and a real ARM64 PC (both are tested on GitHub's
   machines at every build)
 - 📋 Windows: tests on more real PCs (Windows 10, Intel graphics, screens of different scales)
-- 📋 Code-signed Windows releases (no SmartScreen warning): SignPath Foundation accepted the project (11-20), the
-  signing is being set up
+- 📋 Code-signed Windows releases (no SmartScreen warning): SignPath Foundation accepted the project (11-20); the
+  test signing runs, and the release certificate comes after their review
 - 💡 The Samsung TV app in Samsung's store; the TV side of casting (drawn in the design); then iPhone and iPad

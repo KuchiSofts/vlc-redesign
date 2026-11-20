@@ -8,8 +8,10 @@
   artifact, so a zip with vlc-redesign-<version>-<platform>-setup.exe at its
   root; <platform> is win64 or winarm64, the job's matrix). Inno Setup writes
   its version resource from the .iss: product name "VLC Redesign" (AppName),
-  product version <version> (AppVersion). No description on
-  <authenticode-sign>: SignPath Foundation's plan writes it itself.
+  product version <version> (AppVersion), each followed by spaces, which
+  make-release.ps1 trims (installer/trim-version-info.py): SignPath compares
+  both values exactly. No description on <authenticode-sign>: SignPath
+  Foundation's plan writes it itself.
 
   Paste it into the SignPath project as the artifact configuration with the
   slug "installer".

@@ -128,8 +128,8 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.6** started. VideoLAN merged up to `956dda12b5` (2026-11-20, 23 commits: Qt use-after-free fixes,
-  VA-API, Lua extensions, ggml and nfs, macOS carousels; their Windows installer writes the install folder in
+- 🟡 **0.7.6** started. VideoLAN merged up to `7f0d5b9562` (2026-11-20, 25 commits: Qt use-after-free fixes,
+  VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
   Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the
   update is taken from a .zip of the app in place of a mounted image. The 13 Android languages with almost no
@@ -2180,8 +2180,12 @@ and an accepted request made the TV fail after a pause in a test.
   made by SignPath Foundation; the artifact configurations `package` and `installer` added (no `description` on
   `<authenticode-sign>`: refused on their plan; the installer's path takes the platform, win64 or winarm64, which
   the release job now passes); the CI user's token in the secret `SIGNPATH_API_TOKEN`, the organization and the
-  project in variables; README has its *Code signing policy* section. Next: a test-signing run, then SignPath's
-  review and the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it).
+  project in variables; README has its *Code signing policy* section. First test-signing run 11-20 (44724010810):
+  both packages signed once the SignPath GitHub App was installed (required, not optional as the doc said); both
+  installers refused, product name "VLC Redesign" and 48 spaces (Inno Setup fills fixed-size fields; SignPath
+  Foundation's terms require the name and version checked on every signed file, so the check stays):
+  `installer/trim-version-info.py` trims them in place, called by make-release.ps1 and the ARM64 install test. Next:
+  a test-signing run with it, then SignPath's review and the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it).
 - 🟢 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml): the Windows build and the launch test passed on GitHub's runners with the 0.3.0 push (2026-10-25)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at

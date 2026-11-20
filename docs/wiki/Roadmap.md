@@ -47,5 +47,5 @@ After it:
   machines at every build)
 - 📋 Windows: tests on more real PCs (Windows 10, Intel graphics, screens of different scales)
 - 📋 Code-signed Windows releases (no SmartScreen warning): SignPath Foundation accepted the project (11-20); the
-  test signing works on x64 and ARM64, and the release certificate comes after their review
+  test signing works on x64 and ARM64; SignPath reviews the setup (11-20), then the release certificate
 - 💡 The Samsung TV app in Samsung's store; the TV side of casting (drawn in the design); then iPhone and iPad

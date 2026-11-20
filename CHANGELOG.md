@@ -24,6 +24,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   writes the install folder in quotes (VLC Redesign's own installer and updater already did).
 - Code signing: SignPath Foundation accepted the project; the setup is in place, no release is signed yet.
 - Windows installer: its version details (name, version, publisher) without trailing spaces.
+- Code signing: a test-signing run signs the package and the installer of x64 and ARM64.
+- README build badges: only the builds of main's pushes, not the runs started by hand.
 
 ## [0.7.5] · 2026-11-18
 

@@ -152,6 +152,14 @@ check(r.returncode == 0, 'README platform bar and website in step with platforms
       'run extras/juxtopposed/platforms/render.py')
 r = subprocess.run([sys.executable, os.path.join(ROOT, 'design/tools/check_qml.py')], capture_output=True, text=True)
 check(r.returncode == 0, 'Design tokens match the app', (r.stdout + r.stderr).strip().splitlines()[-1:] or '')
+# the README's build badges show the builds of what is on main, its pushes:
+# a run started by hand (a test signing, a release waiting for its approval
+# in SignPath, one cancelled) must not turn a badge red
+badges = re.findall(r'img\.shields\.io/github/actions/workflow/status/[^)\s]+', read('README.md'))
+loose = [b.split('?')[0].rsplit('/', 1)[-1] for b in badges
+         if not re.search(r'[?&]branch=main(&|$)', b) or not re.search(r'[?&]event=push(&|$)', b)]
+check(badges and not loose, 'README build badges: the pushes to main only',
+      '%s: add branch=main&event=push' % ', '.join(loose) if loose else 'no build badge found')
 
 # the wiki's Roadmap page carries the status table and the next steps of
 # ROADMAP.md, word for word: the wiki is where most people look

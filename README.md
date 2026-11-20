@@ -17,10 +17,10 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 [![72 languages](https://img.shields.io/badge/72%20languages-1f1d1b?style=flat-square)](https://github.com/KuchiSofts/vlc-redesign/wiki/Languages)
 [![License](https://img.shields.io/badge/GPL--2.0--or--later-1f1d1b?style=flat-square)](COPYING)
 
-[![Windows build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-windows.yml?branch=main&style=flat-square&label=Windows)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml)
-[![Linux build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-linux.yml?branch=main&style=flat-square&label=Linux)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml)
-[![macOS build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-macos.yml?branch=main&style=flat-square&label=macOS)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml)
-[![Tests](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/tests.yml?branch=main&style=flat-square&label=tests)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml)
+[![Windows build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-windows.yml?branch=main&event=push&style=flat-square&label=Windows)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml?query=branch%3Amain+event%3Apush)
+[![Linux build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-linux.yml?branch=main&event=push&style=flat-square&label=Linux)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-linux.yml?query=branch%3Amain+event%3Apush)
+[![macOS build](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/build-macos.yml?branch=main&event=push&style=flat-square&label=macOS)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-macos.yml?query=branch%3Amain+event%3Apush)
+[![Tests](https://img.shields.io/github/actions/workflow/status/KuchiSofts/vlc-redesign/tests.yml?branch=main&event=push&style=flat-square&label=tests)](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/tests.yml?query=branch%3Amain+event%3Apush)
 [![Translations](https://img.shields.io/weblate/progress/vlc-redesign?style=flat-square&label=translated)](https://hosted.weblate.org/engage/vlc-redesign/)
 
 <br>

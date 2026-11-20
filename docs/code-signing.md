@@ -7,7 +7,8 @@ signs only what this repository's GitHub workflow built, after an approval by ha
 
 **Status:** being set up. SignPath Foundation accepted the project on 2026-11-20. The SignPath project, its two
 signing policies, both artifact configurations, the CI user and the GitHub secret and variables exist (steps 2 and
-3); next are a test-signing run (step 4) and SignPath's review, after which they order the release certificate.
+3), and a test-signing run signed the package and the installer of both platforms (step 4); next is SignPath's
+review, after which they order the release certificate.
 No release is signed yet. The policy that users read is [CODE_SIGNING_POLICY.md](../CODE_SIGNING_POLICY.md).
 
 | File                                                        | What it is                                                           |
@@ -219,12 +220,15 @@ The policy is chosen each time the workflow is started. Until `SIGNPATH_ORGANIZA
 2. Actions → [Windows build](https://github.com/KuchiSofts/vlc-redesign/actions/workflows/build-windows.yml) →
    *Run workflow*: branch `main`, *Sign* `test-signing`.
 3. The four jobs run; `release` warns that the signatures are not trusted by Windows (the test certificate is
-   self-signed): that is expected. A refused request says why in SignPath (for instance a product name or version
+   self-signed): that is expected. Windows reads such a signature as `UnknownError` (a root it does not trust); the
+   job takes it only for test-signing, and only when the root is the chain's one fault. A refused request says why in SignPath (for instance a product name or version
    that doesn't match: prerequisite 1).
 4. Never publish anything from a test-signing run.
 
 The first run (2026-11-20, run 44724010810) signed the package of both platforms, after the GitHub App was installed;
 the installers were refused for the spaces after their product name, which `trim-version-info.py` now removes.
+The second (run 44801403406) signed all four; the release job then refused the installers' test signature, which it
+expected as `NotTrusted`: it now takes `UnknownError` when the chain's one fault is the untrusted root.
 
 ### 5. A signed release
 

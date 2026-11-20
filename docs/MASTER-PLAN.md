@@ -2184,8 +2184,12 @@ and an accepted request made the TV fail after a pause in a test.
   both packages signed once the SignPath GitHub App was installed (required, not optional as the doc said); both
   installers refused, product name "VLC Redesign" and 48 spaces (Inno Setup fills fixed-size fields; SignPath
   Foundation's terms require the name and version checked on every signed file, so the check stays):
-  `installer/trim-version-info.py` trims them in place, called by make-release.ps1 and the ARM64 install test. Next:
-  a test-signing run with it, then SignPath's review and the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it).
+  `installer/trim-version-info.py` trims them in place, called by make-release.ps1 and the ARM64 install test (#121).
+  Second run 11-20 (44801403406): SignPath signed the package and the installer of both platforms; the release job
+  refused the installers' test signature, read by Windows as `UnknownError` (untrusted root), not the `NotTrusted` it
+  expected: it now takes that for test-signing when the root is the chain's one fault (tested on the run's signed
+  files: a changed byte reads HashMismatch, a file without a signature NotSigned, both refused). Next: a test-signing
+  run with it, then SignPath's review and the release certificate (`SIGNPATH_CERT_THUMBPRINT` after it).
 - 🟢 Automated tests in CI: launch, playback, QML warnings (extras/juxtopposed/ci/launch-test.ps1 and its job in
   build-windows.yml): the Windows build and the launch test passed on GitHub's runners with the 0.3.0 push (2026-10-25)
 - 🔴 Intel graphics, older PCs, Windows 10 on real hardware, high-DPI multi-monitor (2026-10-24: the app drawn at

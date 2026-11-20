@@ -560,11 +560,22 @@ jobs:
         run: |
           $name = "vlc-redesign-$env:VERSION-$env:PLATFORM"
           $signature = Get-AuthenticodeSignature -LiteralPath "signed-setup\$name-setup.exe"
+          $refused = "The installer's signature is $($signature.Status): $($signature.StatusMessage)"
           # a release takes only a valid signature; the test signing's
-          # certificate is not trusted by Windows (NotTrusted), nothing else
-          $allowed = if ($env:SIGN_MODE -eq 'release-signing') { @('Valid') } else { @('Valid', 'NotTrusted') }
-          if ($signature.Status -notin $allowed) { throw "The installer's signature is $($signature.Status)" }
+          # certificate signs itself, so Windows does not trust its root
+          # (UnknownError, the chain's only fault UntrustedRoot), nothing else
+          if ($env:SIGN_MODE -ne 'release-signing' -and $signature.Status -ne 'Valid') {
+            $faults = @()
+            if ($signature.Status -eq 'UnknownError' -and $signature.SignerCertificate) {
+              $chain = [Security.Cryptography.X509Certificates.X509Chain]::new()
+              $chain.ChainPolicy.RevocationMode = 'NoCheck'
+              $null = $chain.Build($signature.SignerCertificate)
+              $faults = @($chain.ChainStatus | ForEach-Object { "$($_.Status)" })
+            }
+            if (-join $faults -ne 'UntrustedRoot') { throw $refused }
+          }
           if ($env:SIGN_MODE -eq 'release-signing') {
+            if ($signature.Status -ne 'Valid') { throw $refused }
             if (-not $env:EXPECTED_SIGNER) { throw 'No SIGNPATH_CERT_THUMBPRINT variable (docs/code-signing.md)' }
             if ($signature.SignerCertificate.Thumbprint -ne $env:EXPECTED_SIGNER) {
               throw "Signed by $($signature.SignerCertificate.Subject), not the expected certificate"

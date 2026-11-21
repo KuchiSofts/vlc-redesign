@@ -178,8 +178,9 @@ While something plays and the library shows, it stays at hand:
   opens the queue on the card: drag a row by its handle to move it, **−** removes the selected row, **+** adds
   files.
 - **The player bar** at the bottom: the cover and title (a click opens the player), the controls of the profile
-  (Shuffle, Previous, Play, Next, Repeat in *Default*), the volume and **Switch Player**. With *Always show the
-  player bar* ([Settings: Interface](Settings-Interface)) it stays while nothing plays.
+  (Shuffle, Previous, Play, Next, Repeat in *Default*), the volume, **Play Queue** and **Switch Player**. It stays
+  while nothing plays, so the queue opens and fills before anything plays; turn off *Always show the player bar*
+  ([Settings: Interface](Settings-Interface)) to hide it then.
 
 See [The player](The-Player#the-mini-player). The buttons of the player bar change with the profile: see
 [Customize the player](Customize-the-Player#the-built-in-profiles).

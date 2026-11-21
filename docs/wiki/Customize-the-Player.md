@@ -152,11 +152,14 @@ Their mini player bars (the player bar at the bottom of the library), each start
 
 | Profile | Center | Right |
 |---|---|---|
-| **Default** | Shuffle, Previous, Play, Next, Repeat | Volume, Switch Player |
-| **Movies** | Backward 10s, Play, Forward 10s | Volume, Switch Player |
-| **Shows** | Previous, Play, Next | Volume, Switch Player |
-| **Music** | Shuffle, Previous, Play, Next, Repeat | Favorite, Volume, Switch Player |
-| **Work** | Backward 15s, Play, Forward 15s | Playback Speed, Volume, Switch Player |
+| **Default** | Shuffle, Previous, Play, Next, Repeat | Volume, Play Queue, Switch Player |
+| **Movies** | Backward 10s, Play, Forward 10s | Volume, Play Queue, Switch Player |
+| **Shows** | Previous, Play, Next | Volume, Play Queue, Switch Player |
+| **Music** | Shuffle, Previous, Play, Next, Repeat | Favorite, Volume, Play Queue, Switch Player |
+| **Work** | Backward 15s, Play, Forward 15s | Playback Speed, Volume, Play Queue, Switch Player |
+
+Profiles saved before 0.7.6 get **Play Queue** in their mini player bar once, before **Switch Player**; taken out
+again, it stays out.
 
 A built-in profile has no settings of its own until you first leave it (or save it): until then, choosing it keeps
 the settings in use.

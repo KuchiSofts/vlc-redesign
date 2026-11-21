@@ -95,6 +95,10 @@ void ControlbarProfileModel::insertDefaults()
         ptrNewProfile->m_settingsSnapshot.clear();
     }
 
+    // their mini players have the queue button already: one taken out
+    // later stays out (profile_persistence.cpp, reload)
+    m_settings->setValue(QStringLiteral("redesign/queue-in-miniplayer"), true);
+
     m_selectedProfile = -1;
     setSelectedProfile(0);
 }

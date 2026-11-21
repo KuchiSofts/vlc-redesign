@@ -45,6 +45,8 @@ as you set it.
   library key stops; the queue still has <kbd>Ctrl</kbd>+<kbd>L</kbd>. <kbd>Q</kbd> also opens the queue from the
   library; <kbd>L</kbd> works in the player only.
 - In the library, the arrow keys move between the cards and rows; VLC's shortcuts take over in the player.
+- <kbd>Space</kbd> (and any key of *Play/Pause*) while nothing plays starts the queue, as the Play button does;
+  after <kbd>S</kbd> (Stop) it plays the queue again.
 
 ## VLC's shortcuts
 

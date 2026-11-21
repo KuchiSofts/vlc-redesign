@@ -115,6 +115,7 @@ void ControlbarProfileModel::forgetSettingsSnapshots()
     // the settings cleared took this mark too: the profiles saved now
     // need no migration at the next start
     m_settings->setValue(QStringLiteral("redesign/fullscreen-in-bar"), true);
+    m_settings->setValue(QStringLiteral("redesign/queue-in-miniplayer"), true);
     save(false);
 }
 
@@ -128,6 +129,11 @@ bool ControlbarProfileModel::reload()
     // user who then takes it out of the bar keeps it out.
     const bool migrateFullscreen = !m_settings->value(QStringLiteral("redesign/fullscreen-in-bar"), false).toBool();
     bool migratedFullscreen = false;
+    // 0.7.6: the queue button in the mini player (the bar of the library),
+    // which had none: the queue opened only from the player (#124). Once, as
+    // the fullscreen button above
+    const bool migrateQueue = !m_settings->value(QStringLiteral("redesign/queue-in-miniplayer"), false).toBool();
+    bool migratedQueue = false;
 
     const auto groupName = metaObject()->className();
 
@@ -209,6 +215,17 @@ bool ControlbarProfileModel::reload()
                 migratedFullscreen = true;
             }
 
+            if (migrateQueue && identifier == PlayerControlbarModel::Miniplayer
+                && std::none_of(data.cbegin(), data.cend(), [](const QVector<int>& list) {
+                       return list.contains(ControlListModel::PLAYLIST_BUTTON);
+                   }))
+            {
+                // before the button that opens the player, as in the defaults
+                const qsizetype at = data[2].indexOf(ControlListModel::PLAYER_SWITCH_BUTTON);
+                data[2].insert(at < 0 ? data[2].size() : at, ControlListModel::PLAYLIST_BUTTON);
+                migratedQueue = true;
+            }
+
             ptrNewProfile->setModelData(identifier, data);
             ptrNewProfile->resetDirty(); // Newly loaded model can not be dirty
         }
@@ -253,11 +270,11 @@ bool ControlbarProfileModel::reload()
     setError(error);
 
     if (migrateFullscreen)
-    {
         m_settings->setValue(QStringLiteral("redesign/fullscreen-in-bar"), true);
-        if (migratedFullscreen)
-            save(false);
-    }
+    if (migrateQueue)
+        m_settings->setValue(QStringLiteral("redesign/queue-in-miniplayer"), true);
+    if (migratedFullscreen || migratedQueue)
+        save(false);
 
     return true;
 }

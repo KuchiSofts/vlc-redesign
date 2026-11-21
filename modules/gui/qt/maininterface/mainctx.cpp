@@ -677,8 +677,9 @@ void MainCtx::loadPrefs(const bool callSignals)
     mac_platform::setProcessPriority( getSettings()->value( "redesign/process-priority", 0 ).toInt() );
 #endif
 
-    /* "Always show the player bar" of the settings */
-    const bool alwaysShowPlayerBar = getSettings()->value( "redesign/always-show-player-bar", false ).toBool();
+    /* "Always show the player bar" of the settings: on unless turned off, so
+     * the queue and Play are there before anything plays (#124) */
+    const bool alwaysShowPlayerBar = getSettings()->value( "redesign/always-show-player-bar", true ).toBool();
     if( alwaysShowPlayerBar != m_alwaysShowPlayerBar )
     {
         m_alwaysShowPlayerBar = alwaysShowPlayerBar;
@@ -857,7 +858,28 @@ void MainCtx::sendHotkey(Qt::Key key , Qt::KeyboardModifiers modifiers)
     ++m_hotkeySerial;
     if (m_shortcutFeedbackActive)
         giveShortcutFeedback(vlckey);
+    // Play/Pause (Space) while nothing plays: the queue starts, as with the
+    // Play button and in VLC 3. The core's action only pauses or resumes a
+    // media that plays, so it did nothing after Stop (#124)
+    PlayerController *player = p_intf->p_mainPlayerController;
+    PlaylistController *playlist = p_intf->p_mainPlaylistController;
+    if (player && playlist && !player->isStarted()
+        && (isHotkeyOf("play-pause", vlckey) || isHotkeyOf("play", vlckey)))
+    {
+        playlist->togglePlayPause();
+        return;
+    }
     postHotkey(vlckey);
+}
+
+bool MainCtx::isHotkeyOf(const char *action, int vlcKey) const
+{
+    uint_fast32_t *keycodes = nullptr;
+    const size_t count = vlc_actions_get_keycodes(p_intf, action, false, &keycodes);
+    const bool bound = count && std::find(keycodes, keycodes + count,
+                                          static_cast<uint_fast32_t>(vlcKey)) != keycodes + count;
+    free(keycodes);
+    return bound;
 }
 
 void MainCtx::setShortcutFeedbackActive(bool active)

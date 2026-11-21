@@ -40,13 +40,17 @@ Item {
             ShortcutExt {
                 sequence: "Ctrl+" + ((index + 1) % 10)
                 onActivated:  {
-                    if (index < recentModel.count)
-                    {
-
-                        const trackId = recentModel.data(recentModel.index(index, 0), MLRecentMediaModel.MEDIA_ID)
-                        if (!!trackId)
-                            MediaLib.addAndPlay([trackId])
-                    }
+                    if (index >= recentModel.count)
+                        return
+                    // The media's library id, read as the context menu reads it.
+                    // The model's roles are not enums QML can see: the old
+                    // MLRecentMediaModel.MEDIA_ID was undefined, the URL text came
+                    // back and played as an address ("c:/...": "can't be opened").
+                    recentModel.getData([recentModel.index(index, 0)], (data) => {
+                        const id = data?.[0]?.id
+                        if (id)
+                            MediaLib.addAndPlay(id)
+                    })
                 }
             }
         }

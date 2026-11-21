@@ -26,6 +26,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   nothing until a click.
 - **Space starts the queue when nothing plays** (#124), as the Play button does.
 - **Space plays and pauses after a menu or a button was clicked** (#124): it opened the menu again.
+- **Ctrl+1 … Ctrl+0 play the media played last again** (#124): they showed *Your media can't be opened*.
 
 ### Technical
 

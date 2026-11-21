@@ -142,9 +142,12 @@ What is being worked on, updated as it changes (2026-11-10):
   library, Q closed the queue; Search still takes typing; the bar's option shown on by default, turned off it
   hides the bar and stays off after a restart). There also: after the menu was used with the mouse, the Menu
   button kept the keyboard and Space opened the menu again; in the library Play/Pause now goes to the player
-  while the focused item has it from a click (no visual focus, no text field, not in a popup). Left: that on
-  the next build; Ctrl+1 and dragging a card into the
-  queue by hand (posted Ctrl is not seen; a native drag).
+  while the focused item has it from a click (no visual focus, no text field, not in a popup); checked on the
+  third build. Ctrl+1 (Ctrl held in the test window's own key state, never the user's): the key arrives, but
+  every Ctrl+1 … Ctrl+0 showed *Your media can't be opened*: MLRecentMediaModel.MEDIA_ID is no enum QML sees
+  (undefined, so the URL text came back and played as the address `c:/...`, log: no access module "c"); the
+  shortcut now reads the id with getData, as the context menu does (a VideoLAN line). Left: that on the next
+  build; dragging a card into the queue (a native drag).
 - 🟡 **0.7.6** started. VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-18 14:41+0000\n"
+"POT-Creation-Date: 2026-11-21 15:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1504,7 +1504,7 @@ msgstr ""
 #: src/libvlc-module.c:155 modules/gui/macosx/library/VLCLibrarySegment.m:554
 #: modules/gui/macosx/library/audio-library/VLCLibraryMusicViewController.m:169
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:67
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:595
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:600
 #: modules/gui/qt/maininterface/navigationmodel.cpp:279
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:47
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:35
@@ -17705,7 +17705,7 @@ msgid "Search your history"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibrarySegment.m:272
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:448
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:451
 msgid "Movies"
 msgstr ""
 
@@ -17714,7 +17714,7 @@ msgid "Search your movies"
 msgstr ""
 
 #: modules/gui/macosx/library/VLCLibrarySegment.m:308
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:521
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:525
 msgid "Shows"
 msgstr ""
 
@@ -26573,27 +26573,27 @@ msgstr ""
 msgid "&Quit"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:205
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:438
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:209
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:442
 #: modules/gui/qt/dialogs/toolbar/qml/ToolbarEditorDialog.qml:427
 msgid "Profile %1"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:490
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:494
 msgid "Enter a name for the profile."
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:494
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:498
 msgid "A profile named \"%1\" already exists."
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:535
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:561
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:593
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:539
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:565
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:597
 msgid "No profile is selected."
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:598
+#: modules/gui/qt/dialogs/toolbar/controlbar_profile_model.cpp:602
 msgid "The last profile cannot be deleted."
 msgstr ""
 
@@ -26601,23 +26601,23 @@ msgstr ""
 msgid "Empty Style"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:160
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:163
 msgid "Minimalist Style"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:228
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:231
 msgid "One-liner Style"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:306
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:309
 msgid "Simplest Style"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:363
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:366
 msgid "Classic Style"
 msgstr ""
 
-#: modules/gui/qt/dialogs/toolbar/defaults.cpp:673
+#: modules/gui/qt/dialogs/toolbar/defaults.cpp:679
 msgid "Work"
 msgstr ""
 
@@ -27622,20 +27622,20 @@ msgstr ""
 
 #. xgettext: The step of a jump in seconds shown in full screen
 #. * ("+10 s"); a minute and more are written 1:10
-#: modules/gui/qt/maininterface/mainctx.cpp:940
+#: modules/gui/qt/maininterface/mainctx.cpp:962
 #, no-c-format
 msgid "%1 s"
 msgstr ""
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1466
+#: modules/gui/qt/maininterface/mainctx.cpp:1488
 msgid "Paste from clipboard"
 msgstr ""
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1467
+#: modules/gui/qt/maininterface/mainctx.cpp:1489
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr ""
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1468
+#: modules/gui/qt/maininterface/mainctx.cpp:1490
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -27649,7 +27649,7 @@ msgstr ""
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1849
+#: modules/gui/qt/maininterface/mainctx.cpp:1871
 msgctxt "layout direction"
 msgid "LTR"
 msgstr ""

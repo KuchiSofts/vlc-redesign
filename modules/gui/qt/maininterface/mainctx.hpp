@@ -733,7 +733,7 @@ protected:
     bool m_volumeSliderActive = false;
     bool m_clickPauses = true;
     bool m_showErrorDialogs = true;
-    bool m_alwaysShowPlayerBar = false;
+    bool m_alwaysShowPlayerBar = true;
     bool m_increaseContrast = false;
     bool m_nameInTitle = true;
     float m_windowOpacity = 1.f;
@@ -780,6 +780,8 @@ protected:
     // the thread may outlive the interface)
     std::shared_ptr<std::atomic<bool>> m_hotkeysClosed = std::make_shared<std::atomic<bool>>(false);
     void postHotkey(int vlcKey);
+    // Whether the key is one of the action's keys (VLC's hotkey settings)
+    bool isHotkeyOf(const char *action, int vlcKey) const;
 
     std::unique_ptr<ModelRecoveryAgent> m_playlistRecoveryAgent;
 

@@ -135,6 +135,15 @@ FocusScope {
             History.update(["home"])
         }
         loadCurrentHistoryView(Qt.OtherFocusReason)
+
+        // At the start, and when the view of the player closes (Stop, the
+        // media ended), no item of the window had the keyboard: Space, Q and
+        // the other keys did nothing until a click or Tab (#124). The library
+        // takes it, without the frame of keyboard navigation
+        Qt.callLater(() => {
+            if (g_mainDisplay && !g_mainDisplay.activeFocus)
+                g_mainDisplay.forceActiveFocus(Qt.OtherFocusReason)
+        })
     }
 
     Navigation.cancelAction: function() {

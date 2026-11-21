@@ -15,6 +15,16 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Changed
+
+- **The player bar stays while nothing plays, with a Play Queue button** (#124): the queue opens and fills before
+  anything plays. Settings › Interface › *Always show the player bar* hides it again.
+
+### Fixed
+
+- **Space, Q and the shortcuts work after Stop and at the start** (#124): they did nothing until a click.
+- **Space starts the queue when nothing plays** (#124), as the Play button does.
+
 ### Technical
 
 - Version 0.7.6 started (VLC_REDESIGN_VERSION).

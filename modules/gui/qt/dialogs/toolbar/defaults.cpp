@@ -147,7 +147,10 @@ decltype (ControlbarProfileModel::m_defaults)
                                     ControlListModel::LOOP_BUTTON
                                 },
                                 {
+                                    // the queue opens from the library too,
+                                    // before anything plays (#124)
                                     ControlListModel::VOLUME,
+                                    ControlListModel::PLAYLIST_BUTTON,
                                     ControlListModel::PLAYER_SWITCH_BUTTON
                                 }
                             }
@@ -507,6 +510,7 @@ decltype (ControlbarProfileModel::m_defaults)
                                 },
                                 {
                                     ControlListModel::VOLUME,
+                                    ControlListModel::PLAYLIST_BUTTON,
                                     ControlListModel::PLAYER_SWITCH_BUTTON
                                 }
                             }
@@ -581,6 +585,7 @@ decltype (ControlbarProfileModel::m_defaults)
                                 },
                                 {
                                     ControlListModel::VOLUME,
+                                    ControlListModel::PLAYLIST_BUTTON,
                                     ControlListModel::PLAYER_SWITCH_BUTTON
                                 }
                             }
@@ -659,6 +664,7 @@ decltype (ControlbarProfileModel::m_defaults)
                                 {
                                     ControlListModel::FAVORITE_BUTTON,
                                     ControlListModel::VOLUME,
+                                    ControlListModel::PLAYLIST_BUTTON,
                                     ControlListModel::PLAYER_SWITCH_BUTTON
                                 }
                             }
@@ -734,6 +740,7 @@ decltype (ControlbarProfileModel::m_defaults)
                                 {
                                     ControlListModel::PLAYBACK_SPEED_BUTTON,
                                     ControlListModel::VOLUME,
+                                    ControlListModel::PLAYLIST_BUTTON,
                                     ControlListModel::PLAYER_SWITCH_BUTTON
                                 }
                             }

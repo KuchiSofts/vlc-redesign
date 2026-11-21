@@ -64,7 +64,7 @@ To come back from a skin, start VLC once with `--intf=qt` (for example from a sh
 
 | Option | Choices / default | What it does | VLC option |
 |---|---|---|---|
-| **Always show the player bar** | Toggle. Default: off. | Keeps the player bar at the bottom of Home and the library while nothing plays (its times read `--:--`). Its Play button starts the play queue, or opens files when the queue is empty; its cover opens the empty player. | `redesign/always-show-player-bar` (interface setting) |
+| **Always show the player bar** | Toggle. Default: on (off before 0.7.6). | Keeps the player bar at the bottom of Home and the library while nothing plays (its times read `--:--`), with its **Play Queue** button. Turned off, the bar shows only while something plays. Its Play button starts the play queue, or opens files when the queue is empty; its cover opens the empty player. | `redesign/always-show-player-bar` (interface setting) |
 
 ## Accessibility
 

@@ -146,8 +146,11 @@ What is being worked on, updated as it changes (2026-11-10):
   third build. Ctrl+1 (Ctrl held in the test window's own key state, never the user's): the key arrives, but
   every Ctrl+1 … Ctrl+0 showed *Your media can't be opened*: MLRecentMediaModel.MEDIA_ID is no enum QML sees
   (undefined, so the URL text came back and played as the address `c:/...`, log: no access module "c"); the
-  shortcut now reads the id with getData, as the context menu does (a VideoLAN line). Left: that on the next
-  build; dragging a card into the queue (a native drag).
+  shortcut now reads the id with getData, as the context menu does (a VideoLAN line). Checked on that build:
+  Windows, Ctrl+1 at the start and after S plays the last media; Linux (the AppImage on Xvfb in a throwaway
+  container, real X input): Ctrl+1 after S plays it, a card dragged from Videos or Recent lands in the queue
+  (also an empty one, nothing playing), then Space plays the queue. The Windows drag (OLE) is not checked yet:
+  it needs real input, i.e. Windows Sandbox, which was busy.
 - 🟡 **0.7.6** started. VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what

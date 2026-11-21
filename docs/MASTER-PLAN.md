@@ -137,7 +137,7 @@ What is being worked on, updated as it changes (2026-11-10):
   preset's mini player and once in saved profiles (redesign/queue-in-miniplayer). Reproduced on 0.7.5 with posted
   keys and WM_ACTIVATE/WM_SETFOCUS. Left: the same steps on the build, Ctrl+1 with a real Ctrl, dragging a card
   into the queue (a native drag: by hand).
-- 🟡 **0.7.6** started. VideoLAN merged up to `7f0d5b9562` (2026-11-20, 25 commits: Qt use-after-free fixes,
+- 🟡 **0.7.6** started. VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
   Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the

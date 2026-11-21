@@ -146,6 +146,33 @@ FocusScope {
         })
     }
 
+    // A dialog or a menu that closes gives the keyboard to the window itself
+    // (Qt: its content item), and no item has it then either (What's new at
+    // the start, #124): the library takes it back. Never from an item that
+    // has it (a field, a dialog, a menu)
+    function _takeKeyboardIfNobodyHasIt() {
+        // (called later: the view may be gone, the player's opened)
+        if (!g_mainDisplay)
+            return
+        const w = g_mainDisplay.Window.window
+        if (!w || !w.active)
+            return
+        const item = w.activeFocusItem
+        // the keyboard on a container of the library (the window's content,
+        // the main interface, the loader of the views): no item has it
+        let container = false
+        for (let p = g_mainDisplay.parent; p && !container; p = p.parent)
+            container = (p === item)
+        if (!item || container || !item.visible)
+            g_mainDisplay.forceActiveFocus(Qt.OtherFocusReason)
+    }
+
+    Connections {
+        target: g_mainDisplay.Window.window
+        function onActiveFocusItemChanged() { Qt.callLater(g_mainDisplay._takeKeyboardIfNobodyHasIt) }
+        function onActiveChanged() { Qt.callLater(g_mainDisplay._takeKeyboardIfNobodyHasIt) }
+    }
+
     Navigation.cancelAction: function() {
         g_mainDisplay.historyBack(Qt.BacktabFocusReason)
     }

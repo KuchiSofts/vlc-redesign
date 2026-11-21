@@ -138,7 +138,12 @@ What is being worked on, updated as it changes (2026-11-10):
   keys and WM_ACTIVATE/WM_SETFOCUS. On #125's first build: the bar and its queue button (saved profile migrated),
   focus after S, Space plays again, Q opens the queue; but after What's new closed no item had the keyboard (a
   Popup gives it to the window's content item): MainDisplay now takes it whenever the active window's focus is on
-  none of its items or on a container of it. Left: that on the next build; Ctrl+1 and dragging a card into the
+  none of its items or on a container of it (checked on the second build: What's new closed, focus on the
+  library, Q closed the queue; Search still takes typing; the bar's option shown on by default, turned off it
+  hides the bar and stays off after a restart). There also: after the menu was used with the mouse, the Menu
+  button kept the keyboard and Space opened the menu again; in the library Play/Pause now goes to the player
+  while the focused item has it from a click (no visual focus, no text field, not in a popup). Left: that on
+  the next build; Ctrl+1 and dragging a card into the
   queue by hand (posted Ctrl is not seen; a native drag).
 - 🟡 **0.7.6** started. VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in

@@ -575,6 +575,23 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
             return true;
         }
 
+        // The library: Play/Pause (Space) plays and pauses while the item with
+        // the keyboard has it from a click. A button keeps it after its menu
+        // or dialog closes, and Space opened the menu again (#124). The item
+        // of keyboard navigation (its frame shown) and text fields keep it
+        if (m_mainCtx->getUseGlobalShortcuts()
+            && !m_mainCtx->preferHotkeys() && !m_mainCtx->isMinimalView()
+            && keyEvent->modifiers() == Qt::NoModifier
+            && !focusedItemTakesKeys() && !focusInPopup()
+            && !m_mainCtx->keyGoesBeforeHotkeys(keyEvent->key(), keyEvent->modifiers())
+            && matchesHotkey(VLC_OBJECT(p_intf), "play-pause", qtEventToVLCKey(keyEvent)))
+        {
+            if (!keyEvent->isAutoRepeat())
+                m_mainCtx->sendHotkey(static_cast<Qt::Key> (keyEvent->key()), keyEvent->modifiers());
+            event->accept();
+            return true;
+        }
+
         if (applyKeyEvent(keyEvent) == false)
             return false;
 
@@ -915,6 +932,16 @@ bool InterfaceWindowHandler::applyKeyEvent(QKeyEvent * event) const
     event->accept();
 
     return true;
+}
+
+bool InterfaceWindowHandler::focusInPopup() const
+{
+    for (QQuickItem *item = p_intf->p_compositor->activeFocusItem(); item; item = item->parentItem())
+    {
+        if (item->inherits("QQuickPopupItem") || item->inherits("QQuickOverlay"))
+            return true;
+    }
+    return false;
 }
 
 bool InterfaceWindowHandler::focusedItemTakesKeys() const

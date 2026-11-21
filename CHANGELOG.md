@@ -25,6 +25,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Space, Q and the shortcuts work after Stop, at the start and after a dialog closes** (#124): they did
   nothing until a click.
 - **Space starts the queue when nothing plays** (#124), as the Play button does.
+- **Space plays and pauses after a menu or a button was clicked** (#124): it opened the menu again.
 
 ### Technical
 

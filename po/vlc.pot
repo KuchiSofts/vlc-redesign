@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-21 15:31+0000\n"
+"POT-Creation-Date: 2026-11-22 08:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3631,7 +3631,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1279
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:35
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:283
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:296
 msgid "Repeat all"
 msgstr ""
 
@@ -18601,7 +18601,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:918
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:35
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:283
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:296
 #: share/lua/http/index.html:260
 msgid "Repeat"
 msgstr ""
@@ -18962,7 +18962,7 @@ msgstr ""
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:53
 #: modules/gui/qt/player/qml/controlbarcontrols/RandomButton.qml:28
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:295
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:308
 #: share/lua/http/index.html:258
 msgid "Shuffle"
 msgstr ""
@@ -27877,7 +27877,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:311
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:101
 #: modules/gui/qt/medialibrary/qml/VideoAll.qml:259
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:657
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:677
 msgid "No results"
 msgstr ""
 
@@ -28686,7 +28686,8 @@ msgstr[1] ""
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
 #: modules/gui/qt/player/qml/CompactLibrary.qml:906
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:203
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:204
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:228
 #: modules/gui/qt/widgets/qml/DragItem.qml:618
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:439
 msgid "%1 item"
@@ -30141,7 +30142,7 @@ msgid "Open in the library"
 msgstr ""
 
 #: modules/gui/qt/player/qml/CompactLibrary.qml:970
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:227
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:240
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
 #: modules/gui/qt/widgets/qml/SortControl.qml:64
@@ -30236,7 +30237,7 @@ msgstr ""
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:75
 #: modules/gui/qt/player/qml/QueueCard.qml:72
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:174
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:175
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:63
 msgid "Queue"
 msgstr ""
@@ -30618,7 +30619,7 @@ msgid "HDR output"
 msgstr ""
 
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:34
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:282
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:295
 msgid "Repeat one"
 msgstr ""
 
@@ -30758,27 +30759,28 @@ msgstr ""
 msgid "Media cover"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:202
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:203
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:223
 msgid "No items"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:307
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:320
 msgid "Remove selected items"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:323
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:336
 msgid "Add files to the queue"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:658
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:678
 msgid "No content yet"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:674
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:696
 msgid "Drag & Drop some content here!"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:739
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:761
 msgid "Play queue"
 msgstr ""
 

@@ -17,6 +17,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Added
 
+- **Android: a Folders tab in Videos and Music** ([#132](https://github.com/KuchiSofts/vlc-redesign/discussions/132)): folder by folder, only the folders that hold media.
 - **Play all and Shuffle on the Tracks page**, and Shuffle in the player sidebar's menus of albums, artists, playlists and folders ([#130](https://github.com/KuchiSofts/vlc-redesign/discussions/130)).
 - **Android TV: the keyboard shortcuts list is one stop** of the remote that scrolls, not 37 rows that did nothing.
 - **The release check reads the Discussions** and the Android app's issues too.

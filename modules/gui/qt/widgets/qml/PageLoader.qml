@@ -104,7 +104,21 @@ StackViewExt {
                     }
 
                     History.update([...(pagePrefix ?? []), head])
-                    root.replace(null, component, pageProp)
+                    // A view that was leaving can write its state into the next one's (its
+                    // index as "initialIndex", on Home after Stop): a property the page doesn't
+                    // have threw here, and the rest of the load (the page's name, its focus,
+                    // the pages below) never ran. The stray property is dropped instead.
+                    for (let attempt = 0; ; ++attempt) {
+                        try {
+                            root.replace(null, component, pageProp)
+                            break
+                        } catch (e) {
+                            const stray = /non-existent property "([^"]+)"/.exec(String(e))
+                            if (!stray || attempt > 8 || !(stray[1] in pageProp))
+                                throw e
+                            delete pageProp[stray[1]]
+                        }
+                    }
                     found = true
                     break;
                 } else {

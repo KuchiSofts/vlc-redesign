@@ -167,6 +167,8 @@ signals:
 
 private:
     void updatePalette();
+    // the accent of the redesign (Settings > General) as VLC's own accent
+    void applyRedesignAccent();
 
     void makeLightPalette();
     void makeDarkPalette();

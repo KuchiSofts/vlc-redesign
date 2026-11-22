@@ -18,6 +18,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **The queue panel keeps its width** when the queue empties or fills: its edge moved by about 15 pixels.
+- **The queue's total length is right** when a media's length is read after it was added: it read "1 item - -1 ms".
+- **Home in the player's library panel** no longer says *Nothing here yet.* and "0 items" over what it shows.
+- **Back from the player, the library page loads fully**: a saved state of another page could stop it halfway.
 
 ### Technical
 

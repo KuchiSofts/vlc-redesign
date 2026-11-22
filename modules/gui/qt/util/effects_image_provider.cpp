@@ -426,6 +426,8 @@ QImage EffectsImageProvider::requestImage(const QString &id, QSize *size, const 
 
         case EffectsImageProvider::ArtworkBlur:
             effect = std::make_unique<ArtworkBlurEffect>(queryToVariantMap(query));
+            break;
+
         case EffectsImageProvider::VolumeSliderGradient:
             effect = std::make_unique<VolumeSliderGradientEffect>(queryToVariantMap(query));
             break;

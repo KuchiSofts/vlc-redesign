@@ -171,6 +171,12 @@ What is being worked on, updated as it changes (2026-11-10):
   Playback: the 35 formats of qa\matrix and the 15 edge clips all play (hardware decoding where the GPU has
   it; H.264 8K falls back to software by itself); 120 fps on the 165 Hz screen: 0 late pictures (the late ones
   of the hidden desktop come from its missing vsync); 240 fps drops what the screen can't show.
+  Android TV (atvreal emulator, remote keys, every Settings page): after OK on an accent colour, the theme,
+  the layout's side, the size or the contrast the window is drawn again and the focus started over at the top
+  (fixed: it comes back to that row's choice); the keyboard shortcuts list took 37 stops of plain text (now one
+  stop that scrolls); its Hebrew showed two "long forward jump" rows. A scan of every catalog for opposite
+  texts translated the same (backwards/forward, up/down, left/right, min/max) found 21 more in 12 desktop
+  languages and 2 in Vietnamese on Android: fixed (Bodo and Maithili left for a speaker).
 - 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
   updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both

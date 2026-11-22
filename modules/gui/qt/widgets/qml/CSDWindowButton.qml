@@ -17,6 +17,7 @@
  *****************************************************************************/
 import QtQuick
 import QtQuick.Templates as T
+import QtQuick.Controls.impl as Impl
 import QtQuick.Layouts
 
 import VLC.Widgets as Widgets
@@ -31,6 +32,8 @@ T.Button {
     property color hoverColor
     property string iconTxt: ""
     property url iconSource: ""
+    // the icon in one colour (the accent of a button that is ON), else as drawn
+    property color iconColor: "transparent"
     property string description: ""
     property bool showHovered: false
     property bool isThemeDark: false
@@ -76,7 +79,16 @@ T.Button {
             width: VLCStyle.redesign.iconSize
             height: width
             source: control.iconSource
-            visible: source.toString() !== ""
+            visible: source.toString() !== "" && control.iconColor.a === 0
+        }
+        Impl.IconImage {
+            sourceSize: Qt.size(width, height)
+            anchors.centerIn: parent
+            width: VLCStyle.redesign.iconSize
+            height: width
+            source: control.iconSource
+            color: control.iconColor
+            visible: control.iconSource.toString() !== "" && control.iconColor.a > 0
         }
         Widgets.IconLabel {
             id: icon

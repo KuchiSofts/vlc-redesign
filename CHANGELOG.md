@@ -24,6 +24,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Full screen has the window buttons too**: minimize, exit full screen (lit, in place of maximize) and close, at the top right of the bar.
+- **No invisible Close at the top right**: with the bar hidden (full screen) or gone, Windows still found the window buttons there, and a click in that corner could close the player.
 - **The accent colour reaches every part of the library** ([#131](https://github.com/KuchiSofts/vlc-redesign/issues/131)): an artist's Play all, an album's Play and the play icon over a cover stayed orange.
 - **Ctrl+0 resets the subtitle size again**: the shortcut of the tenth recent media took the key first (and did nothing with fewer than ten).
 - **Play all and Add all to queue work in the player panel** for an album, an artist, a genre or a playlist: they added nothing (the place kept a reference to a row of the list it came from).

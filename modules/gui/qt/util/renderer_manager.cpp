@@ -30,6 +30,9 @@
 #include <QVector>
 #include <QHash>
 
+#include <chrono>
+#include <future>
+#include <list>
 #include <memory>
 #include <utility>
 
@@ -793,6 +796,8 @@ public:
     RendererManager::RendererStatus m_status = RendererManager::IDLE;
 
     std::vector<vlc_renderer_discovery_t*> m_rds;
+    // the discoveries of ended scans being closed (StopScan)
+    std::list<std::future<void>> m_releases;
 
 
     //the elements of the model (in model order), the string is the key of m_items
@@ -1048,6 +1053,10 @@ RendererManager::RendererManager( qt_intf_t *p_intf_, vlc_player_t* player )
 RendererManager::~RendererManager()
 {
     StopScan();
+    /* the discoveries closing: their callbacks use this manager */
+    Q_D(RendererManager);
+    for( std::future<void> &release : d->m_releases )
+        release.wait();
 }
 
 int RendererManager::getScanRemain() const
@@ -1361,9 +1370,21 @@ void RendererManager::StopScan()
     Q_D(RendererManager);
     d->m_stop_scan_timer.stop();
 
-    for ( vlc_renderer_discovery_t* p_rd : d->m_rds )
-        vlc_rd_release( p_rd );
-    d->m_rds.clear();
+    /* Closing a discovery waits for its network searches (UPnP: up to its
+     * search timeout): done off the interface thread, which froze 0.5 to
+     * 4.6 s when the scan of a film's start ended, 20 s later */
+    d->m_releases.remove_if( []( std::future<void> &release ) {
+        return release.wait_for( std::chrono::seconds( 0 ) ) == std::future_status::ready;
+    } );
+    if( !d->m_rds.empty() )
+    {
+        std::vector<vlc_renderer_discovery_t*> rds;
+        rds.swap( d->m_rds );
+        d->m_releases.push_back( std::async( std::launch::async, [rds = std::move( rds )]() {
+            for( vlc_renderer_discovery_t* p_rd : rds )
+                vlc_rd_release( p_rd );
+        } ) );
+    }
 
     /* Cleanup of outdated items, and notify removal */
     for (int i = d->m_itemsIndex.size() - 1; i >= 0; --i)

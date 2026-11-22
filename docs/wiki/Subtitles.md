@@ -30,7 +30,7 @@ English: an English film would otherwise always show its English subtitles.
 
 ## The Subtitles tab
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.gif" alt="The tracks panel: Video, Audio and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.webp" alt="The tracks panel: the Video and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
 
 <sub>The Video, Audio and Subtitles tabs of the panel; the subtitle languages of the video, each in its own language; Hebrew picked. Click for the MP4 · every clip: [Feature tour](Feature-Tour#subtitles).</sub>
 

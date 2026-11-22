@@ -63,14 +63,14 @@ In depth: [Library](Library) · [Home](Library#home) · [Music](Library#music)
 
 ### Player
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.gif" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.webp" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
 
 **The player bar.** Play and pause, then a drag along the seek bar: its thin marks are the lines of the subtitle file
 shown (new in 0.4.0), so you see where people talk. Last, the mouse wheel over the volume changes it.
 
 In depth: [The seek bar](The-Player#the-seek-bar) · [Volume](The-Player#volume) · [The control bar](The-Player#the-control-bar)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.gif" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.webp" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
 
 **A button shows what it opened** (new in 0.4.0, suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
 While its panel, popup or menu shows, a button lights up: the accent icon on a tint of the accent, the same look as a
@@ -88,7 +88,7 @@ punctuation in their place.
 
 In depth: [Subtitles](Subtitles) · [Subtitle keys](Subtitles#subtitle-keys)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.gif" alt="The tracks panel: Video, Audio and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.webp" alt="The tracks panel: the Video and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
 
 **The languages and tracks panel.** Its **Video**, **Audio** and **Subtitles** tabs, the subtitle languages of the
 video, each written in its own language, and Hebrew picked from the list.
@@ -128,7 +128,7 @@ In depth: [Colours and themes](Colours-and-Themes) · [The accent colours](Colou
 
 ### Settings
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/settings-search.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/settings-search.gif" alt="Settings: the Interface, Playback and Subtitles pages, then a search for speed across every page" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/settings-search.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/settings-search.webp" alt="Settings: the Interface, Playback, Subtitles and TV pages, then a search for speed across every page" width="960"></a>
 
 **The Settings window.** The **Interface**, **Playback** and **Subtitles** pages, then a search for "speed", which
 looks through every page at once.
@@ -139,11 +139,11 @@ In depth: [Settings](Settings) · [Search](Settings#search)
 
 New in 0.4.0. Live TV is an add-on, on by default; without it nothing of it shows.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the sources, the catalog of free, legal lists, then the channels of a source with their logos, numbers and groups" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-sources.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-sources.webp" alt="Live TV: the sources and their tabs, then the channels of a source with their logos, numbers and groups" width="960"></a>
 
-**Sources and the catalog.** *Sources* lists your TV sources; the catalog offers free, legal channel lists (the films
-filter, then all); then the channels of a source, with their logos, numbers, groups and what is on now, filtered by
-group. The channels are those of a made-up demo provider.
+**Sources.** *Sources* lists your TV sources, with a tab to add a link, one for the accounts of media servers on your
+network and one for the guides; then the channels of a source, with their logos, numbers and what is on now,
+filtered by group. The channels are those of a made-up demo provider.
 
 In depth: [The catalog](Live-TV#the-catalog) · [The TV page](Live-TV#the-tv-page) · [Add your TV](Live-TV#add-your-tv)
 
@@ -173,7 +173,7 @@ In depth: [Casting to a TV](Casting) · [Cast](Casting#cast) · [TV compatibilit
 
 ### Effects
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/effects.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/effects.gif" alt="Effects over the playing video: the equalizer turned on, two bands raised, the video effects, back to audio" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/effects.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/effects.webp" alt="Effects over the video: the equalizer turned on, three bands moved, then the video effects" width="800"></a>
 
 **Effects while the video plays.** The Effects panel over the playing video: the equalizer turned on and two of its
 bands raised, then the video effects, then back to the audio tab. Every change is heard or seen at once.

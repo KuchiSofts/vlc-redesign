@@ -1,6 +1,7 @@
 """Checks that an upload leaves nothing of the project behind: the version, the
 changelog, the roadmap, the plan, the README, the platforms and the website,
-the wiki, the translations, VideoLAN's master, the credits and every issue.
+the wiki, the translations, VideoLAN's master, the credits, every issue (of
+this repository and the Android app's) and every discussion.
 
   python release-check.py                 an upload of work in progress (the
                                           version being prepared, not released)
@@ -245,6 +246,43 @@ else:
                 todo.append('Reply on #%d (what was fixed, in %s, how to update) and close it' % (n, release))
         if not who.startswith('app/') and (mentioned(n, body_of_target) or i['state'] == 'CLOSED'):
             check(('@' + who) in credits, 'Credit for @%s (#%d)' % (who, n), 'add them to CREDITS.md')
+
+# the Android app's issues: accounted for like this repository's
+android_issues = gh('issue', 'list', '-R', REPO + '-android', '--state', 'open', '--limit', '200',
+                    '--json', 'number,title')
+if android_issues is None:
+    check(False, 'Android issues', 'GitHub not reachable (gh) or --offline: unchecked')
+else:
+    for i in json.loads(android_issues):
+        n = i['number']
+        hit = re.search(r'(android#|vlc-redesign-android/issues/)%d\b' % n, body_of_target + roadmap)
+        check(hit, 'Android issue #%d accounted for' % n,
+              '"%s": name it as android#%d in the changelog, the roadmap or the plan' % (i['title'], n))
+
+# --- discussions -----------------------------------------------------------------------
+# users report faults and ask for features there too: every open discussion has
+# the owner's word last, or is in the changelog, the roadmap or the plan
+OWNER = REPO.split('/')[0]
+query = ('query{repository(owner:"%s",name:"%s"){discussions(first:100,states:OPEN,'
+         'orderBy:{field:UPDATED_AT,direction:DESC}){nodes{number title author{login} category{name} '
+         'comments(last:1){nodes{author{login} replies(last:1){nodes{author{login}}}}}}}}}') % tuple(REPO.split('/'))
+discussions = gh('api', 'graphql', '-f', 'query=' + query)
+if discussions is None:
+    check(False, 'Discussions', 'GitHub not reachable (gh) or --offline: every discussion unchecked')
+else:
+    nodes = json.loads(discussions)['data']['repository']['discussions']['nodes']
+    for d in nodes:
+        n, who = d['number'], (d['author'] or {}).get('login', '')
+        last = who
+        for c in d['comments']['nodes']:
+            last = (c['author'] or {}).get('login', '')
+            for r in c['replies']['nodes']:
+                last = (r['author'] or {}).get('login', '')
+        named = re.search(r'(#|discussions/)%d\b' % n, body_of_target + roadmap)
+        check(last == OWNER or named, 'Discussion #%d answered' % n,
+              '"%s": %s wrote last; reply, or name it in the changelog or the plan' % (d['title'], last))
+        if release and re.search(r'(#|discussions/)%d\b' % n, body_of_target):
+            todo.append('Reply on discussion #%d (what was done, in %s, how to update)' % (n, release))
 
 # --- the designer's credit ------------------------------------------------------------
 # Juxtopposed designed every screen (CC BY 4.0): named in every version and

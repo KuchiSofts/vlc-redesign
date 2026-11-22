@@ -163,7 +163,7 @@ What is being worked on, updated as it changes (2026-11-10):
   45 merged branches deleted on the desktop repository and 19 on Android's (main, Weblate's and the open PR
   stay). Edge clips made (qa\matrix-hi: 3GP H.263/AMR and MPEG-4, 64x48, 853x479, 2560x1080, 1080p120,
   720p240, HEVC 1080p240 and 4K120, DCI 4K, H.264/HEVC/VP9 8K, AV1 4K60, vertical 1080x1920 60).
-  Keys (qaudit080\keytest.py: 64 keys, modifiers in the test window's own key state, rc state + shots):
+  Keys (qa\audit080\keytest.py: 64 keys, modifiers in the test window's own key state, rc state + shots):
   seeks (arrows, Shift/Alt/Ctrl), volume (Up/Down, Ctrl+Up/Down: 1.00 -> 1.15 -> 1.05, the bar's slider
   follows), mute, rate, B audio and V/Shift+V/Alt+V subtitle cycles, E frames, Shift+S snapshot, A/C/Z/O/D,
   Q, L, F, I, Esc, Ctrl+H, S then Space: all work. Memory: 25 min, ~375 media changes (memsoak on its own rc
@@ -2234,7 +2234,7 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   after it starts makes the TV get a new stream 3–5 s after the first (two `SetAVTransportURI` per channel), and a
   cast started on a channel already playing went out with the sound only. The DLNA output needs the Chromecast's
   hold-again (`1880587aa0`): not done, no build was possible (Docker stopped for the disk clean-up).
-- ⬜ the test TV not re-checked on this branch: the test copy (`qapp`) has no firewall rule, and casting would
+- ⬜ the test TV not re-checked on this branch: the test copy (`qa\app`) has no firewall rule, and casting would
   have shown Windows' administrator prompt. Last real-TV check: build 193.
 - 🟡 A TV that keeps its connection but stops answering (the fake's *off* mode) is noticed only after libupnp's
   30 s timeouts (twice), and a quit then waits for the call in flight: a limit of libupnp's blocking SOAP calls.

@@ -150,8 +150,22 @@ What is being worked on, updated as it changes (2026-11-10):
   Windows, Ctrl+1 at the start and after S plays the last media; Linux (the AppImage on Xvfb in a throwaway
   container, real X input): Ctrl+1 after S plays it, a card dragged from Videos or Recent lands in the queue
   (also an empty one, nothing playing), then Space plays the queue. The Windows drag (OLE) is not checked yet:
-  it needs real input, i.e. Windows Sandbox, which was busy.
-- 🟡 **0.7.6** (2026-11-22): an update release of the desktop (Windows, ARM64, Linux, macOS; Android stays 0.7.5
+  it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
+  mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
+  plays the queue, S stops, Ctrl+1 plays the media played last.
+- 🟢 **0.7.7** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
+  `follows: 0.7.7`): Escape closes the welcome dialog again. A regression of 0.7.6, seen in the in-app update check right after
+  publishing: Escape no longer closed the welcome dialog (Onboarding, a Popup that opens at the start): the load
+  of MainDisplay gave the library the keyboard unconditionally, after the dialog had it. Now it calls the same
+  check as the watcher (only when no item has the keyboard). Checked on PR #127's build: a fresh profile, the
+  welcome dialog, Escape closes it (the 0.7.6 build, same steps: it stays); What's new closes with Escape, then
+  Q opens the queue, S stops, Space plays again. Also for 0.7.7: the Android update check reads only
+  the latest release, so an app older than 0.7.5 is not offered 0.7.5 while 0.7.6 (no APK) is the latest; the
+  queue panel's edge moves about 15 px between an empty queue and one with items (asked the owner).
+- 🟢 **0.7.6** published 2026-11-22 04:12 local (17 files; tag v0.7.6 on 529936f36e, PR #126 merged as
+  d102ac20c9; small updates 2.9 MB x64, 1.8 MB ARM64). After publishing: a 0.7.5 copy took the update from
+  About › Check for updates and restarted on 0.7.6; discussion #124 answered.
+- 🟢 **0.7.6** (2026-11-22): an update release of the desktop (Windows, ARM64, Linux, macOS; Android stays 0.7.5
   and the Samsung TV app 0.6.8, both `follows: 0.7.6`): #124 (PR #125) and the blurred cover art with the software
   renderer (17421a5673: the merge of VideoLAN's volume slider left ArtworkBlur without its break). VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in

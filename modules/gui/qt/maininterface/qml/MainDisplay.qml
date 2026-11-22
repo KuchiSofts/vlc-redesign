@@ -139,11 +139,10 @@ FocusScope {
         // At the start, and when the view of the player closes (Stop, the
         // media ended), no item of the window had the keyboard: Space, Q and
         // the other keys did nothing until a click or Tab (#124). The library
-        // takes it, without the frame of keyboard navigation
-        Qt.callLater(() => {
-            if (g_mainDisplay && !g_mainDisplay.activeFocus)
-                g_mainDisplay.forceActiveFocus(Qt.OtherFocusReason)
-        })
+        // takes it, without the frame of keyboard navigation, but only when no
+        // item has it: the welcome dialog opens first and keeps it (0.7.6 took
+        // it there, and Escape no longer closed the dialog)
+        Qt.callLater(g_mainDisplay._takeKeyboardIfNobodyHasIt)
     }
 
     // A dialog or a menu that closes gives the keyboard to the window itself

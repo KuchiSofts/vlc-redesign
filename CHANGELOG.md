@@ -15,6 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Escape closes the welcome dialog again** (0.7.6): the library took the keyboard from it while it opened.
+
+### Technical
+
+- Version 0.7.7 started (VLC_REDESIGN_VERSION).
+
 ## [0.7.6] · 2026-11-22
 
 An update release: the keys work again after Stop, at the start and after a dialog or a menu (Space, Q,

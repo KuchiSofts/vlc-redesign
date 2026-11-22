@@ -128,7 +128,7 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **#124** (Discussions, 11-21, 0.7.5): after S (Stop) and at the start no item of the window had the keyboard
+- 🟢 **#124** (Discussions, 11-21, 0.7.5; PR #125 merged 11-22 as 506a1d2215, in 0.7.6): after S (Stop) and at the start no item of the window had the keyboard
   (UI Automation: no element with the focus; Tab gave it back), so Space, Q and the library's keys did nothing; the
   core's Play/Pause only pauses or resumes, so Space never restarted a stopped queue; the queue opened only from the
   player (no button in the mini player). Owner 11-21: fix in 0.7.6, the bar shown by default, hiding it a setting
@@ -151,13 +151,32 @@ What is being worked on, updated as it changes (2026-11-10):
   container, real X input): Ctrl+1 after S plays it, a card dragged from Videos or Recent lands in the queue
   (also an empty one, nothing playing), then Space plays the queue. The Windows drag (OLE) is not checked yet:
   it needs real input, i.e. Windows Sandbox, which was busy.
-- 🟡 **0.7.6** started. VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
+- 🟡 **0.7.6** (2026-11-22): an update release of the desktop (Windows, ARM64, Linux, macOS; Android stays 0.7.5
+  and the Samsung TV app 0.6.8, both `follows: 0.7.6`): #124 (PR #125) and the blurred cover art with the software
+  renderer (17421a5673: the merge of VideoLAN's volume slider left ArtworkBlur without its break). VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
   Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the
   update is taken from a .zip of the app in place of a mounted image. The 13 Android languages with almost no
   texts of the redesign are left to volunteers; the songs an older Android version listed as videos are not
   read again yet (desktop only).
+- 🟡 **#117, the cause looked for** (owner 11-18: "what can we do about the issue 117? its not bug in our
+  code?"). Ours, fixed in 0.7.5: 0.7.2 waited ten minutes for its helper and then said "damaged". Not known:
+  the step that never ended on the reporter's Mac (their log has no line of the update). A probe on the macOS
+  runners (branch probe/117-from-app, run 44398749801, removed after it) started the installed 0.7.5's helper
+  from a stand-in application, signed ad hoc and opened by LaunchServices: staged in 7 to 8 s on macOS 15.8 and
+  26.7, as from the shell. It could not decide about macOS's permission for the image: the runners have System
+  Integrity Protection off, and macOS asked nothing even for Desktop, Documents and Downloads (no such request
+  in TCC's log), so no test on these runners can show a permission question. A developer's report says a
+  mounted disk image opened without the Removable Volumes question (weak evidence against that cause). The
+  reporter was asked on 11-18 to run the helper by hand under `sh -x`, which names the step. Their trace (11-20):
+  every step ended in seconds from Terminal (attach, copy to /Applications, quarantine, signature, bundle id,
+  detach), with the 0.7.4-or-older helper, so their installed app is still the old one. The steps work on
+  their Mac; only the app as the parent holds one: a permission macOS asks of the app and not of Terminal, or
+  security software. Asked 11-20 (issuecomment-7034676442): install 0.7.5 from the image, Save a log, update to
+  0.7.6 from the app; the Files and Folders switches; a management profile or endpoint security. The update
+  from a .zip still waits for the step's name. The issue was closed by the owner's account 11-20 04:10 UTC,
+  before the trace came.
 - 🟢 **0.7.5** published 2026-11-18 19:54 local (16 files; tag v0.7.5 on 25e10a2006, PR #118 merged as
   a1faa91962; Android tag v0.7.5 = ce28ccacd1, PR #20 merged as 8712d40664, APK 13107050). After publishing: a
   copy of 0.7.4 took the small update from GitHub and opened on 0.7.5 (About: every program 0.7.5, Samsung TV

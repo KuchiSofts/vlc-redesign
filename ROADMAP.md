@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-076-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-077-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,28 +18,25 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-18, 0.7.5 published, 0.7.6 started).
+Updated as the work moves (last: 2026-11-22, 0.7.6 published, 0.7.7 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.7.5 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.7.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.7.5 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.7.5 | ██████████ 100 % | tests on a Mac by hand |
+| **Windows x64** | ✅ released 0.7.6 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.7.6 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.7.6 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.7.6 | ██████████ 100 % | tests on a Mac by hand |
 | **Android** (phones) | ✅ released 0.7.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
 | **Android** (tablets) | ✅ released 0.7.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
 | **Android TV** | ✅ released 0.7.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.7.6 and after
+## Next: 0.7.7 and after
 
-**0.7.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
+**0.7.7** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 🟡 The library without a mouse and before anything plays (#124): the keys after Stop and at the start,
-  Space starting the queue, the player bar with its queue button shown by default; dragging from the library
-  into the queue checked by hand
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
@@ -112,6 +109,15 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.7.6 (2026-11-22)
+
+**An update release** (Android stays 0.7.5, the Samsung TV app 0.6.8):
+
+- ✅ The library without a mouse and before anything plays (#124): the keys after Stop and at the start,
+  Space starting the queue, the player bar with its Play Queue button shown by default, Ctrl+1 … Ctrl+0
+  playing the media played last again
+- ✅ The blurred cover art with the software renderer
 
 ### 0.7.5 (2026-11-18)
 

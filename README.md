@@ -54,7 +54,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </tr>
 </table>
 
-<sub><b>0.7.8</b> · 2026-11-22 &nbsp;·&nbsp; next: 0.7.9 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+<sub><b>0.7.8</b> · 2026-11-22 &nbsp;·&nbsp; next: 0.8.0 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
 
 <br><br>
 

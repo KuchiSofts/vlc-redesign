@@ -15,6 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **A click on a folder of the Network page** no longer stops halfway: the grid had not made the folder's item yet.
+
+### Technical
+
+- Version 0.8.0 started (VLC_REDESIGN_VERSION).
+
 ## [0.7.8] · 2026-11-22
 
 An update release of fixes found in a sweep of every page: the queue panel keeps its width, the queue's

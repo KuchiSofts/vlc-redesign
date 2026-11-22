@@ -153,6 +153,18 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
+- 🟡 **0.8.0**: the full check (owner 11-22: "fully scan every app … every function, option, button, key, window,
+  tab … no memory leak and no lags"; "every resolution of videos from 3gp to 8K to 120fps to 240fps"; the
+  README's gifs in higher quality; the wiki; the git of the project). Done so far: Windows tours of every page,
+  dialog, menu and the 14 Settings pages with the log on (clean after 0.7.8's fixes); the Network page's folder
+  click threw (fixed); qmllint over our 323 changed QML files (40 findings, all of the VideoLAN kind: typed
+  bindings, var callbacks, a required pair upstream also leaves); compiler warnings of the Qt module (15, none
+  ours); 524 wiki links and anchors (none broken); Linux tour in a container with real input (clean). GitHub:
+  45 merged branches deleted on the desktop repository and 19 on Android's (main, Weblate's and the open PR
+  stay). Edge clips made (qa\matrix-hi: 3GP H.263/AMR and MPEG-4, 64x48, 853x479, 2560x1080, 1080p120,
+  720p240, HEVC 1080p240 and 4K120, DCI 4K, H.264/HEVC/VP9 8K, AV1 4K60, vertical 1080x1920 60).
+- 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
+  updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
   `follows: 0.7.8`). Checked on PR #129's build: the queue panel's edge at the same place empty and with an
   item, the player's queue "1 item - 51 sec", the library panel's Home without "0 items" or "Nothing here

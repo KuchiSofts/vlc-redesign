@@ -163,6 +163,14 @@ What is being worked on, updated as it changes (2026-11-10):
   45 merged branches deleted on the desktop repository and 19 on Android's (main, Weblate's and the open PR
   stay). Edge clips made (qa\matrix-hi: 3GP H.263/AMR and MPEG-4, 64x48, 853x479, 2560x1080, 1080p120,
   720p240, HEVC 1080p240 and 4K120, DCI 4K, H.264/HEVC/VP9 8K, AV1 4K60, vertical 1080x1920 60).
+  Keys (qaudit080\keytest.py: 64 keys, modifiers in the test window's own key state, rc state + shots):
+  seeks (arrows, Shift/Alt/Ctrl), volume (Up/Down, Ctrl+Up/Down: 1.00 -> 1.15 -> 1.05, the bar's slider
+  follows), mute, rate, B audio and V/Shift+V/Alt+V subtitle cycles, E frames, Shift+S snapshot, A/C/Z/O/D,
+  Q, L, F, I, Esc, Ctrl+H, S then Space: all work. Memory: 25 min, ~375 media changes (memsoak on its own rc
+  port): private 290 MB after warm-up, 297 -> 300 MB over the last 9 min; handles, threads, GDI, USER flat.
+  Playback: the 35 formats of qa\matrix and the 15 edge clips all play (hardware decoding where the GPU has
+  it; H.264 8K falls back to software by itself); 120 fps on the 165 Hz screen: 0 late pictures (the late ones
+  of the hidden desktop come from its missing vsync); 240 fps drops what the screen can't show.
 - 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
   updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both

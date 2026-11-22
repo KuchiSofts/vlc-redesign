@@ -46,6 +46,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - Version 0.8.0 started (VLC_REDESIGN_VERSION).
 - VideoLAN's master merged up to `391a3bf873` (2026-11-20, 2 commits): libsmb2 7.0.0 in the contribs and the SMB
   module's support for it.
+- Android: VideoLAN's vlc-android master merged up to `2066508dd` (2026-11-19, 18 commits): Remote Access pinned to 0.28.0.
 - The README's clips recorded again on 0.8.0: animated WebP, sharper and lighter than the GIFs, a 1080p MP4 behind each.
 
 ## [0.7.8] · 2026-11-22

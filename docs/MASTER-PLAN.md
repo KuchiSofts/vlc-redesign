@@ -153,10 +153,13 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.7.7** started (2026-11-22). A regression of 0.7.6, seen in the in-app update check right after
+- 🟢 **0.7.7** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
+  `follows: 0.7.7`): Escape closes the welcome dialog again. A regression of 0.7.6, seen in the in-app update check right after
   publishing: Escape no longer closed the welcome dialog (Onboarding, a Popup that opens at the start): the load
   of MainDisplay gave the library the keyboard unconditionally, after the dialog had it. Now it calls the same
-  check as the watcher (only when no item has the keyboard). Also for 0.7.7: the Android update check reads only
+  check as the watcher (only when no item has the keyboard). Checked on PR #127's build: a fresh profile, the
+  welcome dialog, Escape closes it (the 0.7.6 build, same steps: it stays); What's new closes with Escape, then
+  Q opens the queue, S stops, Space plays again. Also for 0.7.7: the Android update check reads only
   the latest release, so an app older than 0.7.5 is not offered 0.7.5 while 0.7.6 (no APK) is the latest; the
   queue panel's edge moves about 15 px between an empty queue and one with items (asked the owner).
 - 🟢 **0.7.6** published 2026-11-22 04:12 local (17 files; tag v0.7.6 on 529936f36e, PR #126 merged as

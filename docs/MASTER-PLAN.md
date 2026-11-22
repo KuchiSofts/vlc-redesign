@@ -153,7 +153,10 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.7.8** started (2026-11-22). The queue panel's edge moved about 15 px as the queue emptied or filled
+- 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
+  `follows: 0.7.8`). Checked on PR #129's build: the queue panel's edge at the same place empty and with an
+  item, the player's queue "1 item - 51 sec", the library panel's Home without "0 items" or "Nothing here
+  yet.", no warning at all in the log of a tour ending in Stop. The queue panel's edge moved about 15 px as the queue emptied or filled
   (owner 11-22: "you choose"): its minimum width followed the count of now ("No items", "1 item") and the empty
   state, which a hidden Column measures as 0; now the widest count and the empty state's words, whether shown or
   not. Checked, not a fault: the Android update check reads the ten newest releases and takes the newest with

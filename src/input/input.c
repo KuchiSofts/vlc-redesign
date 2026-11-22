@@ -94,6 +94,7 @@ static void InputSourceMeta( input_thread_t *, input_source_t *, vlc_meta_t * );
 //static void InputGetAttachments( input_thread_t *, input_source_t * );
 static void SlaveDemux( input_thread_t *p_input );
 static void SlaveSeek( input_thread_t *p_input );
+static void SlaveSubRewind( input_thread_t *p_input, const input_source_t *source );
 static demux_t *MasterReadingDemux( input_thread_t *p_input );
 
 static void InputMetaUser( input_thread_t *p_input, vlc_meta_t *p_meta );
@@ -2021,6 +2022,7 @@ static void ControlSetEsList(input_thread_t *input,
         assert(source);
         demux_Control(source->p_demux, DEMUX_SET_ES,
                       vlc_es_id_GetInputId(ids[0]));
+        SlaveSubRewind(input, source);
         return;
     }
 
@@ -2369,6 +2371,7 @@ static bool Control( input_thread_t *p_input,
                 assert( source );
                 demux_Control( source->p_demux, DEMUX_SET_ES,
                                vlc_es_id_GetInputId( param.id ) );
+                SlaveSubRewind( p_input, source );
             }
             break;
         case INPUT_CONTROL_SET_ES_LIST:
@@ -3392,6 +3395,35 @@ static void SlaveDemux( input_thread_t *p_input )
             msg_Dbg(p_input, "slave %zu EOF", i);
             in->b_eof = true;
         }
+    }
+}
+
+/* A subtitle file beside the media is read ahead of what plays (by the
+ * caching, see SlaveDemux), and the lines read while its track was off are
+ * dropped: once its track is chosen, it is read again from what plays (the
+ * line coming next was lost after a switch, and the one on screen shows in
+ * the new language). Older lines are dropped as late by the decoder. */
+static void SlaveSubRewind( input_thread_t *p_input, const input_source_t *source )
+{
+    input_thread_private_t *priv = input_priv(p_input);
+
+    if( source == priv->master || !source->b_slave_sub )
+        return;
+    for( size_t i = 0; i < priv->i_slave; i++ )
+    {
+        input_source_t *in = priv->slave[i];
+        if( in != source )
+            continue;
+
+        vlc_tick_t i_time;
+        if( demux_Control( MasterReadingDemux( p_input ), DEMUX_GET_TIME, &i_time ) )
+            return;
+        i_time -= priv->master->i_pts_delay + VLC_TICK_FROM_MS(500);
+        if( i_time < VLC_TICK_0 )
+            i_time = VLC_TICK_0;
+        if( demux_Control( in->p_demux, DEMUX_SET_TIME, i_time, true ) == VLC_SUCCESS )
+            in->b_eof = false;
+        return;
     }
 }
 

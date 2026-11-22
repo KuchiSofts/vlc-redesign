@@ -185,6 +185,16 @@ What is being worked on, updated as it changes (2026-11-10):
   the player's own messages grew with the subtitle size ("Subtitle position" at 325 % covered the picture);
   the player panel's breadcrumb pushed its buttons out, its menus opened at the mouse pointer; the interface
   languages were in VideoLAN's order (now by name, as Android). Discussion #130: Play all and Shuffle on Tracks.
+  Owner's reports 11-22: full screen had no minimize, exit full screen or close at the top (the window buttons
+  show there now, Exit Fullscreen lit in place of Maximize; and with the bar hidden Windows still answered
+  HTCLOSE where Close had been: a button keeps its hit-test rectangle only while it shows; checked with a real
+  mouse in Windows Sandbox); the grey band round the window in their screenshots is the invisible resize border
+  as a whole-window capture draws it (transparent on the screen, measured; the 1 px line is the Windows 11
+  border). Found while recording the Live TV clips: after Update the guide stayed on "No guide" until the tab
+  was left (the rows listened for guideRevisionChanged, a signal that does not exist: guideChanged), and from
+  22:30 the guide's day read "Tomorrow" over tonight's shows (desktop and Android). The ten README clips were
+  recorded again on 0.8.0 as WebP 960 px 20 fps + 1080p MP4 (films-080); the subtitle-size one again from 100 %
+  (the first take still showed the old big messages).
 - 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
   updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both

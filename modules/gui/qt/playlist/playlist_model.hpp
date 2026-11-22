@@ -39,7 +39,7 @@ class PlaylistListModel : public QAbstractListModel
     Q_PROPERTY(Playlist playlist READ getPlaylist WRITE setPlaylist NOTIFY playlistChanged FINAL)
     Q_PROPERTY(int currentIndex READ getCurrentIndex NOTIFY currentIndexChanged FINAL)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged FINAL)
-    Q_PROPERTY(VLCDuration duration READ getDuration NOTIFY countChanged FINAL)
+    Q_PROPERTY(VLCDuration duration READ getDuration NOTIFY durationChanged FINAL)
 
 public:
     enum Roles
@@ -89,6 +89,7 @@ signals:
     void playlistChanged(const Playlist&);
     void currentIndexChanged( int );
     void countChanged(int);
+    void durationChanged();
 
 private:
     Q_DECLARE_PRIVATE(PlaylistListModel)

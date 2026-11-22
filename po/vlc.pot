@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-21 15:31+0000\n"
+"POT-Creation-Date: 2026-11-22 08:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -407,8 +407,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1294
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:274
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:173
-#: modules/gui/qt/player/qml/CompactLibrary.qml:935
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1051
+#: modules/gui/qt/player/qml/CompactLibrary.qml:937
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1053
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:589
 msgid "Search"
 msgstr ""
@@ -3631,7 +3631,7 @@ msgstr ""
 
 #: src/libvlc-module.c:1279
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:35
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:283
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:309
 msgid "Repeat all"
 msgstr ""
 
@@ -18568,7 +18568,7 @@ msgstr ""
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:385
 #: modules/gui/qt/menus/menus.cpp:875 modules/gui/qt/menus/menus.cpp:895
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1028
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1030
 msgid "View"
 msgstr ""
 
@@ -18601,7 +18601,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/vlm/vlm.cpp:523 modules/gui/qt/menus/menus.cpp:918
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:54
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:35
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:283
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:309
 #: share/lua/http/index.html:260
 msgid "Repeat"
 msgstr ""
@@ -18962,7 +18962,7 @@ msgstr ""
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:883
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:53
 #: modules/gui/qt/player/qml/controlbarcontrols/RandomButton.qml:28
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:295
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:321
 #: share/lua/http/index.html:258
 msgid "Shuffle"
 msgstr ""
@@ -19216,7 +19216,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:207
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1268
 #: modules/gui/qt/player/qml/TracksListPage.qml:103
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1239
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1241
 msgid "Add"
 msgstr ""
 
@@ -26204,7 +26204,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:376
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1232
-#: modules/gui/qt/player/qml/CompactLibrary.qml:905
+#: modules/gui/qt/player/qml/CompactLibrary.qml:907
 msgid "%1 channel"
 msgid_plural "%1 channels"
 msgstr[0] ""
@@ -26244,7 +26244,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:210
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1570
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1575
 msgid "Browse the Catalog"
 msgstr ""
 
@@ -26989,12 +26989,12 @@ msgid "Series"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:185
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1539
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1544
 msgid "Watch TV in VLC"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:195
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1549
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1554
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
@@ -27003,7 +27003,7 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:205
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:451
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1564
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1569
 msgid "Add a Link"
 msgstr ""
 
@@ -27021,28 +27021,28 @@ msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:460
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:680
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1507
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1512
 msgid "No channel matches the search"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:461
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1508
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1513
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:462
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1509
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1514
 msgid "No channel watched yet"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:463
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1510
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1515
 msgid "Loading the channels…"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:464
 #: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:1003
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1511
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1516
 msgid "No channels"
 msgstr ""
 
@@ -27877,7 +27877,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:311
 #: modules/gui/qt/medialibrary/qml/MusicTracksDisplay.qml:101
 #: modules/gui/qt/medialibrary/qml/VideoAll.qml:259
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:657
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:699
 msgid "No results"
 msgstr ""
 
@@ -28684,9 +28684,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:49
-#: modules/gui/qt/player/qml/CompactLibrary.qml:906
+#: modules/gui/qt/player/qml/CompactLibrary.qml:908
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:107
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:203
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:204
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:241
 #: modules/gui/qt/widgets/qml/DragItem.qml:618
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:439
 msgid "%1 item"
@@ -30123,7 +30124,7 @@ msgid "Add network stream…"
 msgstr ""
 
 #: modules/gui/qt/player/qml/CompactLibrary.qml:841
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1239
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1241
 msgid "Create playlist"
 msgstr ""
 
@@ -30140,8 +30141,8 @@ msgstr ""
 msgid "Open in the library"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:970
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:227
+#: modules/gui/qt/player/qml/CompactLibrary.qml:972
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:253
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:74
 #: modules/gui/qt/widgets/qml/GridSortFilterControls.qml:42
 #: modules/gui/qt/widgets/qml/SortControl.qml:64
@@ -30150,55 +30151,55 @@ msgstr ""
 msgid "Sort"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1005
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1007
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:99
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:100
 msgid "Title A-Z"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1009
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1011
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:99
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:100
 msgid "Title Z-A"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1013
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1015
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:97
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:98
 msgid "Newest First"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1018
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1020
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:97
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:98
 msgid "Oldest First"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1037
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1039
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:524
 msgid "Grid View"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1042
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1044
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:530
 msgid "List View"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1153
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1155
 msgid "See all"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1299
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1301
 msgid "Add Network Stream"
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1408
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1424
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1410
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1429
 msgid "The media library is not available."
 msgstr ""
 
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1409
-#: modules/gui/qt/player/qml/CompactLibrary.qml:1425
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1411
+#: modules/gui/qt/player/qml/CompactLibrary.qml:1430
 msgid "Nothing here yet."
 msgstr ""
 
@@ -30236,7 +30237,7 @@ msgstr ""
 
 #: modules/gui/qt/player/qml/MiniPlayerQueue.qml:75
 #: modules/gui/qt/player/qml/QueueCard.qml:72
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:174
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:176
 #: modules/gui/qt/playlist/qml/QueueHeader.qml:63
 msgid "Queue"
 msgstr ""
@@ -30618,7 +30619,7 @@ msgid "HDR output"
 msgstr ""
 
 #: modules/gui/qt/player/qml/controlbarcontrols/LoopButton.qml:34
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:282
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:308
 msgid "Repeat one"
 msgstr ""
 
@@ -30758,27 +30759,28 @@ msgstr ""
 msgid "Media cover"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:202
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:204
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:236
 msgid "No items"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:307
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:333
 msgid "Remove selected items"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:323
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:349
 msgid "Add files to the queue"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:658
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:700
 msgid "No content yet"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:674
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:718
 msgid "Drag & Drop some content here!"
 msgstr ""
 
-#: modules/gui/qt/playlist/qml/PlaylistPane.qml:739
+#: modules/gui/qt/playlist/qml/PlaylistPane.qml:783
 msgid "Play queue"
 msgstr ""
 

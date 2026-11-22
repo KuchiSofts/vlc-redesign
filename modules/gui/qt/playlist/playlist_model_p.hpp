@@ -51,6 +51,9 @@ public:
     void onItemsAdded(const QVector<PlaylistItem>&& added, size_t index);
     void onItemsMoved(size_t index, size_t count, size_t target);
     void onItemsRemoved(size_t index, size_t count);
+    /* the queue's length from its items (a removal subtracted a length the item no longer
+     * had: "1 item - -1 ms") */
+    void recomputeDuration();
 
     void notifyItemsChanged(int index, int count,
                             const QVector<int> &roles = {});

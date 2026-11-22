@@ -153,8 +153,23 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.7.8** started (2026-11-22). Open: the Android update check that reads only the latest release; the queue
-  panel's edge that moves between an empty queue and one with items (asked the owner).
+- 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
+  `follows: 0.7.8`). Checked on PR #129's build: the queue panel's edge at the same place empty and with an
+  item, the player's queue "1 item - 51 sec", the library panel's Home without "0 items" or "Nothing here
+  yet.", no warning at all in the log of a tour ending in Stop. The queue panel's edge moved about 15 px as the queue emptied or filled
+  (owner 11-22: "you choose"): its minimum width followed the count of now ("No items", "1 item") and the empty
+  state, which a hidden Column measures as 0; now the widest count and the empty state's words, whether shown or
+  not. Checked, not a fault: the Android update check reads the ten newest releases and takes the newest with
+  an APK since 0.6.6 (a stale local branch, feature/stability-3 from 11-02, made it look like the latest only);
+  that branch holds nothing main lacks (its commits are on main, rewritten by the 11-11 cleanup).
+  Bug hunt (owner 11-22: "search for more bugs … speed … nothing missing"), a tour of every page, dialog
+  and player panel with the log on: the queue's total read "1 item - -1 ms" (an item's length read after
+  it was added never reached the total, a removal then subtracted it: recomputed, durationChanged);
+  Home in the player's library panel said "Nothing here yet." and "0 items" over the history it shows;
+  after Stop, PageLoader.qml:107 threw on "initialIndex" a leaving view had written into Home's saved
+  state, and the rest of the load (name, focus) never ran: the stray property is dropped. Left: Qt's own
+  "ShaderEffect: Texture t1" warning at the start (no t1 in our shaders). Speed, 0.7.5 against 0.7.7,
+  three runs: first frame 0.64 s / 0.58 s; idle 0-0.2 % of a core, 206 MB both (the bar shown costs nothing).
 - 🟢 **0.7.7** published 2026-11-22 06:02 local (17 files; tag v0.7.7 on 01e892834e, PR #127 merged as
   788cfa002d; small updates 0.6 MB x64, 1.2 MB ARM64). After publishing: the copy that had taken 0.7.6 from
   the app took 0.7.7 the same way (About › Check for updates, Update now, Restart now; What's new 0.7.7). A CI
@@ -166,9 +181,8 @@ What is being worked on, updated as it changes (2026-11-10):
   of MainDisplay gave the library the keyboard unconditionally, after the dialog had it. Now it calls the same
   check as the watcher (only when no item has the keyboard). Checked on PR #127's build: a fresh profile, the
   welcome dialog, Escape closes it (the 0.7.6 build, same steps: it stays); What's new closes with Escape, then
-  Q opens the queue, S stops, Space plays again. Also for 0.7.7: the Android update check reads only
-  the latest release, so an app older than 0.7.5 is not offered 0.7.5 while 0.7.6 (no APK) is the latest; the
-  queue panel's edge moves about 15 px between an empty queue and one with items (asked the owner).
+  Q opens the queue, S stops, Space plays again. Left for 0.7.8: the
+  queue panel's edge that moved about 15 px between an empty queue and one with items.
 - 🟢 **0.7.6** published 2026-11-22 04:12 local (17 files; tag v0.7.6 on 529936f36e, PR #126 merged as
   d102ac20c9; small updates 2.9 MB x64, 1.8 MB ARM64). After publishing: a 0.7.5 copy took the update from
   About › Check for updates and restarted on 0.7.6; discussion #124 answered.

@@ -195,6 +195,16 @@ What is being worked on, updated as it changes (2026-11-10):
   23:15 the guide's day read "Tomorrow" over tonight's shows (desktop and Android). The ten README clips were
   recorded again on 0.8.0 as WebP 960 px 20 fps + 1080p MP4 (films-080); the subtitle-size one again from 100 %
   (the first take still showed the old big messages).
+  Later the same night: VideoLAN's master merged to 391a3bf873 (libsmb2 7.0.0; the local Docker build has no
+  libsmb2, CI's prebuilt contribs do, x64 and ARM64 archives checked) and vlc-android's to 2066508dd (Remote Access
+  0.28.0; build.gradle kept the redesign's versionName); po/vlc.pot's references; Android 0.8.0 (version, What's
+  new; on the phone emulator at 23:37 in landscape the guide read Today, the Folders tab worked, no crash); the
+  Samsung app's guide had the same day bug (fixed, L.labelTime tested, 0.8.0 version; its run on the test TV waits for
+  the daytime). A logged tour of every page, dialog and player panel (qa/audit080/logtour.py): no QML warning.
+  Found while recording the wiki clips: Cancel in Effects set every crop value again, "Crop: Default" over the
+  picture (fixed: only what changed; checked with real input in Windows Sandbox, a 120 px crop restored). Six wiki
+  clips and the README's Android one recorded again on 0.8.0. Release check 59/59, preflight clean (desktop and
+  Android); its binary rule no longer takes three random letters in a WebP for a download site.
 - 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
   updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both

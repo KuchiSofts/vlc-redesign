@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 import QtQuick
+import QtQuick.Layouts
 import VLC.MainInterface
 import VLC.MediaLibrary
 
@@ -45,6 +46,49 @@ Widgets.PageExt {
         { text: qsTr("Track"),    criteria: "track_number" },
         { text: qsTr("Disc"),     criteria: "disc_number" }
     ]
+
+    // Play all and Shuffle, as the Android app's Tracks (discussion #130): the
+    // tracks in the order and with the search shown
+    headerAction: Component {
+        RowLayout {
+            spacing: VLCStyle.dp(12, VLCStyle.scale)
+
+            Widgets.RedesignButton {
+                objectName: "tracksPlayAllButton"
+                Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
+                accent: true
+                enabled: (root.model?.count ?? 0) > 0
+                text: qsTr("Play all")
+                onClicked: root.playAll(false)
+            }
+
+            Widgets.RedesignButton {
+                objectName: "tracksShuffleButton"
+                Layout.preferredHeight: VLCStyle.dp(34, VLCStyle.scale)
+                enabled: (root.model?.count ?? 0) > 0
+                text: qsTr("Shuffle")
+                onClicked: root.playAll(true)
+            }
+        }
+    }
+
+    function playAll(shuffled) {
+        const model = root.model
+        if (!model || model.count <= 0)
+            return
+        const rows = []
+        for (let i = 0; i < model.count; ++i)
+            rows.push(i)
+        model.getDataFlat(rows, (list) => {
+            const ids = list.map((item) => item?.id).filter((id) => !!id)
+            if (ids.length === 0)
+                return
+            if (shuffled)
+                MediaLib.addAndPlayShuffled(ids)
+            else
+                MediaLib.addAndPlay(ids)
+        })
+    }
 
     function setCurrentItemFocus(reason) {
         tracklistdisplay_id.setCurrentItemFocus(reason);

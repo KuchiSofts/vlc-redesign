@@ -85,6 +85,9 @@
 #endif
 #include <vlc_modules.h>
 
+#include <QCollator>
+#include <algorithm>
+
 static struct {
     const char iso[6];
     const char name[34];
@@ -1444,6 +1447,17 @@ QVariantList interfaceLanguages()
     for( const auto &added : addedLanguages() )
         partial.append( QVariantMap{ { QStringLiteral( "value" ), added.first },
                                      { QStringLiteral( "label" ), qtr( "%1 (partial)" ).arg( added.second ) } } );
+    // by their own names, as a reader looks for theirs (the map above is in
+    // VideoLAN's order, nearly the English names: Greek stood after British
+    // English, Croatian among the H's); Auto stays first
+    QCollator collator{ QLocale( QLocale::English ) };
+    const auto byName = [&collator]( const QVariant &a, const QVariant &b ) {
+        return collator.compare( a.toMap().value( QStringLiteral( "label" ) ).toString(),
+                                 b.toMap().value( QStringLiteral( "label" ) ).toString() ) < 0;
+    };
+    if( languages.size() > 2 )
+        std::stable_sort( languages.begin() + 1, languages.end(), byName );
+    std::stable_sort( partial.begin(), partial.end(), byName );
     languages.append( partial );
     return languages;
 }

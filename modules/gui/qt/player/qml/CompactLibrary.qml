@@ -901,7 +901,9 @@ FocusScope {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 visible: !searchField.visible
-                text: !root._counted ? ""
+                // (Home: no "0 items" over what it shows from the history, Continue Watching and the
+                // folders, while the library itself has no media yet)
+                text: !root._counted || (root.location.section === "home" && root._count === 0) ? ""
                       : root._tvShown ? qsTr("%1 channel", "%1 channels", root._count).arg(root._count)
                       : qsTr("%1 item", "%1 items", root._count).arg(root._count)
                 elide: Text.ElideRight
@@ -1417,8 +1419,11 @@ FocusScope {
         Text {
             anchors.centerIn: homeList
             width: homeList.width - VLCStyle.dp(40, VLCStyle.scale)
-            visible: homeList.visible && (!mlModels.item || (mlModels.item.allMedia.count === 0
-                                                             && !mlModels.item.allMedia.loading))
+            // (only when no section shows anything: an empty library can still show the history,
+            // Continue Watching and the folders, under "Nothing here yet.")
+            visible: homeList.visible && (!mlModels.item || (!mlModels.item.allMedia.loading
+                                                             && !root._homeSections.some(
+                                                                 s => !!s.model && s.model.count > 0)))
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             text: !root._mlAvailable ? qsTr("The media library is not available.")

@@ -120,8 +120,18 @@ on_playlist_items_updated(vlc_playlist_t *playlist, size_t index,
         if (that->m_playlist != playlist)
             return;
         int count = updated.size();
+        bool lengths = false;
         for (int i = 0; i < count; ++i)
+        {
+            const VLCDuration before = that->m_items[index + i].getDuration();
             that->m_items[index + i] = updated[i]; /* sync metadata */
+            const VLCDuration after = updated[i].getDuration();
+            if (before.valid() != after.valid() || before.toVLCTick() != after.toVLCTick())
+                lengths = true;
+        }
+        /* a length known later (the queue showed "1 item - -1 ms" beside an item of 00:50) */
+        if (lengths)
+            that->recomputeDuration();
         that->notifyItemsChanged(index, count);
     });
 }
@@ -180,16 +190,18 @@ void PlaylistListModelPrivate::onItemsReset(const QVector<PlaylistItem>&& newCon
     m_items = newContent;
     q->endResetModel();
 
-    m_duration = VLCDuration();
-    if (m_items.size())
-    {
-        for(const auto& i : m_items)
-        {
-            m_duration += i.getDuration();
-        }
-    }
+    recomputeDuration();
 
     emit q->countChanged(m_items.size());
+}
+
+void PlaylistListModelPrivate::recomputeDuration()
+{
+    Q_Q(PlaylistListModel);
+    m_duration = VLCDuration();
+    for (const auto& i : m_items)
+        m_duration += i.getDuration();
+    emit q->durationChanged();
 }
 
 void PlaylistListModelPrivate::onItemsAdded(const QVector<PlaylistItem>&& added, size_t index)
@@ -205,6 +217,7 @@ void PlaylistListModelPrivate::onItemsAdded(const QVector<PlaylistItem>&& added,
     {
         m_duration += i.getDuration();
     }
+    emit q->durationChanged();
 
     emit q->countChanged(m_items.size());
 }
@@ -235,22 +248,11 @@ void PlaylistListModelPrivate::onItemsRemoved(size_t index, size_t count)
 {
     Q_Q(PlaylistListModel);
 
-    for(size_t i = index; i <= index + count - 1; ++i)
-    {
-        m_duration -= m_items.at(i).getDuration();
-    }
-
     q->beginRemoveRows({}, index, index + count - 1);
     m_items.remove(index, count);
     q->endRemoveRows();
 
-    //maybe we removed the only valid elements
-    if (m_duration.toVLCTick() == 0 && m_duration.valid())
-    {
-        m_duration = VLCDuration();
-        for(const auto& i : m_items)
-            m_duration += i.getDuration();
-    }
+    recomputeDuration();
 
     emit q->countChanged(m_items.size());
 }

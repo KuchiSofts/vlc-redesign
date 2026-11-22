@@ -202,7 +202,7 @@ T.Pane {
                 // the count and the length; the count alone where both do not fit (never a word cut in half)
                 readonly property string _count: root.model.count === 0 ? qsTr("No items")
                                                  : qsTr("%1 item", "%1 items", root.model.count).arg(root.model.count)
-                readonly property string _full: root.model.count === 0 ? _count
+                readonly property string _full: root.model.count === 0 || !root.model.duration.valid() ? _count
                                                 : _count + " - " + root.model.duration.formatLong()
                 text: cardCountMetrics.advanceWidth <= width ? _full : _count
                 TextMetrics {

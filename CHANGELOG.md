@@ -18,6 +18,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **A click on a folder of the Network page** no longer stops halfway: the grid had not made the folder's item yet.
+- **Android TV: the remote stays on the colour, theme or contrast you changed** in Settings: it jumped to the top of the page.
 
 ### Technical
 

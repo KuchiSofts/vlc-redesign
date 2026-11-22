@@ -175,7 +175,7 @@ FocusScope {
             anchors.verticalCenter: parent.verticalCenter
             leftPadding: root.px(8)
             // the day of the hours shown: of now while now is in them (Now
-            // puts it a quarter in: from 22:30 the middle was already past
+            // puts it a quarter in: from 23:15 the middle was already past
             // midnight, "Tomorrow" over tonight's shows), else of the middle
             text: {
                 const width = Iptv.guideHours * 3600

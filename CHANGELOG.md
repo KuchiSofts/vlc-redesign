@@ -25,7 +25,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **TV guide updates at once**: after Update the grid stayed on "No guide" until you left the tab.
-- **TV guide says Today in the evening**: from 22:30 it read "Tomorrow" over tonight's shows (desktop, Android and the Samsung TV app).
+- **TV guide says Today in the evening**: from 23:15 it read "Tomorrow" over tonight's shows (desktop, Android and the Samsung TV app).
 - **Full screen has the window buttons too**: minimize, exit full screen (lit, in place of maximize) and close, at the top right of the bar.
 - **No invisible Close at the top right**: with the bar hidden (full screen) or gone, Windows still found the window buttons there, and a click in that corner could close the player.
 - **The accent colour reaches every part of the library** ([#131](https://github.com/KuchiSofts/vlc-redesign/issues/131)): an artist's Play all, an album's Play and the play icon over a cover stayed orange.

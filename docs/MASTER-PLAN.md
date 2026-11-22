@@ -192,7 +192,7 @@ What is being worked on, updated as it changes (2026-11-10):
   as a whole-window capture draws it (transparent on the screen, measured; the 1 px line is the Windows 11
   border). Found while recording the Live TV clips: after Update the guide stayed on "No guide" until the tab
   was left (the rows listened for guideRevisionChanged, a signal that does not exist: guideChanged), and from
-  22:30 the guide's day read "Tomorrow" over tonight's shows (desktop and Android). The ten README clips were
+  23:15 the guide's day read "Tomorrow" over tonight's shows (desktop and Android). The ten README clips were
   recorded again on 0.8.0 as WebP 960 px 20 fps + 1080p MP4 (films-080); the subtitle-size one again from 100 %
   (the first take still showed the old big messages).
 - 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small

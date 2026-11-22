@@ -174,7 +174,14 @@ FocusScope {
         Text {
             anchors.verticalCenter: parent.verticalCenter
             leftPadding: root.px(8)
-            text: Iptv.dayText(root.leftTime + Iptv.guideHours * 1800)
+            // the day of the hours shown: of now while now is in them (Now
+            // puts it a quarter in: from 22:30 the middle was already past
+            // midnight, "Tomorrow" over tonight's shows), else of the middle
+            text: {
+                const width = Iptv.guideHours * 3600
+                const nowShown = Iptv.now >= root.leftTime && Iptv.now < root.leftTime + width
+                return Iptv.dayText(nowShown ? Iptv.now : root.leftTime + width / 2)
+            }
             color: root.c("#969696", "#4d4d4d")
             font.family: VLCStyle.redesign.fontFamily
             font.pixelSize: root.px(16)
@@ -380,11 +387,19 @@ FocusScope {
                          category: p.category || "", episode: p.episode || "",
                          hasDescription: !!p.hasDescription, archived: !!p.archived }
             }
-            onKeyChanged: {
+            onKeyChanged: reload()
+            // A guide that came (Update, the automatic one) reaches the rows
+            // twice: guideChanged at once, and the channel list read again on
+            // a worker, its "has a guide" flags after it. Both start the row
+            // again, so a row whose flag turns on only then gets its shows
+            // (the grid stayed on "No guide" until the tab was left).
+            readonly property bool hasGuide: model.hasGuide
+            onHasGuideChanged: reload()
+            function reload() {
                 programmes = []
                 _blocks = {}
                 shown.clear()
-                if (model.hasGuide)
+                if (hasGuide)
                     Qt.callLater(load)
             }
             Component.onCompleted: {
@@ -402,13 +417,8 @@ FocusScope {
             }
             Connections {
                 target: Iptv
-                function onGuideRevisionChanged() {
-                    row.programmes = []
-                    row._blocks = {}
-                    shown.clear()
-                    if (row.model.hasGuide)
-                        row.load()
-                }
+                // (guideRevision's NOTIFY signal is guideChanged)
+                function onGuideChanged() { row.reload() }
             }
 
             // the channel: its number, its logo, its name (a click plays it)

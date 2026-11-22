@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **The queue panel keeps its width** when the queue empties or fills: its edge moved by about 15 pixels.
+
 ### Technical
 
 - Version 0.7.8 started (VLC_REDESIGN_VERSION).

@@ -135,11 +135,12 @@ T.Pane {
         // Card: the count and its five buttons always fit (the panel was as wide as its empty state's words: in
         // Hebrew, shorter, the count had no room at all beside the buttons)
         readonly property real _cardNeed: !root.card ? 0
-            : Math.ceil(cardCountBrief.advanceWidth) + 5 * VLCStyle.dp(32, VLCStyle.scale) + 5 * cardHeader.spacing
+            : Math.ceil(Math.max(cardCountNone.advanceWidth, cardCountMany.advanceWidth))
+              + 5 * VLCStyle.dp(32, VLCStyle.scale) + 5 * cardHeader.spacing
               + cardHeader.Layout.leftMargin + cardHeader.Layout.rightMargin
 
         Layout.minimumWidth: Math.max(_cardNeed,
-                                      Math.min(Math.max(noContentInfoColumn.implicitWidth,
+                                      Math.min(Math.max(noContentInfoColumn.fixedWidth,
                                                headerColumn.titleWidth ),
                                       /* Minimum width should not be too large, we rely on elision otherwise: */
                                       Window.width / 3) + (headerColumn.Layout.leftMargin + headerColumn.Layout.rightMargin))
@@ -213,6 +214,18 @@ T.Pane {
                     id: cardCountBrief
                     font: cardCount.font
                     text: cardCount._count
+                }
+                // The panel's minimum width does not follow the count of now: its edge moved
+                // as the queue emptied or filled ("No items", "1 item", "2 items")
+                TextMetrics {
+                    id: cardCountNone
+                    font: cardCount.font
+                    text: qsTr("No items")
+                }
+                TextMetrics {
+                    id: cardCountMany
+                    font: cardCount.font
+                    text: qsTr("%1 item", "%1 items", 999).arg(999)
                 }
                 elide: Text.ElideRight
                 horizontalAlignment: Text.AlignLeft
@@ -611,6 +624,11 @@ T.Pane {
 
                 anchors.centerIn: parent
 
+                // its width for the panel's minimum, the same whether it shows or not (hidden,
+                // the Column measures 0: the panel narrowed as soon as the queue had an item)
+                readonly property real fixedWidth: Math.max(label.implicitWidth, emptyTitle.implicitWidth,
+                                                             emptyHint.implicitWidth)
+
                 // The Binding sets a property of its own: visible also
                 // changes as the queue is shown or hidden, which it took
                 // for a change from elsewhere
@@ -641,6 +659,8 @@ T.Pane {
                 }
 
                 T.Label {
+                    id: emptyTitle
+
                     anchors.topMargin: VLCStyle.margin_xlarge
 
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -663,6 +683,8 @@ T.Pane {
                 }
 
                 T.Label {
+                    id: emptyHint
+
                     anchors.topMargin: VLCStyle.margin_normal
 
                     width: listView.width > 0 ? Math.min(implicitWidth, listView.width - 2 * VLCStyle.margin_normal) : implicitWidth

@@ -37,8 +37,7 @@ Updated as the work moves (last: 2026-11-22, 0.7.7 published and its in-app upda
 **0.7.8** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
-- 📋 Android: the update check finds the newest release that has an APK (it reads only the latest release:
-  an app older than 0.7.5 is not offered 0.7.5 while 0.7.6, a desktop release, is the latest)
+- 🟡 The queue panel keeps its width when the queue empties or fills (its edge moved about 15 px)
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

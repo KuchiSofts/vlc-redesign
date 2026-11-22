@@ -153,8 +153,12 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.7.8** started (2026-11-22). Open: the Android update check that reads only the latest release; the queue
-  panel's edge that moves between an empty queue and one with items (asked the owner).
+- 🟡 **0.7.8** started (2026-11-22). The queue panel's edge moved about 15 px as the queue emptied or filled
+  (owner 11-22: "you choose"): its minimum width followed the count of now ("No items", "1 item") and the empty
+  state, which a hidden Column measures as 0; now the widest count and the empty state's words, whether shown or
+  not. Checked, not a fault: the Android update check reads the ten newest releases and takes the newest with
+  an APK since 0.6.6 (a stale local branch, feature/stability-3 from 11-02, made it look like the latest only);
+  that branch holds nothing main lacks (its commits are on main, rewritten by the 11-11 cleanup).
 - 🟢 **0.7.7** published 2026-11-22 06:02 local (17 files; tag v0.7.7 on 01e892834e, PR #127 merged as
   788cfa002d; small updates 0.6 MB x64, 1.2 MB ARM64). After publishing: the copy that had taken 0.7.6 from
   the app took 0.7.7 the same way (About › Check for updates, Update now, Restart now; What's new 0.7.7). A CI
@@ -166,9 +170,8 @@ What is being worked on, updated as it changes (2026-11-10):
   of MainDisplay gave the library the keyboard unconditionally, after the dialog had it. Now it calls the same
   check as the watcher (only when no item has the keyboard). Checked on PR #127's build: a fresh profile, the
   welcome dialog, Escape closes it (the 0.7.6 build, same steps: it stays); What's new closes with Escape, then
-  Q opens the queue, S stops, Space plays again. Also for 0.7.7: the Android update check reads only
-  the latest release, so an app older than 0.7.5 is not offered 0.7.5 while 0.7.6 (no APK) is the latest; the
-  queue panel's edge moves about 15 px between an empty queue and one with items (asked the owner).
+  Q opens the queue, S stops, Space plays again. Left for 0.7.8: the
+  queue panel's edge that moved about 15 px between an empty queue and one with items.
 - 🟢 **0.7.6** published 2026-11-22 04:12 local (17 files; tag v0.7.6 on 529936f36e, PR #126 merged as
   d102ac20c9; small updates 2.9 MB x64, 1.8 MB ARM64). After publishing: a 0.7.5 copy took the update from
   About › Check for updates and restarted on 0.7.6; discussion #124 answered.

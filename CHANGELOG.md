@@ -15,9 +15,23 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Play all and Shuffle on the Tracks page**, and Shuffle in the player sidebar's menus of albums, artists, playlists and folders ([#130](https://github.com/KuchiSofts/vlc-redesign/discussions/130)).
+- **Android TV: the keyboard shortcuts list is one stop** of the remote that scrolls, not 37 rows that did nothing.
+- **The release check reads the Discussions** and the Android app's issues too.
+
 ### Fixed
 
+- **Ctrl+0 resets the subtitle size again**: the shortcut of the tenth recent media took the key first (and did nothing with fewer than ten).
+- **Play all and Add all to queue work in the player panel** for an album, an artist, a genre or a playlist: they added nothing (the place kept a reference to a row of the list it came from).
+- **The player's messages keep their size when the subtitles are made larger**: at 300 % a "Subtitle position" message covered the picture.
+- **The next subtitle line no longer goes missing after a track switch** (V, the tracks panel): a subtitle file beside the video is read again from what plays, so the line on screen also changes language.
+- **No more short freeze about 20 s after a video starts** (0.5 to 4.6 s, desktop and Android): the search for cast devices was closed on the interface's thread.
+- **The player panel's menus open under their button**, from the keyboard too: they opened wherever the mouse pointer was.
 - **A click on a folder of the Network page** no longer stops halfway: the grid had not made the folder's item yet.
+- **The player's library panel keeps its buttons inside** with a long address (… › Artists › an artist): the last one was cut at the edge.
+- **Interface languages in the order of their names**, in Settings and the welcome, as on Android: Greek stood after British English.
 - **Android TV: the remote stays on the colour, theme or contrast you changed** in Settings: it jumped to the top of the page.
 - **Translations: 24 texts that said the opposite** (a backwards jump that read "forward" in Hebrew, Page Up as "down" in Kazakh …) in 12 languages.
 

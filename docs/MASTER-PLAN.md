@@ -177,6 +177,14 @@ What is being worked on, updated as it changes (2026-11-10):
   stop that scrolls); its Hebrew showed two "long forward jump" rows. A scan of every catalog for opposite
   texts translated the same (backwards/forward, up/down, left/right, min/max) found 21 more in 12 desktop
   languages and 2 in Vietnamese on Android: fixed (Bodo and Maithili left for a speaker).
+  Found while recording the README clips on 0.8.0 (hidden desktop, PrintWindow): a freeze of 0.5 to 4.6 s about
+  20 s after a video starts (the cast search's UPnP module closed on the interface's thread: closed on a thread of
+  its own now, desktop and Android; measured 0.46-0.89 s before, 0.00 s after, by WM_NULL pings); the first
+  subtitle line after a track switch was lost (an external subtitle file is read ahead of playback by the caching,
+  and lines read while its track was off were dropped: the file is read again from what plays, src/input/input.c);
+  the player's own messages grew with the subtitle size ("Subtitle position" at 325 % covered the picture);
+  the player panel's breadcrumb pushed its buttons out, its menus opened at the mouse pointer; the interface
+  languages were in VideoLAN's order (now by name, as Android). Discussion #130: Play all and Shuffle on Tracks.
 - 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
   updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both

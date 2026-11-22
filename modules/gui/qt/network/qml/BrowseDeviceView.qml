@@ -136,7 +136,12 @@ FocusScope {
 
         _currentView.currentIndex = index
 
-        _currentView.currentItem.forceActiveFocus(Qt.MouseFocusReason)
+        // (the grid makes the current item later: right after the index changed it can still be
+        // missing, and the click threw "Cannot call method 'forceActiveFocus' of undefined")
+        if (_currentView.currentItem)
+            _currentView.currentItem.forceActiveFocus(Qt.MouseFocusReason)
+        else
+            _currentView.forceActiveFocus(Qt.MouseFocusReason)
     }
 
     function onDoubleClicked(model, index) {

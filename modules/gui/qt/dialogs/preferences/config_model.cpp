@@ -262,7 +262,7 @@ const QtSettingOption qtSettingOptions[] = {
     // (MainCtx: 0 Automatic, else a percentage; its choices below)
     { "redesign/interface-size", 'i', 0, 0, 200, N_("Interface size"),
       N_("How large the pages, texts and controls are drawn. Automatic picks the size that suits this screen.") },
-    { "redesign/always-show-player-bar", 'b', 0, 0, 0, N_("Always show the player bar"),
+    { "redesign/always-show-player-bar", 'b', 1, 0, 0, N_("Always show the player bar"),
       N_("Keeps the player bar at the bottom of the library while nothing plays: Play starts "
          "the play queue, or opens files when it is empty.") },
     { "redesign/increase-contrast", 'b', 0, 0, 0, N_("Increase text contrast"),

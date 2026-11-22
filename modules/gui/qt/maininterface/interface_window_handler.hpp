@@ -68,6 +68,8 @@ signals:
 private:
     bool applyKeyEvent(QKeyEvent * event) const;
     bool focusedItemTakesKeys() const;
+    // The keyboard in an open popup (a menu, a dialog): its keys are its own
+    bool focusInPopup() const;
     bool canTakeSpace() const;
     void cancelSpaceHold();
     // the player, null once it is gone (the window can outlive it as VLC quits)

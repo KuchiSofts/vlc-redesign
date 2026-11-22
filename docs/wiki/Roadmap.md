@@ -29,6 +29,9 @@ Updated as the work moves (last: 2026-11-18, 0.7.5 published, 0.7.6 started).
 **0.7.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
 with a build to try):
 
+- 🟡 The library without a mouse and before anything plays (#124): the keys after Stop and at the start,
+  Space starting the queue, the player bar with its queue button shown by default; dragging from the library
+  into the queue checked by hand
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

@@ -128,7 +128,30 @@ What is being worked on, updated as it changes (2026-11-10):
   is 3.8 MB (4.5 MB on ARM64), those from 0.6.0 to 0.6.2 about 23 MB (debug to release build). No APK in it: the
   Android app's update check reads only the latest release (RdUpdateCheck.kt), so an app on 0.6.2 or older is
   not offered 0.6.3 while 0.6.4 is the latest.
-- 🟡 **0.7.6** started. VideoLAN merged up to `7f0d5b9562` (2026-11-20, 25 commits: Qt use-after-free fixes,
+- 🟡 **#124** (Discussions, 11-21, 0.7.5): after S (Stop) and at the start no item of the window had the keyboard
+  (UI Automation: no element with the focus; Tab gave it back), so Space, Q and the library's keys did nothing; the
+  core's Play/Pause only pauses or resumes, so Space never restarted a stopped queue; the queue opened only from the
+  player (no button in the mini player). Owner 11-21: fix in 0.7.6, the bar shown by default, hiding it a setting
+  that is remembered. Done on fix/124-keys-queue: MainDisplay takes the focus when it loads, MainCtx::sendHotkey
+  starts the queue for Play/Pause while nothing plays, *Always show the player bar* on by default, Play Queue in every
+  preset's mini player and once in saved profiles (redesign/queue-in-miniplayer). Reproduced on 0.7.5 with posted
+  keys and WM_ACTIVATE/WM_SETFOCUS. On #125's first build: the bar and its queue button (saved profile migrated),
+  focus after S, Space plays again, Q opens the queue; but after What's new closed no item had the keyboard (a
+  Popup gives it to the window's content item): MainDisplay now takes it whenever the active window's focus is on
+  none of its items or on a container of it (checked on the second build: What's new closed, focus on the
+  library, Q closed the queue; Search still takes typing; the bar's option shown on by default, turned off it
+  hides the bar and stays off after a restart). There also: after the menu was used with the mouse, the Menu
+  button kept the keyboard and Space opened the menu again; in the library Play/Pause now goes to the player
+  while the focused item has it from a click (no visual focus, no text field, not in a popup); checked on the
+  third build. Ctrl+1 (Ctrl held in the test window's own key state, never the user's): the key arrives, but
+  every Ctrl+1 … Ctrl+0 showed *Your media can't be opened*: MLRecentMediaModel.MEDIA_ID is no enum QML sees
+  (undefined, so the URL text came back and played as the address `c:/...`, log: no access module "c"); the
+  shortcut now reads the id with getData, as the context menu does (a VideoLAN line). Checked on that build:
+  Windows, Ctrl+1 at the start and after S plays the last media; Linux (the AppImage on Xvfb in a throwaway
+  container, real X input): Ctrl+1 after S plays it, a card dragged from Videos or Recent lands in the queue
+  (also an empty one, nothing playing), then Space plays the queue. The Windows drag (OLE) is not checked yet:
+  it needs real input, i.e. Windows Sandbox, which was busy.
+- 🟡 **0.7.6** started. VideoLAN merged up to `5c415c4ef8` (2026-11-21, 26 commits: Qt use-after-free fixes,
   VA-API, Lua extensions, ggml and nfs, macOS carousels, araw; their Windows installer writes the install folder in
   quotes, which our installer and updater already do). Open: the cause of #117 on the reporter's Mac (asked: where the app is installed, and what
   Privacy & Security › Files and Folders › Removable Volumes reads for it); if it is that permission, the

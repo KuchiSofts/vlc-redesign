@@ -153,7 +153,7 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.0**: the full check (owner 11-22: "fully scan every app … every function, option, button, key, window,
+- 🟢 **0.8.0** (2026-11-23, a full release; the Samsung TV app follows): the full check (owner 11-22: "fully scan every app … every function, option, button, key, window,
   tab … no memory leak and no lags"; "every resolution of videos from 3gp to 8K to 120fps to 240fps"; the
   README's gifs in higher quality; the wiki; the git of the project). Done so far: Windows tours of every page,
   dialog, menu and the 14 Settings pages with the log on (clean after 0.7.8's fixes); the Network page's folder

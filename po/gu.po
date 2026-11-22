@@ -4324,7 +4324,7 @@ msgstr "ટૂંકો આગળનો કૂદકો"
 
 #: src/libvlc-module.c:1409
 msgid "Select the hotkey to make a short forward jump."
-msgstr "ટૂંકો પાછળનો કૂદકો કરવા માટે હોટકીને પસંદ કરો."
+msgstr "ટૂંકો આગળનો કૂદકો કરવા માટે હોટકીને પસંદ કરો."
 
 #: src/libvlc-module.c:1410
 msgid "Medium forward jump"

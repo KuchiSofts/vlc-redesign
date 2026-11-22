@@ -37275,7 +37275,7 @@ msgstr "하단 채우기 픽셀"
 
 #: modules/video_filter/croppadd.c:63
 msgid "Number of pixels to padd to the bottom of the image after cropping."
-msgstr "잘라내기후 이미지 상단 채우기 픽셀수."
+msgstr "잘라내기후 이미지 하단 채우기 픽셀수."
 
 #: modules/video_filter/croppadd.c:64
 msgid "Pixels to padd to left"

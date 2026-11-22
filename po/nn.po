@@ -5235,7 +5235,7 @@ msgstr "Nettlesarfavorittar"
 #: src/misc/actions.c:60
 msgctxt "key"
 msgid "Browser Forward"
-msgstr "Nettlesar tilbake"
+msgstr "Nettlesar fram"
 
 #: src/misc/actions.c:61
 msgctxt "key"

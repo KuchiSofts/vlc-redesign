@@ -1313,7 +1313,7 @@ msgstr "Парақты төмен жылжыту"
 #: src/misc/actions.c:132
 msgctxt "key"
 msgid "Page Up"
-msgstr "Парақты төмен жылжыту"
+msgstr "Парақты жоғары жылжыту"
 
 #: src/misc/actions.c:133
 msgctxt "key"

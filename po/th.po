@@ -14939,7 +14939,7 @@ msgstr ""
 
 #: modules/codec/vorbis.c:181
 msgid "Minimum encoding bitrate"
-msgstr "อัตราส่งบิตการลงรหัสสูงสุด"
+msgstr "อัตราส่งบิตการลงรหัสต่ำสุด"
 
 #: modules/codec/vorbis.c:183
 msgid ""
@@ -36316,7 +36316,7 @@ msgstr "พิกเซลที่จะถูกตัดไปจากขอ
 
 #: modules/video_filter/croppadd.c:56 modules/video_filter/formatcrop.c:57
 msgid "Number of pixels to crop from the right of the image."
-msgstr "จำนวนพิกเซลที่จะถูกตัดทิ้งไปจากขอบด้านซ้ายของภาพ"
+msgstr "จำนวนพิกเซลที่จะถูกตัดทิ้งไปจากขอบด้านขวาของภาพ"
 
 #: modules/video_filter/croppadd.c:58
 msgid "Pixels to padd to top"

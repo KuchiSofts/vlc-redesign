@@ -5578,7 +5578,7 @@ msgstr ""
 #: src/misc/actions.c:140
 msgctxt "key"
 msgid "Volume Down"
-msgstr "Ivolumu ephezulu"
+msgstr "Ivolumu ephansi"
 
 #: src/misc/actions.c:141
 msgctxt "key"
@@ -19520,7 +19520,7 @@ msgstr "Ivolumu ephezulu"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:520
 msgid "Volume Down"
-msgstr "Ivolumu ephezulu"
+msgstr "Ivolumu ephansi"
 
 #: modules/gui/macosx/menus/VLCMainMenu.m:1498
 msgid "File Format:"

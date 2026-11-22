@@ -4047,7 +4047,7 @@ msgstr "Taaɓal caggal daɓɓal"
 
 #: src/libvlc-module.c:1396
 msgid "Select the hotkey to make a short backwards jump."
-msgstr "Labo codorgal ngam waɗde taaɓal yeeso daɓɓiɗngal"
+msgstr "Labo codorgal ngam waɗde taaɓal caggal daɓɓiɗngal"
 
 #: src/libvlc-module.c:1397
 msgid "Medium backwards jump"
@@ -4063,7 +4063,7 @@ msgstr "Taaɓal caggal juutngal"
 
 #: src/libvlc-module.c:1402
 msgid "Select the hotkey to make a long backwards jump."
-msgstr "Labo codorgal ngam waɗde taaɓal yeeso juutngal."
+msgstr "Labo codorgal ngam waɗde taaɓal caggal juutngal."
 
 #: src/libvlc-module.c:1404
 msgid "Very short forward jump"

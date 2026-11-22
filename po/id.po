@@ -5630,7 +5630,7 @@ msgstr "Menu"
 #: src/misc/actions.c:127
 msgctxt "key"
 msgid "Mouse Wheel Down"
-msgstr "Roda Tetikus Naik"
+msgstr "Roda Tetikus Turun"
 
 #: src/misc/actions.c:128
 msgctxt "key"

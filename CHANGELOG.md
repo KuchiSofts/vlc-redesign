@@ -24,6 +24,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **Cancel in Effects leaves the video alone**: it showed "Crop: Default" over the picture although the crop was never changed.
 - **TV guide updates at once**: after Update the grid stayed on "No guide" until you left the tab.
 - **TV guide says Today in the evening**: from 23:15 it read "Tomorrow" over tonight's shows (desktop, Android and the Samsung TV app).
 - **Full screen has the window buttons too**: minimize, exit full screen (lit, in place of maximize) and close, at the top right of the bar.

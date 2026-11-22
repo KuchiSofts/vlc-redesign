@@ -537,19 +537,29 @@ bool VideoEffects::cancel()
             const QVariant value = m_snapshotValues.value(name);
             if (value.isValid() && value != readValue(name) && !writeValue(name, value)) return false;
         }
-    for (const QString& side : cropSides)
+    // Only what changed is set back: each set puts its message on the video
+    // ("Crop: Default" after a Cancel that never touched the crop)
+    bool sideChanged = false;
+    for (const QString& side : cropSides) {
+        if (cropValue(side) == m_snapshotCrop.value(side)) continue;
         if (!setCrop(side, m_snapshotCrop.value(side))) return false;
+        sideChanged = true;
+    }
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return fail(tr("No active video output is available."));
     const QByteArray chain = m_snapshotChain.toUtf8();
-    const int result = var_SetString(vout, "video-filter", chain.constData());
+    const int result = own(var_GetString(vout, "video-filter")) == m_snapshotChain ? VLC_SUCCESS
+                     : var_SetString(vout, "video-filter", chain.constData());
     // (the subpicture unit opens its sources again on any set, the same chain
     // included: a logo kept would start over)
     const QByteArray sourceChain = m_snapshotSources.toUtf8();
     const int sourceResult = own(var_GetString(vout, "sub-source")) == m_snapshotSources ? VLC_SUCCESS
                            : var_SetString(vout, "sub-source", sourceChain.constData());
+    // (a side set leaves the crop string as it was: a ratio crop is set again
+    // after one)
     const QByteArray crop = m_snapshotCropString.toUtf8();
-    const int cropResult = var_SetString(vout, "crop", crop.constData());
+    const int cropResult = !sideChanged && own(var_GetString(vout, "crop")) == m_snapshotCropString ? VLC_SUCCESS
+                         : var_SetString(vout, "crop", crop.constData());
     vout_Release(vout);
     if (result != VLC_SUCCESS || sourceResult != VLC_SUCCESS || cropResult != VLC_SUCCESS)
         return fail(tr("Video preview could not be restored."));

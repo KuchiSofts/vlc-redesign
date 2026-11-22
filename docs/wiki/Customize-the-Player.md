@@ -4,9 +4,9 @@ The control bar is edited right on the player: drag buttons onto it, along it an
 **profile**, together with your settings, so you can switch from a bar made for films to one made for music in two
 clicks.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/customize-player.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar, saved, then 1.5x chosen from the speed button" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/customize-player.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/customize-player.webp" alt="Customize Player: Playback Speed and Picture in Picture dragged onto the bar, saved, then 1.5x chosen from the speed button" width="800"></a>
 
-<sub>Playback Speed and Cast to TV dragged onto the bar, saved, then 1.5× chosen from the new speed button. Click for the MP4 · every clip: [Feature tour](Feature-Tour#customize).</sub>
+<sub>Playback Speed and Picture in Picture dragged onto the bar, saved, then 1.5× chosen from the new speed button. Click for the MP4 · every clip: [Feature tour](Feature-Tour#customize).</sub>
 
 ![Customize Player open over the player: the title, the line "Drag items around and out of the box below to re-order them. Drag items into the box to remove them from the player.", the palette of items from Spacer to Volume, Cancel and Save, and below it the bar of the player and the top bar outlined with dashed boxes](images/customize.jpg)
 

@@ -142,24 +142,24 @@ If you like how this looks, go subscribe to Juxtopposed's channel. That's where 
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Use your own IPTV playlist or Xtream Codes account, or a free, legal list from the catalog. Page Up and Page Down change channel.</td>
-<td width="50%" valign="top"><a href="docs/media/demo/tv-guide.mp4"><img src="docs/media/demo/tv-guide.gif" alt="The Live TV guide with the line of now, Later and Now, and the Kids group"></a><br><b>Program guide.</b> Every channel across the hours, with a line marking the current time.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.webp" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Use your own IPTV playlist or Xtream Codes account, or a free, legal list from the catalog. Page Up and Page Down change channel.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-guide.mp4"><img src="docs/media/demo/tv-guide.webp" alt="The Live TV guide with the line of now, Later and Now, the Kids group and a programme's details"></a><br><b>Program guide.</b> Every channel across the hours, with a line marking the current time.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/subtitles-he-ar-ja.mp4"><img src="docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn"></a><br><b>Subtitles in any script.</b> Sharp text, with right-to-left scripts in the correct order. The player learns the languages you pick.</td>
-<td valign="top"><a href="docs/media/demo/subtitle-size.mp4"><img src="docs/media/demo/subtitle-size.gif" alt="Ctrl and the mouse wheel over the video change the subtitle size"></a><br><b>Move and resize subtitles while playing.</b> Ctrl + mouse wheel over the video, or Shift+↑ / Shift+↓.</td>
+<td valign="top"><a href="docs/media/demo/subtitles-he-ar-ja.mp4"><img src="docs/media/demo/subtitles-he-ar-ja.webp" alt="English, Hebrew, Japanese and Arabic subtitles in turn"></a><br><b>Subtitles in any script.</b> Sharp text, with right-to-left scripts in the correct order. The player learns the languages you pick.</td>
+<td valign="top"><a href="docs/media/demo/subtitle-size.mp4"><img src="docs/media/demo/subtitle-size.webp" alt="Ctrl and the mouse wheel over the video change the subtitle size"></a><br><b>Move and resize subtitles while playing.</b> Ctrl + mouse wheel over the video, or Shift+↑ / Shift+↓.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/customize-player.mp4"><img src="docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar"></a><br><b>Customizable controls.</b> Drag buttons onto the control bar and save layouts as profiles.</td>
-<td valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.gif" alt="The light theme and the accent colours applied at once"></a><br><b>Themes and accent colours.</b> Dark, light or system theme and nine accent colours, applied instantly.</td>
+<td valign="top"><a href="docs/media/demo/customize-player.mp4"><img src="docs/media/demo/customize-player.webp" alt="Customize Player: Playback Speed and Picture in Picture dragged onto the bar"></a><br><b>Customizable controls.</b> Drag buttons onto the control bar and save layouts as profiles.</td>
+<td valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.webp" alt="The light theme and the accent colours applied at once"></a><br><b>Themes and accent colours.</b> Dark, light or system theme and nine accent colours, applied instantly.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.gif" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to your TV.</b> Chromecast and DLNA TVs, controlled from the player bar. See <a href="https://github.com/KuchiSofts/vlc-redesign/wiki/TV-Compatibility">which TVs work</a>.</td>
-<td valign="top"><a href="docs/media/demo/library.mp4"><img src="docs/media/demo/library.gif" alt="Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks"></a><br><b>Home and media library.</b> Continue Watching, plus videos, music, albums and tracks.</td>
+<td valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.webp" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to your TV.</b> Chromecast and DLNA TVs, controlled from the player bar. See <a href="https://github.com/KuchiSofts/vlc-redesign/wiki/TV-Compatibility">which TVs work</a>.</td>
+<td valign="top"><a href="docs/media/demo/library.mp4"><img src="docs/media/demo/library.webp" alt="Home with Continue Watching, then Videos, the albums of Music and Tracks with Play all and Shuffle"></a><br><b>Home and media library.</b> Continue Watching, plus videos, music, albums and tracks.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/rtl-hebrew.mp4"><img src="docs/media/demo/rtl-hebrew.gif" alt="The interface in Hebrew, laid out right to left"></a><br><b>72 languages, switched without a restart.</b> Right-to-left languages mirror the whole layout.</td>
-<td valign="top"><a href="docs/media/demo/onboarding.mp4"><img src="docs/media/demo/onboarding.gif" alt="The welcome steps: media folder, theme, subtitle languages, what VLC does online"></a><br><b>Private by default.</b> No telemetry, no ads, no account. The first-run setup asks what may go online.</td>
+<td valign="top"><a href="docs/media/demo/rtl-hebrew.mp4"><img src="docs/media/demo/rtl-hebrew.webp" alt="Hebrew chosen in Settings: the whole interface turns right to left at once"></a><br><b>72 languages, switched without a restart.</b> Right-to-left languages mirror the whole layout.</td>
+<td valign="top"><a href="docs/media/demo/onboarding.mp4"><img src="docs/media/demo/onboarding.webp" alt="The welcome steps: media folder, theme, subtitle languages, what VLC does online"></a><br><b>Private by default.</b> No telemetry, no ads, no account. The first-run setup asks what may go online.</td>
 </tr>
 </table>
 

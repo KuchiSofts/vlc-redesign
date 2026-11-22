@@ -4,7 +4,7 @@ VLC Redesign shows subtitles in your language by itself: from the video, from a 
 It learns the languages you pick, remembers the subtitle of each file and the timing of each series, and lets you
 fix early or late subtitles, and move or resize them, while you watch.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitles-he-ar-ja.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn with the V key" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitles-he-ar-ja.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitles-he-ar-ja.webp" alt="English, Hebrew, Japanese and Arabic subtitles in turn with the V key" width="720"></a>
 
 <sub>English, Hebrew, Japanese and Arabic subtitles in turn with <kbd>V</kbd>: sharp, and Hebrew and Arabic in the right order, with their brackets and punctuation. Click for the MP4 · every clip: [Feature tour](Feature-Tour#subtitles).</sub>
 
@@ -273,7 +273,7 @@ local episode to save its track and timing choices.*
 
 ## Position and size
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitle-size.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitle-size.gif" alt="Ctrl and the mouse wheel over the video change the subtitle size, up to 200 % and down to 50 %" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitle-size.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitle-size.webp" alt="Ctrl and the mouse wheel over the video change the subtitle size, up to 200 % and down to 50 %" width="720"></a>
 
 <sub><kbd>Ctrl</kbd> + mouse wheel over the video: the subtitle size up to 200 %, then down to 50 %, from the next line on. Click for the MP4 · every clip: [Feature tour](Feature-Tour#subtitles).</sub>
 

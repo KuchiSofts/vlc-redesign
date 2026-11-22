@@ -4,7 +4,7 @@ VLC Redesign has the two themes of the design, **Dark** and **Light**, and a thi
 Windows. On top of the theme, one of **nine accent colours** marks what is selected and active. Both change at once, without
 a restart, and both can follow a [player profile](Customize-the-Player#profiles).
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/theme-accent.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/theme-accent.gif" alt="Settings, General: the light theme and the blue, green and pink accents applied at once, then the library in light pink" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/theme-accent.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/theme-accent.webp" alt="Settings, General: the light theme and the blue, green and pink accents applied at once, then the library in light pink" width="960"></a>
 
 <sub>Settings, General: the light theme, then the blue, green and pink accents, each applied at once; the library in light pink. Click for the MP4 · every clip: [Feature tour](Feature-Tour#themes).</sub>
 

@@ -72,7 +72,7 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 3. **Play** something: drop a file on the window, open one from Explorer, or pick it on [Home](Library#home).
 4. VLC Redesign checks for a new release once a day and offers a **small update** when one is out.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.gif" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.webp" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
 
 <sub>The welcome steps of 0.4.0, from the media folder to Home. Click for the MP4; every clip: [Feature tour](Feature-Tour).</sub>
 

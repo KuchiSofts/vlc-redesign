@@ -213,7 +213,7 @@ On each platform:
 <tr>
 <td width="40%" valign="top"><a href="docs/media/demo/linux.mp4"><img src="docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About, Settings in the dark theme, Home in the light theme"></a><br><b>Linux.</b> The AppImage on Arch Linux: About, Settings, Home.</td>
 <td width="40%" valign="top"><a href="docs/media/demo/macos.png"><img src="docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home"></a><br><b>macOS.</b> The app on an Intel Mac, captured by the build's launch test.</td>
-<td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.gif" alt="The Android app: Home and the library on a phone"></a><br><b>Android.</b> Home on a phone, and <a href="docs/media/demo/android/tablet.mp4">on a tablet</a>.</td>
+<td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.webp" alt="The Android app: Home and the library on a phone"></a><br><b>Android.</b> Home on a phone, and <a href="docs/media/demo/android/tablet.mp4">on a tablet</a>.</td>
 </tr>
 </table>
 

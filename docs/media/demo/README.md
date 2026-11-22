@@ -50,7 +50,7 @@ The Android app (phone and tablet, recorded on the emulator; not part of 0.4.0 y
 
 | Clip | What it shows |
 |---|---|
-| [android/home.gif](android/home.gif) · [MP4](android/home.mp4) | **Home and the library.** The phone's Home with Continue Watching, folders, new videos and music, then Videos, Music and TV. |
+| [android/home.webp](android/home.webp) · [MP4](android/home.mp4) | **Home and the library** (0.8.0). The phone's Home with Continue Watching, folders, new videos and music, then Videos and its Folders tab, Music and the TV guide. |
 | [android/customize-player.gif](android/customize-player.gif) · [MP4](android/customize-player.mp4) | **Player bar and Customize Player.** The player's menu, then Customize Player: the bar's three zones, Playback speed and Queue added, saved. |
 | [android/context-menu.gif](android/context-menu.gif) · [MP4](android/context-menu.mp4) | **The compact context menu.** The ⋯ of a video opens a compact menu; a long press selects. |
 | [android/subtitles-hebrew.gif](android/subtitles-hebrew.gif) · [MP4](android/subtitles-hebrew.mp4) | **Tracks and subtitles in Hebrew.** The tracks panel over the video: the subtitle files next to it, Hebrew picked, read right to left. |

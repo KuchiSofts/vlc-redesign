@@ -175,7 +175,7 @@ The clips below were recorded on the Android emulator, before the first release.
 
 <table>
 <tr>
-<td width="33%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/home.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/home.gif" alt="Android phone: Home and the library" width="240"></a><br><sub><b>Home and the library</b> on a phone.</sub></td>
+<td width="33%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/home.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/home.webp" alt="Android phone: Home and the library" width="240"></a><br><sub><b>Home and the library</b> on a phone.</sub></td>
 <td width="33%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/tv-zapping.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/tv-zapping.gif" alt="Android phone: Live TV zapping with the banner" width="240"></a><br><sub><b>Live TV zapping</b> with the banner.</sub></td>
 <td width="33%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/subtitles-hebrew.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/subtitles-hebrew.gif" alt="Android phone: tracks and subtitles in Hebrew" width="240"></a><br><sub><b>Tracks and subtitles</b> in Hebrew.</sub></td>
 </tr>

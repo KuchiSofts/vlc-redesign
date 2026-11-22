@@ -23,6 +23,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **The accent colour reaches every part of the library** ([#131](https://github.com/KuchiSofts/vlc-redesign/issues/131)): an artist's Play all, an album's Play and the play icon over a cover stayed orange.
 - **Ctrl+0 resets the subtitle size again**: the shortcut of the tenth recent media took the key first (and did nothing with fewer than ten).
 - **Play all and Add all to queue work in the player panel** for an album, an artist, a genre or a playlist: they added nothing (the place kept a reference to a row of the list it came from).
 - **The player's messages keep their size when the subtitles are made larger**: at 300 % a "Subtitle position" message covered the picture.

@@ -153,6 +153,13 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
+- 🟡 **0.7.8** started (2026-11-22). Open: the Android update check that reads only the latest release; the queue
+  panel's edge that moves between an empty queue and one with items (asked the owner).
+- 🟢 **0.7.7** published 2026-11-22 06:02 local (17 files; tag v0.7.7 on 01e892834e, PR #127 merged as
+  788cfa002d; small updates 0.6 MB x64, 1.2 MB ARM64). After publishing: the copy that had taken 0.7.6 from
+  the app took 0.7.7 the same way (About › Check for updates, Update now, Restart now; What's new 0.7.7). A CI
+  build of 0.7.6 refuses the small update ("a file was changed since it was installed"): only the released
+  package is patched, as designed.
 - 🟢 **0.7.7** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
   `follows: 0.7.7`): Escape closes the welcome dialog again. A regression of 0.7.6, seen in the in-app update check right after
   publishing: Escape no longer closed the welcome dialog (Onboarding, a Popup that opens at the start): the load

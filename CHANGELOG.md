@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Version 0.7.8 started (VLC_REDESIGN_VERSION).
+
 ## [0.7.7] · 2026-11-22
 
 An update release: Escape closes the welcome dialog again (0.7.6 gave the keyboard to the library while the

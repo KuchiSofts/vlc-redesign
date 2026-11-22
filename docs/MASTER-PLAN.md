@@ -159,6 +159,14 @@ What is being worked on, updated as it changes (2026-11-10):
   not. Checked, not a fault: the Android update check reads the ten newest releases and takes the newest with
   an APK since 0.6.6 (a stale local branch, feature/stability-3 from 11-02, made it look like the latest only);
   that branch holds nothing main lacks (its commits are on main, rewritten by the 11-11 cleanup).
+  Bug hunt (owner 11-22: "search for more bugs … speed … nothing missing"), a tour of every page, dialog
+  and player panel with the log on: the queue's total read "1 item - -1 ms" (an item's length read after
+  it was added never reached the total, a removal then subtracted it: recomputed, durationChanged);
+  Home in the player's library panel said "Nothing here yet." and "0 items" over the history it shows;
+  after Stop, PageLoader.qml:107 threw on "initialIndex" a leaving view had written into Home's saved
+  state, and the rest of the load (name, focus) never ran: the stray property is dropped. Left: Qt's own
+  "ShaderEffect: Texture t1" warning at the start (no t1 in our shaders). Speed, 0.7.5 against 0.7.7,
+  three runs: first frame 0.64 s / 0.58 s; idle 0-0.2 % of a core, 206 MB both (the bar shown costs nothing).
 - 🟢 **0.7.7** published 2026-11-22 06:02 local (17 files; tag v0.7.7 on 01e892834e, PR #127 merged as
   788cfa002d; small updates 0.6 MB x64, 1.2 MB ARM64). After publishing: the copy that had taken 0.7.6 from
   the app took 0.7.7 the same way (About › Check for updates, Update now, Restart now; What's new 0.7.7). A CI

@@ -7,7 +7,8 @@
 # tree (else the contribs from source), Qt 6.8.3 (the official build, by
 # aqtinstall: the contribs of macOS have no Qt), VLC with the Qt interface
 # and without the macosx one, then "VLC Redesign.app" and its disk image
-# vlc-redesign-X.Y.Z-macos-<arch>.dmg (docs/MASTER-PLAN.md, 13.5).
+# vlc-redesign-X.Y.Z-macos-<arch>.dmg (docs/MASTER-PLAN.md, 13.5), and the
+# application as vlc-redesign-X.Y.Z-macos-<arch>.app.zip for the update in place.
 # extras/juxtopposed/macos/README.md tells why each step is what it is.
 #
 #   extras/juxtopposed/macos-build.sh [-a arm64|x86_64] [-j jobs] [-b dir] [-o dir] [-c] [-n] [-g] [-t]
@@ -459,3 +460,14 @@ if [ "$identity" != - ]; then
 fi
 (cd "$out" && shasum -a 256 "$(basename "$dmg")" | tee "$(basename "$dmg").sha256")
 echo "made $dmg"
+
+# The application as a zip too, for the update in place: the updater unpacks
+# it next to the installed app (ditto), with no disk image to open (#117: on
+# a user's Mac the attach of the image never answered when VLC started it).
+# ditto keeps the bundle's links, modes and code signature.
+step "Update archive"
+zip=$out/vlc-redesign-$version-macos-$arch.app.zip
+rm -f "$zip"
+ditto -c -k --sequesterRsrc --keepParent "$app" "$zip"
+(cd "$out" && shasum -a 256 "$(basename "$zip")" | tee "$(basename "$zip").sha256")
+echo "made $zip"

@@ -136,9 +136,11 @@ for arch in ('x86_64', 'aarch64'):
         if sha256(os.path.join(folder, name.lstrip('*'))) != digest:
             sys.exit('%s: not the checksum built with it' % name)
 for arch in ('arm64', 'x86_64'):
-    dmg = os.path.join(work, 'macos-' + arch, 'vlc-redesign-%s-macos-%s.dmg' % (version, arch))
-    if sha256(dmg) != open(dmg + '.sha256', encoding='utf-8').read().split()[0]:
-        sys.exit('%s: not the checksum built with it' % os.path.basename(dmg))
+    # (the disk image, and the application's zip of the update in place, #117)
+    for ext in ('dmg', 'app.zip'):
+        made = os.path.join(work, 'macos-' + arch, 'vlc-redesign-%s-macos-%s.%s' % (version, arch, ext))
+        if sha256(made) != open(made + '.sha256', encoding='utf-8').read().split()[0]:
+            sys.exit('%s: not the checksum built with it' % os.path.basename(made))
 step('the builds of %s in %s (Linux and macOS checksums good)' % (built[:10], work))
 
 # --- 3. the Windows files -----------------------------------------------------------------------------------------
@@ -176,8 +178,9 @@ for arch in ('x86_64', 'aarch64'):
             if name.endswith(('.deb', '.rpm', '.flatpak')):
                 shutil.copy2(os.path.join(work, 'linux-' + arch, name), os.path.join(dist, name))
 for arch in ('arm64', 'x86_64'):
-    name = 'vlc-redesign-%s-macos-%s.dmg' % (version, arch)
-    shutil.copy2(os.path.join(work, 'macos-' + arch, name), os.path.join(dist, name))
+    for ext in ('dmg', 'app.zip'):
+        name = 'vlc-redesign-%s-macos-%s.%s' % (version, arch, ext)
+        shutil.copy2(os.path.join(work, 'macos-' + arch, name), os.path.join(dist, name))
 if args.apk:
     shutil.copy2(args.apk, os.path.join(dist, 'vlc-redesign-%s-android.apk' % version))
 tv = 'Juxto-Media-Player-TV-%s-source.zip' % version

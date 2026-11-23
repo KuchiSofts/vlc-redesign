@@ -25,7 +25,8 @@
 #      checked with the key the app carries (verify-test.c with this Mac's
 #      Security framework: good, and bad once changed), then the image's app
 #      staged next to a copy and swapped in by the app's own
-#      Resources/vlc-redesign-update.sh, as the updater does;
+#      Resources/vlc-redesign-update.sh, as the updater does; the same from
+#      the .app.zip beside the image (the updater's first choice, #117);
 #   6. a playlist opened as Finder opens it (open -a: an Apple event, #84),
 #      its clip opened;
 #   7. memory: the Qt interface changing media every 0.6 s for SOAK_SECS
@@ -127,25 +128,36 @@ if [ -f "$root/extras/juxtopposed/signing/verify-test.c" ]     && clang -O2 -Wal
 else
     fail "verify-test.c does not build on macOS (see verify-test-build.log)"
 fi
+# update_with <dmg or app.zip> <name>: a copy of the app updated from it
+update_with() {
+    mkdir -p "$work/update"
+    installed="$work/update/$(basename "$app")"
+    cp -R "$app" "$installed"
+    staged=$(/bin/sh "$updater" stage "$1" "$installed" 2> "$work/update-stage-$2.log")
+    if [ $? = 0 ] && [ -d "$staged" ] && codesign --verify --deep --strict "$staged" 2>/dev/null; then
+        note "ok: the update from the $2 is staged next to the app, its signature intact"
+        true & gone=$!; wait $gone
+        if VLC_REDESIGN_UPDATE_NO_OPEN=1 /bin/sh "$updater" apply "$gone" "$staged" "$installed" 2> "$work/update-apply-$2.log"                 && [ ! -e "$staged" ] && [ ! -e "$work/update/.vlc-redesign-old.app" ]                 && codesign --verify --deep --strict "$installed" 2>/dev/null; then
+            note "ok: the update from the $2 is swapped in (the old app removed, the new one's signature intact)"
+        else
+            fail "the update from the $2 was not swapped in (see update-apply-$2.log)"
+        fi
+    else
+        fail "the update from the $2 could not be staged (see update-stage-$2.log)"
+    fi
+    rm -rf "$work/update"
+}
 case $target in
     *.dmg)
         if [ -x "$updater" ]; then
-            mkdir -p "$work/update"
-            installed="$work/update/$(basename "$app")"
-            cp -R "$app" "$installed"
-            staged=$(/bin/sh "$updater" stage "$target" "$installed" 2> "$work/update-stage.log")
-            if [ $? = 0 ] && [ -d "$staged" ] && codesign --verify --deep --strict "$staged" 2>/dev/null; then
-                note "ok: the update is staged next to the app, its signature intact"
-                true & gone=$!; wait $gone
-                if VLC_REDESIGN_UPDATE_NO_OPEN=1 /bin/sh "$updater" apply "$gone" "$staged" "$installed" 2> "$work/update-apply.log"                     && [ ! -e "$staged" ] && [ ! -e "$work/update/.vlc-redesign-old.app" ]                     && codesign --verify --deep --strict "$installed" 2>/dev/null; then
-                    note "ok: the update is swapped in (the old app removed, the new one's signature intact)"
-                else
-                    fail "the update was not swapped in (see update-apply.log)"
-                fi
+            update_with "$target" "disk image"
+            # (#117) the application's zip beside it, which the updater takes first
+            archive=${target%.dmg}.app.zip
+            if [ -f "$archive" ]; then
+                update_with "$archive" zip
             else
-                fail "the update could not be staged (see update-stage.log)"
+                fail "no $(basename "$archive") beside the disk image"
             fi
-            rm -rf "$work/update"
         fi
         ;;
 esac

@@ -7,8 +7,11 @@
 # the release's disk image of its architecture and checks it against the
 # release's signed SHA256SUMS.txt first; this script does the rest:
 #
-#   vlc-redesign-update.sh stage <image.dmg> <VLC Redesign.app>
-#       The application of the image, copied next to the running one as
+#   vlc-redesign-update.sh stage <image.dmg | app.zip> <VLC Redesign.app>
+#       The application of the image (or of the release's zip of it,
+#       vlc-redesign-X.Y.Z-macos-<arch>.app.zip: unpacked by ditto, no disk
+#       image to open; #117: on a user's Mac the attach of the image never
+#       answered when VLC started it, and did in Terminal), copied next to the running one as
 #       <folder>/.vlc-redesign-update.app (the same volume: put in place by a
 #       rename), its code signature checked whole (codesign --verify --deep
 #       --strict) and its bundle identifier compared with the running one's.
@@ -78,13 +81,28 @@ stage)
     limit=${VLC_REDESIGN_UPDATE_STEP_LIMIT:-120}
     mount=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
     notes=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
-    # (at the end, whatever it is: the image released, within the limit too)
-    trap 'step detach hdiutil detach "$mount" -quiet -force 2>/dev/null; rmdir "$mount" 2>/dev/null; rm -rf "$notes"' EXIT
-    step attach hdiutil attach -nobrowse -readonly -noautoopen -mountpoint "$mount" "$image"
-    case $? in
-        0) ;;
-        124) die 7 "the image did not open in time" ;;
-        *) die 2 "the image can't be opened" ;;
+    # (at the end, whatever it is: the image released, within the limit too;
+    # a zip's unpacked folder removed)
+    attached=
+    trap 'if [ -n "$attached" ]; then step detach hdiutil detach "$mount" -quiet -force 2>/dev/null; rmdir "$mount" 2>/dev/null; else rm -rf "$mount"; fi; rm -rf "$notes"' EXIT
+    case $image in
+    *.zip)
+        step unpack ditto -x -k "$image" "$mount"
+        case $? in
+            0) ;;
+            124) die 7 "the archive was not unpacked in time" ;;
+            *) die 2 "the archive can't be opened" ;;
+        esac
+        ;;
+    *)
+        attached=yes
+        step attach hdiutil attach -nobrowse -readonly -noautoopen -mountpoint "$mount" "$image"
+        case $? in
+            0) ;;
+            124) die 7 "the image did not open in time" ;;
+            *) die 2 "the image can't be opened" ;;
+        esac
+        ;;
     esac
     # The first reading of the image's volume, a step too: a Mac that holds
     # it (macOS counts a disk image as a removable volume, which an app may

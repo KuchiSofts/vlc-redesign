@@ -118,6 +118,7 @@ jobs:
           name: vlc-redesign-macos-${{ matrix.arch }}-${{ github.sha }}
           path: |
             ${{ env.OUT_DIR }}/*.dmg
+            ${{ env.OUT_DIR }}/*.app.zip
             ${{ env.OUT_DIR }}/*.sha256
           retention-days: ${{ github.event_name == 'pull_request' && 2 || 7 }}
 

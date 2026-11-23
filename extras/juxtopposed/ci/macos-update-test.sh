@@ -177,6 +177,46 @@ if [ "$code" = 0 ] && [ -d "$staged" ]; then
     esac
 fi
 
+# 3b. (#117) the update from the application's zip, the updater's first
+# choice from 0.8.1 (no disk image to open): the new image's app zipped as
+# the release does (ditto), quarantined as a download, staged next to the
+# copy in /Applications by the helper given, its signature checked. Only the
+# helper given: the one of a release before 0.8.1 can't unpack a zip.
+if [ -n "${4:-}" ]; then
+    zipwork=$work/zip
+    mkdir -p "$zipwork/image"
+    if hdiutil attach -nobrowse -readonly -noautoopen -mountpoint "$zipwork/image" "$new_image" \
+            > "$work/zip-attach.log" 2>&1; then
+        app=$(ls -d "$zipwork/image"/*.app | head -n 1)
+        archive=$zipwork/$(basename "${new_image%.dmg}").app.zip
+        ditto -c -k --sequesterRsrc --keepParent "$app" "$archive" 2> "$work/zip-make.log" \
+            || fail "the zip of $(basename "$app") could not be made"
+        hdiutil detach "$zipwork/image" -quiet -force > /dev/null 2>&1
+        xattr -w com.apple.quarantine "0083;$(printf '%x' "$(seconds)");Safari;$(uuidgen)" "$archive"
+        target=/Applications/$(basename "$app")
+        if [ ! -d "$target" ]; then
+            fail "no copy in /Applications to update from the zip"
+        else
+            t=$(seconds)
+            /bin/sh -x "$helper" stage "$archive" "$target" < /dev/null > "$work/zip-stage.out" 2> "$work/zip-stage.log"
+            code=$?
+            staged=$(cat "$work/zip-stage.out" 2> /dev/null)
+            note "staging from the zip: exit $code after $(($(seconds) - t)) s, printed \"$staged\""
+            if [ $code = 0 ] && [ -d "$staged" ] && codesign --verify --deep --strict "$staged" 2> "$work/zip-codesign.log"; then
+                note "ok: the update from the zip is staged ($(version_of "$staged")), its signature intact"
+            else
+                fail "the update from the zip could not be staged"
+                sed 's/^/  /' "$work/zip-stage.log" | tail -n 30
+                sed 's/^/  /' "$work/zip-codesign.log" 2> /dev/null | tail -n 8
+            fi
+            rm -rf "$staged" /Applications/.vlc-redesign-update.app
+        fi
+    else
+        fail "the disk image of $to can't be opened to zip its application"
+        sed 's/^/  /' "$work/zip-attach.log" | tail -n 8
+    fi
+fi
+
 # 4. a step that never answers, an image whose application can't be read or
 # whose contents are never listed, an image that can't be opened (#117: a step blocked on a user's Mac left the
 # app on "Preparing the update" for ten minutes, then "damaged"): the helper
@@ -219,6 +259,19 @@ if [ -n "${4:-}" ]; then
     rm -f "$fake/find"
     helper_with 'case $1 in attach) echo "hdiutil: attach failed - no mountable file systems" >&2; exit 1 ;; esac' \
         2 'no mountable file systems' 30 "an image that can't be opened"
+    # (#117) a zip that isn't one: said, nothing left behind
+    printf 'not a zip\n' > "$work/broken.app.zip"
+    t=$(seconds)
+    /bin/sh "$helper" stage "$work/broken.app.zip" "$target" < /dev/null > /dev/null 2> "$work/broken-zip.log"
+    code=$?
+    took=$(($(seconds) - t))
+    if [ $code = 2 ] && grep -q 'archive' "$work/broken-zip.log"; then
+        note "ok: a broken zip: exit $code after $took s, \"$(grep 'archive' "$work/broken-zip.log" | head -n 1)\""
+    else
+        fail "a broken zip: exit $code after $took s (expected 2, saying \"archive\")"
+        sed 's/^/  /' "$work/broken-zip.log" | tail -n 12
+    fi
+    [ ! -e "$(dirname "$target")/.vlc-redesign-update.app" ] || fail "a broken zip: a staged copy is left behind"
 fi
 
 rm -rf "$installed" /Applications/.vlc-redesign-update.app /Applications/.vlc-redesign-old.app

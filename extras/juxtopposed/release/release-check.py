@@ -310,7 +310,7 @@ if os.path.exists(private):
 
 if release:
     todo += ['GitHub release v%s: a full release: setup, zip and every package; an update release: the setups, the '
-             'zips, the AppImages, the disk images, the APK; both with ONE small update (.vrdelta) for each Windows '
+             'zips, the AppImages, the disk images and the macOS update zips (.app.zip), the APK; both with ONE small update (.vrdelta) for each Windows '
              'architecture, from the release before (docs/RELEASE-CHECKLIST.md); '
              'always the source, SHA256SUMS.txt and SHA256SUMS.txt.sig' % release,
              'Announce %s in Discussions › Announcements' % release,

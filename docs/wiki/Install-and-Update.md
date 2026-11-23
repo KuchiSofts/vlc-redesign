@@ -68,6 +68,9 @@ PC.
 | `vlc-redesign-0.8.0-macos-arm64.dmg` | **For a Mac with Apple Silicon.** |
 | `vlc-redesign-0.8.0-macos-x86_64.dmg` | **For a Mac with an Intel processor.** |
 
+From 0.8.1 on, each release also has `vlc-redesign-<version>-macos-<arm64|x86_64>.app.zip`: the app itself, which
+the app downloads to update in place. You don't need it: install from the `.dmg`.
+
 **Android** (5.0 or later):
 
 | File | What it is |

@@ -23,6 +23,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Fixed
 
+- **macOS: the update needs no disk image** ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)): from 0.8.1 on the app updates from a zip of itself.
 - **A deleted or moved file no longer fails again and again**: it leaves the queue, Continue Watching and Recent,
   the library reads its folder again, and one message says it was deleted or moved (desktop and Android).
 

@@ -1148,6 +1148,19 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
             DialogsProvider::getInstance()->streamingDialog(selectedUrlList, true);
         });
 
+        // VLC Redesign (#135): the selected media into a playlist of the
+        // library (a new one or one there)
+        if (m_ctx->hasMediaLibrary())
+        {
+            action = m_menu->addAction( qtr("Add to playlist") );
+            connect(action, &QAction::triggered, [selectedUrlList]( ) {
+                QVariantList media;
+                for (const QUrl& url : selectedUrlList)
+                    media.push_back(url);
+                DialogsProvider::getInstance()->playlistsDialog(media);
+            });
+        }
+
         m_menu->addSeparator();
     }
 
@@ -1189,6 +1202,23 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
     });
 
     m_menu->addSeparator();
+
+    // VLC Redesign (#135): the whole queue, in its order, into a playlist of
+    // the library (a new one or one there), beside its save to a file
+    if (m_model->rowCount() > 0 && m_ctx->hasMediaLibrary())
+    {
+        action = m_menu->addAction( qtr("Add queue to playlist") );
+        connect(action, &QAction::triggered, [this]( ) {
+            QVariantList media;
+            for (int i = 0, n = m_model->rowCount(); i < n; ++i)
+                media.push_back(m_model->itemAt(i).getUrl());
+            if (!media.isEmpty())
+                DialogsProvider::getInstance()->playlistsDialog(media);
+        });
+
+        if (!m_selectionModel->hasSelection())
+            m_menu->addSeparator();
+    }
 
     if (m_selectionModel->hasSelection())
     {

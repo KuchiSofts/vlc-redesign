@@ -15,6 +15,12 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **The queue into a playlist** ([#135](https://github.com/KuchiSofts/vlc-redesign/issues/135)): *Add queue to playlist* in the queue's menu, *Add to playlist* for the selected items.
+- **Android: sort and Play all in Folders** ([#132](https://github.com/KuchiSofts/vlc-redesign/discussions/132)): by name, recently added, modified or length, both ways; Play all with or without subfolders.
+- **Android: *Sort by…* in the menu** of the Videos and Music lists.
+
 ### Fixed
 
 - **A deleted or moved file no longer fails again and again**: it leaves the queue, Continue Watching and Recent,

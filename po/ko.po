@@ -40502,3 +40502,7 @@ msgstr "이 Mac에서 업데이트를 준비할 수 없습니다. 릴리스 페�
 #: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
 msgid "%1 was deleted or moved."
 msgstr "%1 파일이 삭제되었거나 이동되었습니다."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "대기열을 재생 목록에 추가"

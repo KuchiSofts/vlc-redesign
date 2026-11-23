@@ -41156,3 +41156,7 @@ msgstr "De update kon niet worden voorbereid op deze Mac. Download het via de re
 #: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
 msgid "%1 was deleted or moved."
 msgstr "Het bestand %1 is verwijderd of verplaatst."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Wachtrij toevoegen aan afspeellijst"

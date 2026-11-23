@@ -31,6 +31,12 @@ request, then released).
 
 - ✅ The Samsung TV app's 0.8.0 (the guide's day), checked on a real TV, added to the 0.8.0 release
 - ✅ The in-app *What's new* lists only what you see: a line about the release tooling left 0.8.0's
+- ✅ A deleted or moved file leaves the queue and the history, with one message (desktop and Android)
+- ✅ The queue into a playlist from its menu ([#135](https://github.com/KuchiSofts/vlc-redesign/issues/135))
+- ✅ Android: sort and Play all (with or without subfolders) in Folders, *Sort by…* in the library's menu
+  ([#132](https://github.com/KuchiSofts/vlc-redesign/discussions/132))
+- 🟡 macOS: the update without the disk image (a zip unpacked next to the app;
+  [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117): the Mac never answered the image's opening)
 
 And as the issues bring them:
 

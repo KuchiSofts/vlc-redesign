@@ -41168,3 +41168,7 @@ msgstr "Não foi possível preparar a atualização neste Mac. Baixe pela págin
 #: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
 msgid "%1 was deleted or moved."
 msgstr "O arquivo %1 foi excluído ou movido."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Adicionar a fila a uma playlist"

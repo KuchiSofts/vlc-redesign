@@ -41349,3 +41349,7 @@ msgstr "La mise à jour n'a pas pu être préparée sur ce Mac. Téléchargez-la
 #: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
 msgid "%1 was deleted or moved."
 msgstr "Le fichier %1 a été supprimé ou déplacé."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Ajouter la file d’attente à une liste de lecture"

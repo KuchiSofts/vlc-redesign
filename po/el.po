@@ -41702,3 +41702,7 @@ msgstr "Δεν ήταν δυνατή η προετοιμασία της ενημ
 #: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
 msgid "%1 was deleted or moved."
 msgstr "Το αρχείο %1 διαγράφηκε ή μετακινήθηκε."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Προσθήκη ουράς σε λίστα αναπαραγωγής"

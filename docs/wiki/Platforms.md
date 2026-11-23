@@ -3,7 +3,7 @@
 VLC Redesign **0.8.0** is released for **Windows 10 (version 1809 or later) and Windows 11,
 64-bit** (x64), **Windows 11 on ARM64**, **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon
 and Intel), with **Android** (phones, tablets and Android TV: a separate app, 0.8.0 too); Samsung TVs
-get **Juxto Media Player** (0.6.8), a player of its own in the design. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
+get **Juxto Media Player** (0.8.0), a player of its own in the design. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
 The status of each platform is kept in one file,
@@ -22,7 +22,7 @@ The study behind the order, with the evidence from VideoLAN's build system:
 | **[macOS](#macos)** | **Released** | **0.8.0** (2026-11-23) | 0.8.1 | macOS 12 Monterey, Apple Silicon or Intel |
 | **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.8.0** (2026-11-23) | 0.8.1 | Windows 11 on ARM64 |
 | **[Android (phones, tablets, TV)](#android)** | **Released** | **0.8.0** (2026-11-23) | 0.8.1 | Android 5.0 or later |
-| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.6.8** (2026-11-15) | 0.8.0 | Tizen 3.0 (2017 models) or later |
+| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.8.0** (2026-11-23) | 0.8.1 | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
@@ -198,10 +198,10 @@ The clips below were recorded on the Android emulator, before the first release.
 
 | | |
 |---|---|
-| **Status** | **Released** in 0.5.3: *Juxto Media Player* (named so from 0.5.6), the app's source with its install guide on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.8) |
-| **Version** | 0.6.8, 2026-11-15 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.6.8)); unchanged since. Next: 0.8.0 |
+| **Status** | **Released** in 0.5.3: *Juxto Media Player* (named so from 0.5.6), the app's source with its install guide on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.0) |
+| **Version** | 0.8.0, 2026-11-23 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.0)). Next: 0.8.1 |
 | **Needs** | Tizen 3.0 (2017 models) or later, installed from a computer with the TV in developer mode |
-| **Files** | `Juxto-Media-Player-TV-0.6.8-source.zip`: [Install and update: Samsung TV](Install-and-Update#samsung-tv) |
+| **Files** | `Juxto-Media-Player-TV-0.8.0-source.zip`: [Install and update: Samsung TV](Install-and-Update#samsung-tv) |
 | **What it is** | A player of its own for Samsung TVs, inspired by VLC, in the design: the library (USB drives and the TV's storage), the player with subtitles from the internet, Live TV with the guide, 17 languages, right to left. The TV's own player plays the video. |
 
 Casting from the desktop to a Samsung TV works today through DLNA: see [Casting to a TV](Casting) and

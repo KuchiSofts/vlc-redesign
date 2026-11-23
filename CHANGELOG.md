@@ -19,6 +19,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - Version 0.8.1 started (VLC_REDESIGN_VERSION).
 - The wiki's About clip recorded again on the released 0.8.0.
+- The Samsung TV app's 0.8.0 joined the 0.8.0 release after its run on a real TV.
+- macOS builds download the build tools from GNU's own server: the random mirror of
+  ftpmirror.gnu.org with an expired certificate failed two macOS x86_64 builds.
 
 ## [0.8.0] · 2026-11-23
 

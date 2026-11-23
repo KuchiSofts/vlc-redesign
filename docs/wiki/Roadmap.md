@@ -21,15 +21,15 @@ Updated as the work moves (last: 2026-11-23, 0.8.0 published, 0.8.1 started).
 | **Android** (phones) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
 | **Android** (tablets) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
 | **Android TV** | ✅ released 0.8.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — 0.8.0 follows (the guide's day, after a run on a real TV); the Samsung store (later) |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
 ## Next: 0.8.1 and after
 
 **0.8.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
-request, then released). The Samsung TV app follows 0.8.0 with its guide fix after a run on a real TV.
+request, then released).
 
-- 🟡 The Samsung TV app's 0.8.0 (the guide's day), after its run on a real TV
+- ✅ The Samsung TV app's 0.8.0 (the guide's day), checked on a real TV, added to the 0.8.0 release
 - ✅ The in-app *What's new* lists only what you see: a line about the release tooling left 0.8.0's
 
 And as the issues bring them:

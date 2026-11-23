@@ -233,7 +233,7 @@ SHA-256 checksums in `SHA256SUMS.txt`. The full guide is
 | **Linux** x86_64 / ARM64 (glibc 2.38: Ubuntu 24.04+, Debian 13, Fedora 39+) | A .deb, .rpm, AppImage or tarball. It installs to `/opt/vlc-redesign` as `vlc-redesign`, next to your distribution's `vlc`. Live TV is an optional add-on package (.deb and .rpm). A Flatpak bundle is also attached to the release. [Which file to pick](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#linux) |
 | **macOS 12+** (Apple Silicon / Intel) | Drag VLC Redesign to Applications. The app is signed ad hoc, not by Apple, so open it once via *System Settings › Privacy & Security › Open Anyway*. [Details](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#macos) |
 | **Android 5.0+** (phones, tablets and Android TV) | The **APK** (`vlc-redesign-0.6.3-android.apk`). Open it on the device and allow installs from that app once. It installs alongside VLC as *VLC Media Player Redesign*. Not available on Google Play. [Details](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#android) |
-| **Samsung TVs** (Tizen 3.0, 2017 models and later) | **Juxto Media Player**, a player of its own inspired by VLC (not VLC), in the design (`Juxto-Media-Player-TV-0.6.8-source.zip`), installed from a computer with the TV in developer mode. Not in Samsung's store. [Step by step](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv) |
+| **Samsung TVs** (Tizen 3.0, 2017 models and later) | **Juxto Media Player**, a player of its own inspired by VLC (not VLC), in the design (`Juxto-Media-Player-TV-0.8.0-source.zip`), installed from a computer with the TV in developer mode. Not in Samsung's store. [Step by step](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv) |
 
 > [!NOTE]
 > The Windows files are not code-signed yet (SignPath Foundation accepted the project, and the signing is being set
@@ -308,7 +308,7 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 <!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
 <p align="center"><sub>
 
-**[Windows 0.8.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.6.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
+**[Windows 0.8.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
 
 </sub></p>
 
@@ -322,7 +322,7 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 | macOS | 🟢 released | 0.8.0 · 2026-11-23 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-macos-x86_64.dmg) |
 | Windows ARM64 | 🟢 released | 0.8.0 · 2026-11-23 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-winarm64.zip) |
 | Android | 🟢 released | 0.8.0 · 2026-11-23 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-android.apk) |
-| Samsung TV | 🟢 released | 0.6.8 · 2026-11-15 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.8/Juxto-Media-Player-TV-0.6.8-source.zip) |
+| Samsung TV | 🟢 released | 0.8.0 · 2026-11-23 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/Juxto-Media-Player-TV-0.8.0-source.zip) |
 | iPhone/iPad | ⚪ later | — | coming soon |
 
 <sub>From [`platforms.yml`](platforms.yml) · [every platform on the website](https://kuchisofts.github.io/vlc-redesign/).</sub>

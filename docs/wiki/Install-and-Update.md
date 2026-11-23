@@ -1,6 +1,6 @@
 # Install and update
 
-VLC Redesign 0.8.0 is released for **Windows**, **Linux** and **macOS**, with **Android** (0.8.0: phones, tablets and TV) and **Samsung TVs** (0.6.8),
+VLC Redesign 0.8.0 is released for **Windows**, **Linux** and **macOS**, with **Android** (0.8.0: phones, tablets and TV) and **Samsung TVs** (0.8.0),
 every file on the
 [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
 
@@ -82,7 +82,7 @@ release's full file (from 0.5.6); the other Linux packages are updated by instal
 
 | File | What it is |
 |---|---|
-| [`Juxto-Media-Player-TV-0.6.8-source.zip`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.8/Juxto-Media-Player-TV-0.6.8-source.zip) (0.6.8) | **Juxto Media Player**: the app's source and its install guide (see [Samsung TV](#samsung-tv)). |
+| [`Juxto-Media-Player-TV-0.8.0-source.zip`](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/Juxto-Media-Player-TV-0.8.0-source.zip) | **Juxto Media Player**: the app's source and its install guide (see [Samsung TV](#samsung-tv)). |
 
 > **Good to know.** Windows SmartScreen may warn about an unknown publisher the first time, because the releases are
 > not code-signed yet: see

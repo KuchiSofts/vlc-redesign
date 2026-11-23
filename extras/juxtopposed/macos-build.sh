@@ -138,11 +138,15 @@ echo "host $HOST_TRIPLET, SDK $SDKROOT, $(xcodebuild -version | head -n 1)"
 step "Build tools"
 cd "$root/extras/tools"
 run tools-bootstrap ./bootstrap
-run tools make -j"$jobs"
+# (GNU's own server: ftpmirror.gnu.org sends to a random mirror, and one with an expired certificate failed
+# m4's download twice in a row, 11-23, after VideoLAN's copy was missing)
+run tools make -j"$jobs" GNU="${VLC_GNU_MIRROR:-https://ftp.gnu.org/gnu}"
 
 # ---------------------------------------------------------------------------
 step "Contribs"
 vlcSetSymbolEnvironment
+# (the same server for what the contribs download: their GNU ?= reads the environment)
+export GNU="${VLC_GNU_MIRROR:-https://ftp.gnu.org/gnu}"
 vlcSetContribEnvironment "$MINIMAL_OSX_VERSION" > "$logs/contrib-environment.log"
 contrib=$build/contrib
 mkdir -p "$contrib/contrib-$HOST_TRIPLET"

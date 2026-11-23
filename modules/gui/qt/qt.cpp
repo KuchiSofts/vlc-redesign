@@ -1384,6 +1384,19 @@ static void *Thread( void *obj )
         }
 #endif
 
+#ifdef Q_OS_MACOS
+        // Metal first, Qt's own choice on a Mac (#89: Qt's software
+        // renderer does not show the video). The OpenGL 3 context of the
+        // probe below fails on every Mac (Apple Silicon and Intel, CI and
+        // users' logs: "OpenGL (ES) 3.0 context creation failed" at each
+        // start) before Metal was taken anyway; it stays the fallback.
+        {
+            QRhiMetalInitParams params;
+            if (QRhi::probe(QRhi::Metal, &params))
+                return {QSGRendererInterface::Metal, false};
+        }
+#endif
+
         if (const std::optional<QSurfaceFormat> format = createCompatibleOpenGLFormat())
         {
             QRhiGles2InitParams params;
@@ -1423,16 +1436,6 @@ static void *Thread( void *obj )
             }
         }
 
-#ifdef Q_OS_MACOS
-        // Metal, Qt's own choice on a Mac: before Qt's software renderer,
-        // which does not show the video (#89: once OpenGL failed there, the
-        // video stayed black at every start)
-        {
-            QRhiMetalInitParams params;
-            if (QRhi::probe(QRhi::Metal, &params))
-                return {QSGRendererInterface::Metal, false};
-        }
-#endif
 
         // TODO: Investigate if using Vulkan makes sense on Windows.
         // TODO: Investigate if it makes sense to try D3D12 when probing D3D11 failed.

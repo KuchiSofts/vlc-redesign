@@ -153,7 +153,31 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.2**: update releases of fixes as the issues bring them.
+- 🟡 **0.8.3**: update releases of fixes as the issues bring them.
+- 🟢 **0.8.2** (2026-11-23, an update release of every app, the Samsung TV app joining from 0.8.0): Android (work/0.8.2, 215822d3c): dialog lists
+  and messages were Material's 60 % of the text colour, grey on the light panel #ABABAA (2.8:1): now the text
+  colour itself (#2E2E2E, 5.9:1) as the desktop's dialogs, light and dark (checked on the emulator, sort dialog).
+  Samsung TV (vlc-redesign-tizen 7da3532): the library now gives the player the song's cover from the TV's media
+  database (thumbnailURIs: the embedded cover the TV extracts), the backdrop dimmed by the desktop's rule (4.5:1
+  for white on the cover's bright parts, 90th of 12x12) and the title grey/near white/dark by 3:1. On the test TV
+  (TV muted, then restored): bright 0.355, backdrop kept 0.741, title #EAEAEA; the PC preview gives the same.
+  #138 (repeat one -> all still repeated once): VLC's core changed repeat/order without updating the media the
+  player had queued next (vlc_playlist_UpdateNextMedia); now it does; same in VideoLAN master. qa/audit080/t138.py
+  (two 5 s tones, rc "repeat off/loop on"): 0.8.1 Tone B at 10.4 s (A again), fix 5.4 s; all -> one: 0.8.1 B,
+  fix A again. #139: the player's panel (CompactLibrary) had a fixed section list without Folders (0.7.4 put it in
+  the sidebar only): a Folders section = the library's folders through the panel's LocalFolderModel (roots, as
+  FolderDisplay), browsed with "Folders > Videos" crumbs, open-in-library -> ["folders"]; checked on Windows.
+  The macOS check (owner 11-23 "super check the macOS version, every line"): the #138 user's log (1,851 lines,
+  0.8.0, macOS 26, M4): 1,561 "stale plugins cache" (4 of 9 starts, all 390 plugins; our 0.2.4 change re-saved
+  the cache into the signed .app = a broken seal). The cause: macos-build.sh filled the dmg with cp -R (new
+  dates for every file), so every install from the dmg was stale once (CI's first, unlogged start re-saved it;
+  PR #140's first run, without the re-save, was stale at all 7 starts). Now: the dmg made with ditto, a plugin
+  in a Mac app checked by its size (it changes only with the whole app, cache included), the cache never
+  written into the app; the smoke test keeps cp -R on purpose and fails on any stale line), 229 auhal errors (stream listeners added again at each device rebuild:
+  upstream's "TODO: only register once"; nameless private devices asked their name), the OpenGL 3 probe failing
+  at every start on every Mac (CI arm64/x86_64 too) before Metal: Metal first on macOS now. Every macOS-only
+  line read (mac_integration.mm, macos_titlebar, open documents, updater, Info.plist, 20 files' blocks): no other
+  fault. CI shots: the light library bar = the frosted effect, as on Windows (the idle seek track unseen on both).
 - 🟢 **0.8.1** published 2026-11-23 07:37 local (tag v0.8.1 on 6bc0fa4f1b, PR #136 merged as 759fc8273f; Android
   tag v0.8.1 on 0569e02986, PR #22 merged as ca1e2b1efd, APK versionCode 13108010; 20 files, small updates 5.2 MB
   x64, 4.2 MB ARM64, the macOS .app.zip for the first time). Before publishing: pkg_scan 0 hits on the Windows

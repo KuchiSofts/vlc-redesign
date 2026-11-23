@@ -60,7 +60,9 @@ case $target in
         hdiutil attach "$target" -nobrowse -readonly -mountpoint "$mount" -quiet || { echo "cannot open $target"; exit 1; }
         app=$(find "$mount" -maxdepth 1 -name '*.app' | head -n 1)
         [ -n "$app" ] || { echo "no app in $target"; exit 1; }
-        # (run from a copy, as from /Applications)
+        # (run from a copy, as from /Applications; cp -R on purpose: it gives
+        # each file a new date, as some ways of installing do, and the plugin
+        # cache must hold anyway, checked below)
         cp -R "$app" "$work/"
         app=$work/$(basename "$app")
         hdiutil detach "$mount" -quiet -force || true
@@ -286,11 +288,25 @@ fi
 grep -E 'using interface module "qt"' "$work/interface.log" > /dev/null \
     && note "ok: the Qt interface was loaded" || fail "the Qt interface was not loaded"
 # the unified title bar (maininterface/macos_titlebar.cpp): the traffic
-# lights in the redesign's top bar, the only bar of the window
+# lights in the redesign's top bar, the only bar of the window. Waited for
+# (up to 20 s more): on the slow Intel runner the window, and its line, came
+# after the 10 s above now and then, though the bar was there
+for _ in $(seq 1 40); do
+    grep -q 'unified title bar:' "$work/interface.log" 2>/dev/null && break
+    kill -0 $pid 2>/dev/null || break
+    sleep 0.5
+done
 if line=$(grep -m 1 'unified title bar:' "$work/interface.log"); then
     note "ok: ${line#*: }"
 else
     fail "no unified title bar on the window (the system's title bar above the redesign's)"
+fi
+# the plugin cache of the app read as it is at every start (src/modules/bank.c:
+# by size in an app; out of date, every start read all the plugins again)
+if grep -l 'stale plugins cache' "$work"/*.log > /dev/null 2>&1; then
+    fail "the plugin cache is out of date: $(cat "$work"/*.log | grep -c 'stale plugins cache') plugins read again"
+else
+    note "ok: the plugin cache holds (no plugin read again)"
 fi
 grep -E 'Qt check failed|cannot start any interface' "$work/interface.log" "$work/interface.out" \
     && fail "Qt did not start"

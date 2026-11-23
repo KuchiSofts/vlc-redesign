@@ -101,6 +101,8 @@ FocusScope {
         { section: "home", icon: "home", title: qsTr("Home") },
         { section: "videos", icon: "videos", title: qsTr("Videos") },
         { section: "music", icon: "songs", title: qsTr("Music") },
+        // the library's folders, videos and songs, as the library's sidebar has them (#139: it had no Folders)
+        { section: "folders", icon: "folder", title: qsTr("Folders") },
         { section: "network", icon: "streaming", title: qsTr("Network") }
     ].concat(_tvAvailable ? [{ section: "tv", icon: "tv", title: qsTr("TV") }] : []).concat([
         { section: "playlists", icon: "playlist", title: qsTr("Playlists") },
@@ -270,7 +272,8 @@ FocusScope {
             // Figma 2160:8732: a folder shown, the Videos icon filled; the
             // folder of the song playing, the Music one (4778:25123)
             if (_folderRoot)
-                return _folderRoot.section === "songs" ? "music" : "videos"
+                return _folderRoot.section === "songs" ? "music"
+                     : _folderRoot.section === "folders" ? "folders" : "videos"
             return _songFolder ? "music" : "videos"
         default:
             return location.section
@@ -317,6 +320,7 @@ FocusScope {
         case "home": return qsTr("Home")
         case "videos": return qsTr("Videos")
         case "music": return qsTr("Music")
+        case "folders": return qsTr("Folders")
         case "network": return qsTr("Network")
         case "playlists": return qsTr("Playlists")
         case "recent": return qsTr("Recent")
@@ -401,6 +405,9 @@ FocusScope {
         case "folder": return folderModel
         case "videos": return ml ? ml.videoFolders : null
         case "songs": return ml ? ml.songFolders : null
+        // (the library's folders as the folder model lists them for the library's Folders page: its order, sort
+        // and search)
+        case "folders": return _mlAvailable ? folderModel : null
         case "music": return _mlAvailable ? musicCategories : null
         case "albums": return ml ? ml.albums : null
         case "artists": return ml ? ml.artists : null
@@ -470,6 +477,7 @@ FocusScope {
         case "videos":
         case "songs":
         case "music":
+        case "folders":
             return _mlAvailable
         case "folder":
             return folderModel.count > 0 && !_folderContent.video
@@ -496,9 +504,38 @@ FocusScope {
         libraryFolder: true
     }
 
+    // the library's folders (its entry points), the rows of Folders (as FolderDisplay.qml reads them)
+    Network.MLFolderModel {
+        id: libraryFolders
+        ctx: MainCtx
+    }
+    Instantiator {
+        id: libraryFolderUrls
+        model: libraryFolders
+        delegate: QtObject {
+            required property var url
+        }
+        // (a folder replaced by another leaves the count as it was)
+        property int revision: 0
+        onObjectAdded: ++revision
+        onObjectRemoved: ++revision
+    }
+    readonly property var _libraryRootUrls: {
+        void libraryFolderUrls.revision
+        let urls = []
+        for (let i = 0; i < libraryFolderUrls.count; ++i) {
+            const entry = libraryFolderUrls.objectAt(i)
+            if (entry)
+                urls.push(String(entry.url))
+        }
+        return urls
+    }
+
     LocalFolderModel {
         id: folderModel
         folder: root.location.section === "folder" ? root.location.folder : ""
+        // Folders: the library's folders themselves
+        roots: root.location.section === "folders" ? root._libraryRootUrls : []
         ml: root._mlAvailable ? MainCtx.mediaLibrary : null
         // Figma: unwatched first, as the folder pages
         sortCriteria: "unwatched"
@@ -562,6 +599,7 @@ FocusScope {
             break
         case "videos":
         case "songs":
+        case "folders":
             // a folder of the library, browsed under the section
             root.go({ section: "folder", folder: entry.url,
                       root: { section: place.section, folder: String(entry.url), trail: root._crumbs } })
@@ -1300,6 +1338,7 @@ FocusScope {
                         return root.location.kind === "frequentFolders"
                     case "videos":
                     case "songs":
+                    case "folders":
                     case "music":
                     case "albums":
                     case "artists":
@@ -1333,6 +1372,7 @@ FocusScope {
                                                                 : (model.name ?? "")
                     case "videos":
                     case "songs":
+                    case "folders":
                         return root._nameOf(model.url)
                     case "network":
                         return model.long_name ?? model.name ?? ""
@@ -1366,6 +1406,7 @@ FocusScope {
                     // the icons of the design (Figma "playlist", "folder")
                     case "videos":
                     case "songs":
+                    case "folders":
                     case "music":
                     case "network":
                     case "genres":
@@ -1383,6 +1424,7 @@ FocusScope {
                     switch (place) {
                     case "videos":
                     case "songs":
+                    case "folders":
                         return root._icon("folder")
                     case "music":
                         return root._icon(model.icon)

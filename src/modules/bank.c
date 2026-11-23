@@ -322,8 +322,18 @@ static int AllocatePluginFile (module_bank_t *bank, const char *abspath,
     {
         plugin = vlc_cache_lookup(&bank->cache, relpath);
 
+#ifdef __APPLE__
+        /* VLC Redesign: in a Mac application (….app/Contents/), a plugin
+         * changes only with the whole application, its cache with it (its
+         * code signature seals both); the dates of its files are those of
+         * the copy that installed it (cp -R, a tool), which made the cache
+         * of every new install out of date: the size is the check there */
+        const bool in_app = strstr(abspath, ".app/Contents/") != NULL;
+#else
+        const bool in_app = false;
+#endif
         if (plugin != NULL
-         && (plugin->mtime != (int64_t)st->st_mtime
+         && ((!in_app && plugin->mtime != (int64_t)st->st_mtime)
           || plugin->size != (uint64_t)st->st_size))
         {
             msg_Err(bank->obj, "stale plugins cache: modified %s",
@@ -557,7 +567,14 @@ static void AllocatePluginPath(libvlc_int_t *obj, const char *path,
 
     if (mode & CACHE_WRITE_FILE)
         CacheSave(obj, path, bank.plugins, bank.size);
-    else if ((mode & CACHE_READ_FILE) && (mode & CACHE_SCAN_DIR) && bank.stale)
+    else if ((mode & CACHE_READ_FILE) && (mode & CACHE_SCAN_DIR) && bank.stale
+#ifdef __APPLE__
+             /* not in a Mac application's own folder (….app/Contents/): its
+              * files are sealed by its code signature, and a cache written
+              * there broke the seal (codesign --verify fails) */
+             && strstr(path, ".app/Contents/") == NULL
+#endif
+            )
     {
         /* Made again for the next start: the times of the files change
          * when the package is unzipped in another time zone, an update adds

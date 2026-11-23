@@ -56,6 +56,11 @@ vlc_playlist_PlaybackOrderChanged(vlc_playlist_t *playlist)
     vlc_playlist_Notify(playlist, on_playback_order_changed, playlist->order);
     vlc_playlist_state_NotifyChanges(playlist, &state);
 
+    /* VLC Redesign (#138): the media the player plays next follows the new
+     * order at once (it kept the one chosen when the current media started:
+     * after Repeat one then Repeat all, the same song played again) */
+    vlc_playlist_UpdateNextMedia(playlist);
+
     char const *state_text = NULL;
     switch (playlist->order)
     {
@@ -89,6 +94,11 @@ vlc_playlist_PlaybackRepeatChanged(vlc_playlist_t *playlist)
 
     vlc_playlist_Notify(playlist, on_playback_repeat_changed, playlist->repeat);
     vlc_playlist_state_NotifyChanges(playlist, &state);
+
+    /* VLC Redesign (#138): the media the player plays next follows the new
+     * repeat at once (it kept the one chosen when the current media started:
+     * after Repeat one then Repeat all, the same song played again) */
+    vlc_playlist_UpdateNextMedia(playlist);
 
     char const *state_text = NULL;
     switch (playlist->repeat)

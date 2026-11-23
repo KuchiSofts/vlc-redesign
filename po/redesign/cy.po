@@ -1885,6 +1885,10 @@ msgstr ""
 "href=\"https://www.videolan.org/contribute/\"><span style=\" text-"
 "decoration: underline; color:#0057ae;\">Helpwch ac ymunwch â ni!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Mae'r ffeil %1 wedi'i dileu neu ei symud."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Diddymu"
@@ -8097,6 +8101,10 @@ msgstr "Neidio i'r hyn sy'n chwarae"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "Agor Uwch..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Ychwanegu'r ciw at restr chwarae"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

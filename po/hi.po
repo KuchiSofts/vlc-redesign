@@ -39571,3 +39571,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "इस Mac पर अपडेट तैयार नहीं किया जा सका। इसे रिलीज़ पेज से डाउनलोड करें।"
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "फ़ाइल %1 हटा दी गई है या कहीं और ले जाई गई है।"
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "कतार को प्लेलिस्ट में जोड़ें"

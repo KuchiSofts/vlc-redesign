@@ -41110,3 +41110,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "No se pudo preparar la actualización en esta Mac. Descárguela desde la página de la versión."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "El archivo %1 se eliminó o se movió."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Agregar la cola a una lista de reproducción"

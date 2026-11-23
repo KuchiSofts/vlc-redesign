@@ -73,7 +73,8 @@ After the push to the public repository, before the release is published:
    the start of the redesign's top bar, the cone and ⋯ after them, nothing over them), the light and the dark
    theme, the window's border and shadow; `about.png` shows About with its *macOS* badge and the Juxtopposed credit
    (a `note:` instead when the runner refused System Events: open About by hand on a Mac then).
-3. **macOS disk images**: `vlc-redesign-X.Y.Z-macos-arm64.dmg` and `-macos-x86_64.dmg` with their `.sha256` in the
+3. **macOS disk images**: `vlc-redesign-X.Y.Z-macos-arm64.dmg` and `-macos-x86_64.dmg`, and from 0.8.1 the app's
+   update zips `-macos-arm64.app.zip` and `-macos-x86_64.app.zip` (#117), with their `.sha256` in the
    `vlc-redesign-macos-<arch>` artifacts go to the release; the notes say they are signed ad hoc (*Open Anyway*,
    `extras/juxtopposed/macos/README.md` §4) and that Live TV is turned off in Settings, Startup.
 4. **macOS by hand, when a Mac is at hand** (the CI can't click): the top bar's buttons under the title bar's band
@@ -104,7 +105,7 @@ Program Files, which the small update can't write, and a copy older than the sma
 |---|---|---|
 | Windows x64 / ARM64 | installer, portable zip, **one** small update (from the release before) | the same |
 | Linux | AppImage (+ .zsync), .deb, .rpm, Flatpak, tar.xz | AppImage (+ .zsync), tar.xz |
-| macOS | disk images | disk images (the app updates itself from them, from 0.5.5) |
+| macOS | disk images, update zips | disk images, update zips (the app updates itself from the zip, from 0.8.1; from the disk image before) |
 | Android | APK | APK |
 | Samsung TV | the source zip | — (the last full release's) |
 | Always | source tarball, `SHA256SUMS.txt` and its signature | the same |
@@ -134,7 +135,7 @@ An update release:
    zip; the small update from the release before, checked by applying it (about a minute). `<folder>` holds the Windows
    workflow's artifact of the pull request (`vlc-redesign-win64-<sha>`, `vlc-redesign-winarm64-<sha>`): a release
    build. A local `-Quick` build is a debug one, and make-release refuses a Qt plugin that keeps asserts.
-3. The Linux AppImages and the disk images from the pull request's CI artifacts (not the .deb, .rpm, Flatpak);
+3. The Linux AppImages, the disk images and the macOS update zips from the pull request's CI artifacts (not the .deb, .rpm, Flatpak);
    the APK; `SHA256SUMS.txt` of all of them, signed.
 4. `release-notes.py`: one table of the files; it names the last full release for the .deb, .rpm and Flatpak.
 5. Everything else as for a release (below): changelog, roadmap, plan, wiki (its file tables: the Windows

@@ -40208,3 +40208,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Cha b' urrainn dhuinn an t-ùrachadh ullachadh air a' choimpiutair Mac seo. Luchdaich a-nuas e o dhuilleag an sgaoilidh."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Chaidh am faidhle %1 a sguabadh às no a ghluasad."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Cuir an ciutha ri liosta-chluich"

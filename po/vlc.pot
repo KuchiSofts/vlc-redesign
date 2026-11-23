@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-22 21:56+0000\n"
+"POT-Creation-Date: 2026-11-23 03:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2013,7 +2013,7 @@ msgid "Deinterlace method to use for video processing."
 msgstr ""
 
 #: src/libvlc-module.c:386 modules/gui/qt/dialogs/dialogs_provider.cpp:558
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1273
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1303
 #: modules/video_filter/deinterlace/deinterlace.h:57
 msgid "Discard"
 msgstr ""
@@ -4424,7 +4424,7 @@ msgstr ""
 msgid "Select the key to set this play queue bookmark."
 msgstr ""
 
-#: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1212
+#: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1242
 msgid "Clear the play queue"
 msgstr ""
 
@@ -5419,7 +5419,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:213
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:272
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:281
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1273
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1303
 #: modules/gui/qt/widgets/native/redesign_message_box.cpp:297
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:29
 #: modules/stream_out/chromecast/cast.cpp:1212
@@ -10438,15 +10438,15 @@ msgstr ""
 msgid "Shared memory framebuffer"
 msgstr ""
 
-#: modules/access/smb2.c:104
+#: modules/access/smb2.c:109
 msgid "SMB2 / SMB3 input"
 msgstr ""
 
-#: modules/access/smb2.c:105
+#: modules/access/smb2.c:110
 msgid "Samba (Windows network shares) input via libsmb2"
 msgstr ""
 
-#: modules/access/smb2.c:963
+#: modules/access/smb2.c:979
 msgid "SMB2 operation failed"
 msgstr ""
 
@@ -16588,7 +16588,7 @@ msgstr ""
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:968
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1014
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1083
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1155
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1168
 msgid "Information"
 msgstr ""
 
@@ -19750,7 +19750,7 @@ msgid "Remove from Play Queue"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueMenuController.m:95
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1172
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Add File..."
 msgstr ""
 
@@ -21285,6 +21285,10 @@ msgstr ""
 msgid "&Close"
 msgstr ""
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr ""
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr ""
@@ -21916,7 +21920,7 @@ msgid "Audio effect settings could not be saved (error %1)."
 msgstr ""
 
 #: modules/gui/qt/dialogs/extended/audio_effects.cpp:525
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:601
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:611
 msgid "The setting \"%1\" changed outside this dialog."
 msgstr ""
 
@@ -22139,7 +22143,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/video_effects.cpp:415
 #: modules/gui/qt/dialogs/extended/video_effects.cpp:485
 #: modules/gui/qt/dialogs/extended/video_effects.cpp:499
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:543
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:549
 msgid "No active video output is available."
 msgstr ""
 
@@ -22182,15 +22186,15 @@ msgstr ""
 msgid "Video output changed; the previous preview can no longer be restored."
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:555
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:565
 msgid "Video preview could not be restored."
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:568
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:578
 msgid "A video effect value is unavailable."
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/video_effects.cpp:600
+#: modules/gui/qt/dialogs/extended/video_effects.cpp:610
 msgid "Video effect settings could not be saved (error %1)."
 msgstr ""
 
@@ -27625,20 +27629,20 @@ msgstr ""
 
 #. xgettext: The step of a jump in seconds shown in full screen
 #. * ("+10 s"); a minute and more are written 1:10
-#: modules/gui/qt/maininterface/mainctx.cpp:962
+#: modules/gui/qt/maininterface/mainctx.cpp:967
 #, no-c-format
 msgid "%1 s"
 msgstr ""
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1488
+#: modules/gui/qt/maininterface/mainctx.cpp:1493
 msgid "Paste from clipboard"
 msgstr ""
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1489
+#: modules/gui/qt/maininterface/mainctx.cpp:1494
 msgid "Do you want to enqueue the following URLs into the play queue?"
 msgstr ""
 
-#: modules/gui/qt/maininterface/mainctx.cpp:1490
+#: modules/gui/qt/maininterface/mainctx.cpp:1495
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:184
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:156
 #: modules/gui/qt/medialibrary/qml/MusicAlbumSectionDelegate.qml:223
@@ -27652,7 +27656,7 @@ msgstr ""
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1871
+#: modules/gui/qt/maininterface/mainctx.cpp:1876
 msgctxt "layout direction"
 msgid "LTR"
 msgstr ""
@@ -28352,7 +28356,7 @@ msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:255
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:981
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1202
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1232
 msgid "Remove Selected"
 msgstr ""
 
@@ -29329,6 +29333,7 @@ msgid "Add and play"
 msgstr ""
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1155
 msgid "Add to playlist"
 msgstr ""
 
@@ -29344,44 +29349,48 @@ msgstr ""
 msgid "Jump to current playing"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1163
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1176
 msgid "Show Containing Directory..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1179
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1192
 msgid "Add Directory..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1198
 msgid "Advanced Open..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1210
+msgid "Add queue to playlist"
+msgstr ""
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1225
 msgid "Save Play Queue to File..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1224
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1254
 msgid "Sort by"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1245
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1275
 msgid "%1 Ascending"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1246
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1276
 msgid "%1 Descending"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1249
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1279
 msgid "Shuffle the play queue"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1263
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1272
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1293
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1302
 msgid "Discard the filtered out items"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1271
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1301
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr ""

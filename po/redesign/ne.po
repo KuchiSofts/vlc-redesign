@@ -1855,6 +1855,10 @@ msgstr ""
 "text-decoration: underline; color:#0057ae;\">सहयोग गर्नुहोस् र हामीसँग जोडिनुहोस्!"
 "</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "फाइल %1 मेटाइएको वा सारिएको छ।"
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "रद्द गर्नुहोस्"
@@ -7922,6 +7926,10 @@ msgstr "हाल बजिरहेकोमा जानुहोस्"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "उन्नत खोल्नुहोस्..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "लाइनलाई प्लेलिस्टमा थप्नुहोस्"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

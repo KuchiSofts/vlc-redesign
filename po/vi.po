@@ -40875,3 +40875,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Không thể chuẩn bị bản cập nhật trên máy Mac này. Hãy tải từ trang phát hành."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Tệp %1 đã bị xóa hoặc di chuyển."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Thêm hàng đợi vào danh sách phát"

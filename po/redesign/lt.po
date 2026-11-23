@@ -1887,6 +1887,10 @@ msgstr ""
 "style=\" text-decoration: underline; color:#0057ae;\">Padėkite ir "
 "prisijunkite prie mūsų!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Failas %1 ištrintas arba perkeltas."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "atšaukti"
@@ -8056,6 +8060,10 @@ msgstr "Pereiti prie dabar grojamo"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "Sudėtingesnis atvėrimas..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Įtraukti eilę į grojaraštį"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

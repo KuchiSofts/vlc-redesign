@@ -1869,6 +1869,10 @@ msgstr ""
 "www.videolan.org/contribute/\"><span style=\" text-decoration: underline; "
 "color:#0057ae;\">مدد کریں اور ہمارے ساتھ شامل ہوں!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "فائل %1 حذف کر دی گئی ہے یا منتقل کر دی گئی ہے۔"
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "منسوخ کریں"
@@ -7997,6 +8001,10 @@ msgstr "ابھی چلنے والے پر جائیں"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "اعلیٰ درجے سے کھولیں..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "قطار کو پلے لسٹ میں شامل کریں"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

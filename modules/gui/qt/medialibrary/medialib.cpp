@@ -28,11 +28,19 @@
 #include <random>
 #include <utility>
 
+#include <QDateTime>
 #include <QDir>
+#include <QFileInfo>
+#include <QGuiApplication>
 #include <QQmlEngine>
+#include <QSet>
 #include <QSettings>
+#include <QTimer>
+#include <QUrl>
 
 #include <vlc_url.h>
+#include <vlc_interface.h>
+#include <vlc_playlist.h>
 
 MediaLib::MediaLib(qt_intf_t *_intf, vlc::playlist::PlaylistController* playlistController, QObject *_parent)
     : QObject( _parent )
@@ -47,6 +55,173 @@ MediaLib::MediaLib(qt_intf_t *_intf, vlc::playlist::PlaylistController* playlist
                                                       this ) );
     m_runner = new ThreadRunner();
     reparseSongsListedAsVideos();
+
+    // deleted files out of the history and the queue: once the library has
+    // started, then each time VLC comes to the front (at most once a minute)
+    QTimer::singleShot(8000, this, &MediaLib::checkMissing);
+    connect(qGuiApp, &QGuiApplication::applicationStateChanged, this, [this](Qt::ApplicationState state) {
+        if (state == Qt::ApplicationActive)
+            checkMissing();
+    });
+}
+
+namespace {
+
+// A local file that is gone: deleted or moved while what held it is still
+// there. A drive that is not plugged in, a share or a volume that is not
+// mounted: its media come back with it, they are kept. A share is only
+// looked at after a play failed (a server that is off makes a look wait).
+bool localFileGone(const QString& mrl, bool network)
+{
+    const QUrl url(mrl);
+    if (!url.isLocalFile())
+        return false;
+    const QString path = url.toLocalFile();
+    if (path.isEmpty())
+        return false;
+    if (!network && (path.startsWith(QLatin1String("//")) || path.startsWith(QLatin1String("\\\\"))))
+        return false;
+    const QFileInfo info(path);
+    if (info.exists())
+        return false;
+    if (info.dir().exists())
+        return true;
+#ifdef _WIN32
+    // its folder went too: gone when the drive is there
+    const QString root = path.left(3);
+    return root.size() == 3 && root.at(1) == QLatin1Char(':') && QDir(root).exists();
+#else
+    // (an unmounted volume takes its folders with it)
+    return false;
+#endif
+}
+
+// The library forgets a media whose file is gone: out of the history
+// (Continue Watching, Recent), and the library's folder that held it read
+// again (the library takes out the files it no longer finds there)
+void forgetInLibrary(vlc_medialibrary_t* ml, const QString& mrl, QSet<QString>& reload)
+{
+    ml_unique_ptr<vlc_ml_media_t> media{ vlc_ml_get_media_by_mrl(ml, qtu(mrl)) };
+    if (!media)
+        return;
+    vlc_ml_media_set_played(ml, media->i_id, false);
+    bool inLibrary = false;
+    if (media->p_files)
+        for (size_t i = 0; i < media->p_files->i_nb_items; ++i)
+        {
+            const vlc_ml_file_t& file = media->p_files->p_items[i];
+            if (file.i_type == VLC_ML_FILE_TYPE_MAIN && !file.b_external)
+                inLibrary = true;
+        }
+    if (!inLibrary)
+        return;
+    vlc_ml_query_params_t params = vlc_ml_query_params_create();
+    ml_unique_ptr<vlc_ml_folder_list_t> points{ vlc_ml_list_entry_points(ml, &params) };
+    if (!points)
+        return;
+    for (size_t i = 0; i < points->i_nb_items; ++i)
+    {
+        const char* point = points->p_items[i].psz_mrl;
+        if (point && mrl.startsWith(QString::fromUtf8(point)))
+            reload.insert(QString::fromUtf8(point));
+    }
+}
+
+} // namespace
+
+void MediaLib::forgetMissing(const QString& mrl)
+{
+    struct Ctx { bool gone = false; };
+    runOnMLThread<Ctx>(this,
+    [mrl](vlc_medialibrary_t* ml, Ctx& ctx) {
+        ctx.gone = localFileGone(mrl, true);
+        if (!ctx.gone)
+            return;
+        QSet<QString> reload;
+        forgetInLibrary(ml, mrl, reload);
+        for (const QString& point : std::as_const(reload))
+            vlc_ml_reload_folder(ml, qtu(point));
+    },
+    [this, mrl](quint64, Ctx& ctx) {
+        if (ctx.gone)
+            removeFromQueue({ mrl });
+    });
+}
+
+void MediaLib::checkMissing()
+{
+    const qint64 now = QDateTime::currentMSecsSinceEpoch();
+    if (m_lastMissingCheck != 0 && now - m_lastMissingCheck < 60000)
+        return;
+    m_lastMissingCheck = now;
+    // the queue's local files, read here (the queue is this thread's); looked
+    // at on the library's thread with the history
+    QStringList queue;
+    vlc_playlist_t* playlist = vlc_intf_GetMainPlaylist(m_intf->intf);
+    vlc_playlist_Lock(playlist);
+    const size_t count = vlc_playlist_Count(playlist);
+    for (size_t i = 0; i < count && i < 5000; ++i)
+    {
+        input_item_t* item = vlc_playlist_item_GetMedia(vlc_playlist_Get(playlist, i));
+        char* uri = item ? input_item_GetURI(item) : nullptr;
+        if (uri && strncmp(uri, "file://", 7) == 0)
+            queue << QString::fromUtf8(uri);
+        free(uri);
+    }
+    vlc_playlist_Unlock(playlist);
+
+    struct Ctx { QStringList gone; };
+    runOnMLThread<Ctx>(this,
+    [queue](vlc_medialibrary_t* ml, Ctx& ctx) {
+        QSet<QString> reload;
+        vlc_ml_query_params_t params = vlc_ml_query_params_create();
+        params.i_nbResults = 500;
+        ml_unique_ptr<vlc_ml_media_list_t> history{ vlc_ml_list_history(ml, &params, VLC_ML_HISTORY_TYPE_LOCAL) };
+        if (history)
+            for (size_t i = 0; i < history->i_nb_items; ++i)
+            {
+                const vlc_ml_media_t& media = history->p_items[i];
+                if (!media.p_files)
+                    continue;
+                for (size_t f = 0; f < media.p_files->i_nb_items; ++f)
+                {
+                    const vlc_ml_file_t& file = media.p_files->p_items[f];
+                    // (a drive that is not plugged in: kept)
+                    if (file.i_type != VLC_ML_FILE_TYPE_MAIN || !file.psz_mrl || (file.b_removable && !file.b_present))
+                        continue;
+                    const QString mrl = QString::fromUtf8(file.psz_mrl);
+                    if (localFileGone(mrl, false))
+                        forgetInLibrary(ml, mrl, reload);
+                }
+            }
+        for (const QString& point : std::as_const(reload))
+            vlc_ml_reload_folder(ml, qtu(point));
+        for (const QString& mrl : queue)
+            if (localFileGone(mrl, false))
+                ctx.gone << mrl;
+    },
+    [this](quint64, Ctx& ctx) {
+        removeFromQueue(ctx.gone);
+    });
+}
+
+void MediaLib::removeFromQueue(const QStringList& mrls)
+{
+    if (mrls.isEmpty())
+        return;
+    const QSet<QString> gone(mrls.cbegin(), mrls.cend());
+    vlc_playlist_t* playlist = vlc_intf_GetMainPlaylist(m_intf->intf);
+    vlc_playlist_Lock(playlist);
+    for (size_t i = vlc_playlist_Count(playlist); i-- > 0;)
+    {
+        input_item_t* item = vlc_playlist_item_GetMedia(vlc_playlist_Get(playlist, i));
+        char* uri = item ? input_item_GetURI(item) : nullptr;
+        const bool remove = uri && gone.contains(QString::fromUtf8(uri));
+        free(uri);
+        if (remove)
+            vlc_playlist_RemoveOne(playlist, i);
+    }
+    vlc_playlist_Unlock(playlist);
 }
 
 // VLC Redesign: songs whose picture is a video track were videos for the

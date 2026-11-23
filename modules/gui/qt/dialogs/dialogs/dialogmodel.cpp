@@ -23,7 +23,11 @@
 // VLC includes
 #include <vlc_dialog.h>
 #include "qt.hpp"
+#include <QDir>
+#include <QFileInfo>
+#include <QRegularExpression>
 #include <QThread>
+#include <QUrl>
 
 #include "maininterface/mainctx.hpp"
 
@@ -90,6 +94,28 @@ QHash<int, QByteArray> DialogErrorModel::roleNames() const /* override */
 // Private functions
 //-------------------------------------------------------------------------------------------------
 
+// VLC Redesign: the name of a local file an error is about when the file is
+// gone while its folder (or its drive) is there: deleted or moved
+static QString goneFileName(const QString& text)
+{
+    static const QRegularExpression mrlPattern(QStringLiteral("file:///[^\\s'\"‘’“”«»]+"));
+    const QRegularExpressionMatch match = mrlPattern.match(text);
+    if (!match.hasMatch())
+        return {};
+    const QString path = QUrl(match.captured(0)).toLocalFile();
+    if (path.isEmpty())
+        return {};
+    const QFileInfo info(path);
+    if (info.exists())
+        return {};
+    bool holderThere = info.dir().exists();
+#ifdef _WIN32
+    if (!holderThere && path.size() > 3 && path.at(1) == QLatin1Char(':'))
+        holderThere = QDir(path.left(3)).exists();
+#endif
+    return holderThere ? info.fileName() : QString();
+}
+
 void DialogErrorModel::onError(void * p_data,
                                const char * psz_title, const char * psz_text)
 {
@@ -97,8 +123,19 @@ void DialogErrorModel::onError(void * p_data,
 
     DialogErrorModel::DialogError error { psz_title, psz_text };
 
-    QMetaObject::invokeMethod(model, [model, error = std::move(error)]()
+    // "unable to open the MRL 'file:///…'" of a file that was deleted or
+    // moved said so, once (the queue and the history let it go:
+    // MediaLib::forgetMissing)
+    // (the popup shows the title: the sentence is both)
+    const QString gone = goneFileName(error.text);
+    if (!gone.isEmpty())
+        error.title = error.text = qtr("%1 was deleted or moved.").arg(gone);
+
+    QMetaObject::invokeMethod(model, [model, error = std::move(error), gone]()
     {
+        if (!gone.isEmpty() && !model->m_data.isEmpty() && model->m_data.last().title == error.title
+            && model->m_data.last().text == error.text)
+            return;
         model->pushError(error);
     });
 }

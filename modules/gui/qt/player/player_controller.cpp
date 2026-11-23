@@ -654,10 +654,23 @@ static void on_player_state_changed(vlc_player_t *, enum vlc_player_state state,
     });
 }
 
-void on_player_error_changed(vlc_player_t *, enum vlc_player_error , void *data)
+void on_player_error_changed(vlc_player_t *player, enum vlc_player_error error, void *data)
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
     msg_Dbg( that->p_intf, "on_player_error_changed");
+    // VLC Redesign: the media that could not be opened, for the library to
+    // see whether its file was deleted (MediaLib::forgetMissing)
+    if (error == VLC_PLAYER_ERROR_NONE)
+        return;
+    input_item_t *item = vlc_player_GetCurrentMedia(player);
+    char *uri = item ? input_item_GetURI(item) : nullptr;
+    if (uri == nullptr)
+        return;
+    const QString mrl = QString::fromUtf8(uri);
+    free(uri);
+    that->callAsync([that, mrl](){
+        emit that->q_func()->mediaOpenFailed(mrl);
+    });
 }
 
 static void on_player_buffering(vlc_player_t *, float new_buffering, void *data)

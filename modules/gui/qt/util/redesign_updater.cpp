@@ -108,9 +108,14 @@ const char deltaInfix[] = "";
 // quit); a release without that image is not an update of this Mac
 # if defined(__aarch64__) || defined(__arm64__)
 const char ownPackageSuffix[] = "-macos-arm64.dmg";
+const char ownArchiveSuffix[] = "-macos-arm64.app.zip";
 # else
 const char ownPackageSuffix[] = "-macos-x86_64.dmg";
+const char ownArchiveSuffix[] = "-macos-x86_64.app.zip";
 # endif
+// (#117) The release's zip of the application is taken before its disk image
+// when there is one: the helper unpacks it with ditto, no image to open (on a
+// user's Mac the attach of the image never answered when VLC started it)
 
 // The application bundle this VLC runs from (…/VLC Redesign.app), empty when
 // it doesn't run from one
@@ -146,9 +151,15 @@ bool hasOwnPackage(const QJsonObject &release)
     return false;
 #endif
 #if defined(_WIN32) || defined(__linux__) || defined(__APPLE__)
-    for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray())
-        if (asset.toObject().value(QLatin1String("name")).toString().endsWith(suffix, Qt::CaseInsensitive))
+    for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray()) {
+        const QString name = asset.toObject().value(QLatin1String("name")).toString();
+        if (name.endsWith(suffix, Qt::CaseInsensitive))
             return true;
+#ifdef __APPLE__
+        if (name.endsWith(QLatin1String(ownArchiveSuffix), Qt::CaseInsensitive))
+            return true;
+#endif
+    }
     return false;
 #endif
 }
@@ -886,6 +897,9 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     m_sigUrl.clear();
 #ifdef __APPLE__
     bool ownPackage = false;
+    // (the zip of the application, taken before the disk image)
+    QString archiveUrl, archiveName;
+    qint64 archiveSize = 0;
 #endif
     for (const QJsonValue asset : release.value(QLatin1String("assets")).toArray()) {
         const QJsonObject a = asset.toObject();
@@ -912,6 +926,12 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
             m_installerSize = size;
         }
 #elif defined(__APPLE__)
+        else if (name.endsWith(QLatin1String(ownArchiveSuffix), Qt::CaseInsensitive)) {
+            ownPackage = true;
+            archiveUrl = url;
+            archiveName = name;
+            archiveSize = size;
+        }
         else if (name.endsWith(QLatin1String(ownPackageSuffix), Qt::CaseInsensitive)) {
             ownPackage = true;
             m_installerUrl = url;
@@ -930,6 +950,11 @@ void RedesignUpdater::onRelease(int status, const QByteArray &body)
     if (!ownPackage) {
         setState(UpToDate);
         return;
+    }
+    if (!archiveUrl.isEmpty()) {
+        m_installerUrl = archiveUrl;
+        m_installerName = archiveName;
+        m_installerSize = archiveSize;
     }
 #endif
     msg_Dbg(m_intf, "update check: the newest release for this system is %s (this copy: %s)",
@@ -1586,8 +1611,9 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                         QFile::remove(saved->path);
                 }
 #ifdef __APPLE__
-                // The image's application copied next to this one and checked
-                // (vlc-redesign-update.sh stage): saved->path is that copy
+                // The application of the zip (or of the image) copied next to
+                // this one and checked (vlc-redesign-update.sh stage):
+                // saved->path is that copy
                 if (saved->error.isEmpty()) {
                     const QString image = saved->path;
                     const QString bundle = ownBundle();

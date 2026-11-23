@@ -277,6 +277,11 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     b_hasMedialibrary = (ml != NULL);
     if (b_hasMedialibrary) {
         m_medialib = new MediaLib(p_intf, p_intf->p_mainPlaylistController);
+        // a media that could not be opened: out of the queue and the history
+        // when its file was deleted or moved
+        if (p_intf->p_mainPlayerController)
+            connect(p_intf->p_mainPlayerController, &PlayerController::mediaOpenFailed,
+                    m_medialib, &MediaLib::forgetMissing);
     }
 
     /* Controlbar Profile Model Creation */

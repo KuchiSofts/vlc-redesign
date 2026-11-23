@@ -1908,6 +1908,10 @@ msgstr ""
 "decoration: underline; color:#0057ae;\">Ajutați-ne și alăturați-vă nouă!</"
 "span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Fișierul %1 a fost șters sau mutat."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Renunță"
@@ -8103,6 +8107,10 @@ msgstr "Salt la elementul în redare"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "Deschidere avansată..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Adaugă coada la o listă de redare"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

@@ -39589,3 +39589,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "මෙම Mac හි යාවත්කාලීනය සූදානම් කළ නොහැකි විය. එය නිකුතු පිටුවෙන් බාගන්න."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 ගොනුව මකා දමා හෝ ගෙන ගොස් ඇත."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "පෝලිම ධාවන ලැයිස්තුවට එක් කරන්න"

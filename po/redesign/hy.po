@@ -1894,6 +1894,10 @@ msgstr ""
 "\"><span style=\" text-decoration: underline; color:#0057ae;\">Օգնեք և "
 "միացեք մեզ!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 ֆայլը ջնջվել կամ տեղափոխվել է։"
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "չեղարկել"
@@ -8041,6 +8045,10 @@ msgstr "Անցնել ընթացիկ նվագարկվողին"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "Ընդլայնված բացում..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Ավելացնել հերթը նվագացանկին"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

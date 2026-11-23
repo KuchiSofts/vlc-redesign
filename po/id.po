@@ -40538,3 +40538,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Pembaruan tidak dapat disiapkan di Mac ini. Unduh dari halaman rilis."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "File %1 telah dihapus atau dipindahkan."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Tambahkan antrean ke daftar putar"

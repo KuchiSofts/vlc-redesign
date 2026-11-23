@@ -670,6 +670,7 @@ modules/gui/minimal_macosx/macosx.c
 modules/gui/ncurses.c
 modules/gui/qt/dialogs/bookmarks/bookmarks.cpp
 modules/gui/qt/dialogs/bookmarks/bookmarks.hpp
+modules/gui/qt/dialogs/dialogs/dialogmodel.cpp
 modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml
 modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml
 modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml

@@ -41057,3 +41057,11 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Nie udało się przygotować aktualizacji na tym Macu. Pobierz ją ze strony wydania."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Plik %1 został usunięty lub przeniesiony."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Dodaj kolejkę do listy odtwarzania"

@@ -1883,6 +1883,10 @@ msgstr ""
 "href=\"https://www.videolan.org/contribute/\"><span style=\" text-"
 "decoration: underline; color:#0057ae;\">உதவுங்கள், எங்களுடன் இணையுங்கள்!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 கோப்பு நீக்கப்பட்டது அல்லது நகர்த்தப்பட்டது."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "ரத்துசெய்"
@@ -8018,6 +8022,10 @@ msgstr "தற்போது இயங்குவதற்குச் செ�
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "மேம்பட்ட திறப்பு..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "வரிசையை பிளேலிஸ்டில் சேர்"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

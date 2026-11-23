@@ -153,13 +153,21 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.1**: update releases of fixes as the issues bring them; the Samsung TV app's 0.8.0 (the guide's day) after
+- 🟡 **0.8.2**: update releases of fixes as the issues bring them.
+- 🟢 **0.8.1** (2026-11-23, an update release; the Samsung TV app stays 0.8.0, follows: 0.8.1): the first fixes after 0.8.0; the Samsung TV app's 0.8.0 (the guide's day) after
   its run on the test TV. The in-app What's new of 0.8.0 listed "The release check reads the Discussions" (a tooling
   line of the changelog's Added): moved to Technical.
   Owner 11-23: a deleted file stayed in the queue and the history and failed at each play ("please be smarter"):
   desktop and Android drop it and say it was deleted or moved (in work). Discussion #132's author asks next for
   sorting (A-Z, newly added, date modified, both ways) in the Video and Music tabs and Play all of a folder
   (with or without its subfolders): Android 0.8.1.
+  Done 11-23 (emulator): Folders has Play all, an Include subfolders switch (remembered per Videos/Music) and
+  Sort by (name, recently added, modified, length, both ways; folders follow Z-A); every library tab's menu has
+  Sort by… (opens Display settings, where the order is). Play all in Series: off = Trailer only, on = Trailer then
+  Episode 1. Issue #135 (11-23): the queue's right-click menu has Add queue to playlist (the whole queue, beside
+  Save Play Queue to File) and Add to playlist (the selection); checked on Windows: playlist "Queue test" holds
+  both songs in queue order. #117 (11-23): the 0.7.5+ log says the image's attach never answered (362 s), no
+  permission dialog seen: the next macOS update moves to a zip (no disk image to open).
 - 🟢 **0.8.0** published 2026-11-23 03:33 local (tag v0.8.0 on 607148c6b2, PR #133 merged as 1511d02400; Android
   tag v0.8.0 on 8c010b4a4, PR #21 merged as 6900beb076; small updates 2.7 MB x64, 2.0 MB ARM64; 26 files,
   the list signed). Before publishing: CI's AppImage in a container with openbox and real input (full screen:

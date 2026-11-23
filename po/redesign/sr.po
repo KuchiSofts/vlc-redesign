@@ -1885,6 +1885,10 @@ msgstr ""
 "decoration: underline; color:#0057ae;\">Помозите и придружите нам се!</"
 "span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Датотека %1 је обрисана или премештена."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Откажи"
@@ -8042,6 +8046,10 @@ msgstr "Иди на тренутно пуштану ставку"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
 msgid "Advanced Open..."
 msgstr "Напредно отварање..."
+
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Додај ред на листу за пуштање"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."

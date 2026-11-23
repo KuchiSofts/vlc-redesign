@@ -484,6 +484,8 @@ public slots:
     RendererManager* getRendererManager();
 
 signals:
+    // VLC Redesign: a media could not be opened (its MRL)
+    void mediaOpenFailed( const QString& mrl );
     //playback
     void playingStateChanged( PlayingState state );
     void inputChanged( bool hasInput );

@@ -154,6 +154,13 @@ What is being worked on, updated as it changes (2026-11-10):
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
 - 🟡 **0.8.3**: update releases of fixes as the issues bring them.
+- 🟢 **0.8.2** published 2026-11-23 20:41 local (tag v0.8.2 on 1d886664c5, PR #140 merged as 938f251085; Android tag
+  v0.8.2 on acfafce16, PR #23 merged as 1ec16ea8a6; Samsung TV app tag v0.8.2 00c9cfb in its repo, its zip added; 21
+  files, small updates 1.2 MB x64, 0.9 MB ARM64). Before publishing: CI green on every platform (the Intel Mac's
+  title-bar check waits for its line now; GitHub stopped one Apple Silicon job, run again), VideoLAN master merged
+  (5589a060d4), pkg_scan 0 hits on the 4 zips, the release zip passes t138.py, the APK updated 0.8.1 in place, the TV
+  runs 0.8.2. After: a 0.8.1 copy updated itself to 0.8.2 (About: 0.8.2, Also on every platform 0.8.2). #138, #139
+  closed; #117 asked to try the first update from the zip (0.8.1 -> 0.8.2).
 - 🟢 **0.8.2** (2026-11-23, an update release of every app, the Samsung TV app joining from 0.8.0): Android (work/0.8.2, 215822d3c): dialog lists
   and messages were Material's 60 % of the text colour, grey on the light panel #ABABAA (2.8:1): now the text
   colour itself (#2E2E2E, 5.9:1) as the desktop's dialogs, light and dark (checked on the emulator, sort dialog).

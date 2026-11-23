@@ -39,6 +39,7 @@ request, then released).
 
 - 🟡 macOS: the first update from the zip on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (0.8.1 or later installed from the disk image once, then the next update comes through the app)
+- ✅ A scroll bar in the player's library panel ([#143](https://github.com/KuchiSofts/vlc-redesign/discussions/143))
 
 And as the issues bring them:
 

@@ -115,14 +115,25 @@ typedef NS_ENUM(NSUInteger, VLCSampleBufferPixelFlip) {
         return NO;
     }
 
+    OSType poolFormat;
+    value = CFDictionaryGetValue(poolAttr, kCVPixelBufferPixelFormatTypeKey);
+    if (!value || CFGetTypeID(value) != CFNumberGetTypeID()
+        || !CFNumberGetValue(value, kCFNumberIntType, &poolFormat)
+        || poolFormat != CVPixelBufferGetPixelFormatType(pixelBuffer))
+    {
+        return NO;
+    }
+
     return YES;
 }
 
 - (CVPixelBufferRef)provideFromBuffer:(CVPixelBufferRef)pixelBuffer
                              rotation:(VLCSampleBufferPixelRotation)rotation
 {
-    if (![self _validateRotationPoolWithBuffer:pixelBuffer rotation:rotation])
+    if (![self _validateRotationPoolWithBuffer:pixelBuffer rotation:rotation]) {
         CVPixelBufferPoolRelease(_rotationPool);
+        _rotationPool = NULL;
+    }
 
     if (!_rotationPool) {
         bool rotated = rotation == kVLCSampleBufferPixelRotation_90CW || rotation == kVLCSampleBufferPixelRotation_90CCW;

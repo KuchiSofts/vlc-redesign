@@ -153,7 +153,8 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.2**: update releases of fixes as the issues bring them. Android (work/0.8.2, 215822d3c): dialog lists
+- 🟡 **0.8.3**: update releases of fixes as the issues bring them.
+- 🟢 **0.8.2** (2026-11-23, an update release of every app, the Samsung TV app joining from 0.8.0): Android (work/0.8.2, 215822d3c): dialog lists
   and messages were Material's 60 % of the text colour, grey on the light panel #ABABAA (2.8:1): now the text
   colour itself (#2E2E2E, 5.9:1) as the desktop's dialogs, light and dark (checked on the emulator, sort dialog).
   Samsung TV (vlc-redesign-tizen 7da3532): the library now gives the player the song's cover from the TV's media

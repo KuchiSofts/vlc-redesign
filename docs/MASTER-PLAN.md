@@ -168,8 +168,11 @@ What is being worked on, updated as it changes (2026-11-10):
   FolderDisplay), browsed with "Folders > Videos" crumbs, open-in-library -> ["folders"]; checked on Windows.
   The macOS check (owner 11-23 "super check the macOS version, every line"): the #138 user's log (1,851 lines,
   0.8.0, macOS 26, M4): 1,561 "stale plugins cache" (4 of 9 starts, all 390 plugins; our 0.2.4 change re-saved
-  the cache into the signed .app = a broken seal: not inside .app on macOS now; CI's dmg installs are not stale,
-  the user's install way unknown), 229 auhal errors (stream listeners added again at each device rebuild:
+  the cache into the signed .app = a broken seal). The cause: macos-build.sh filled the dmg with cp -R (new
+  dates for every file), so every install from the dmg was stale once (CI's first, unlogged start re-saved it;
+  PR #140's first run, without the re-save, was stale at all 7 starts). Now: the dmg made with ditto, a plugin
+  in a Mac app checked by its size (it changes only with the whole app, cache included), the cache never
+  written into the app; the smoke test keeps cp -R on purpose and fails on any stale line), 229 auhal errors (stream listeners added again at each device rebuild:
   upstream's "TODO: only register once"; nameless private devices asked their name), the OpenGL 3 probe failing
   at every start on every Mac (CI arm64/x86_64 too) before Metal: Metal first on macOS now. Every macOS-only
   line read (mac_integration.mm, macos_titlebar, open documents, updater, Info.plist, 20 files' blocks): no other

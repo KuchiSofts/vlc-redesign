@@ -322,8 +322,18 @@ static int AllocatePluginFile (module_bank_t *bank, const char *abspath,
     {
         plugin = vlc_cache_lookup(&bank->cache, relpath);
 
+#ifdef __APPLE__
+        /* VLC Redesign: in a Mac application (….app/Contents/), a plugin
+         * changes only with the whole application, its cache with it (its
+         * code signature seals both); the dates of its files are those of
+         * the copy that installed it (cp -R, a tool), which made the cache
+         * of every new install out of date: the size is the check there */
+        const bool in_app = strstr(abspath, ".app/Contents/") != NULL;
+#else
+        const bool in_app = false;
+#endif
         if (plugin != NULL
-         && (plugin->mtime != (int64_t)st->st_mtime
+         && ((!in_app && plugin->mtime != (int64_t)st->st_mtime)
           || plugin->size != (uint64_t)st->st_size))
         {
             msg_Err(bank->obj, "stale plugins cache: modified %s",

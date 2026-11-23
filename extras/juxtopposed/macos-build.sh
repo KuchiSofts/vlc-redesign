@@ -438,7 +438,9 @@ dmg=$out/vlc-redesign-$version-macos-$arch.dmg
 stage=$build/dmg
 rm -rf "$stage" "$dmg"
 mkdir -p "$stage"
-cp -R "$app" "$stage/"
+# (ditto: the files' dates, links and signatures kept; cp -R gave each file
+# a new date)
+ditto "$app" "$stage/$(basename "$app")"
 ln -s /Applications "$stage/Applications"
 # (hdiutil is known to fail now and then on CI Macs: "Resource busy")
 for attempt in 1 2 3; do

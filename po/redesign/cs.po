@@ -6862,6 +6862,10 @@ msgstr "Obnovit"
 msgid "Maximize"
 msgstr "Maximalizovat"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Ukončit celou obrazovku"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Žádné výsledky"
@@ -9231,10 +9235,6 @@ msgstr "Název složky není k dispozici"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Snímková frekvence není k dispozici"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Ukončit celou obrazovku"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

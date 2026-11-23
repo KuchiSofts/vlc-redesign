@@ -6687,6 +6687,10 @@ msgstr "คืนขนาด"
 msgid "Maximize"
 msgstr "ขยายใหญ่สุด"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "ออกจากเต็มจอ"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "ไม่มีผลลัพธ์"
@@ -9012,10 +9016,6 @@ msgstr "ไม่มีข้อมูลชื่อโฟลเดอร์"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ไม่มีข้อมูลอัตราเฟรม"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "ออกจากเต็มจอ"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

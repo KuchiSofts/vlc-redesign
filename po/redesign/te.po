@@ -6721,6 +6721,10 @@ msgstr "పునరుద్ధరించు"
 msgid "Maximize"
 msgstr "గరిష్ఠీకరించు"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "పూర్తితెర నుండి నిష్క్రమించు"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "ఫలితాలు లేవు"
@@ -9058,10 +9062,6 @@ msgstr "సంచయం పేరు అందుబాటులో లేదు
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ఫ్రేమ్ రేటు అందుబాటులో లేదు"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "పూర్తితెర నుండి నిష్క్రమించు"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

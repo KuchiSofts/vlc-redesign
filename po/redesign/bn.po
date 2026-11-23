@@ -6773,6 +6773,10 @@ msgstr "পুনঃস্থাপন"
 msgid "Maximize"
 msgstr "বড় করুন"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "পূর্ণ স্ক্রিন থেকে বেরোন"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "কোনো ফলাফল নেই"
@@ -9117,10 +9121,6 @@ msgstr "ফোল্ডারের নাম উপলব্ধ নেই"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ফ্রেম রেট উপলব্ধ নেই"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "পূর্ণ স্ক্রিন থেকে বেরোন"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

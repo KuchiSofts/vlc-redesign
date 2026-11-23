@@ -182,10 +182,10 @@ In depth: [Effects](Effects) · [Equalizer](Effects#equalizer) · [Video](Effect
 
 ### About
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/about.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/about.gif" alt="About: the platform badge Windows x64, What's new in 0.4.0 and the designer's credit" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/about.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/about.webp" alt="About in 0.8.0: the version, the platform badge Windows x64, the designer's credit and the other systems" width="960"></a>
 
-**About.** **⋯ → About VLC**: the platform badge (*Windows x64*), *What's new* in 0.4.0, and the credit of the
-designer, Juxtopposed.
+**About.** **⋯ → About VLC**: the version with its *What's new*, the platform badge (*Windows x64*), the credit of the
+designer, Juxtopposed, and the other systems it runs on.
 
 In depth: [Credits and license](Credits-and-License) · [Small updates](Install-and-Update#small-updates)
 

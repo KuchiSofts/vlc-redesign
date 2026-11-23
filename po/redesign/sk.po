@@ -6858,6 +6858,10 @@ msgstr "Obnoviť"
 msgid "Maximize"
 msgstr "Maximalizovať"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Ukončiť celú obrazovku"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Žiadne výsledky"
@@ -9231,10 +9235,6 @@ msgstr "Názov priečinka nie je k dispozícii"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Snímková frekvencia nie je k dispozícii"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Ukončiť celú obrazovku"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

@@ -6804,6 +6804,10 @@ msgstr "ಮರುಸ್ಥಾಪಿಸಿ"
 msgid "Maximize"
 msgstr "ಗರಿಷ್ಠಗೊಳಿಸಿ"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "ಪೂರ್ಣತೆರೆಯಿಂದ ನಿರ್ಗಮಿಸಿ"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "ಫಲಿತಾಂಶಗಳಿಲ್ಲ"
@@ -9141,10 +9145,6 @@ msgstr "ಕೋಶದ ಹೆಸರು ಲಭ್ಯವಿಲ್ಲ"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ಚೌಕಟ್ಟು ದರ ಲಭ್ಯವಿಲ್ಲ"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "ಪೂರ್ಣತೆರೆಯಿಂದ ನಿರ್ಗಮಿಸಿ"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

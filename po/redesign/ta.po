@@ -6826,6 +6826,10 @@ msgstr "மீட்டமை"
 msgid "Maximize"
 msgstr "பெரிதாக்கு"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "முழுத்திரையிலிருந்து வெளியேறு"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "முடிவுகள் இல்லை"
@@ -9180,10 +9184,6 @@ msgstr "கோப்புறைப் பெயர் கிடைக்கவ�
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "சட்டக வீதம் கிடைக்கவில்லை"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "முழுத்திரையிலிருந்து வெளியேறு"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

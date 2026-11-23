@@ -6739,6 +6739,10 @@ msgstr "पुनर्स्थापना गर्नुहोस्"
 msgid "Maximize"
 msgstr "ठूलो पार्नुहोस्"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "पूरापर्दाबाट निस्कनुहोस्"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "कुनै परिणाम छैन"
@@ -9079,10 +9083,6 @@ msgstr "फोल्डरको नाम उपलब्ध छैन"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "फ्रेम दर उपलब्ध छैन"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "पूरापर्दाबाट निस्कनुहोस्"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

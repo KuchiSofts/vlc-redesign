@@ -6884,6 +6884,10 @@ msgstr "Rimete"
 msgid "Maximize"
 msgstr "Mete å pus grand"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Cwiter l' forrimpli waitroûle"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Nou rizultat"
@@ -9264,10 +9268,6 @@ msgstr "No do ridant nén disponibe"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Imådjes pa sigonde nén disponibe"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Cwiter l' forrimpli waitroûle"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

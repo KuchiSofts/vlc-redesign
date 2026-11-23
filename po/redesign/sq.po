@@ -6855,6 +6855,10 @@ msgstr "Rikthe"
 msgid "Maximize"
 msgstr "Maksimizo"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Dil nga ekrani i plotë"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Nuk ka rezultate"
@@ -9221,10 +9225,6 @@ msgstr "Emri i dosjes nuk është i disponueshëm"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Shpejtësia e kuadrove nuk është e disponueshme"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Dil nga ekrani i plotë"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

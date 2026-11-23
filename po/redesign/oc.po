@@ -6903,6 +6903,10 @@ msgstr "Restablir"
 msgid "Maximize"
 msgstr "Maximizar"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Quitar l'ecran complet"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Cap de resultat"
@@ -9289,10 +9293,6 @@ msgstr "Nom del dorsièr indisponible"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Cadéncia d'imatges indisponibla"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Quitar l'ecran complet"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

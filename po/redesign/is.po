@@ -6826,6 +6826,10 @@ msgstr "Endurheimta"
 msgid "Maximize"
 msgstr "Hámarka"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Hætta í heilskjá"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Engar niðurstöður"
@@ -9177,10 +9181,6 @@ msgstr "Heiti möppu ekki tiltækt"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Rammahraði ekki tiltækur"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Hætta í heilskjá"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

@@ -6815,6 +6815,10 @@ msgstr "აღდგენა"
 msgid "Maximize"
 msgstr "გაშლა"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "სრული ეკრანიდან გასვლა"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "შედეგები არ არის"
@@ -9154,10 +9158,6 @@ msgstr "საქაღალდის სახელი მიუწვდო�
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "კადრების სიხშირე მიუწვდომელია"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "სრული ეკრანიდან გასვლა"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

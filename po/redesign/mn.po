@@ -6822,6 +6822,10 @@ msgstr "Сэргээх"
 msgid "Maximize"
 msgstr "Томсгох"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Бүтэн дэлгэцээс гарах"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Үр дүн алга"
@@ -9175,10 +9179,6 @@ msgstr "Хавтасны нэр тодорхойгүй"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Кадрын давтамж тодорхойгүй"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Бүтэн дэлгэцээс гарах"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

@@ -6884,6 +6884,10 @@ msgstr "Adfer"
 msgid "Maximize"
 msgstr "Mwyhau"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Gadael Sgrin Lawn"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Dim canlyniadau"
@@ -9269,10 +9273,6 @@ msgstr "Nid yw enw'r ffolder ar gael"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Nid yw'r gyfradd fframiau ar gael"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Gadael Sgrin Lawn"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

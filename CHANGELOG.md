@@ -15,6 +15,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Version 0.8.1 started (VLC_REDESIGN_VERSION).
+- The wiki's About clip recorded again on the released 0.8.0.
+- The Samsung TV app's 0.8.0 joined the 0.8.0 release after its run on a real TV.
+- macOS builds download the build tools from GNU's own server: the random mirror of
+  ftpmirror.gnu.org with an expired certificate failed two macOS x86_64 builds.
+
 ## [0.8.0] · 2026-11-23
 
 A full release, every package: a check of every app, a Folders tab on Android, Play all and Shuffle on Tracks,
@@ -26,7 +34,6 @@ README, and VideoLAN's latest changes. Windows, ARM64, Linux, macOS and Android;
 - **Android: a Folders tab in Videos and Music** ([#132](https://github.com/KuchiSofts/vlc-redesign/discussions/132)): folder by folder, only the folders that hold media.
 - **Play all and Shuffle on the Tracks page**, and Shuffle in the player sidebar's menus of albums, artists, playlists and folders ([#130](https://github.com/KuchiSofts/vlc-redesign/discussions/130)).
 - **Android TV: the keyboard shortcuts list is one stop** of the remote that scrolls, not 37 rows that did nothing.
-- **The release check reads the Discussions** and the Android app's issues too.
 
 ### Fixed
 
@@ -54,6 +61,7 @@ README, and VideoLAN's latest changes. Windows, ARM64, Linux, macOS and Android;
   module's support for it.
 - Android: VideoLAN's vlc-android master merged up to `2066508dd` (2026-11-19, 18 commits): Remote Access pinned to 0.28.0.
 - The README's clips recorded again on 0.8.0: animated WebP, sharper and lighter than the GIFs, a 1080p MP4 behind each.
+- The release check reads the Discussions and the Android app's issues too.
 
 ## [0.7.8] · 2026-11-22
 

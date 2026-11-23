@@ -6885,6 +6885,10 @@ msgstr "Leheneratu"
 msgid "Maximize"
 msgstr "Maximizatu"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Irten pantaila osotik"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Emaitzarik ez"
@@ -9260,10 +9264,6 @@ msgstr "Karpetaren izena ez dago erabilgarri"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Marko-emaria ez dago erabilgarri"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Irten pantaila osotik"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

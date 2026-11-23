@@ -153,6 +153,20 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
+- 🟡 **0.8.1**: update releases of fixes as the issues bring them; the Samsung TV app's 0.8.0 (the guide's day) after
+  its run on the test TV. The in-app What's new of 0.8.0 listed "The release check reads the Discussions" (a tooling
+  line of the changelog's Added): moved to Technical.
+  Owner 11-23: a deleted file stayed in the queue and the history and failed at each play ("please be smarter"):
+  desktop and Android drop it and say it was deleted or moved (in work). Discussion #132's author asks next for
+  sorting (A-Z, newly added, date modified, both ways) in the Video and Music tabs and Play all of a folder
+  (with or without its subfolders): Android 0.8.1.
+- 🟢 **0.8.0** published 2026-11-23 03:33 local (tag v0.8.0 on 607148c6b2, PR #133 merged as 1511d02400; Android
+  tag v0.8.0 on 8c010b4a4, PR #21 merged as 6900beb076; small updates 2.7 MB x64, 2.0 MB ARM64; 26 files,
+  the list signed). Before publishing: CI's AppImage in a container with openbox and real input (full screen:
+  minimize, the lit Exit Fullscreen, close; Exit Fullscreen works), the release zip played with About 0.8.0,
+  the signed APK updated 0.7.5 in place on the emulator, pkg_scan 0 hits on both zips (the APK's 3 are parts of
+  longer words in its channel lists and a German text). The macOS x86_64 job failed once on a GNU mirror's expired certificate (m4's tarball),
+  passed when run again.
 - 🟢 **0.8.0** (2026-11-23, a full release; the Samsung TV app follows): the full check (owner 11-22: "fully scan every app … every function, option, button, key, window,
   tab … no memory leak and no lags"; "every resolution of videos from 3gp to 8K to 120fps to 240fps"; the
   README's gifs in higher quality; the wiki; the git of the project). Done so far: Windows tours of every page,

@@ -6834,6 +6834,10 @@ msgstr "Pulihkan"
 msgid "Maximize"
 msgstr "Maksimalkan"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Keluar dari Layar Penuh"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Tidak ada hasil"
@@ -9175,10 +9179,6 @@ msgstr "Nama folder tidak tersedia"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Laju bingkai tidak tersedia"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Keluar dari Layar Penuh"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

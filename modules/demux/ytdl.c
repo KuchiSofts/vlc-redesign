@@ -123,43 +123,158 @@ static int vlc_kill(pid_t pid, int signum)
 struct ytdl_playlist {
     struct json_object json;
     stream_t *source;
+    struct {
+        es_out_t out;
+        es_out_t *target;
+        const char *lang;
+    } esout;
 };
 
-static int CompareFormats(const struct json_object *f_a,
-                          const struct json_object *f_b, double pref_height)
+static bool FormatHasManifest(const struct json_object *fmt)
 {
-    double h_a = json_get_num(f_a, "height");
-    double abr_a = json_get_num(f_a, "abr");
-    double h_b = json_get_num(f_b, "height");
-    double abr_b = json_get_num(f_b, "abr");
+    const char *protocol = json_get_str(fmt, "protocol");
 
-    /* Prefer non-mute formats */
-    if (!isnan(abr_a) != !isnan(abr_b))
-        return isnan(abr_a) ? -1 : +1;
+    if (protocol == NULL || json_get_str(fmt, "manifest_url") == NULL)
+        return false;
 
-    /* Prefer non-blind formats */
-    if (!isnan(h_a) != !isnan(h_b))
-        return isnan(h_a) ? -1 : +1;
+    return strncmp(protocol, "m3u8", 4) == 0 /* HLS */
+        || strcmp(protocol, "http_dash_segments") == 0 /* DASH */
+        || strcmp(protocol, "ism") == 0; /* Smooth Streaming */
+}
 
-    if (islessequal(h_a, pref_height)) {
+static const char *FormatURL(const struct json_object *fmt)
+{
+    if (FormatHasManifest(fmt))
+        return json_get_str(fmt, "manifest_url");
+
+    return json_get_str(fmt, "url");
+}
+
+/* yt-dlp sets the codec to "none" when a format has no such track.
+ * Treat unknown as a present track. */
+static bool FormatHasTrack(const struct json_object *fmt, const char *codec)
+{
+    const char *str = json_get_str(fmt, codec);
+
+    return str == NULL || strcmp(str, "none") != 0;
+}
+
+/* Prefer the highest resolution not above the preferred one, or else
+ * the lowest resolution (or the highest if there is no preference). */
+static int CompareHeight(double h_a, double h_b, double pref_height)
+{
+    if (isnan(pref_height)) {
+        if (isgreater(h_a, h_b))
+            return +1;
+        if (isless(h_a, h_b))
+            return -1;
+    } else if (islessequal(h_a, pref_height)) {
         if (!islessequal(h_b, pref_height))
             return +1;
         if (h_a > h_b)
-            return -1;
-        if (h_a < h_b)
             return +1;
+        if (h_a < h_b)
+            return -1;
     } else {
         if (islessequal(h_b, pref_height))
             return -1;
         if (isless(h_a, h_b))
-            return -1;
-        if (isgreater(h_a, h_b))
             return +1;
+        if (isgreater(h_a, h_b))
+            return -1;
     }
 
-    if (isgreater(abr_a, abr_b))
+    return 0;
+}
+
+/* What is played if a format is picked */
+struct ytdl_tracks {
+    bool manifest;
+    bool audio;
+    bool video;
+    double lang;
+    double height;
+    double abr;
+};
+
+static void AddFormatTracks(struct ytdl_tracks *t,
+                            const struct json_object *fmt, double pref_height)
+{
+    double lang = json_get_num(fmt, "language_preference");
+    double abr = json_get_num(fmt, "abr");
+
+    if (FormatHasTrack(fmt, "acodec"))
+        t->audio = true;
+
+    if (FormatHasTrack(fmt, "vcodec")) {
+        double height = json_get_num(fmt, "height");
+
+        if (isnan(t->height) || CompareHeight(height, t->height,
+                                              pref_height) > 0)
+            t->height = height;
+        t->video = true;
+    }
+
+    if (isnan(t->lang) || isgreater(lang, t->lang))
+        t->lang = lang;
+    if (isnan(t->abr) || isgreater(abr, t->abr))
+        t->abr = abr;
+}
+
+static void GetFormatTracks(struct ytdl_tracks *t,
+                            const struct json_array *fmts,
+                            const struct json_object *fmt, double pref_height)
+{
+    t->manifest = FormatHasManifest(fmt);
+    t->audio = t->video = false;
+    t->lang = t->height = t->abr = NAN;
+
+    if (!t->manifest) {
+        AddFormatTracks(t, fmt, pref_height);
+        return;
+    }
+
+    /* The manifest provides all the formats that it lists, not only the
+     * variant described by this format. */
+    const char *url = json_get_str(fmt, "manifest_url");
+
+    for (size_t i = 0; i < fmts->size; i++) {
+        const struct json_value *v = &fmts->entries[i];
+
+        if (v->type == JSON_OBJECT && FormatHasManifest(&v->object)
+         && strcmp(json_get_str(&v->object, "manifest_url"), url) == 0)
+            AddFormatTracks(t, &v->object, pref_height);
+    }
+}
+
+static int CompareTracks(const struct ytdl_tracks *a,
+                         const struct ytdl_tracks *b, double pref_height)
+{
+    /* Prefer non-mute formats */
+    if (a->audio != b->audio)
+        return a->audio ? +1 : -1;
+
+    /* Prefer non-blind formats */
+    if (a->video != b->video)
+        return a->video ? +1 : -1;
+
+    /* Prefer the original audio language over dubs */
+    if (isgreater(a->lang, b->lang))
         return +1;
-    if (isgreater(abr_b, abr_a))
+    if (isgreater(b->lang, a->lang))
+        return -1;
+
+    int val = CompareHeight(a->height, b->height, pref_height);
+    if (val != 0)
+        return val;
+
+    /* Prefer formats with manifests */
+    if (a->manifest != b->manifest)
+        return a->manifest ? +1 : -1;
+
+    if (isgreater(a->abr, b->abr))
+        return +1;
+    if (isgreater(b->abr, a->abr))
         return -1;
 
     return 0;
@@ -176,6 +291,7 @@ static const struct json_object *PickFormat(stream_t *s,
          return NULL;
 
      const struct json_object *best_fmt = NULL;
+     struct ytdl_tracks best = { 0 };
      double pref_height = var_InheritInteger(s, "preferred-resolution");
 
      if (isless(pref_height, 0.))
@@ -188,18 +304,138 @@ static const struct json_object *PickFormat(stream_t *s,
              continue;
 
          const struct json_object *fmt = &v->object;
+         struct ytdl_tracks tracks;
 
-         if (best_fmt == NULL) {
+         GetFormatTracks(&tracks, &fmts->array, fmt, pref_height);
+
+         /* On a tie, prefer the later format as yt-dlp sorts them from worst
+          * to best. */
+         if (best_fmt == NULL
+          || CompareTracks(&tracks, &best, pref_height) >= 0) {
              best_fmt = fmt;
-             continue;
+             best = tracks;
          }
-
-         if (CompareFormats(fmt, best_fmt, pref_height) > 0)
-              best_fmt = fmt;
      }
 
      return best_fmt;
 }
+
+static void SetHTTPHeader(vlc_object_t *obj, const struct json_object *headers,
+                          const char *name, const char *varname)
+{
+    const char *value = json_get_str(headers, name);
+
+    if (value != NULL) {
+        var_Create(obj, varname, VLC_VAR_STRING);
+        var_SetString(obj, varname, value);
+    }
+}
+
+/* Use the same HTTP headers as yt-dlp, as some servers reject requests
+ * with another User-Agent or without a Referer. */
+static void SetHTTPHeaders(vlc_object_t *obj, const struct json_object *fmt)
+{
+    const struct json_object *headers = json_get_object(fmt, "http_headers");
+
+    if (headers == NULL)
+        return;
+
+    SetHTTPHeader(obj, headers, "User-Agent", "http-user-agent");
+    SetHTTPHeader(obj, headers, "Referer", "http-referrer");
+}
+
+static void AddHTTPOption(input_item_t *item, const struct json_object *headers,
+                          const char *name, const char *varname)
+{
+    const char *value = json_get_str(headers, name);
+    char *option;
+
+    if (value != NULL && asprintf(&option, "%s=%s", varname, value) != -1) {
+        input_item_AddOption(item, option, VLC_INPUT_OPTION_UNIQUE);
+        free(option);
+    }
+}
+
+static void AddHTTPOptions(input_item_t *item, const struct json_object *fmt)
+{
+    const struct json_object *headers = json_get_object(fmt, "http_headers");
+
+    if (headers == NULL)
+        return;
+
+    AddHTTPOption(item, headers, "User-Agent", "http-user-agent");
+    AddHTTPOption(item, headers, "Referer", "http-referrer");
+}
+
+static bool LanguageMatch(const char *a, const char *b)
+{
+    size_t len = strcspn(a, "-_");
+
+    return len > 0 && strcspn(b, "-_") == len
+        && vlc_ascii_strncasecmp(a, b, len) == 0;
+}
+
+static es_out_id_t *EsOutAdd(es_out_t *out, input_source_t *in,
+                             const es_format_t *fmt)
+{
+    struct ytdl_playlist *sys = container_of(out, struct ytdl_playlist,
+                                             esout.out);
+    es_out_t *target = sys->esout.target;
+
+    if (sys->esout.lang != NULL && fmt->i_cat == AUDIO_ES
+     && fmt->i_priority == ES_PRIORITY_SELECTABLE_MIN
+     && fmt->psz_language != NULL
+     && LanguageMatch(fmt->psz_language, sys->esout.lang)) {
+        es_format_t copy = *fmt;
+
+        /* Prefer the tracks in the language selected by yt-dlp */
+        copy.i_priority = ES_PRIORITY_SELECTABLE_MIN + 1;
+        return target->cbs->add(target, in, &copy);
+    }
+
+    return target->cbs->add(target, in, fmt);
+}
+
+static int EsOutSend(es_out_t *out, es_out_id_t *id, block_t *block)
+{
+    struct ytdl_playlist *sys = container_of(out, struct ytdl_playlist,
+                                             esout.out);
+    es_out_t *target = sys->esout.target;
+
+    return target->cbs->send(target, id, block);
+}
+
+static void EsOutDel(es_out_t *out, es_out_id_t *id)
+{
+    struct ytdl_playlist *sys = container_of(out, struct ytdl_playlist,
+                                             esout.out);
+    es_out_t *target = sys->esout.target;
+
+    target->cbs->del(target, id);
+}
+
+static int EsOutControl(es_out_t *out, input_source_t *in, int query,
+                        va_list args)
+{
+    struct ytdl_playlist *sys = container_of(out, struct ytdl_playlist,
+                                             esout.out);
+    es_out_t *target = sys->esout.target;
+
+    return target->cbs->control(target, in, query, args);
+}
+
+static void EsOutDestroy(es_out_t *out)
+{
+    (void) out;
+}
+
+static const struct es_out_callbacks ytdl_esout_cbs = {
+    .add = EsOutAdd,
+    .send = EsOutSend,
+    .del = EsOutDel,
+    .control = EsOutControl,
+    .destroy = EsOutDestroy,
+};
 
 static const char *PickArt(const struct json_object *entry)
 {
@@ -243,7 +479,7 @@ static int ReadItem(stream_t *s, input_item_node_t *node,
     if (fmt == NULL)
         return VLC_EGENERIC;
 
-    const char *url = json_get_str(fmt, "url");
+    const char *url = FormatURL(fmt);
 
     if (url == NULL)
         return VLC_EGENERIC;
@@ -268,6 +504,7 @@ static int ReadItem(stream_t *s, input_item_node_t *node,
 
     /* Don't care to lock, the item is still private. */
     GetMeta(item->p_meta, json);
+    AddHTTPOptions(item, fmt);
     input_item_node_AppendItem(node, item);
     input_item_Release(item);
 
@@ -434,11 +671,20 @@ static int OpenCommon(vlc_object_t *obj, const char *src_url)
     stream_t *demux = NULL;
 
     if (fmt != NULL) {
-        const char *url = json_get_str(fmt, "url");
+        const char *url = FormatURL(fmt);
 
         if (url != NULL) {
+            sys->esout.out.cbs = &ytdl_esout_cbs;
+            sys->esout.target = s->out;
+            /* Language of the format yt-dlp would itself select */
+            sys->esout.lang = json_get_str(&sys->json, "language");
+
+            if (sys->esout.lang != NULL)
+                msg_Dbg(s, "preferred audio language: %s", sys->esout.lang);
+
             var_Create(obj, "ytdl", VLC_VAR_BOOL);
-            demux = vlc_demux_NewURL(obj, url, s->out);
+            SetHTTPHeaders(obj, fmt);
+            demux = vlc_demux_NewURL(obj, url, &sys->esout.out);
 
             if (demux == NULL)
                 msg_Err(s, "cannot open URL: %s", url);

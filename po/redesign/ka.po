@@ -1876,6 +1876,10 @@ msgstr ""
 "decoration: underline; color:#0057ae;\">დაგვეხმარეთ და შემოგვიერთდით!</"
 "span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "ფაილი %1 წაიშალა ან გადაიტანეს."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "გაუქმება"

@@ -1839,6 +1839,10 @@ msgstr ""
 "p><p><a href=\"https://www.videolan.org/contribute/\"><span style=\" text-"
 "decoration: underline; color:#0057ae;\">ជួយ និងចូលរួមជាមួយយើង!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "ឯកសារ %1 ត្រូវបានលុប ឬផ្លាស់ទី។"
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "បោះបង់"

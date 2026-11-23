@@ -1887,6 +1887,10 @@ msgstr ""
 "style=\" text-decoration: underline; color:#0057ae;\">Padėkite ir "
 "prisijunkite prie mūsų!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Failas %1 ištrintas arba perkeltas."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "atšaukti"

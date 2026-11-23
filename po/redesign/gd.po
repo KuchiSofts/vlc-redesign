@@ -1905,6 +1905,10 @@ msgstr ""
 "decoration: underline; color:#0057ae;\">Cuidich sinn is gabh pàirt!</span></"
 "a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Chaidh am faidhle %1 a sguabadh às no a ghluasad."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Sguir dheth"

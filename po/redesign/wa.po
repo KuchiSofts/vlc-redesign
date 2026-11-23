@@ -1900,6 +1900,10 @@ msgstr ""
 "\"><span style=\" text-decoration: underline; color:#0057ae;\">Aidîz nos et "
 "vnoz avou nos ôtes!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Li fitchî %1 a stî disfacé ou bodjî."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "rinoncî"

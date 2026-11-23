@@ -1894,6 +1894,10 @@ msgstr ""
 "\"><span style=\" text-decoration: underline; color:#0057ae;\">Օգնեք և "
 "միացեք մեզ!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 ֆայլը ջնջվել կամ տեղափոխվել է։"
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "չեղարկել"

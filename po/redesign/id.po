@@ -1885,6 +1885,10 @@ msgstr ""
 "decoration: underline; color:#0057ae;\">Bantu dan bergabunglah dengan kami!</"
 "span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "File %1 telah dihapus atau dipindahkan."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Batal"

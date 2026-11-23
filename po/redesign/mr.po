@@ -1849,6 +1849,10 @@ msgstr ""
 "text-decoration: underline; color:#0057ae;\">मदत करा आणि आमच्यात सामील व्हा!</"
 "span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 ही फाइल हटवली किंवा हलवली गेली आहे."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "रद्द करा"

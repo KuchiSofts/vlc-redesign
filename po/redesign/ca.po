@@ -1918,6 +1918,10 @@ msgstr ""
 "decoration: underline; color:#0057ae;\">Ajudeu-nos i uniu-vos a nosaltres!</"
 "span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "El fitxer %1 s'ha suprimit o s'ha mogut."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Cancel·la"

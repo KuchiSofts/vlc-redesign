@@ -1845,6 +1845,10 @@ msgstr ""
 "p><p><a href=\"https://www.videolan.org/contribute/\"><span style=\" text-"
 "decoration: underline; color:#0057ae;\">ਮਦਦ ਕਰੋ ਅਤੇ ਸਾਡੇ ਨਾਲ ਜੁੜੋ!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "ਫ਼ਾਈਲ %1 ਮਿਟਾ ਦਿੱਤੀ ਗਈ ਹੈ ਜਾਂ ਹਿਲਾਈ ਗਈ ਹੈ।"
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "ਰੱਦ ਕਰੋ"

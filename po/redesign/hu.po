@@ -1903,6 +1903,10 @@ msgstr ""
 "style=\" text-decoration: underline; color:#0057ae;\">Segítsen, és "
 "csatlakozzon hozzánk!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "A(z) %1 fájlt törölték vagy áthelyezték."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "mégse"

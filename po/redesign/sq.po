@@ -1899,6 +1899,10 @@ msgstr ""
 "www.videolan.org/contribute/\"><span style=\" text-decoration: underline; "
 "color:#0057ae;\">Na ndihmoni dhe bashkohuni me ne!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Skedari %1 u fshi ose u zhvendos."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "anulo"

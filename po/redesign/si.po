@@ -1848,6 +1848,10 @@ msgstr ""
 "හැක!</p><p><a href=\"https://www.videolan.org/contribute/\"><span style=\" "
 "text-decoration: underline; color:#0057ae;\">උදව් කර අප හා එක්වන්න!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 ගොනුව මකා දමා හෝ ගෙන ගොස් ඇත."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "අවලංගු කරන්න"

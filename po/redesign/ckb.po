@@ -1877,6 +1877,10 @@ msgstr ""
 "style=\" text-decoration: underline; color:#0057ae;\">یارمەتیمان بدە و "
 "بەشداربە!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "پەڕگەی %1 سڕایەوە یان گوازرایەوە."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "پاشگەزبوونەوە"

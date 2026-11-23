@@ -1888,6 +1888,10 @@ msgstr ""
 "\"><span style=\" text-decoration: underline; color:#0057ae;\">Pomozite i "
 "pridružite nam se!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Datoteka %1 je izbrisana ili premještena."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "Odustani"

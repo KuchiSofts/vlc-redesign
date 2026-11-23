@@ -1946,6 +1946,10 @@ msgstr ""
 "contribute/\"><span style=\" text-decoration: underline; color:#0057ae;"
 "\">Aiutaci e unisciti a noi!</span></a>"
 
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Il file %1 è stato eliminato o spostato."
+
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:40
 msgid "cancel"
 msgstr "annulla"

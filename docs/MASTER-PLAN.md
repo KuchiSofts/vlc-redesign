@@ -153,7 +153,8 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.1**: update releases of fixes as the issues bring them; the Samsung TV app's 0.8.0 (the guide's day) after
+- 🟡 **0.8.2**: update releases of fixes as the issues bring them.
+- 🟢 **0.8.1** (2026-11-23, an update release; the Samsung TV app stays 0.8.0, follows: 0.8.1): the first fixes after 0.8.0; the Samsung TV app's 0.8.0 (the guide's day) after
   its run on the test TV. The in-app What's new of 0.8.0 listed "The release check reads the Discussions" (a tooling
   line of the changelog's Added): moved to Technical.
   Owner 11-23: a deleted file stayed in the queue and the history and failed at each play ("please be smarter"):

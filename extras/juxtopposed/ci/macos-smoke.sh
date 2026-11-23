@@ -288,7 +288,14 @@ fi
 grep -E 'using interface module "qt"' "$work/interface.log" > /dev/null \
     && note "ok: the Qt interface was loaded" || fail "the Qt interface was not loaded"
 # the unified title bar (maininterface/macos_titlebar.cpp): the traffic
-# lights in the redesign's top bar, the only bar of the window
+# lights in the redesign's top bar, the only bar of the window. Waited for
+# (up to 20 s more): on the slow Intel runner the window, and its line, came
+# after the 10 s above now and then, though the bar was there
+for _ in $(seq 1 40); do
+    grep -q 'unified title bar:' "$work/interface.log" 2>/dev/null && break
+    kill -0 $pid 2>/dev/null || break
+    sleep 0.5
+done
 if line=$(grep -m 1 'unified title bar:' "$work/interface.log"); then
     note "ok: ${line#*: }"
 else

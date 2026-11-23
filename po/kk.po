@@ -39828,3 +39828,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Жаңартуды осы Mac-та дайындау мүмкін болмады. Оны шығарылым бетінен жүктеп алыңыз."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 файлы жойылды немесе жылжытылды."

@@ -39875,3 +39875,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "无法在这台 Mac 上准备更新。请从发布页面下载。"
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "文件 %1 已被删除或移动。"

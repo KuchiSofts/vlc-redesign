@@ -40263,3 +40263,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "មិនអាចរៀបចំបច្ចុប្បន្នភាពនៅលើ Mac នេះបានទេ។ ទាញយកវាពីទំព័រចេញផ្សាយ។"
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "ឯកសារ %1 ត្រូវបានលុប ឬផ្លាស់ទី។"

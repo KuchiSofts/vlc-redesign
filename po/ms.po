@@ -40910,3 +40910,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Kemas kini tidak dapat disediakan pada Mac ini. Muat turun dari halaman keluaran."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Fail %1 telah dipadam atau dipindahkan."

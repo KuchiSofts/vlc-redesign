@@ -40793,3 +40793,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "ഈ Mac-ൽ അപ്ഡേറ്റ് തയ്യാറാക്കാൻ കഴിഞ്ഞില്ല. റിലീസ് പേജിൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 എന്ന ഫയൽ ഇല്ലാതാക്കുകയോ നീക്കുകയോ ചെയ്തു."

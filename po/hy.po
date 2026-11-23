@@ -39812,3 +39812,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Թարմացումը հնարավոր չեղավ նախապատրաստել այս Mac-ում։ Ներբեռնեք այն թողարկման էջից։"
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 ֆայլը ջնջվել կամ տեղափոխվել է։"

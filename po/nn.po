@@ -39903,3 +39903,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Oppdateringa kunne ikkje førebuast på denne Mac-en. Last ho ned frå utgjevingssida."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Fila %1 er sletta eller flytta."

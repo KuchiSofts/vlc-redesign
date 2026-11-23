@@ -39812,3 +39812,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Përditësimi s'u përgatit dot në këtë Mac. Shkarkojeni nga faqja e botimit."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Skedari %1 u fshi ose u zhvendos."

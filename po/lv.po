@@ -41045,3 +41045,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Atjauninājumu neizdevās sagatavot šajā Mac datorā. Lejupielādējiet to no laidiena lapas."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Fails %1 ir izdzēsts vai pārvietots."

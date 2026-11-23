@@ -41070,3 +41070,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Güncelleme bu Mac'te hazırlanamadı. Sürüm sayfasından indirin."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "%1 dosyası silinmiş veya taşınmış."

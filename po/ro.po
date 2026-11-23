@@ -40732,3 +40732,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Actualizarea nu a putut fi pregătită pe acest Mac. Descărcați-o de pe pagina versiunii."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Fișierul %1 a fost șters sau mutat."

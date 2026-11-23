@@ -40310,3 +40310,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Värskendust ei õnnestunud selles Macis ette valmistada. Laadi see alla väljalaske lehelt."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Fail %1 on kustutatud või teisaldatud."

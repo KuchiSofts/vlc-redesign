@@ -40100,3 +40100,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Nid oedd modd paratoi'r diweddariad ar y Mac hwn. Llwythwch ef i lawr o dudalen y rhyddhad."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Mae'r ffeil %1 wedi'i dileu neu ei symud."

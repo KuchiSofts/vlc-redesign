@@ -39635,3 +39635,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "לא ניתן היה להכין את העדכון ב־Mac הזה. הורד אותו מדף הגרסה."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "הקובץ %1 נמחק או הועבר."

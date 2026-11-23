@@ -15,6 +15,11 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **A deleted or moved file no longer fails again and again**: it leaves the queue, Continue Watching and Recent,
+  the library reads its folder again, and one message says it was deleted or moved (desktop and Android).
+
 ### Technical
 
 - Version 0.8.1 started (VLC_REDESIGN_VERSION).

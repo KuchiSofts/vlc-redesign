@@ -40978,3 +40978,7 @@ msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr "Päivitystä ei voitu valmistella tässä Macissa. Lataa se julkaisusivulta."
+
+#: modules/gui/qt/dialogs/dialogs/dialogmodel.cpp:132
+msgid "%1 was deleted or moved."
+msgstr "Tiedosto %1 on poistettu tai siirretty."

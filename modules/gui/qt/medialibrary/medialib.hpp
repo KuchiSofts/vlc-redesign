@@ -71,6 +71,14 @@ public:
 
     Q_INVOKABLE void reload();
 
+    // VLC Redesign: media whose local file was deleted or moved. A media that
+    // could not be opened: when its file is gone (its drive is there), it
+    // leaves the queue and the history, and the library reads its folder
+    // again. checkMissing: the same for the history and the queue at the
+    // start and when VLC comes to the front (at most once a minute).
+    void forgetMissing(const QString& mrl);
+    void checkMissing();
+
     Q_INVOKABLE void mlInputItem(const QVector<MLItemId>& itemIdVector, QJSValue callback);
 
     inline bool idle() const { return m_idle; }
@@ -187,8 +195,11 @@ private:
     static void onMediaLibraryEvent( void* data, const vlc_ml_event_t* event );
     // Once: the songs an older version listed as videos read again (#111)
     void reparseSongsListedAsVideos();
+    // the queue's entries of these MRLs taken out
+    void removeFromQueue(const QStringList& mrls);
 
 private:
+    qint64 m_lastMissingCheck = 0;
     qt_intf_t* m_intf;
     vlc::playlist::PlaylistController* m_playlistController = nullptr;
 

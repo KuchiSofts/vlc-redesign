@@ -7864,6 +7864,10 @@ msgstr "ไปยังรายการที่กำลังเล่น"
 msgid "Advanced Open..."
 msgstr "เปิดขั้นสูง..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "เพิ่มคิวลงในเพลย์ลิสต์"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "บันทึกคิวเล่นเป็นแฟ้ม..."

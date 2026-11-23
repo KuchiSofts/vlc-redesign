@@ -8242,6 +8242,10 @@ msgstr "Leum gu na tha 'ga chluich"
 msgid "Advanced Open..."
 msgstr "Fosgladh adhartach..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Cuir an ciutha ri liosta-chluich"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Sàbhail an ciutha-cluich ann am faidhle..."

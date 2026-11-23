@@ -8084,6 +8084,10 @@ msgstr "Оди на тековно репродуцираното"
 msgid "Advanced Open..."
 msgstr "Напредно отворање..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Додај ја редицата во листа за репродукција"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Зачувај ја редицата за репродукција во датотека..."

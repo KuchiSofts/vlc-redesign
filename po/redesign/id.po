@@ -8016,6 +8016,10 @@ msgstr "Lompat ke yang sedang diputar"
 msgid "Advanced Open..."
 msgstr "Buka Lanjutan..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Tambahkan antrean ke daftar putar"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Simpan Antrean Putar ke File..."

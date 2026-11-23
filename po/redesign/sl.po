@@ -8087,6 +8087,10 @@ msgstr "Skoči na trenutno predvajano"
 msgid "Advanced Open..."
 msgstr "Napredno odpiranje ..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Dodaj vrsto na seznam predvajanja"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Shrani čakalno vrsto v datoteko ..."

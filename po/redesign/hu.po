@@ -8079,6 +8079,10 @@ msgstr "Ugrás az éppen lejátszottra"
 msgid "Advanced Open..."
 msgstr "Speciális megnyitás..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Várólista hozzáadása lejátszási listához"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Lejátszási sor mentése fájlba..."

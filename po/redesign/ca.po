@@ -8121,6 +8121,10 @@ msgstr "Vés a l'element en reproducció"
 msgid "Advanced Open..."
 msgstr "Obertura avançada..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Afegeix la cua a una llista de reproducció"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Desa la cua de reproducció en un fitxer..."

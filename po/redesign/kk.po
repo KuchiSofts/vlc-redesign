@@ -8013,6 +8013,10 @@ msgstr "Қазір ойнатылып жатқанға өту"
 msgid "Advanced Open..."
 msgstr "Қосымша ашу..."
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp
+msgid "Add queue to playlist"
+msgstr "Кезекті ойнату тізіміне қосу"
+
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1195
 msgid "Save Play Queue to File..."
 msgstr "Ойнату кезегін файлға сақтау..."

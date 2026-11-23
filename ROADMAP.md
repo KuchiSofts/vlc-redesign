@@ -39,11 +39,15 @@ request, then released).
 
 - 🟡 macOS: the first update from the zip on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (its owner installs 0.8.1 from the disk image once, then 0.8.2 comes through the app)
+- ✅ Android: the lists and messages of dialogs in the text colour itself (light theme: 5.9:1, was 2.8:1)
+- ✅ Samsung TV: the song's cover in its music view, with the desktop's rule for the texts over it
+- ✅ Repeat and Shuffle take effect at once ([#138](https://github.com/KuchiSofts/vlc-redesign/issues/138))
+- ✅ Folders in the player's library panel ([#139](https://github.com/KuchiSofts/vlc-redesign/issues/139))
+- ✅ macOS, from a full check of a user's log and every macOS line: the audio module's errors, the plugin cache
+  never written into the signed app, Metal at once
 
 And as the issues bring them:
 
-- 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
-  desktop's rule for the texts over it
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

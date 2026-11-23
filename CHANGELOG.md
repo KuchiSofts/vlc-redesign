@@ -15,6 +15,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Added
+
+- **Folders in the player's library panel** ([#139](https://github.com/KuchiSofts/vlc-redesign/issues/139)), as in the sidebar.
+
+### Fixed
+
+- **Repeat and Shuffle take effect at once** ([#138](https://github.com/KuchiSofts/vlc-redesign/issues/138)): the next song followed the old mode.
+- **macOS: no audio errors in the log** each time a device comes or goes, a faster start, and the app's signature kept intact.
+- **Android: dialogs readable in the light theme**: their lists and messages were grey on grey.
+- **Samsung TV: the song's cover in the music view** (it showed none), the texts over it readable.
+
 ### Technical
 
 - Version 0.8.2 started (VLC_REDESIGN_VERSION).

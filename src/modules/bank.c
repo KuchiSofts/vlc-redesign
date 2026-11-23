@@ -557,7 +557,14 @@ static void AllocatePluginPath(libvlc_int_t *obj, const char *path,
 
     if (mode & CACHE_WRITE_FILE)
         CacheSave(obj, path, bank.plugins, bank.size);
-    else if ((mode & CACHE_READ_FILE) && (mode & CACHE_SCAN_DIR) && bank.stale)
+    else if ((mode & CACHE_READ_FILE) && (mode & CACHE_SCAN_DIR) && bank.stale
+#ifdef __APPLE__
+             /* not in a Mac application's own folder (….app/Contents/): its
+              * files are sealed by its code signature, and a cache written
+              * there broke the seal (codesign --verify fails) */
+             && strstr(path, ".app/Contents/") == NULL
+#endif
+            )
     {
         /* Made again for the next start: the times of the files change
          * when the package is unzipped in another time zone, an update adds

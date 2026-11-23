@@ -493,6 +493,17 @@ RebuildDeviceList(audio_output_t * p_aout, UInt32 *p_id_exists)
         char *psz_name;
         UInt32 i_id = p_devices[i];
 
+        /* VLC Redesign: a device without a name (a private aggregate one
+         * the system makes for another program) is skipped below; asked
+         * for it, each one wrote an error in the log */
+        const AudioObjectPropertyAddress name_address =
+            { kAudioObjectPropertyName, kAudioObjectPropertyScopeGlobal, 0 };
+        if (!AudioObjectHasProperty(i_id, &name_address))
+        {
+            msg_Dbg(p_aout, "device %i has no name: skipped", i_id);
+            continue;
+        }
+
         int ret = AO_GET1PROP(i_id, CFStringRef, &device_name_ref,
                               kAudioObjectPropertyName,
                               kAudioObjectPropertyScopeGlobal);
@@ -522,10 +533,20 @@ RebuildDeviceList(audio_output_t * p_aout, UInt32 *p_id_exists)
         CFNumberRef deviceNumber = CFNumberCreate(kCFAllocatorDefault,
                                                   kCFNumberSInt32Type, &i_id);
         CFArrayAppendValue(currentListOfDevices, deviceNumber);
-        CFRelease(deviceNumber);
 
-        // TODO: only register once for each device
-        ManageAudioStreamsCallback(p_aout, i_id, true);
+        /* VLC Redesign: the streams of a device listened to once, when it
+         * comes (its listeners leave with it, below): added again at each
+         * rebuild, the system refused them, an error for each stream every
+         * time a device came or went */
+        bool known = false;
+        vlc_mutex_lock(&p_sys->device_list_lock);
+        if (p_sys->device_list)
+            known = CFArrayContainsValue(p_sys->device_list,
+                CFRangeMake(0, CFArrayGetCount(p_sys->device_list)), deviceNumber);
+        vlc_mutex_unlock(&p_sys->device_list_lock);
+        CFRelease(deviceNumber);
+        if (!known)
+            ManageAudioStreamsCallback(p_aout, i_id, true);
 
         if (AudioDeviceSupportsDigital(p_aout, i_id))
         {

@@ -700,7 +700,7 @@ FocusScope {
                     network: ["discover", "services"], service: ["discover", "services"],
                     netfolder: ["discover", "services"],
                     playlists: ["video", "playlists"], playlist: ["video", "playlists"],
-                    recent: ["home", "recent"], folder: ["network"], tv: ["tv"]
+                    recent: ["home", "recent"], folder: ["network"], folders: ["folders"], tv: ["tv"]
                 }
                 rootPlayer.libraryVisible = false
                 MainCtx.playerView = false

@@ -35,6 +35,8 @@ dialogs on Android and the song's cover on Samsung TVs.
 ### Technical
 
 - Version 0.8.2 started (VLC_REDESIGN_VERSION).
+- VideoLAN's latest changes merged (5589a060d4): yt-dlp (adaptive formats, the original audio language,
+  the preferred resolution), HLS alternative renditions, a video converter use-after-free.
 
 ## [0.8.1] · 2026-11-23
 

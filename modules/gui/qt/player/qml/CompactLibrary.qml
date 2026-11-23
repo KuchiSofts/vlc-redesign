@@ -1167,6 +1167,9 @@ FocusScope {
             clip: true
             boundsBehavior: Flickable.StopAtBounds
             visible: root.location.section === "home"
+            // (discussion #143) the library pages' scroll bar: at the panel's edge while the list moves or
+            // the bar is hovered, then faded out
+            T.ScrollBar.vertical: Widgets.ScrollBarExt { }
             model: visible ? root._homeSections : []
 
             delegate: Column {
@@ -1288,6 +1291,8 @@ FocusScope {
             rightMargin: VLCStyle.dp(20, VLCStyle.scale)
             spacing: VLCStyle.dp(10, VLCStyle.scale)
             clip: true
+            // (discussion #143) as Home's
+            T.ScrollBar.vertical: Widgets.ScrollBarExt { }
             boundsBehavior: Flickable.StopAtBounds
             visible: root.location.section !== "home" && !root._tvShown
             model: root._model

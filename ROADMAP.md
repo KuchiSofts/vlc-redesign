@@ -37,6 +37,9 @@ Updated as the work moves (last: 2026-11-23, 0.8.0 published, 0.8.1 started).
 **0.8.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released). The Samsung TV app follows 0.8.0 with its guide fix after a run on a real TV.
 
+- 🟡 The Samsung TV app's 0.8.0 (the guide's day), after its run on a real TV
+- ✅ The in-app *What's new* lists only what you see: a line about the release tooling left 0.8.0's
+
 And as the issues bring them:
 
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the

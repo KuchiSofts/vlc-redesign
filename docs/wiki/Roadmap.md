@@ -10,24 +10,26 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-22, 0.7.8 published, 0.7.9 started).
+Updated as the work moves (last: 2026-11-23, 0.8.0 published, 0.8.1 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.7.8 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.7.8 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.7.8 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.7.8 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.7.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.7.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.7.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.8.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — 0.8.0 follows (the guide's day, after a run on a real TV); the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.7.9 and after
+## Next: 0.8.1 and after
 
-**0.7.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try):
+**0.8.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+request, then released). The Samsung TV app follows 0.8.0 with its guide fix after a run on a real TV.
+
+And as the issues bring them:
 
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it

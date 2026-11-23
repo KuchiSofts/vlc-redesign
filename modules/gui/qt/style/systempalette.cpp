@@ -21,6 +21,8 @@
 #include <QSettings>
 #include <QFile>
 #include <maininterface/mainctx.hpp>
+#include "menus/redesign_menu_style.hpp"
+#include "dialogs/toolbar/controlbar_profile_model.hpp"
 #include <vlc_modules.h>
 #include <vlc_picture.h>
 
@@ -302,6 +304,14 @@ SystemPalette::SystemPalette(QObject* parent)
 
 }
 
+void SystemPalette::applyRedesignAccent()
+{
+    if (!m_ctx)
+        return;
+    orange500 = RedesignMenuStyle::accentColor(m_ctx);
+    orange800 = orange500;
+}
+
 void SystemPalette::componentComplete()
 {
     {
@@ -311,7 +321,18 @@ void SystemPalette::componentComplete()
 
         if (!strcmp(accentColor, "default"))
         {
-            // Use default
+            // the redesign's accent, followed as it changes: the parts of
+            // VLC's own (Play all of an artist, the play icon over a cover)
+            // stayed orange with another accent (#131)
+            applyRedesignAccent();
+            const auto follow = [this]() { applyRedesignAccent(); updatePalette(); };
+            connect(m_ctx, &MainCtx::settingValueChanged, this, [follow](const QString &key) {
+                if (key == QLatin1String("redesign/accent"))
+                    follow();
+            });
+            connect(m_ctx, &MainCtx::systemAccentChanged, this, follow);
+            if (ControlbarProfileModel *profiles = m_ctx->controlbarProfileModel())
+                connect(profiles, &ControlbarProfileModel::selectedProfileChanged, this, follow);
         }
         else if (!strcmp(accentColor, "system"))
         {

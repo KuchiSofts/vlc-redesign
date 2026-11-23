@@ -575,6 +575,8 @@ FocusScope {
         pinControls: MainCtx.pinVideoControls
 
         showCSD: MainCtx.clientSideDecoration && (MainCtx.intfMainWindow.visibility !== Window.FullScreen)
+        // minimize, exit fullscreen and close in fullscreen too (no dragging there)
+        showWindowButtons: MainCtx.clientSideDecoration
         showToolbar: MainCtx.hasToolbarMenu && (MainCtx.intfMainWindow.visibility !== Window.FullScreen)
         playlistVisible: playlistVisibility.isPlaylistVisible
 

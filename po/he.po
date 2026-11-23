@@ -4270,11 +4270,11 @@ msgstr "נא לבחור את מקש הקיצור שיבצע קפיצה בינו�
 
 #: src/libvlc-module.c:1400
 msgid "Long backwards jump"
-msgstr "קפיצה ארוכה קדימה"
+msgstr "קפיצה ארוכה אחורה"
 
 #: src/libvlc-module.c:1402
 msgid "Select the hotkey to make a long backwards jump."
-msgstr "נא לבחור את מקש הקיצור לביצוע קפיצה ארוכה קדימה."
+msgstr "נא לבחור את מקש הקיצור לביצוע קפיצה ארוכה אחורה."
 
 #: src/libvlc-module.c:1404
 msgid "Very short forward jump"
@@ -4298,7 +4298,7 @@ msgstr "קפיצה בינונית קדימה"
 
 #: src/libvlc-module.c:1412
 msgid "Select the hotkey to make a medium forward jump."
-msgstr "נא לבחור את מקש הקיצור שיבצע קפיצה בינונית אחורה."
+msgstr "נא לבחור את מקש הקיצור שיבצע קפיצה בינונית קדימה."
 
 #: src/libvlc-module.c:1413
 msgid "Long forward jump"

@@ -37767,7 +37767,7 @@ msgstr "Pixels der skal beskæres fra højre"
 
 #: modules/video_filter/croppadd.c:56 modules/video_filter/formatcrop.c:57
 msgid "Number of pixels to crop from the right of the image."
-msgstr "Antal pixels der skal beskæres fra venstre side af billedet."
+msgstr "Antal pixels der skal beskæres fra højre side af billedet."
 
 #: modules/video_filter/croppadd.c:58
 msgid "Pixels to padd to top"
@@ -37783,7 +37783,7 @@ msgstr "Pixels der skal paddes til bunden"
 
 #: modules/video_filter/croppadd.c:63
 msgid "Number of pixels to padd to the bottom of the image after cropping."
-msgstr "Antal pixels der skal paddes til toppen af billedet, efter beskæring."
+msgstr "Antal pixels der skal paddes til bunden af billedet, efter beskæring."
 
 #: modules/video_filter/croppadd.c:64
 msgid "Pixels to padd to left"

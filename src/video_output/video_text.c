@@ -67,7 +67,9 @@ static void OSDTextUpdate(subpicture_t *subpic,
     const int   margin_h     = margin_ratio * fmt_dst->i_visible_width;
     const int   margin_v     = margin_ratio * fmt_dst->i_visible_height;
 
-    r->text_flags |= sys->position;
+    /* (the size chosen for the subtitles is not the messages': at 300 % a
+     * "Subtitle position" covered the picture) */
+    r->text_flags |= sys->position | VLC_SUBPIC_TEXT_FLAG_NOT_SCALED;
     r->b_absolute = false; r->b_in_window = true;
     r->i_align = sys->position;
     if (r->i_align & SUBPICTURE_ALIGN_LEFT)

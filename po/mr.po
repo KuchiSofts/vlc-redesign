@@ -15435,7 +15435,7 @@ msgstr "कमाल बिटदर केबीपीएसमध्ये. �
 
 #: modules/codec/vorbis.c:181
 msgid "Minimum encoding bitrate"
-msgstr "कमाल संकेतक बिटदर"
+msgstr "किमान संकेतक बिटदर"
 
 #: modules/codec/vorbis.c:183
 msgid ""

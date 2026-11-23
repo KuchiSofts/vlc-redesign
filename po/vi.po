@@ -4513,7 +4513,7 @@ msgstr "Chọn phím tắt để nhảy tới phía trước ngắn nhất."
 
 #: src/libvlc-module.c:1410
 msgid "Medium forward jump"
-msgstr "Nhảy tới phía sau trung bình"
+msgstr "Nhảy tới phía trước trung bình"
 
 #: src/libvlc-module.c:1412
 msgid "Select the hotkey to make a medium forward jump."

@@ -17,6 +17,7 @@
  *****************************************************************************/
 import QtQuick
 
+import VLC.MainInterface
 import VLC.MediaLibrary
 import VLC.Dialogs
 import VLC.Menus
@@ -39,6 +40,11 @@ Item {
         Item {
             ShortcutExt {
                 sequence: "Ctrl+" + ((index + 1) % 10)
+                // not over a key of VLC's hotkeys: Ctrl+0 resets the
+                // subtitles' size, and this shortcut took it first (the size
+                // stayed, and nothing played with fewer than 10 recent media)
+                enabled: MainCtx.useGlobalShortcuts
+                         && MainCtx.isHotkeyFree(Qt.Key_0 + ((index + 1) % 10), Qt.ControlModifier)
                 onActivated:  {
                     if (index >= recentModel.count)
                         return

@@ -42,7 +42,7 @@ Windows 10 (version 1809 or later) and Windows 11, 64-bit. Version 0.4.0, the in
 
 ### First run
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.gif" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.webp" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
 
 **The welcome steps.** The first start of a new copy goes through the welcome: a media folder for the library, the
 theme (Light, Dark or System) and the accent colour, the subtitle languages, what VLC does online (the update check
@@ -54,7 +54,7 @@ In depth: [In one minute](Home#in-one-minute) · [Colours and themes](Colours-an
 
 ### Library
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/library.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/library.gif" alt="Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/library.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/library.webp" alt="Home with Continue Watching, then Videos, the albums of Music and Tracks with Play all and Shuffle" width="960"></a>
 
 **Home and the library.** Home opens on *Continue Watching* (the videos you started, with how far you got) and your
 folders. The clip then goes through **Videos**, **Music**, and the music pages **Albums** and **Tracks**.
@@ -63,14 +63,14 @@ In depth: [Library](Library) · [Home](Library#home) · [Music](Library#music)
 
 ### Player
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.gif" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.webp" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
 
 **The player bar.** Play and pause, then a drag along the seek bar: its thin marks are the lines of the subtitle file
 shown (new in 0.4.0), so you see where people talk. Last, the mouse wheel over the volume changes it.
 
 In depth: [The seek bar](The-Player#the-seek-bar) · [Volume](The-Player#volume) · [The control bar](The-Player#the-control-bar)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.gif" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.webp" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
 
 **A button shows what it opened** (new in 0.4.0, suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
 While its panel, popup or menu shows, a button lights up: the accent icon on a tint of the accent, the same look as a
@@ -80,7 +80,7 @@ In depth: [Panels that open above the bar](The-Player#panels-that-open-above-the
 
 ### Subtitles
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitles-he-ar-ja.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn with the V key" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitles-he-ar-ja.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitles-he-ar-ja.webp" alt="English, Hebrew, Japanese and Arabic subtitles in turn with the V key" width="720"></a>
 
 **Subtitles in every language.** The <kbd>V</kbd> key goes through the English, Hebrew, Japanese and Arabic subtitles
 of the film in turn. Each one is sharp, and Hebrew and Arabic read in the right order, with their brackets and
@@ -88,14 +88,14 @@ punctuation in their place.
 
 In depth: [Subtitles](Subtitles) · [Subtitle keys](Subtitles#subtitle-keys)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.gif" alt="The tracks panel: Video, Audio and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tracks-panel.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tracks-panel.webp" alt="The tracks panel: the Video and Subtitles tabs, the subtitle languages with their own names, Hebrew picked" width="800"></a>
 
 **The languages and tracks panel.** Its **Video**, **Audio** and **Subtitles** tabs, the subtitle languages of the
 video, each written in its own language, and Hebrew picked from the list.
 
 In depth: [The Subtitles tab](Subtitles#the-subtitles-tab) · [Languages and tracks](The-Player#languages-and-tracks)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitle-size.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitle-size.gif" alt="Ctrl and the mouse wheel over the video change the subtitle size, up to 200 % and down to 50 %" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/subtitle-size.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/subtitle-size.webp" alt="Ctrl and the mouse wheel over the video change the subtitle size, up to 200 % and down to 50 %" width="720"></a>
 
 **Ctrl + mouse wheel sizes the subtitles** (new in 0.4.0, suggested in [#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).
 Over the video, <kbd>Ctrl</kbd> and the wheel change the subtitle size, as in classic VLC: in the clip up to 200 %,
@@ -107,7 +107,7 @@ In depth: [Position and size](Subtitles#position-and-size) · [Keyboard shortcut
 
 ### Customize
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/customize-player.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar, saved, then 1.5x chosen from the speed button" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/customize-player.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/customize-player.webp" alt="Customize Player: Playback Speed and Picture in Picture dragged onto the bar, saved, then 1.5x chosen from the speed button" width="800"></a>
 
 **Customize Player.** **Playback Speed** and **Cast to TV** are dragged from the palette onto the bar, the layout is
 saved, then 1.5× is chosen from the new speed button. In 0.4.0 the speed button can be added again
@@ -118,7 +118,7 @@ In depth: [Customize the player](Customize-the-Player) · [The palette](Customiz
 
 ### Themes
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/theme-accent.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/theme-accent.gif" alt="Settings, General: the light theme and the blue, green and pink accents applied at once, then the library in light pink" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/theme-accent.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/theme-accent.webp" alt="Settings, General: the light theme and the blue, green and pink accents applied at once, then the library in light pink" width="960"></a>
 
 **Theme and accent colour.** In Settings, General, the light theme, then the blue, green and pink accents: each
 applies at once, with no restart. The clip ends on the library in the light theme with the pink accent.
@@ -128,7 +128,7 @@ In depth: [Colours and themes](Colours-and-Themes) · [The accent colours](Colou
 
 ### Settings
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/settings-search.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/settings-search.gif" alt="Settings: the Interface, Playback and Subtitles pages, then a search for speed across every page" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/settings-search.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/settings-search.webp" alt="Settings: the Interface, Playback, Subtitles and TV pages, then a search for speed across every page" width="960"></a>
 
 **The Settings window.** The **Interface**, **Playback** and **Subtitles** pages, then a search for "speed", which
 looks through every page at once.
@@ -139,22 +139,22 @@ In depth: [Settings](Settings) · [Search](Settings#search)
 
 New in 0.4.0. Live TV is an add-on, on by default; without it nothing of it shows.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-catalog.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-catalog.gif" alt="Live TV: the sources, the catalog of free, legal lists, then the channels of a source with their logos, numbers and groups" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-sources.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-sources.webp" alt="Live TV: the sources and their tabs, then the channels of a source with their logos, numbers and groups" width="960"></a>
 
-**Sources and the catalog.** *Sources* lists your TV sources; the catalog offers free, legal channel lists (the films
-filter, then all); then the channels of a source, with their logos, numbers, groups and what is on now, filtered by
-group. The channels are those of a made-up demo provider.
+**Sources.** *Sources* lists your TV sources, with a tab to add a link, one for the accounts of media servers on your
+network and one for the guides; then the channels of a source, with their logos, numbers and what is on now,
+filtered by group. The channels are those of a made-up demo provider.
 
 In depth: [The catalog](Live-TV#the-catalog) · [The TV page](Live-TV#the-tv-page) · [Add your TV](Live-TV#add-your-tv)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-zapping.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and the banner shows the number, the programme, its progress and description" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-zapping.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-zapping.webp" alt="Live TV: Page Up and Page Down change channel, and the banner shows the number, the programme, its progress and description" width="800"></a>
 
 **Change channel.** <kbd>Page Up</kbd> and <kbd>Page Down</kbd> change channel. At every switch the banner shows the
 channel number, the programme on now with its progress, and its description.
 
 In depth: [Watching](Live-TV#watching)
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-guide.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-guide.gif" alt="The Live TV guide with the line of now, each programme's progress, Later and Now, and the Kids group" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/tv-guide.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/tv-guide.webp" alt="The Live TV guide with the line of now, each programme's progress, Later and Now, and the Kids group" width="960"></a>
 
 **The guide.** **Guide** at the top of the TV page: the channels down, the hours across, the line of now and each
 programme's progress. *Later* moves ahead by the hours shown and *Now* comes back; the clip ends on the Kids group.
@@ -163,7 +163,7 @@ In depth: [The guide](Live-TV#the-guide)
 
 ### Casting
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/cast.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/cast.gif" alt="Cast to: the devices found, a Chromecast picked, Playing on Living Room TV, pause and play from the bar" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/cast.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/cast.webp" alt="Cast to: the devices found, a Chromecast picked, Playing on Living Room TV, pause and play from the bar" width="800"></a>
 
 **Cast to a TV.** The **Cast to** panel lists the devices found (the real ones of the recording network are hidden
 here), a Chromecast is picked (a test Chromecast that runs on the recording PC), the player reads *Playing on Living
@@ -173,7 +173,7 @@ In depth: [Casting to a TV](Casting) · [Cast](Casting#cast) · [TV compatibilit
 
 ### Effects
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/effects.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/effects.gif" alt="Effects over the playing video: the equalizer turned on, two bands raised, the video effects, back to audio" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/effects.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/effects.webp" alt="Effects over the video: the equalizer turned on, three bands moved, then the video effects" width="800"></a>
 
 **Effects while the video plays.** The Effects panel over the playing video: the equalizer turned on and two of its
 bands raised, then the video effects, then back to the audio tab. Every change is heard or seen at once.
@@ -191,7 +191,7 @@ In depth: [Credits and license](Credits-and-License) · [Small updates](Install-
 
 ### Right to left
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/rtl-hebrew.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/rtl-hebrew.gif" alt="The interface in Hebrew, laid out right to left: the sidebar, Videos, Music, Albums and the mirrored more menu" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/rtl-hebrew.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/rtl-hebrew.webp" alt="The interface in Hebrew, laid out right to left: the sidebar, Videos, Music, Albums and the mirrored more menu" width="960"></a>
 
 **A right-to-left language.** The interface in Hebrew, laid out right to left: the sidebar on the right, Videos,
 Music, Albums, and the ⋯ menu mirrored.
@@ -238,7 +238,7 @@ Portrait phone clips (Home at 400 px wide, the others at 360 px), then the table
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/home.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/home.gif" alt="Android phone: Home with Continue Watching, folders, new videos and music, then Videos, Music and TV" width="300"></a><br><b>Home and the library.</b> The phone's Home with Continue Watching, folders, new videos and music, then Videos, Music and TV.<br><sub>Desktop: <a href="Library">Library</a></sub></td>
+<td width="50%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/home.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/home.webp" alt="Android phone: Home with Continue Watching, folders, new videos and music, then Videos, Music and TV" width="300"></a><br><b>Home and the library.</b> The phone's Home with Continue Watching, folders, new videos and music, then Videos, Music and TV.<br><sub>Desktop: <a href="Library">Library</a></sub></td>
 <td width="50%" valign="top"><a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/android/customize-player.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/android/customize-player.gif" alt="Android phone: the player's menu, then Customize Player with the bar's three zones, Playback speed and Queue added, saved" width="300"></a><br><b>Player bar and Customize Player.</b> The player's menu, then Customize Player: the bar's three zones, Playback speed and Queue added, saved.<br><sub>Desktop: <a href="Customize-the-Player">Customize the player</a></sub></td>
 </tr>
 <tr>

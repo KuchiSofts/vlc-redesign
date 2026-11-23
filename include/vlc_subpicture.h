@@ -58,6 +58,8 @@ typedef struct filter_t vlc_blender_t;
 #define VLC_SUBPIC_TEXT_FLAG_TEXT_NOT_BALANCED (1 << 6)
 /** mark the subpicture region as a text flag */
 #define VLC_SUBPIC_TEXT_FLAG_IS_TEXT           (1 << 7)
+/** the player's own message: the subtitles' text scale does not apply */
+#define VLC_SUBPIC_TEXT_FLAG_NOT_SCALED        (1 << 8)
 
 /**
  * Video subtitle region

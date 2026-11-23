@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-079-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-080-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,24 +18,26 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-22, 0.7.8 published, 0.7.9 started).
+Updated as the work moves (last: 2026-11-23, 0.8.0 published, 0.8.1 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.7.8 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.7.8 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.7.8 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.7.8 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.7.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.7.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.7.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.8.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.6.8 | ██████████ 100 % | — 0.8.0 follows (the guide's day, after a run on a real TV); the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.7.9 and after
+## Next: 0.8.1 and after
 
-**0.7.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull request,
-with a build to try):
+**0.8.1** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+request, then released). The Samsung TV app follows 0.8.0 with its guide fix after a run on a real TV.
+
+And as the issues bring them:
 
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the
   desktop's rule for the texts over it
@@ -109,6 +111,17 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.8.0 (2026-11-23)
+
+**A full release**, every package (the Samsung TV app stays 0.6.8 and follows 0.8.0):
+
+- ✅ A full check of every app: every page, dialog, menu, Settings page and key with the log on; video from 3GP to
+  8K and up to 240 frames a second; memory over long playback
+- ✅ Android: a Folders tab in Videos and Music; Tracks: Play all and Shuffle
+- ✅ Full screen keeps the window buttons; the TV guide updates at once and says Today in the evening
+- ✅ The accent colour everywhere; the next subtitle line after a switch; no freeze after a video starts
+- ✅ The README's and the wiki's clips recorded again on 0.8.0; VideoLAN's latest changes merged
 
 ### 0.7.8 (2026-11-22)
 

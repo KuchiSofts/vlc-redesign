@@ -153,6 +153,60 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
+- 🟢 **0.8.0** (2026-11-23, a full release; the Samsung TV app follows): the full check (owner 11-22: "fully scan every app … every function, option, button, key, window,
+  tab … no memory leak and no lags"; "every resolution of videos from 3gp to 8K to 120fps to 240fps"; the
+  README's gifs in higher quality; the wiki; the git of the project). Done so far: Windows tours of every page,
+  dialog, menu and the 14 Settings pages with the log on (clean after 0.7.8's fixes); the Network page's folder
+  click threw (fixed); qmllint over our 323 changed QML files (40 findings, all of the VideoLAN kind: typed
+  bindings, var callbacks, a required pair upstream also leaves); compiler warnings of the Qt module (15, none
+  ours); 524 wiki links and anchors (none broken); Linux tour in a container with real input (clean). GitHub:
+  45 merged branches deleted on the desktop repository and 19 on Android's (main, Weblate's and the open PR
+  stay). Edge clips made (qa\matrix-hi: 3GP H.263/AMR and MPEG-4, 64x48, 853x479, 2560x1080, 1080p120,
+  720p240, HEVC 1080p240 and 4K120, DCI 4K, H.264/HEVC/VP9 8K, AV1 4K60, vertical 1080x1920 60).
+  Keys (qa\audit080\keytest.py: 64 keys, modifiers in the test window's own key state, rc state + shots):
+  seeks (arrows, Shift/Alt/Ctrl), volume (Up/Down, Ctrl+Up/Down: 1.00 -> 1.15 -> 1.05, the bar's slider
+  follows), mute, rate, B audio and V/Shift+V/Alt+V subtitle cycles, E frames, Shift+S snapshot, A/C/Z/O/D,
+  Q, L, F, I, Esc, Ctrl+H, S then Space: all work. Memory: 25 min, ~375 media changes (memsoak on its own rc
+  port): private 290 MB after warm-up, 297 -> 300 MB over the last 9 min; handles, threads, GDI, USER flat.
+  Playback: the 35 formats of qa\matrix and the 15 edge clips all play (hardware decoding where the GPU has
+  it; H.264 8K falls back to software by itself); 120 fps on the 165 Hz screen: 0 late pictures (the late ones
+  of the hidden desktop come from its missing vsync); 240 fps drops what the screen can't show.
+  Android TV (atvreal emulator, remote keys, every Settings page): after OK on an accent colour, the theme,
+  the layout's side, the size or the contrast the window is drawn again and the focus started over at the top
+  (fixed: it comes back to that row's choice); the keyboard shortcuts list took 37 stops of plain text (now one
+  stop that scrolls); its Hebrew showed two "long forward jump" rows. A scan of every catalog for opposite
+  texts translated the same (backwards/forward, up/down, left/right, min/max) found 21 more in 12 desktop
+  languages and 2 in Vietnamese on Android: fixed (Bodo and Maithili left for a speaker).
+  Found while recording the README clips on 0.8.0 (hidden desktop, PrintWindow): a freeze of 0.5 to 4.6 s about
+  20 s after a video starts (the cast search's UPnP module closed on the interface's thread: closed on a thread of
+  its own now, desktop and Android; measured 0.46-0.89 s before, 0.00 s after, by WM_NULL pings); the first
+  subtitle line after a track switch was lost (an external subtitle file is read ahead of playback by the caching,
+  and lines read while its track was off were dropped: the file is read again from what plays, src/input/input.c);
+  the player's own messages grew with the subtitle size ("Subtitle position" at 325 % covered the picture);
+  the player panel's breadcrumb pushed its buttons out, its menus opened at the mouse pointer; the interface
+  languages were in VideoLAN's order (now by name, as Android). Discussion #130: Play all and Shuffle on Tracks.
+  Owner's reports 11-22: full screen had no minimize, exit full screen or close at the top (the window buttons
+  show there now, Exit Fullscreen lit in place of Maximize; and with the bar hidden Windows still answered
+  HTCLOSE where Close had been: a button keeps its hit-test rectangle only while it shows; checked with a real
+  mouse in Windows Sandbox); the grey band round the window in their screenshots is the invisible resize border
+  as a whole-window capture draws it (transparent on the screen, measured; the 1 px line is the Windows 11
+  border). Found while recording the Live TV clips: after Update the guide stayed on "No guide" until the tab
+  was left (the rows listened for guideRevisionChanged, a signal that does not exist: guideChanged), and from
+  23:15 the guide's day read "Tomorrow" over tonight's shows (desktop and Android). The ten README clips were
+  recorded again on 0.8.0 as WebP 960 px 20 fps + 1080p MP4 (films-080); the subtitle-size one again from 100 %
+  (the first take still showed the old big messages).
+  Later the same night: VideoLAN's master merged to 391a3bf873 (libsmb2 7.0.0; the local Docker build has no
+  libsmb2, CI's prebuilt contribs do, x64 and ARM64 archives checked) and vlc-android's to 2066508dd (Remote Access
+  0.28.0; build.gradle kept the redesign's versionName); po/vlc.pot's references; Android 0.8.0 (version, What's
+  new; on the phone emulator at 23:37 in landscape the guide read Today, the Folders tab worked, no crash); the
+  Samsung app's guide had the same day bug (fixed, L.labelTime tested, 0.8.0 version; its run on the test TV waits for
+  the daytime). A logged tour of every page, dialog and player panel (qa/audit080/logtour.py): no QML warning.
+  Found while recording the wiki clips: Cancel in Effects set every crop value again, "Crop: Default" over the
+  picture (fixed: only what changed; checked with real input in Windows Sandbox, a 120 px crop restored). Six wiki
+  clips and the README's Android one recorded again on 0.8.0. Release check 59/59, preflight clean (desktop and
+  Android); its binary rule no longer takes three random letters in a WebP for a download site.
+- 🟢 **0.7.8** published 2026-11-22 12:10 local (tag v0.7.8 on bbe431cfb2, PR #129 merged as 305d49a7ec; small
+  updates 1.9 MB x64, 1.1 MB ARM64); a 0.7.7 copy took it from the app (What's new 0.7.8).
 - 🟢 **0.7.8** (2026-11-22, an update release of the desktop; Android stays 0.7.5, Samsung 0.6.8, both
   `follows: 0.7.8`). Checked on PR #129's build: the queue panel's edge at the same place empty and with an
   item, the player's queue "1 item - 51 sec", the library panel's Home without "0 items" or "Nothing here
@@ -2208,7 +2262,7 @@ All classic windows go through one hook, `redesign_widget_theme.cpp`, applied fr
   after it starts makes the TV get a new stream 3–5 s after the first (two `SetAVTransportURI` per channel), and a
   cast started on a channel already playing went out with the sound only. The DLNA output needs the Chromecast's
   hold-again (`1880587aa0`): not done, no build was possible (Docker stopped for the disk clean-up).
-- ⬜ the test TV not re-checked on this branch: the test copy (`qapp`) has no firewall rule, and casting would
+- ⬜ the test TV not re-checked on this branch: the test copy (`qa\app`) has no firewall rule, and casting would
   have shown Windows' administrator prompt. Last real-TV check: build 193.
 - 🟡 A TV that keeps its connection but stops answering (the fake's *off* mode) is noticed only after libupnp's
   30 s timeouts (twice), and a quit then waits for the call in flight: a limit of libupnp's blocking SOAP calls.

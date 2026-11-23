@@ -27,8 +27,8 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 
 | | |
 |---|---|
-| **Current version** | **0.7.8**, released 2026-11-22 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.8), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
-| **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit; Windows 11 on ARM64; Linux (x86_64, ARM64; glibc 2.38 or later); macOS 12 or later (Apple Silicon, Intel); Android 8.0 or later (phones, tablets, TV); Samsung TVs (Tizen 3.0 or later, [its own app](Install-and-Update#samsung-tv)). Other systems: [Platforms](Platforms) |
+| **Current version** | **0.8.0**, released 2026-11-23 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.0), [changelog](https://github.com/KuchiSofts/vlc-redesign/blob/main/CHANGELOG.md)) |
+| **Runs on** | Windows 10 (version 1809 or later) and Windows 11, 64-bit; Windows 11 on ARM64; Linux (x86_64, ARM64; glibc 2.38 or later); macOS 12 or later (Apple Silicon, Intel); Android 5.0 or later (phones, tablets, TV); Samsung TVs (Tizen 3.0 or later, [its own app](Install-and-Update#samsung-tv)). Other systems: [Platforms](Platforms) |
 | **Based on** | VLC 4.0 (development branch), with fixes from VideoLAN merged in regularly |
 | **Download** | Windows x64: an installer (59.6 MB, no administrator rights) or a portable zip (107.9 MB); the same two for Windows on ARM64. Linux: a .deb, an .rpm, an AppImage or a folder. macOS: a disk image for Apple Silicon or Intel. Android: an APK. All on [Install and update](Install-and-Update) |
 | **Updates** | On Windows, in the app, a few megabytes at a time: only the files that changed ([small updates](Install-and-Update#small-updates)). On Linux and macOS, install the new version |
@@ -72,7 +72,7 @@ Every feature of 0.4.0 in short clips, Windows, Linux, macOS and the Android app
 3. **Play** something: drop a file on the window, open one from Explorer, or pick it on [Home](Library#home).
 4. VLC Redesign checks for a new release once a day and offers a **small update** when one is out.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.gif" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/onboarding.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/onboarding.webp" alt="The welcome steps: a media folder, the theme and accent colour, the subtitle languages, what VLC does online, the basic shortcuts, then Home" width="960"></a>
 
 <sub>The welcome steps of 0.4.0, from the media folder to Home. Click for the MP4; every clip: [Feature tour](Feature-Tour).</sub>
 

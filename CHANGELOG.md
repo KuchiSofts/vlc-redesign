@@ -5,15 +5,55 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `5c415c4ef8` (2026-11-21).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `391a3bf873` (2026-11-20).
 
-**Contents:** [Unreleased](#unreleased) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.8.0] · 2026-11-23
+
+A full release, every package: a check of every app, a Folders tab on Android, Play all and Shuffle on Tracks,
+the window buttons in full screen, fixes to the TV guide, the subtitles and the accent colour, sharper clips in the
+README, and VideoLAN's latest changes. Windows, ARM64, Linux, macOS and Android; the Samsung TV app follows.
+
+### Added
+
+- **Android: a Folders tab in Videos and Music** ([#132](https://github.com/KuchiSofts/vlc-redesign/discussions/132)): folder by folder, only the folders that hold media.
+- **Play all and Shuffle on the Tracks page**, and Shuffle in the player sidebar's menus of albums, artists, playlists and folders ([#130](https://github.com/KuchiSofts/vlc-redesign/discussions/130)).
+- **Android TV: the keyboard shortcuts list is one stop** of the remote that scrolls, not 37 rows that did nothing.
+- **The release check reads the Discussions** and the Android app's issues too.
+
+### Fixed
+
+- **Cancel in Effects leaves the video alone**: it showed "Crop: Default" over the picture although the crop was never changed.
+- **TV guide updates at once**: after Update the grid stayed on "No guide" until you left the tab.
+- **TV guide says Today in the evening**: from 23:15 it read "Tomorrow" over tonight's shows (desktop, Android and the Samsung TV app).
+- **Full screen has the window buttons too**: minimize, exit full screen (lit, in place of maximize) and close, at the top right of the bar.
+- **No invisible Close at the top right**: with the bar hidden (full screen) or gone, Windows still found the window buttons there, and a click in that corner could close the player.
+- **The accent colour reaches every part of the library** ([#131](https://github.com/KuchiSofts/vlc-redesign/issues/131)): an artist's Play all, an album's Play and the play icon over a cover stayed orange.
+- **Ctrl+0 resets the subtitle size again**: the shortcut of the tenth recent media took the key first (and did nothing with fewer than ten).
+- **Play all and Add all to queue work in the player panel** for an album, an artist, a genre or a playlist: they added nothing (the place kept a reference to a row of the list it came from).
+- **The player's messages keep their size when the subtitles are made larger**: at 300 % a "Subtitle position" message covered the picture.
+- **The next subtitle line no longer goes missing after a track switch** (V, the tracks panel): a subtitle file beside the video is read again from what plays, so the line on screen also changes language.
+- **No more short freeze about 20 s after a video starts** (0.5 to 4.6 s, desktop and Android): the search for cast devices was closed on the interface's thread.
+- **The player panel's menus open under their button**, from the keyboard too: they opened wherever the mouse pointer was.
+- **A click on a folder of the Network page** no longer stops halfway: the grid had not made the folder's item yet.
+- **The player's library panel keeps its buttons inside** with a long address (… › Artists › an artist): the last one was cut at the edge.
+- **Interface languages in the order of their names**, in Settings and the welcome, as on Android: Greek stood after British English.
+- **Android TV: the remote stays on the colour, theme or contrast you changed** in Settings: it jumped to the top of the page.
+- **Translations: 24 texts that said the opposite** (a backwards jump that read "forward" in Hebrew, Page Up as "down" in Kazakh …) in 12 languages.
+
+### Technical
+
+- VideoLAN's master merged up to `391a3bf873` (2026-11-20, 2 commits): libsmb2 7.0.0 in the contribs and the SMB
+  module's support for it.
+- Android: VideoLAN's vlc-android master merged up to `2066508dd` (2026-11-19, 18 commits): Remote Access pinned to 0.28.0.
+- The README's clips recorded again on 0.8.0: animated WebP, sharper and lighter than the GIFs, a 1080p MP4 behind each.
 
 ## [0.7.8] · 2026-11-22
 

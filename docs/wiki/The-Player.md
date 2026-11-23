@@ -4,7 +4,7 @@ The player opens when a video or a song plays. A video sits in a frame with roun
 the control bar; in fullscreen it fills the screen and the bars float over it. A song opens the music view: the
 cover over a blurred copy of itself, the title and the artist, and a waveform for a seek bar.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.gif" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/player-bar.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/player-bar.webp" alt="The player bar: play and pause, dragging the seek bar with its subtitle marks, the mouse wheel over the volume" width="720"></a>
 
 <sub>Play and pause, a drag along the seek bar (its marks are the lines of the subtitle file), and the mouse wheel over the volume. Click for the MP4 · every clip: [Feature tour](Feature-Tour#player).</sub>
 
@@ -163,7 +163,7 @@ three tabs:
 
 ## Panels that open above the bar
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.gif" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/open-state.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/open-state.webp" alt="Buttons that light up while what they open is open: tracks and subtitles, effects, the player menu, the more menu" width="800"></a>
 
 <sub>Each button lights up while what it opens shows: tracks and subtitles, effects, the player menu, the ⋯ menu ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)). Click for the MP4 · every clip: [Feature tour](Feature-Tour#player).</sub>
 

@@ -4,9 +4,9 @@ The library is the window VLC Redesign opens on: your videos and music, the medi
 and the network. It is VLC's media library: it reads the folders you add to it and keeps track of what you played,
 how far, and how often.
 
-<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/library.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/library.gif" alt="Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks" width="960"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/library.mp4"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/library.webp" alt="Home with Continue Watching, then Videos, the albums of Music and Tracks with Play all and Shuffle" width="960"></a>
 
-<sub>Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks. Click for the MP4 · every clip: [Feature tour](Feature-Tour#library).</sub>
+<sub>Home with Continue Watching, then Videos, the albums of Music and Tracks with Play all and Shuffle. Click for the MP4 · every clip: [Feature tour](Feature-Tour#library).</sub>
 
 ![The library on Home: the sidebar with Home, Videos, Music, Network, Playlists, Recent and Add item; the header with the arrows, Home, 12 items, Sort, the view button, Search and the more button; Continue Watching with three videos and their progress lines, and Listen Again with four album covers](images/home.jpg)
 

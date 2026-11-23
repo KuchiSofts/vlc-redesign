@@ -33,6 +33,10 @@ Row {
     padding: 0
     width: implicitWidth
 
+    // In fullscreen (issue: no way out at the top, no minimize, no close): the
+    // set shows there too, Maximize gives way to Exit Fullscreen, lit
+    readonly property bool _fullscreen: MainCtx.intfMainWindow.visibility === Window.FullScreen
+
     property color color: theme.fg.primary
     property color hoverColor: theme.bg.primary.alpha(0.5)
 
@@ -64,6 +68,7 @@ Row {
                 id: windowButton
                 csdButton: modelData
                 height: root.height
+                visible: !(root._fullscreen && modelData.type === CSDButton.MaximizeRestore)
                 showHovered: modelData.showHovered
                 externalPressed: modelData.externalPressed
                 color: root.color
@@ -132,7 +137,18 @@ Row {
                     color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
                 }
 
-                // Preserve the native Windows hit-test/snap rectangles.
+                // Preserve the native Windows hit-test/snap rectangles: only
+                // while the button shows (a bar faded out in fullscreen, a set
+                // gone: no Close left there, invisible, at the top right)
+                onVisibleChanged: Qt.callLater(updateRect)
+                Component.onDestruction: releaseRect()
+                property rect _registered: Qt.rect(0, 0, 0, 0)
+                function releaseRect() {
+                    const r = modelData ? modelData.rect : null
+                    if (r && r.x === _registered.x && r.y === _registered.y
+                            && r.width === _registered.width && r.height === _registered.height)
+                        modelData.rect = Qt.rect(0, 0, 0, 0)
+                }
                 onWidthChanged: Qt.callLater(updateRect)
                 onHeightChanged: Qt.callLater(updateRect)
                 onXChanged: Qt.callLater(updateRect)
@@ -151,20 +167,28 @@ Row {
                     function onFullscreenHiddenChanged() { Qt.callLater(windowButton.updateRect) }
                 }
                 function updateRect() {
+                    if (!visible || width <= 0) {
+                        releaseRect()
+                        return
+                    }
                     const point = mapToItem(null, 0, 0)
-                    modelData.rect = Qt.rect(point.x, point.y, width, height)
+                    _registered = Qt.rect(point.x, point.y, width, height)
+                    modelData.rect = _registered
                 }
             }
 
             CSDWindowButton {
                 id: fullscreenButton
                 height: root.height
-                visible: modelData.type === CSDButton.MaximizeRestore && !root.fullscreenHidden
+                visible: modelData.type === CSDButton.MaximizeRestore && (!root.fullscreenHidden || root._fullscreen)
                 color: root.color
                 hoverColor: root.hoverColor
                 isThemeDark: theme.palette.isDark
                 iconSource: "qrc:///redesign/player/fullscreen.svg"
-                description: qsTr("Fullscreen")
+                // lit as the bar's fullscreen button (RedesignIconButton)
+                iconColor: !root._fullscreen ? "transparent"
+                           : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
+                description: root._fullscreen ? qsTr("Exit Fullscreen") : qsTr("Fullscreen")
                 onClicked: {
                     if (Player.hasVideoOutput)
                         Player.fullscreen = !Player.fullscreen

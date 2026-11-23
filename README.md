@@ -34,27 +34,27 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </tr>
 <tr>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-win64-setup.exe"><img src="https://img.shields.io/badge/Installer-x64-0078D4?style=for-the-badge" alt="Windows installer, x64"></a><br>
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-winarm64-setup.exe"><img src="https://img.shields.io/badge/Installer-ARM64-0078D4?style=for-the-badge" alt="Windows installer, ARM64"></a><br>
-<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-win64.zip">portable zip</a></sub>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-win64-setup.exe"><img src="https://img.shields.io/badge/Installer-x64-0078D4?style=for-the-badge" alt="Windows installer, x64"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-winarm64-setup.exe"><img src="https://img.shields.io/badge/Installer-ARM64-0078D4?style=for-the-badge" alt="Windows installer, ARM64"></a><br>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-win64.zip">portable zip</a></sub>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-x86_64.AppImage"><img src="https://img.shields.io/badge/AppImage-x86__64-E95420?style=for-the-badge&logo=linux&logoColor=white" alt="Linux AppImage, x86_64"></a><br>
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign_0.7.0_amd64.deb"><img src="https://img.shields.io/badge/.deb-Ubuntu%20%C2%B7%20Debian-E95420?style=for-the-badge" alt="Linux .deb"></a><br>
-<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-x86_64.AppImage"><img src="https://img.shields.io/badge/AppImage-x86__64-E95420?style=for-the-badge&logo=linux&logoColor=white" alt="Linux AppImage, x86_64"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_amd64.deb"><img src="https://img.shields.io/badge/.deb-Ubuntu%20%C2%B7%20Debian-E95420?style=for-the-badge" alt="Linux .deb"></a><br>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-macos-arm64.dmg"><img src="https://img.shields.io/badge/Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Apple Silicon"></a><br>
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-macos-x86_64.dmg"><img src="https://img.shields.io/badge/Intel-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Intel"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-macos-arm64.dmg"><img src="https://img.shields.io/badge/Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Apple Silicon"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-macos-x86_64.dmg"><img src="https://img.shields.io/badge/Intel-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Intel"></a>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.5/vlc-redesign-0.7.5-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
 <sub>phones, tablets and Android TV<br>not on Google Play</sub>
 </td>
 </tr>
 </table>
 
-<sub><b>0.7.8</b> · 2026-11-22 &nbsp;·&nbsp; next: 0.7.9 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+<sub><b>0.8.0</b> · 2026-11-23 &nbsp;·&nbsp; next: 0.8.1 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
 
 <br><br>
 
@@ -142,24 +142,24 @@ If you like how this looks, go subscribe to Juxtopposed's channel. That's where 
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.gif" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Use your own IPTV playlist or Xtream Codes account, or a free, legal list from the catalog. Page Up and Page Down change channel.</td>
-<td width="50%" valign="top"><a href="docs/media/demo/tv-guide.mp4"><img src="docs/media/demo/tv-guide.gif" alt="The Live TV guide with the line of now, Later and Now, and the Kids group"></a><br><b>Program guide.</b> Every channel across the hours, with a line marking the current time.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-zapping.mp4"><img src="docs/media/demo/tv-zapping.webp" alt="Live TV: Page Up and Page Down change channel, and a banner shows what is on"></a><br><b>Live TV.</b> Use your own IPTV playlist or Xtream Codes account, or a free, legal list from the catalog. Page Up and Page Down change channel.</td>
+<td width="50%" valign="top"><a href="docs/media/demo/tv-guide.mp4"><img src="docs/media/demo/tv-guide.webp" alt="The Live TV guide with the line of now, Later and Now, the Kids group and a programme's details"></a><br><b>Program guide.</b> Every channel across the hours, with a line marking the current time.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/subtitles-he-ar-ja.mp4"><img src="docs/media/demo/subtitles-he-ar-ja.gif" alt="English, Hebrew, Japanese and Arabic subtitles in turn"></a><br><b>Subtitles in any script.</b> Sharp text, with right-to-left scripts in the correct order. The player learns the languages you pick.</td>
-<td valign="top"><a href="docs/media/demo/subtitle-size.mp4"><img src="docs/media/demo/subtitle-size.gif" alt="Ctrl and the mouse wheel over the video change the subtitle size"></a><br><b>Move and resize subtitles while playing.</b> Ctrl + mouse wheel over the video, or Shift+↑ / Shift+↓.</td>
+<td valign="top"><a href="docs/media/demo/subtitles-he-ar-ja.mp4"><img src="docs/media/demo/subtitles-he-ar-ja.webp" alt="English, Hebrew, Japanese and Arabic subtitles in turn"></a><br><b>Subtitles in any script.</b> Sharp text, with right-to-left scripts in the correct order. The player learns the languages you pick.</td>
+<td valign="top"><a href="docs/media/demo/subtitle-size.mp4"><img src="docs/media/demo/subtitle-size.webp" alt="Ctrl and the mouse wheel over the video change the subtitle size"></a><br><b>Move and resize subtitles while playing.</b> Ctrl + mouse wheel over the video, or Shift+↑ / Shift+↓.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/customize-player.mp4"><img src="docs/media/demo/customize-player.gif" alt="Customize Player: Playback Speed and Cast to TV dragged onto the bar"></a><br><b>Customizable controls.</b> Drag buttons onto the control bar and save layouts as profiles.</td>
-<td valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.gif" alt="The light theme and the accent colours applied at once"></a><br><b>Themes and accent colours.</b> Dark, light or system theme and nine accent colours, applied instantly.</td>
+<td valign="top"><a href="docs/media/demo/customize-player.mp4"><img src="docs/media/demo/customize-player.webp" alt="Customize Player: Playback Speed and Picture in Picture dragged onto the bar"></a><br><b>Customizable controls.</b> Drag buttons onto the control bar and save layouts as profiles.</td>
+<td valign="top"><a href="docs/media/demo/theme-accent.mp4"><img src="docs/media/demo/theme-accent.webp" alt="The light theme and the accent colours applied at once"></a><br><b>Themes and accent colours.</b> Dark, light or system theme and nine accent colours, applied instantly.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.gif" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to your TV.</b> Chromecast and DLNA TVs, controlled from the player bar. See <a href="https://github.com/KuchiSofts/vlc-redesign/wiki/TV-Compatibility">which TVs work</a>.</td>
-<td valign="top"><a href="docs/media/demo/library.mp4"><img src="docs/media/demo/library.gif" alt="Home with Continue Watching and the folders, then Videos, Music, Albums and Tracks"></a><br><b>Home and media library.</b> Continue Watching, plus videos, music, albums and tracks.</td>
+<td valign="top"><a href="docs/media/demo/cast.mp4"><img src="docs/media/demo/cast.webp" alt="Casting to a Chromecast from the Cast to panel"></a><br><b>Cast to your TV.</b> Chromecast and DLNA TVs, controlled from the player bar. See <a href="https://github.com/KuchiSofts/vlc-redesign/wiki/TV-Compatibility">which TVs work</a>.</td>
+<td valign="top"><a href="docs/media/demo/library.mp4"><img src="docs/media/demo/library.webp" alt="Home with Continue Watching, then Videos, the albums of Music and Tracks with Play all and Shuffle"></a><br><b>Home and media library.</b> Continue Watching, plus videos, music, albums and tracks.</td>
 </tr>
 <tr>
-<td valign="top"><a href="docs/media/demo/rtl-hebrew.mp4"><img src="docs/media/demo/rtl-hebrew.gif" alt="The interface in Hebrew, laid out right to left"></a><br><b>72 languages, switched without a restart.</b> Right-to-left languages mirror the whole layout.</td>
-<td valign="top"><a href="docs/media/demo/onboarding.mp4"><img src="docs/media/demo/onboarding.gif" alt="The welcome steps: media folder, theme, subtitle languages, what VLC does online"></a><br><b>Private by default.</b> No telemetry, no ads, no account. The first-run setup asks what may go online.</td>
+<td valign="top"><a href="docs/media/demo/rtl-hebrew.mp4"><img src="docs/media/demo/rtl-hebrew.webp" alt="Hebrew chosen in Settings: the whole interface turns right to left at once"></a><br><b>72 languages, switched without a restart.</b> Right-to-left languages mirror the whole layout.</td>
+<td valign="top"><a href="docs/media/demo/onboarding.mp4"><img src="docs/media/demo/onboarding.webp" alt="The welcome steps: media folder, theme, subtitle languages, what VLC does online"></a><br><b>Private by default.</b> No telemetry, no ads, no account. The first-run setup asks what may go online.</td>
 </tr>
 </table>
 
@@ -213,7 +213,7 @@ On each platform:
 <tr>
 <td width="40%" valign="top"><a href="docs/media/demo/linux.mp4"><img src="docs/media/demo/linux.gif" alt="The Linux AppImage on Arch Linux: About, Settings in the dark theme, Home in the light theme"></a><br><b>Linux.</b> The AppImage on Arch Linux: About, Settings, Home.</td>
 <td width="40%" valign="top"><a href="docs/media/demo/macos.png"><img src="docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home"></a><br><b>macOS.</b> The app on an Intel Mac, captured by the build's launch test.</td>
-<td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.gif" alt="The Android app: Home and the library on a phone"></a><br><b>Android.</b> Home on a phone, and <a href="docs/media/demo/android/tablet.mp4">on a tablet</a>.</td>
+<td width="20%" valign="top"><a href="docs/media/demo/android/home.mp4"><img src="docs/media/demo/android/home.webp" alt="The Android app: Home and the library on a phone"></a><br><b>Android.</b> Home on a phone, and <a href="docs/media/demo/android/tablet.mp4">on a tablet</a>.</td>
 </tr>
 </table>
 
@@ -308,7 +308,7 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 <!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
 <p align="center"><sub>
 
-**[Windows 0.7.8](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.7.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.7.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.7.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.7.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.6.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
+**[Windows 0.8.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.8.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.6.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
 
 </sub></p>
 
@@ -317,11 +317,11 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 
 | Platform | Status | Latest | Get it |
 |---|---|---|---|
-| Windows | 🟢 released | 0.7.8 · 2026-11-22 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-win64.zip) |
-| Linux | 🟢 released | 0.7.8 · 2026-11-22 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign_0.7.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign_0.7.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-1.aarch64.rpm) |
-| macOS | 🟢 released | 0.7.8 · 2026-11-22 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-macos-x86_64.dmg) |
-| Windows ARM64 | 🟢 released | 0.7.8 · 2026-11-22 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.8/vlc-redesign-0.7.8-winarm64.zip) |
-| Android | 🟢 released | 0.7.5 · 2026-11-18 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.5/vlc-redesign-0.7.5-android.apk) |
+| Windows | 🟢 released | 0.8.0 · 2026-11-23 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-win64.zip) |
+| Linux | 🟢 released | 0.8.0 · 2026-11-23 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.aarch64.rpm) |
+| macOS | 🟢 released | 0.8.0 · 2026-11-23 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-macos-x86_64.dmg) |
+| Windows ARM64 | 🟢 released | 0.8.0 · 2026-11-23 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-winarm64.zip) |
+| Android | 🟢 released | 0.8.0 · 2026-11-23 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-android.apk) |
 | Samsung TV | 🟢 released | 0.6.8 · 2026-11-15 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.6.8/Juxto-Media-Player-TV-0.6.8-source.zip) |
 | iPhone/iPad | ⚪ later | — | coming soon |
 
@@ -380,12 +380,12 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 ## Roadmap
 
-- **Now: [0.7.8](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.8)** (2026-11-22): fixes found in a sweep of every page (the queue panel's width
-  and total length, Home in the player's library panel). The same day, [0.7.6](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.6): the keys work after
-  Stop and at the start, Space starts the queue, and the player bar stays with a Play Queue button, so the
-  queue fills before anything plays. The last full release, with
-  every package, is [0.7.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.0).
-- **Next: 0.7.9**, fixes as the issues bring them.
+- **Now: [0.8.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.0)** (2026-11-23), a full release with
+  every package: a Folders tab on Android, Play all and Shuffle on Tracks, the window buttons in full screen, the
+  TV guide's fixes, the next subtitle line kept after a switch, no freeze after a video starts, the README's clips
+  recorded again, and VideoLAN's latest changes merged. Before it, [0.7.8](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.7.8)
+  (2026-11-22): fixes found in a sweep of every page.
+- **Next: 0.8.1**, fixes as the issues bring them.
 
 What is planned for each platform: [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases: [CHANGELOG.md](CHANGELOG.md).

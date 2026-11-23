@@ -65,8 +65,12 @@ T.Menu {
         }
         if (button.pressedAt - root._closedAt < 300)
             return
+        // under the button, its end at the button's end (over the panel the
+        // button is in), as the other menus of buttons: it opened at the
+        // mouse pointer, wherever it was when the button was pressed from
+        // the keyboard
         if (x === undefined)
-            root.popup()
+            root.popupFrom(button, button.width - root.width, button.height + VLCStyle.dp(4, VLCStyle.scale))
         else
             root.popup(button, x, y)
     }

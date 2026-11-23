@@ -543,6 +543,14 @@ FocusScope {
         ListElement { place: "genres"; name: qsTr("Genres"); icon: "genre" }
     }
 
+    // A copy of the id of a row: the id read from a row refers to its data,
+    // dead once the list changes ("Type error"), and Play all, Shuffle and
+    // Add all to queue of an album, an artist, a genre or a playlist added
+    // nothing
+    function _ownId(id) {
+        return id ? MediaLib.deserializeMlItemIdFromString(id.toString()) : id
+    }
+
     function _activate(entry, index) {
         const place = root.location
         switch (place.section) {
@@ -564,7 +572,7 @@ FocusScope {
         case "albums":
         case "artists":
         case "genres":
-            root.go({ section: place.section.slice(0, -1), parentId: entry.id,
+            root.go({ section: place.section.slice(0, -1), parentId: root._ownId(entry.id),
                       title: entry.name ?? entry.title ?? "", trail: root._crumbs })
             break
         case "network":
@@ -581,7 +589,7 @@ FocusScope {
                 root._model.addAndPlay(index)
             break
         case "playlists":
-            root.go({ section: "playlist", playlistId: entry.id, title: entry.name, trail: root._crumbs })
+            root.go({ section: "playlist", playlistId: root._ownId(entry.id), title: entry.name, trail: root._crumbs })
             break
         case "homeall":
             if (place.kind === "frequentFolders")
@@ -719,6 +727,10 @@ FocusScope {
             // Address line of the places in a section: "... > parent > place"
             RowLayout {
                 Layout.fillWidth: true
+                // never wider than what the buttons leave ("... > Artists >
+                // Kevin MacLeod" pushed the menu and the full library button
+                // out of the panel, the last one cut at its edge)
+                Layout.minimumWidth: 0
                 Layout.leftMargin: VLCStyle.dp(10, VLCStyle.scale)
                 visible: root._crumbs.length >= 2
                 spacing: VLCStyle.dp(6, VLCStyle.scale)
@@ -737,7 +749,10 @@ FocusScope {
                 CrumbSeparator { visible: root._crumbs.length > 2 }
                 CrumbButton {
                     readonly property var crumbData: root._crumbs.length >= 2 ? root._crumbs[root._crumbs.length - 2] : null
-                    // Gives way to the current place first
+                    // Gives way to the current place first (fillWidth: an
+                    // item without it keeps its whole width, its minimum
+                    // never used: the place was cut instead of elided)
+                    Layout.fillWidth: true
                     Layout.minimumWidth: Math.min(implicitWidth, VLCStyle.dp(40, VLCStyle.scale))
                     Layout.maximumWidth: implicitWidth
                     text: crumbData ? crumbData.title : ""
@@ -746,7 +761,8 @@ FocusScope {
                 }
                 CrumbSeparator { }
                 Text {
-                    Layout.minimumWidth: Math.min(implicitWidth, VLCStyle.dp(130, VLCStyle.scale))
+                    Layout.fillWidth: true
+                    Layout.minimumWidth: Math.min(implicitWidth, VLCStyle.dp(80, VLCStyle.scale))
                     Layout.maximumWidth: implicitWidth
                     textFormat: Text.PlainText
                     text: root._crumbs.length > 0 ? root._crumbs[root._crumbs.length - 1].title : ""
@@ -852,6 +868,11 @@ FocusScope {
                         onTriggered: root._playCollection(false)
                     }
                     Widgets.RedesignMenuItem {
+                        text: qsTr("Shuffle")
+                        iconName: "shuffle"
+                        onTriggered: root._playCollection(false, true)
+                    }
+                    Widgets.RedesignMenuItem {
                         text: qsTr("Add all to queue")
                         iconName: "queue"
                         onTriggered: root._playCollection(true)
@@ -864,6 +885,11 @@ FocusScope {
                         text: qsTr("Play all")
                         iconName: "play"
                         onTriggered: root._playFolder(false)
+                    }
+                    Widgets.RedesignMenuItem {
+                        text: qsTr("Shuffle")
+                        iconName: "shuffle"
+                        onTriggered: root._playFolder(false, true)
                     }
                     Widgets.RedesignMenuItem {
                         text: qsTr("Add all to queue")
@@ -1820,23 +1846,30 @@ FocusScope {
             _homeSorted = true
     }
 
-    function _playFolder(enqueue) {
+    function _playFolder(enqueue, shuffled) {
         const urls = []
         for (let i = 0; i < folderModel.count; ++i) {
             const index = folderModel.index(i, 0)
             if (!folderModel.data(index, LocalFolderModel.IsFolderRole))
                 urls.push(folderModel.data(index, LocalFolderModel.UrlRole))
         }
+        // (Shuffle: the files in a random order, discussion #130)
+        for (let i = shuffled ? urls.length - 1 : 0; i > 0; --i) {
+            const j = Math.floor(Math.random() * (i + 1))
+            const t = urls[i]; urls[i] = urls[j]; urls[j] = t
+        }
         if (urls.length > 0)
             MainPlaylistController.append(urls, !enqueue)
     }
     // The songs of the album, the artist, the genre or the playlist shown
-    function _playCollection(enqueue) {
+    function _playCollection(enqueue, shuffled) {
         const id = location.section === "playlist" ? location.playlistId : location.parentId
         if (!root._mlAvailable || id === undefined)
             return
         if (enqueue)
             MediaLib.addToPlaylist([id])
+        else if (shuffled)
+            MediaLib.addAndPlayShuffled([id])
         else
             MediaLib.addAndPlay([id])
     }

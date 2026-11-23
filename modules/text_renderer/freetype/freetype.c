@@ -1086,7 +1086,8 @@ static subpicture_region_t *Render( filter_t *p_filter,
     filter_sys_t *p_sys = p_filter->p_sys;
     subpicture_region_t *region = NULL;
     bool b_grid = (p_region_in->text_flags & VLC_SUBPIC_TEXT_FLAG_GRID_MODE) != 0;
-    p_sys->i_scale = ( b_grid ) ? 100 : var_InheritInteger( p_filter, "sub-text-scale");
+    const bool b_not_scaled = (p_region_in->text_flags & VLC_SUBPIC_TEXT_FLAG_NOT_SCALED) != 0;
+    p_sys->i_scale = ( b_grid || b_not_scaled ) ? 100 : var_InheritInteger( p_filter, "sub-text-scale");
 
     UpdateDefaultLiveStyles( p_filter );
 

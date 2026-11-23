@@ -50,6 +50,9 @@ FocusScope{
     property string title
 
     property bool showCSD: false
+    // the window's buttons (minimize, maximize, close), shown in fullscreen
+    // too where the rest of the title bar's window handling is off
+    property bool showWindowButtons: showCSD
     property bool showToolbar: false
     property bool pinControls: false
 
@@ -202,7 +205,7 @@ FocusScope{
                 left = menubar
             }
 
-            if (showCSD) {
+            if (showWindowButtons) {
                 right = csdDecorations
                 if (!left) {
                     left = logoOrResume
@@ -265,7 +268,7 @@ FocusScope{
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.leftMargin: root.sideMargin + root._insetStart
-        anchors.right: root.showCSD ? csdDecorations.left : parent.right
+        anchors.right: root.showWindowButtons ? csdDecorations.left : parent.right
 
 
         visible: root.showToolbar
@@ -496,10 +499,10 @@ FocusScope{
         centerWithinBounds: true
         // between the cone group and the window buttons (on the other
         // sides in a right to left bar)
-        leftLimit: root._mirrored ? (root.showCSD ? csdDecorations.x + csdDecorations.width : 0)
+        leftLimit: root._mirrored ? (root.showWindowButtons ? csdDecorations.x + csdDecorations.width : 0)
                                   : logoOrResume.x + logoOrResume.width
         rightLimit: root._mirrored ? logoOrResume.x
-                                   : (root.showCSD ? csdDecorations.x : root.width)
+                                   : (root.showWindowButtons ? csdDecorations.x : root.width)
         visible: root._showCenterText && !root.resumeVisible && !root._titleInBar
         enabled: visible
         text: root.title || (Player.isStarted && Player.name.length ? Player.name : "VLC Media Player Redesign")
@@ -560,9 +563,9 @@ FocusScope{
 
         focus: false
         height: VLCStyle.redesign.topbarHeight
-        active: root.showCSD
-        enabled: root.showCSD
-        visible: root.showCSD
+        active: root.showWindowButtons
+        enabled: root.showWindowButtons
+        visible: root.showWindowButtons
         source: "qrc:///qt/qml/VLC/Widgets/CSDWindowButtonSet.qml"
 
         Binding {

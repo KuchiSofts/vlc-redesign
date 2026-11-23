@@ -6789,6 +6789,10 @@ msgstr "പുനഃസ്ഥാപിക്കുക"
 msgid "Maximize"
 msgstr "വലുതാക്കുക"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "മുഴുവൻ സ്ക്രീനിൽ നിന്ന് പുറത്തുകടക്കുക"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "ഫലങ്ങളൊന്നുമില്ല"
@@ -9138,10 +9142,6 @@ msgstr "ഫോൾഡർ പേര് ലഭ്യമല്ല"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ഫ്രെയിം റേറ്റ് ലഭ്യമല്ല"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "മുഴുവൻ സ്ക്രീനിൽ നിന്ന് പുറത്തുകടക്കുക"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

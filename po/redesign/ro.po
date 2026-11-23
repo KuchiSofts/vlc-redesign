@@ -6900,6 +6900,10 @@ msgstr "Restaurează"
 msgid "Maximize"
 msgstr "Maximizează"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Ieși din modul pe tot ecranul"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Niciun rezultat"
@@ -9276,10 +9280,6 @@ msgstr "Nume de dosar indisponibil"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Frecvența cadrelor indisponibilă"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Ieși din modul pe tot ecranul"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

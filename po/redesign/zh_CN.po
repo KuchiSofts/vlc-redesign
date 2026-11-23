@@ -6663,6 +6663,10 @@ msgstr "还原"
 msgid "Maximize"
 msgstr "最大化"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "退出全屏"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "没有结果"
@@ -8986,10 +8990,6 @@ msgstr "文件夹名称不可用"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "帧率不可用"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "退出全屏"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

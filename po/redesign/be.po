@@ -6860,6 +6860,10 @@ msgstr "Аднавіць"
 msgid "Maximize"
 msgstr "Разгарнуць"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Выйсці з поўнаэкраннага рэжыму"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Няма вынікаў"
@@ -9235,10 +9239,6 @@ msgstr "Назва папкі недаступная"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Частата кадраў недаступная"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Выйсці з поўнаэкраннага рэжыму"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

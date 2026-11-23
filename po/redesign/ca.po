@@ -6911,6 +6911,10 @@ msgstr "Restaura"
 msgid "Maximize"
 msgstr "Maximitza"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Surt de la pantalla completa"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Cap resultat"
@@ -9291,10 +9295,6 @@ msgstr "Nom de la carpeta no disponible"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Fotogrames per segon no disponibles"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Surt de la pantalla completa"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

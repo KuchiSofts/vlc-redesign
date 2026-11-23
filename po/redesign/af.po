@@ -6846,6 +6846,10 @@ msgstr "Herstel"
 msgid "Maximize"
 msgstr "Maksimeer"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Verlaat volskerm"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Geen resultate nie"
@@ -9203,10 +9207,6 @@ msgstr "Vouernaam nie beskikbaar nie"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Raampietempo nie beskikbaar nie"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Verlaat volskerm"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

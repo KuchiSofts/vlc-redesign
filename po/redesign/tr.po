@@ -6844,6 +6844,10 @@ msgstr "Önceki boyut"
 msgid "Maximize"
 msgstr "Ekranı kapla"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Tam Ekrandan Çık"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Sonuç yok"
@@ -9198,10 +9202,6 @@ msgstr "Klasör adı bilgisi yok"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Kare hızı bilgisi yok"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Tam Ekrandan Çık"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

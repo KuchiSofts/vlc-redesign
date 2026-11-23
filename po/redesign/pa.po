@@ -6728,6 +6728,10 @@ msgstr "ਮੁੜ ਬਹਾਲ ਕਰੋ"
 msgid "Maximize"
 msgstr "ਮੈਕਸੀਮਾਈਜ਼ ਕਰੋ"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "ਪੂਰੀ ਸਕਰੀਨ ਛੱਡੋ"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ"
@@ -9064,10 +9068,6 @@ msgstr "ਫੋਲਡਰ ਨਾਂ ਉਪਲੱਬਧ ਨਹੀਂ"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ਫਰੇਮ ਰੇਟ ਉਪਲੱਬਧ ਨਹੀਂ"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "ਪੂਰੀ ਸਕਰੀਨ ਛੱਡੋ"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

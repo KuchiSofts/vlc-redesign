@@ -6734,6 +6734,10 @@ msgstr "ප්‍රතිස්ථාපනය කරන්න"
 msgid "Maximize"
 msgstr "උපරිම කරන්න"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "පුන් තිරයෙන් ඉවත් වන්න"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "ප්‍රතිඵල නැත"
@@ -9072,10 +9076,6 @@ msgstr "ෆෝල්ඩර නාමය ලබා ගත නොහැක"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "රාමු අනුපාතය ලබා ගත නොහැක"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "පුන් තිරයෙන් ඉවත් වන්න"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

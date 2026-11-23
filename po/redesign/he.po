@@ -6765,6 +6765,10 @@ msgstr "שחזר"
 msgid "Maximize"
 msgstr "הגדל"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "צא ממסך מלא"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "אין תוצאות"
@@ -9126,10 +9130,6 @@ msgstr "שם התיקייה אינו זמין"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "קצב התמוניות אינו זמין"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "צא ממסך מלא"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

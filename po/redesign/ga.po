@@ -6944,6 +6944,10 @@ msgstr "Athchóirigh"
 msgid "Maximize"
 msgstr "Uasmhéadaigh"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Fág an lánscáileán"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Gan torthaí"
@@ -9353,10 +9357,6 @@ msgstr "Níl ainm an fhillteáin ar fáil"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Níl an ráta frámaí ar fáil"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Fág an lánscáileán"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

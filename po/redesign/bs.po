@@ -6845,6 +6845,10 @@ msgstr "Vrati"
 msgid "Maximize"
 msgstr "Maksimiziraj"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Izađi iz prikaza preko cijelog ekrana"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Nema rezultata"
@@ -9215,10 +9219,6 @@ msgstr "Naziv mape nije dostupan"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Broj sličica u sekundi nije dostupan"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Izađi iz prikaza preko cijelog ekrana"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

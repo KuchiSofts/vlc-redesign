@@ -6828,6 +6828,10 @@ msgstr "Қалпына келтіру"
 msgid "Maximize"
 msgstr "Үлкейту"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Толық бейнебеттен шығу"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Нәтижелер жоқ"
@@ -9174,10 +9178,6 @@ msgstr "Қалта аты қолжетімсіз"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Кадр жиілігі қолжетімсіз"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Толық бейнебеттен шығу"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

@@ -6708,6 +6708,10 @@ msgstr "ស្ដារ"
 msgid "Maximize"
 msgstr "ពង្រីកអតិបរមា"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "ចេញពីពេញអេក្រង់"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "គ្មានលទ្ធផល"
@@ -9032,10 +9036,6 @@ msgstr "ឈ្មោះថតមិនមានទេ"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "អត្រាស៊ុមមិនមានទេ"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "ចេញពីពេញអេក្រង់"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

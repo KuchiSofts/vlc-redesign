@@ -6879,6 +6879,10 @@ msgstr "Előző méret"
 msgid "Maximize"
 msgstr "Teljes méret"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Kilépés a teljes képernyőből"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Nincs találat"
@@ -9239,10 +9243,6 @@ msgstr "Mappanév nem elérhető"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Képkockasebesség nem elérhető"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Kilépés a teljes képernyőből"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

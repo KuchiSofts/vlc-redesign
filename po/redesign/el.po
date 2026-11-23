@@ -6953,6 +6953,10 @@ msgstr "Επαναφορά"
 msgid "Maximize"
 msgstr "Μεγιστοποίηση"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Έξοδος από πλήρη οθόνη"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Κανένα αποτέλεσμα"
@@ -9339,10 +9343,6 @@ msgstr "Το όνομα φακέλου δεν είναι διαθέσιμο"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Ο ρυθμός καρέ δεν είναι διαθέσιμος"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Έξοδος από πλήρη οθόνη"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

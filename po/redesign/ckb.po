@@ -6822,6 +6822,10 @@ msgstr "گەڕاندنەوە"
 msgid "Maximize"
 msgstr "گەورەکردن"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "دەرچوون لە پڕشاشە"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "هیچ ئەنجامێک نییە"
@@ -9182,10 +9186,6 @@ msgstr "ناوی بوخچە بەردەست نییە"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "ڕێژەی چوارچێوە بەردەست نییە"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "دەرچوون لە پڕشاشە"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

@@ -6805,6 +6805,10 @@ msgstr "Khôi phục"
 msgid "Maximize"
 msgstr "Phóng to"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Thoát toàn màn hình"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Không có kết quả"
@@ -9151,10 +9155,6 @@ msgstr "Không có tên thư mục"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Không có thông tin tốc độ khung hình"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Thoát toàn màn hình"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

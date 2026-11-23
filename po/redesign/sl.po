@@ -6870,6 +6870,10 @@ msgstr "Obnovi"
 msgid "Maximize"
 msgstr "Povečaj"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Zapusti celozaslonski način"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Ni rezultatov"
@@ -9252,10 +9256,6 @@ msgstr "Ime mape ni na voljo"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Hitrost sličic ni na voljo"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Zapusti celozaslonski način"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

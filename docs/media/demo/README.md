@@ -34,7 +34,7 @@ in Hebrew, Arabic and Japanese were written for these clips.
 | [tv-guide.webp](tv-guide.webp) · [MP4](tv-guide.mp4) | Live TV: the Guide with the line of now and each programme's progress, *Later* and *Now*, the Kids group, and a programme's details. |
 | [cast.webp](cast.webp) · [MP4](cast.mp4) | Cast to a TV: the devices found (real ones hidden here), a Chromecast picked, *Playing on Living Room TV*, pause and play from the bar, then back to *This computer*. |
 | [effects.webp](effects.webp) · [MP4](effects.mp4) | Effects over the video: the equalizer turned on, three bands moved (two up, one down), then the video effects. |
-| [about.gif](about.gif) · [MP4](about.mp4) | About: the platform badge (*Windows x64*), What's new in 0.4.0 and the designer's credit. |
+| [about.webp](about.webp) · [MP4](about.mp4) | About (the released 0.8.0): the version, the platform badge (*Windows x64*), the designer's credit and the other systems it runs on. |
 | [rtl-hebrew.webp](rtl-hebrew.webp) · [MP4](rtl-hebrew.mp4) | Settings, the language list down to Hebrew: the whole interface turns right to left at once, no restart (Settings, the sidebar, Home). |
 
 ## Linux and macOS

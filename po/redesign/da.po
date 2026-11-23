@@ -6861,6 +6861,10 @@ msgstr "Gendan"
 msgid "Maximize"
 msgstr "Maksimér"
 
+#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
+msgid "Exit Fullscreen"
+msgstr "Afslut fuldskærm"
+
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:634
 msgid "No results"
 msgstr "Ingen resultater"
@@ -9213,10 +9217,6 @@ msgstr "Mappenavn ikke tilgængeligt"
 #: modules/gui/qt/player/qml/controlbarcontrols/FrameRateWidget.qml:16
 msgid "Frame rate unavailable"
 msgstr "Billedhastighed ikke tilgængelig"
-
-#: modules/gui/qt/player/qml/controlbarcontrols/FullscreenButton.qml:33
-msgid "Exit Fullscreen"
-msgstr "Afslut fuldskærm"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/HDRButton.qml:10
 msgid "HDR output"

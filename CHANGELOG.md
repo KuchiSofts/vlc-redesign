@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Version 0.8.2 started (VLC_REDESIGN_VERSION).
+
 ## [0.8.1] · 2026-11-23
 
 An update release: a deleted or moved file leaves the queue and the history, the queue goes into a playlist

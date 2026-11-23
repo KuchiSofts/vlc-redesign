@@ -154,6 +154,13 @@ What is being worked on, updated as it changes (2026-11-10):
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
 - 🟡 **0.8.2**: update releases of fixes as the issues bring them.
+- 🟢 **0.8.1** published 2026-11-23 07:37 local (tag v0.8.1 on 6bc0fa4f1b, PR #136 merged as 759fc8273f; Android
+  tag v0.8.1 on 0569e02986, PR #22 merged as ca1e2b1efd, APK versionCode 13108010; 20 files, small updates 5.2 MB
+  x64, 4.2 MB ARM64, the macOS .app.zip for the first time). Before publishing: pkg_scan 0 hits on the Windows
+  zips and both .app.zip, the release zip played, the signed APK updated 0.8.0 in place (What's new 0.8.1). After:
+  a 0.8.0 portable copy found 0.8.1 in About, took the small update and restarted as 0.8.1 (Also on: 0.8.1, Samsung
+  0.8.0). macOS CI: both builds staged and swapped the app from the dmg and from the .app.zip. #135 closed; #117
+  open until its reporter's next update comes through the zip; #132 answered. No Discussions post (owner rule).
 - 🟢 **0.8.1** (2026-11-23, an update release; the Samsung TV app stays 0.8.0, follows: 0.8.1): the first fixes after 0.8.0; the Samsung TV app's 0.8.0 (the guide's day) after
   its run on the test TV. The in-app What's new of 0.8.0 listed "The release check reads the Discussions" (a tooling
   line of the changelog's Added): moved to Technical.

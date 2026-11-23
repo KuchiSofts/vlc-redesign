@@ -29,6 +29,9 @@ Updated as the work moves (last: 2026-11-23, 0.8.1 published, 0.8.2 started).
 **0.8.2** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released).
 
+- 🟡 macOS: the first update from the zip on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
+  (its owner installs 0.8.1 from the disk image once, then 0.8.2 comes through the app)
+
 And as the issues bring them:
 
 - 📋 Samsung TV: the song's cover in its music view (it shows none yet: no backdrop, nothing unreadable), with the

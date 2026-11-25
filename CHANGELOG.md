@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Mini player in small windows**: with its queue open it stays below the top bar, and the folder and artist no longer run under the queue button.
+
 ## [0.8.7] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library

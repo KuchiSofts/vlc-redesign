@@ -23,6 +23,9 @@ T.Control {
     property real dragXMax: 0
     property real dragYMin: 0
     property real dragYMax: 0
+    // Maximum height of the card (negative: uncapped); when smaller than the
+    // expanded card, the queue drawer shrinks to fit instead of overflowing
+    property real maximumHeight: -1
     property bool queueExpanded: false
     readonly property bool lightTheme: !VLCStyle.palette.isDark
     // Parent folder of a local media (a stream has none: not its host)
@@ -38,9 +41,9 @@ T.Control {
     // (4, the title 19, 14, the row 32, 4)
     padding: VLCStyle.dp(8, VLCStyle.scale)
     implicitWidth: VLCStyle.dp(391, VLCStyle.scale)
-    implicitHeight: topPadding + bottomPadding +
-                    (queueExpanded ? queueArea.height : 0) +
-                    _frameHeight + VLCStyle.dp(20 + 4 + 19 + 14 + 32 + 4, VLCStyle.scale)
+    readonly property real _baseHeight: topPadding + bottomPadding +
+                                        _frameHeight + VLCStyle.dp(20 + 4 + 19 + 14 + 32 + 4, VLCStyle.scale)
+    implicitHeight: _baseHeight + (queueExpanded ? queueArea.height : 0)
     // "Frame 112": the video and the seek bar, 230 for the video of 211;
     // narrower, the video is lower (16:9) and the frame with it
     readonly property real _frameHeight: video.height + VLCStyle.dp(19, VLCStyle.scale)
@@ -65,8 +68,10 @@ T.Control {
             x: -root.leftPadding
             y: -root.topPadding
             width: parent.width + root.leftPadding + root.rightPadding
-            height: implicitHeight
-            visible: root.queueExpanded
+            height: root.maximumHeight >= 0
+                    ? Math.min(implicitHeight, Math.max(0, root.maximumHeight - root._baseHeight))
+                    : implicitHeight
+            visible: root.queueExpanded && height > 0
             // the card's border and radius (background)
             edge: root.lightTheme ? 1 : 0
             radius: VLCStyle.dp(14, VLCStyle.scale)
@@ -227,12 +232,25 @@ T.Control {
         // the folder and the artist (icon 24, 8, the name), 20 apart
         Row {
             id: details
-            // (from the right in a right to left layout)
-            x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+            // (from the right in a right to left layout; stop dp(8) before queueButton)
+            x: LayoutMirroring.enabled ? queueButton.x + queueButton.width + VLCStyle.dp(8, VLCStyle.scale)
                                        : VLCStyle.dp(8, VLCStyle.scale)
             y: titleLabel.y + titleLabel.height + VLCStyle.dp(14, VLCStyle.scale)
+            width: Math.max(0, LayoutMirroring.enabled
+                               ? parent.width - VLCStyle.dp(8, VLCStyle.scale) - x
+                               : queueButton.x - x - VLCStyle.dp(8, VLCStyle.scale))
             height: VLCStyle.dp(32, VLCStyle.scale)
             spacing: VLCStyle.dp(20, VLCStyle.scale)
+            clip: true
+
+            readonly property int _visibleCount: (root.folderName ? 1 : 0) + (Player.artist ? 1 : 0)
+            readonly property real _textMaxWidth: {
+                const n = Math.max(1, _visibleCount)
+                const overhead = n * (VLCStyle.redesign.iconSize + VLCStyle.dp(8, VLCStyle.scale))
+                                 + (n - 1) * spacing
+                return Math.min(VLCStyle.dp(120, VLCStyle.scale),
+                                Math.max(0, Math.floor((width - overhead) / n)))
+            }
 
             Repeater {
                 model: [
@@ -257,7 +275,7 @@ T.Control {
                     Text {
                         id: detailText
                         anchors.verticalCenter: parent.verticalCenter
-                        width: Math.min(implicitWidth, VLCStyle.dp(120, VLCStyle.scale))
+                        width: Math.min(implicitWidth, details._textMaxWidth)
                         height: VLCStyle.dp(19, VLCStyle.scale)
                         textFormat: Text.PlainText
                         text: detail.modelData.label

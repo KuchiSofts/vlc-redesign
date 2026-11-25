@@ -153,7 +153,26 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.3** (work/0.8.3, 2026-11-25): a full check of issues, PRs and Discussions on both repositories.
+- 🟡 **0.8.4**: update releases of fixes as the issues bring them. Waiting: nine more pull requests of the same
+  contributor (#159 to #167: the queue's total length, hidden controls and the playback's ticks, old update files
+  removed off the start, the waveform drawn once, local folders sorted on a worker, the TV guide with the
+  keyboard, playback options kept in a saved playlist, the 2x hold as a temporary rate in the core, grid cards
+  made ahead), each to be read in full first; the update card's lines filtered by platform as What's new does.
+- 🟢 **0.8.3** published 2026-11-25 09:03 local, every app (tag v0.8.3 on 5968fea83c, PR #158 merged as 867fab712c;
+  Android tag v0.8.3 on 0b9a6ffad, PR #24 merged as c79a94dba; Samsung TV app tag v0.8.3 in its repo, its zip added;
+  19 files and the signed list, small updates 3.5 MB x64, 2.3 MB ARM64). Before publishing: CI green on every
+  platform, pkg_scan 0 hits on the Windows zips, the APK installed over 0.8.2 on the phone, tablet (from 0.5.6) and
+  TV emulators, the TV app's signed package installed on the test TV. After: a 0.8.2 portable copy updated itself
+  to 0.8.3 (the card, the signed list checked, Restart now, What's new of 0.8.3). #145 closed, #117 answered and
+  kept open until the next update goes through on the reporter's Mac, #143 and #132 answered.
+  - A real phone (Galaxy S24 class, Android 17), with a debug build whose library held three test clips only:
+    Folders (sort, eight choices readable, Play all with subfolders in order), a clip deleted on disk left both
+    lists by itself. Found there: the Videos page drew about 125 frames a second at rest (0 on the other pages).
+    The play button is anchored to the navigation, which it also dodges as a bottom inset edge; its bottom margin
+    made the two disagree before every frame. Without the margin: 0 frames at rest on the phone, the emulator, the
+    tablet and the TV; the button 2 px from where it was drawn. Frames at rest (`dumpsys gfxinfo`) is now a check
+    of every page.
+- 🟢 **0.8.3** (work/0.8.3, 2026-11-25): a full check of issues, PRs and Discussions on both repositories.
   - #117 (macOS update): the reporter's log showed the cause. VLC blocks SIGCHLD (and SIGTERM, SIGINT, SIGPIPE) in all
     its threads (bin/darwinvlc.m), and Qt learns of a child process's end on macOS only from SIGCHLD, so
     QProcess never saw the helper end ("ended with -1 after 362 s"). The child also inherited the blocked SIGTERM, so

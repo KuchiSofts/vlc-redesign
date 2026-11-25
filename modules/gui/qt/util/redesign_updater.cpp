@@ -64,6 +64,7 @@
 #endif
 
 #include "dialogs/dialogs_provider.hpp"
+#include "dialogs/firstrun/whats_new_text.hpp"
 #include "maininterface/mainctx.hpp"
 #include "player/player_controller.hpp"
 #include "util/http_request.hpp"
@@ -416,8 +417,10 @@ void splitVersion(QString v, QList<int> &numbers, QString &pre)
         numbers.append(0);
 }
 
-// The release notes in a few plain lines: the bullets of the first section
-// that has some (the "Highlights"), without Markdown
+// The release notes in a few plain lines: the first bullets that are about
+// this system (the card of 0.8.3 on Windows began with a Samsung TV line and
+// an Android TV one; What's new leaves those out the same way), without
+// Markdown
 QString summarise(const QString &markdown)
 {
     static const QRegularExpression link(QStringLiteral("!?\\[([^\\]]*)\\]\\([^)]*\\)"));
@@ -427,12 +430,16 @@ QString summarise(const QString &markdown)
         line = line.trimmed();
         if (line.startsWith(QLatin1String("- ")) || line.startsWith(QLatin1String("* "))) {
             line = line.mid(2);
+            if (WhatsNewText::forOtherSystem(line))
+                continue;
             line.replace(link, QStringLiteral("\\1"));
             line.remove(emphasis);
             bullets.append(line.trimmed());
             if (bullets.size() == 4)
                 break;
-        } else if (!bullets.isEmpty() && line.startsWith('#')) {
+        } else if (!bullets.isEmpty() && line.startsWith(QLatin1String("## "))) {
+            // (the notes' next part, Downloads: a "###" is the next kind of
+            // change, Fixed after Added, and its bullets count too)
             break;
         }
     }

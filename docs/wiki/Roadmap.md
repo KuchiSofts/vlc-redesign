@@ -31,6 +31,11 @@ request, then released).
 
 - 🟡 macOS: the first update from inside the app on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (0.8.3 installed by hand once: the fix is in the app that updates)
+- ✅ The update card lists what concerns your system (lines about the other apps left out)
+- 🟡 Nine more pull requests of a contributor (#159 to #167: speed in the queue, the seek bar, the TV guide with
+  the keyboard, playback options kept in a saved playlist), each read in full before it is taken
+- 🟡 VideoLAN's new way to build the interface's QML (type registration, an import folder) brought into our
+  build files and checked on every system
 
 And as the issues bring them:
 

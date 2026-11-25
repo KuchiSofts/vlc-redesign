@@ -15,6 +15,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **The update card lists what concerns your system**: lines about the other apps (Samsung TV, Android, another
+  operating system) are left out, as in What's new.
+
+### Technical
+
+- Version 0.8.4 started (VLC_REDESIGN_VERSION).
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the
@@ -48,6 +57,7 @@ player's library panel, and on Android TV every folder of a list within reach of
 - **Android TV: every folder and file of a folder list can be reached with the remote**: only the first
   column could.
 - **Android TV: a folder list keeps the focus** after playback or a jump along the path.
+- **Android: the Videos page no longer keeps drawing itself while nothing moves**: less battery used.
 
 ### Technical
 

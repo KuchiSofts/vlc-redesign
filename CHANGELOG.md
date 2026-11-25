@@ -31,6 +31,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Resync refreshes the open folder** so added, renamed, or removed files show up correctly without leaving the page.
 - **TV guide shows corrected programme titles after a refresh**, even when the guide is already open.
 - **TV searches by channel number** update when a source changes its channel numbers.
+- **The current audio output device stays selected** when you switch Settings pages and close Settings.
 
 ### Technical
 

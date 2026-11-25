@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Play Queue**: with a search filter or several items selected, Remove, the menu's actions, drag and drop and Jump to current act on the right items, in their order.
+
 ## [0.8.7] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library

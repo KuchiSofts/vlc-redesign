@@ -28,6 +28,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **TV guide keeps its place when you resize the window**.
 - **Deleting from the library uses the file you picked**, even if a scan rearranges the list while you confirm.
 - **Folder breadcrumbs work on Windows network shares** in the library and the player's library panel.
+- **Resync refreshes the open folder** so added, renamed, or removed files show up correctly without leaving the page.
 
 ### Technical
 

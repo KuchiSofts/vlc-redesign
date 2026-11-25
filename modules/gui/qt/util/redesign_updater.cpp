@@ -482,7 +482,8 @@ void removeOldInstallers()
     const QDateTime before = QDateTime::currentDateTime().addSecs(-3600);
     for (const QFileInfo &entry : dir.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden))
     {
-        if (entry.lastModified() >= before)
+        // (read again: a download of this session may have just replaced it)
+        if (QFileInfo(entry.filePath()).lastModified() >= before)
             continue;
         if (entry.isDir() && !entry.isSymLink())
             QDir(entry.filePath()).removeRecursively();
@@ -510,7 +511,10 @@ RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
             check(false);
     });
     connect(qApp, &QCoreApplication::aboutToQuit, this, &RedesignUpdater::applyOnExit);
-    removeOldInstallers();
+    runInBackground(this, []() {
+        QThread::currentThread()->setPriority(QThread::LowPriority);
+        removeOldInstallers();
+    });
     findStagedUpdate();
     resumeAfterUpdate();
     scheduleStartupCheck();
@@ -1412,6 +1416,22 @@ QString RedesignUpdater::stageFinish(const QString &dir, const QString &version,
 // place, or a file was held): it is applied when VLC closes this time
 void RedesignUpdater::findStagedUpdate()
 {
+    // A stage is moved aside at once (a rename), then removed on a worker
+    // with any other one moved aside before: an update prepared in this
+    // session meanwhile writes a new "staged" of its own
+    const QString work = appDir() + QStringLiteral("/.update");
+    const auto removeStaleStage = [this, work](const QString &stage) {
+        if (!stage.isEmpty())
+            QDir().rename(stage, stage + QStringLiteral(".old-")
+                                 + QString::number(QDateTime::currentMSecsSinceEpoch()));
+        runInBackground(this, [work]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
+            const QStringList old = QDir(work).entryList({ QStringLiteral("staged.old-*") },
+                                                         QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden);
+            for (const QString &name : old)
+                QDir(work + QLatin1Char('/') + name).removeRecursively();
+        });
+    };
     QFile ready(appDir() + QStringLiteral("/.update/ready.txt"));
     if (!ready.open(QIODevice::ReadOnly)) {
         // the helper of the last update, done
@@ -1419,8 +1439,9 @@ void RedesignUpdater::findStagedUpdate()
         // an update left half written (VLC closed while it was prepared);
         // not one another VLC is writing now
         const QFileInfo staged(appDir() + QStringLiteral("/.update/staged"));
-        if (staged.isDir() && staged.lastModified().secsTo(QDateTime::currentDateTime()) > 3600)
-            QDir(staged.filePath()).removeRecursively();
+        // (and the ones a session quit before removing)
+        const bool stale = staged.isDir() && staged.lastModified().secsTo(QDateTime::currentDateTime()) > 3600;
+        removeStaleStage(stale ? staged.filePath() : QString());
         return;
     }
     const QString version = QString::fromUtf8(ready.readAll()).trimmed();
@@ -1459,7 +1480,7 @@ void RedesignUpdater::findStagedUpdate()
     } else {
         // applied already, or older than this version
         ready.remove();
-        QDir(appDir() + QStringLiteral("/.update/staged")).removeRecursively();
+        removeStaleStage(appDir() + QStringLiteral("/.update/staged"));
     }
 }
 

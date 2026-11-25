@@ -298,6 +298,7 @@ FocusScope {
             // which each of these assignments would overwrite)
             property var programmes
             property var _blocks
+            property int _loadGeneration: 0
             // the ones of the blocks in sight, as cells: changed at its ends
             // only (a new list made every cell of every row again at each
             // block the time crossed)
@@ -341,8 +342,10 @@ FocusScope {
                 for (const b of wanted)
                     _blocks[b] = true
                 const key = row.key
+                const generation = row._loadGeneration
                 root.askProgrammes(key, from, to, (list) => {
-                    if (row.key !== key)
+                    // A guide refresh can keep the same channel key.
+                    if (row.key !== key || row._loadGeneration !== generation)
                         return
                     const known = {}
                     for (const p of row.programmes)
@@ -396,6 +399,7 @@ FocusScope {
             readonly property bool hasGuide: model.hasGuide
             onHasGuideChanged: reload()
             function reload() {
+                ++_loadGeneration
                 programmes = []
                 _blocks = {}
                 shown.clear()

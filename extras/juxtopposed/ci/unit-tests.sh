@@ -11,7 +11,7 @@
 # full screen (the kinds of the actions, the jumps added up, their texts);
 # and the headlines "What's new" makes of a changelog.
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
-# with g++, Qt 6 Core, zlib and Python 3:
+# with g++, Qt 6 Core, zlib, Python 3 and Node.js:
 #   sh extras/juxtopposed/ci/unit-tests.sh
 set -eu
 out=${OUT:-build-tests}
@@ -154,4 +154,7 @@ python3 extras/juxtopposed/qml-plaintext-check.py
 
 echo "== every text field and settings toggle has an accessible name"
 python3 extras/juxtopposed/qml-a11y-name-check.py
+
+echo "== TV guide refresh keeps the corrected programme"
+node extras/juxtopposed/tv-guide-refresh.js
 echo "all passed"

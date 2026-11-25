@@ -304,7 +304,7 @@ QVariantList VideoEffects::parameters(const QString& filter) const
 }
 int VideoEffects::cropValue(const QString& side) const
 {
-    if (!available() || !validSide(side)) return 0;
+    if (!available() || !validSide(side) || m_offline) return 0;
     vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
     if (!vout) return 0;
     const QByteArray id = cropName(side).toUtf8();
@@ -334,13 +334,15 @@ bool VideoEffects::requirePreview()
 }
 bool VideoEffects::begin()
 {
-    if (m_transactionActive && m_offline) return true;
     if (!activeVideo()) {
+        if (m_transactionActive && m_offline) return true;
         // no video: the picture of the frames all the same, on the saved
         // values (the adjustment only: the other filters need a video)
         if (!available()) return fail(tr("No active video output is available."));
         m_offline = true;
         m_offlineValues.clear();
+        m_snapshotValues.clear();
+        m_snapshotCrop.clear();
         m_configSnapshot.clear();
         for (const QString& name : optionNames(savedFilter)) {
             const QVariant value = getConfig(name);
@@ -353,7 +355,10 @@ bool VideoEffects::begin()
         clearError(); changed();
         return true;
     }
-    if (m_transactionActive && voutToken() == m_snapshotVout) return true;
+    if (m_transactionActive && !m_offline && voutToken() == m_snapshotVout) return true;
+    m_offline = false;
+    m_offlineValues.clear();
+    m_offlineChain.clear();
     m_snapshotVout = voutToken();
     m_snapshotChain = filterChain("video-filter");
     m_snapshotSources = filterChain("sub-source");
@@ -500,6 +505,7 @@ bool VideoEffects::setCrop(const QString& side, int pixels)
 {
     if (!validSide(side) || pixels < 0) return fail(tr("Invalid crop value."));
     if (!requirePreview()) return false;
+    if (m_offline) return fail(tr("No active video output is available."));
     size_t count = 0;
     vout_thread_t** vouts = vlc_player_vout_HoldAll(m_ctx->getIntf()->p_player, &count);
     if (!vouts || count == 0) { free(vouts); return fail(tr("No active video output is available.")); }
@@ -539,7 +545,7 @@ bool VideoEffects::resetDefaults(const QString& filter)
 }
 bool VideoEffects::cancel()
 {
-    if (!m_transactionActive) return true;
+    if (!m_transactionActive) { clearError(); return true; }
     if (m_offline) {
         // nothing reached a video: the kept values are dropped
         m_offline = false; m_offlineValues.clear(); m_offlineChain.clear();

@@ -9,9 +9,9 @@
 # addresses and answers, fixtures/subtitle-services), and the encoding
 # detection of text subtitles (the corpus); what a shortcut shows in
 # full screen (the kinds of the actions, the jumps added up, their texts);
-# and the headlines "What's new" makes of a changelog.
+# the headlines "What's new" makes of a changelog, and folder breadcrumbs.
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
-# with g++, Qt 6 Core, zlib and Python 3:
+# with g++, Qt 6 Core, zlib, Node.js and Python 3:
 #   sh extras/juxtopposed/ci/unit-tests.sh
 set -eu
 out=${OUT:-build-tests}
@@ -148,6 +148,9 @@ g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-c
 
 echo "== subtitle encodings"
 python3 extras/juxtopposed/subtitle-charset-test.py --cc "gcc $san"
+
+echo "== folder breadcrumbs (network shares, drive roots, encoded paths)"
+node extras/juxtopposed/folder-breadcrumbs-test.js
 
 echo "== outside text is never drawn as HTML (QML textFormat)"
 python3 extras/juxtopposed/qml-plaintext-check.py

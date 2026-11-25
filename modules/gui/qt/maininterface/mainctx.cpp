@@ -111,6 +111,7 @@
 #include <QSettings>
 
 #include <QThread>
+#include <QTimer>
 
 #include <vlc_actions.h>
 #include <vlc_interface.h>
@@ -348,8 +349,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
             }, Qt::QueuedConnection);
         else if (m_medialib)
             /* the library is read as usual meanwhile (VLC always opened with
-             * a file never read it at start) */
-            QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
+             * a file never read it at start), after a short delay so the
+             * folder scan does not compete with opening the file */
+            QTimer::singleShot(10000, m_medialib, &MediaLib::reload);
     }
     else if (m_medialib)
     {

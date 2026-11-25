@@ -1543,6 +1543,8 @@ PlayerControllerPrivate::PlayerControllerPrivate(PlayerController *playercontrol
     m_fullscreen = vlc_player_vout_IsFullscreen( m_player );
 
     m_volume = vlc_player_aout_GetVolume( m_player );
+    // The output can restore mute before the listener is attached.
+    m_muted = vlc_player_aout_IsMuted( m_player ) > 0;
 }
 
 void PlayerControllerPrivate::addSMPTETimer()
@@ -2485,8 +2487,6 @@ void PlayerController::setVolumeDown(int steps)
 void PlayerController::setMuted(bool muted)
 {
     Q_D(PlayerController);
-    if( d->m_muted == muted )
-        return;
     vlc_player_locker lock{ d->m_player };
     vlc_player_aout_Mute( d->m_player, muted );
 }
@@ -2494,7 +2494,9 @@ void PlayerController::setMuted(bool muted)
 void PlayerController::toggleMuted()
 {
     Q_D(PlayerController);
-    setMuted( !d->m_muted );
+    vlc_player_locker lock{ d->m_player };
+    // The audio output's state can be newer than the queued Qt notification.
+    vlc_player_aout_ToggleMute( d->m_player );
 }
 
 bool PlayerController::hasAudioVisualization() const

@@ -287,6 +287,7 @@ qt_plugin_sources = files(
     '../../player/subtitle_charset.c',
     '../../player/local_folder_model.cpp',
     '../../player/local_folder_model.hpp',
+    '../../player/local_folder_order.hpp',
     '../../player/sleep_timer.cpp',
     '../../player/sleep_timer.hpp',
     '../../player/player_controller.cpp',

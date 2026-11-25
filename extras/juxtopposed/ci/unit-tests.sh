@@ -36,6 +36,11 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     $(pkg-config --libs Qt6Core) -o "$out/screen-fit"
 "$out/screen-fit"
 
+echo "== local folders (search, natural names, dates and watched order)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/local-folder-order.cpp $(pkg-config --libs Qt6Core) -o "$out/local-folder-order"
+"$out/local-folder-order"
+
 echo "== What's new (the headlines of a changelog: no issue references, a long lead's colon, whole words)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/whats-new.cpp modules/gui/qt/dialogs/firstrun/whats_new_text.cpp \

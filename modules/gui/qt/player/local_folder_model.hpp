@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <mutex>
+#include <optional>
 
 #include "medialibrary/medialib.hpp"
 #include "medialibrary/mlqmltypes.hpp"
@@ -123,7 +124,7 @@ private:
         QString title;
         QString artist;
     };
-    // The model for the listings still running, null once it is gone
+    // The model for the workers still running, null once it is gone
     struct Guard
     {
         std::mutex lock;
@@ -132,13 +133,16 @@ private:
 
     // Reads the progress and the play count of the media from the library
     void loadLibraryData();
+    void notifyLibraryDataChanged();
     // The rows of the entries matching the search, sorted
-    void updateRows();
-    void sortRows();
+    void updateRows(bool refilter = true);
+    void startRowUpdate(std::optional<QVector<int>> seed = std::nullopt);
+    void applyRows(QVector<int> rows);
+    void clearEntries();
     // Lists the folder on a thread of the pool: a network drive that does
     // not answer would freeze the interface
     void startListing();
-    void onListed(const QVector<Entry>& entries);
+    void onListed(QVector<Entry> entries);
     static QVector<Entry> listFolder(const QString& path);
     // the folders of these paths that are there
     static QVector<Entry> listRoots(const QStringList& paths);
@@ -147,6 +151,8 @@ private:
     // search and the sort work on it, without listing the folder again
     QVector<Entry> m_entries;
     QVector<int> m_rows;
+    // A reload keeps showing the previous listing until its replacement is ready
+    std::optional<QVector<Entry>> m_pendingEntries;
     MediaLib* m_ml = nullptr;
     std::shared_ptr<Guard> m_guard;
     // one listing at a time; another one asked meanwhile runs after it
@@ -154,6 +160,12 @@ private:
     bool m_relist = false;
     // Changes with each listing: older answers of the library are dropped
     quint64 m_generation = 0;
+    // Separate from the listing so a search or sort does not invalidate enrichment
+    quint64 m_rowGeneration = 0;
+    quint64 m_refilterGeneration = 0;
+    std::optional<QVector<Entry>> m_refilterEntries;
+    bool m_updatingRows = false;
+    bool m_libraryDataChanged = false;
     QUrl m_folder;
     QStringList m_roots;
     QString m_searchPattern;

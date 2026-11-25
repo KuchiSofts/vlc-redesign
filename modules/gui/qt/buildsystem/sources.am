@@ -252,6 +252,7 @@ libqt_plugin_la_SOURCES = \
 	player/lrc_parser.cpp player/lrc_parser.hpp \
 	player/subtitle_charset.c \
 	player/local_folder_model.cpp player/local_folder_model.hpp \
+	player/local_folder_order.hpp \
 	player/sleep_timer.cpp player/sleep_timer.hpp \
 	player/player_controller.cpp player/player_controller.hpp player/player_controller_p.hpp \
 	player/player_controlbar_model.cpp player/player_controlbar_model.hpp \

@@ -30,6 +30,11 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/shortcut-feedback.c
     modules/gui/qt/player/shortcut_feedback.cpp -o "$out/shortcut-feedback"
 "$out/shortcut-feedback"
 
+echo "== playlist duration total (unknown lengths, metadata updates and removals)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/playlist-duration-total.cpp \
+    -o "$out/playlist-duration-total"
+"$out/playlist-duration-total"
+
 echo "== audio output selection (same names, reordered and removed devices, default)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/audio-output-device.cpp \
     -o "$out/audio-output-device"

@@ -304,6 +304,7 @@ qt_plugin_sources = files(
     '../../playlist/playlist_controller.cpp',
     '../../playlist/playlist_controller.hpp',
     '../../playlist/playlist_controller_p.hpp',
+    '../../playlist/playlist_duration_total.hpp',
     '../../playlist/playlist_item.cpp',
     '../../playlist/playlist_item.hpp',
     '../../playlist/playlist_model.cpp',

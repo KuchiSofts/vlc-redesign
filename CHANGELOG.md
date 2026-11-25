@@ -19,8 +19,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - **A scroll bar in the player's library panel** ([#143](https://github.com/KuchiSofts/vlc-redesign/discussions/143)), as on the library pages.
 
+### Fixed
+
+- **macOS: in-app updates install** instead of stopping after minutes on "Preparing the update"
+  ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)).
+- **macOS: the waveform seek bar appears** instead of "Waveform analysis did not complete" after a minute.
+
 ### Technical
 
+- macOS: VLC blocks SIGCHLD in all its threads, so Qt never saw a program it started end. One thread of the
+  Qt interface now takes that signal; the update's helper runs through `vlc_spawn()` and `waitpid()`, its
+  signals unblocked (inherited, a blocked SIGTERM made every step of the helper wait out its two minutes).
 - Version 0.8.3 started (VLC_REDESIGN_VERSION).
 - The release tooling's bsdiff4 1.4.3 and the SignPath signing action 3.1 (Dependabot #141, #142; their hashes and
   commit checked against PyPI and SignPath's own tag).

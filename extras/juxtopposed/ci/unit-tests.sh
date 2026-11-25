@@ -9,9 +9,9 @@
 # addresses and answers, fixtures/subtitle-services), and the encoding
 # detection of text subtitles (the corpus); what a shortcut shows in
 # full screen (the kinds of the actions, the jumps added up, their texts);
-# and the headlines "What's new" makes of a changelog.
+# the headlines "What's new" makes of a changelog, and folder breadcrumbs.
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
-# with g++, Qt 6 Core, zlib and Python 3:
+# with g++, Qt 6 Core, zlib, Python 3 and Node.js:
 #   sh extras/juxtopposed/ci/unit-tests.sh
 set -eu
 out=${OUT:-build-tests}
@@ -34,6 +34,11 @@ echo "== playlist duration total (unknown lengths, metadata updates and removals
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/playlist-duration-total.cpp \
     -o "$out/playlist-duration-total"
 "$out/playlist-duration-total"
+
+echo "== audio output selection (same names, reordered and removed devices, default)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/audio-output-device.cpp \
+    -o "$out/audio-output-device"
+"$out/audio-output-device"
 
 echo "== windows that fit their screen (the first size and scale, a saved geometry, negative coordinates)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
@@ -74,6 +79,14 @@ g++ -std=c++17 -O1 -Wall $san -fPIC -I. -I"$out/thread-runner" -Imodules/gui/qt/
 echo "== Cover tracks (a song's picture kept as a video track is its cover, not a video)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/cover-track.cpp -o "$out/cover-track"
 "$out/cover-track"
+
+echo "== Live TV: searches after channel numbers change"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/iptv-channel-rows.cpp $(pkg-config --libs Qt6Core) -o "$out/iptv-channel-rows"
+"$out/iptv-channel-rows"
+echo "== Live TV: only the latest selection can act on its reply"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/iptv-tune-requests.cpp -o "$out/iptv-tune-requests"
+"$out/iptv-tune-requests"
 
 echo "== Live TV parsers"
 # (Qt's own allocations are not ours: only the parsers' leaks count; a
@@ -154,9 +167,17 @@ g++ -std=c++17 -O1 -g $san $fcast -fPIC -DHAVE_ZLIB -I. -Imodules/gui/qt $(pkg-c
 echo "== subtitle encodings"
 python3 extras/juxtopposed/subtitle-charset-test.py --cc "gcc $san"
 
+echo "== folder breadcrumbs (network shares, drive roots, encoded paths)"
+node extras/juxtopposed/folder-breadcrumbs-test.js
+
 echo "== outside text is never drawn as HTML (QML textFormat)"
 python3 extras/juxtopposed/qml-plaintext-check.py
 
 echo "== every text field and settings toggle has an accessible name"
 python3 extras/juxtopposed/qml-a11y-name-check.py
+
+echo "== file deletion keeps its target through library refreshes"
+node extras/juxtopposed/delete-file-confirmation.cjs
+echo "== TV guide refresh keeps the corrected programme"
+node extras/juxtopposed/tv-guide-refresh.js
 echo "all passed"

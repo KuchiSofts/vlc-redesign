@@ -2,6 +2,7 @@ libqt_plugin_la_SOURCES = \
 	dialogs/toolbar/profile_settings.cpp \
 	dialogs/toolbar/profile_settings.hpp \
 	dialogs/toolbar/profile_persistence.cpp \
+	dialogs/preferences/audio_output_device.hpp \
 	dialogs/preferences/audio_output_preview.cpp \
 	dialogs/preferences/audio_output_preview.hpp \
 	dialogs/preferences/config_model_effects.cpp \
@@ -275,7 +276,7 @@ libqt_plugin_la_SOURCES = \
 	util/audio_device_model.hpp \
 	util/workerthreadset.hpp util/workerthreadset.cpp \
 	util/http_request.cpp util/http_request.hpp \
-	iptv/iptv_addon.cpp iptv/iptv_addon.hpp \
+	iptv/iptv_addon.cpp iptv/iptv_addon.hpp iptv/iptv_channel_rows.hpp iptv/iptv_tune_requests.hpp \
 	util/redesign_updater.cpp util/redesign_updater.hpp \
 	util/redesign_update_key.h util/redesign_update_verify.h \
 	util/redesign_feedback.cpp util/redesign_feedback.hpp \
@@ -367,7 +368,10 @@ libqt_plugin_la_SOURCES = \
 	widgets/native/redesign_message_box.cpp \
 	widgets/native/redesign_message_box.hpp \
 	widgets/native/searchlineedit.cpp widgets/native/searchlineedit.hpp \
-	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp
+	widgets/native/viewblockingrectangle.cpp widgets/native/viewblockingrectangle.hpp \
+	widgets/native/backdropblenditem.cpp widgets/native/backdropblenditem.hpp \
+	widgets/native/roundedcornermask.cpp widgets/native/roundedcornermask.hpp \
+	widgets/native/fadingedgemask.cpp widgets/native/fadingedgemask.hpp
 
 # Meta-object compilation
 

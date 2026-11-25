@@ -6,32 +6,29 @@ import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import VLC.Dialogs
-import VLC.MainInterface
 import VLC.Player
 import VLC.Style
 import VLC.Widgets as Widgets
 
 ColumnLayout {
     id: root
+    required property AudioOutputPreview preview
     property int selectedIndex: -1
-    readonly property bool dirty: preview.dirty
-    readonly property string error: preview.lastError
     spacing: VLCStyle.dp(5, VLCStyle.scale)
 
-    function begin() {
-        if (!preview.active && preview.begin()) selectedIndex = preview.currentIndex()
+    function syncSelection() {
+        // Playback may have changed while the chooser was hidden.
+        if (!preview.dirty)
+            preview.cancel()
+        if (preview.dirty || preview.begin())
+            selectedIndex = preview.currentIndex()
     }
-    function canApply() { return preview.canCommit() }
-    function apply() { return preview.commit() }
-    function cancel() { return preview.cancel() }
-    function reset() { if (preview.cancel()) begin() }
 
-    AudioOutputPreview { id: preview; ctx: MainCtx }
     Repeater {
         id: deviceRows
         model: Player.audioDevices
         onCountChanged: {
-            if (count > 0 && root.visible && !preview.active) root.begin()
+            if (count > 0 && root.visible) root.syncSelection()
             if (count === 0) root.selectedIndex = -1
         }
         Item {
@@ -70,9 +67,10 @@ ColumnLayout {
             enabled: preview.active && deviceRows.count > 0
             model: Player.audioDevices
             textRole: "display"
+            valueRole: "deviceId"
             Binding { target: deviceBox; property: "currentIndex"; value: root.selectedIndex; when: !deviceBox.popup.visible }
             onActivated: (index) => {
-                if (preview.preview(index, textAt(index))) root.selectedIndex = index
+                if (preview.preview(valueAt(index))) root.selectedIndex = index
             }
             contentItem: Label {
                 // 12 px from the start (the right, right to left)

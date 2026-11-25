@@ -347,7 +347,7 @@ void LocalFolderModel::loadLibraryData()
     {
         std::vector<Result> results;
     };
-    const quint64 generation = m_generation;
+    const quint64 generation = ++m_generation;
     m_ml->runOnMLThread<Ctx>(this,
     // ML thread
     [mrls](vlc_medialibrary_t* ml, Ctx& ctx)
@@ -356,7 +356,10 @@ void LocalFolderModel::loadLibraryData()
         {
             ml_unique_ptr<vlc_ml_media_t> media{ vlc_ml_get_media_by_mrl(ml, qtu(entry.second)) };
             if (!media)
+            {
+                ctx.results.push_back({ entry.first, entry.second, 0., 0, 0, false, {}, {} });
                 continue;
+            }
             // a song: its title and its artist
             QString title, artist;
             if (media->i_type == VLC_ML_MEDIA_TYPE_AUDIO

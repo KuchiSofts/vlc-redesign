@@ -34,9 +34,11 @@ FocusScope {
 
     readonly property real channelWidth: px(260)
     readonly property real rowHeight: px(56)
-    readonly property real gridWidth: Math.max(px(200), width - channelWidth - px(20))
+    readonly property real timelineWidth: width - channelWidth - px(20)
+    readonly property real gridWidth: Math.max(px(200), timelineWidth)
     // Settings > TV: the hours across the guide
-    readonly property real pxPerSec: gridWidth / (Iptv.guideHours * 3600)
+    readonly property real guideScale: gridWidth / (Iptv.guideHours * 3600)
+    property real pxPerSec: guideScale
     // two days back (the archives), a week ahead
     readonly property real origin: {
         const d = new Date()
@@ -124,11 +126,23 @@ FocusScope {
         }
     }
 
+    function resizeTimeline() {
+        // Either width can clamp the offset, so keep the time before changing them.
+        const time = leftTime
+        scrollAnimation.stop()
+        timeline.width = timelineWidth
+        pxPerSec = guideScale
+        scrollTo(time, false)
+    }
+
     Component.onCompleted: {
+        // Take over from the initial bindings so later resizes can save the old time.
+        resizeTimeline()
         settle.start()
         Qt.callLater(() => root.scrollTo(Iptv.now - Iptv.guideHours * 3600 / 4, false))
     }
-    onPxPerSecChanged: Qt.callLater(() => root.scrollTo(root.leftTime, false))
+    onTimelineWidthChanged: Qt.callLater(resizeTimeline)
+    onGuideScaleChanged: Qt.callLater(resizeTimeline)
 
     NumberAnimation {
         id: scrollAnimation
@@ -194,8 +208,7 @@ FocusScope {
         id: timeline
         anchors.left: parent.left
         anchors.leftMargin: root.channelWidth
-        anchors.right: parent.right
-        anchors.rightMargin: root.px(20)
+        width: root.timelineWidth
         anchors.top: toolbar.bottom
         anchors.topMargin: root.px(12)
         height: root.px(28)
@@ -298,6 +311,7 @@ FocusScope {
             // which each of these assignments would overwrite)
             property var programmes
             property var _blocks
+            property int _loadGeneration: 0
             // the ones of the blocks in sight, as cells: changed at its ends
             // only (a new list made every cell of every row again at each
             // block the time crossed)
@@ -341,8 +355,10 @@ FocusScope {
                 for (const b of wanted)
                     _blocks[b] = true
                 const key = row.key
+                const generation = row._loadGeneration
                 root.askProgrammes(key, from, to, (list) => {
-                    if (row.key !== key)
+                    // A guide refresh can keep the same channel key.
+                    if (row.key !== key || row._loadGeneration !== generation)
                         return
                     const known = {}
                     for (const p of row.programmes)
@@ -396,6 +412,7 @@ FocusScope {
             readonly property bool hasGuide: model.hasGuide
             onHasGuideChanged: reload()
             function reload() {
+                ++_loadGeneration
                 programmes = []
                 _blocks = {}
                 shown.clear()

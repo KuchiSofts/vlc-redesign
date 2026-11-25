@@ -3,6 +3,7 @@ qt_plugin_sources = files(
     '../../dialogs/toolbar/profile_settings.hpp',
     '../../dialogs/toolbar/profile_persistence.cpp',
 
+    '../../dialogs/preferences/audio_output_device.hpp',
     '../../dialogs/preferences/audio_output_preview.cpp',
     '../../dialogs/preferences/audio_output_preview.hpp',
 
@@ -320,6 +321,8 @@ qt_plugin_sources = files(
     '../../util/http_request.hpp',
     '../../iptv/iptv_addon.cpp',
     '../../iptv/iptv_addon.hpp',
+    '../../iptv/iptv_channel_rows.hpp',
+    '../../iptv/iptv_tune_requests.hpp',
     '../../util/redesign_updater.cpp',
     '../../util/redesign_updater.hpp',
     '../../util/redesign_update_key.h',
@@ -454,6 +457,12 @@ qt_plugin_sources = files(
     '../../widgets/native/searchlineedit.hpp',
     '../../widgets/native/viewblockingrectangle.cpp',
     '../../widgets/native/viewblockingrectangle.hpp',
+    '../../widgets/native/backdropblenditem.cpp',
+    '../../widgets/native/backdropblenditem.hpp',
+    '../../widgets/native/roundedcornermask.cpp',
+    '../../widgets/native/roundedcornermask.hpp',
+    '../../widgets/native/fadingedgemask.cpp',
+    '../../widgets/native/fadingedgemask.hpp',
 )
 
 if host_system == 'windows'

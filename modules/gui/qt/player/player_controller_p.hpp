@@ -20,6 +20,7 @@
 #define QVLC_INPUT_MANAGER_P_H_
 
 #include "player_controller.hpp"
+#include "util/asynctask.hpp"
 #include "util/variables.hpp"
 #include "input_models.hpp"
 #include "util/varchoicemodel.hpp"
@@ -70,9 +71,9 @@ public:
     // UpdateMeta) into a list of TimedText entries. The cache is
     // invalidated when m_syltRaw changes.
     QList<TimedText> syltLyrics() const;
-    // The lyrics of an .lrc beside the local file playing (m_url), taken
-    // before the ones the file carries (as on Android)
-    void loadLrcLyrics();
+    // Sidecar lyrics take precedence over embedded lyrics (as on Android).
+    void loadLrcLyrics(quint64 generation);
+    void UpdateCurrentLyric(VLCTime time, bool lyricsChanged = false);
     void onArtFetchEnded(input_item_t *, bool fetched);
 
     // SMPTE Timer
@@ -227,6 +228,10 @@ public:
     mutable bool m_lyricsTimed = true;
     bool m_lyricsFromLrc = false;
     int m_currentLyricIndex = -1;
+
+    class LrcLyricsTask;
+    TaskHandle<LrcLyricsTask> m_lrcLyricsTask;
+    quint64 m_lrcLyricsGeneration = 0; // Protected by the player lock.
 };
 
 #endif /* QVLC_INPUT_MANAGER_P_H_ */

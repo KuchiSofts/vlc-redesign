@@ -11,6 +11,7 @@
 #endif
 
 #include "iptv_addon.hpp"
+#include "iptv_channel_rows.hpp"
 
 #include <QDateTime>
 #include <QImage>
@@ -182,40 +183,43 @@ void IptvChannelModel::setSearch(const QString& search)
 
 void IptvChannelModel::refilter()
 {
+    resetRows(filteredRows(IptvChannelSearch(m_search)));
+}
+
+QVector<int> IptvChannelModel::filteredRows(const IptvChannelSearch& search) const
+{
+    QStringList keys;
+    if (m_group == QLatin1String("recent"))
+        keys = m_addon->recent();
+    else if (m_group == QLatin1String("favorites"))
+        keys = m_addon->favorites();
+    return iptvChannelRows(m_addon->channels(), m_group, keys, search, m_addon->showAdult(),
+                           [this](const QString& key) { return m_addon->channelIndex(key); });
+}
+
+void IptvChannelModel::resetRows(QVector<int> rows)
+{
     beginResetModel();
-    m_rows.clear();
-    const auto& channels = m_addon->channels();
-    const QString needle = m_search.trimmed().toCaseFolded();
-    bool numeric = false;
-    const int number = needle.toInt(&numeric);
-    const bool adult = m_addon->showAdult();
-    auto matches = [&](const IptvChannelModel::Item& c) {
-        if (c.adult && !adult)
-            return false;
-        if (needle.isEmpty())
-            return true;
-        return c.nameFolded.contains(needle) || (numeric && c.number == number);
-    };
-    if (m_group == QLatin1String("recent") || m_group == QLatin1String("favorites"))
-    {
-        // in the order of the list kept (the last watched first)
-        const QStringList keys = m_group == QLatin1String("recent") ? m_addon->recent() : m_addon->favorites();
-        for (const QString& key : keys)
-        {
-            const int i = m_addon->channelIndex(key);
-            if (i >= 0 && matches(channels[i]))
-                m_rows.append(i);
-        }
-    }
-    else
-    {
-        for (int i = 0; i < channels.size(); ++i)
-            if ((m_group.isEmpty() || channels[i].group == m_group) && matches(channels[i]))
-                m_rows.append(i);
-    }
+    m_rows = std::move(rows);
     endResetModel();
     emit countChanged();
     emit currentIndexChanged();
+}
+
+void IptvChannelModel::channelDataChanged(bool numbersChanged)
+{
+    // A renumbered channel can enter or leave a search without changing its key.
+    if (numbersChanged)
+    {
+        const IptvChannelSearch search(m_search);
+        auto rows = search.rowsAfterRenumbering(m_rows, [this, &search]() { return filteredRows(search); });
+        if (rows)
+        {
+            resetRows(std::move(*rows));
+            return;
+        }
+    }
+    nowNextChanged({});
 }
 
 void IptvChannelModel::nowNextChanged(const QSet<QString>& keys)
@@ -603,6 +607,11 @@ void IptvAddon::loadChannels()
                                       return x.key == y.key && x.group == y.group && x.adult == y.adult
                                              && x.name == y.name;
                                   });
+                const bool numbersChanged = sameRows
+                    && !std::equal(a->m_channels.cbegin(), a->m_channels.cend(), items->cbegin(),
+                                   [](const IptvChannelModel::Item& x, const IptvChannelModel::Item& y) {
+                                       return x.number == y.number;
+                                   });
                 a->m_channels = std::move(*items);
                 if (a->m_loadTime.isValid() && !a->m_channels.isEmpty())
                 {
@@ -612,8 +621,8 @@ void IptvAddon::loadChannels()
                 }
                 if (sameRows)
                 {
-                    a->m_channelModel->nowNextChanged({});
-                    a->m_playerModel->nowNextChanged({});
+                    a->m_channelModel->channelDataChanged(numbersChanged);
+                    a->m_playerModel->channelDataChanged(numbersChanged);
                     emit a->currentChannelChanged();
                     if (a->m_channelsAgain)
                     {

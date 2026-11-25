@@ -115,7 +115,7 @@ Widgets.PageExt {
     property var _subtitleDialog: null
     Component {
         id: subtitleDialogComponent
-        SubtitleAssociationsDialog { parent: root }
+        SubtitleAssociationsDialog { }
     }
     function _tracksDialog() {
         if (!_subtitleDialog)

@@ -8,10 +8,15 @@ import VLC.Playlist
 Item {
     id: root
     SleepTimerController { id: sleepTimer; player: Player; playlist: MainPlaylistController }
-    PlayerMenu { id: playerMenu; parent: root; x: root.centeredX(width); y: root.centeredY(height) }
-    SleepTimerMenu { id: timerMenu; parent: root; x: root.centeredX(width); y: root.centeredY(height); timerController: sleepTimer }
-    AudioVisualizationDialog { id: visualization; parent: root; x: root.centeredX(width); y: root.centeredY(height) }
-    HdrOutputDialog { id: hdr; parent: root; x: root.centeredX(width); y: root.centeredY(height) }
+    // made the first time they are asked for (not with the window), then kept
+    Loader { id: playerMenu; active: false; onLoaded: item.open()
+        sourceComponent: Component { PlayerMenu { parent: root; x: root.centeredX(width); y: root.centeredY(height) } } }
+    Loader { id: timerMenu; active: false; onLoaded: item.open()
+        sourceComponent: Component { SleepTimerMenu { parent: root; x: root.centeredX(width); y: root.centeredY(height); timerController: sleepTimer } } }
+    Loader { id: visualization; active: false; onLoaded: item.open()
+        sourceComponent: Component { AudioVisualizationDialog { parent: root; x: root.centeredX(width); y: root.centeredY(height) } } }
+    Loader { id: hdr; active: false; onLoaded: item.open()
+        sourceComponent: Component { HdrOutputDialog { parent: root; x: root.centeredX(width); y: root.centeredY(height) } } }
     OnboardingController {
         id: setupState
         ctx: MainCtx
@@ -117,10 +122,10 @@ Item {
             if (effects.item) effects.item.switchTab(page)
             root.show(effects)
         }
-        function onPlayerMenuRequested() { playerMenu.open() }
-        function onSleepTimerRequested() { timerMenu.open() }
-        function onAudioVisualizationRequested() { visualization.open() }
-        function onHdrOutputRequested() { hdr.open() }
+        function onPlayerMenuRequested() { root.show(playerMenu) }
+        function onSleepTimerRequested() { root.show(timerMenu) }
+        function onAudioVisualizationRequested() { root.show(visualization) }
+        function onHdrOutputRequested() { root.show(hdr) }
         // (Ctrl+T and the menus show and hide it, as the classic window)
         function onGotoTimeRequested() { root.toggle(goToTime) }
         function onPluginsRequested() { root.toggle(plugins) }

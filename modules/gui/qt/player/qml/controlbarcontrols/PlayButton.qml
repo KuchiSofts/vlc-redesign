@@ -97,11 +97,13 @@ T.Control {
     Keys.onReleased: (event) => {
         if (KeyHelper.matchOk(event)) {
             if (!event.isAutoRepeat) {
+                // false when the hold already stopped playback
+                const pressed = _keyOkPressed
                 _keyOkPressed = false
                 keyHoldTimer.stop()
                 innerRectangle.state = ""
-                if (Player.playingState !== Player.PLAYING_STATE_STOPPED)
-                    MainPlaylistController.togglePlayPause()
+                if (pressed)
+                    root._activate()
             }
             event.accepted = true
         }

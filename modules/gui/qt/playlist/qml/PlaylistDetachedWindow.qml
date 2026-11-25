@@ -48,12 +48,9 @@ Window {
     onVisibleChanged: {
         if (visible) {
             console.assert(transientParent)
-            height = transientParent.height
-            minimumHeight = transientParent.minimumHeight
-            // beside the main window: on its left in a right to left layout
-            x = _rtl ? transientParent.x - width - 10
-                     : transientParent.x + transientParent.width + 10
-            y = transientParent.y
+            // beside the main window: on its left in a right to left layout,
+            // kept inside its screen when there is no room on that side
+            MainCtx.placeWindowBesideParent(this, _rtl)
         }
     }
 

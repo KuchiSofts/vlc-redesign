@@ -1697,11 +1697,19 @@ static void *Thread( void *obj )
 
         new TouchObserver(p_intf->p_mi);
 
-        static const auto gracefulExitHandler = [&app, mainCtx = QPointer(p_intf->p_mi), settings = QPointer(p_intf->mainSettings)](QQuickWindow *window) {
+        const auto aboutToShowQuickWindow = [&app, mainCtx = QPointer(p_intf->p_mi), settings = QPointer(p_intf->mainSettings)](QQuickWindow *window) {
+            assert(window);
+            // A swap can be emitted by the render thread. Run the bindings
+            // for optional startup items on the interface thread afterward.
+            QObject::connect(window, &QQuickWindow::frameSwapped, window, [mainCtx]() {
+                if (mainCtx)
+                    mainCtx->markFirstFrameSwapped();
+            },
+                             static_cast<Qt::ConnectionType>(Qt::QueuedConnection | Qt::SingleShotConnection));
+
             // Graceful exit on error, as if this signal is not connected
             // Qt uses `qFatal()`. With `MainCtx::askToQuit()`, the event loop
             // would be cleared first:
-            assert(window);
             QObject::connect(window,
                              &QQuickWindow::sceneGraphError,
                              &app,
@@ -1729,7 +1737,7 @@ static void *Thread( void *obj )
             p_intf->p_compositor.reset(compositorFactory.createCompositor());
             if (! p_intf->p_compositor)
                 break;
-            ret = p_intf->p_compositor->makeMainInterface(p_intf->p_mi, gracefulExitHandler);
+            ret = p_intf->p_compositor->makeMainInterface(p_intf->p_mi, aboutToShowQuickWindow);
             if (!ret)
             {
                 p_intf->p_compositor->destroyMainInterface();

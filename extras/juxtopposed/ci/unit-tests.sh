@@ -196,4 +196,6 @@ echo "== file deletion keeps its target through library refreshes"
 node extras/juxtopposed/delete-file-confirmation.cjs
 echo "== TV guide refresh keeps the corrected programme"
 node extras/juxtopposed/tv-guide-refresh.js
+echo "== Home sections that can fit in the first frame"
+node extras/juxtopposed/home-startup-test.mjs
 echo "all passed"

@@ -61,6 +61,10 @@ FocusScope {
     readonly property bool _showAudioMiniPlayer: MainCtx.canShowVideoPIP && Player.isStarted
                                                  && !(Player.hasVideoOutput && MainCtx.hasEmbededVideo)
 
+    readonly property bool _showPipPlayer: MainCtx.canShowVideoPIP
+                                           && ((_showMiniPlayer && MainCtx.hasEmbededVideo) || _showAudioMiniPlayer)
+    property Item _pipPlayer: null
+
     property bool _showCSD: MainCtx.clientSideDecoration
         && !(MainCtx.intfMainWindow.visibility === Window.FullScreen)
 
@@ -139,9 +143,17 @@ FocusScope {
         contextSaver.restore(History.viewPath)
     }
 
+    function _ensurePipPlayer() {
+        // Keep the surface ready when the card is needed, and keep the card's
+        // dragged position and queue state when it hides again.
+        if (_showPipPlayer && !_pipPlayer)
+            _pipPlayer = pipPlayerComponent.createObject(g_mainDisplay)
+    }
+
     Component.onCompleted: {
         if (MainCtx.canShowVideoPIP) {
-            pipPlayerComponent.createObject(this)
+            _ensurePipPlayer()
+            _showPipPlayerChanged.connect(g_mainDisplay, _ensurePipPlayer)
         } else {
             if (MainCtx.hasEmbededVideo)
                 MainPlaylistController.stop()
@@ -313,7 +325,7 @@ FocusScope {
         }
 
         plListView: {
-            if (playlistLoader.active)
+            if (MainCtx.playqueuePanel.docked)
                 return playlistLoader.item
             else if (playlistWindowLoader.status === Loader.Ready)
                 return playlistWindowLoader.item.playlistView
@@ -337,7 +349,7 @@ FocusScope {
         topPadding: menuTopbar.visible ? 0 : VLCStyle.applicationVerticalMargin
 
         plListView: {
-            if (playlistLoader.active)
+            if (MainCtx.playqueuePanel.docked)
                 return playlistLoader.item
             else if (playlistWindowLoader.status === Loader.Ready)
                 return playlistWindowLoader.item.playlistView
@@ -629,7 +641,9 @@ FocusScope {
             visible: false
             height: parent.height - g_mainDisplay.displayMargin
 
+            // A restored open queue must reserve its width on the first frame.
             active: MainCtx.playqueuePanel.docked
+                    && (MainCtx.playqueuePanel.visible || pannelVisiblity.showPlayqueue || MainCtx.firstFrameSwapped)
 
             state: ((status === Loader.Ready) && pannelVisiblity.showPlayqueue) ? "expanded" : ""
 
@@ -940,14 +954,14 @@ FocusScope {
                             + VLCStyle.dp(16, VLCStyle.scale))
             height: implicitHeight
             z: 4
-            visible: (g_mainDisplay._showMiniPlayer && MainCtx.hasEmbededVideo) || g_mainDisplay._showAudioMiniPlayer
+            visible: g_mainDisplay._showPipPlayer
             enabled: visible
 
             Binding on visible {
                 id: visibleBinding
                 when: false
                 delayed: true
-                value: (g_mainDisplay._showMiniPlayer && MainCtx.hasEmbededVideo) || g_mainDisplay._showAudioMiniPlayer
+                value: g_mainDisplay._showPipPlayer
             }
 
             Component.onCompleted: {

@@ -171,6 +171,9 @@ moc_headers = files(
     '../../widgets/native/mlfolderseditor.hpp',
     '../../widgets/native/searchlineedit.hpp',
     '../../widgets/native/viewblockingrectangle.hpp',
+    '../../widgets/native/backdropblenditem.hpp',
+    '../../widgets/native/roundedcornermask.hpp',
+    '../../widgets/native/fadingedgemask.hpp',
 )
 
 if host_system == 'windows'

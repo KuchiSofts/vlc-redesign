@@ -456,6 +456,12 @@ qt_plugin_sources = files(
     '../../widgets/native/searchlineedit.hpp',
     '../../widgets/native/viewblockingrectangle.cpp',
     '../../widgets/native/viewblockingrectangle.hpp',
+    '../../widgets/native/backdropblenditem.cpp',
+    '../../widgets/native/backdropblenditem.hpp',
+    '../../widgets/native/roundedcornermask.cpp',
+    '../../widgets/native/roundedcornermask.hpp',
+    '../../widgets/native/fadingedgemask.cpp',
+    '../../widgets/native/fadingedgemask.hpp',
 )
 
 if host_system == 'windows'

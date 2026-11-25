@@ -21,6 +21,7 @@ import QtQuick.Window
 import VLC.MainInterface
 import VLC.Style
 import VLC.Util
+import VLC.Widgets
 
 Item {
     id: root
@@ -31,6 +32,17 @@ Item {
     // so that layering is not used for the view,
     // which results lower memory consumption:
     property alias backgroundColor: backgroundRect.color
+
+    // Set this property to `true` if beneath the
+    // target Qt Quick Scene has uniform background.
+    // In other words, when background color is not
+    // opaque, but it has nothing to blend in to.
+    // This is an optimization hint that eliminates
+    // layering, which helps lowering video memory
+    // consumption. This property does not have an
+    // effect if `enforceClipping` is set, since then
+    // layering is necessary:
+    property bool uniformBackdrop: false
 
     property Item sourceItem
 
@@ -56,13 +68,14 @@ Item {
     // size intended, which may increase greatly depending on the fraction
     // of the display scale. Also note that if the QML item size is fractional
     // itself, it is ceiled regardless of the display scale or this property.
+    // This property is not relevant when `useLayering` is not set.
     property bool pixelAlignedForDPR: true
 
     readonly property bool effectCompatible: (GraphicsInfo.shaderType === GraphicsInfo.RhiShader)
 
     readonly property bool implicitClipping: !!_shaderEffect?.visible
 
-    property bool useLayering: effectCompatible && (enforceClipping || backgroundColor.a < 1.0)
+    property bool useLayering: effectCompatible && (enforceClipping || (!uniformBackdrop && backgroundColor.a < 1.0))
 
     // Sometimes `Item::clip` may not be suitable to use with item views,
     // this includes, but not limited to, when display margins are set.
@@ -109,19 +122,21 @@ Item {
         visible: !!root._shaderEffectSource?.visible && (color.a > 0.0)
     }
 
-    // Fading edge effect provider when background is opaque:
-    // This is an optimization, because layering is not used.
-    component FadingEdgeRectangleForOpaqueBackground : Rectangle {
-        id: fadingEdgeRectangle
+    // Fading edge effect provider when layering is not used:
+    // This is an optimization, as layering requires an intermediate texture.
+    component FadingEdgeMaskForBackground : FadingEdgeMask {
+        id: fadingEdgeMask
 
         implicitHeight: root.fadeSize
         implicitWidth: root.fadeSize
 
-        visible: (opacity > 0.0 || enabled) && !root.useLayering
+        visible: supported && (opacity > 0.0 || enabled) && !root.useLayering
 
         opacity: enabled ? 1.0 : 0.0
 
-        // Animating opacity is expected to be less expensive than animating gradient stop.
+        color: root.backgroundColor
+
+        // Animating opacity is expected to be less expensive than updating the uniforms.
         Behavior on opacity {
             id: opacityBehavior
 
@@ -138,18 +153,7 @@ Item {
             // This is used to prevent animating at initialization:
             MainCtx.setTimeout(() => {
                 opacityBehavior.enabled = true
-            }, 50, [], fadingEdgeRectangle)
-        }
-
-        required property color colorStop0
-        required property color colorStop1
-
-        gradient: Gradient {
-            orientation: (root.orientation === Qt.Horizontal) ? Gradient.Horizontal
-                                                              : Gradient.Vertical
-
-            GradientStop { position: 0.0; color: fadingEdgeRectangle.colorStop0; }
-            GradientStop { position: 1.0; color: fadingEdgeRectangle.colorStop1; }
+            }, 50, [], fadingEdgeMask)
         }
     }
 
@@ -164,7 +168,7 @@ Item {
             bottomMargin: (root.orientation === Qt.Vertical ? -root.endMargin : 0)
         }
 
-        FadingEdgeRectangleForOpaqueBackground {
+        FadingEdgeMaskForBackground {
             anchors {
                 top: parent.top
                 left: parent.left
@@ -174,11 +178,10 @@ Item {
             }
 
             enabled: root.enableBeginningFade
-            colorStop0: root.backgroundColor
-            colorStop1: "transparent"
+            edge: (root.orientation === Qt.Horizontal) ? Qt.LeftEdge : Qt.TopEdge
         }
 
-        FadingEdgeRectangleForOpaqueBackground {
+        FadingEdgeMaskForBackground {
             anchors {
                 bottom: parent.bottom
                 right: parent.right
@@ -188,8 +191,7 @@ Item {
             }
 
             enabled: root.enableEndFade
-            colorStop0: "transparent"
-            colorStop1: root.backgroundColor
+            edge: (root.orientation === Qt.Horizontal) ? Qt.RightEdge : Qt.BottomEdge
         }
     }
 

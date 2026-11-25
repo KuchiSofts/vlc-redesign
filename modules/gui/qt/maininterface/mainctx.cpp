@@ -325,9 +325,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
      * Callbacks
      ************/
     libvlc_int_t* libvlc = vlc_object_instance(p_intf);
-    var_AddCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, p_intf );
-    var_AddCallback( libvlc, "intf-boss", IntfBossCB, p_intf );
-    var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, p_intf );
+    var_AddCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
+    var_AddCallback( libvlc, "intf-boss", IntfBossCB, this );
+    var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
 
     /* Register callback for the intf-popupmenu variable */
     var_AddCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
@@ -467,9 +467,9 @@ MainCtx::~MainCtx()
 
     /* Unregister callbacks */
     libvlc_int_t* libvlc = vlc_object_instance(p_intf);
-    var_DelCallback( libvlc, "intf-boss", IntfBossCB, p_intf );
-    var_DelCallback( libvlc, "intf-show", IntfRaiseMainCB, p_intf );
-    var_DelCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, p_intf );
+    var_DelCallback( libvlc, "intf-boss", IntfBossCB, this );
+    var_DelCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
+    var_DelCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
     var_DelCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
 
     if (m_medialib)
@@ -1541,8 +1541,9 @@ static int PopupMenuCB( vlc_object_t *, const char *,
 static int IntfShowCB( vlc_object_t *, const char *,
                        vlc_value_t, vlc_value_t, void *param )
 {
-    qt_intf_t *p_intf = (qt_intf_t *)param;
-    p_intf->p_mi->emitShow();
+    // the MainCtx itself: p_intf->p_mi is only set once its constructor,
+    // which adds this callback, returned
+    static_cast<MainCtx *>( param )->emitShow();
 
     return VLC_SUCCESS;
 }
@@ -1569,8 +1570,9 @@ static int KeyFeedbackTextCB( vlc_object_t *, const char *,
 static int IntfRaiseMainCB( vlc_object_t *, const char *,
                             vlc_value_t, vlc_value_t, void *param )
 {
-    qt_intf_t *p_intf = (qt_intf_t *)param;
-    p_intf->p_mi->emitRaise();
+    // the MainCtx itself: p_intf->p_mi is only set once its constructor,
+    // which adds this callback, returned
+    static_cast<MainCtx *>( param )->emitRaise();
 
     return VLC_SUCCESS;
 }
@@ -1581,8 +1583,9 @@ static int IntfRaiseMainCB( vlc_object_t *, const char *,
 static int IntfBossCB( vlc_object_t *, const char *,
                        vlc_value_t, vlc_value_t, void *param )
 {
-    qt_intf_t *p_intf = (qt_intf_t *)param;
-    p_intf->p_mi->emitBoss();
+    // the MainCtx itself: p_intf->p_mi is only set once its constructor,
+    // which adds this callback, returned
+    static_cast<MainCtx *>( param )->emitBoss();
 
     return VLC_SUCCESS;
 }

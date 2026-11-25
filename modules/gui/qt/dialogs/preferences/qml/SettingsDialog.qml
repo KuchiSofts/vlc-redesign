@@ -88,7 +88,7 @@ Dialog {
     function commit() {
         if (saved)
             return true
-        const audioOutputReady = !audioOutput.item || audioOutput.item.canApply()
+        const audioOutputReady = audioOutputPreview.canCommit()
         if (!config.applyWithEffects(inlineEffects.audioForSave(), inlineEffects.videoForSave())) {
             applyFailed = true
             // the preview of the effects was put back: start it again
@@ -98,8 +98,8 @@ Dialog {
         }
         saved = true
         applyFailed = false
-        if (audioOutputReady && audioOutput.item)
-            audioOutput.item.apply()
+        if (audioOutputReady)
+            audioOutputPreview.commit()
         inlineEffects.clearDirty()
         appearance.save()
         subtitleLanguages.save()
@@ -145,8 +145,7 @@ Dialog {
         // closed another way than requestClose: keep what can be kept
         commit()
         inlineEffects.cancel()
-        if (audioOutput.item)
-            audioOutput.item.cancel()
+        audioOutputPreview.cancel()
         MainCtx.useGlobalShortcuts = previousGlobalShortcuts
     }
     // VLC quits with the window open (its close button, Quit): the changes
@@ -195,6 +194,9 @@ Dialog {
         category: searchField.text.length > 0 ? "" : root.selectedCategory
         search: searchField.text
     }
+
+    // A device choice lasts until Settings closes, even if the chooser is hidden.
+    AudioOutputPreview { id: audioOutputPreview; ctx: MainCtx }
 
     // #0E0E0E at 95 %, radius 14 (Dark/BG/B1 Transparent)
     background: Rectangle {
@@ -657,10 +659,9 @@ Dialog {
                     text: qsTr("Output device")
 
                     Loader {
-                        id: audioOutput
                         width: parent.width
                         active: outputDeviceSection.visible
-                        sourceComponent: SettingsAudioOutput {}
+                        sourceComponent: SettingsAudioOutput { preview: audioOutputPreview }
                     }
                 }
 
@@ -876,7 +877,7 @@ Dialog {
         objectName: "settingsError"
         parent: root.contentItem
         z: 1
-        readonly property string message: config.error || (audioOutput.item ? audioOutput.item.error : "")
+        readonly property string message: config.error || (outputDeviceSection.visible ? audioOutputPreview.lastError : "")
                                           || inlineEffects.error
         visible: message.length > 0
         // over the page, the sidebar on the right right to left

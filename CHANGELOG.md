@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `391a3bf873` (2026-11-20).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `d3f8b7afff` (2026-11-24).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -16,6 +16,53 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ## [Unreleased]
 
 - **Music seek bar**: drawing the waveform takes less work, and songs are analyzed one at a time so playback has priority.
+
+## [0.8.3] · 2026-11-25
+
+An update release of every app: macOS updates install from inside the app, the speaker button brings the
+sound back, eleven fixes from a contributor (Live TV, folders, the audio output, lyrics), a scroll bar in the
+player's library panel, and on Android TV every folder of a list within reach of the remote.
+
+### Added
+
+- **A scroll bar in the player's library panel** ([#143](https://github.com/KuchiSofts/vlc-redesign/discussions/143)), as on the library pages.
+- **Samsung TV: the queue into a playlist** from the queue panel ([#135](https://github.com/KuchiSofts/vlc-redesign/issues/135)).
+- **Android TV: Play all in the menu of a folder** ([#132](https://github.com/KuchiSofts/vlc-redesign/discussions/132)).
+
+### Fixed
+
+- **macOS: in-app updates install** instead of stopping after minutes on "Preparing the update"
+  ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)).
+- **macOS: the waveform seek bar appears** instead of "Waveform analysis did not complete" after a minute.
+- **Unmuting brings sound back at the previous volume**, even after restarting the player
+  ([#145](https://github.com/KuchiSofts/vlc-redesign/issues/145)).
+- **TV guide keeps its place when you resize the window**.
+- **Deleting from the library uses the file you picked**, even if a scan rearranges the list while you confirm.
+- **Folder breadcrumbs work on Windows network shares** in the library and the player's library panel.
+- **Resync refreshes the open folder** so added, renamed, or removed files show up correctly without leaving the page.
+- **TV guide shows corrected programme titles after a refresh**, even when the guide is already open.
+- **TV searches by channel number** update when a source changes its channel numbers.
+- **The current audio output device stays selected** when you switch Settings pages and close Settings.
+- **Audio Settings can select either output device when two have the same name.**
+- **Opening or skipping songs on slow drives keeps the player responsive** while it looks for lyrics beside the file.
+- **Live TV keeps your latest selection** when a channel you picked earlier takes longer to open.
+- **Samsung TV: a deleted or moved file leaves the queue and the history**, with one message.
+- **Android TV: every folder and file of a folder list can be reached with the remote**: only the first
+  column could.
+- **Android TV: a folder list keeps the focus** after playback or a jump along the path.
+
+### Technical
+
+- macOS: VLC blocks SIGCHLD in all its threads, so Qt never saw a program it started end. One thread of the
+  Qt interface now takes that signal; the update's helper runs through `vlc_spawn()` and `waitpid()`, its
+  signals unblocked (inherited, a blocked SIGTERM made every step of the helper wait out its two minutes).
+- Version 0.8.3 started (VLC_REDESIGN_VERSION).
+- VideoLAN's latest changes merged (d3f8b7afff): AV1 on VideoToolbox with HDR metadata and closed captions,
+  dav1d 1.5.5, HTTP/2 and Chromecast fixes, the fading edges of the lists.
+- Translations from Weblate: Slovak; the example addresses of Swedish and Brazilian Portuguese keep the
+  reserved example.com.
+- The release tooling's bsdiff4 1.4.3 and the SignPath signing action 3.1 (Dependabot #141, #142; their hashes and
+  commit checked against PyPI and SignPath's own tag).
 
 ## [0.8.2] · 2026-11-23
 

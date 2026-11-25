@@ -18,27 +18,27 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-23, 0.8.2 published, 0.8.3 started).
+Updated as the work moves (last: 2026-11-25, 0.8.3 published, 0.8.4 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.2 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.2 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.2 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.2 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.2 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.2 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.2 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.2 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.8.3 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.3 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.3 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.8.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.3 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.3 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.3 and after
+## Next: 0.8.4 and after
 
-**0.8.3** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+**0.8.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released).
 
-- 🟡 macOS: the first update from the zip on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
-  (0.8.1 or later installed from the disk image once, then the next update comes through the app)
+- 🟡 macOS: the first update from inside the app on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
+  (0.8.3 installed by hand once: the fix is in the app that updates)
 
 And as the issues bring them:
 
@@ -112,6 +112,22 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.8.3 (2026-11-25)
+
+**An update release** of every app:
+
+- ✅ macOS: updates install from inside the app ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)): the app never saw its update helper
+  end (VLC blocks the signal that says so); the waveform seek bar had the same cause
+- ✅ The speaker button brings the sound back ([#145](https://github.com/KuchiSofts/vlc-redesign/issues/145))
+- ✅ Eleven fixes by a contributor (#147 to #157): the TV guide on resize and after a refresh, channel-number
+  searches, the latest channel chosen, the file deleted is the one picked, breadcrumbs on network shares,
+  Resync of the open folder, the output device kept and same-name devices, lyrics read off the interface
+- ✅ A scroll bar in the player's library panel ([#143](https://github.com/KuchiSofts/vlc-redesign/discussions/143))
+- ✅ Samsung TV: the queue into a playlist, a deleted or moved file leaves the queue and the history
+- ✅ Android TV: Right moves across the columns of a folder list (only the first column could be reached),
+  Play all in a folder's menu, the focus kept after playback
+- ✅ Every issue checked on every app: Repeat and Shuffle on Linux, Android and the Samsung TV app too
 
 ### 0.8.2 (2026-11-23)
 

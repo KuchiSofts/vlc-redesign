@@ -33,7 +33,7 @@ public:
     QString lastError() const { return m_error; }
     Q_INVOKABLE bool begin();
     Q_INVOKABLE int currentIndex() const;
-    Q_INVOKABLE bool preview(int index, const QString& displayedName);
+    Q_INVOKABLE bool preview(const QString& chosenId);
     Q_INVOKABLE bool canCommit();
     Q_INVOKABLE bool commit();
     Q_INVOKABLE bool cancel();

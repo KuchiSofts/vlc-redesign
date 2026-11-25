@@ -217,6 +217,45 @@ if [ -n "${4:-}" ]; then
     fi
 fi
 
+# 3c. (#117) the helper started as the app starts it: VLC blocks SIGINT,
+# SIGTERM, SIGPIPE and SIGCHLD in all its threads (bin/darwinvlc.m), and a
+# child process inherits the mask. On a user's Mac the image's attach, then
+# the zip's unpack, never answered from the app and took seconds from
+# Terminal. (a) the mask kept: what 0.8.2 and older do; (b) the mask cleared
+# in the child before it runs the helper: what the app does from 0.8.3 on.
+if [ -n "${4:-}" ] && [ -f "${archive:-}" ] && [ -x /usr/bin/perl ]; then
+    target=/Applications/$(basename "${app:-VLC Redesign.app}")
+    if [ -d "$target" ]; then
+        # masked <clear: 0|1> <command>...: the command run with the four
+        # signals blocked, or with the mask cleared in it after the block
+        masked() {
+            /usr/bin/perl -MPOSIX -e '
+                my $clear = shift @ARGV;
+                sigprocmask(SIG_BLOCK, POSIX::SigSet->new(SIGINT, SIGTERM, SIGPIPE, SIGCHLD));
+                sigprocmask(SIG_SETMASK, POSIX::SigSet->new()) if $clear;
+                exec @ARGV or exit 127;' "$@"
+        }
+        for clear in 0 1; do
+            t=$(seconds)
+            VLC_REDESIGN_UPDATE_STEP_LIMIT=25 masked $clear /bin/sh "$helper" stage "$archive" "$target" \
+                < /dev/null > "$work/masked$clear.out" 2> "$work/masked$clear.log"
+            code=$?
+            took=$(($(seconds) - t))
+            staged=$(cat "$work/masked$clear.out" 2> /dev/null)
+            rm -rf "$staged" /Applications/.vlc-redesign-update.app
+            if [ $clear = 0 ]; then
+                note "as 0.8.2 starts it (SIGCHLD, SIGTERM... blocked): exit $code after $took s" \
+                     "($(grep -m 1 'vlc-redesign-update' "$work/masked0.log" | head -c 160))"
+            elif [ $code = 0 ]; then
+                note "ok: as 0.8.3 starts it (the mask cleared in the child): staged in $took s"
+            else
+                fail "as 0.8.3 starts it (the mask cleared in the child): exit $code after $took s"
+                sed 's/^/  /' "$work/masked1.log" | tail -n 12
+            fi
+        done
+    fi
+fi
+
 # 4. a step that never answers, an image whose application can't be read or
 # whose contents are never listed, an image that can't be opened (#117: a step blocked on a user's Mac left the
 # app on "Preparing the update" for ten minutes, then "damaged"): the helper

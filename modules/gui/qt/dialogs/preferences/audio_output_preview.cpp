@@ -6,6 +6,7 @@
 # include "config.h"
 #endif
 #include "audio_output_preview.hpp"
+#include "audio_output_device.hpp"
 #include "maininterface/mainctx.hpp"
 #include "qt.hpp"
 
@@ -101,35 +102,29 @@ int AudioOutputPreview::currentIndex() const
     return selectedIndex;
 }
 
-bool AudioOutputPreview::preview(int index, const QString& displayedName)
+bool AudioOutputPreview::preview(const QString& chosenId)
 {
     if (!m_aout || !sameOutput())
         return fail(qtr("The audio output changed. Reopen Audio settings to choose a device."));
     char** ids = nullptr;
     char** names = nullptr;
     const int count = aout_DevicesList(m_aout, &ids, &names);
-    QByteArray chosenId;
-    bool matches = ids && names && index >= 0 && index < count && names[index]
-                   && QString::fromUtf8(names[index]) == displayedName;
-    bool chosenDefault = false;
-    int matchingNames = 0;
-    for (int i = 0; i < count; ++i)
-        if (names && names[i] && QString::fromUtf8(names[i]) == displayedName)
-            ++matchingNames;
-    matches = matches && matchingNames == 1;
-    if (matches && ids[index]) chosenId = ids[index];
-    if (matches) chosenDefault = !ids[index] || ids[index][0] == '\0';
+    if (count < 0) return fail(qtr("The available output devices changed. Reopen Audio settings."));
+
+    const QByteArray id = chosenId.toUtf8();
+    const bool matches = audioOutputDeviceExists(ids, count, std::string_view(id.constData(), id.size()));
     for (int i = 0; i < count; ++i) {
-        if (ids) free(ids[i]);
-        if (names) free(names[i]);
+        free(ids[i]);
+        free(names[i]);
     }
     free(ids);
     free(names);
     if (!matches) return fail(qtr("The available output devices changed. Reopen Audio settings."));
-    if (aout_DeviceSet(m_aout, chosenDefault ? nullptr : chosenId.constData()) != 0)
+    const bool chosenDefault = chosenId.isEmpty();
+    if (aout_DeviceSet(m_aout, chosenDefault ? nullptr : id.constData()) != 0)
         return fail(qtr("Could not select this output device."));
     m_dirty = chosenDefault != m_originalIsDefault
-              || (!chosenDefault && chosenId != m_originalDevice);
+              || (!chosenDefault && id != m_originalDevice);
     clearError();
     emit stateChanged();
     return true;

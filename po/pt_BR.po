@@ -22415,7 +22415,7 @@ msgstr "Você pode digitar vários links para carregar."
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:108
 msgid "e.g., https://www.example.com/stream.avi"
-msgstr "ex.: https://www.exemplo.com/video.avi"
+msgstr "ex.: https://www.example.com/video.avi"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481

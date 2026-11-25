@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Screen readers in Settings and first run**: the chosen theme, accent colour and Settings page are announced, and accents are read as "Accent color 3 of 9" instead of a hex code.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

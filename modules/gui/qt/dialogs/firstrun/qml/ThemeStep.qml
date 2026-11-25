@@ -168,6 +168,8 @@ Item {
                     }
                     contentItem: Item {}
                     Accessible.name: modelData.title
+                    Accessible.checkable: true
+                    Accessible.checked: root.themeIndex === modelData.index
                     onClicked: root.themeRequested(modelData.index)
                 }
             }
@@ -335,7 +337,9 @@ Item {
                         border.color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
                     }
                     contentItem: Item {}
-                    Accessible.name: qsTr("Accent color %1").arg(index + 1)
+                    Accessible.name: qsTr("Accent color %1 of %2").arg(index + 1).arg(root.accentChoices.length)
+                    Accessible.checkable: true
+                    Accessible.checked: choice.chosen
                     onClicked: root.accentRequested(modelData)
                 }
             }

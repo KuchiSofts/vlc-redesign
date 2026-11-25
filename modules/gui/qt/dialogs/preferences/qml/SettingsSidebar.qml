@@ -107,6 +107,8 @@ Item {
                         horizontalPadding: root.px(4)
                         onClicked: root.selected(modelData.key)
                         Accessible.name: modelData.label || ""
+                        Accessible.checkable: true
+                        Accessible.checked: entry.current
                         // the whole name of a page cut short (a long translation)
                         ToolTip.visible: item.hovered && itemLabel.truncated
                         ToolTip.text: modelData.label || ""

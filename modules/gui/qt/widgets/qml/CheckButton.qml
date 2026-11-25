@@ -104,7 +104,7 @@ T.Switch {
                                               : VLCStyle.redesign.textBaseline(Math.round((parent.height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                                font.pixelSize)
                 text: root.checked ? qsTr("ON") : qsTr("OFF")
-                color: root.checked ? VLCStyle.redesign.accent : root.c("#6B6B6B")
+                color: root.checked ? VLCStyle.redesign.onAccent : root.c("#6B6B6B")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: _fits ? _designSize
                                       : Math.max(root.px(7), Math.min(_designSize,

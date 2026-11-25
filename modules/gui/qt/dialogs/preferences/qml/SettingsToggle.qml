@@ -86,7 +86,7 @@ T.AbstractButton {
                 anchors.baseline: parent.top
                 anchors.baselineOffset: VLCStyle.redesign.textBaseline(root.px(6), font.pixelSize)
                 text: root.checked ? qsTr("ON") : qsTr("OFF")
-                color: root.checked ? VLCStyle.redesign.accent : root.c("#6B6B6B")
+                color: root.checked ? VLCStyle.redesign.onAccent : root.c("#6B6B6B")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(12)
             }

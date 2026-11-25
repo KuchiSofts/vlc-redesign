@@ -29006,7 +29006,7 @@ msgstr "Playlisty"
 #: modules/gui/qt/player/qml/CompactLibrary.qml:316
 #: modules/gui/qt/player/qml/CompactLibrary.qml:532
 msgid "Artists"
-msgstr "Umelci"
+msgstr "Interpreti"
 
 #: modules/gui/qt/maininterface/navigationmodel.cpp:281
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
@@ -29647,7 +29647,7 @@ msgid ""
 "No artists found\n"
 "Please try adding sources"
 msgstr ""
-"Nenašli sa žiadni umelci\n"
+"Nenašli sa žiadni interpreti\n"
 "Skúste pridať zdroje"
 
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:60
@@ -33021,12 +33021,12 @@ msgstr "Najprv pozreté"
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:84
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:85
 msgid "Artist A-Z"
-msgstr "Umelec A-Z"
+msgstr "Interpreti A-Z"
 
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:84
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:85
 msgid "Artist Z-A"
-msgstr "Umelec Z-A"
+msgstr "Interpreti Z-A"
 
 #: modules/gui/qt/widgets/qml/LibraryHeader.qml:86
 msgid "Album A-Z"

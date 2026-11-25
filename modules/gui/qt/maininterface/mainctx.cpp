@@ -333,29 +333,29 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     /* Register callback for the intf-popupmenu variable */
     var_AddCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
 
-    if( var_InheritBool( p_intf, "qt-privacy-ask") )
-    {
-        /* Not over a file VLC was opened with (from Explorer): the film
-         * first, the welcome the next time VLC opens without one */
-        vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(p_intf->intf);
-        vlc_playlist_Lock(playlist);
-        const bool has_media = vlc_playlist_Count(playlist) > 0;
-        vlc_playlist_Unlock(playlist);
+    /* VLC opened to play something (a file opened from Explorer) */
+    vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(p_intf->intf);
+    vlc_playlist_Lock(playlist);
+    const bool has_media = vlc_playlist_Count(playlist) > 0;
+    vlc_playlist_Unlock(playlist);
 
+    if( var_InheritBool( p_intf, "qt-privacy-ask") && !has_media )
+    {
+        /* Not over a file VLC was opened with: the film first, the welcome
+         * the next time VLC opens without one */
         //postpone dialog call, as composition might not be ready yet
-        if (!has_media)
-            QMetaObject::invokeMethod(this, [](){
-                THEDP->firstRunDialog();
-            }, Qt::QueuedConnection);
-        else if (m_medialib)
-            /* the library is read as usual meanwhile (VLC always opened with
-             * a file never read it at start), after a short delay so the
-             * folder scan does not compete with opening the file */
-            QTimer::singleShot(10000, m_medialib, &MediaLib::reload);
+        QMetaObject::invokeMethod(this, [](){
+            THEDP->firstRunDialog();
+        }, Qt::QueuedConnection);
     }
     else if (m_medialib)
     {
-        QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
+        /* With a file to play, the library is read a little later: the walk
+         * of every folder does not compete with opening the file */
+        if (has_media)
+            QTimer::singleShot(10000, m_medialib, &MediaLib::reload);
+        else
+            QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
     }
 
     const struct vlc_preparser_cfg cfg = []{

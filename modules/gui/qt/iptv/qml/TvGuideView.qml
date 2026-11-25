@@ -34,9 +34,11 @@ FocusScope {
 
     readonly property real channelWidth: px(260)
     readonly property real rowHeight: px(56)
-    readonly property real gridWidth: Math.max(px(200), width - channelWidth - px(20))
+    readonly property real timelineWidth: width - channelWidth - px(20)
+    readonly property real gridWidth: Math.max(px(200), timelineWidth)
     // Settings > TV: the hours across the guide
-    readonly property real pxPerSec: gridWidth / (Iptv.guideHours * 3600)
+    readonly property real guideScale: gridWidth / (Iptv.guideHours * 3600)
+    property real pxPerSec: guideScale
     // two days back (the archives), a week ahead
     readonly property real origin: {
         const d = new Date()
@@ -124,11 +126,23 @@ FocusScope {
         }
     }
 
+    function resizeTimeline() {
+        // Either width can clamp the offset, so keep the time before changing them.
+        const time = leftTime
+        scrollAnimation.stop()
+        timeline.width = timelineWidth
+        pxPerSec = guideScale
+        scrollTo(time, false)
+    }
+
     Component.onCompleted: {
+        // Take over from the initial bindings so later resizes can save the old time.
+        resizeTimeline()
         settle.start()
         Qt.callLater(() => root.scrollTo(Iptv.now - Iptv.guideHours * 3600 / 4, false))
     }
-    onPxPerSecChanged: Qt.callLater(() => root.scrollTo(root.leftTime, false))
+    onTimelineWidthChanged: Qt.callLater(resizeTimeline)
+    onGuideScaleChanged: Qt.callLater(resizeTimeline)
 
     NumberAnimation {
         id: scrollAnimation
@@ -194,8 +208,7 @@ FocusScope {
         id: timeline
         anchors.left: parent.left
         anchors.leftMargin: root.channelWidth
-        anchors.right: parent.right
-        anchors.rightMargin: root.px(20)
+        width: root.timelineWidth
         anchors.top: toolbar.bottom
         anchors.topMargin: root.px(12)
         height: root.px(28)

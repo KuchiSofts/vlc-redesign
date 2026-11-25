@@ -188,8 +188,21 @@ HelperRun runHelper(const QStringList &args, qint64 limitMs)
         QThread::msleep(200);
     }
     if (ended == 0) {
-        kill(pid, SIGKILL);
-        vlc_waitpid(pid);
+        // Asked to stop first: the helper then ends the step it is in,
+        // releases the image and removes a copy that is not whole (its own
+        // last lines). Ended outright only when it has not after 15 s: that
+        // left the image attached and its tool running.
+        kill(pid, SIGTERM);
+        QElapsedTimer asked;
+        asked.start();
+        do {
+            QThread::msleep(200);
+            ended = waitpid(pid, &status, WNOHANG);
+        } while ((ended == 0 || (ended == -1 && errno == EINTR)) && asked.elapsed() < 15000);
+        if (ended == 0 || (ended == -1 && errno == EINTR)) {
+            kill(pid, SIGKILL);
+            vlc_waitpid(pid);
+        }
         run.code = -1;
     } else {
         run.code = ended == pid && WIFEXITED(status) ? WEXITSTATUS(status) : -2;
@@ -417,33 +430,12 @@ void splitVersion(QString v, QList<int> &numbers, QString &pre)
         numbers.append(0);
 }
 
-// The release notes in a few plain lines: the first bullets that are about
-// this system (the card of 0.8.3 on Windows began with a Samsung TV line and
-// an Android TV one; What's new leaves those out the same way), without
-// Markdown
+// The release notes in a few plain lines (WhatsNewText::releaseSummary: the
+// card of 0.8.3 on Windows began with a Samsung TV line and an Android TV
+// one, and a bullet wrapped over two lines lost its second)
 QString summarise(const QString &markdown)
 {
-    static const QRegularExpression link(QStringLiteral("!?\\[([^\\]]*)\\]\\([^)]*\\)"));
-    static const QRegularExpression emphasis(QStringLiteral("[*_`]+"));
-    QStringList bullets;
-    for (QString line : markdown.split('\n')) {
-        line = line.trimmed();
-        if (line.startsWith(QLatin1String("- ")) || line.startsWith(QLatin1String("* "))) {
-            line = line.mid(2);
-            if (WhatsNewText::forOtherSystem(line))
-                continue;
-            line.replace(link, QStringLiteral("\\1"));
-            line.remove(emphasis);
-            bullets.append(line.trimmed());
-            if (bullets.size() == 4)
-                break;
-        } else if (!bullets.isEmpty() && line.startsWith(QLatin1String("## "))) {
-            // (the notes' next part, Downloads: a "###" is the next kind of
-            // change, Fixed after Added, and its bullets count too)
-            break;
-        }
-    }
-    return bullets.join('\n');
+    return WhatsNewText::releaseSummary(markdown);
 }
 
 // The delta of a release (make-delta.py): its blocks are in the qCompress

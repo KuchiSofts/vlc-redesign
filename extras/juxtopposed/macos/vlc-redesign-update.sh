@@ -55,10 +55,12 @@ step() {
     watcher=$!
     wait "$job"
     code=$?
+    job=
     kill "$watcher" 2>/dev/null
     # (its end taken here, silently: the shell would otherwise write
     # "Terminated: 15" for it on the error output, in the app's log)
     wait "$watcher" 2>/dev/null
+    watcher=
     said=$(tail -n 6 "$notes/said" 2>/dev/null)
     if [ -e "$notes/late" ]; then
         echo "vlc-redesign-update: $name: no answer after $limit s" >&2
@@ -81,10 +83,23 @@ stage)
     limit=${VLC_REDESIGN_UPDATE_STEP_LIMIT:-120}
     mount=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
     notes=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
-    # (at the end, whatever it is: the image released, within the limit too;
-    # a zip's unpacked folder removed)
+    # (at the end, whatever it is: a step still running ended, and its
+    # watcher; a copy that is not whole removed; the image released, within
+    # the limit too; a zip's unpacked folder removed)
     attached=
-    trap 'if [ -n "$attached" ]; then step detach hdiutil detach "$mount" -quiet -force 2>/dev/null; rmdir "$mount" 2>/dev/null; else rm -rf "$mount"; fi; rm -rf "$notes"' EXIT
+    copying=
+    whole=
+    job=
+    watcher=
+    trap 'if [ -n "$job" ]; then kill "$job" 2>/dev/null; fi
+          if [ -n "$watcher" ]; then kill "$watcher" 2>/dev/null; fi
+          if [ -n "$copying" ] && [ -z "$whole" ]; then rm -rf "$staged"; fi
+          if [ -n "$attached" ]; then step detach hdiutil detach "$mount" -quiet -force 2>/dev/null; rmdir "$mount" 2>/dev/null; else rm -rf "$mount"; fi
+          rm -rf "$notes"' EXIT
+    # (asked to stop by the app, whose own limit passed: the same end, through
+    # the lines above; without this the shell ends at once and leaves the
+    # image attached and the step's tool running)
+    trap 'exit 143' TERM INT HUP
     case $image in
     *.zip)
         step unpack ditto -x -k "$image" "$mount"
@@ -114,6 +129,7 @@ stage)
     # of the image was right; what the listing said goes to the log)
     [ -n "$source" ] && [ -d "$source" ] \
         || die 8 "no application can be read in the image (the listing says: $(tail -n 3 "$notes/said" 2>/dev/null | tr '\n' ' '))"
+    copying=yes
     rm -rf "$staged"
     step copy ditto "$source" "$staged"
     case $? in
@@ -134,6 +150,7 @@ stage)
     own_id=$("$plist" -c 'Print :CFBundleIdentifier' "$target/Contents/Info.plist" 2>/dev/null)
     [ -n "$new_id" ] && [ "$new_id" = "$own_id" ] \
         || { rm -rf "$staged"; die 5 "the image holds another application ($new_id)"; }
+    whole=yes
     echo "$staged"
     ;;
 apply)

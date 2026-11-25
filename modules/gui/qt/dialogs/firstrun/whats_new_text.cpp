@@ -39,19 +39,103 @@ bool forOtherSystem(const QString& bullet)
     const int colon = text.indexOf(QLatin1Char(':'));
     if (colon <= 0 || colon > 40)
         return false;
-    const QString lead = text.left(colon).trimmed();
-    static const QStringList others = {
-        QStringLiteral("Android"), QStringLiteral("Android TV"), QStringLiteral("Android tablet"),
-        QStringLiteral("Samsung TV"), QStringLiteral("Samsung TV app"), QStringLiteral("Samsung"),
+    // The lead may name several ("Android TV and Samsung TV", "macOS, Linux",
+    // "Android phones and tablets"): another system's line only when every
+    // one of them is another system
+    static const QRegularExpression between(QStringLiteral(R"(\s*(?:,|/|&|\band\b)\s*)"),
+                                            QRegularExpression::CaseInsensitiveOption);
+    static const QRegularExpression app(
+        QStringLiteral(R"(^(?:android|samsung|tizen)(?: (?:tv app|tvs?|phones?|tablets?|app))?$)"),
+        QRegularExpression::CaseInsensitiveOption);
+    // (after "Android": "... phones and tablets")
+    static const QRegularExpression device(QStringLiteral(R"(^(?:tvs?|phones?|tablets?)$)"),
+                                           QRegularExpression::CaseInsensitiveOption);
+    static const QStringList computers = {
 #if defined(_WIN32)
-        QStringLiteral("macOS"), QStringLiteral("Linux"),
+        QStringLiteral("macOS"), QStringLiteral("Mac"), QStringLiteral("Linux"),
 #elif defined(__APPLE__)
         QStringLiteral("Windows"), QStringLiteral("Linux"),
 #else
-        QStringLiteral("Windows"), QStringLiteral("macOS"),
+        QStringLiteral("Windows"), QStringLiteral("macOS"), QStringLiteral("Mac"),
 #endif
     };
-    return others.contains(lead, Qt::CaseInsensitive);
+    const QStringList leads = text.left(colon).split(between, Qt::SkipEmptyParts);
+    bool afterApp = false;
+    for (const QString& part : leads) {
+        const QString lead = part.trimmed();
+        if (app.match(lead).hasMatch())
+            afterApp = true;
+        else if (computers.contains(lead, Qt::CaseInsensitive))
+            afterApp = false;
+        else if (!(afterApp && device.match(lead).hasMatch()))
+            return false;
+    }
+    return !leads.isEmpty();
+}
+
+QString releaseSummary(const QString& notes, int most)
+{
+    const auto kindOf = [](const QString& heading) {
+        const QString name = heading.mid(heading.indexOf(QLatin1Char(' ')) + 1).trimmed().toLower();
+        return name == QLatin1String("added") || name == QLatin1String("changed")
+            || name == QLatin1String("fixed");
+    };
+    const QStringList lines = notes.split(QLatin1Char('\n'));
+    // (notes without those headings, a release of before them: every bullet)
+    const bool kinds = std::any_of(lines.cbegin(), lines.cend(), [&kindOf](const QString& line) {
+        return line.startsWith(QLatin1String("###")) && kindOf(line);
+    });
+
+    QStringList bullets;
+    QString bullet;
+    bool counted = !kinds;
+    bool seen = false;
+    // a bullet of a bullet: its lines are not the line's
+    bool nested = false;
+    const auto flush = [&]() {
+        if (!bullet.isEmpty() && !forOtherSystem(bullet)) {
+            const QString text = plainText(bullet);
+            if (!text.isEmpty())
+                bullets.append(text);
+        }
+        bullet.clear();
+        nested = false;
+    };
+    for (const QString& raw : lines) {
+        const QString line = raw.trimmed();
+        if (bullets.size() >= most)
+            break;
+        if (line.startsWith(QLatin1Char('#'))) {
+            flush();
+            const bool kind = kindOf(line);
+            // (the notes' next part, Downloads: a "###" of another kind of
+            // change, Fixed after Added, counts too)
+            if (line.startsWith(QLatin1String("## ")) && (seen || !bullets.isEmpty()))
+                break;
+            if (kinds)
+                counted = kind;
+            seen = seen || kind;
+            continue;
+        }
+        if (!counted)
+            continue;
+        const bool isBullet = line.startsWith(QLatin1String("- ")) || line.startsWith(QLatin1String("* "));
+        const bool indented = raw.startsWith(QLatin1Char(' ')) || raw.startsWith(QLatin1Char('\t'));
+        if (isBullet && indented && (!bullet.isEmpty() || nested)) {
+            nested = true;
+        } else if (isBullet) {
+            flush();
+            bullet = line.mid(2).trimmed();
+        } else if (line.isEmpty()) {
+            flush();
+        } else if (!bullet.isEmpty() && !nested) {
+            // (a bullet wrapped over several lines)
+            bullet += QLatin1Char(' ') + line;
+        }
+    }
+    if (bullets.size() < most)
+        flush();
+    return bullets.join(QLatin1Char('\n'));
 }
 
 QString headline(const QString& bullet)

@@ -97,6 +97,7 @@ public:
 
 public slots:
     void reload();
+    void loadLibraryData();
 
 signals:
     void folderChanged();
@@ -130,8 +131,6 @@ private:
         LocalFolderModel* model = nullptr;
     };
 
-    // Reads the progress and the play count of the media from the library
-    void loadLibraryData();
     // The rows of the entries matching the search, sorted
     void updateRows();
     void sortRows();
@@ -152,7 +151,7 @@ private:
     // one listing at a time; another one asked meanwhile runs after it
     bool m_listing = false;
     bool m_relist = false;
-    // Changes with each listing: older answers of the library are dropped
+    // Changes with each listing or library query so older answers are dropped
     quint64 m_generation = 0;
     QUrl m_folder;
     QStringList m_roots;

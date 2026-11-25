@@ -21,6 +21,8 @@
 #include <vlc_player.h>
 #include <vlc_aout.h>
 
+static constexpr int DeviceIdRole = Qt::UserRole;
+
 extern "C" {
 
 static void on_player_aout_device_changed(audio_output_t *,const char *device, void *data)
@@ -113,6 +115,8 @@ QVariant AudioDeviceModel::data(const QModelIndex &index, int role) const
     const char *name = m_names[row];
     if (role == Qt::DisplayRole)
         return qfu(name);
+    else if (role == DeviceIdRole)
+        return QString::fromUtf8(m_ids[row]);
     else if (role == Qt::CheckStateRole)
         return QVariant::fromValue<bool>((!m_current.isEmpty() && (m_ids[row] == m_current)) ||
             (m_current.isEmpty() && m_ids[row] && m_ids[row][0] == '\0' )) ;
@@ -168,6 +172,7 @@ QHash<int, QByteArray> AudioDeviceModel::roleNames() const
 {
     return QHash<int, QByteArray>{
         {Qt::DisplayRole, QByteArrayLiteral("display")},
-        {Qt::CheckStateRole, QByteArrayLiteral("checked")}
+        {Qt::CheckStateRole, QByteArrayLiteral("checked")},
+        {DeviceIdRole, QByteArrayLiteral("deviceId")}
     };
 }

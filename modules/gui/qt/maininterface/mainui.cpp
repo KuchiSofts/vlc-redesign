@@ -95,6 +95,8 @@
 #include "widgets/native/filepicker.hpp"
 #include "widgets/native/navigation_attached.hpp"
 #include "widgets/native/viewblockingrectangle.hpp"
+#include "widgets/native/roundedcornermask.hpp"
+#include "widgets/native/fadingedgemask.hpp"
 
 #include "videosurface.hpp"
 #include "mainctx.hpp"
@@ -547,6 +549,8 @@ void MainUI::registerQMLTypes()
         qmlRegisterType<CSDThemeImage>(uri, versionMajor, versionMinor, "CSDThemeImage");
         qmlRegisterType<FilePicker>(uri, versionMajor, versionMinor, "FilePicker");
         qmlRegisterType<ViewBlockingRectangle>( uri, versionMajor, versionMinor, "ViewBlockingRectangle" );
+        qmlRegisterTypesAndRevisions<RoundedCornerMask>( uri, versionMajor );
+        qmlRegisterTypesAndRevisions<FadingEdgeMask>( uri, versionMajor );
         qmlRegisterTypesAndRevisions<PointingToolTipAttached>( uri, versionMajor );
 
         qmlRegisterModule(uri, versionMajor, versionMinor);

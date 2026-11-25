@@ -53,6 +53,12 @@
 # include "util/redesign_update_key.h"
 # include "util/redesign_update_verify.h"
 #elif defined(__APPLE__)
+# include <cerrno>
+# include <csignal>
+# include <vector>
+# include <sys/wait.h>
+# include <QTemporaryFile>
+# include <vlc_spawn.h>
 # include "util/redesign_update_key.h"
 # include "util/redesign_update_verify.h"
 #endif
@@ -128,6 +134,72 @@ QString ownBundle()
 QString updateScript()
 {
     return QCoreApplication::applicationDirPath() + QStringLiteral("/../Resources/vlc-redesign-update.sh");
+}
+
+// A program run to its end, never longer than limitMs: its exit code (-1 when
+// it was ended for taking too long, -2 when it did not end by itself, -3 when
+// it could not be started) and what it printed.
+//
+// (#117) Not QProcess: VLC blocks SIGCHLD in all its threads (bin/darwinvlc.m)
+// and Qt hears of a child's end on macOS only from that signal, so
+// waitForFinished() never saw the helper end (a user's Mac waited the whole
+// ten, then six, minutes on "Preparing the update", whatever the helper did).
+// waitpid() needs no signal. vlc_spawn() also clears the blocked signals in
+// the child: inherited, SIGTERM blocked kept the helper's shell from stopping
+// the watcher of a step that had ended, and every step "did not answer" after
+// its two minutes.
+struct HelperRun
+{
+    int code = -3;
+    QByteArray out;
+    QByteArray err;
+};
+
+HelperRun runHelper(const QStringList &args, qint64 limitMs)
+{
+    HelperRun run;
+    // (its outputs to files: a pipe nobody reads while it runs could fill)
+    QTemporaryFile out, err;
+    if (args.isEmpty() || !out.open() || !err.open())
+        return run;
+    std::vector<QByteArray> names;
+    for (const QString &arg : args)
+        names.push_back(QFile::encodeName(arg));
+    std::vector<const char *> argv;
+    for (const QByteArray &name : names)
+        argv.push_back(name.constData());
+    argv.push_back(nullptr);
+    // (nothing typed to it: -1 is /dev/null)
+    const int fds[] = { -1, out.handle(), err.handle(), -1 };
+    pid_t pid;
+    if (vlc_spawn(&pid, argv[0], fds, argv.data()) != 0)
+        return run;
+    QElapsedTimer taken;
+    taken.start();
+    int status = 0;
+    pid_t ended;
+    for (;;) {
+        ended = waitpid(pid, &status, WNOHANG);
+        if (ended == -1 && errno == EINTR)
+            continue;
+        if (ended != 0 || taken.elapsed() >= limitMs)
+            break;
+        QThread::msleep(200);
+    }
+    if (ended == 0) {
+        kill(pid, SIGKILL);
+        vlc_waitpid(pid);
+        run.code = -1;
+    } else {
+        run.code = ended == pid && WIFEXITED(status) ? WEXITSTATUS(status) : -2;
+    }
+    QFile said(out.fileName());
+    if (said.open(QIODevice::ReadOnly))
+        run.out = said.readAll();
+    QFile errors(err.fileName());
+    if (errors.open(QIODevice::ReadOnly))
+        run.err = errors.readAll();
+    return run;
 }
 #elif defined(__linux__)
 // Linux updates the AppImage it runs from (the release's AppImage of this
@@ -1645,21 +1717,17 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                     // minutes waited here, and the end read "damaged")
                     QElapsedTimer taken;
                     taken.start();
-                    QProcess stage;
-                    stage.setStandardInputFile(QProcess::nullDevice());
-                    stage.start(QStringLiteral("/bin/sh"), { updateScript(), QStringLiteral("stage"), image, bundle });
-                    const bool done = stage.waitForFinished(6 * 60 * 1000);
-                    if (!done) {
-                        stage.kill();
-                        stage.waitForFinished(2000);
-                    }
+                    // (runHelper, not QProcess: #117)
+                    const HelperRun stage = runHelper({ QStringLiteral("/bin/sh"), updateScript(),
+                                                        QStringLiteral("stage"), image, bundle },
+                                                      6 * 60 * 1000);
                     QFile::remove(image);
-                    const QString staged = QString::fromUtf8(stage.readAllStandardOutput()).trimmed();
-                    const int code = !done ? -1 : stage.exitStatus() != QProcess::NormalExit ? -2 : stage.exitCode();
+                    const QString staged = QString::fromUtf8(stage.out).trimmed();
+                    const int code = stage.code;
                     // what the helper said (its steps' own words), for the log
                     saved->log = QStringLiteral("the helper ended with %1 after %2 s: %3")
                                      .arg(code).arg(taken.elapsed() / 1000)
-                                     .arg(QString::fromUtf8(stage.readAllStandardError()).trimmed().right(900)
+                                     .arg(QString::fromUtf8(stage.err).trimmed().right(900)
                                               .replace(QLatin1Char('\n'), QLatin1String(" | ")));
                     if (code != 0 || staged.isEmpty()) {
                         switch (code) {

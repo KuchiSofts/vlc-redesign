@@ -321,6 +321,7 @@ qt_plugin_sources = files(
     '../../iptv/iptv_addon.cpp',
     '../../iptv/iptv_addon.hpp',
     '../../iptv/iptv_channel_rows.hpp',
+    '../../iptv/iptv_tune_requests.hpp',
     '../../util/redesign_updater.cpp',
     '../../util/redesign_updater.hpp',
     '../../util/redesign_update_key.h',

@@ -24,7 +24,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **macOS: in-app updates install** instead of stopping after minutes on "Preparing the update"
   ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)).
 - **macOS: the waveform seek bar appears** instead of "Waveform analysis did not complete" after a minute.
-- **Unmuting brings sound back at the previous volume**, even after restarting the player.
+- **Unmuting brings sound back at the previous volume**, even after restarting the player
+  ([#145](https://github.com/KuchiSofts/vlc-redesign/issues/145)).
 - **TV guide keeps its place when you resize the window**.
 - **Deleting from the library uses the file you picked**, even if a scan rearranges the list while you confirm.
 - **Folder breadcrumbs work on Windows network shares** in the library and the player's library panel.
@@ -34,6 +35,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **The current audio output device stays selected** when you switch Settings pages and close Settings.
 - **Audio Settings can select either output device when two have the same name.**
 - **Opening or skipping songs on slow drives keeps the player responsive** while it looks for lyrics beside the file.
+- **Live TV keeps your latest selection** when a channel you picked earlier takes longer to open.
 
 ### Technical
 

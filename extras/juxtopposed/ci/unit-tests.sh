@@ -79,6 +79,9 @@ echo "== Live TV: searches after channel numbers change"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/iptv-channel-rows.cpp $(pkg-config --libs Qt6Core) -o "$out/iptv-channel-rows"
 "$out/iptv-channel-rows"
+echo "== Live TV: only the latest selection can act on its reply"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/iptv-tune-requests.cpp -o "$out/iptv-tune-requests"
+"$out/iptv-tune-requests"
 
 echo "== Live TV parsers"
 # (Qt's own allocations are not ours: only the parsers' leaks count; a

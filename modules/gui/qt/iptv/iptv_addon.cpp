@@ -643,14 +643,11 @@ void IptvAddon::loadChannels()
                 a->m_playerModel->refilter();
                 emit a->channelsChanged();
                 emit a->currentChannelChanged();
-                // the last channel when VLC starts (Settings > TV)
-                if (a->m_startOnLast && !a->m_startedLast && !a->m_currentKey.isEmpty()
+                // the last channel at startup, unless a selection was already made
+                if (a->m_startOnLast && !a->m_tuneRequests.hasSelection() && !a->m_currentKey.isEmpty()
                     && a->m_channelIndex.contains(a->m_currentKey) && a->m_intf->p_mainPlaylistController
                     && a->m_intf->p_mainPlaylistController->isEmpty())
-                {
-                    a->m_startedLast = true;
                     a->play(a->m_currentKey);
-                }
             }
             if (a->m_channelsAgain)
             {
@@ -991,7 +988,7 @@ void IptvAddon::play(const QString& key)
     if (key.isEmpty())
         return;
     call(QJsonObject { { QStringLiteral("op"), QStringLiteral("play") }, { QStringLiteral("key"), key } },
-         [this, key](const QJsonObject& answer) {
+         m_tuneRequests.forNextTune([this, key](const QJsonObject& answer) {
              const QString url = answer.value(QLatin1String("url")).toString();
              if (url.isEmpty())
              {
@@ -1020,7 +1017,7 @@ void IptvAddon::play(const QString& key)
              m_channelModel->nowNextChanged({});
              m_playerModel->nowNextChanged({});
              emit channelSwitched();
-         });
+         }));
 }
 
 void IptvAddon::playCatchup(const QString& key, qint64 start, qint64 stop, const QString& title)
@@ -1030,7 +1027,7 @@ void IptvAddon::playCatchup(const QString& key, qint64 start, qint64 stop, const
     r.insert(QLatin1String("key"), key);
     r.insert(QLatin1String("start"), double(start));
     r.insert(QLatin1String("stop"), double(stop));
-    call(r, [this, key, start, stop, title](const QJsonObject& answer) {
+    call(r, m_tuneRequests.forNextTune([this, key, start, stop, title](const QJsonObject& answer) {
         const QString url = answer.value(QLatin1String("url")).toString();
         if (url.isEmpty())
         {
@@ -1053,7 +1050,7 @@ void IptvAddon::playCatchup(const QString& key, qint64 start, qint64 stop, const
                    options);
         emit currentChannelChanged();
         emit channelSwitched();
-    });
+    }));
 }
 
 void IptvAddon::playFromStart()
@@ -1117,6 +1114,7 @@ bool IptvAddon::playNumber(int number)
 
 void IptvAddon::playUrl(const QString& url, const QString& title)
 {
+    m_tuneRequests.advance();
     m_catchup.clear();
     startMedia(url, title, {});
     // a film or an episode: no channel, no keys of the TV

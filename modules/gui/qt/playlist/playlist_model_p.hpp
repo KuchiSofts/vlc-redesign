@@ -21,6 +21,7 @@
 #define PLAYLIST_MODEL_P_HPP
 
 #include "playlist_model.hpp"
+#include "playlist_duration_total.hpp"
 
 namespace vlc {
 namespace playlist {
@@ -44,16 +45,18 @@ public:
         // NOTE: Starting with Qt 6.7.0, lambda expression here without a return value
         //       causes compilation issues with some compilers.
         // TODO: Find out if a more recent Qt version does not behave that way.
-        QMetaObject::invokeMethod(q, [fun = std::forward<Fun>(fun)]() -> std::monostate { fun(); return std::monostate{}; }, Qt::QueuedConnection);
+        QMetaObject::invokeMethod(q, [this, generation = m_generation, fun = std::forward<Fun>(fun)]() -> std::monostate {
+            if (generation == m_generation)
+                fun();
+            return {};
+        }, Qt::QueuedConnection);
     }
 
     void onItemsReset(const QVector<PlaylistItem>&& items);
     void onItemsAdded(const QVector<PlaylistItem>&& added, size_t index);
     void onItemsMoved(size_t index, size_t count, size_t target);
     void onItemsRemoved(size_t index, size_t count);
-    /* the queue's length from its items (a removal subtracted a length the item no longer
-     * had: "1 item - -1 ms") */
-    void recomputeDuration();
+    void scheduleDurationChanged();
 
     void notifyItemsChanged(int index, int count,
                             const QVector<int> &roles = {});
@@ -61,11 +64,16 @@ public:
     vlc_playlist_t* m_playlist = nullptr;
     vlc_playlist_listener_id *m_listener = nullptr;
 
+    /* Playlist callbacks read this under the playlist lock. Only change it on
+     * the UI thread between removing the old listener and adding the new one. */
+    std::uint64_t m_generation = 0;
+
     /* access only from the UI thread */
     QVector<PlaylistItem> m_items;
     ssize_t m_current = -1;
 
-    VLCDuration m_duration = VLCDuration{};
+    PlaylistDurationTotal m_duration;
+    bool m_durationChangePending = false;
 };
 
 } //namespace playlist

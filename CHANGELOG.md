@@ -29,7 +29,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Technical
 
 - Version 0.8.4 started (VLC_REDESIGN_VERSION).
-- VideoLAN's latest changes merged (14 more commits: the interface's QML types are registered at build time).
+- VideoLAN's latest changes merged (0741280a41, 14 more commits: the interface's QML types are registered at
+  build time).
   Their Makefile rules were carried into the split build files and checked line by line.
 
 ## [0.8.3] · 2026-11-25

@@ -158,6 +158,18 @@ What is being worked on, updated as it changes (2026-11-10):
   removed off the start, the waveform drawn once, local folders sorted on a worker, the TV guide with the
   keyboard, playback options kept in a saved playlist, the 2x hold as a temporary rate in the core, grid cards
   made ahead), each to be read in full first; the update card's lines filtered by platform as What's new does.
+  - 2026-11-25, on the release branch (our own work only): VideoLAN's 0741280a41 merged (14 commits, the
+    interface's QML types registered at build time; the Makefile rules carried into the split build files, a build
+    of the interface from nothing as CI does it); a review of 0.8.3's own changes and what it found: the update
+    card's lines made by one tested function (a wrapped line whole, several systems named together), the macOS
+    update helper asked to stop before it is ended (its step's tool ended, the image released, no partial copy);
+    Android TV: Play all only where something plays, the played file's row focused again far down a list, the
+    Network page's Favorites reached with Up, a folder row one stop; Samsung TV: Back leaves the "deleted or
+    moved" box, only "not found" counts as deleted. Checked: unit tests, a tour of every page with the log (no new
+    warning), 25 minutes of use (289 to 295 MB, handles and threads flat), the TV app with the remote's keys.
+  - From 2026-11-25 a contributed pull request is taken only after the owner saw its before and after and chose
+    it: nine ready ones (#159, #161 to #163, #165, #169 to #172) wait on a local branch with their previews;
+    eight more are their author's drafts (#160, #164, #166 to #168, #173 to #175).
 - 🟢 **0.8.3** published 2026-11-25 09:03 local, every app (tag v0.8.3 on 5968fea83c, PR #158 merged as 867fab712c;
   Android tag v0.8.3 on 0b9a6ffad, PR #24 merged as c79a94dba; Samsung TV app tag v0.8.3 in its repo, its zip added;
   19 files and the signed list, small updates 3.5 MB x64, 2.3 MB ARM64). Before publishing: CI green on every

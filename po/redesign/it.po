@@ -2338,6 +2338,26 @@ msgstr "Sì a tutti"
 msgid "No to All"
 msgstr "No a tutti"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "Aggiungi alla scaletta"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Le playlist della raccolta non possono conservare le opzioni di riproduzione."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Salva una playlist M3U per conservare opzioni come i tempi di inizio e di fine."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Salva come M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Aggiungi senza opzioni"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Salva coda di riproduzione come..."
@@ -8109,10 +8129,6 @@ msgstr "Selezione multipla"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "Aggiungi e riproduci"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "Aggiungi alla scaletta"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

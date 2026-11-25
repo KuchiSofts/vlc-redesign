@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-25 03:38+0000\n"
+"POT-Creation-Date: 2026-11-25 08:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -830,8 +830,8 @@ msgstr ""
 msgid "Scrambled"
 msgstr ""
 
-#: src/input/es_out.c:2235 modules/gui/qt/dialogs/dialogs_provider.cpp:523
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
+#: src/input/es_out.c:2235 modules/gui/qt/dialogs/dialogs_provider.cpp:524
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
 #: modules/keystore/keychain.m:46 modules/lua/extension.c:1108
 msgid "Yes"
 msgstr ""
@@ -2012,8 +2012,8 @@ msgstr ""
 msgid "Deinterlace method to use for video processing."
 msgstr ""
 
-#: src/libvlc-module.c:386 modules/gui/qt/dialogs/dialogs_provider.cpp:558
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1303
+#: src/libvlc-module.c:386 modules/gui/qt/dialogs/dialogs_provider.cpp:559
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1306
 #: modules/video_filter/deinterlace/deinterlace.h:57
 msgid "Discard"
 msgstr ""
@@ -3779,7 +3779,7 @@ msgid "These settings are the global VLC key bindings, known as \"hotkeys\"."
 msgstr ""
 
 #: src/libvlc-module.c:1350 modules/gui/macosx/main/VLCMain+OldPrefs.m:117
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
 #: modules/misc/medialibrary/medialibrary.cpp:471
 msgid "Ignore"
 msgstr ""
@@ -4424,7 +4424,7 @@ msgstr ""
 msgid "Select the key to set this play queue bookmark."
 msgstr ""
 
-#: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1242
+#: src/libvlc-module.c:1513 modules/gui/qt/menus/qml_menu_wrapper.cpp:1245
 msgid "Clear the play queue"
 msgstr ""
 
@@ -5403,7 +5403,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:355
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:502
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignMessageDialog.qml:77
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:557
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:328
 #: modules/gui/qt/dialogs/firstrun/qml/OnboardingDialog.qml:305
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1438
@@ -5419,7 +5419,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaList.qml:213
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:275
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:282
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1303
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1306
 #: modules/gui/qt/widgets/native/redesign_message_box.cpp:297
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:29
 #: modules/stream_out/chromecast/cast.cpp:1212
@@ -7826,8 +7826,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignFolderInfoDialog.qml:27
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:30
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignStatisticsDialog.qml:26
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:555
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:560
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:326
@@ -16588,7 +16588,7 @@ msgstr ""
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:968
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1014
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1083
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1168
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1170
 msgid "Information"
 msgstr ""
 
@@ -17396,8 +17396,8 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:62
 #: modules/gui/qt/dialogs/dialogs/qml/CustomDialog.qml:39
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignMessageDialog.qml:76
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:550
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:587
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:588
 #: modules/gui/qt/dialogs/native_dialogs.cpp:35
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1437
 #: modules/gui/qt/widgets/native/redesign_message_box.cpp:302
@@ -17592,7 +17592,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:34
 #: modules/gui/qt/menus/menus.cpp:814
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:870
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1126
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1131
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:33
 msgid "Play"
 msgstr ""
@@ -18007,12 +18007,12 @@ msgid ""
 msgstr ""
 
 #: modules/gui/macosx/library/history-library/VLCLibraryHistorySection.m:81
-#: modules/gui/qt/iptv/iptv_addon.cpp:1325
+#: modules/gui/qt/iptv/iptv_addon.cpp:1358
 msgid "Today"
 msgstr ""
 
 #: modules/gui/macosx/library/history-library/VLCLibraryHistorySection.m:85
-#: modules/gui/qt/iptv/iptv_addon.cpp:1329
+#: modules/gui/qt/iptv/iptv_addon.cpp:1362
 msgid "Yesterday"
 msgstr ""
 
@@ -18051,7 +18051,7 @@ msgstr ""
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:99
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:206
 #: modules/gui/qt/menus/menus.cpp:973
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1146
 msgid "Stream"
 msgstr ""
 
@@ -18884,7 +18884,7 @@ msgstr ""
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:503
 #: modules/gui/macosx/windows/convertandsave/VLCOutput.m:415
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:67
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:354
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:59
 #: modules/gui/qt/dialogs/sout/profile_selector.cpp:464
@@ -18892,7 +18892,7 @@ msgstr ""
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:169
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:35
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:100
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1146
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1151
 #: modules/gui/qt/player/qml/SubtitleSyncTimeline.qml:146
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:27
 msgid "Save"
@@ -19707,7 +19707,7 @@ msgstr ""
 #: modules/gui/macosx/panels/dialogs/VLCCustomCropArWindowController.m:42
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:191
 #: modules/gui/macosx/windows/convertandsave/VLCConvertAndSaveWindowController.m:220
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 msgid "Apply"
 msgstr ""
 
@@ -19725,22 +19725,22 @@ msgid "Playback of \"%@\" will continue at %@"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:744
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1105
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1187
 msgid "XSPF playlist"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:749
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1106
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1188
 msgid "M3U playlist"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:754
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1107
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1189
 msgid "M3U8 playlist"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueController.m:759
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1108
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1190
 msgid "HTML playlist"
 msgstr ""
 
@@ -19750,7 +19750,7 @@ msgid "Remove from Play Queue"
 msgstr ""
 
 #: modules/gui/macosx/playqueue/VLCPlayQueueMenuController.m:95
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1185
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1187
 msgid "Add File..."
 msgstr ""
 
@@ -20249,7 +20249,7 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:637
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:801
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:824
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:838
@@ -21724,81 +21724,103 @@ msgstr ""
 msgid "Played"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:87
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:88
 #: modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml:35
 msgid "Open Directory"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:88
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:89
 #: modules/gui/qt/menus/menus.cpp:954 modules/gui/qt/menus/qml/MainMenu.qml:59
 msgid "Open Folder"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:521
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:522
 msgid "Confirm"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:524
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:557
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:525
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:558
 #: modules/keystore/keychain.m:46
 msgid "No"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:551
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:552
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:218
 msgid "Retry"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:553
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:554
 msgid "Yes to All"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:558 modules/misc/gnutls.c:489
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:559 modules/misc/gnutls.c:489
 #: modules/misc/gnutls.c:510 modules/misc/securetransport.c:359
 msgid "Abort"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:559
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:560
 msgid "No to All"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:594 modules/logger/file.c:225
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:595 modules/logger/file.c:225
 msgid "Error"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:840
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1160
+msgid "Add to playlist"
+msgstr ""
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:841
+msgid "Library playlists cannot keep playback options."
+msgstr ""
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:842
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr ""
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:843
+msgid "Save as M3U"
+msgstr ""
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:845
+msgid "Add without options"
+msgstr ""
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1258
 msgid "Save play queue as..."
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1484
 msgid "Write error"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1407
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1501
 msgid "Export playlist as..."
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1424
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1518
 msgid ""
 "The playlist could not be exported to %1:\n"
 "%2"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1520
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
 msgid "Export Playlist"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1547
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1641
 msgid "Open subtitles..."
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1646
 msgid "Open audio..."
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1557
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1651
 msgid "Open video..."
 msgstr ""
 
@@ -26810,111 +26832,111 @@ msgstr ""
 msgid "Schedule: "
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:892
+#: modules/gui/qt/iptv/iptv_addon.cpp:917
 msgid "the server did not answer"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:893
+#: modules/gui/qt/iptv/iptv_addon.cpp:918
 msgid "the server could not be reached"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:894
+#: modules/gui/qt/iptv/iptv_addon.cpp:919
 msgid "cancelled"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:895
+#: modules/gui/qt/iptv/iptv_addon.cpp:920
 msgid "it is too large"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:896
+#: modules/gui/qt/iptv/iptv_addon.cpp:921
 msgid "the server sent nothing"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:897
+#: modules/gui/qt/iptv/iptv_addon.cpp:922
 msgid "it came cut short"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:898
-#: modules/gui/qt/iptv/iptv_addon.cpp:899
+#: modules/gui/qt/iptv/iptv_addon.cpp:923
+#: modules/gui/qt/iptv/iptv_addon.cpp:924
 msgid "it cannot be saved on this device"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:900
+#: modules/gui/qt/iptv/iptv_addon.cpp:925
 msgid "it is not an M3U playlist"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:901
-#: modules/gui/qt/iptv/iptv_addon.cpp:902
-#: modules/gui/qt/iptv/iptv_addon.cpp:903
+#: modules/gui/qt/iptv/iptv_addon.cpp:926
+#: modules/gui/qt/iptv/iptv_addon.cpp:927
+#: modules/gui/qt/iptv/iptv_addon.cpp:928
 msgid "it has no channels"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:904
-#: modules/gui/qt/iptv/iptv_addon.cpp:905
+#: modules/gui/qt/iptv/iptv_addon.cpp:929
+#: modules/gui/qt/iptv/iptv_addon.cpp:930
 msgid "the guide could not be read"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:906
+#: modules/gui/qt/iptv/iptv_addon.cpp:931
 msgid "the list of channels could not be read"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:908
+#: modules/gui/qt/iptv/iptv_addon.cpp:933
 msgid "this link is a single stream, not a list of channels"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:915
+#: modules/gui/qt/iptv/iptv_addon.cpp:940
 msgid "the server refused access (%1)"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:916
+#: modules/gui/qt/iptv/iptv_addon.cpp:941
 msgid "nothing was found at this address (%1)"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:917
+#: modules/gui/qt/iptv/iptv_addon.cpp:942
 msgid "the server answered with an error (%1)"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:995
+#: modules/gui/qt/iptv/iptv_addon.cpp:1023
 msgid "This channel cannot be played"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1035
+#: modules/gui/qt/iptv/iptv_addon.cpp:1065
 msgid "This programme is older than the channel's archive"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1036
+#: modules/gui/qt/iptv/iptv_addon.cpp:1066
 msgid "This programme has not started yet"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1037
+#: modules/gui/qt/iptv/iptv_addon.cpp:1067
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1061
+#: modules/gui/qt/iptv/iptv_addon.cpp:1091
 msgid "The guide does not say what is on"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1111
+#: modules/gui/qt/iptv/iptv_addon.cpp:1143
 msgid "No channel %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1314
+#: modules/gui/qt/iptv/iptv_addon.cpp:1347
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1317
+#: modules/gui/qt/iptv/iptv_addon.cpp:1350
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1317 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1350 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1327
+#: modules/gui/qt/iptv/iptv_addon.cpp:1360
 msgid "Tomorrow"
 msgstr ""
 
@@ -28359,7 +28381,7 @@ msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:255
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:981
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1232
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1235
 msgid "Remove Selected"
 msgstr ""
 
@@ -29335,11 +29357,6 @@ msgstr ""
 msgid "Add and play"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1155
-msgid "Add to playlist"
-msgstr ""
-
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"
 msgstr ""
@@ -29348,52 +29365,52 @@ msgstr ""
 msgid "Remove from Media Library"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1136
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1141
 msgid "Jump to current playing"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1176
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1178
 msgid "Show Containing Directory..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1192
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1194
 msgid "Add Directory..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1198
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1200
 msgid "Advanced Open..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1210
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1212
 msgid "Add queue to playlist"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1225
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1228
 msgid "Save Play Queue to File..."
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1254
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1257
 msgid "Sort by"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1275
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1278
 msgid "%1 Ascending"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1276
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1279
 msgid "%1 Descending"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1279
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1282
 msgid "Shuffle the play queue"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1293
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1302
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1296
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1305
 msgid "Discard the filtered out items"
 msgstr ""
 
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1301
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:1304
 msgid ""
 "Do you really want to discard the items that are not displayed at the moment?"
 msgstr ""
@@ -29677,15 +29694,15 @@ msgstr ""
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr ""
 
-#: modules/gui/qt/player/waveform.cpp:230
+#: modules/gui/qt/player/waveform.cpp:251
 msgid "Waveform analyzer is unavailable."
 msgstr ""
 
-#: modules/gui/qt/player/waveform.cpp:275
+#: modules/gui/qt/player/waveform.cpp:308
 msgid "Waveform analyzer could not start."
 msgstr ""
 
-#: modules/gui/qt/player/waveform.cpp:277
+#: modules/gui/qt/player/waveform.cpp:310
 msgid "Waveform analysis did not complete."
 msgstr ""
 
@@ -31264,124 +31281,124 @@ msgstr ""
 msgid "Don't restore"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:367
+#: modules/gui/qt/util/redesign_updater.cpp:381
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:667
+#: modules/gui/qt/util/redesign_updater.cpp:683
 msgid "%1 (later)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:669
+#: modules/gui/qt/util/redesign_updater.cpp:685
 msgid "%1 (soon)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:872
+#: modules/gui/qt/util/redesign_updater.cpp:888
 msgid "This build cannot check for updates."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:889
+#: modules/gui/qt/util/redesign_updater.cpp:905
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:902
+#: modules/gui/qt/util/redesign_updater.cpp:918
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:906
+#: modules/gui/qt/util/redesign_updater.cpp:922
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:956
+#: modules/gui/qt/util/redesign_updater.cpp:972
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1203
+#: modules/gui/qt/util/redesign_updater.cpp:1223
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1225
-#: modules/gui/qt/util/redesign_updater.cpp:1266
+#: modules/gui/qt/util/redesign_updater.cpp:1245
+#: modules/gui/qt/util/redesign_updater.cpp:1286
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1240
-#: modules/gui/qt/util/redesign_updater.cpp:1318
+#: modules/gui/qt/util/redesign_updater.cpp:1260
+#: modules/gui/qt/util/redesign_updater.cpp:1338
 msgid "The download failed. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1341
+#: modules/gui/qt/util/redesign_updater.cpp:1361
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1379
-#: modules/gui/qt/util/redesign_updater.cpp:1401
-#: modules/gui/qt/util/redesign_updater.cpp:1441
-#: modules/gui/qt/util/redesign_updater.cpp:1464
-#: modules/gui/qt/util/redesign_updater.cpp:1474
-#: modules/gui/qt/util/redesign_updater.cpp:1479
-#: modules/gui/qt/util/redesign_updater.cpp:1714
+#: modules/gui/qt/util/redesign_updater.cpp:1399
+#: modules/gui/qt/util/redesign_updater.cpp:1421
+#: modules/gui/qt/util/redesign_updater.cpp:1461
+#: modules/gui/qt/util/redesign_updater.cpp:1484
+#: modules/gui/qt/util/redesign_updater.cpp:1494
+#: modules/gui/qt/util/redesign_updater.cpp:1499
+#: modules/gui/qt/util/redesign_updater.cpp:1768
 msgid "The update can't be written in %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1387
+#: modules/gui/qt/util/redesign_updater.cpp:1407
 msgid "The update isn't in a format this version knows."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1390
-#: modules/gui/qt/util/redesign_updater.cpp:1411
-#: modules/gui/qt/util/redesign_updater.cpp:1426
-#: modules/gui/qt/util/redesign_updater.cpp:1432
-#: modules/gui/qt/util/redesign_updater.cpp:1719
+#: modules/gui/qt/util/redesign_updater.cpp:1410
+#: modules/gui/qt/util/redesign_updater.cpp:1431
+#: modules/gui/qt/util/redesign_updater.cpp:1446
+#: modules/gui/qt/util/redesign_updater.cpp:1452
+#: modules/gui/qt/util/redesign_updater.cpp:1773
 msgid "The update is damaged."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1395
-#: modules/gui/qt/util/redesign_updater.cpp:1722
+#: modules/gui/qt/util/redesign_updater.cpp:1415
+#: modules/gui/qt/util/redesign_updater.cpp:1776
 msgid "The update isn't for this version."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1403
+#: modules/gui/qt/util/redesign_updater.cpp:1423
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1437
+#: modules/gui/qt/util/redesign_updater.cpp:1457
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1610
-#: modules/gui/qt/util/redesign_updater.cpp:1799
+#: modules/gui/qt/util/redesign_updater.cpp:1664
+#: modules/gui/qt/util/redesign_updater.cpp:1853
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1637
+#: modules/gui/qt/util/redesign_updater.cpp:1691
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1653
+#: modules/gui/qt/util/redesign_updater.cpp:1707
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1665
-#: modules/gui/qt/util/redesign_updater.cpp:1679
+#: modules/gui/qt/util/redesign_updater.cpp:1719
+#: modules/gui/qt/util/redesign_updater.cpp:1733
 msgid "The installer couldn't be saved to %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1729
+#: modules/gui/qt/util/redesign_updater.cpp:1783
 msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1779
-#: modules/gui/qt/util/redesign_updater.cpp:1817
+#: modules/gui/qt/util/redesign_updater.cpp:1833
+#: modules/gui/qt/util/redesign_updater.cpp:1871
 msgid "The installer couldn't be started."
 msgstr ""
 

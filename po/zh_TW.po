@@ -39507,3 +39507,19 @@ msgstr "檔案 %1 已被刪除或移動。"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "將佇列加入播放清單"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "媒體櫃播放清單無法保留播放選項。"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "儲存為 M3U 播放清單可保留開始與停止時間等選項。"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "另存為 M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "不含選項加入"

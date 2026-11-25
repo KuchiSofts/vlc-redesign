@@ -30,6 +30,15 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   read is no longer called deleted.
 - **Samsung TV: Shuffle goes on correctly after a deleted file**, and a failure while the player is behind the
   library brings it back with its message.
+- **Long queues**: the total length is updated as items come and go, without adding it all again.
+- VLC opens without waiting for old update files to be cleaned up.
+- **Smoother browsing in large folders** when searching or changing the sort order.
+- **Saving queue items with playback options** offers an M3U playlist so settings like start and stop times are kept.
+  Items without options of your own are added as before.
+- **Live TV with large channel lists**: programme updates refresh only the rows and fields that changed.
+- **Updates you start**: a failed download now shows its error with Retry, and the download stays in view after the banner was closed.
+- **Channel up/down**: quick presses each move one channel, even before the previous channel answered.
+- **Add subtitles to a playlist**: the dialog is centred on the window and no longer squeezed into the page.
 
 ### Technical
 
@@ -40,6 +49,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - VideoLAN's latest changes merged (0741280a41, 14 more commits: the interface's QML types are registered at
   build time).
   Their Makefile rules were carried into the split build files and checked line by line.
+- A review of 0.8.3's own changes and of the contributed ones: a folder's rows are moved only up to 1000 rows
+  (more are read again as before), and the queue's length counter cannot go below zero.
 
 ## [0.8.3] · 2026-11-25
 

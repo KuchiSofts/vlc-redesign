@@ -40271,3 +40271,19 @@ msgstr "ឯកសារ %1 ត្រូវបានលុប ឬផ្លាស�
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "បន្ថែមជួរទៅបញ្ជីចាក់"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "បញ្ជីចាក់របស់បណ្ណាល័យមិនអាចរក្សាជម្រើសចាក់បានទេ។"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "រក្សាទុកបញ្ជីចាក់ M3U ដើម្បីរក្សាជម្រើសដូចជាពេលចាប់ផ្ដើម និងពេលបញ្ឈប់។"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "រក្សាទុកជា M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "បន្ថែមដោយគ្មានជម្រើស"

@@ -40482,3 +40482,19 @@ msgstr "Filen %1 har tagits bort eller flyttats."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "Lägg till kön i spellista"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Bibliotekets spellistor kan inte behålla uppspelningsalternativ."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Spara en M3U-spellista för att behålla alternativ som start- och stopptid."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Spara som M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Lägg till utan alternativ"

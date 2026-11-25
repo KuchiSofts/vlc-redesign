@@ -12,6 +12,7 @@ struct Entry
     qint64 modified;
     double progress = 0.;
     unsigned playCount = 0;
+    bool isAudio = false;
 };
 
 bool checkRows(const char* label, const QVector<int>& rows, const QVector<int>& expected)
@@ -61,6 +62,18 @@ int main()
     entries[0].playCount = 1;
     LocalFolderOrder::sortRows(filtered, entries, QStringLiteral("unwatched"), Qt::AscendingOrder, locale);
     ok &= checkRows("enrichment of filtered rows", filtered, { 3, 1, 5, 2, 0 });
+
+    // a played song is not a watched media: it keeps its place by name
+    QVector<Entry> songs = {
+        { QStringLiteral("Track 01.mp3"), false, 1, 0., 3, true },
+        { QStringLiteral("Track 02.mp3"), false, 2, 0., 0, true },
+        { QStringLiteral("Track 03.mp3"), false, 3, 0.4, 0, true },
+        { QStringLiteral("Clip.mp4"), false, 4, 0., 1, false },
+        { QStringLiteral("Film.mp4"), false, 5, 0., 0, false },
+    };
+    QVector<int> order = LocalFolderOrder::matchingRows(songs, QString());
+    LocalFolderOrder::sortRows(order, songs, QStringLiteral("unwatched"), Qt::AscendingOrder, locale);
+    ok &= checkRows("played songs keep their place", order, { 4, 0, 1, 2, 3 });
 
     return ok ? 0 : 1;
 }

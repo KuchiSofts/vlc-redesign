@@ -40506,3 +40506,19 @@ msgstr "%1 파일이 삭제되었거나 이동되었습니다."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "대기열을 재생 목록에 추가"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "라이브러리 재생 목록은 재생 옵션을 유지할 수 없습니다."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "시작 및 정지 시간 같은 옵션을 유지하려면 M3U 재생 목록으로 저장하세요."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "M3U로 저장"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "옵션 없이 추가"

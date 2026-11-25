@@ -136,6 +136,7 @@ private:
         LocalFolderModel* model = nullptr;
     };
 
+    // (loadLibraryData is a public slot: Resync calls it when the library is idle again)
     void notifyLibraryDataChanged();
     // The rows of the entries matching the search, sorted
     void updateRows(bool refilter = true);

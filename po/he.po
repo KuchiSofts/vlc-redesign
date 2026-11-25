@@ -39643,3 +39643,19 @@ msgstr "הקובץ %1 נמחק או הועבר."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "הוספת התור לרשימת השמעה"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "רשימות ההשמעה של הספרייה לא שומרות אפשרויות ניגון."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "שמרו רשימת השמעה M3U כדי לשמור אפשרויות כמו זמני התחלה וסיום."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "שמירה כ-M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "הוספה ללא האפשרויות"

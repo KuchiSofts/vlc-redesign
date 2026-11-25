@@ -33,7 +33,10 @@ void sortRows(QVector<int>& rows, const QVector<Entry>& entries, const QString& 
     const bool byDate = criteria == QLatin1String("date");
     const bool byWatched = criteria == QLatin1String("unwatched");
     const bool descending = sortOrder == Qt::DescendingOrder;
-    const auto played = [](const Entry& e) { return e.playCount > 0 || e.progress > 0.; };
+    // (A song is played again and again: played, it is not a media watched. With "Unwatched First", the
+    // default, a folder of music listed the songs heard after all the others: an album began at its fourth
+    // track, and the song playing was at the end of the list.)
+    const auto played = [](const Entry& e) { return !e.isAudio && (e.playCount > 0 || e.progress > 0.); };
     std::sort(rows.begin(), rows.end(), [&](int rowA, int rowB) {
         const Entry& a = entries[rowA];
         const Entry& b = entries[rowB];

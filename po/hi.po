@@ -39579,3 +39579,19 @@ msgstr "फ़ाइल %1 हटा दी गई है या कहीं �
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "कतार को प्लेलिस्ट में जोड़ें"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "लाइब्रेरी की प्लेलिस्ट प्लेबैक विकल्प नहीं रख सकतीं।"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "शुरू और रुकने के समय जैसे विकल्प रखने के लिए M3U प्लेलिस्ट सहेजें।"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "M3U के रूप में सहेजें"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "विकल्पों के बिना जोड़ें"

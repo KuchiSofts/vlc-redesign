@@ -2226,6 +2226,26 @@ msgstr "បាទ/ចាស ទាំងអស់"
 msgid "No to All"
 msgstr "ទេ ទាំងអស់"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "បន្ថែមទៅបញ្ជីចាក់"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "បញ្ជីចាក់របស់បណ្ណាល័យមិនអាចរក្សាជម្រើសចាក់បានទេ។"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "រក្សាទុកបញ្ជីចាក់ M3U ដើម្បីរក្សាជម្រើសដូចជាពេលចាប់ផ្ដើម និងពេលបញ្ឈប់។"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "រក្សាទុកជា M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "បន្ថែមដោយគ្មានជម្រើស"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "រក្សាទុកជួរចាក់ជា..."
@@ -7863,10 +7883,6 @@ msgstr "ជ្រើសច្រើន"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "បន្ថែម ហើយចាក់"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "បន្ថែមទៅបញ្ជីចាក់"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

@@ -2288,6 +2288,26 @@ msgstr "Jā visiem"
 msgid "No to All"
 msgstr "Nē visiem"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "Pievienot atskaņošanas sarakstam"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Bibliotēkas atskaņošanas saraksti nevar saglabāt atskaņošanas opcijas."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Saglabājiet M3U atskaņošanas sarakstu, lai paturētu tādas opcijas kā sākuma un beigu laiks."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Saglabāt kā M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Pievienot bez opcijām"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Saglabāt atskaņošanas rindu kā..."
@@ -8053,10 +8073,6 @@ msgstr "Atlasīt vairākus"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "Pievienot un atskaņot"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "Pievienot atskaņošanas sarakstam"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

@@ -2289,6 +2289,26 @@ msgstr "Այո բոլորին"
 msgid "No to All"
 msgstr "Ոչ բոլորին"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "Ավելացնել երգացանկում"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Գրադարանի նվագացանկերը չեն կարող պահել նվագարկման ընտրանքները։"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Պահեք M3U նվագացանկ՝ մեկնարկի և ավարտի ժամանակների նման ընտրանքները պահպանելու համար։"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Պահել որպես M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Ավելացնել առանց ընտրանքների"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Պահել նվագարկման հերթը որպես..."
@@ -8025,10 +8045,6 @@ msgstr "Ընտրել մի քանիսը"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "Ավելացնել և նվագարկել"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "Ավելացնել երգացանկում"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

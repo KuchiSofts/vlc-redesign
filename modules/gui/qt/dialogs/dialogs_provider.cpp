@@ -791,17 +791,44 @@ void DialogsProvider::playlistsDialog( const QVariantList & medias, MLPlaylistLi
     dialog->show(); // "Modeless dialogs are displayed using show()"
 }
 
+// An option the user set for an item (start and stop times, a subtitle file, audio only), as opposed to
+// what the interface adds by itself: the Open dialog's caching value when it is the default one (a value
+// the user raised there is theirs), the empty first piece of its option text, and "not in Recent" for
+// Live TV channels and excluded files.
+static bool isUserOption(qt_intf_t *intf, const char *option)
+{
+    if (!option)
+        return false;
+    while (*option == ':' || *option == ' ')
+        ++option;
+    if (*option == '\0')
+        return false;
+    const QByteArray text(option);
+    const qsizetype equals = text.indexOf('=');
+    const QByteArray name = (equals < 0 ? text : text.left(equals)).trimmed();
+    if (name.endsWith("-caching"))
+    {
+        bool number = false;
+        const qlonglong value = equals < 0 ? 0 : text.mid(equals + 1).trimmed().toLongLong(&number);
+        return !number || value != var_InheritInteger(intf, name.constData());
+    }
+    return name != "no-save-recentplay" && name != "save-recentplay";
+}
+
 void DialogsProvider::addQueueItemsToPlaylist(const QList<PlaylistItem>& items)
 {
     if (items.isEmpty())
         return;
 
-    const bool hasOptions = std::any_of(items.cbegin(), items.cend(), [](const PlaylistItem& item) {
+    const bool hasOptions = std::any_of(items.cbegin(), items.cend(), [this](const PlaylistItem& item) {
         input_item_t *input = item.inputItem();
         if (!input)
             return false;
         vlc_mutex_locker locker(&input->lock);
-        return input->i_options > 0;
+        for (int i = 0; i < input->i_options; i++)
+            if (isUserOption(p_intf, input->ppsz_options[i]))
+                return true;
+        return false;
     });
 
     const auto addToLibraryPlaylist = [this, items]() {
@@ -838,7 +865,10 @@ void DialogsProvider::addQueueItemsToPlaylist(const QList<PlaylistItem>& items)
                 QVector<vlc::playlist::Media> medias;
                 medias.reserve(items.size());
                 for (const PlaylistItem& entry : items)
-                    medias.emplaceBack(entry.inputItem());
+                    if (input_item_t *input = entry.inputItem())
+                        medias.emplaceBack(input);
+                if (medias.isEmpty())
+                    return;
                 saveMediaToPlaylistFile(medias, true);
             }, Qt::QueuedConnection);
         });

@@ -4,6 +4,7 @@
 #ifndef VLC_QT_PLAYLIST_DURATION_TOTAL_HPP_
 #define VLC_QT_PLAYLIST_DURATION_TOTAL_HPP_
 
+#include <cassert>
 #include <cstddef>
 #include <cstdint>
 #include <optional>
@@ -25,11 +26,14 @@ public:
 
     void remove(std::optional<std::int64_t> duration)
     {
-        if (duration)
-        {
-            m_ticks -= *duration;
-            --m_known;
-        }
+        if (!duration)
+            return;
+        // (a removal without its addition would wrap the count around: a total shown for an empty queue)
+        assert(m_known > 0);
+        if (m_known == 0)
+            return;
+        m_ticks -= *duration;
+        --m_known;
     }
 
     std::optional<std::int64_t> total() const

@@ -41118,3 +41118,19 @@ msgstr "El archivo %1 se eliminó o se movió."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "Agregar la cola a una lista de reproducción"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Las listas de reproducción de la biblioteca no pueden conservar las opciones de reproducción."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Guarda una lista de reproducción M3U para conservar opciones como los tiempos de inicio y de fin."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Guardar como M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Agregar sin opciones"

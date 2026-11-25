@@ -2236,6 +2236,26 @@ msgstr "બધા માટે હા"
 msgid "No to All"
 msgstr "બધા માટે ના"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "પ્લેલિસ્ટમાં ઉમેરો"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "લાઇબ્રેરીની પ્લેલિસ્ટ પ્લેબેક વિકલ્પો રાખી શકતી નથી."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "શરૂ અને બંધ થવાના સમય જેવા વિકલ્પો રાખવા માટે M3U પ્લેલિસ્ટ સાચવો."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "M3U તરીકે સાચવો"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "વિકલ્પો વિના ઉમેરો"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "વગાડવાની કતારને આ રીતે સંગ્રહો..."
@@ -7905,10 +7925,6 @@ msgstr "એકથી વધુ પસંદ કરો"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "ઉમેરો અને વગાડો"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "પ્લેલિસ્ટમાં ઉમેરો"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

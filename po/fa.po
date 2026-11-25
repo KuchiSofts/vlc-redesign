@@ -39735,3 +39735,19 @@ msgstr "فایل %1 حذف یا جابه‌جا شده است."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "افزودن صف به فهرست پخش"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "فهرست‌های پخش کتابخانه نمی‌توانند گزینه‌های پخش را نگه دارند."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "برای نگه‌داشتن گزینه‌هایی مانند زمان شروع و پایان، یک فهرست پخش M3U ذخیره کنید."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "ذخیره به‌صورت M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "افزودن بدون گزینه‌ها"

@@ -2240,6 +2240,26 @@ msgstr "כן לכולם"
 msgid "No to All"
 msgstr "לא לכולם"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "הוסף לרשימת נגינה"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "רשימות ההשמעה של הספרייה לא שומרות אפשרויות ניגון."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "שמרו רשימת השמעה M3U כדי לשמור אפשרויות כמו זמני התחלה וסיום."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "שמירה כ-M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "הוספה ללא האפשרויות"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "שמור את תור הנגינה בשם..."
@@ -7953,10 +7973,6 @@ msgstr "בחירה מרובה"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "הוסף ונגן"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "הוסף לרשימת נגינה"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

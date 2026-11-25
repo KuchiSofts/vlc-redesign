@@ -232,13 +232,14 @@ T.Control {
         // the folder and the artist (icon 24, 8, the name), 20 apart
         Row {
             id: details
-            // (from the right in a right to left layout; stop dp(8) before queueButton)
-            x: LayoutMirroring.enabled ? queueButton.x + queueButton.width + VLCStyle.dp(8, VLCStyle.scale)
+            // (from the right in a right to left layout; stop dp(4) before queueButton, which keeps two
+            // 120 dp names at the 391 dp design width)
+            x: LayoutMirroring.enabled ? queueButton.x + queueButton.width + VLCStyle.dp(4, VLCStyle.scale)
                                        : VLCStyle.dp(8, VLCStyle.scale)
             y: titleLabel.y + titleLabel.height + VLCStyle.dp(14, VLCStyle.scale)
             width: Math.max(0, LayoutMirroring.enabled
                                ? parent.width - VLCStyle.dp(8, VLCStyle.scale) - x
-                               : queueButton.x - x - VLCStyle.dp(8, VLCStyle.scale))
+                               : queueButton.x - x - VLCStyle.dp(4, VLCStyle.scale))
             height: VLCStyle.dp(32, VLCStyle.scale)
             spacing: VLCStyle.dp(20, VLCStyle.scale)
             clip: true

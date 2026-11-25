@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Keyboard pane resize**: the sidebar, play queue and Music artists pane edges are Tab stops; Left/Right resize them (Shift for bigger steps, Home/End for the limits), and screen readers see them as named sliders.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

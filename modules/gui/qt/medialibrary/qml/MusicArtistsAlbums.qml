@@ -267,11 +267,29 @@ Widgets.PageExt {
                 // left edge, dragged to the left to widen it
                 atRight: !LayoutMirroring.enabled
 
+                accessibleName: qsTr("Resize the artists pane")
                 currentWidth: artistList.width
                 minimumWidth: artistList.minimumWidth
                 maximumWidth: artistList.maximumWidth
 
                 visible: !VLCStyle.isScreenSmall
+
+                Navigation.parentItem: artistList
+
+                Rectangle {
+                    anchors {
+                        top: parent.top
+                        bottom: parent.bottom
+                        horizontalCenter: parent.horizontalCenter
+                        topMargin: VLCStyle.dp(8, VLCStyle.scale)
+                        bottomMargin: VLCStyle.dp(8, VLCStyle.scale)
+                    }
+
+                    width: VLCStyle.dp(2, VLCStyle.scale)
+                    radius: width / 2
+                    color: artistList.colorContext.accent
+                    visible: resizeHandle.visualFocus
+                }
 
                 onRequestedWidthChanged: {
                     if (!_inhibitMainCtxUpdate)

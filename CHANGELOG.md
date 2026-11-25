@@ -32,6 +32,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   library brings it back with its message.
 - **Long queues**: the total length is updated as items come and go, without adding it all again.
 - VLC opens without waiting for old update files to be cleaned up.
+- **Music seek bar**: drawing the waveform takes less work, and songs are analyzed one at a time so playback has priority.
 - **Smoother browsing in large folders** when searching or changing the sort order.
 - **Saving queue items with playback options** offers an M3U playlist so settings like start and stop times are kept.
   Items without options of your own are added as before.
@@ -49,8 +50,9 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - VideoLAN's latest changes merged (0741280a41, 14 more commits: the interface's QML types are registered at
   build time).
   Their Makefile rules were carried into the split build files and checked line by line.
-- A review of 0.8.3's own changes and of the contributed ones: a folder's rows are moved only up to 1000 rows
-  (more are read again as before), and the queue's length counter cannot go below zero.
+- A review of 0.8.3's own changes and of the contributed ones: the cleanup of old update files never follows a
+  link, the waveform's Windows code includes config.h first (ARM64), a folder's rows are moved only up to 1000
+  rows, the M3U writer leaves out empty options and any with a line break.
 
 ## [0.8.3] · 2026-11-25
 

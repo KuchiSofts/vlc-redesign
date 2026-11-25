@@ -223,6 +223,8 @@ int wmain(int argc, wchar_t **argv)
 #else
 int main(int argc, char **argv)
 {
+    /* Decoder threads inherit this priority and compete with audio playback. */
+    (void)nice(5);
     return argc == 2 ? analyze(argv[1]) : 2;
 }
 #endif

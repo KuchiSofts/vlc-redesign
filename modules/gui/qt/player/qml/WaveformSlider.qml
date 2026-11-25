@@ -27,7 +27,6 @@ SliderBar {
         durationSeconds: Player.length.toSeconds()
     }
 
-    // Built from Rectangles: VLC's Qt Quick is compiled without Canvas.
     // Over the bar of SliderBar: the track of the design with the waveform
     // in it (no fill: the played bars show the progress) and the handle; the
     // pointer handlers below still get the events
@@ -71,16 +70,19 @@ SliderBar {
             }
             return result
         }
-        // A bar is played once its middle is. The bars are drawn twice, each
-        // set clipped on its side of the gap after the last played bar: the
-        // position moves the two clips, the bars stay as they are
+        // A bar is played once its middle is. Keep Qt Quick's retained
+        // rounded rectangles so crossing the boundary only recolors bars
+        // and uses the same antialiasing at every scale.
         readonly property int playedCount: Math.max(0, Math.min(peaks.length,
             Math.floor((played * width - inset - barWidth / 2) / pitch) + 1))
-        readonly property real playedEdge: playedCount > 0
-                                           ? inset + playedCount * pitch - (pitch - barWidth) / 2
-                                           : 0
+        readonly property color unplayedColor: VLCStyle.redesign.color("#404040", "#929291")
         Item {
-            width: graph.playedEdge
+            // A slider narrower than the first bar can still show the
+            // entire played bar, just as with the original progress clip.
+            width: graph.playedCount > 0
+                   ? Math.max(graph.width, graph.inset + graph.playedCount * graph.pitch
+                                         - (graph.pitch - graph.barWidth) / 2)
+                   : graph.width
             height: graph.height
             clip: true
             Repeater {
@@ -88,36 +90,14 @@ SliderBar {
                 delegate: Rectangle {
                     required property int index
                     readonly property real peak: graph.peaks[index]
+                    readonly property bool played: index < graph.playedCount
                     x: graph.inset + index * graph.pitch
                     width: graph.barWidth
                     height: graph.peakHeight(peak)
                     y: (graph.height - height) / 2
                     radius: width / 2
-                    color: VLCStyle.redesign.accent
-                    opacity: 0.8
-                }
-            }
-        }
-        Item {
-            id: unplayed
-            x: graph.playedEdge
-            width: graph.width - x
-            height: graph.height
-            clip: true
-            Item {
-                x: -unplayed.x
-                Repeater {
-                    model: graph.peaks.length
-                    delegate: Rectangle {
-                        required property int index
-                        readonly property real peak: graph.peaks[index]
-                        x: graph.inset + index * graph.pitch
-                        width: graph.barWidth
-                        height: graph.peakHeight(peak)
-                        y: (graph.height - height) / 2
-                        radius: width / 2
-                        color: VLCStyle.redesign.color("#404040", "#929291")
-                    }
+                    color: played ? VLCStyle.redesign.accent : graph.unplayedColor
+                    opacity: played ? 0.8 : 1
                 }
             }
         }

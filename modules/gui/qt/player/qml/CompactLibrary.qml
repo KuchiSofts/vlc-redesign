@@ -1235,7 +1235,9 @@ FocusScope {
                             required property int index
 
                             readonly property bool folder: homeSection.modelData.kind === "frequentFolders"
+                            // (a file of a folder says it by its suffix: the library may not know it yet)
                             readonly property bool song: !!model.main_artist || model.isVideo === false
+                                                         || model.isAudio === true
                             readonly property bool watched: !folder && !song
                                                             && (Number(model.playcount ?? 0) > 0 || progress > 0)
 
@@ -1351,7 +1353,9 @@ FocusScope {
                 readonly property bool media: !container && !addRow
                 // (not a song: one is played again, Figma 4778:25123 shows
                 // its songs of Listen Again as the others)
+                // (a file of a folder says it by its suffix: the library may not know it yet)
                 readonly property bool song: !!model.main_artist || model.isVideo === false
+                                             || model.isAudio === true
                 readonly property bool watched: media && !song
                                                 && (Number(model.playcount ?? 0) > 0 || progress > 0)
 

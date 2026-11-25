@@ -202,8 +202,10 @@ HelperRun runHelper(const QStringList &args, qint64 limitMs)
         if (ended == 0 || (ended == -1 && errno == EINTR)) {
             kill(pid, SIGKILL);
             vlc_waitpid(pid);
+            ended = 0;
         }
-        run.code = -1;
+        // (it ended well by itself just as its time was up: its copy is whole)
+        run.code = ended == pid && WIFEXITED(status) && WEXITSTATUS(status) == 0 ? 0 : -1;
     } else {
         run.code = ended == pid && WIFEXITED(status) ? WEXITSTATUS(status) : -2;
     }
@@ -538,6 +540,48 @@ QString installerFolder()
     return temp.isEmpty() ? QString() : temp + QStringLiteral("/vlc-redesign-update");
 }
 
+// A link, of either kind: Qt tells a Windows junction apart from a symbolic
+// link, and QDir::removeRecursively() goes into a junction
+bool isLink(const QFileInfo &info)
+{
+    return info.isSymLink() || info.isJunction();
+}
+
+bool removeFile(const QString &path)
+{
+    if (QFile::remove(path))
+        return true;
+    // (a read-only file, as QDir::removeRecursively() does)
+    const QFile::Permissions permissions = QFile::permissions(path);
+    return !(permissions & QFile::WriteUser)
+        && QFile::setPermissions(path, permissions | QFile::WriteUser) && QFile::remove(path);
+}
+
+// A folder of the updater's own removed with what it holds, never through a
+// link: a junction planted in a folder that is cleaned up would have the
+// files of its target removed. A link is removed as the link.
+bool removeTree(const QString &path)
+{
+    const QFileInfo top(path);
+    if (isLink(top))
+        return QFile::remove(path) || QDir().rmdir(path);
+    if (!top.isDir())
+        return !top.exists() || removeFile(path);
+    bool ok = true;
+    const QFileInfoList entries = QDir(path).entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot
+                                                           | QDir::Hidden | QDir::System);
+    for (const QFileInfo &entry : entries) {
+        const QString file = entry.filePath();
+        if (isLink(entry))
+            ok = (QFile::remove(file) || QDir().rmdir(file)) && ok;
+        else if (entry.isDir())
+            ok = removeTree(file) && ok;
+        else
+            ok = removeFile(file) && ok;
+    }
+    return QDir().rmdir(path) && ok;
+}
+
 // The installers the sessions before downloaded (run once, then left there:
 // a hundred MB each) go at the start. Those of the last hour stay: another
 // VLC may be saving one now, or the installer still running (it opens VLC
@@ -550,15 +594,16 @@ void removeOldInstallers()
     const QDir dir(folder);
     if (!dir.exists())
         return;
+    // (a link of this name, planted in a temporary folder that several users
+    // share: the files of its target are not ours to remove)
+    if (isLink(QFileInfo(folder)))
+        return;
     const QDateTime before = QDateTime::currentDateTime().addSecs(-3600);
-    for (const QFileInfo &entry : dir.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden))
+    for (const QFileInfo &entry : dir.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden | QDir::System))
     {
         if (entry.lastModified() >= before)
             continue;
-        if (entry.isDir() && !entry.isSymLink())
-            QDir(entry.filePath()).removeRecursively();
-        else
-            QFile::remove(entry.filePath());
+        removeTree(entry.filePath());
     }
     // (the folder too, once it is empty)
     QDir().rmdir(folder);
@@ -1373,7 +1418,7 @@ QString RedesignUpdater::stageBegin(const QString &dir)
     const QString work = dir + QStringLiteral("/.update");
     const QString staged = work + QStringLiteral("/staged");
     QFile::remove(work + QStringLiteral("/ready.txt"));
-    QDir(staged).removeRecursively();
+    removeTree(staged);
     if (!QDir().mkpath(staged))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     return {};
@@ -1466,7 +1511,7 @@ QString RedesignUpdater::stageFinish(const QString &dir, const QString &version,
     // ready.txt, so no update put in place unchecked
     const QString publisher = stagedPublisherMismatch(staged);
     if (!publisher.isEmpty()) {
-        QDir(staged).removeRecursively();
+        removeTree(staged);
         return publisher;
     }
     if (!prepareHelper(dir))
@@ -1491,7 +1536,7 @@ void RedesignUpdater::findStagedUpdate()
         // not one another VLC is writing now
         const QFileInfo staged(appDir() + QStringLiteral("/.update/staged"));
         if (staged.isDir() && staged.lastModified().secsTo(QDateTime::currentDateTime()) > 3600)
-            QDir(staged.filePath()).removeRecursively();
+            removeTree(staged.filePath());
         return;
     }
     const QString version = QString::fromUtf8(ready.readAll()).trimmed();
@@ -1513,7 +1558,7 @@ void RedesignUpdater::findStagedUpdate()
                 msg_Warn(m_intf, "update to %s: a program staged isn't of this copy's publisher: not used",
                          qtu(version));
                 QFile::remove(dir + QStringLiteral("/.update/ready.txt"));
-                QDir(dir + QStringLiteral("/.update/staged")).removeRecursively();
+                removeTree(dir + QStringLiteral("/.update/staged"));
                 return;
             }
             // (a download started meanwhile goes on: the installer then)
@@ -1530,7 +1575,7 @@ void RedesignUpdater::findStagedUpdate()
     } else {
         // applied already, or older than this version
         ready.remove();
-        QDir(appDir() + QStringLiteral("/.update/staged")).removeRecursively();
+        removeTree(appDir() + QStringLiteral("/.update/staged"));
     }
 }
 
@@ -1794,7 +1839,7 @@ void RedesignUpdater::launchInstaller(const QString &path)
         args << media.toString(QUrl::FullyEncoded);
     }
     if (!QProcess::startDetached(QStringLiteral("/bin/sh"), args)) {
-        QDir(path).removeRecursively();
+        removeTree(path);
         setState(Failed, qtr("The update couldn't be started. It will be tried again next time."));
         return;
     }

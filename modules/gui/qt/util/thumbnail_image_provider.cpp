@@ -583,8 +583,9 @@ public:
         m_state->response = this;
         const std::shared_ptr<ThumbnailResponseState> state = m_state;
         pool->start(QRunnable::create([state, obj, mrl, requestedSize]() {
-            state->deliver(readArtwork(obj, mrl, requestedSize),
-                           QStringLiteral("No artwork for %1").arg(mrl));
+            QString failure;
+            const QImage image = readArtwork(obj, mrl, requestedSize, failure);
+            state->deliver(image, failure);
         }));
     }
 
@@ -614,11 +615,20 @@ public:
     }
 
 private:
-    static QImage readArtwork(vlc_object_t *obj, const QString &mrl, const QSize &requestedSize)
+    // failure: why there is no image. "No artwork for <mrl>" is the answer
+    // for a media the library has no artwork for: expected, the callers show
+    // their placeholder, and the line is written as a debug one
+    // (vlcqtmessagehandler.cpp). Artwork that is there and cannot be read is
+    // a fault, with a text of its own.
+    static QImage readArtwork(vlc_object_t *obj, const QString &mrl, const QSize &requestedSize,
+                              QString &failure)
     {
         const QString path = artworkPath(obj, mrl);
         if (path.isEmpty())
+        {
+            failure = QStringLiteral("No artwork for %1").arg(mrl);
             return {};
+        }
         QImageReader reader(path);
         reader.setAutoTransform(true);
         const QSize size = reader.size();
@@ -629,7 +639,11 @@ private:
             if (size.width() > bound.width() || size.height() > bound.height())
                 reader.setScaledSize(size.scaled(bound, Qt::KeepAspectRatio));
         }
-        return reader.read();
+        const QImage image = reader.read();
+        if (image.isNull())
+            failure = QStringLiteral("Cannot read the artwork %1 of %2: %3")
+                          .arg(path, mrl, reader.errorString());
+        return image;
     }
 
     static QString localPath(const vlc_ml_thumbnail_t &thumbnail)

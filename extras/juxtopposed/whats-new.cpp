@@ -188,6 +188,19 @@ int main()
         // the last bullet of notes that end without an empty line
         CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- Only one")), "Only one");
         CHECK_EQ(releaseSummary(QString()), "");
+        // a wrapped line that begins with an issue's number is text, not a heading
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- First line (see\n  #145).\n- Second.\n### Changed\n- Third.\n")),
+                 "First line (see #145).\nSecond.\nThird.");
+        // a "####" inside a part keeps its bullets; kinds written "## Added" count as "### Added"
+        CHECK_EQ(releaseSummary(QStringLiteral("### Added\n#### Player\n- a\n### Fixed\n- c\n")), "a\nc");
+        CHECK_EQ(releaseSummary(QStringLiteral("## Added\n\n- Android: x\n\n## Fixed\n\n- y\n\n## Downloads\n\n- z\n")), "y");
+        // bullets all indented alike are bullets, not bullets of a bullet; "+" and numbered lists
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n\n  - one\n  - two\n    - of two\n  - three\n")), "one\ntwo\nthree");
+        CHECK_EQ(releaseSummary(QStringLiteral("### Changed\n+ a\n+ b\n### Fixed\n1. c\n2) d\n")), "a\nb\nc\nd");
+        // italics inside a bold lead, a picture
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- **The arrows stop at *Show the video here too*.** More ![shot](https://example.com/a.png).\n")),
+                 "The arrows stop at Show the video here too. More shot.");
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- a\n- b\n"), 0), "");
         CHECK_EQ(releaseSummary(QStringLiteral("No bullet at all.\n\n## Downloads\n")), "");
     }
     // no changelog, or none of its sections

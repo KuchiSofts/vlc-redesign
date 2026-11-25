@@ -59,6 +59,8 @@ public:
         // artist", as the design names songs)
         TitleRole,
         ArtistRole,
+        // a song, by its suffix (the last role: the numbers of the others stay)
+        IsAudioRole,
     };
     Q_ENUM(Roles)
 
@@ -115,6 +117,8 @@ private:
         QString mrl;
         QUrl url;
         bool isFolder;
+        // a song, by its suffix: played, it is not a media watched
+        bool isAudio = false;
         qint64 modified;
         double progress = 0.;
         unsigned playCount = 0;

@@ -20,15 +20,23 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **The update card lists what concerns your system**: lines about the other apps (Samsung TV, Android, another
   operating system) are left out, as in What's new, and a long line is no longer cut in the middle.
 - **macOS: an update that takes too long stops cleanly**: its disk image is released and no partial copy stays.
+- **Music folders keep their order**: a song you played no longer moves to the end of its folder's list, in the
+  player's library panel and on the Folders page.
 - **Android TV: Play all is offered only where there is something to play**.
 - **Android TV: the Network page's Favorites are reached with Up from Storages**, and a folder row is one stop.
 - **Android TV: the focus returns to the file you played**, also far down a long list.
+- **Android TV: Up from a page reaches the nearest button of the header** instead of the search box.
 - **Samsung TV: Back closes the player from the "deleted or moved" message**; a file that is there but can't be
   read is no longer called deleted.
+- **Samsung TV: Shuffle goes on correctly after a deleted file**, and a failure while the player is behind the
+  library brings it back with its message.
 
 ### Technical
 
 - Version 0.8.4 started (VLC_REDESIGN_VERSION).
+- The updater's clean-ups never go through a link or a Windows junction (QDir::removeRecursively() follows one).
+- A saved playlist file: a title, an artist or an option with a line break in it no longer writes lines of its own.
+- A song without a cover is a debug line in the log, no longer a warning of Qt at each picture.
 - VideoLAN's latest changes merged (0741280a41, 14 more commits: the interface's QML types are registered at
   build time).
   Their Makefile rules were carried into the split build files and checked line by line.

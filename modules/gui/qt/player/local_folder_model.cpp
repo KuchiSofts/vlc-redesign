@@ -42,6 +42,19 @@ const QSet<QString>& mediaSuffixes()
     return suffixes;
 }
 
+// Suffixes of the songs, from "*.aac;*.mp3;..."
+const QSet<QString>& audioSuffixes()
+{
+    static const QSet<QString> suffixes = [] {
+        QSet<QString> set;
+        const QString patterns = QStringLiteral(EXTENSIONS_AUDIO);
+        for (const QString& pattern : patterns.split(QLatin1Char(';'), Qt::SkipEmptyParts))
+            set.insert(pattern.mid(2).toLower()); // drop "*."
+        return set;
+    }();
+    return suffixes;
+}
+
 // The MRL of a local path as the core writes it (vlc_path2uri), the one the
 // media library stores: QUrl::fromLocalFile leaves ( ) ' ! & + , ; = @ $
 // as they are, the media would not be found (resume, artwork, subtitles)
@@ -229,6 +242,7 @@ QVector<LocalFolderModel::Entry> LocalFolderModel::listFolder(const QString& pat
         entry.mrl = mrl;
         entry.url = coreUrl(filePath, mrl);
         entry.isFolder = isFolder;
+        entry.isAudio = !isFolder && audioSuffixes().contains(info.suffix().toLower());
         entry.modified = info.lastModified().toMSecsSinceEpoch();
         entries.push_back(std::move(entry));
     }
@@ -290,7 +304,10 @@ void LocalFolderModel::sortRows()
     const bool byDate = m_sortCriteria == QLatin1String("date");
     const bool byWatched = m_sortCriteria == QLatin1String("unwatched");
     const bool descending = m_sortOrder == Qt::DescendingOrder;
-    const auto played = [](const Entry& e) { return e.playCount > 0 || e.progress > 0.; };
+    // (A song is played again and again: played, it is not a media watched. With "Unwatched First", the
+    // default, a folder of music listed the songs heard after all the others: an album began at its fourth
+    // track, and the song playing was at the end of the list.)
+    const auto played = [](const Entry& e) { return !e.isAudio && (e.playCount > 0 || e.progress > 0.); };
     std::sort(m_rows.begin(), m_rows.end(), [&](int rowA, int rowB) {
         const Entry& a = m_entries[rowA];
         const Entry& b = m_entries[rowB];
@@ -431,6 +448,8 @@ QVariant LocalFolderModel::data(const QModelIndex& index, int role) const
         return entry.mrl.isEmpty() ? entry.url.toString(QUrl::FullyEncoded) : entry.mrl;
     case IsFolderRole:
         return entry.isFolder;
+    case IsAudioRole:
+        return entry.isAudio;
     case ProgressRole:
         return entry.progress;
     case PlayCountRole:
@@ -489,6 +508,7 @@ QHash<int, QByteArray> LocalFolderModel::roleNames() const
         { NameRole, "name" },
         { UrlRole, "url" },
         { IsFolderRole, "isFolder" },
+        { IsAudioRole, "isAudio" },
         { ProgressRole, "progress" },
         { PlayCountRole, "playcount" },
         { IsFavoriteRole, "isFavorite" },

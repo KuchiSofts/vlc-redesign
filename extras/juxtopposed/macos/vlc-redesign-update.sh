@@ -85,14 +85,26 @@ stage)
     notes=$(mktemp -d "${TMPDIR:-/tmp}/vlc-redesign-update.XXXXXX") || die 3 "no temporary folder"
     # (at the end, whatever it is: a step still running ended, and its
     # watcher; a copy that is not whole removed; the image released, within
-    # the limit too; a zip's unpacked folder removed)
+    # the limit too; a zip's unpacked folder removed. The step's tool is
+    # waited for, ended outright after 2 s: one still writing would put a
+    # file back into a folder just removed. A second request to stop does
+    # not cut these lines short: it is taken and nothing is done for it (not
+    # ignored, which the tools started here would inherit: the watcher of the
+    # detach step could then not be ended and was waited for a whole limit).)
     attached=
     copying=
     whole=
     job=
     watcher=
-    trap 'if [ -n "$job" ]; then kill "$job" 2>/dev/null; fi
+    trap 'trap : TERM INT HUP
           if [ -n "$watcher" ]; then kill "$watcher" 2>/dev/null; fi
+          if [ -n "$job" ]; then
+              kill "$job" 2>/dev/null
+              ( sleep 2; kill -KILL "$job" ) < /dev/null > /dev/null 2>&1 &
+              killer=$!
+              wait "$job" 2>/dev/null
+              kill "$killer" 2>/dev/null
+          fi
           if [ -n "$copying" ] && [ -z "$whole" ]; then rm -rf "$staged"; fi
           if [ -n "$attached" ]; then step detach hdiutil detach "$mount" -quiet -force 2>/dev/null; rmdir "$mount" 2>/dev/null; else rm -rf "$mount"; fi
           rm -rf "$notes"' EXIT

@@ -66,6 +66,12 @@ static void vlcQtMessageHandler(QtMsgType type, const QMessageLogContext &contex
         default:
             vlcLogLevel = VLC_MSG_DBG;
         }
+        // (VLC Redesign) Not a fault: the answer of the artwork provider for a media the library has no
+        // artwork for (util/thumbnail_image_provider.cpp). A QML Image cannot fail to load without a warning
+        // of Qt, and that failure is what shows the callers' placeholder. Kept as a debug line; artwork that
+        // is there and cannot be read answers with another text and stays a warning.
+        if (type == QtWarningMsg && msg.contains(QLatin1String(": No artwork for ")))
+            vlcLogLevel = VLC_MSG_DBG;
 
         vlc_object_Log(g_intf, vlcLogLevel, vlc_module_name, file, context.line, function, "(%s) %s", context.category,  msg.toUtf8().constData());
     }

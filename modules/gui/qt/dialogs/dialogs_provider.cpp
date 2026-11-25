@@ -1211,6 +1211,12 @@ void writeM3U( FILE *file, const char *baseUrl, const QVector<vlc::playlist::Med
         if( name && strcmp( uri, name ) )
         {
             char *artist = input_item_GetArtist( item );
+            // (a title or an artist with a line break in it, from a tag or a playlist of the network,
+            // would write lines of its own into the file: a space instead)
+            for( char *text : { name, artist } )
+                for( char *c = text; c && *c; c++ )
+                    if( *c == '\r' || *c == '\n' )
+                        *c = ' ';
             const vlc_tick_t duration = input_item_GetDuration( item );
             const long long seconds = duration > 0 ? SEC_FROM_VLC_TICK( duration ) : -1;
             if( artist && *artist )
@@ -1225,7 +1231,13 @@ void writeM3U( FILE *file, const char *baseUrl, const QVector<vlc::playlist::Med
         for( int i = 0; i < item->i_options; i++ )
         {
             const char *option = item->ppsz_options[i];
-            printText( file, "#EXTVLCOPT:%s\n", option[0] == ':' ? option + 1 : option );
+            if( option[0] == ':' )
+                option++;
+            // (an empty option is not a line; one with a line break in it, which only a playlist from
+            // outside can hold, would write lines of its own into the file)
+            if( option[0] == '\0' || strpbrk( option, "\r\n" ) )
+                continue;
+            printText( file, "#EXTVLCOPT:%s\n", option );
         }
         vlc_mutex_unlock( &item->lock );
 

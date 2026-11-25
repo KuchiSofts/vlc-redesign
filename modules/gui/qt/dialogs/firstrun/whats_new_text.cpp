@@ -22,10 +22,13 @@ namespace {
 // The text of a bit of Markdown: links, code and emphasis without their marks
 QString plainText(QString text)
 {
-    static const QRegularExpression link(QStringLiteral(R"(\[([^\]]*)\]\([^)]*\))"));
+    // (a picture's "![alt](address)" as its alt text)
+    static const QRegularExpression link(QStringLiteral(R"(!?\[([^\]]*)\]\([^)]*\))"));
     static const QRegularExpression emphasis(QStringLiteral(R"((\*\*|\*|__)(.+?)\1)"));
     text.replace(link, QStringLiteral("\\1"));
     text.remove(QLatin1Char('`'));
+    // (twice: italics inside a bold lead, "**the arrows stop at *Show here*.**")
+    text.replace(emphasis, QStringLiteral("\\2"));
     text.replace(emphasis, QStringLiteral("\\2"));
     return text.simplified();
 }
@@ -75,22 +78,32 @@ bool forOtherSystem(const QString& bullet)
 
 QString releaseSummary(const QString& notes, int most)
 {
-    const auto kindOf = [](const QString& heading) {
-        const QString name = heading.mid(heading.indexOf(QLatin1Char(' ')) + 1).trimmed().toLower();
-        return name == QLatin1String("added") || name == QLatin1String("changed")
-            || name == QLatin1String("fixed");
+    // A heading is "#" to "######" and a space: a wrapped line that begins
+    // with an issue's number ("#145).") is text
+    static const QRegularExpression heading(QStringLiteral(R"(^(#{1,6})(?:\s+(.*))?$)"));
+    // "- ", "* ", "+ " and "1. " / "1) " items
+    static const QRegularExpression item(QStringLiteral(R"(^(?:[-*+]|\d{1,3}[.)])\s+(.*)$)"));
+    const auto kindOf = [](const QString& name) {
+        const QString kind = name.trimmed().toLower();
+        return kind == QLatin1String("added") || kind == QLatin1String("changed")
+            || kind == QLatin1String("fixed");
     };
     const QStringList lines = notes.split(QLatin1Char('\n'));
     // (notes without those headings, a release of before them: every bullet)
-    const bool kinds = std::any_of(lines.cbegin(), lines.cend(), [&kindOf](const QString& line) {
-        return line.startsWith(QLatin1String("###")) && kindOf(line);
+    const bool kinds = std::any_of(lines.cbegin(), lines.cend(), [&kindOf](const QString& raw) {
+        const QRegularExpressionMatch m = heading.match(raw.trimmed());
+        return m.hasMatch() && kindOf(m.captured(2));
     });
 
     QStringList bullets;
+    if (most <= 0)
+        return {};
     QString bullet;
     bool counted = !kinds;
     bool seen = false;
-    // a bullet of a bullet: its lines are not the line's
+    // how far the last bullet of the list was indented: one indented more is
+    // a bullet of that bullet, and its lines are not the line's
+    int topIndent = -1;
     bool nested = false;
     const auto flush = [&]() {
         if (!bullet.isEmpty() && !forOtherSystem(bullet)) {
@@ -99,33 +112,48 @@ QString releaseSummary(const QString& notes, int most)
                 bullets.append(text);
         }
         bullet.clear();
-        nested = false;
     };
     for (const QString& raw : lines) {
-        const QString line = raw.trimmed();
         if (bullets.size() >= most)
             break;
-        if (line.startsWith(QLatin1Char('#'))) {
+        const QString line = raw.trimmed();
+        int indent = 0;
+        for (const QChar c : raw) {
+            if (c == QLatin1Char(' ')) ++indent;
+            else if (c == QLatin1Char('\t')) indent += 4;
+            else break;
+        }
+        const QRegularExpressionMatch h = heading.match(line);
+        if (h.hasMatch()) {
             flush();
-            const bool kind = kindOf(line);
-            // (the notes' next part, Downloads: a "###" of another kind of
+            const int level = int(h.capturedLength(1));
+            const bool kind = kindOf(h.captured(2));
+            // (the notes' next part, Downloads: a heading of another kind of
             // change, Fixed after Added, counts too)
-            if (line.startsWith(QLatin1String("## ")) && (seen || !bullets.isEmpty()))
+            if (level <= 2 && !kind && (seen || !bullets.isEmpty()))
                 break;
-            if (kinds)
-                counted = kind;
-            seen = seen || kind;
+            // (a "####" inside a part groups its bullets: they still count)
+            if (level <= 3) {
+                if (kinds)
+                    counted = kind;
+                seen = seen || kind;
+                topIndent = -1;
+                nested = false;
+            }
             continue;
         }
         if (!counted)
             continue;
-        const bool isBullet = line.startsWith(QLatin1String("- ")) || line.startsWith(QLatin1String("* "));
-        const bool indented = raw.startsWith(QLatin1Char(' ')) || raw.startsWith(QLatin1Char('\t'));
-        if (isBullet && indented && (!bullet.isEmpty() || nested)) {
-            nested = true;
-        } else if (isBullet) {
+        const QRegularExpressionMatch i = item.match(line);
+        if (i.hasMatch()) {
+            if (topIndent >= 0 && indent > topIndent) {
+                nested = true;
+                continue;
+            }
             flush();
-            bullet = line.mid(2).trimmed();
+            bullet = i.captured(1).trimmed();
+            topIndent = indent;
+            nested = false;
         } else if (line.isEmpty()) {
             flush();
         } else if (!bullet.isEmpty() && !nested) {

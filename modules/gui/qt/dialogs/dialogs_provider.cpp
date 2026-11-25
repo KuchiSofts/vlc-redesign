@@ -65,6 +65,7 @@
 #include <vlc_charset.h>
 #include <vlc_strings.h>
 
+#include <algorithm>
 #include <cerrno>
 #include <vector>
 
@@ -790,6 +791,63 @@ void DialogsProvider::playlistsDialog( const QVariantList & medias, MLPlaylistLi
     dialog->show(); // "Modeless dialogs are displayed using show()"
 }
 
+void DialogsProvider::addQueueItemsToPlaylist(const QList<PlaylistItem>& items)
+{
+    if (items.isEmpty())
+        return;
+
+    const bool hasOptions = std::any_of(items.cbegin(), items.cend(), [](const PlaylistItem& item) {
+        input_item_t *input = item.inputItem();
+        if (!input)
+            return false;
+        vlc_mutex_locker locker(&input->lock);
+        return input->i_options > 0;
+    });
+
+    const auto addToLibraryPlaylist = [this, items]() {
+        QVariantList urls;
+        urls.reserve(items.size());
+        for (const PlaylistItem& item : items)
+            urls.push_back(item.getUrl());
+        playlistsDialog(urls);
+    };
+
+    if (hasOptions)
+    {
+        // The library stores media IDs, so an entry's options need a file
+        // that can save them alongside that entry.
+        RedesignMessage message;
+        message.title = qtr("Add to playlist");
+        message.heading = qtr("Library playlists cannot keep playback options.");
+        message.text = qtr("Save an M3U playlist to keep options such as start and stop times.");
+        message.acceptText = qtr("Save as M3U");
+        // Still possible: the library playlist, without the options
+        message.extraText = qtr("Add without options");
+        showRedesignMessage(message, this, [this, items, addToLibraryPlaylist](int answer, const QString&) {
+            if (answer == RedesignMessage::Extra)
+            {
+                QMetaObject::invokeMethod(this, addToLibraryPlaylist, Qt::QueuedConnection);
+                return;
+            }
+            if (answer != RedesignMessage::Accepted)
+                return;
+
+            // The file dialog has its own event loop. Open it after the
+            // message's answer handler has returned.
+            QMetaObject::invokeMethod(this, [this, items]() {
+                QVector<vlc::playlist::Media> medias;
+                medias.reserve(items.size());
+                for (const PlaylistItem& entry : items)
+                    medias.emplaceBack(entry.inputItem());
+                saveMediaToPlaylistFile(medias, true);
+            }, Qt::QueuedConnection);
+        });
+        return;
+    }
+
+    addToLibraryPlaylist();
+}
+
 void DialogsProvider::bookmarksDialog()
 {
     toggleDialogVisible(m_bookmarkDialog);
@@ -1094,27 +1152,30 @@ void DialogsProvider::PLAppendDir()
 /****************
  * Playlist     *
  ****************/
-QString DialogsProvider::askPlaylistFile( const QString& title, const char **module )
+QString DialogsProvider::askPlaylistFile( const QString& title, const char **module, bool m3uOnly )
 {
     static const struct
     {
         char filter_name[14];
         char filter_patterns[5];
         char module[12];
+        bool m3u;
     } types[] = {
-        { N_("XSPF playlist"), "xspf", "export-xspf", },
-        { N_("M3U playlist"),  "m3u",  "export-m3u", },
-        { N_("M3U8 playlist"), "m3u8", "export-m3u8", },
-        { N_("HTML playlist"), "html", "export-html", },
+        { N_("XSPF playlist"), "xspf", "export-xspf", false },
+        { N_("M3U playlist"),  "m3u",  "export-m3u",  true },
+        { N_("M3U8 playlist"), "m3u8", "export-m3u8", true },
+        { N_("HTML playlist"), "html", "export-html", false },
     };
 
     QStringList filters;
     QString ext = getSettings()->value( "last-playlist-ext" ).toString();
 
-    for( size_t i = 0; i < ARRAY_SIZE(types); i++ )
+    for( const auto& type : types )
     {
-        QString tmp = qfut( types[i].filter_name ) + " (*." + types[i].filter_patterns + ")";
-        if( ext == qfu( types[i].filter_patterns ) )
+        if( m3uOnly && !type.m3u )
+            continue;
+        QString tmp = qfut( type.filter_name ) + " (*." + type.filter_patterns + ")";
+        if( ext == qfu( type.filter_patterns ) )
             filters.insert( 0, tmp );
         else
             filters.append( tmp );
@@ -1131,12 +1192,14 @@ QString DialogsProvider::askPlaylistFile( const QString& title, const char **mod
         return {};
 
     /* First test if the file extension is set, and different to selected filter */
-    for( size_t i = 0; i < ARRAY_SIZE(types); i++)
+    for( const auto& type : types )
     {
-        if ( file.endsWith( QString( "." ) + qfu( types[i].filter_patterns ) ) )
+        if( m3uOnly && !type.m3u )
+            continue;
+        if ( file.endsWith( QString( "." ) + qfu( type.filter_patterns ) ) )
         {
-            psz_selected_module = types[i].module;
-            psz_last_playlist_ext = types[i].filter_patterns;
+            psz_selected_module = type.module;
+            psz_last_playlist_ext = type.filter_patterns;
             break;
         }
     }
@@ -1144,12 +1207,14 @@ QString DialogsProvider::askPlaylistFile( const QString& title, const char **mod
     /* otherwise apply the selected extension */
     if ( !psz_last_playlist_ext )
     {
-        for( size_t i = 0; i < ARRAY_SIZE(types); i++)
+        for( const auto& type : types )
         {
-            if ( selected.startsWith( qfut( types[i].filter_name ) ) )
+            if( m3uOnly && !type.m3u )
+                continue;
+            if ( selected.startsWith( qfut( type.filter_name ) ) )
             {
-                psz_selected_module = types[i].module;
-                psz_last_playlist_ext = types[i].filter_patterns;
+                psz_selected_module = type.module;
+                psz_last_playlist_ext = type.filter_patterns;
                 /* Fix file extension */
                 file = file.append( QString( "." ) + qfu( psz_last_playlist_ext ) );
                 break;
@@ -1411,12 +1476,12 @@ QString writePlaylistFile( const QString& path, const QByteArray& module,
  * Playlist"). The file is written from the media themselves on a worker
  * thread: the export modules would need a playlist, with its player and
  * audio output, created on the UI thread. */
-void DialogsProvider::saveMediaToPlaylistFile( const QVector<vlc::playlist::Media>& medias )
+void DialogsProvider::saveMediaToPlaylistFile( const QVector<vlc::playlist::Media>& medias, bool m3uOnly )
 {
     if ( medias.isEmpty() )
         return;
     const char *module = nullptr;
-    const QString file = askPlaylistFile( qtr( "Export playlist as..." ), &module );
+    const QString file = askPlaylistFile( qtr( "Export playlist as..." ), &module, m3uOnly );
     if ( file.isEmpty() )
         return;
 

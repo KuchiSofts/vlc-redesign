@@ -1178,6 +1178,10 @@ void RedesignUpdater::install()
     }
     ++m_attempt;
     setProgress(0);
+    // the user started it: its progress, and a failure, are shown even
+    // after an automatic check or a dismissed banner
+    m_manual = true;
+    m_dismissed = false;
     setState(Downloading);
     // Nothing is used unless it matches the checksum published with it
     if (smallUpdate()) {

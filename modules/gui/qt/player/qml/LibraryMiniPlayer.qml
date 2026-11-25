@@ -127,7 +127,11 @@ T.Control {
             padding: 0
             from: 0
             to: 1
-            value: Player.position
+            Binding on value {
+                when: !seek.pressed && !fastSeekTimer.moved
+                value: Player.position
+                restoreMode: Binding.RestoreNone
+            }
             enabled: Player.seekable
             Accessible.name: qsTr("Playback position")
             // Dragged: key frame seeks, at most one every 150 ms (a precise

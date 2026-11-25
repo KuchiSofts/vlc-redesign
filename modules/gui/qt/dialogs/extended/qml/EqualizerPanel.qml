@@ -29,14 +29,22 @@ ExpandPanel {
     SettingsDropdown {
         id: presetBox
         objectName: "equalizerPreset"
+        readonly property int presetIndex: root.effects.presets.findIndex(p => p.id === root.effects.preset)
         Layout.fillWidth: true
         implicitHeight: root.px(48)
         model: root.effects.presets
         textRole: "name"
-        currentIndex: root.effects.presets.findIndex(p => p.id === root.effects.preset)
+        Binding on currentIndex {
+            value: presetBox.presetIndex
+            restoreMode: Binding.RestoreNone
+        }
+        onModelChanged: currentIndex = presetIndex
         displayText: currentIndex < 0 ? qsTr("Custom") : currentText
         Accessible.name: qsTr("Equalizer preset")
-        onActivated: (index) => root.effects.setPreset(root.effects.presets[index].id)
+        onActivated: (index) => {
+            if (!root.effects.setPreset(root.effects.presets[index].id))
+                currentIndex = presetIndex
+        }
 
         delegate: T.ItemDelegate {
             id: presetOption

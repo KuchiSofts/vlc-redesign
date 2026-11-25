@@ -584,7 +584,11 @@ Widgets.RedesignDialog {
                                   : root.singleMedia
                                     ? [qsTr("From Computer"), qsTr("From Link"), qsTr("From OpenSubtitles")]
                                     : [qsTr("From Computer"), qsTr("From Link"), qsTr("From the Internet")]
-                currentIndex: root.originIndex
+                Binding on currentIndex {
+                    value: root.originIndex
+                    restoreMode: Binding.RestoreNone
+                }
+                onModelChanged: currentIndex = root.originIndex
                 onActivated: (index) => {
                     root.originIndex = index
                     // Figma: the search starts from the name of the media
@@ -1133,6 +1137,7 @@ Widgets.RedesignDialog {
                         HeaderDropdown {
                             id: batchChoice
                             objectName: "subtitleBatchChoice"
+                            readonly property int choiceIndex: batchRow.choice >= 0 ? batchRow.choice : batchRow.candidates.length
                             Layout.fillWidth: true
                             Layout.preferredWidth: -1
                             Layout.preferredHeight: VLCStyle.dp(32, VLCStyle.scale)
@@ -1142,7 +1147,11 @@ Widgets.RedesignDialog {
                             enabled: batchRow.choosing && !batch.downloading
                             model: batchRow.candidates.map(candidate => ({
                                 label: candidate.label + " · " + candidate.detail })).concat([{ label: qsTr("Don't download") }])
-                            currentIndex: batchRow.choice >= 0 ? batchRow.choice : batchRow.candidates.length
+                            Binding on currentIndex {
+                                value: batchChoice.choiceIndex
+                                restoreMode: Binding.RestoreNone
+                            }
+                            onModelChanged: currentIndex = choiceIndex
                             onActivated: (index) => batch.choose(batchRow.index,
                                                                  index >= batchRow.candidates.length ? -1 : index)
                             Accessible.name: qsTr("Subtitle for %1").arg(batchRow.label)

@@ -58,7 +58,11 @@ ColumnLayout {
         from: -10000
         to: 10000
         stepSize: 50
-        value: Player.subtitleDelayMS
+        Binding on value {
+            when: !timeline.pressed
+            value: Player.subtitleDelayMS
+            restoreMode: Binding.RestoreNone
+        }
         enabled: Player.isStarted
         Accessible.name: qsTr("Primary subtitle delay")
         onMoved: Player.subtitleDelayMS = value

@@ -359,6 +359,7 @@ ColumnLayout {
     // the chevron 13 px from the end; the list of the settings
     SettingsDropdown {
         id: choiceBox
+        readonly property int choiceIndex: root.choiceList.findIndex(choice => String(choice.id) === String(root.currentValue))
         visible: root.option.type === "choice" && !root.colorValue && !root.compact
         Layout.fillWidth: true
         implicitHeight: root.px(48)
@@ -367,12 +368,19 @@ ColumnLayout {
         rightPadding: LayoutMirroring.enabled ? root.px(18) : root.px(18 + 24 + 13)
         model: root.choiceList
         textRole: "name"
-        currentIndex: root.choiceList.findIndex(choice => String(choice.id) === String(root.currentValue))
+        Binding on currentIndex {
+            value: choiceBox.choiceIndex
+            restoreMode: Binding.RestoreNone
+        }
+        onModelChanged: currentIndex = choiceIndex
         // the name before the value, but where the design shows the value alone
         displayText: (root.label.length ? root.label + ": " : "")
                      + (currentIndex < 0 ? String(root.currentValue) : currentText)
         Accessible.name: root.label.length ? root.label : root.option.name
-        onActivated: (index) => root.effects.setParameter(root.option.id, root.choiceList[index].id)
+        onActivated: (index) => {
+            if (!root.effects.setParameter(root.option.id, root.choiceList[index].id))
+                currentIndex = choiceIndex
+        }
 
         background: Rectangle {
             radius: root.px(6)

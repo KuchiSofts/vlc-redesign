@@ -388,8 +388,15 @@ Item {
                     }
                     return -1
                 }
-                currentIndex: valueIndex()
-                onActivated: (index) => root.commit(root.choices[index].value)
+                Binding on currentIndex {
+                    value: choiceControl.valueIndex()
+                    restoreMode: Binding.RestoreNone
+                }
+                onModelChanged: currentIndex = valueIndex()
+                onActivated: (index) => {
+                    root.commit(root.choices[index].value)
+                    currentIndex = valueIndex()
+                }
                 Accessible.name: root.accessibleLabel
             }
         }
@@ -398,6 +405,7 @@ Item {
             active: root.useSlider
             sourceComponent: Item {
                 SettingsSlider {
+                    id: rangeControl
                     objectName: "settingRange_" + root.settingKey
                     anchors.left: parent.left
                     anchors.right: root.sliderScale ? parent.right : rangeValue.left
@@ -416,11 +424,15 @@ Item {
                     readonly property var sensitivityPixels: [12, 3, 1]
                     // the opacities of VLC (0..255) in percent
                     readonly property real opacityRange: Number(root.maximum) - Number(root.minimum)
-                    value: root.editorKind === "sensitivity"
-                           ? (Number(root.settingValue) >= 8 ? 0 : Number(root.settingValue) >= 2 ? 1 : 2)
-                           : root.editorKind === "opacity" && opacityRange > 0
-                           ? Math.round((Number(root.settingValue) - Number(root.minimum)) * 100 / opacityRange)
-                           : Number(root.settingValue)
+                    Binding on value {
+                        when: !rangeControl.pressed
+                        value: root.editorKind === "sensitivity"
+                               ? (Number(root.settingValue) >= 8 ? 0 : Number(root.settingValue) >= 2 ? 1 : 2)
+                               : root.editorKind === "opacity" && rangeControl.opacityRange > 0
+                               ? Math.round((Number(root.settingValue) - Number(root.minimum)) * 100 / rangeControl.opacityRange)
+                               : Number(root.settingValue)
+                        restoreMode: Binding.RestoreNone
+                    }
                     stepSize: root.settingKey === "rate" ? 0.25
                               : root.editorKind === "sensitivity" ? 1
                               : root.settingKey === "mouse-hide-timeout"

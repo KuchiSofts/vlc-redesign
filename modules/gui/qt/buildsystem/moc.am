@@ -171,6 +171,12 @@ nodist_libqt_plugin_la_SOURCES = \
 	widgets/native/roundedcornermask.moc.cpp \
 	widgets/native/fadingedgemask.moc.cpp
 
+if HAVE_QMLTYPEREGISTRAR
+if HAVE_QMLCACHEGEN
+CLEANFILES += $(nodist_libqt_plugin_la_SOURCES:.moc.cpp=.moc.cpp.json)
+endif
+endif
+
 nodist_libqt_plugin_la_SOURCES += \
 	dialogs/extended/ui_equalizer.h \
 	dialogs/extended/ui_video_effects.h \

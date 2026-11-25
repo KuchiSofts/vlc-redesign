@@ -379,11 +379,18 @@ moc_verbose_ = $(moc_verbose__$(AM_DEFAULT_VERBOSITY))
 moc_verbose_0 = @echo "  MOC     " $@;
 moc_verbose__0 = $(moc_verbose_0)
 
+MOC_EXTRA_ARGS =
+if HAVE_QMLTYPEREGISTRAR
+if HAVE_QMLCACHEGEN
+MOC_EXTRA_ARGS += --output-json
+endif
+endif
+
 .hpp.moc.cpp:
-	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $<
+	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $< $(MOC_EXTRA_ARGS)
 
 .cpp.moc:
-	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $<
+	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $< $(MOC_EXTRA_ARGS)
 
 # These MOC files depend on the configure settings:
 dialogs/dialogs_provider.moc.cpp dialogs/vlm/vlm.moc.cpp: $(top_builddir)/config.h

@@ -40,7 +40,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 TOKENS = ROOT / "design" / "tokens.json"
-VLCSTYLE = ROOT / "modules" / "gui" / "qt" / "style" / "VLCStyle.qml"
+VLCSTYLE = ROOT / "modules" / "gui" / "qt" / "style" / "qml" / "VLCStyle.qml"
 EXT = "org.vlc-redesign"
 
 sys.path.insert(0, str(HERE))

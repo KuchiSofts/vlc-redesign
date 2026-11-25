@@ -1911,7 +1911,7 @@ the new playlist's thumbnail and empty playlists, the resume card, the classic d
 The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). **The source of these values
 is [`design/tokens.json`](../design/tokens.json)** (`design-1.0`, W3C Design Tokens format, each token with its
 Figma node and the places in the code that hold it); the tables below are its summary. In the code they live in
-`modules/gui/qt/style/VLCStyle.qml` (object `redesign`), `menus/redesign_menu_style.cpp`,
+`modules/gui/qt/style/qml/VLCStyle.qml` (object `redesign`), `menus/redesign_menu_style.cpp`,
 `util/redesign_widget_theme.cpp` and the components named; `design/tools/check_qml.py` (CI, every pull request)
 fails when the code and `tokens.json` differ. Icons and fonts: `design/icons/`, `design/fonts/`; CSS, Android and
 Swift files: `design/build/` (`design/README.md`).

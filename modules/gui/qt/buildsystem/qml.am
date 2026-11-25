@@ -590,6 +590,7 @@ libqt_plugin_la_ALL_QML = \
 	$(libqml_module_player_a_QML) \
 	$(libqml_module_player_a_Singleton_QML) \
 	$(libqml_module_playercontrols_a_QML) \
+	$(libqml_module_playercontrols_a_Singleton_QML) \
 	$(libqml_module_playlist_a_QML) \
 	$(libqml_module_style_a_QML) \
 	$(libqml_module_style_a_Singleton_QML) \

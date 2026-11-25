@@ -4619,7 +4619,6 @@ AS_IF([test "${enable_qt}" != "no" -a "${SYS}" != "mingw32"], [
     AC_MSG_WARN([libcurl was not found: the Qt interface will have no online subtitles, artwork or update check])
   ])
 ])
-AC_SUBST([QT_INDIRECT_LIBS])
 AC_SUBST([QT_ARCHDATA_DIRECTORY])
 AC_SUBST([QT_QML_DIRECTORY])
 AM_CONDITIONAL([ENABLE_QT], [test "$enable_qt" != "no"])

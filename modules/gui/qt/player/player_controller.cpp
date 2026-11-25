@@ -1821,8 +1821,12 @@ void PlayerController::cancelSpeedHolds()
     {
         vlc_player_locker lock{ d->m_player };
         rate = vlc_player_SetRateOverride(d->m_player, 0.f);
+        // 0: no override left to release (the input is stopping or
+        // not started yet); show the rate the core has now
+        if (rate == 0.f)
+            rate = vlc_player_GetRate(d->m_player);
     }
-    if (rate != 0.f)
+    if (rate != d->m_rate)
     {
         d->m_rate = rate;
         emit rateChanged(d->m_rate);

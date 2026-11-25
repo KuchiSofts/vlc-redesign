@@ -185,8 +185,8 @@ Widgets.RedesignDialog {
             if (failed === 0 && linked > 0)
                 root.close()
             else
-                root._batchResult = linked > 0 ? qsTr("%1 linked, %2 failed.").arg(linked).arg(failed)
-                                                : qsTr("Nothing was linked: %1 failed.").arg(failed)
+                root._batchResult = linked > 0 ? qsTr("%1 linked, %2 failed.", "%1 linked, %2 failed.", linked).arg(linked).arg(failed)
+                                                : qsTr("Nothing was linked: %1 failed.", "Nothing was linked: %1 failed.", failed).arg(failed)
         }
     }
 
@@ -1166,7 +1166,7 @@ Widgets.RedesignDialog {
                     if (batch.downloading)
                         return qsTr("Downloading and linking the subtitles chosen…")
                     if (batch.searching)
-                        return qsTr("Searching the internet: %1 of %2 videos done…").arg(batch.searched).arg(batch.total)
+                        return qsTr("Searching the internet: %1 of %2 video done…", "Searching the internet: %1 of %2 videos done…", batch.total).arg(batch.searched).arg(batch.total)
                     let text = qsTr("For the file: %1 · By title: %2 · Not found: %3")
                                    .arg(batch.exactCount).arg(batch.guessCount).arg(batch.notFoundCount)
                     if (batch.failedCount > 0)

@@ -906,7 +906,8 @@ Widgets.RedesignDialog {
                             textFormat: Text.PlainText
                             text: guideRow.s.name + "  ·  " + (guideRow.s.kind === "schedulesdirect"
                                       ? qsTr("A guide for the channels of every source")
-                                      : qsTr("Guide for %1 of %2 channels").arg(guideRow.s.withGuide).arg(guideRow.s.channels))
+                                      : qsTr("Guide for %1 of %2 channel", "Guide for %1 of %2 channels",
+                                                  guideRow.s.channels).arg(guideRow.s.withGuide).arg(guideRow.s.channels))
                             elide: Text.ElideRight
                             horizontalAlignment: Text.AlignLeft
                             color: root.c("#C6C6C6", "#2e2e2e")

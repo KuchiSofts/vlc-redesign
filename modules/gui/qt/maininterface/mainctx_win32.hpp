@@ -72,6 +72,10 @@ private:
         {
             CoUninitialize();
         }
+
+        // one CoUninitialize per CoInitializeEx: built in place, never copied
+        ComHolder(const ComHolder &) = delete;
+        ComHolder &operator=(const ComHolder &) = delete;
     };
 
     std::optional<ComHolder> m_comHolder;

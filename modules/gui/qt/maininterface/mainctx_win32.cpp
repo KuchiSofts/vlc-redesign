@@ -608,6 +608,9 @@ void WinTaskbarWidget::createTaskBarButtons()
     /*Here is the code for the taskbar thumb buttons
     FIXME:We need pretty buttons in 16x16 px that are handled correctly by masks in Qt
     */
+    // again after Explorer restarts (TaskbarButtonCreated): the old list goes
+    if( himl )
+        ImageList_Destroy( himl );
     himl = NULL;
 
     auto winId = WinId(m_window);
@@ -616,7 +619,8 @@ void WinTaskbarWidget::createTaskBarButtons()
 
     try
     {
-        m_comHolder = ComHolder();
+        // (a temporary copied in ran CoUninitialize once more)
+        m_comHolder.emplace();
     }
     catch( const std::exception& exception )
     {
@@ -694,14 +698,14 @@ void WinTaskbarWidget::createTaskBarButtons()
             msg_Err( p_intf, "%s failed with error %08lx",
                      "ThumbBarAddButtons", hr );
     }
+    // once, though this runs again after Explorer restarts (countChanged is
+    // connected in the constructor)
     connect( THEMIM, &PlayerController::playingStateChanged,
-             this, &WinTaskbarWidget::changeThumbbarButtons);
-    connect( THEMPL, &vlc::playlist::PlaylistController::countChanged,
-            this, &WinTaskbarWidget::playlistItemCountChanged );
+             this, &WinTaskbarWidget::changeThumbbarButtons, Qt::UniqueConnection );
     connect( THEMPL, &vlc::playlist::PlaylistController::hasPrevChanged,
-            this, &WinTaskbarWidget::changeThumbbarButtons );
+            this, &WinTaskbarWidget::changeThumbbarButtons, Qt::UniqueConnection );
     connect( THEMPL, &vlc::playlist::PlaylistController::hasNextChanged,
-            this, &WinTaskbarWidget::changeThumbbarButtons );
+            this, &WinTaskbarWidget::changeThumbbarButtons, Qt::UniqueConnection );
     if( THEMIM->getPlayingState() == PlayerController::PLAYING_STATE_PLAYING )
         changeThumbbarButtons( );
 }
@@ -771,7 +775,8 @@ void WinTaskbarWidget::changeThumbbarButtons( )
     //play/pause
     thbButtons[1].dwMask = dwMask;
     thbButtons[1].iId = 1;
-    thbButtons[1].dwFlags = THBF_ENABLED;
+    // nothing to play with an empty queue, as when the buttons are made
+    thbButtons[1].dwFlags = THEMPL->count() > 0 ? THBF_ENABLED : THBF_DISABLED;
 
     //next
     thbButtons[2].dwMask = dwMask;

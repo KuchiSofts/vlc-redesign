@@ -30,11 +30,9 @@ QtObject {
     // Light chrome values measured from the full exported Player - Light frame.
     readonly property QtObject redesign: QtObject {
         // Inter 3.19 (variable, SIL OFL): the build Figma lays the design out
-        // with (its text boxes are the advances of 3.19 rounded up)
-        readonly property FontLoader regularFont: FontLoader {
-            source: "qrc:///fonts/InterVariable.ttf"
-        }
-        readonly property string fontFamily: regularFont.name
+        // with (its text boxes are the advances of 3.19 rounded up), loaded
+        // once in C++ (RedesignMenuStyle::fontFamily)
+        readonly property string fontFamily: MainCtx.redesignFontFamily
         // DM Mono (SIL OFL), the keys of the design ("Keyboard Shortcuts"):
         // a line of 1.302 em (ascender 0.992, descender 0.31)
         readonly property FontLoader monoFont: FontLoader {

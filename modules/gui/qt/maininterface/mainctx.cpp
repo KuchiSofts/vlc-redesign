@@ -1989,6 +1989,11 @@ QString MainCtx::volumeSliderColors() const
     return QString::fromUtf8(vlc::wrap_cptr(sliderColors).get());
 }
 
+QString MainCtx::redesignFontFamily() const
+{
+    return RedesignMenuStyle::fontFamily();
+}
+
 MainCtx::MainInterfaceMode MainCtx::getEffectiveMainInterfaceMode() const {
     //priority applies across modes
     if (m_mainInterfaceModes & MainCtx::MAININTERFACE_MODE_MINIMAL)

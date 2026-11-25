@@ -588,6 +588,12 @@ bool removeTree(const QString &path)
 // again at its end); the next start takes them
 void removeOldInstallers()
 {
+#ifdef __linux__
+    // Nothing is saved there on Linux (the AppImage is replaced where it
+    // is), and /tmp is every user's: a folder of this name can be another
+    // user's, with links in it. Left alone.
+    return;
+#endif
     const QString folder = installerFolder();
     if (folder.isEmpty())
         return;
@@ -601,9 +607,13 @@ void removeOldInstallers()
     const QDateTime before = QDateTime::currentDateTime().addSecs(-3600);
     for (const QFileInfo &entry : dir.entryInfoList(QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden | QDir::System))
     {
-        if (entry.lastModified() >= before)
+        // Read again: a download of this session may have just replaced it,
+        // and what it is now is what is removed (a folder that became a link
+        // or a junction meanwhile goes as the link, never what it leads to)
+        const QFileInfo now(entry.filePath());
+        if (now.lastModified() >= before)
             continue;
-        removeTree(entry.filePath());
+        removeTree(now.filePath());
     }
     // (the folder too, once it is empty)
     QDir().rmdir(folder);
@@ -626,7 +636,10 @@ RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
             check(false);
     });
     connect(qApp, &QCoreApplication::aboutToQuit, this, &RedesignUpdater::applyOnExit);
-    removeOldInstallers();
+    runInBackground(this, []() {
+        QThread::currentThread()->setPriority(QThread::LowPriority);
+        removeOldInstallers();
+    });
     findStagedUpdate();
     resumeAfterUpdate();
     scheduleStartupCheck();
@@ -1222,6 +1235,10 @@ void RedesignUpdater::install()
     }
     ++m_attempt;
     setProgress(0);
+    // the user started it: its progress, and a failure, are shown even
+    // after an automatic check or a dismissed banner
+    m_manual = true;
+    m_dismissed = false;
     setState(Downloading);
     // Nothing is used unless it matches the checksum published with it
     if (smallUpdate()) {
@@ -1528,6 +1545,36 @@ QString RedesignUpdater::stageFinish(const QString &dir, const QString &version,
 // place, or a file was held): it is applied when VLC closes this time
 void RedesignUpdater::findStagedUpdate()
 {
+    // A stage is moved aside at once (a rename), then removed on a worker
+    // with any other one moved aside before: an update prepared in this
+    // session meanwhile writes a new "staged" of its own
+    const QString work = appDir() + QStringLiteral("/.update");
+    const auto removeStaleStage = [this, work](const QString &stage) {
+        // (a file of the stage held open, an antivirus reading it: the
+        // rename fails. The stage is then removed where it is, as before,
+        // on the worker too: what is held stays for the next start)
+        QString held;
+        if (!stage.isEmpty()
+            && !QDir().rename(stage, stage + QStringLiteral(".old-")
+                                     + QString::number(QDateTime::currentMSecsSinceEpoch())))
+            held = stage;
+        runInBackground(this, [work, held]() {
+            QThread::currentThread()->setPriority(QThread::LowPriority);
+            // A link or a junction of that name is not a stage of ours: it
+            // goes as the link, never what it leads to, and so does a link
+            // inside a stage (removeTree)
+            const auto remove = [](const QFileInfo &entry) {
+                if (isLink(entry) || entry.isDir())
+                    removeTree(entry.filePath());
+            };
+            const QFileInfoList old = QDir(work).entryInfoList({ QStringLiteral("staged.old-*") },
+                                                               QDir::Dirs | QDir::NoDotAndDotDot | QDir::Hidden);
+            for (const QFileInfo &entry : old)
+                remove(entry);
+            if (!held.isEmpty())
+                remove(QFileInfo(held));
+        });
+    };
     QFile ready(appDir() + QStringLiteral("/.update/ready.txt"));
     if (!ready.open(QIODevice::ReadOnly)) {
         // the helper of the last update, done
@@ -1535,8 +1582,9 @@ void RedesignUpdater::findStagedUpdate()
         // an update left half written (VLC closed while it was prepared);
         // not one another VLC is writing now
         const QFileInfo staged(appDir() + QStringLiteral("/.update/staged"));
-        if (staged.isDir() && staged.lastModified().secsTo(QDateTime::currentDateTime()) > 3600)
-            removeTree(staged.filePath());
+        // (and the ones a session quit before removing)
+        const bool stale = staged.isDir() && staged.lastModified().secsTo(QDateTime::currentDateTime()) > 3600;
+        removeStaleStage(stale ? staged.filePath() : QString());
         return;
     }
     const QString version = QString::fromUtf8(ready.readAll()).trimmed();
@@ -1575,7 +1623,7 @@ void RedesignUpdater::findStagedUpdate()
     } else {
         // applied already, or older than this version
         ready.remove();
-        removeTree(appDir() + QStringLiteral("/.update/staged"));
+        removeStaleStage(appDir() + QStringLiteral("/.update/staged"));
     }
 }
 

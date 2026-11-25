@@ -53,6 +53,11 @@ Widgets.ExpandGridItemView {
     titleHeight: VLCStyle.dp(18, VLCStyle.scale)
     subtitleHeight: 0
 
+    // Include the video group roles used by labels and row actions.
+    delegateRoles: model instanceof MLVideoModel
+                   ? ["id", "thumbnail", "fileName", "title", "duration", "playcount", "progress",
+                      "resolution_name", "channel", "count", "isVideo"] : null
+
     activeFocusOnTab: true
 
     // Functions

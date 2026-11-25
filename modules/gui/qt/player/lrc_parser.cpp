@@ -8,6 +8,7 @@
  *****************************************************************************/
 #include "lrc_parser.hpp"
 
+#include <QFile>
 #include <QFileInfo>
 #include <QDir>
 #include <QStringConverter>
@@ -181,6 +182,24 @@ QString besideFile(const QString &audioPath)
             return lrc.filePath();
     }
     return {};
+}
+
+QByteArray loadBesideFile(const QString &audioPath)
+{
+    const QString path = besideFile(audioPath);
+    if (path.isEmpty())
+        return {};
+
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly) || file.size() > maxFileSize)
+        return {};
+
+    // The file can grow after the size check.
+    const QByteArray data = file.read(maxFileSize + 1);
+    if (data.size() > maxFileSize || file.error() != QFileDevice::NoError)
+        return {};
+
+    return toSylt(parse(decode(data)));
 }
 
 }

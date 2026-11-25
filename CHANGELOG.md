@@ -33,6 +33,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **TV searches by channel number** update when a source changes its channel numbers.
 - **The current audio output device stays selected** when you switch Settings pages and close Settings.
 - **Audio Settings can select either output device when two have the same name.**
+- **Opening or skipping songs on slow drives keeps the player responsive** while it looks for lyrics beside the file.
 
 ### Technical
 

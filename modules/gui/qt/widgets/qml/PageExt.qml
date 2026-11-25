@@ -84,6 +84,15 @@ T.Page {
         available: root.isSearchable
     }
 
+    Connections {
+        target: MainCtx.search
+        enabled: root.visible && root.isSearchable
+
+        function onAskShow() {
+            _searchCtx.askShow()
+        }
+    }
+
     SortCtx {
         id: _sortCtx
 

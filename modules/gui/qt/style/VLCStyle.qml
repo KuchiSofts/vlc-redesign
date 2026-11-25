@@ -180,7 +180,7 @@ QtObject {
         })
         readonly property var _contrastLight: ({
             "#7c7c7b": "#333333", "#6b6b6b": "#333333", "#666666": "#333333", "#5a5a59": "#333333",
-            "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756"
+            "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756", "#8f8f8f": "#333333"
         })
 
         // color(dark[, light[, isDark]]): the light value a component gives

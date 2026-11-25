@@ -45,4 +45,7 @@ QByteArray toSylt(const QList<Line> &lines);
 // empty string.
 QString besideFile(const QString &audioPath);
 
+// Read and parse a sidecar into sylt-data, or return an empty array.
+QByteArray loadBesideFile(const QString &audioPath);
+
 }

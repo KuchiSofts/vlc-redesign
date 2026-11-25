@@ -58,10 +58,8 @@ public:
     Q_INVOKABLE QUrl getParentURL(const QModelIndex &index);
     Q_INVOKABLE QUrl getParentURL(const MLMedia *media) const;
     Q_INVOKABLE bool getPermissions(const MLMedia* media) const;
-    // To the Recycle Bin (the Trash on macOS and Linux) when toTrash, else for
-    // good. False when the file is still there: no trash on its drive, or it
-    // could not be removed.
-    Q_INVOKABLE bool deleteFileFromSource(const QModelIndex &index, bool toTrash = true);
+    Q_INVOKABLE void deleteFileFromSource(MLItemId id, const QString &expectedMrl,
+                                          bool toTrash, QJSValue onTrashFailed);
 
 protected:
     QHash<int, QByteArray> roleNames() const override;

@@ -231,10 +231,35 @@ void IptvChannelModel::nowNextChanged(const QSet<QString>& keys)
         emit dataChanged(index(0), index(int(m_rows.size()) - 1));
         return;
     }
-    const auto& channels = m_addon->channels();
-    for (int row = 0; row < m_rows.size(); ++row)
-        if (keys.contains(channels[m_rows[row]].key))
-            emit dataChanged(index(row), index(row));
+    // A batch names a few channels of a lineup that can have 20,000: compare
+    // channel indexes, not keys, and tell only the roles of what is on, by
+    // runs of rows (the delegates keep their logo, name and number bindings)
+    QSet<int> changed;
+    changed.reserve(keys.size());
+    for (const QString& key : keys)
+    {
+        const int channel = m_addon->channelIndex(key);
+        if (channel >= 0)
+            changed.insert(channel);
+    }
+    if (changed.isEmpty())
+        return;
+    static const QList<int> roles = {
+        NowTitleRole, NowStartRole, NowStopRole, NowDescriptionRole,
+        NowArchivedRole, NextTitleRole, NextStartRole,
+    };
+    int first = -1;
+    for (int row = 0; row <= m_rows.size(); ++row)
+    {
+        const bool hit = row < m_rows.size() && changed.contains(m_rows[row]);
+        if (hit && first < 0)
+            first = row;
+        else if (!hit && first >= 0)
+        {
+            emit dataChanged(index(first), index(row - 1), roles);
+            first = -1;
+        }
+    }
 }
 
 int IptvChannelModel::currentIndex() const

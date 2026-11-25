@@ -18,11 +18,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 ### Fixed
 
 - **The update card lists what concerns your system**: lines about the other apps (Samsung TV, Android, another
-  operating system) are left out, as in What's new.
+  operating system) are left out, as in What's new, and a long line is no longer cut in the middle.
+- **macOS: an update that takes too long stops cleanly**: its disk image is released and no partial copy stays.
+- **Android TV: Play all is offered only where there is something to play**.
+- **Android TV: the Network page's Favorites are reached with Up from Storages**, and a folder row is one stop.
+- **Android TV: the focus returns to the file you played**, also far down a long list.
+- **Samsung TV: Back closes the player from the "deleted or moved" message**; a file that is there but can't be
+  read is no longer called deleted.
 
 ### Technical
 
 - Version 0.8.4 started (VLC_REDESIGN_VERSION).
+- VideoLAN's latest changes merged (14 more commits: the interface's QML types are registered at build time).
+  Their Makefile rules were carried into the split build files and checked line by line.
 
 ## [0.8.3] · 2026-11-25
 

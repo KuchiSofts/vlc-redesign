@@ -468,6 +468,9 @@ static bool av1_parse_uncompressed_header(bs_t *p_bs, struct av1_uncompressed_he
             {
                 /* load_grain */
             }
+            p_uh->frame_type = AV1_FRAME_TYPE_INTER;
+            p_uh->show_frame = 1;
+            return true;
         }
         p_uh->frame_type = bs_read(p_bs, 2);
         p_uh->show_frame = bs_read1(p_bs);
@@ -617,6 +620,74 @@ vlc_fourcc_t AV1_get_chroma(const av1_OBU_sequence_header_t *p_seq)
         default:
             vlc_assert_unreachable();
     }
+}
+
+bool AV1_OBU_parse_hdr_metadata(const uint8_t *p_data, size_t i_data,
+                                av1_OBU_hdr_metadata_t *p_meta)
+{
+    if(!AV1_OBUSkipHeader(&p_data, &i_data))
+        return false;
+
+    uint8_t i_len;
+    const uint64_t i_type = leb128(p_data, i_data, &i_len);
+    if(i_len == 0 || (i_type != AV1_METADATA_TYPE_HDR_MDCV &&
+                      i_type != AV1_METADATA_TYPE_HDR_CLL))
+        return false;
+    p_meta->i_type = i_type;
+
+    bs_t bs;
+    bs_init(&bs, p_data + i_len, i_data - i_len);
+    if(p_meta->i_type == AV1_METADATA_TYPE_HDR_CLL)
+    {
+        p_meta->lighting.MaxCLL = bs_read(&bs, 16);
+        p_meta->lighting.MaxFALL = bs_read(&bs, 16);
+    }
+    else
+    {
+        const uint8_t RGB2GBR[3] = {2, 0, 1};
+        for(int i = 0; i < 3; i++)
+        {
+            p_meta->mastering.primaries[RGB2GBR[i] * 2] =
+                    bs_read(&bs, 16) * 50000 >> 16;
+            p_meta->mastering.primaries[RGB2GBR[i] * 2 + 1] =
+                    bs_read(&bs, 16) * 50000 >> 16;
+        }
+        for(int i = 0; i < 2; i++)
+            p_meta->mastering.white_point[i] = bs_read(&bs, 16) * 50000 >> 16;
+        p_meta->mastering.max_luminance =
+                (uint64_t) bs_read(&bs, 32) * 10000 >> 8;
+        p_meta->mastering.min_luminance =
+                (uint64_t) bs_read(&bs, 32) * 10000 >> 14;
+    }
+    return !bs_error(&bs);
+}
+
+bool AV1_OBU_get_itut_t35(const uint8_t *p_data, size_t i_data,
+                          uint8_t *pi_country_code,
+                          const uint8_t **pp_payload, size_t *pi_payload)
+{
+    if(!AV1_OBUSkipHeader(&p_data, &i_data))
+        return false;
+
+    uint8_t i_len;
+    if(leb128(p_data, i_data, &i_len) != AV1_METADATA_TYPE_ITUT_T35)
+        return false;
+    p_data += i_len;
+    i_data -= i_len;
+
+    while(i_data > 0 && p_data[i_data - 1] == 0)
+        i_data--;
+    if(i_data < 2)
+        return false;
+    i_data--;
+
+    const size_t i_header = p_data[0] == 0xFF ? 2 : 1;
+    if(i_data < i_header)
+        return false;
+    *pi_country_code = p_data[0];
+    *pp_payload = &p_data[i_header];
+    *pi_payload = i_data - i_header;
+    return true;
 }
 
 size_t AV1_create_DecoderConfigurationRecord(uint8_t **pp_buffer,

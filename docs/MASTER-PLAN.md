@@ -153,7 +153,55 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.3**: update releases of fixes as the issues bring them.
+- 🟡 **0.8.3** (work/0.8.3, 2026-11-25): a full check of issues, PRs and Discussions on both repositories.
+  - #117 (macOS update): the reporter's log showed the cause. VLC blocks SIGCHLD (and SIGTERM, SIGINT, SIGPIPE) in all
+    its threads (bin/darwinvlc.m), and Qt learns of a child process's end on macOS only from SIGCHLD, so
+    QProcess never saw the helper end ("ended with -1 after 362 s"). The child also inherited the blocked SIGTERM, so
+    the helper could not stop the watcher of a step that had ended and every step waited out its 120 s. The same
+    cause made the waveform always stop at its 60 s watchdog and the plugin cache's generator never finish on macOS.
+    Fix: one thread of the Qt interface takes SIGCHLD (qt.cpp HearChildEnds); the update's helper runs through
+    vlc_spawn() + waitpid(). The CI never saw it: the smoke and update tests run the helper from a shell; the
+    update test now also runs it with VLC's blocked signals (3c).
+  - #145 (mute stuck, Windows): PR #147 by a contributor, with ten more of theirs (#148-#157: TV guide resize and
+    refresh, channel-number search, latest channel wins, library delete target, network-share breadcrumbs, Resync,
+    audio device choice kept and same-name devices, lyrics read off the GUI thread). Each read in full before merging:
+    no links, no hidden characters, file deletion now checked against the media's id and path; CI green on each.
+  - Cross-device: the eleven are desktop code shared by Windows, Linux and macOS. Android and the Samsung TV app
+    have none of these faults: their Live TV tunes at once (no server reply to race), their guides load whole,
+    Android reads .lrc on Dispatchers.IO, the TV app lists them asynchronously; mute, output devices, UNC paths and
+    Resync have no counterpart there.
+  - VLC upstream merged (22 commits, to d3f8b7afff): new FadingEdgeMask/RoundedCornerMask/BackdropBlendItem
+    carried into our split build lists; our side bar and corner rounding (right to left) kept; upstream's own
+    Chromecast fix taken in place of ours.
+  - #117 proved on the CI's Macs (macOS 15 and 26): the helper started with VLC's blocked signals ends with
+    "unpack: no answer after 25 s" (exit 7, the reporter's error); with them cleared it stages the update in 6 s.
+    The launch tests of both Macs: 0 failures.
+  - The earlier issues on every device (owner's rule, 11-23):
+
+    | | Windows | Linux | macOS | Android phone | Android TV | Samsung TV |
+    |---|---|---|---|---|---|---|
+    | #138 Repeat/Shuffle at once | fixed 0.8.2, tested | same code, tested (AppImage, both ways) | fixed 0.8.2 (CI) | not affected, tested on the emulator both ways | same code as the phone | not affected, 2 tests |
+    | #139 Folders in the player's panel | fixed 0.8.2 | same code | same code | no such panel | no such panel | its Videos/Music are folder views |
+    | #135 queue into a playlist | 0.8.1 | same code | same code | had it | had it | added 0.8.3 |
+    | a deleted file | 0.8.1 | same code | same code | 0.8.1 | same code as the phone | added 0.8.3 |
+    | #132 sort, Play all | had it | had it | had it | 0.8.1 | sort had it; Play all added 0.8.3 | had it |
+    | #143 scroll bar | 0.8.3 | same code | same code | touch | remote | remote |
+
+  - Android TV, found while checking #132 there with the remote's keys only (0.8.3): in a folder list (several
+    columns) Right never left the first column (the row's layout sent Right to its ban button, gone outside
+    the storage browser, and the focus search came back to the row); the TV menu called the activity's
+    onOptionsItemSelected alone, so an item the page answers did nothing (Play all, Add to / Remove from
+    favorites); back from the player the focus went to the window's menu. All three fixed and walked again.
+    The TV code of a page follows Settings.showTvUi (the TV interface), not AndroidDevices.isTv (the device).
+  - Weblate: a Swedish volunteer's four example addresses pointed at a registered site (exempel.se): put back to
+    the reserved example.com with a note for them, the same for Brazilian Portuguese; Slovak's Artists merged.
+- 🟢 **0.8.2** published 2026-11-23 20:41 local (tag v0.8.2 on 1d886664c5, PR #140 merged as 938f251085; Android tag
+  v0.8.2 on acfafce16, PR #23 merged as 1ec16ea8a6; Samsung TV app tag v0.8.2 00c9cfb in its repo, its zip added; 21
+  files, small updates 1.2 MB x64, 0.9 MB ARM64). Before publishing: CI green on every platform (the Intel Mac's
+  title-bar check waits for its line now; GitHub stopped one Apple Silicon job, run again), VideoLAN master merged
+  (5589a060d4), pkg_scan 0 hits on the 4 zips, the release zip passes t138.py, the APK updated 0.8.1 in place, the TV
+  runs 0.8.2. After: a 0.8.1 copy updated itself to 0.8.2 (About: 0.8.2, Also on every platform 0.8.2). #138, #139
+  closed; #117 asked to try the first update from the zip (0.8.1 -> 0.8.2).
 - 🟢 **0.8.2** (2026-11-23, an update release of every app, the Samsung TV app joining from 0.8.0): Android (work/0.8.2, 215822d3c): dialog lists
   and messages were Material's 60 % of the text colour, grey on the light panel #ABABAA (2.8:1): now the text
   colour itself (#2E2E2E, 5.9:1) as the desktop's dialogs, light and dark (checked on the emulator, sort dialog).

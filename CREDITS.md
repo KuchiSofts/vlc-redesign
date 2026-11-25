@@ -62,16 +62,30 @@ Thank you to everyone who tested, reported and translated:
     ([#84](https://github.com/KuchiSofts/vlc-redesign/issues/84)), lyrics without times out of step with the song
     ([#109](https://github.com/KuchiSofts/vlc-redesign/issues/109)), the wheel at the end of the queue changing
     the volume ([#113](https://github.com/KuchiSofts/vlc-redesign/issues/113)), Home's list view and songs under New
-    Videos ([#111](https://github.com/KuchiSofts/vlc-redesign/issues/111)), and the library's folders as a place of
-    their own ([#112](https://github.com/KuchiSofts/vlc-redesign/issues/112)).
+    Videos ([#111](https://github.com/KuchiSofts/vlc-redesign/issues/111)), the library's folders as a place of
+    their own ([#112](https://github.com/KuchiSofts/vlc-redesign/issues/112)), and the macOS update that never
+    finished, with the log that showed why ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)).
+  - [@georgp85](https://github.com/georgp85): the speaker button that could not bring the sound back
+    ([#145](https://github.com/KuchiSofts/vlc-redesign/issues/145)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up
     ([#50](https://github.com/KuchiSofts/vlc-redesign/pull/50)) and Settings that lists fonts and drives only when
     asked ([#51](https://github.com/KuchiSofts/vlc-redesign/pull/51)), the design check on Windows checkouts
     ([#62](https://github.com/KuchiSofts/vlc-redesign/pull/62)), the subtitle labels refreshed once a folder scan
-    ([#63](https://github.com/KuchiSofts/vlc-redesign/pull/63)) and holding Space or the video for 2× speed
-    ([#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)).
+    ([#63](https://github.com/KuchiSofts/vlc-redesign/pull/63)), holding Space or the video for 2× speed
+    ([#64](https://github.com/KuchiSofts/vlc-redesign/pull/64)), and eleven fixes in 0.8.3: unmuting
+    ([#147](https://github.com/KuchiSofts/vlc-redesign/pull/147)), the TV guide on resize and after a refresh
+    ([#148](https://github.com/KuchiSofts/vlc-redesign/pull/148),
+    [#152](https://github.com/KuchiSofts/vlc-redesign/pull/152)), deleting the file that was picked
+    ([#149](https://github.com/KuchiSofts/vlc-redesign/pull/149)), breadcrumbs on network shares
+    ([#150](https://github.com/KuchiSofts/vlc-redesign/pull/150)), Resync of the open folder
+    ([#151](https://github.com/KuchiSofts/vlc-redesign/pull/151)), channel-number searches
+    ([#153](https://github.com/KuchiSofts/vlc-redesign/pull/153)), the output device kept and same-name devices
+    ([#154](https://github.com/KuchiSofts/vlc-redesign/pull/154),
+    [#155](https://github.com/KuchiSofts/vlc-redesign/pull/155)), lyrics read without holding up the player
+    ([#156](https://github.com/KuchiSofts/vlc-redesign/pull/156)) and the latest channel chosen winning
+    ([#157](https://github.com/KuchiSofts/vlc-redesign/pull/157)).
 - **Ideas:**
   - [@muhammadali-og](https://github.com/muhammadali-og): buttons that show what is open, and Ctrl + wheel for
     the subtitle size ([#10](https://github.com/KuchiSofts/vlc-redesign/issues/10)).

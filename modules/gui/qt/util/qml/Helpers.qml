@@ -170,6 +170,31 @@ QtObject {
         return path.replace(/\//g, "\\")
     }
 
+    function folderBreadcrumbs(url : var) : var {
+        const match = String(url ?? "").match(/^(file:(?:\/\/([^/?#]*))?)(\/[^?#]*)?/i)
+        if (!match)
+            return []
+        const prefix = match[1]
+        const authority = match[2]
+        const path = match[3] ?? ""
+        const crumbs = authority ? [{ title: authority, url: prefix, isAuthority: true }] : []
+        const segments = /[^/]+/g
+        let segment
+        while ((segment = segments.exec(path)) !== null) {
+            const part = segment[0]
+            const driveRoot = crumbs.length === 0 && /^[A-Za-z]:$/.test(part)
+            // Decode only the label so escaped characters cannot change the URL hierarchy.
+            let title = part
+            try {
+                title = decodeURIComponent(part)
+            } catch (e) {
+                // A path can contain bytes that are not valid UTF-8.
+            }
+            crumbs.push({ title: title, url: prefix + path.slice(0, segments.lastIndex) + (driveRoot ? "/" : "") })
+        }
+        return crumbs
+    }
+
     // Similar to Item::contains(), but accepts area (rectangle):
     function itemIntersects(item: Item, area: rect) : bool {
         if (!item)

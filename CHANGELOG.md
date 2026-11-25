@@ -5,9 +5,9 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `d3f8b7afff` (2026-11-24).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `0741280a41` (2026-11-25).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.4](#084--2026-11-25) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,13 +15,37 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+## [0.8.4] · 2026-11-25
+
+An update release of every app: nine changes from a contributor (the music seek bar, folders, Live TV,
+playlists, the update), a waveform that is there at once, music folders that keep their order, the remote
+reaching every part of the Android TV app, and the "deleted or moved" message put right on the Samsung TV.
+
+### Added
+
+- **Music seek bar: the waveform is there at once**: a song heard before keeps its waveform between runs, and the
+  next song's is prepared while this one plays.
+- **Saving queue items with playback options** offers an M3U playlist so settings like start and stop times are kept.
+  Items without options of your own are added as before.
+
+### Changed
+
+- **Music folders keep their order**: a song you played no longer moves to the end of its folder's list, in the
+  player's library panel and on the Folders page.
+- **Music seek bar**: drawing the waveform takes less work, and songs are analyzed one at a time so playback has priority.
+- **Smoother browsing in large folders** when searching or changing the sort order.
+- **Live TV with large channel lists**: programme updates refresh only the rows and fields that changed.
+- **Long queues**: the total length is updated as items come and go, without adding it all again.
+- VLC opens without waiting for old update files to be cleaned up.
+
 ### Fixed
 
 - **The update card lists what concerns your system**: lines about the other apps (Samsung TV, Android, another
   operating system) are left out, as in What's new, and a long line is no longer cut in the middle.
+- **Updates you start**: a failed download now shows its error with Retry, and the download stays in view after the banner was closed.
+- **Channel up/down**: quick presses each move one channel, even before the previous channel answered.
+- **Add subtitles to a playlist**: the dialog is centred on the window and no longer squeezed into the page.
 - **macOS: an update that takes too long stops cleanly**: its disk image is released and no partial copy stays.
-- **Music folders keep their order**: a song you played no longer moves to the end of its folder's list, in the
-  player's library panel and on the Folders page.
 - **Android TV: Play all is offered only where there is something to play**.
 - **Android TV: the Network page's Favorites are reached with Up from Storages**, and a folder row is one stop.
 - **Android TV: the focus returns to the file you played**, also far down a long list.
@@ -30,18 +54,6 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   read is no longer called deleted.
 - **Samsung TV: Shuffle goes on correctly after a deleted file**, and a failure while the player is behind the
   library brings it back with its message.
-- **Long queues**: the total length is updated as items come and go, without adding it all again.
-- VLC opens without waiting for old update files to be cleaned up.
-- **Music seek bar**: drawing the waveform takes less work, and songs are analyzed one at a time so playback has priority.
-- **Music seek bar: the waveform is there at once**: a song heard before keeps its waveform between runs, and the
-  next song's is prepared while this one plays.
-- **Smoother browsing in large folders** when searching or changing the sort order.
-- **Saving queue items with playback options** offers an M3U playlist so settings like start and stop times are kept.
-  Items without options of your own are added as before.
-- **Live TV with large channel lists**: programme updates refresh only the rows and fields that changed.
-- **Updates you start**: a failed download now shows its error with Retry, and the download stays in view after the banner was closed.
-- **Channel up/down**: quick presses each move one channel, even before the previous channel answered.
-- **Add subtitles to a playlist**: the dialog is centred on the window and no longer squeezed into the page.
 
 ### Technical
 

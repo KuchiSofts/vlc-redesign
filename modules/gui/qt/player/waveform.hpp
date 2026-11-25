@@ -53,7 +53,8 @@ private:
     void release(bool now);
     void setBins(const QVariantList& bins);
     void setError(const QString& error);
-    static void startAnalysis(const QString& key, const QString& path, int seconds);
+    void enqueueAnalysis();
+    static void startNextAnalysis();
     static void stopAll();
     static void finishAnalysis(const QString& key, const QVariantList& bins, const QString& error);
     static QString helperPath();
@@ -65,6 +66,7 @@ private:
     // the analysis waited for (shared by the sliders of the same file)
     QString m_key;
     QString m_path;
+    quint64 m_generation = 0;
     // a source is analyzed once it stays: not the passing ones
     QTimer m_settle;
     QString m_lastError;

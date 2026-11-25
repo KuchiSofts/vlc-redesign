@@ -9,9 +9,10 @@
 # addresses and answers, fixtures/subtitle-services), and the encoding
 # detection of text subtitles (the corpus); what a shortcut shows in
 # full screen (the kinds of the actions, the jumps added up, their texts);
-# and the headlines "What's new" makes of a changelog.
+# the headlines "What's new" makes of a changelog, and the waveform analysis
+# queue with a stand-in for the decoder.
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
-# with g++, Qt 6 Core, zlib and Python 3:
+# with g++, Qt 6 Base and Declarative development files, zlib and Python 3:
 #   sh extras/juxtopposed/ci/unit-tests.sh
 set -eu
 out=${OUT:-build-tests}
@@ -65,6 +66,15 @@ g++ -std=c++17 -O1 -Wall $san -fPIC -I. -I"$out/thread-runner" -Imodules/gui/qt/
     "$out/thread-runner/moc_mlthreadpool.cpp" \
     $(pkg-config --libs Qt6Core Qt6Test) -o "$out/thread-runner/test"
 "$out/thread-runner/test" -silent
+
+echo "== waveform analysis (sharing, cancellation and serial helpers)"
+mkdir -p "$out/waveform"
+"$moc" $(pkg-config --cflags Qt6Qml) modules/gui/qt/player/waveform.hpp -o "$out/waveform/moc_waveform.cpp"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Qml) \
+    extras/juxtopposed/waveform-analysis-test.cpp modules/gui/qt/player/waveform.cpp \
+    "$out/waveform/moc_waveform.cpp" $(pkg-config --libs Qt6Qml) -o "$out/waveform/test"
+ln -sf test "$out/waveform/vlc-waveform"
+"$out/waveform/test"
 
 echo "== Cover tracks (a song's picture kept as a video track is its cover, not a video)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/cover-track.cpp -o "$out/cover-track"

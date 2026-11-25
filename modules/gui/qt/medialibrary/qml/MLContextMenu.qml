@@ -263,23 +263,25 @@ Widgets.RedesignContextMenu {
         model.deleteStream(dataList[0][idDataRole])
     }
 
-    function deleteFileFromSource(dataList, options, indexes) {
+    function deleteFileFromSource(dataList) {
+        const sourceModel = model
+        const mediaId = dataList[0][idDataRole]
+        const expectedMrl = dataList[0]["mrl"]
         // to the Recycle Bin (the Trash on macOS and Linux), asked even
         // without the confirmations
         const windows = (Qt.platform.os === "windows")
         if (!DialogsProvider.questionDialog(windows ? qsTr("Move this file to the Recycle Bin?")
                                                     : qsTr("Move this file to the Trash?"),
-                                            qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel")))
+                                            qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel")) || !sourceModel)
             return
 
-        if (model.deleteFileFromSource(indexes[0], true))
-            return
-
-        // its drive has no trash (a network share...): for good only with a second yes
-        if (DialogsProvider.questionDialog(windows ? qsTr("This file can't be moved to the Recycle Bin. Delete it permanently?")
-                                                   : qsTr("This file can't be moved to the Trash. Delete it permanently?"),
-                                           qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel")))
-            model.deleteFileFromSource(indexes[0], false)
+        sourceModel.deleteFileFromSource(mediaId, expectedMrl, true, () => {
+            // its drive has no trash (a network share...): for good only with a second yes
+            if (DialogsProvider.questionDialog(windows ? qsTr("This file can't be moved to the Recycle Bin. Delete it permanently?")
+                                                       : qsTr("This file can't be moved to the Trash. Delete it permanently?"),
+                                               qsTr("Delete file"), true, qsTr("Delete"), qsTr("Cancel")) && sourceModel)
+                sourceModel.deleteFileFromSource(mediaId, expectedMrl, false, null)
+        })
     }
 
     function showInformationAvailable(dataList, options, indexes) {

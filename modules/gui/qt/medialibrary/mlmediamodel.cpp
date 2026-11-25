@@ -23,6 +23,7 @@
 #include "mlhelper.hpp"
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -114,32 +115,43 @@ bool MLMediaModel::getPermissions(const MLMedia* media) const
     return folderPermissions & QFileDevice::WriteUser;
 }
 
-bool MLMediaModel::deleteFileFromSource(const QModelIndex &index, bool toTrash)
+void MLMediaModel::deleteFileFromSource(MLItemId id, const QString &expectedMrl,
+                                        bool toTrash, QJSValue onTrashFailed)
 {
-    const auto media = static_cast<MLMedia *>(item(index.row()));
-    if (!media)
-        return false;
-    QString mrl = media->mrl();
+    if (!m_mediaLib || !id.isValid() || id.hasParent() || expectedMrl.isEmpty())
+        return;
 
-    QUrl fileUrl(mrl);
-    QString localPath = fileUrl.toLocalFile();
-    if (localPath.isEmpty())
-        return false;
+    struct Ctx {
+        bool trashFailed = false;
+    };
+    m_mediaLib->runOnMLThread<Ctx>(this,
+        [id, expectedMrl, toTrash](vlc_medialibrary_t *ml, Ctx &ctx)
+        {
+            // A scan can change the rows or the media's file while a prompt is open.
+            ml_unique_ptr<vlc_ml_media_t> media(vlc_ml_get_media(ml, id.id));
+            if (!media)
+                return;
 
-    const bool removed = toTrash ? (hasTrash(localPath) && QFile::moveToTrash(localPath))
-                                 : QFile::remove(localPath);
-    if (!removed)
-        return false;
+            const QString mrl = MLMedia(media.get()).mrl();
+            if (mrl != expectedMrl)
+                return;
 
-    QUrl parentUrl = getParentURL(index);
-    QString parentUrlString = parentUrl.toString();
+            const QString localPath = QUrl(mrl).toLocalFile();
+            if (localPath.isEmpty() || !QFileInfo(localPath).isFile())
+                return;
 
-    m_mediaLib->runOnMLThread(this,
-                              [parentUrlString](vlc_medialibrary_t *ml)
-                              {
-                                  vlc_ml_reload_folder(ml, qtu(parentUrlString));
-                              });
-    return true;
+            const bool removed = toTrash ? (hasTrash(localPath) && QFile::moveToTrash(localPath))
+                                         : QFile::remove(localPath);
+            if (removed)
+                vlc_ml_reload_folder(ml, qtu(getParentURLFromURL(mrl).toString()));
+            else
+                ctx.trashFailed = toTrash && QFileInfo(localPath).isFile();
+        },
+        [onTrashFailed](quint64, Ctx &ctx)
+        {
+            if (ctx.trashFailed && onTrashFailed.isCallable())
+                onTrashFailed.call();
+        });
 }
 
 vlc_ml_sorting_criteria_t MLMediaModel::nameToCriteria(QByteArray name) const

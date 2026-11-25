@@ -135,6 +135,38 @@ extern "C" char **environ;
 # include "util/redesign_feedback.hpp"
 # include <QDesktopServices>
 # include <QWindow>
+# include <csignal>
+# include <pthread.h>
+# include <unistd.h>
+
+// VLC blocks SIGCHLD in all its threads (bin/darwinvlc.m), and Qt hears of a
+// child process's end on macOS only from that signal: QProcess never saw its
+// programs end (the waveform's helper always ran into its one-minute watchdog,
+// the plugin cache's generator never "finished"; #117 was the update's
+// helper). One thread of its own takes the signal, so no other thread is
+// interrupted by it; Qt's handler reaps only its own children, a program of
+// vlc_spawn() stays for its vlc_waitpid(). Started once and kept: this plugin
+// is never unloaded (cannot_unload_broken_library below).
+static void *ChildEndsThread( void * )
+{
+    sigset_t set;
+    sigemptyset( &set );
+    sigaddset( &set, SIGCHLD );
+    pthread_sigmask( SIG_UNBLOCK, &set, nullptr );
+    for( ;; )
+        pause();
+    return nullptr;
+}
+
+static void HearChildEnds()
+{
+    static pthread_once_t once = PTHREAD_ONCE_INIT;
+    pthread_once( &once, [] {
+        pthread_t thread;
+        if( pthread_create( &thread, nullptr, ChildEndsThread, nullptr ) == 0 )
+            pthread_detach( thread );
+    } );
+}
 #endif
 
 #ifndef X_DISPLAY_MISSING
@@ -1122,6 +1154,8 @@ static void *Thread( void *obj )
 #ifdef Q_OS_MACOS
     // before the application is made (util/mac_open_documents.hpp)
     MacOpenDocuments::install();
+    // before any program is started (the waveform's helper, the plugin cache)
+    HearChildEnds();
 #endif
 
     /* Start the QApplication here */

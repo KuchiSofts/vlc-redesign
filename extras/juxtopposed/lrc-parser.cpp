@@ -97,8 +97,11 @@ int main()
         const QString song = dir.filePath(QStringLiteral("My Song [Live].mp3"));
         write(song, "x");
         CHECK(besideFile(song).isEmpty());
-        write(dir.filePath(QStringLiteral("My Song [Live].lrc")), "[00:01.00]a");
-        CHECK(besideFile(song) == dir.filePath(QStringLiteral("My Song [Live].lrc")));
+        CHECK(loadBesideFile(song).isEmpty());
+        const QString sidecar = dir.filePath(QStringLiteral("My Song [Live].lrc"));
+        write(sidecar, "[00:01.00]a");
+        CHECK(besideFile(song) == sidecar);
+        CHECK(loadBesideFile(song) == QByteArray("1000\x1f" "a\x1e"));
         // another song's .lrc, or a folder named like one, is not taken
         const QString other = dir.filePath(QStringLiteral("Other.flac"));
         write(other, "x");
@@ -108,6 +111,18 @@ int main()
         write(upper, "x");
         write(dir.filePath(QStringLiteral("Upper.LRC")), "[00:01.00]a");
         CHECK(!besideFile(upper).isEmpty());
+        CHECK(loadBesideFile(upper) == QByteArray("1000\x1f" "a\x1e"));
+
+        write(sidecar, "No timed lyrics");
+        CHECK(loadBesideFile(song).isEmpty());
+
+        QByteArray data("[00:01.00]a\n");
+        data.append(QByteArray(maxFileSize - data.size(), ' '));
+        write(sidecar, data);
+        CHECK(loadBesideFile(song) == QByteArray("1000\x1f" "a\x1e"));
+        data.append(' ');
+        write(sidecar, data);
+        CHECK(loadBesideFile(song).isEmpty());
     }
 
     if (failures)

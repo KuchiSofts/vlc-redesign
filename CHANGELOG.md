@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Windows media controls**: VLC Redesign has an entry in the Windows media flyout and on the lock screen, with title, artist and album, and the keyboard media keys control it while it is in the background.
+
 ## [0.8.7] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library

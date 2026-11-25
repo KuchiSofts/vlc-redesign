@@ -26,6 +26,7 @@
 #endif
 
 #include "mainctx_win32.hpp"
+#include "win_media_controls.hpp"
 
 #include "maininterface/compositor.hpp"
 #include "playlist/playlist_controller.hpp"
@@ -34,6 +35,7 @@
 #include "util/csdbuttonmodel.hpp"
 
 #include <QBitmap>
+#include <QPlatformSurfaceEvent>
 #include <QTimer>
 
 #include <cassert>
@@ -112,6 +114,35 @@ HWND WinId( const QWindow *window )
     if (!window->handle())
         return NULL;
     return reinterpret_cast<HWND>(window->winId());
+}
+
+bool isSystemMediaCommand(const MSG &message)
+{
+    if (message.message == WM_APPCOMMAND)
+    {
+        switch (GET_APPCOMMAND_LPARAM(message.lParam))
+        {
+            case APPCOMMAND_MEDIA_PLAY_PAUSE:
+            case APPCOMMAND_MEDIA_PLAY:
+            case APPCOMMAND_MEDIA_PAUSE:
+            case APPCOMMAND_MEDIA_PREVIOUSTRACK:
+            case APPCOMMAND_MEDIA_NEXTTRACK:
+            case APPCOMMAND_MEDIA_STOP:
+                return true;
+        }
+    }
+    else if (message.message == WM_KEYDOWN || message.message == WM_SYSKEYDOWN)
+    {
+        switch (message.wParam)
+        {
+            case VK_MEDIA_PLAY_PAUSE:
+            case VK_MEDIA_PREV_TRACK:
+            case VK_MEDIA_NEXT_TRACK:
+            case VK_MEDIA_STOP:
+                return true;
+        }
+    }
+    return false;
 }
 
 class CSDWin32EventHandler : public QObject, public QAbstractNativeEventFilter
@@ -576,6 +607,7 @@ WinTaskbarWidget::WinTaskbarWidget(qt_intf_t *_p_intf, QWindow* windowHandle, QO
     : QObject(parent)
     , p_intf(_p_intf)
     , m_window(windowHandle)
+    , m_mainCtx(static_cast<MainCtxWin32 *>(_p_intf->p_mi))
 {
     taskbar_wmsg = RegisterWindowMessage(TEXT("TaskbarButtonCreated"));
     if (taskbar_wmsg == 0)
@@ -591,7 +623,8 @@ WinTaskbarWidget::~WinTaskbarWidget()
 {
     if( himl )
         ImageList_Destroy( himl );
-    p_taskbl.Reset();
+    if (m_mainCtx)
+        m_mainCtx->releaseTaskbarCom();
 }
 
 Q_GUI_EXPORT HBITMAP qt_pixmapToWinHBITMAP(const QPixmap &p, int hbitmapFormat = 0);
@@ -614,15 +647,18 @@ void WinTaskbarWidget::createTaskBarButtons()
     himl = NULL;
 
     auto winId = WinId(m_window);
-    if (!winId)
+    if (!winId || !m_mainCtx)
         return;
+
+    auto &p_taskbl = m_mainCtx->p_taskbl;
 
     try
     {
+        m_mainCtx->setMediaControlsWindow(nullptr);
         // (a temporary copied in ran CoUninitialize once more; the taskbar
         // object of before goes first: emplace() ends the COM it lives in)
         p_taskbl.Reset();
-        m_comHolder.emplace();
+        m_mainCtx->m_comHolder.emplace();
     }
     catch( const std::exception& exception )
     {
@@ -634,7 +670,7 @@ void WinTaskbarWidget::createTaskBarButtons()
                                    IID_PPV_ARGS(p_taskbl.ReleaseAndGetAddressOf()));
     if( FAILED(hr) )
     {
-        m_comHolder.reset();
+        m_mainCtx->releaseTaskbarCom();
         return;
     }
 
@@ -646,8 +682,7 @@ void WinTaskbarWidget::createTaskBarButtons()
                              4 /*cInitial*/, 0 /*cGrow*/);
     if( himl == NULL )
     {
-        p_taskbl.Reset();
-        m_comHolder.reset();
+        m_mainCtx->releaseTaskbarCom();
         return;
     }
 
@@ -721,7 +756,11 @@ bool WinTaskbarWidget::nativeEventFilter(const QByteArray &, void *message, qint
     if (msg->message == taskbar_wmsg)
     {
         //We received the taskbarbuttoncreated, now we can really create the buttons
+        const bool restoreMediaControls = m_mainCtx && m_mainCtx->m_mediaControls;
         createTaskBarButtons();
+        // Media controls also work when taskbar initialization fails.
+        if (restoreMediaControls && m_mainCtx && m_window->handle())
+            m_mainCtx->setMediaControlsWindow(WinId(m_window));
     }
 
     switch( msg->message )
@@ -760,6 +799,9 @@ void WinTaskbarWidget::onVideoFullscreenChanged( bool fs )
 
 void WinTaskbarWidget::changeThumbbarButtons( )
 {
+    if (!m_mainCtx)
+        return;
+    auto &p_taskbl = m_mainCtx->p_taskbl;
     if( p_taskbl == NULL )
         return;
 
@@ -832,6 +874,28 @@ MainCtxWin32::MainCtxWin32(qt_intf_t * _p_intf )
     : MainCtx( _p_intf )
 {
     m_disableVolumeKeys = var_InheritBool( _p_intf, "qt-disable-volume-keys" );
+}
+
+MainCtxWin32::~MainCtxWin32() = default;
+
+void MainCtxWin32::releaseTaskbarCom()
+{
+    m_mediaControls.reset();
+    p_taskbl.Reset();
+    m_comHolder.reset();
+}
+
+void MainCtxWin32::setMediaControlsWindow(HWND hwnd)
+{
+    if (!hwnd)
+        m_mediaControls.reset();
+    else if (!m_mediaControls)
+        m_mediaControls = std::make_unique<WinMediaControls>(p_intf, hwnd);
+}
+
+bool MainCtxWin32::hasActiveMediaControls() const
+{
+    return m_mediaControls && m_mediaControls->isActive();
 }
 
 void MainCtxWin32::reloadPrefs()
@@ -916,11 +980,16 @@ InterfaceWindowHandlerWin32::InterfaceWindowHandlerWin32(qt_intf_t *_p_intf, Mai
     });
 
     m_setupQuitMessage = RegisterWindowMessageW(L"VLC Redesign Setup Quit");
+    m_mainCtxWin32 = mainCtxWin32;
+    mainCtxWin32->setMediaControlsWindow(WinId(window));
     QApplication::instance()->installNativeEventFilter(this);
 }
 
 InterfaceWindowHandlerWin32::~InterfaceWindowHandlerWin32()
 {
+    // MainCtx is deleted before this handler when VLC quits
+    if (m_mainCtxWin32)
+        m_mainCtxWin32->setMediaControlsWindow(nullptr);
     // The CSD event handler is a child of the window, and the window outlives
     // the interface: when the interface is closed (unloadGUI), MainCtx and its
     // CSD button model are deleted while the window stays (the video output
@@ -977,6 +1046,15 @@ void InterfaceWindowHandlerWin32::toggleWindowVisibility(bool _requestActivate)
 
 bool InterfaceWindowHandlerWin32::eventFilter(QObject* obj, QEvent* ev)
 {
+    if (obj == m_window && ev->type() == QEvent::PlatformSurface)
+    {
+        const auto *surfaceEvent = static_cast<QPlatformSurfaceEvent *>(ev);
+        const HWND hwnd = surfaceEvent->surfaceEventType() == QPlatformSurfaceEvent::SurfaceCreated
+                              ? WinId(m_window) : nullptr;
+        if (m_mainCtxWin32)
+            m_mainCtxWin32->setMediaControlsWindow(hwnd);
+    }
+
     bool ret = InterfaceWindowHandler::eventFilter(obj, ev);
     if (ret)
         return ret;
@@ -1034,6 +1112,17 @@ bool InterfaceWindowHandlerWin32::nativeEventFilter(const QByteArray &, void *me
         if (result)
             *result = TRUE;
         emit m_mainCtx->askToQuit();
+        return true;
+    }
+
+    if (msg->hwnd && isSystemMediaCommand(*msg) &&
+        m_mainCtxWin32 && m_mainCtxWin32->hasActiveMediaControls())
+    {
+        // Let the default window procedure forward media commands to the shell.
+        // Qt can also turn the virtual media keys into focused VLC hotkeys.
+        const LRESULT shellResult = DefWindowProc(msg->hwnd, msg->message, msg->wParam, msg->lParam);
+        if (result)
+            *result = shellResult;
         return true;
     }
 

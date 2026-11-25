@@ -203,8 +203,7 @@ Checked, nothing to change:
 - 🟡 The unified title bar on a real Mac: the look in the smoke screenshots, then by hand: clicks on the top bar's
   buttons under the title bar's band, dragging, double-click to zoom, full screen and back, a saved geometry that
   stays the same over restarts, always on top.
-- 🔴 Now Playing and media keys (`MPRemoteCommandCenter`, `MPNowPlayingInfoCenter`): the `macosx` interface does it,
-  the Qt interface has nothing on macOS (Windows has its SMTC).
+- ✅ Now Playing and media keys in the Qt interface on macOS (`MPRemoteCommandCenter`, `MPNowPlayingInfoCenter`).
 - 🔴 The video in the window (CompositorPlatform's `NSView`), VideoToolbox decoding, HDR, AirPlay audio, the
   audio devices of `auhal`.
 - ✅ Opening files from Finder (a double click, *Open With*, a drop on the Dock icon), at launch and while running:

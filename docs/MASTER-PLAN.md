@@ -173,6 +173,28 @@ What is being worked on, updated as it changes (2026-11-10):
   - VLC upstream merged (22 commits, to d3f8b7afff): new FadingEdgeMask/RoundedCornerMask/BackdropBlendItem
     carried into our split build lists; our side bar and corner rounding (right to left) kept; upstream's own
     Chromecast fix taken in place of ours.
+  - #117 proved on the CI's Macs (macOS 15 and 26): the helper started with VLC's blocked signals ends with
+    "unpack: no answer after 25 s" (exit 7, the reporter's error); with them cleared it stages the update in 6 s.
+    The launch tests of both Macs: 0 failures.
+  - The earlier issues on every device (owner's rule, 11-23):
+
+    | | Windows | Linux | macOS | Android phone | Android TV | Samsung TV |
+    |---|---|---|---|---|---|---|
+    | #138 Repeat/Shuffle at once | fixed 0.8.2, tested | same code, tested (AppImage, both ways) | fixed 0.8.2 (CI) | not affected, tested on the emulator both ways | same code as the phone | not affected, 2 tests |
+    | #139 Folders in the player's panel | fixed 0.8.2 | same code | same code | no such panel | no such panel | its Videos/Music are folder views |
+    | #135 queue into a playlist | 0.8.1 | same code | same code | had it | had it | added 0.8.3 |
+    | a deleted file | 0.8.1 | same code | same code | 0.8.1 | same code as the phone | added 0.8.3 |
+    | #132 sort, Play all | had it | had it | had it | 0.8.1 | sort had it; Play all added 0.8.3 | had it |
+    | #143 scroll bar | 0.8.3 | same code | same code | touch | remote | remote |
+
+  - Android TV, found while checking #132 there with the remote's keys only (0.8.3): in a folder list (several
+    columns) Right never left the first column (the row's layout sent Right to its ban button, gone outside
+    the storage browser, and the focus search came back to the row); the TV menu called the activity's
+    onOptionsItemSelected alone, so an item the page answers did nothing (Play all, Add to / Remove from
+    favorites); back from the player the focus went to the window's menu. All three fixed and walked again.
+    The TV code of a page follows Settings.showTvUi (the TV interface), not AndroidDevices.isTv (the device).
+  - Weblate: a Swedish volunteer's four example addresses pointed at a registered site (exempel.se): put back to
+    the reserved example.com with a note for them, the same for Brazilian Portuguese; Slovak's Artists merged.
 - 🟢 **0.8.2** published 2026-11-23 20:41 local (tag v0.8.2 on 1d886664c5, PR #140 merged as 938f251085; Android tag
   v0.8.2 on acfafce16, PR #23 merged as 1ec16ea8a6; Samsung TV app tag v0.8.2 00c9cfb in its repo, its zip added; 21
   files, small updates 1.2 MB x64, 0.9 MB ARM64). Before publishing: CI green on every platform (the Intel Mac's

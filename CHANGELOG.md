@@ -30,6 +30,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Folder breadcrumbs work on Windows network shares** in the library and the player's library panel.
 - **Resync refreshes the open folder** so added, renamed, or removed files show up correctly without leaving the page.
 - **TV guide shows corrected programme titles after a refresh**, even when the guide is already open.
+- **TV searches by channel number** update when a source changes its channel numbers.
 
 ### Technical
 

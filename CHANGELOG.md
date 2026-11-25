@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Resync refreshes the open folder** so added, renamed, or removed files show up correctly without leaving the page.
+
 ## [0.8.2] · 2026-11-23
 
 An update release of every app: Repeat and Shuffle take effect at once, Folders in the player's library

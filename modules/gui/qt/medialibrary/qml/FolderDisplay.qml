@@ -146,9 +146,13 @@ Widgets.PageExt {
           action: (dataList) => root._tracksDialog(false).openForFolderUrl(root._folderOf(dataList)) },
         { text: qsTr("Edit Audio Tracks"), icon: "audio",
           action: (dataList) => root._tracksDialog(true).openForFolderUrl(root._folderOf(dataList)) },
-        // the whole library is scanned again
         { text: qsTr("Resync"), icon: "sync",
-          action: () => { if (MainCtx.mediaLibraryAvailable) MainCtx.mediaLibrary.reload() },
+          action: () => {
+              if (!MainCtx.mediaLibraryAvailable)
+                  return
+              folderModel.reload()
+              MainCtx.mediaLibrary.reload()
+          },
           enabled: () => MainCtx.mediaLibraryAvailable },
         // a row of its own in the sidebar (the designer's pinned folders)
         { text: (dataList) => sidebarPins.isPinnedFolder(root._folderOf(dataList)) ? qsTr("Unpin from Sidebar")
@@ -286,6 +290,17 @@ Widgets.PageExt {
         // the default of the design: "Unwatched First" (the page's order
         // only means something once a criterion is chosen)
         sortOrder: root.sort.criteria !== "" ? root.sort.order : Qt.AscendingOrder
+    }
+
+    Connections {
+        target: folderModel.ml
+        enabled: !root._libraryRoots
+
+        function onIdleChanged() {
+            // Discovery can finish while the library is still parsing new files.
+            if (folderModel.ml.idle)
+                folderModel.loadLibraryData()
+        }
     }
 
     GridView {

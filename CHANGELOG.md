@@ -25,6 +25,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)).
 - **macOS: the waveform seek bar appears** instead of "Waveform analysis did not complete" after a minute.
 - **Unmuting brings sound back at the previous volume**, even after restarting the player.
+- **TV guide keeps its place when you resize the window**.
 
 ### Technical
 

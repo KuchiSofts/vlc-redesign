@@ -70,6 +70,10 @@ echo "== Cover tracks (a song's picture kept as a video track is its cover, not 
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/cover-track.cpp -o "$out/cover-track"
 "$out/cover-track"
 
+echo "== Live TV: only the latest selection can act on its reply"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/iptv-tune-requests.cpp -o "$out/iptv-tune-requests"
+"$out/iptv-tune-requests"
+
 echo "== Live TV parsers"
 # (Qt's own allocations are not ours: only the parsers' leaks count; a
 # number out of range made an int or a qint64, tvg-shift="1e9", aborts too)

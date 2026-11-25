@@ -27,6 +27,7 @@
 #include <functional>
 #include <memory>
 
+#include "iptv_tune_requests.hpp"
 #include "qt.hpp"
 #include "util/shared_input_item.hpp"
 
@@ -364,6 +365,7 @@ private:
     qint64 m_now = 0;
     int m_guideRevision = 0;
 
+    IptvTuneRequests m_tuneRequests;
     QString m_currentKey;
     QString m_previousKey;
     QString m_currentUrl;
@@ -371,7 +373,6 @@ private:
     QElapsedTimer m_switchTime;
     QVariantMap m_catchup;
     bool m_playing = false;
-    bool m_startedLast = false;
 
     QStringList m_favorites;
     QSet<QString> m_favoriteSet;

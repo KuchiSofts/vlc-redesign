@@ -1012,14 +1012,18 @@ void IptvAddon::play(const QString& key)
 {
     if (key.isEmpty())
         return;
+    // the channel asked for: a zap made before the answer goes on from it
+    m_pendingKey = key;
     call(QJsonObject { { QStringLiteral("op"), QStringLiteral("play") }, { QStringLiteral("key"), key } },
          m_tuneRequests.forNextTune([this, key](const QJsonObject& answer) {
              const QString url = answer.value(QLatin1String("url")).toString();
              if (url.isEmpty())
              {
+                 // (the next zap goes on past it)
                  emit message(qtr("This channel cannot be played"));
                  return;
              }
+             m_pendingKey.clear();
              QStringList options;
              for (const QJsonValue& o : answer.value(QLatin1String("options")).toArray())
                  options << o.toString();
@@ -1052,6 +1056,7 @@ void IptvAddon::playCatchup(const QString& key, qint64 start, qint64 stop, const
     r.insert(QLatin1String("key"), key);
     r.insert(QLatin1String("start"), double(start));
     r.insert(QLatin1String("stop"), double(stop));
+    m_pendingKey.clear();
     call(r, m_tuneRequests.forNextTune([this, key, start, stop, title](const QJsonObject& answer) {
         const QString url = answer.value(QLatin1String("url")).toString();
         if (url.isEmpty())
@@ -1111,7 +1116,9 @@ void IptvAddon::zap(int step)
     }
     if (keys.isEmpty())
         return;
-    const int i = int(keys.indexOf(m_currentKey));
+    // presses quicker than the answers each move one channel on
+    const QString from = m_pendingKey.isEmpty() ? m_currentKey : m_pendingKey;
+    const int i = int(keys.indexOf(from));
     const int next = i < 0 ? 0 : int((i + step + keys.size()) % keys.size());
     play(keys[next]);
 }
@@ -1140,6 +1147,7 @@ bool IptvAddon::playNumber(int number)
 void IptvAddon::playUrl(const QString& url, const QString& title)
 {
     m_tuneRequests.advance();
+    m_pendingKey.clear();
     m_catchup.clear();
     startMedia(url, title, {});
     // a film or an episode: no channel, no keys of the TV

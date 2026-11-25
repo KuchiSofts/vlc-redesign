@@ -161,43 +161,34 @@ FocusScope {
             return
         const libraryRoot = location.section === "folder" ? location.root : undefined
         go({ section: "folder", folder: url,
-             root: libraryRoot && _isPrefix(_partsOf(libraryRoot.folder), _partsOf(url)) ? libraryRoot : undefined })
+             root: libraryRoot && _isPrefix(Helpers.folderBreadcrumbs(libraryRoot.folder), Helpers.folderBreadcrumbs(url))
+                   ? libraryRoot : undefined })
     }
 
-    // Folders of the path of a folder url ("C:", "Users", ...)
-    function _partsOf(url) {
-        let path = String(url ?? "").replace(/^file:\/\/\/?/, "")
+    // The folders `parts` begin the path `path` (a folder holds the other)
+    function _isPrefix(parts, path) {
+        return parts.length > 0 && parts.length <= path.length
+               && parts.every((part, i) => part.isAuthority === path[i].isAuthority
+                                           && part.title.toLowerCase() === path[i].title.toLowerCase())
+    }
+    // Name of a folder url (its last folder)
+    function _nameOf(url) {
+        const text = String(url ?? "")
+        let path = text.replace(/^file:\/\/\/?/, "")
         try {
             path = decodeURIComponent(path)
         } catch (e) {
             // (not encoded: kept as it is)
         }
-        return path.split("/").filter(part => part.length > 0)
-    }
-    // The folders `parts` begin the path `path` (a folder holds the other)
-    function _isPrefix(parts, path) {
-        return parts.length > 0 && parts.length <= path.length
-               && parts.every((part, i) => part.toLowerCase() === path[i].toLowerCase())
-    }
-    // Name of a folder url (its last folder)
-    function _nameOf(url) {
-        const parts = _partsOf(url)
-        return parts.length > 0 ? parts[parts.length - 1] : String(url ?? "")
+        const parts = path.split("/").filter(part => part.length > 0)
+        return parts.length > 0 ? parts[parts.length - 1] : text
     }
     function _icon(name) {
         return "qrc:///redesign/icons/" + name + "/default.svg"
     }
 
     // Folders of the path of the current folder
-    readonly property var _folderParts: location.section === "folder" ? _partsOf(folderModel.folder) : []
-
-    // Folder of the first `depth` parts of the path
-    function _folderAt(depth) {
-        const path = _folderParts.slice(0, depth)
-                                 .map((part, i) => i === 0 && /:$/.test(part) ? part : encodeURIComponent(part))
-                                 .join("/")
-        return "file:///" + path + (depth === 1 && /:$/.test(path) ? "/" : "")
-    }
+    readonly property var _folderParts: location.section === "folder" ? Helpers.folderBreadcrumbs(folderModel.folder) : []
 
     function _isVideoFile(url) {
         return /\.(3gp|asf|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|vob|webm|wmv)$/i.test(String(url))
@@ -239,7 +230,7 @@ FocusScope {
         let best = ""
         let bestLength = 0
         for (const url of urls) {
-            const parts = _partsOf(url)
+            const parts = Helpers.folderBreadcrumbs(url)
             if (parts.length > bestLength && _isPrefix(parts, _folderParts)) {
                 best = url
                 bestLength = parts.length
@@ -286,13 +277,14 @@ FocusScope {
     readonly property var _folderCrumbs: {
         const parts = _folderParts
         const libraryRoot = _folderRoot
-        const rootParts = libraryRoot ? _partsOf(libraryRoot.folder) : []
+        const rootParts = libraryRoot ? Helpers.folderBreadcrumbs(libraryRoot.folder) : []
         const inRoot = libraryRoot !== null && _isPrefix(rootParts, parts)
         // (under the library folder, from it; else the whole path)
         const crumbs = inRoot ? libraryRoot.trail.slice() : []
         for (let depth = inRoot ? rootParts.length : 1; depth <= parts.length; ++depth) {
-            crumbs.push({ title: parts[depth - 1],
-                          place: { section: "folder", folder: _folderAt(depth),
+            const part = parts[depth - 1]
+            crumbs.push({ title: part.title,
+                          place: { section: "folder", folder: part.url,
                                    root: inRoot ? libraryRoot : undefined } })
         }
         if (crumbs.length > 0 && folderModel.folderName !== "")

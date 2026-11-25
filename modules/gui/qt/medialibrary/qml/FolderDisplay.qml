@@ -36,8 +36,7 @@ Widgets.PageExt {
     readonly property bool _libraryRoots: String(folderUrl) === ""
 
     // The folders of the path
-    readonly property var _parts: decodeURIComponent(String(folderUrl).replace(/^file:\/\/\/?/, ""))
-                                      .split("/").filter(part => part.length > 0)
+    readonly property var _parts: Helpers.folderBreadcrumbs(folderUrl)
 
     // The folders of the library (its entry points)
     Network.MLFolderModel {
@@ -77,12 +76,12 @@ Widgets.PageExt {
             const entry = libraryFolderUrls.objectAt(i)
             if (!entry)
                 continue
-            const parts = decodeURIComponent(String(entry.url).replace(/^file:\/\/\/?/, ""))
-                              .split("/").filter(part => part.length > 0)
+            const parts = Helpers.folderBreadcrumbs(entry.url)
             // (the deepest one, when one is inside another)
             if (parts.length === 0 || parts.length > _parts.length || parts.length - 1 <= best)
                 continue
-            if (parts.every((part, j) => part.toLowerCase() === _parts[j].toLowerCase()))
+            if (parts.every((part, j) => part.isAuthority === _parts[j].isAuthority
+                                         && part.title.toLowerCase() === _parts[j].title.toLowerCase()))
                 best = parts.length - 1
         }
         return best
@@ -90,7 +89,8 @@ Widgets.PageExt {
     readonly property bool _inLibrary: _rootDepth >= 0
     readonly property int _shown: _inLibrary ? _parts.length - _rootDepth : Math.min(3, _parts.length)
     readonly property var _crumbs: _libraryRoots ? [qsTr("Folders")]
-                                                 : (_inLibrary ? [qsTr("Folders")] : []).concat(_parts.slice(-_shown))
+                                                 : (_inLibrary ? [qsTr("Folders")] : [])
+                                                   .concat(_parts.slice(-_shown).map(part => part.title))
     readonly property string _path: _crumbs.join("  \u25B8  ")
 
     title: _path
@@ -107,15 +107,8 @@ Widgets.PageExt {
             History.push(["folders"], Qt.MouseFocusReason)
             return
         }
-        // Folder of the crumb: the path up to it
-        const depth = _parts.length - _shown + index + (_inLibrary ? 0 : 1)
-        // Names encoded ("#", "%", any script), the drive kept as is ("C:")
-        const path = _parts.slice(0, depth)
-                           .map((part, i) => i === 0 && /:$/.test(part) ? part : encodeURIComponent(part))
-                           .join("/")
-        // Drive roots keep their slash ("C:/")
-        const url = "file:///" + path + (depth === 1 && /:$/.test(path) ? "/" : "")
-        History.push(["folder"], { folderUrl: url }, Qt.MouseFocusReason)
+        const part = _parts[_parts.length - _shown + index - (_inLibrary ? 1 : 0)]
+        History.push(["folder"], { folderUrl: part.url }, Qt.MouseFocusReason)
     }
     libraryHeader: true
     libraryItemCount: folderModel.count

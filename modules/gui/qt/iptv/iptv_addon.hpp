@@ -373,6 +373,7 @@ private:
     IptvTuneRequests m_tuneRequests;
     QString m_currentKey;
     QString m_previousKey;
+    QString m_pendingKey;
     QString m_currentUrl;
     SharedInputItem m_currentMedia;
     QElapsedTimer m_switchTime;

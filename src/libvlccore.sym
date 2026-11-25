@@ -953,6 +953,7 @@ vlc_player_SetCategoryDelay
 vlc_player_SetCurrentMedia
 vlc_player_SetNextMedia
 vlc_player_SetEsIdDelay
+vlc_player_SetRateOverride
 vlc_player_SetRecordingEnabled
 vlc_player_SetRenderer
 vlc_player_SetStartPaused

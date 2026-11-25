@@ -1036,10 +1036,16 @@ input_thread_Events(input_thread_t *input_thread,
                 handled = false;
             break;
         case INPUT_EVENT_RATE:
+        {
+            const bool changed = input->rate.effective != event->rate.effective;
             input->rate = event->rate;
-            vlc_player_SignalAtoBLoop(player);
-            vlc_player_SendEvent(player, on_rate_changed, input->rate);
+            if (changed)
+            {
+                vlc_player_SignalAtoBLoop(player);
+                vlc_player_SendEvent(player, on_rate_changed, input->rate.effective);
+            }
             break;
+        }
         case INPUT_EVENT_CAPABILITIES:
         {
             int old_caps = input->capabilities;
@@ -1091,7 +1097,7 @@ input_thread_Events(input_thread_t *input_thread,
             {
                 const struct vlc_player_timer_point point = {
                     .position = input->position,
-                    .rate = input->rate,
+                    .rate = input->rate.effective,
                     .ts = input->time,
                     .length = input->length,
                     .live = input->live,
@@ -1266,7 +1272,8 @@ vlc_player_input_New(vlc_player_t *player, input_item_t *item)
 
     input->state = VLC_PLAYER_STATE_STOPPED;
     input->error = VLC_PLAYER_ERROR_NONE;
-    input->rate = 1.f;
+    input->rate = (struct input_playback_rate) { .effective = 1.f, .base = 1.f };
+    input->rate_override_requested = false;
     input->capabilities = 0;
     input->length = input->time = VLC_TICK_INVALID;
     input->live = false;

@@ -258,12 +258,14 @@ vlc_player_UpdateMLStates(vlc_player_t *player, struct vlc_player_input* input)
     else
         input->ml.states.current_title = -1;
 
+    /* The outgoing input may still be playing at a temporary override. */
+    const float rate = input->rate.base;
     /* We use .0f to signal an unsaved rate. We want to save it to the ml if it
      * changed, and if it's not the player's default value when the value was
      * never saved in the ML */
-    if (input->rate != input->ml.states.rate &&
-            (input->rate != 1.f || input->ml.states.rate != .0f))
-        input->ml.states.rate = input->rate;
+    if (rate != input->ml.states.rate &&
+            (rate != 1.f || input->ml.states.rate != .0f))
+        input->ml.states.rate = rate;
     else
         input->ml.states.rate = -1.f;
 

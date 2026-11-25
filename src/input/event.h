@@ -94,7 +94,8 @@ static inline void input_SendEventStatistics(input_thread_t *p_input,
     });
 }
 
-static inline void input_SendEventRate(input_thread_t *p_input, float rate)
+static inline void input_SendEventRate(input_thread_t *p_input,
+                                     struct input_playback_rate rate)
 {
     input_SendEvent(p_input, &(struct vlc_input_event) {
         .type = INPUT_EVENT_RATE,

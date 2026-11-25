@@ -323,6 +323,7 @@ libvlccore_la_SOURCES = \
 	input/event.h \
 	input/item.h \
 	input/mrl_helpers.h \
+	input/playback_rate.h \
 	input/stream.h \
 	input/input_internal.h \
 	input/input_interface.h \

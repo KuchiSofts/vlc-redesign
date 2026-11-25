@@ -22,6 +22,10 @@ san="-fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-fram
 export ASAN_OPTIONS=detect_leaks=1:abort_on_error=1
 export UBSAN_OPTIONS=print_stacktrace=1
 
+echo "== Temporary playback rate (the input keeps its base rate for the library)"
+gcc -std=c11 -O1 -Wall -Wextra $san -I. extras/juxtopposed/playback-rate.c -o "$out/playback-rate"
+"$out/playback-rate"
+
 echo "== subtitle cues"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/subtitle-cues-parser.cpp \
     modules/gui/qt/player/subtitle_cues_parser.cpp -o "$out/subtitle-cues-parser"

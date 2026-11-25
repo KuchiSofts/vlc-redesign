@@ -153,7 +153,26 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.3**: update releases of fixes as the issues bring them.
+- 🟡 **0.8.3** (work/0.8.3, 2026-11-25): a full check of issues, PRs and Discussions on both repositories.
+  - #117 (macOS update): the reporter's log showed the cause. VLC blocks SIGCHLD (and SIGTERM, SIGINT, SIGPIPE) in all
+    its threads (bin/darwinvlc.m), and Qt learns of a child process's end on macOS only from SIGCHLD, so
+    QProcess never saw the helper end ("ended with -1 after 362 s"). The child also inherited the blocked SIGTERM, so
+    the helper could not stop the watcher of a step that had ended and every step waited out its 120 s. The same
+    cause made the waveform always stop at its 60 s watchdog and the plugin cache's generator never finish on macOS.
+    Fix: one thread of the Qt interface takes SIGCHLD (qt.cpp HearChildEnds); the update's helper runs through
+    vlc_spawn() + waitpid(). The CI never saw it: the smoke and update tests run the helper from a shell; the
+    update test now also runs it with VLC's blocked signals (3c).
+  - #145 (mute stuck, Windows): PR #147 by a contributor, with ten more of theirs (#148-#157: TV guide resize and
+    refresh, channel-number search, latest channel wins, library delete target, network-share breadcrumbs, Resync,
+    audio device choice kept and same-name devices, lyrics read off the GUI thread). Each read in full before merging:
+    no links, no hidden characters, file deletion now checked against the media's id and path; CI green on each.
+  - Cross-device: the eleven are desktop code shared by Windows, Linux and macOS. Android and the Samsung TV app
+    have none of these faults: their Live TV tunes at once (no server reply to race), their guides load whole,
+    Android reads .lrc on Dispatchers.IO, the TV app lists them asynchronously; mute, output devices, UNC paths and
+    Resync have no counterpart there.
+  - VLC upstream merged (22 commits, to d3f8b7afff): new FadingEdgeMask/RoundedCornerMask/BackdropBlendItem
+    carried into our split build lists; our side bar and corner rounding (right to left) kept; upstream's own
+    Chromecast fix taken in place of ours.
 - 🟢 **0.8.2** published 2026-11-23 20:41 local (tag v0.8.2 on 1d886664c5, PR #140 merged as 938f251085; Android tag
   v0.8.2 on acfafce16, PR #23 merged as 1ec16ea8a6; Samsung TV app tag v0.8.2 00c9cfb in its repo, its zip added; 21
   files, small updates 1.2 MB x64, 0.9 MB ARM64). Before publishing: CI green on every platform (the Intel Mac's

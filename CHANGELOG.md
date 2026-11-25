@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Subtitle services**: a sign-in or key test finishing while Settings was reopened elsewhere no longer erases the saved logins.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

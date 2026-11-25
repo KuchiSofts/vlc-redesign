@@ -65,6 +65,8 @@ SettingsSectionTitle {
     signal fieldsReset(string id)
 
     function save() {
+        if (!_begun)
+            return
         for (const id in states) {
             const entry = states[id]
             const initial = _initial[id] || {}
@@ -100,12 +102,15 @@ SettingsSectionTitle {
 
     Connections {
         target: SubtitleFinder
+        enabled: root._begun
         function onServiceChecked(id, result, who) {
+            if (!(id in root.states))
+                return
             const service = SubtitleFinder.services.find(s => s.id === id)
             const changes = { result: result, who: who, checking: false }
             // working the first time: on by itself
             if ((result === "works" || result === "signedIn") && service && !service.switched
-                && root.states[id] && root.states[id].on === root._initial[id].on)
+                && root.states[id] && root._initial[id] && root.states[id].on === root._initial[id].on)
                 changes.on = true
             root.update(id, changes)
         }

@@ -892,6 +892,18 @@ bool PlaylistController::hasNext() const
     return d->m_hasNext;
 }
 
+PlaylistItem PlaylistController::itemAfterCurrent() const
+{
+    Q_D(const PlaylistController);
+    if (!d->m_playlist || d->m_random)
+        return {};
+    vlc_playlist_locker lock{d->m_playlist};
+    const ssize_t current = vlc_playlist_GetCurrentIndex(d->m_playlist);
+    if (current < 0 || size_t(current) + 1 >= vlc_playlist_Count(d->m_playlist))
+        return {};
+    return PlaylistItem{vlc_playlist_Get(d->m_playlist, size_t(current) + 1)};
+}
+
 bool PlaylistController::hasPrev() const
 {
     Q_D(const PlaylistController);

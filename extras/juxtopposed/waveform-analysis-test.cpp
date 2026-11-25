@@ -3,6 +3,7 @@
 #include "modules/gui/qt/player/waveform.hpp"
 
 #include <QCoreApplication>
+#include <QDir>
 #include <QElapsedTimer>
 #include <QFile>
 #include <QFileInfo>
@@ -10,6 +11,7 @@
 #include <QThread>
 
 #include <cassert>
+#include <cmath>
 #include <cstdio>
 #include <memory>
 #include <sys/file.h>
@@ -125,5 +127,43 @@ int main(int argc, char** argv)
     assert(cached.ready() && !cached.busy() && cached.bins() == first.bins());
     QFile launches(temp.filePath("launches"));
     assert(launches.open(QIODevice::ReadOnly) && launches.readAll() == "a\nb\nd\nb\n");
+    launches.close();
+
+    // Kept on the disk between two runs: a song analyzed with a cache folder
+    // set is ready at once in the "next run" (the memory emptied), without a
+    // helper; a file that is not an envelope of ours is not believed.
+    const QString store = temp.filePath("waveforms");
+    const QString e = temp.filePath("e");
+    touch(e);
+    Waveform::setCacheFolder(store);
+    Waveform kept;
+    request(kept, e);
+    assert(waitFor([&] { return QFile::exists(e + ".started"); }));
+    touch(e + ".finish");
+    assert(waitFor([&] { return kept.ready(); }));
+    assert(waitFor([&] { return QDir(store).entryList({ "*.wf" }, QDir::Files).size() == 1; }));
+    const QString file = store + '/' + QDir(store).entryList({ "*.wf" }, QDir::Files).first();
+    assert(QFileInfo(file).size() == 8 + 512 * 2);
+
+    Waveform::setCacheFolder(store);            // a new run: nothing in memory
+    Waveform again;
+    again.setDurationSeconds(3);
+    again.setSource(QUrl::fromLocalFile(e));
+    assert(again.ready() && !again.busy());
+    assert(std::abs(again.bins().first().toDouble() - kept.bins().first().toDouble()) < 0.001);
+    assert(launches.open(QIODevice::ReadOnly) && launches.readAll() == "a\nb\nd\nb\ne\n");
+    launches.close();
+
+    QFile damaged(file);
+    assert(damaged.open(QIODevice::WriteOnly) && damaged.write("not an envelope") > 0);
+    damaged.close();
+    Waveform::setCacheFolder(store);
+    Waveform doubted;
+    assert(QFile::remove(e + ".started") && QFile::remove(e + ".finish"));
+    request(doubted, e);                        // (it asserts busy(): analyzed again)
+    assert(waitFor([&] { return QFile::exists(e + ".started"); }));
+    touch(e + ".finish");
+    assert(waitFor([&] { return doubted.ready(); }));
+    Waveform::setCacheFolder({});
     return 0;
 }

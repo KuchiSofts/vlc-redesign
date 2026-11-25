@@ -42,6 +42,13 @@ public:
     bool busy() const { return !m_key.isEmpty(); }
     QString lastError() const { return m_lastError; }
 
+    // Where the envelopes are kept between two runs of VLC (a folder of its
+    // cache, set once by the interface): a song analyzed before shows its
+    // waveform at once, without decoding it again. Not set: kept in memory
+    // for this run only. One small file for each song, named by a hash of
+    // the song's path, size and date: no name of a file is written there.
+    static void setCacheFolder(const QString& folder);
+
 signals:
     void sourceChanged();
     void durationSecondsChanged();
@@ -59,6 +66,9 @@ private:
     static void finishAnalysis(const QString& key, const QVariantList& bins, const QString& error);
     static QString helperPath();
     static QVariantList parseOutput(const QByteArray& bytes, int expectedSeconds);
+    static void remember(const QString& key, const QVariantList& bins);
+    static QVariantList storedBins(const QString& key);
+    static void storeBins(const QString& key, const QVariantList& bins);
 
     QUrl m_source;
     int m_durationSeconds = 0;

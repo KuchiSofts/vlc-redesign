@@ -18,15 +18,19 @@
 #include "waveform.hpp"
 
 #include <QCoreApplication>
+#include <QCryptographicHash>
 #include <QDir>
 #include <QElapsedTimer>
+#include <QFile>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPointer>
 #include <QProcess>
+#include <QSaveFile>
 #include <QThread>
+#include <QThreadPool>
 #include <algorithm>
 #include <atomic>
 #include <cmath>
@@ -35,6 +39,8 @@
 
 #ifdef Q_OS_WIN
 # include <windows.h>
+#else
+# include <unistd.h>
 #endif
 
 namespace {
@@ -43,7 +49,16 @@ constexpr int maxDurationSeconds = 8 * 60;
 constexpr qsizetype maxJsonBytes = 64 * 1024;
 // shared by the sliders (the player's, the mini player's): an analysis
 // decodes the whole file
-constexpr int maxCacheEntries = 16;
+constexpr int maxCacheEntries = 64;
+// The envelopes kept on the disk: "VRWAVE1\n", then the 512 peaks as 16-bit
+// numbers, low byte first (a peak is 0 to 16: 4095 steps for each unit).
+// About 1 kB a song; the oldest go once there are more than this many.
+constexpr char storeMagic[] = "VRWAVE1\n";
+constexpr qsizetype storeMagicBytes = 8;
+constexpr qsizetype storeBytes = storeMagicBytes + 512 * 2;
+constexpr double storeScale = 4095.0;
+constexpr int maxStoredFiles = 4000;
+constexpr int trimEvery = 64;
 // a helper that hangs is killed after a minute (8 minutes of sound,
 // decoded 16 times faster than they play, take 30 s)
 constexpr int watchdogMs = 60 * 1000;
@@ -73,6 +88,24 @@ std::shared_ptr<Job> s_active;
 QThread* s_thread = nullptr;
 bool s_stopAllAtEnd = false;
 QList<Waveform*> s_instances;
+// the folder of the envelopes kept between runs; empty: none are
+QString s_cacheFolder;
+int s_stored = 0;
+
+QString storePath(const QString& folder, const QString& key)
+{
+    return folder + QLatin1Char('/')
+        + QString::fromLatin1(QCryptographicHash::hash(key.toUtf8(), QCryptographicHash::Sha1).toHex())
+        + QStringLiteral(".wf");
+}
+
+// (on a worker) the oldest envelopes go once the folder holds too many
+void trimStore(const QString& folder)
+{
+    QFileInfoList files = QDir(folder).entryInfoList({ QStringLiteral("*.wf") }, QDir::Files, QDir::Time);
+    for (qsizetype i = files.size() - 1; i >= maxStoredFiles * 9 / 10 && files.size() > maxStoredFiles; --i)
+        QFile::remove(files[i].filePath());
+}
 
 bool hasAnalysis(const QString& key)
 {
@@ -166,11 +199,66 @@ void Waveform::release(bool now)
     });
 }
 
+void Waveform::setCacheFolder(const QString& folder)
+{
+    s_cacheFolder = folder;
+    // (what is in memory belongs to the folder it was read from or written to)
+    s_cache.clear();
+}
+
+void Waveform::remember(const QString& key, const QVariantList& bins)
+{
+    s_cache.prepend({key, bins});
+    while (s_cache.size() > maxCacheEntries) s_cache.removeLast();
+}
+
+// The envelope of a song analyzed in a run before; empty when there is none
+// (or the file is not one of ours: its size and its first bytes are checked)
+QVariantList Waveform::storedBins(const QString& key)
+{
+    if (s_cacheFolder.isEmpty()) return {};
+    QFile file(storePath(s_cacheFolder, key));
+    if (!file.open(QIODevice::ReadOnly) || file.size() != storeBytes) return {};
+    const QByteArray bytes = file.readAll();
+    if (bytes.size() != storeBytes || !bytes.startsWith(QByteArray(storeMagic, storeMagicBytes))) return {};
+    QVariantList bins;
+    bins.reserve(512);
+    const auto* data = reinterpret_cast<const unsigned char*>(bytes.constData()) + storeMagicBytes;
+    for (int i = 0; i < 512; ++i) {
+        const double peak = (data[2 * i] | (data[2 * i + 1] << 8)) / storeScale;
+        if (peak > 16) return {};
+        bins << peak;
+    }
+    return bins;
+}
+
+// Written on a worker, under a temporary name first (QSaveFile): a file
+// half written is never read as an envelope
+void Waveform::storeBins(const QString& key, const QVariantList& bins)
+{
+    if (s_cacheFolder.isEmpty() || bins.size() != 512) return;
+    QByteArray bytes(storeMagic, storeMagicBytes);
+    bytes.reserve(storeBytes);
+    for (const QVariant& bin : bins) {
+        const int value = int(std::lround(std::clamp(bin.toDouble(), 0.0, 16.0) * storeScale));
+        bytes.append(char(value & 0xFF));
+        bytes.append(char((value >> 8) & 0xFF));
+    }
+    const bool trim = ++s_stored % trimEvery == 1;
+    QThreadPool::globalInstance()->start([folder = s_cacheFolder, path = storePath(s_cacheFolder, key), bytes, trim] {
+        if (!QDir().mkpath(folder)) return;
+        QSaveFile file(path);
+        if (file.open(QIODevice::WriteOnly) && file.write(bytes) == bytes.size())
+            file.commit();
+        if (trim) trimStore(folder);
+    });
+}
+
 void Waveform::finishAnalysis(const QString& key, const QVariantList& bins, const QString& error)
 {
     if (bins.size() == 512) {
-        s_cache.prepend({key, bins});
-        while (s_cache.size() > maxCacheEntries) s_cache.removeLast();
+        remember(key, bins);
+        storeBins(key, bins);
     }
     // the signals may destroy sliders
     QList<std::pair<QPointer<Waveform>, quint64>> waiting;
@@ -245,6 +333,13 @@ void Waveform::refresh()
         setBins(hit.bins);
         return;
     }
+    // analyzed in a run before: about 1 kB read, no helper started
+    const QVariantList stored = storedBins(key);
+    if (stored.size() == 512) {
+        remember(key, stored);
+        setBins(stored);
+        return;
+    }
     // the analysis of another slider: its result comes here too
     const bool scheduled = hasAnalysis(key);
     if (!scheduled && !QFileInfo::exists(helperPath())) {
@@ -286,6 +381,9 @@ void Waveform::startNextAnalysis()
         process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) {
             arguments->flags |= CREATE_NO_WINDOW | BELOW_NORMAL_PRIORITY_CLASS;
         });
+#else
+        // The same on the other systems: the decoder runs "nice".
+        process.setChildProcessModifier([] { if (nice(10) == -1) { /* stays as it is */ } });
 #endif
         // libvlc_media_new_path() of the helper wants native separators on Windows
         process.start(program, {QDir::toNativeSeparators(job->path)});

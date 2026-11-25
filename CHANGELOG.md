@@ -33,6 +33,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Long queues**: the total length is updated as items come and go, without adding it all again.
 - VLC opens without waiting for old update files to be cleaned up.
 - **Music seek bar**: drawing the waveform takes less work, and songs are analyzed one at a time so playback has priority.
+- **Music seek bar: the waveform is there at once**: a song heard before keeps its waveform between runs, and the
+  next song's is prepared while this one plays.
 - **Smoother browsing in large folders** when searching or changing the sort order.
 - **Saving queue items with playback options** offers an M3U playlist so settings like start and stop times are kept.
   Items without options of your own are added as before.

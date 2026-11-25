@@ -154,6 +154,10 @@ public:
     SortKey getSortKey() const;
     bool hasNext() const;
     bool hasPrev() const;
+    // (VLC Redesign) The item that plays after the current one, when the
+    // list's own order says which: none in random order or at the end. The
+    // waveform of a song is prepared ahead from it.
+    Q_INVOKABLE PlaylistItem itemAfterCurrent() const;
 
     bool isRandom() const;
     MediaStopAction getMediaStopAction() const;

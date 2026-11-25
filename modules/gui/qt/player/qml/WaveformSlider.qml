@@ -5,6 +5,7 @@
  *****************************************************************************/
 import QtQuick
 import VLC.Player
+import VLC.Playlist
 import VLC.Style
 
 SliderBar {
@@ -25,6 +26,29 @@ SliderBar {
                  && Player.audioTracks.count > 0
                  && Player.videoTracks.count === 0) ? Player.url : ""
         durationSeconds: Player.length.toSeconds()
+    }
+
+    // The song after this one, analyzed ahead once this one's waveform is
+    // drawn: at the change of song its waveform is there at once (an
+    // analysis decodes the whole file: a second or more before it showed).
+    // Only what the queue is sure to play next (not in random order), a
+    // song by its suffix, while this one plays; nothing is drawn from it.
+    Waveform {
+        id: ahead
+        readonly property var following: {
+            // (asked again when the queue moves on, changes or is shuffled)
+            MainPlaylistController.currentIndex
+            MainPlaylistController.count
+            MainPlaylistController.random
+            return MainPlaylistController.itemAfterCurrent()
+        }
+        readonly property bool wanted: analysis.ready && root.visible
+                                       && (Player.playingState === Player.PLAYING_STATE_PLAYING
+                                           || Player.playingState === Player.PLAYING_STATE_PAUSED)
+                                       && /\.(mp3|flac|m4a|aac|ogg|oga|opus|wav|wma|ape|aiff?|mka|wv)$/i
+                                              .test(String(following.url))
+        source: wanted ? following.url : ""
+        durationSeconds: wanted ? following.duration.toSeconds() : 0
     }
 
     // Over the bar of SliderBar: the track of the design with the waveform

@@ -133,7 +133,8 @@ T.ProgressBar {
     }
 
     // The frame preview shows the time itself
-    Widgets.PointingToolTipAttached.visible: (hoverHandler.hovered || control.visualFocus || dragHandler.active)
+    Widgets.PointingToolTipAttached.visible: control.visible
+                                             && (hoverHandler.hovered || control.visualFocus || dragHandler.active)
                                              && !framePreview.visible
 
     Widgets.PointingToolTipAttached.text: {
@@ -302,12 +303,25 @@ T.ProgressBar {
     }
 
     Connections {
+        target: control.visible ? Player : null
+        function onPositionChanged() { fsm.playerUpdatePosition(Player.position) }
+    }
+
+    Connections {
         target: Player
-        function onPositionChanged() {  fsm.playerUpdatePosition(Player.position) }
         function onInputChanged() {  fsm.inputChanged() }
     }
 
-    Component.onCompleted: value = Player.position
+    onVisibleChanged: {
+        // The FSM keeps a held slider under the pointer when it is shown again.
+        if (visible && fsm.started)
+            fsm.playerUpdatePosition(Player.samplePosition())
+    }
+
+    Component.onCompleted: {
+        if (visible)
+            value = Player.samplePosition()
+    }
 
     implicitHeight: control.barHeight
     height: implicitHeight

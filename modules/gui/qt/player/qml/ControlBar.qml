@@ -147,6 +147,16 @@ T.Pane {
 
     enabled: visible
 
+    onVisibleChanged: {
+        if (visible)
+            Player.refreshTimeDisplay()
+    }
+
+    onShowRemainingTimeChanged: {
+        if (visible && showRemainingTime && MainCtx.showRemainingTime)
+            Player.refreshTimeDisplay()
+    }
+
     Keys.priority: Keys.AfterItem
     Keys.onPressed: (event) => root.Navigation.defaultKeyAction(event)
     Navigation.cancelAction: function() { History.previous(Qt.BacktabFocusReason) }
@@ -234,15 +244,19 @@ T.Pane {
 
                 Layout.preferredWidth: (effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider) ? VLCStyle.redesign.timeWidth : -1
 
-                text: {
-                    // nothing plays (the bar of the library kept shown): the
-                    // empty time of formatHMS(), not the 0 of the last stop
-                    if (!Player.isStarted)
-                        return "--:--"
-                    const length = Player.length
-                    // The design always shows the hours: 00:02:10
-                    return Player.time.formatHMS(VLCTick.ForceHours
-                                                 | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
+                Binding {
+                    when: mediaTime.visible
+                    restoreMode: Binding.RestoreNone
+                    mediaTime.text: {
+                        // nothing plays (the bar of the library kept shown): the
+                        // empty time of formatHMS(), not the 0 of the last stop
+                        if (!Player.isStarted)
+                            return "--:--"
+                        const length = Player.length
+                        // The design always shows the hours: 00:02:10
+                        return Player.displayTime.formatHMS(VLCTick.ForceHours
+                                                            | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
+                    }
                 }
                 color: editing ? "transparent"
                                : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
@@ -367,12 +381,17 @@ T.Pane {
 
                 Layout.preferredWidth: (effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider) ? VLCStyle.redesign.timeWidth : -1
 
-                readonly property bool showRemainingTime: (MainCtx.showRemainingTime && Player.remainingTime.valid())
+                readonly property bool showRemainingTime: visible && MainCtx.showRemainingTime
+                                                          && Player.displayRemainingTime.valid()
 
-                text: !Player.isStarted ? "--:--"
-                      : showRemainingTime
-                      ? "-" + Player.remainingTime.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
-                      : Player.length.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
+                Binding {
+                    when: mediaRemainingTime.visible
+                    restoreMode: Binding.RestoreNone
+                    mediaRemainingTime.text: !Player.isStarted ? "--:--"
+                                             : mediaRemainingTime.showRemainingTime
+                                             ? "-" + Player.displayRemainingTime.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
+                                             : Player.length.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
+                }
                 color: mediaTime.color
                 font: timeTextMetrics.font
 
@@ -424,7 +443,8 @@ T.Pane {
                 }
 
                 Widgets.ToolTipExt {
-                    visible: mediaRemainingTimeHover.hovered && MainCtx.showRemainingTime && Player.rate !== 1
+                    visible: mediaRemainingTime.visible && mediaRemainingTimeHover.hovered
+                             && MainCtx.showRemainingTime && Player.rate !== 1
                     delay: VLCStyle.delayToolTipAppear
                     text: {
                         if (!visible)

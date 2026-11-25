@@ -63,6 +63,9 @@ public:
     void UpdateTrackSelection(vlc_es_id_t *trackid, bool selected);
     void UpdateSpuOrder(vlc_es_id_t *es_id, enum vlc_vout_order spu_order);
     int interpolateTime(vlc_tick_t system_now);
+    int interpolateTime(vlc_tick_t system_now, VLCTime &time, double &position) const;
+    bool sampleClock(VLCTime &time, double &position) const;
+    void updateTimeDisplay(VLCTime time, VLCDuration remaining);
     bool isCurrentItemSynced();
     void castVolume( float volume );
     float castMaxVolume() const;
@@ -112,6 +115,8 @@ public:
 
     VLCTime      m_time;
     VLCDuration  m_remainingTime;
+    VLCTime      m_displayTime;
+    VLCTime      m_displayRemainingTime{VLC_TICK_INVALID};
     double       m_position = 0.f;
     VLCDuration  m_length;
 

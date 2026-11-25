@@ -26,6 +26,7 @@
 #include "player_controller_p.hpp"
 #include "player/subtitle_finder.hpp"
 #include "player/lrc_parser.hpp"
+#include "player/time_display.hpp"
 #include "iptv/iptv_addon.hpp"
 #include "maininterface/compositor.hpp"   /* videoTakesOpenGL */
 #include "util/shared_input_item.hpp"
@@ -466,11 +467,16 @@ static void keepTimeInMedia(VLCTime &time, const VLCDuration &length, double pos
 
 int PlayerControllerPrivate::interpolateTime(vlc_tick_t system_now)
 {
+    return interpolateTime(system_now, m_time, m_position);
+}
+
+int PlayerControllerPrivate::interpolateTime(vlc_tick_t system_now, VLCTime &time, double &position) const
+{
     vlc_tick_t new_time;
     if (m_player_time.system_date == VLC_TICK_INVALID)
         return VLC_EGENERIC;
     if (vlc_player_timer_point_Interpolate(&m_player_time, system_now,
-                                           &new_time, &m_position) == VLC_SUCCESS)
+                                           &new_time, &position) == VLC_SUCCESS)
     {
         // casting: where the device is, which shows the media later than it
         // is read here (after a seek: where it goes, until it is there)
@@ -483,14 +489,51 @@ int PlayerControllerPrivate::interpolateTime(vlc_tick_t system_now)
             {
                 new_time = cast_time;
                 if (m_length.valid() && m_length.toVLCTick() > 0)
-                    m_position = std::clamp(double(cast_time) / m_length.toVLCTick(), 0., 1.);
+                    position = std::clamp(double(cast_time) / m_length.toVLCTick(), 0., 1.);
             }
         }
-        m_time = new_time;
-        keepTimeInMedia(m_time, m_length, m_position);
+        time = new_time;
+        keepTimeInMedia(time, m_length, position);
         return VLC_SUCCESS;
     }
     return VLC_EGENERIC;
+}
+
+bool PlayerControllerPrivate::sampleClock(VLCTime &time, double &position) const
+{
+    // The position timer is stopped on pause and seek. Keep their last
+    // values until an advancing clock point starts the timer again.
+    return m_playing_status == PlayerController::PLAYING_STATE_PLAYING
+        && m_position_timer.isActive()
+        && m_player_time.system_date != VLC_TICK_MAX
+        && interpolateTime(vlc_tick_now(), time, position) == VLC_SUCCESS;
+}
+
+static VLCDuration remainingTimeAt(VLCTime time, VLCDuration length)
+{
+    if (time.valid() && length.valid() && time <= VLCTime(length))
+        return VLCTime(length) - time;
+    return {};
+}
+
+void PlayerControllerPrivate::updateTimeDisplay(VLCTime time, VLCDuration remaining)
+{
+    Q_Q(PlayerController);
+
+    // The control bar only needs a notification when formatting changes.
+    // Raw clock notifications also serve consumers that need full precision.
+    const auto displayTime = timeDisplayTick(time.toVLCTick(), m_length.isSubSecond());
+    const auto displayRemainingTime = remaining.valid()
+                                    ? timeDisplayTick(VLCTime(remaining).toVLCTick(), true)
+                                    : VLC_TICK_INVALID;
+    const bool timeChanged = m_displayTime.toVLCTick() != displayTime;
+    const bool remainingChanged = m_displayRemainingTime.toVLCTick() != displayRemainingTime;
+    m_displayTime = displayTime;
+    m_displayRemainingTime = displayRemainingTime;
+    if (timeChanged)
+        emit q->displayTimeChanged();
+    if (remainingChanged)
+        emit q->displayRemainingTimeChanged();
 }
 
 extern "C" {
@@ -633,8 +676,10 @@ static void on_player_state_changed(vlc_player_t *player, enum vlc_player_state 
             /* reset the state on stop */
             that->m_position = 0;
             that->m_time = 0;
+            that->m_remainingTime = {};
             that->m_length = 0;
             that->m_player_time.system_date = VLC_TICK_INVALID;
+            that->updateTimeDisplay(that->m_time, that->m_remainingTime);
             emit q->positionUpdated( -1.0, VLCTime() , VLCDuration() );
             that->m_rate = 1.0f;
             emit q->rateChanged( 1.0f );
@@ -2641,6 +2686,25 @@ void PlayerControllerPrivate::UpdateCurrentLyric(VLCTime time, bool lyricsChange
     }
 }
 
+double PlayerController::samplePosition() const
+{
+    Q_D(const PlayerController);
+    auto time = d->m_time;
+    auto position = d->m_position;
+    d->sampleClock(time, position);
+    return position;
+}
+
+void PlayerController::refreshTimeDisplay()
+{
+    Q_D(PlayerController);
+    auto time = d->m_time;
+    auto position = d->m_position;
+    const auto remainingTime = d->sampleClock(time, position)
+                             ? remainingTimeAt(time, d->m_length) : d->m_remainingTime;
+    d->updateTimeDisplay(time, remainingTime);
+}
+
 void PlayerController::updateTime(vlc_tick_t system_now, bool forceUpdate)
 {
     Q_D(PlayerController);
@@ -2648,11 +2712,9 @@ void PlayerController::updateTime(vlc_tick_t system_now, bool forceUpdate)
     keepTimeInMedia(d->m_time, d->m_length, d->m_position);
     // Update time properties
     emit timeChanged(d->m_time);
-    if (d->m_time.valid() && d->m_length.valid() && d->m_time <= VLCTime(d->m_length))
-        d->m_remainingTime = VLCTime(d->m_length) - d->m_time;
-    else
-        d->m_remainingTime = VLCDuration();
+    d->m_remainingTime = remainingTimeAt(d->m_time, d->m_length);
     emit remainingTimeChanged(d->m_remainingTime);
+    d->updateTimeDisplay(d->m_time, d->m_remainingTime);
 
     d->UpdateCurrentLyric(d->m_time);
 
@@ -3039,6 +3101,8 @@ PRIMITIVETYPE_GETTER(PlayerController::PlayingState, getPlayingState, m_playing_
 PRIMITIVETYPE_GETTER(QString, getName, m_name)
 PRIMITIVETYPE_GETTER(VLCTime, getTime, m_time)
 PRIMITIVETYPE_GETTER(VLCDuration, getRemainingTime, m_remainingTime)
+PRIMITIVETYPE_GETTER(VLCTime, getDisplayTime, m_displayTime)
+PRIMITIVETYPE_GETTER(VLCTime, getDisplayRemainingTime, m_displayRemainingTime)
 PRIMITIVETYPE_GETTER(double, getPosition, m_position)
 PRIMITIVETYPE_GETTER(VLCDuration, getLength, m_length)
 PRIMITIVETYPE_GETTER(VLCDuration, getAudioDelay, m_audioDelay)

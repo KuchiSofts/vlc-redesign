@@ -40,8 +40,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
 "POT-Creation-Date: 2026-11-09 23:01+0000\n"
 "PO-Revision-Date: 2026-11-25 03:50+0000\n"
-"Last-Translator: Daniel Nylander "
-"<yeagersthlm2@users.noreply.hosted.weblate.org>\n"
+"Last-Translator: KuchiSofts <kuchisofts@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/vlc-redesign/"
 "interface/sv/>\n"
 "Language: sv\n"
@@ -1966,7 +1965,7 @@ msgstr "Du kan ange flera länkar att läsa in."
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:108
 msgid "e.g., https://www.example.com/stream.avi"
-msgstr "t.ex. https://www.exempel.se/stream.avi"
+msgstr "t.ex. https://www.example.com/stream.avi"
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:481
@@ -6372,7 +6371,7 @@ msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:502
 msgid "e.g., https://example.com/playlist.m3u"
-msgstr "t.ex. https://exempel.se/playlist.m3u"
+msgstr "t.ex. https://example.com/playlist.m3u"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:509
 msgid "Choose a playlist"
@@ -6399,7 +6398,7 @@ msgstr "Adressen till leverantörens panel, med port (http://host:8080)."
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:557
 msgid "e.g., http://example.com:8080"
-msgstr "t.ex. http://exempel.se:8080"
+msgstr "t.ex. http://example.com:8080"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:583
 msgid "For the source"
@@ -6428,7 +6427,7 @@ msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:607
 msgid "e.g., https://example.com/guide.xml.gz"
-msgstr "t.ex. https://exempel.se/guide.xml.gz"
+msgstr "t.ex. https://example.com/guide.xml.gz"
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:614
 msgid ""

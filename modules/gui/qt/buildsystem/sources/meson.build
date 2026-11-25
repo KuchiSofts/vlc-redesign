@@ -3,6 +3,7 @@ qt_plugin_sources = files(
     '../../dialogs/toolbar/profile_settings.hpp',
     '../../dialogs/toolbar/profile_persistence.cpp',
 
+    '../../dialogs/preferences/audio_output_device.hpp',
     '../../dialogs/preferences/audio_output_preview.cpp',
     '../../dialogs/preferences/audio_output_preview.hpp',
 

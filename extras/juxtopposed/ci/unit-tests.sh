@@ -30,6 +30,11 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/shortcut-feedback.c
     modules/gui/qt/player/shortcut_feedback.cpp -o "$out/shortcut-feedback"
 "$out/shortcut-feedback"
 
+echo "== audio output selection (same names, reordered and removed devices, default)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/audio-output-device.cpp \
+    -o "$out/audio-output-device"
+"$out/audio-output-device"
+
 echo "== windows that fit their screen (the first size and scale, a saved geometry, negative coordinates)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/screen-fit.cpp modules/gui/qt/util/screen_fit.cpp \

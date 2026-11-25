@@ -2,6 +2,7 @@ libqt_plugin_la_SOURCES = \
 	dialogs/toolbar/profile_settings.cpp \
 	dialogs/toolbar/profile_settings.hpp \
 	dialogs/toolbar/profile_persistence.cpp \
+	dialogs/preferences/audio_output_device.hpp \
 	dialogs/preferences/audio_output_preview.cpp \
 	dialogs/preferences/audio_output_preview.hpp \
 	dialogs/preferences/config_model_effects.cpp \

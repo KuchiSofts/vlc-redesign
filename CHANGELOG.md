@@ -32,6 +32,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **TV guide shows corrected programme titles after a refresh**, even when the guide is already open.
 - **TV searches by channel number** update when a source changes its channel numbers.
 - **The current audio output device stays selected** when you switch Settings pages and close Settings.
+- **Audio Settings can select either output device when two have the same name.**
 
 ### Technical
 

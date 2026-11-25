@@ -67,9 +67,10 @@ ColumnLayout {
             enabled: preview.active && deviceRows.count > 0
             model: Player.audioDevices
             textRole: "display"
+            valueRole: "deviceId"
             Binding { target: deviceBox; property: "currentIndex"; value: root.selectedIndex; when: !deviceBox.popup.visible }
             onActivated: (index) => {
-                if (preview.preview(index, textAt(index))) root.selectedIndex = index
+                if (preview.preview(valueAt(index))) root.selectedIndex = index
             }
             contentItem: Label {
                 // 12 px from the start (the right, right to left)

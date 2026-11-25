@@ -29,6 +29,10 @@ import VLC.MainInterface
 T.ProgressBar {
     id: control
 
+    // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
+    readonly property real minimumValue: from
+    readonly property real maximumValue: to
+
     // The time of a media runs from left to right in right to left
     // languages too (Hebrew, Arabic...), as Material, Apple and YouTube
     // keep it: the bar, its chapters, its waveform and the arrow keys

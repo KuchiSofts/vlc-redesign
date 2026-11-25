@@ -57,6 +57,9 @@ ColumnLayout {
         LayoutMirroring.childrenInherit: true
         from: -10000
         to: 10000
+        // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
+        readonly property real minimumValue: from
+        readonly property real maximumValue: to
         stepSize: 50
         value: Player.subtitleDelayMS
         enabled: Player.isStarted

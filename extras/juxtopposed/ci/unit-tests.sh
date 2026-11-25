@@ -42,7 +42,7 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/audio-output-device
     -o "$out/audio-output-device"
 "$out/audio-output-device"
 echo "== player time display (seconds, milliseconds and invalid time)"
-g++ -std=c++17 -O1 -Wall -Wextra $san -I. -Iinclude extras/juxtopposed/time-display.cpp -o "$out/time-display"
+g++ -std=c++17 -O1 -Wall -Wextra $san -Drestrict=__restrict__ -I. -Iinclude extras/juxtopposed/time-display.cpp -o "$out/time-display"
 "$out/time-display"
 
 echo "== windows that fit their screen (the first size and scale, a saved geometry, negative coordinates)"

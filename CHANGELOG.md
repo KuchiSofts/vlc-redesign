@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Installer and close to tray**: setup and the uninstaller now ask a running VLC Redesign to quit the way its Quit menu does, so it saves its settings, window position and queue, also when "close to system tray" is on.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

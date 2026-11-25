@@ -160,4 +160,6 @@ python3 extras/juxtopposed/qml-a11y-name-check.py
 
 echo "== file deletion keeps its target through library refreshes"
 node extras/juxtopposed/delete-file-confirmation.cjs
+echo "== TV guide refresh keeps the corrected programme"
+node extras/juxtopposed/tv-guide-refresh.js
 echo "all passed"

@@ -173,6 +173,8 @@ public:
     // The same, waiting for the answer (as QMessageBox::exec() did)
     int execRedesignMessage(const RedesignMessage& message, QString* input = nullptr);
 
+    void addQueueItemsToPlaylist(const QList<PlaylistItem>& items);
+
 protected:
     void customEvent( QEvent *) override;
 
@@ -186,7 +188,7 @@ private:
     void loadMediaFile( es_format_category_e category, int filter, const QString& dialogTitle );
     // A playlist file chosen by the user and the export module of its
     // type (empty: cancelled)
-    QString askPlaylistFile( const QString& title, const char **module );
+    QString askPlaylistFile( const QString& title, const char **module, bool m3uOnly = false );
 
     qt_intf_t *p_intf;
 
@@ -353,7 +355,7 @@ public slots:
     void openAndTranscodingDialogs();
 
     void savePlayingToPlaylist();
-    void saveMediaToPlaylistFile( const QVector<vlc::playlist::Media>& medias );
+    void saveMediaToPlaylistFile( const QVector<vlc::playlist::Media>& medias, bool m3uOnly = false );
 
     void loadSubtitlesFile();
     void loadAudioFile();

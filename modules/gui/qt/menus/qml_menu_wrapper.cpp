@@ -1113,9 +1113,14 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
     m_menu = std::make_unique<VLCMenu>(m_ctx->getIntf());
     QAction* action;
 
+    QList<PlaylistItem> selectedItems;
     QList<QUrl> selectedUrlList;
     for (const int modelIndex : m_selectionModel->selectedIndexesFlat())
-        selectedUrlList.push_back(m_model->itemAt(modelIndex).getUrl());
+    {
+        const PlaylistItem item = m_model->itemAt(modelIndex);
+        selectedItems.push_back(item);
+        selectedUrlList.push_back(item.getUrl());
+    }
 
     PlaylistItem selectedItem;
     if (selectedIndex >= 0)
@@ -1153,11 +1158,8 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
         if (m_ctx->hasMediaLibrary())
         {
             action = m_menu->addAction( qtr("Add to playlist") );
-            connect(action, &QAction::triggered, [selectedUrlList]( ) {
-                QVariantList media;
-                for (const QUrl& url : selectedUrlList)
-                    media.push_back(url);
-                DialogsProvider::getInstance()->playlistsDialog(media);
+            connect(action, &QAction::triggered, [selectedItems]( ) {
+                DialogsProvider::getInstance()->addQueueItemsToPlaylist(selectedItems);
             });
         }
 
@@ -1209,11 +1211,12 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
     {
         action = m_menu->addAction( qtr("Add queue to playlist") );
         connect(action, &QAction::triggered, [this]( ) {
-            QVariantList media;
-            for (int i = 0, n = m_model->rowCount(); i < n; ++i)
-                media.push_back(m_model->itemAt(i).getUrl());
-            if (!media.isEmpty())
-                DialogsProvider::getInstance()->playlistsDialog(media);
+            const int count = m_model->rowCount();
+            QList<PlaylistItem> items;
+            items.reserve(count);
+            for (int i = 0; i < count; ++i)
+                items.push_back(m_model->itemAt(i));
+            DialogsProvider::getInstance()->addQueueItemsToPlaylist(items);
         });
 
         if (!m_selectionModel->hasSelection())

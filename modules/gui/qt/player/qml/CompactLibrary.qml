@@ -1010,6 +1010,19 @@ FocusScope {
                 }
                 Keys.onEscapePressed: { text = ""; visible = false }
 
+                property bool previousGlobalShortcuts: true
+                onActiveFocusChanged: {
+                    if (activeFocus) {
+                        previousGlobalShortcuts = MainCtx.useGlobalShortcuts
+                        MainCtx.useGlobalShortcuts = false
+                    } else {
+                        MainCtx.useGlobalShortcuts = previousGlobalShortcuts
+                    }
+                }
+                Component.onDestruction: {
+                    if (activeFocus) MainCtx.useGlobalShortcuts = previousGlobalShortcuts
+                }
+
                 // nor a placeholder
                 Text {
                     anchors.fill: parent

@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Compact Library search**: Ctrl+V pastes and Ctrl+C copies in the search field, instead of playing the clipboard or opening Capture.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

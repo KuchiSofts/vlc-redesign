@@ -1042,7 +1042,12 @@ bool InterfaceWindowHandlerWin32::eventFilter(QObject* obj, QEvent* ev)
                     THEMPL->togglePlayPause();
                     break;
                 case APPCOMMAND_MEDIA_PLAY:
-                    THEMPL->play();
+                    // Start() does nothing on a started (paused) player:
+                    // resume it, as the Play hotkey does (#124)
+                    if (THEMIM->isStarted())
+                        THEMPL->resume();
+                    else
+                        THEMPL->play();
                     break;
                 case APPCOMMAND_MEDIA_PAUSE:
                     THEMPL->pause();

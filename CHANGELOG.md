@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Play media key (Windows)**: a Play key or a headset's Play button resumes a paused media.
 - **Sidebar with the keyboard**: Enter (or Space) opens the highlighted page or pin.
 - **Library search**: / and Ctrl+K open the search of the page shown.
 - **Music → Tracks**: Play All and Shuffle no longer freeze a large library, and a library changing while it loads can no longer crash VLC.

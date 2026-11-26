@@ -194,5 +194,5 @@ void MLFoldersEditor::reloadUrl(int row)
         || m_removeEntries.contains(mrl) )
         return;
 
-    m_foldersModel->reload( row );
+    m_foldersModel->reload( mrl );
 }

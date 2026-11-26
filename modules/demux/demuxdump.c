@@ -66,8 +66,8 @@ static int Open( vlc_object_t * p_this )
 {
     demux_t *p_demux = (demux_t*)p_this;
 
-    /* Accept only if forced */
-    if( !p_demux->obj.force )
+    /* Do not open the output file during metadata preparsing. */
+    if( !p_demux->obj.force || p_demux->b_preparsing )
         return VLC_EGENERIC;
 
     char *access = var_InheritString( p_demux, "demuxdump-access" );

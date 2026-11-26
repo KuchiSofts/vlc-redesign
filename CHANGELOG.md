@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Raw dump overwrite**: Convert / Save with "Dump raw input" now asks Keep or Overwrite when the destination file exists, instead of replacing it silently.
 - **Saved playlist search**: Remove, Move, Add files and drops are disabled while a saved playlist is filtered by search, so they can no longer act on a different entry.
 - **Media Information save**: clearing the queue while Media Information is open now ends the edit and hides Save Metadata, so it can no longer write empty tags to the last file.
 

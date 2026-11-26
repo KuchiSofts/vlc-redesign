@@ -276,6 +276,7 @@ struct vlc_player_t
 
     input_item_t *media;
     struct vlc_player_input *input;
+    uint64_t input_id;
 
     bool releasing_media;
     input_item_t *next_media;

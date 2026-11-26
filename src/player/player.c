@@ -102,6 +102,8 @@ vlc_player_OpenNextMedia(vlc_player_t *player)
             player->media = NULL;
             ret = VLC_ENOMEM;
         }
+        else
+            ++player->input_id;
     }
     vlc_player_SendEvent(player, on_current_media_changed, player->media);
     vlc_player_QueryPlaybackRestore(player);
@@ -1160,6 +1162,12 @@ vlc_player_GetCurrentMedia(vlc_player_t *player)
     return player->media;
 }
 
+uint64_t
+vlc_player_GetInputId(vlc_player_t *player)
+{
+    return vlc_player_get_input_locked(player) ? player->input_id : 0;
+}
+
 int
 vlc_player_AddAssociatedMedia(vlc_player_t *player,
                               enum es_format_category_e cat, const char *uri,
@@ -1284,6 +1292,7 @@ vlc_player_Start(vlc_player_t *player)
 
         if (!player->input)
             return VLC_ENOMEM;
+        ++player->input_id;
     }
     assert(!player->input->started);
 
@@ -2140,6 +2149,7 @@ vlc_player_New(vlc_object_t *parent, enum vlc_player_lock_type lock_type)
     player->renderer = NULL;
     player->media = NULL;
     player->input = NULL;
+    player->input_id = 0;
     player->global_state = VLC_PLAYER_STATE_STOPPED;
     player->started = false;
 

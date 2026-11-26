@@ -416,6 +416,16 @@ VLC_API input_item_t *
 vlc_player_GetCurrentMedia(vlc_player_t *player);
 
 /**
+ * Get the identity of the current input. Reopening the same media creates a
+ * new input with a different ID.
+ *
+ * @param player locked player instance
+ * @return a player-local input ID, or 0 if there is no current input
+ */
+VLC_API uint64_t
+vlc_player_GetInputId(vlc_player_t *player);
+
+/**
  * Get the next played media.
  *
  * This function return the media set by vlc_player_SetNextMedia()

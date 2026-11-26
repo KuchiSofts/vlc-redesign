@@ -2984,9 +2984,18 @@ bool PlayerController::associateSubtitleFile(const QString &uri)
     return AddAssociatedMedia(SPU_ES, uri, true, true, true) == VLC_SUCCESS;
 }
 
-int PlayerController::AddAssociatedMedia(es_format_category_e cat, const QString &uri, bool select, bool notify, bool check_ext)
+int PlayerController::AddAssociatedMedia(es_format_category_e cat, const QString &uri,
+                                         bool select, bool notify, bool check_ext, uint64_t inputId)
 {
     Q_D(PlayerController);
+    int ret;
+    {
+        vlc_player_locker lock{ d->m_player };
+        if (inputId != 0 && inputId != vlc_player_GetInputId(d->m_player))
+            return VLC_ENOENT;
+        ret = vlc_player_AddAssociatedMedia(d->m_player, cat, qtu(uri), select, notify, check_ext);
+    }
+
     // where its track comes from (the subtitle panel says it)
     if (cat == SPU_ES)
     {
@@ -2994,8 +3003,7 @@ int PlayerController::AddAssociatedMedia(es_format_category_e cat, const QString
         SubtitleFinder::noteFile(uri, QStringLiteral("added"),
                                  url.isLocalFile() ? QFileInfo(url.toLocalFile()).fileName() : url.fileName());
     }
-    vlc_player_locker lock{ d->m_player };
-    return vlc_player_AddAssociatedMedia( d->m_player, cat, qtu(uri), select, notify, check_ext );
+    return ret;
 }
 
 #define QABSTRACTLIST_GETTER( type, fun, var ) \

@@ -144,6 +144,11 @@ static const char* psz_introspection_xml =
 "      <arg type=\"a{sv}\" />\n"
 "    </signal>\n"
 "  </interface>\n"
+"  <interface name=\"" DBUS_VLC_PLAYLIST_INTERFACE "\">\n"
+"    <method name=\"ReplaceAndPlay\">\n"
+"      <arg name=\"uris\" type=\"as\" direction=\"in\" />\n"
+"    </method>\n"
+"  </interface>\n"
 "</node>\n"
 ;
 

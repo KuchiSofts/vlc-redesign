@@ -30,6 +30,74 @@
 /* used for one-instance mode */
 # include <dbus/dbus.h>
 # include <vlc_url.h>
+# define MPRIS_APPEND "/org/mpris/MediaPlayer2/TrackList/Append"
+# define MPRIS_BUS_NAME "org.mpris.MediaPlayer2.vlc"
+# define MPRIS_OBJECT_PATH "/org/mpris/MediaPlayer2"
+# define MPRIS_TRACKLIST_INTERFACE "org.mpris.MediaPlayer2.TrackList"
+/* Keep in sync with modules/control/dbus/dbus_common.h. */
+# define VLC_PLAYLIST_INTERFACE "org.videolan.vlc.Playlist"
+
+static const char *resolve_mrl(const char *arg, char **buffer)
+{
+    *buffer = NULL;
+    if (strstr(arg, "://"))
+        return arg;
+    /* Resolve relative paths in the sending instance. */
+    *buffer = vlc_path2uri(arg, NULL);
+    return *buffer;
+}
+
+static bool send_handoff(libvlc_int_t *vlc, DBusConnection *conn, DBusMessage *req)
+{
+    DBusError error;
+    dbus_error_init(&error);
+    DBusMessage *reply = dbus_connection_send_with_reply_and_block(conn,
+                                                               req, -1, &error);
+    if (!reply)
+    {
+        msg_Err(vlc, "D-Bus error: %s", error.message);
+        dbus_error_free(&error);
+        return false;
+    }
+
+    dbus_message_unref(reply);
+    return true;
+}
+
+static bool handoff_replace(libvlc_int_t *vlc, DBusConnection *conn, int argc,
+                            const char *const argv[])
+{
+    DBusMessage *req = dbus_message_new_method_call(MPRIS_BUS_NAME,
+        MPRIS_OBJECT_PATH, VLC_PLAYLIST_INTERFACE, "ReplaceAndPlay");
+    if (!req)
+        return false;
+
+    DBusMessageIter args, uris;
+    dbus_message_iter_init_append(req, &args);
+    bool sent = false;
+    if (!dbus_message_iter_open_container(&args, DBUS_TYPE_ARRAY, "s", &uris))
+        goto out;
+
+    for (int i = 0; i < argc; i++)
+    {
+        char *buffer;
+        const char *mrl = resolve_mrl(argv[i], &buffer);
+        bool ok = mrl && dbus_message_iter_append_basic(&uris, DBUS_TYPE_STRING, &mrl);
+        free(buffer);
+        if (!ok)
+        {
+            dbus_message_iter_abandon_container(&args, &uris);
+            goto out;
+        }
+    }
+
+    if (dbus_message_iter_close_container(&args, &uris))
+        sent = send_handoff(vlc, conn, req);
+
+out:
+    dbus_message_unref(req);
+    return sent;
+}
 #endif
 
 void system_Init (void)
@@ -41,11 +109,6 @@ static void system_ConfigureDbus(libvlc_int_t *vlc, int argc,
 {
 /* FIXME: could be replaced by using Unix sockets */
 #ifdef HAVE_DBUS
-# define MPRIS_APPEND "/org/mpris/MediaPlayer2/TrackList/Append"
-# define MPRIS_BUS_NAME "org.mpris.MediaPlayer2.vlc"
-# define MPRIS_OBJECT_PATH "/org/mpris/MediaPlayer2"
-# define MPRIS_TRACKLIST_INTERFACE "org.mpris.MediaPlayer2.TrackList"
-
     dbus_threads_init_default();
 
     if (var_InheritBool(vlc, "dbus"))
@@ -90,10 +153,19 @@ static void system_ConfigureDbus(libvlc_int_t *vlc, int argc,
         return;
     }
 
+    const bool replace = !var_InheritBool(vlc, "playlist-enqueue");
+    if (argc > 0 && replace && handoff_replace(vlc, conn, argc, argv))
+    {
+        dbus_connection_unref(conn);
+        msg_Warn(vlc, "running VLC instance - exiting...");
+        exit(0);
+    }
+
     msg_Warn(vlc, "running VLC instance - exiting...");
 
-    const dbus_bool_t play = !var_InheritBool(vlc, "playlist-enqueue");
-
+    /* An older instance without ReplaceAndPlay still gets the files, played
+     * as before. */
+    const dbus_bool_t play = replace;
     for (int i = 0; i < argc; i++)
     {
         DBusMessage *req = dbus_message_new_method_call(MPRIS_BUS_NAME,
@@ -101,21 +173,12 @@ static void system_ConfigureDbus(libvlc_int_t *vlc, int argc,
         if (unlikely(req == NULL))
             continue;
 
-        /* We need to resolve relative paths in this instance */
-        char *mrlbuf = NULL;
-        const char *mrl;
-
-        if (strstr(argv[i], "://"))
-            mrl = argv[i];
-        else
+        char *mrlbuf;
+        const char *mrl = resolve_mrl(argv[i], &mrlbuf);
+        if (unlikely(mrl == NULL))
         {
-            mrlbuf = vlc_path2uri(argv[i], NULL);
-            if (unlikely(mrlbuf == NULL))
-            {
-                dbus_message_unref(req);
-                continue;
-            }
-            mrl = mrlbuf;
+            dbus_message_unref(req);
+            continue;
         }
 
         /* append MRLs */
@@ -127,23 +190,9 @@ static void system_ConfigureDbus(libvlc_int_t *vlc, int argc,
                                            DBUS_TYPE_BOOLEAN, &play,
                                            DBUS_TYPE_INVALID);
         free(mrlbuf);
-        if (unlikely(!ok))
-        {
-             dbus_message_unref(req);
-             continue;
-        }
-
-        /* send message and get a handle for a reply */
-        DBusMessage *reply = dbus_connection_send_with_reply_and_block(conn,
-                                                                req, -1, &err);
+        if (ok)
+            send_handoff(vlc, conn, req);
         dbus_message_unref(req);
-        if (reply == NULL)
-        {
-            msg_Err(vlc, "D-Bus error: %s", err.message);
-            dbus_error_free(&err);
-            continue;
-        }
-        dbus_message_unref(reply);
     }
 
     /* we unreference the connection when we've finished with it */

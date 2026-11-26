@@ -37,6 +37,7 @@ Widgets.TableViewExt {
     //---------------------------------------------------------------------------------------------
 
     property bool isMusic
+    required property bool canEditPositions
 
     //---------------------------------------------------------------------------------------------
     // Private
@@ -127,6 +128,9 @@ Widgets.TableViewExt {
     // Drop interface
 
     isDropAcceptableFunc: function(drop, index) {
+        if (!root.canEditPositions)
+            return false
+
         if (drop.source === dragItem) {
             return Helpers.itemsMovable(selectionModel.sortedSelectedIndexesFlat, index)
         } else if (Helpers.isValidInstanceOf(drop.source, Widgets.DragItem)) {
@@ -156,7 +160,8 @@ Widgets.TableViewExt {
         } else if (Helpers.isValidInstanceOf(item, Widgets.DragItem)) {
             return item.getSelectedInputItem()
                         .then(inputItems => {
-                            model.insert(inputItems, destinationIndex)
+                            if (root.canEditPositions)
+                                model.insert(inputItems, destinationIndex)
                         })
                         .then(() => { root.forceActiveFocus(); })
         } else if (drop.hasUrls) {

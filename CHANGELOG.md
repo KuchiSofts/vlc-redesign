@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Subtitle services**: a sign-in or key test finishing while Settings was reopened elsewhere no longer erases the saved logins.
 - **Compact Library search**: Ctrl+V pastes and Ctrl+C copies in the search field, instead of playing the clipboard or opening Capture.
 - **Video information**: the Audio track column shows the audio track (it repeated the video's codec and language).
 - **Faster start**: the Inter font is read once instead of two or three times.

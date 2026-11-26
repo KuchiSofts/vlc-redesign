@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Built-in file browser setting**: turning "Show the file browser inside Open Multiple Files" on or off takes effect the next time the dialog opens, without restarting VLC; the setting's name says which dialog it changes.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes

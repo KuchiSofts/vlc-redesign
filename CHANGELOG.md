@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Effects with the keyboard**: the Audio/Video tabs and the video sections show the focus border, and screen readers say which is selected.
 - **Taskbar buttons (Windows)**: after Explorer restarts, the thumbnail buttons update once, and Play is disabled with an empty queue.
 - **Opening a file while VLC starts**: no longer able to crash a starting instance.
 - **Play button with the keyboard**: Enter or Space starts a stopped queue (or asks for files when it is empty), as a click does.

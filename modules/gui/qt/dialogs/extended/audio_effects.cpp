@@ -390,8 +390,7 @@ bool AudioEffects::setFilterEnabled(const QString& filter, bool enabled)
     if (!filterAvailable(filter)) return fail(tr("Audio filter is unavailable."));
     if (!requirePreview()) return false;
     if (filterEnabled(filter) == enabled) return true;
-    // Materialize the real bands before loading the filter. The VLC module
-    // rejects an empty bands string even when a preset exists.
+    // Set the bands before loading the filter to keep the current preamp.
     if (enabled && filter == "equalizer" && readValue("equalizer-bands").toString().isEmpty()) {
         QStringList values;
         for (const QVariant& value : bands()) values << QLocale::c().toString(value.toDouble(), 'f', 3);

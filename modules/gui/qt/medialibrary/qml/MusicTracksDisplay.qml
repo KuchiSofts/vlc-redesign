@@ -76,18 +76,7 @@ Widgets.PageExt {
         const model = root.model
         if (!model || model.count <= 0)
             return
-        const rows = []
-        for (let i = 0; i < model.count; ++i)
-            rows.push(i)
-        model.getDataFlat(rows, (list) => {
-            const ids = list.map((item) => item?.id).filter((id) => !!id)
-            if (ids.length === 0)
-                return
-            if (shuffled)
-                MediaLib.addAndPlayShuffled(ids)
-            else
-                MediaLib.addAndPlay(ids)
-        })
+        model.addAndPlayAll(!!shuffled)
     }
 
     function setCurrentItemFocus(reason) {

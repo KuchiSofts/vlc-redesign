@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Recent thumbnails**: a video thumbnail generated while Recent is open now appears without reloading the page.
 - **Browse Back keeps your place**: going Back in Browse selects and scrolls to the folder you had opened, in list and grid.
 - **Save play queue errors**: saving the queue (Ctrl+Y) to a file that cannot be created no longer crashes, and a failed save now says so.
 - **Cancel library subtitle downloads**: closing Add subtitles to the library now cancels the request in flight instead of letting it run (and use up a download).

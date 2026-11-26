@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Right-to-left languages**: picking Hebrew or Arabic in Settings marks the texts left in English at once, so their punctuation sits on the right side.
 - **Decimal settings**: a value typed with the language's decimal comma ("0,5") is accepted.
 - **Translations**: the guide and subtitle search counts can be translated with the right plural forms.
 - **Toggles, light theme**: the ON word reads clearly on its pale accent tint.

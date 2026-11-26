@@ -908,9 +908,11 @@ MPRISEntryPoint ( DBusConnection *p_conn, DBusMessage *p_from, void *p_this )
     if( !strcmp( psz_target_interface, DBUS_MPRIS_PLAYER_INTERFACE ) )
         return handle_player( p_conn, p_from, p_this );
 
-    if( !strcmp( psz_target_interface, DBUS_MPRIS_TRACKLIST_INTERFACE )
-     || !strcmp( psz_target_interface, DBUS_VLC_PLAYLIST_INTERFACE ) )
+    if( !strcmp( psz_target_interface, DBUS_MPRIS_TRACKLIST_INTERFACE ) )
         return handle_tracklist( p_conn, p_from, p_this );
+
+    if( !strcmp( psz_target_interface, DBUS_VLC_PLAYLIST_INTERFACE ) )
+        return handle_vlc_playlist( p_conn, p_from, p_this );
 
     return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 }

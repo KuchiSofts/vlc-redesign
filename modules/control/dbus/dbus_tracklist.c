@@ -217,15 +217,13 @@ DBUS_METHOD( ReplaceAndPlay )
 
     vlc_playlist_t *playlist = PL;
     vlc_playlist_Lock(playlist);
-    /* Keep the old queue if insertion fails. */
-    size_t old_count = vlc_playlist_Count(playlist);
+    /* Clear (a reset event) rather than removing the old range after the
+     * append: this module's items-removed listener reads the removed items'
+     * ids from the playlist after they are gone. */
+    vlc_playlist_Clear(playlist);
     int ret = vlc_playlist_Append(playlist, items, count);
     if (ret == VLC_SUCCESS)
-    {
-        if (old_count > 0)
-            vlc_playlist_Remove(playlist, 0, old_count);
         vlc_playlist_PlayAt(playlist, 0);
-    }
     vlc_playlist_Unlock(playlist);
 
     if (ret == VLC_SUCCESS)
@@ -581,6 +579,14 @@ handle_tracklist ( DBusConnection *p_conn, DBusMessage *p_from, void *p_this )
     METHOD_FUNC( DBUS_MPRIS_TRACKLIST_INTERFACE, "RemoveTrack", RemoveTrack );
     METHOD_FUNC( DBUS_MPRIS_TRACKLIST_INTERFACE, "GetTracksMetadata",
                                                   GetTracksMetadata );
+    return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+}
+
+DBusHandlerResult
+handle_vlc_playlist ( DBusConnection *p_conn, DBusMessage *p_from, void *p_this )
+{
+    if(0);
+
     METHOD_FUNC( DBUS_VLC_PLAYLIST_INTERFACE, "ReplaceAndPlay", ReplaceAndPlay );
 
     return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;

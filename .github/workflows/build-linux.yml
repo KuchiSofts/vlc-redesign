@@ -234,6 +234,9 @@ jobs:
           # loaders the system lacks: the launcher adds their copies; and Qt's
           # plugins for what VLC doesn't use)
           "$app" --appimage-extract > /dev/null
+          # PipeWire's client library is the system's (#207): only a fallback copy
+          test -e squashfs-root/syslib/fallback/libpipewire-0.3.so.0/libpipewire-0.3.so.0
+          test ! -e squashfs-root/syslib/libpipewire-0.3.so.0
           fallback=$(find squashfs-root/syslib/fallback -mindepth 1 -maxdepth 1 -type d -printf '%p:')
           find squashfs-root \( -path squashfs-root/qt/plugins -o -path squashfs-root/qt/qml \) -prune -o -type f \( -name '*.so*' -o -perm -u+x \) -print \
             | while read -r f; do

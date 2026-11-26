@@ -170,6 +170,7 @@ debpkg() {
         libva-wayland.so.2) echo libva-wayland2 ;;
         libvdpau.so.1) echo libvdpau1 ;;
         libOpenCL.so.1) echo 'ocl-icd-libopencl1 | libopencl1' ;;
+        libpipewire-0.3.so.0) echo 'libpipewire-0.3-0t64 | libpipewire-0.3-0' ;;
         libX11.so.6) echo libx11-6 ;;
         libX11-xcb.so.1) echo libx11-xcb1 ;;
         libXau.so.6) echo libxau6 ;;

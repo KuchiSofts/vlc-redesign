@@ -55,8 +55,12 @@ system='^(ld-linux.*|libc|libm|libmvec|libpthread|libdl|librt|libresolv|libanl|l
 # they find its drivers, in its paths. But FFmpeg's libavutil needs them, and
 # without them (no libva2 on a fresh Ubuntu) the avcodec plugin did not load:
 # no video. Copies in syslib/fallback/NAME/, which the launcher adds only for
-# those the PC lacks (no driver then: decoding on the CPU)
-loaders='^(libva|libva-drm|libva-x11|libva-wayland|libvdpau|libOpenCL)\.so'
+# those the PC lacks (no driver then: decoding on the CPU).
+# PipeWire's client library is the PC's as well (#207): the copy from the
+# build's Ubuntu looks for its modules in Ubuntu's paths, so on Fedora the
+# PipeWire output failed, and the PC's ALSA plugin for PipeWire, loaded into
+# the same process, missed symbols of its own newer library: no sound at all.
+loaders='^(libva|libva-drm|libva-x11|libva-wayland|libvdpau|libOpenCL|libpipewire-0\.3)\.so'
 mkdir -p "$root/syslib"
 export LD_LIBRARY_PATH="$root/lib:$root/lib/vlc:$root/qt/lib:/work/build-m0/deps/lib"
 find "$root" -type f \( -name '*.so*' -o -perm -u+x \) -print | while read -r f; do
@@ -205,9 +209,10 @@ fi
 # The libraries are found by their own search paths (RUNPATH) and Qt's
 # plugins by bin/qt.conf: no LD_LIBRARY_PATH, QT_PLUGIN_PATH or QML paths
 # here, which every program VLC starts would inherit (dbus-launch failed with
-# the bundled libdbus). Only the loaders of VA-API, VDPAU and OpenCL this
-# system lacks come from syslib/fallback (no driver to load: decoding on the
-# CPU); harmless to the others, which can't have them either.
+# the bundled libdbus). Only the loaders of VA-API, VDPAU and OpenCL and the
+# PipeWire client library this system lacks come from syslib/fallback (no
+# driver or sound server to reach then); harmless to the others, which can't
+# have them either.
 fallback=
 for d in "$here"/syslib/fallback/*/; do
     [ -d "$d" ] || continue

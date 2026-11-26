@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Installer and close to tray**: setup and the uninstaller now ask a running VLC Redesign to quit the way its Quit menu does, so it saves its settings, window position and queue, also when "close to system tray" is on.
 - **Keyboard pane resize**: the sidebar, play queue and Music artists pane edges are Tab stops; Left/Right resize them (Shift for bigger steps, Home/End for the limits), and screen readers see them as named sliders.
 - **Right-to-left languages**: picking Hebrew or Arabic in Settings marks the texts left in English at once, so their punctuation sits on the right side.
 - **Decimal settings**: a value typed with the language's decimal comma ("0,5") is accepted.

@@ -2734,6 +2734,8 @@ const
   RTL_POP = #$202C;
 
   FR_PRIVATE = $10;
+  SMTO_ABORTIFHUNG = $0002;
+  SETUP_QUIT_MESSAGE = 'VLC Redesign Setup Quit';
 
   { The types VLC plays (extras/package/win32/NSIS/helpers/extensions.nsh) }
   VIDEO_EXTS = '.3g2 .3gp .3gp2 .3gpp .amrec .amv .asf .avi .bik .dav .divx .drc .dv .evo .f4v .flv .gvi .gxf .k3g .m1v .m2t .m2v .m2ts .m4v .mkv .mov .mp2v .mp4 .mp4v .mpa .mpe .mpeg .mpeg1 .mpeg2 .mpeg4 .mpg .mpv2 .mts .mtv .mxf .nsv .nuv .ogg .ogm .ogx .ogv .qt .rec .rm .rmvb .rpl .skm .thp .tod .tp .ts .tts .vob .vp6 .vro .webm .wmv .wtv .xesc';
@@ -2749,6 +2751,8 @@ const
   PROFILES = 'Software\{#AppName}\Profiles';
 
 type
+  TProcessIds = array of Longword;
+
   TWinPoint = record
     X, Y: Longint;
   end;
@@ -2850,6 +2854,14 @@ function GetCurrentProcessId(): Longword;
   external 'GetCurrentProcessId@kernel32.dll stdcall';
 function ProcessIdToSessionId(ProcessId: Longword; var SessionId: Longword): Boolean;
   external 'ProcessIdToSessionId@kernel32.dll stdcall';
+function FindWindowEx(Parent, Previous, ClassName, WindowName: HWND): HWND;
+  external 'FindWindowExW@user32.dll stdcall';
+function GetWindowThreadProcessId(Wnd: HWND; var ProcessId: Longword): Longword;
+  external 'GetWindowThreadProcessId@user32.dll stdcall';
+{ HWND also supplies the pointer-sized integer type in 32-bit and 64-bit Setup. }
+function SendMessageTimeout(Wnd: HWND; Msg: Longword; WParam, LParam: HWND;
+  Flags, Timeout: Longword; var Reply: HWND): HWND;
+  external 'SendMessageTimeoutW@user32.dll stdcall';
 
 { ---- Closing and reopening a running copy --------------------------------- }
 
@@ -2858,20 +2870,17 @@ begin
   Result := ExpandConstant('{app}\vlc.exe');
 end;
 
-{ Process ids (as taskkill arguments) of the VLC Redesign instances started
-  from the install folder; other VLCs are left alone. All of them go (an
-  install for everyone replaces the files every user runs), but only one in
-  this Windows session (Here) is reopened, with its command line: never
-  another user's media, in this user's session. }
-function FindRunning(var Pids: String; var CmdLine: String; var Here: Boolean): Boolean;
+{ Only processes from this install folder and Windows session may be closed
+  or reopened. A copy in another session can still be using the shared files. }
+function FindRunning(var Pids: TProcessIds; var CmdLine: String; var OtherSession: Boolean): Boolean;
 var
   Locator, Service, Procs, Proc: Variant;
-  I: Integer;
+  I, N: Integer;
   Session: Longword;
 begin
   Result := False;
-  Here := False;
-  Pids := '';
+  OtherSession := False;
+  SetArrayLength(Pids, 0);
   CmdLine := '';
   if not ProcessIdToSessionId(GetCurrentProcessId(), Session) then
     Session := $FFFFFFFF;
@@ -2885,18 +2894,71 @@ begin
       if (not VarIsNull(Proc.ExecutablePath)) and (CompareText(Proc.ExecutablePath, AppExe()) = 0) then
       begin
         Result := True;
-        Pids := Pids + ' /PID ' + IntToStr(Proc.ProcessId);
         if (not VarIsNull(Proc.SessionId)) and (Proc.SessionId = Session) then
         begin
-          Here := True;
+          N := GetArrayLength(Pids);
+          SetArrayLength(Pids, N + 1);
+          Pids[N] := Proc.ProcessId;
           if not VarIsNull(Proc.CommandLine) then
             CmdLine := Proc.CommandLine;
-        end;
+        end
+        else
+          OtherSession := True;
       end;
     end;
   except
     Log('Cannot list processes: ' + GetExceptionMessage);
   end;
+  if OtherSession then
+    Log('VLC Redesign is running from this folder in another Windows session.');
+end;
+
+function RequestQuit(ProcessId, QuitMessage: Longword): Boolean;
+var
+  Wnd, Reply: HWND;
+  Owner: Longword;
+begin
+  Result := False;
+  if QuitMessage = 0 then
+    Exit;
+  { Search by PID so a hidden window works and other VLC installations are ignored. }
+  Wnd := FindWindowEx(0, 0, 0, 0);
+  while Wnd <> 0 do
+  begin
+    if (GetWindowThreadProcessId(Wnd, Owner) <> 0) and (Owner = ProcessId) then
+    begin
+      Reply := 0;
+      if (SendMessageTimeout(Wnd, QuitMessage, ProcessId, 0, SMTO_ABORTIFHUNG, 200, Reply) <> 0)
+        and (Reply = 1) then
+      begin
+        Result := True;
+        Exit;
+      end;
+    end;
+    Wnd := FindWindowEx(0, Wnd, 0, 0);
+  end;
+end;
+
+procedure CloseProcesses(const Pids: TProcessIds; Force: Boolean);
+var
+  Args: String;
+  Code, I: Integer;
+  QuitMessage: Longword;
+begin
+  Args := '';
+  QuitMessage := 0;
+  if not Force then
+    QuitMessage := RegisterWindowMessage(SETUP_QUIT_MESSAGE);
+  { taskkill sends WM_CLOSE for copies that did not acknowledge the quit
+    message, or force-closes the remaining PIDs after the existing timeout. }
+  for I := 0 to GetArrayLength(Pids) - 1 do
+    if not RequestQuit(Pids[I], QuitMessage) then
+      Args := Args + ' /PID ' + IntToStr(Pids[I]);
+  if Args = '' then
+    Exit;
+  if Force then
+    Args := '/F' + Args;
+  Exec(ExpandConstant('{sys}\taskkill.exe'), Trim(Args), '', SW_HIDE, ewWaitUntilTerminated, Code);
 end;
 
 { The arguments of a command line, without the program }
@@ -2947,28 +3009,34 @@ end;
 
 function CloseRunning(): Boolean;
 var
-  Pids, CmdLine: String;
-  Code, I: Integer;
-  Here: Boolean;
+  Pids: TProcessIds;
+  CmdLine: String;
+  I: Integer;
+  OtherSession: Boolean;
 begin
-  Result := True;
-  if not FindRunning(Pids, CmdLine, Here) then
+  Result := not FindRunning(Pids, CmdLine, OtherSession);
+  if Result or OtherSession then
     Exit;
-  WasRunning := Here;
+  WasRunning := True;
   RunningArgs := ArgsOf(CmdLine);
   if (not WizardSilent) and (not IsUpdate()) then
+  begin
     MsgBox(CustomMessage('Running'), mbInformation, MB_OK);
-  { Ask politely (WM_CLOSE) so VLC saves its settings and position }
-  Exec(ExpandConstant('{sys}\taskkill.exe'), Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
+    Result := not FindRunning(Pids, CmdLine, OtherSession);
+    if Result or OtherSession then
+      Exit;
+  end;
+  CloseProcesses(Pids, False);
   for I := 1 to 30 do
   begin
     Sleep(500);
-    if not FindRunning(Pids, CmdLine, Here) then
+    Result := not FindRunning(Pids, CmdLine, OtherSession);
+    if Result or OtherSession then
       Exit;
   end;
-  Exec(ExpandConstant('{sys}\taskkill.exe'), '/F ' + Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
+  CloseProcesses(Pids, True);
   Sleep(1000);
-  Result := not FindRunning(Pids, CmdLine, Here);
+  Result := not FindRunning(Pids, CmdLine, OtherSession);
 end;
 
 function PrepareToInstall(var NeedsRestart: Boolean): String;
@@ -5078,18 +5146,30 @@ end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
-  Pids, CmdLine: String;
-  Code: Integer;
-  Here: Boolean;
+  Pids: TProcessIds;
+  CmdLine: String;
+  OtherSession: Boolean;
 begin
   if CurUninstallStep = usUninstall then
   begin
-    if FindRunning(Pids, CmdLine, Here) then
+    FindRunning(Pids, CmdLine, OtherSession);
+    while OtherSession do
     begin
-      Exec(ExpandConstant('{sys}\taskkill.exe'), Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
+      if UninstallSilent then
+        Abort;
+      if MsgBox(FmtMessage(SetupMessage(msgUninstallAppRunningError), ['{#AppName}']),
+                mbInformation, MB_OKCANCEL) <> IDOK then
+        Abort;
+      FindRunning(Pids, CmdLine, OtherSession);
+    end;
+    if GetArrayLength(Pids) > 0 then
+    begin
+      CloseProcesses(Pids, False);
       Sleep(3000);
-      if FindRunning(Pids, CmdLine, Here) then
-        Exec(ExpandConstant('{sys}\taskkill.exe'), '/F ' + Trim(Pids), '', SW_HIDE, ewWaitUntilTerminated, Code);
+      FindRunning(Pids, CmdLine, OtherSession);
+      if OtherSession then
+        Abort;
+      CloseProcesses(Pids, True);
     end;
     UnregisterFileTypes();
   end;

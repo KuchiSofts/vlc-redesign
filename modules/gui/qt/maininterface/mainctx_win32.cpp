@@ -913,6 +913,7 @@ InterfaceWindowHandlerWin32::InterfaceWindowHandlerWin32(qt_intf_t *_p_intf, Mai
         m_disableVolumeKeys = disable;
     });
 
+    m_setupQuitMessage = RegisterWindowMessageW(L"VLC Redesign Setup Quit");
     QApplication::instance()->installNativeEventFilter(this);
 }
 
@@ -1020,9 +1021,19 @@ bool InterfaceWindowHandlerWin32::eventFilter(QObject* obj, QEvent* ev)
     return ret;
 }
 
-    bool InterfaceWindowHandlerWin32::nativeEventFilter(const QByteArray &, void *message, qintptr *result)
+bool InterfaceWindowHandlerWin32::nativeEventFilter(const QByteArray &, void *message, qintptr *result)
 {
     MSG* msg = static_cast<MSG*>( message );
+
+    if (m_setupQuitMessage && msg->message == m_setupQuitMessage &&
+        msg->wParam == GetCurrentProcessId() && m_window && msg->hwnd == WinId(m_window))
+    {
+        // Acknowledge the request before the queued quit can destroy the window.
+        if (result)
+            *result = TRUE;
+        emit m_mainCtx->askToQuit();
+        return true;
+    }
 
     short cmd;
     bool handled = false;

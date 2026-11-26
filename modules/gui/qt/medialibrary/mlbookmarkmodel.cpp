@@ -260,7 +260,8 @@ void MLBookmarkModel::add()
     {
         int64_t time = MS_FROM_VLC_TICK(currentTime);
 
-        vlc_ml_media_add_bookmark(ml, mediaId, time);
+        if (vlc_ml_media_add_bookmark(ml, mediaId, time) != VLC_SUCCESS)
+            return;
 
         ml_unique_ptr<vlc_ml_media_t> media { vlc_ml_get_media(ml, mediaId) };
 

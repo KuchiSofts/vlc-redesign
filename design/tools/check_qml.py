@@ -222,9 +222,13 @@ def check_light_map(tokens, style):
 
 
 # Calls whose light value is meant to differ from the map's (file, dark value,
-# light value); design/light-theme.md gives the Figma evidence of each. None
-# today: wherever Figma "Player - Light" shows a value, it is the map's.
-LIGHT_EXCEPTIONS = set()
+# light value); design/light-theme.md gives the Figma evidence of each.
+# Wherever Figma "Player - Light" shows a value, it is the map's, but for the
+# rows of the Compact Library, which keep their own measured grey.
+LIGHT_EXCEPTIONS = {
+    ("modules/gui/qt/player/qml/CompactLibrary.qml", "#8F8F8F", "#8F8F8F"),
+    ("modules/gui/qt/player/qml/CompactLibrary.qml", "#969696", "#8F8F8F"),
+}
 
 
 def _call_args(text, start):

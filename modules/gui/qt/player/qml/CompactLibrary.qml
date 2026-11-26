@@ -1010,17 +1010,12 @@ FocusScope {
                 }
                 Keys.onEscapePressed: { text = ""; visible = false }
 
-                property bool previousGlobalShortcuts: true
-                onActiveFocusChanged: {
-                    if (activeFocus) {
-                        previousGlobalShortcuts = MainCtx.useGlobalShortcuts
-                        MainCtx.useGlobalShortcuts = false
-                    } else {
-                        MainCtx.useGlobalShortcuts = previousGlobalShortcuts
-                    }
-                }
+                // (on again whenever the field loses the keyboard, as the
+                // header's search box: giving back the value met at focus time
+                // could keep them off after a menu closed over the field)
+                onActiveFocusChanged: MainCtx.useGlobalShortcuts = !activeFocus
                 Component.onDestruction: {
-                    if (activeFocus) MainCtx.useGlobalShortcuts = previousGlobalShortcuts
+                    if (activeFocus) MainCtx.useGlobalShortcuts = true
                 }
 
                 // nor a placeholder

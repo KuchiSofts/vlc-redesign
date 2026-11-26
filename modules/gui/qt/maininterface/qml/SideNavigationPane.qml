@@ -202,9 +202,11 @@ T.Pane {
         // a pin: its folder or playlist (unless already shown)
         if (entry.pin) {
             if (!root._pinMatches(entry))
+                // (from the keyboard the focus stays on the sidebar, as for
+                // the pages: only a click hands it to the page)
                 History.push([...entry.uri], entry.pin.kind === "playlist" ? sidebarItems.playlistProps(entry.pin)
                                                                            : entry.props,
-                             focusReason)
+                             focusReason === Qt.MouseFocusReason ? focusReason : Qt.OtherFocusReason)
             return
         }
         const item = listView.itemAtIndex(index) ?? listView.currentItem
@@ -319,6 +321,9 @@ T.Pane {
             showText: root.delegateShowText
             focusPolicy: Qt.StrongFocus
             onClicked: DialogsProvider.simpleOpenDialog()
+            // (a button takes Space only: Enter as on the rows above)
+            Keys.onReturnPressed: clicked()
+            Keys.onEnterPressed: clicked()
             Navigation.parentItem: root
             Navigation.upItem: listView
         }

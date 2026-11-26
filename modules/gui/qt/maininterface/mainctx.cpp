@@ -1183,10 +1183,10 @@ void MainCtx::setRightToLeft(bool rightToLeft)
     m_rightToLeft = rightToLeft;
     emit rightToLeftChanged();
     // The texts left in English are marked left-to-right only in a right-to-left
-    // layout (the translator, qt.cpp): a language previewed before its direction
-    // was set (Settings) is translated again, now that the direction is known
-    if (!m_interfaceLanguage.isEmpty())
-        emit interfaceLanguageChanged();
+    // layout (the translator, qt.cpp): they are translated again now that the
+    // direction is known, whichever way it changed (a language picked in
+    // Settings, or the Layout direction alone)
+    emit interfaceLanguageChanged();
 }
 
 void MainCtx::setPinVideoControls(bool pinVideoControls)

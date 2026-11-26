@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Effects Cancel with a negative preamp**: Cancel in Effects > Audio now removes a previewed compressor even when a negative equalizer preamp was saved in Settings.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

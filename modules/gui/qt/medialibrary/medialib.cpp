@@ -288,24 +288,27 @@ static void sortGroupNaturally(const MLItemId &itemId, std::vector<const vlc_ml_
     });
 }
 
-static void convertMLItemToPlaylistMedias(vlc_medialibrary_t* ml, const MLItemId & itemId, const QStringList &options, QVector<vlc::playlist::Media>& medias)
+static bool convertMLItemToPlaylistMedias(vlc_medialibrary_t* ml, const MLItemId & itemId, const QStringList &options, QVector<vlc::playlist::Media>& medias)
 {
     //invalid item
     if (itemId.id == 0)
-        return;
+        return false;
 
     if (itemId.type == VLC_ML_PARENT_UNKNOWN)
     {
         SharedInputItem item( vlc_ml_get_input_item( ml, itemId.id ), false );
-        if (item)
-            medias.push_back(vlc::playlist::Media(item.get(), options));
+        if (!item)
+            return false;
+        medias.push_back(vlc::playlist::Media(item.get(), options));
     }
     else
     {
         vlc_ml_query_params_t query = vlc_ml_query_params_create();
         ml_unique_ptr<vlc_ml_media_list_t> media_list(vlc_ml_list_media_of( ml, &query, itemId.type, itemId.id));
-        if (media_list == nullptr || media_list->i_nb_items == 0)
-            return;
+        if (media_list == nullptr)
+            return false;
+        if (media_list->i_nb_items == 0)
+            return true;
 
         auto mediaRange = ml_range_iterate<vlc_ml_media_t>( media_list );
         std::vector<const vlc_ml_media_t *> ordered;
@@ -317,6 +320,7 @@ static void convertMLItemToPlaylistMedias(vlc_medialibrary_t* ml, const MLItemId
             return vlc::playlist::Media(item.get(), options);
         });
     }
+    return true;
 }
 
 static void convertQUrlToPlaylistMedias(QUrl mrl, const QStringList& options, QVector<vlc::playlist::Media>& medias)
@@ -332,8 +336,9 @@ static void convertQStringToPlaylistMedias(const QString &mrl, const QStringList
 }
 
 
-static void convertQVariantListToPlaylistMedias(vlc_medialibrary_t* ml, QVariantList itemIdList, const QStringList& options, QVector<vlc::playlist::Media>& medias)
+static bool convertQVariantListToPlaylistMedias(vlc_medialibrary_t* ml, QVariantList itemIdList, const QStringList& options, QVector<vlc::playlist::Media>& medias)
 {
+    bool resolved = !itemIdList.isEmpty();
     for (const QVariant& varValue: itemIdList)
     {
         if (varValue.canConvert<QUrl>())
@@ -349,10 +354,13 @@ static void convertQVariantListToPlaylistMedias(vlc_medialibrary_t* ml, QVariant
         else if (varValue.canConvert<MLItemId>())
         {
             MLItemId itemId = varValue.value<MLItemId>();
-            convertMLItemToPlaylistMedias(ml, itemId, options, medias);
+            if (!convertMLItemToPlaylistMedias(ml, itemId, options, medias))
+                resolved = false;
         }
-        // else ignore
+        else
+            resolved = false;
     }
+    return resolved;
 }
 
 MLItemId MediaLib::deserializeMlItemIdFromString(const QString& serialized_id) {
@@ -506,17 +514,28 @@ void MediaLib::exportToFile(const QVariantList& itemIdList)
 {
     struct Context {
         QVector<vlc::playlist::Media> medias;
+        bool resolved = false;
     };
     runOnMLThread<Context>(this,
     //ML thread
     [itemIdList]
     (vlc_medialibrary_t* ml, Context& ctx)
     {
-        convertQVariantListToPlaylistMedias(ml, itemIdList, {}, ctx.medias);
+        ctx.resolved = convertQVariantListToPlaylistMedias(ml, itemIdList, {}, ctx.medias)
+            && std::none_of(ctx.medias.cbegin(), ctx.medias.cend(),
+                            [](const vlc::playlist::Media& media) { return !media.raw(); });
     },
     //UI thread
     [](quint64, Context& ctx){
-        DialogsProvider::getInstance()->saveMediaToPlaylistFile(ctx.medias);
+        auto* dialogs = DialogsProvider::getInstance();
+        if (!ctx.resolved)
+        {
+            dialogs->messageDialog(qtr("Could not load the playlist media for export."),
+                                   qtr("Export Playlist"), QMessageBox::Ok, QMessageBox::Ok,
+                                   QMessageBox::Warning);
+            return;
+        }
+        dialogs->saveMediaToPlaylistFile(ctx.medias);
     });
 }
 

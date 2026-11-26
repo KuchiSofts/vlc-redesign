@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Export an empty playlist**: Export Playlist on a playlist with no files now opens the save dialog and writes a valid empty playlist; a playlist that cannot be read shows a warning.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes

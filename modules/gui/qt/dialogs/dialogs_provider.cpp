@@ -1444,15 +1444,21 @@ void writeHTML( FILE *file, const QVector<vlc::playlist::Media>& medias )
            "</head>\n\n"
            "<body>\n"
            "  <h1>Playlist</h1>\n"
-           "  <hr />\n"
-           "  <ol>\n", file );
+           "  <hr />\n", file );
 
+    // XHTML 1.1 requires at least one list item in an ordered list.
+    bool hasEntries = false;
     for( const auto& media : medias )
     {
         input_item_t *item = media.raw();
         char *name = xmlEncoded( input_item_GetName( item ) );
         if( !name )
             continue;
+        if( !hasEntries )
+        {
+            fputs( "  <ol>\n", file );
+            hasEntries = true;
+        }
         char *artist = xmlEncoded( input_item_GetArtist( item ) );
         const vlc_tick_t duration = input_item_GetDuration( item );
         const long long seconds = duration > 0 ? SEC_FROM_VLC_TICK( duration ) : 0;
@@ -1465,8 +1471,9 @@ void writeHTML( FILE *file, const QVector<vlc::playlist::Media>& medias )
         free( name );
     }
 
-    fputs( "  </ol>\n"
-           "  <hr />\n"
+    if( hasEntries )
+        fputs( "  </ol>\n", file );
+    fputs( "  <hr />\n"
            "</body>\n"
            "</html>", file );
 }
@@ -1508,8 +1515,6 @@ QString writePlaylistFile( const QString& path, const QByteArray& module,
  * audio output, created on the UI thread. */
 void DialogsProvider::saveMediaToPlaylistFile( const QVector<vlc::playlist::Media>& medias, bool m3uOnly )
 {
-    if ( medias.isEmpty() )
-        return;
     const char *module = nullptr;
     const QString file = askPlaylistFile( qtr( "Export playlist as..." ), &module, m3uOnly );
     if ( file.isEmpty() )

@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Tray menu Show / Hide**: after closing VLC to the tray, its tray menu offers Show instead of Hide.
 - **Window position after rearranging displays**: when a monitor's position changed since last time, VLC reopens at the same place on that monitor instead of being pushed against its edge.
 - **Exit Fullscreen button**: the fullscreen title bar's Exit Fullscreen button now leaves fullscreen after F11 during a video, instead of staying fullscreen or moving to another display.
 - **Clear history**: a confirmed Clear in Settings > Privacy now always finishes, even when you switch to another category right away.

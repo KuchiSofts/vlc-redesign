@@ -15,31 +15,48 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **Floating Play Queue**: it opens inside the screen beside the window, on the other side or over its edge when there is no room.
-- **Installer and close to tray**: setup and the uninstaller now ask a running VLC Redesign to quit the way its Quit menu does, so it saves its settings, window position and queue, also when "close to system tray" is on.
-- **Keyboard pane resize**: the sidebar, play queue and Music artists pane edges are Tab stops; Left/Right resize them (Shift for bigger steps, Home/End for the limits), and screen readers see them as named sliders.
-- **Right-to-left languages**: picking Hebrew or Arabic in Settings marks the texts left in English at once, so their punctuation sits on the right side.
-- **Decimal settings**: a value typed with the language's decimal comma ("0,5") is accepted.
-- **Translations**: the guide and subtitle search counts can be translated with the right plural forms.
-- **Toggles, light theme**: the ON word reads clearly on its pale accent tint.
-- **Compact Library, light theme**: with Increase text contrast on, the grey file and folder names are dark enough to read.
-- **Screen readers on sliders**: the seek bar, volume, speed, mini player and subtitle delay sliders report their range.
-- **Screen readers in Settings and first run**: the chosen theme, accent colour and Settings page are announced, and accents are read as "Accent color 3 of 9" instead of a hex code.
-- **Effects with the keyboard**: the Audio/Video tabs and the video sections show the focus border, and screen readers say which is selected.
-- **Taskbar buttons (Windows)**: after Explorer restarts, the thumbnail buttons update once, and Play is disabled with an empty queue.
-- **Opening a file while VLC starts**: no longer able to crash a starting instance.
-- **Play button with the keyboard**: Enter or Space starts a stopped queue (or asks for files when it is empty), as a click does.
-- **About**: its links (What's new, Suggest an idea, Report a problem, credits) can be reached with Tab and opened with Enter or Space.
-- **Open from Explorer (Windows)**: with "Add to the playlist instead of replacing it", a file opened while nothing plays now plays and the window shows.
-- **Play media key (Windows)**: a Play key or a headset's Play button resumes a paused media.
-- **Sidebar with the keyboard**: Enter (or Space) opens the highlighted page or pin.
-- **Library search**: / and Ctrl+K open the search of the page shown.
-- **Music → Tracks**: Play All and Shuffle no longer freeze a large library, and a library changing while it loads can no longer crash VLC.
-- **Subtitle services**: a sign-in or key test finishing while Settings was reopened elsewhere no longer erases the saved logins.
-- **Compact Library search**: Ctrl+V pastes and Ctrl+C copies in the search field, instead of playing the clipboard or opening Capture.
-- **Video information**: the Audio track column shows the audio track (it repeated the video's codec and language).
-- **Faster start**: the Inter font is read once instead of two or three times.
-- **Opening a file from Explorer**: the library rescan waits 10 seconds, so it no longer competes with the file for the disk.
+### Added
+
+- **Library search with / or Ctrl+K**: the search of the page shown opens.
+- **Sidebar with the keyboard**: Enter opens the highlighted page, pin or Add item.
+- **Pane edges with the keyboard**: Tab reaches the edge of the sidebar, the play queue and the artists pane, and
+  the arrows resize it.
+- **About with the keyboard**: Tab reaches its links, Enter opens them.
+- **Decimal comma in Settings**: "0,5" is accepted in the languages that write it so.
+
+### Changed
+
+- **Floating Play Queue**: it opens beside the window inside the screen, on the other side when there is no room.
+- **A file opened from Explorer while nothing plays (Windows)** plays, also with "Add to the playlist".
+- **Setup and "close to system tray" (Windows)**: setup asks a running copy to quit for real, so it saves its
+  settings, window position and queue.
+- **A file opened from Explorer**: the library's rescan waits 10 seconds.
+- **Faster start**: the Inter font is read once.
+- **Translations**: the counts of channels and videos take each language's plural forms.
+
+### Fixed
+
+- **Video information**: the Audio track column shows the audio track.
+- **Play media key (Windows)**: it resumes a paused media.
+- **Play button with the keyboard**: Enter or Space starts a stopped queue.
+- **Compact Library search**: the app's shortcuts wait while you type.
+- **Music › Tracks**: Play All and Shuffle no longer freeze a large library.
+- **Subtitle services**: a late sign-in answer no longer erases the saved logins.
+- **Light theme**: the ON word of the toggles reads clearly, and Increase text contrast reaches the Compact Library.
+- **Effects with the keyboard**: the focused tab and section are framed.
+- **Right-to-left languages**: the texts left in English keep their punctuation in place when the direction changes.
+- **Taskbar buttons (Windows)**: rebuilt cleanly after Explorer restarts; Play is greyed with an empty queue.
+- **A file opened while VLC starts** can no longer crash it.
+- **Screen readers**: the chosen theme, accent colour and Settings page are announced, and the sliders give
+  their range.
+
+### Technical
+
+- Twenty-five pull requests by a contributor (#177 to #184, #186, #193 to #206, #208, #209), each shown before and
+  after and then taken, with our fixes on five of them: the shortcuts come back whenever the Compact Library's
+  search loses the keyboard (#180), Enter on Add item and one focus rule for pins and pages (#184), the Compact
+  Library's rows as listed exceptions of the light map (#202), a translation again on every direction change
+  (#206), and setup still closing the copies of every Windows session (#209).
 
 ## [0.8.4] · 2026-11-26
 

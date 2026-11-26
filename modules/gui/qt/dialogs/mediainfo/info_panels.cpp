@@ -261,14 +261,12 @@ void MetaPanel::update( const SharedInputItem& p_item )
 /**
  * Save the MetaData, triggered by parent->save Button
  **/
-bool MetaPanel::saveMeta()
+void MetaPanel::saveMeta()
 {
     const auto input = p_input.get();
 
-    if( input == NULL ) {
-        RedesignMessageBox::warning( p_intf, this, qtr("Metadata"), qtr("Not editing a file") );
-        return false;
-    }
+    if( !input || !b_inEditMode )
+        return;
 
     /* now we read the modified meta data */
     input_item_SetTitle(  input, qtu( title_text->text() ) );
@@ -286,19 +284,16 @@ bool MetaPanel::saveMeta()
     if( !currentURL.isEmpty() )
         input_item_SetArtURL( input, qtu( currentURL ) );
 
-    /* Reset the status of the mode. No need to emit any signal because parent
-       is the only caller */
-    b_inEditMode = false;
     int vlcret = input_item_WriteMeta( VLC_OBJECT(p_intf), input );
     if (vlcret != VLC_SUCCESS) {
         RedesignMessageBox::warning( p_intf, this, qtr("Metadata"), qtr("Failed to save metadata") );
-        return false;
+        return;
     }
+    setEditMode( false );
     art_cover->setItem( p_input );
     /* Refresh the player controller caches for the currently playing item so
      * the Qt UI sees the new artwork and metadata without reopening. */
     THEMIM->refreshMediaMeta( input );
-    return true;
 }
 
 
@@ -309,13 +304,16 @@ bool MetaPanel::isInEditMode()
 
 void MetaPanel::enterEditMode()
 {
-    setEditMode( true );
+    if( p_input )
+        setEditMode( true );
 }
 
 void MetaPanel::setEditMode( bool b_editing )
 {
+    if( b_inEditMode == b_editing )
+        return;
     b_inEditMode = b_editing;
-    if( b_editing )emit editing();
+    emit editModeChanged();
 }
 
 /*
@@ -323,6 +321,9 @@ void MetaPanel::setEditMode( bool b_editing )
  */
 void MetaPanel::clear()
 {
+    p_input.reset();
+    setEditMode( false );
+
     title_text->clear();
     artist_text->clear();
     genre_text->clear();
@@ -338,11 +339,10 @@ void MetaPanel::clear()
     nowplaying_text->clear();
     publisher_text->clear();
     encodedby_text->clear();
-    art_cover->clear();
+    art_cover->setItem( p_input );
     currentURL.clear();
     fingerprintButton->setEnabled( false );
 
-    setEditMode( false );
     emit uriSet( "" );
 }
 
@@ -356,6 +356,8 @@ void MetaPanel::fingerprint()
 
 void MetaPanel::fingerprintUpdate( const SharedInputItem& p_item )
 {
+    if( !p_input || p_item != p_input )
+        return;
     update( p_item );
     setEditMode( true );
 }

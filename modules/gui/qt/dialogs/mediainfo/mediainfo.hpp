@@ -71,7 +71,6 @@ private slots:
 
     void close() override;
 
-    void saveMeta();
     void updateButtons( int i_tab );
     void updateURI( const QString& );
 };

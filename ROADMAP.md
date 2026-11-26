@@ -46,8 +46,6 @@ request, then released).
 
 And as the issues bring them:
 
-- 📋 Android: a more compact video player (a smaller title area, the seek bar on a row of its own), asked for in
-  [#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -132,6 +130,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ The update card lists what concerns your system, each line whole
 - ✅ Linux: sound on Fedora and other systems with a newer PipeWire ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207))
 - ✅ A second VLC window no longer closes on Settings › Library ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211))
+- ✅ Android: the player on a phone held sideways, the seek bar on its own row and a slim top bar ([#213](https://github.com/KuchiSofts/vlc-redesign/issues/213))
 - ✅ macOS: an update that takes too long stops cleanly
 - ✅ Android TV: the remote reaches the header's buttons and the Favorites row, the focus returns to the file
   played, Play all only where something plays

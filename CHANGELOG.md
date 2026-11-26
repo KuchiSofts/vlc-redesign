@@ -93,6 +93,8 @@ reaching every part of the Android TV app, and the "deleted or moved" message pu
 - **Linux: sound on Fedora and other systems with a newer PipeWire**: the app uses the system's PipeWire
   library, its own copy only where there is none ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207)).
 - **A second VLC window no longer closes when Settings › Library is opened** ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211)).
+- **Android: the player on a phone held sideways**: the seek bar on a row of its own, and a slim top bar that
+  fades into the video ([#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)).
 - **macOS: an update that takes too long stops cleanly**: its disk image is released and no partial copy stays.
 - **Android TV: Play all is offered only where there is something to play**.
 - **Android TV: the Network page's Favorites are reached with Up from Storages**, and a folder row is one stop.

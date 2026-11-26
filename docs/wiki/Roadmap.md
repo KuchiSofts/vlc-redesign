@@ -38,8 +38,6 @@ request, then released).
 
 And as the issues bring them:
 
-- 📋 Android: a more compact video player (a smaller title area, the seek bar on a row of its own), asked for in
-  [#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

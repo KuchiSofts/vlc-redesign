@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Cancel library subtitle downloads**: closing Add subtitles to the library now cancels the request in flight instead of letting it run (and use up a download).
 - **Discard changes and subtitle languages**: Discard changes in Settings no longer saves a subtitle language or service change made in that session.
 - **Effects Cancel with a negative preamp**: Cancel in Effects > Audio now removes a previewed compressor even when a negative equalizer preamp was saved in Settings.
 - **Equalizer preset from Settings**: a preset chosen in Settings > Audio now loads at the next start instead of the equalizer failing with "No preset selected"; negative preset gains are written correctly.

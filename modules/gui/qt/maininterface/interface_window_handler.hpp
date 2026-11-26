@@ -89,8 +89,6 @@ protected:
 
     MainCtx* m_mainCtx = nullptr;
 
-    bool m_hasPausedWhenMinimized = false;
-
     bool m_isWindowTiled = false;
 
     bool m_maximizedView = false;

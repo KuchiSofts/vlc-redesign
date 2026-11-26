@@ -103,6 +103,9 @@ public:
 
     //playback
     PlayerController::PlayingState m_playing_status = PlayerController::PLAYING_STATE_STOPPED;
+    // Tracks the minimize pause for the current input under the player lock.
+    enum class MinimizePause { None, Active, ResumePending };
+    MinimizePause m_minimizePause = MinimizePause::None;
     QString         m_name;
     float           m_buffering = 0.f;
     float           m_rate = 1.f;

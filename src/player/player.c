@@ -1579,21 +1579,17 @@ vlc_player_SetAtoBLoop(vlc_player_t *player, enum vlc_player_abloop abloop)
     switch (abloop)
     {
         case VLC_PLAYER_ABLOOP_A:
-            if (input->abloop_state[1].set)
+            if (!vlc_player_CanSeek(player) || input->abloop_state[1].set)
                 return VLC_EGENERIC;
             input->abloop_state[0].time = time;
             input->abloop_state[0].pos = pos;
             input->abloop_state[0].set = true;
             break;
         case VLC_PLAYER_ABLOOP_B:
-            if (!vlc_player_CanSeek(player))
-            {
-                input->abloop_state[0].set = false;
-                return VLC_EGENERIC;
-            }
-
             if (!input->abloop_state[0].set)
                 return VLC_EGENERIC;
+            if (!vlc_player_CanSeek(player))
+                goto invalid_loop;
             input->abloop_state[1].time = time;
             input->abloop_state[1].pos = pos;
             input->abloop_state[1].set = true;
@@ -1613,6 +1609,7 @@ vlc_player_SetAtoBLoop(vlc_player_t *player, enum vlc_player_abloop abloop)
             }
 
             /* Error: A time is superior to B time. */
+        invalid_loop:
             abloop = VLC_PLAYER_ABLOOP_NONE;
             ret = VLC_EGENERIC;
             /* fall-through */

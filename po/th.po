@@ -39536,3 +39536,7 @@ msgstr "ปรับขนาดคิวเล่น"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "ปรับขนาดแผงศิลปิน"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "ไม่สามารถส่งออกผังเล่นไปยัง %1"

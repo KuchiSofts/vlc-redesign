@@ -390,8 +390,7 @@ bool AudioEffects::setFilterEnabled(const QString& filter, bool enabled)
     if (!filterAvailable(filter)) return fail(tr("Audio filter is unavailable."));
     if (!requirePreview()) return false;
     if (filterEnabled(filter) == enabled) return true;
-    // Materialize the real bands before loading the filter. The VLC module
-    // rejects an empty bands string even when a preset exists.
+    // Set the bands before loading the filter to keep the current preamp.
     if (enabled && filter == "equalizer" && readValue("equalizer-bands").toString().isEmpty()) {
         QStringList values;
         for (const QVariant& value : bands()) values << QLocale::c().toString(value.toDouble(), 'f', 3);
@@ -468,18 +467,25 @@ bool AudioEffects::cancel()
         return fail(tr("Audio output changed; the previous preview can no longer be restored."));
     }
     // Restore the original effect values before restoring the original chain.
+    QString restoreError;
     for (const QString& filter : filters)
         for (const QString& name : optionNames(filter)) {
             if (configOnly.contains(name)) continue;
             const QVariant value = m_snapshotValues.value(name);
-            if (value.isValid() && !writeValue(name, value)) return false;
+            if (!value.isValid() || value == readValue(name)) continue;
+            if (!writeValue(name, value)) restoreError = m_lastError;
         }
     audio_output_t* aout = vlc_player_aout_Hold(m_ctx->getIntf()->p_player);
     if (!aout) return fail(tr("No active audio output is available."));
+    if (reinterpret_cast<quintptr>(aout) != m_snapshotAout) {
+        aout_Release(aout);
+        return fail(tr("Audio output changed during the preview."));
+    }
     const QByteArray bytes = m_snapshotChain.toUtf8();
     const int result = var_SetString(aout, "audio-filter", bytes.constData());
     aout_Release(aout);
     if (result != VLC_SUCCESS) return fail(tr("Audio filter preview could not be restored."));
+    if (!restoreError.isEmpty()) return fail(restoreError);
     m_transactionActive = false;
     m_snapshotValues.clear();
     m_configSnapshot.clear();

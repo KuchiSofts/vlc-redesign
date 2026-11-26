@@ -40142,3 +40142,7 @@ msgstr "تغيير حجم قائمة الانتظار"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "تغيير حجم لوحة الفنانين"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "تعذّر تصدير قائمة التشغيل إلى %1."

@@ -41073,3 +41073,7 @@ msgstr "Змяніць памер чаргі прайгравання"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Змяніць памер панэлі выканаўцаў"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Не ўдалося экспартаваць плэйліст у %1."

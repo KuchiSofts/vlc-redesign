@@ -39714,3 +39714,7 @@ msgstr "Тоглуулах дарааллын хэмжээг өөрчлөх"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Уран бүтээлчдийн самбарын хэмжээг өөрчлөх"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Тоглуулах жагсаалтыг %1 руу экспортлож чадсангүй."

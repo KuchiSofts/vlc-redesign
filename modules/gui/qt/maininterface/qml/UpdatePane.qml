@@ -171,7 +171,7 @@ T.Pane {
 
                 onClicked: {
                     descriptionFlickable.revealed = false
-                    UpdateModel.checkUpdate()
+                    UpdateModel.checkUpdate(true)
                 }
 
                 Navigation.parentItem: root

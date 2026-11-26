@@ -72,6 +72,13 @@ T.Pane {
         colorSet: ColorContext.Window
     }
 
+    // VideoLAN's update button of this pane (2026-11): their update check is not part of this interface, which has
+    // its own in About and its "ready" toast. MainDisplay asks for the button by this name: it is never active.
+    readonly property QtObject loaderUpdateButton: QtObject {
+        readonly property bool active: false
+        readonly property bool suppressed: false
+    }
+
     // Retain the controller model for the existing navigation context menu.
     NavigationModel {
         id: navigationModel

@@ -5,15 +5,70 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `865394f5d5` (2026-11-26).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `3d86ce421d` (2026-11-26).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.8.6] · 2026-11-26
+
+An update release of every app: ten more changes from a contributor (Browse, the equalizer, subtitle
+settings, saved queues), and what a review of the Android app and the Samsung TV app as a whole found.
+
+### Fixed
+
+- **Save play queue**: a file that cannot be created no longer crashes, and a failed save says so.
+- **Media Library folders (classic settings)**: Reload rescans the folder, also after another one was removed.
+- **Services**: the address bar shows the service and the folders above again, and they can be clicked.
+- **Recent**: a new video thumbnail appears without reloading the page.
+- **Browse**: Back returns to the folder you had opened.
+- **Browse sort**: ascending File size and File modified start with the smallest and the oldest.
+- **Add subtitles to the library**: closing it cancels the request in flight.
+- **Settings › Discard changes**: a subtitle language or service change is no longer saved.
+- **Effects › Audio**: Cancel removes a previewed compressor also when a negative preamp is saved.
+- **Equalizer preset from Settings**: it loads at the next start.
+
+- **Android: a lyrics file with a bad offset** no longer closes the app when its song plays.
+- **Android: Folders**: a folder of more than 2,000 files is listed and played in full, and Back works after its
+  drive is taken out.
+- **Android: Export playlist** writes its file also when the phone is turned while the save dialog is open.
+- **Android TV**: Back leaves the app with Home hidden, and Left in a Home row goes one card back.
+- **Android: Check for updates** finds the newest app file after many desktop-only releases.
+
+- **Samsung TV: closing the player** returns the focus to the item it was opened from, and Back to a folder to
+  the row you left.
+- **Samsung TV: Remove** in the Queue and Bookmarks tabs removes the row you choose.
+- **Samsung TV: quick presses of Fast Forward and Rewind** add up.
+- **Samsung TV: Repeat all** works with one item and with "autoplay next" off.
+- **Samsung TV: a playlist named in Open Network Stream** is kept.
+- **Samsung TV: mute and the volume shown** follow the TV, and the TV's screen saver is allowed again while a
+  video is paused.
+- **Samsung TV: a channel** stops when the app is hidden and comes back with it.
+
+### Technical
+
+- Ten pull requests by a contributor (#236, #238 to #244, #246, #247), each read in full, then read together
+  by a reviewer before the release, with two small fixes of ours: a page restored by its row number (the
+  services' pages) waits for its rows, and the equalizer preamp that was saved stays the one applied when a
+  preset is loaded at the start.
+- One new text ("The playlist could not be exported to %1.") in 72 languages, each from the language's own
+  wording of the sister text that ends with the reason.
+- VideoLAN's master merged up to `3d86ce421d` (2026-11-26, 10 commits): their update button in the side pane and
+  its badge (this interface keeps its own side pane and its own update), button colours of the GTK and system
+  palette theme providers.
+- Android: the app beyond the player read as a whole by a reviewer (the update check, Folders, the TV window,
+  lyrics, playlist export): nine findings fixed. The update check takes only addresses of the project's own
+  release files and reads up to three pages; the Folders page takes its two layout listeners off the window
+  again (every visit kept the page alive). Unit tests for the update check and the lyrics reader.
+- Samsung TV: the app read as a whole by a reviewer (everything but the deleted-file flow): ten findings fixed,
+  among them the `tv.audio` privilege the volume control needs and the no-answer timeout running again after a
+  network retry. `tools/tvplayer.js` runs seventeen checks of them in the local preview; the focus, the queue's
+  Remove and the screen saver were also run on a 2017 TV.
 
 ## [0.8.5] · 2026-11-26
 

@@ -2304,6 +2304,16 @@ msgstr "Dodaj bez mogućnosti"
 msgid "Save play queue as..."
 msgstr "Spremi red izvođenja kao..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Popis za izvođenje nije bilo moguće izvesti u %1."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Izvezi popis za izvođenje"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Greška pisanja"
@@ -2319,12 +2329,6 @@ msgid ""
 msgstr ""
 "Popis za izvođenje nije bilo moguće izvesti u %1:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Izvezi popis za izvođenje"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8128,6 +8132,10 @@ msgstr "Želite li zaista odbaciti stavke koje trenutno nisu prikazane?"
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "Dokumenti"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "Prikaz pregledavanja"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

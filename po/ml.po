@@ -40834,3 +40834,7 @@ msgstr "പ്ലേ ക്യൂവിന്റെ വലുപ്പം മാ
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "ആർട്ടിസ്റ്റുകളുടെ പാനലിന്റെ വലുപ്പം മാറ്റുക"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "പ്ലേലിസ്റ്റ് %1-ലേക്ക് എക്സ്പോർട്ട് ചെയ്യാനായില്ല."

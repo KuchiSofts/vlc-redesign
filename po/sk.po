@@ -41307,3 +41307,7 @@ msgstr "Zmeniť veľkosť frontu prehrávania"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Zmeniť veľkosť panela interpretov"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Playlist sa nepodarilo exportovať do %1."

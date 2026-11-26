@@ -210,13 +210,15 @@ Widgets.PageLoader {
                 History.previous(Qt.BacktabFocusReason)
             }
 
-            onBrowse: (tree, reason) => {
+            onBrowse: (tree, reason, index) => {
+                if (index >= 0 && index < mediaModel.count) {
+                    History.viewProp.initialIndex = index
+                    History.viewProp.initialUri = mediaModel.getDataAt(index).url ?? ""
+                }
                 root._showBrowseNode(tree, reason)
             }
 
             onHomeButtonClicked: reason => root._showHome(reason)
-
-            onCurrentIndexChanged: History.viewProp.initialIndex = currentIndex
         }
     }
 }

@@ -68,14 +68,12 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
     request.deadlineMs = 90 * 1000;
     request.maxBytes = maxSubtitleBytes;
 
-    m_busy = true;
-    m_error.clear();
-    emit changed();
     const quint64 revision = m_revision;
     // Redirects never downgrade to HTTP (see util/http_request.cpp).
-    httpRequestAsync(this, request, [this, revision, url, name](const HttpResponse& reply) {
+    m_cancelRequest = httpRequestAsync(this, request, [this, revision, url, name](const HttpResponse& reply) {
         if (revision != m_revision)
             return;
+        m_cancelRequest = {};
         // changed() is emitted once the file is added and matched (or with
         // the error): the dialog saves on the first change that is not busy
         const QByteArray& payload = reply.body;
@@ -149,4 +147,7 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
         if (!started)
             m_busy = false;
     });
+    m_busy = true;
+    m_error.clear();
+    emit changed();
 }

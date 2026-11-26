@@ -41073,3 +41073,7 @@ msgstr "Изменить размер очереди воспроизведен�
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Изменить размер панели исполнителей"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Не удалось экспортировать плейлист в %1."

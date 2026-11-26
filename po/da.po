@@ -41078,3 +41078,7 @@ msgstr "Tilpas afspilningskøens størrelse"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Tilpas kunstnerpanelets størrelse"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Spillelisten kunne ikke eksporteres til %1."

@@ -2306,6 +2306,16 @@ msgstr "Дадаць без параметраў"
 msgid "Save play queue as..."
 msgstr "Захаваць чаргу прайгравання як..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Не ўдалося экспартаваць плэйліст у %1."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Экспартаваць плэйліст"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Памылка запісу"
@@ -2321,12 +2331,6 @@ msgid ""
 msgstr ""
 "Не ўдалося экспартаваць плэйліст у %1:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Экспартаваць плэйліст"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8144,6 +8148,10 @@ msgstr "Сапраўды адкінуць элементы, якія зараз 
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "Дакументы"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "Агляд"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

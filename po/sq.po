@@ -39853,3 +39853,7 @@ msgstr "Ndrysho madhësinë e radhës së luajtjes"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Ndrysho madhësinë e panelit të artistëve"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Lista e luajtjes nuk mund të eksportohej në %1."

@@ -2325,6 +2325,16 @@ msgstr "Adaugă fără opțiuni"
 msgid "Save play queue as..."
 msgstr "Salvează coada de redare ca..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Lista de redare nu a putut fi exportată în %1."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Exportă lista de redare"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Eroare de scriere"
@@ -2340,12 +2350,6 @@ msgid ""
 msgstr ""
 "Lista de redare nu a putut fi exportată în %1:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Exportă lista de redare"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8181,6 +8185,10 @@ msgstr "Sigur doriți să renunțați la elementele care nu sunt afișate moment
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "Documente"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "Vizualizare navigare"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

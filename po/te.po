@@ -39560,3 +39560,7 @@ msgstr "ప్రదర్శన వరుస పరిమాణం మార్
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "కళాకారుల ప్యానెల్ పరిమాణం మార్చు"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "ప్లేజాబితాను %1 కు ఎగుమతి చేయలేకపోయాం."

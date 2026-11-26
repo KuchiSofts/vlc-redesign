@@ -2311,6 +2311,16 @@ msgstr "Dodaj bez opcji"
 msgid "Save play queue as..."
 msgstr "Zapisz kolejkę odtwarzania jako..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Nie można wyeksportować listy odtwarzania do %1."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Eksportuj listę odtwarzania"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Błąd zapisu"
@@ -2326,12 +2336,6 @@ msgid ""
 msgstr ""
 "Nie można wyeksportować listy odtwarzania do %1:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Eksportuj listę odtwarzania"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8160,6 +8164,10 @@ msgstr "Czy na pewno odrzucić pozycje, które nie są obecnie wyświetlane?"
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "Dokumenty"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "Widok przeglądania"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

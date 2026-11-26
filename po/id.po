@@ -40579,3 +40579,7 @@ msgstr "Ubah ukuran antrean putar"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Ubah ukuran panel artis"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Daftar putar tidak dapat diekspor ke %1."

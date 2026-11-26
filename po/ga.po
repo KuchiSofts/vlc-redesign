@@ -40074,3 +40074,7 @@ msgstr "Athraigh méid na scuaine seinnte"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Athraigh méid phainéal na n-ealaíontóirí"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Níorbh fhéidir an seinnliosta a easpórtáil chuig %1."

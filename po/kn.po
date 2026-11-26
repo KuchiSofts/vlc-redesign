@@ -40861,3 +40861,7 @@ msgstr "ಪ್ಲೇ ಸರತಿಯ ಗಾತ್ರ ಬದಲಿಸಿ"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "ಕಲಾವಿದರ ಫಲಕದ ಗಾತ್ರ ಬದಲಿಸಿ"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು %1 ಗೆ ರಫ್ತು ಮಾಡಲಾಗಲಿಲ್ಲ."

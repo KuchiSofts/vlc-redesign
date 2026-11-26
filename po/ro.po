@@ -40773,3 +40773,7 @@ msgstr "Redimensionează coada de redare"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Redimensionează panoul artiștilor"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Lista de redare nu a putut fi exportată în %1."

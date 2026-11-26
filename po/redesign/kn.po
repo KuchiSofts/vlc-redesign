@@ -2296,6 +2296,16 @@ msgstr "ಆಯ್ಕೆಗಳಿಲ್ಲದೆ ಸೇರಿಸಿ"
 msgid "Save play queue as..."
 msgstr "ಪ್ಲೇ ಸರತಿಯನ್ನು ಹೀಗೆ ಉಳಿಸಿ..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು %1 ಗೆ ರಫ್ತು ಮಾಡಲಾಗಲಿಲ್ಲ."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು ರಫ್ತು ಮಾಡಿ"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "ಬರೆಯುವಲ್ಲಿ ದೋಷ"
@@ -2311,12 +2321,6 @@ msgid ""
 msgstr ""
 "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು %1 ಗೆ ರಫ್ತು ಮಾಡಲಾಗಲಿಲ್ಲ:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು ರಫ್ತು ಮಾಡಿ"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8057,6 +8061,10 @@ msgstr "ಪ್ರಸ್ತುತ ಪ್ರದರ್ಶಿಸದ ಐಟಂಗಳ�
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "ದಾಖಲೆಗಳು"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "ಬ್ರೌಸ್ ನೋಟ"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

@@ -977,6 +977,10 @@ bool ConfigModel::setValue(const QString &key, const QVariant &value)
         if ((key == QLatin1String("hotkeys-y-wheel-mode") || key == QLatin1String("hotkeys-x-wheel-mode"))
             && normalized.toLongLong() >= 2)
             normalized = QVariant::fromValue<int64_t>(2);
+        const bool selectingPreset = key == QLatin1String("equalizer-preset");
+        const QString equalizer = QStringLiteral("equalizer");
+        const bool enablingEqualizer = key == QLatin1String("audio-filter")
+                                       && listHas(normalized, equalizer) && !listHas(entry.staged, equalizer);
         const bool wasDirty = dirty();
         entry.staged = normalized;
         notifyEntry(i);
@@ -1017,11 +1021,19 @@ bool ConfigModel::setValue(const QString &key, const QVariant &value)
             if (background >= 0 && m_entries[background].staged.toLongLong() != 0)
                 setValue(QStringLiteral("freetype-background-opacity"), normalized);
         }
-        if (key == QLatin1String("equalizer-preset")) {
-            const QVariantList preset = equalizerPreset(normalized.toString());
-            if (indexOfKey(QStringLiteral("equalizer-bands")) >= 0)
-                setValue(QStringLiteral("equalizer-bands"), QString());
-            if (!preset.isEmpty() && indexOfKey(QStringLiteral("equalizer-preamp")) >= 0)
+        if (selectingPreset || enablingEqualizer) {
+            const QString name = valueFor(QStringLiteral("equalizer-preset")).toString();
+            const QVariantList preset = equalizerPreset(name.toLower());
+            const QString bandsKey = QStringLiteral("equalizer-bands");
+            const int bands = indexOfKey(bandsKey);
+            if (!preset.isEmpty() && bands >= 0
+                && (selectingPreset || m_entries[bands].staged.toString().isEmpty())) {
+                QStringList gains;
+                for (qsizetype band = 1; band < preset.size(); ++band)
+                    gains.append(QLocale::c().toString(preset[band].toDouble(), 'f', 7));
+                setValue(bandsKey, gains.join(' '));
+            }
+            if (selectingPreset && !preset.isEmpty() && indexOfKey(QStringLiteral("equalizer-preamp")) >= 0)
                 setValue(QStringLiteral("equalizer-preamp"), preset.first());
         }
         syncDerived();

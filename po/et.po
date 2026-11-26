@@ -40351,3 +40351,7 @@ msgstr "Muuda esitusjärjekorra suurust"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Muuda esitajate paneeli suurust"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Esitusloendit ei õnnestunud eksportida asukohta %1."

@@ -36,12 +36,60 @@ Widgets.PageExt {
 
     property var contextMenu
 
+    property int initialIndex: -1
+    property string initialUri: ""
+    property bool _initialItemRestored: false
+
     readonly property var currentIndex: loader.currentItem?.currentIndex ?? -1
 
-    signal browse(var tree, int reason)
+    signal browse(var tree, int reason, int index)
     signal homeButtonClicked(int reason)
 
     isSearchable: loader.isSearchable
+
+    function _restoreInitialItem() {
+        if (_initialItemRestored || initialIndex < 0 || !loader.currentItem
+                || loader.isLoading || loader.count === 0)
+            return
+
+        let index = initialIndex
+        if (initialUri) {
+            const savedRowUri = index < loader.count ? model.getDataAt(index).url : ""
+            if (savedRowUri == null)
+                return // Accessing an uncached row requests it asynchronously.
+
+            if (savedRowUri !== initialUri) {
+                for (let row = 0; row < loader.count; ++row) {
+                    const uri = model.getDataAt(row).url
+                    if (uri == null) {
+                        // Request the remaining rows before falling back to the saved index.
+                        model.getDataAt(loader.count - 1)
+                        return
+                    }
+                    if (uri === initialUri) {
+                        index = row
+                        break
+                    }
+                }
+            }
+        }
+
+        // A place kept by its row number only (the services' pages): while its rows are still arriving the number
+        // is past the end, and the first row would be taken for it.
+        if (!initialUri && index >= loader.count)
+            return
+
+        _initialItemRestored = true
+        loader.resetFocus(index)
+    }
+
+    Connections {
+        target: root.model
+        enabled: root.initialIndex >= 0 && !root._initialItemRestored
+
+        function onLoadingChanged() { Qt.callLater(root._restoreInitialItem) }
+        function onDataChanged() { Qt.callLater(root._restoreInitialItem) }
+    }
 
     header:  BrowseTreeHeader {
         id: browseTreeHeader
@@ -62,12 +110,14 @@ Widgets.PageExt {
         Navigation.parentItem: root
         Navigation.downItem: loader
 
-        onBrowse: (tree, reason) => root.browse(tree, reason)
+        onBrowse: (tree, reason) => root.browse(tree, reason, root.currentIndex)
         onHomeButtonClicked: (reason) => root.homeButtonClicked(reason)
     }
 
     contentItem: MainViewLoader {
         id: loader
+
+        onLoaded: Qt.callLater(root._restoreInitialItem)
 
         isSearchable: true
 
@@ -103,7 +153,7 @@ Widgets.PageExt {
                 if (data.type === NetworkMediaModel.TYPE_DIRECTORY
                         || data.type === NetworkMediaModel.TYPE_NODE
                         || data.type === NetworkMediaModel.TYPE_PLAYLIST)  {
-                    browse(data.tree, Qt.TabFocusReason)
+                    browse(data.tree, Qt.TabFocusReason, index)
                 } else {
                     playAt(index)
                 }
@@ -189,7 +239,7 @@ Widgets.PageExt {
                         if (model.type === NetworkMediaModel.TYPE_NODE
                                 || model.type === NetworkMediaModel.TYPE_DIRECTORY
                                 || model.type === NetworkMediaModel.TYPE_PLAYLIST)
-                            browse(model.tree, Qt.MouseFocusReason)
+                            browse(model.tree, Qt.MouseFocusReason, index)
                         else
                             playAt(index)
                     }

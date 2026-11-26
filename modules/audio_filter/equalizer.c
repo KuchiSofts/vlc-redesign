@@ -90,8 +90,8 @@ vlc_module_begin ()
               TWOPASS_LONGTEXT )
     add_bool( "equalizer-vlcfreqs", true, VLC_BANDS_TEXT,
               VLC_BANDS_LONGTEXT )
-    add_float( "equalizer-preamp", 12.0f, PREAMP_TEXT,
-               PREAMP_LONGTEXT )
+    add_float_with_range( "equalizer-preamp", 12.0f, -20.0f, 20.0f,
+                          PREAMP_TEXT, PREAMP_LONGTEXT )
     set_callback( Open )
     add_shortcut( "equalizer" )
 vlc_module_end ()
@@ -281,7 +281,6 @@ static int EqzInit( filter_t *p_filter, int i_rate )
     filter_sys_t *p_sys = p_filter->p_sys;
     eqz_config_t cfg;
     int i, ch;
-    vlc_value_t val1, val2, val3;
     vlc_object_t *p_aout = vlc_object_parent(p_filter);
     int i_ret = VLC_ENOMEM;
 
@@ -339,28 +338,34 @@ static int EqzInit( filter_t *p_filter, int i_rate )
 
     var_Create( p_aout, "equalizer-preamp", VLC_VAR_FLOAT | VLC_VAR_DOINHERIT );
 
-    /* Get initial values */
-    var_Get( p_aout, "equalizer-preset", &val1 );
-    var_Get( p_aout, "equalizer-bands", &val2 );
-    var_Get( p_aout, "equalizer-preamp", &val3 );
-
     /* Load the preset only if equalizer-bands is not set. */
-    if ( val2.psz_string == NULL || *val2.psz_string == '\0' )
-        PresetCallback( VLC_OBJECT( p_aout ), NULL, val1, val1, p_sys );
-    free( val1.psz_string );
-    BandsCallback(  VLC_OBJECT( p_aout ), NULL, val2, val2, p_sys );
-    PreampCallback( VLC_OBJECT( p_aout ), NULL, val3, val3, p_sys );
+    vlc_value_t bands = { .psz_string = var_GetNonEmptyString( p_aout, "equalizer-bands" ) };
+    if( bands.psz_string == NULL )
+    {
+        vlc_value_t preset = { .psz_string = var_GetNonEmptyString( p_aout, "equalizer-preset" ) };
+        /* The preamp that was saved stays the one applied, as before: the preset sets its own on the way. */
+        const float saved_preamp = var_GetFloat( p_aout, "equalizer-preamp" );
+        if( preset.psz_string != NULL &&
+            PresetCallback( p_aout, NULL, preset, preset, p_sys ) == VLC_SUCCESS )
+        {
+            bands.psz_string = var_GetNonEmptyString( p_aout, "equalizer-bands" );
+            var_SetFloat( p_aout, "equalizer-preamp", saved_preamp );
+        }
+        free( preset.psz_string );
+    }
 
     /* Exit if we have no preset and no bands value */
-    if (!val2.psz_string || !*val2.psz_string)
+    if( bands.psz_string == NULL )
     {
         msg_Err(p_filter, "No preset selected");
-        free( val2.psz_string );
         free( p_sys->f_amp );
         i_ret = VLC_EGENERIC;
         goto error;
     }
-    free( val2.psz_string );
+    BandsCallback( p_aout, NULL, bands, bands, p_sys );
+    free( bands.psz_string );
+    vlc_value_t preamp = { .f_float = var_GetFloat( p_aout, "equalizer-preamp" ) };
+    PreampCallback( p_aout, NULL, preamp, preamp, p_sys );
 
     /* Add our own callbacks */
     var_AddCallback( p_aout, "equalizer-preset", PresetCallback, p_sys );
@@ -494,10 +499,11 @@ static int PresetCallback( vlc_object_t *p_aout, char const *psz_cmd,
     {
         char *psz;
 
-        lldiv_t d = lldiv( lroundf(preset->f_amp[i] * 10000000.f), 10000000 );
+        const long long gain = lroundf( preset->f_amp[i] * 10000000.f );
+        const lldiv_t d = lldiv( llabs( gain ), 10000000 );
 
-        if( asprintf( &psz, "%s %lld.%07llu", i ? bands : "",
-                      d.quot, d.rem ) == -1 )
+        if( asprintf( &psz, "%s %s%lld.%07lld", i ? bands : "",
+                      gain < 0 ? "-" : "", d.quot, d.rem ) == -1 )
             psz = NULL;
 
         free( bands );

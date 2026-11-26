@@ -41417,3 +41417,7 @@ msgstr "Ridimensiona la coda di riproduzione"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Ridimensiona il pannello degli artisti"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Impossibile esportare la scaletta in %1."

@@ -20,7 +20,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Recent thumbnails**: a video thumbnail generated while Recent is open now appears without reloading the page.
 - **Browse Back keeps your place**: going Back in Browse selects and scrolls to the folder you had opened, in list and grid.
 - **Save play queue errors**: saving the queue (Ctrl+Y) to a file that cannot be created no longer crashes, and a failed save now says so.
-- **Cancel library subtitle downloads**: closing Add subtitles to the library now cancels the request in flight instead of letting it run (and use up a download).
+- **Cancel library subtitle downloads**: closing Add subtitles to the library now cancels the request in flight instead of letting it run.
 - **Discard changes and subtitle languages**: Discard changes in Settings no longer saves a subtitle language or service change made in that session.
 - **Effects Cancel with a negative preamp**: Cancel in Effects > Audio now removes a previewed compressor even when a negative equalizer preamp was saved in Settings.
 - **Equalizer preset from Settings**: a preset chosen in Settings > Audio now loads at the next start instead of the equalizer failing with "No preset selected"; negative preset gains are written correctly.

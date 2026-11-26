@@ -40141,3 +40141,7 @@ msgstr "Newid maint y ciw chwarae"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Newid maint y panel artistiaid"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Nid oedd modd allforio'r rhestr chwarae i %1."

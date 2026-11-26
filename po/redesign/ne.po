@@ -2267,6 +2267,16 @@ msgstr "विकल्पहरू बिना थप्नुहोस्"
 msgid "Save play queue as..."
 msgstr "बजाउने लाम यस रूपमा बचत गर्नुहोस्..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "प्लेलिस्ट %1 मा निर्यात गर्न सकिएन।"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "बजाउने सूची निर्यात गर्नुहोस्"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "लेखन त्रुटि"
@@ -2282,12 +2292,6 @@ msgid ""
 msgstr ""
 "प्लेलिस्ट %1 मा निर्यात गर्न सकिएन:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "बजाउने सूची निर्यात गर्नुहोस्"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8000,6 +8004,10 @@ msgstr "के तपाईं हाल नदेखाइएका वस्�
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "कागजातहरू"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "ब्राउज दृश्य"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

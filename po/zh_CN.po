@@ -39916,3 +39916,7 @@ msgstr "调整播放队列大小"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "调整艺术家面板大小"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "无法将播放列表导出到 %1。"

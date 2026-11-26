@@ -40239,3 +40239,7 @@ msgstr "Keisti grojimo eilės dydį"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Keisti atlikėjų skydelio dydį"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Nepavyko eksportuoti grojaraščio į %1."

@@ -41375,3 +41375,7 @@ msgstr "Größe der Warteschlange ändern"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Größe des Künstlerbereichs ändern"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Die Wiedergabeliste konnte nicht nach %1 exportiert werden."

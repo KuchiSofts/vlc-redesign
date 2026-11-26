@@ -2287,6 +2287,16 @@ msgstr "Сонголтгүйгээр нэмэх"
 msgid "Save play queue as..."
 msgstr "Тоглуулах дарааллыг өөрөөр хадгалах..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Тоглуулах жагсаалтыг %1 руу экспортлож чадсангүй."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "Тоглуулах жагсаалтыг экспортлох"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "Бичих алдаа"
@@ -2302,12 +2312,6 @@ msgid ""
 msgstr ""
 "Тоглуулах жагсаалтыг %1 руу экспортлож чадсангүй:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "Тоглуулах жагсаалтыг экспортлох"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8091,6 +8095,10 @@ msgstr "Одоогоор харагдахгүй байгаа зүйлсийг х
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "Баримт бичиг"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "Хөтлөх харагдац"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

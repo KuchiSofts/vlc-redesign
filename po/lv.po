@@ -41086,3 +41086,7 @@ msgstr "Mainīt atskaņošanas rindas izmēru"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Mainīt izpildītāju paneļa izmēru"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Atskaņošanas sarakstu neizdevās eksportēt uz %1."

@@ -2259,6 +2259,16 @@ msgstr "විකල්ප නොමැතිව එක් කරන්න"
 msgid "Save play queue as..."
 msgstr "ධාවන පෝලිම මෙලෙස සුරකින්න..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "ධාවන ලැයිස්තුව %1 වෙත අපනයනය කළ නොහැකි විය."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "ධාවන ලැයිස්තුව අපනයනය කරන්න"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "ලිවීමේ දෝෂය"
@@ -2274,12 +2284,6 @@ msgid ""
 msgstr ""
 "ධාවන ලැයිස්තුව %1 වෙත අපනයනය කළ නොහැකි විය:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "ධාවන ලැයිස්තුව අපනයනය කරන්න"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -7993,6 +7997,10 @@ msgstr "දැනට සංදර්ශනය නොවන අයිතම බ�
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "ලේඛන"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "පිරික්සුම් දසුන"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

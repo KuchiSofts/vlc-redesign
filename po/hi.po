@@ -39612,3 +39612,7 @@ msgstr "प्ले कतार का आकार बदलें"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "कलाकार पैनल का आकार बदलें"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "प्लेलिस्ट को %1 में निर्यात नहीं किया जा सका।"

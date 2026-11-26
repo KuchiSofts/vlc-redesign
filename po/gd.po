@@ -40249,3 +40249,7 @@ msgstr "Atharraich meud a' chiutha-cluich"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Atharraich meud panail an luchd-ealain"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Cha b' urrainn dhuinn an liosta-chluich às-phortadh gu %1."

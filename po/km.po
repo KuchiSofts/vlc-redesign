@@ -40304,3 +40304,7 @@ msgstr "ប្ដូរទំហំជួរចាក់"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "ប្ដូរទំហំផ្ទាំងសិល្បករ"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "មិនអាចនាំចេញបញ្ជីចាក់ទៅ %1 បានទេ។"

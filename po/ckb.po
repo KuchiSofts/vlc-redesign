@@ -40372,3 +40372,7 @@ msgstr "گۆڕینی قەبارەی ڕیزی لێدان"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "گۆڕینی قەبارەی پانێڵی هونەرمەندەکان"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "لیستی لێدان نەتوانرا بۆ %1 هەناردە بکرێت."

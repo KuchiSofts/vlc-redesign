@@ -41019,3 +41019,7 @@ msgstr "Muuta toistojonon kokoa"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Muuta esittäjäpaneelin kokoa"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Soittolistaa ei voitu viedä kohteeseen %1."

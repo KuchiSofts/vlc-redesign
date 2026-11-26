@@ -40464,3 +40464,7 @@ msgstr "વગાડવાની કતારનું માપ બદલો"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "કલાકારોની પેનલનું માપ બદલો"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "પ્લેલિસ્ટ %1 માં નિકાસ કરી શકાઈ નહીં."

@@ -40865,3 +40865,7 @@ msgstr "Преоразмеряване на опашката за възпрои
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Преоразмеряване на панела с изпълнители"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Плейлистът не можа да бъде експортиран в %1."

@@ -40222,3 +40222,7 @@ msgstr "Промени величину реда за пуштање"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Промени величину панела извођача"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Листа за пуштање није могла да се извезе у %1."

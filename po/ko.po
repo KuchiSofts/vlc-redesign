@@ -40539,3 +40539,7 @@ msgstr "재생 대기열 크기 조정"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "아티스트 패널 크기 조정"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "재생목록을 %1(으)로 내보낼 수 없습니다."

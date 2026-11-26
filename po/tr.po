@@ -41111,3 +41111,7 @@ msgstr "Oynatma kuyruğunu yeniden boyutlandır"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Sanatçılar panelini yeniden boyutlandır"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Oynatma listesi %1 konumuna dışa aktarılamadı."

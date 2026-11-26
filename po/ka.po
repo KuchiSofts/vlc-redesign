@@ -41483,3 +41483,7 @@ msgstr "დაკვრის რიგის ზომის შეცვლა
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "შემსრულებლების პანელის ზომის შეცვლა"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "დაკვრის სიის ექსპორტი ვერ მოხერხდა აქ: %1."

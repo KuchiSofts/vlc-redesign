@@ -2250,6 +2250,16 @@ msgstr "បន្ថែមដោយគ្មានជម្រើស"
 msgid "Save play queue as..."
 msgstr "រក្សាទុកជួរចាក់ជា..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "មិនអាចនាំចេញបញ្ជីចាក់ទៅ %1 បានទេ។"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "នាំចេញបញ្ជីចាក់"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "កំហុសក្នុងការសរសេរ"
@@ -2265,12 +2275,6 @@ msgid ""
 msgstr ""
 "មិនអាចនាំចេញបញ្ជីចាក់ទៅ %1 បានទេ៖\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "នាំចេញបញ្ជីចាក់"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -7957,6 +7961,10 @@ msgstr "តើអ្នកពិតជាចង់បោះបង់ធាតុ
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "ឯកសារ"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "ទិដ្ឋភាពរកមើល"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

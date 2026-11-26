@@ -2299,6 +2299,16 @@ msgstr "விருப்பங்கள் இல்லாமல் சேர�
 msgid "Save play queue as..."
 msgstr "இயக்க வரிசையை இவ்வாறு சேமி..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "இயக்கப்பட்டியலை %1-க்கு ஏற்றுமதி செய்ய முடியவில்லை."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "தொகுப்பு பட்டியலை ஏற்றுமதி செய்"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "எழுதுவதில் வழு"
@@ -2314,12 +2324,6 @@ msgid ""
 msgstr ""
 "இயக்கப்பட்டியலை %1-க்கு ஏற்றுமதி செய்ய முடியவில்லை:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "தொகுப்பு பட்டியலை ஏற்றுமதி செய்"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8096,6 +8100,10 @@ msgstr "தற்போது காட்டப்படாத உருப்�
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "ஆவணங்கள்"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "உலாவல் காட்சி"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

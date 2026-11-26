@@ -39768,3 +39768,7 @@ msgstr "تغییر اندازهٔ صف پخش"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "تغییر اندازهٔ پنل هنرمندان"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "فهرست پخش در %1 صادر نشد."

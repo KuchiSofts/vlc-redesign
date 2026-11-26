@@ -39869,3 +39869,7 @@ msgstr "Ойнату кезегінің өлшемін өзгерту"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Орындаушылар тақтасының өлшемін өзгерту"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Ойнату тізімін %1 ішіне экспорттау мүмкін болмады."

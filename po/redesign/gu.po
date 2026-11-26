@@ -2260,6 +2260,16 @@ msgstr "વિકલ્પો વિના ઉમેરો"
 msgid "Save play queue as..."
 msgstr "વગાડવાની કતારને આ રીતે સંગ્રહો..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "પ્લેલિસ્ટ %1 માં નિકાસ કરી શકાઈ નહીં."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "પ્લેલિસ્ટ નિકાસ કરો"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "લખવામાં ભૂલ"
@@ -2275,12 +2285,6 @@ msgid ""
 msgstr ""
 "પ્લેલિસ્ટ %1 માં નિકાસ કરી શકાઈ નહીં:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "પ્લેલિસ્ટ નિકાસ કરો"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -7999,6 +8003,10 @@ msgstr "શું તમે ખરેખર હાલમાં ન બતાવ�
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "દસ્તાવેજો"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "બ્રાઉઝ દૃશ્ય"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

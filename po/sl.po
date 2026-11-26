@@ -41071,3 +41071,7 @@ msgstr "Spremeni velikost čakalne vrste"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Spremeni velikost plošče izvajalcev"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Seznama predvajanja ni bilo mogoče izvoziti v %1."

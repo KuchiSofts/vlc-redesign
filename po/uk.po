@@ -41060,3 +41060,7 @@ msgstr "Змінити розмір черги відтворення"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "Змінити розмір панелі виконавців"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "Не вдалося експортувати список відтворення до %1."

@@ -39630,3 +39630,7 @@ msgstr "ධාවන පෝලිම ප්‍රතිප්‍රමාණ ක
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "කලාකරුවන්ගේ පැනලය ප්‍රතිප්‍රමාණ කරන්න"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "ධාවන ලැයිස්තුව %1 වෙත අපනයනය කළ නොහැකි විය."

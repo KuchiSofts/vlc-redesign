@@ -39495,3 +39495,7 @@ msgstr "پلے قطار کا سائز تبدیل کریں"
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
 msgid "Resize the artists pane"
 msgstr "فنکاروں کے پینل کا سائز تبدیل کریں"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "پلے لسٹ %1 میں برآمد نہیں کی جا سکی۔"

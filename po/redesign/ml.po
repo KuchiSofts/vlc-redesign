@@ -2277,6 +2277,16 @@ msgstr "ഓപ്ഷനുകൾ ഇല്ലാതെ ചേർക്കുക"
 msgid "Save play queue as..."
 msgstr "പ്ലേ ക്യൂ ഇങ്ങനെ സംരക്ഷിക്കുക..."
 
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "The playlist could not be exported to %1."
+msgstr "പ്ലേലിസ്റ്റ് %1-ലേക്ക് എക്സ്പോർട്ട് ചെയ്യാനായില്ല."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
+#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
+msgid "Export Playlist"
+msgstr "പ്ലേലിസ്റ്റ് എക്സ്പോർട്ട് ചെയ്യുക"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1390
 msgid "Write error"
 msgstr "എഴുതുന്നതിൽ പിശക്"
@@ -2292,12 +2302,6 @@ msgid ""
 msgstr ""
 "പ്ലേലിസ്റ്റ് %1-ലേക്ക് എക്സ്പോർട്ട് ചെയ്യാനായില്ല:\n"
 "%2"
-
-#: modules/gui/qt/dialogs/dialogs_provider.cpp:1426
-#: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:50
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:887
-msgid "Export Playlist"
-msgstr "പ്ലേലിസ്റ്റ് എക്സ്പോർട്ട് ചെയ്യുക"
 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1552
 msgid "Open audio..."
@@ -8054,6 +8058,10 @@ msgstr "ഇപ്പോൾ പ്രദർശിപ്പിക്കാത്�
 #: modules/gui/qt/network/standardpathmodel.cpp:150
 msgid "Documents"
 msgstr "ഡോക്യുമെന്റുകൾ"
+
+#: modules/gui/qt/network/qml/BrowseDisplay.qml:57
+msgid "Browse view"
+msgstr "ബ്രൗസ് കാഴ്ച"
 
 #: modules/gui/qt/network/qml/BrowseHomeDisplay.qml:125
 msgid "No network shares found"

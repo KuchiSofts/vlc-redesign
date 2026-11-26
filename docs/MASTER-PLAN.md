@@ -153,7 +153,13 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.5** (2026-11-26): an update release of the desktop apps and the Android app (the Samsung TV app stays
+- ✅ **0.8.6** (2026-11-26): an update release of every app. Ten more pull requests of the same contributor
+  (#236, #238 to #244, #246, #247) read in full and read together by a reviewer; VideoLAN's 3d86ce421d merged (ten
+  commits, their update button of the side pane: ours kept). Two more readers went over the Android app beyond
+  the player and over the Samsung TV app as a whole: nine and ten faults, all fixed, the TV ones run in the local
+  preview (17 checks, 7 of them passing on 0.8.4) and on the 2017 TV. Not merged: VideoLAN's 18 new Android
+  commits, which need their newer player library and our media library built again on it (next).
+- ✅ **0.8.5** (published 2026-11-26): an update release of the desktop apps and the Android app (the Samsung TV app stayed
   0.8.4). Before the release three readers went over the branch as a whole and over the Android player: five
   faults of the new floating Play Queue, five where two contributed changes met, and six in the Android
   player (four from 0.8.4's phone change, among them Customize Player's Landscape layout no longer shown on a

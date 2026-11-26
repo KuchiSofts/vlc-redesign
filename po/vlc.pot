@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-26 07:36+0000\n"
+"POT-Creation-Date: 2026-11-26 08:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3930,7 +3930,7 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCHelpWindowController.m:61
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:174
 #: modules/gui/macosx/windows/controlsbar/VLCControlsBarCommon.m:257
-#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:211
+#: modules/gui/qt/maininterface/qml/LocalTopbar.qml:258
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:36
 #: modules/gui/qt/player/qml/CompactLibrary.qml:722
 #: modules/gui/qt/player/qml/controlbarcontrols/PreviousButton.qml:32
@@ -17744,7 +17744,7 @@ msgstr ""
 #: modules/gui/macosx/library/VLCLibrarySegment.m:394
 #: modules/gui/qt/maininterface/navigationmodel.cpp:280
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:101
 #: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml:230
 #: modules/gui/qt/medialibrary/qml/MusicArtistsDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:37
@@ -17760,7 +17760,7 @@ msgstr ""
 #: modules/gui/macosx/library/VLCLibrarySegment.m:434
 #: modules/gui/qt/maininterface/navigationmodel.cpp:281
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:94
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:101
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsDisplay.qml:30
 #: modules/gui/qt/medialibrary/qml/MusicArtist.qml:401
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:42
@@ -17789,7 +17789,7 @@ msgstr ""
 #: modules/gui/macosx/library/audio-library/VLCLibraryMusicViewController.m:136
 #: modules/gui/qt/maininterface/navigationmodel.cpp:283
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:102
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:50
 #: modules/gui/qt/medialibrary/qml/MusicGenresDisplay.qml:51
 #: modules/gui/qt/player/qml/CompactLibrary.qml:323
@@ -17827,7 +17827,7 @@ msgstr ""
 #: modules/gui/qt/maininterface/navigationmodel.cpp:284
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:96
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:103
 #: modules/gui/qt/maininterface/qml/SidebarItems.qml:42
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:54
 #: modules/gui/qt/medialibrary/qml/MusicPlaylistsDisplay.qml:61
@@ -27694,7 +27694,7 @@ msgstr ""
 
 #: modules/gui/qt/maininterface/navigationmodel.cpp:282
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:50
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:95
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:102
 #: modules/gui/qt/medialibrary/qml/MusicAlbumsGridExpandDelegate.qml:386
 #: modules/gui/qt/medialibrary/qml/MusicAllArtists.qml:217
 #: modules/gui/qt/medialibrary/qml/MusicDisplay.qml:46
@@ -27856,16 +27856,16 @@ msgid "Recent"
 msgstr ""
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:320
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:327
 msgid "Add item"
 msgstr ""
 
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:121
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:132
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:128
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:139
 msgid "Edit Sidebar…"
 msgstr ""
 
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:131
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:138
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:151
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"

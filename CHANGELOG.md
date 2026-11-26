@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Messages and the clipboard**: selecting text in Tools > Messages no longer copies it to the clipboard each time a new log line arrives; the selection and scroll position stay.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

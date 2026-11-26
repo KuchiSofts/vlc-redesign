@@ -26,9 +26,9 @@ Updated as the work moves (last: 2026-11-26, 0.8.5 published, 0.8.6 started).
 | **Windows on ARM64** | ✅ released 0.8.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
 | **Linux** (x86_64, ARM64) | ✅ released 0.8.5 | ██████████ 100 % | the Flatpak on Flathub |
 | **macOS** (Apple Silicon, Intel) | ✅ released 0.8.5 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.4 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Android** (phones) | ✅ released 0.8.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
@@ -117,7 +117,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 
 ### 0.8.5 (2026-11-26)
 
-**An update release** of the desktop apps (Android and Samsung TV stay 0.8.4):
+**An update release** of the desktop apps and the Android app (Samsung TV stays 0.8.4):
 
 - ✅ Forty-four changes by a contributor (#177 to #186, #193 to #203, #205, #206, #208, #209, #214 to #216, #218,
   #220 to #234), each read in full and shown before and after where it can be seen: the keyboard (the sidebar,
@@ -126,6 +126,8 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ The floating Play Queue as the design draws the queue, in a window of the main window's style
 - ✅ The sidebar, the play queue and the artists pane resized with the keyboard
   ([#45](https://github.com/KuchiSofts/vlc-redesign/discussions/45))
+- ✅ Android: the player after a review of 0.8.4's phone change (Customize Player's Landscape layout
+  shown again on a phone held sideways, the top bar after a rotation, subtitles above the controls)
 
 ### 0.8.4 (2026-11-26)
 

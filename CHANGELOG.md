@@ -17,9 +17,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [0.8.5] · 2026-11-26
 
-An update release of the desktop apps (the Android and Samsung TV apps stay 0.8.4): forty-four changes from a
-contributor, most of them for the keyboard, screen readers and the small faults of windows, the tray and the
-older dialogs, and the floating Play Queue redrawn as the design's queue card.
+An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes
+from a contributor, most of them for the keyboard, screen readers and the small faults of windows, the tray and
+the older dialogs, the floating Play Queue redrawn as the design's queue card, and the Android player after
+a review of 0.8.4's change for phones held sideways.
 
 ### Added
 
@@ -76,6 +77,12 @@ older dialogs, and the floating Play Queue redrawn as the design's queue card.
 - **Media Information**: after the queue is cleared, Save Metadata can no longer write empty tags to the last
   file.
 
+- **Android: Customize Player's Landscape layout on a phone held sideways** is shown again, on the row under the
+  seek bar.
+- **Android: turning the phone with the controls up** keeps the top bar's buttons.
+- **Android: subtitles drawn into the picture** stay above the controls of a phone held sideways.
+- **Android: Bookmarks opened before the controls were ever shown** no longer close the app.
+
 ### Technical
 
 - Forty-four pull requests by a contributor (#177 to #186, #193 to #203, #205, #206, #208, #209, #214 to #216,
@@ -86,6 +93,11 @@ older dialogs, and the floating Play Queue redrawn as the design's queue card.
   closing the copies of every Windows session (#209), Convert and Stream starting a Blu-ray without menus (#228),
   and a double click in place of "activated" in Add to Playlist (#229).
 - The "continue watching" action checks that there is a media to go back to (it could be asked after Stop).
+- The 0.8.5 branch read as a whole by reviewers before the release: the floating Play Queue (Escape, Close
+  above the resize grips, resizing where the system does not do it), the time editor giving the shortcuts
+  back, the boss key's pause kept apart from "pause when minimized", the A-B button able to clear a loop.
+- Android: a 600 dp tablet held sideways is not taken for a phone; the top bar's fade is measured on the
+  warning when a file has no title.
 
 ## [0.8.4] · 2026-11-26
 

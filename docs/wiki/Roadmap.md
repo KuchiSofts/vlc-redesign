@@ -18,9 +18,9 @@ Updated as the work moves (last: 2026-11-26, 0.8.5 published, 0.8.6 started).
 | **Windows on ARM64** | ✅ released 0.8.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
 | **Linux** (x86_64, ARM64) | ✅ released 0.8.5 | ██████████ 100 % | the Flatpak on Flathub |
 | **macOS** (Apple Silicon, Intel) | ✅ released 0.8.5 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.4 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Android** (phones) | ✅ released 0.8.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 

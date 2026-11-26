@@ -1,6 +1,6 @@
 # Install and update
 
-VLC Redesign 0.8.5 is released for **Windows**, **Linux** and **macOS**, with **Android** (0.8.4: phones, tablets and TV) and **Samsung TVs** (0.8.4),
+VLC Redesign 0.8.5 is released for **Windows**, **Linux** and **macOS**, with **Android** (0.8.5: phones, tablets and TV) and **Samsung TVs** (0.8.4),
 every file on the
 [latest release](https://github.com/KuchiSofts/vlc-redesign/releases/latest).
 
@@ -75,7 +75,7 @@ PC.
 
 | File | What it is |
 |---|---|
-| `vlc-redesign-0.8.4-android.apk` | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
+| `vlc-redesign-0.8.5-android.apk` | **For phones, tablets and Android TV** (ARM64, ARMv7, x86 and x86_64 in one file). |
 
 `SHA256SUMS.txt`, signed by the project, lists every file of the release (Windows, Linux, macOS and Android). The small
 updates in the app are for Windows; the AppImage on Linux and the app on macOS update themselves from the app with the
@@ -443,8 +443,8 @@ delete those too to remove everything.
 VLC Media Player Redesign for Android is a separate app: VLC for Android with the design
 ([source](https://github.com/KuchiSofts/vlc-redesign-android)). It is not on Google Play.
 
-1. On the phone, download `vlc-redesign-0.8.4-android.apk` from the
-   [0.8.4 release](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.4) (the Android app's latest).
+1. On the phone, download `vlc-redesign-0.8.5-android.apk` from the
+   [0.8.5 release](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.5) (the Android app's latest).
 2. Open it. Android asks once to allow installing apps from your browser (or file manager): allow it, then *Install*.
 3. The app is *VLC Media Player Redesign* (package `org.kuchisofts.vlcredesign`). It installs **beside** VLC from
    Google Play, which stays as it is, with its own settings and library.
@@ -454,8 +454,8 @@ so Android accepts it as an update. Uninstall it like any app.
 
 **Android TV and Google TV.** The same APK has the TV layout, driven by the remote. A TV has no browser to download
 it: install a file manager or the *Downloader* app from the TV's store, open the APK's link there (the latest
-release's `vlc-redesign-0.8.4-android.apk`) and install it, allowing installs from that app once. From a computer
-with the TV in developer mode, `adb install vlc-redesign-0.8.4-android.apk` does the same. The app shows on the
+release's `vlc-redesign-0.8.5-android.apk`) and install it, allowing installs from that app once. From a computer
+with the TV in developer mode, `adb install vlc-redesign-0.8.5-android.apk` does the same. The app shows on the
 TV's home screen.
 
 ## Samsung TV

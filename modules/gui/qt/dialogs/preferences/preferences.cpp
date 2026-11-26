@@ -434,5 +434,5 @@ void PrefsDialog::advancedTreeFilterChanged( const QString & text )
 
 void PrefsDialog::onlyLoadedToggled()
 {
-    advanced_tree->setLoadedOnly( current_filter->isChecked() );
+    advanced_tree->setLoadedOnly( current_filter->isChecked(), tree_filter->text() );
 }

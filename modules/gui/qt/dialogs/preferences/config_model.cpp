@@ -719,7 +719,15 @@ bool ConfigModel::normalize(const Entry &entry, const QVariant &value,
         *normalized = QVariant::fromValue(static_cast<int64_t>(number));
     } else if (entry.type == QLatin1String("float")) {
         bool ok = false;
-        const double number = value.toString().toDouble(&ok);
+        const QString text = value.toString();
+        double number = text.toDouble(&ok);
+        if (!ok) {
+            // typed in the language of the interface ("0,5" in German): the
+            // decimal mark of the locale, a group separator still refused
+            QLocale locale;
+            locale.setNumberOptions(locale.numberOptions() | QLocale::RejectGroupSeparator);
+            number = locale.toDouble(text, &ok);
+        }
         if (!ok || !std::isfinite(number)
             || number < -std::numeric_limits<float>::max()
             || number > std::numeric_limits<float>::max()

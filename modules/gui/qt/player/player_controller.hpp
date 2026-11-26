@@ -320,9 +320,10 @@ public:
     SharedVOutThread getVout();
     VOutThreadList getVouts() const;
     SharedAOut getAout();
-    // A nonzero input ID requires a match. Returns VLC_ENOENT if it no longer matches.
+    // If expectedItem is set, return VLC_ENOENT when it is no longer current.
     int AddAssociatedMedia(enum es_format_category_e cat, const QString& uri,
-                           bool select, bool notify, bool check_ext, uint64_t inputId = 0);
+                           bool select, bool notify, bool check_ext,
+                           const input_item_t *expectedItem = nullptr);
 
     void requestArtUpdate( input_item_t *p_item );
     void setArt( input_item_t *p_item, QString fileUrl );

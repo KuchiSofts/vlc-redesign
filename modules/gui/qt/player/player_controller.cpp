@@ -2985,13 +2985,14 @@ bool PlayerController::associateSubtitleFile(const QString &uri)
 }
 
 int PlayerController::AddAssociatedMedia(es_format_category_e cat, const QString &uri,
-                                         bool select, bool notify, bool check_ext, uint64_t inputId)
+                                         bool select, bool notify, bool check_ext,
+                                         const input_item_t *expectedItem)
 {
     Q_D(PlayerController);
     int ret;
     {
         vlc_player_locker lock{ d->m_player };
-        if (inputId != 0 && inputId != vlc_player_GetInputId(d->m_player))
+        if (expectedItem && expectedItem != vlc_player_GetCurrentMedia(d->m_player))
             return VLC_ENOENT;
         ret = vlc_player_AddAssociatedMedia(d->m_player, cat, qtu(uri), select, notify, check_ext);
     }

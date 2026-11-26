@@ -15,7 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **Add subtitle to the right video**: a subtitle, audio or video file chosen in the picker is only added if the same playback is still current; if it changed or stopped, VLC says so instead of attaching it to the next video.
+- **Add subtitle to the right video**: a subtitle, audio or video file chosen in the picker is only added if the media item the picker was opened for is still current.
 
 ## [0.8.7] · 2026-11-26
 

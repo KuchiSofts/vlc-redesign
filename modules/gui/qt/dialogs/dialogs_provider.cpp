@@ -1170,9 +1170,15 @@ void DialogsProvider::savePlayingToPlaylist()
     const QString file = askPlaylistFile( qtr( "Save play queue as..." ), &module );
     if ( file.isEmpty() )
         return;
+    const QString path = toNativeSeparators( file );
     vlc_playlist_Lock( p_intf->p_playlist  );
-    vlc_playlist_Export( p_intf->p_playlist, qtu( toNativeSeparators( file ) ), module );
+    const int ret = vlc_playlist_Export( p_intf->p_playlist, qtu( path ), module );
     vlc_playlist_Unlock( p_intf->p_playlist  );
+
+    if ( ret != VLC_SUCCESS )
+        messageDialog( qtr( "The playlist could not be exported to %1." ).arg( path ),
+                       qtr( "Export Playlist" ), QMessageBox::Ok, QMessageBox::Ok,
+                       QMessageBox::Warning );
 }
 
 namespace {

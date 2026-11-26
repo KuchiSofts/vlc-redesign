@@ -155,12 +155,14 @@ struct vlc_qt_theme_provider_t
     void (*close)(vlc_qt_theme_provider_t* obj);
     bool (*isThemeDark)(vlc_qt_theme_provider_t* obj);
     /**
-     * return VLC_SUCCESS if palette have been updated, VLC_EGENERIC otherwise
+     * Return VLC_SUCCESS for a populated palette, VLC_EGENERIC to use VLC's
+     * palette, or VLC_ENOTSUP to fall back to the basic Qt palette provider.
      */
     int (*updatePalette)(vlc_qt_theme_provider_t* obj);
     picture_t* (*getThemeImage)(vlc_qt_theme_provider_t* obj, vlc_qt_theme_image_type type, const vlc_qt_theme_image_setting* setting);
     bool (*getThemeMetrics)(vlc_qt_theme_provider_t* obj, vlc_qt_theme_image_type type, vlc_qt_theme_metrics* setting);
     bool (*supportThemeImage)(vlc_qt_theme_provider_t* obj, vlc_qt_theme_image_type type);
+    bool (*isHighContrast)(vlc_qt_theme_provider_t* obj);
 };
 
 #endif // QTTHEMEPROVIDER_HPP

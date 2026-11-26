@@ -34,12 +34,19 @@ Widgets.IconToolButton {
     // keyboard's focus ring stays its own); dark: Accent Bright of the
     // design, light: the accent at 14 % with the icon in its Dim (readable
     // on the light bar)
-    color: !lit ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted)
+    color: VLCStyle.redesign.highContrast
+           ? !enabled ? VLCStyle.redesign.textDisabled
+             : lit ? VLCStyle.redesign.accent
+             : (hovered || down) ? VLCStyle.redesign.highlightedText : VLCStyle.redesign.textPrimary
+           : !lit ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted)
                 : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
     // Figma 177:98: the hover box is white at 6 % over the bar, 30 x 32 even
     // where the bar's row is lower (the box reaches over it)
     backgroundColor: {
         const hover = hovered || down
+        if (VLCStyle.redesign.highContrast)
+            return lit ? VLCStyle.redesign.buttonBackground
+                       : hover ? VLCStyle.redesign.selectionBackground : "transparent"
         if (lit) {
             const tint = VLCStyle.palette.isDark ? VLCStyle.redesign.accentBackground
                                                  : Qt.alpha(VLCStyle.redesign.accent, 0.14)
@@ -66,7 +73,7 @@ Widgets.IconToolButton {
             height: width
             source: root.iconSource
             color: root.color
-            opacity: root.enabled ? 1 : 0.4
+            opacity: root.enabled || VLCStyle.redesign.highContrast ? 1 : 0.4
             Behavior on color { ColorAnimation { duration: 120 } }
         }
     }

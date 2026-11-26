@@ -134,7 +134,9 @@ T.ItemDelegate {
         // color, no background; hovered and pressed items do
         color: VLCStyle.redesign.color(control.down || control.hovered ? VLCStyle.redesign.controlHoverBackground
                                                                        : "transparent")
-        border.color: visualFocus ? VLCStyle.redesign.color(VLCStyle.redesign.focusColor, theme.visualFocus) : "transparent"
+        border.color: visualFocus ? VLCStyle.redesign.color(VLCStyle.redesign.focusColor, theme.visualFocus)
+                     : VLCStyle.redesign.highContrast && control.hovered ? VLCStyle.redesign.border
+                     : "transparent"
 
         radius: control.radius
 
@@ -145,7 +147,7 @@ T.ItemDelegate {
                 verticalCenter: parent.verticalCenter
             }
             implicitHeight: parent.height / 2
-            visible: control.checked && !VLCStyle.palette.isDark
+            visible: control.checked && (VLCStyle.redesign.highContrast || !VLCStyle.palette.isDark)
 
             radius: control.radius / 2
         }
@@ -169,8 +171,11 @@ T.ItemDelegate {
                 // part, the hands above in the accent)
                 readonly property bool _tinted: control._useIconSet && control.checked
                                                 && !VLCStyle.redesign.defaultAccent
-                readonly property bool _twoTone: _tinted && control.iconSetName === "recent"
-                color: _tinted && !_twoTone ? VLCStyle.redesign.accent : "transparent"
+                readonly property bool _twoTone: _tinted && !VLCStyle.redesign.highContrast && control.iconSetName === "recent"
+                color: VLCStyle.redesign.highContrast
+                       ? !control.enabled ? VLCStyle.redesign.textDisabled
+                         : control.checked ? VLCStyle.redesign.accent : VLCStyle.redesign.textPrimary
+                       : _tinted && !_twoTone ? VLCStyle.redesign.accent : "transparent"
                 // Drawn in #8F8F8F: the current page takes the accent, the
                 // light theme its muted text color
                 source: {
@@ -190,7 +195,7 @@ T.ItemDelegate {
                                         .any({ "#8F8F8F": VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e") }).uri()
                 }
                 visible: source.toString().length > 0 && status === Image.Ready
-                opacity: control.enabled ? 1.0 : 0.4
+                opacity: control.enabled || VLCStyle.redesign.highContrast ? 1.0 : 0.4
                 fillMode: Image.PreserveAspectFit
                 smooth: !control._useIconSet
 

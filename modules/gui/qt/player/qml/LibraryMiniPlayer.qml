@@ -45,10 +45,10 @@ T.Control {
     // narrower, the video is lower (16:9) and the frame with it
     readonly property real _frameHeight: video.height + VLCStyle.dp(19, VLCStyle.scale)
     background: Rectangle {
-        color: root.lightTheme ? "#ababaa" : VLCStyle.redesign.playerControlBackground
+        color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.playerControlBackground : "#ababaa"
         radius: VLCStyle.dp(14, VLCStyle.scale)
-        border.width: root.lightTheme ? 1 : 0
-        border.color: "#858585"
+        border.width: root.lightTheme || VLCStyle.redesign.highContrast ? 1 : 0
+        border.color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.border : "#858585"
 
         // Figma: drop shadow 0 0, blur 11.8, #000000 38 %
         Widgets.RoundedRectangleShadow {
@@ -98,7 +98,7 @@ T.Control {
             radius: VLCStyle.dp(6, VLCStyle.scale) + cover
             color: "transparent"
             border.width: cover
-            border.color: root.lightTheme ? "#ababaa" : VLCStyle.redesign.playerControlBackground
+            border.color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.playerControlBackground : "#ababaa"
         }
         // Figma: a border of 2 #090909 inside
         Rectangle {
@@ -109,7 +109,7 @@ T.Control {
             radius: VLCStyle.dp(6, VLCStyle.scale)
             color: "transparent"
             border.width: VLCStyle.dp(2, VLCStyle.scale)
-            border.color: root.lightTheme ? "#dedede" : VLCStyle.redesign.seekBackground
+            border.color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.seekBackground : "#dedede"
         }
 
         Controls.Slider {
@@ -174,7 +174,9 @@ T.Control {
             // Figma: the track radius 6 #090909, the fill 2 inside, radius 4,
             // #371F06
             background: Rectangle {
-                color: root.lightTheme ? "#dedede" : VLCStyle.redesign.seekBackground
+                color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.seekBackground : "#dedede"
+                border.width: VLCStyle.redesign.highContrast ? 1 : 0
+                border.color: VLCStyle.redesign.border
                 radius: VLCStyle.dp(6, VLCStyle.scale)
                 Rectangle {
                     readonly property real inset: VLCStyle.dp(2, VLCStyle.scale)
@@ -184,7 +186,8 @@ T.Control {
                     width: Math.max(0, (parent.width - 2 * inset) * seek.visualPosition)
                     height: parent.height - 2 * inset
                     radius: VLCStyle.dp(4, VLCStyle.scale)
-                    color: root.lightTheme
+                    color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.seekFill
+                           : root.lightTheme
                            ? Qt.rgba(VLCStyle.redesign.accent.r, VLCStyle.redesign.accent.g,
                                      VLCStyle.redesign.accent.b, 0.35)
                            : VLCStyle.redesign.accentBackground
@@ -196,7 +199,9 @@ T.Control {
                 radius: width / 2
                 x: Math.max(0, Math.min(seek.width - width, seek.visualPosition * seek.width - width / 2))
                 y: (seek.height - height) / 2
-                color: VLCStyle.redesign.accent
+                color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText : VLCStyle.redesign.accent
+                border.width: VLCStyle.redesign.highContrast ? 1 : 0
+                border.color: VLCStyle.redesign.accent
                 visible: seek.hovered || seek.pressed || seek.visualFocus
             }
         }
@@ -210,7 +215,7 @@ T.Control {
             height: VLCStyle.dp(19, VLCStyle.scale)
             textFormat: Text.PlainText
             text: Player.name
-            color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
+            color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.textSecondary : "#4d4d4d"
             elide: Text.ElideRight
             // (from the right in a right to left layout)
             horizontalAlignment: Text.AlignLeft
@@ -245,11 +250,12 @@ T.Control {
                     visible: detail.modelData.label.length > 0
                     height: details.height
                     spacing: VLCStyle.dp(8, VLCStyle.scale)
-                    Image {
+                    Impl.ColorImage {
                         anchors.verticalCenter: parent.verticalCenter
                         width: VLCStyle.redesign.iconSize
                         height: width
                         source: "qrc:///redesign/icons/" + detail.modelData.iconName + "/default.svg"
+                        color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.textPrimary : "transparent"
                         sourceSize: Qt.size(width, height)
                         fillMode: Image.Pad
                         smooth: false
@@ -261,7 +267,7 @@ T.Control {
                         height: VLCStyle.dp(19, VLCStyle.scale)
                         textFormat: Text.PlainText
                         text: detail.modelData.label
-                        color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
+                        color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.textSecondary : "#4d4d4d"
                         elide: Text.ElideRight
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -306,7 +312,8 @@ T.Control {
                     fillMode: Image.Pad
                     smooth: false
                     // (drawn in the default accent: another one tints it)
-                    color: root.queueExpanded ? VLCStyle.redesign.accentTint : "transparent"
+                    color: root.queueExpanded ? VLCStyle.redesign.accentTint
+                           : VLCStyle.redesign.highContrast ? VLCStyle.redesign.textPrimary : "transparent"
                 }
             }
         }

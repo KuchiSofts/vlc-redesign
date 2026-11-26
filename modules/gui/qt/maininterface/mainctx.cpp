@@ -53,6 +53,7 @@
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
 
 #include "util/color_scheme_model.hpp"
+#include "style/systempalette.hpp"
 #include "util/redesign_accent.hpp"
 #include "util/model_recovery_agent.hpp"
 
@@ -288,6 +289,26 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     /* Controlbar Profile Model Creation */
     m_controlbarProfileModel = new ControlbarProfileModel(p_intf->mainSettings, this);
 
+    m_stylePalette = new SystemPalette(this);
+    m_stylePalette->setObjectName(QStringLiteral("themePalette"));
+    m_stylePalette->setSource(m_colorScheme->currentScheme());
+    m_stylePalette->setCtx(this);
+    m_stylePalette->componentComplete();
+    connect(m_colorScheme, &ColorSchemeModel::currentChanged, m_stylePalette, [this]() {
+        m_stylePalette->setSource(m_colorScheme->currentScheme());
+    });
+    connect(m_stylePalette, &SystemPalette::paletteChanged, this,
+            [this, wasHighContrast = m_stylePalette->highContrast()]() mutable {
+        const bool highContrast = m_stylePalette->highContrast();
+        const bool changed = highContrast || wasHighContrast;
+        const bool increaseContrastChangedBySystem = highContrast != wasHighContrast && !m_increaseContrast;
+        wasHighContrast = highContrast;
+        if (increaseContrastChangedBySystem)
+            emit increaseContrastChanged();
+        if (changed)
+            emit contrastPaletteChanged();
+    });
+
     const QUrl homeUrl = QUrl::fromLocalFile(QVLCUserDir( VLC_HOME_DIR ));
     m_dialogFilepath = getSettings()->value( "filedialog-path", homeUrl ).toUrl();
 
@@ -481,6 +502,11 @@ MainCtx::~MainCtx()
         vlc_preparser_Delete(m_network_preparser);
 
     p_intf->p_mi = NULL;
+}
+
+bool MainCtx::increaseContrast() const
+{
+    return m_increaseContrast || (m_stylePalette && m_stylePalette->highContrast());
 }
 
 bool MainCtx::hasVLM() const {

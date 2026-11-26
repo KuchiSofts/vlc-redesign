@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Windows contrast themes**: the main interface follows the Windows contrast palette live and returns to its usual colours when the theme is turned off.
+
 ## [0.8.7] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library

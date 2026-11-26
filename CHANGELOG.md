@@ -15,7 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **Unmounted volumes keep their queue entries**: files on a drive or volume that is unmounted while VLC runs are no longer removed from the queue as deleted.
+- **Linux keeps queue entries for unmounted volumes**: files on a volume that is unmounted while VLC runs are no longer removed from the queue as deleted.
 
 ## [0.8.7] · 2026-11-26
 

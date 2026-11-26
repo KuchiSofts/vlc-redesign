@@ -38,7 +38,13 @@
 //=================================================================================================
 
 /* explicit */ MLPlaylistModel::MLPlaylistModel(QObject * parent)
-    : MLBaseModel(parent) {}
+    : MLBaseModel(parent)
+{
+    connect(this, &MLPlaylistModel::modelReset, this, [this]() {
+        if (m_transactionPending)
+            m_cacheResetDuringTransaction = true;
+    });
+}
 
 //-------------------------------------------------------------------------------------------------
 // Interface
@@ -52,7 +58,8 @@
 
     assert(id);
 
-    if (unlikely(m_transactionPending))
+    // Filtered rows and counts cannot be used as saved playlist positions.
+    if (unlikely(m_transactionPending) || !searchPattern().isEmpty())
         return;
 
     QVector<vlc::playlist::Media> medias = vlc::playlist::toMediaList(items);
@@ -91,7 +98,8 @@
     },
     //UI thread
     [this, at](quint64, Ctx& ctx) {
-        insertItemListInCache(std::move(ctx.medias), at);
+        if (!m_cacheResetDuringTransaction)
+            insertItemListInCache(std::move(ctx.medias), at);
         m_need_reset = true;
         endTransaction();
     });
@@ -120,7 +128,8 @@ void MLPlaylistModel::moveImpl(int64_t playlistId, HighLowRanges&& ranges)
         },
         //UI thread
         [this, playlistId, high, low, r = std::move(ranges)](quint64, Ctx& ctx) mutable {
-            moveRangeInCache(low, high, r.lowTo);
+            if (!m_cacheResetDuringTransaction)
+                moveRangeInCache(low, high, r.lowTo);
             r.lowTo = ctx.newTo;
             --r.lowRangeIt;
             moveImpl(playlistId, std::move(r));
@@ -140,7 +149,8 @@ void MLPlaylistModel::moveImpl(int64_t playlistId, HighLowRanges&& ranges)
         },
         //UI thread
         [this, playlistId, low, high, r = std::move(ranges)](quint64, Ctx& ctx) mutable {
-            moveRangeInCache(low, high, r.highTo);
+            if (!m_cacheResetDuringTransaction)
+                moveRangeInCache(low, high, r.highTo);
             r.highTo = ctx.newTo;
             ++r.highRangeIt;
             moveImpl(playlistId, std::move(r));
@@ -181,7 +191,7 @@ void MLPlaylistModel::moveImpl(int64_t playlistId, HighLowRanges&& ranges)
     if (indexes.size() == 0)
         return;
 
-    if (unlikely(m_transactionPending))
+    if (unlikely(m_transactionPending) || !searchPattern().isEmpty())
         return;
 
     int64_t id = parentId().id;
@@ -237,7 +247,8 @@ void MLPlaylistModel::removeImpl(int64_t playlistId, const std::vector<std::pair
     },
     //UI thread
     [this, playlistId, range, rows = std::move(rangeList), index]() {
-        deleteRangeInCache(range.first, range.second);
+        if (!m_cacheResetDuringTransaction)
+            deleteRangeInCache(range.first, range.second);
         removeImpl(playlistId, std::move(rows), index+1);
     });
 }
@@ -248,7 +259,7 @@ void MLPlaylistModel::removeImpl(int64_t playlistId, const std::vector<std::pair
     if (indexes.size() == 0)
         return;
 
-    if (unlikely(m_transactionPending))
+    if (unlikely(m_transactionPending) || !searchPattern().isEmpty())
         return;
 
     int64_t id = parentId().id;
@@ -276,9 +287,11 @@ void MLPlaylistModel::setTransactionPending(bool value)
 
     if (!value)
     {
-        if (m_resetAfterTransaction)
+        // A replacement cache may already include some steps of the transaction.
+        if (m_resetAfterTransaction || m_cacheResetDuringTransaction)
         {
             m_resetAfterTransaction = false;
+            m_cacheResetDuringTransaction = false;
             emit resetRequested();
         }
     }

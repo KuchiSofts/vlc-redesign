@@ -45,6 +45,8 @@ Widgets.PageExt {
     readonly property int currentIndex: view.currentIndex
     property alias model: model
     property alias dragItem: dragItem
+    readonly property bool canEditPositions: model.searchPattern === ""
+                                             && !model.loading && !model.transactionPending
 
     property string _placeHolder: root.isMusic ? VLCStyle.noArtAlbumCover : VLCStyle.noArtVideoCover
 
@@ -72,10 +74,11 @@ Widgets.PageExt {
                 Widgets.ButtonExt {
                     objectName: "playlistAddFilesButton"
                     text: qsTr("Add files")
-                    enabled: !model.transactionPending
+                    enabled: root.canEditPositions
                     onClicked: {
                         const selected = filePicker.chooseFiles(qsTr("Add files to playlist"))
-                        if (selected.length > 0) model.insert(selected, model.count)
+                        if (selected.length > 0 && root.canEditPositions)
+                            model.insert(selected, model.count)
                     }
                 }
 
@@ -89,22 +92,21 @@ Widgets.PageExt {
                 Widgets.ButtonExt {
                     objectName: "playlistMoveUpButton"
                     text: qsTr("Move up")
-                    enabled: root.selectedRow > 0 && !model.transactionPending
+                    enabled: root.canEditPositions && root.selectedRow > 0
                     onClicked: model.move(view.selectionModel.selectedRows(), root.selectedRow - 1)
                 }
 
                 Widgets.ButtonExt {
                     objectName: "playlistMoveDownButton"
                     text: qsTr("Move down")
-                    enabled: root.selectedRow >= 0 && root.selectedRow < model.count - 1
-                             && !model.transactionPending
+                    enabled: root.canEditPositions && root.selectedRow >= 0 && root.selectedRow < model.count - 1
                     onClicked: model.move(view.selectionModel.selectedRows(), root.selectedRow + 2)
                 }
 
                 Widgets.ButtonExt {
                     objectName: "playlistRemoveItemButton"
                     text: qsTr("Remove")
-                    enabled: view.selectionModel.hasSelection && !model.transactionPending
+                    enabled: root.canEditPositions && view.selectionModel.hasSelection
                     onClicked: root.onDelete()
                 }
             }
@@ -158,6 +160,9 @@ Widgets.PageExt {
 
     function onDelete()
     {
+        if (!root.canEditPositions)
+            return;
+
         const indexes = view.selectionModel.selectedIndexes;
 
         if (indexes.length === 0)
@@ -166,7 +171,7 @@ Widgets.PageExt {
         // asked even with the error dialogs turned off: nothing undoes it
         if (DialogsProvider.questionDialog(qsTr("Remove selected media from this playlist?"),
                                            qsTr("Remove from playlist"), true,
-                                           qsTr("Remove"), qsTr("Cancel")))
+                                           qsTr("Remove"), qsTr("Cancel")) && root.canEditPositions)
             model.remove(indexes);
     }
 
@@ -251,10 +256,17 @@ Widgets.PageExt {
 
             showPlayAsAudioAction: true
 
+            tableView_popup: (_, indexes, globalPos) => contextMenu.popup(indexes, globalPos, {
+                canEditPositions: root.canEditPositions
+            })
             extraActions: [{
                 "text": qsTr("Remove Selected"),
                 "icon": "remove",
-                "action": (dataList, options, indexes) => root.model.remove(indexes)
+                "enabled": (dataList, options) => options?.canEditPositions && root.canEditPositions,
+                "action": (dataList, options, indexes) => {
+                    if (options?.canEditPositions && root.canEditPositions)
+                        root.model.remove(indexes)
+                }
             }]
         }
 
@@ -273,6 +285,7 @@ Widgets.PageExt {
             dragItem: root.dragItem
 
             rowContextMenu: contextMenu
+            canEditPositions: root.canEditPositions
 
             isMusic: root.isMusic
 
@@ -298,12 +311,12 @@ Widgets.PageExt {
             // Events
 
             onRightClick: (_,_,globalMousePos) => {
-                contextMenu.popup(selectionModel.selectedRows(), globalMousePos)
+                contextMenu.tableView_popup(-1, selectionModel.selectedRows(), globalMousePos)
             }
 
             // Keys
 
-            Keys.onDeletePressed: onDelete()
+            Keys.onDeletePressed: root.onDelete()
         }
 
         Widgets.EmptyLabelButton {

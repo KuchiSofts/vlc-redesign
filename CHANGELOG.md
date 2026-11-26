@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Saved playlist search**: Remove, Move, Add files and drops are disabled while a saved playlist is filtered by search, so they can no longer act on a different entry.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

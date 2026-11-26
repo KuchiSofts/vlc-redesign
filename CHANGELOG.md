@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Equalizer preset from Settings**: a preset chosen in Settings > Audio now loads at the next start instead of the equalizer failing with "No preset selected"; negative preset gains are written correctly.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes

@@ -1441,6 +1441,19 @@ void MainCtx::toggleInterfaceFullScreen()
     emit setInterfaceFullScreen( m_windowVisibility != QWindow::FullScreen );
 }
 
+void MainCtx::exitFullscreen()
+{
+    PlayerController *player = p_intf->p_mainPlayerController;
+    if (player && hasEmbededVideo())
+    {
+        // The vout request can change before the player UI is notified.
+        const SharedVOutThread vout = player->getVout();
+        if (vout && var_GetBool(vout.get(), "fullscreen"))
+            player->setFullscreen(false);
+    }
+    emit setInterfaceFullScreen(false);
+}
+
 void MainCtx::emitBoss()
 {
     emit askBoss();

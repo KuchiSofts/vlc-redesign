@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Exit Fullscreen button**: the fullscreen title bar's Exit Fullscreen button now leaves fullscreen after F11 during a video, instead of staying fullscreen or moving to another display.
 - **Clear history**: a confirmed Clear in Settings > Privacy now always finishes, even when you switch to another category right away.
 - **Resume after Stop**: with "Continue where you left off" on Ask, Stop then Play on the same item shows the resume card again instead of starting from the beginning.
 - **Pause when minimized**: restoring the window resumes only the video VLC paused when minimizing; a video stopped meanwhile stays stopped, and a paused one resumes reliably.

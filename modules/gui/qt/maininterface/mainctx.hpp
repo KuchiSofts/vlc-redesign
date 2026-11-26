@@ -795,6 +795,7 @@ protected:
 public slots:
     void toggleToolbarMenu();
     void toggleInterfaceFullScreen();
+    void exitFullscreen();
     void setPlayerPlaylistWidth( double factor );
     void setInterfaceAlwaysOnTop( bool );
     void setShowRemainingTime( bool );

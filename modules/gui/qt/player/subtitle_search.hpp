@@ -73,7 +73,7 @@ public:
         StatusOk,
         StatusKeyRefused,   // until they change or a search succeeds
         StatusLoginRefused,
-        StatusBusy          // a minute
+        StatusBusy          // waiting out the provider's rate limit
     };
 
     SubtitleSearch(qt_intf_t *intf, SubtitlePreferences *preferences, QObject *parent = nullptr);
@@ -149,10 +149,10 @@ public:
     static bool setCredentials(QSettings *settings, const QString &id,
                                const SubtitleProviders::Credentials &credentials);
     static ServiceStatus serviceStatus(QSettings *settings, const QString &id);
-    // what a search or a check found (Problem::None: they work)
+    // what a search or a check found about the credentials (Problem::None: they work)
     static void noteProblem(QSettings *settings, const QString &id, SubtitleProviders::Problem problem);
-    // Whether a service is asked for these languages: on, not removed, with
-    // the credentials it needs, and one of its languages among them
+    // Whether a service is asked for these languages, taking its settings,
+    // credentials, supported languages and current cooldown into account.
     static bool serviceAsked(QSettings *settings, const SubtitleProviders::Provider &provider,
                              const QStringList &languages);
     // The subtitle chosen for a file ({ file, id, language, release,

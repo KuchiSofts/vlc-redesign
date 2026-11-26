@@ -64,14 +64,6 @@ const char keyCredentials[] = "redesign/subtitle-credentials/";
 // the credentials a search found refused ("<kind>:<their fingerprint>"):
 // shown on the service's row until they change or a search succeeds
 const char keyRefused[] = "redesign/subtitle-service-refused/";
-// a service that asked to wait (429): shown so for a minute
-constexpr qint64 busyMs = 60 * 1000;
-
-QHash<QString, qint64> &busyUntil()
-{
-    static QHash<QString, qint64> until;
-    return until;
-}
 
 // A secret as kept: on Windows sealed for this user on this PC ("dpapi:"
 // and the sealed bytes), elsewhere as it is (VLC keeps its own passwords so)
@@ -662,7 +654,6 @@ bool SubtitleSearch::setCredentials(QSettings *settings, const QString &id,
     store("email", credentials.email.trimmed());
     // (new ones: not refused, nor signed in with the old)
     settings->remove(QString::fromLatin1(keyRefused) + id);
-    busyUntil().remove(id);
     SubtitleProviders::forgetSession(id);
     return true;
 }
@@ -672,7 +663,7 @@ SubtitleSearch::ServiceStatus SubtitleSearch::serviceStatus(QSettings *settings,
     const QString refused = settings->value(QString::fromLatin1(keyRefused) + id).toString();
     if (!refused.isEmpty() && refused.section(QLatin1Char(':'), 1) == fingerprint(credentials(settings, id)))
         return refused.startsWith(QLatin1String("login:")) ? StatusLoginRefused : StatusKeyRefused;
-    if (busyUntil().value(id) > QDateTime::currentMSecsSinceEpoch())
+    if (SubtitleProviders::coolingDown(id))
         return StatusBusy;
     return StatusOk;
 }
@@ -686,15 +677,11 @@ void SubtitleSearch::noteProblem(QSettings *settings, const QString &id, Subtitl
         case Problem::None:
             if (settings->contains(key))
                 settings->remove(key);
-            busyUntil().remove(id);
             break;
         case Problem::KeyRefused:
         case Problem::LoginRefused:
             settings->setValue(key, QString(QLatin1String(problem == Problem::KeyRefused ? "key:" : "login:")
                                             + fingerprint(credentials(settings, id))));
-            break;
-        case Problem::Busy:
-            busyUntil().insert(id, QDateTime::currentMSecsSinceEpoch() + busyMs);
             break;
         default:
             break;
@@ -704,7 +691,8 @@ void SubtitleSearch::noteProblem(QSettings *settings, const QString &id, Subtitl
 bool SubtitleSearch::serviceAsked(QSettings *settings, const SubtitleProviders::Provider &provider,
                                   const QStringList &languages)
 {
-    if (!serviceEnabled(settings, provider.id) || serviceRemoved(settings, provider.id))
+    if (!serviceEnabled(settings, provider.id) || serviceRemoved(settings, provider.id)
+        || SubtitleProviders::coolingDown(provider.id))
         return false;
     if (provider.required && !SubtitleProviders::hasRequired(provider, credentials(settings, provider.id)))
         return false;

@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Subtitle providers that say "too many requests"**: after a provider answers 429, VLC stops asking it until its Retry-After time (a minute when it gives none), instead of sending the rest of the search's requests.
+
 ## [0.8.7] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library

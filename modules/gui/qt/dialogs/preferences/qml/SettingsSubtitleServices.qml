@@ -125,7 +125,7 @@ SettingsSectionTitle {
         case "signedIn": return qsTr("Signed in as %1").arg(who)
         case "keyRefused": return qsTr("Key refused")
         case "loginRefused": return qsTr("Wrong user name or password")
-        case "busy": return qsTr("Busy: try again in a minute")
+        case "busy": return qsTr("Busy: try again later")
         case "noAnswer": return qsTr("No answer, try again")
         default: return ""
         }
@@ -334,7 +334,7 @@ SettingsSectionTitle {
                 horizontalAlignment: Text.AlignLeft
                 text: status === "keyRefused" ? qsTr("Key refused: check it")
                       : status === "loginRefused" ? qsTr("Sign-in refused: check it")
-                      : status === "busy" ? qsTr("Busy: try again in a minute")
+                      : status === "busy" ? qsTr("Busy: try again later")
                       : serviceRow.service.languages.length > 0
                         ? qsTr("Asked only when %1 is one of your subtitle languages").arg(serviceRow.service.languageNames)
                         : ""

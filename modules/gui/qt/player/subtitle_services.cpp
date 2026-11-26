@@ -12,6 +12,7 @@
 
 #include "subtitle_services.hpp"
 
+#include <QDateTime>
 #include <QFileInfo>
 #include <QHash>
 #include <QJsonArray>
@@ -264,6 +265,55 @@ Check checkOf(int status)
         case Problem::Busy: return Check::Busy;
         default: return Check::NoAnswer;
     }
+}
+
+qint64 retryAfterDeadline(const QByteArray &header, const QDateTime &now)
+{
+    const QByteArray value = header.trimmed();
+    const qint64 nowMs = now.toMSecsSinceEpoch();
+    if (!value.isEmpty() && std::all_of(value.cbegin(), value.cend(), [](char c) { return c >= '0' && c <= '9'; }))
+    {
+        bool valid;
+        const qint64 seconds = value.toLongLong(&valid);
+        constexpr qint64 maxDeadline = std::numeric_limits<qint64>::max();
+        if (!valid || seconds > (maxDeadline - std::max<qint64>(0, nowMs)) / 1000)
+            return maxDeadline;
+        return nowMs + seconds * 1000;
+    }
+
+    const QString text = QString::fromLatin1(value);
+    QDateTime date;
+    if (text.endsWith(QLatin1String(" GMT")))
+    {
+        const QString utc = text.chopped(3) + QLatin1String("+0000");
+        date = QDateTime::fromString(utc, QStringLiteral("ddd, dd MMM yyyy hh:mm:ss t"));
+        if (!date.isValid())
+        {
+            static const QRegularExpression rfc850(QStringLiteral(R"(^[A-Za-z]+, ([0-9]{2}-[A-Za-z]{3}-)([0-9]{2})( .+)$)"));
+            const auto match = rfc850.match(utc);
+            if (match.hasMatch())
+            {
+                // RFC 850 dates use a two-digit year, at most 50 years ahead.
+                const QDateTime latest = now.toUTC().addYears(50);
+                const int lastYear = latest.date().year();
+                int year = lastYear - lastYear % 100 + match.captured(2).toInt();
+                if (year > lastYear)
+                    year -= 100;
+                const auto parse = [&](int fullYear) {
+                    return QDateTime::fromString(match.captured(1) + QString::number(fullYear) + match.captured(3),
+                                                 QStringLiteral("dd-MMM-yyyy hh:mm:ss t"));
+                };
+                date = parse(year);
+                if (date > latest)
+                    date = parse(year - 100);
+            }
+        }
+    }
+    else
+        date = QDateTime::fromString(text.simplified() + QLatin1String(" +0000"),
+                                     QStringLiteral("ddd MMM d hh:mm:ss yyyy t"));
+
+    return date.isValid() ? date.toMSecsSinceEpoch() : nowMs + 60 * 1000;
 }
 
 QString cleanRelease(const QString &release)

@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Default Preset and Video menu crop**: Default Preset in Effects now also removes a crop chosen in the Video menu (4:3...), and saved presets keep it.
 - **Export an empty playlist**: Export Playlist on a playlist with no files now opens the save dialog and writes a valid empty playlist; a playlist that cannot be read shows a warning.
 - **Home search with no matches**: a search on Home that matches nothing shows "No results" instead of the empty-library cone with Open File and Open Disc.
 - **Accent after reset**: after Reset all settings (or Reset Preferences), the default orange accent shows at once and stays after reopening Settings.

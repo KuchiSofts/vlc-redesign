@@ -30,6 +30,7 @@
 #include <vlc_plugin.h>
 #include <vlc_interface.h>
 #include <vlc_playlist.h>
+#include <vlc_player.h>
 #include <vlc_url.h> // FIXME: move URL generation to calling process
 #include <vlc_input_item.h>
 
@@ -106,8 +107,21 @@ static LRESULT CALLBACK WMCOPYWNDPROC(HWND hwnd, UINT uMsg,
             intf_sys_t *sys = intf->p_sys;
             const vlc_tick_t now = vlc_tick_now();
             const bool together = now - sys->last_open < VLC_TICK_FROM_MS(800);
-            const bool enqueue = p_data->enqueue || together;
+            bool enqueue = p_data->enqueue || together;
             sys->last_open = now;
+
+            /* "Add to the playlist instead of replacing it" (or the Add to
+             * queue verb) while nothing plays: the file plays and the window
+             * shows, as on macOS; it was only queued, the double-click
+             * seemed ignored */
+            if( p_data->enqueue && !together )
+            {
+                vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(intf);
+                vlc_playlist_Lock(playlist);
+                if( !vlc_player_IsStarted(vlc_playlist_GetPlayer(playlist)) )
+                    enqueue = false;
+                vlc_playlist_Unlock(playlist);
+            }
 
             ppsz_argv = vlc_alloc( i_argc, sizeof(char *) );
             for( i_opt = 0; i_opt < i_argc; i_opt++ )

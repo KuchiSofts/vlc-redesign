@@ -526,7 +526,7 @@ bool VideoEffects::setCropString(const QString& crop)
     const QByteArray value = crop.toUtf8();
     const int result = var_SetString(vout, "crop", value.constData());
     vout_Release(vout);
-    if (result != VLC_SUCCESS) return fail(qtr("Crop could not be applied."));
+    if (result != VLC_SUCCESS) return fail(tr("The video effect value could not be applied."));
     clearError(); changed();
     return true;
 }

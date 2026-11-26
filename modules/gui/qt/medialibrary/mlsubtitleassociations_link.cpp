@@ -95,7 +95,8 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
         if (SubtitleProviders::isErrorDocument(payload))
         {
             m_busy = false;
-            setError(qtr("The server returned an invalid subtitle file."));
+            // (the player's own download says the same of an error page: no new text to translate)
+            setError(qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
             return;
         }
 

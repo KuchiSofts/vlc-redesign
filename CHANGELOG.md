@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Add to Playlist keyboard**: in Add to Playlist, selecting an existing playlist with the arrow keys enables OK, and Enter adds to it.
 - **Blu-ray menus in Open Disc**: choosing Blu-ray in Open Disc no longer forces "No disc menus" on; the box follows the Blu-ray menu setting and your choice.
 - **Continue Watching timeout**: a resume card that closed by itself after 10 s no longer reappears when returning from picture in picture.
 - **Tray restore keeps maximized**: bringing a minimized, maximized VLC back from the tray icon (or by opening a file) keeps it maximized.

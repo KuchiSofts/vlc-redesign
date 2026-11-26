@@ -49,12 +49,12 @@ public slots:
     void accept() override;
 
 private slots:
-    void onClicked      ();
-    void onDoubleClicked();
-
+    void onSelectionChanged();
     void onTextEdited();
 
 private:
+    void updateOkButton();
+
     QVariantList m_ids;
 
     MLPlaylistListModel * m_model;

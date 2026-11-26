@@ -50,4 +50,5 @@ private:
     QString m_error;
     bool m_busy = false;
     quint64 m_revision = 0;
+    HttpCancel m_cancelRequest;
 };

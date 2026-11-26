@@ -150,6 +150,7 @@ Widgets.RedesignDialog {
     }
 
     onClosed: {
+        _saveAfterDownload = false
         associations.cancel()
         service.cancel()
         // (the searches and downloads going on stopped)
@@ -158,7 +159,6 @@ Widgets.RedesignDialog {
         SubtitleFinder.setServiceCredentials("opensubtitlescom", { key: apiKeyField.text, username: usernameField.text,
                                                                  password: passwordField.text, email: "" })
         onlineSelection = -1
-        _saveAfterDownload = false
     }
 
     MLSubtitleAssociations {

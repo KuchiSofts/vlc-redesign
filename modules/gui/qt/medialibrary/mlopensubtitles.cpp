@@ -15,6 +15,8 @@
 #include <QJsonObject>
 #include <QUrlQuery>
 
+#include <utility>
+
 namespace {
 constexpr qsizetype maxJsonBytes = 2 * 1024 * 1024;
 const QUrl apiUrl(QStringLiteral("https://api.opensubtitles.com/api/v1/"));
@@ -82,18 +84,21 @@ void MLOpenSubtitles::fail(const QString& message)
 void MLOpenSubtitles::send(const HttpRequest& request,
                            std::function<void(const HttpResponse&)> done)
 {
-    begin();
     const quint64 revision = m_revision;
-    httpRequestAsync(this, request, [this, revision, done = std::move(done)](const HttpResponse& reply) {
-        if (revision == m_revision)
-            done(reply);
+    m_cancelRequest = httpRequestAsync(this, request, [this, revision, done = std::move(done)](const HttpResponse& reply) {
+        if (revision != m_revision)
+            return;
+        m_cancelRequest = {};
+        done(reply);
     });
+    begin();
 }
 
 void MLOpenSubtitles::cancel()
 {
-    // A request in flight cannot be interrupted; its reply is ignored.
     ++m_revision;
+    if (auto cancelRequest = std::exchange(m_cancelRequest, {}))
+        cancelRequest();
     m_busy = false;
     m_error.clear();
     emit changed();
@@ -147,9 +152,8 @@ void MLOpenSubtitles::search(const QString& query, const QString& language,
         QVariantList results;
     };
     auto parsed = std::make_shared<Parsed>();
-    begin();
     const quint64 revision = m_revision;
-    httpRequestAsync(this, request(url, apiKey.trimmed()), [parsed](const HttpResponse& reply) {
+    m_cancelRequest = httpRequestAsync(this, request(url, apiKey.trimmed()), [parsed](const HttpResponse& reply) {
         if (!replyOk(reply))
             return;
         const QJsonDocument doc = QJsonDocument::fromJson(reply.body);
@@ -174,6 +178,7 @@ void MLOpenSubtitles::search(const QString& query, const QString& language,
     }, [this, revision, parsed](const HttpResponse& reply) {
         if (revision != m_revision)
             return;
+        m_cancelRequest = {};
         if (!replyOk(reply))
         {
             fail(apiMessage(reply.body, tr("OpenSubtitles search failed. Check the API key and network.")));
@@ -188,6 +193,7 @@ void MLOpenSubtitles::search(const QString& query, const QString& language,
         m_busy = false;
         emit changed();
     });
+    begin();
 }
 
 void MLOpenSubtitles::download(int index, const QString& apiKey,

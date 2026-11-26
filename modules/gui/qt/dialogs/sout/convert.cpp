@@ -176,7 +176,7 @@ void ConvertDialog::accept()
 
         if( dumpRadio->isChecked() )
         {
-            mrl.header(" :demux=dump :demuxdump-file=" + fileLine->text());
+            mrl.header(" :demux=dump :no-sout-file-overwrite :demuxdump-file=" + fileLine->text());
         }
         else
         {

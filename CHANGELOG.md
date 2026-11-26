@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Opening a file while VLC starts**: no longer able to crash a starting instance.
 - **Play button with the keyboard**: Enter or Space starts a stopped queue (or asks for files when it is empty), as a click does.
 - **About**: its links (What's new, Suggest an idea, Report a problem, credits) can be reached with Tab and opened with Enter or Space.
 - **Open from Explorer (Windows)**: with "Add to the playlist instead of replacing it", a file opened while nothing plays now plays and the window shows.

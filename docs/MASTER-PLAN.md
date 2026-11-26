@@ -158,6 +158,12 @@ What is being worked on, updated as it changes (2026-11-10):
   removed off the start, the waveform drawn once, local folders sorted on a worker, the TV guide with the
   keyboard, playback options kept in a saved playlist, the 2x hold as a temporary rate in the core, grid cards
   made ahead), each to be read in full first; the update card's lines filtered by platform as What's new does.
+  - 2026-11-26, before the release: three new issues read. #207 (no sound from the AppImage on Fedora: the
+    bundle's PipeWire library loaded before the system's) and #211 (a second window closed on Settings > Library:
+    the folders model registered with a media library that is not there) fixed on the release branch; #213 (a
+    more compact Android video player) in the roadmap's list. VideoLAN's 865394f5d5 merged (4 FLAC commits).
+    Twenty-five more contributed pull requests (#177 to #187, #193 to #206) shown before and after: twenty-two
+    taken for 0.8.5, three wait for a run.
   - 2026-11-25, on the release branch (our own work only): VideoLAN's 0741280a41 merged (14 commits, the
     interface's QML types registered at build time; the Makefile rules carried into the split build files, a build
     of the interface from nothing as CI does it); a review of 0.8.3's own changes and what it found: the update

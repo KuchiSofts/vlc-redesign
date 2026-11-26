@@ -412,6 +412,13 @@ void MainUI::registerQMLTypes()
 
         // @uri VLC.Player
         qmlRegisterType<Waveform>(uri, versionMajor, versionMinor, "Waveform");
+        // (VLC Redesign) the waveforms analyzed are kept between runs, in VLC's cache folder (the portable
+        // copy's own): a song heard before shows its waveform at once
+        if (char *cache = config_GetUserDir(VLC_CACHE_DIR))
+        {
+            Waveform::setCacheFolder(QString::fromUtf8(cache) + QStringLiteral("/waveforms"));
+            free(cache);
+        }
         qmlRegisterType<SubtitleCues>(uri, versionMajor, versionMinor, "SubtitleCues");
         qmlRegisterType<LocalFolderModel>(uri, versionMajor, versionMinor, "LocalFolderModel");
         qmlRegisterUncreatableType<TrackListModel>(uri, versionMajor, versionMinor, "TrackListModel", "available tracks of a media (audio/video/sub)" );

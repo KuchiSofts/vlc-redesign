@@ -40041,3 +40041,19 @@ msgstr "Scriosadh nó bogadh an comhad %1."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "Cuir an scuaine le seinmliosta"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Ní féidir le seinnliostaí na leabharlainne roghanna athsheinnte a choinneáil."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Sábháil seinnliosta M3U chun roghanna ar nós amanna tosaithe agus stoptha a choinneáil."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Sábháil mar M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Cuir leis gan roghanna"

@@ -31,9 +31,16 @@ QString headline(const QString& bullet);
 
 // A bullet for another system only: its lead before the colon names the
 // Android app, the Samsung TV app or another computer system than this
-// one's ("Android: ...", "Samsung TV app: ...", "macOS: ..." on Windows).
+// one's ("Android: ...", "Samsung TV app: ...", "macOS: ..." on Windows),
+// or several of them ("Android TV and Samsung TV: ...").
 // The card leaves it out; the full notes keep it.
 bool forOtherSystem(const QString& bullet);
+
+// The notes of a release in a few plain lines, for the update's card: the
+// first bullets of their Added, Changed and Fixed parts that are about this
+// system, each whole (a bullet wrapped over lines is one line), without
+// Markdown. Notes without those parts: their first bullets.
+QString releaseSummary(const QString& notes, int most = 4);
 
 // The headlines of the "## [version]" section of a changelog, else of
 // "## [Unreleased]" (a build between two releases); ownSection: the version

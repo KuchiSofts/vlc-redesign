@@ -153,7 +153,44 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.3** (work/0.8.3, 2026-11-25): a full check of issues, PRs and Discussions on both repositories.
+- 🟡 **0.8.4**: update releases of fixes as the issues bring them. Waiting: nine more pull requests of the same
+  contributor (#159 to #167: the queue's total length, hidden controls and the playback's ticks, old update files
+  removed off the start, the waveform drawn once, local folders sorted on a worker, the TV guide with the
+  keyboard, playback options kept in a saved playlist, the 2x hold as a temporary rate in the core, grid cards
+  made ahead), each to be read in full first; the update card's lines filtered by platform as What's new does.
+  - 2026-11-26, before the release: three new issues read. #207 (no sound from the AppImage on Fedora: the
+    bundle's PipeWire library loaded before the system's) and #211 (a second window closed on Settings > Library:
+    the folders model registered with a media library that is not there) fixed on the release branch; #213 (a
+    more compact Android video player) in the roadmap's list. VideoLAN's 865394f5d5 merged (4 FLAC commits).
+    Twenty-five more contributed pull requests (#177 to #187, #193 to #206) shown before and after: twenty-two
+    taken for 0.8.5, three wait for a run.
+  - 2026-11-25, on the release branch (our own work only): VideoLAN's 0741280a41 merged (14 commits, the
+    interface's QML types registered at build time; the Makefile rules carried into the split build files, a build
+    of the interface from nothing as CI does it); a review of 0.8.3's own changes and what it found: the update
+    card's lines made by one tested function (a wrapped line whole, several systems named together), the macOS
+    update helper asked to stop before it is ended (its step's tool ended, the image released, no partial copy);
+    Android TV: Play all only where something plays, the played file's row focused again far down a list, the
+    Network page's Favorites reached with Up, a folder row one stop; Samsung TV: Back leaves the "deleted or
+    moved" box, only "not found" counts as deleted. Checked: unit tests, a tour of every page with the log (no new
+    warning), 25 minutes of use (289 to 295 MB, handles and threads flat), the TV app with the remote's keys.
+  - From 2026-11-25 a contributed pull request is taken only after the owner saw its before and after and chose
+    it: nine ready ones (#159, #161 to #163, #165, #169 to #172) wait on a local branch with their previews;
+    eight more are their author's drafts (#160, #164, #166 to #168, #173 to #175).
+- 🟢 **0.8.3** published 2026-11-25 09:03 local, every app (tag v0.8.3 on 5968fea83c, PR #158 merged as 867fab712c;
+  Android tag v0.8.3 on 0b9a6ffad, PR #24 merged as c79a94dba; Samsung TV app tag v0.8.3 in its repo, its zip added;
+  19 files and the signed list, small updates 3.5 MB x64, 2.3 MB ARM64). Before publishing: CI green on every
+  platform, pkg_scan 0 hits on the Windows zips, the APK installed over 0.8.2 on the phone, tablet (from 0.5.6) and
+  TV emulators, the TV app's signed package installed on the test TV. After: a 0.8.2 portable copy updated itself
+  to 0.8.3 (the card, the signed list checked, Restart now, What's new of 0.8.3). #145 closed, #117 answered and
+  kept open until the next update goes through on the reporter's Mac, #143 and #132 answered.
+  - A real phone (Galaxy S24 class, Android 17), with a debug build whose library held three test clips only:
+    Folders (sort, eight choices readable, Play all with subfolders in order), a clip deleted on disk left both
+    lists by itself. Found there: the Videos page drew about 125 frames a second at rest (0 on the other pages).
+    The play button is anchored to the navigation, which it also dodges as a bottom inset edge; its bottom margin
+    made the two disagree before every frame. Without the margin: 0 frames at rest on the phone, the emulator, the
+    tablet and the TV; the button 2 px from where it was drawn. Frames at rest (`dumpsys gfxinfo`) is now a check
+    of every page.
+- 🟢 **0.8.3** (work/0.8.3, 2026-11-25): a full check of issues, PRs and Discussions on both repositories.
   - #117 (macOS update): the reporter's log showed the cause. VLC blocks SIGCHLD (and SIGTERM, SIGINT, SIGPIPE) in all
     its threads (bin/darwinvlc.m), and Qt learns of a child process's end on macOS only from SIGCHLD, so
     QProcess never saw the helper end ("ended with -1 after 362 s"). The child also inherited the blocked SIGTERM, so
@@ -1892,7 +1929,7 @@ the new playlist's thumbnail and empty playlists, the resume card, the classic d
 The values the app uses at 100 % (1 px = 1 Figma px; `MainCtx.dp()` scales them). **The source of these values
 is [`design/tokens.json`](../design/tokens.json)** (`design-1.0`, W3C Design Tokens format, each token with its
 Figma node and the places in the code that hold it); the tables below are its summary. In the code they live in
-`modules/gui/qt/style/VLCStyle.qml` (object `redesign`), `menus/redesign_menu_style.cpp`,
+`modules/gui/qt/style/qml/VLCStyle.qml` (object `redesign`), `menus/redesign_menu_style.cpp`,
 `util/redesign_widget_theme.cpp` and the components named; `design/tools/check_qml.py` (CI, every pull request)
 fails when the code and `tokens.json` differ. Icons and fonts: `design/icons/`, `design/fonts/`; CSS, Android and
 Swift files: `design/build/` (`design/README.md`).

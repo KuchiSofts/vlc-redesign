@@ -39795,3 +39795,19 @@ msgstr "Skránni %1 var eytt eða hún færð."
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "Bæta biðröð við spilunarlista"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Spilunarlistar safnsins geta ekki geymt afspilunarvalkosti."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Vistaðu M3U-spilunarlista til að halda valkostum á borð við upphafs- og lokatíma."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Vista sem M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Bæta við án valkosta"

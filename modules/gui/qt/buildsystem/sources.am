@@ -253,6 +253,7 @@ libqt_plugin_la_SOURCES = \
 	player/lrc_parser.cpp player/lrc_parser.hpp \
 	player/subtitle_charset.c \
 	player/local_folder_model.cpp player/local_folder_model.hpp \
+	player/local_folder_order.hpp \
 	player/sleep_timer.cpp player/sleep_timer.hpp \
 	player/player_controller.cpp player/player_controller.hpp player/player_controller_p.hpp \
 	player/player_controlbar_model.cpp player/player_controlbar_model.hpp \
@@ -264,6 +265,7 @@ libqt_plugin_la_SOURCES = \
 	playlist/playlist_controller.cpp \
 	playlist/playlist_controller.hpp \
 	playlist/playlist_controller_p.hpp \
+	playlist/playlist_duration_total.hpp \
 	playlist/playlist_item.cpp \
 	playlist/playlist_item.hpp \
 	playlist/playlist_model.cpp \
@@ -379,11 +381,18 @@ moc_verbose_ = $(moc_verbose__$(AM_DEFAULT_VERBOSITY))
 moc_verbose_0 = @echo "  MOC     " $@;
 moc_verbose__0 = $(moc_verbose_0)
 
+MOC_EXTRA_ARGS =
+if HAVE_QMLTYPEREGISTRAR
+if HAVE_QMLCACHEGEN
+MOC_EXTRA_ARGS += --output-json
+endif
+endif
+
 .hpp.moc.cpp:
-	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $<
+	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $< $(MOC_EXTRA_ARGS)
 
 .cpp.moc:
-	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $<
+	$(moc_verbose)$(MOC) $(MOC_CPPFLAGS) -o $@ $< $(MOC_EXTRA_ARGS)
 
 # These MOC files depend on the configure settings:
 dialogs/dialogs_provider.moc.cpp dialogs/vlm/vlm.moc.cpp: $(top_builddir)/config.h

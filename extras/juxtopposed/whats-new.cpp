@@ -143,6 +143,66 @@ int main()
         CHECK(mixed.size() == 1 && mixed[0].toMap().value(QStringLiteral("items")).toStringList()
                                        == QStringList({QStringLiteral("Two for every copy")}));
     }
+    // several systems named together: another system's line only when all are
+    CHECK(forOtherSystem(QStringLiteral("**Android TV and Samsung TV:** the remote's Back key.")));
+    CHECK(forOtherSystem(QStringLiteral("Android phones and tablets: the sort dialog.")));
+    CHECK(forOtherSystem(QStringLiteral("Android, Samsung TV: the queue.")));
+    CHECK(!forOtherSystem(QStringLiteral("TV: the guide keeps its place.")));
+    CHECK(!forOtherSystem(QStringLiteral("Phones and tablets: a sentence that names no app.")));
+    CHECK(!forOtherSystem(QStringLiteral("Android files on this computer: read by their names.")));
+#if defined(__linux__)
+    CHECK(forOtherSystem(QStringLiteral("Windows and macOS: the title bar.")));
+    CHECK(!forOtherSystem(QStringLiteral("Windows and Linux: the tray icon.")));
+    CHECK(!forOtherSystem(QStringLiteral("Linux, Android: the lyrics.")));
+#endif
+    // the update card's lines of a release's notes: the kinds of change only,
+    // a wrapped bullet whole, other systems' lines left out, four at most
+    {
+        const QString notes = QStringLiteral(
+            "# A Player 2.0.0\n\n"
+            "> The interface is **someone's** design\n\n"
+            "An update with:\n- not a change, a line of the introduction\n\n"
+            "### Added\n\n"
+            "- **A scroll bar in the panel** ([#143](https://example.com/143)), as on the\n"
+            "  library pages.\n"
+            "- **Samsung TV: the queue into a playlist**.\n"
+            "- **Android TV and Samsung TV: the Back key**.\n\n"
+            "### Fixed\n\n"
+            "- **Unmuting brings sound back**, even after restarting\n"
+            "  ([#145](https://example.com/145)).\n"
+            "  - a detail of that line\n"
+            "    over two lines\n"
+            "- A name_with_underscores stays whole.\n"
+            "* Fourth for this system.\n"
+            "- Fifth: never shown.\n\n"
+            "## Downloads\n\n- a file\n");
+        CHECK_EQ(releaseSummary(notes),
+                 "A scroll bar in the panel (#143), as on the library pages.\n"
+                 "Unmuting brings sound back, even after restarting (#145).\n"
+                 "A name_with_underscores stays whole.\n"
+                 "Fourth for this system.");
+        CHECK_EQ(releaseSummary(notes, 1), "A scroll bar in the panel (#143), as on the library pages.");
+        // notes without those parts: their first bullets, up to the next part
+        CHECK_EQ(releaseSummary(QStringLiteral("Some words.\r\n\r\n- One.\r\n- Android: two.\r\n- Three\r\n  and its end.\r\n\r\n## Downloads\r\n\r\n- a file\r\n")),
+                 "One.\nThree and its end.");
+        // the last bullet of notes that end without an empty line
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- Only one")), "Only one");
+        CHECK_EQ(releaseSummary(QString()), "");
+        // a wrapped line that begins with an issue's number is text, not a heading
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- First line (see\n  #145).\n- Second.\n### Changed\n- Third.\n")),
+                 "First line (see #145).\nSecond.\nThird.");
+        // a "####" inside a part keeps its bullets; kinds written "## Added" count as "### Added"
+        CHECK_EQ(releaseSummary(QStringLiteral("### Added\n#### Player\n- a\n### Fixed\n- c\n")), "a\nc");
+        CHECK_EQ(releaseSummary(QStringLiteral("## Added\n\n- Android: x\n\n## Fixed\n\n- y\n\n## Downloads\n\n- z\n")), "y");
+        // bullets all indented alike are bullets, not bullets of a bullet; "+" and numbered lists
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n\n  - one\n  - two\n    - of two\n  - three\n")), "one\ntwo\nthree");
+        CHECK_EQ(releaseSummary(QStringLiteral("### Changed\n+ a\n+ b\n### Fixed\n1. c\n2) d\n")), "a\nb\nc\nd");
+        // italics inside a bold lead, a picture
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- **The arrows stop at *Show the video here too*.** More ![shot](https://example.com/a.png).\n")),
+                 "The arrows stop at Show the video here too. More shot.");
+        CHECK_EQ(releaseSummary(QStringLiteral("### Fixed\n- a\n- b\n"), 0), "");
+        CHECK_EQ(releaseSummary(QStringLiteral("No bullet at all.\n\n## Downloads\n")), "");
+    }
     // no changelog, or none of its sections
     CHECK(parseChangelog(QString(), QStringLiteral("1.0.0")).isEmpty());
     CHECK(parseChangelog(QStringLiteral("# Changelog\n\n## [0.9.0]\n\n### Added\n\n- x\n"), QStringLiteral("1.0.0")).isEmpty());

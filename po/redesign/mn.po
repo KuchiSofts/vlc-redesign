@@ -2263,6 +2263,26 @@ msgstr "Бүгдэд нь тийм"
 msgid "No to All"
 msgstr "Бүгдэд нь үгүй"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "Тоглуулах жагсаалтад нэмэх"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Сангийн тоглуулах жагсаалтууд тоглуулах сонголтуудыг хадгалж чадахгүй."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Эхлэх, зогсох хугацаа зэрэг сонголтыг хадгалахын тулд M3U тоглуулах жагсаалт хадгална уу."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "M3U болгон хадгалах"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Сонголтгүйгээр нэмэх"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Тоглуулах дарааллыг өөрөөр хадгалах..."
@@ -7997,10 +8017,6 @@ msgstr "Олныг сонгох"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "Нэмээд тоглуулах"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "Тоглуулах жагсаалтад нэмэх"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

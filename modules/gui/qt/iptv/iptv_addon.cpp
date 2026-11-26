@@ -231,10 +231,35 @@ void IptvChannelModel::nowNextChanged(const QSet<QString>& keys)
         emit dataChanged(index(0), index(int(m_rows.size()) - 1));
         return;
     }
-    const auto& channels = m_addon->channels();
-    for (int row = 0; row < m_rows.size(); ++row)
-        if (keys.contains(channels[m_rows[row]].key))
-            emit dataChanged(index(row), index(row));
+    // A batch names a few channels of a lineup that can have 20,000: compare
+    // channel indexes, not keys, and tell only the roles of what is on, by
+    // runs of rows (the delegates keep their logo, name and number bindings)
+    QSet<int> changed;
+    changed.reserve(keys.size());
+    for (const QString& key : keys)
+    {
+        const int channel = m_addon->channelIndex(key);
+        if (channel >= 0)
+            changed.insert(channel);
+    }
+    if (changed.isEmpty())
+        return;
+    static const QList<int> roles = {
+        NowTitleRole, NowStartRole, NowStopRole, NowDescriptionRole,
+        NowArchivedRole, NextTitleRole, NextStartRole,
+    };
+    int first = -1;
+    for (int row = 0; row <= m_rows.size(); ++row)
+    {
+        const bool hit = row < m_rows.size() && changed.contains(m_rows[row]);
+        if (hit && first < 0)
+            first = row;
+        else if (!hit && first >= 0)
+        {
+            emit dataChanged(index(first), index(row - 1), roles);
+            first = -1;
+        }
+    }
 }
 
 int IptvChannelModel::currentIndex() const
@@ -987,14 +1012,18 @@ void IptvAddon::play(const QString& key)
 {
     if (key.isEmpty())
         return;
+    // the channel asked for: a zap made before the answer goes on from it
+    m_pendingKey = key;
     call(QJsonObject { { QStringLiteral("op"), QStringLiteral("play") }, { QStringLiteral("key"), key } },
          m_tuneRequests.forNextTune([this, key](const QJsonObject& answer) {
              const QString url = answer.value(QLatin1String("url")).toString();
              if (url.isEmpty())
              {
+                 // (the next zap goes on past it)
                  emit message(qtr("This channel cannot be played"));
                  return;
              }
+             m_pendingKey.clear();
              QStringList options;
              for (const QJsonValue& o : answer.value(QLatin1String("options")).toArray())
                  options << o.toString();
@@ -1027,6 +1056,7 @@ void IptvAddon::playCatchup(const QString& key, qint64 start, qint64 stop, const
     r.insert(QLatin1String("key"), key);
     r.insert(QLatin1String("start"), double(start));
     r.insert(QLatin1String("stop"), double(stop));
+    m_pendingKey.clear();
     call(r, m_tuneRequests.forNextTune([this, key, start, stop, title](const QJsonObject& answer) {
         const QString url = answer.value(QLatin1String("url")).toString();
         if (url.isEmpty())
@@ -1086,7 +1116,9 @@ void IptvAddon::zap(int step)
     }
     if (keys.isEmpty())
         return;
-    const int i = int(keys.indexOf(m_currentKey));
+    // presses quicker than the answers each move one channel on
+    const QString from = m_pendingKey.isEmpty() ? m_currentKey : m_pendingKey;
+    const int i = int(keys.indexOf(from));
     const int next = i < 0 ? 0 : int((i + step + keys.size()) % keys.size());
     play(keys[next]);
 }
@@ -1115,6 +1147,7 @@ bool IptvAddon::playNumber(int number)
 void IptvAddon::playUrl(const QString& url, const QString& title)
 {
     m_tuneRequests.advance();
+    m_pendingKey.clear();
     m_catchup.clear();
     startMedia(url, title, {});
     // a film or an episode: no channel, no keys of the TV

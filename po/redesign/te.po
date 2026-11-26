@@ -2231,6 +2231,26 @@ msgstr "అన్నింటికీ అవును"
 msgid "No to All"
 msgstr "అన్నింటికీ కాదు"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "ప్రదర్శనజాబితాకు జతచేయి"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "లైబ్రరీ ప్లేలిస్టులు ప్లేబ్యాక్ ఐచ్ఛికాలను ఉంచలేవు."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "ప్రారంభ, ఆపే సమయాల వంటి ఐచ్ఛికాలను ఉంచడానికి M3U ప్లేలిస్టును భద్రపరచండి."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "M3Uగా భద్రపరుచు"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "ఐచ్ఛికాలు లేకుండా జోడించు"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "ప్రదర్శన వరుసను ఇలా భద్రపరుచు..."
@@ -7887,10 +7907,6 @@ msgstr "అనేకం ఎంచుకో"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "జతచేసి ఆడించు"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "ప్రదర్శనజాబితాకు జతచేయి"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

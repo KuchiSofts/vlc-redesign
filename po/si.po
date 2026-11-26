@@ -39597,3 +39597,19 @@ msgstr "%1 ගොනුව මකා දමා හෝ ගෙන ගොස් ඇ
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp
 msgid "Add queue to playlist"
 msgstr "පෝලිම ධාවන ලැයිස්තුවට එක් කරන්න"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "පුස්තකාලයේ ධාවන ලැයිස්තුවලට ධාවන විකල්ප තබා ගත නොහැක."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "ආරම්භක සහ නැවතුම් වේලාවන් වැනි විකල්ප තබා ගැනීමට M3U ධාවන ලැයිස්තුවක් සුරකින්න."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "M3U ලෙස සුරකින්න"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "විකල්ප නොමැතිව එක් කරන්න"

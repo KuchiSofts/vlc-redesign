@@ -2258,6 +2258,26 @@ msgstr "نعم للكل"
 msgid "No to All"
 msgstr "لا للكل"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "إضافة إلى قائمة التشغيل"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "قوائم تشغيل المكتبة لا تحتفظ بخيارات التشغيل."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "احفظ قائمة تشغيل M3U للاحتفاظ بخيارات مثل وقتي البدء والتوقف."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "حفظ بصيغة M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "إضافة بدون الخيارات"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "حفظ قائمة الانتظار باسم..."
@@ -8031,10 +8051,6 @@ msgstr "تحديد متعدد"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "إضافة وتشغيل"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "إضافة إلى قائمة التشغيل"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

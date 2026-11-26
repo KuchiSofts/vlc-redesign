@@ -9,24 +9,39 @@
 /*****************************************************************************
  * waveform.cpp: Cancellable local audio envelope analysis
  *****************************************************************************/
+// (first: it defines NOMINMAX before windows.h below, whose max() macro breaks std::max with libc++, the
+// Windows ARM64 build's library)
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+
 #include "waveform.hpp"
 
 #include <QCoreApplication>
+#include <QCryptographicHash>
 #include <QDir>
 #include <QElapsedTimer>
+#include <QFile>
 #include <QFileInfo>
-#include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPointer>
 #include <QProcess>
+#include <QSaveFile>
 #include <QThread>
+#include <QThreadPool>
 #include <algorithm>
 #include <atomic>
 #include <cmath>
 #include <memory>
 #include <utility>
+
+#ifdef Q_OS_WIN
+# include <windows.h>
+#else
+# include <unistd.h>
+#endif
 
 namespace {
 constexpr qint64 maxFileBytes = 1024LL * 1024LL * 1024LL;
@@ -34,7 +49,16 @@ constexpr int maxDurationSeconds = 8 * 60;
 constexpr qsizetype maxJsonBytes = 64 * 1024;
 // shared by the sliders (the player's, the mini player's): an analysis
 // decodes the whole file
-constexpr int maxCacheEntries = 16;
+constexpr int maxCacheEntries = 64;
+// The envelopes kept on the disk: "VRWAVE1\n", then the 512 peaks as 16-bit
+// numbers, low byte first (a peak is 0 to 16: 4095 steps for each unit).
+// About 1 kB a song; the oldest go once there are more than this many.
+constexpr char storeMagic[] = "VRWAVE1\n";
+constexpr qsizetype storeMagicBytes = 8;
+constexpr qsizetype storeBytes = storeMagicBytes + 512 * 2;
+constexpr double storeScale = 4095.0;
+constexpr int maxStoredFiles = 4000;
+constexpr int trimEvery = 64;
 // a helper that hangs is killed after a minute (8 minutes of sound,
 // decoded 16 times faster than they play, take 30 s)
 constexpr int watchdogMs = 60 * 1000;
@@ -47,15 +71,48 @@ constexpr int settleMs = 1000;
 
 // an analysis, run by its own thread: Windows may check a new program for
 // seconds before it starts, the interface goes on meanwhile
-struct Job { std::atomic_bool cancel{false}; };
+struct Job {
+    QString key;
+    QString path;
+    int seconds = 0;
+    std::atomic_bool cancel{false};
+    QVariantList bins;
+    QString error;
+};
 
 struct CacheEntry { QString key; QVariantList bins; };
-// all in the GUI thread
+// The GUI thread owns the queue and reads results after the worker joins.
 QList<CacheEntry> s_cache;
-QHash<QString, std::shared_ptr<Job>> s_jobs;
-QList<QPointer<QThread>> s_threads;
+QList<std::shared_ptr<Job>> s_pending;
+std::shared_ptr<Job> s_active;
+QThread* s_thread = nullptr;
 bool s_stopAllAtEnd = false;
 QList<Waveform*> s_instances;
+// the folder of the envelopes kept between runs; empty: none are
+QString s_cacheFolder;
+int s_stored = 0;
+
+QString storePath(const QString& folder, const QString& key)
+{
+    return folder + QLatin1Char('/')
+        + QString::fromLatin1(QCryptographicHash::hash(key.toUtf8(), QCryptographicHash::Sha1).toHex())
+        + QStringLiteral(".wf");
+}
+
+// (on a worker) the oldest envelopes go once the folder holds too many
+void trimStore(const QString& folder)
+{
+    QFileInfoList files = QDir(folder).entryInfoList({ QStringLiteral("*.wf") }, QDir::Files, QDir::Time);
+    for (qsizetype i = files.size() - 1; i >= maxStoredFiles * 9 / 10 && files.size() > maxStoredFiles; --i)
+        QFile::remove(files[i].filePath());
+}
+
+bool hasAnalysis(const QString& key)
+{
+    return (s_active && !s_active->cancel && s_active->key == key) ||
+        std::any_of(s_pending.cbegin(), s_pending.cend(),
+                    [&key](const auto& job) { return job->key == key; });
+}
 }
 
 Waveform::Waveform(QObject* parent) : QObject(parent)
@@ -63,11 +120,7 @@ Waveform::Waveform(QObject* parent) : QObject(parent)
     s_instances.append(this);
     m_settle.setSingleShot(true);
     m_settle.setInterval(settleMs);
-    connect(&m_settle, &QTimer::timeout, this, [this] {
-        // (or the analysis of another slider came meanwhile)
-        if (!m_key.isEmpty() && !s_jobs.contains(m_key))
-            startAnalysis(m_key, m_path, m_durationSeconds);
-    });
+    connect(&m_settle, &QTimer::timeout, this, &Waveform::enqueueAnalysis);
 }
 
 Waveform::~Waveform()
@@ -80,14 +133,12 @@ Waveform::~Waveform()
 void Waveform::stopAll()
 {
     s_stopAllAtEnd = false;
-    for (const std::shared_ptr<Job>& job : std::as_const(s_jobs))
+    s_pending.clear();
+    if (auto job = std::exchange(s_active, {})) {
         job->cancel = true;
-    s_jobs.clear();
-    for (const QPointer<QThread>& thread : std::exchange(s_threads, {}))
-        if (thread) {
-            thread->wait();
-            delete thread;
-        }
+        s_thread->wait();
+        delete std::exchange(s_thread, nullptr);
+    }
 }
 
 void Waveform::setSource(const QUrl& source)
@@ -110,8 +161,10 @@ void Waveform::setBins(const QVariantList& bins)
 {
     if (m_bins == bins) return;
     m_bins = bins;
+    const QPointer<Waveform> guard(this);
+    const quint64 generation = m_generation;
     emit binsChanged();
-    emit stateChanged();
+    if (guard && m_generation == generation) emit stateChanged();
 }
 
 void Waveform::setError(const QString& error)
@@ -126,42 +179,98 @@ void Waveform::setError(const QString& error)
 void Waveform::release(bool now)
 {
     m_settle.stop();
+    ++m_generation;
     const QString key = std::exchange(m_key, QString());
     if (key.isEmpty()) return;
     for (const Waveform* other : std::as_const(s_instances))
         if (other != this && other->m_key == key) return;
-    const std::shared_ptr<Job> job = s_jobs.value(key);
-    if (!job) return;
+    s_pending.removeIf([&key](const auto& job) { return job->key == key; });
+    const auto job = s_active;
+    if (!job || job->key != key || job->cancel) return;
     if (now) {
-        s_jobs.remove(key);
         job->cancel = true;
         return;
     }
     QTimer::singleShot(orphanMs, QCoreApplication::instance(), [key, job] {
-        if (s_jobs.value(key) != job) return;
+        if (s_active != job) return;
         for (const Waveform* waveform : std::as_const(s_instances))
             if (waveform->m_key == key) return;
-        s_jobs.remove(key);
         job->cancel = true;
+    });
+}
+
+void Waveform::setCacheFolder(const QString& folder)
+{
+    s_cacheFolder = folder;
+    // (what is in memory belongs to the folder it was read from or written to)
+    s_cache.clear();
+}
+
+void Waveform::remember(const QString& key, const QVariantList& bins)
+{
+    s_cache.prepend({key, bins});
+    while (s_cache.size() > maxCacheEntries) s_cache.removeLast();
+}
+
+// The envelope of a song analyzed in a run before; empty when there is none
+// (or the file is not one of ours: its size and its first bytes are checked)
+QVariantList Waveform::storedBins(const QString& key)
+{
+    if (s_cacheFolder.isEmpty()) return {};
+    QFile file(storePath(s_cacheFolder, key));
+    if (!file.open(QIODevice::ReadOnly) || file.size() != storeBytes) return {};
+    const QByteArray bytes = file.readAll();
+    if (bytes.size() != storeBytes || !bytes.startsWith(QByteArray(storeMagic, storeMagicBytes))) return {};
+    QVariantList bins;
+    bins.reserve(512);
+    const auto* data = reinterpret_cast<const unsigned char*>(bytes.constData()) + storeMagicBytes;
+    for (int i = 0; i < 512; ++i) {
+        const double peak = (data[2 * i] | (data[2 * i + 1] << 8)) / storeScale;
+        if (peak > 16) return {};
+        bins << peak;
+    }
+    return bins;
+}
+
+// Written on a worker, under a temporary name first (QSaveFile): a file
+// half written is never read as an envelope
+void Waveform::storeBins(const QString& key, const QVariantList& bins)
+{
+    if (s_cacheFolder.isEmpty() || bins.size() != 512) return;
+    QByteArray bytes(storeMagic, storeMagicBytes);
+    bytes.reserve(storeBytes);
+    for (const QVariant& bin : bins) {
+        const int value = int(std::lround(std::clamp(bin.toDouble(), 0.0, 16.0) * storeScale));
+        bytes.append(char(value & 0xFF));
+        bytes.append(char((value >> 8) & 0xFF));
+    }
+    const bool trim = ++s_stored % trimEvery == 1;
+    QThreadPool::globalInstance()->start([folder = s_cacheFolder, path = storePath(s_cacheFolder, key), bytes, trim] {
+        if (!QDir().mkpath(folder)) return;
+        QSaveFile file(path);
+        if (file.open(QIODevice::WriteOnly) && file.write(bytes) == bytes.size())
+            file.commit();
+        if (trim) trimStore(folder);
     });
 }
 
 void Waveform::finishAnalysis(const QString& key, const QVariantList& bins, const QString& error)
 {
     if (bins.size() == 512) {
-        s_cache.prepend({key, bins});
-        while (s_cache.size() > maxCacheEntries) s_cache.removeLast();
+        remember(key, bins);
+        storeBins(key, bins);
     }
     // the signals may destroy sliders
-    QList<QPointer<Waveform>> waiting;
+    QList<std::pair<QPointer<Waveform>, quint64>> waiting;
     for (Waveform* waveform : std::as_const(s_instances))
-        if (waveform->m_key == key) waiting << waveform;
-    for (const QPointer<Waveform>& waveform : std::as_const(waiting)) {
-        if (!waveform || waveform->m_key != key) continue;
+        if (waveform->m_key == key) waiting.append({waveform, waveform->m_generation});
+    for (const auto& [waveform, generation] : std::as_const(waiting)) {
+        if (!waveform || waveform->m_generation != generation || waveform->m_key != key) continue;
+        waveform->m_settle.stop();
         waveform->m_key.clear();
         if (bins.size() == 512) waveform->setBins(bins);
         else waveform->setError(error);
-        if (waveform) emit waveform->stateChanged();
+        if (waveform && waveform->m_generation == generation) emit waveform->stateChanged();
     }
 }
 
@@ -224,40 +333,61 @@ void Waveform::refresh()
         setBins(hit.bins);
         return;
     }
+    // analyzed in a run before: about 1 kB read, no helper started
+    const QVariantList stored = storedBins(key);
+    if (stored.size() == 512) {
+        remember(key, stored);
+        setBins(stored);
+        return;
+    }
     // the analysis of another slider: its result comes here too
-    const bool running = s_jobs.contains(key);
-    if (!running && !QFileInfo::exists(helperPath())) {
+    const bool scheduled = hasAnalysis(key);
+    if (!scheduled && !QFileInfo::exists(helperPath())) {
         setError(tr("Waveform analyzer is unavailable."));
         return;
     }
     m_key = key;
     m_path = path;
     emit stateChanged();
-    if (!running)
+    if (!scheduled)
         m_settle.start();
 }
 
-void Waveform::startAnalysis(const QString& key, const QString& path, int seconds)
+void Waveform::enqueueAnalysis()
 {
+    if (m_key.isEmpty() || hasAnalysis(m_key)) return;
+    auto job = std::make_shared<Job>();
+    job->key = m_key;
+    job->path = m_path;
+    job->seconds = m_durationSeconds;
+    s_pending.append(std::move(job));
+    startNextAnalysis();
+}
+
+void Waveform::startNextAnalysis()
+{
+    if (s_active || s_pending.isEmpty()) return;
     if (!std::exchange(s_stopAllAtEnd, true))
         qAddPostRoutine(stopAll);
-    s_threads.removeIf([](const QPointer<QThread>& thread) { return thread.isNull(); });
 
-    auto job = std::make_shared<Job>();
-    s_jobs.insert(key, job);
+    const auto job = s_pending.takeFirst();
+    s_active = job;
     const QString program = helperPath();
-    QThread* thread = QThread::create([job, key, path, seconds, program] {
+    s_thread = QThread::create([job, program] {
+        if (job->cancel) return;
         QProcess process;
 #ifdef Q_OS_WIN
-        // CREATE_NO_WINDOW: keep the analysis helper invisible beside the GUI.
+        // Give playback priority over the decoder, including its own threads.
         process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) {
-            arguments->flags |= 0x08000000;
+            arguments->flags |= CREATE_NO_WINDOW | BELOW_NORMAL_PRIORITY_CLASS;
         });
+#else
+        // The same on the other systems: the decoder runs "nice".
+        process.setChildProcessModifier([] { if (nice(10) == -1) { /* stays as it is */ } });
 #endif
         // libvlc_media_new_path() of the helper wants native separators on Windows
-        process.start(program, {QDir::toNativeSeparators(path)});
+        process.start(program, {QDir::toNativeSeparators(job->path)});
         const bool started = process.waitForStarted();
-        QVariantList result;
         if (started) {
             // a helper that hangs does not keep the sliders busy
             QElapsedTimer elapsed;
@@ -270,18 +400,23 @@ void Waveform::startAnalysis(const QString& key, const QString& path, int second
                 }
             }
             if (!job->cancel && process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0)
-                result = parseOutput(process.readAllStandardOutput(), seconds);
+                job->bins = parseOutput(process.readAllStandardOutput(), job->seconds);
         }
-        const QString error = !started ? tr("Waveform analyzer could not start.")
-                            : result.size() == 512 ? QString()
-                            : tr("Waveform analysis did not complete.");
-        QMetaObject::invokeMethod(QCoreApplication::instance(), [job, key, result, error] {
-            if (s_jobs.value(key) != job) return;
-            s_jobs.remove(key);
-            finishAnalysis(key, result, error);
-        }, Qt::QueuedConnection);
+        if (!started)
+            job->error = tr("Waveform analyzer could not start.");
+        else if (job->bins.size() != 512)
+            job->error = tr("Waveform analysis did not complete.");
     });
-    connect(thread, &QThread::finished, thread, &QObject::deleteLater);
-    s_threads.append(thread);
-    thread->start();
+    connect(s_thread, &QThread::finished, QCoreApplication::instance(), [job] {
+        if (s_active != job) return;
+        // Keep the slot reserved through cancellation until QProcess has
+        // reaped the helper. This job also identifies this run of the key.
+        s_thread->wait();
+        delete std::exchange(s_thread, nullptr);
+        s_active.reset();
+        if (!job->cancel)
+            finishAnalysis(job->key, job->bins, job->error);
+        startNextAnalysis();
+    }, Qt::QueuedConnection);
+    s_thread->start(QThread::LowPriority);
 }

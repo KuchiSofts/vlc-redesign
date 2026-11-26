@@ -67,6 +67,10 @@ Thank you to everyone who tested, reported and translated:
     finished, with the log that showed why ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)).
   - [@georgp85](https://github.com/georgp85): the speaker button that could not bring the sound back
     ([#145](https://github.com/KuchiSofts/vlc-redesign/issues/145)).
+  - [@GGQQmax](https://github.com/GGQQmax): no sound from the AppImage on Fedora, with its cause and the way to fix it
+    ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207)).
+  - [@Snooooze](https://github.com/Snooooze): the second window that closed on Settings › Library
+    ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up

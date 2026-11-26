@@ -18,30 +18,36 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-25, 0.8.3 published, 0.8.4 started).
+Updated as the work moves (last: 2026-11-26, 0.8.4 published, 0.8.5 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.3 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.3 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.3 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.3 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.3 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.3 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.3 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.3 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.8.4 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.4 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.4 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.4 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.4 and after
+## Next: 0.8.5 and after
 
-**0.8.4** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+**0.8.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released).
 
 - 🟡 macOS: the first update from inside the app on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (0.8.3 installed by hand once: the fix is in the app that updates)
+- 🟡 Eight more pull requests of a contributor, still their author's drafts (#160, #164, #166 to #168,
+  #173 to #175): read; each is shown before and after when its author marks it ready
+- 🟡 Twenty-five more of the same contributor, marked ready (#177 to #187, #193 to #206): each shown before and
+  after; twenty-two are taken for 0.8.5, three wait for a run (#185 to #187)
 
 And as the issues bring them:
 
+- 📋 Android: a more compact video player (a smaller title area, the seek bar on a row of its own), asked for in
+  [#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -112,6 +118,25 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.8.4 (2026-11-26)
+
+**An update release** of every app:
+
+- ✅ Nine changes by a contributor (#159, #161 to #163, #165, #169 to #172), each shown to the owner before and
+  after and then taken: the queue's length, old update files removed off the start, the waveform drawn once,
+  folders sorted and searched off the interface, playback options kept in a saved playlist, Live TV rows and
+  quick channel presses, an update's progress, the subtitles dialog in its place
+- ✅ Music seek bar: the waveform kept between runs and prepared for the next song
+- ✅ Music folders keep their order (a played song is not a watched video)
+- ✅ The update card lists what concerns your system, each line whole
+- ✅ Linux: sound on Fedora and other systems with a newer PipeWire ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207))
+- ✅ A second VLC window no longer closes on Settings › Library ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211))
+- ✅ macOS: an update that takes too long stops cleanly
+- ✅ Android TV: the remote reaches the header's buttons and the Favorites row, the focus returns to the file
+  played, Play all only where something plays
+- ✅ Samsung TV: the "deleted or moved" message (Back, Shuffle, files with special characters in their name)
+- ✅ VideoLAN's new way to build the interface's QML brought into our build files
 
 ### 0.8.3 (2026-11-25)
 

@@ -2319,6 +2319,26 @@ msgstr "Ναι σε όλα"
 msgid "No to All"
 msgstr "Όχι σε όλα"
 
+#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
+msgid "Add to playlist"
+msgstr "Προσθήκη στη λίστα αναπαραγωγής"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Library playlists cannot keep playback options."
+msgstr "Οι λίστες αναπαραγωγής της βιβλιοθήκης δεν μπορούν να κρατήσουν τις επιλογές αναπαραγωγής."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save an M3U playlist to keep options such as start and stop times."
+msgstr "Αποθηκεύστε μια λίστα αναπαραγωγής M3U για να διατηρηθούν επιλογές όπως οι χρόνοι έναρξης και λήξης."
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Save as M3U"
+msgstr "Αποθήκευση ως M3U"
+
+#: modules/gui/qt/dialogs/dialogs_provider.cpp
+msgid "Add without options"
+msgstr "Προσθήκη χωρίς επιλογές"
+
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:1170
 msgid "Save play queue as..."
 msgstr "Αποθήκευση ουράς αναπαραγωγής ως..."
@@ -8140,10 +8160,6 @@ msgstr "Πολλαπλή επιλογή"
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:1073
 msgid "Add and play"
 msgstr "Προσθήκη και αναπαραγωγή"
-
-#: modules/gui/qt/menus/qml_menu_wrapper.cpp:955
-msgid "Add to playlist"
-msgstr "Προσθήκη στη λίστα αναπαραγωγής"
 
 #: modules/gui/qt/menus/qml_menu_wrapper.cpp:961
 msgid "Play as audio"

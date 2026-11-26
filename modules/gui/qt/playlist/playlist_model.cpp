@@ -34,6 +34,14 @@ namespace playlist {
 
 namespace {
 
+static std::optional<std::int64_t> durationTicks(const PlaylistItem &item)
+{
+    const VLCDuration duration = item.getDuration();
+    if (duration.valid())
+        return duration.toVLCTick();
+    return std::nullopt;
+}
+
 static QVector<PlaylistItem> toVec(vlc_playlist_item_t *const items[],
                                    size_t len)
 {
@@ -58,92 +66,82 @@ static QVector<RAW> toRaw(const QVector<WRAPPER> &items)
 extern "C" { // for C callbacks
 
 static void
-on_playlist_items_reset(vlc_playlist_t *playlist,
+on_playlist_items_reset(vlc_playlist_t *,
                         vlc_playlist_item_t *const items[],
                         size_t len, void *userdata)
 {
     PlaylistListModelPrivate *that = static_cast<PlaylistListModelPrivate *>(userdata);
     QVector<PlaylistItem> newContent = toVec(items, len);
     that->callAsync([=]() {
-        if (that->m_playlist != playlist)
-            return;
         that->onItemsReset(std::move(newContent));
     });
 }
 
 static void
-on_playlist_items_added(vlc_playlist_t *playlist, size_t index,
+on_playlist_items_added(vlc_playlist_t *, size_t index,
                         vlc_playlist_item_t *const items[], size_t len,
                         void *userdata)
 {
     PlaylistListModelPrivate *that = static_cast<PlaylistListModelPrivate *>(userdata);
     QVector<PlaylistItem> added = toVec(items, len);
     that->callAsync([=]() {
-        if (that->m_playlist != playlist)
-            return;
         that->onItemsAdded(std::move(added), index);
     });
 }
 
 static void
-on_playlist_items_moved(vlc_playlist_t *playlist, size_t index, size_t count,
+on_playlist_items_moved(vlc_playlist_t *, size_t index, size_t count,
                         size_t target, void *userdata)
 {
     PlaylistListModelPrivate *that = static_cast<PlaylistListModelPrivate *>(userdata);
     that->callAsync([=]() {
-        if (that->m_playlist != playlist)
-            return;
         that->onItemsMoved(index, count, target);
     });
 }
 
 static void
-on_playlist_items_removed(vlc_playlist_t *playlist, size_t index, size_t count,
+on_playlist_items_removed(vlc_playlist_t *, size_t index, size_t count,
                           void *userdata)
 {
     PlaylistListModelPrivate *that = static_cast<PlaylistListModelPrivate *>(userdata);
     that->callAsync([=](){
-        if (that->m_playlist != playlist)
-            return;
         that->onItemsRemoved(index, count);
     });
 }
 
 static void
-on_playlist_items_updated(vlc_playlist_t *playlist, size_t index,
+on_playlist_items_updated(vlc_playlist_t *, size_t index,
                           vlc_playlist_item_t *const items[], size_t len,
                           void *userdata)
 {
     PlaylistListModelPrivate *that = static_cast<PlaylistListModelPrivate *>(userdata);
     QVector<PlaylistItem> updated = toVec(items, len);
     that->callAsync([=](){
-        if (that->m_playlist != playlist)
-            return;
         int count = updated.size();
-        bool lengths = false;
+        const auto previousTotal = that->m_duration.total();
         for (int i = 0; i < count; ++i)
         {
-            const VLCDuration before = that->m_items[index + i].getDuration();
+            const auto before = durationTicks(that->m_items.at(index + i));
+            const auto after = durationTicks(updated[i]);
             that->m_items[index + i] = updated[i]; /* sync metadata */
-            const VLCDuration after = updated[i].getDuration();
-            if (before.valid() != after.valid() || before.toVLCTick() != after.toVLCTick())
-                lengths = true;
+            if (before != after)
+            {
+                that->m_duration.remove(before);
+                that->m_duration.add(after);
+            }
         }
-        /* a length known later (the queue showed "1 item - -1 ms" beside an item of 00:50) */
-        if (lengths)
-            that->recomputeDuration();
+        if (that->m_duration.total() != previousTotal)
+            that->scheduleDurationChanged();
         that->notifyItemsChanged(index, count);
     });
 }
 
 static void
-on_playlist_current_item_changed(vlc_playlist_t *playlist, ssize_t index,
+on_playlist_current_item_changed(vlc_playlist_t *, ssize_t index,
                                  void *userdata)
 {
     PlaylistListModelPrivate *that = static_cast<PlaylistListModelPrivate *>(userdata);
     that->callAsync([=](){
-        if (that->m_playlist != playlist)
-            return;
         ssize_t oldCurrent = that->m_current;
         that->m_current = index;
         if (oldCurrent != -1)
@@ -188,20 +186,28 @@ void PlaylistListModelPrivate::onItemsReset(const QVector<PlaylistItem>&& newCon
     Q_Q(PlaylistListModel);
     q->beginResetModel();
     m_items = newContent;
+    m_duration = {};
+    for (const auto &item : newContent)
+        m_duration.add(durationTicks(item));
     q->endResetModel();
 
-    recomputeDuration();
+    scheduleDurationChanged();
 
     emit q->countChanged(m_items.size());
 }
 
-void PlaylistListModelPrivate::recomputeDuration()
+void PlaylistListModelPrivate::scheduleDurationChanged()
 {
-    Q_Q(PlaylistListModel);
-    m_duration = VLCDuration();
-    for (const auto& i : m_items)
-        m_duration += i.getDuration();
-    emit q->durationChanged();
+    if (m_durationChangePending)
+        return;
+
+    // Preparse can queue one update per item. Refresh the header once for
+    // the updates already queued ahead of this notification.
+    m_durationChangePending = true;
+    callAsync([this]() {
+        m_durationChangePending = false;
+        emit q_func()->durationChanged();
+    });
 }
 
 void PlaylistListModelPrivate::onItemsAdded(const QVector<PlaylistItem>&& added, size_t index)
@@ -211,13 +217,11 @@ void PlaylistListModelPrivate::onItemsAdded(const QVector<PlaylistItem>&& added,
     q->beginInsertRows({}, index, index + count - 1);
     m_items.insert(index, count, nullptr);
     std::move(added.cbegin(), added.cend(), m_items.begin() + index);
+    for (const auto &item : added)
+        m_duration.add(durationTicks(item));
     q->endInsertRows();
 
-    for(const auto& i : added)
-    {
-        m_duration += i.getDuration();
-    }
-    emit q->durationChanged();
+    scheduleDurationChanged();
 
     emit q->countChanged(m_items.size());
 }
@@ -249,10 +253,12 @@ void PlaylistListModelPrivate::onItemsRemoved(size_t index, size_t count)
     Q_Q(PlaylistListModel);
 
     q->beginRemoveRows({}, index, index + count - 1);
+    for (size_t i = 0; i < count; ++i)
+        m_duration.remove(durationTicks(m_items.at(index + i)));
     m_items.remove(index, count);
     q->endRemoveRows();
 
-    recomputeDuration();
+    scheduleDurationChanged();
 
     emit q->countChanged(m_items.size());
 }
@@ -317,7 +323,8 @@ VLCDuration
 PlaylistListModel::getDuration() const
 {
     Q_D(const PlaylistListModel);
-    return d->m_duration;
+    const auto total = d->m_duration.total();
+    return total ? VLCDuration(*total) : VLCDuration();
 }
 
 PlaylistItem
@@ -463,6 +470,8 @@ void PlaylistListModel::setPlaylist(vlc_playlist_t* playlist)
         d->m_playlist = nullptr;
         d->m_listener = nullptr;
     }
+    ++d->m_generation;
+    d->m_durationChangePending = false;
     if (playlist)
     {
         vlc_playlist_locker locker(playlist);

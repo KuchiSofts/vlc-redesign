@@ -56,8 +56,10 @@ void MLFoldersBaseModel::setCtx(MainCtx* ctx)
     if (ctx)
     {
         m_ctx = ctx;
-        m_mediaLib = m_ctx->getMediaLibrary();
-        m_ml_event_handle.reset(m_mediaLib->registerEventListener(onMlEvent, this));
+        // none in a second instance: the first one holds the library (#211)
+        m_mediaLib = m_ctx->hasMediaLibrary() ? m_ctx->getMediaLibrary() : nullptr;
+        m_ml_event_handle.reset(m_mediaLib ? m_mediaLib->registerEventListener(onMlEvent, this)
+                                           : nullptr);
     }
     else
     {
@@ -128,6 +130,8 @@ QHash<int, QByteArray> MLFoldersBaseModel::roleNames() const
 
 void MLFoldersBaseModel::reload(const int row)
 {
+    if (!m_mediaLib || row < 0 || static_cast<size_t>(row) >= m_mrls.size())
+        return;
     const QString mrl = m_mrls.at(row).mrl;
     m_mediaLib->runOnMLThread(this, [mrl](vlc_medialibrary_t *ml)
     {
@@ -284,6 +288,8 @@ bool MLFoldersModel::failed(const vlc_ml_event_t *event) const
 
 void MLFoldersModel::remove( const QUrl &mrl )
 {
+    if (!m_mediaLib)
+        return;
     //UI data is updated on onMlEvent
     m_mediaLib->runOnMLThread(this,
     //ML thread
@@ -295,6 +301,8 @@ void MLFoldersModel::remove( const QUrl &mrl )
 
 void MLFoldersModel::add(const QUrl &mrl )
 {
+    if (!m_mediaLib)
+        return;
     //UI data is updated on onMlEvent
     m_mediaLib->runOnMLThread(this,
     //ML thread
@@ -306,6 +314,8 @@ void MLFoldersModel::add(const QUrl &mrl )
 
 void MLBannedFoldersModel::remove(const QUrl &mrl)
 {
+    if (!m_mediaLib)
+        return;
     //UI data is updated on onMlEvent
     m_mediaLib->runOnMLThread(this,
     //ML thread
@@ -317,6 +327,8 @@ void MLBannedFoldersModel::remove(const QUrl &mrl)
 
 void MLBannedFoldersModel::add(const QUrl &mrl)
 {
+    if (!m_mediaLib)
+        return;
     //UI data is updated on onMlEvent
     m_mediaLib->runOnMLThread(this,
     //ML thread

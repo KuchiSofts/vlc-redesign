@@ -9,9 +9,11 @@
 # addresses and answers, fixtures/subtitle-services), and the encoding
 # detection of text subtitles (the corpus); what a shortcut shows in
 # full screen (the kinds of the actions, the jumps added up, their texts);
-# the headlines "What's new" makes of a changelog, and folder breadcrumbs.
+# the headlines "What's new" makes of a changelog, folder breadcrumbs, and the
+# waveform analysis queue with a stand-in for the decoder.
 # Run by .github/workflows/tests.yml; on Linux, from the root of the tree,
-# with g++, Qt 6 Core, zlib, Python 3 and Node.js:
+# with g++, Qt 6 Base and Declarative development files, zlib, Python 3 and
+# Node.js:
 #   sh extras/juxtopposed/ci/unit-tests.sh
 set -eu
 out=${OUT:-build-tests}
@@ -30,6 +32,11 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/shortcut-feedback.c
     modules/gui/qt/player/shortcut_feedback.cpp -o "$out/shortcut-feedback"
 "$out/shortcut-feedback"
 
+echo "== playlist duration total (unknown lengths, metadata updates and removals)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/playlist-duration-total.cpp \
+    -o "$out/playlist-duration-total"
+"$out/playlist-duration-total"
+
 echo "== audio output selection (same names, reordered and removed devices, default)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/audio-output-device.cpp \
     -o "$out/audio-output-device"
@@ -40,6 +47,11 @@ g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
     extras/juxtopposed/screen-fit.cpp modules/gui/qt/util/screen_fit.cpp \
     $(pkg-config --libs Qt6Core) -o "$out/screen-fit"
 "$out/screen-fit"
+
+echo "== local folders (search, natural names, dates and watched order)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
+    extras/juxtopposed/local-folder-order.cpp $(pkg-config --libs Qt6Core) -o "$out/local-folder-order"
+"$out/local-folder-order"
 
 echo "== What's new (the headlines of a changelog: no issue references, a long lead's colon, whole words)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
@@ -70,6 +82,15 @@ g++ -std=c++17 -O1 -Wall $san -fPIC -I. -I"$out/thread-runner" -Imodules/gui/qt/
     "$out/thread-runner/moc_mlthreadpool.cpp" \
     $(pkg-config --libs Qt6Core Qt6Test) -o "$out/thread-runner/test"
 "$out/thread-runner/test" -silent
+
+echo "== waveform analysis (sharing, cancellation and serial helpers)"
+mkdir -p "$out/waveform"
+"$moc" $(pkg-config --cflags Qt6Qml) modules/gui/qt/player/waveform.hpp -o "$out/waveform/moc_waveform.cpp"
+g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Qml) \
+    extras/juxtopposed/waveform-analysis-test.cpp modules/gui/qt/player/waveform.cpp \
+    "$out/waveform/moc_waveform.cpp" $(pkg-config --libs Qt6Qml) -o "$out/waveform/test"
+ln -sf test "$out/waveform/vlc-waveform"
+"$out/waveform/test"
 
 echo "== Cover tracks (a song's picture kept as a video track is its cover, not a video)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/cover-track.cpp -o "$out/cover-track"

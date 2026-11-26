@@ -311,6 +311,33 @@ if [ -n "${4:-}" ]; then
         sed 's/^/  /' "$work/broken-zip.log" | tail -n 12
     fi
     [ ! -e "$(dirname "$target")/.vlc-redesign-update.app" ] || fail "a broken zip: a staged copy is left behind"
+    # Asked to stop while a step runs (the app does when its own limit has
+    # passed, before it ends the helper): the step's tool ended with it, its
+    # temporary folders removed, no copy left behind
+    asked_tmp=$work/asked-tmp
+    mkdir -p "$asked_tmp"
+    printf '%s\n' '#!/bin/sh' "case \$1 in attach) echo \$\$ > \"$work/asked.pid\"; exec sleep 120 ;; esac" > "$fake/hdiutil"
+    chmod 755 "$fake/hdiutil"
+    t=$(seconds)
+    PATH="$fake:$PATH" TMPDIR="$asked_tmp" VLC_REDESIGN_UPDATE_STEP_LIMIT=60 /bin/sh "$helper" stage "$new_image" "$target" \
+        < /dev/null > /dev/null 2> "$work/asked.log" &
+    asked=$!
+    sleep 3
+    kill -TERM $asked
+    wait $asked
+    code=$?
+    took=$(($(seconds) - t))
+    sleep 1
+    held=$(cat "$work/asked.pid" 2> /dev/null)
+    left=$(ls -A "$asked_tmp" | tr '\n' ' ')
+    if [ $code = 143 ] && [ $took -le 15 ] && [ -n "$held" ] && ! kill -0 "$held" 2> /dev/null && [ -z "$left" ]; then
+        note "ok: asked to stop during a step: exit $code after $took s, the step's tool ended, nothing left"
+    else
+        fail "asked to stop during a step: exit $code after $took s (expected 143 within 15 s)," \
+             "the step's tool ${held:-never started}$(kill -0 "${held:-0}" 2> /dev/null && echo ' still runs'), left: ${left:-nothing}"
+        sed 's/^/  /' "$work/asked.log" | tail -n 12
+    fi
+    [ ! -e "$(dirname "$target")/.vlc-redesign-update.app" ] || fail "asked to stop: a staged copy is left behind"
 fi
 
 rm -rf "$installed" /Applications/.vlc-redesign-update.app /Applications/.vlc-redesign-old.app

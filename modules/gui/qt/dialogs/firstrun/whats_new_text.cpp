@@ -22,10 +22,13 @@ namespace {
 // The text of a bit of Markdown: links, code and emphasis without their marks
 QString plainText(QString text)
 {
-    static const QRegularExpression link(QStringLiteral(R"(\[([^\]]*)\]\([^)]*\))"));
+    // (a picture's "![alt](address)" as its alt text)
+    static const QRegularExpression link(QStringLiteral(R"(!?\[([^\]]*)\]\([^)]*\))"));
     static const QRegularExpression emphasis(QStringLiteral(R"((\*\*|\*|__)(.+?)\1)"));
     text.replace(link, QStringLiteral("\\1"));
     text.remove(QLatin1Char('`'));
+    // (twice: italics inside a bold lead, "**the arrows stop at *Show here*.**")
+    text.replace(emphasis, QStringLiteral("\\2"));
     text.replace(emphasis, QStringLiteral("\\2"));
     return text.simplified();
 }
@@ -39,19 +42,128 @@ bool forOtherSystem(const QString& bullet)
     const int colon = text.indexOf(QLatin1Char(':'));
     if (colon <= 0 || colon > 40)
         return false;
-    const QString lead = text.left(colon).trimmed();
-    static const QStringList others = {
-        QStringLiteral("Android"), QStringLiteral("Android TV"), QStringLiteral("Android tablet"),
-        QStringLiteral("Samsung TV"), QStringLiteral("Samsung TV app"), QStringLiteral("Samsung"),
+    // The lead may name several ("Android TV and Samsung TV", "macOS, Linux",
+    // "Android phones and tablets"): another system's line only when every
+    // one of them is another system
+    static const QRegularExpression between(QStringLiteral(R"(\s*(?:,|/|&|\band\b)\s*)"),
+                                            QRegularExpression::CaseInsensitiveOption);
+    static const QRegularExpression app(
+        QStringLiteral(R"(^(?:android|samsung|tizen)(?: (?:tv app|tvs?|phones?|tablets?|app))?$)"),
+        QRegularExpression::CaseInsensitiveOption);
+    // (after "Android": "... phones and tablets")
+    static const QRegularExpression device(QStringLiteral(R"(^(?:tvs?|phones?|tablets?)$)"),
+                                           QRegularExpression::CaseInsensitiveOption);
+    static const QStringList computers = {
 #if defined(_WIN32)
-        QStringLiteral("macOS"), QStringLiteral("Linux"),
+        QStringLiteral("macOS"), QStringLiteral("Mac"), QStringLiteral("Linux"),
 #elif defined(__APPLE__)
         QStringLiteral("Windows"), QStringLiteral("Linux"),
 #else
-        QStringLiteral("Windows"), QStringLiteral("macOS"),
+        QStringLiteral("Windows"), QStringLiteral("macOS"), QStringLiteral("Mac"),
 #endif
     };
-    return others.contains(lead, Qt::CaseInsensitive);
+    const QStringList leads = text.left(colon).split(between, Qt::SkipEmptyParts);
+    bool afterApp = false;
+    for (const QString& part : leads) {
+        const QString lead = part.trimmed();
+        if (app.match(lead).hasMatch())
+            afterApp = true;
+        else if (computers.contains(lead, Qt::CaseInsensitive))
+            afterApp = false;
+        else if (!(afterApp && device.match(lead).hasMatch()))
+            return false;
+    }
+    return !leads.isEmpty();
+}
+
+QString releaseSummary(const QString& notes, int most)
+{
+    // A heading is "#" to "######" and a space: a wrapped line that begins
+    // with an issue's number ("#145).") is text
+    static const QRegularExpression heading(QStringLiteral(R"(^(#{1,6})(?:\s+(.*))?$)"));
+    // "- ", "* ", "+ " and "1. " / "1) " items
+    static const QRegularExpression item(QStringLiteral(R"(^(?:[-*+]|\d{1,3}[.)])\s+(.*)$)"));
+    const auto kindOf = [](const QString& name) {
+        const QString kind = name.trimmed().toLower();
+        return kind == QLatin1String("added") || kind == QLatin1String("changed")
+            || kind == QLatin1String("fixed");
+    };
+    const QStringList lines = notes.split(QLatin1Char('\n'));
+    // (notes without those headings, a release of before them: every bullet)
+    const bool kinds = std::any_of(lines.cbegin(), lines.cend(), [&kindOf](const QString& raw) {
+        const QRegularExpressionMatch m = heading.match(raw.trimmed());
+        return m.hasMatch() && kindOf(m.captured(2));
+    });
+
+    QStringList bullets;
+    if (most <= 0)
+        return {};
+    QString bullet;
+    bool counted = !kinds;
+    bool seen = false;
+    // how far the last bullet of the list was indented: one indented more is
+    // a bullet of that bullet, and its lines are not the line's
+    int topIndent = -1;
+    bool nested = false;
+    const auto flush = [&]() {
+        if (!bullet.isEmpty() && !forOtherSystem(bullet)) {
+            const QString text = plainText(bullet);
+            if (!text.isEmpty())
+                bullets.append(text);
+        }
+        bullet.clear();
+    };
+    for (const QString& raw : lines) {
+        if (bullets.size() >= most)
+            break;
+        const QString line = raw.trimmed();
+        int indent = 0;
+        for (const QChar c : raw) {
+            if (c == QLatin1Char(' ')) ++indent;
+            else if (c == QLatin1Char('\t')) indent += 4;
+            else break;
+        }
+        const QRegularExpressionMatch h = heading.match(line);
+        if (h.hasMatch()) {
+            flush();
+            const int level = int(h.capturedLength(1));
+            const bool kind = kindOf(h.captured(2));
+            // (the notes' next part, Downloads: a heading of another kind of
+            // change, Fixed after Added, counts too)
+            if (level <= 2 && !kind && (seen || !bullets.isEmpty()))
+                break;
+            // (a "####" inside a part groups its bullets: they still count)
+            if (level <= 3) {
+                if (kinds)
+                    counted = kind;
+                seen = seen || kind;
+                topIndent = -1;
+                nested = false;
+            }
+            continue;
+        }
+        if (!counted)
+            continue;
+        const QRegularExpressionMatch i = item.match(line);
+        if (i.hasMatch()) {
+            if (topIndent >= 0 && indent > topIndent) {
+                nested = true;
+                continue;
+            }
+            flush();
+            bullet = i.captured(1).trimmed();
+            topIndent = indent;
+            nested = false;
+        } else if (line.isEmpty()) {
+            flush();
+        } else if (!bullet.isEmpty() && !nested) {
+            // (a bullet wrapped over several lines)
+            bullet += QLatin1Char(' ') + line;
+        }
+    }
+    if (bullets.size() < most)
+        flush();
+    return bullets.join(QLatin1Char('\n'));
 }
 
 QString headline(const QString& bullet)

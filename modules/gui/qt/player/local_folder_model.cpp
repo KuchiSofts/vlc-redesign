@@ -8,18 +8,20 @@
 #endif
 
 #include "local_folder_model.hpp"
+#include "local_folder_order.hpp"
 
 #include "medialibrary/medialib.hpp"
 #include "medialibrary/mlhelper.hpp"
 
-#include <QCollator>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
+#include <QLocale>
 #include <QSet>
 #include <QThreadPool>
 
 #include <algorithm>
+#include <utility>
 
 #include <vlc_common.h>
 #include <vlc_interface.h>
@@ -35,6 +37,19 @@ const QSet<QString>& mediaSuffixes()
     static const QSet<QString> suffixes = [] {
         QSet<QString> set;
         const QString patterns = QStringLiteral(EXTENSIONS_VIDEO ";" EXTENSIONS_AUDIO ";" EXTENSIONS_PLAYLIST);
+        for (const QString& pattern : patterns.split(QLatin1Char(';'), Qt::SkipEmptyParts))
+            set.insert(pattern.mid(2).toLower()); // drop "*."
+        return set;
+    }();
+    return suffixes;
+}
+
+// Suffixes of the songs, from "*.aac;*.mp3;..."
+const QSet<QString>& audioSuffixes()
+{
+    static const QSet<QString> suffixes = [] {
+        QSet<QString> set;
+        const QString patterns = QStringLiteral(EXTENSIONS_AUDIO);
         for (const QString& pattern : patterns.split(QLatin1Char(';'), Qt::SkipEmptyParts))
             set.insert(pattern.mid(2).toLower()); // drop "*."
         return set;
@@ -73,7 +88,7 @@ LocalFolderModel::LocalFolderModel(QObject* parent)
 
 LocalFolderModel::~LocalFolderModel()
 {
-    // a listing ending later finds no model
+    // A worker ending later finds no model
     std::lock_guard<std::mutex> lock(m_guard->lock);
     m_guard->model = nullptr;
 }
@@ -85,9 +100,7 @@ void LocalFolderModel::setFolder(const QUrl& folder)
     m_folder = folder;
     emit folderChanged();
     // the entries of the previous folder go now, not when the listing ends
-    m_entries.clear();
-    ++m_generation;
-    updateRows();
+    clearEntries();
     startListing();
 }
 
@@ -100,10 +113,22 @@ void LocalFolderModel::setRoots(const QStringList& roots)
     // (shown only without a folder)
     if (m_folder.isLocalFile())
         return;
-    m_entries.clear();
-    ++m_generation;
-    updateRows();
+    clearEntries();
     startListing();
+}
+
+void LocalFolderModel::clearEntries()
+{
+    ++m_generation;
+    m_refilterGeneration = ++m_rowGeneration;
+    m_refilterEntries.reset();
+    m_pendingEntries.reset();
+    m_libraryDataChanged = false;
+    beginResetModel();
+    m_entries.clear();
+    m_rows.clear();
+    endResetModel();
+    emit countChanged();
 }
 
 QUrl LocalFolderModel::parentFolder() const
@@ -229,6 +254,7 @@ QVector<LocalFolderModel::Entry> LocalFolderModel::listFolder(const QString& pat
         entry.mrl = mrl;
         entry.url = coreUrl(filePath, mrl);
         entry.isFolder = isFolder;
+        entry.isAudio = !isFolder && audioSuffixes().contains(info.suffix().toLower());
         entry.modified = info.lastModified().toMSecsSinceEpoch();
         entries.push_back(std::move(entry));
     }
@@ -261,47 +287,113 @@ QVector<LocalFolderModel::Entry> LocalFolderModel::listRoots(const QStringList& 
     return entries;
 }
 
-void LocalFolderModel::onListed(const QVector<Entry>& entries)
+void LocalFolderModel::onListed(QVector<Entry> entries)
 {
-    m_entries = entries;
     ++m_generation;
+    m_pendingEntries = std::move(entries);
+    m_libraryDataChanged = false;
     updateRows();
-    loadLibraryData();
 }
 
-void LocalFolderModel::updateRows()
+void LocalFolderModel::updateRows(bool refilter)
 {
-    beginResetModel();
-    m_rows.clear();
-    for (int i = 0; i < m_entries.size(); ++i)
-        if (m_searchPattern.isEmpty() || m_entries[i].name.contains(m_searchPattern, Qt::CaseInsensitive))
-            m_rows.push_back(i);
-    sortRows();
-    endResetModel();
-    emit countChanged();
+    ++m_rowGeneration;
+    if (refilter)
+    {
+        m_refilterGeneration = m_rowGeneration;
+        m_refilterEntries = m_pendingEntries ? *m_pendingEntries : m_entries;
+    }
+    if (m_updatingRows)
+        return;
+    if (refilter)
+        startRowUpdate();
+    else
+        startRowUpdate(m_rows);
 }
 
-void LocalFolderModel::sortRows()
+void LocalFolderModel::startRowUpdate(std::optional<QVector<int>> seed)
 {
-    // Folders first, then names the way people read them (2 before 10)
-    QCollator collator;
-    collator.setNumericMode(true);
-    collator.setCaseSensitivity(Qt::CaseInsensitive);
-    const bool byDate = m_sortCriteria == QLatin1String("date");
-    const bool byWatched = m_sortCriteria == QLatin1String("unwatched");
-    const bool descending = m_sortOrder == Qt::DescendingOrder;
-    const auto played = [](const Entry& e) { return e.playCount > 0 || e.progress > 0.; };
-    std::sort(m_rows.begin(), m_rows.end(), [&](int rowA, int rowB) {
-        const Entry& a = m_entries[rowA];
-        const Entry& b = m_entries[rowB];
-        if (a.isFolder != b.isFolder)
-            return a.isFolder;
-        if (byWatched && played(a) != played(b))
-            return descending ? played(a) : played(b);
-        const int order = byDate ? (a.modified < b.modified ? -1 : a.modified > b.modified)
-                                 : collator.compare(a.name, b.name);
-        return (descending && !byWatched) ? order > 0 : order < 0;
+    // Keep the rebuild's original input if enrichment arrived while it was queued
+    const quint64 generation = m_refilterEntries ? m_refilterGeneration : m_rowGeneration;
+    auto refilterEntries = std::exchange(m_refilterEntries, std::nullopt);
+    const QVector<Entry>& entries = refilterEntries ? *refilterEntries : m_entries;
+    if (entries.isEmpty())
+    {
+        applyRows({});
+        return;
+    }
+
+    // Keep one job in flight so typing does not queue a sort for each keystroke
+    m_updatingRows = true;
+    QThreadPool::globalInstance()->start([guard = m_guard, generation,
+                                          entries, pattern = m_searchPattern, criteria = m_sortCriteria,
+                                          order = m_sortOrder, locale = QLocale().collation(),
+                                          seed = std::move(seed)]() mutable {
+        QVector<int> rows = seed ? std::move(*seed) : LocalFolderOrder::matchingRows(entries, pattern);
+        LocalFolderOrder::sortRows(rows, entries, criteria, order, locale);
+        std::lock_guard<std::mutex> lock(guard->lock);
+        if (LocalFolderModel* model = guard->model)
+            QMetaObject::invokeMethod(model, [model, generation, rows = std::move(rows)]() mutable {
+                model->m_updatingRows = false;
+                if (generation == model->m_rowGeneration)
+                    model->applyRows(std::move(rows));
+                else if (generation >= model->m_refilterGeneration)
+                    // Enrichment sorts the filtered order, including entries tied by name
+                    model->startRowUpdate(std::move(rows));
+                else
+                    model->startRowUpdate();
+            }, Qt::QueuedConnection);
     });
+}
+
+void LocalFolderModel::applyRows(QVector<int> rows)
+{
+    const bool newListing = m_pendingEntries.has_value();
+    if (!newListing && rows == m_rows)
+    {
+        notifyLibraryDataChanged();
+        return;
+    }
+
+    // (a new order of the same rows as moves, for a list of a size the views take them in: they turn each
+    // displaced row into a move of its own, and a folder of thousands of files froze longer than the reset
+    // it had before)
+    constexpr int maxRowsMoved = 1000;
+    if (!newListing && rows.size() == m_rows.size() && rows.size() <= maxRowsMoved)
+    {
+        QVector<int> positions(m_entries.size(), -1);
+        for (int i = 0; i < rows.size(); ++i)
+            positions[rows[i]] = i;
+        const auto stillShown = [&positions](int entry) { return positions.at(entry) >= 0; };
+        if (std::all_of(m_rows.cbegin(), m_rows.cend(), stillShown))
+        {
+            emit layoutAboutToBeChanged({}, VerticalSortHint);
+            const QModelIndexList oldIndexes = persistentIndexList();
+            QModelIndexList newIndexes;
+            newIndexes.reserve(oldIndexes.size());
+            const QVector<int> oldRows = std::exchange(m_rows, std::move(rows));
+            for (const QModelIndex& oldIndex : oldIndexes)
+                newIndexes.push_back(index(positions.at(oldRows.at(oldIndex.row())), oldIndex.column()));
+            changePersistentIndexList(oldIndexes, newIndexes);
+            emit layoutChanged({}, VerticalSortHint);
+            notifyLibraryDataChanged();
+            return;
+        }
+    }
+
+    beginResetModel();
+    if (newListing)
+    {
+        m_entries = std::move(*m_pendingEntries);
+        m_pendingEntries.reset();
+    }
+    m_rows = std::move(rows);
+    m_libraryDataChanged = false;
+    endResetModel();
+    // Some bindings also use this signal when the entries change at the same count
+    emit countChanged();
+    if (newListing)
+        loadLibraryData();
 }
 
 void LocalFolderModel::setMl(MediaLib* ml)
@@ -315,17 +407,18 @@ void LocalFolderModel::setMl(MediaLib* ml)
 
 void LocalFolderModel::loadLibraryData()
 {
-    if (!m_ml || m_entries.isEmpty())
+    if (!m_ml || m_pendingEntries || m_entries.isEmpty())
         return;
 
     // The MRLs the library stores (vlc_path2uri) of the media of the folder,
     // all of them: the search only hides rows
     std::vector<std::pair<int, QString>> mrls;
-    for (int i = 0; i < m_entries.size(); ++i)
+    const auto& entries = std::as_const(m_entries);
+    for (int i = 0; i < entries.size(); ++i)
     {
-        if (m_entries[i].isFolder || m_entries[i].mrl.isEmpty())
+        if (entries[i].isFolder || entries[i].mrl.isEmpty())
             continue;
-        mrls.emplace_back(i, m_entries[i].mrl);
+        mrls.emplace_back(i, entries[i].mrl);
     }
     if (mrls.empty())
         return;
@@ -385,7 +478,7 @@ void LocalFolderModel::loadLibraryData()
             return;
         for (const auto& result : ctx.results)
         {
-            if (result.entry >= m_entries.size() || m_entries[result.entry].mrl != result.mrl)
+            if (result.entry >= m_entries.size() || m_entries.at(result.entry).mrl != result.mrl)
                 continue;
             Entry& entry = m_entries[result.entry];
             entry.progress = result.progress > 0. ? result.progress : 0.;
@@ -395,19 +488,20 @@ void LocalFolderModel::loadLibraryData()
             entry.title = result.title;
             entry.artist = result.artist;
         }
+        m_libraryDataChanged = true;
         if (m_sortCriteria == QLatin1String("unwatched"))
-        {
-            // the order depends on what was played
-            beginResetModel();
-            sortRows();
-            endResetModel();
-            return;
-        }
-        if (!m_rows.isEmpty())
-            emit dataChanged(index(0), index(m_rows.size() - 1),
-                             { ProgressRole, PlayCountRole, IsFavoriteRole, IsIndexedRole,
-                               TitleRole, ArtistRole });
+            updateRows(false);
+        else
+            notifyLibraryDataChanged();
     });
+}
+
+void LocalFolderModel::notifyLibraryDataChanged()
+{
+    if (std::exchange(m_libraryDataChanged, false) && !m_rows.isEmpty())
+        emit dataChanged(index(0), index(m_rows.size() - 1),
+                         { ProgressRole, PlayCountRole, IsFavoriteRole, IsIndexedRole,
+                           TitleRole, ArtistRole });
 }
 
 int LocalFolderModel::rowCount(const QModelIndex& parent) const
@@ -431,6 +525,8 @@ QVariant LocalFolderModel::data(const QModelIndex& index, int role) const
         return entry.mrl.isEmpty() ? entry.url.toString(QUrl::FullyEncoded) : entry.mrl;
     case IsFolderRole:
         return entry.isFolder;
+    case IsAudioRole:
+        return entry.isAudio;
     case ProgressRole:
         return entry.progress;
     case PlayCountRole:
@@ -489,6 +585,7 @@ QHash<int, QByteArray> LocalFolderModel::roleNames() const
         { NameRole, "name" },
         { UrlRole, "url" },
         { IsFolderRole, "isFolder" },
+        { IsAudioRole, "isAudio" },
         { ProgressRole, "progress" },
         { PlayCountRole, "playcount" },
         { IsFavoriteRole, "isFavorite" },

@@ -551,7 +551,9 @@ void DiscOpenPanel::updateButtons()
             setDrive( psz_dvddiscpath );
             m_discType = BRD;
             ui.dvdsimple->setChecked( !m_blurayMenuAvailable ||
-                m_blurayNoMenus.value_or( !var_InheritBool( p_intf, "bluray-menu" ) ) );
+                // (Convert and Stream start without menus, as for a DVD)
+                m_blurayNoMenus.value_or( context == OpenPanel::CONTEXT_BATCH
+                                          || !var_InheritBool( p_intf, "bluray-menu" ) ) );
         }
         ui.titleLabel->setText( qtr("Title") );
         ui.chapterLabel->hide();

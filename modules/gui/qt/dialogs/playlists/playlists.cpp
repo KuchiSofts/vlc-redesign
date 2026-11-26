@@ -107,11 +107,13 @@ PlaylistsDialog::PlaylistsDialog(qt_intf_t * _p_intf, const QVariantList &media,
     connect(m_playlists->selectionModel(), &QItemSelectionModel::selectionChanged,
             this, &PlaylistsDialog::onSelectionChanged);
     connect(m_model, &QAbstractItemModel::modelReset, this, &PlaylistsDialog::updateOkButton);
-    connect(m_playlists, &QTreeView::activated, this, [this](const QModelIndex &index) {
+    // A double click adds to the playlist under it. (Not QTreeView::activated:
+    // on a desktop set to open with one click, one click would add and close;
+    // Enter reaches OK, the default button, once a row is selected.)
+    connect(m_playlists, &QTreeView::doubleClicked, this, [this](const QModelIndex &index) {
         if (!index.isValid() || !m_lineEdit->text().isEmpty())
             return;
 
-        // Qt can activate a focused row before it has been selected.
         m_playlists->setCurrentIndex(index);
         accept();
     });

@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Casting a video**: the Tracks popup keeps its Subtitles tab, and subtitles are looked for, while the video plays on a TV.
+
 ### Added
 
 - **Library search with / or Ctrl+K**: the search of the page shown opens.

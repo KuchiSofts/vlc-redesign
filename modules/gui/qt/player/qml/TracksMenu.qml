@@ -39,10 +39,13 @@ T.Popup {
     ].concat(subtitlesOffered
              ? [{ title: qsTr("Subtitles"), icon: "qrc:///redesign/track-subtitles.svg", activeIcon: "qrc:///redesign/track-subtitles-active.svg", tab: 0 }]
              : [])
-    // Subtitles are for films and videos: a live TV channel or music has
-    // no Subtitles tab, unless it carries subtitle tracks of its own
-    // (teletext, DVB, closed captions: then their choice only)
-    readonly property bool subtitlesOffered: (Player.hasVideoOutput && !Iptv.playing)
+    // Subtitles are for films and videos (here or cast to a TV): a live TV
+    // channel or music has no Subtitles tab, unless it carries subtitle
+    // tracks of its own (teletext, DVB, closed captions: then their choice only)
+    readonly property bool subtitlesOffered: ((Player.hasVideoOutput || (Player.rendererManager.useRenderer
+                                                                         && Player.rendererManager.rendererVideo
+                                                                         && Player.videoTracks.count > 0))
+                                              && !Iptv.playing)
                                              || Player.subtitleTracks.count > 0
     onSubtitlesOfferedChanged: if (!subtitlesOffered && currentTab === 0) currentTab = 1
     Component.onCompleted: if (!subtitlesOffered && currentTab === 0) currentTab = 1

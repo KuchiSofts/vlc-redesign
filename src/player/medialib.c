@@ -336,5 +336,9 @@ vlc_player_UpdateMLStates(vlc_player_t *player, struct vlc_player_input* input)
 void
 vlc_player_RestorePlaybackPos(vlc_player_t *player)
 {
+    /* Asked from the "continue watching" card, which can outlive the media:
+     * nothing to restore once it was stopped (no input) */
+    if (player->input == NULL)
+        return;
     vlc_player_input_RestoreMlStates(player->input, true);
 }

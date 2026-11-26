@@ -337,18 +337,40 @@ Widgets.PageExt {
         // Keyboard: Return/Enter do what a click does, Menu / Shift+F10 open
         // the context menu of the current card, Up on the first row leaves
         // the grid for the header (the arrows move the current card)
-        Keys.onReturnPressed: (event) => { currentItem?.activate(Qt.TabFocusReason); event.accepted = currentItem !== null }
-        Keys.onEnterPressed: (event) => { currentItem?.activate(Qt.TabFocusReason); event.accepted = currentItem !== null }
-        Keys.onMenuPressed: (event) => { currentItem?.showMenu(); event.accepted = currentItem !== null }
+        Keys.onReturnPressed: (event) => {
+            if (event.isAutoRepeat) {
+                event.accepted = true
+                return
+            }
+            currentItem?.activate(Qt.TabFocusReason)
+            event.accepted = currentItem !== null
+        }
+        Keys.onEnterPressed: (event) => {
+            if (event.isAutoRepeat) {
+                event.accepted = true
+                return
+            }
+            currentItem?.activate(Qt.TabFocusReason)
+            event.accepted = currentItem !== null
+        }
+        Keys.onMenuPressed: (event) => {
+            if (event.isAutoRepeat) {
+                event.accepted = true
+                return
+            }
+            currentItem?.showMenu()
+            event.accepted = currentItem !== null
+        }
         Keys.onPressed: (event) => {
             if (event.key === Qt.Key_F10 && (event.modifiers & Qt.ShiftModifier)) {
+                if (event.isAutoRepeat) {
+                    event.accepted = true
+                    return
+                }
                 currentItem?.showMenu()
                 event.accepted = currentItem !== null
-            } else if (event.key === Qt.Key_Up) {
-                // (the cells of the first row are at the top of the content)
-                const firstRow = currentItem ? currentItem.y < cellHeight / 2 : currentIndex < columns
-                if (firstRow)
-                    Navigation.defaultKeyAction(event)
+            } else if (event.key === Qt.Key_Up && currentIndex < columns) {
+                Navigation.defaultKeyAction(event)
             }
         }
 
@@ -608,12 +630,16 @@ Widgets.PageExt {
                     fileMenu.popup([card.index], point)
             }
 
+            onPressed: grid.currentIndex = card.index
             onClicked: card.activate()
 
             // Figma "folder context menu"
             TapHandler {
                 acceptedButtons: Qt.RightButton
-                onTapped: (eventPoint) => card.showMenu(card.mapToGlobal(eventPoint.position))
+                onTapped: (eventPoint) => {
+                    grid.currentIndex = card.index
+                    card.showMenu(card.mapToGlobal(eventPoint.position))
+                }
             }
         }
 

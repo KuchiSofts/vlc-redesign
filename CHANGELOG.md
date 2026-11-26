@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Default Preset and Video menu crop**: Default Preset in Effects now also removes a crop chosen in the Video menu (4:3...), and saved presets keep it.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes

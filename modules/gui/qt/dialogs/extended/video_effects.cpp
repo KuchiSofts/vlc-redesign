@@ -312,6 +312,15 @@ int VideoEffects::cropValue(const QString& side) const
     vout_Release(vout);
     return value;
 }
+QString VideoEffects::cropString() const
+{
+    if (!activeVideo()) return {};
+    vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
+    if (!vout) return {};
+    const QString value = own(var_GetString(vout, "crop"));
+    vout_Release(vout);
+    return value;
+}
 bool VideoEffects::fail(const QString& reason) { m_lastError = reason; emit errorChanged(); return false; }
 void VideoEffects::clearError() { if (!m_lastError.isEmpty()) { m_lastError.clear(); emit errorChanged(); } }
 void VideoEffects::changed() { ++m_revision; emit stateChanged(); }
@@ -348,10 +357,7 @@ bool VideoEffects::begin()
     m_snapshotVout = voutToken();
     m_snapshotChain = filterChain("video-filter");
     m_snapshotSources = filterChain("sub-source");
-    if (vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player)) {
-        m_snapshotCropString = own(var_GetString(vout, "crop"));
-        vout_Release(vout);
-    }
+    m_snapshotCropString = cropString();
     m_snapshotValues.clear();
     m_snapshotCrop.clear();
     m_configSnapshot.clear();
@@ -508,6 +514,22 @@ bool VideoEffects::setCrop(const QString& side, int pixels)
     clearError(); changed();
     return true;
 }
+bool VideoEffects::setCropString(const QString& crop)
+{
+    if (!requirePreview() || m_offline) return false;
+    vout_thread_t* vout = vlc_player_vout_Hold(m_ctx->getIntf()->p_player);
+    if (!vout) return fail(tr("No active video output is available."));
+    if (reinterpret_cast<quintptr>(vout) != m_snapshotVout) {
+        vout_Release(vout);
+        return fail(tr("Video output changed during the preview."));
+    }
+    const QByteArray value = crop.toUtf8();
+    const int result = var_SetString(vout, "crop", value.constData());
+    vout_Release(vout);
+    if (result != VLC_SUCCESS) return fail(qtr("Crop could not be applied."));
+    clearError(); changed();
+    return true;
+}
 bool VideoEffects::resetDefaults(const QString& filter)
 {
     if (!filterAvailable(filter) || !requirePreview()) return false;
@@ -555,8 +577,7 @@ bool VideoEffects::cancel()
     const QByteArray sourceChain = m_snapshotSources.toUtf8();
     const int sourceResult = own(var_GetString(vout, "sub-source")) == m_snapshotSources ? VLC_SUCCESS
                            : var_SetString(vout, "sub-source", sourceChain.constData());
-    // (a side set leaves the crop string as it was: a ratio crop is set again
-    // after one)
+    // Restoring a side rewrites the crop string. Restore the saved string last.
     const QByteArray crop = m_snapshotCropString.toUtf8();
     const int cropResult = !sideChanged && own(var_GetString(vout, "crop")) == m_snapshotCropString ? VLC_SUCCESS
                          : var_SetString(vout, "crop", crop.constData());

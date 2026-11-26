@@ -63,12 +63,13 @@ Widgets.PageLoader {
         History.push([...root.pagePrefix, "source_root"], { source_name: source_name }, reason)
     }
 
-    function _showServiceNode(tree, source_name, reason) {
+    function _showServiceNode(tree, source_name, source_display_name, reason) {
         History.push(
             [...root.pagePrefix, "source_browse"],
             {
                 tree: tree,
-                source_name: source_name
+                source_name: source_name,
+                source_display_name: source_display_name
             },
             reason)
     }
@@ -122,7 +123,7 @@ Widgets.PageLoader {
 
             onHomeButtonClicked: reason => _showServiceHome(reason)
             onBrowse: (tree, reason) => {
-                root._showServiceNode(tree, deviceModel.source_name, reason)
+                root._showServiceNode(tree, deviceModel.source_name, deviceModel.name, reason)
             }
 
             onCurrentIndexChanged: History.viewProp.initialIndex = currentIndex
@@ -155,12 +156,13 @@ Widgets.PageLoader {
 
             property alias tree: mediaModel.tree
             property string source_name
+            property string source_display_name
 
             onBrowse: (tree, reason) => {
                 if (tree.isRoot)
                     root._showServiceRoot(source_name, reason)
                 else
-                    root._showServiceNode(tree, source_name, reason)
+                    root._showServiceNode(tree, source_name, source_display_name, reason)
             }
             onHomeButtonClicked: (tree, reason) => root._showServiceHome(reason)
             onCurrentIndexChanged: History.viewProp.initialIndex = currentIndex
@@ -174,12 +176,8 @@ Widgets.PageLoader {
                 sortCriteria: sourceBrowsePage.sort.criteria
             }
 
-            headerPath:  {
-                let _path =  [{display: mediaModel.name, tree: {"source_name": source_name, "isRoot": true}}]
-                _path.concat(mediaModel.path)
-
-                return _path
-            }
+            headerPath: [{display: source_display_name, tree: {source_name: source_name, isRoot: true}}]
+                        .concat(mediaModel.path)
 
             contextMenu: NetworkMediaContextMenu {
                 model: mediaModel

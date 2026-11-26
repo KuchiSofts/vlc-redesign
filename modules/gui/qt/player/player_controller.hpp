@@ -329,6 +329,9 @@ public:
     void updatePosition();
     void updateTime(vlc_tick_t system_now, bool forceTimer);
 
+    void pauseForMinimize();
+    void resumeFromMinimize();
+
     enum SpeedHoldSource { KeyboardSpeedHold = 1, MouseSpeedHold = 2 };
     static constexpr int SpeedHoldDelay = 350;
     static constexpr float HoldSpeedRate = 2.f;

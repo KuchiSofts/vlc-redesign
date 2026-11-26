@@ -464,26 +464,12 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
 
         if( newState & Qt::WindowMinimized )
         {
-
-            m_hasPausedWhenMinimized = false;
-
-            /* "Pause video when window is minimized" of the settings, as
-             * it is */
-            if( THEMIM->getPlayingState() == PlayerController::PLAYING_STATE_PLAYING &&
-                THEMIM->hasVideoOutput() && !THEMIM->hasAudioVisualization() &&
+            if( !( oldState & Qt::WindowMinimized ) && m_player &&
                 var_InheritBool( p_intf, "qt-pause-minimized" ) )
-            {
-                m_hasPausedWhenMinimized = true;
-                THEMPL->pause();
-            }
+                m_player->pauseForMinimize();
         }
-        else if( oldState & Qt::WindowMinimized && !( newState & Qt::WindowMinimized ) )
-        {
-            if( m_hasPausedWhenMinimized )
-            {
-                THEMPL->play();
-            }
-        }
+        else if( oldState & Qt::WindowMinimized && m_player )
+            m_player->resumeFromMinimize();
         break;
     }
     case QEvent::KeyPress:

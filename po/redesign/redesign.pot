@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-26 04:11+0000\n"
+"POT-Creation-Date: 2026-11-26 05:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:43
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistButton.qml:36
 #: modules/gui/qt/player/qml/controlbarcontrols/PlaylistNameWidget.qml:26
-#: modules/gui/qt/playlist/qml/PlaylistDetachedWindow.qml:55
+#: modules/gui/qt/playlist/qml/PlaylistDetachedWindow.qml:56
 #: modules/gui/qt/playlist/qml/PlaylistPane.qml:81
 msgid "Play Queue"
 msgstr ""
@@ -1464,7 +1464,7 @@ msgstr ""
 #: modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml:92
 #: modules/gui/qt/medialibrary/qml/VideoInfoExpandPanel.qml:194
 #: modules/gui/qt/medialibrary/qml/PlaylistPropertiesDialog.qml:32
-#: modules/gui/qt/playlist/qml/PlaylistDetachedWindow.qml:160
+#: modules/gui/qt/playlist/qml/PlaylistDetachedWindow.qml:172
 #: modules/gui/qt/util/csdmenu.cpp:123
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
 #: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
@@ -6464,7 +6464,7 @@ msgstr ""
 #. * right to left (Arabic, Hebrew, Persian, Urdu...), else "LTR". Choosing
 #. * the language lays the interface out in that direction (the user can
 #. * change it under the language).
-#: modules/gui/qt/maininterface/mainctx.cpp:1932
+#: modules/gui/qt/maininterface/mainctx.cpp:1931
 msgctxt "layout direction"
 msgid "LTR"
 msgstr ""
@@ -8600,11 +8600,11 @@ msgstr ""
 msgid "Player controls"
 msgstr ""
 
-#: modules/gui/qt/player/qml/ControlBar.qml:437
+#: modules/gui/qt/player/qml/ControlBar.qml:440
 msgid "%1 (%2x)"
 msgstr ""
 
-#: modules/gui/qt/player/qml/ControlBar.qml:452
+#: modules/gui/qt/player/qml/ControlBar.qml:455
 msgid "Progress"
 msgstr ""
 

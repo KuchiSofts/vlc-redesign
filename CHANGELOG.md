@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Service breadcrumbs**: inside a service's folders (Discover > Services), the address bar shows the service and the folders above again, and they can be clicked.
 - **Built-in file browser setting**: turning "Show the file browser inside Open Multiple Files" on or off takes effect the next time the dialog opens, without restarting VLC; the setting's name says which dialog it changes.
 - **Default Preset and Video menu crop**: Default Preset in Effects now also removes a crop chosen in the Video menu (4:3...), and saved presets keep it.
 - **Export an empty playlist**: Export Playlist on a playlist with no files now opens the save dialog and writes a valid empty playlist; a playlist that cannot be read shows a warning.

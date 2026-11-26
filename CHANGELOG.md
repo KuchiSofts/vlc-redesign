@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Messages and the clipboard**: selecting text in Tools > Messages no longer copies it to the clipboard each time a new log line arrives; the selection and scroll position stay.
 - **Bookmark names**: pressing Create again at the same position in Edit Bookmarks no longer renames the existing bookmark to "Bookmark at ...".
 - **Add to Playlist keyboard**: in Add to Playlist, selecting an existing playlist with the arrow keys enables OK, and Enter adds to it.
 - **Blu-ray menus in Open Disc**: choosing Blu-ray in Open Disc no longer forces "No disc menus" on; the box follows the Blu-ray menu setting and your choice.

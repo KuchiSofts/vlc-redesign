@@ -64,7 +64,7 @@ private:
 
     bool m_videoFullScreen = false;
 
-    QScreen* m_lastWinScreen = nullptr;
+    QPointer<QScreen> m_lastWinScreen;
 
     bool m_hasWayland = false;
 };

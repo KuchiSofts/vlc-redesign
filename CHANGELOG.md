@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Browse Back keeps your place**: going Back in Browse selects and scrolls to the folder you had opened, in list and grid.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes

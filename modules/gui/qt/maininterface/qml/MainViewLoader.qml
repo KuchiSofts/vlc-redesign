@@ -181,15 +181,11 @@ Loader {
         }
     }
 
-    // makes the views currentIndex initial index and position view at that index
-    function resetFocus() {
-        if (isLoading || count === 0 || initialIndex === -1) return
-
-        var index
-
-        if (initialIndex < count)
-            index = initialIndex
-        else
+    // Select and reveal the requested row.
+    function resetFocus(index = initialIndex) {
+        if (!currentItem || isLoading || count === 0 || index < 0)
+            return
+        if (index >= count)
             index = 0
 
         selectionModel.select(model.index(index, 0), ItemSelectionModel.ClearAndSelect)

@@ -15,8 +15,6 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **Casting a video**: the Tracks popup keeps its Subtitles tab, and subtitles are looked for, while the video plays on a TV.
-
 ### Added
 
 - **Library search with / or Ctrl+K**: the search of the page shown opens.
@@ -46,6 +44,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Subtitle services**: a late sign-in answer no longer erases the saved logins.
 - **Light theme**: the ON word of the toggles reads clearly, and Increase text contrast reaches the Compact Library.
 - **Effects with the keyboard**: the focused tab and section are framed.
+- **Subtitles while casting a video**: the Tracks popup keeps its Subtitles tab.
 - **Right-to-left languages**: the texts left in English keep their punctuation in place when the direction changes.
 - **Taskbar buttons (Windows)**: rebuilt cleanly after Explorer restarts; Play is greyed with an empty queue.
 - **A file opened while VLC starts** can no longer crash it.
@@ -54,7 +53,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
-- Twenty-five pull requests by a contributor (#177 to #184, #186, #193 to #206, #208, #209), each shown before and
+- Twenty-six pull requests by a contributor (#177 to #186, #193 to #206, #208, #209), each shown before and
   after and then taken, with our fixes on five of them: the shortcuts come back whenever the Compact Library's
   search loses the keyboard (#180), Enter on Add item and one focus rule for pins and pages (#184), the Compact
   Library's rows as listed exceptions of the light map (#202), a translation again on every direction change

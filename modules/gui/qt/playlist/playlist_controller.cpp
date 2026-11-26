@@ -463,11 +463,12 @@ void PlaylistController::replaceAndPlay(const QVariantList &sources)
     const auto rawMedia = toRaw<input_item_t *>(media);
 
     vlc_playlist_locker locker(d->m_playlist);
-    // Keep the old queue if insertion fails.
+    // An append that fails keeps the old queue (no throw: this runs on the
+    // interface's thread, with the playlist locked).
     const size_t oldCount = vlc_playlist_Count(d->m_playlist);
     if (vlc_playlist_Append(d->m_playlist, rawMedia.constData(),
                             rawMedia.size()) != VLC_SUCCESS)
-        throw std::bad_alloc();
+        return;
 
     if (oldCount > 0)
         vlc_playlist_Remove(d->m_playlist, 0, oldCount);

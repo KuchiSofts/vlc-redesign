@@ -36,8 +36,6 @@
 #include <dbus/dbus.h>
 
 #define DBUS_MPRIS_OBJECT_PATH "/org/mpris/MediaPlayer2"
-/* Keep in sync with src/posix/specific.c. */
-#define DBUS_VLC_PLAYLIST_INTERFACE "org.videolan.vlc.Playlist"
 
 /* MACROS */
 

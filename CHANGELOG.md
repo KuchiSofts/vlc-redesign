@@ -15,7 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **Open with on macOS and Linux**: with "Add to the playlist instead of replacing it" off, files opened from Finder or a Linux file manager into a running VLC replace the queue, as on Windows.
+- **Open with on macOS**: with "Add to the playlist instead of replacing it" off, files opened from Finder into a running VLC replace the queue, as on Windows.
 
 ## [0.8.7] · 2026-11-26
 

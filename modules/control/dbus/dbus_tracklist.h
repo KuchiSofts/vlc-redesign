@@ -99,10 +99,6 @@ tracklist_remove_event_next( tracklist_remove_event_t *event ) {
 DBusHandlerResult handle_tracklist ( DBusConnection *p_conn,
                                      DBusMessage *p_from,
                                      void *p_this );
-/* org.videolan.vlc.Playlist: no properties, only ReplaceAndPlay */
-DBusHandlerResult handle_vlc_playlist ( DBusConnection *p_conn,
-                                        DBusMessage *p_from,
-                                        void *p_this );
 
 int TrackListPropertiesChangedEmit( intf_thread_t *, vlc_dictionary_t * );
 

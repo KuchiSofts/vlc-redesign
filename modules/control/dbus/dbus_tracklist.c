@@ -177,74 +177,6 @@ DBUS_METHOD( AddTrack )
     REPLY_SEND;
 }
 
-DBUS_METHOD( ReplaceAndPlay )
-{
-    if (!dbus_message_has_signature(p_from, "as"))
-        return InvalidArguments(p_conn, p_from, p_this);
-
-    char **uris;
-    int count;
-    if (!dbus_message_get_args(p_from, NULL, DBUS_TYPE_ARRAY,
-                               DBUS_TYPE_STRING, &uris, &count, DBUS_TYPE_INVALID))
-        return DBUS_HANDLER_RESULT_NEED_MEMORY;
-    if (count == 0)
-    {
-        dbus_free_string_array(uris);
-        return InvalidArguments(p_conn, p_from, p_this);
-    }
-
-    DBusHandlerResult result = DBUS_HANDLER_RESULT_NEED_MEMORY;
-    input_item_t **items = vlc_alloc(count, sizeof(*items));
-    if (!items)
-        goto out_uris;
-
-    int prepared;
-    for (prepared = 0; prepared < count; ++prepared)
-    {
-        items[prepared] = input_item_New(uris[prepared], NULL);
-        if (!items[prepared])
-            goto out_items;
-    }
-
-    /* Reserve the reply before changing the queue so dispatch can retry
-     * on allocation failure without applying the replacement twice. */
-    DBusMessage *reply = dbus_message_new_method_return(p_from);
-    if (!reply)
-        goto out_items;
-    DBusPreallocatedSend *send = dbus_connection_preallocate_send(p_conn);
-    if (!send)
-        goto out_reply;
-
-    vlc_playlist_t *playlist = PL;
-    vlc_playlist_Lock(playlist);
-    /* Clear (a reset event) rather than removing the old range after the
-     * append: this module's items-removed listener reads the removed items'
-     * ids from the playlist after they are gone. */
-    vlc_playlist_Clear(playlist);
-    int ret = vlc_playlist_Append(playlist, items, count);
-    if (ret == VLC_SUCCESS)
-        vlc_playlist_PlayAt(playlist, 0);
-    vlc_playlist_Unlock(playlist);
-
-    if (ret == VLC_SUCCESS)
-    {
-        dbus_connection_send_preallocated(p_conn, send, reply, NULL);
-        result = DBUS_HANDLER_RESULT_HANDLED;
-    }
-    else
-        dbus_connection_free_preallocated_send(p_conn, send);
-
-out_reply:
-    dbus_message_unref(reply);
-out_items:
-    while (prepared > 0)
-        input_item_Release(items[--prepared]);
-    free(items);
-out_uris:
-    dbus_free_string_array(uris);
-    return result;
-}
-
 DBUS_METHOD( GetTracksMetadata )
 {
     REPLY_INIT;
@@ -579,15 +511,6 @@ handle_tracklist ( DBusConnection *p_conn, DBusMessage *p_from, void *p_this )
     METHOD_FUNC( DBUS_MPRIS_TRACKLIST_INTERFACE, "RemoveTrack", RemoveTrack );
     METHOD_FUNC( DBUS_MPRIS_TRACKLIST_INTERFACE, "GetTracksMetadata",
                                                   GetTracksMetadata );
-    return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
-}
-
-DBusHandlerResult
-handle_vlc_playlist ( DBusConnection *p_conn, DBusMessage *p_from, void *p_this )
-{
-    if(0);
-
-    METHOD_FUNC( DBUS_VLC_PLAYLIST_INTERFACE, "ReplaceAndPlay", ReplaceAndPlay );
 
     return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 }

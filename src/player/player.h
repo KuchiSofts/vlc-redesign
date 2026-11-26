@@ -65,9 +65,7 @@ struct vlc_player_input
 
     enum vlc_player_state state;
     enum vlc_player_error error;
-    struct input_playback_rate rate;
-    /* A release can arrive before the input applies the override. */
-    bool rate_override_requested;
+    float rate;
     int capabilities;
     vlc_tick_t length;
     bool live;

@@ -188,7 +188,6 @@ libvlccore_sources_base = files(
     'input/event.h',
     'input/item.h',
     'input/mrl_helpers.h',
-    'input/playback_rate.h',
     'input/stream.h',
     'input/input_internal.h',
     'input/input_interface.h',

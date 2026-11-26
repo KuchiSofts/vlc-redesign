@@ -221,7 +221,7 @@ vlc_player_GetAtoBLoopDeadline(vlc_player_t *player)
             return VLC_TICK_MIN;
         b_time = input->abloop_state[1].pos * input->length;
     }
-    return now + (vlc_tick_t) ((b_time - ts) / input->rate.effective);
+    return now + (vlc_tick_t) ((b_time - ts) / input->rate);
 }
 
 static void *
@@ -1416,7 +1416,7 @@ vlc_player_GetRate(vlc_player_t *player)
 {
     struct vlc_player_input *input = vlc_player_get_input_locked(player);
     if (input)
-        return input->rate.effective;
+        return input->rate;
     else
         return var_GetFloat(player, "rate");
 }
@@ -1440,23 +1440,6 @@ vlc_player_ChangeRate(vlc_player_t *player, float rate)
     else /* Send the event anyway since it's a global state */
         vlc_player_SendEvent(player, on_rate_changed, rate);
 
-}
-
-float
-vlc_player_SetRateOverride(vlc_player_t *player, float rate)
-{
-    struct vlc_player_input *input = vlc_player_get_input_locked(player);
-    if (!input || !input->started || (rate == 0.f && !input->rate_override_requested))
-        return 0.f;
-
-    /* Keep the override on the input that owns it. Next, Stop and shutdown
-     * can detach that input before the interface hears about the transition. */
-    if (input_ControlPushHelper(input->thread, INPUT_CONTROL_SET_RATE_OVERRIDE,
-                                &(vlc_value_t) { .f_float = rate }) != VLC_SUCCESS)
-        return 0.f;
-
-    input->rate_override_requested = rate != 0.f;
-    return input->rate.base;
 }
 
 static void

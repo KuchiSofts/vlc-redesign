@@ -640,19 +640,6 @@ VLC_API void
 vlc_player_ChangeRate(vlc_player_t *player, float rate);
 
 /**
- * Temporarily change the current input's rate without changing its saved rate.
- *
- * An applied regular rate change sets a new base rate. The override ends with the
- * input and is never inherited by a later input.
- *
- * @param player locked player instance
- * @param rate override rate, or zero to restore the input's base rate
- * @return last applied base rate if queued, or zero if no request was queued
- */
-VLC_API float
-vlc_player_SetRateOverride(vlc_player_t *player, float rate);
-
-/**
  * Increment the rate of the player (faster)
  *
  * @param player locked player instance

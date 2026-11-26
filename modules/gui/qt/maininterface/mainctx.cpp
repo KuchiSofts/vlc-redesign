@@ -1579,6 +1579,9 @@ static int IntfShowCB( vlc_object_t *, const char *,
 static int KeyFeedbackTextCB( vlc_object_t *, const char *,
                               vlc_value_t, vlc_value_t new_val, void *param )
 {
+    if (PlayerController::isChangingSpeedHoldRate())
+        return VLC_SUCCESS;
+
     MainCtx *ctx = static_cast<MainCtx *>( param );
     const QString text = qfu( new_val.psz_string ? new_val.psz_string : "" ).trimmed();
     if( !text.isEmpty() )

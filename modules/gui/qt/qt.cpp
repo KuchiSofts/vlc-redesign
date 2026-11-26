@@ -969,6 +969,8 @@ static void Close( vlc_object_t *p_this )
         /* (the steps of a close are logged: a close that never ends, seen on
          * a CI runner, shows where it stopped) */
         msg_Dbg( p_intf, "closing: the interface thread is asked to unload" );
+        if (p_intf->p_mainPlayerController)
+            p_intf->p_mainPlayerController->finishSpeedHoldForShutdown();
         QMetaObject::invokeMethod( p_intf->p_mi, [p_intf] () {
             ThreadCleanup(p_intf, CLEANUP_INTF_CLOSED);
         }, Qt::BlockingQueuedConnection);

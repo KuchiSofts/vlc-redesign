@@ -278,7 +278,7 @@ input_thread_t * input_Create( vlc_object_t *p_parent, input_item_t *p_item,
     priv->is_stopped = false;
     priv->b_recording = false;
     priv->b_pause_after_buffering = false;
-    priv->rate = (struct input_playback_rate) { .effective = 1.f, .base = 1.f };
+    priv->rate = 1.f;
     TAB_INIT( priv->i_attachment, priv->attachment );
     priv->p_sout   = NULL;
     priv->b_out_pace_control = priv->type == INPUT_TYPE_THUMBNAILING;
@@ -358,8 +358,8 @@ input_thread_t * input_Create( vlc_object_t *p_parent, input_item_t *p_item,
     else
         priv->stats = NULL;
 
-    priv->p_es_out_display = input_EsOutNew(p_input, priv->master,
-                                            priv->rate.effective, priv->type);
+    priv->p_es_out_display = input_EsOutNew(p_input, priv->master, priv->rate,
+                                            priv->type);
     if( !priv->p_es_out_display )
     {
         Destroy( p_input );
@@ -659,7 +659,7 @@ static bool InputDrainOverdue( input_thread_t *p_input, vlc_tick_t *since )
         return false;
     }
     input_thread_private_t *priv = input_priv(p_input);
-    const float rate = priv->rate.effective > 0.f ? priv->rate.effective : 1.f;
+    const float rate = priv->rate > 0.f ? priv->rate : 1.f;
     const vlc_tick_t limit = __MAX( (vlc_tick_t)( 2 * priv->master->i_pts_delay / rate ),
                                     VLC_TICK_FROM_SEC(10) );
     if( now - *since < limit )
@@ -1407,8 +1407,7 @@ static int Init( input_thread_t * p_input )
         goto error;
 
     /* Create es out */
-    priv->p_es_out = input_EsOutTimeshiftNew(p_input, priv->p_es_out_display,
-                                           priv->rate.effective);
+    priv->p_es_out = input_EsOutTimeshiftNew(p_input, priv->p_es_out_display, priv->rate);
     if (priv->p_es_out == NULL)
         goto error;
 
@@ -1600,7 +1599,6 @@ static size_t ControlGetReducedIndexLocked( input_thread_t *p_input,
     {
         if ( i_ct == INPUT_CONTROL_SET_STATE ||
              i_ct == INPUT_CONTROL_SET_RATE ||
-             i_ct == INPUT_CONTROL_SET_RATE_OVERRIDE ||
              i_ct == INPUT_CONTROL_SET_POSITION ||
              i_ct == INPUT_CONTROL_SET_TIME ||
              i_ct == INPUT_CONTROL_SET_PROGRAM ||
@@ -2277,22 +2275,10 @@ static bool Control( input_thread_t *p_input,
             break;
 
         case INPUT_CONTROL_SET_RATE:
-        case INPUT_CONTROL_SET_RATE_OVERRIDE:
         {
-            /* Resolve release in queue order in case a base rate was still
-             * pending when the override started. */
-            const bool temporary = i_type == INPUT_CONTROL_SET_RATE_OVERRIDE;
-            const float request = input_playback_rate_target(&priv->rate,
-                                                           param.val.f_float,
-                                                           temporary);
-            const float previous = priv->rate.effective;
-            if( temporary && param.val.f_float == 0.f && request == previous )
-                break;
-            bool accepted = true;
-
             /* Get rate and direction */
-            float rate = fabsf( request );
-            int i_rate_sign = request < 0 ? -1 : 1;
+            float rate = fabsf( param.val.f_float );
+            int i_rate_sign = param.val.f_float < 0 ? -1 : 1;
 
             /* Check rate bound */
             if( rate > INPUT_RATE_MAX )
@@ -2312,8 +2298,7 @@ static bool Control( input_thread_t *p_input,
                 if( priv->master->b_rescale_ts )
                 {
                     msg_Dbg( p_input, "cannot set negative rate" );
-                    rate = previous;
-                    accepted = false;
+                    rate = priv->rate;
                     assert( rate > 0 );
                 }
                 else
@@ -2329,7 +2314,7 @@ static bool Control( input_thread_t *p_input,
                 msg_Dbg( p_input, "cannot change rate" );
                 rate = 1.f;
             }
-            if( rate != previous &&
+            if( rate != priv->rate &&
                 !priv->master->b_can_pace_control && priv->master->b_can_rate_control )
             {
                 if( !priv->master->b_rescale_ts )
@@ -2339,19 +2324,16 @@ static bool Control( input_thread_t *p_input,
                                    &rate ) )
                 {
                     msg_Warn( p_input, "ACCESS/DEMUX_SET_RATE failed" );
-                    rate = previous;
-                    accepted = false;
+                    rate = priv->rate;
                 }
             }
 
-            /* A permanent request can adopt the current effective rate. The
-             * player still needs the new base for the outgoing input's save. */
-            if( input_playback_rate_update( &priv->rate, rate,
-                                            !temporary && accepted ) )
-                input_SendEventRate( p_input, priv->rate );
-
-            if( rate != previous )
+            /* */
+            if( rate != priv->rate )
             {
+                priv->rate = rate;
+                input_SendEventRate( p_input, rate );
+
                 if( priv->master->b_rescale_ts )
                 {
                     const float rate_source = (priv->master->b_can_pace_control ||

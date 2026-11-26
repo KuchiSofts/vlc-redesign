@@ -37,6 +37,7 @@ Item {
     }
     required property Item target
     required property QtObject panelObject
+    required property string accessibleName
     // On the right edge of the panel (its left edge in a right to left
     // layout: the anchors are mirrored, the drag follows them)
     property bool atRight: false
@@ -63,8 +64,7 @@ Item {
         color: theme.separator
     }
 
-    // The edge that resizes the pane, shown while the pointer is on it or
-    // drags it: without it, it is a bare strip nobody finds (#45)
+    // Mark the resize edge on hover, during a drag, and with keyboard focus.
     Rectangle {
         anchors {
             top: parent.top
@@ -78,7 +78,7 @@ Item {
         radius: width / 2
         color: theme.accent
         visible: resizeHandle.visible && opacity > 0
-        opacity: (resizeHandle.containsMouse || resizeHandle.pressed) ? 1.0 : 0.0
+        opacity: (resizeHandle.containsMouse || resizeHandle.pressed || resizeHandle.visualFocus) ? 1.0 : 0.0
 
         Behavior on opacity {
             NumberAnimation { duration: VLCStyle.duration_short; easing.type: Easing.OutQuad }
@@ -99,9 +99,12 @@ Item {
 
         // the side it is on once mirrored: a drag away from the panel widens it
         atRight: LayoutMirroring.enabled ? !paneResizeHandle.atRight : paneResizeHandle.atRight
+        accessibleName: paneResizeHandle.accessibleName
         currentWidth: target.width
 
         visible: !VLCStyle.isScreenSmall
+
+        Navigation.parentItem: paneResizeHandle.target
 
         onRequestedWidthChanged: {
             if (!_inhibitMainInterfaceUpdate)

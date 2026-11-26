@@ -707,6 +707,7 @@ FocusScope {
                     maximumWidth: playlist.maximumWidth
 
                     panelObject: MainCtx.playqueuePanel
+                    accessibleName: qsTr("Resize the play queue")
                     atRight: false
 
                     anchors {

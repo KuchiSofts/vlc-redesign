@@ -53,7 +53,9 @@ settings, saved queues), and what a review of the Android app and the Samsung TV
 ### Technical
 
 - Ten pull requests by a contributor (#236, #238 to #244, #246, #247), each read in full, then read together
-  by a reviewer before the release.
+  by a reviewer before the release, with two small fixes of ours: a page restored by its row number (the
+  services' pages) waits for its rows, and the equalizer preamp that was saved stays the one applied when a
+  preset is loaded at the start.
 - One new text ("The playlist could not be exported to %1.") in 72 languages, each from the language's own
   wording of the sister text that ends with the reason.
 - VideoLAN's master merged up to `3d86ce421d` (2026-11-26, 10 commits): their update button in the side pane and

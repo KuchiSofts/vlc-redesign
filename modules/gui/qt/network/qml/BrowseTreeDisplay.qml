@@ -74,6 +74,11 @@ Widgets.PageExt {
             }
         }
 
+        // A place kept by its row number only (the services' pages): while its rows are still arriving the number
+        // is past the end, and the first row would be taken for it.
+        if (!initialUri && index >= loader.count)
+            return
+
         _initialItemRestored = true
         loader.resetFocus(index)
     }

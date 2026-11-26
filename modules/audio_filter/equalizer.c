@@ -343,9 +343,14 @@ static int EqzInit( filter_t *p_filter, int i_rate )
     if( bands.psz_string == NULL )
     {
         vlc_value_t preset = { .psz_string = var_GetNonEmptyString( p_aout, "equalizer-preset" ) };
+        /* The preamp that was saved stays the one applied, as before: the preset sets its own on the way. */
+        const float saved_preamp = var_GetFloat( p_aout, "equalizer-preamp" );
         if( preset.psz_string != NULL &&
             PresetCallback( p_aout, NULL, preset, preset, p_sys ) == VLC_SUCCESS )
+        {
             bands.psz_string = var_GetNonEmptyString( p_aout, "equalizer-bands" );
+            var_SetFloat( p_aout, "equalizer-preamp", saved_preamp );
+        }
         free( preset.psz_string );
     }
 

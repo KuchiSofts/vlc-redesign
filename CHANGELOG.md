@@ -15,26 +15,6 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **A-B Loop on live streams**: the A-B Loop button is disabled on playback that cannot seek, and it no longer stays stuck on A.
-- **Advanced preferences search**: checking or unchecking "Only show current" keeps the search applied instead of showing the whole tree.
-- **Messages filter**: the Tools > Messages filter is case-insensitive for new lines too, so a line no longer stays hidden until the filter is edited.
-- **Messages and the clipboard**: selecting text in Tools > Messages no longer copies it to the clipboard each time a new log line arrives; the selection and scroll position stay.
-- **Bookmark names**: pressing Create again at the same position in Edit Bookmarks no longer renames the existing bookmark to "Bookmark at ...".
-- **Add to Playlist keyboard**: in Add to Playlist, selecting an existing playlist with the arrow keys enables OK, and Enter adds to it.
-- **Blu-ray menus in Open Disc**: choosing Blu-ray in Open Disc no longer forces "No disc menus" on; the box follows the Blu-ray menu setting and your choice.
-- **Continue Watching timeout**: a resume card that closed by itself after 10 s no longer reappears when returning from picture in picture.
-- **Tray restore keeps maximized**: bringing a minimized, maximized VLC back from the tray icon (or by opening a file) keeps it maximized.
-- **Tray menu Show / Hide**: after closing VLC to the tray, its tray menu offers Show instead of Hide.
-- **Window position after rearranging displays**: when a monitor's position changed since last time, VLC reopens at the same place on that monitor instead of being pushed against its edge.
-- **Exit Fullscreen button**: the fullscreen title bar's Exit Fullscreen button now leaves fullscreen after F11 during a video, instead of staying fullscreen or moving to another display.
-- **Clear history**: a confirmed Clear in Settings > Privacy now always finishes, even when you switch to another category right away.
-- **Resume after Stop**: with "Continue where you left off" on Ask, Stop then Play on the same item shows the resume card again instead of starting from the beginning.
-- **Pause when minimized**: restoring the window resumes only the video VLC paused when minimizing; a video stopped meanwhile stays stopped, and a paused one resumes reliably.
-- **Monitor unplugged in fullscreen**: leaving video fullscreen after the monitor VLC came from was disconnected no longer uses the removed screen (possible crash); VLC stays on the remaining screen.
-- **Raw dump overwrite**: Convert / Save with "Dump raw input" now asks Keep or Overwrite when the destination file exists, instead of replacing it silently.
-- **Saved playlist search**: Remove, Move, Add files and drops are disabled while a saved playlist is filtered by search, so they can no longer act on a different entry.
-- **Media Information save**: clearing the queue while Media Information is open now ends the edit and hides Save Metadata, so it can no longer write empty tags to the last file.
-
 ### Added
 
 - **Library search with / or Ctrl+K**: the search of the page shown opens.
@@ -72,13 +52,35 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Screen readers**: the chosen theme, accent colour and Settings page are announced, and the sliders give
   their range.
 
+- **A-B Loop**: the button is off on playback that cannot seek, and no longer sticks on A.
+- **Advanced preferences**: the search stays when "Only show current" is switched.
+- **Messages**: new lines no longer copy the selection to the clipboard, and the filter treats new and old lines
+  alike.
+- **Bookmarks**: Create at the same position keeps the bookmark's name.
+- **Add to Playlist**: an existing playlist can be chosen with the keyboard.
+- **Open Disc**: Blu-ray menus are no longer forced off.
+- **Continue Watching**: a card that timed out does not come back, and after Stop then Play it is offered again.
+- **Tray**: restoring keeps the window maximized, and the menu offers Show after closing to the tray.
+- **Window position**: kept on its monitor after the displays were rearranged; a monitor unplugged in fullscreen
+  is no longer used on the way out.
+- **Exit Fullscreen** in the title bar always leaves fullscreen.
+- **Clear history** in Settings › Privacy finishes also when you leave the page at once.
+- **Pause when minimized**: restoring the window resumes only the video VLC paused itself.
+- **Convert / Save**: a raw dump asks before it overwrites a file.
+- **Saved playlists**: Remove, Move and Add files wait while the list is filtered by a search.
+- **Media Information**: after the queue is cleared, Save Metadata can no longer write empty tags to the last
+  file.
+
 ### Technical
 
-- Twenty-six pull requests by a contributor (#177 to #186, #193 to #206, #208, #209), each shown before and
-  after and then taken, with our fixes on five of them: the shortcuts come back whenever the Compact Library's
-  search loses the keyboard (#180), Enter on Add item and one focus rule for pins and pages (#184), the Compact
-  Library's rows as listed exceptions of the light map (#202), a translation again on every direction change
-  (#206), and setup still closing the copies of every Windows session (#209).
+- Forty-five pull requests by a contributor (#177 to #186, #193 to #206, #208, #209, #214 to #216, #218, #220 to
+  #234), each read in full, the fault looked for in 0.8.4 and the change shown before and after where it can be
+  seen, with our fixes on seven of them: the shortcuts come back whenever the Compact Library's search loses the
+  keyboard (#180), Enter on Add item and one focus rule for pins and pages (#184), the Compact Library's rows as
+  listed exceptions of the light map (#202), a translation again on every direction change (#206), setup still
+  closing the copies of every Windows session (#209), Convert and Stream starting a Blu-ray without menus (#228),
+  and a double click in place of "activated" in Add to Playlist (#229).
+- The "continue watching" action checks that there is a media to go back to (it could be asked after Stop).
 
 ## [0.8.4] · 2026-11-26
 

@@ -23,7 +23,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - The macOS build checks the update of an installed copy through the app itself: a build that takes itself for
   an older version updates to the latest release with its own updater, helper and restart
   ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)). Two test switches of the updater
-  (`VLC_REDESIGN_UPDATE_TEST_AS`, `VLC_REDESIGN_UPDATE_TEST_AUTO`) make it run without a click.
+  (`VLC_REDESIGN_UPDATE_TEST_AS`, `VLC_REDESIGN_UPDATE_TEST_AUTO`) make it run without a click; the
+  workflow's token goes with its requests to GitHub's API (the CI machines' shared addresses reach the anonymous limit).
 
 ## [0.8.7] · 2026-11-26
 

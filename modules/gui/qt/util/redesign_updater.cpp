@@ -414,6 +414,15 @@ HttpRequest githubRequest(const QString &url, qsizetype maxBytes, int timeoutMs)
     // GitHub refuses API requests without a User-Agent
     request.headers.append(qMakePair(QByteArray("User-Agent"), QByteArray("VLC-Redesign/" VLC_REDESIGN_VERSION)));
     request.headers.append(qMakePair(QByteArray("Accept"), QByteArray("application/vnd.github+json")));
+    // (the CI's test of the update through the app, #117: the shared addresses of the CI's machines soon reach
+    // GitHub's limit for anonymous API requests. With the test switch on, the workflow's own token goes with the
+    // requests to GitHub's API, and to nothing else)
+    if (qEnvironmentVariable("VLC_REDESIGN_UPDATE_TEST_AUTO") == QLatin1String("1")
+        && request.url.scheme() == QLatin1String("https") && request.url.host() == QLatin1String("api.github.com")) {
+        const QByteArray token = qgetenv("VLC_REDESIGN_UPDATE_TEST_TOKEN");
+        if (!token.isEmpty() && token.size() < 512 && !token.contains('\n') && !token.contains('\r'))
+            request.headers.append(qMakePair(QByteArray("Authorization"), QByteArray("Bearer ") + token));
+    }
     return request;
 }
 

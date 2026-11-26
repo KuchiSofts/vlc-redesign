@@ -127,6 +127,8 @@ jobs:
 
       # (#117) the update of an installed copy through the app itself, to the latest release
       - name: Update through the app
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: bash extras/juxtopposed/ci/macos-app-update-test.sh "$(ls "$OUT_DIR"/*.dmg | head -n 1)" "$RUNNER_TEMP/app-update"
 
       - name: Upload the logs

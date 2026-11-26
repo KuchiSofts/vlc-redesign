@@ -32,7 +32,11 @@ plist=/usr/libexec/PlistBuddy
 version_of() { "$plist" -c 'Print :CFBundleShortVersionString' "$1/Contents/Info.plist" 2> /dev/null; }
 
 note "macOS $(sw_vers -productVersion) ($(sw_vers -buildVersion)), $(uname -m)"
-latest=$(curl -fsSL https://api.github.com/repos/KuchiSofts/vlc-redesign/releases/latest \
+# (GH_TOKEN: the workflow's token. The shared addresses of the CI's machines soon reach GitHub's limit for
+# anonymous API requests; the app takes it as VLC_REDESIGN_UPDATE_TEST_TOKEN, for its requests to GitHub's API only)
+auth=()
+[ -n "${GH_TOKEN:-}" ] && auth=(-H "Authorization: Bearer $GH_TOKEN")
+latest=$(curl -fsSL ${auth[@]+"${auth[@]}"} https://api.github.com/repos/KuchiSofts/vlc-redesign/releases/latest \
          | python3 -c 'import json, sys; print(json.load(sys.stdin)["tag_name"].lstrip("v"))') \
     || { fail "the latest release could not be read"; exit "$failures"; }
 note "the latest release: $latest; this build takes itself for $as"
@@ -56,7 +60,8 @@ note "installed: $installed, version $(version_of "$installed")"
 
 # the app, as a user starts it, in a profile of its own
 start=$(date +%s)
-VLC_REDESIGN_UPDATE_TEST_AS=$as VLC_REDESIGN_UPDATE_TEST_AUTO=1 HOME=$work/home \
+VLC_REDESIGN_UPDATE_TEST_AS=$as VLC_REDESIGN_UPDATE_TEST_AUTO=1 VLC_REDESIGN_UPDATE_TEST_TOKEN=${GH_TOKEN:-} \
+    HOME=$work/home \
     "$exe" --verbose=2 --file-logging --logfile="$work/update.log" --no-qt-privacy-ask --aout=dummy \
     > "$work/update.out" 2>&1 &
 pid=$!

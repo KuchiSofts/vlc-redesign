@@ -40924,3 +40924,11 @@ msgstr "Không thể xuất danh sách phát ra %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Không thể tải nội dung đa phương tiện của danh sách phát để xuất."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Trang khởi đầu"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Trang mà thư viện mở ra khi VLC khởi động."

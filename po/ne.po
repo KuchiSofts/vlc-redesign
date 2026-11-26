@@ -39940,3 +39940,11 @@ msgstr "प्लेलिस्ट %1 मा निर्यात गर्न
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "निर्यातका लागि प्लेलिस्टको मिडिया लोड गर्न सकिएन।"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "सुरुवात पृष्ठ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC सुरु हुँदा पुस्तकालय खुल्ने पृष्ठ।"

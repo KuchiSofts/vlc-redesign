@@ -40959,3 +40959,11 @@ msgstr "Senarai main tidak dapat dieksport ke %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Media senarai main tidak dapat dimuatkan untuk dieksport."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Halaman mula"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Halaman tempat pustaka dibuka apabila VLC bermula."

@@ -3188,6 +3188,14 @@ msgstr ""
 "Cerca los aparelhs de difusion de la ret locala quand lo menú Rendut se "
 "dobrís."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Pagina de començament"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "La pagina ont la bibliotèca s'obrís a l'aviada de VLC."
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
@@ -4495,6 +4503,14 @@ msgstr "Afichar los dialògs de confirmacion e d'error"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "Verificar automaticament las mesas a jorn"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
+msgid "Recent"
+msgstr "Recents"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Save a log"
@@ -6879,14 +6895,6 @@ msgstr "Detalhs"
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:167
 msgid "Re-check"
 msgstr "Tornar verificar"
-
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:97
-#: modules/gui/qt/player/qml/CompactLibrary.qml:312
-msgid "Recent"
-msgstr "Recents"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303

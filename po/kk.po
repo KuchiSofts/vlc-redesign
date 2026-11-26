@@ -39877,3 +39877,11 @@ msgstr "Ойнату тізімін %1 ішіне экспорттау мүмк�
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Экспорттау үшін ойнату тізімінің медиасын жүктеу мүмкін болмады."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Бастапқы бет"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC іске қосылғанда кітапхана ашылатын бет."

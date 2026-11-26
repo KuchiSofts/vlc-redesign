@@ -3107,6 +3107,14 @@ msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr "렌더러 메뉴를 열 때 로컬 네트워크의 캐스트 장치를 찾습니다."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "시작 페이지"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC를 시작할 때 라이브러리가 열리는 페이지입니다."
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
@@ -4390,6 +4398,14 @@ msgstr "확인 및 오류 대화 상자 표시"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "자동으로 업데이트 확인"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
+msgid "Recent"
+msgstr "최근"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Save a log"
@@ -6723,14 +6739,6 @@ msgstr "세부 정보"
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:167
 msgid "Re-check"
 msgstr "다시 확인"
-
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:97
-#: modules/gui/qt/player/qml/CompactLibrary.qml:312
-msgid "Recent"
-msgstr "최근"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303

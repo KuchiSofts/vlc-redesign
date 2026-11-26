@@ -39722,3 +39722,11 @@ msgstr "Тоглуулах жагсаалтыг %1 руу экспортлож �
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Экспортлохын тулд тоглуулах жагсаалтын медиаг ачаалж чадсангүй."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Эхлэх хуудас"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC эхлэхэд номын сан нээгдэх хуудас."

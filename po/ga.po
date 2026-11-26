@@ -40082,3 +40082,11 @@ msgstr "Níorbh fhéidir an seinnliosta a easpórtáil chuig %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Níorbh fhéidir meáin an tseinnliosta a lódáil le haghaidh easpórtála."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Leathanach tosaigh"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "An leathanach a osclaíonn an leabharlann air nuair a thosaíonn VLC."

@@ -3077,6 +3077,14 @@ msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr "ស្វែងរកឧបករណ៍បញ្ជូននៅក្នុងបណ្ដាញមូលដ្ឋាន នៅពេលម៉ឺនុយឧបករណ៍បង្ហាញបើក។"
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ទំព័រចាប់ផ្ដើម"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "ទំព័រដែលបណ្ណាល័យបើកនៅពេល VLC ចាប់ផ្ដើម។"
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
@@ -4342,6 +4350,14 @@ msgstr "បង្ហាញប្រអប់បញ្ជាក់ និងក�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "ពិនិត្យរកបច្ចុប្បន្នភាពដោយស្វ័យប្រវត្តិ"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
+msgid "Recent"
+msgstr "ថ្មីៗ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Save a log"
@@ -6684,14 +6700,6 @@ msgstr "ព័ត៌មានលម្អិត"
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:167
 msgid "Re-check"
 msgstr "ពិនិត្យម្ដងទៀត"
-
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:97
-#: modules/gui/qt/player/qml/CompactLibrary.qml:312
-msgid "Recent"
-msgstr "ថ្មីៗ"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303

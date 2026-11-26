@@ -3091,6 +3091,14 @@ msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr "રેન્ડરર મેનુ ખુલે ત્યારે સ્થાનિક નેટવર્કના કાસ્ટ ઉપકરણો શોધે છે."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "શરૂઆતનું પાનું"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC શરૂ થાય ત્યારે લાઇબ્રેરી જે પાના પર ખૂલે છે."
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
@@ -4359,6 +4367,14 @@ msgstr "પુષ્ટિ અને ભૂલ સંવાદો બતાવ�
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "આપમેળે અપડેટ માટે તપાસો"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
+msgid "Recent"
+msgstr "તાજેતરનાં"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Save a log"
@@ -6715,14 +6731,6 @@ msgstr "વિગતો"
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:167
 msgid "Re-check"
 msgstr "ફરી તપાસો"
-
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:97
-#: modules/gui/qt/player/qml/CompactLibrary.qml:312
-msgid "Recent"
-msgstr "તાજેતરનાં"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303

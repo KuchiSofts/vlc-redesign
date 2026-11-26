@@ -40281,3 +40281,11 @@ msgstr "Li djivêye a djouwer n' a savou esse ebaguêye viè %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Les media del djivêye a djouwer n' ont savou esse tcherdjîs po l' ebaguer."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Pådje d' enondaedje"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Li pådje wice ki l' bibliotecke si drouve cwand VLC enonde."

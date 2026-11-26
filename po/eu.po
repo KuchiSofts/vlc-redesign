@@ -41433,3 +41433,11 @@ msgstr "Ezin izan da erreprodukzio-zerrenda %1 kokapenera esportatu."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Ezin izan dira erreprodukzio-zerrendako multimedia-elementuak kargatu esportatzeko."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Hasierako orria"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC abiaraztean liburutegia irekitzen den orria."

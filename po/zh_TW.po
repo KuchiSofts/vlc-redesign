@@ -39548,3 +39548,11 @@ msgstr "無法將播放清單匯出至 %1。"
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "無法載入要匯出的播放清單媒體。"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "起始頁面"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC 啟動時媒體庫開啟的頁面。"

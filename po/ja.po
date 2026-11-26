@@ -40868,3 +40868,11 @@ msgstr "プレイリストを%1にエクスポートできませんでした。"
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "エクスポートするプレイリストのメディアを読み込めませんでした。"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "起動時のページ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC の起動時にライブラリが開くページです。"

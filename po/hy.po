@@ -39861,3 +39861,11 @@ msgstr "Երգացանկը հնարավոր չեղավ արտահանել %1-ո�
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Երգացանկի մեդիան հնարավոր չեղավ բեռնել արտահանման համար։"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Մեկնարկային էջ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Էջը, որում բացվում է գրադարանը VLC-ի գործարկման ժամանակ։"

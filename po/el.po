@@ -41747,3 +41747,11 @@ msgstr "Δεν ήταν δυνατή η εξαγωγή της λίστας αν�
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Δεν ήταν δυνατή η φόρτωση των πολυμέσων της λίστας αναπαραγωγής για εξαγωγή."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Σελίδα έναρξης"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Η σελίδα στην οποία ανοίγει η βιβλιοθήκη όταν ξεκινά το VLC."

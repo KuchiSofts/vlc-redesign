@@ -3144,6 +3144,14 @@ msgid ""
 msgstr ""
 "Mencari perangkat transmisi di jaringan lokal saat menu Perender dibuka."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Halaman awal"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Halaman tempat pustaka terbuka saat VLC dimulai."
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
@@ -4451,6 +4459,14 @@ msgstr "Tampilkan dialog konfirmasi dan kesalahan"
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "Periksa pembaruan secara otomatis"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
+msgid "Recent"
+msgstr "Terbaru"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Save a log"
@@ -6809,14 +6825,6 @@ msgstr "Detail"
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:167
 msgid "Re-check"
 msgstr "Periksa ulang"
-
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:97
-#: modules/gui/qt/player/qml/CompactLibrary.qml:312
-msgid "Recent"
-msgstr "Terbaru"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303

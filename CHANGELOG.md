@@ -17,11 +17,19 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [0.8.7] · 2026-11-26
 
-An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): six more changes
-from a contributor, the follow-ups of three of 0.8.6's, and VideoLAN's latest changes on both.
+An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library
+opens on can be chosen, the mini player's queue scrolls with a bar, six more changes from a contributor, the
+follow-ups of three of 0.8.6's, and VideoLAN's latest changes on both.
+
+### Added
+
+- **Start page**: Settings › General › Startup chooses the page the library opens on: Home, Videos, Music,
+  Folders, Network, TV, Playlists or Recent ([#258](https://github.com/KuchiSofts/vlc-redesign/issues/258)).
 
 ### Fixed
 
+- **The mini player's queue, Bookmarks and Chapters** have the library's scroll bar, shown while they scroll
+  ([#259](https://github.com/KuchiSofts/vlc-redesign/issues/259)).
 - **Home search with no matches**: "No results" shows, and the search field keeps the keyboard while you type.
 - **Export Playlist**: a playlist with no files is exported as an empty playlist.
 - **Default Preset in Effects** also removes a crop chosen in the Video menu.

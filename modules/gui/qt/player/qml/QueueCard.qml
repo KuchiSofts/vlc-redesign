@@ -148,6 +148,8 @@ T.Pane {
 
                 ListView {
                     id: bookmarkList
+                    // (#259) the library pages' scroll bar, as the queue's
+                    T.ScrollBar.vertical: Widgets.ScrollBarExt { }
 
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -199,6 +201,8 @@ T.Pane {
             // Chapters of the media: number, name, start
             ListView {
                 id: chapterList
+                // (#259) the library pages' scroll bar, as the queue's
+                T.ScrollBar.vertical: Widgets.ScrollBarExt { }
 
                 clip: true
                 leftMargin: VLCStyle.dp(6, VLCStyle.scale)

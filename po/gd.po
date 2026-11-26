@@ -40257,3 +40257,11 @@ msgstr "Cha b' urrainn dhuinn an liosta-chluich às-phortadh gu %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Cha b' urrainn dhuinn meadhanan na liosta-chluich a luchdadh airson às-phortadh."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Duilleag tòiseachaidh"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "An duilleag air am fosgail an leabharlann nuair a thòisicheas VLC."

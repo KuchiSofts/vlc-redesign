@@ -39544,3 +39544,11 @@ msgstr "ไม่สามารถส่งออกผังเล่นไป
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "ไม่สามารถโหลดสื่อของผังเล่นเพื่อส่งออกได้"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "หน้าเริ่มต้น"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "หน้าที่คลังสื่อเปิดขึ้นเมื่อเริ่ม VLC"

@@ -3115,6 +3115,14 @@ msgid ""
 "Looks for the cast devices of the local network when the Renderer menu opens."
 msgstr "റെൻഡറർ മെനു തുറക്കുമ്പോൾ ലോക്കൽ നെറ്റ്വർക്കിലെ കാസ്റ്റ് ഉപകരണങ്ങൾക്കായി തിരയുന്നു."
 
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ആരംഭ പേജ്"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC ആരംഭിക്കുമ്പോൾ ലൈബ്രറി തുറക്കുന്ന പേജ്."
+
 #: modules/gui/qt/dialogs/preferences/config_model.cpp:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:52
 msgid "Remember window size and position"
@@ -4403,6 +4411,14 @@ msgstr "സ്ഥിരീകരണ, പിശക് ഡയലോഗുകൾ �
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 msgid "Check for updates automatically"
 msgstr "അപ്ഡേറ്റുകൾക്കായി സ്വയമേവ പരിശോധിക്കുക"
+
+#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
+#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
+#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
+#: modules/gui/qt/player/qml/CompactLibrary.qml:97
+#: modules/gui/qt/player/qml/CompactLibrary.qml:312
+msgid "Recent"
+msgstr "സമീപകാലം"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:30
 msgid "Save a log"
@@ -6765,14 +6781,6 @@ msgstr "വിശദാംശങ്ങൾ"
 #: modules/gui/qt/maininterface/qml/UpdatePane.qml:167
 msgid "Re-check"
 msgstr "വീണ്ടും പരിശോധിക്കുക"
-
-#: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
-#: modules/gui/qt/maininterface/qml/SidebarItems.qml:41
-#: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:224
-#: modules/gui/qt/player/qml/CompactLibrary.qml:97
-#: modules/gui/qt/player/qml/CompactLibrary.qml:312
-msgid "Recent"
-msgstr "സമീപകാലം"
 
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:48
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:303

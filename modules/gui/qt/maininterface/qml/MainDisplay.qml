@@ -118,6 +118,22 @@ FocusScope {
             _showMiniPlayer = true
     }
 
+    // (#258) the page of Settings › General › Start page, as the sidebar opens it; Home when that page cannot
+    // open now (the library off, the Live TV add-on off)
+    function _startPage() {
+        const pages = [["home"], ["video", "all"], ["music"], ["folders"], ["network"], ["tv"],
+                       ["video", "playlists"], ["home", "recent"]]
+        const library = [false, true, true, true, false, false, true, true]
+        const index = Number(MainCtx.settingValue("redesign/start-page", 0))
+        if (!(index > 0 && index < pages.length))
+            return ["home"]
+        if (library[index] && !MainCtx.mediaLibraryAvailable)
+            return ["home"]
+        if (index === 5 && !Iptv.enabled)
+            return ["home"]
+        return pages[index]
+    }
+
     function loadCurrentHistoryView(focusReason) {
         loadView(History.viewPath, History.viewProp, focusReason)
         contextSaver.restore(History.viewPath)
@@ -132,7 +148,7 @@ FocusScope {
         }
 
         if (History.previousEmpty) {
-            History.update(["home"])
+            History.update(g_mainDisplay._startPage())
         }
         loadCurrentHistoryView(Qt.OtherFocusReason)
 

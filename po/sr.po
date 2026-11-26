@@ -40230,3 +40230,11 @@ msgstr "Листа за пуштање није могла да се извез�
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Медији листе за пуштање нису могли да се учитају за извоз."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Почетна страница"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Страница на којој се библиотека отвара када се VLC покрене."

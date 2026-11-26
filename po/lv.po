@@ -41094,3 +41094,11 @@ msgstr "Atskaņošanas sarakstu neizdevās eksportēt uz %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Atskaņošanas saraksta multividi neizdevās ielādēt eksportēšanai."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Sākuma lapa"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Lapa, kurā atveras bibliotēka, kad VLC tiek palaists."

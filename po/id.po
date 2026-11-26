@@ -40587,3 +40587,11 @@ msgstr "Daftar putar tidak dapat diekspor ke %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Media daftar putar tidak dapat dimuat untuk diekspor."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Halaman awal"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Halaman tempat pustaka terbuka saat VLC dimulai."

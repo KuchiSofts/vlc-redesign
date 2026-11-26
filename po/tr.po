@@ -41119,3 +41119,11 @@ msgstr "Oynatma listesi %1 konumuna dışa aktarılamadı."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Dışa aktarma için oynatma listesinin ortamları yüklenemedi."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Başlangıç sayfası"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC başladığında kitaplığın açıldığı sayfa."

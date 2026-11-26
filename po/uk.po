@@ -41068,3 +41068,11 @@ msgstr "Не вдалося експортувати список відтвор
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Не вдалося завантажити медіа списку відтворення для експорту."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Початкова сторінка"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Сторінка, на якій відкривається медіатека під час запуску VLC."

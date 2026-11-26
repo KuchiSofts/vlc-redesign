@@ -39864,3 +39864,11 @@ msgstr "Die afspeellys kon nie na %1 uitgevoer word nie."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Die media van die afspeellys kon nie vir die uitvoer gelaai word nie."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Beginblad"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Die blad waarop die biblioteek oopmaak wanneer VLC begin."

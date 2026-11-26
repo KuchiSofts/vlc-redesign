@@ -41315,3 +41315,11 @@ msgstr "Playlist sa nepodarilo exportovať do %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Médiá playlistu sa nepodarilo načítať na export."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Úvodná stránka"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Stránka, na ktorej sa knižnica otvorí pri spustení VLC."

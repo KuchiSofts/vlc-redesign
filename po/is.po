@@ -39836,3 +39836,11 @@ msgstr "Ekki tókst að flytja spilunarlistann út í %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Ekki tókst að hlaða miðlum spilunarlistans fyrir útflutning."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Upphafssíða"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Síðan sem safnið opnast á þegar VLC ræsist."

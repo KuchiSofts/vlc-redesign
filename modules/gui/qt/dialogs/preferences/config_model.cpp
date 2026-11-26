@@ -257,6 +257,11 @@ const QtSettingOption qtSettingOptions[] = {
          "with a link to the full changelog. The notes are in English.") },
     { "redesign/discover-cast-devices", 'b', 1, 0, 0, N_("Discover cast devices"),
       N_("Looks for the cast devices of the local network when the Renderer menu opens.") },
+    // (#258, MainDisplay) the page the library opens on: the sidebar's pages, by number. Their labels are the
+    // sidebar's (SettingsPresentation), the names here only make the list
+    { "redesign/start-page", 'i', 0, 0, 7, N_("Start page"),
+      N_("The page the library opens on when VLC starts."),
+      "Home|Videos|Music|Folders|Network|TV|Playlists|Recent" },
     { "redesign/remember-window-geometry", 'b', 1, 0, 0, N_("Remember window size and position"),
       N_("Opens the window where it was when VLC was closed.") },
     // (MainCtx: 0 Automatic, else a percentage; its choices below)

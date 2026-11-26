@@ -41425,3 +41425,11 @@ msgstr "Impossibile esportare la scaletta in %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Impossibile caricare i contenuti multimediali della scaletta per l'esportazione."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Pagina iniziale"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "La pagina su cui si apre la libreria all'avvio di VLC."

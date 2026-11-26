@@ -40781,3 +40781,11 @@ msgstr "Lista de redare nu a putut fi exportată în %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Fișierele media ale listei de redare nu au putut fi încărcate pentru export."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Pagina de pornire"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Pagina pe care se deschide biblioteca la pornirea VLC."

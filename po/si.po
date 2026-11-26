@@ -39638,3 +39638,11 @@ msgstr "ධාවන ලැයිස්තුව %1 වෙත අපනයනය
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "අපනයනය සඳහා ධාවන ලැයිස්තුවේ මාධ්‍ය පූරණය කළ නොහැකි විය."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ආරම්භක පිටුව"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC ආරම්භ වන විට පුස්තකාලය විවෘත වන පිටුව."

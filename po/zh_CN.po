@@ -39924,3 +39924,11 @@ msgstr "无法将播放列表导出到 %1。"
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "无法加载要导出的播放列表媒体。"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "起始页"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC 启动时媒体库打开的页面。"

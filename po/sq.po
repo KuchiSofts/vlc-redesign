@@ -39861,3 +39861,11 @@ msgstr "Lista e luajtjes nuk mund të eksportohej në %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Mediat e listës së luajtjes nuk mund të ngarkoheshin për eksportim."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Faqja e nisjes"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Faqja në të cilën hapet biblioteka kur niset VLC."

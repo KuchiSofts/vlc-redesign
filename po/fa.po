@@ -39776,3 +39776,11 @@ msgstr "فهرست پخش در %1 صادر نشد."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "رسانه‌های فهرست پخش برای صدور بارگذاری نشدند."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "صفحهٔ آغاز"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "صفحه‌ای که کتابخانه هنگام آغاز VLC روی آن باز می‌شود."

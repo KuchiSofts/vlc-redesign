@@ -39787,3 +39787,11 @@ msgstr "Листата за репродукција не можеше да се
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Медиумите од листата за репродукција не можеа да се вчитаат за извоз."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Почетна страница"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Страницата на која се отвора библиотеката кога ќе се стартува VLC."

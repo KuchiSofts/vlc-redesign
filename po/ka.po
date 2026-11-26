@@ -41491,3 +41491,11 @@ msgstr "დაკვრის სიის ექსპორტი ვერ �
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "დაკვრის სიის მედიის ჩატვირთვა ექსპორტისთვის ვერ მოხერხდა."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "საწყისი გვერდი"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "გვერდი, რომელზეც ბიბლიოთეკა იხსნება VLC-ის გაშვებისას."

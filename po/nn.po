@@ -39952,3 +39952,11 @@ msgstr "Spelelista kunne ikkje eksporterast til %1."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "Media i spelelista kunne ikkje lastast inn for eksport."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Startside"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Sida biblioteket opnar på når VLC startar."

@@ -40547,3 +40547,11 @@ msgstr "재생목록을 %1(으)로 내보낼 수 없습니다."
 #: modules/gui/qt/medialibrary/medialib.cpp
 msgid "Could not load the playlist media for export."
 msgstr "내보낼 재생목록의 미디어를 불러올 수 없습니다."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "시작 페이지"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC를 시작할 때 라이브러리가 열리는 페이지입니다."

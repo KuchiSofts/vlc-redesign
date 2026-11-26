@@ -28,6 +28,10 @@ import VLC.Util
 T.Slider {
     id: control
 
+    // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
+    readonly property real minimumValue: from
+    readonly property real maximumValue: to
+
     // helper to set colors based on given particular theme
     readonly property ColorContext colorContext: ColorContext {
         id: theme

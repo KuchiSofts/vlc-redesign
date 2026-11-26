@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Screen readers on sliders**: the seek bar, volume, speed, mini player and subtitle delay sliders report their range.
 - **Screen readers in Settings and first run**: the chosen theme, accent colour and Settings page are announced, and accents are read as "Accent color 3 of 9" instead of a hex code.
 - **Effects with the keyboard**: the Audio/Video tabs and the video sections show the focus border, and screen readers say which is selected.
 - **Taskbar buttons (Windows)**: after Explorer restarts, the thumbnail buttons update once, and Play is disabled with an empty queue.

@@ -88,7 +88,7 @@ readonly property var items: ({
         // the compact view
         "qt-bgcone": [qsTr("Window"), qsTr("Show cover art in the window when playing audio"), "", null,
                       { advanced: true, info: false }],
-        "qt-embedded-open": [qsTr("Window"), qsTr("Show the file browser inside the open dialog"), "", null, { advanced: true, info: false }],
+        "qt-embedded-open": [qsTr("Window"), qsTr("Show the file browser inside Open Multiple Files"), "", null, { advanced: true, info: false }],
         "qt-icon-change": [qsTr("Window"), qsTr("Allow the app icon to change"), "", null, { advanced: true, info: false }],
         // one frame in the design: 5 above, 5 between, 5 below
         "qt-fs-opacity": [qsTr("Playback Controls"), qsTr("Fullscreen controls opacity"), "opacity10", null,

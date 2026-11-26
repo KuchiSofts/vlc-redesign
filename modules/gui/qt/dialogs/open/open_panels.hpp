@@ -113,6 +113,7 @@ class FileOpenPanel: public OpenPanel
 public:
     FileOpenPanel( QWidget *, qt_intf_t * );
     virtual ~FileOpenPanel();
+    bool refreshFileBrowser();
     void clear() override;
     virtual void accept() ;
 protected:
@@ -126,6 +127,7 @@ protected:
         }
         return false;
     }
+    void hideEvent( QHideEvent * ) override;
     void dropEvent( QDropEvent *) override;
     void dragEnterEvent( QDragEnterEvent * ) override;
     void dragMoveEvent( QDragMoveEvent * ) override;
@@ -135,7 +137,7 @@ private:
     QList<QUrl> urlList;
     QUrl subUrl; //url for subtitle
     FileOpenBox *dialogBox;
-    void BuildOldPanel();
+    void BuildOldPanel( const QUrl& directory );
 public slots:
     void updateMRL() override;
 private slots:

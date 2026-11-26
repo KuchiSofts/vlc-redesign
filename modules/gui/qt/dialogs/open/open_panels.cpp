@@ -45,6 +45,8 @@
 #include <vlc_url.h>
 
 #include <QFileDialog>
+#include <QFileInfo>
+#include <QHideEvent>
 #include <QDialogButtonBox>
 #include <QLineEdit>
 #include <QStackedLayout>
@@ -55,6 +57,7 @@
 #include <QDropEvent>
 #include <QRegularExpression>
 #include <QPushButton>
+#include <QSignalBlocker>
 
 #define I_DEVICE_TOOLTIP \
     I_DIR_OR_FOLDER( N_("Select a device or a VIDEO_TS directory"), \
@@ -89,11 +92,7 @@ FileOpenPanel::FileOpenPanel( QWidget *_parent, qt_intf_t *_p_intf ) :
 
     setAcceptDrops( true );
 
-    if( var_InheritBool( p_intf, "qt-embedded-open" ) )
-    {
-        ui.tempWidget->hide();
-        BuildOldPanel();
-    }
+    refreshFileBrowser();
 
     /* Subtitles */
     /* Deactivate the subtitles control by default. */
@@ -113,7 +112,35 @@ FileOpenPanel::FileOpenPanel( QWidget *_parent, qt_intf_t *_p_intf ) :
     updateButtons();
 }
 
-inline void FileOpenPanel::BuildOldPanel()
+bool FileOpenPanel::refreshFileBrowser()
+{
+    const bool embedded = var_InheritBool( p_intf, "qt-embedded-open" );
+    if( embedded == ui.tempWidget->isHidden() )
+        return false;
+
+    const QSignalBlocker blocker( this );
+    ui.tempWidget->setHidden( embedded );
+    if( embedded )
+    {
+        QUrl directory = p_intf->p_mi->getDialogFilePath();
+        const QString localPath = directory.toLocalFile();
+        if( !localPath.isEmpty() )
+        {
+            const QFileInfo path( localPath );
+            if( !path.isDir() )
+                directory = QUrl::fromLocalFile( path.absolutePath() );
+        }
+
+        if( !dialogBox )
+            BuildOldPanel( directory );
+        else if( directory.isLocalFile() && directory != dialogBox->directoryUrl() )
+            dialogBox->setDirectoryUrl( directory );
+    }
+    dialogBox->setVisible( embedded );
+    return true;
+}
+
+inline void FileOpenPanel::BuildOldPanel( const QUrl& directory )
 {
     /** BEGIN QFileDialog tweaking **/
     /* Use a QFileDialog and customize it because we don't want to
@@ -121,8 +148,7 @@ inline void FileOpenPanel::BuildOldPanel()
        Be very careful and test correctly when you modify this. */
 
     /* Make this QFileDialog a child of tempWidget from the ui. */
-    dialogBox = new FileOpenBox( ui.tempWidget, NULL,
-                                 p_intf->p_mi->getDialogFilePath(), "" );
+    dialogBox = new FileOpenBox( ui.tempWidget, NULL, directory, "" );
 
     dialogBox->setFileMode( QFileDialog::ExistingFiles );
     dialogBox->setAcceptMode( QFileDialog::AcceptOpen );
@@ -181,6 +207,13 @@ FileOpenPanel::~FileOpenPanel()
 {
     if( dialogBox )
         getSettings()->setValue( "file-dialog-state", dialogBox->saveState() );
+}
+
+void FileOpenPanel::hideEvent( QHideEvent *event )
+{
+    if( ui.tempWidget->isHidden() && !event->spontaneous() )
+        p_intf->p_mi->setDialogFilePath( dialogBox->directoryUrl() );
+    OpenPanel::hideEvent( event );
 }
 
 void FileOpenPanel::dragEnterEvent( QDragEnterEvent *event )
@@ -279,7 +312,7 @@ void FileOpenPanel::updateMRL()
     QString mrl;
 
     /* File Listing */
-    if( dialogBox == NULL )
+    if( !ui.tempWidget->isHidden() )
         foreach( const QUrl& url, urlList )
             fileList << url.toEncoded();
     else
@@ -301,8 +334,8 @@ void FileOpenPanel::updateMRL()
 /* Function called by Open Dialog when clicke on Play/Enqueue */
 void FileOpenPanel::accept()
 {
-    if( dialogBox )
-        p_intf->p_mi->setDialogFilePath(dialogBox->directory().absolutePath());
+    if( ui.tempWidget->isHidden() )
+        p_intf->p_mi->setDialogFilePath( dialogBox->directoryUrl() );
     ui.fileListWidg->clear();
     urlList.clear();
 }

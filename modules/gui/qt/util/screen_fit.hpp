@@ -63,6 +63,13 @@ QSize defaultWindowSize(const QSize &available, double scale = 1.0);
 // bar and the borders of a window given by its client area).
 QRect fitted(const QRect &wanted, const QRect &available, const QMargins &frame = {});
 
+// `size` placed beside `anchor` (on its left when `onLeft`, else its right,
+// `gap` away) inside `available`: flipped to the opposite side when there is
+// room there, else fitted inside `available` (overlapping the anchor's edge).
+// `frame` is the window's decorations, as in `fitted()`.
+QRect beside(const QRect &anchor, const QSize &size, const QRect &available,
+             bool onLeft, int gap = 10, const QMargins &frame = {});
+
 // Whether a window at `geometry` can be used on a screen whose usable area
 // is `available`: not larger than it, its title bar on the screen (it may
 // hang over an edge, as a window the user moved there).

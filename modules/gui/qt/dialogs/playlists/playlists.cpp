@@ -36,6 +36,7 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QTreeView>
+#include <QItemSelectionModel>
 #include <QLabel>
 #include <QLineEdit>
 #include <QDialogButtonBox>
@@ -64,9 +65,7 @@ PlaylistsDialog::PlaylistsDialog(qt_intf_t * _p_intf, const QVariantList &media,
     QGroupBox * groupBox = new QGroupBox(qtr("Existing Playlist"));
 
     m_playlists = new QTreeView(this);
-
-    connect(m_playlists, &QTreeView::clicked,       this, &PlaylistsDialog::onClicked);
-    connect(m_playlists, &QTreeView::doubleClicked, this, &PlaylistsDialog::onDoubleClicked);
+    m_playlists->setSelectionMode(QAbstractItemView::SingleSelection);
 
     m_model = new MLPlaylistListModel(m_playlists);
     m_model->setPlaylistType(type);
@@ -105,7 +104,20 @@ PlaylistsDialog::PlaylistsDialog(qt_intf_t * _p_intf, const QVariantList &media,
 
     m_button = buttonBox->button(QDialogButtonBox::Ok);
 
-    m_button->setEnabled(false);
+    connect(m_playlists->selectionModel(), &QItemSelectionModel::selectionChanged,
+            this, &PlaylistsDialog::onSelectionChanged);
+    connect(m_model, &QAbstractItemModel::modelReset, this, &PlaylistsDialog::updateOkButton);
+    // A double click adds to the playlist under it. (Not QTreeView::activated:
+    // on a desktop set to open with one click, one click would add and close;
+    // Enter reaches OK, the default button, once a row is selected.)
+    connect(m_playlists, &QTreeView::doubleClicked, this, [this](const QModelIndex &index) {
+        if (!index.isValid() || !m_lineEdit->text().isEmpty())
+            return;
+
+        m_playlists->setCurrentIndex(index);
+        accept();
+    });
+    updateOkButton();
 
     connect(buttonBox, &QDialogButtonBox::accepted, this, &PlaylistsDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &PlaylistsDialog::reject);
@@ -146,20 +158,13 @@ PlaylistsDialog::~PlaylistsDialog()
 // Private slots
 //-------------------------------------------------------------------------------------------------
 
-void PlaylistsDialog::onClicked()
+void PlaylistsDialog::onSelectionChanged()
 {
     // NOTE: We clear the lineEdit when the list is selected.
-    m_lineEdit->clear();
+    if (m_playlists->selectionModel()->hasSelection())
+        m_lineEdit->clear();
 
-    m_button->setEnabled(true);
-}
-
-void PlaylistsDialog::onDoubleClicked()
-{
-    if (m_button->isEnabled() == false)
-        return;
-
-    accept();
+    updateOkButton();
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -169,20 +174,31 @@ void PlaylistsDialog::onTextEdited()
     // NOTE: We clear the list selection when we edit the 'new playlist' field.
     m_playlists->clearSelection();
 
-    if (m_lineEdit->text().isEmpty())
-        m_button->setEnabled(false);
-    else
-        m_button->setEnabled(true);
+    updateOkButton();
+}
+
+void PlaylistsDialog::updateOkButton()
+{
+    m_button->setEnabled(m_playlists->selectionModel()->hasSelection() || !m_lineEdit->text().isEmpty());
 }
 
 void PlaylistsDialog::accept()
 {
+    if (m_model->transactionPending())
+        return;
 
     QString text = m_lineEdit->text();
 
     if (text.isEmpty())
     {
-        const MLItemId playlistId = m_model->getItemId(m_playlists->currentIndex().row());
+        const auto selected = m_playlists->selectionModel()->selectedIndexes();
+        if (selected.isEmpty())
+            return;
+
+        const MLItemId playlistId = m_model->getItemId(selected.constFirst().row());
+        if (!playlistId.isValid())
+            return;
+
         m_model->append(playlistId, m_ids);
     }
     else

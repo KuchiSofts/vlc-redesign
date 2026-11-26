@@ -96,6 +96,22 @@ static QColor logColor( const QWidget *view, Qt::GlobalColor color )
     }
 }
 
+static void finishLogAppend( QPlainTextEdit *view, int oldEnd, int scrollPosition, bool followEnd )
+{
+    /* Qt can extend a selection that touches the insertion point. */
+    QTextCursor selection = view->textCursor();
+    if( selection.hasSelection() && selection.selectionEnd() > oldEnd )
+    {
+        const int position = qMin( selection.position(), oldEnd );
+        selection.setPosition( qMin( selection.anchor(), oldEnd ) );
+        selection.setPosition( position, QTextCursor::KeepAnchor );
+        view->setTextCursor( selection );
+    }
+
+    QScrollBar *scrollBar = view->verticalScrollBar();
+    scrollBar->setValue( followEnd ? scrollBar->maximum() : scrollPosition );
+}
+
 MessagesDialog::MessagesDialog( qt_intf_t *_p_intf)
                : QVLCFrame( _p_intf )
 {
@@ -216,34 +232,29 @@ void MessagesDialog::addError(int row){
 
     QPlainTextEdit * errorsList = ui.errors;
 
-    bool b_autoscroll = ( errorsList->verticalScrollBar()->value()
-                          + errorsList->verticalScrollBar()->pageStep()
-                          >= errorsList->verticalScrollBar()->maximum() );
+    QScrollBar *scrollBar = errorsList->verticalScrollBar();
+    const int scrollPosition = scrollBar->value();
+    const bool followEnd = scrollPosition == scrollBar->maximum();
 
-    /* Copy selected text to the clipboard */
-    if( errorsList->textCursor().hasSelection() )
-        errorsList->copy();
-
-    /* Fix selected text bug */
-    if( !errorsList->textCursor().atEnd() ||
-         errorsList->textCursor().anchor() != errorsList->textCursor().position() )
-         errorsList->moveCursor( QTextCursor::End );
+    QTextCursor cursor( errorsList->document() );
+    cursor.movePosition( QTextCursor::End );
+    const int oldEnd = cursor.position();
 
     /* Start a new logic block */
     if( !errorsList->document()->isEmpty() )
-        errorsList->textCursor().insertBlock();
+        cursor.insertBlock();
 
     QTextCharFormat format;
 
     format.setProperty( QTextFormat::FontItalic, true );
     format.setForeground( logColor( errorsList, Qt::darkRed ) );
-    errorsList->textCursor().insertText( errors->data(errors->index(row, 0), DialogErrorModel::DIALOG_TITLE).toString()+": ", format );
+    cursor.insertText( errors->data(errors->index(row, 0), DialogErrorModel::DIALOG_TITLE).toString()+": ", format );
 
     format.setProperty( QTextFormat::FontItalic, false );
     format.setForeground( errorsList->palette().windowText() );
-    errorsList->textCursor().insertText( errors->data(errors->index(row, 0), DialogErrorModel::DIALOG_TEXT).toString(), format );
+    cursor.insertText( errors->data(errors->index(row, 0), DialogErrorModel::DIALOG_TEXT).toString(), format );
 
-    if ( b_autoscroll ) errorsList->ensureCursorVisible();
+    finishLogAppend( errorsList, oldEnd, scrollPosition, followEnd );
 }
 
 void MessagesDialog::errorsCountChanged(){
@@ -259,7 +270,7 @@ void MessagesDialog::filterMessages()
 
     while( block.isValid() )
     {
-        block.setVisible( matchFilter( block.text().toLower() ) );
+        block.setVisible( matchFilter( block.text() ) );
         block = block.next();
     }
 
@@ -277,7 +288,7 @@ bool MessagesDialog::matchFilter( const QString& text )
 {
     const QString& filter = ui.filterEdit->text();
 
-    if( filter.isEmpty() || text.contains( filter.toLower() ) )
+    if( filter.isEmpty() || text.contains( filter, Qt::CaseInsensitive ) )
         return true;
     return false;
 }
@@ -287,63 +298,58 @@ void MessagesDialog::sinkMessage( const MsgEvent *msg )
     QMutexLocker locker( &messageLocker );
 
     QPlainTextEdit *messages = ui.messages;
-    /* Only scroll if the viewport is at the end.
-       Don't bug user by auto-changing/losing viewport on insert(). */
-    bool b_autoscroll = ( messages->verticalScrollBar()->value()
-                          + messages->verticalScrollBar()->pageStep()
-                          >= messages->verticalScrollBar()->maximum() );
+    QScrollBar *scrollBar = messages->verticalScrollBar();
+    const int scrollPosition = scrollBar->value();
+    const bool followEnd = scrollPosition == scrollBar->maximum();
 
-    /* Copy selected text to the clipboard */
-    if( messages->textCursor().hasSelection() )
-        messages->copy();
-
-    /* Fix selected text bug */
-    if( !messages->textCursor().atEnd() ||
-         messages->textCursor().anchor() != messages->textCursor().position() )
-         messages->moveCursor( QTextCursor::End );
+    QTextCursor cursor( messages->document() );
+    cursor.movePosition( QTextCursor::End );
+    const int oldEnd = cursor.position();
+    cursor.beginEditBlock();
 
     /* Start a new logic block */
     if( !messages->document()->isEmpty() )
-        messages->textCursor().insertBlock();
+        cursor.insertBlock();
 
     /* Insert the prefix */
     QTextCharFormat format;
     format.setProperty( QTextFormat::FontItalic, true );
     format.setForeground( logColor( messages, Qt::darkBlue ) );
 
-    messages->textCursor().insertText( msg->module, format );
+    cursor.insertText( msg->module, format );
 
     switch ( msg->priority )
     {
         case VLC_MSG_INFO:
             format.setForeground( logColor( messages, Qt::darkBlue ) );
-            messages->textCursor().insertText( " info: ", format );
+            cursor.insertText( " info: ", format );
             break;
         case VLC_MSG_ERR:
             format.setForeground( logColor( messages, Qt::darkRed ) );
-            messages->textCursor().insertText( " error: ", format );
+            cursor.insertText( " error: ", format );
             break;
         case VLC_MSG_WARN:
             format.setForeground( logColor( messages, Qt::darkGreen ) );
-            messages->textCursor().insertText( " warning: ", format );
+            cursor.insertText( " warning: ", format );
             break;
         case VLC_MSG_DBG:
         default:
             format.setForeground( logColor( messages, Qt::darkGray ) );
-            messages->textCursor().insertText( " debug: ", format );
+            cursor.insertText( " debug: ", format );
             break;
     }
 
     /* Insert the message */
     format.setProperty( QTextFormat::FontItalic, false );
     format.setForeground( messages->palette().windowText() );
-    messages->textCursor().insertText( msg->text, format );
+    cursor.insertText( msg->text, format );
 
-    /* Pass the new message thru the filter */
+    /* Filter the new message before Qt updates the layout and scroll range. */
     QTextBlock b = messages->document()->lastBlock();
     b.setVisible( matchFilter( b.text() ) );
+    cursor.endEditBlock();
 
-    if ( b_autoscroll ) messages->ensureCursorVisible();
+    finishLogAppend( messages, oldEnd, scrollPosition, followEnd );
 }
 
 void MessagesDialog::customEvent( QEvent *event )

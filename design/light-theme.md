@@ -11,7 +11,9 @@ The light theme of the desktop app is drawn from the dark values: `VLCStyle.rede
 Until 2026-10-28 step 3 came before step 2: whenever the map knew the dark value, the light value the component
 gave was ignored. `design/tools/check_qml.py` found 113 such calls with two literal colours; a full scan found
 228 (below). Each was settled against Figma, and `check_qml.py` now fails on any call whose light value differs
-from the map's unless it is listed in `LIGHT_EXCEPTIONS` (none today).
+from the map's unless it is listed in `LIGHT_EXCEPTIONS`: the rows, section names and crumbs of the Compact
+Library, which keep their own measured `#8F8F8F` (below) and go through `color()` only so that "Increase text
+contrast" turns them `#333333`.
 
 ## The Figma evidence
 

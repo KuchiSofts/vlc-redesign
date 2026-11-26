@@ -30,11 +30,9 @@ QtObject {
     // Light chrome values measured from the full exported Player - Light frame.
     readonly property QtObject redesign: QtObject {
         // Inter 3.19 (variable, SIL OFL): the build Figma lays the design out
-        // with (its text boxes are the advances of 3.19 rounded up)
-        readonly property FontLoader regularFont: FontLoader {
-            source: "qrc:///fonts/InterVariable.ttf"
-        }
-        readonly property string fontFamily: regularFont.name
+        // with (its text boxes are the advances of 3.19 rounded up), loaded
+        // once in C++ (RedesignMenuStyle::fontFamily)
+        readonly property string fontFamily: MainCtx.redesignFontFamily
         // DM Mono (SIL OFL), the keys of the design ("Keyboard Shortcuts"):
         // a line of 1.302 em (ascender 0.992, descender 0.31)
         readonly property FontLoader monoFont: FontLoader {
@@ -112,6 +110,10 @@ QtObject {
                                            : Qt.rgba(accent.r * 0.81, accent.g * 0.81, accent.b * 0.81, 1)
         readonly property color accentBackground: Qt.colorEqual(accent, "#D37918") ? "#371F06"
                                                   : Qt.rgba(accent.r * 0.26, accent.g * 0.26, accent.b * 0.26, 1)
+        // The accent as a text on the tint of it (the ON word of a toggle):
+        // darkened in the light theme, where it reads 1.8:1 on the pale tint,
+        // as the Widgets theme does (onAccent, redesign_widget_theme.cpp)
+        readonly property color onAccent: vlc_style.palette.isDark ? accent : Qt.darker(accent, 2.2)
         // The images drawn in the default accent are shown as they are with
         // it, a ColorImage tints them with the others (transparent: no tint)
         readonly property bool defaultAccent: Qt.colorEqual(accent, "#D37918")
@@ -180,7 +182,7 @@ QtObject {
         })
         readonly property var _contrastLight: ({
             "#7c7c7b": "#333333", "#6b6b6b": "#333333", "#666666": "#333333", "#5a5a59": "#333333",
-            "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756"
+            "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756", "#8f8f8f": "#333333"
         })
 
         // color(dark[, light[, isDark]]): the light value a component gives

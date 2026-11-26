@@ -464,25 +464,16 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
 
         if( newState & Qt::WindowMinimized )
         {
-
-            m_hasPausedWhenMinimized = false;
-
-            /* "Pause video when window is minimized" of the settings, as
-             * it is */
-            if( THEMIM->getPlayingState() == PlayerController::PLAYING_STATE_PLAYING &&
-                THEMIM->hasVideoOutput() && !THEMIM->hasAudioVisualization() &&
+            // (not after the boss key: it paused by itself, and that pause stays when the window is back)
+            if( !( oldState & Qt::WindowMinimized ) && m_player && !m_bossPaused &&
                 var_InheritBool( p_intf, "qt-pause-minimized" ) )
-            {
-                m_hasPausedWhenMinimized = true;
-                THEMPL->pause();
-            }
+                m_player->pauseForMinimize();
         }
-        else if( oldState & Qt::WindowMinimized && !( newState & Qt::WindowMinimized ) )
+        else if( oldState & Qt::WindowMinimized && m_player )
         {
-            if( m_hasPausedWhenMinimized )
-            {
-                THEMPL->play();
-            }
+            if( !m_bossPaused )
+                m_player->resumeFromMinimize();
+            m_bossPaused = false;
         }
         break;
     }
@@ -715,7 +706,7 @@ void InterfaceWindowHandler::toggleWindowVisibility(bool _requestActivate)
             requestActivate();
         break;
     case QWindow::Minimized:
-        setInterfaceNormal();
+        restoreInterfaceFromMinimized();
         if (_requestActivate)
             requestActivate();
         break;
@@ -738,7 +729,7 @@ void InterfaceWindowHandler::setInterfaceVisible(bool visible, bool _requestActi
                 requestActivate();
             break;
         case QWindow::Minimized:
-            setInterfaceNormal();
+            restoreInterfaceFromMinimized();
             if (_requestActivate)
                 requestActivate();
             break;
@@ -775,7 +766,7 @@ void InterfaceWindowHandler::setRaise()
         setInterfaceShown();
         break;
     case QWindow::Minimized:
-        setInterfaceNormal();
+        restoreInterfaceFromMinimized();
         break;
     default:
         break;
@@ -794,6 +785,7 @@ void InterfaceWindowHandler::setBoss()
     }
     else
     {
+        m_bossPaused = true;
         setInterfaceMinimized();
     }
 }
@@ -837,6 +829,11 @@ void InterfaceWindowHandler::setInterfaceShown()
 void InterfaceWindowHandler::setInterfaceMinimized()
 {
     setWindowState(m_window, Qt::WindowMinimized);
+}
+
+void InterfaceWindowHandler::restoreInterfaceFromMinimized()
+{
+    m_window->setWindowStates(m_window->windowStates() & ~Qt::WindowMinimized);
 }
 
 void InterfaceWindowHandler::setInterfaceMaximized()

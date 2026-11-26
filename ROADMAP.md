@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-080-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-086-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,36 +18,32 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-26, 0.8.4 published, 0.8.5 started).
+Updated as the work moves (last: 2026-11-26, 0.8.5 published, 0.8.6 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.4 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.4 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.4 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.4 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Windows x64** | ✅ released 0.8.5 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.5 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.5 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.8.5 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.5 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.5 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.5 and after
+## Next: 0.8.6 and after
 
-**0.8.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+**0.8.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released).
 
 - 🟡 macOS: the first update from inside the app on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (0.8.3 installed by hand once: the fix is in the app that updates)
-- 🟡 Eight more pull requests of a contributor, still their author's drafts (#160, #164, #166 to #168,
-  #173 to #175): read; each is shown before and after when its author marks it ready
-- 🟡 Twenty-five more of the same contributor, marked ready (#177 to #187, #193 to #206): each shown before and
-  after; twenty-two are taken for 0.8.5, three wait for a run (#185 to #187)
+- 🟡 More pull requests of a contributor: the ones that are still their author's drafts, and #187 (sliders and
+  choice lists), where the author was asked for the steps that show the fault
 
 And as the issues bring them:
 
-- 📋 Android: a more compact video player (a smaller title area, the seek bar on a row of its own), asked for in
-  [#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -119,6 +115,20 @@ Android and Swift files made from them and a check on every pull request that th
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
 
+### 0.8.5 (2026-11-26)
+
+**An update release** of the desktop apps and the Android app (Samsung TV stays 0.8.4):
+
+- ✅ Forty-four changes by a contributor (#177 to #186, #193 to #203, #205, #206, #208, #209, #214 to #216, #218,
+  #220 to #234), each read in full and shown before and after where it can be seen: the keyboard (the sidebar,
+  pane edges, About, the Play button, Add to Playlist, the library's search), screen readers, the tray, Open
+  Disc, Messages, saved playlists, Continue Watching
+- ✅ The floating Play Queue as the design draws the queue, in a window of the main window's style
+- ✅ The sidebar, the play queue and the artists pane resized with the keyboard
+  ([#45](https://github.com/KuchiSofts/vlc-redesign/discussions/45))
+- ✅ Android: the player after a review of 0.8.4's phone change (Customize Player's Landscape layout
+  shown again on a phone held sideways, the top bar after a rotation, subtitles above the controls)
+
 ### 0.8.4 (2026-11-26)
 
 **An update release** of every app:
@@ -132,6 +142,7 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ The update card lists what concerns your system, each line whole
 - ✅ Linux: sound on Fedora and other systems with a newer PipeWire ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207))
 - ✅ A second VLC window no longer closes on Settings › Library ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211))
+- ✅ Android: the player on a phone held sideways, the seek bar on its own row and a slim top bar ([#213](https://github.com/KuchiSofts/vlc-redesign/issues/213))
 - ✅ macOS: an update that takes too long stops cleanly
 - ✅ Android TV: the remote reaches the header's buttons and the Favorites row, the focus returns to the file
   played, Play all only where something plays

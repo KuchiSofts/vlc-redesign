@@ -39915,3 +39915,20 @@ msgstr "M3U को रूपमा बचत गर्नुहोस्"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "विकल्पहरू बिना थप्नुहोस्"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "एक्सेन्ट रङ %2 मध्ये %1"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "साइडबारको आकार परिवर्तन गर्नुहोस्"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "बजाउने लामको आकार परिवर्तन गर्नुहोस्"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "कलाकार प्यानलको आकार परिवर्तन गर्नुहोस्"

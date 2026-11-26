@@ -2889,10 +2889,10 @@ msgstr "Цайвар"
 msgid "System"
 msgstr "Систем"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Онцлох өнгө %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Онцлох өнгө %1 (нийт %2)"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2991,10 +2991,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Шинэчлэлт шалгаж байна..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Файл засварлаагүй байна"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Мета өгөгдлийг хадгалж чадсангүй"
@@ -3020,10 +3016,18 @@ msgstr "Видео камер"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Байгаа тоглуулах жагсаалт"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Шинэ тоглуулах жагсаалт"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 медиа"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5620,6 +5624,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "Бүгдийг сэргээх"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "Энэ нь үр дүнгийн медиаг харуулах боловч ажиллагааг удаашруулж болно."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 медиа тоглуулагчийг &харуулах"
@@ -6681,6 +6689,10 @@ msgstr "Навигацийн цэсийг харуулах"
 msgid "Main display"
 msgstr "Үндсэн дэлгэц"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Тоглуулах дарааллын хэмжээг өөрчлөх"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Үндсэн интерфейс"
@@ -6806,6 +6818,10 @@ msgstr "Хажуугийн самбарыг засах…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Хажуугийн самбараас салгах"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Хажуугийн самбарын хэмжээг өөрчлөх"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7258,6 +7274,10 @@ msgstr "Гарсан он"
 msgid "Album Title"
 msgstr "Цомгийн нэр"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Уран бүтээлчдийн самбарын хэмжээг өөрчлөх"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Үл мэдэгдэх төрөл"
@@ -7294,6 +7314,10 @@ msgid ""
 msgstr ""
 "Дуу олдсонгүй\n"
 "Эх үүсвэр нэмж үзнэ үү"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Тоглуулах жагсаалтын медиа"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9175,6 +9199,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A-аас B хүртэл давтах"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

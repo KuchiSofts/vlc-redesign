@@ -52,6 +52,18 @@ static_assert(VLC_PLAYER_TITLE_MENU == INPUT_TITLE_MENU &&
 #define vlc_player_foreach_inputs(it) \
     for (struct vlc_player_input *it = player->input; it != NULL; it = NULL)
 
+static void
+vlc_player_QueryPlaybackRestore(vlc_player_t *player)
+{
+    struct vlc_player_input *input = vlc_player_get_input_locked(player);
+    if (input && input->ml.delay_restore)
+    {
+        /* A listener can call back into the player. */
+        input->ml.delay_restore = false;
+        vlc_player_SendEvent(player, on_playback_restore_queried);
+    }
+}
+
 int
 vlc_player_OpenNextMedia(vlc_player_t *player)
 {
@@ -92,11 +104,7 @@ vlc_player_OpenNextMedia(vlc_player_t *player)
         }
     }
     vlc_player_SendEvent(player, on_current_media_changed, player->media);
-    if (player->input && player->input->ml.delay_restore)
-    {
-        vlc_player_SendEvent(player, on_playback_restore_queried);
-        player->input->ml.delay_restore = false;
-    }
+    vlc_player_QueryPlaybackRestore(player);
     return ret;
 }
 
@@ -1290,6 +1298,7 @@ vlc_player_Start(vlc_player_t *player)
     {
         player->started = true;
         vlc_player_osd_Icon(player, OSD_PLAY_ICON);
+        vlc_player_QueryPlaybackRestore(player);
     }
     return ret;
 }
@@ -1579,21 +1588,17 @@ vlc_player_SetAtoBLoop(vlc_player_t *player, enum vlc_player_abloop abloop)
     switch (abloop)
     {
         case VLC_PLAYER_ABLOOP_A:
-            if (input->abloop_state[1].set)
+            if (!vlc_player_CanSeek(player) || input->abloop_state[1].set)
                 return VLC_EGENERIC;
             input->abloop_state[0].time = time;
             input->abloop_state[0].pos = pos;
             input->abloop_state[0].set = true;
             break;
         case VLC_PLAYER_ABLOOP_B:
-            if (!vlc_player_CanSeek(player))
-            {
-                input->abloop_state[0].set = false;
-                return VLC_EGENERIC;
-            }
-
             if (!input->abloop_state[0].set)
                 return VLC_EGENERIC;
+            if (!vlc_player_CanSeek(player))
+                goto invalid_loop;
             input->abloop_state[1].time = time;
             input->abloop_state[1].pos = pos;
             input->abloop_state[1].set = true;
@@ -1613,6 +1618,7 @@ vlc_player_SetAtoBLoop(vlc_player_t *player, enum vlc_player_abloop abloop)
             }
 
             /* Error: A time is superior to B time. */
+        invalid_loop:
             abloop = VLC_PLAYER_ABLOOP_NONE;
             ret = VLC_EGENERIC;
             /* fall-through */

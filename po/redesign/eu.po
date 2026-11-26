@@ -2928,10 +2928,10 @@ msgstr "Argia"
 msgid "System"
 msgstr "Sistema"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Nabarmentze-kolorea %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Nabarmentze-kolorea: %2 koloretatik %1.a"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3031,10 +3031,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Eguneratzeak bilatzen..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Ez da fitxategirik editatzen ari"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Ezin izan dira metadatuak gorde"
@@ -3060,10 +3056,18 @@ msgstr "Bideo-kamera"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Lehendik dagoen erreprodukzio-zerrenda"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Erreprodukzio-zerrenda berria"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 multimedia-elementu"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5676,6 +5680,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "Berrezarri guztia"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "Honek emaitza bistaratzen du, baina prozesua motel dezake."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "Erakut&si %1 multimedia-erreproduzigailua"
@@ -6743,6 +6751,10 @@ msgstr "Erakutsi nabigazio-menua"
 msgid "Main display"
 msgstr "Pantaila nagusia"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Aldatu erreprodukzio-ilararen tamaina"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Interfaze nagusia"
@@ -6869,6 +6881,10 @@ msgstr "Editatu alboko barra…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Kendu alboko barratik"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Aldatu alboko barraren tamaina"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7326,6 +7342,10 @@ msgstr "Argitalpen-urtea"
 msgid "Album Title"
 msgstr "Albumaren titulua"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Aldatu artisten panelaren tamaina"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Genero ezezaguna"
@@ -7362,6 +7382,10 @@ msgid ""
 msgstr ""
 "Ez da pistarik aurkitu\n"
 "Saiatu iturburuak gehitzen"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Erreprodukzio-zerrendako multimedia"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9260,6 +9284,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A-tik B-ra begizta"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

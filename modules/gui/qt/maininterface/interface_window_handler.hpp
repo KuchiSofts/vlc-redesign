@@ -76,9 +76,12 @@ private:
     QPointer<PlayerController> m_player;
     QTimer m_spaceHoldTimer;
     bool m_spacePressed = false;
+    // the boss key minimized the window after pausing: not a pause of "pause when minimized"
+    bool m_bossPaused = false;
     bool m_spaceTapPending = false;
 
 protected:
+    void restoreInterfaceFromMinimized();
     virtual void updateCSDWindowSettings();
     // the room of the traffic lights in the top bar (macOS), MainCtx's
     void updateWindowButtonsInset();
@@ -88,8 +91,6 @@ protected:
     QPointer<QWindow> m_window;
 
     MainCtx* m_mainCtx = nullptr;
-
-    bool m_hasPausedWhenMinimized = false;
 
     bool m_isWindowTiled = false;
 

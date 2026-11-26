@@ -2082,7 +2082,7 @@ int MediaLibrary::controlMedia( int query, va_list args )
             auto time = va_arg( args, int64_t );
             if ( m->addBookmark( time ) == nullptr )
                 return VLC_EGENERIC;
-            return VLC_EGENERIC;
+            return VLC_SUCCESS;
         }
         case VLC_ML_MEDIA_REMOVE_BOOKMARK:
         {

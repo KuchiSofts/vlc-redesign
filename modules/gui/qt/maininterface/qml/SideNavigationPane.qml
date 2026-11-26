@@ -187,6 +187,33 @@ T.Pane {
         function onViewPropChanged() { Qt.callLater(root.updateCurrentIndex) }
     }
 
+    function activateEntry(index, reason) {
+        if (index < 0 || index >= entries.length)
+            return
+        const entry = entries[index]
+        if (!entry || (entry.library && !MainCtx.mediaLibraryAvailable))
+            return
+        const focusReason = reason ?? Qt.OtherFocusReason
+        // The navigation may rebuild the delegates: the view is
+        // updated first
+        listView.currentIndex = index
+        root.matchedIndex = index
+        listView.forceActiveFocus(focusReason)
+        // a pin: its folder or playlist (unless already shown)
+        if (entry.pin) {
+            if (!root._pinMatches(entry))
+                // (from the keyboard the focus stays on the sidebar, as for
+                // the pages: only a click hands it to the page)
+                History.push([...entry.uri], entry.pin.kind === "playlist" ? sidebarItems.playlistProps(entry.pin)
+                                                                           : entry.props,
+                             focusReason === Qt.MouseFocusReason ? focusReason : Qt.OtherFocusReason)
+            return
+        }
+        const item = listView.itemAtIndex(index) ?? listView.currentItem
+        if (item)
+            root.itemClicked(entry.uri, item)
+    }
+
     background: Rectangle {
         color: VLCStyle.redesign.color(VLCStyle.redesign.windowBackground, "#c2c2c1")
         Rectangle {
@@ -217,6 +244,7 @@ T.Pane {
             colorContext.colorSet: ColorContext.Window
             Navigation.parentItem: root
             Navigation.downItem: addItem
+            onActionAtIndex: (index) => root.activateEntry(index, Qt.TabFocusReason)
 
             delegate: SideNavigationDelegate {
                 required property var modelData
@@ -268,22 +296,7 @@ T.Pane {
                         }
                     }
                 }
-                onClicked: {
-                    // The navigation may rebuild the delegates: the view is
-                    // updated first
-                    listView.currentIndex = index
-                    root.matchedIndex = index
-                    listView.forceActiveFocus(Qt.MouseFocusReason)
-                    // a pin: its folder or playlist (unless already shown)
-                    if (modelData.pin) {
-                        if (!root._pinMatches(modelData))
-                            History.push([...uri], modelData.pin.kind === "playlist" ? sidebarItems.playlistProps(modelData.pin)
-                                                                                     : modelData.props,
-                                         Qt.MouseFocusReason)
-                        return
-                    }
-                    root.itemClicked(uri, this)
-                }
+                onClicked: root.activateEntry(index, Qt.MouseFocusReason)
             }
         }
 
@@ -308,6 +321,9 @@ T.Pane {
             showText: root.delegateShowText
             focusPolicy: Qt.StrongFocus
             onClicked: DialogsProvider.simpleOpenDialog()
+            // (a button takes Space only: Enter as on the rows above)
+            Keys.onReturnPressed: clicked()
+            Keys.onEnterPressed: clicked()
             Navigation.parentItem: root
             Navigation.upItem: listView
         }

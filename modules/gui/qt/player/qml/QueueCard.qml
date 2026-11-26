@@ -33,6 +33,10 @@ T.Pane {
 
     readonly property bool darkTheme: VLCStyle.palette.isDark
 
+    // In a window of its own (the floating Play Queue): the window draws the
+    // frame and the colour, the card has no frame, corners or backdrop
+    property bool windowed: false
+
     padding: 0
     // a wheel its lists don't take (at their ends, or too short to scroll)
     // stays in the card: under it the music view turns any wheel into the
@@ -45,10 +49,10 @@ T.Pane {
     Accessible.name: qsTr("Play queue, bookmarks and chapters")
 
     background: Rectangle {
-        radius: VLCStyle.dp(6, VLCStyle.scale)
-        color: root.darkTheme ? "#F2191919" : "#F2ABABAA"
+        radius: root.windowed ? 0 : VLCStyle.dp(6, VLCStyle.scale)
+        color: root.windowed ? "transparent" : (root.darkTheme ? "#F2191919" : "#F2ABABAA")
         // the frame of the main window
-        border.width: 1
+        border.width: root.windowed ? 0 : 1
         border.color: VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
     }
 
@@ -59,7 +63,7 @@ T.Pane {
         Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: VLCStyle.dp(50, VLCStyle.scale)
-            topLeftRadius: VLCStyle.dp(6, VLCStyle.scale)
+            topLeftRadius: root.windowed ? 0 : VLCStyle.dp(6, VLCStyle.scale)
             topRightRadius: topLeftRadius
             color: root.darkTheme ? "#66000000" : "#1A000000"
 

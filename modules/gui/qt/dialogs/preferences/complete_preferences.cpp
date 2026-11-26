@@ -416,10 +416,10 @@ void PrefsTree::filter( const QString &text )
     }
 }
 
-void PrefsTree::setLoadedOnly( bool b_only )
+void PrefsTree::setLoadedOnly( bool b_only, const QString &text )
 {
     b_show_only_loaded = b_only;
-    filter( "" );
+    filter( text );
 }
 
 void PrefsTree::resizeColumns()

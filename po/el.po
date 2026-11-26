@@ -41722,3 +41722,20 @@ msgstr "Αποθήκευση ως M3U"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "Προσθήκη χωρίς επιλογές"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Χρώμα έμφασης %1 από %2"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Προσαρμογή μεγέθους πλευρικής γραμμής"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Προσαρμογή μεγέθους ουράς αναπαραγωγής"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Προσαρμογή μεγέθους πλαισίου καλλιτεχνών"

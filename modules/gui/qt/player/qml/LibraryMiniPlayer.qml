@@ -127,6 +127,9 @@ T.Control {
             padding: 0
             from: 0
             to: 1
+            // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
+            readonly property real minimumValue: from
+            readonly property real maximumValue: to
             value: Player.position
             enabled: Player.seekable
             Accessible.name: qsTr("Playback position")

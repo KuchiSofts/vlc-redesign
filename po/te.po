@@ -39543,3 +39543,20 @@ msgstr "M3Uగా భద్రపరుచు"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "ఐచ్ఛికాలు లేకుండా జోడించు"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "యాస రంగు %2 లో %1"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "పక్కపట్టీ పరిమాణం మార్చు"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "ప్రదర్శన వరుస పరిమాణం మార్చు"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "కళాకారుల ప్యానెల్ పరిమాణం మార్చు"

@@ -798,7 +798,7 @@ FocusScope {
                     text: root._crumbs.length > 0 ? root._crumbs[root._crumbs.length - 1].title : ""
                     elide: Text.ElideRight
                     // Dimmed: the parents are the ones to click
-                    color: VLCStyle.palette.isDark ? VLCStyle.redesign.textMuted : "#8f8f8f"
+                    color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#8f8f8f")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
                 }
@@ -1009,6 +1009,14 @@ FocusScope {
                     root._searchedModels = text !== "" ? models : []
                 }
                 Keys.onEscapePressed: { text = ""; visible = false }
+
+                // (on again whenever the field loses the keyboard, as the
+                // header's search box: giving back the value met at focus time
+                // could keep them off after a menu closed over the field)
+                onActiveFocusChanged: MainCtx.useGlobalShortcuts = !activeFocus
+                Component.onDestruction: {
+                    if (activeFocus) MainCtx.useGlobalShortcuts = true
+                }
 
                 // nor a placeholder
                 Text {
@@ -2016,7 +2024,7 @@ FocusScope {
                 // Figma "Player - Light" (2425:13624): #8F8F8F, the watched
                 // ones #6B6B6B; dark: #969696
                 color: libraryRow.dimmed ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")
-                                         : (VLCStyle.palette.isDark ? VLCStyle.redesign.textSecondary : "#8f8f8f")
+                                         : VLCStyle.redesign.color(VLCStyle.redesign.textSecondary, "#8f8f8f")
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.redesign.fontNormal
             }
@@ -2082,7 +2090,7 @@ FocusScope {
             font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
             font.underline: crumb.hovered
             // Figma: the parents as the folder, #8F8F8F
-            color: (crumb.dimmed && !VLCStyle.palette.isDark) ? "#8f8f8f"
+            color: (crumb.dimmed && !VLCStyle.palette.isDark) ? VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#8f8f8f")
                                                               : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
         }
     }

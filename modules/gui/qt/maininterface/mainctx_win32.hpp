@@ -72,6 +72,10 @@ private:
         {
             CoUninitialize();
         }
+
+        // one CoUninitialize per CoInitializeEx: built in place, never copied
+        ComHolder(const ComHolder &) = delete;
+        ComHolder &operator=(const ComHolder &) = delete;
     };
 
     std::optional<ComHolder> m_comHolder;
@@ -134,6 +138,7 @@ private:
     // a child of the window, which outlives this handler: see the destructor
     QPointer<QObject> m_CSDWindowEventHandler;
 
+    UINT m_setupQuitMessage = 0;
     bool m_disableVolumeKeys = false;
 };
 

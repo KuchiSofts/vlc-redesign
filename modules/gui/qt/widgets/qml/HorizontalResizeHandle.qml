@@ -28,6 +28,7 @@ MouseArea {
     id: root
 
     required property int currentWidth
+    required property string accessibleName
     property int requestedWidth: 0
     property int minimumWidth: 0
     property int maximumWidth: Number.MAX_SAFE_INTEGER
@@ -35,6 +36,40 @@ MouseArea {
     property bool atRight: true
 
     property int _previousX
+    property bool _syncingValue: false
+
+    // A mouse drag leaves focus with the pane contents.
+    readonly property bool visualFocus: activeFocus
+    // The artists pane can run out of space with both side panels open.
+    activeFocusOnTab: maximumWidth > minimumWidth
+
+    Accessible.role: Accessible.Slider
+    Accessible.name: accessibleName
+    Accessible.ignored: !root.visible || !root.activeFocusOnTab
+
+    // Qt's accessible slider reads these property names and writes value.
+    property int value
+    readonly property int minimumValue: minimumWidth
+    readonly property int maximumValue: Math.max(minimumWidth, maximumWidth)
+    readonly property int stepSize: Math.max(1, VLCStyle.dp(16, VLCStyle.scale))
+
+    readonly property int _displayedWidth: Helpers.clamp(currentWidth, minimumValue, maximumValue)
+    on_DisplayedWidthChanged: _syncValue(_displayedWidth)
+
+    function _syncValue(width) {
+        _syncingValue = true
+        value = width
+        _syncingValue = false
+    }
+
+    onValueChanged: {
+        if (_syncingValue || !activeFocusOnTab)
+            return
+
+        const width = Helpers.clamp(value, minimumValue, maximumValue)
+        _syncValue(width)
+        requestedWidth = width
+    }
 
     cursorShape: Qt.SplitHCursor
     width: VLCStyle.resizeHandleWidth
@@ -42,6 +77,31 @@ MouseArea {
     hoverEnabled: true
     acceptedButtons: Qt.LeftButton
     preventStealing: true
+
+    Keys.onPressed: (event) => {
+        let width
+        switch (event.key) {
+        case Qt.Key_Left:
+        case Qt.Key_Right: {
+            const step = (event.modifiers & Qt.ShiftModifier) ? 4 * stepSize : stepSize
+            const wider = (event.key === Qt.Key_Right) === atRight
+            width = currentWidth + (wider ? step : -step)
+            break
+        }
+        case Qt.Key_Home:
+            width = minimumValue
+            break
+        case Qt.Key_End:
+            width = maximumValue
+            break
+        default:
+            root.Navigation.defaultKeyAction(event)
+            return
+        }
+        if (activeFocusOnTab)
+            requestedWidth = Helpers.clamp(width, minimumValue, maximumValue)
+        event.accepted = true
+    }
 
     onPressed: (mouse) => {
         MainCtx.setCursor(cursorShape)

@@ -40,6 +40,7 @@
 #include "player/subtitle_providers.hpp"
 #include "util/http_request.hpp"
 #include "iptv/iptv_addon.hpp"
+#include "util/renderer_manager.hpp"
 #include "util/subtitle_preferences.hpp"
 
 namespace {
@@ -187,6 +188,14 @@ QString languageOfName(const QString &name)
     return {};
 }
 
+bool isCastingVideo(PlayerController *player)
+{
+    const RendererManager *renderer = player->getRendererManager();
+    const TrackListModel *videoTracks = player->getVideoTracks();
+    return renderer && renderer->useRenderer() && renderer->rendererVideo()
+        && videoTracks && videoTracks->getCount() > 0;
+}
+
 } // namespace
 
 SubtitleFinder::SubtitleFinder(qt_intf_t *intf, PlayerController *player,
@@ -219,6 +228,14 @@ SubtitleFinder::SubtitleFinder(qt_intf_t *intf, PlayerController *player,
         if (has)
             lookAgain();
     });
+    auto lookAgainIfCastingVideo = [this, lookAgain]() {
+        if (isCastingVideo(m_player))
+            lookAgain();
+    };
+    connect(m_player->getRendererManager(), &RendererManager::useRendererChanged,
+            this, lookAgainIfCastingVideo);
+    connect(m_player->getVideoTracks(), &TrackListModel::countChanged,
+            this, lookAgainIfCastingVideo);
     connect(m_player, &PlayerController::lengthChanged, this, lookAgain);
     finderInstance() = this;
     TrackListModel *tracks = m_player->getSubtitleTracks();
@@ -514,8 +531,8 @@ void SubtitleFinder::onStarted()
         return;
     // No picture yet: the app or the drive starting cold (a film opened
     // from the file manager), a slow server. Looked at again when it comes
-    // (hasVideoOutputChanged); music never gets one
-    if (!m_player->hasVideoOutput())
+    // (hasVideoOutputChanged, or a cast video track); music never gets one
+    if (!m_player->hasVideoOutput() && !isCastingVideo(m_player))
     {
         m_waitingForPicture = true;
         msg_Dbg(m_intf, "subtitles: no picture yet, waiting for it");

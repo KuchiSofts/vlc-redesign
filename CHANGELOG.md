@@ -7,13 +7,97 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `865394f5d5` (2026-11-26).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.8.5] · 2026-11-26
+
+An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes
+from a contributor, most of them for the keyboard, screen readers and the small faults of windows, the tray and
+the older dialogs, the floating Play Queue redrawn as the design's queue card, and the Android player after
+a review of 0.8.4's change for phones held sideways.
+
+### Added
+
+- **Library search with / or Ctrl+K**: the search of the page shown opens.
+- **Sidebar with the keyboard**: Enter opens the highlighted page, pin or Add item.
+- **Pane edges with the keyboard**: Tab reaches the edge of the sidebar, the play queue and the artists pane, and
+  the arrows resize it.
+- **About with the keyboard**: Tab reaches its links, Enter opens them.
+- **Decimal comma in Settings**: "0,5" is accepted in the languages that write it so.
+
+### Changed
+
+- **Floating Play Queue**: it is the design's queue card (Queue, Bookmarks, Chapters) in a window of the main
+  window's style, and it opens beside the window inside the screen, on the other side when there is no room.
+- **A file opened from Explorer while nothing plays (Windows)** plays, also with "Add to the playlist".
+- **Setup and "close to system tray" (Windows)**: setup asks a running copy to quit for real, so it saves its
+  settings, window position and queue.
+- **A file opened from Explorer**: the library's rescan waits 10 seconds.
+- **Faster start**: the Inter font is read once.
+
+### Fixed
+
+- **Video information**: the Audio track column shows the audio track.
+- **Play media key (Windows)**: it resumes a paused media.
+- **Play button with the keyboard**: Enter or Space starts a stopped queue.
+- **Compact Library search**: the app's shortcuts wait while you type.
+- **Music › Tracks**: Play All and Shuffle no longer freeze a large library.
+- **Subtitle services**: a late sign-in answer no longer erases the saved logins.
+- **Light theme**: the ON word of the toggles reads clearly, and Increase text contrast reaches the Compact Library.
+- **Effects with the keyboard**: the focused tab and section are framed.
+- **Subtitles while casting a video**: the Tracks popup keeps its Subtitles tab.
+- **Right-to-left languages**: the texts left in English keep their punctuation in place when the direction changes.
+- **Taskbar buttons (Windows)**: rebuilt cleanly after Explorer restarts; Play is greyed with an empty queue.
+- **A file opened while VLC starts** can no longer crash it.
+- **Screen readers**: the chosen theme, accent colour and Settings page are announced, and the sliders give
+  their range.
+
+- **A-B Loop**: the button is off on playback that cannot seek, and no longer sticks on A.
+- **Advanced preferences**: the search stays when "Only show current" is switched.
+- **Messages**: new lines no longer copy the selection to the clipboard, and the filter treats new and old lines
+  alike.
+- **Bookmarks**: Create at the same position keeps the bookmark's name.
+- **Add to Playlist**: an existing playlist can be chosen with the keyboard.
+- **Open Disc**: Blu-ray menus are no longer forced off.
+- **Continue Watching**: a card that timed out does not come back, and after Stop then Play it is offered again.
+- **Tray**: restoring keeps the window maximized, and the menu offers Show after closing to the tray.
+- **Window position**: kept on its monitor after the displays were rearranged; a monitor unplugged in fullscreen
+  is no longer used on the way out.
+- **Exit Fullscreen** in the title bar always leaves fullscreen.
+- **Clear history** in Settings › Privacy finishes also when you leave the page at once.
+- **Pause when minimized**: restoring the window resumes only the video VLC paused itself.
+- **Convert / Save**: a raw dump asks before it overwrites a file.
+- **Saved playlists**: Remove, Move and Add files wait while the list is filtered by a search.
+- **Media Information**: after the queue is cleared, Save Metadata can no longer write empty tags to the last
+  file.
+
+- **Android: Customize Player's Landscape layout on a phone held sideways** is shown again, on the row under the
+  seek bar.
+- **Android: turning the phone with the controls up** keeps the top bar's buttons.
+- **Android: subtitles drawn into the picture** stay above the controls of a phone held sideways.
+- **Android: Bookmarks opened before the controls were ever shown** no longer close the app.
+
+### Technical
+
+- Forty-four pull requests by a contributor (#177 to #186, #193 to #203, #205, #206, #208, #209, #214 to #216,
+  #218, #220 to #234), each read in full, the fault looked for in 0.8.4 and the change shown before and after where it can be
+  seen, with our fixes on seven of them: the shortcuts come back whenever the Compact Library's search loses the
+  keyboard (#180), Enter on Add item and one focus rule for pins and pages (#184), the Compact Library's rows as
+  listed exceptions of the light map (#202), a translation again on every direction change (#206), setup still
+  closing the copies of every Windows session (#209), Convert and Stream starting a Blu-ray without menus (#228),
+  and a double click in place of "activated" in Add to Playlist (#229).
+- The "continue watching" action checks that there is a media to go back to (it could be asked after Stop).
+- The 0.8.5 branch read as a whole by reviewers before the release: the floating Play Queue (Escape, Close
+  above the resize grips, resizing where the system does not do it), the time editor giving the shortcuts
+  back, the boss key's pause kept apart from "pause when minimized", the A-B button able to clear a loop.
+- Android: a 600 dp tablet held sideways is not taken for a phone; the top bar's fade is measured on the
+  warning when a file has no title.
 
 ## [0.8.4] · 2026-11-26
 
@@ -48,6 +132,8 @@ reaching every part of the Android TV app, and the "deleted or moved" message pu
 - **Linux: sound on Fedora and other systems with a newer PipeWire**: the app uses the system's PipeWire
   library, its own copy only where there is none ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207)).
 - **A second VLC window no longer closes when Settings › Library is opened** ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211)).
+- **Android: the player on a phone held sideways**: the seek bar on a row of its own, and a slim top bar that
+  fades into the video ([#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)).
 - **macOS: an update that takes too long stops cleanly**: its disk image is released and no partial copy stays.
 - **Android TV: Play all is offered only where there is something to play**.
 - **Android TV: the Network page's Favorites are reached with Up from Storages**, and a folder row is one stop.

@@ -608,6 +608,9 @@ void WinTaskbarWidget::createTaskBarButtons()
     /*Here is the code for the taskbar thumb buttons
     FIXME:We need pretty buttons in 16x16 px that are handled correctly by masks in Qt
     */
+    // again after Explorer restarts (TaskbarButtonCreated): the old list goes
+    if( himl )
+        ImageList_Destroy( himl );
     himl = NULL;
 
     auto winId = WinId(m_window);
@@ -616,7 +619,10 @@ void WinTaskbarWidget::createTaskBarButtons()
 
     try
     {
-        m_comHolder = ComHolder();
+        // (a temporary copied in ran CoUninitialize once more; the taskbar
+        // object of before goes first: emplace() ends the COM it lives in)
+        p_taskbl.Reset();
+        m_comHolder.emplace();
     }
     catch( const std::exception& exception )
     {
@@ -694,14 +700,14 @@ void WinTaskbarWidget::createTaskBarButtons()
             msg_Err( p_intf, "%s failed with error %08lx",
                      "ThumbBarAddButtons", hr );
     }
+    // once, though this runs again after Explorer restarts (countChanged is
+    // connected in the constructor)
     connect( THEMIM, &PlayerController::playingStateChanged,
-             this, &WinTaskbarWidget::changeThumbbarButtons);
-    connect( THEMPL, &vlc::playlist::PlaylistController::countChanged,
-            this, &WinTaskbarWidget::playlistItemCountChanged );
+             this, &WinTaskbarWidget::changeThumbbarButtons, Qt::UniqueConnection );
     connect( THEMPL, &vlc::playlist::PlaylistController::hasPrevChanged,
-            this, &WinTaskbarWidget::changeThumbbarButtons );
+            this, &WinTaskbarWidget::changeThumbbarButtons, Qt::UniqueConnection );
     connect( THEMPL, &vlc::playlist::PlaylistController::hasNextChanged,
-            this, &WinTaskbarWidget::changeThumbbarButtons );
+            this, &WinTaskbarWidget::changeThumbbarButtons, Qt::UniqueConnection );
     if( THEMIM->getPlayingState() == PlayerController::PLAYING_STATE_PLAYING )
         changeThumbbarButtons( );
 }
@@ -771,7 +777,8 @@ void WinTaskbarWidget::changeThumbbarButtons( )
     //play/pause
     thbButtons[1].dwMask = dwMask;
     thbButtons[1].iId = 1;
-    thbButtons[1].dwFlags = THBF_ENABLED;
+    // nothing to play with an empty queue, as when the buttons are made
+    thbButtons[1].dwFlags = THEMPL->count() > 0 ? THBF_ENABLED : THBF_DISABLED;
 
     //next
     thbButtons[2].dwMask = dwMask;
@@ -908,6 +915,7 @@ InterfaceWindowHandlerWin32::InterfaceWindowHandlerWin32(qt_intf_t *_p_intf, Mai
         m_disableVolumeKeys = disable;
     });
 
+    m_setupQuitMessage = RegisterWindowMessageW(L"VLC Redesign Setup Quit");
     QApplication::instance()->installNativeEventFilter(this);
 }
 
@@ -934,7 +942,7 @@ void InterfaceWindowHandlerWin32::toggleWindowVisibility(bool _requestActivate)
             requestActivate();
         break;
     case QWindow::Minimized:
-        setInterfaceMinimized();
+        restoreInterfaceFromMinimized();
         if (_requestActivate)
             requestActivate();
         break;
@@ -1015,9 +1023,19 @@ bool InterfaceWindowHandlerWin32::eventFilter(QObject* obj, QEvent* ev)
     return ret;
 }
 
-    bool InterfaceWindowHandlerWin32::nativeEventFilter(const QByteArray &, void *message, qintptr *result)
+bool InterfaceWindowHandlerWin32::nativeEventFilter(const QByteArray &, void *message, qintptr *result)
 {
     MSG* msg = static_cast<MSG*>( message );
+
+    if (m_setupQuitMessage && msg->message == m_setupQuitMessage &&
+        msg->wParam == GetCurrentProcessId() && m_window && msg->hwnd == WinId(m_window))
+    {
+        // Acknowledge the request before the queued quit can destroy the window.
+        if (result)
+            *result = TRUE;
+        emit m_mainCtx->askToQuit();
+        return true;
+    }
 
     short cmd;
     bool handled = false;
@@ -1042,7 +1060,12 @@ bool InterfaceWindowHandlerWin32::eventFilter(QObject* obj, QEvent* ev)
                     THEMPL->togglePlayPause();
                     break;
                 case APPCOMMAND_MEDIA_PLAY:
-                    THEMPL->play();
+                    // Start() does nothing on a started (paused) player:
+                    // resume it, as the Play hotkey does (#124)
+                    if (THEMIM->isStarted())
+                        THEMPL->resume();
+                    else
+                        THEMPL->play();
                     break;
                 case APPCOMMAND_MEDIA_PAUSE:
                     THEMPL->pause();

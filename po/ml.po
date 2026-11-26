@@ -40817,3 +40817,20 @@ msgstr "M3U ആയി സേവ് ചെയ്യുക"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "ഓപ്ഷനുകൾ ഇല്ലാതെ ചേർക്കുക"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "ആക്സന്റ് നിറം %2 ൽ %1"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "സൈഡ്ബാറിന്റെ വലുപ്പം മാറ്റുക"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "പ്ലേ ക്യൂവിന്റെ വലുപ്പം മാറ്റുക"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "ആർട്ടിസ്റ്റുകളുടെ പാനലിന്റെ വലുപ്പം മാറ്റുക"

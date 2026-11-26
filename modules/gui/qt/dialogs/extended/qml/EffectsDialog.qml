@@ -192,8 +192,12 @@ T.Popup {
                     implicitHeight: VLCStyle.dp(45, VLCStyle.scale)
                     focusPolicy: Qt.StrongFocus
                     onClicked: root.switchTab(index)
+                    Accessible.checkable: true
+                    Accessible.checked: root.currentTab === index
                     background: Rectangle {
                         color: tabButton.hovered ? root.c(VLCStyle.redesign.controlHoverBackground) : "transparent"
+                        border.width: tabButton.visualFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
+                        border.color: VLCStyle.redesign.focusColor
                         Rectangle {
                             anchors.bottom: parent.bottom
                             anchors.horizontalCenter: parent.horizontalCenter

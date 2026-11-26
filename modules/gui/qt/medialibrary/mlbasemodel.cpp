@@ -358,6 +358,38 @@ void MLBaseModel::addAndPlay(const QModelIndexList &list, const QStringList &opt
     loadItems(indx, play);
 }
 
+void MLBaseModel::addAndPlayAll(bool shuffled, const QStringList &options)
+{
+    Q_D(MLBaseModel);
+    if (!m_mediaLib)
+        return;
+
+    if (!m_itemLoader)
+        m_itemLoader = createMLLoader();
+
+    m_itemLoader->loadTask(d->m_offset, d->m_limit,
+        [this, shuffled, options](size_t, std::vector<std::unique_ptr<MLItem>> &items)
+        {
+            if (!m_mediaLib)
+                return;
+
+            QVariantList ids;
+            ids.reserve(static_cast<qsizetype>(items.size()));
+            for (const std::unique_ptr<MLItem> &item : items)
+            {
+                if (item)
+                    ids.push_back(QVariant::fromValue(item->getId()));
+            }
+            if (ids.isEmpty())
+                return;
+
+            if (shuffled)
+                m_mediaLib->addAndPlayShuffled(ids, options);
+            else
+                m_mediaLib->addAndPlay(ids, options);
+        });
+}
+
 vlc_ml_sorting_criteria_t MLBaseModel::getMLSortingCriteria() const
 {
     Q_D(const MLBaseModel);
@@ -694,7 +726,18 @@ quint64 MLListCacheLoader::loadItemsTask(size_t offset, const QVector<int> &inde
             if (indexes.isEmpty())
                 return;
 
-            auto sortedIndexes = indexes;
+            ctx.items.resize(indexes.size());
+
+            QVector<int> sortedIndexes;
+            sortedIndexes.reserve(indexes.size());
+            for (const int index : indexes)
+            {
+                if (index >= 0)
+                    sortedIndexes.push_back(index);
+            }
+            if (sortedIndexes.isEmpty())
+                return;
+
             std::sort(sortedIndexes.begin(), sortedIndexes.end());
 
             struct Range
@@ -713,20 +756,20 @@ quint64 MLListCacheLoader::loadItemsTask(size_t offset, const QVector<int> &inde
                     ranges.push_back(Range {index, index});
             }
 
-            ctx.items.resize(indexes.size());
-
             vlc_ml_query_params_t queryParam = op->getQueryParams();
             for (const auto range : ranges)
             {
-                queryParam.i_offset = offset + range.low;
-                queryParam.i_nbResults = offset + range.high - range.low + 1;
+                queryParam.i_offset = offset + static_cast<size_t>(range.low);
+                queryParam.i_nbResults = static_cast<uint32_t>(range.high - range.low) + 1;
                 auto data = op->load(ml, &queryParam);
                 for (int i = 0; i < indexes.size(); ++i)
                 {
                     const auto targetIndex = indexes[i];
                     if (targetIndex >= range.low && targetIndex <= range.high)
                     {
-                        ctx.items.at(i) = std::move(data.at(targetIndex - range.low));
+                        const size_t pos = static_cast<size_t>(targetIndex - range.low);
+                        if (pos < data.size())
+                            ctx.items.at(i) = std::move(data[pos]);
                     }
                 }
             }

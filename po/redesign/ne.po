@@ -2858,10 +2858,10 @@ msgstr "लाइट"
 msgid "System"
 msgstr "प्रणाली"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "एक्सेन्ट रङ %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "एक्सेन्ट रङ %2 मध्ये %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2959,10 +2959,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "अद्यावधिकहरू जाँच गर्दै..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "कुनै फाइल सम्पादन भइरहेको छैन"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "मेटाडेटा बचत गर्न असफल भयो"
@@ -2988,10 +2984,18 @@ msgstr "भिडियो क्यामेरा"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "अवस्थित बजाउने सूची"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "नयाँ बजाउने सूची"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 मिडिया"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5555,6 +5559,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "सबै रिसेट गर्नुहोस्"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "यसले परिणाम मिडिया देखाउँछ, तर काम ढिलो बनाउन सक्छ।"
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 मिडिया प्लेयर &देखाउनुहोस्"
@@ -6601,6 +6609,10 @@ msgstr "नेभिगेसन मेनु देखाउनुहोस्"
 msgid "Main display"
 msgstr "मुख्य डिस्प्ले"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "बजाउने लामको आकार परिवर्तन गर्नुहोस्"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "मुख्य इन्टरफेस"
@@ -6723,6 +6735,10 @@ msgstr "साइडबार सम्पादन गर्नुहोस्�
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "साइडबारबाट अनपिन गर्नुहोस्"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "साइडबारको आकार परिवर्तन गर्नुहोस्"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7170,6 +7186,10 @@ msgstr "रिलिज वर्ष"
 msgid "Album Title"
 msgstr "एल्बमको शीर्षक"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "कलाकार प्यानलको आकार परिवर्तन गर्नुहोस्"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "अज्ञात विधा"
@@ -7206,6 +7226,10 @@ msgid ""
 msgstr ""
 "कुनै ट्रयाक फेला परेन\n"
 "कृपया स्रोतहरू थपेर हेर्नुहोस्"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "बजाउने सूचीका मिडिया"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9079,6 +9103,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A देखि B लुप"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

@@ -2894,10 +2894,10 @@ msgstr "வெளிர்"
 msgid "System"
 msgstr "கணினி"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "உச்சரிப்பு நிறம் %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "உச்சரிப்பு நிறம் %2 இல் %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2997,10 +2997,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "புதுப்பிப்புகளைச் சரிபார்க்கிறது..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "எந்தக் கோப்பும் திருத்தப்படவில்லை"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "மீத்தரவைச் சேமிக்க முடியவில்லை"
@@ -3026,10 +3022,18 @@ msgstr "நிகழ்படக் கேமரா"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "ஏற்கனவே உள்ள தொகுப்பு பட்டியல்"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "புதிய தொகுப்பு பட்டியல்"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 ஊடகங்கள்"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5624,6 +5628,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "அனைத்தையும் மீட்டமை"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "இது விளைவான ஊடகத்தைக் காட்டுகிறது, ஆனால் செயல்பாட்டை மெதுவாக்கலாம்."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 ஊடக ஓட்டியைக் காட்டு"
@@ -6685,6 +6693,10 @@ msgstr "வழிசெலுத்தல் மெனுவைக் காட�
 msgid "Main display"
 msgstr "முதன்மைக் காட்சி"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "இயக்க வரிசையின் அளவை மாற்று"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "முதன்மை இடைமுகம்"
@@ -6810,6 +6822,10 @@ msgstr "பக்கப்பட்டியைத் திருத்து�
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "பக்கப்பட்டியிலிருந்து நீக்கு"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "பக்கப்பட்டியின் அளவை மாற்று"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7263,6 +7279,10 @@ msgstr "வெளியீட்டு ஆண்டு"
 msgid "Album Title"
 msgstr "ஆல்பத் தலைப்பு"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "கலைஞர்கள் பலகத்தின் அளவை மாற்று"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "தெரியாத வகை"
@@ -7299,6 +7319,10 @@ msgid ""
 msgstr ""
 "பாடல்கள் எதுவும் கிடைக்கவில்லை\n"
 "மூலங்களைச் சேர்த்துப் பார்க்கவும்"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "தொகுப்பு பட்டியல் ஊடகம்"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9180,6 +9204,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A முதல் B வரை சுழற்சி"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

@@ -2914,10 +2914,10 @@ msgstr "Բաց"
 msgid "System"
 msgstr "Համակարգային"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Շեշտադրման գույն %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Շեշտադրման գույն %1՝ %2-ից"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3017,10 +3017,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Թարմացումների ստուգում..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Ֆայլ չի խմբագրվում"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Չհաջողվեց պահել մետատվյալները"
@@ -3046,10 +3042,18 @@ msgstr "Տեսախցիկ"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Գոյություն ունեցող երգացանկ"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Նոր երգացանկ"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 մեդիա"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5653,6 +5657,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "Վերակայել բոլորը"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "Սա ցուցադրում է ստացված մեդիան, բայց կարող է դանդաղեցնել աշխատանքը։"
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "&Ցույց տալ %1-ը"
@@ -6713,6 +6721,10 @@ msgstr "Ցույց տալ նավարկման մենյուն"
 msgid "Main display"
 msgstr "Հիմնական ցուցադրում"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Փոխել նվագարկման հերթի չափը"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Հիմնական ինտերֆեյս"
@@ -6838,6 +6850,10 @@ msgstr "Խմբագրել կողային վահանակը…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Ապամրացնել կողային վահանակից"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Փոխել կողային վահանակի չափը"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7289,6 +7305,10 @@ msgstr "Թողարկման տարի"
 msgid "Album Title"
 msgstr "Ալբոմի անվանում"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Փոխել արտիստների վահանակի չափը"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Անհայտ ոճ"
@@ -7325,6 +7345,10 @@ msgid ""
 msgstr ""
 "Թրեքեր չեն գտնվել\n"
 "Փորձեք ավելացնել աղբյուրներ"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Երգացանկի մեդիա"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9211,6 +9235,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A-ից B ցիկլ"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

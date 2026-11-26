@@ -104,6 +104,7 @@ private: // Functions
 
     bool m_transactionPending = false;
     bool m_resetAfterTransaction = false;
+    bool m_cacheResetDuringTransaction = false;
 
 private:
     struct Loader : public MLListCacheLoader::MLOp

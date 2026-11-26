@@ -141,6 +141,8 @@ static bool restoreWindowPositionImpl(QSettings *settings, QWindow *window)
     }
     else if (!unchanged)
     {
+        // Keep the saved offset from the screen's origin in Qt coordinates.
+        geometry.translate(target->geometry().topLeft() - screenGeometry.topLeft());
         geometry = ScreenFit::fitted(geometry, target->availableGeometry());
     }
     else

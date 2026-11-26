@@ -40844,3 +40844,20 @@ msgstr "M3U ಆಗಿ ಉಳಿಸಿ"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "ಆಯ್ಕೆಗಳಿಲ್ಲದೆ ಸೇರಿಸಿ"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "ಉಚ್ಚಾರಣಾ ಬಣ್ಣ %2 ರಲ್ಲಿ %1"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "ಪಕ್ಕಪಟ್ಟಿಯ ಗಾತ್ರ ಬದಲಿಸಿ"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "ಪ್ಲೇ ಸರತಿಯ ಗಾತ್ರ ಬದಲಿಸಿ"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "ಕಲಾವಿದರ ಫಲಕದ ಗಾತ್ರ ಬದಲಿಸಿ"

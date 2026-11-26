@@ -203,6 +203,7 @@ class MainCtx : public QObject
     Q_PROPERTY(MainInterfaceMode effectiveMainInterfaceMode READ getEffectiveMainInterfaceMode NOTIFY mainInterfaceModesChanged FINAL)
     Q_PROPERTY(MainInterfaceMode initialEffectiveMainInterfaceMode READ getInitialEffectiveMainInterfaceMode CONSTANT FINAL)
     Q_PROPERTY(QString volumeSliderColors READ volumeSliderColors CONSTANT FINAL)
+    Q_PROPERTY(QString redesignFontFamily READ redesignFontFamily CONSTANT FINAL)
 
     //Property to get Operating System info
     Q_PROPERTY(OsType osName READ getOSName CONSTANT)
@@ -505,6 +506,11 @@ public:
         return window->format().depthBufferSize() > 0;
     }
 
+    // Places `window` beside its transientParent inside that parent's screen
+    // (flipping to the opposite side or overlapping the inside edge when there
+    // is no room on the preferred side).
+    Q_INVOKABLE static void placeWindowBesideParent(QWindow *window, bool onLeft, int gap = 10);
+
     // TODO: This functions is akin to Window Web API's `setTimeout()`. Get rid of this once
     //       once Qt implements it.
     Q_INVOKABLE static void setTimeout(const QJSValue& func, const int delay, const QJSValueList& params = {}, const QObject* context = nullptr)
@@ -594,6 +600,7 @@ public:
     MainInterfaceMode getInitialEffectiveMainInterfaceMode() const { return m_initialEffectiveMainInterfaceMode; }
 
     Q_INVOKABLE QString volumeSliderColors() const;
+    QString redesignFontFamily() const;
 
     Q_INVOKABLE static double dp(const double px, const double scale);
     Q_INVOKABLE double dp(const double px) const;
@@ -788,6 +795,7 @@ protected:
 public slots:
     void toggleToolbarMenu();
     void toggleInterfaceFullScreen();
+    void exitFullscreen();
     void setPlayerPlaylistWidth( double factor );
     void setInterfaceAlwaysOnTop( bool );
     void setShowRemainingTime( bool );

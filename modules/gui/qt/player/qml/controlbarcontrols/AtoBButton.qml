@@ -30,6 +30,8 @@ Widgets.ImageToolButton {
 
     sourceSize: Qt.size(VLCStyle.icon_toolbar, VLCStyle.icon_toolbar)
 
+    // (a loop already set can always be cleared)
+    enabled: Player.seekable || Player.ABloopState !== Player.ABLOOP_STATE_NONE
     checked: Player.ABloopState !== Player.ABLOOP_STATE_NONE
     onClicked: Player.toggleABloopState()
 

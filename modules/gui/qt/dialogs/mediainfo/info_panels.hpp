@@ -50,7 +50,7 @@ class MetaPanel: public QWidget
     Q_OBJECT
 public:
     MetaPanel( QWidget *, qt_intf_t * );
-    bool saveMeta();
+    void saveMeta();
 
     bool isInEditMode();
     void setEditMode( bool );
@@ -91,7 +91,7 @@ private slots:
 
 signals:
     void uriSet( const QString& );
-    void editing();
+    void editModeChanged();
 };
 
 class ExtraMetaPanel: public QWidget

@@ -203,6 +203,7 @@ SideNavigationPane {
         target: sidebar
 
         panelObject: MainCtx.navigationPanel
+        accessibleName: qsTr("Resize the sidebar")
         atRight: true
 
         resizeHandle.visible: (sidebar.state === "expanded") && !VLCStyle.isScreenSmall

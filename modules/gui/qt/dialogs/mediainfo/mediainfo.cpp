@@ -94,11 +94,13 @@ MediaInfoDialog::MediaInfoDialog(qt_intf_t *_p_intf,
     BUTTONACT( closeButton, &MediaInfoDialog::close );
 
     /* The tabs buttons are shown in the main dialog for space and cosmetics */
-    BUTTONACT( saveMetaButton, &MediaInfoDialog::saveMeta );
+    connect( saveMetaButton, &QPushButton::clicked, MP, &MetaPanel::saveMeta );
 
     /* Let the MetaData Panel update the URI */
     connect( MP, &MetaPanel::uriSet, this, &MediaInfoDialog::updateURI );
-    connect( MP, &MetaPanel::editing, saveMetaButton, &QPushButton::show );
+    connect( MP, &MetaPanel::editModeChanged, this, [this]() {
+        updateButtons( infoTabW->currentIndex() );
+    } );
 
     /* Display the buttonBar according to the Tab selected */
     connect( infoTabW, &QTabWidget::currentChanged, this, &MediaInfoDialog::updateButtons );
@@ -150,13 +152,6 @@ int MediaInfoDialog::currentTab()
     return infoTabW->currentIndex();
 }
 
-void MediaInfoDialog::saveMeta()
-{
-    bool success = MP->saveMeta();
-    if (success)
-        saveMetaButton->hide();
-}
-
 void MediaInfoDialog::updateAllTabs( const SharedInputItem& p_item )
 {
     if (! p_item)
@@ -183,11 +178,7 @@ void MediaInfoDialog::close()
     hide();
 
     /* if dialog is closed, revert editing if not saved */
-    if( MP->isInEditMode() )
-    {
-        MP->setEditMode( false );
-        updateButtons( 0 );
-    }
+    MP->setEditMode( false );
 
     if( !isMainInputInfo )
         deleteLater();

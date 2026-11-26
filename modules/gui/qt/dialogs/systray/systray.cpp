@@ -203,18 +203,20 @@ void VLCSystray::update()
     }
 #else
     /* Hide / Show VLC and cone */
-    if( m_ctx->interfaceVisibility() != QWindow::Hidden )
-    {
-        m_menu->addAction(
-            QIcon( ":/logo/vlc.svg" ), qtr( "&Hide %1 in taskbar" ).arg( QStringLiteral( VLC_REDESIGN_NAME ) ),
-            this, &VLCSystray::hideUpdateMenu);
-    }
-    else
-    {
-        m_menu->addAction(
-            QIcon( ":/logo/vlc.svg" ), qtr( "Sho&w %1" ).arg( QStringLiteral( VLC_REDESIGN_NAME ) ),
-            this, &VLCSystray::showUpdateMenu);
-    }
+    QAction* const visibilityAction = m_menu->addAction(
+        QIcon( ":/logo/vlc.svg" ), QString(), this, [this]() {
+            if( m_ctx->interfaceVisibility() == QWindow::Hidden )
+                showUpdateMenu();
+            else
+                hideUpdateMenu();
+        } );
+    const auto refreshVisibilityAction = [this, visibilityAction]() {
+        const QString text = m_ctx->interfaceVisibility() == QWindow::Hidden
+            ? qtr( "Sho&w %1" ) : qtr( "&Hide %1 in taskbar" );
+        visibilityAction->setText( text.arg( QStringLiteral( VLC_REDESIGN_NAME ) ) );
+    };
+    refreshVisibilityAction();
+    connect( m_menu.get(), &QMenu::aboutToShow, visibilityAction, refreshVisibilityAction );
     m_menu->addSeparator();
 #endif
 

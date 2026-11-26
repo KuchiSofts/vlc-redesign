@@ -89,9 +89,13 @@ ColumnLayout {
                 implicitHeight: VLCStyle.dp(42, VLCStyle.scale)
                 focusPolicy: Qt.StrongFocus
                 onClicked: root.section = index
+                Accessible.checkable: true
+                Accessible.checked: root.section === index
                 background: Rectangle {
                     color: sectionButton.hovered ? root.c(VLCStyle.redesign.controlHoverBackground) : "transparent"
                     radius: VLCStyle.dp(5, VLCStyle.scale)
+                    border.width: sectionButton.visualFocus ? VLCStyle.dp(1, VLCStyle.scale) : 0
+                    border.color: VLCStyle.redesign.focusColor
                 }
                 contentItem: Text {
                     textFormat: Text.PlainText

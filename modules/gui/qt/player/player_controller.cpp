@@ -501,6 +501,7 @@ static  void on_player_current_media_changed(vlc_player_t *, input_item_t *new_m
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
     msg_Dbg( that->p_intf, "on_player_current_media_changed");
+    that->m_minimizePause = PlayerControllerPrivate::MinimizePause::None;
     const auto lyricsGeneration = ++that->m_lrcLyricsGeneration;
 
     if (!new_media)
@@ -568,14 +569,24 @@ static void on_player_stopping_current_media(vlc_player_t *, input_item_t *,
                                              void *data)
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
+    that->m_minimizePause = PlayerControllerPrivate::MinimizePause::None;
     if( reason != VLC_PLAYER_MEDIA_STOPPING_EOS )
         var_TriggerCallback( VLC_OBJECT( vlc_object_instance( that->p_intf ) ), "renderer-stop" );
 }
 
-static void on_player_state_changed(vlc_player_t *, enum vlc_player_state state, void *data)
+static void on_player_state_changed(vlc_player_t *player, enum vlc_player_state state, void *data)
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
     msg_Dbg( that->p_intf, "on_player_state_changed");
+    using MinimizePause = PlayerControllerPrivate::MinimizePause;
+    if (state != VLC_PLAYER_STATE_PAUSED)
+        that->m_minimizePause = MinimizePause::None;
+    else if (that->m_minimizePause == MinimizePause::ResumePending)
+    {
+        that->m_minimizePause = MinimizePause::None;
+        vlc_player_Resume(player);
+    }
+
     if (state == VLC_PLAYER_STATE_STOPPED)
         ++that->m_lrcLyricsGeneration;
 
@@ -1665,6 +1676,40 @@ bool PlayerController::isStarted() const
 bool PlayerController::hasInput() const
 {
     return getInput();
+}
+
+void PlayerController::pauseForMinimize()
+{
+    if (!hasVideoOutput() || hasAudioVisualization())
+        return;
+
+    Q_D(PlayerController);
+    vlc_player_locker lock{ d->m_player };
+    if (vlc_player_GetState(d->m_player) != VLC_PLAYER_STATE_PLAYING || !d->isCurrentItemSynced())
+        return;
+
+    d->m_minimizePause = PlayerControllerPrivate::MinimizePause::Active;
+    vlc_player_Pause(d->m_player);
+}
+
+void PlayerController::resumeFromMinimize()
+{
+    Q_D(PlayerController);
+    vlc_player_locker lock{ d->m_player };
+    using MinimizePause = PlayerControllerPrivate::MinimizePause;
+    if (d->m_minimizePause != MinimizePause::Active)
+        return;
+
+    if (vlc_player_IsPaused(d->m_player))
+    {
+        d->m_minimizePause = MinimizePause::None;
+        vlc_player_Resume(d->m_player);
+    }
+    else
+    {
+        // The input may still be processing the asynchronous pause.
+        d->m_minimizePause = MinimizePause::ResumePending;
+    }
 }
 
 void PlayerController::reverse()

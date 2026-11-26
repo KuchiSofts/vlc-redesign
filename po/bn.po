@@ -40321,3 +40321,20 @@ msgstr "M3U হিসেবে সংরক্ষণ করুন"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "অপশন ছাড়া যোগ করুন"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "অ্যাকসেন্ট রং %2টির মধ্যে %1 নম্বর"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "সাইডবারের আকার বদলান"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "প্লে কিউর আকার বদলান"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "শিল্পী প্যানেলের আকার বদলান"

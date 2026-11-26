@@ -39697,3 +39697,20 @@ msgstr "M3U болгон хадгалах"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "Сонголтгүйгээр нэмэх"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Онцлох өнгө %1 (нийт %2)"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Хажуугийн самбарын хэмжээг өөрчлөх"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Тоглуулах дарааллын хэмжээг өөрчлөх"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Уран бүтээлчдийн самбарын хэмжээг өөрчлөх"

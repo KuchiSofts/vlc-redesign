@@ -104,6 +104,7 @@ public:
     void setFavoriteOnly(const bool favoriteOnly);
 
     Q_INVOKABLE void addAndPlay(const QModelIndexList &list, const QStringList &options = {});
+    Q_INVOKABLE void addAndPlayAll(bool shuffled = false, const QStringList &options = {});
 
     vlc_ml_sorting_criteria_t getMLSortingCriteria() const;
 

@@ -111,6 +111,7 @@
 #include <QSettings>
 
 #include <QThread>
+#include <QTimer>
 
 #include <vlc_actions.h>
 #include <vlc_interface.h>
@@ -325,35 +326,36 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
      * Callbacks
      ************/
     libvlc_int_t* libvlc = vlc_object_instance(p_intf);
-    var_AddCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, p_intf );
-    var_AddCallback( libvlc, "intf-boss", IntfBossCB, p_intf );
-    var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, p_intf );
+    var_AddCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
+    var_AddCallback( libvlc, "intf-boss", IntfBossCB, this );
+    var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
 
     /* Register callback for the intf-popupmenu variable */
     var_AddCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
 
-    if( var_InheritBool( p_intf, "qt-privacy-ask") )
-    {
-        /* Not over a file VLC was opened with (from Explorer): the film
-         * first, the welcome the next time VLC opens without one */
-        vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(p_intf->intf);
-        vlc_playlist_Lock(playlist);
-        const bool has_media = vlc_playlist_Count(playlist) > 0;
-        vlc_playlist_Unlock(playlist);
+    /* VLC opened to play something (a file opened from Explorer) */
+    vlc_playlist_t *playlist = vlc_intf_GetMainPlaylist(p_intf->intf);
+    vlc_playlist_Lock(playlist);
+    const bool has_media = vlc_playlist_Count(playlist) > 0;
+    vlc_playlist_Unlock(playlist);
 
+    if( var_InheritBool( p_intf, "qt-privacy-ask") && !has_media )
+    {
+        /* Not over a file VLC was opened with: the film first, the welcome
+         * the next time VLC opens without one */
         //postpone dialog call, as composition might not be ready yet
-        if (!has_media)
-            QMetaObject::invokeMethod(this, [](){
-                THEDP->firstRunDialog();
-            }, Qt::QueuedConnection);
-        else if (m_medialib)
-            /* the library is read as usual meanwhile (VLC always opened with
-             * a file never read it at start) */
-            QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
+        QMetaObject::invokeMethod(this, [](){
+            THEDP->firstRunDialog();
+        }, Qt::QueuedConnection);
     }
     else if (m_medialib)
     {
-        QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
+        /* With a file to play, the library is read a little later: the walk
+         * of every folder does not compete with opening the file */
+        if (has_media)
+            QTimer::singleShot(10000, m_medialib, &MediaLib::reload);
+        else
+            QMetaObject::invokeMethod(m_medialib, &MediaLib::reload, Qt::QueuedConnection);
     }
 
     const struct vlc_preparser_cfg cfg = []{
@@ -467,9 +469,9 @@ MainCtx::~MainCtx()
 
     /* Unregister callbacks */
     libvlc_int_t* libvlc = vlc_object_instance(p_intf);
-    var_DelCallback( libvlc, "intf-boss", IntfBossCB, p_intf );
-    var_DelCallback( libvlc, "intf-show", IntfRaiseMainCB, p_intf );
-    var_DelCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, p_intf );
+    var_DelCallback( libvlc, "intf-boss", IntfBossCB, this );
+    var_DelCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
+    var_DelCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
     var_DelCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
 
     if (m_medialib)
@@ -1180,6 +1182,11 @@ void MainCtx::setRightToLeft(bool rightToLeft)
         return;
     m_rightToLeft = rightToLeft;
     emit rightToLeftChanged();
+    // The texts left in English are marked left-to-right only in a right-to-left
+    // layout (the translator, qt.cpp): they are translated again now that the
+    // direction is known, whichever way it changed (a language picked in
+    // Settings, or the Layout direction alone)
+    emit interfaceLanguageChanged();
 }
 
 void MainCtx::setPinVideoControls(bool pinVideoControls)
@@ -1434,6 +1441,19 @@ void MainCtx::toggleInterfaceFullScreen()
     emit setInterfaceFullScreen( m_windowVisibility != QWindow::FullScreen );
 }
 
+void MainCtx::exitFullscreen()
+{
+    PlayerController *player = p_intf->p_mainPlayerController;
+    if (player && hasEmbededVideo())
+    {
+        // The vout request can change before the player UI is notified.
+        const SharedVOutThread vout = player->getVout();
+        if (vout && var_GetBool(vout.get(), "fullscreen"))
+            player->setFullscreen(false);
+    }
+    emit setInterfaceFullScreen(false);
+}
+
 void MainCtx::emitBoss()
 {
     emit askBoss();
@@ -1541,8 +1561,9 @@ static int PopupMenuCB( vlc_object_t *, const char *,
 static int IntfShowCB( vlc_object_t *, const char *,
                        vlc_value_t, vlc_value_t, void *param )
 {
-    qt_intf_t *p_intf = (qt_intf_t *)param;
-    p_intf->p_mi->emitShow();
+    // the MainCtx itself: p_intf->p_mi is only set once its constructor,
+    // which adds this callback, returned
+    static_cast<MainCtx *>( param )->emitShow();
 
     return VLC_SUCCESS;
 }
@@ -1569,8 +1590,9 @@ static int KeyFeedbackTextCB( vlc_object_t *, const char *,
 static int IntfRaiseMainCB( vlc_object_t *, const char *,
                             vlc_value_t, vlc_value_t, void *param )
 {
-    qt_intf_t *p_intf = (qt_intf_t *)param;
-    p_intf->p_mi->emitRaise();
+    // the MainCtx itself: p_intf->p_mi is only set once its constructor,
+    // which adds this callback, returned
+    static_cast<MainCtx *>( param )->emitRaise();
 
     return VLC_SUCCESS;
 }
@@ -1581,8 +1603,9 @@ static int IntfRaiseMainCB( vlc_object_t *, const char *,
 static int IntfBossCB( vlc_object_t *, const char *,
                        vlc_value_t, vlc_value_t, void *param )
 {
-    qt_intf_t *p_intf = (qt_intf_t *)param;
-    p_intf->p_mi->emitBoss();
+    // the MainCtx itself: p_intf->p_mi is only set once its constructor,
+    // which adds this callback, returned
+    static_cast<MainCtx *>( param )->emitBoss();
 
     return VLC_SUCCESS;
 }
@@ -1831,6 +1854,38 @@ QWindow *MainCtx::intfMainWindow() const
         return nullptr;
 }
 
+void MainCtx::placeWindowBesideParent(QWindow *window, bool onLeft, int gap)
+{
+    if (!window)
+        return;
+    const QWindow *parent = window->transientParent();
+    if (!parent)
+        return;
+
+    const QRect anchor = parent->geometry();
+    const QSize size(std::max(window->width(), window->minimumWidth()), anchor.height());
+    QScreen *screen = parent->screen();
+    if (!screen)
+        screen = QGuiApplication::primaryScreen();
+    if (screen && window->screen() && window->screen() != screen
+        && screen->virtualSiblings().contains(window->screen()))
+        window->setScreen(screen);
+
+    const QRect available = screen ? screen->availableGeometry() : QRect();
+    const QRect target = ScreenFit::beside(anchor, size, available, onLeft, gap,
+                                           window->frameMargins());
+
+    // (the window's own minimum stands; only one that would not fit the place is lowered)
+    if (target.height() > 0 && window->minimumHeight() > target.height())
+        window->setMinimumHeight(target.height());
+    if (target.width() > 0 && window->minimumWidth() > target.width())
+        window->setMinimumWidth(target.width());
+    if (target.isValid())
+        window->setGeometry(target);
+    else
+        window->setPosition(target.topLeft());
+}
+
 bool MainCtx::videoSurfaceCanHaveFractionalPosition() const
 {
     assert(p_intf->p_compositor);
@@ -1987,6 +2042,11 @@ QString MainCtx::volumeSliderColors() const
         return {};
 
     return QString::fromUtf8(vlc::wrap_cptr(sliderColors).get());
+}
+
+QString MainCtx::redesignFontFamily() const
+{
+    return RedesignMenuStyle::fontFamily();
 }
 
 MainCtx::MainInterfaceMode MainCtx::getEffectiveMainInterfaceMode() const {

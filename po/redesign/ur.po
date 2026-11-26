@@ -2885,10 +2885,10 @@ msgstr "ہلکا"
 msgid "System"
 msgstr "سسٹم"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "نمایاں رنگ %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "نمایاں رنگ %2 میں سے %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2987,10 +2987,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "اپ ڈیٹس کی جانچ ہو رہی ہے..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "کسی فائل میں ترمیم نہیں ہو رہی"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "میٹا ڈیٹا محفوظ کرنے میں ناکامی"
@@ -3016,10 +3012,18 @@ msgstr "ویڈیو کیمرا"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "موجودہ پلے لسٹ"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "نئی پلے لسٹ"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 میڈیا"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5610,6 +5614,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "سب ری سیٹ کریں"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "یہ نتیجے میں بننے والا میڈیا دکھاتا ہے، لیکن رفتار سست کر سکتا ہے۔"
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "میڈیا پلیئر %1 &دکھائیں"
@@ -6668,6 +6676,10 @@ msgstr "نیویگیشن مینو دکھائیں"
 msgid "Main display"
 msgstr "مرکزی ڈسپلے"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "پلے قطار کا سائز تبدیل کریں"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "مرکزی انٹرفیس"
@@ -6794,6 +6806,10 @@ msgstr "سائیڈ بار میں ترمیم کریں…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "سائیڈ بار سے ان پن کریں"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "سائیڈ بار کا سائز تبدیل کریں"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7245,6 +7261,10 @@ msgstr "ریلیز کا سال"
 msgid "Album Title"
 msgstr "البم کا عنوان"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "فنکاروں کے پینل کا سائز تبدیل کریں"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "نامعلوم صنف"
@@ -7281,6 +7301,10 @@ msgid ""
 msgstr ""
 "کوئی ٹریک نہیں ملا\n"
 "براہ کرم سورسز شامل کرنے کی کوشش کریں"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "پلے لسٹ کا میڈیا"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9164,6 +9188,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "لوپ A سے B تک"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

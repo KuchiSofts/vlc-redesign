@@ -212,10 +212,12 @@ void VideoWindowHandler::setVideoFullScreen( bool fs )
     }
     else
     {
+        const QPointer<QScreen> lastWinScreen = m_lastWinScreen;
+        m_lastWinScreen.clear();
         WindowStateHolder::holdFullscreen(m_window,  WindowStateHolder::VIDEO, false);
 
-        if( m_lastWinScreen != NULL && !m_hasWayland )
-            m_window->setScreen(m_lastWinScreen);
+        if( lastWinScreen && !m_hasWayland )
+            m_window->setScreen(lastWinScreen);
     }
 }
 

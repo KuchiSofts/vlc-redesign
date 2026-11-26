@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Resume after Stop**: with "Continue where you left off" on Ask, Stop then Play on the same item shows the resume card again instead of starting from the beginning.
 - **Pause when minimized**: restoring the window resumes only the video VLC paused when minimizing; a video stopped meanwhile stays stopped, and a paused one resumes reliably.
 - **Monitor unplugged in fullscreen**: leaving video fullscreen after the monitor VLC came from was disconnected no longer uses the removed screen (possible crash); VLC stays on the remaining screen.
 - **Raw dump overwrite**: Convert / Save with "Dump raw input" now asks Keep or Overwrite when the destination file exists, instead of replacing it silently.

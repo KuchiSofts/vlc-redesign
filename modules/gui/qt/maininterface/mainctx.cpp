@@ -148,7 +148,7 @@ namespace
 int WinMsgHistoryFilterCB(vlc_object_t *, const char *, vlc_value_t,
                          vlc_value_t value, void *)
 {
-    Media::applyHistoryFilter(static_cast<input_item_t *>(value.p_address));
+    vlc::playlist::Media::applyHistoryFilter(static_cast<input_item_t *>(value.p_address));
     return VLC_SUCCESS;
 }
 #endif
@@ -340,6 +340,18 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
 #ifdef _WIN32
     var_AddCallback( libvlc, "win-msg-history-filter", WinMsgHistoryFilterCB, nullptr );
+    /* Files opened from Explorer while VLC was starting (and the files on
+     * its command line) reached the playlist before this callback: filter
+     * them now, before they are played */
+    {
+        vlc_playlist_t *playlist = p_intf->p_playlist;
+        vlc_playlist_Lock( playlist );
+        const size_t count = vlc_playlist_Count( playlist );
+        for( size_t i = 0; i < count; ++i )
+            vlc::playlist::Media::applyHistoryFilter(
+                vlc_playlist_item_GetMedia( vlc_playlist_Get( playlist, i ) ) );
+        vlc_playlist_Unlock( playlist );
+    }
 #endif
 
     /* Register callback for the intf-popupmenu variable */

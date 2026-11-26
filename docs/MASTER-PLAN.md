@@ -153,7 +153,9 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.8** (started 2026-11-26): the macOS build updates an installed copy through the app itself (#117: the
+- ✅ **0.8.8** (2026-11-26): the Android player on a phone held sideways blends its controls into the video (#213,
+  the reporter's follow-up: two slimmer rows, a thin seek bar, a dark fade, shown before and after on the phone
+  emulator). The macOS build updates an installed copy through the app itself (#117: the
   app's own updater, its helper and the restart, which a shell test could not show); VideoLAN's 562a3049df merged.
 - ✅ **0.8.7** (2026-11-26): an update release of the desktop apps and the Android app (the Samsung TV app stays
   0.8.6). Six more pull requests of the same contributor (#249, #250, #252 to #255) read in full, three made to

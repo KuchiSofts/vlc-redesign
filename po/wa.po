@@ -40277,3 +40277,7 @@ msgstr "Candjî l' grandeu del panea des årtisses"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Li djivêye a djouwer n' a savou esse ebaguêye viè %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Les media del djivêye a djouwer n' ont savou esse tcherdjîs po l' ebaguer."

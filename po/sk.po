@@ -41311,3 +41311,7 @@ msgstr "Zmeniť veľkosť panela interpretov"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Playlist sa nepodarilo exportovať do %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Médiá playlistu sa nepodarilo načítať na export."

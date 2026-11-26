@@ -7204,6 +7204,12 @@ msgstr "No s'ha pogut baixar el subtítol: %1"
 msgid "HTTP status %1"
 msgstr "Estat HTTP %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "No s'ha pogut baixar el subtítol (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "No s'ha pogut crear la carpeta d'emmagatzematge dels subtítols."
@@ -8463,12 +8469,6 @@ msgstr "No s'ha trobat «%1». Cerqueu-ne el títol."
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "No s'han trobat subtítols per a %1."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "No s'ha pogut baixar el subtítol (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

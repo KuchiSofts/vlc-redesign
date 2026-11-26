@@ -41316,3 +41316,7 @@ msgstr "Redimensionar o panel de artistas"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Non foi posíbel exportar a lista de reprodución a %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Non foi posíbel cargar os ficheiros multimedia da lista de reprodución para exportala."

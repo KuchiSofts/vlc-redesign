@@ -40955,3 +40955,7 @@ msgstr "Saiz semula panel artis"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Senarai main tidak dapat dieksport ke %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Media senarai main tidak dapat dimuatkan untuk dieksport."

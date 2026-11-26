@@ -39857,3 +39857,7 @@ msgstr "Ndrysho madhësinë e panelit të artistëve"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Lista e luajtjes nuk mund të eksportohej në %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Mediat e listës së luajtjes nuk mund të ngarkoheshin për eksportim."

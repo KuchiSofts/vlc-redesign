@@ -41429,3 +41429,7 @@ msgstr "Aldatu artisten panelaren tamaina"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Ezin izan da erreprodukzio-zerrenda %1 kokapenera esportatu."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Ezin izan dira erreprodukzio-zerrendako multimedia-elementuak kargatu esportatzeko."

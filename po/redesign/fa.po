@@ -7059,6 +7059,12 @@ msgstr "زیرنویس بارگیری نشد: %1"
 msgid "HTTP status %1"
 msgstr "وضعیت HTTP %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "زیرنویس بارگیری نشد (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "پوشهٔ ذخیرهٔ زیرنویس ساخته نشد."
@@ -8292,12 +8298,6 @@ msgstr "«%1» یافت نشد. عنوان آن را جستجو کنید."
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "هیچ زیرنویسی برای %1 یافت نشد."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "زیرنویس بارگیری نشد (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

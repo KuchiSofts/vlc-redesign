@@ -7072,6 +7072,12 @@ msgstr "ഉപശീർഷകം ഡൗൺലോഡ് ചെയ്യാനാ�
 msgid "HTTP status %1"
 msgstr "HTTP സ്റ്റാറ്റസ് %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "ഉപശീർഷകം ഡൗൺലോഡ് ചെയ്യാനായില്ല (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "ഉപശീർഷക സംഭരണ ഫോൾഡർ സൃഷ്ടിക്കാനായില്ല."
@@ -8316,12 +8322,6 @@ msgstr "\"%1\" കണ്ടെത്തിയില്ല. അതിന്റെ
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "%1-നായി ഉപശീർഷകങ്ങളൊന്നും കണ്ടെത്തിയില്ല."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "ഉപശീർഷകം ഡൗൺലോഡ് ചെയ്യാനായില്ല (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

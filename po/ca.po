@@ -41564,3 +41564,7 @@ msgstr "Canvia la mida del plafó d'artistes"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "No s'ha pogut exportar la llista de reproducció a %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "No s'han pogut carregar els elements multimèdia de la llista de reproducció per exportar-los."

@@ -39860,3 +39860,7 @@ msgstr "Verander die grootte van die kunstenaarspaneel"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Die afspeellys kon nie na %1 uitgevoer word nie."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Die media van die afspeellys kon nie vir die uitvoer gelaai word nie."

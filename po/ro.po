@@ -40777,3 +40777,7 @@ msgstr "Redimensionează panoul artiștilor"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Lista de redare nu a putut fi exportată în %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Fișierele media ale listei de redare nu au putut fi încărcate pentru export."

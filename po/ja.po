@@ -40864,3 +40864,7 @@ msgstr "アーティストパネルのサイズを変更"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "プレイリストを%1にエクスポートできませんでした。"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "エクスポートするプレイリストのメディアを読み込めませんでした。"

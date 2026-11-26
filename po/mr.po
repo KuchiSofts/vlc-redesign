@@ -40657,3 +40657,7 @@ msgstr "कलाकार पॅनेलचा आकार बदला"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "प्लेलिस्ट %1 येथे निर्यात करता आली नाही."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "निर्यातीसाठी प्लेलिस्टचे मीडिया लोड करता आले नाही."

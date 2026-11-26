@@ -7157,6 +7157,12 @@ msgstr "Nie można pobrać napisów: %1"
 msgid "HTTP status %1"
 msgstr "Kod HTTP %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "Nie udało się pobrać napisów (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "Nie można utworzyć folderu na napisy."
@@ -8425,12 +8431,6 @@ msgstr "Nie znaleziono „%1”. Wyszukaj jego tytuł."
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "Nie znaleziono napisów dla %1."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "Nie udało się pobrać napisów (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

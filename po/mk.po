@@ -39783,3 +39783,7 @@ msgstr "Промени ја големината на панелот со изв
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Листата за репродукција не можеше да се извезе во %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Медиумите од листата за репродукција не можеа да се вчитаат за извоз."

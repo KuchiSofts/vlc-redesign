@@ -41379,3 +41379,7 @@ msgstr "Größe des Künstlerbereichs ändern"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Die Wiedergabeliste konnte nicht nach %1 exportiert werden."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Die Medien der Wiedergabeliste konnten für den Export nicht geladen werden."

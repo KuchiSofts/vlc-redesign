@@ -41113,3 +41113,7 @@ msgstr "Endre størrelsen på artistpanelet"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Spillelisten kunne ikke eksporteres til %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Spillelistens medier kunne ikke lastes inn for eksport."

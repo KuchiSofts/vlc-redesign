@@ -7095,6 +7095,12 @@ msgstr "سب ٹائٹل ڈاؤن لوڈ نہیں کیا جا سکا: %1"
 msgid "HTTP status %1"
 msgstr "حالت HTTP %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "سب ٹائٹل ڈاؤن لوڈ نہیں ہو سکا (%1)۔"
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "سب ٹائٹل محفوظ کرنے کا فولڈر نہیں بنایا جا سکا۔"
@@ -8340,12 +8346,6 @@ msgstr "یہ نہیں ملا: \"%1\"۔ اس کا عنوان تلاش کریں۔"
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "کوئی سب ٹائٹلز نہیں ملے: %1۔"
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "سب ٹائٹل ڈاؤن لوڈ نہیں ہو سکا (%1)۔"
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

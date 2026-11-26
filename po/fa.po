@@ -39772,3 +39772,7 @@ msgstr "تغییر اندازهٔ پنل هنرمندان"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "فهرست پخش در %1 صادر نشد."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "رسانه‌های فهرست پخش برای صدور بارگذاری نشدند."

@@ -40869,3 +40869,7 @@ msgstr "Преоразмеряване на панела с изпълнител
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Плейлистът не можа да бъде експортиран в %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Медията на плейлиста не можа да бъде заредена за експортиране."

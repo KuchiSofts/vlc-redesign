@@ -39920,3 +39920,7 @@ msgstr "调整艺术家面板大小"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "无法将播放列表导出到 %1。"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "无法加载要导出的播放列表媒体。"

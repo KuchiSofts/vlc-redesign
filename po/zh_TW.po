@@ -39544,3 +39544,7 @@ msgstr "調整藝人面板大小"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "無法將播放清單匯出至 %1。"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "無法載入要匯出的播放清單媒體。"

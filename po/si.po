@@ -39634,3 +39634,7 @@ msgstr "කලාකරුවන්ගේ පැනලය ප්‍රතිප�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "ධාවන ලැයිස්තුව %1 වෙත අපනයනය කළ නොහැකි විය."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "අපනයනය සඳහා ධාවන ලැයිස්තුවේ මාධ්‍ය පූරණය කළ නොහැකි විය."

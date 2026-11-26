@@ -39549,3 +39549,7 @@ msgstr "ਕਲਾਕਾਰਾਂ ਦੇ ਪੈਨਲ ਦਾ ਆਕਾਰ ਬਦ�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "ਪਲੇਲਿਸਟ ਨੂੰ %1 ਵਿੱਚ ਐਕਸਪੋਰਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ਐਕਸਪੋਰਟ ਲਈ ਪਲੇਲਿਸਟ ਦਾ ਮੀਡੀਆ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"

@@ -40583,3 +40583,7 @@ msgstr "Ubah ukuran panel artis"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Daftar putar tidak dapat diekspor ke %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Media daftar putar tidak dapat dimuat untuk diekspor."

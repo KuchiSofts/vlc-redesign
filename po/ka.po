@@ -41487,3 +41487,7 @@ msgstr "შემსრულებლების პანელის ზო�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "დაკვრის სიის ექსპორტი ვერ მოხერხდა აქ: %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "დაკვრის სიის მედიის ჩატვირთვა ექსპორტისთვის ვერ მოხერხდა."

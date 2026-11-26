@@ -41077,3 +41077,7 @@ msgstr "Изменить размер панели исполнителей"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Не удалось экспортировать плейлист в %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Не удалось загрузить медиафайлы плейлиста для экспорта."

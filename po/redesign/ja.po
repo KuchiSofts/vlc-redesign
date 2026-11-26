@@ -7079,6 +7079,12 @@ msgstr "字幕をダウンロードできませんでした: %1"
 msgid "HTTP status %1"
 msgstr "HTTPステータス %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "字幕をダウンロードできませんでした (%1)。"
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "字幕の保存フォルダーを作成できませんでした。"
@@ -8318,12 +8324,6 @@ msgstr "「%1」は見つかりませんでした。タイトルで検索して�
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "%1の字幕は見つかりませんでした。"
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "字幕をダウンロードできませんでした (%1)。"
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

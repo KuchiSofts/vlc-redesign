@@ -7113,6 +7113,12 @@ msgstr "வசனத்தைப் பதிவிறக்க முடிய�
 msgid "HTTP status %1"
 msgstr "HTTP நிலை %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "வசனத்தைப் பதிவிறக்க முடியவில்லை (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "வசனச் சேமிப்புக் கோப்புறையை உருவாக்க முடியவில்லை."
@@ -8358,12 +8364,6 @@ msgstr "\"%1\" கிடைக்கவில்லை. அதன் தலை�
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "%1-க்கு வசனங்கள் எதுவும் கிடைக்கவில்லை."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "வசனத்தைப் பதிவிறக்க முடியவில்லை (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

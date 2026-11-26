@@ -7027,6 +7027,12 @@ msgstr "अनुवादपट्टी डाउनलोड करता आ
 msgid "HTTP status %1"
 msgstr "HTTP स्थिती %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "अनुवादपट्टी डाउनलोड करता आली नाही (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "अनुवादपट्टी साठवण फोल्डर तयार करता आले नाही."
@@ -8264,12 +8270,6 @@ msgstr "\"%1\" सापडले नाही. त्याचे शीर्�
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "%1 साठी अनुवादपट्ट्या सापडल्या नाहीत."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "अनुवादपट्टी डाउनलोड करता आली नाही (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

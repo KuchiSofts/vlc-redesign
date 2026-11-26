@@ -40838,3 +40838,7 @@ msgstr "ആർട്ടിസ്റ്റുകളുടെ പാനലിന�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "പ്ലേലിസ്റ്റ് %1-ലേക്ക് എക്സ്പോർട്ട് ചെയ്യാനായില്ല."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "എക്സ്പോർട്ടിനായി പ്ലേലിസ്റ്റിലെ മീഡിയ ലോഡ് ചെയ്യാനായില്ല."

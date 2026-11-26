@@ -7147,6 +7147,12 @@ msgstr "Underteksten kunne ikke downloades: %1"
 msgid "HTTP status %1"
 msgstr "HTTP-status %1"
 
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
+msgid "The subtitle couldn't be downloaded (%1)."
+msgstr "Underteksten kunne ikke downloades (%1)."
+
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:129
 msgid "Could not create the subtitle storage folder."
 msgstr "Mappen til lagring af undertekster kunne ikke oprettes."
@@ -8390,12 +8396,6 @@ msgstr "\"%1\" blev ikke fundet. Søg efter titlen."
 #: modules/gui/qt/player/subtitle_search.cpp:1388
 msgid "No subtitles were found for %1."
 msgstr "Der blev ikke fundet nogen undertekster til %1."
-
-#: modules/gui/qt/player/subtitle_search.cpp:1430
-#: modules/gui/qt/player/subtitle_search.cpp:1472
-#: modules/gui/qt/player/subtitle_search.cpp:1494
-msgid "The subtitle couldn't be downloaded (%1)."
-msgstr "Underteksten kunne ikke downloades (%1)."
 
 #: modules/gui/qt/player/waveform.cpp:230
 msgid "Waveform analyzer is unavailable."

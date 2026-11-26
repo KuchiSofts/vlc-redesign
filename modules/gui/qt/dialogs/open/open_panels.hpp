@@ -42,6 +42,7 @@
 #include <QFileDialog>
 
 #include <limits.h>
+#include <optional>
 
 #define setSpinBoxFreq( spinbox ){ spinbox->setRange ( 0, INT_MAX ); \
     spinbox->setAccelerated( true ); }
@@ -186,6 +187,9 @@ private:
     Ui::OpenDisk ui;
     char *psz_dvddiscpath, *psz_vcddiscpath, *psz_cddadiscpath;
     DiscType m_discType;
+    const bool m_blurayMenuAvailable;
+    bool m_dvdNoMenus = false;
+    std::optional<bool> m_blurayNoMenus;
 public slots:
     void updateMRL() override;
 private slots:

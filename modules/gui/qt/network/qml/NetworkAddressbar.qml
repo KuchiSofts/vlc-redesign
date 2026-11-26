@@ -281,7 +281,7 @@ T.Control {
             popup.popup(point, model)
         }
 
-        onSelected: {
+        onSelected: (index) => {
             browse(control._menuModel[index].tree, focusReason)
         }
     }

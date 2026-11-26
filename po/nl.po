@@ -41197,3 +41197,15 @@ msgstr "Grootte van het artiestenpaneel aanpassen"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "De afspeellijst kon niet naar %1 worden geëxporteerd."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "De media van de afspeellijst konden niet worden geladen voor de export."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Startpagina"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "De pagina waarop de bibliotheek opent wanneer VLC start."

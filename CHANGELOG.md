@@ -5,15 +5,54 @@ Changes of **VLC Redesign**, an unofficial VLC 4 build with the interface design
 For changes to VLC itself, see [NEWS](NEWS).
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
-what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `3d86ce421d` (2026-11-26).
+what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `c584554672` (2026-11-20).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.7](#087--2026-11-26) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.8.7] · 2026-11-26
+
+An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library
+opens on can be chosen, the mini player's queue scrolls with a bar, six more changes from a contributor, the
+follow-ups of three of 0.8.6's, and VideoLAN's latest changes on both.
+
+### Added
+
+- **Start page**: Settings › General › Startup chooses the page the library opens on: Home, Videos, Music,
+  Folders, Network, TV, Playlists or Recent ([#258](https://github.com/KuchiSofts/vlc-redesign/issues/258)).
+
+### Fixed
+
+- **The mini player's queue, Bookmarks and Chapters** have the library's scroll bar, shown while they scroll
+  ([#259](https://github.com/KuchiSofts/vlc-redesign/issues/259)).
+- **Home search with no matches**: "No results" shows, and the search field keeps the keyboard while you type.
+- **Export Playlist**: a playlist with no files is exported as an empty playlist.
+- **Default Preset in Effects** also removes a crop chosen in the Video menu.
+- **Reset all settings**: the default accent comes back at once.
+- **A subtitle link that answers with a web page** is no longer saved as a subtitle.
+- **The built-in file browser setting** takes effect the next time Open Multiple Files opens.
+- **Discard changes in Settings** no longer saves the subtitle forms' defaults.
+- **Discover › Services**: the home button of a service's folders goes to the service again.
+
+- **Android: the first subtitles** no longer wait long for the fonts.
+
+### Technical
+
+- Six more pull requests by the same contributor (#249, #250, #252 to #255), each read in full; three reuse texts
+  that are already translated (#252, #254, #255), and #250's one new text is in 72 languages.
+- The ten pull requests of 0.8.6, rebased by their author after the release: seven are the same change (recorded
+  in the history as they are), three bring a follow-up each (#238, #241, #246).
+- `po/POTFILES.in` lists `medialibrary/medialib.cpp`: its texts were never in the template.
+- VideoLAN's master merged up to `c584554672` (2026-11-20, 11 commits): a colour context is inherited across
+  popups and windows. This interface's own dialogs, tracks menu, search box and floating Play Queue keep theirs.
+- Android: VideoLAN's vlc-android master merged up to `6f06739a8` (2026-11-25, 18 commits): the fonts cache,
+  the playback service followed only while the app is in front, libvlc 3.7.8. The media library stays our
+  0.13.24-rd1 (VideoLAN's 0.13.25 is the same library).
 
 ## [0.8.6] · 2026-11-26
 

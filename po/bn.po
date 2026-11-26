@@ -40342,3 +40342,15 @@ msgstr "শিল্পী প্যানেলের আকার বদলা
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "প্লেলিস্টটি %1-এ রপ্তানি করা যায়নি।"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "রপ্তানির জন্য প্লেলিস্টের মিডিয়া লোড করা যায়নি।"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "শুরুর পাতা"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC চালু হলে লাইব্রেরি যে পাতায় খোলে।"

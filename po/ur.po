@@ -39499,3 +39499,15 @@ msgstr "فنکاروں کے پینل کا سائز تبدیل کریں"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "پلے لسٹ %1 میں برآمد نہیں کی جا سکی۔"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "برآمد کے لیے پلے لسٹ کا میڈیا لوڈ نہیں کیا جا سکا۔"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "آغاز کا صفحہ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "وہ صفحہ جس پر VLC شروع ہونے پر لائبریری کھلتی ہے۔"

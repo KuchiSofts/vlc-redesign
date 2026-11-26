@@ -39564,3 +39564,15 @@ msgstr "కళాకారుల ప్యానెల్ పరిమాణం 
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "ప్లేజాబితాను %1 కు ఎగుమతి చేయలేకపోయాం."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ఎగుమతి కోసం ప్లేజాబితాలోని మీడియాను లోడ్ చేయలేకపోయాం."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ప్రారంభ పేజీ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC ప్రారంభమైనప్పుడు లైబ్రరీ తెరుచుకునే పేజీ."

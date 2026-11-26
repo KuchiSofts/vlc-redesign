@@ -41023,3 +41023,15 @@ msgstr "Muuta esittäjäpaneelin kokoa"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Soittolistaa ei voitu viedä kohteeseen %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Soittolistan mediaa ei voitu ladata vientiä varten."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Aloitussivu"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Sivu, jolle kirjasto avautuu, kun VLC käynnistyy."

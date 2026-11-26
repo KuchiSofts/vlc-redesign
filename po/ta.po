@@ -39706,3 +39706,15 @@ msgstr "கலைஞர்கள் பலகத்தின் அளவை ம
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "இயக்கப்பட்டியலை %1-க்கு ஏற்றுமதி செய்ய முடியவில்லை."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ஏற்றுமதிக்காக இயக்கப்பட்டியலின் ஊடகத்தை ஏற்ற முடியவில்லை."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "தொடக்கப் பக்கம்"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC தொடங்கும்போது நூலகம் திறக்கும் பக்கம்."

@@ -40308,3 +40308,15 @@ msgstr "ប្ដូរទំហំផ្ទាំងសិល្បករ"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "មិនអាចនាំចេញបញ្ជីចាក់ទៅ %1 បានទេ។"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "មិនអាចផ្ទុកមេឌៀនៃបញ្ជីចាក់សម្រាប់ការនាំចេញបានទេ។"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ទំព័រចាប់ផ្ដើម"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "ទំព័រដែលបណ្ណាល័យបើកនៅពេល VLC ចាប់ផ្ដើម។"

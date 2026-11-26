@@ -19,6 +19,8 @@ static const Option entries[] = {
     {"general", "qt-error-dialogs"}, {"general", "redesign-update-check"},
     // the card of the new version after an update (whats_new.cpp)
     {"general", "qt:redesign/show-whats-new"},
+    // the page the library opens on (#258, MainDisplay)
+    {"general", "qt:redesign/start-page"},
     {"general", "file-logging"}, {"general", "logfile"},
     {"general", "log-verbose"},
     // extra-options: read by the core at the start (libvlc.c)

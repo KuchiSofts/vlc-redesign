@@ -35,6 +35,9 @@ Dialog {
 
     property string selectedCategory: "general"
     property bool saved: false
+    // Discard changes: the subtitle forms keep what was saved before (their
+    // save() also writes defaults that were never chosen)
+    property bool _discarding: false
     // The last attempt to keep the changes failed (Discard changes shows)
     property bool applyFailed: false
     property bool previousGlobalShortcuts: true
@@ -102,8 +105,10 @@ Dialog {
             audioOutputPreview.commit()
         inlineEffects.clearDirty()
         appearance.save()
-        subtitleLanguages.save()
-        subtitleServices.save()
+        if (!_discarding) {
+            subtitleLanguages.save()
+            subtitleServices.save()
+        }
         developerMode.save()
         MainCtx.controlbarProfileModel.save()
         // Live TV switched on or off: its entry, its page and its keys follow
@@ -126,12 +131,16 @@ Dialog {
         inlineEffects.cancel()
         subtitleLanguages.begin()
         subtitleServices.begin()
+        _discarding = true
         requestClose()
+        // still open (VLC refused again): a later Save keeps the subtitle forms
+        _discarding = false
     }
 
     onOpened: {
         saved = false
         applyFailed = false
+        _discarding = false
         previousGlobalShortcuts = MainCtx.useGlobalShortcuts
         MainCtx.useGlobalShortcuts = false
         config.refresh()

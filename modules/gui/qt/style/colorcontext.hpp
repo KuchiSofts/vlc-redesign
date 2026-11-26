@@ -19,6 +19,7 @@
 #define VLC_COLOR_CONTEXT_H
 
 #include <memory>
+#include <vector>
 
 #include <QObject>
 #include <QColor>
@@ -122,10 +123,13 @@ public:
         Indicator = VQTC_NAME_INDICATOR
     };
 
-    Q_PROPERTY(SystemPalette* palette READ palette WRITE setPalette NOTIFY paletteChanged FINAL)
-    Q_PROPERTY(ColorSet colorSet READ colorSet WRITE setColorSet NOTIFY colorSetChanged FINAL)
+    // palette and color set are inherited from the parent context unless set,
+    // assigning undefined restores the inheritance
+    Q_PROPERTY(SystemPalette* palette READ palette WRITE setPalette RESET resetPalette NOTIFY paletteChanged FINAL)
+    Q_PROPERTY(ColorSet colorSet READ colorSet WRITE setColorSet RESET resetColorSet NOTIFY colorSetChanged FINAL)
 
     // enabled/disabled buttons for instance, true by default
+    // a context is disabled when its parent context is disabled
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged FINAL)
     // mouse hover
     Q_PROPERTY(bool hovered READ hovered WRITE setHovered NOTIFY hoveredChanged FINAL)
@@ -169,7 +173,9 @@ public:
     QColor accent() const;
 
     void setPalette(SystemPalette*);
+    void resetPalette();
     void setColorSet(ColorSet);
+    void resetColorSet();
 
     void setEnabled(bool);
     void setHovered(bool);
@@ -178,7 +184,7 @@ public:
 
     bool hasExplicitPalette() const { return m_hasExplicitPalette; }
     bool hasExplicitColorSet() const { return m_hasExplicitColorSet; }
-    bool hasExplicitState() const { return m_hasExplicitColorSet; }
+    bool hasExplicitState() const { return m_hasExplicitState; }
     bool initialized() const { return m_initialized; }
 
 signals:
@@ -198,11 +204,24 @@ protected:
     void componentComplete() override;
 
 private:
+    /**
+     * Palette and color set are inherited across popups and windows, the state
+     * (enabled, hovered, pressed, ...) is not, as the popup or the window is not
+     * part of the item that opens it.
+     */
+    enum class StateInheritance {
+        Inherited,
+        //the parent context is outside of our popup or window
+        NotInherited,
+    };
+
     void onParentChanged();
-    void setParentContext(ColorContext* parentContext);
+    void setParentContext(ColorContext* parentContext,
+                          StateInheritance stateInheritance = StateInheritance::Inherited);
 
     void ensureExplicitState();
     void onInheritedStateChanged();
+    void setInheritedEnabled(bool);
 
     bool setInheritedPalette(SystemPalette*);
     bool setInheritedColorSet(ColorSet);
@@ -212,6 +231,8 @@ private:
     std::shared_ptr<ColorContextState> m_state;
 
     QPointer<ColorContext> m_parentContext;
+    //parentChanged connections of the items between us and our parent context
+    std::vector<QMetaObject::Connection> m_pathConnections;
 
     ColorSet m_colorSet = ColorSet::ColorSetUndefined;
 
@@ -219,6 +240,9 @@ private:
     bool m_hasExplicitPalette = false;
     bool m_hasExplicitColorSet = false;
     bool m_hasExplicitState = false;
+    //whether the parent context is enabled, inherited even with an explicit state
+    bool m_inheritedEnabled = true;
+    StateInheritance m_stateInheritance = StateInheritance::Inherited;
 };
 
 class ColorContextState : public QObject

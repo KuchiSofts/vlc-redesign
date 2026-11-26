@@ -40865,3 +40865,15 @@ msgstr "ಕಲಾವಿದರ ಫಲಕದ ಗಾತ್ರ ಬದಲಿಸಿ"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "ಪ್ಲೇಪಟ್ಟಿಯನ್ನು %1 ಗೆ ರಫ್ತು ಮಾಡಲಾಗಲಿಲ್ಲ."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ರಫ್ತಿಗಾಗಿ ಪ್ಲೇಪಟ್ಟಿಯ ಮಾಧ್ಯಮವನ್ನು ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ಪ್ರಾರಂಭ ಪುಟ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC ಪ್ರಾರಂಭವಾದಾಗ ಲೈಬ್ರರಿ ತೆರೆಯುವ ಪುಟ."

@@ -19,6 +19,8 @@
 #include <vlc_configuration.h>
 #include <vlc_input_item.h>
 
+#include "player/subtitle_services.hpp"
+#include "qt.hpp"
 #include "util/http_request.hpp"
 
 namespace {
@@ -88,6 +90,13 @@ void MLSubtitleAssociations::addLinkWithName(const QUrl& url, const QString& fil
             m_busy = false;
             setError(tr("Could not download the subtitle: %1")
                      .arg(reply.error.isEmpty() ? tr("HTTP status %1").arg(reply.status) : reply.error));
+            return;
+        }
+        if (SubtitleProviders::isErrorDocument(payload))
+        {
+            m_busy = false;
+            // (the player's own download says the same of an error page: no new text to translate)
+            setError(qtr("The subtitle couldn't be downloaded (%1).").arg(reply.status));
             return;
         }
 

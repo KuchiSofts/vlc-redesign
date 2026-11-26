@@ -40468,3 +40468,15 @@ msgstr "કલાકારોની પેનલનું માપ બદલો
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "પ્લેલિસ્ટ %1 માં નિકાસ કરી શકાઈ નહીં."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "નિકાસ માટે પ્લેલિસ્ટના મીડિયા લોડ કરી શકાયા નહીં."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "શરૂઆતનું પાનું"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC શરૂ થાય ત્યારે લાઇબ્રેરી જે પાના પર ખૂલે છે."

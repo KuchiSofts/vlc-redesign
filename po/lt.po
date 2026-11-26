@@ -40243,3 +40243,15 @@ msgstr "Keisti atlikėjų skydelio dydį"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Nepavyko eksportuoti grojaraščio į %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Nepavyko įkelti grojaraščio medijos eksportavimui."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Pradinis puslapis"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Puslapis, kuriame atsidaro biblioteka paleidus VLC."

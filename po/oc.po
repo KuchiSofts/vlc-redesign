@@ -41312,3 +41312,15 @@ msgstr "Redimensionar lo panèl dels artistas"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Impossible d'exportar la lista de lectura cap a %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Impossible de cargar los mèdias de la lista de lectura per l'exportacion."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Pagina de començament"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "La pagina ont la bibliotèca s'obrís a l'aviada de VLC."

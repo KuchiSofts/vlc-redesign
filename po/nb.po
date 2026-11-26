@@ -41113,3 +41113,15 @@ msgstr "Endre størrelsen på artistpanelet"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Spillelisten kunne ikke eksporteres til %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Spillelistens medier kunne ikke lastes inn for eksport."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Startside"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Siden biblioteket åpnes på når VLC starter."

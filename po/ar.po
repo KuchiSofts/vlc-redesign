@@ -40146,3 +40146,15 @@ msgstr "تغيير حجم لوحة الفنانين"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "تعذّر تصدير قائمة التشغيل إلى %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "تعذّر تحميل وسائط قائمة التشغيل للتصدير."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "صفحة البدء"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "الصفحة التي تُفتح عليها المكتبة عند بدء تشغيل VLC."

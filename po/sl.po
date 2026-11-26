@@ -41075,3 +41075,15 @@ msgstr "Spremeni velikost plošče izvajalcev"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Seznama predvajanja ni bilo mogoče izvoziti v %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Predstavnosti seznama predvajanja ni bilo mogoče naložiti za izvoz."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Začetna stran"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Stran, na kateri se knjižnica odpre ob zagonu VLC."

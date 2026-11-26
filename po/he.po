@@ -39680,3 +39680,15 @@ msgstr "שינוי גודל חלונית האמנים"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "לא ניתן היה לייצא את רשימת הנגינה אל %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "לא ניתן היה לטעון את המדיה של רשימת הנגינה לייצוא."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "דף פתיחה"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "הדף שבו הספרייה נפתחת כש‑VLC מופעל."

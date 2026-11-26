@@ -41184,3 +41184,15 @@ msgstr "Előadók paneljének átméretezése"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "A lejátszólista nem exportálható ide: %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "A lejátszólista médiafájljai nem tölthetők be az exportáláshoz."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Indítási oldal"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Az oldal, amelyen a médiatár megnyílik a VLC indításakor."

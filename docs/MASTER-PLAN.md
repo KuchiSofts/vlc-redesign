@@ -153,6 +153,13 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
+- ✅ **0.8.7** (2026-11-26): an update release of the desktop apps and the Android app (the Samsung TV app stays
+  0.8.6). Six more pull requests of the same contributor (#249, #250, #252 to #255) read in full, three made to
+  reuse texts already translated; the ten of 0.8.6 rebased by their author afterwards (seven the same change,
+  three with a follow-up); the three drafts (#237, #245, #251) reviewed with what each needs. VideoLAN merged
+  on both: the desktop to c584554672 (colour contexts across popups and windows; this interface's own dialogs
+  kept), Android to 6f06739a8 (18 commits, libvlc 3.7.8; the media library stays 0.13.24-rd1, the same as
+  their 0.13.25). Implemented ideas closed as resolved in Discussions (#45, #46, #124, #130, #132, #143).
 - ✅ **0.8.6** (2026-11-26): an update release of every app. Ten more pull requests of the same contributor
   (#236, #238 to #244, #246, #247) read in full and read together by a reviewer; VideoLAN's 3d86ce421d merged (ten
   commits, their update button of the side pane: ours kept). Two more readers went over the Android app beyond

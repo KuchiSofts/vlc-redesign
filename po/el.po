@@ -41743,3 +41743,15 @@ msgstr "Προσαρμογή μεγέθους πλαισίου καλλιτεχ�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Δεν ήταν δυνατή η εξαγωγή της λίστας αναπαραγωγής στο %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Δεν ήταν δυνατή η φόρτωση των πολυμέσων της λίστας αναπαραγωγής για εξαγωγή."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Σελίδα έναρξης"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Η σελίδα στην οποία ανοίγει η βιβλιοθήκη όταν ξεκινά το VLC."

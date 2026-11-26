@@ -57,6 +57,8 @@ public:
     Q_INVOKABLE bool setParameter(const QString& name, const QVariant& value);
     Q_INVOKABLE int cropValue(const QString& side) const;
     Q_INVOKABLE bool setCrop(const QString& side, int pixels);
+    Q_INVOKABLE QString cropString() const;
+    Q_INVOKABLE bool setCropString(const QString& crop);
     Q_INVOKABLE bool resetDefaults(const QString& filter);
 
 signals:

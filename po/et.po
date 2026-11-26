@@ -40355,3 +40355,15 @@ msgstr "Muuda esitajate paneeli suurust"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Esitusloendit ei õnnestunud eksportida asukohta %1."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Esitusloendi meediat ei õnnestunud eksportimiseks laadida."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Avaleht käivitamisel"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Leht, millel teek VLC käivitamisel avaneb."

@@ -40376,3 +40376,15 @@ msgstr "گۆڕینی قەبارەی پانێڵی هونەرمەندەکان"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "لیستی لێدان نەتوانرا بۆ %1 هەناردە بکرێت."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "میدیاکانی لیستی لێدان نەتوانران بۆ هەناردەکردن بار بکرێن."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "پەڕەی دەستپێک"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "ئەو پەڕەیەی کتێبخانەکەی لەسەر دەکرێتەوە کاتێک VLC دەست پێدەکات."

@@ -227,6 +227,19 @@ QString OpenDialog::getOptions()
 void OpenDialog::showTab( OpenDialog::OpenTab i_tab, OpenDialog::ActionFlag i_action )
 {
     setActionFlag(i_action);
+    if( !isVisible() )
+    {
+        const QSize previousHint = sizeHint();
+        if( fileOpenPanel->refreshFileBrowser() )
+        {
+            ui.Tab->updateGeometry();
+            // Adjust the minimum only by the change in the file panel's layout.
+            const QSize hintChange = sizeHint() - previousHint;
+            setMinimumSize( ( minimumSize() + hintChange ).boundedTo( maximumSize() ) );
+            if( i_tab == OPEN_FILE_TAB && ui.Tab->currentIndex() == i_tab )
+                fileOpenPanel->updateMRL();
+        }
+    }
     if( i_tab == OPEN_CAPTURE_TAB ) captureOpenPanel->initialize();
     ui.Tab->setCurrentIndex( i_tab );
     show();

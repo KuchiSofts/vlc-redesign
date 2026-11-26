@@ -41379,3 +41379,15 @@ msgstr "Größe des Künstlerbereichs ändern"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "Die Wiedergabeliste konnte nicht nach %1 exportiert werden."
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Die Medien der Wiedergabeliste konnten für den Export nicht geladen werden."
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "Startseite beim Öffnen"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "Die Seite, auf der sich die Mediathek beim Start von VLC öffnet."

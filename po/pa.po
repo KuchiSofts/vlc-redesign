@@ -39549,3 +39549,15 @@ msgstr "ਕਲਾਕਾਰਾਂ ਦੇ ਪੈਨਲ ਦਾ ਆਕਾਰ ਬਦ�
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "The playlist could not be exported to %1."
 msgstr "ਪਲੇਲਿਸਟ ਨੂੰ %1 ਵਿੱਚ ਐਕਸਪੋਰਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ਐਕਸਪੋਰਟ ਲਈ ਪਲੇਲਿਸਟ ਦਾ ਮੀਡੀਆ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "Start page"
+msgstr "ਸ਼ੁਰੂਆਤੀ ਪੰਨਾ"
+
+#: modules/gui/qt/dialogs/preferences/config_model.cpp
+msgid "The page the library opens on when VLC starts."
+msgstr "VLC ਸ਼ੁਰੂ ਹੋਣ 'ਤੇ ਲਾਇਬ੍ਰੇਰੀ ਜਿਸ ਪੰਨੇ 'ਤੇ ਖੁੱਲ੍ਹਦੀ ਹੈ।"

@@ -804,6 +804,9 @@ void MainCtx::loadFromSettingsImpl(const bool callSignals)
     const auto colorSchemeIndex = getSettings()->value( "MainWindow/color-scheme-index", 0 ).toInt();
     m_colorScheme->setCurrentIndex(colorSchemeIndex);
 
+    // Reset clears the stored accent directly, bypassing setSettingValue().
+    if (callSignals)
+        emit settingValueChanged(QStringLiteral("redesign/accent"));
 }
 
 void MainCtx::reloadPrefs()

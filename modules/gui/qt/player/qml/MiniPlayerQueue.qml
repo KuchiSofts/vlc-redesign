@@ -9,6 +9,7 @@
 import QtQuick
 import QtQuick.Controls.Basic as Controls
 import QtQuick.Controls.impl as Impl
+import QtQuick.Templates as T
 
 import VLC.MainInterface
 import VLC.Playlist
@@ -186,6 +187,9 @@ Item {
         clip: true
         model: queueModel
         boundsBehavior: Flickable.StopAtBounds
+        // (#259) the library pages' scroll bar: at the list's edge while it moves or the bar is hovered, then
+        // faded out (a long queue could be scrolled only by dragging its rows)
+        T.ScrollBar.vertical: Widgets.ScrollBarExt { }
         delegate: Controls.ItemDelegate {
             id: queueRow
             required property int index

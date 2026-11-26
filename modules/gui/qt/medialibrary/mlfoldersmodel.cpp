@@ -130,8 +130,8 @@ QHash<int, QByteArray> MLFoldersBaseModel::roleNames() const
 
 void MLFoldersBaseModel::reload(const QUrl &mrl)
 {
-    // (none in a second window: the first one holds the library, #211)
-    if (!m_mediaLib)
+    // (none in a second window: the first one holds the library, #211; no address: nothing to rescan)
+    if (!m_mediaLib || mrl.isEmpty())
         return;
     m_mediaLib->runOnMLThread(this, [mrl](vlc_medialibrary_t *ml)
     {

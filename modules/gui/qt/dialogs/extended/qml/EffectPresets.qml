@@ -147,12 +147,14 @@ QtObject {
             }
             const crop = {}
             for (const side of cropSides) crop[side] = video.cropValue(side)
-            result.video = { filters: filters, crop: crop }
+            result.video = { filters: filters, crop: crop, cropString: video.cropString() }
         }
         return result
     }
 
     function canCapture() { return audio.activeAudio || video.activeVideo }
+
+    function noCrop(crop) { return crop === "" || crop === "0+0+0+0" }
 
     // no filter on, no crop
     function atDefaults(current) {
@@ -161,9 +163,11 @@ QtObject {
             for (const id in part.filters)
                 if (part.filters[id].enabled) return false
         }
-        if (current.video)
+        if (current.video) {
+            if (!noCrop(current.video.cropString)) return false
             for (const side of cropSides)
                 if (current.video.crop[side] !== 0) return false
+        }
         return true
     }
 
@@ -211,7 +215,9 @@ QtObject {
         const crop = isObject(stored.crop) ? stored.crop : {}
         for (const side of cropSides)
             if (Math.round(Number(crop[side] ?? 0)) !== current.crop[side]) return false
-        return true
+        const cropString = typeof stored.cropString === "string" ? stored.cropString
+                         : [current.crop.left, current.crop.top, current.crop.right, current.crop.bottom].join("+")
+        return cropString === current.cropString || (noCrop(cropString) && noCrop(current.cropString))
     }
 
     // The preset the effects playing are: "" (the default one) at their
@@ -414,6 +420,10 @@ QtObject {
             pixels = Number.isFinite(pixels) ? Math.min(Math.max(pixels, 0), 2147483647) : 0
             if (pixels !== video.cropValue(side)) ok = video.setCrop(side, pixels) && ok
         }
+        // Border writes replace the effective crop string, so restore it last.
+        const cropString = part === null ? "" : part.cropString
+        if (typeof cropString === "string" && cropString !== video.cropString())
+            ok = video.setCropString(cropString) && ok
         return ok
     }
 

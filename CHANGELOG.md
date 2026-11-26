@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Subtitle link that returns a page**: adding a subtitle to the library from a link that answers with a web page (a login or a browser check) now shows an error instead of saving the page as the subtitle.
+
 ## [0.8.6] · 2026-11-26
 
 An update release of every app: ten more changes from a contributor (Browse, the equalizer, subtitle

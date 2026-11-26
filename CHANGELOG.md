@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Faster start**: the Inter font is read once instead of two or three times.
 - **Opening a file from Explorer**: the library rescan waits 10 seconds, so it no longer competes with the file for the disk.
 
 ## [0.8.4] · 2026-11-26

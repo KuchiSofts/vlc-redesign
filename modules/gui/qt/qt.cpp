@@ -114,6 +114,7 @@ extern "C" char **environ;
 #include "playlist/playlist_item.hpp"
 #include "util/language_change.hpp"
 #include "util/redesign_version.hpp"
+#include "menus/redesign_menu_style.hpp"
 
 #include <vlc_interface.h>
 #include <vlc_plugin.h>
@@ -1253,12 +1254,11 @@ static void *Thread( void *obj )
     /* The redesign uses Inter everywhere: as the application font, it also
      * reaches the widget dialogs and the QML text without a font family */
     {
-        const int fontId = QFontDatabase::addApplicationFont( QStringLiteral(":/fonts/InterVariable.ttf") );
-        const QStringList families = QFontDatabase::applicationFontFamilies( fontId );
-        if( !families.isEmpty() )
+        const QString family = RedesignMenuStyle::fontFamily();
+        if( !family.isEmpty() )
         {
             QFont font = app.font();
-            font.setFamilies( { families.first() } );
+            font.setFamilies( { family } );
             // Grey scale text without hinting, as the design draws it: the
             // distance field glyphs of Qt Quick come closest to Figma's
             // rendering (measured against the frames of the design; the

@@ -203,6 +203,7 @@ class MainCtx : public QObject
     Q_PROPERTY(MainInterfaceMode effectiveMainInterfaceMode READ getEffectiveMainInterfaceMode NOTIFY mainInterfaceModesChanged FINAL)
     Q_PROPERTY(MainInterfaceMode initialEffectiveMainInterfaceMode READ getInitialEffectiveMainInterfaceMode CONSTANT FINAL)
     Q_PROPERTY(QString volumeSliderColors READ volumeSliderColors CONSTANT FINAL)
+    Q_PROPERTY(QString redesignFontFamily READ redesignFontFamily CONSTANT FINAL)
 
     //Property to get Operating System info
     Q_PROPERTY(OsType osName READ getOSName CONSTANT)
@@ -594,6 +595,7 @@ public:
     MainInterfaceMode getInitialEffectiveMainInterfaceMode() const { return m_initialEffectiveMainInterfaceMode; }
 
     Q_INVOKABLE QString volumeSliderColors() const;
+    QString redesignFontFamily() const;
 
     Q_INVOKABLE static double dp(const double px, const double scale);
     Q_INVOKABLE double dp(const double px) const;

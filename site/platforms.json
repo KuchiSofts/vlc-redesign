@@ -151,8 +151,8 @@
       "status": "released",
       "statusLabel": "released",
       "available": true,
-      "bar": "Android 0.8.4",
-      "version": "0.8.4",
+      "bar": "Android 0.8.5",
+      "version": "0.8.5",
       "date": "2026-11-26",
       "next": "0.8.6",
       "os": "android",
@@ -163,8 +163,8 @@
       "downloads": [
         {
           "label": "APK",
-          "file": "vlc-redesign-0.8.4-android.apk",
-          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.4/vlc-redesign-0.8.4-android.apk"
+          "file": "vlc-redesign-0.8.5-android.apk",
+          "url": "https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-android.apk"
         }
       ]
     },

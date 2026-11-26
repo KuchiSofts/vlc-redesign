@@ -255,18 +255,21 @@ T.Pane {
                 readonly property bool editable: effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider
                                                  && Player.isStarted && Player.seekable && Player.length.toSeconds() > 0
                 property bool editing: false
-                property bool _previousShortcuts: true
                 onEditingChanged: {
                     // (the digits typed are not the shortcuts of VLC)
                     if (editing) {
-                        _previousShortcuts = MainCtx.useGlobalShortcuts
                         MainCtx.useGlobalShortcuts = false
                         timeInput.text = text
                         timeInput.forceActiveFocus(Qt.MouseFocusReason)
                         // the time shown is selected: what is typed replaces it
                         timeInput.selectAll()
                     } else {
-                        MainCtx.useGlobalShortcuts = _previousShortcuts
+                        // On again, unless the keyboard went straight to another text field, which holds them
+                        // off itself. (Not "as they were met": begun from the library panel's search, that was
+                        // "off", and nothing set them on again.)
+                        const item = mediaTime.Window.activeFocusItem
+                        MainCtx.useGlobalShortcuts = !(item && item !== timeInput
+                                                       && (item instanceof TextInput || item instanceof TextEdit))
                     }
                 }
                 background: Rectangle {

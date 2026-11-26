@@ -619,7 +619,9 @@ void WinTaskbarWidget::createTaskBarButtons()
 
     try
     {
-        // (a temporary copied in ran CoUninitialize once more)
+        // (a temporary copied in ran CoUninitialize once more; the taskbar
+        // object of before goes first: emplace() ends the COM it lives in)
+        p_taskbl.Reset();
         m_comHolder.emplace();
     }
     catch( const std::exception& exception )

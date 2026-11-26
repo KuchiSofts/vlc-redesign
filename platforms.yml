@@ -120,8 +120,7 @@ platforms:
     name: Android (phones, tablets, TV)
     short: Android
     status: released
-    version: 0.8.4
-    follows: 0.8.5
+    version: 0.8.5
     date: 2026-11-26
     next: 0.8.6
     full: 0.8.0

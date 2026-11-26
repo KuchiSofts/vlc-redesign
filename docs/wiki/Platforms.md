@@ -2,7 +2,7 @@
 
 VLC Redesign **0.8.5** is released for **Windows 10 (version 1809 or later) and Windows 11,
 64-bit** (x64), **Windows 11 on ARM64**, **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon
-and Intel), with **Android** (phones, tablets and Android TV: a separate app, 0.8.4); Samsung TVs
+and Intel), with **Android** (phones, tablets and Android TV: a separate app, 0.8.5 too); Samsung TVs
 get **Juxto Media Player** (0.8.4), a player of its own in the design. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
@@ -21,7 +21,7 @@ The study behind the order, with the evidence from VideoLAN's build system:
 | **[Linux](#linux)** | **Released** | **0.8.5** (2026-11-26) | 0.8.6 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
 | **[macOS](#macos)** | **Released** | **0.8.5** (2026-11-26) | 0.8.6 | macOS 12 Monterey, Apple Silicon or Intel |
 | **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.8.5** (2026-11-26) | 0.8.6 | Windows 11 on ARM64 |
-| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.8.4** (2026-11-26) | 0.8.6 | Android 5.0 or later |
+| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.8.5** (2026-11-26) | 0.8.6 | Android 5.0 or later |
 | **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.8.4** (2026-11-26) | 0.8.6 | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
@@ -165,10 +165,10 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | **Released** in 0.5.0: an APK on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/latest), not on Google Play; how to install: [Install and update](Install-and-Update#android) |
-| **Version** | 0.8.4, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.4)); 0.5.0 was the first for Android. Next: 0.8.6 |
+| **Version** | 0.8.5, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.5)); 0.5.0 was the first for Android. Next: 0.8.6 |
 | **Needs** | Android 5.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
-| **Files** | `vlc-redesign-0.8.4-android.apk` (ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
+| **Files** | `vlc-redesign-0.8.5-android.apk` (ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
 
 The clips below were recorded on the Android emulator, before the first release. All of them, with captions:
 [Feature tour: Android](Feature-Tour#android).

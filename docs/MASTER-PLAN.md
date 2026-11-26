@@ -153,7 +153,11 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.5** (2026-11-26): an update release of the desktop apps (the Android and Samsung TV apps stay 0.8.4).
+- 🟡 **0.8.5** (2026-11-26): an update release of the desktop apps and the Android app (the Samsung TV app stays
+  0.8.4). Before the release three readers went over the branch as a whole and over the Android player: five
+  faults of the new floating Play Queue, five where two contributed changes met, and six in the Android
+  player (four from 0.8.4's phone change, among them Customize Player's Landscape layout no longer shown on a
+  phone held sideways), all fixed.
   Forty-four pull requests of the same contributor taken (#177 to #186, #193 to #203, #205, #206, #208, #209, #214
   to #216, #218, #220 to #234): each read in full, the fault looked for in 0.8.4, shown before and after where it
   can be seen, with our fixes on seven (#180, #184, #202, #206, #209, #228, #229). #204 closed (seven plural

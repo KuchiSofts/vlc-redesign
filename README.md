@@ -48,7 +48,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-macos-x86_64.dmg"><img src="https://img.shields.io/badge/Intel-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Intel"></a>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.4/vlc-redesign-0.8.4-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
 <sub>phones, tablets and Android TV<br>not on Google Play</sub>
 </td>
 </tr>
@@ -308,7 +308,7 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 <!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
 <p align="center"><sub>
 
-**[Windows 0.8.5](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.8.4](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.8.4](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
+**[Windows 0.8.5](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.8.5](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.8.4](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
 
 </sub></p>
 
@@ -321,7 +321,7 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 | Linux | 🟢 released | 0.8.5 · 2026-11-26 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.aarch64.rpm) |
 | macOS | 🟢 released | 0.8.5 · 2026-11-26 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-macos-x86_64.dmg) |
 | Windows ARM64 | 🟢 released | 0.8.5 · 2026-11-26 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-winarm64.zip) |
-| Android | 🟢 released | 0.8.4 · 2026-11-26 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.4/vlc-redesign-0.8.4-android.apk) |
+| Android | 🟢 released | 0.8.5 · 2026-11-26 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.5/vlc-redesign-0.8.5-android.apk) |
 | Samsung TV | 🟢 released | 0.8.4 · 2026-11-26 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.4/Juxto-Media-Player-TV-0.8.4-source.zip) |
 | iPhone/iPad | ⚪ later | — | coming soon |
 
@@ -381,7 +381,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 ## Roadmap
 
 - **Now: [0.8.5](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.5)** (2026-11-26), an update release of the
-  desktop apps: forty-four changes from a contributor (the keyboard, screen readers, the tray, the older dialogs)
+  desktop and Android apps: forty-four changes from a contributor (the keyboard, screen readers, the tray, the older dialogs)
   and the floating Play Queue as the design draws it. Before it, [0.8.4](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.4) (2026-11-26):
   sound from the Linux AppImage on Fedora, a second window that no longer closes, the Android player on a phone
   held sideways.

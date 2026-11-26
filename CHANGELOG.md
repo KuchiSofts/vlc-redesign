@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Compact Library search**: Ctrl+V pastes and Ctrl+C copies in the search field, instead of playing the clipboard or opening Capture.
 - **Video information**: the Audio track column shows the audio track (it repeated the video's codec and language).
 - **Faster start**: the Inter font is read once instead of two or three times.
 - **Opening a file from Explorer**: the library rescan waits 10 seconds, so it no longer competes with the file for the disk.

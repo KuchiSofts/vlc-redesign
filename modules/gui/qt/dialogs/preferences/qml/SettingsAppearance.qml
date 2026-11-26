@@ -27,8 +27,9 @@ SettingsSectionTitle {
     property bool initialRightToLeft: false
     readonly property var languages: themeBridge.interfaceLanguages()
     readonly property bool dark: VLCStyle.palette.isDark
+    readonly property bool accentDirty: selectedAccent.toLowerCase() !== initialAccent.toLowerCase()
     readonly property bool dirty: selectedTheme !== initialTheme
-                                  || selectedAccent.toLowerCase() !== initialAccent.toLowerCase()
+                                  || accentDirty
                                   || selectedLanguage !== initialLanguage
                                   || selectedRightToLeft !== initialRightToLeft
 
@@ -109,7 +110,8 @@ SettingsSectionTitle {
 
     function save() {
         themeBridge.acceptTheme()
-        MainCtx.setSettingValue("redesign/accent", selectedAccent)
+        if (accentDirty)
+            MainCtx.setSettingValue("redesign/accent", selectedAccent)
         if (selectedLanguage !== initialLanguage)
             themeBridge.setInterfaceLanguage(selectedLanguage)
         initialTheme = selectedTheme

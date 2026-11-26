@@ -98,6 +98,13 @@ QtObject {
         function accentOf(choice) {
             return choice === systemAccentChoice ? systemAccent : choice
         }
+        readonly property Connections accentSettingsSync: Connections {
+            target: MainCtx
+            function onSettingValueChanged(key) {
+                if (key === "redesign/accent")
+                    vlc_style.redesign.accentChoice = MainCtx.settingValue("redesign/accent", "#D37918")
+            }
+        }
         readonly property Connections profileAppearanceSync: Connections {
             target: MainCtx.controlbarProfileModel
             function onSelectedProfileChanged() {

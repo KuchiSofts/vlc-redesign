@@ -15,6 +15,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- The macOS build checks the update of an installed copy through the app itself: a build that takes itself for
+  an older version updates to the latest release with its own updater, helper and restart
+  ([#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)). Two test switches of the updater
+  (`VLC_REDESIGN_UPDATE_TEST_AS`, `VLC_REDESIGN_UPDATE_TEST_AUTO`) make it run without a click.
+
 ## [0.8.7] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the page the library

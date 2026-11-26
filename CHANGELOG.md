@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Browse sort order**: in Browse, ascending File size and File modified now put the smallest and oldest first.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps (the Android and Samsung TV apps stay 0.8.4): forty-four changes from a

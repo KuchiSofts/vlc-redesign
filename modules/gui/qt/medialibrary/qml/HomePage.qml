@@ -90,28 +90,36 @@ Widgets.PageExt {
     }
 
     function setCurrentItemFocus(reason) {
-        // `focus` is checked, because that indicates the item that has the focus within the focus scope
-        if (continueWatchingRow.focus)
-            continueWatchingRow.setCurrentItemFocus(reason)
-        else if (listenAgainRow.focus)
-            listenAgainRow.setCurrentItemFocus(reason)
-        else if (favoritesRow.focus)
-            favoritesRow.setCurrentItemFocus(reason)
-        else if (newVideoRow.focus)
-            newVideoRow.setCurrentItemFocus(reason)
-        else if (newMusicRow.focus)
-            newMusicRow.setCurrentItemFocus(reason)
-        else if (coneNButtons.visible)
+        if (coneNButtons.visible) {
             coneNButtons.forceActiveFocus(reason)
-        else
+            return
+        }
+        if (!flickable._hasMedias)
+            return
+
+        // `focus` is checked, because that indicates the item that has the focus within the focus scope
+        if (continueWatchingRow.visible && continueWatchingRow.focus)
+            continueWatchingRow.setCurrentItemFocus(reason)
+        else if (listenAgainRow.visible && listenAgainRow.focus)
+            listenAgainRow.setCurrentItemFocus(reason)
+        else if (favoritesRow.visible && favoritesRow.focus)
+            favoritesRow.setCurrentItemFocus(reason)
+        else if (newVideoRow.visible && newVideoRow.focus)
+            newVideoRow.setCurrentItemFocus(reason)
+        else if (newMusicRow.visible && newMusicRow.focus)
+            newMusicRow.setCurrentItemFocus(reason)
+        else if (continueWatchingRow.visible)
             continueWatchingRow.forceActiveFocus(reason)
+        else if (flickable._modelsLoaded)
+            mediaRows.forceActiveFocus(reason)
     }
 
     contentItem: Flickable {
         id: flickable
 
         implicitWidth: Math.max(coneNButtons.implicitWidth, mediaRows.implicitWidth)
-        implicitHeight: _hasMedias ? mediaRows.implicitHeight : coneNButtons.implicitHeight
+        implicitHeight: _hasMedias ? mediaRows.implicitHeight
+                                   : (noResults.visible ? noResults.implicitHeight : coneNButtons.implicitHeight)
 
         contentWidth: width
         contentHeight: _hasMedias ? mediaRows.implicitHeight
@@ -130,11 +138,13 @@ Widgets.PageExt {
         // with the Binding on it was a change from elsewhere for it)
         readonly property bool _hasMedias: !_noMedias
         property bool _noMedias
+        // A search change must reach every model before its count describes the new query.
+        readonly property bool _modelsLoaded: [continueWatchingRow.model, listenAgainRow.model,
+                                              favoritesRow.model, newVideoRow.model, newMusicRow.model]
+            .every(model => model.searchPattern === root.search.pattern && !model.loading)
 
         Binding on _noMedias {
-            when: !continueWatchingRow.model.loading && !listenAgainRow.model.loading
-                  && !favoritesRow.model.loading
-                  && !newVideoRow.model.loading && !newMusicRow.model.loading
+            when: flickable._modelsLoaded
             value: !(continueWatchingRow.visible || listenAgainRow.visible || foldersRow.visible
                      || favoritesRow.visible || newVideoRow.visible || newMusicRow.visible)
             restoreMode: Binding.RestoreNone
@@ -192,8 +202,16 @@ Widgets.PageExt {
         NoMedialibHome.ConeNButtons {
             id: coneNButtons
 
-            visible: !flickable._hasMedias
-            focus: visible
+            property bool _preferFocus: false
+
+            visible: flickable._noMedias && flickable._modelsLoaded && root.search.pattern === ""
+            focus: _preferFocus
+
+            onVisibleChanged: {
+                // Leave focus in the header while the user edits or clears a search.
+                if (!root.header?.activeFocus)
+                    _preferFocus = visible
+            }
 
             orientation: flickable._hasMedias ? Qt.Horizontal : Qt.Vertical
 
@@ -213,6 +231,15 @@ Widgets.PageExt {
             }
         }
 
+        Widgets.EmptyLabel {
+            id: noResults
+
+            anchors.centerIn: parent
+            visible: flickable._noMedias && flickable._modelsLoaded && root.search.pattern !== ""
+            text: qsTr("No results")
+            cover: VLCStyle.noArtVideoCover
+        }
+
         Widgets.NavigableCol {
             id: mediaRows
 
@@ -224,7 +251,7 @@ Widgets.PageExt {
 
             spacing: 0 // NOTE: We depend on the top padding of view header currently.
 
-            focus: !coneNButtons.visible
+            focus: !coneNButtons._preferFocus
 
             Navigation.parentItem: root
             Navigation.upItem: coneNButtons.visible ? coneNButtons : root.header

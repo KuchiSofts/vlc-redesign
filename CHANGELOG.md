@@ -26,7 +26,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Changed
 
-- **Floating Play Queue**: it opens beside the window inside the screen, on the other side when there is no room.
+- **Floating Play Queue**: it is the design's queue card (Queue, Bookmarks, Chapters) in a window of the main
+  window's style, and it opens beside the window inside the screen, on the other side when there is no room.
 - **A file opened from Explorer while nothing plays (Windows)** plays, also with "Add to the playlist".
 - **Setup and "close to system tray" (Windows)**: setup asks a running copy to quit for real, so it saves its
   settings, window position and queue.

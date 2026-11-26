@@ -190,7 +190,9 @@ Row {
                            : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
                 description: root._fullscreen ? qsTr("Exit Fullscreen") : qsTr("Fullscreen")
                 onClicked: {
-                    if (Player.hasVideoOutput)
+                    if (root._fullscreen)
+                        MainCtx.exitFullscreen()
+                    else if (Player.hasVideoOutput)
                         Player.fullscreen = !Player.fullscreen
                     else
                         MainCtx.toggleInterfaceFullScreen()

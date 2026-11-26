@@ -447,6 +447,27 @@ void SystemPalette::updatePalette()
     }
 }
 
+QPalette SystemPalette::contrastPalette() const
+{
+    using C = ColorContext;
+    const auto viewColor = [this](C::ColorSection section, C::ColorName name,
+                                  C::ColorState state = C::Normal) {
+        return getColor(C::View, section, name, state);
+    };
+    QPalette palette;
+    palette.setColor(QPalette::Window, viewColor(C::Bg, C::Primary));
+    palette.setColor(QPalette::Base, viewColor(C::Bg, C::Secondary));
+    palette.setColor(QPalette::WindowText, viewColor(C::Fg, C::Primary));
+    palette.setColor(QPalette::Text, palette.windowText().color());
+    palette.setColor(QPalette::Button, getColor(C::ButtonStandard, C::Bg, C::Primary, C::Normal));
+    palette.setColor(QPalette::ButtonText, getColor(C::ButtonStandard, C::Fg, C::Primary, C::Normal));
+    palette.setColor(QPalette::Highlight, viewColor(C::Bg, C::Highlight));
+    palette.setColor(QPalette::HighlightedText, viewColor(C::Fg, C::Highlight));
+    palette.setColor(QPalette::Link, viewColor(C::Fg, C::Link));
+    palette.setColor(QPalette::Disabled, QPalette::Text, viewColor(C::Fg, C::Primary, C::Disabled));
+    return palette;
+}
+
 static quint64 makeKey(ColorContext::ColorSet colorSet, ColorContext::ColorSection section,
                        ColorContext::ColorName name, ColorContext::ColorState state)
 {

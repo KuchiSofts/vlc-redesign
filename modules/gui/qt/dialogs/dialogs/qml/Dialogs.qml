@@ -360,8 +360,10 @@ Item {
         echoMode: TextInput.Password
 
         color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
-        selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-        selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
+        selectionColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                        : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+        selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                           : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         selectByMouse: true

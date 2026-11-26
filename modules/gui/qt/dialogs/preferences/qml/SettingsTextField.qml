@@ -30,8 +30,9 @@ T.TextField {
     verticalAlignment: TextInput.AlignTop
     selectByMouse: true
     color: c("#8F8F8F")
-    selectionColor: VLCStyle.redesign.accentBackground
-    selectedTextColor: VLCStyle.redesign.accent
+    selectionColor: VLCStyle.redesign.selectionBackground
+    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                       : VLCStyle.redesign.accent
     placeholderTextColor: c("#404040")
     font.family: VLCStyle.redesign.fontFamily
     font.pixelSize: px(14)

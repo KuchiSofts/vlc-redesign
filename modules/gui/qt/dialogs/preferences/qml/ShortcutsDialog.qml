@@ -429,7 +429,9 @@ Widgets.RedesignDialog {
                     topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                font.pixelSize) - searchMetrics.ascent
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                    selectionColor: VLCStyle.redesign.accentBackground
+                    selectionColor: VLCStyle.redesign.selectionBackground
+                    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : "white"
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     FontMetrics {

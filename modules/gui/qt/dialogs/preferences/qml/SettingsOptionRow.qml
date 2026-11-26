@@ -562,8 +562,9 @@ Item {
                     anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                     text: parent.hex
                     color: root.c("#8F8F8F")
-                    selectionColor: VLCStyle.redesign.accentBackground
-                    selectedTextColor: VLCStyle.redesign.accent
+                    selectionColor: VLCStyle.redesign.selectionBackground
+                    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : VLCStyle.redesign.accent
                     selectByMouse: true
                     activeFocusOnTab: true
                     clip: true

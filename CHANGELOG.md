@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Windows contrast themes**: with a contrast theme on (Aquatic, Desert, Night sky...), the interface uses the theme's colours for its surfaces, texts, borders, focus, selection and accent, live, and goes back to its own look when the theme is turned off.
 - **Windows contrast themes**: the main interface follows the Windows contrast palette live and returns to its usual colours when the theme is turned off.
 
 ## [0.8.7] · 2026-11-26

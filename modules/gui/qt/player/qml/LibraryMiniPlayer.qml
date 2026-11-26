@@ -45,7 +45,7 @@ T.Control {
     // narrower, the video is lower (16:9) and the frame with it
     readonly property real _frameHeight: video.height + VLCStyle.dp(19, VLCStyle.scale)
     background: Rectangle {
-        color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.playerControlBackground : "#ababaa"
+        color: VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa")
         radius: VLCStyle.dp(14, VLCStyle.scale)
         border.width: root.lightTheme || VLCStyle.redesign.highContrast ? 1 : 0
         border.color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.border : "#858585"
@@ -98,7 +98,7 @@ T.Control {
             radius: VLCStyle.dp(6, VLCStyle.scale) + cover
             color: "transparent"
             border.width: cover
-            border.color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.playerControlBackground : "#ababaa"
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa")
         }
         // Figma: a border of 2 #090909 inside
         Rectangle {
@@ -109,7 +109,7 @@ T.Control {
             radius: VLCStyle.dp(6, VLCStyle.scale)
             color: "transparent"
             border.width: VLCStyle.dp(2, VLCStyle.scale)
-            border.color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.seekBackground : "#dedede"
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede")
         }
 
         Controls.Slider {
@@ -174,7 +174,7 @@ T.Control {
             // Figma: the track radius 6 #090909, the fill 2 inside, radius 4,
             // #371F06
             background: Rectangle {
-                color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.seekBackground : "#dedede"
+                color: VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede")
                 border.width: VLCStyle.redesign.highContrast ? 1 : 0
                 border.color: VLCStyle.redesign.border
                 radius: VLCStyle.dp(6, VLCStyle.scale)

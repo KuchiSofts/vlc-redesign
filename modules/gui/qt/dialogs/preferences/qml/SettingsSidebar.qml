@@ -115,10 +115,15 @@ Item {
                         ToolTip.delay: 650
                         background: Rectangle {
                             radius: root.px(2)
-                            color: entry.current ? root.c("#222222")
+                            color: VLCStyle.redesign.highContrast
+                                   ? (entry.current || item.hovered) ? VLCStyle.redesign.buttonBackground : "transparent"
+                                   : entry.current ? root.c("#222222")
                                    : item.hovered ? (root.dark ? "#1d1d1d" : root.c("#222222")) : "transparent"
-                            border.width: item.visualFocus ? 1 : 0
-                            border.color: VLCStyle.redesign.accent
+                            border.width: item.visualFocus
+                                          || (VLCStyle.redesign.highContrast && (item.hovered || entry.current)) ? 1 : 0
+                            border.color: VLCStyle.redesign.highContrast
+                                          ? item.visualFocus ? VLCStyle.redesign.focusColor : VLCStyle.redesign.accent
+                                          : VLCStyle.redesign.accent
                         }
                         // The Icon component of the design: 32 x 32 around the 24 px glyph
                         contentItem: Row {
@@ -136,7 +141,11 @@ Item {
                                     fillMode: Image.PreserveAspectFit
                                     source: !modelData.icon ? "" : "qrc:///redesign/icons/" + modelData.icon + "/"
                                             + (entry.current ? "active" : "default") + ".svg"
-                                    color: entry.current ? VLCStyle.redesign.accentTint : "transparent"
+                                    color: VLCStyle.redesign.highContrast
+                                           ? !item.enabled ? VLCStyle.redesign.textDisabled
+                                             : entry.current ? VLCStyle.redesign.accentTint
+                                             : item.hovered ? VLCStyle.redesign.buttonText : VLCStyle.redesign.textPrimary
+                                           : entry.current ? VLCStyle.redesign.accentTint : "transparent"
                                 }
                             }
                             Text {
@@ -152,7 +161,10 @@ Item {
                                 anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                                 textFormat: Text.PlainText
                                 text: modelData.label || ""
-                                color: entry.current ? root.c("#EAEAEA") : root.c("#8F8F8F")
+                                color: VLCStyle.redesign.highContrast
+                                       ? !item.enabled ? VLCStyle.redesign.textDisabled
+                                         : (entry.current || item.hovered) ? VLCStyle.redesign.buttonText : VLCStyle.redesign.textPrimary
+                                       : entry.current ? root.c("#EAEAEA") : root.c("#8F8F8F")
                                 font.family: VLCStyle.redesign.fontFamily
                                 font.pixelSize: root.px(14)
                             }

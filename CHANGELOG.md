@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Bookmark names**: pressing Create again at the same position in Edit Bookmarks no longer renames the existing bookmark to "Bookmark at ...".
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

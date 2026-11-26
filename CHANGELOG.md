@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Monitor unplugged in fullscreen**: leaving video fullscreen after the monitor VLC came from was disconnected no longer uses the removed screen (possible crash); VLC stays on the remaining screen.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

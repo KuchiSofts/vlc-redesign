@@ -222,6 +222,7 @@ SettingsSectionTitle {
                     model: root.accentChoices
                     delegate: Button {
                         id: swatch
+                        required property int index
                         required property var modelData
                         readonly property bool chosen: root.selectedAccent.toLowerCase() === modelData.toLowerCase()
                         width: (parent.width - root.px(4) * (root.accentChoices.length - 1)) / root.accentChoices.length
@@ -230,7 +231,9 @@ SettingsSectionTitle {
                         // (Basic adds 2 px each side otherwise: 16 wide, not 20)
                         horizontalPadding: root.px(6)
                         onClicked: root.chooseAccent(modelData)
-                        Accessible.name: qsTr("Accent color %1").arg(modelData)
+                        Accessible.name: qsTr("Accent color %1 of %2").arg(index + 1).arg(root.accentChoices.length)
+                        Accessible.checkable: true
+                        Accessible.checked: chosen
                         background: Rectangle {
                             radius: root.px(4)
                             color: swatch.chosen ? Qt.rgba(Qt.color(swatch.modelData).r * 0.26,

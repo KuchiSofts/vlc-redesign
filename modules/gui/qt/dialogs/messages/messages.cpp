@@ -270,7 +270,7 @@ void MessagesDialog::filterMessages()
 
     while( block.isValid() )
     {
-        block.setVisible( matchFilter( block.text().toLower() ) );
+        block.setVisible( matchFilter( block.text() ) );
         block = block.next();
     }
 
@@ -288,7 +288,7 @@ bool MessagesDialog::matchFilter( const QString& text )
 {
     const QString& filter = ui.filterEdit->text();
 
-    if( filter.isEmpty() || text.contains( filter.toLower() ) )
+    if( filter.isEmpty() || text.contains( filter, Qt::CaseInsensitive ) )
         return true;
     return false;
 }

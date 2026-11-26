@@ -306,12 +306,21 @@ static int updatePalette(vlc_qt_theme_provider_t* obj)
         setGtkColor(obj, CS, VQTC_SECTION_BG, VQTC_NAME_PRIMARY, VQTC_STATE_NORMAL, tabButtonNormalBg);
     }
 
-#define BUTTON_STANDARD_SELECTOR VIEW_SELECTOR " GtkButton#button.flat"
+#define BUTTON_STANDARD_SELECTOR VIEW_SELECTOR " GtkButton#button"
     {
         auto CS = VQTC_SET_BUTTON_STANDARD;
         setGtkColorSetBg(obj, CS, VQTC_NAME_PRIMARY, BUTTON_STANDARD_SELECTOR);
         setGtkColorSetFg(obj, CS, VQTC_NAME_PRIMARY, BUTTON_STANDARD_SELECTOR);
         setGtkColorSetBorder(obj, CS, BUTTON_STANDARD_SELECTOR);
+
+        setGtkColorSetBg(obj, CS, VQTC_NAME_NEGATIVE, BUTTON_STANDARD_SELECTOR ".destructive-action");
+        setGtkColorSetFg(obj, CS, VQTC_NAME_NEGATIVE, BUTTON_STANDARD_SELECTOR ".destructive-action");
+
+        setGtkColorSetBg(obj, CS, VQTC_NAME_NEUTRAL, BUTTON_STANDARD_SELECTOR ".warning");
+        setGtkColorSetFg(obj, CS, VQTC_NAME_NEUTRAL, BUTTON_STANDARD_SELECTOR ".warning");
+
+        setGtkColorSetBg(obj, CS, VQTC_NAME_POSITIVE, BUTTON_STANDARD_SELECTOR ".suggested-action");
+        setGtkColorSetFg(obj, CS, VQTC_NAME_POSITIVE, BUTTON_STANDARD_SELECTOR ".suggested-action");
     }
 
 #define BUTTON_ACCENT_SELECTOR VIEW_SELECTOR " GtkButton#button.suggested-action"

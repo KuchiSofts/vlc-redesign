@@ -359,6 +359,11 @@ int libvlc_InternalInit( libvlc_int_t *p_libvlc, int i_argc,
     var_Create( p_libvlc, "app-version", VLC_VAR_STRING );
     var_SetString( p_libvlc, "app-version", PACKAGE_VERSION );
 
+#ifdef _WIN32
+    /* Let Qt apply its history filter to items received by win_msg. */
+    var_Create(p_libvlc, "win-msg-history-filter", VLC_VAR_ADDRESS);
+#endif
+
     /* System specific configuration */
     system_Configure( p_libvlc, i_argc - vlc_optind, ppsz_argv + vlc_optind );
 

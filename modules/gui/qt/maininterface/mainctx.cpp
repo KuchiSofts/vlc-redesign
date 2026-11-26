@@ -144,6 +144,15 @@ const QEvent::Type MainCtx::ToolbarsNeedRebuild =
 namespace
 {
 
+#ifdef _WIN32
+int WinMsgHistoryFilterCB(vlc_object_t *, const char *, vlc_value_t,
+                         vlc_value_t value, void *)
+{
+    Media::applyHistoryFilter(static_cast<input_item_t *>(value.p_address));
+    return VLC_SUCCESS;
+}
+#endif
+
 template <typename T>
 T loadVLCOption(vlc_object_t *obj, const char *name);
 
@@ -329,6 +338,9 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     var_AddCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
     var_AddCallback( libvlc, "intf-boss", IntfBossCB, this );
     var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
+#ifdef _WIN32
+    var_AddCallback( libvlc, "win-msg-history-filter", WinMsgHistoryFilterCB, nullptr );
+#endif
 
     /* Register callback for the intf-popupmenu variable */
     var_AddCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
@@ -471,6 +483,9 @@ MainCtx::~MainCtx()
     libvlc_int_t* libvlc = vlc_object_instance(p_intf);
     var_DelCallback( libvlc, "intf-boss", IntfBossCB, this );
     var_DelCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
+#ifdef _WIN32
+    var_DelCallback( libvlc, "win-msg-history-filter", WinMsgHistoryFilterCB, nullptr );
+#endif
     var_DelCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
     var_DelCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
 

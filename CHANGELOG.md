@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Blu-ray menus in Open Disc**: choosing Blu-ray in Open Disc no longer forces "No disc menus" on; the box follows the Blu-ray menu setting and your choice.
+
 ## [0.8.3] · 2026-11-25
 
 An update release of every app: macOS updates install from inside the app, the speaker button brings the

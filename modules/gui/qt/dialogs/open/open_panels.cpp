@@ -328,7 +328,8 @@ void FileOpenPanel::updateButtons()
  * Open Discs ( DVD, CD, VCD and similar devices )                        *
  **************************************************************************/
 DiscOpenPanel::DiscOpenPanel( QWidget *_parent, qt_intf_t *_p_intf ) :
-                                OpenPanel( _parent, _p_intf )
+                                OpenPanel( _parent, _p_intf ),
+                                m_blurayMenuAvailable( config_GetType( "bluray-menu" ) == VLC_VAR_BOOL )
 {
     ui.setupUi( this );
 
@@ -370,7 +371,13 @@ DiscOpenPanel::DiscOpenPanel( QWidget *_parent, qt_intf_t *_p_intf ) :
     BUTTONACT( ui.bdRadioButton,      &DiscOpenPanel::updateButtons );
     BUTTONACT( ui.vcdRadioButton,     &DiscOpenPanel::updateButtons );
     BUTTONACT( ui.audioCDRadioButton, &DiscOpenPanel::updateButtons );
-    BUTTONACT( ui.dvdsimple,          &DiscOpenPanel::updateButtons );
+    connect( ui.dvdsimple, &QCheckBox::clicked, this, [this]( bool checked ) {
+        if( ui.bdRadioButton->isChecked() )
+            m_blurayNoMenus = checked;
+        else
+            m_dvdNoMenus = checked;
+        updateButtons();
+    });
     BUTTONACT( ui.browseDiscButton,   &DiscOpenPanel::browseDevice );
     BUTTONACT( ui.ejectButton,  &DiscOpenPanel::eject );
 
@@ -477,7 +484,9 @@ void DiscOpenPanel::onFocus()
 void DiscOpenPanel::updateContext(int c)
 {
     OpenPanel::updateContext(c);
-    ui.dvdsimple->setChecked( context == OpenPanel::CONTEXT_BATCH );
+    m_dvdNoMenus = context == OpenPanel::CONTEXT_BATCH;
+    if( !ui.bdRadioButton->isChecked() )
+        ui.dvdsimple->setChecked( m_dvdNoMenus );
 }
 
 DiscOpenPanel::~DiscOpenPanel()
@@ -514,6 +523,7 @@ void DiscOpenPanel::updateButtons()
         {
             setDrive( psz_dvddiscpath );
             m_discType = Dvd;
+            ui.dvdsimple->setChecked( m_dvdNoMenus );
         }
         ui.titleLabel->setText( qtr("Title") );
         ui.chapterLabel->show();
@@ -536,27 +546,18 @@ void DiscOpenPanel::updateButtons()
     }
     else if ( ui.bdRadioButton->isChecked() )
     {
-        bool dvdsimpleEnable = true;
         if( m_discType != BRD )
         {
             setDrive( psz_dvddiscpath );
             m_discType = BRD;
-            const auto bm = "bluray-menu";
-            if( var_Type( p_intf, bm ) )
-            {
-                ui.dvdsimple->setChecked( !var_InheritBool( p_intf, bm ) );
-            }
-            else
-            {
-                ui.dvdsimple->setChecked( true ); // No menus
-                dvdsimpleEnable = false;
-            }
+            ui.dvdsimple->setChecked( !m_blurayMenuAvailable ||
+                m_blurayNoMenus.value_or( !var_InheritBool( p_intf, "bluray-menu" ) ) );
         }
         ui.titleLabel->setText( qtr("Title") );
         ui.chapterLabel->hide();
         ui.chapterSpin->hide();
         ui.diskOptionBox_2->hide();
-        ui.dvdsimple->setEnabled( dvdsimpleEnable );
+        ui.dvdsimple->setEnabled( m_blurayMenuAvailable );
     }
     else if ( ui.vcdRadioButton->isChecked() )
     {
@@ -659,10 +660,9 @@ void DiscOpenPanel::updateMRL()
         if( ui.titleSpin->value() > 0 )
             opts += QString(" :cdda-track=%1").arg( ui.titleSpin->value() );
     }
-    else if ( ui.bdRadioButton->isChecked() )
+    else if ( ui.bdRadioButton->isChecked() && m_blurayMenuAvailable )
     {
-        if ( ui.dvdsimple->isChecked() )
-            opts += " :no-bluray-menu";
+        opts += ui.dvdsimple->isChecked() ? " :no-bluray-menu" : " :bluray-menu";
     }
     emit mrlUpdated( fileList, opts );
 }

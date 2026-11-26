@@ -6878,6 +6878,10 @@ msgstr "Үр дүн алга"
 msgid "Empty view"
 msgstr "Хоосон харагдац"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Экспортлохын тулд тоглуулах жагсаалтын медиаг ачаалж чадсангүй."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Хавчуурга: %1"

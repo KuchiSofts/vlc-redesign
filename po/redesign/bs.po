@@ -6901,6 +6901,10 @@ msgstr "Nema rezultata"
 msgid "Empty view"
 msgstr "Prazan prikaz"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Mediji liste izvođenja nisu se mogli učitati za izvoz."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Oznaka na %1"

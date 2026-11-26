@@ -6764,6 +6764,10 @@ msgstr "គ្មានលទ្ធផល"
 msgid "Empty view"
 msgstr "ទិដ្ឋភាពទទេ"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "មិនអាចផ្ទុកមេឌៀនៃបញ្ជីចាក់សម្រាប់ការនាំចេញបានទេ។"
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "ចំណាំនៅ %1"

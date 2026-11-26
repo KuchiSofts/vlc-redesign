@@ -6884,6 +6884,10 @@ msgstr "Нәтижелер жоқ"
 msgid "Empty view"
 msgstr "Бос көрініс"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Экспорттау үшін ойнату тізімінің медиасын жүктеу мүмкін болмады."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1 уақытындағы бетбелгі"

@@ -6922,6 +6922,10 @@ msgstr "Non hai resultados"
 msgid "Empty view"
 msgstr "Vista baleira"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Non foi posíbel cargar os ficheiros multimedia da lista de reprodución para exportala."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Marcador en %1"

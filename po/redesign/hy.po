@@ -6910,6 +6910,10 @@ msgstr "Արդյունքներ չկան"
 msgid "Empty view"
 msgstr "Դատարկ տեսք"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Երգացանկի մեդիան հնարավոր չեղավ բեռնել արտահանման համար։"
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Էջանիշ՝ %1"

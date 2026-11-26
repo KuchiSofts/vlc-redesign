@@ -6871,6 +6871,10 @@ msgstr "Tulemusi pole"
 msgid "Empty view"
 msgstr "Tühi vaade"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Esitusloendi meediat ei õnnestunud eksportimiseks laadida."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Järjehoidja: %1"

@@ -858,6 +858,7 @@ modules/gui/qt/widgets/qml/CSDWindowButtonSet.qml
 modules/gui/qt/widgets/qml/CheckButton.qml
 modules/gui/qt/widgets/qml/EmptyLabelButton.qml
 modules/gui/qt/widgets/qml/EmptyLabel.qml
+modules/gui/qt/medialibrary/medialib.cpp
 modules/gui/qt/medialibrary/mlbookmarkmodel.cpp
 modules/gui/qt/medialibrary/mlbookmarkmodel.hpp
 modules/gui/qt/medialibrary/mlfolder.cpp

@@ -6942,6 +6942,10 @@ msgstr "Sem resultados"
 msgid "Empty view"
 msgstr "Vista vazia"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Não foi possível carregar os ficheiros multimédia da lista de reprodução para exportar."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Marcador em %1"

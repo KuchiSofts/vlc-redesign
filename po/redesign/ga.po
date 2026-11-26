@@ -7002,6 +7002,10 @@ msgstr "Gan torthaí"
 msgid "Empty view"
 msgstr "Amharc folamh"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Níorbh fhéidir meáin an tseinnliosta a lódáil le haghaidh easpórtála."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Leabharmharc ag %1"

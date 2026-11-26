@@ -6821,6 +6821,10 @@ msgstr "אין תוצאות"
 msgid "Empty view"
 msgstr "תצוגה ריקה"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "לא ניתן היה לטעון את המדיה של רשימת הנגינה לייצוא."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "סימנייה ב־%1"

@@ -6882,6 +6882,10 @@ msgstr "முடிவுகள் இல்லை"
 msgid "Empty view"
 msgstr "காலியான காட்சி"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ஏற்றுமதிக்காக இயக்கப்பட்டியலின் ஊடகத்தை ஏற்ற முடியவில்லை."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1-இல் நினைவுக்குறி"

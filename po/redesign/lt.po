@@ -6912,6 +6912,10 @@ msgstr "Rezultatų nėra"
 msgid "Empty view"
 msgstr "Tuščias rodinys"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Nepavyko įkelti grojaraščio medijos eksportavimui."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Žymelė ties %1"

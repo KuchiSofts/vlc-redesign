@@ -6861,6 +6861,10 @@ msgstr "Không có kết quả"
 msgid "Empty view"
 msgstr "Chế độ xem trống"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Không thể tải nội dung đa phương tiện của danh sách phát để xuất."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Dấu trang tại %1"

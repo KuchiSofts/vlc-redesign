@@ -6940,6 +6940,10 @@ msgstr "Dim canlyniadau"
 msgid "Empty view"
 msgstr "Golwg wag"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Nid oedd modd llwytho cyfryngau'r rhestr chwarae i'w hallforio."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Nod ar %1"

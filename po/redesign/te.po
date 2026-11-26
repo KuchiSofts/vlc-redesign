@@ -6777,6 +6777,10 @@ msgstr "ఫలితాలు లేవు"
 msgid "Empty view"
 msgstr "ఖాళీ వీక్షణ"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ఎగుమతి కోసం ప్లేజాబితాలోని మీడియాను లోడ్ చేయలేకపోయాం."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1 వద్ద ఇష్టాంశం"

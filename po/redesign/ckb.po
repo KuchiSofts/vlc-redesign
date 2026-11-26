@@ -6878,6 +6878,10 @@ msgstr "هیچ ئەنجامێک نییە"
 msgid "Empty view"
 msgstr "بینینی بەتاڵ"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "میدیاکانی لیستی لێدان نەتوانران بۆ هەناردەکردن بار بکرێن."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "نیشانە لە %1"

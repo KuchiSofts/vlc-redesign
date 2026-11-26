@@ -6926,6 +6926,10 @@ msgstr "Geen resultaten"
 msgid "Empty view"
 msgstr "Lege weergave"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "De media van de afspeellijst konden niet worden geladen voor de export."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Bladwijzer op %1"

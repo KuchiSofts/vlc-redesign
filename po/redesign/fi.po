@@ -6915,6 +6915,10 @@ msgstr "Ei tuloksia"
 msgid "Empty view"
 msgstr "Tyhjä näkymä"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Soittolistan mediaa ei voitu ladata vientiä varten."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Kirjanmerkki kohdassa %1"

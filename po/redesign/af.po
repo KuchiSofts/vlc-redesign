@@ -6902,6 +6902,10 @@ msgstr "Geen resultate nie"
 msgid "Empty view"
 msgstr "Leë aansig"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Die media van die afspeellys kon nie vir die uitvoer gelaai word nie."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Boekmerk by %1"

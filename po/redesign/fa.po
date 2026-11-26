@@ -6832,6 +6832,10 @@ msgstr "نتیجه‌ای نیست"
 msgid "Empty view"
 msgstr "نمای خالی"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "رسانه‌های فهرست پخش برای صدور بارگذاری نشدند."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "نشانک در %1"

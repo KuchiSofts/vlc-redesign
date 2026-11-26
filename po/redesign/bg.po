@@ -6941,6 +6941,10 @@ msgstr "Няма резултати"
 msgid "Empty view"
 msgstr "Празен изглед"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Медията на плейлиста не можа да бъде заредена за експортиране."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Отметка на %1"

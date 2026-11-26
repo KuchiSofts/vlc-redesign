@@ -6941,6 +6941,10 @@ msgstr "Nou rizultat"
 msgid "Empty view"
 msgstr "Vuwe vude"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Les media del djivêye a djouwer n' ont savou esse tcherdjîs po l' ebaguer."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Rimarke a %1"

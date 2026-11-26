@@ -6941,6 +6941,10 @@ msgstr "Emaitzarik ez"
 msgid "Empty view"
 msgstr "Ikuspegi hutsa"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Ezin izan dira erreprodukzio-zerrendako multimedia-elementuak kargatu esportatzeko."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Laster-marka: %1"

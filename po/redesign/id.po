@@ -6890,6 +6890,10 @@ msgstr "Tidak ada hasil"
 msgid "Empty view"
 msgstr "Tampilan kosong"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Media daftar putar tidak dapat dimuat untuk diekspor."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Penanda di %1"

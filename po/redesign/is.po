@@ -6882,6 +6882,10 @@ msgstr "Engar niðurstöður"
 msgid "Empty view"
 msgstr "Tómt yfirlit"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Ekki tókst að hlaða miðlum spilunarlistans fyrir útflutning."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Bókamerki á %1"

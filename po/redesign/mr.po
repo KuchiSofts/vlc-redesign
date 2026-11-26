@@ -6802,6 +6802,10 @@ msgstr "कोणतेही परिणाम नाहीत"
 msgid "Empty view"
 msgstr "रिकामे दृश्य"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "निर्यातीसाठी प्लेलिस्टचे मीडिया लोड करता आले नाही."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1 वरील वाचनखूण"

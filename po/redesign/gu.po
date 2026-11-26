@@ -6794,6 +6794,10 @@ msgstr "કોઈ પરિણામ નથી"
 msgid "Empty view"
 msgstr "ખાલી દૃશ્ય"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "નિકાસ માટે પ્લેલિસ્ટના મીડિયા લોડ કરી શકાયા નહીં."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1 પર બુકમાર્ક"

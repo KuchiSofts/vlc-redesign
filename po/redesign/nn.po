@@ -6896,6 +6896,10 @@ msgstr "Ingen resultat"
 msgid "Empty view"
 msgstr "Tom vising"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Media i spelelista kunne ikkje lastast inn for eksport."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Bokmerke ved %1"

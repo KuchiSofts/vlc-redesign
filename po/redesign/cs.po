@@ -6918,6 +6918,10 @@ msgstr "Žádné výsledky"
 msgid "Empty view"
 msgstr "Prázdné zobrazení"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Média seznamu skladeb nelze načíst pro export."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Záložka v %1"

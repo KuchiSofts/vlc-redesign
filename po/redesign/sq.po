@@ -6911,6 +6911,10 @@ msgstr "Nuk ka rezultate"
 msgid "Empty view"
 msgstr "Pamje bosh"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Mediat e listës së luajtjes nuk mund të ngarkoheshin për eksportim."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Faqeshënues në %1"

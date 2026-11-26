@@ -6928,6 +6928,10 @@ msgstr "Brak wyników"
 msgid "Empty view"
 msgstr "Pusty widok"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Nie można wczytać multimediów listy odtwarzania do eksportu."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Zakładka: %1"

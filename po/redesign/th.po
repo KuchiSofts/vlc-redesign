@@ -6743,6 +6743,10 @@ msgstr "ไม่มีผลลัพธ์"
 msgid "Empty view"
 msgstr "มุมมองว่าง"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "ไม่สามารถโหลดสื่อของผังเล่นเพื่อส่งออกได้"
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "ที่คั่นที่ %1"

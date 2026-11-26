@@ -6935,6 +6935,10 @@ msgstr "Nincs találat"
 msgid "Empty view"
 msgstr "Üres nézet"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "A lejátszólista médiafájljai nem tölthetők be az exportáláshoz."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Könyvjelző itt: %1"

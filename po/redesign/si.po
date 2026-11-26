@@ -6790,6 +6790,10 @@ msgstr "ප්‍රතිඵල නැත"
 msgid "Empty view"
 msgstr "හිස් දසුන"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "අපනයනය සඳහා ධාවන ලැයිස්තුවේ මාධ්‍ය පූරණය කළ නොහැකි විය."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1 හි පොත් සළකුණ"

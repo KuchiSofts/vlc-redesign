@@ -6956,6 +6956,10 @@ msgstr "Niciun rezultat"
 msgid "Empty view"
 msgstr "Vizualizare goală"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Fișierele media ale listei de redare nu au putut fi încărcate pentru export."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Semn de carte la %1"

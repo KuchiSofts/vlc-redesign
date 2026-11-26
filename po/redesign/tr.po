@@ -6901,6 +6901,10 @@ msgstr "Sonuç yok"
 msgid "Empty view"
 msgstr "Boş görünüm"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Dışa aktarma için oynatma listesinin ortamları yüklenemedi."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "%1 konumunda yer imi"

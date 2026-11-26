@@ -7053,6 +7053,10 @@ msgstr "Gun toraidhean"
 msgid "Empty view"
 msgstr "Sealladh falamh"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Cha b' urrainn dhuinn meadhanan na liosta-chluich a luchdadh airson às-phortadh."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Comharra-leabhair aig %1"

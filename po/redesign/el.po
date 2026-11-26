@@ -7011,6 +7011,10 @@ msgstr "Κανένα αποτέλεσμα"
 msgid "Empty view"
 msgstr "Κενή προβολή"
 
+#: modules/gui/qt/medialibrary/medialib.cpp
+msgid "Could not load the playlist media for export."
+msgstr "Δεν ήταν δυνατή η φόρτωση των πολυμέσων της λίστας αναπαραγωγής για εξαγωγή."
+
 #: modules/gui/qt/medialibrary/mlbookmarkmodel.cpp:269
 msgid "Bookmark at %1"
 msgstr "Σελιδοδείκτης στο %1"

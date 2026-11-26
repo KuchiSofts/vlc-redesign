@@ -101,9 +101,10 @@ void MLSubtitleAssociations::cancel()
 {
     if (m_saving)
         return;
-    // Also drops the reply of a link download in flight.
     ++m_revision;
     ++m_targetRevision;
+    if (auto cancelRequest = std::exchange(m_cancelRequest, {}))
+        cancelRequest();
     m_destinations.clear();
     m_sources.clear();
     m_targets.clear();

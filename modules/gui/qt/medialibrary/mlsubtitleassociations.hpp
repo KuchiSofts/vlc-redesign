@@ -17,6 +17,7 @@
 #include <functional>
 
 #include "mlqmltypes.hpp"
+#include "util/http_request.hpp"
 
 Q_MOC_INCLUDE("medialibrary/medialib.hpp")
 
@@ -127,4 +128,5 @@ private:
     bool m_busy = false;
     bool m_saving = false;
     quint64 m_revision = 0;
+    HttpCancel m_cancelRequest;
 };

@@ -153,7 +153,15 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.4**: update releases of fixes as the issues bring them. Waiting: nine more pull requests of the same
+- 🟡 **0.8.5** (2026-11-26): an update release of the desktop apps (the Android and Samsung TV apps stay 0.8.4).
+  Forty-four pull requests of the same contributor taken (#177 to #186, #193 to #203, #205, #206, #208, #209, #214
+  to #216, #218, #220 to #234): each read in full, the fault looked for in 0.8.4, shown before and after where it
+  can be seen, with our fixes on seven (#180, #184, #202, #206, #209, #228, #229). #204 closed (seven plural
+  entries to translate again in 72 languages for one English word); #187 waits for its author's steps (its fault
+  did not show on 0.8.3). The floating Play Queue redrawn as the design's queue card in a window of the main
+  window's style (the owner's request; seen dark, light and right to left). Four new texts in 72 languages.
+- ✅ **0.8.4** (published 2026-11-26, every app; #207, #211 and #213 fixed and closed). Before the release it
+  read: update releases of fixes as the issues bring them. Waiting: nine more pull requests of the same
   contributor (#159 to #167: the queue's total length, hidden controls and the playback's ticks, old update files
   removed off the start, the waveform drawn once, local folders sorted on a worker, the TV guide with the
   keyboard, playback options kept in a saved playlist, the 2x hold as a temporary rate in the core, grid cards

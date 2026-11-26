@@ -10,31 +10,29 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-26, 0.8.4 published, 0.8.5 started).
+Updated as the work moves (last: 2026-11-26, 0.8.5 published, 0.8.6 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.4 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.4 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.4 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.4 | ██████████ 100 % | tests on a Mac by hand |
+| **Windows x64** | ✅ released 0.8.5 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.5 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.5 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.5 | ██████████ 100 % | tests on a Mac by hand |
 | **Android** (phones) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
 | **Android** (tablets) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
 | **Android TV** | ✅ released 0.8.4 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.4 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.5 and after
+## Next: 0.8.6 and after
 
-**0.8.5** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+**0.8.6** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released).
 
 - 🟡 macOS: the first update from inside the app on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (0.8.3 installed by hand once: the fix is in the app that updates)
-- 🟡 Eight more pull requests of a contributor, still their author's drafts (#160, #164, #166 to #168,
-  #173 to #175): read; each is shown before and after when its author marks it ready
-- 🟡 Twenty-five more of the same contributor, marked ready (#177 to #187, #193 to #206): each shown before and
-  after; twenty-two are taken for 0.8.5, three wait for a run (#185 to #187)
+- 🟡 More pull requests of a contributor: the ones that are still their author's drafts, and #187 (sliders and
+  choice lists), where the author was asked for the steps that show the fault
 
 And as the issues bring them:
 

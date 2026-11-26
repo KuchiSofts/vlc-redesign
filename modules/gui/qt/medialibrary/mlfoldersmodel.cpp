@@ -53,18 +53,14 @@ MLFoldersBaseModel::EntryPoint::EntryPoint( const vlc_ml_folder_t& entryPoint)
 
 void MLFoldersBaseModel::setCtx(MainCtx* ctx)
 {
-    if (ctx)
-    {
-        m_ctx = ctx;
-        m_mediaLib = m_ctx->getMediaLibrary();
+    // Unregister from the previous library before replacing it.
+    m_ml_event_handle.reset();
+    m_ctx = ctx;
+    m_mediaLib = ctx ? ctx->getMediaLibrary() : nullptr;
+    if (m_mediaLib)
         m_ml_event_handle.reset(m_mediaLib->registerEventListener(onMlEvent, this));
-    }
     else
     {
-        m_ctx = nullptr;
-        //reset *before* setting m_mediaLib to nullptr
-        m_ml_event_handle.reset( nullptr );
-        m_mediaLib = nullptr;
         beginResetModel();
         m_mrls.clear();
         endResetModel();

@@ -506,6 +506,11 @@ public:
         return window->format().depthBufferSize() > 0;
     }
 
+    // Places `window` beside its transientParent inside that parent's screen
+    // (flipping to the opposite side or overlapping the inside edge when there
+    // is no room on the preferred side).
+    Q_INVOKABLE static void placeWindowBesideParent(QWindow *window, bool onLeft, int gap = 10);
+
     // TODO: This functions is akin to Window Web API's `setTimeout()`. Get rid of this once
     //       once Qt implements it.
     Q_INVOKABLE static void setTimeout(const QJSValue& func, const int delay, const QJSValueList& params = {}, const QObject* context = nullptr)

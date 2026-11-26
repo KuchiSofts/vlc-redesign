@@ -161,6 +161,40 @@ int main()
     CHECK(fitted({10, 10, 100, 100}, QRect()) == QRect(10, 10, 100, 100));
     CHECK(fitted(QRect(), main) == QRect());
 
+    // ---- a detached window placed beside its parent --------------------
+    // room on the preferred side: untouched
+    CHECK(beside({200, 150, 1280, 720}, {350, 720}, main, false) == QRect(1490, 150, 350, 720));
+    CHECK(beside({400, 150, 1280, 720}, {350, 720}, main, true) == QRect(40, 150, 350, 720));
+    // near the screen edge: flipped to the opposite side when there is room
+    CHECK(beside({600, 100, 1280, 720}, {350, 720}, main, false) == QRect(240, 100, 350, 720));
+    CHECK(beside({40, 100, 1280, 720}, {350, 720}, main, true) == QRect(1330, 100, 350, 720));
+    // maximized (no room on either side): overlapped on the inside edge
+    CHECK(beside(main, {350, 1032}, main, false) == QRect(1570, 0, 350, 1032));
+    CHECK(beside(main, {350, 1032}, main, true) == QRect(0, 0, 350, 1032));
+    const QRect maxLtr = beside(main, {350, 1032}, main, false, 10, frame);
+    CHECK(inside(maxLtr.marginsAdded(frame), main));
+    CHECK(maxLtr.marginsAdded(frame).right() == main.right());
+    const QRect maxRtl = beside(main, {350, 1032}, main, true, 10, frame);
+    CHECK(inside(maxRtl.marginsAdded(frame), main));
+    CHECK(maxRtl.marginsAdded(frame).left() == main.left());
+    // monitor at the left (negative coordinates): never spills onto the primary monitor
+    CHECK(beside(left, {350, 1392}, left, false) == QRect(-350, 0, 350, 1392));
+    CHECK(beside({-1300, 200, 1280, 720}, {350, 720}, left, false) == QRect(-1660, 200, 350, 720));
+    // anchor hanging past the bottom: clamped vertically
+    CHECK(beside({200, 600, 1280, 720}, {350, 720}, main, false) == QRect(1490, 312, 350, 720));
+    // every result is inside the screen, LTR and RTL
+    for (bool onLeft : { false, true })
+        for (int x = -3000; x <= 2500; x += 650)
+            for (int y = -1200; y <= 1200; y += 500)
+                for (const QRect &area : { main, left, above })
+                {
+                    const QRect result = beside(QRect(x, y, 1280, 720), {350, 720}, area, onLeft, 10, frame);
+                    CHECK(inside(result.marginsAdded(frame), area));
+                }
+    // no screen: keeps the raw side offset
+    CHECK(beside({200, 150, 1280, 720}, {350, 720}, QRect(), false) == QRect(1490, 150, 350, 720));
+    CHECK(beside({200, 150, 1280, 720}, {350, 720}, QRect(), true) == QRect(-160, 150, 350, 720));
+
     // ---- a saved geometry ---------------------------------------------
     CHECK(reachable({100, 100, 1280, 720}, main));
     // hanging over the right or the bottom edge, its title bar on the screen

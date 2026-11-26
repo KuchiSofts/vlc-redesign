@@ -1841,6 +1841,39 @@ QWindow *MainCtx::intfMainWindow() const
         return nullptr;
 }
 
+void MainCtx::placeWindowBesideParent(QWindow *window, bool onLeft, int gap)
+{
+    if (!window)
+        return;
+    const QWindow *parent = window->transientParent();
+    if (!parent)
+        return;
+
+    const QRect anchor = parent->geometry();
+    const QSize size(std::max(window->width(), window->minimumWidth()), anchor.height());
+    QScreen *screen = parent->screen();
+    if (!screen)
+        screen = QGuiApplication::primaryScreen();
+    if (screen && window->screen() && window->screen() != screen
+        && screen->virtualSiblings().contains(window->screen()))
+        window->setScreen(screen);
+
+    const QRect available = screen ? screen->availableGeometry() : QRect();
+    const QRect target = ScreenFit::beside(anchor, size, available, onLeft, gap,
+                                           window->frameMargins());
+
+    int minHeight = parent->minimumHeight();
+    if (target.height() > 0 && minHeight > target.height())
+        minHeight = target.height();
+    window->setMinimumHeight(minHeight);
+    if (target.width() > 0 && window->minimumWidth() > target.width())
+        window->setMinimumWidth(target.width());
+    if (target.isValid())
+        window->setGeometry(target);
+    else
+        window->setPosition(target.topLeft());
+}
+
 bool MainCtx::videoSurfaceCanHaveFractionalPosition() const
 {
     assert(p_intf->p_compositor);

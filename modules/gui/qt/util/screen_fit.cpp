@@ -114,6 +114,29 @@ QRect fitted(const QRect &wanted, const QRect &available, const QMargins &frame)
     return outer.marginsRemoved(frame);
 }
 
+QRect beside(const QRect &anchor, const QSize &size, const QRect &available,
+             bool onLeft, int gap, const QMargins &frame)
+{
+    const int leftX = anchor.x() - size.width() - gap;
+    const int rightX = anchor.x() + anchor.width() + gap;
+    const int preferredX = onLeft ? leftX : rightX;
+    if (!available.isValid() || !size.isValid())
+        return QRect(QPoint(preferredX, anchor.y()), size);
+
+    const auto fitsHorizontally = [&](int posX)
+    {
+        const int outerLeft = posX - frame.left();
+        const int outerRight = posX + size.width() + frame.right() - 1;
+        return outerLeft >= available.left() && outerRight <= available.right();
+    };
+
+    const int oppositeX = onLeft ? rightX : leftX;
+    const int chosenX = fitsHorizontally(preferredX) ? preferredX
+                      : fitsHorizontally(oppositeX)  ? oppositeX
+                                                     : preferredX;
+    return fitted(QRect(QPoint(chosenX, anchor.y()), size), available, frame);
+}
+
 bool reachable(const QRect &geometry, const QRect &available)
 {
     if (!available.isValid() || !geometry.isValid())

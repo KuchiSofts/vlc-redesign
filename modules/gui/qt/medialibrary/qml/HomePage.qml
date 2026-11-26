@@ -609,8 +609,16 @@ Widgets.PageExt {
 
                 // Keep the model and the navigation item in the column, so a
                 // lower row can become visible or take focus before the swap.
-                active: MainCtx.firstFrameSwapped || focus || flickable.moving || scrollBar.interacting
-                        || (count > 0 && root._sectionMayBeVisible(favoritesHeader))
+                // Latch once wanted so upper rows gaining height before the
+                // swap cannot tear down and rebuild the view.
+                property bool _wanted
+                Binding on _wanted {
+                    when: MainCtx.firstFrameSwapped || favoritesRow.focus || flickable.moving || scrollBar.interacting
+                          || (favoritesRow.count > 0 && root._sectionMayBeVisible(favoritesHeader))
+                    value: true
+                    restoreMode: Binding.RestoreNone
+                }
+                active: _wanted
 
                 compactMargins: true
                 // (the design's own page: its card sizes win)
@@ -702,8 +710,14 @@ Widgets.PageExt {
             VideoAll {
                 id: newVideoRow
 
-                active: MainCtx.firstFrameSwapped || focus || flickable.moving || scrollBar.interacting
-                        || (count > 0 && root._sectionMayBeVisible(newVideoHeader))
+                property bool _wanted
+                Binding on _wanted {
+                    when: MainCtx.firstFrameSwapped || newVideoRow.focus || flickable.moving || scrollBar.interacting
+                          || (newVideoRow.count > 0 && root._sectionMayBeVisible(newVideoHeader))
+                    value: true
+                    restoreMode: Binding.RestoreNone
+                }
+                active: _wanted
 
                 AccessibleCompat.id: "newVideo"
 
@@ -793,8 +807,14 @@ Widgets.PageExt {
             MediaView {
                 id: newMusicRow
 
-                active: MainCtx.firstFrameSwapped || focus || flickable.moving || scrollBar.interacting
-                        || (count > 0 && root._sectionMayBeVisible(newMusicHeader))
+                property bool _wanted
+                Binding on _wanted {
+                    when: MainCtx.firstFrameSwapped || newMusicRow.focus || flickable.moving || scrollBar.interacting
+                          || (newMusicRow.count > 0 && root._sectionMayBeVisible(newMusicHeader))
+                    value: true
+                    restoreMode: Binding.RestoreNone
+                }
+                active: _wanted
 
                 compactMargins: true
                 // (the design's own page: its card sizes win)

@@ -353,6 +353,8 @@ public:
     bool firstFrameSwapped() const { return m_firstFrameSwapped; }
     void markFirstFrameSwapped()
     {
+        if (m_firstFrameSwapped)
+            return;
         m_firstFrameSwapped = true;
         emit firstFrameSwappedChanged();
     }

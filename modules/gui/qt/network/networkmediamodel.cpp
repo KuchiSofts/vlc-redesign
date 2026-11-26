@@ -297,12 +297,12 @@ public:
             if (m_sortOrder == Qt::SortOrder::DescendingOrder)
                 return [](const NetworkMediaItemPtr& a, const NetworkMediaItemPtr& b) -> bool {
                     if(isADir(a) != isADir(b)) return isADir(a);
-                    return a->fileSize < b->fileSize;
+                    return a->fileSize > b->fileSize;
                 };
             else
                 return [](const NetworkMediaItemPtr& a, const NetworkMediaItemPtr& b) -> bool {
                     if(isADir(a) != isADir(b)) return isADir(a);
-                    return a->fileSize > b->fileSize;
+                    return a->fileSize < b->fileSize;
                 };
         }
         else if (m_sortCriteria == "fileModified")
@@ -310,12 +310,12 @@ public:
             if (m_sortOrder == Qt::SortOrder::DescendingOrder)
                 return [](const NetworkMediaItemPtr& a, const NetworkMediaItemPtr& b) -> bool {
                     if(isADir(a) != isADir(b)) return isADir(a);
-                    return a->fileModified < b->fileModified;
+                    return a->fileModified > b->fileModified;
                 };
             else
                 return [](const NetworkMediaItemPtr& a, const NetworkMediaItemPtr& b) -> bool {
                     if(isADir(a) != isADir(b)) return isADir(a);
-                    return a->fileModified > b->fileModified;
+                    return a->fileModified < b->fileModified;
                 };
         }
         else if (m_sortCriteria == "duration")

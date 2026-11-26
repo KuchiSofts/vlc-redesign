@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Media Information save**: clearing the queue while Media Information is open now ends the edit and hides Save Metadata, so it can no longer write empty tags to the last file.
+
 ### Added
 
 - **Library search with / or Ctrl+K**: the search of the page shown opens.

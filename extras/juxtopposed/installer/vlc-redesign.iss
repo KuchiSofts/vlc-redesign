@@ -2870,16 +2870,19 @@ begin
   Result := ExpandConstant('{app}\vlc.exe');
 end;
 
-{ Only processes from this install folder and Windows session may be closed
-  or reopened. A copy in another session can still be using the shared files. }
-function FindRunning(var Pids: TProcessIds; var CmdLine: String; var OtherSession: Boolean): Boolean;
+{ Process ids of the VLC Redesign instances started from the install folder;
+  other VLCs are left alone. All of them go (an install for everyone replaces
+  the files every user runs), but only one in this Windows session (Here) is
+  reopened, with its command line: never another user's media, in this
+  user's session. }
+function FindRunning(var Pids: TProcessIds; var CmdLine: String; var Here: Boolean): Boolean;
 var
   Locator, Service, Procs, Proc: Variant;
   I, N: Integer;
   Session: Longword;
 begin
   Result := False;
-  OtherSession := False;
+  Here := False;
   SetArrayLength(Pids, 0);
   CmdLine := '';
   if not ProcessIdToSessionId(GetCurrentProcessId(), Session) then
@@ -2894,23 +2897,20 @@ begin
       if (not VarIsNull(Proc.ExecutablePath)) and (CompareText(Proc.ExecutablePath, AppExe()) = 0) then
       begin
         Result := True;
+        N := GetArrayLength(Pids);
+        SetArrayLength(Pids, N + 1);
+        Pids[N] := Proc.ProcessId;
         if (not VarIsNull(Proc.SessionId)) and (Proc.SessionId = Session) then
         begin
-          N := GetArrayLength(Pids);
-          SetArrayLength(Pids, N + 1);
-          Pids[N] := Proc.ProcessId;
+          Here := True;
           if not VarIsNull(Proc.CommandLine) then
             CmdLine := Proc.CommandLine;
-        end
-        else
-          OtherSession := True;
+        end;
       end;
     end;
   except
     Log('Cannot list processes: ' + GetExceptionMessage);
   end;
-  if OtherSession then
-    Log('VLC Redesign is running from this folder in another Windows session.');
 end;
 
 function RequestQuit(ProcessId, QuitMessage: Longword): Boolean;
@@ -2921,7 +2921,9 @@ begin
   Result := False;
   if QuitMessage = 0 then
     Exit;
-  { Search by PID so a hidden window works and other VLC installations are ignored. }
+  { Search by PID so a hidden window works and other VLC installations are
+    ignored. (A copy in another Windows session has no window here: it is
+    left to taskkill.) }
   Wnd := FindWindowEx(0, 0, 0, 0);
   while Wnd <> 0 do
   begin
@@ -3012,31 +3014,31 @@ var
   Pids: TProcessIds;
   CmdLine: String;
   I: Integer;
-  OtherSession: Boolean;
+  Here: Boolean;
 begin
-  Result := not FindRunning(Pids, CmdLine, OtherSession);
-  if Result or OtherSession then
+  Result := not FindRunning(Pids, CmdLine, Here);
+  if Result then
     Exit;
-  WasRunning := True;
+  WasRunning := Here;
   RunningArgs := ArgsOf(CmdLine);
   if (not WizardSilent) and (not IsUpdate()) then
   begin
     MsgBox(CustomMessage('Running'), mbInformation, MB_OK);
-    Result := not FindRunning(Pids, CmdLine, OtherSession);
-    if Result or OtherSession then
+    Result := not FindRunning(Pids, CmdLine, Here);
+    if Result then
       Exit;
   end;
   CloseProcesses(Pids, False);
   for I := 1 to 30 do
   begin
     Sleep(500);
-    Result := not FindRunning(Pids, CmdLine, OtherSession);
-    if Result or OtherSession then
+    Result := not FindRunning(Pids, CmdLine, Here);
+    if Result then
       Exit;
   end;
   CloseProcesses(Pids, True);
   Sleep(1000);
-  Result := not FindRunning(Pids, CmdLine, OtherSession);
+  Result := not FindRunning(Pids, CmdLine, Here);
 end;
 
 function PrepareToInstall(var NeedsRestart: Boolean): String;
@@ -5148,28 +5150,16 @@ procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
   Pids: TProcessIds;
   CmdLine: String;
-  OtherSession: Boolean;
+  Here: Boolean;
 begin
   if CurUninstallStep = usUninstall then
   begin
-    FindRunning(Pids, CmdLine, OtherSession);
-    while OtherSession do
-    begin
-      if UninstallSilent then
-        Abort;
-      if MsgBox(FmtMessage(SetupMessage(msgUninstallAppRunningError), ['{#AppName}']),
-                mbInformation, MB_OKCANCEL) <> IDOK then
-        Abort;
-      FindRunning(Pids, CmdLine, OtherSession);
-    end;
-    if GetArrayLength(Pids) > 0 then
+    if FindRunning(Pids, CmdLine, Here) then
     begin
       CloseProcesses(Pids, False);
       Sleep(3000);
-      FindRunning(Pids, CmdLine, OtherSession);
-      if OtherSession then
-        Abort;
-      CloseProcesses(Pids, True);
+      if FindRunning(Pids, CmdLine, Here) then
+        CloseProcesses(Pids, True);
     end;
     UnregisterFileTypes();
   end;

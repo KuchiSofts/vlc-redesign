@@ -691,8 +691,7 @@ void SubtitleSearch::noteProblem(QSettings *settings, const QString &id, Subtitl
 bool SubtitleSearch::serviceAsked(QSettings *settings, const SubtitleProviders::Provider &provider,
                                   const QStringList &languages)
 {
-    if (!serviceEnabled(settings, provider.id) || serviceRemoved(settings, provider.id)
-        || SubtitleProviders::coolingDown(provider.id))
+    if (!serviceEnabled(settings, provider.id) || serviceRemoved(settings, provider.id))
         return false;
     if (provider.required && !SubtitleProviders::hasRequired(provider, credentials(settings, provider.id)))
         return false;

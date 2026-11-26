@@ -134,10 +134,10 @@ QString failure(const QString &name, const HttpResponse &reply, Problem problem 
         return QStringLiteral("%1: %2").arg(name, qtr("Key refused: check it"));
     if (problem == Problem::LoginRefused)
         return QStringLiteral("%1: %2").arg(name, qtr("Sign-in refused: check it"));
+    if (problem == Problem::Busy || reply.status == 429)
+        return qtr("%1 asks to wait a moment (too many searches).").arg(name);
     if (reply.status == 0)
         return qtr("%1 didn't answer.").arg(name);
-    if (reply.status == 429)
-        return qtr("%1 asks to wait a moment (too many searches).").arg(name);
     return qtr("%1 didn't answer (%2).").arg(name).arg(reply.status);
 }
 

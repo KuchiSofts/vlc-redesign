@@ -151,8 +151,10 @@ public:
     static ServiceStatus serviceStatus(QSettings *settings, const QString &id);
     // what a search or a check found about the credentials (Problem::None: they work)
     static void noteProblem(QSettings *settings, const QString &id, SubtitleProviders::Problem problem);
-    // Whether a service is asked for these languages, taking its settings,
-    // credentials, supported languages and current cooldown into account.
+    // Whether a service is asked for these languages: on, not removed, with
+    // the credentials it needs, and one of its languages among them (one
+    // waiting out a 429 is still asked: askProvider() answers it as busy
+    // without a request)
     static bool serviceAsked(QSettings *settings, const SubtitleProviders::Provider &provider,
                              const QStringList &languages);
     // The subtitle chosen for a file ({ file, id, language, release,

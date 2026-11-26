@@ -102,7 +102,6 @@ Widgets.IconToolButton {
         background: Rectangle {
             ColorContext {
                 id: popupTheme
-                palette: control.colorContext.palette
                 colorSet: ColorContext.Window
             }
 

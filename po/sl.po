@@ -41054,3 +41054,20 @@ msgstr "Shrani kot M3U"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "Dodaj brez možnosti"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Barva poudarka %1 od %2"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Spremeni velikost stranske vrstice"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Spremeni velikost čakalne vrste"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Spremeni velikost plošče izvajalcev"

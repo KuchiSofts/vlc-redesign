@@ -40522,3 +40522,20 @@ msgstr "M3U로 저장"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "옵션 없이 추가"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "강조 색 %2개 중 %1번째"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "사이드바 크기 조정"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "재생 대기열 크기 조정"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "아티스트 패널 크기 조정"

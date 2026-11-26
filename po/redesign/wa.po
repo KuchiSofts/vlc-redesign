@@ -2925,10 +2925,10 @@ msgstr "Clair"
 msgid "System"
 msgstr "Sistinme"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Coleur d' acsint %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Coleur d' acsint %1 di %2"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3027,10 +3027,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Dji cwir des metaedjes a djoû..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Nou fitchî n' est aspougnî"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Nén moyén d' schaper les meta-dinêyes"
@@ -3056,10 +3052,18 @@ msgstr "Camera videyo"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Djivêye a djouwer k' egzistêye"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Novele djivêye a djouwer"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 media(s)"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5674,6 +5678,11 @@ msgstr ""
 msgid "Reset all"
 msgstr "Rimete tot a zero"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr ""
+"Çoula håyne li media k' on fwait, mins çoula pout tot fé aler pus londjin."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "&Mostrer l' djouweu d' media %1"
@@ -6740,6 +6749,10 @@ msgstr "Mostrer l' dressêye di naviaedje"
 msgid "Main display"
 msgstr "Håynaedje mwaisse"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Candjî l' grandeu del rote a djouwer"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Eterface mwaisse"
@@ -6868,6 +6881,10 @@ msgstr "Candjî l' bår di costé…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Disatetchî del bår di costé"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Candjî l' grandeu del bår di costé"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7332,6 +7349,10 @@ msgstr "Anêye di rexhowe"
 msgid "Album Title"
 msgstr "Tite di l' albom"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Candjî l' grandeu del panea des årtisses"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Djinre nén cnoxhou"
@@ -7368,6 +7389,10 @@ msgid ""
 msgstr ""
 "Nou boket trové\n"
 "Sayîz d' radjouter des sourdants"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Medias del djivêye a djouwer"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9264,6 +9289,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "Blouke di A a B"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

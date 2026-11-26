@@ -2936,10 +2936,10 @@ msgstr "Geal"
 msgid "System"
 msgstr "Córas"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Dath béime %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Dath béime %1 as %2"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3041,10 +3041,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Ag seiceáil le haghaidh nuashonruithe..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Níl comhad á chur in eagar"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Theip ar shábháil na meiteashonraí"
@@ -3070,10 +3066,18 @@ msgstr "Ceamara físe"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Seinnliosta atá ann cheana"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Seinnliosta nua"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "Meáin: %1"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5702,6 +5706,12 @@ msgstr ""
 msgid "Reset all"
 msgstr "Athshocraigh gach rud"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr ""
+"Taispeánann sé seo an meán a thagann as, ach d'fhéadfadh sé cúrsaí a "
+"mhoilliú."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "Taispeáin seinnteoir meán %1"
@@ -6800,6 +6810,10 @@ msgstr "Taispeáin an roghchlár nascleanúna"
 msgid "Main display"
 msgstr "Príomhthaispeáint"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Athraigh méid na scuaine seinnte"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Príomhchomhéadan"
@@ -6928,6 +6942,10 @@ msgstr "Cuir an barra taoibh in eagar…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Díghreamaigh ón mBarra Taoibh"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Athraigh méid an bharra taoibh"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7390,6 +7408,10 @@ msgstr "Bliain eisiúna"
 msgid "Album Title"
 msgstr "Teideal an albaim"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Athraigh méid phainéal na n-ealaíontóirí"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Seánra anaithnid"
@@ -7429,6 +7451,10 @@ msgid ""
 msgstr ""
 "Níor aimsíodh rianta\n"
 "Bain triail as foinsí a chur leis"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Meáin an tseinnliosta"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9353,6 +9379,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "Lúb A go B"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

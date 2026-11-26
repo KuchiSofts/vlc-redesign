@@ -850,6 +850,7 @@ modules/gui/qt/maininterface/qml/OpenFileSplitButton.qml
 modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml
 modules/gui/qt/maininterface/qml/UpdatePane.qml
 modules/gui/qt/maininterface/qml/SideNavigationPane.qml
+modules/gui/qt/maininterface/qml/Sidebar.qml
 modules/gui/qt/maininterface/qml/SidebarEditDialog.qml
 modules/gui/qt/maininterface/qml/SidebarItems.qml
 modules/gui/qt/maininterface/qml/VolumeMeter.qml

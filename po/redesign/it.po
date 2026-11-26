@@ -2965,10 +2965,10 @@ msgstr "Chiaro"
 msgid "System"
 msgstr "Sistema"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Colore principale %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Colore principale %1 di %2"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3067,10 +3067,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Ricerca aggiornamenti..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Nessun file in modifica"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Impossibile salvare i metadati"
@@ -3096,10 +3092,18 @@ msgstr "Videocamera"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Scaletta esistente"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Nuova scaletta"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 media"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5721,6 +5725,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "Ripristina tutto"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "Mostra il media risultante, ma può rallentare l'operazione."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "M&ostra il lettore multimediale %1"
@@ -6782,6 +6790,10 @@ msgstr "Mostra il menu di navigazione"
 msgid "Main display"
 msgstr "Visualizzazione principale"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Ridimensiona la coda di riproduzione"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Interfaccia principale"
@@ -6913,6 +6925,10 @@ msgstr "Modifica barra laterale…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Rimuovi dalla barra laterale"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Ridimensiona la barra laterale"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7369,6 +7385,10 @@ msgstr "Anno di uscita"
 msgid "Album Title"
 msgstr "Titolo dell'album"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Ridimensiona il pannello degli artisti"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Genere sconosciuto"
@@ -7405,6 +7425,10 @@ msgid ""
 msgstr ""
 "Nessuna traccia trovata\n"
 "Prova ad aggiungere delle sorgenti"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Media della scaletta"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9300,6 +9324,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "Ripetizione da A a B"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

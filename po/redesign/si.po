@@ -2850,10 +2850,10 @@ msgstr "ආලෝක"
 msgid "System"
 msgstr "පද්ධතිය"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "අවධාරණ වර්ණය %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "අවධාරණ වර්ණය %2 න් %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2951,10 +2951,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "යාවත්කාලීන සඳහා පරීක්ෂා කරමින්..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "ගොනුවක් සංස්කරණය නොකෙරේ"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "පාරදත්ත සුරැකීම අසමත් විය"
@@ -2980,10 +2976,18 @@ msgstr "වීඩියෝ කැමරාව"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "පවතින ධාවන ලැයිස්තුව"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "නව ධාවන ලැයිස්තුව"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "මාධ්‍ය %1"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5547,6 +5551,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "සියල්ල යළි සකසන්න"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "මෙය ප්‍රතිඵල මාධ්‍යය සංදර්ශනය කරයි, නමුත් ක්‍රියාකාරිත්වය මන්දගාමී කළ හැක."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 මාධ්‍ය ධාවකය &පෙන්වන්න"
@@ -6596,6 +6604,10 @@ msgstr "සංචාලන මෙනුව පෙන්වන්න"
 msgid "Main display"
 msgstr "ප්‍රධාන සංදර්ශකය"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "ධාවන පෝලිම ප්‍රතිප්‍රමාණ කරන්න"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "ප්‍රධාන අතුරුමුහුණත"
@@ -6719,6 +6731,10 @@ msgstr "පැති තීරුව සංස්කරණය කරන්න…
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "පැති තීරුවෙන් ගලවන්න"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "පැති තීරුව ප්‍රතිප්‍රමාණ කරන්න"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7164,6 +7180,10 @@ msgstr "නිකුත් කළ වර්ෂය"
 msgid "Album Title"
 msgstr "ඇල්බම මාතෘකාව"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "කලාකරුවන්ගේ පැනලය ප්‍රතිප්‍රමාණ කරන්න"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "නොදන්නා ප්‍රභේදය"
@@ -7200,6 +7220,10 @@ msgid ""
 msgstr ""
 "ගීත හමු නොවීය\n"
 "කරුණාකර මූලාශ්‍ර එක් කිරීමට උත්සාහ කරන්න"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "ධාවන ලැයිස්තු මාධ්‍ය"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9072,6 +9096,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A සිට B දක්වා ලූපය"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

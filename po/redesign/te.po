@@ -2845,10 +2845,10 @@ msgstr "లేత"
 msgid "System"
 msgstr "వ్యవస్థ"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "యాస రంగు %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "యాస రంగు %2 లో %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2946,10 +2946,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "నవీకరణల కోసం తనిఖీ చేస్తోంది..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "దస్త్రాన్ని సవరించడం లేదు"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "మెటాడేటాను భద్రపరచడంలో విఫలమైంది"
@@ -2975,10 +2971,18 @@ msgstr "వీడియో కెమెరా"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "ఉన్న ప్రదర్శనజాబితా"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "కొత్త ప్రదర్శనజాబితా"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 మాధ్యమాలు"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5539,6 +5543,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "అన్నీ తిరిగి అమర్చు"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "ఇది ఫలిత మాధ్యమాన్ని ప్రదర్శిస్తుంది, కానీ పనులను నెమ్మది చేయవచ్చు."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 మాధ్యమ ప్రదర్శకాన్ని చూపించు (&W)"
@@ -6582,6 +6590,10 @@ msgstr "నావిగేషన్ మెనూను చూపించు"
 msgid "Main display"
 msgstr "ప్రధాన ప్రదర్శన"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "ప్రదర్శన వరుస పరిమాణం మార్చు"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "ప్రధాన అంతరవర్తి"
@@ -6707,6 +6719,10 @@ msgstr "పక్కపట్టీని సవరించు…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "పక్కపట్టీ నుండి తొలగించు"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "పక్కపట్టీ పరిమాణం మార్చు"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7152,6 +7168,10 @@ msgstr "విడుదల సంవత్సరం"
 msgid "Album Title"
 msgstr "ఆల్బమ్ శీర్షిక"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "కళాకారుల ప్యానెల్ పరిమాణం మార్చు"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "తెలియని శైలి"
@@ -7188,6 +7208,10 @@ msgid ""
 msgstr ""
 "ట్రాక్‌లు ఏవీ కనబడలేదు\n"
 "దయచేసి మూలాలను జతచేసి చూడండి"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "ప్రదర్శనజాబితా మాధ్యమం"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9058,6 +9082,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A నుండి B ఆవృతం"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

@@ -2912,10 +2912,10 @@ msgstr "Gaišs"
 msgid "System"
 msgstr "Sistēma"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Akcenta krāsa %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Akcenta krāsa %1 no %2"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3015,10 +3015,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Pārbauda atjauninājumus..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Datne netiek rediģēta"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Neizdevās saglabāt metadatus"
@@ -3044,10 +3040,18 @@ msgstr "Videokamera"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Esošs atskaņošanas saraksts"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Jauns atskaņošanas saraksts"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "Mediji: %1"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5651,6 +5655,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "Atiestatīt visu"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "Tiek rādīts iegūtais medijs, bet tas var palēnināt darbību."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "Parādīt %1 mediju atskaņotāju"
@@ -6724,6 +6732,10 @@ msgstr "Rādīt navigācijas izvēlni"
 msgid "Main display"
 msgstr "Galvenais displejs"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Mainīt atskaņošanas rindas izmēru"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Galvenā saskarne"
@@ -6850,6 +6862,10 @@ msgstr "Rediģēt sānjoslu…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Atspraust no sānjoslas"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Mainīt sānjoslas izmēru"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7306,6 +7322,10 @@ msgstr "Izdošanas gads"
 msgid "Album Title"
 msgstr "Albuma nosaukums"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Mainīt izpildītāju paneļa izmēru"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Nezināms žanrs"
@@ -7343,6 +7363,10 @@ msgid ""
 msgstr ""
 "Nav atrasts neviens celiņš\n"
 "Lūdzu, pievienojiet avotus"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Atskaņošanas saraksta mediji"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9234,6 +9258,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "Cikls no A līdz B"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

@@ -41408,3 +41408,20 @@ msgstr "Gorde M3U gisa"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "Gehitu aukerarik gabe"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Nabarmentze-kolorea: %2 koloretatik %1.a"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Aldatu alboko barraren tamaina"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Aldatu erreprodukzio-ilararen tamaina"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Aldatu artisten panelaren tamaina"

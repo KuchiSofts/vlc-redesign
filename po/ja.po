@@ -40843,3 +40843,20 @@ msgstr "M3Uとして保存"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "オプションなしで追加"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "アクセントカラー %1（%2 色中）"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "サイドバーのサイズを変更"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "再生キューのサイズを変更"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "アーティストパネルのサイズを変更"

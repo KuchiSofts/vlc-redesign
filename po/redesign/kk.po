@@ -2903,10 +2903,10 @@ msgstr "Ашық"
 msgid "System"
 msgstr "Жүйелік"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Акцент түсі %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Акцент түсі %2 ішінен %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3005,10 +3005,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Жаңартуларды тексеру..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Файл өңделіп жатқан жоқ"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Метадеректерді сақтау сәтсіз аяқталды"
@@ -3034,10 +3030,18 @@ msgstr "Бейнекамера"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Бар ойнату тізімі"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Жаңа ойнату тізімі"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 медиа"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5633,6 +5637,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "Барлығын ысыру"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "Бұл нәтиже медианы көрсетеді, бірақ жұмысты баяулатуы мүмкін."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1-ді &көрсету"
@@ -6686,6 +6694,10 @@ msgstr "Шарлау мәзірін көрсету"
 msgid "Main display"
 msgstr "Негізгі көрініс"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Ойнату кезегінің өлшемін өзгерту"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Негізгі интерфейс"
@@ -6812,6 +6824,10 @@ msgstr "Бүйірлік тақтаны өңдеу…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Бүйірлік тақтадан босату"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Бүйірлік тақтаның өлшемін өзгерту"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7263,6 +7279,10 @@ msgstr "Шыққан жылы"
 msgid "Album Title"
 msgstr "Альбом атауы"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Орындаушылар тақтасының өлшемін өзгерту"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Белгісіз жанр"
@@ -7298,6 +7318,10 @@ msgid ""
 msgstr ""
 "Тректер табылмады\n"
 "Көздерді қосып көріңіз"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Ойнату тізімінің медиасы"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9174,6 +9198,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A-дан B-ге дейін қайталау"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

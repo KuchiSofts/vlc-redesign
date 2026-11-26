@@ -2920,10 +2920,10 @@ msgstr "Açık"
 msgid "System"
 msgstr "Sistem"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Vurgu rengi %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Vurgu rengi %1 / %2"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3023,10 +3023,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Güncellemeler denetleniyor..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Bir dosya düzenlenmiyor"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Üst veri kaydedilemedi"
@@ -3052,10 +3048,18 @@ msgstr "Video kamera"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Var Olan Oynatma Listesi"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Yeni Oynatma Listesi"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 Ortam"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5649,6 +5653,11 @@ msgstr ""
 msgid "Reset all"
 msgstr "Tümünü sıfırla"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr ""
+"Bu seçenek ortaya çıkan ortamı görüntüler ancak işlemleri yavaşlatabilir."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 &görüntülensin"
@@ -6701,6 +6710,10 @@ msgstr "Gezinti menüsünü göster"
 msgid "Main display"
 msgstr "Ana görünüm"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Oynatma kuyruğunu yeniden boyutlandır"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Ana arayüz"
@@ -6828,6 +6841,10 @@ msgstr "Kenar Çubuğunu Düzenle…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Kenar Çubuğundan Kaldır"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Kenar çubuğunu yeniden boyutlandır"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7281,6 +7298,10 @@ msgstr "Yayın Yılı"
 msgid "Album Title"
 msgstr "Albüm Adı"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Sanatçılar panelini yeniden boyutlandır"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Bilinmeyen tür"
@@ -7317,6 +7338,10 @@ msgid ""
 msgstr ""
 "Kayıt bulunamadı\n"
 "Kaynak eklemeyi deneyin"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Oynatma listesi ortamları"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9198,6 +9223,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A-B Çevrimi"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

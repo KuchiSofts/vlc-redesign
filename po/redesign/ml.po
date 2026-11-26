@@ -2873,10 +2873,10 @@ msgstr "ലൈറ്റ്"
 msgid "System"
 msgstr "സിസ്റ്റം"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "ആക്സന്റ് നിറം %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "ആക്സന്റ് നിറം %2 ൽ %1"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -2975,10 +2975,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "അപ്ഡേറ്റുകൾക്കായി പരിശോധിക്കുന്നു..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "ഒരു ഫയലും എഡിറ്റ് ചെയ്യുന്നില്ല"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "മെറ്റാഡാറ്റ സംരക്ഷിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -3004,10 +3000,18 @@ msgstr "വീഡിയോ ക്യാമറ"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "നിലവിലുള്ള പ്ലേലിസ്റ്റ്"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "പുതിയ പ്ലേലിസ്റ്റ്"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 മീഡിയ"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5592,6 +5596,10 @@ msgstr ""
 msgid "Reset all"
 msgstr "എല്ലാം റീസെറ്റ് ചെയ്യുക"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr "ഇത് ഫലമായുണ്ടാകുന്ന മീഡിയ പ്രദർശിപ്പിക്കുന്നു, പക്ഷേ പ്രവർത്തനം മന്ദഗതിയിലാക്കിയേക്കാം."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "%1 മീഡിയാ പ്ലെയര്‍ &കാണിക്കുക"
@@ -6646,6 +6654,10 @@ msgstr "നാവിഗേഷൻ മെനു കാണിക്കുക"
 msgid "Main display"
 msgstr "പ്രധാന ഡിസ്പ്ലേ"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "പ്ലേ ക്യൂവിന്റെ വലുപ്പം മാറ്റുക"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "പ്രധാന ഇന്റർഫേസ്"
@@ -6773,6 +6785,10 @@ msgstr "സൈഡ്ബാർ തിരുത്തുക…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "സൈഡ്ബാറിൽ നിന്ന് അൺപിൻ ചെയ്യുക"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "സൈഡ്ബാറിന്റെ വലുപ്പം മാറ്റുക"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7222,6 +7238,10 @@ msgstr "റിലീസ് വർഷം"
 msgid "Album Title"
 msgstr "ആൽബം തലക്കെട്ട്"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "ആർട്ടിസ്റ്റുകളുടെ പാനലിന്റെ വലുപ്പം മാറ്റുക"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "അജ്ഞാത വിഭാഗം"
@@ -7258,6 +7278,10 @@ msgid ""
 msgstr ""
 "ട്രാക്കുകളൊന്നും കണ്ടെത്തിയില്ല\n"
 "ദയവായി ഉറവിടങ്ങൾ ചേർക്കാൻ ശ്രമിക്കുക"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "പ്ലേലിസ്റ്റ് മീഡിയ"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9138,6 +9162,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "A മുതൽ B വരെ ലൂപ്പ്"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

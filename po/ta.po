@@ -39685,3 +39685,20 @@ msgstr "M3U ஆகச் சேமி"
 #: modules/gui/qt/dialogs/dialogs_provider.cpp
 msgid "Add without options"
 msgstr "விருப்பங்கள் இல்லாமல் சேர்"
+
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "உச்சரிப்பு நிறம் %2 இல் %1"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "பக்கப்பட்டியின் அளவை மாற்று"
+
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "இயக்க வரிசையின் அளவை மாற்று"
+
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "கலைஞர்கள் பலகத்தின் அளவை மாற்று"

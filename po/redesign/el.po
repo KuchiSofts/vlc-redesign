@@ -2951,10 +2951,10 @@ msgstr "Φωτεινό"
 msgid "System"
 msgstr "Σύστημα"
 
-#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:337
-#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:222
-msgid "Accent color %1"
-msgstr "Χρώμα έμφασης %1"
+#: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml
+#: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml
+msgid "Accent color %1 of %2"
+msgstr "Χρώμα έμφασης %1 από %2"
 
 #: modules/gui/qt/dialogs/firstrun/qml/WelcomeStep.qml:55
 msgid "Welcome to %1!"
@@ -3054,10 +3054,6 @@ msgstr ""
 msgid "Checking for updates..."
 msgstr "Έλεγχος για ενημερώσεις..."
 
-#: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:269
-msgid "Not editing a file"
-msgstr "Δεν γίνεται επεξεργασία αρχείου"
-
 #: modules/gui/qt/dialogs/mediainfo/info_panels.cpp:294
 msgid "Failed to save metadata"
 msgstr "Αποτυχία αποθήκευσης μεταδεδομένων"
@@ -3083,10 +3079,18 @@ msgstr "Βιντεοκάμερα"
 msgid "JACK Audio Connection Kit"
 msgstr "JACK Audio Connection Kit"
 
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:64
+msgid "Existing Playlist"
+msgstr "Υπάρχουσα λίστα αναπαραγωγής"
+
 #: modules/gui/qt/dialogs/playlists/playlists.cpp:87
 #: modules/gui/qt/medialibrary/qml/PlaylistCreateDialog.qml:34
 msgid "New Playlist"
 msgstr "Νέα λίστα αναπαραγωγής"
+
+#: modules/gui/qt/dialogs/playlists/playlists.cpp:136
+msgid "%1 Media"
+msgstr "%1 πολυμέσα"
 
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:372
 msgid ""
@@ -5719,6 +5723,12 @@ msgstr ""
 msgid "Reset all"
 msgstr "Επαναφορά όλων"
 
+#: modules/gui/qt/dialogs/sout/convert.cpp:119
+msgid "This displays the resulting media, but can slow things down."
+msgstr ""
+"Εμφανίζει το πολυμέσο που προκύπτει, αλλά μπορεί να επιβραδύνει τη "
+"διαδικασία."
+
 #: modules/gui/qt/dialogs/systray/systray.cpp:206
 msgid "Sho&w %1"
 msgstr "Προβο&λή αναπαραγωγού πολυμέσων %1"
@@ -6805,6 +6815,10 @@ msgstr "Εμφάνιση μενού πλοήγησης"
 msgid "Main display"
 msgstr "Κύρια προβολή"
 
+#: modules/gui/qt/maininterface/qml/MainDisplay.qml
+msgid "Resize the play queue"
+msgstr "Προσαρμογή μεγέθους ουράς αναπαραγωγής"
+
 #: modules/gui/qt/maininterface/qml/MainInterface.qml:49
 msgid "Main interface"
 msgstr "Κύρια διεπαφή"
@@ -6937,6 +6951,10 @@ msgstr "Επεξεργασία πλευρικής γραμμής…"
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:79
 msgid "Unpin from Sidebar"
 msgstr "Ξεκαρφίτσωμα από την πλευρική γραμμή"
+
+#: modules/gui/qt/maininterface/qml/Sidebar.qml
+msgid "Resize the sidebar"
+msgstr "Προσαρμογή μεγέθους πλευρικής γραμμής"
 
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:34
 msgid "Reset to Default"
@@ -7395,6 +7413,10 @@ msgstr "Έτος κυκλοφορίας"
 msgid "Album Title"
 msgstr "Τίτλος άλμπουμ"
 
+#: modules/gui/qt/medialibrary/qml/MusicArtistsAlbums.qml
+msgid "Resize the artists pane"
+msgstr "Προσαρμογή μεγέθους πλαισίου καλλιτεχνών"
+
 #: modules/gui/qt/medialibrary/qml/MusicGenres.qml:180
 msgid "Unknown genre"
 msgstr "Άγνωστο είδος"
@@ -7431,6 +7453,10 @@ msgid ""
 msgstr ""
 "Δεν βρέθηκαν κομμάτια\n"
 "Δοκιμάστε να προσθέσετε πηγές"
+
+#: modules/gui/qt/medialibrary/qml/PlaylistMedia.qml:32
+msgid "Playlist media"
+msgstr "Πολυμέσα λίστας αναπαραγωγής"
 
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:74
 msgid "Add files"
@@ -9339,6 +9365,10 @@ msgstr ""
 "%1\n"
 "%2\n"
 "%3"
+
+#: modules/gui/qt/player/qml/controlbarcontrols/AtoBButton.qml:29
+msgid "A to B Loop"
+msgstr "Βρόχος από A έως B"
 
 #: modules/gui/qt/player/qml/controlbarcontrols/DurationWidget.qml:13
 msgid "Duration unavailable"

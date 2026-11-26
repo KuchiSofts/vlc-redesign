@@ -51,9 +51,9 @@ Rectangle {
             root.reminder = null
             root.undoSource = result.found > result.before ? result.id : ""
             root.text = result.found > result.before
-                        ? qsTr("Guide found for %1 of %2 channel", "Guide found for %1 of %2 channels", result.total).arg(result.found).arg(result.total)
+                        ? qsTr("Guide found for %1 of %2 channels").arg(result.found).arg(result.total)
                         : result.error ? qsTr("The list of channels to match could not be downloaded")
-                        : result.before > 0 ? qsTr("Guide for %1 of %2 channel", "Guide for %1 of %2 channels", result.total).arg(result.before).arg(result.total)
+                        : result.before > 0 ? qsTr("Guide for %1 of %2 channels").arg(result.before).arg(result.total)
                         : qsTr("No free guide was found for the channels of %1").arg(result.name)
             hideTimer.interval = result.found > result.before ? 15000 : 6000
             hideTimer.restart()

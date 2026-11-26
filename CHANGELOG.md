@@ -33,7 +33,6 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   settings, window position and queue.
 - **A file opened from Explorer**: the library's rescan waits 10 seconds.
 - **Faster start**: the Inter font is read once.
-- **Translations**: the counts of channels and videos take each language's plural forms.
 
 ### Fixed
 
@@ -73,8 +72,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ### Technical
 
-- Forty-five pull requests by a contributor (#177 to #186, #193 to #206, #208, #209, #214 to #216, #218, #220 to
-  #234), each read in full, the fault looked for in 0.8.4 and the change shown before and after where it can be
+- Forty-four pull requests by a contributor (#177 to #186, #193 to #203, #205, #206, #208, #209, #214 to #216,
+  #218, #220 to #234), each read in full, the fault looked for in 0.8.4 and the change shown before and after where it can be
   seen, with our fixes on seven of them: the shortcuts come back whenever the Compact Library's search loses the
   keyboard (#180), Enter on Add item and one focus rule for pins and pages (#184), the Compact Library's rows as
   listed exceptions of the light map (#202), a translation again on every direction change (#206), setup still

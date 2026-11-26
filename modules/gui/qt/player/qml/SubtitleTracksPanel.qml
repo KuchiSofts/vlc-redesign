@@ -263,8 +263,8 @@ ColumnLayout {
                     if (SubtitleFinder.loadingId !== "")
                         return qsTr("Downloading…")
                     return SubtitleFinder.matchTitle !== ""
-                           ? qsTr("%1 · %2 found", "%1 · %2 found", SubtitleFinder.results.length).arg(SubtitleFinder.matchTitle).arg(SubtitleFinder.results.length)
-                           : qsTr("%1 found for this file", "%1 found for this file", SubtitleFinder.results.length).arg(SubtitleFinder.results.length)
+                           ? qsTr("%1 · %2 found").arg(SubtitleFinder.matchTitle).arg(SubtitleFinder.results.length)
+                           : qsTr("%1 found for this file").arg(SubtitleFinder.results.length)
                 case SubtitleFinder.NotFound:
                 case SubtitleFinder.Failed: return SubtitleFinder.errorText
                 default:

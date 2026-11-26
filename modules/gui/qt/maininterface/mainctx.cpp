@@ -1875,10 +1875,9 @@ void MainCtx::placeWindowBesideParent(QWindow *window, bool onLeft, int gap)
     const QRect target = ScreenFit::beside(anchor, size, available, onLeft, gap,
                                            window->frameMargins());
 
-    int minHeight = parent->minimumHeight();
-    if (target.height() > 0 && minHeight > target.height())
-        minHeight = target.height();
-    window->setMinimumHeight(minHeight);
+    // (the window's own minimum stands; only one that would not fit the place is lowered)
+    if (target.height() > 0 && window->minimumHeight() > target.height())
+        window->setMinimumHeight(target.height());
     if (target.width() > 0 && window->minimumWidth() > target.width())
         window->setMinimumWidth(target.width());
     if (target.isValid())

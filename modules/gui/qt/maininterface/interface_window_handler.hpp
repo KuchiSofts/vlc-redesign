@@ -76,6 +76,8 @@ private:
     QPointer<PlayerController> m_player;
     QTimer m_spaceHoldTimer;
     bool m_spacePressed = false;
+    // the boss key minimized the window after pausing: not a pause of "pause when minimized"
+    bool m_bossPaused = false;
     bool m_spaceTapPending = false;
 
 protected:

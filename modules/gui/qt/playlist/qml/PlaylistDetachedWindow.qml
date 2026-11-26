@@ -46,8 +46,9 @@ Window {
     readonly property real _radius: VLCStyle.dp(6, VLCStyle.scale)
     readonly property real _grip: VLCStyle.dp(5, VLCStyle.scale)
 
-    // the card's width in the design, and no narrower than its queue needs
-    width: VLCStyle.dp(400, VLCStyle.scale) + 2 * _frame
+    // the card's width in the design (set once, in Component.onCompleted: as
+    // a binding, a change of scale took the width the user gave it back), and
+    // no narrower than its queue needs
     minimumWidth: Math.max(VLCStyle.dp(320, VLCStyle.scale),
                            playlistView ? playlistView.minimumWidth : 0) + 2 * _frame
     minimumHeight: VLCStyle.redesign.topbarHeight + VLCStyle.dp(200, VLCStyle.scale)
@@ -85,6 +86,7 @@ Window {
                 console.debug("MainCtx::createWindowWithoutRedirectionSurface(): returned false for window", this)
         }
 
+        width = VLCStyle.dp(400, VLCStyle.scale) + 2 * _frame
         _componentCompleted = true
     }
 
@@ -138,28 +140,37 @@ Window {
             Accessible.ignored: true
         }
 
-        // dragged, the bar moves the window
+        // dragged, the bar moves the window (it takes no press over: not
+        // from Close, not from the grip along the top)
         DragHandler {
             target: null
-            grabPermissions: TapHandler.CanTakeOverFromAnything
+            grabPermissions: PointerHandler.TakeOverForbidden
             onActiveChanged: {
                 if (active)
                     root.startSystemMove()
             }
         }
 
-        Widgets.CSDWindowButton {
-            id: closeButton
+    }
 
-            anchors.right: parent.right
-            height: parent.height
-            color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
-            hoverColor: "#c42b1c"
-            isThemeDark: VLCStyle.palette.isDark
-            iconSource: "qrc:///redesign/player/close.svg"
-            description: qsTr("Close")
-            onClicked: root.close()
+    // Close, as the main window's. Above the frame's grips (z 2 and 3): they
+    // covered its top and its outer edge, where a click then resized
+    Widgets.CSDWindowButton {
+        id: closeButton
+
+        z: 4
+        anchors {
+            right: parent.right
+            top: parent.top
+            margins: root._frame
         }
+        height: titleBar.height
+        color: VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e")
+        hoverColor: "#c42b1c"
+        isThemeDark: VLCStyle.palette.isDark
+        iconSource: "qrc:///redesign/player/close.svg"
+        description: qsTr("Close")
+        onClicked: root.close()
     }
 
     Loader {
@@ -180,7 +191,9 @@ Window {
         onLoaded: {
             item.windowed = true
             item.focus = true
-            item.Navigation.cancelAction = () => { root.close() }
+            // Escape closes the window: from the queue's pane, where the
+            // list's keys end (the card itself is not on their way)
+            item.queue.Navigation.cancelAction = () => { root.close() }
         }
     }
 
@@ -212,7 +225,46 @@ Window {
             z: corner ? 3 : 2
             cursorShape: modelData.shape
             acceptedButtons: Qt.LeftButton
-            onPressed: root.startSystemResize(edge)
+
+            // Where the system does not resize a window without a frame
+            // (macOS), the grip does it: from the pointer's place on the screen
+            property bool manual: false
+            property point pressedAt
+            property rect startGeometry
+
+            onPressed: (mouse) => {
+                manual = !root.startSystemResize(edge)
+                if (manual) {
+                    pressedAt = mapToGlobal(mouse.x, mouse.y)
+                    startGeometry = Qt.rect(root.x, root.y, root.width, root.height)
+                }
+            }
+            onPositionChanged: (mouse) => {
+                if (!manual || !pressed)
+                    return
+                const now = mapToGlobal(mouse.x, mouse.y)
+                const dx = now.x - pressedAt.x
+                const dy = now.y - pressedAt.y
+                let w = startGeometry.width
+                let h = startGeometry.height
+                if (edge & Qt.LeftEdge)
+                    w = Math.max(root.minimumWidth, startGeometry.width - dx)
+                else if (edge & Qt.RightEdge)
+                    w = Math.max(root.minimumWidth, startGeometry.width + dx)
+                if (edge & Qt.TopEdge)
+                    h = Math.max(root.minimumHeight, startGeometry.height - dy)
+                else if (edge & Qt.BottomEdge)
+                    h = Math.max(root.minimumHeight, startGeometry.height + dy)
+                // (the far edge stays where it was)
+                if (edge & Qt.LeftEdge)
+                    root.x = startGeometry.x + startGeometry.width - w
+                if (edge & Qt.TopEdge)
+                    root.y = startGeometry.y + startGeometry.height - h
+                root.width = w
+                root.height = h
+            }
+            onReleased: manual = false
+            onCanceled: manual = false
         }
     }
 }

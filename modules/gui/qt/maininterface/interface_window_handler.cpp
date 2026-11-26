@@ -464,12 +464,17 @@ bool InterfaceWindowHandler::eventFilter(QObject*, QEvent* event)
 
         if( newState & Qt::WindowMinimized )
         {
-            if( !( oldState & Qt::WindowMinimized ) && m_player &&
+            // (not after the boss key: it paused by itself, and that pause stays when the window is back)
+            if( !( oldState & Qt::WindowMinimized ) && m_player && !m_bossPaused &&
                 var_InheritBool( p_intf, "qt-pause-minimized" ) )
                 m_player->pauseForMinimize();
         }
         else if( oldState & Qt::WindowMinimized && m_player )
-            m_player->resumeFromMinimize();
+        {
+            if( !m_bossPaused )
+                m_player->resumeFromMinimize();
+            m_bossPaused = false;
+        }
         break;
     }
     case QEvent::KeyPress:
@@ -780,6 +785,7 @@ void InterfaceWindowHandler::setBoss()
     }
     else
     {
+        m_bossPaused = true;
         setInterfaceMinimized();
     }
 }

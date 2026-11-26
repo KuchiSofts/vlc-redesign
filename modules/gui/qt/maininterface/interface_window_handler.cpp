@@ -715,7 +715,7 @@ void InterfaceWindowHandler::toggleWindowVisibility(bool _requestActivate)
             requestActivate();
         break;
     case QWindow::Minimized:
-        setInterfaceNormal();
+        restoreInterfaceFromMinimized();
         if (_requestActivate)
             requestActivate();
         break;
@@ -738,7 +738,7 @@ void InterfaceWindowHandler::setInterfaceVisible(bool visible, bool _requestActi
                 requestActivate();
             break;
         case QWindow::Minimized:
-            setInterfaceNormal();
+            restoreInterfaceFromMinimized();
             if (_requestActivate)
                 requestActivate();
             break;
@@ -775,7 +775,7 @@ void InterfaceWindowHandler::setRaise()
         setInterfaceShown();
         break;
     case QWindow::Minimized:
-        setInterfaceNormal();
+        restoreInterfaceFromMinimized();
         break;
     default:
         break;
@@ -837,6 +837,11 @@ void InterfaceWindowHandler::setInterfaceShown()
 void InterfaceWindowHandler::setInterfaceMinimized()
 {
     setWindowState(m_window, Qt::WindowMinimized);
+}
+
+void InterfaceWindowHandler::restoreInterfaceFromMinimized()
+{
+    m_window->setWindowStates(m_window->windowStates() & ~Qt::WindowMinimized);
 }
 
 void InterfaceWindowHandler::setInterfaceMaximized()

@@ -79,6 +79,7 @@ private:
     bool m_spaceTapPending = false;
 
 protected:
+    void restoreInterfaceFromMinimized();
     virtual void updateCSDWindowSettings();
     // the room of the traffic lights in the top bar (macOS), MainCtx's
     void updateWindowButtonsInset();

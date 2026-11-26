@@ -414,6 +414,15 @@ HttpRequest githubRequest(const QString &url, qsizetype maxBytes, int timeoutMs)
     // GitHub refuses API requests without a User-Agent
     request.headers.append(qMakePair(QByteArray("User-Agent"), QByteArray("VLC-Redesign/" VLC_REDESIGN_VERSION)));
     request.headers.append(qMakePair(QByteArray("Accept"), QByteArray("application/vnd.github+json")));
+    // (the CI's test of the update through the app, #117: the shared addresses of the CI's machines soon reach
+    // GitHub's limit for anonymous API requests. With the test switch on, the workflow's own token goes with the
+    // requests to GitHub's API, and to nothing else)
+    if (qEnvironmentVariable("VLC_REDESIGN_UPDATE_TEST_AUTO") == QLatin1String("1")
+        && request.url.scheme() == QLatin1String("https") && request.url.host() == QLatin1String("api.github.com")) {
+        const QByteArray token = qgetenv("VLC_REDESIGN_UPDATE_TEST_TOKEN");
+        if (!token.isEmpty() && token.size() < 512 && !token.contains('\n') && !token.contains('\r'))
+            request.headers.append(qMakePair(QByteArray("Authorization"), QByteArray("Bearer ") + token));
+    }
     return request;
 }
 
@@ -643,6 +652,25 @@ RedesignUpdater::RedesignUpdater(qt_intf_t *intf, QObject *parent)
     findStagedUpdate();
     resumeAfterUpdate();
     scheduleStartupCheck();
+
+    // The CI's test of the update through the app (#117, extras/juxtopposed/ci/macos-app-update-test.sh): with
+    // VLC_REDESIGN_UPDATE_TEST_AUTO=1 the check, Update now and Restart now are pressed by themselves, so the
+    // app's own updater (its helper, the child process it waits for) runs as a user starts it. The update is
+    // checked as always (the release key's signature of the checksums).
+    if (qEnvironmentVariable("VLC_REDESIGN_UPDATE_TEST_AUTO") == QLatin1String("1")) {
+        msg_Info(m_intf, "update test: the check, Update now and Restart now go by themselves");
+        connect(this, &RedesignUpdater::stateChanged, this, [this]() {
+            msg_Info(m_intf, "update test: state %d", int(m_state));
+            if (m_state == Available && canInstall())
+                QTimer::singleShot(500, this, &RedesignUpdater::install);
+            else if (m_state == Ready)
+                QTimer::singleShot(500, this, &RedesignUpdater::restartNow);
+        });
+        QTimer::singleShot(3000, this, [this]() {
+            if (m_state == Idle || m_state == UpToDate)
+                check(true);
+        });
+    }
 }
 
 // A few seconds after the start, unless the user is yet to say whether VLC
@@ -681,7 +709,14 @@ RedesignUpdater::~RedesignUpdater()
 
 QString RedesignUpdater::currentVersion() const
 {
-    return QStringLiteral(VLC_REDESIGN_VERSION);
+    // (the CI's test of the update through the app, #117: a build that takes itself for an older version,
+    // VLC_REDESIGN_UPDATE_TEST_AS=0.8.6, so that the latest release is an update for it)
+    static const QString testAs = []() {
+        const QString as = qEnvironmentVariable("VLC_REDESIGN_UPDATE_TEST_AS");
+        return as.size() <= 16 && QRegularExpression(QStringLiteral("^\\d+\\.\\d+\\.\\d+$")).match(as).hasMatch()
+               ? as : QString();
+    }();
+    return testAs.isEmpty() ? QStringLiteral(VLC_REDESIGN_VERSION) : testAs;
 }
 
 QString RedesignUpdater::repositoryUrl() const

@@ -125,6 +125,12 @@ jobs:
       - name: Launch test
         run: bash extras/juxtopposed/ci/macos-smoke.sh "$(ls "$OUT_DIR"/*.dmg | head -n 1)" "$RUNNER_TEMP/smoke"
 
+      # (#117) the update of an installed copy through the app itself, to the latest release
+      - name: Update through the app
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash extras/juxtopposed/ci/macos-app-update-test.sh "$(ls "$OUT_DIR"/*.dmg | head -n 1)" "$RUNNER_TEMP/app-update"
+
       - name: Upload the logs
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
@@ -138,4 +144,7 @@ jobs:
             ${{ runner.temp }}/smoke/*.out
             ${{ runner.temp }}/smoke/*.png
             ${{ runner.temp }}/smoke/crashes
+            ${{ runner.temp }}/app-update/*.txt
+            ${{ runner.temp }}/app-update/*.log
+            ${{ runner.temp }}/app-update/*.out
           retention-days: 7

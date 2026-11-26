@@ -62,10 +62,6 @@ typedef struct
 
 #define CDG_PACKET_SIZE 24u
 
-#define CDG_COLOR_R_SHIFT  0
-#define CDG_COLOR_G_SHIFT  8
-#define CDG_COLOR_B_SHIFT 16
-
 /*****************************************************************************
  * Local prototypes
  *****************************************************************************/
@@ -111,7 +107,7 @@ static int Open( vlc_object_t *p_this )
     /* Set output properties
      * TODO maybe it would be better to use RV16 or RV24 ? */
     p_dec->fmt_out.i_codec =
-    p_dec->fmt_out.video.i_chroma = VLC_CODEC_XBGR;
+    p_dec->fmt_out.video.i_chroma = VLC_CODEC_RGBX;
     p_dec->fmt_out.video.i_width = CDG_DISPLAY_WIDTH;
     p_dec->fmt_out.video.i_height = CDG_DISPLAY_HEIGHT;
     p_dec->fmt_out.video.i_sar_num = 1;
@@ -170,6 +166,7 @@ static int Decode( decoder_t *p_dec, block_t *p_block )
         p_pic = decoder_NewPicture( p_dec );
         if( !p_pic )
             goto exit;
+        p_pic->b_progressive = true;
 
         Render( p_sys, p_pic );
         p_pic->date = p_block->i_pts != VLC_TICK_INVALID ? p_block->i_pts : p_block->i_dts;
@@ -390,16 +387,13 @@ static int DecodePacket( decoder_sys_t *p_cdg, uint8_t *p_buffer, int i_buffer )
     return 0;
 }
 
-static void RenderPixel( picture_t *p_picture, int x, int y, uint32_t c )
+static void RenderPixel( picture_t *p_picture, int x, int y, const uint8_t rgb[3] )
 {
-    const int i_plane = 0;
-    const int i_pitch = p_picture->p[i_plane].i_pitch;
-    uint32_t *s = (uint32_t*)&p_picture->p[i_plane].p_pixels[y*i_pitch + x*sizeof(uint32_t)];
-    *s = c;
-}
-static uint32_t RenderRGB( int r, int g, int b )
-{
-    return ( r << CDG_COLOR_R_SHIFT ) | ( g << CDG_COLOR_G_SHIFT ) | ( b << CDG_COLOR_B_SHIFT );
+    const int i_pitch = p_picture->p[0].i_pitch;
+    uint8_t *p = &p_picture->p[0].p_pixels[y*i_pitch + 4*x];
+    p[0] = rgb[0];
+    p[1] = rgb[1];
+    p[2] = rgb[2];
 }
 
 static int Render( decoder_sys_t *p_cdg, picture_t *p_picture )
@@ -411,13 +405,64 @@ static int Render( decoder_sys_t *p_cdg, picture_t *p_picture )
             const int sx = x + p_cdg->i_offseth + CDG_SCREEN_BORDER_WIDTH;
             const int sy = y + p_cdg->i_offsetv + CDG_SCREEN_BORDER_HEIGHT;
             uint8_t cidx = p_cdg->p_screen[sy*CDG_SCREEN_PITCH +sx];
-            uint8_t r = p_cdg->color[cidx][0];
-            uint8_t g = p_cdg->color[cidx][1];
-            uint8_t b = p_cdg->color[cidx][2];
 
-            RenderPixel( p_picture, x, y, RenderRGB( r, g, b ) );
+            RenderPixel( p_picture, x, y, p_cdg->color[cidx] );
         }
     }
     return 0;
 }
 
+#ifdef ENABLE_TEST
+#include "../../test/modules/codec/decoder.h"
+
+/* Load colour table low (instruction 30): colour 0, which fills the initial
+ * screen, becomes R,G,B 0xf,0x8,0x1 */
+static const uint8_t test_load_colours[CDG_PACKET_SIZE] = {
+    0x09, 30, 0, 0, 0xf << 2 | 0x8 >> 2, (0x8 & 0x3) << 4 | 0x1,
+};
+/* Only pushes the previous packet out of the copy packetizer */
+static const uint8_t test_nop[CDG_PACKET_SIZE];
+
+static const struct decoder_test_packet test_packets[] = {
+    DECODER_TEST_PACKET(test_load_colours),
+    DECODER_TEST_PACKET(test_nop),
+};
+
+static int TestCheckPicture( const picture_t *pic )
+{
+    int failures = 0;
+
+    if( pic->format.i_chroma != VLC_CODEC_RGBX )
+    {
+        decoder_test_log( "FAIL: cdg: chroma %4.4s, expected RGBX\n",
+                          (const char *)&pic->format.i_chroma );
+        failures++;
+    }
+    if( !pic->b_progressive )
+    {
+        decoder_test_log( "FAIL: cdg: the picture is not progressive\n" );
+        failures++;
+    }
+
+    const uint8_t *px = pic->p[0].p_pixels;
+    if( px[0] != 0xf0 || px[1] != 0x80 || px[2] != 0x10 )
+    {
+        decoder_test_log( "FAIL: cdg: pixel %02x %02x %02x, expected f0 80 10\n",
+                          px[0], px[1], px[2] );
+        failures++;
+    }
+    return failures;
+}
+
+const struct decoder_test decoder_tests[] = {
+    {
+        .name = "cdg",
+        .codec = VLC_CODEC_CDG,
+        .packets = test_packets,
+        .packet_count = ARRAY_SIZE(test_packets),
+        .picture_count = 1,
+        .check_picture = TestCheckPicture,
+    },
+    { .name = NULL },
+};
+#endif

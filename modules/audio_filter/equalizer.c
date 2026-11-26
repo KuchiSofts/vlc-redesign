@@ -90,8 +90,8 @@ vlc_module_begin ()
               TWOPASS_LONGTEXT )
     add_bool( "equalizer-vlcfreqs", true, VLC_BANDS_TEXT,
               VLC_BANDS_LONGTEXT )
-    add_float( "equalizer-preamp", 12.0f, PREAMP_TEXT,
-               PREAMP_LONGTEXT )
+    add_float_with_range( "equalizer-preamp", 12.0f, -20.0f, 20.0f,
+                          PREAMP_TEXT, PREAMP_LONGTEXT )
     set_callback( Open )
     add_shortcut( "equalizer" )
 vlc_module_end ()

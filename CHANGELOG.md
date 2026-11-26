@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Service breadcrumbs**: inside a service's folders (Discover > Services), the address bar shows the service and the folders above again, and they can be clicked.
+
 ## [0.8.5] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.4): forty-four changes

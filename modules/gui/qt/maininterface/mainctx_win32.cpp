@@ -940,7 +940,7 @@ void InterfaceWindowHandlerWin32::toggleWindowVisibility(bool _requestActivate)
             requestActivate();
         break;
     case QWindow::Minimized:
-        setInterfaceMinimized();
+        restoreInterfaceFromMinimized();
         if (_requestActivate)
             requestActivate();
         break;

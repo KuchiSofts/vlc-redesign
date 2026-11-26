@@ -88,7 +88,7 @@ public:
 public slots:
     virtual void remove( const QUrl &mrl ) = 0;
     virtual void add( const QUrl &mrl ) = 0;
-    virtual void reload( const int row );
+    virtual void reload( const QUrl &mrl );
 
     void removeAt( int index );
 

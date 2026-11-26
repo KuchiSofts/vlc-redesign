@@ -63,10 +63,7 @@ FocusScope {
     Timer {
         id: resumeTimeout
         interval: 10000
-        onTriggered: {
-            resumePanel.visible = false
-            hidden()
-        }
+        onTriggered: hideResumePanel()
     }
 
     Connections {

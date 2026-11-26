@@ -124,6 +124,8 @@ Dialog {
     function discardAndClose() {
         config.cancel()
         inlineEffects.cancel()
+        subtitleLanguages.begin()
+        subtitleServices.begin()
         requestClose()
     }
 

@@ -128,14 +128,13 @@ QHash<int, QByteArray> MLFoldersBaseModel::roleNames() const
     };
 }
 
-void MLFoldersBaseModel::reload(const int row)
+void MLFoldersBaseModel::reload(const QUrl &mrl)
 {
-    if (!m_mediaLib || row < 0 || static_cast<size_t>(row) >= m_mrls.size())
+    if (!m_mediaLib || mrl.isEmpty())
         return;
-    const QString mrl = m_mrls.at(row).mrl;
     m_mediaLib->runOnMLThread(this, [mrl](vlc_medialibrary_t *ml)
     {
-        vlc_ml_reload_folder( ml, qtu(mrl) );
+        vlc_ml_reload_folder( ml, qtu( mrl.toString( QUrl::FullyEncoded ) ) );
     });
 }
 

@@ -18,7 +18,7 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-25, 0.8.4 published, 0.8.5 started).
+Updated as the work moves (last: 2026-11-26, 0.8.4 published, 0.8.5 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -41,9 +41,13 @@ request, then released).
   (0.8.3 installed by hand once: the fix is in the app that updates)
 - 🟡 Eight more pull requests of a contributor, still their author's drafts (#160, #164, #166 to #168,
   #173 to #175): read; each is shown before and after when its author marks it ready
+- 🟡 Twenty-five more of the same contributor, marked ready (#177 to #187, #193 to #206): each shown before and
+  after; twenty-two are taken for 0.8.5, three wait for a run (#185 to #187)
 
 And as the issues bring them:
 
+- 📋 Android: a more compact video player (a smaller title area, the seek bar on a row of its own), asked for in
+  [#213](https://github.com/KuchiSofts/vlc-redesign/issues/213)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)
@@ -115,7 +119,7 @@ Android and Swift files made from them and a check on every pull request that th
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
 
-### 0.8.4 (2026-11-25)
+### 0.8.4 (2026-11-26)
 
 **An update release** of every app:
 
@@ -126,6 +130,8 @@ Newest first. Every change is in the [changelog](CHANGELOG.md).
 - ✅ Music seek bar: the waveform kept between runs and prepared for the next song
 - ✅ Music folders keep their order (a played song is not a watched video)
 - ✅ The update card lists what concerns your system, each line whole
+- ✅ Linux: sound on Fedora and other systems with a newer PipeWire ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207))
+- ✅ A second VLC window no longer closes on Settings › Library ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211))
 - ✅ macOS: an update that takes too long stops cleanly
 - ✅ Android TV: the remote reaches the header's buttons and the Favorites row, the focus returns to the file
   played, Play all only where something plays

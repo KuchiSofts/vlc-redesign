@@ -31,7 +31,7 @@ platforms:
     short: Windows
     status: released
     version: 0.8.4
-    date: 2026-11-25
+    date: 2026-11-26
     next: 0.8.5
     full: 0.8.0
     os: windows
@@ -50,7 +50,7 @@ platforms:
     short: Linux
     status: released
     version: 0.8.4
-    date: 2026-11-25
+    date: 2026-11-26
     next: 0.8.5
     full: 0.8.0
     os: linux
@@ -83,7 +83,7 @@ platforms:
     short: macOS
     status: released
     version: 0.8.4
-    date: 2026-11-25
+    date: 2026-11-26
     next: 0.8.5
     full: 0.8.0
     os: macos
@@ -102,7 +102,7 @@ platforms:
     short: Windows ARM64
     status: released
     version: 0.8.4
-    date: 2026-11-25
+    date: 2026-11-26
     next: 0.8.5
     full: 0.8.0
     os: windows-arm64
@@ -121,7 +121,7 @@ platforms:
     short: Android
     status: released
     version: 0.8.4
-    date: 2026-11-25
+    date: 2026-11-26
     next: 0.8.5
     full: 0.8.0
     os: android
@@ -138,7 +138,7 @@ platforms:
     short: Samsung TV
     status: released
     version: 0.8.4
-    date: 2026-11-25
+    date: 2026-11-26
     next: 0.8.5
     full: 0.6.0
     os: tizen

@@ -71,6 +71,8 @@ Thank you to everyone who tested, reported and translated:
     ([#207](https://github.com/KuchiSofts/vlc-redesign/issues/207)).
   - [@Snooooze](https://github.com/Snooooze): the second window that closed on Settings › Library
     ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211)).
+  - [@Dipen425](https://github.com/Dipen425): the mini player's queue that had no scroll bar to drag on a laptop
+    ([#259](https://github.com/KuchiSofts/vlc-redesign/issues/259)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up
@@ -99,7 +101,8 @@ Thank you to everyone who tested, reported and translated:
   - [@BarbodF](https://github.com/BarbodF): keys in full screen that don't reveal the controls, as in VLC 3
     ([#72](https://github.com/KuchiSofts/vlc-redesign/issues/72)).
   - [@Sagarsantra1](https://github.com/Sagarsantra1): episodes grouped by their show and played in order
-    ([#108](https://github.com/KuchiSofts/vlc-redesign/issues/108)).
+    ([#108](https://github.com/KuchiSofts/vlc-redesign/issues/108)), and the page the library opens on
+    ([#258](https://github.com/KuchiSofts/vlc-redesign/issues/258)).
 - **Translations:**
   - [@Kinglucas962](https://github.com/Kinglucas962): Brazilian Portuguese
     ([#6](https://github.com/KuchiSofts/vlc-redesign/pull/6)).

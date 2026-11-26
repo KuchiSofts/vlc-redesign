@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Service breadcrumbs**: inside a service's folders (Discover > Services), the address bar shows the service and the folders above again, and they can be clicked.
 - **Recent thumbnails**: a video thumbnail generated while Recent is open now appears without reloading the page.
 - **Browse Back keeps your place**: going Back in Browse selects and scrolls to the folder you had opened, in list and grid.
 - **Save play queue errors**: saving the queue (Ctrl+Y) to a file that cannot be created no longer crashes, and a failed save now says so.

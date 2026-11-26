@@ -96,7 +96,7 @@ public:
 
     void applyAll();
     void filter( const QString &text );
-    void setLoadedOnly( bool );
+    void setLoadedOnly( bool b_only, const QString &text );
     PrefsTreeItem *topLevelItem(int index) const
     {
         return static_cast<PrefsTreeItem *>( QTreeWidget::topLevelItem( index ) );

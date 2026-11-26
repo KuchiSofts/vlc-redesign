@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Advanced preferences search**: checking or unchecking "Only show current" keeps the search applied instead of showing the whole tree.
 - **Messages filter**: the Tools > Messages filter is case-insensitive for new lines too, so a line no longer stays hidden until the filter is edited.
 - **Messages and the clipboard**: selecting text in Tools > Messages no longer copies it to the clipboard each time a new log line arrives; the selection and scroll position stay.
 - **Bookmark names**: pressing Create again at the same position in Edit Bookmarks no longer renames the existing bookmark to "Bookmark at ...".

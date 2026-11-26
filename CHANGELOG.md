@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Toggles, light theme**: the ON word reads clearly on its pale accent tint.
 - **Compact Library, light theme**: with Increase text contrast on, the grey file and folder names are dark enough to read.
 - **Screen readers on sliders**: the seek bar, volume, speed, mini player and subtitle delay sliders report their range.
 - **Screen readers in Settings and first run**: the chosen theme, accent colour and Settings page are announced, and accents are read as "Accent color 3 of 9" instead of a hex code.

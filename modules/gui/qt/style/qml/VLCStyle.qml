@@ -110,6 +110,10 @@ QtObject {
                                            : Qt.rgba(accent.r * 0.81, accent.g * 0.81, accent.b * 0.81, 1)
         readonly property color accentBackground: Qt.colorEqual(accent, "#D37918") ? "#371F06"
                                                   : Qt.rgba(accent.r * 0.26, accent.g * 0.26, accent.b * 0.26, 1)
+        // The accent as a text on the tint of it (the ON word of a toggle):
+        // darkened in the light theme, where it reads 1.8:1 on the pale tint,
+        // as the Widgets theme does (onAccent, redesign_widget_theme.cpp)
+        readonly property color onAccent: vlc_style.palette.isDark ? accent : Qt.darker(accent, 2.2)
         // The images drawn in the default accent are shown as they are with
         // it, a ColorImage tints them with the others (transparent: no tint)
         readonly property bool defaultAccent: Qt.colorEqual(accent, "#D37918")

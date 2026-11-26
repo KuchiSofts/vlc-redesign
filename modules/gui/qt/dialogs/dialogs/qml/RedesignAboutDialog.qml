@@ -64,30 +64,48 @@ T.Popup {
     }
 
     // A link of the about box: the accent colour, underlined on hover; with
-    // no url, it only says it was clicked
+    // no url, it only says it was clicked. Tab reaches it (with a ring) and
+    // Enter or Space opens it, as a screen reader's press does
     component Link: Text {
         id: link
         property string url
         signal activated()
+        function activate() {
+            if (link.url !== "")
+                Qt.openUrlExternally(link.url)
+            else
+                link.activated()
+        }
         color: VLCStyle.redesign.accent
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
         font.weight: Font.Medium
-        font.underline: linkArea.containsMouse
+        font.underline: linkArea.containsMouse || activeFocus
+        activeFocusOnTab: true
+        Keys.onReturnPressed: link.activate()
+        Keys.onEnterPressed: link.activate()
+        Keys.onSpacePressed: link.activate()
         Accessible.role: Accessible.Link
         Accessible.name: text
+        Accessible.onPressAction: link.activate()
+        FocusRing { visible: link.activeFocus }
         MouseArea {
             id: linkArea
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: {
-                if (link.url !== "")
-                    Qt.openUrlExternally(link.url)
-                else
-                    link.activated()
-            }
+            onClicked: link.activate()
         }
+    }
+
+    // the keyboard focus of a link (the redesign's 1 dp focus border)
+    component FocusRing: Rectangle {
+        anchors.fill: parent
+        anchors.margins: -VLCStyle.dp(3, VLCStyle.scale)
+        radius: VLCStyle.dp(4, VLCStyle.scale)
+        color: "transparent"
+        border.width: VLCStyle.dp(1, VLCStyle.scale)
+        border.color: VLCStyle.redesign.focusColor
     }
 
     // A credit and its link in one text: a longer translation wraps as a
@@ -104,7 +122,15 @@ T.Popup {
         textFormat: Text.StyledText
         text: escaped(prefix) + " <a href=\"" + url + "\">" + escaped(linkText) + "</a>"
         linkColor: VLCStyle.redesign.accent
+        Accessible.role: Accessible.Link
         Accessible.name: prefix + " " + linkText
+        Accessible.onPressAction: Qt.openUrlExternally(credit.url)
+        // its link from the keyboard, as a Link
+        activeFocusOnTab: true
+        Keys.onReturnPressed: Qt.openUrlExternally(credit.url)
+        Keys.onEnterPressed: Qt.openUrlExternally(credit.url)
+        Keys.onSpacePressed: Qt.openUrlExternally(credit.url)
+        FocusRing { visible: credit.activeFocus }
         onLinkActivated: (link) => Qt.openUrlExternally(link)
         HoverHandler {
             cursorShape: credit.hoveredLink.length > 0 ? Qt.PointingHandCursor : Qt.ArrowCursor

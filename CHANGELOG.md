@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **About**: its links (What's new, Suggest an idea, Report a problem, credits) can be reached with Tab and opened with Enter or Space.
 - **Open from Explorer (Windows)**: with "Add to the playlist instead of replacing it", a file opened while nothing plays now plays and the window shows.
 - **Play media key (Windows)**: a Play key or a headset's Play button resumes a paused media.
 - **Sidebar with the keyboard**: Enter (or Space) opens the highlighted page or pin.

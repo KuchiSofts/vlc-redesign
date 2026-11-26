@@ -380,7 +380,8 @@ void MLBaseModel::onVlcMlEvent(const MLEvent &event)
             break;
         case VLC_ML_EVENT_MEDIA_THUMBNAIL_GENERATED:
         {
-            if (event.media_thumbnail_generated.b_success) {
+            if (event.media_thumbnail_generated.b_success
+                && event.media_thumbnail_generated.i_size == VLC_ML_THUMBNAIL_SMALL) {
                 if (!d->m_cache)
                     break;
 

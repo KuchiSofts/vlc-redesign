@@ -274,6 +274,16 @@ void MLMediaModel::onVlcMlEvent(const MLEvent &event)
     }
 }
 
+void MLMediaModel::thumbnailUpdated(const QModelIndex &index, MLItem *item, const QString &mrl,
+                                    vlc_ml_thumbnail_status_t status)
+{
+    if (auto video = dynamic_cast<MLVideo *>(item))
+    {
+        video->setSmallCover(status, mrl);
+        emit dataChanged(index, index, { MEDIA_SMALL_COVER });
+    }
+}
+
 void MLMediaModel::generateThumbnail(const MLVideo *video) const
 {
     assert(video != nullptr);

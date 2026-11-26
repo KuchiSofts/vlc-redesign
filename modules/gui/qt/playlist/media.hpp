@@ -65,10 +65,12 @@ public:
 
     static void applyHistoryFilter(input_item_t *item)
     {
-        if (!item)
-            return;
-        const QRegularExpression filter = historyFilter();
-        if (filter.pattern().isEmpty() || !filter.isValid())
+        applyHistoryFilter(item, historyFilter());
+    }
+
+    static void applyHistoryFilter(input_item_t *item, const QRegularExpression &filter)
+    {
+        if (!item || filter.pattern().isEmpty() || !filter.isValid())
             return;
         char *uri = input_item_GetURI(item);
         char *name = input_item_GetName(item);

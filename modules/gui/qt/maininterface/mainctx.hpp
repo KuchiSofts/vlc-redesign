@@ -39,6 +39,11 @@
 #include <atomic>
 #include <memory>
 
+#ifdef _WIN32
+# include <QRegularExpression>
+# include <mutex>
+#endif
+
 #include "player/shortcut_feedback.hpp"
 
 Q_MOC_INCLUDE( "dialogs/toolbar/controlbar_profile_model.hpp" )
@@ -950,7 +955,19 @@ signals:
     void systemAccentChanged();
 
 private:
+#ifdef _WIN32
+    struct WinMsgHistoryFilter
+    {
+        std::mutex mutex;
+        QRegularExpression expression;
+    } m_winMsgHistoryFilter;
+
+    static int WinMsgHistoryFilterCB(vlc_object_t *, const char *, vlc_value_t,
+                                     vlc_value_t value, void *data);
+#endif
+
     void loadPrefs(bool callSignals);
+    void loadHistoryFilter();
     void loadFromSettingsImpl(bool callSignals);
     void applySetupChoices();
 };

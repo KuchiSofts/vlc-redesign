@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-087-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-088-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,31 +18,30 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-26, 0.8.6 published, 0.8.7 started).
+Updated as the work moves (last: 2026-11-26, 0.8.7 published, 0.8.8 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.6 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.6 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.6 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.6 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.6 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Windows x64** | ✅ released 0.8.7 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.7 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.7 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.7 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.8.7 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.8.7 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.8.7 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.7 and after
+## Next: 0.8.8 and after
 
-**0.8.7** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
+**0.8.8** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
 request, then released).
 
 - 🟡 macOS: the first update from inside the app on the Mac of [#117](https://github.com/KuchiSofts/vlc-redesign/issues/117)
   (0.8.3 installed by hand once: the fix is in the app that updates)
-- 🟡 Android: VideoLAN's newest changes (their fonts cache, the playback service followed only while the
-  app is in front), which need their newer player library and our media library built again on it
-- 🟡 More pull requests of a contributor: the ones that are still their author's drafts, and #187 (sliders and
-  choice lists), where the author was asked for the steps that show the fault
+- 🟡 Three pull requests of a contributor that are still drafts, each reviewed (#237 for Linux only, #245,
+  #251's macOS part), and #187 (sliders and choice lists), where the author was asked for the steps that show
+  the fault
 
 And as the issues bring them:
 
@@ -116,6 +115,17 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.8.7 (2026-11-26)
+
+**An update release** of the desktop apps and the Android app (the Samsung TV app stays 0.8.6):
+
+- ✅ Six more changes by a contributor (#249, #250, #252 to #255): Home's search with no matches, an empty
+  playlist exported, Default Preset and the Video menu's crop, the accent after a reset, a subtitle link that
+  answers with a web page, the built-in file browser setting
+- ✅ The follow-ups of three of 0.8.6's changes (#238, #241, #246)
+- ✅ VideoLAN's latest changes on the desktop (colours across popups and windows) and on Android (the fonts
+  cache, libvlc 3.7.8)
 
 ### 0.8.6 (2026-11-26)
 

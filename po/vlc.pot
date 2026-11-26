@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-26 09:01+0000\n"
+"POT-Creation-Date: 2026-11-26 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgstr ""
 
 #: include/vlc_config_cat.h:53 modules/gui/qt/dialogs/plugins/plugins.cpp:361
 #: modules/gui/qt/dialogs/preferences/simple_preferences.cpp:725
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:58
 msgid "Interface Settings"
 msgstr ""
 
@@ -405,7 +405,7 @@ msgstr ""
 
 #: include/vlc_intf_strings.h:67
 #: modules/gui/qt/dialogs/preferences/preferences_widgets.cpp:1294
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:278
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:287
 #: modules/gui/qt/dialogs/preferences/qml/SettingsExtensions.qml:173
 #: modules/gui/qt/player/qml/CompactLibrary.qml:993
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1117
@@ -4779,8 +4779,8 @@ msgid "Plugins"
 msgstr ""
 
 #: src/libvlc-module.c:2155
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:559
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:644
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:568
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:653
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:27
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:28
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:29
@@ -7829,7 +7829,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:560
 #: modules/gui/qt/dialogs/extended/qml/EffectsDialog.qml:152
 #: modules/gui/qt/dialogs/firstrun/qml/WhatsNewDialog.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:328
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:337
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:47
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:166
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:111
@@ -12535,8 +12535,8 @@ msgid "Enabled"
 msgstr ""
 
 #: modules/audio_output/mmdevice.c:1626
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:660
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:661
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:669
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:670
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:194
 msgid "Output device"
 msgstr ""
@@ -18364,9 +18364,9 @@ msgstr ""
 
 #: modules/gui/macosx/main/macosx.m:138
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:13
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:449
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:450
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:453
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:458
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:459
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:462
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:257
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:259
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:261
@@ -19036,8 +19036,8 @@ msgstr ""
 #: modules/gui/qt/dialogs/extended/qml/VideoEffectsPanel.qml:153
 #: modules/gui/qt/dialogs/gototime/gototime.cpp:66
 #: modules/gui/qt/dialogs/preferences/preferences.cpp:396
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:481
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:856
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:490
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:865
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:386
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPicture.qml:86
 #: modules/gui/qt/player/qml/TracksMenu.qml:586
@@ -20250,9 +20250,9 @@ msgstr ""
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:895
 #: modules/gui/macosx/windows/VLCOpenWindowController.m:1275
 #: modules/gui/qt/dialogs/dialogs_provider.cpp:553
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:803
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:826
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:840
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:812
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:835
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:849
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:378
 #: modules/gui/qt/player/qml/PlayerControlbarControls.qml:35
 msgid "Open"
@@ -21581,7 +21581,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/dialogs/qml/RedesignPluginsDialog.qml:29
 #: modules/gui/qt/dialogs/plugins/plugins.cpp:82
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:802
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:811
 msgid "Plugins and extensions"
 msgstr ""
 
@@ -22756,7 +22756,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/SubtitleLanguagesStep.qml:124
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:207
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:609
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:618
 msgid "Find subtitles online when a video has none in these languages"
 msgstr ""
 
@@ -22772,19 +22772,19 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:92
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:38
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:454
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:463
 msgid "Light"
 msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:37
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:454
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:463
 msgid "Dark"
 msgstr ""
 
 #: modules/gui/qt/dialogs/firstrun/qml/ThemeStep.qml:94
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:39
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:455
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:464
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSidebar.qml:30
 #: modules/gui/qt/util/color_scheme_model.cpp:46
 msgid "System"
@@ -23237,8 +23237,8 @@ msgid " f/s"
 msgstr ""
 
 #: modules/gui/qt/dialogs/open/open_panels.cpp:1439
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:717
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:731
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:726
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:740
 msgid "Advanced Options"
 msgstr ""
 
@@ -24252,7 +24252,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:64
 #: modules/misc/iptv/iptv.cpp:954
 msgid "Live TV"
 msgstr ""
@@ -24372,12 +24372,12 @@ msgid "Right to left"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:178
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:453
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:462
 msgid "Theme"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAppearance.qml:205
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:453
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:462
 #: modules/gui/qt/qt.cpp:394
 msgid "Accent color"
 msgstr ""
@@ -24395,7 +24395,7 @@ msgid "VLC follows the system language."
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:22
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:607
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:616
 msgid "Second Language & Online Subtitles"
 msgstr ""
 
@@ -24409,7 +24409,7 @@ msgid "Show both languages at once (dual subtitles)"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:239
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:610
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:619
 msgid "Languages to search"
 msgstr ""
 
@@ -24431,7 +24431,7 @@ msgid "Add a language"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:365
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:610
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:619
 msgid "Every other language too"
 msgstr ""
 
@@ -24440,7 +24440,7 @@ msgid "Fewer languages: a faster search"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:22
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:620
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:629
 msgid "Subtitle services"
 msgstr ""
 
@@ -24539,7 +24539,7 @@ msgid "Create a free account"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:413
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:623
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:632
 msgid "Get a free key"
 msgstr ""
 
@@ -24554,7 +24554,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsAudioOutput.qml:50
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:660
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:669
 msgid "Current output device"
 msgstr ""
 
@@ -24575,7 +24575,7 @@ msgid ""
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:18
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:630
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:639
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:21
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:23
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:25
@@ -24588,7 +24588,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:59
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDeveloperMode.qml:85
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:630
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:639
 msgid "Developer mode"
 msgstr ""
 
@@ -24598,108 +24598,108 @@ msgid ""
 "options of VLC."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:54
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:57
 msgid "Add-ons & Scripts"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:55
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:58
 msgid "Global Settings"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:56
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:59
 msgid "Privacy Settings"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:56
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:59
 msgid "Mouse, Keyboard & Remote Controls"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:60
 msgid "Playback Preferences"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:57
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:60
 msgid "Video Defaults"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
 msgid "Audio Defaults"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:58
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:61
 msgid "Subtitle Defaults"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:62
 msgid "Playlists, Folders & Files"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:59
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:62
 msgid "Network Connections & Security"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:63
 msgid "Performance Settings"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:60
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:63
 msgid "Recording, Casting & Streaming Out"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:220
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:310
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:229
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:319
 #: modules/gui/qt/dialogs/sout/convert.cpp:103
 #: modules/gui/qt/menus/qml/MainMenu.qml:166
 msgid "Settings"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:309
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:318
 msgid "Search results"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:454
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:463
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:34
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLanguageAction.qml:47
 msgid "Interface language"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:463
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:470
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:472
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:479
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:54
 #: modules/gui/qt/menus/qml/MainMenu.qml:156
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:464
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:475
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:473
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:484
 msgid "Edit Keyboard Shortcuts"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:465
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:480
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:489
 msgid "Reset all shortcuts"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:474
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:483
 msgid "Defaults"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:508
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:517
 msgid "Set a shortcut"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:516
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:525
 msgid "%1 more matching shortcut"
 msgid_plural "%1 more matching shortcuts"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:518
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:527
 msgid "Show all"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:557
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:687
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:566
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:696
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:160
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:161
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:165
@@ -24717,98 +24717,98 @@ msgstr ""
 msgid "Output"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:567
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:576
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:93
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:109
 msgid "Submit played tracks to last.fm"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:568
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:577
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:115
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:118
 msgid "Last.fm username"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:568
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:577
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:117
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:119
 msgid "Last.fm password"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:569
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:578
 #: modules/gui/qt/dialogs/preferences/qml/SettingsLastfm.qml:119
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:120
 msgid "Last.fm submission URL"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:580
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:582
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:589
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:591
 #: modules/gui/qt/maininterface/qml/SideNavigationPane.qml:68
 msgid "Sidebar"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:580
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:586
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:589
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:595
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:32
 msgid "Edit Sidebar"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:581
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:585
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:590
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:594
 msgid "Order and pages of the sidebar"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:607
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:616
 msgid "Dual subtitles"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:608
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:617
 msgid "Second language"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:608
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:617
 msgid "OpenSubtitles"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:698
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:707
 msgid "No matching settings"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:699
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:708
 msgid "No settings are available for this category on this VLC installation"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:781
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:797
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:790
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:806
 msgid "Show installed add-ons only"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:813
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:822
 msgid "No advanced options on this page."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:825
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:834
 msgid "Welcome setup"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:839
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:848
 msgid "All VLC options"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:855
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:864
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionList.qml:384
 msgid "Reset all settings"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:869
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:878
 msgid "Reset all settings?"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:870
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:879
 msgid "Every setting of %1 goes back to its default."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:924
+#: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:933
 msgid "Discard changes"
 msgstr ""
 
@@ -30127,7 +30127,7 @@ msgid "Subtitle Speed"
 msgstr ""
 
 #: modules/gui/qt/player/qml/TracksListPage.qml:54
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:75
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:73
 #, no-c-format
 msgid "%1x"
 msgstr ""
@@ -30269,11 +30269,11 @@ msgstr ""
 msgid "Player controls"
 msgstr ""
 
-#: modules/gui/qt/player/qml/ControlBar.qml:440
+#: modules/gui/qt/player/qml/ControlBar.qml:438
 msgid "%1 (%2x)"
 msgstr ""
 
-#: modules/gui/qt/player/qml/ControlBar.qml:455
+#: modules/gui/qt/player/qml/ControlBar.qml:453
 msgid "Progress"
 msgstr ""
 
@@ -30689,7 +30689,7 @@ msgstr ""
 msgid "change playback speed"
 msgstr ""
 
-#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:76
+#: modules/gui/qt/player/qml/controlbarcontrols/PlaybackSpeedButton.qml:74
 msgid "1x"
 msgstr ""
 

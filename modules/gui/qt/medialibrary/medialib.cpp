@@ -25,25 +25,90 @@
 #include "../../../misc/medialibrary/cover_track.h"
 
 #include <algorithm>
+#include <cerrno>
+#include <cstring>
+#include <optional>
 #include <random>
 #include <utility>
+#include <sys/stat.h>
 
 #include <QDateTime>
 #include <QDir>
+#include <QFile>
 #include <QFileInfo>
 #include <QGuiApplication>
+#include <QHash>
 #include <QQmlEngine>
 #include <QSet>
 #include <QSettings>
+#include <QStorageInfo>
 #include <QTimer>
 #include <QUrl>
 
+#ifdef Q_OS_LINUX
+#include <sys/vfs.h>
+#endif
+
+#include <vlc_fs.h>
 #include <vlc_url.h>
 #include <vlc_interface.h>
 #include <vlc_playlist.h>
 
+namespace {
+
+constexpr char missingFilesQueue[] = "missingFiles";
+
+struct FileVolume
+{
+    QStorageInfo storage;
+#ifdef Q_OS_LINUX
+    QByteArray filesystemId;
+#endif
+
+    bool matches(const FileVolume& other) const
+    {
+#ifdef Q_OS_LINUX
+        if (filesystemId != other.filesystemId)
+            return false;
+#endif
+        return storage == other.storage && storage.subvolume() == other.storage.subvolume();
+    }
+};
+
+std::optional<FileVolume> fileVolume(const QString& path)
+{
+    FileVolume volume;
+    volume.storage = QStorageInfo(path);
+    if (!volume.storage.isValid() || !volume.storage.isReady()
+        || volume.storage.rootPath().isEmpty() || volume.storage.device().isEmpty())
+        return std::nullopt;
+#ifdef Q_OS_WIN
+    // A mapped share name is not a local volume GUID.
+    if (!volume.storage.device().startsWith("\\\\?\\Volume{"))
+        return std::nullopt;
+#elif defined(Q_OS_LINUX)
+    // Device paths can be reused when a different disk is plugged in.
+    struct statfs fs;
+    const decltype(fs.f_fsid) emptyId{};
+    if (statfs(QFile::encodeName(path).constData(), &fs) != 0
+        || std::memcmp(&fs.f_fsid, &emptyId, sizeof(emptyId)) == 0)
+        return std::nullopt;
+    volume.filesystemId = QByteArray(reinterpret_cast<const char*>(&fs.f_fsid), sizeof(fs.f_fsid));
+#endif
+    return volume;
+}
+
+} // namespace
+
+struct MediaLib::MissingFiles
+{
+    bool localFileGone(const QString& mrl, bool network);
+    QHash<QString, FileVolume> volumes;
+};
+
 MediaLib::MediaLib(qt_intf_t *_intf, vlc::playlist::PlaylistController* playlistController, QObject *_parent)
     : QObject( _parent )
+    , m_missingFiles(std::make_shared<MissingFiles>())
     , m_intf( _intf )
     , m_playlistController(playlistController)
     , m_ml( vlc_ml_instance_get( _intf ) )
@@ -65,13 +130,9 @@ MediaLib::MediaLib(qt_intf_t *_intf, vlc::playlist::PlaylistController* playlist
     });
 }
 
-namespace {
-
-// A local file that is gone: deleted or moved while what held it is still
-// there. A drive that is not plugged in, a share or a volume that is not
-// mounted: its media come back with it, they are kept. A share is only
-// looked at after a play failed (a server that is off makes a look wait).
-bool localFileGone(const QString& mrl, bool network)
+// Learn a file's volume while the file is present. After an unmount the
+// same directory can still exist on the filesystem below the mount point.
+bool MediaLib::MissingFiles::localFileGone(const QString& mrl, bool network)
 {
     const QUrl url(mrl);
     if (!url.isLocalFile())
@@ -81,20 +142,38 @@ bool localFileGone(const QString& mrl, bool network)
         return false;
     if (!network && (path.startsWith(QLatin1String("//")) || path.startsWith(QLatin1String("\\\\"))))
         return false;
-    const QFileInfo info(path);
-    if (info.exists())
-        return false;
-    if (info.dir().exists())
-        return true;
-#ifdef _WIN32
-    // its folder went too: gone when the drive is there
-    const QString root = path.left(3);
-    return root.size() == 3 && root.at(1) == QLatin1Char(':') && QDir(root).exists();
+#ifdef Q_OS_WIN
+    const QByteArray nativePath = path.toUtf8(); // vlc_stat takes UTF-8 on Windows
 #else
-    // (an unmounted volume takes its folders with it)
-    return false;
+    const QByteArray nativePath = QFile::encodeName(path);
 #endif
+    struct stat st;
+    if (vlc_stat(nativePath.constData(), &st) == 0)
+    {
+        if (!volumes.contains(mrl))
+        {
+            const auto volume = fileVolume(path);
+            if (volume && vlc_stat(nativePath.constData(), &st) == 0)
+                volumes.insert(mrl, *volume);
+        }
+        return false;
+    }
+    if (errno != ENOENT)
+        return false;
+
+    const auto original = volumes.constFind(mrl);
+    if (original == volumes.cend())
+        return false;
+    const QFileInfo info(path);
+    const QDir parent = info.dir();
+    if (info.isSymLink() || !parent.exists())
+        return false;
+    const auto current = fileVolume(parent.absolutePath());
+    return current && original->matches(*current)
+        && vlc_stat(nativePath.constData(), &st) != 0 && errno == ENOENT;
 }
+
+namespace {
 
 // The library forgets a media whose file is gone: out of the history
 // (Continue Watching, Recent), and the library's folder that held it read
@@ -133,8 +212,8 @@ void MediaLib::forgetMissing(const QString& mrl)
 {
     struct Ctx { bool gone = false; };
     runOnMLThread<Ctx>(this,
-    [mrl](vlc_medialibrary_t* ml, Ctx& ctx) {
-        ctx.gone = localFileGone(mrl, true);
+    [mrl, missing = m_missingFiles](vlc_medialibrary_t* ml, Ctx& ctx) {
+        ctx.gone = missing->localFileGone(mrl, true);
         if (!ctx.gone)
             return;
         QSet<QString> reload;
@@ -145,7 +224,7 @@ void MediaLib::forgetMissing(const QString& mrl)
     [this, mrl](quint64, Ctx& ctx) {
         if (ctx.gone)
             removeFromQueue({ mrl });
-    });
+    }, missingFilesQueue);
 }
 
 void MediaLib::checkMissing()
@@ -172,7 +251,8 @@ void MediaLib::checkMissing()
 
     struct Ctx { QStringList gone; };
     runOnMLThread<Ctx>(this,
-    [queue](vlc_medialibrary_t* ml, Ctx& ctx) {
+    [queue, missing = m_missingFiles](vlc_medialibrary_t* ml, Ctx& ctx) {
+        QSet<QString> seen(queue.cbegin(), queue.cend());
         QSet<QString> reload;
         vlc_ml_query_params_t params = vlc_ml_query_params_create();
         params.i_nbResults = 500;
@@ -190,19 +270,21 @@ void MediaLib::checkMissing()
                     if (file.i_type != VLC_ML_FILE_TYPE_MAIN || !file.psz_mrl || (file.b_removable && !file.b_present))
                         continue;
                     const QString mrl = QString::fromUtf8(file.psz_mrl);
-                    if (localFileGone(mrl, false))
+                    seen.insert(mrl);
+                    if (missing->localFileGone(mrl, false))
                         forgetInLibrary(ml, mrl, reload);
                 }
             }
         for (const QString& point : std::as_const(reload))
             vlc_ml_reload_folder(ml, qtu(point));
         for (const QString& mrl : queue)
-            if (localFileGone(mrl, false))
+            if (missing->localFileGone(mrl, false))
                 ctx.gone << mrl;
+        missing->volumes.removeIf([&seen](auto it) { return !seen.contains(it.key()); });
     },
     [this](quint64, Ctx& ctx) {
         removeFromQueue(ctx.gone);
-    });
+    }, missingFilesQueue);
 }
 
 void MediaLib::removeFromQueue(const QStringList& mrls)

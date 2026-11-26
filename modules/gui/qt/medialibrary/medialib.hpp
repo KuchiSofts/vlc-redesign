@@ -199,6 +199,9 @@ private:
     void removeFromQueue(const QStringList& mrls);
 
 private:
+    struct MissingFiles;
+    // Used only by the serial missing-file tasks, which can outlive MediaLib.
+    const std::shared_ptr<MissingFiles> m_missingFiles;
     qint64 m_lastMissingCheck = 0;
     qt_intf_t* m_intf;
     vlc::playlist::PlaylistController* m_playlistController = nullptr;

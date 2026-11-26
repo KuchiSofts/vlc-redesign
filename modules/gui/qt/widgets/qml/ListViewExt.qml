@@ -68,6 +68,7 @@ ListView {
 
     // Signals
     signal actionAtIndex(int index)
+    signal selectionByUser()
 
     signal showContextMenu(point globalPos)
 
@@ -644,8 +645,10 @@ ListView {
 
         if (event.matches(StandardKey.SelectAll)) {
             event.accepted = true
-            if (selectionModel)
+            if (selectionModel) {
+                root.selectionByUser()
                 selectionModel.selectAll()
+            }
         } else if (KeyHelper.matchOk(event)) {
             // Keep activation handling on release to avoid double interpretation.
             event.accepted = true
@@ -655,6 +658,7 @@ ListView {
         const oldIndex = currentIndex
         if (newIndex >= 0 && newIndex < count && newIndex !== oldIndex) {
             event.accepted = true;
+            root.selectionByUser()
 
             currentIndex = newIndex;
 

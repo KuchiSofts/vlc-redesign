@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Add subtitle to the right video**: a subtitle, audio or video file chosen in the picker is only added if the media item the picker was opened for is still current.
 - **Browse Back** keeps the row you select while a slow folder is still loading.
 - **Fullscreen with the queue open**: the controls no longer hide over an open Queue or Compact Library after entering fullscreen.
 - **Mini player in small windows**: with its queue open it stays below the top bar, and the folder and artist no longer run under the queue button.

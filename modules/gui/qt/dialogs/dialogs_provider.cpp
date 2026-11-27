@@ -1634,10 +1634,16 @@ void DialogsProvider::openAndTranscodingDialogs()
 
 void  DialogsProvider::loadMediaFile( const es_format_category_e category, const int filter , const QString &dialogTitle)
 {
-    input_item_t *p_item = THEMIM->getInput();
-    if( !p_item ) return;
+    vlc_player_t *player = THEMIM->getPlayer();
+    SharedInputItem item;
+    {
+        vlc_player_locker lock{ player };
+        item.reset(vlc_player_GetCurrentMedia(player));
+    }
+    if (!item)
+        return;
 
-    char *path = input_item_GetURI( p_item );
+    char *path = input_item_GetURI( item.get() );
     QUrl url;
     if( path )
     {
@@ -1654,8 +1660,10 @@ void  DialogsProvider::loadMediaFile( const es_format_category_e category, const
 
     foreach( const QString &qsUrl, qsl )
     {
-
-        if ( THEMIM->AddAssociatedMedia( category, qsUrl, true, true, false ) )
+        const int ret = THEMIM->AddAssociatedMedia(category, qsUrl, true, true, false, item.get());
+        if (ret == VLC_ENOENT)
+            break;
+        if (ret != VLC_SUCCESS)
             msg_Warn( p_intf, "unable to load media from '%s', category(%d)", qtu( qsUrl ), category );
     }
 }

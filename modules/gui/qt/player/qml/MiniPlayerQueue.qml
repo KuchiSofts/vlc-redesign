@@ -23,6 +23,7 @@ Item {
     objectName: "miniPlayerQueue"
     // the card's top to 8 above the video (the video at 359 under the top)
     implicitHeight: VLCStyle.dp(351, VLCStyle.scale)
+    clip: true
     readonly property bool lightTheme: !VLCStyle.palette.isDark
     // the border of the card (light theme), left visible around the header
     property real edge: 0
@@ -183,7 +184,7 @@ Item {
         x: VLCStyle.dp(20, VLCStyle.scale)
         y: VLCStyle.dp(118, VLCStyle.scale)
         width: parent.width - 2 * x
-        height: parent.height - y - VLCStyle.dp(13, VLCStyle.scale)
+        height: Math.max(0, parent.height - y - VLCStyle.dp(13, VLCStyle.scale))
         clip: true
         model: queueModel
         boundsBehavior: Flickable.StopAtBounds

@@ -939,6 +939,7 @@ FocusScope {
                             (parent.height / 2 - VLCStyle.dp(128, VLCStyle.scale)) * 16 / 9
                             + VLCStyle.dp(16, VLCStyle.scale))
             height: implicitHeight
+            maximumHeight: Math.max(0, loaderUpdatePane.y - playerPip.dragYMin - playerPip.anchors.bottomMargin)
             z: 4
             visible: (g_mainDisplay._showMiniPlayer && MainCtx.hasEmbededVideo) || g_mainDisplay._showAudioMiniPlayer
             enabled: visible
@@ -957,7 +958,7 @@ FocusScope {
             dragXMin: VLCStyle.applicationHorizontalMargin
             dragXMax: g_mainDisplay.width - playerPip.width - VLCStyle.applicationHorizontalMargin
             dragYMin: localTopbar.y + localTopbar.height
-            dragYMax: loaderUpdatePane.y - playerPip.height
+            dragYMax: Math.max(dragYMin, loaderUpdatePane.y - playerPip.height)
 
             //keep the player visible on resize, and when it grows (its
             //queue opened) after it was dragged
@@ -967,7 +968,7 @@ FocusScope {
             }
             onDragYMaxChanged: {
                 if (playerPip.y > playerPip.dragYMax)
-                    playerPip.y = playerPip.dragYMax
+                    playerPip.y = Math.max(playerPip.dragYMin, playerPip.dragYMax)
             }
         }
     }

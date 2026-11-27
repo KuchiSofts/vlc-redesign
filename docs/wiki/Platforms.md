@@ -43,6 +43,8 @@ version from its first published build.
   refuses an older Windows, and `vlc.exe` on one says *This version of VLC media player needs Windows 10 version
   1809 or later.*
 - **No graphics card needed**: it also runs in Windows Sandbox, decoding on the processor.
+- **System media controls** let you use media keys while VLC is in the background. The Windows media
+  flyout can show VLC's current title, artist, album and playback controls.
 - **Updates are signed by the project** from 0.4.0 on: the app installs an update only when the signature of the
   release's checksums by the project's release key is good.
 - **Tested:** a regression suite on every build (playback, pause and seek, Chromecast and DLNA test devices);
@@ -118,10 +120,10 @@ Home in the light theme. Click for the MP4.</sub>
   Mac apps; full screen in its own Space, tiling and resizing from every edge work. *Show window decorations* in
   Settings brings the separate title bar back. A minimal menu bar sits at the top of the screen, and ⌘ reaches VLC's
   shortcuts.
-- **The same features as Windows** (from 0.6.4): the
+- **Media controls and desktop integration** (from 0.6.4): the
   media keys, the Touch Bar, headphones and Control Center's *Now Playing* play, pause, go to the previous or next
-  item, jump and seek, and Now Playing shows the title, artist, album, artwork and time (what Windows does with its
-  media keys); the Dock menu has Play / Pause, Stop, Previous, Next and Mute (Windows: the buttons of the taskbar
+  item, jump and seek, and Now Playing shows the title, artist, album, artwork and time; the Dock menu has
+  Play / Pause, Stop, Previous, Next and Mute (Windows: the buttons of the taskbar
   thumbnail); the global hotkeys work from any app; *Show in folder* opens Finder with the file selected; *Process priority*, VLC's own *HTTP proxy* and
   *Add to the playlist instead of replacing it* are in Settings; the bug report names the graphics processors and
   the HDR screens.

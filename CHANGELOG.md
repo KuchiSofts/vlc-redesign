@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Windows media controls**: VLC Redesign has an entry in the Windows media flyout and on the lock screen, with title, artist and album, and the keyboard media keys control it while it is in the background.
 - **Typing a time on the control bar**: a time past the end or not a time stays in the box to correct, instead of jumping to the next item; Tab and Enter reach it from the keyboard.
 - **Faster first window**: the hidden mini-player, a closed play queue and the Home sections below the fold are prepared after the first frame.
 - **Smoother scrolling in grid views** as cards are prepared before they come into view.

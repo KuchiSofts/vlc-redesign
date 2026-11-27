@@ -471,6 +471,8 @@ if host_system == 'windows'
     qt_plugin_sources += files(
         '../../maininterface/mainctx_win32.cpp',
         '../../maininterface/mainctx_win32.hpp',
+        '../../maininterface/win_media_controls.cpp',
+        '../../maininterface/win_media_controls.hpp',
         '../../maininterface/compositor_win7.cpp',
         '../../maininterface/compositor_win7.hpp',
         '../../style/windowsthemeprovider.cpp',

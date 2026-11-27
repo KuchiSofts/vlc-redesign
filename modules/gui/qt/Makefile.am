@@ -101,7 +101,7 @@ endif
 
 if HAVE_WIN32
 libqt_plugin_la_CXXFLAGS += $(LIBCOMCXXFLAGS)
-libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp -lshell32 -liphlpapi -lcrypt32
+libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid -ldwmapi -lwinhttp -lshell32 -liphlpapi -lcrypt32 -lruntimeobject
 endif
 if HAVE_QT_LIBCURL
 # util/http_request.cpp: libcurl outside Windows
@@ -132,6 +132,8 @@ if HAVE_WIN32
 libqt_plugin_la_SOURCES += \
 	maininterface/mainctx_win32.cpp \
 	maininterface/mainctx_win32.hpp \
+	maininterface/win_media_controls.cpp \
+	maininterface/win_media_controls.hpp \
 	maininterface/compositor_win7.cpp \
 	maininterface/compositor_win7.hpp \
 	style/windowsthemeprovider.cpp \

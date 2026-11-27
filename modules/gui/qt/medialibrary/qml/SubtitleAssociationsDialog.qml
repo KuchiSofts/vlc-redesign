@@ -263,6 +263,8 @@ Widgets.RedesignDialog {
     // a line of Inter 14 centred in its box as Figma does
     component CenteredText: Text {
         id: centeredText
+        // (file names: one with "<" and ">" in it, possible on Linux and macOS, is not markup)
+        textFormat: Text.PlainText
         // the box the (first) line is centred in
         property real boxHeight: height
         // from the start of the line (the right in a right to left layout)

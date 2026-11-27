@@ -15,6 +15,10 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+A release of every app (desktop, Android, Samsung TV) after a long bug hunt: Live TV, casting, online subtitles and
+updates were gone through for anything a playlist, a TV or a server could abuse, and Windows updates now survive a
+power cut. The light theme's lists are readable again and the start-up busy cursor is gone (thanks @yamtartunga).
+
 ### Fixed
 
 - **Live TV playlists can no longer write files on your computer**: a provider's stream options are only the safe
@@ -39,6 +43,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
   ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
 - **Windows updates survive a power cut** in the middle, and an update missing a file is never half applied.
 - **A cast paused for over an hour** keeps going on Samsung TVs.
+- **Android: adding a subtitle from a link** no longer closes the app on Android 5 and 6.
+- **Android: Live TV** takes only the stream options a playlist really needs.
+- **Android: Check for updates** only ever opens this project's release page.
+- **Android: older phones** show the TV welcome screen and the library's headings as designed.
+- **Samsung TV: long songs** no longer use up the TV's memory for their waveform.
+- **Samsung TV: a video opening when you press Home** no longer plays behind the TV's menu.
+- **Samsung TV: the queue** keeps the page you played from when you sort it or remove a song.
+- **Samsung TV: a subtitle linked in Add subtitles** is used again when the video opens.
 
 ### Technical
 

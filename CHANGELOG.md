@@ -15,6 +15,8 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **TV Guide: open programme details with the keyboard** by pressing Tab to select a programme and Enter to open it.
+
 ### Technical
 
 - Version 0.8.9 started (VLC_REDESIGN_VERSION).

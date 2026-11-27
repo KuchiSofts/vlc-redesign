@@ -294,6 +294,7 @@ qt_plugin_sources = files(
     '../../player/player_controller.cpp',
     '../../player/player_controller.hpp',
     '../../player/player_controller_p.hpp',
+    '../../player/time_display.hpp',
     '../../player/player_controlbar_model.cpp',
     '../../player/player_controlbar_model.hpp',
     '../../player/control_list_model.cpp',

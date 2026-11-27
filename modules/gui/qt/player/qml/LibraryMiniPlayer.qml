@@ -135,9 +135,22 @@ T.Control {
             // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
             readonly property real minimumValue: from
             readonly property real maximumValue: to
-            value: Player.position
             enabled: Player.seekable
             Accessible.name: qsTr("Playback position")
+
+            Connections {
+                target: seek.visible ? Player : null
+                function onPositionChanged() { seek.value = Player.position }
+            }
+
+            function _refreshPosition() {
+                if (visible)
+                    value = Player.samplePosition()
+            }
+
+            onVisibleChanged: _refreshPosition()
+            Component.onCompleted: _refreshPosition()
+
             // Dragged: key frame seeks, at most one every 150 ms (a precise
             // seek decodes up to seconds of frames), the release precisely,
             // as SliderBar does

@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  ****************************************************************************/
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Templates as T
 import VLC.Style
+import VLC.Widgets as Widgets
 
 // Equalizer of the design (Figma "EQ"): closed, the 36 px "Open Equalizer"
 // bar (#090909, radius 2); open, a #191919 panel (radius 2, 6 px above, 20
@@ -150,19 +151,25 @@ Item {
             clip: true
             boundsBehavior: Flickable.StopAtBounds
 
+            // right to left, Preamp is the right end of the row: the bands open there
+            // until they are scrolled
+            readonly property bool rtl: Qt.application.layoutDirection === Qt.RightToLeft
+            property bool scrolled: false
             function clampScroll() {
                 const maxX = Math.max(0, contentWidth - width)
-                if (contentX > maxX)
+                if (rtl && !scrolled)
+                    contentX = maxX
+                else if (contentX > maxX)
                     contentX = maxX
             }
             onWidthChanged: clampScroll()
             onContentWidthChanged: clampScroll()
+            onRtlChanged: { scrolled = false; clampScroll() }
+            onMovementStarted: scrolled = true
 
-            ScrollBar.horizontal: ScrollBar {
-                policy: bandsFlick.contentWidth > bandsFlick.width ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
-                // Basic's handle is light grey: darker in the light theme
-                palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
-                palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
+            // (the scroll bar of the rest of the redesign, in both themes)
+            T.ScrollBar.horizontal: Widgets.ScrollBarExt {
+                policy: bandsFlick.contentWidth > bandsFlick.width ? T.ScrollBar.AlwaysOn : T.ScrollBar.AlwaysOff
             }
 
             Row {
@@ -200,11 +207,14 @@ Item {
                                     return
                                 const left = column.x + bandsRow.x - bandsFlick.sidePadding
                                 const right = column.x + bandsRow.x + column.width + bandsFlick.sidePadding
-                                if (left < bandsFlick.contentX)
+                                if (left < bandsFlick.contentX) {
+                                    bandsFlick.scrolled = true
                                     bandsFlick.contentX = Math.max(0, left)
-                                else if (right > bandsFlick.contentX + bandsFlick.width)
+                                } else if (right > bandsFlick.contentX + bandsFlick.width) {
+                                    bandsFlick.scrolled = true
                                     bandsFlick.contentX = Math.min(bandsFlick.contentWidth - bandsFlick.width,
                                                                    right - bandsFlick.width)
+                                }
                             }
                             Keys.onPressed: (event) => {
                                 const steps = { [Qt.Key_Up]: 0.5, [Qt.Key_Right]: 0.5,

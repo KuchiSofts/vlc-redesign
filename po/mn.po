@@ -39730,3 +39730,11 @@ msgstr "Эхлэх хуудас"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC эхлэхэд номын сан нээгдэх хуудас."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Завгүй байна: дараа дахин оролдоно уу"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Энэ хугацаа медиад байхгүй"

@@ -3860,10 +3860,9 @@ msgstr "Кілт қабылданбады"
 msgid "Wrong user name or password"
 msgstr "Пайдаланушы аты немесе құпия сөз қате"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Бос емес: бір минуттан кейін қайталаңыз"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Бос емес: кейінірек қайталаңыз"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8253,14 +8252,14 @@ msgstr "Бір секунд пен 24 сағат аралығындағы ұза
 msgid "The subtitle couldn't be saved."
 msgstr "Субтитрді сақтау мүмкін болмады."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 біраз күтуді сұрайды (іздеулер тым көп)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 жауап бермеді."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 біраз күтуді сұрайды (іздеулер тым көп)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8855,6 +8854,10 @@ msgstr "Мұнда әзірге ештеңе жоқ."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Ойнатқышты басқару элементтері"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Бұл уақыт медиада жоқ"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

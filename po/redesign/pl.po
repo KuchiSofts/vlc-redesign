@@ -3869,10 +3869,9 @@ msgstr "Klucz odrzucony"
 msgid "Wrong user name or password"
 msgstr "Nieprawidłowa nazwa użytkownika lub hasło"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Serwis zajęty: spróbuj za minutę"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Serwis zajęty: spróbuj później"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8330,14 +8329,14 @@ msgstr "Wybierz czas od jednej sekundy do 24 godzin."
 msgid "The subtitle couldn't be saved."
 msgstr "Nie udało się zapisać napisów."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 prosi o chwilę cierpliwości (zbyt wiele wyszukiwań)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 nie odpowiada."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 prosi o chwilę cierpliwości (zbyt wiele wyszukiwań)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8930,6 +8929,10 @@ msgstr "Na razie nic tu nie ma."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Sterowanie odtwarzaczem"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Tego czasu nie ma w multimediach"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

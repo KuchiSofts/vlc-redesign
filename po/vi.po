@@ -40932,3 +40932,11 @@ msgstr "Trang khởi đầu"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Trang mà thư viện mở ra khi VLC khởi động."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Đang bận: hãy thử lại sau"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Thời điểm này không có trong nội dung"

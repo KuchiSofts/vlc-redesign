@@ -41125,3 +41125,11 @@ msgstr "Startside"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Siden biblioteket åpnes på når VLC starter."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Opptatt: prøv igjen senere"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Dette tidspunktet finnes ikke i mediet"

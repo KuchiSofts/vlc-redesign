@@ -40090,3 +40090,11 @@ msgstr "Leathanach tosaigh"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "An leathanach a osclaíonn an leabharlann air nuair a thosaíonn VLC."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Gnóthach: bain triail eile as ar ball"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Níl an t-am seo sna meáin"

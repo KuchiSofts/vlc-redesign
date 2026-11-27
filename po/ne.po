@@ -39948,3 +39948,11 @@ msgstr "सुरुवात पृष्ठ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC सुरु हुँदा पुस्तकालय खुल्ने पृष्ठ।"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "व्यस्त: पछि फेरि प्रयास गर्नुहोस्"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "यो समय मिडियामा छैन"

@@ -3779,10 +3779,9 @@ msgstr "કી નકારાઈ"
 msgid "Wrong user name or password"
 msgstr "ખોટું વપરાશકર્તા નામ અથવા પાસવર્ડ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "વ્યસ્ત: એક મિનિટ પછી ફરી પ્રયાસ કરો"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "વ્યસ્ત: પછીથી ફરી પ્રયાસ કરો"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8164,14 +8163,14 @@ msgstr "એક સેકન્ડ અને 24 કલાક વચ્ચેન�
 msgid "The subtitle couldn't be saved."
 msgstr "ઉપશીર્ષક સંગ્રહી શકાયું નથી."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 થોડી વાર રાહ જોવા કહે છે (ઘણી બધી શોધ)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 એ જવાબ આપ્યો નથી."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 થોડી વાર રાહ જોવા કહે છે (ઘણી બધી શોધ)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8758,6 +8757,10 @@ msgstr "અહીં હજુ કંઈ નથી."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "પ્લેયર નિયંત્રણો"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "આ સમય મીડિયામાં નથી"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

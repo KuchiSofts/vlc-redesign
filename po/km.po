@@ -40320,3 +40320,11 @@ msgstr "ទំព័រចាប់ផ្ដើម"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "ទំព័រដែលបណ្ណាល័យបើកនៅពេល VLC ចាប់ផ្ដើម។"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "រវល់៖ សូមព្យាយាមម្ដងទៀតនៅពេលក្រោយ"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ពេលវេលានេះមិនមាននៅក្នុងមេឌៀទេ"

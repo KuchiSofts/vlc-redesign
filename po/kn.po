@@ -40877,3 +40877,11 @@ msgstr "ಪ್ರಾರಂಭ ಪುಟ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC ಪ್ರಾರಂಭವಾದಾಗ ಲೈಬ್ರರಿ ತೆರೆಯುವ ಪುಟ."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "ಕಾರ್ಯನಿರತವಾಗಿದೆ: ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ಈ ಸಮಯ ಮಾಧ್ಯಮದಲ್ಲಿ ಇಲ್ಲ"

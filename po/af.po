@@ -39872,3 +39872,11 @@ msgstr "Beginblad"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Die blad waarop die biblioteek oopmaak wanneer VLC begin."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Besig: probeer later weer"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Hierdie tyd is nie in die media nie"

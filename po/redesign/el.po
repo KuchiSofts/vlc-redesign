@@ -3925,10 +3925,9 @@ msgstr "Το κλειδί απορρίφθηκε"
 msgid "Wrong user name or password"
 msgstr "Λάθος όνομα χρήστη ή κωδικός πρόσβασης"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Απασχολημένο: δοκιμάστε ξανά σε ένα λεπτό"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Απασχολημένο: δοκιμάστε ξανά αργότερα"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8410,14 +8409,14 @@ msgstr "Επιλέξτε διάρκεια από ένα δευτερόλεπτο
 msgid "The subtitle couldn't be saved."
 msgstr "Δεν ήταν δυνατή η αποθήκευση των υποτίτλων."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "Το %1 ζητά να περιμένετε λίγο (πάρα πολλές αναζητήσεις)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "Το %1 δεν απάντησε."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "Το %1 ζητά να περιμένετε λίγο (πάρα πολλές αναζητήσεις)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -9018,6 +9017,10 @@ msgstr "Δεν υπάρχει τίποτα εδώ ακόμη."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Στοιχεία ελέγχου αναπαραγωγού"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Αυτός ο χρόνος δεν υπάρχει στο πολυμέσο"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

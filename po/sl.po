@@ -41087,3 +41087,11 @@ msgstr "Začetna stran"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Stran, na kateri se knjižnica odpre ob zagonu VLC."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Storitev je zasedena: poskusite pozneje"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Tega časa v predstavnosti ni"

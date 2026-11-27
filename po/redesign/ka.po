@@ -3850,10 +3850,9 @@ msgstr "გასაღები უარყოფილია"
 msgid "Wrong user name or password"
 msgstr "მომხმარებლის სახელი ან პაროლი არასწორია"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "დაკავებულია: სცადეთ ერთ წუთში"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "დაკავებულია: სცადეთ მოგვიანებით"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8236,14 +8235,14 @@ msgstr "აირჩიეთ ხანგრძლივობა ერთი 
 msgid "The subtitle couldn't be saved."
 msgstr "ტიტრების შენახვა ვერ მოხერხდა."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 გთხოვთ ცოტა მოიცადოთ (ძალიან ბევრი ძებნა)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 არ პასუხობს."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 გთხოვთ ცოტა მოიცადოთ (ძალიან ბევრი ძებნა)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8836,6 +8835,10 @@ msgstr "აქ ჯერ არაფერია."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "დამკვრელის მართვა"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ეს დრო მედიაში არ არის"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

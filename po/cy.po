@@ -40157,3 +40157,11 @@ msgstr "Tudalen gychwyn"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Y dudalen y mae'r llyfrgell yn agor arni pan fydd VLC yn cychwyn."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Prysur: ceisiwch eto yn nes ymlaen"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Nid yw'r amser hwn yn y cyfryngau"

@@ -39885,3 +39885,11 @@ msgstr "Бастапқы бет"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC іске қосылғанда кітапхана ашылатын бет."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Бос емес: кейінірек қайталаңыз"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Бұл уақыт медиада жоқ"

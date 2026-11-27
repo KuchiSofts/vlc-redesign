@@ -39576,3 +39576,11 @@ msgstr "ప్రారంభ పేజీ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC ప్రారంభమైనప్పుడు లైబ్రరీ తెరుచుకునే పేజీ."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "బిజీగా ఉంది: తర్వాత మళ్ళీ ప్రయత్నించండి"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ఈ సమయం మీడియాలో లేదు"

@@ -3752,10 +3752,9 @@ msgstr "คีย์ถูกปฏิเสธ"
 msgid "Wrong user name or password"
 msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "ไม่ว่าง: ลองอีกครั้งในอีกหนึ่งนาที"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "ไม่ว่าง: ลองอีกครั้งในภายหลัง"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8102,14 +8101,14 @@ msgstr "เลือกระยะเวลาระหว่างหนึ่
 msgid "The subtitle couldn't be saved."
 msgstr "ไม่สามารถบันทึกบทบรรยายได้"
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 ขอให้รอสักครู่ (ค้นหามากเกินไป)"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 ไม่ตอบสนอง"
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 ขอให้รอสักครู่ (ค้นหามากเกินไป)"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8696,6 +8695,10 @@ msgstr "ยังไม่มีอะไรที่นี่"
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "ตัวควบคุมตัวเล่น"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "เวลานี้ไม่มีอยู่ในสื่อ"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

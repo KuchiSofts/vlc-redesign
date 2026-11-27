@@ -39561,3 +39561,11 @@ msgstr "ਸ਼ੁਰੂਆਤੀ ਪੰਨਾ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC ਸ਼ੁਰੂ ਹੋਣ 'ਤੇ ਲਾਇਬ੍ਰੇਰੀ ਜਿਸ ਪੰਨੇ 'ਤੇ ਖੁੱਲ੍ਹਦੀ ਹੈ।"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "ਰੁੱਝਿਆ ਹੋਇਆ: ਬਾਅਦ ਵਿੱਚ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ਇਹ ਸਮਾਂ ਮੀਡੀਆ ਵਿੱਚ ਨਹੀਂ ਹੈ"

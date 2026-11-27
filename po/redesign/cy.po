@@ -3868,10 +3868,9 @@ msgstr "Allwedd wedi'i gwrthod"
 msgid "Wrong user name or password"
 msgstr "Enw defnyddiwr neu gyfrinair anghywir"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Prysur: ceisiwch eto ymhen munud"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Prysur: ceisiwch eto yn nes ymlaen"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8345,14 +8344,14 @@ msgstr "Dewiswch hyd rhwng un eiliad a 24 awr."
 msgid "The subtitle couldn't be saved."
 msgstr "Methu cadw'r isdeitlau."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "Mae %1 yn gofyn i chi aros eiliad (gormod o chwiliadau)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "Ni atebodd %1."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "Mae %1 yn gofyn i chi aros eiliad (gormod o chwiliadau)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8948,6 +8947,10 @@ msgstr "Dim byd yma eto."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Rheolyddion y chwaraeydd"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Nid yw'r amser hwn yn y cyfryngau"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

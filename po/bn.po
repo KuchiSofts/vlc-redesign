@@ -40354,3 +40354,11 @@ msgstr "শুরুর পাতা"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC চালু হলে লাইব্রেরি যে পাতায় খোলে।"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "ব্যস্ত: পরে আবার চেষ্টা করুন"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "এই সময়টি মিডিয়ায় নেই"

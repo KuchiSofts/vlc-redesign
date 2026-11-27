@@ -3831,10 +3831,9 @@ msgstr "キーが拒否されました"
 msgid "Wrong user name or password"
 msgstr "ユーザー名またはパスワードが違います"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "混雑中: 1分後にもう一度お試しください"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "混雑中: しばらくしてからもう一度お試しください"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8224,14 +8223,14 @@ msgstr "1秒から24時間までの時間を選択してください。"
 msgid "The subtitle couldn't be saved."
 msgstr "字幕を保存できませんでした。"
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1からしばらく待つよう求められました (検索回数が多すぎます)。"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1から応答がありませんでした。"
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1からしばらく待つよう求められました (検索回数が多すぎます)。"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8823,6 +8822,10 @@ msgstr "まだ何もありません。"
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "プレイヤーのコントロール"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "この時間はメディア内にありません"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

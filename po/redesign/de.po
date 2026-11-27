@@ -3924,10 +3924,9 @@ msgstr "Schlüssel abgelehnt"
 msgid "Wrong user name or password"
 msgstr "Falscher Benutzername oder falsches Passwort"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Ausgelastet: in einer Minute erneut versuchen"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Ausgelastet: später erneut versuchen"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8372,14 +8371,14 @@ msgstr "Wählen Sie eine Dauer zwischen einer Sekunde und 24 Stunden."
 msgid "The subtitle couldn't be saved."
 msgstr "Der Untertitel konnte nicht gespeichert werden."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 bittet, einen Moment zu warten (zu viele Suchanfragen)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 hat nicht geantwortet."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 bittet, einen Moment zu warten (zu viele Suchanfragen)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8979,6 +8978,10 @@ msgstr "Hier ist noch nichts."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Player-Steuerung"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Diese Zeit liegt nicht im Medium"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

@@ -3861,10 +3861,9 @@ msgstr "Raktas atmestas"
 msgid "Wrong user name or password"
 msgstr "Neteisingas vartotojo vardas arba slaptažodis"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Užimta: bandykite dar kartą po minutės"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Užimta: bandykite dar kartą vėliau"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8301,14 +8300,14 @@ msgstr "Pasirinkite trukmę nuo vienos sekundės iki 24 valandų."
 msgid "The subtitle couldn't be saved."
 msgstr "Nepavyko įrašyti subtitrų."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 prašo truputį palaukti (per daug paieškų)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 neatsakė."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 prašo truputį palaukti (per daug paieškų)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8899,6 +8898,10 @@ msgstr "Čia dar nieko nėra."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Grotuvo valdikliai"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Šio laiko medijoje nėra"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

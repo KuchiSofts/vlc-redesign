@@ -3769,10 +3769,9 @@ msgstr "కీ తిరస్కరించబడింది"
 msgid "Wrong user name or password"
 msgstr "తప్పు వాడుకరి పేరు లేదా సంకేతపదం"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "బిజీగా ఉంది: ఒక నిమిషంలో మళ్ళీ ప్రయత్నించండి"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "బిజీగా ఉంది: తర్వాత మళ్ళీ ప్రయత్నించండి"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8146,14 +8145,14 @@ msgstr "ఒక సెకను మరియు 24 గంటల మధ్య న�
 msgid "The subtitle couldn't be saved."
 msgstr "ఉపశీర్షికను భద్రపరచలేకపోయింది."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 కొంతసేపు ఆగమని అడుగుతోంది (చాలా ఎక్కువ శోధనలు)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 స్పందించలేదు."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 కొంతసేపు ఆగమని అడుగుతోంది (చాలా ఎక్కువ శోధనలు)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8741,6 +8740,10 @@ msgstr "ఇక్కడ ఇంకా ఏమీ లేదు."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "ప్రదర్శకం నియంత్రణలు"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ఈ సమయం మీడియాలో లేదు"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

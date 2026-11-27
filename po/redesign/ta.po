@@ -3848,10 +3848,9 @@ msgstr "விசை நிராகரிக்கப்பட்டது"
 msgid "Wrong user name or password"
 msgstr "தவறான பயனர்பெயர் அல்லது கடவுச்சொல்"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "பிஸியாக உள்ளது: ஒரு நிமிடத்தில் மீண்டும் முயலவும்"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "பிஸியாக உள்ளது: பின்னர் மீண்டும் முயலவும்"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8263,14 +8262,14 @@ msgstr "ஒரு வினாடி முதல் 24 மணிநேரம்
 msgid "The subtitle couldn't be saved."
 msgstr "வசனத்தைச் சேமிக்க முடியவில்லை."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 சிறிது நேரம் காத்திருக்கக் கேட்கிறது (அதிகமான தேடல்கள்)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 பதிலளிக்கவில்லை."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 சிறிது நேரம் காத்திருக்கக் கேட்கிறது (அதிகமான தேடல்கள்)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8863,6 +8862,10 @@ msgstr "இங்கே இன்னும் எதுவும் இல்ல
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "இயக்கிக் கட்டுப்பாடுகள்"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "இந்த நேரம் ஊடகத்தில் இல்லை"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

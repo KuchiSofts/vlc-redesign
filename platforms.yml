@@ -32,7 +32,7 @@ platforms:
     status: released
     version: 0.8.9
     date: 2026-11-27
-    next: 0.8.10
+    next: 0.9.0
     full: 0.8.0
     os: windows
     requires: Windows 10 (1809) or 11, 64-bit
@@ -51,7 +51,7 @@ platforms:
     status: released
     version: 0.8.9
     date: 2026-11-27
-    next: 0.8.10
+    next: 0.9.0
     full: 0.8.0
     os: linux
     requires: glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64
@@ -84,7 +84,7 @@ platforms:
     status: released
     version: 0.8.9
     date: 2026-11-27
-    next: 0.8.10
+    next: 0.9.0
     full: 0.8.0
     os: macos
     requires: macOS 12 Monterey, Apple Silicon or Intel
@@ -103,7 +103,7 @@ platforms:
     status: released
     version: 0.8.9
     date: 2026-11-27
-    next: 0.8.10
+    next: 0.9.0
     full: 0.8.0
     os: windows-arm64
     requires: Windows 11 on ARM64
@@ -122,7 +122,7 @@ platforms:
     status: released
     version: 0.8.8
     date: 2026-11-26
-    next: 0.8.10
+    next: 0.9.0
     follows: 0.8.9
     full: 0.8.0
     os: android
@@ -141,7 +141,7 @@ platforms:
     version: 0.8.6
     follows: 0.8.9
     date: 2026-11-26
-    next: 0.8.10
+    next: 0.9.0
     full: 0.6.0
     os: tizen
     requires: Tizen 3.0 (2017 models) or later, installed from a computer in developer mode

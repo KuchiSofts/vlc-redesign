@@ -153,7 +153,7 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.10** (started 2026-11-27): fixes as the issues bring them, and the next contributions. A bug hunt of
+- 🟡 **0.9.0** (started 2026-11-27): fixes as the issues bring them, and the next contributions. A bug hunt of
   11-27 (three read-only reviews: desktop Live TV, Android, Samsung; every finding checked by hand): a provider's
   #EXTVLCOPT:sout wrote a 22 MB file on 0.8.3 (proven; now "unsafe option ignored", no file), guide links from
   network paths, markup in guide texts, logos holding up zapping, the banner's "now", a reminder saved every

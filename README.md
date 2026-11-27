@@ -54,7 +54,7 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </tr>
 </table>
 
-<sub><b>0.8.9</b> · 2026-11-27 &nbsp;·&nbsp; next: 0.8.10 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+<sub><b>0.8.9</b> · 2026-11-27 &nbsp;·&nbsp; next: 0.9.0 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
 
 <br><br>
 
@@ -384,7 +384,7 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
   desktop apps: twenty-two reviewed changes from a contributor, with Windows media controls and contrast
   themes. Before it, [0.8.8](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8) (2026-11-26): on a phone held sideways the Android
   player's controls blend into the video.
-- **Next: 0.8.10**, fixes as the issues bring them.
+- **Next: 0.9.0**, fixes as the issues bring them.
 
 What is planned for each platform: [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases: [CHANGELOG.md](CHANGELOG.md).

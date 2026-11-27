@@ -10,7 +10,7 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.8.10 started).
+Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.9.0 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -24,9 +24,9 @@ Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.8.10 started).
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.10 and after
+## Next: 0.9.0 and after
 
-**0.8.10** is an update release of fixes, made as the issues bring them, and of the next contributions,
+**0.9.0** is an update release of fixes, made as the issues bring them, and of the next contributions,
 each reviewed before it is taken.
 
 - 🟡 Fixes from a review of Live TV, Android and the Samsung TV app: a provider's playlist can no longer write

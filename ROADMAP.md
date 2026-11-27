@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-0810-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-090-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,7 +18,7 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.8.10 started).
+Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.9.0 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
@@ -32,9 +32,9 @@ Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.8.10 started).
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.10 and after
+## Next: 0.9.0 and after
 
-**0.8.10** is an update release of fixes, made as the issues bring them, and of the next contributions,
+**0.9.0** is an update release of fixes, made as the issues bring them, and of the next contributions,
 each reviewed before it is taken.
 
 - 🟡 Fixes from a review of Live TV, Android and the Samsung TV app: a provider's playlist can no longer write

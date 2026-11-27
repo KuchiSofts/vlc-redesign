@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Typing a time on the control bar**: a time past the end or not a time stays in the box to correct, instead of jumping to the next item; Tab and Enter reach it from the keyboard.
 - **Faster first window**: the hidden mini-player, a closed play queue and the Home sections below the fold are prepared after the first frame.
 - **Smoother scrolling in grid views** as cards are prepared before they come into view.
 - **Holding for 2× speed** is temporary in the desktop player. Releasing the hold, switching videos, stopping, or quitting restores the previous speed. If you choose a different speed during the hold, VLC keeps your choice.

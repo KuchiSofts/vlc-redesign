@@ -46,13 +46,6 @@ T.ToolTip {
 
     property real radius: VLCStyle.dp(4, VLCStyle.scale)
 
-    Component.onCompleted: {
-        if (control.popupType !== undefined) {
-            console.assert(typeof control.popupType === "number")
-            control.popupType = 1 // Popup.Window
-        }
-    }
-
     // NOTE: The tool tip often moves around, particularly noticable
     //       with the attached (global) tool tip, and pointing tool
     //       tip. Ideally, we could override property `visible` and
@@ -107,7 +100,7 @@ T.ToolTip {
             })
         }
 
-        readonly property real maxContentWidth: (control.popupType === 1 /* Popup.Window */)
+        readonly property real maxContentWidth: (control.popupType === T.Popup.Window)
             ? Screen.desktopAvailableWidth
             : Window.width
 

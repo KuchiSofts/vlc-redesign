@@ -617,6 +617,8 @@ static void InputSourceStatistics(input_source_t *source, input_item_t *item,
 
     es_out_SetTimes( out, f_position, i_time, i_normal_time, i_length,
                      live );
+    if (i_normal_time != VLC_TICK_INVALID)
+        source->reported_normal_time = i_normal_time;
 }
 
 /**
@@ -3027,6 +3029,7 @@ static input_source_t *InputSourceNew( const char *psz_mrl )
     }
 
     in->i_normal_time = VLC_TICK_0;
+    in->reported_normal_time = VLC_TICK_INVALID;
 
     return in;
 }
@@ -3339,6 +3342,14 @@ static void SlaveDemux( input_thread_t *p_input )
         msg_Err( p_input, "demux doesn't like DEMUX_GET_TIME" );
         return;
     }
+
+    /* Report a changed main origin before the slaves send blocks that use it. */
+    vlc_tick_t normal_time;
+    if( demux_Control( priv->master->p_demux, DEMUX_GET_NORMAL_TIME,
+                       &normal_time ) == VLC_SUCCESS
+     && normal_time != VLC_TICK_INVALID
+     && normal_time != priv->master->reported_normal_time )
+        InputSourceStatistics( priv->master, priv->p_item, priv->p_es_out );
 
     for (size_t i = 0; i < input_priv(p_input)->i_slave; i++)
     {

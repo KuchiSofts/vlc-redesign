@@ -931,6 +931,11 @@ QString IptvAddon::errorText(const QString& reason, bool sentence) const
         { QStringLiteral("the list of channels could not be read"), N_("the list of channels could not be read") },
         { QStringLiteral("this link is a single stream, not a list of channels"),
           N_("this link is a single stream, not a list of channels") },
+        // (said with texts translated already: they showed in English)
+        { QStringLiteral("sign-in refused"), N_("Wrong user name or password") },
+        { QStringLiteral("wrong user name or password"), N_("Wrong user name or password") },
+        { QStringLiteral("no channels yet"), N_("it has no channels") },
+        { QStringLiteral("no guide yet"), N_("No guide") },
     };
     QString text = reason;
     const QRegularExpressionMatch m = answered.match(reason);

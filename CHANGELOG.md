@@ -15,12 +15,18 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Version 0.8.10 started (VLC_REDESIGN_VERSION).
+- The summary of 0.8.9 is the one of its release page, written for people.
+
 ## [0.8.9] · 2026-11-27
 
-An update release of the desktop apps (Android stays 0.8.8, the Samsung TV app 0.8.6): twenty-two changes
-from a contributor, each reviewed and some fixed on top: Windows media controls and contrast themes, a 2×
-hold that ends, the Folders page and the TV Guide with the keyboard, and fixes to the Play Queue, Add
-Subtitle File, the history filter and small windows.
+This update is for the desktop apps (Android stays at 0.8.8 and the Samsung TV app at 0.8.6). It brings
+twenty-two changes from a contributor, all reviewed and a few polished: VLC now shows up in the Windows media
+controls and follows Windows contrast themes, holding for 2× speed lets go when you do, the Folders page and the
+TV Guide work with the keyboard, and the Play Queue, Add Subtitle File, the history filter and small windows got
+fixes.
 
 ### Added
 

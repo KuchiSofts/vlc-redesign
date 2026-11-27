@@ -1814,7 +1814,8 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
         // (runInBackground). Its answer is dropped if the updater is gone.
         // (log: what the macOS helper said, for the debug log; inPlace: it
         // could not prepare the update on this Mac, the download is offered)
-        struct Saved { QString error, path, log; bool inPlaceFailed = false; };
+        // (lock: the installer's file held open until it has started, Windows)
+        struct Saved { QString error, path, log; bool inPlaceFailed = false; void *lock = nullptr; };
         auto saved = std::make_shared<Saved>();
         const QByteArray body = response.body;
         const QString name = m_installerName;
@@ -1849,6 +1850,30 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 if (dir.isEmpty() || !writeDurably(saved->path, body)) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
                 } else {
+#ifdef _WIN32
+                    // Kept open, others only reading it, until it has started,
+                    // and its checksum read again through that handle: the file
+                    // checked is the one run (it is saved in a folder of the
+                    // user's, where another program could have swapped it)
+                    const std::wstring native = QDir::toNativeSeparators(saved->path).toStdWString();
+                    HANDLE lock = CreateFileW(native.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr,
+                                              OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+                    QByteArray again;
+                    if (lock != INVALID_HANDLE_VALUE) {
+                        char chunk[64 * 1024];
+                        DWORD read = 0;
+                        while (ReadFile(lock, chunk, sizeof(chunk), &read, nullptr) && read > 0)
+                            again.append(chunk, int(read));
+                    }
+                    if (lock == INVALID_HANDLE_VALUE || sha256Hex(again) != expectedSha256) {
+                        if (lock != INVALID_HANDLE_VALUE)
+                            CloseHandle(lock);
+                        QFile::remove(saved->path);
+                        saved->error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
+                        return;
+                    }
+                    saved->lock = lock;
+#endif
                     saved->error = publisherMismatch(saved->path);
                     if (!saved->error.isEmpty())
                         QFile::remove(saved->path);
@@ -1924,6 +1949,12 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 setState(Failed, saved->error);
             else
                 launchInstaller(saved->path);
+#ifdef _WIN32
+            // (it has started, or won't: no longer held)
+            if (saved->lock)
+                CloseHandle(static_cast<HANDLE>(saved->lock));
+            saved->lock = nullptr;
+#endif
         });
     });
 }

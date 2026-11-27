@@ -652,6 +652,12 @@ bool SubtitleSearch::setCredentials(QSettings *settings, const QString &id,
     store("username", credentials.username.trimmed());
     store("password", credentials.password);
     store("email", credentials.email.trimmed());
+#ifndef _WIN32
+    // (kept as they are outside Windows: the settings file then readable by
+    // this user only, not by the computer's other users)
+    settings->sync();
+    QFile::setPermissions(settings->fileName(), QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+#endif
     // (new ones: not refused, nor signed in with the old)
     settings->remove(QString::fromLatin1(keyRefused) + id);
     SubtitleProviders::forgetSession(id);

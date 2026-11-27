@@ -199,10 +199,10 @@ QtObject {
             "#8f8f8f": "#2e2e2e", "#404040": "#929291", "#373737": "#8e8e8d",
             "#090909": "#dedede", "#151515": "#b5b5b4", "#6b6b6b": "#6b6b6b",
             "#c6c6c6": "#2e2e2e", "#4c4a48": "#4c4a48",
-            // (#266: the row chosen in a list of Settings, the equalizer and the
-            // video options stayed near black, its text unreadable; a heading
-            // stayed light grey)
-            "#1f1f1f": "#9c9c9b", "#b8b8b8": "#2e2e2e"
+            // (#266: BG/A2, the row chosen in a list of Settings, the equalizer
+            // and the video options, stayed near black, its text unreadable:
+            // the menus' light grey, as their rows give it)
+            "#1f1f1f": "#9c9c9b"
         })
 
         // "Increase text contrast" (Interface > Accessibility): the dim texts

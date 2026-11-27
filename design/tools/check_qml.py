@@ -228,6 +228,9 @@ def check_light_map(tokens, style):
 LIGHT_EXCEPTIONS = {
     ("modules/gui/qt/player/qml/CompactLibrary.qml", "#8F8F8F", "#8F8F8F"),
     ("modules/gui/qt/player/qml/CompactLibrary.qml", "#969696", "#8F8F8F"),
+    # the subtitle panel's chosen language keeps its own lighter grey (2026-11-27,
+    # when #1F1F1F got the menus' #9C9C9B in the map for #266)
+    ("modules/gui/qt/player/qml/SubtitleTracksPanel.qml", "#1F1F1F", "#B4B4B3"),
 }
 
 

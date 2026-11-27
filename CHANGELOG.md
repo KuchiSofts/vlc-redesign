@@ -19,7 +19,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 - **Windows media controls**: VLC is in the media flyout and on the lock screen, and the media keys reach it in
   the background.
-- **Windows contrast themes**: the main interface follows the contrast palette live.
+- **Windows contrast themes**: the main interface and the dialogs follow the contrast palette live.
 - **Folders and the TV Guide with the keyboard**: the arrows, Enter and the Menu key work on their cards and
   programmes.
 - **The control bar's time with the keyboard**: Tab reaches it, and a time past the end stays in the box to fix.

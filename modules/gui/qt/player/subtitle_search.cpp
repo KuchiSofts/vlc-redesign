@@ -272,7 +272,7 @@ ParsedName parseName(const QString &name, const QString &folder)
             parsed.episode = m.captured(2).toInt();
         }
     }
-    // the year: not the first word ("2012.2009.1080p": the film 2012)
+    // the year: not the first word (a title can itself be a year, written before the year of release)
     for (QRegularExpressionMatchIterator it = yearRe.globalMatch(base); it.hasNext();)
     {
         const QRegularExpressionMatch m = it.next();

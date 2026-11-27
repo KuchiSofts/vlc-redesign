@@ -31,6 +31,7 @@
 #include <vlc_configuration.h>
 #include <vlc_es.h>
 #include <vlc_interface.h>
+#include <vlc_media_library.h>
 #include <vlc_player.h>
 #include <vlc_url.h>
 
@@ -569,6 +570,8 @@ void SubtitleFinder::onStarted()
             attach(remembered[0], remembered[1], rememberedLanguage, true, rememberedLanguage != primary);
         // the default language: remembered, or in the media (VLC shows it, its
         // sub-language); the secondary one too when both are shown
+        if (rememberedLanguage != primary && local.contains(primary))
+            preferPrimaryFile(primary);
         bool needPrimary = rememberedLanguage != primary && !local.contains(primary);
         bool needSecondary = showBoth && rememberedLanguage != secondary && !local.contains(secondary);
         // the video's own subtitle folder ("Subs") has it: shown from there,
@@ -927,6 +930,95 @@ void SubtitleFinder::autoPick()
         }
     }
     ensureSecondary();
+}
+
+// VLC shows the first subtitle file beside a video when it has no language
+// to prefer (a computer in English gives it none: SubtitlePreferences), so a
+// folder with "Film.ar.srt" and "Film.en.srt" showed Arabic. When the file it
+// shows is not in the preferred language and another file of the video is,
+// that one is shown instead. Nothing changes when no subtitle is shown (an
+// English film keeps none), when the one shown is the media's own track, or
+// when the media library brought back a track the user chose for this video.
+void SubtitleFinder::preferPrimaryFile(const QString &primary)
+{
+    vlc_player_t *player = m_intf->p_player;
+    QByteArray mrl;
+    vlc_player_Lock(player);
+    if (input_item_t *media = vlc_player_GetCurrentMedia(player))
+    {
+        char *uri = input_item_GetURI(media);
+        mrl = uri ? QByteArray(uri) : QByteArray();
+        free(uri);
+    }
+    vlc_player_Unlock(player);
+    if (mrl.isEmpty())
+        return;
+    if (vlc_medialibrary_t *ml = vlc_ml_instance_get(m_intf))
+    {
+        bool chosenBefore = false;
+        if (vlc_ml_media_t *media = vlc_ml_get_media_by_mrl(ml, mrl.constData()))
+        {
+            vlc_ml_playback_states_all states{};
+            if (vlc_ml_media_get_all_playback_pref(ml, media->i_id, &states) == VLC_SUCCESS)
+            {
+                chosenBefore = states.current_subtitle_track && *states.current_subtitle_track;
+                vlc_ml_playback_states_all_release(&states);
+            }
+            vlc_ml_release(media);
+        }
+        if (chosenBefore)
+            return;
+    }
+
+    const auto fromFile = [](const struct vlc_player_track *track) {
+        const char *id = vlc_es_id_GetStrId(track->es_id);
+        return id && strlen(id) > 33 && id[32] == '/';
+    };
+    const auto languageOf = [](const struct vlc_player_track *track) {
+        return track->fmt.psz_language ? SubtitlePreferences::normalize(qfu(track->fmt.psz_language)) : QString();
+    };
+    const double minutes = lengthMinutes();
+    const QHash<QString, Source> known = sources();
+    vlc_player_Lock(player);
+    const size_t count = vlc_player_GetSubtitleTrackCount(player);
+    const struct vlc_player_track *shown = nullptr;
+    const struct vlc_player_track *wanted = nullptr;
+    int selected = 0;
+    for (size_t i = 0; i < count; ++i)
+    {
+        const struct vlc_player_track *track = vlc_player_GetSubtitleTrackAt(player, i);
+        if (!track)
+            continue;
+        if (track->selected)
+        {
+            ++selected;
+            if (languageOf(track) == primary)
+            {
+                shown = nullptr;
+                wanted = nullptr;
+                break;
+            }
+            if (!shown)
+                shown = track;
+        }
+        else if (!wanted && fromFile(track) && languageOf(track) == primary)
+        {
+            // (not the forced lines alone, nor an advert)
+            const char *id = vlc_es_id_GetStrId(track->es_id);
+            const Source source = known.value(QString::fromLatin1(id, 32));
+            if (!(source.kind == QLatin1String("file") && isPartialSubtitle(source.forced, source.cues, minutes)))
+                wanted = track;
+        }
+    }
+    if (shown && wanted && fromFile(shown))
+    {
+        msg_Dbg(m_intf, "subtitles: %s shown in place of the first file beside the video", qtu(primary));
+        vlc_player_SelectEsId(player, wanted->es_id,
+                              selected > 1 ? VLC_PLAYER_SELECT_SIMULTANEOUS : VLC_PLAYER_SELECT_EXCLUSIVE);
+        if (selected > 1)
+            vlc_player_UnselectEsId(player, shown->es_id);
+    }
+    vlc_player_Unlock(player);
 }
 
 // The secondary language shown too: a track of the media, else the best

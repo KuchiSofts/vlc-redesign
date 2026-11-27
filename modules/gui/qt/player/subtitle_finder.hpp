@@ -166,6 +166,7 @@ private:
     void downloadNext();
     // the secondary language shown too (SubtitlePreferences::showBoth)
     void ensureSecondary();
+    void preferPrimaryFile(const QString &primary);
     // the best one of the language the user picks most (learned), unless
     // the video has it (local) or one is loaded
     QVariantMap bestOfLearned(const QStringList &local) const;

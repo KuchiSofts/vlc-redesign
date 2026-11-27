@@ -192,6 +192,7 @@ FocusScope {
         }
 
         Text {
+            textFormat: Text.PlainText
             anchors.centerIn: parent
             visible: posters.count === 0
             text: root.account === "" ? qsTr("No account with films or series")

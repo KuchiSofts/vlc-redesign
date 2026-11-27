@@ -283,6 +283,7 @@ Widgets.RedesignDialog {
             border.color: field.activeFocus ? VLCStyle.redesign.accentDim : root.c("#191919", "#c4c4c3")
         }
         Text {
+            textFormat: Text.PlainText
             x: field.leftPadding
             anchors.verticalCenter: parent.verticalCenter
             visible: field.length === 0 && field.preeditText === ""
@@ -613,6 +614,7 @@ Widgets.RedesignDialog {
         }
 
         Text {
+            textFormat: Text.PlainText
             Layout.fillWidth: true
             text: root._error !== "" ? root._error
                   : qsTr("Links and passwords are kept in the keystore of VLC, never written to its log.")
@@ -677,6 +679,7 @@ Widgets.RedesignDialog {
             onChosen: (value) => { root.serverKind = value; root._test = "" }
         }
         Text {
+            textFormat: Text.PlainText
             Layout.fillWidth: true
             text: root._account.detail
             wrapMode: Text.WordWrap
@@ -780,6 +783,7 @@ Widgets.RedesignDialog {
                 }
             }
             Text {
+                textFormat: Text.PlainText
                 Layout.fillWidth: true
                 objectName: "tvSourceServerTestResult"
                 text: root._testing ? "…"
@@ -809,6 +813,7 @@ Widgets.RedesignDialog {
         }
 
         Text {
+            textFormat: Text.PlainText
             Layout.fillWidth: true
             text: root._error !== "" ? root._error
                   : qsTr("Passwords and keys are kept in the keystore of VLC, never written to its log.")
@@ -941,6 +946,7 @@ Widgets.RedesignDialog {
                     }
                     // what the automatic guide matched
                     Text {
+                        textFormat: Text.PlainText
                         width: parent.width
                         visible: (guideRow.found.matched || 0) > 0
                         text: guideRow.s.busy && guideRow.s.stage === "guide"
@@ -1004,6 +1010,7 @@ Widgets.RedesignDialog {
                         }
                     }
                     Text {
+                        textFormat: Text.PlainText
                         visible: (guideRow.s.guides || []).length === 0
                         text: qsTr("No guide yet: add one, or one of the catalog's.")
                         color: root.c("#6B6B6B", "#4d4d4d")
@@ -1288,6 +1295,7 @@ Widgets.RedesignDialog {
             }
 
             Text {
+                textFormat: Text.PlainText
                 anchors.centerIn: parent
                 width: Math.min(implicitWidth, parent.width - root.px(40))
                 visible: cards.count === 0
@@ -1306,6 +1314,7 @@ Widgets.RedesignDialog {
             Layout.fillWidth: true
             spacing: root.px(12)
             Text {
+                textFormat: Text.PlainText
                 Layout.fillWidth: true
                 // (its room is what the button leaves: wrapped, not wider)
                 Layout.preferredWidth: 0

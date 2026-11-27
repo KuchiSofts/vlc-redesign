@@ -67,6 +67,12 @@ public:
     bool sampleClock(VLCTime &time, double &position) const;
     void updateTimeDisplay(VLCTime time, VLCDuration remaining);
     bool isCurrentItemSynced();
+    void changeSpeedHoldRate(float rate);
+    float releaseSpeedHold();
+    void dropSpeedHoldSources();
+    void commitSpeedHoldRate(float rate);
+    void clearSpeedHold();
+    void saveRateAfterSpeedHold(input_item_t *nextMedia);
     void castVolume( float volume );
     float castMaxVolume() const;
 
@@ -112,6 +118,19 @@ public:
     QString         m_name;
     float           m_buffering = 0.f;
     float           m_rate = 1.f;
+
+    // Accessed by the interface and player callbacks under the player lock.
+    struct SpeedHold
+    {
+        SharedInputItem media;
+        float restoreRate;
+        float appliedRate;
+        unsigned sources;
+        bool stopping = false;
+    };
+    std::optional<SpeedHold> m_speedHold;
+    bool m_speedHoldClosing = false;
+    vlc_cond_t m_speedHoldFinished;
 
     VLCTime      m_time;
     VLCDuration  m_remainingTime;

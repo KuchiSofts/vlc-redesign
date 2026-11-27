@@ -34,6 +34,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 
 #include <vlc_actions.h>           /* ACTION_ID */
 #include <vlc_url.h>            /* vlc_uri_decode */
@@ -48,6 +49,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
+#include <QScopedValueRollback>
 #include <QUrl>
 #include <QSignalMapper>
 #include <QThreadPool>
@@ -71,6 +73,8 @@ using SharedTitleList = ::vlc::vlc_shared_data_ptr<vlc_player_title_list,
                                                    &vlc_player_title_list_Release>;
 
 namespace {
+
+thread_local bool changingSpeedHoldRate = false;
 
 struct ParsedLyrics
 {
@@ -133,6 +137,120 @@ bool PlayerControllerPrivate::isCurrentItemSynced()
      * all. Here d->m_currentItem is read and modified under the player
      * lock. */
     return m_currentItem.get() == vlc_player_GetCurrentMedia( m_player );
+}
+
+bool PlayerController::isChangingSpeedHoldRate()
+{
+    return changingSpeedHoldRate;
+}
+
+void PlayerControllerPrivate::changeSpeedHoldRate(float rate)
+{
+    const QScopedValueRollback changing(changingSpeedHoldRate, true);
+    vlc_player_ChangeRate(m_player, rate);
+
+    // The hold already has a badge. Suppress the rate API's own OSD.
+    const size_t count = vlc_player_GetTrackCount(m_player, VIDEO_ES);
+    for (size_t i = 0; i < count; ++i)
+    {
+        const auto *track = vlc_player_GetTrackAt(m_player, VIDEO_ES, i);
+        if (!track->selected)
+            continue;
+        if (auto *vout = vlc_player_GetEsIdVout(m_player, track->es_id, nullptr))
+            vout_FlushSubpictureChannel(vout, VOUT_SPU_CHANNEL_OSD);
+    }
+}
+
+void PlayerControllerPrivate::dropSpeedHoldSources()
+{
+    if (m_speedHold && m_speedHold->sources)
+    {
+        m_speedHold->sources = 0;
+        callAsync([this] { emit q_func()->holdSpeedActiveChanged(); });
+    }
+}
+
+void PlayerControllerPrivate::clearSpeedHold()
+{
+    dropSpeedHoldSources();
+    m_speedHold.reset();
+    vlc_cond_signal(&m_speedHoldFinished);
+}
+
+void PlayerControllerPrivate::commitSpeedHoldRate(float rate)
+{
+    if (!m_speedHold || m_speedHold->stopping)
+        return;
+    if (rate == PlayerController::HoldSpeedRate)
+        clearSpeedHold();
+    else
+    {
+        dropSpeedHoldSources();
+        m_speedHold->restoreRate = rate;
+    }
+}
+
+float PlayerControllerPrivate::releaseSpeedHold()
+{
+    dropSpeedHoldSources();
+    const float rate = vlc_player_GetRate(m_player);
+    if (m_speedHold->restoreRate == PlayerController::HoldSpeedRate)
+    {
+        clearSpeedHold();
+        return rate;
+    }
+
+    // The 2x request may still be queued when the key or button is released.
+    const float restoreRate = m_speedHold->restoreRate;
+    if (rate == PlayerController::HoldSpeedRate || rate == m_speedHold->appliedRate)
+    {
+        changeSpeedHoldRate(restoreRate);
+        return restoreRate;
+    }
+    return rate;
+}
+
+void PlayerControllerPrivate::saveRateAfterSpeedHold(input_item_t *nextMedia)
+{
+    if (!m_speedHold || !m_speedHold->stopping)
+        return;
+
+    auto hold = std::move(*m_speedHold);
+    clearSpeedHold();
+    if (hold.appliedRate != PlayerController::HoldSpeedRate
+        || hold.restoreRate == PlayerController::HoldSpeedRate)
+        return;
+
+    // VLC saves the outgoing input before notifying us of the new media or
+    // STOPPED. A stop can discard a queued restore, so repair only that speed.
+    vlc_medialibrary_t *ml = vlc_ml_instance_get(p_intf);
+    const auto mrl = vlc::wrap_cptr(input_item_GetURI(hold.media.get()));
+    if (!ml || !mrl)
+        return;
+    const auto media = vlc::wrap_cptr(vlc_ml_get_media_by_mrl(ml, mrl.get()),
+                                     vlc_ml_media_release);
+    if (!media)
+        return;
+
+    char *savedRate = nullptr;
+    const int result = vlc_ml_media_get_playback_state(ml, media->i_id,
+                                                       VLC_ML_PLAYBACK_STATE_SPEED, &savedRate);
+    const auto saved = vlc::wrap_cptr(savedRate);
+    if (result != VLC_SUCCESS || !saved
+        || QByteArray(saved.get()).toFloat() != PlayerController::HoldSpeedRate)
+        return;
+
+    const QByteArray rate = QByteArray::number(hold.restoreRate, 'g', 9);
+    vlc_ml_media_set_playback_state(ml, media->i_id, VLC_ML_PLAYBACK_STATE_SPEED,
+                                    rate.constData());
+
+    // Repeat can already have read the outgoing speed while opening this MRL.
+    if (nextMedia)
+    {
+        const auto nextMrl = vlc::wrap_cptr(input_item_GetURI(nextMedia));
+        if (nextMrl && std::strcmp(mrl.get(), nextMrl.get()) == 0)
+            changeSpeedHoldRate(hold.restoreRate);
+    }
 }
 
 
@@ -544,6 +662,7 @@ static  void on_player_current_media_changed(vlc_player_t *, input_item_t *new_m
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
     msg_Dbg( that->p_intf, "on_player_current_media_changed");
+    that->saveRateAfterSpeedHold(new_media);
     that->m_minimizePause = PlayerControllerPrivate::MinimizePause::None;
     const auto lyricsGeneration = ++that->m_lrcLyricsGeneration;
 
@@ -607,12 +726,23 @@ static  void on_player_current_media_changed(vlc_player_t *, input_item_t *new_m
 
 /* casting: a media stopped before its end (stop, next, another one): the
  * device stops now, not once it showed what it has (it is behind) */
-static void on_player_stopping_current_media(vlc_player_t *, input_item_t *,
+static void on_player_stopping_current_media(vlc_player_t *player, input_item_t *media,
                                              enum vlc_player_media_stopping_reason reason,
                                              void *data)
 {
     PlayerControllerPrivate* that = static_cast<PlayerControllerPrivate*>(data);
     that->m_minimizePause = PlayerControllerPrivate::MinimizePause::None;
+    if (auto &hold = that->m_speedHold; hold && hold->media.get() == media)
+    {
+        hold->stopping = true;
+        // A user stop has already detached the input. GetRate then returns
+        // the last requested rate, including any edit still in the queue.
+        const float rate = vlc_player_GetRate(player);
+        if (!vlc_player_GetCapabilities(player) && rate != PlayerController::HoldSpeedRate)
+            hold->restoreRate = rate;
+        if (hold->sources)
+            that->releaseSpeedHold();
+    }
     if( reason != VLC_PLAYER_MEDIA_STOPPING_EOS )
         var_TriggerCallback( VLC_OBJECT( vlc_object_instance( that->p_intf ) ), "renderer-stop" );
 }
@@ -631,7 +761,13 @@ static void on_player_state_changed(vlc_player_t *player, enum vlc_player_state 
     }
 
     if (state == VLC_PLAYER_STATE_STOPPED)
+    {
+        that->saveRateAfterSpeedHold(nullptr);
+        // closing: whatever the hold was waiting for, the player has stopped
+        if (that->m_speedHoldClosing && that->m_speedHold)
+            that->clearSpeedHold();
         ++that->m_lrcLyricsGeneration;
+    }
 
     that->callAsync([that,state] () {
         PlayerController* q = that->q_func();
@@ -780,6 +916,32 @@ static void on_player_buffering(vlc_player_t *, float new_buffering, void *data)
         that->m_buffering = new_buffering;
         emit that->q_func()->bufferingChanged( new_buffering );
     });
+}
+
+static void on_player_rate_changed(vlc_player_t *player, float rate, void *data)
+{
+    auto *that = static_cast<PlayerControllerPrivate *>(data);
+    auto &hold = that->m_speedHold;
+    if (!hold || PlayerController::isChangingSpeedHoldRate())
+        return;
+
+    // A pending 2x request can take effect just as the input gets detached.
+    if (rate == PlayerController::HoldSpeedRate)
+    {
+        hold->appliedRate = rate;
+        return;
+    }
+    if (!vlc_player_GetCapabilities(player) || vlc_player_GetRate(player) != rate)
+        return;
+
+    const bool wasBoosted = hold->appliedRate == PlayerController::HoldSpeedRate;
+    hold->appliedRate = rate;
+    if (hold->stopping)
+        return;
+    if (wasBoosted || (!hold->sources && rate == hold->restoreRate))
+        that->clearSpeedHold();
+    else if (hold->sources)
+        hold->restoreRate = rate;
 }
 
 static void on_player_capabilities_changed(vlc_player_t *, int old_caps, int new_caps, void *data)
@@ -1491,6 +1653,7 @@ static const struct vlc_player_cbs player_cbs = [] {
     cbs.on_current_media_changed = on_player_current_media_changed;
     cbs.on_stopping_current_media = on_player_stopping_current_media;
     cbs.on_state_changed = on_player_state_changed;
+    cbs.on_rate_changed = on_player_rate_changed;
     cbs.on_error_changed = on_player_error_changed;
     cbs.on_buffering_changed = on_player_buffering;
     cbs.on_capabilities_changed = on_player_capabilities_changed;
@@ -1583,6 +1746,7 @@ PlayerControllerPrivate::PlayerControllerPrivate(PlayerController *playercontrol
     , m_audioVisualization((audio_output_t*)nullptr, "visual")
     , m_rendererManager(p_intf, m_player)
 {
+    vlc_cond_init(&m_speedHoldFinished);
     {
         vlc_player_locker locker{m_player};
         m_player_listener = vlc_player_AddListener( m_player, &player_cbs, this );
@@ -1670,29 +1834,22 @@ PlayerController::PlayerController( qt_intf_t *_p_intf )
 {
     connect( &d_ptr->m_position_timer, &QTimer::timeout, this, &PlayerController::updatePositionFromTimer );
     connect( &d_ptr->m_time_timer, &QTimer::timeout, this, &PlayerController::updateTimeFromTimer );
-    connect(this, &PlayerController::inputChanged, this, &PlayerController::cancelSpeedHolds);
     connect(this, &PlayerController::playingStateChanged, this, [this](PlayingState state) {
-        if (state != PLAYING_STATE_PLAYING)
+        if (state == PLAYING_STATE_PAUSED)
             cancelSpeedHolds();
     });
     connect(this, &PlayerController::rateChangableChanged, this, [this](bool changeable) {
         if (!changeable)
             cancelSpeedHolds();
     });
-    // (another rate during a hold: setRate(), slower(), faster() and
-    // normalRate() end it without bringing back the old one; a rate from
-    // elsewhere, a hotkey or rc, is kept as cancelSpeedHolds() finds it)
-    // The hold ends just before the media does: the player saves the media's
-    // rate when it stops, and that is the normal one then
-    connect(this, &PlayerController::positionUpdated, this, [this](double, VLCTime time, VLCDuration length) {
-        if (holdSpeedActive() && length.valid() && time.valid()
-            && length.toVLCTick() - time.toVLCTick() < VLC_TICK_FROM_SEC(2))
-            cancelSpeedHolds();
-    });
 }
 
 PlayerController::~PlayerController()
 {
+    Q_D(PlayerController);
+    vlc_player_locker lock{ d->m_player };
+    if (d->m_speedHold && d->m_speedHold->sources)
+        d->releaseSpeedHold();
 }
 
 // PLAYBACK
@@ -1765,6 +1922,7 @@ void PlayerController::reverse()
     if ( vlc_player_CanChangeRate( d->m_player ) )
     {
         float f_rate_ = vlc_player_GetRate( d->m_player );
+        d->commitSpeedHoldRate(-f_rate_);
         vlc_player_ChangeRate( d->m_player, -f_rate_ );
     }
 }
@@ -1772,14 +1930,7 @@ void PlayerController::reverse()
 void PlayerController::setRate( float new_rate )
 {
     Q_D(PlayerController);
-
-    // A rate asked for during a hold is the new normal one: the hold ends
-    // without bringing back the rate from before it
-    const bool holding = holdSpeedActive();
-    if (holding)
-        dropSpeedHolds();
-
-    if (qFuzzyCompare(d->m_rate, new_rate) && !holding)
+    if (new_rate == 0.f)
         return;
 
     msg_Dbg( d->p_intf, "setRate %f", new_rate);
@@ -1787,6 +1938,9 @@ void PlayerController::setRate( float new_rate )
         vlc_player_locker lock{ d->m_player };
         if ( !vlc_player_CanChangeRate( d->m_player ) )
             return;
+        if ((!d->m_speedHold || !d->m_speedHold->sources) && qFuzzyCompare(d->m_rate, new_rate))
+            return;
+        d->commitSpeedHoldRate(new_rate);
         vlc_player_ChangeRate( d->m_player, new_rate );
     }
 
@@ -1820,148 +1974,118 @@ bool PlayerController::beginSpeedHold(SpeedHoldSource source)
     if (!canHoldSpeed())
         return false;
 
-    const bool wasActive = holdSpeedActive();
     {
         vlc_player_locker lock{ d->m_player };
-        if (vlc_player_GetState(d->m_player) != VLC_PLAYER_STATE_PLAYING
-            || !d->isCurrentItemSynced())
+        if (d->m_speedHoldClosing || (d->m_speedHold && d->m_speedHold->stopping)
+            || vlc_player_GetState(d->m_player) != VLC_PLAYER_STATE_PLAYING
+            || !vlc_player_CanChangeRate(d->m_player) || !d->isCurrentItemSynced())
             return false;
-        if (!wasActive)
+        if (d->m_speedHold && d->m_speedHold->sources)
         {
-            // The hold is the interface's: the player's own rate, given back
-            // when it ends (no change in VLC's core)
-            m_rateBeforeHold = vlc_player_GetRate(d->m_player);
-            vlc_player_ChangeRate(d->m_player, HoldSpeedRate);
+            d->m_speedHold->sources |= source;
+            return true;
         }
+
+        const float rate = vlc_player_GetRate(d->m_player);
+        if (!d->m_speedHold)
+            d->m_speedHold.emplace(PlayerControllerPrivate::SpeedHold{d->m_currentItem, rate, rate, 0});
+        else if (rate != HoldSpeedRate)
+        {
+            d->m_speedHold->restoreRate = rate;
+            d->m_speedHold->appliedRate = rate;
+        }
+        d->m_speedHold->sources = source;
+        if (d->m_speedHold->restoreRate != HoldSpeedRate)
+            d->changeSpeedHoldRate(HoldSpeedRate);
     }
-    m_speedHoldSources |= source;
-    if (!wasActive)
-    {
-        clearSpeedOsd();
-        m_holdMrl = getUrl().toString(QUrl::FullyEncoded);
-        // as setRate(): the rate shown at once (the badge), not with the
-        // player's next timer update
-        d->m_rate = HoldSpeedRate;
-        emit rateChanged(d->m_rate);
-        emit holdSpeedActiveChanged();
-    }
+
+    d->m_rate = HoldSpeedRate;
+    emit rateChanged(d->m_rate);
+    emit holdSpeedActiveChanged();
     return true;
 }
 
-// ChangeRate writes "Speed: 2.00x" over the video; the hold has its own badge
-// (PlayerToast), so the player's message is taken off at once
-void PlayerController::clearSpeedOsd()
+bool PlayerController::holdSpeedActive() const
 {
-    Q_D(PlayerController);
-    size_t count = 0;
-    vout_thread_t **vouts = vlc_player_vout_HoldAll(d->m_player, &count);
-    for (size_t i = 0; i < count; ++i)
-    {
-        vout_FlushSubpictureChannel(vouts[i], VOUT_SPU_CHANNEL_OSD);
-        vout_Release(vouts[i]);
-    }
-    free(vouts);
-}
-
-void PlayerController::dropSpeedHolds()
-{
-    if (!holdSpeedActive())
-        return;
-    m_speedHoldSources = 0;
-    m_holdMrl.clear();
-    emit holdSpeedActiveChanged();
-}
-
-// The player saves a media's rate in the library when it stops: a media that
-// ended or was left during a hold would come back at the hold's speed. Its
-// saved rate is set back to the one from before the hold, once the player has
-// written it (a moment later, from the interface's thread).
-void PlayerController::restoreSavedRate(const QString &mrl, float rate)
-{
-    Q_D(PlayerController);
-    if (mrl.isEmpty())
-        return;
-    QTimer::singleShot(1500, this, [this, mrl, rate]() {
-        Q_D(PlayerController);
-        vlc_medialibrary_t *ml = vlc_ml_instance_get(d->p_intf);
-        if (!ml)
-            return;
-        vlc_ml_media_t *media = vlc_ml_get_media_by_mrl(ml, qtu(mrl));
-        if (!media)
-            return;
-        // (no saved rate means the normal speed)
-        const QByteArray value = qFuzzyCompare(rate, 1.f) ? QByteArray()
-                                                          : QByteArray::number(rate, 'f', 2);
-        vlc_ml_media_set_playback_state(ml, media->i_id, VLC_ML_PLAYBACK_STATE_SPEED,
-                                        value.isEmpty() ? nullptr : value.constData());
-        vlc_ml_media_release(media);
-    });
-    Q_UNUSED(d);
+    Q_D(const PlayerController);
+    vlc_player_locker lock{ d->m_player };
+    return d->m_speedHold && d->m_speedHold->sources;
 }
 
 void PlayerController::endSpeedHold(SpeedHoldSource source)
 {
-    if (!(m_speedHoldSources & source))
-        return;
-    if (m_speedHoldSources == static_cast<unsigned>(source))
-        cancelSpeedHolds();
-    else
-        m_speedHoldSources &= ~static_cast<unsigned>(source);
+    cancelSpeedHolds(source);
 }
 
-void PlayerController::cancelSpeedHolds()
+void PlayerController::cancelSpeedHolds(unsigned source)
 {
     Q_D(PlayerController);
-    if (!holdSpeedActive())
-        return;
-
-    const QString mrl = m_holdMrl;
-    const float rate = m_rateBeforeHold;
-    m_speedHoldSources = 0;
-    m_holdMrl.clear();
-    bool samePlaying;
-    bool restored;
+    float rate;
     {
         vlc_player_locker lock{ d->m_player };
-        samePlaying = vlc_player_GetState(d->m_player) == VLC_PLAYER_STATE_PLAYING;
-        // the rate from before the hold, on this media or the next one (the
-        // player keeps it for the next input when none is playing); not when
-        // another rate was asked for meanwhile (a hotkey, rc: their rate
-        // reaches the interface only with the next timer update)
-        restored = qFuzzyCompare(vlc_player_GetRate(d->m_player), HoldSpeedRate);
-        if (restored)
-            vlc_player_ChangeRate(d->m_player, rate);
+        if (!d->m_speedHold || !d->m_speedHold->sources)
+            return;
+        if (source && d->m_speedHold->sources != source)
+        {
+            d->m_speedHold->sources &= ~source;
+            return;
+        }
+        rate = d->releaseSpeedHold();
     }
-    clearSpeedOsd();
-    if (restored)
+    if (rate != d->m_rate)
     {
         d->m_rate = rate;
         emit rateChanged(d->m_rate);
     }
-    samePlaying = samePlaying && getUrl().toString(QUrl::FullyEncoded) == mrl;
-    if (!samePlaying)
-        restoreSavedRate(mrl, rate);
-    emit holdSpeedActiveChanged();
+}
+
+void PlayerController::finishSpeedHoldForShutdown()
+{
+    Q_D(PlayerController);
+    // Called from interface shutdown while the Qt event loop can still
+    // handle video output teardown. The player will be destroyed next.
+    vlc_player_locker lock{ d->m_player };
+    d->m_speedHoldClosing = true;
+    if (d->m_speedHold && d->m_speedHold->sources)
+        d->releaseSpeedHold();
+    if (!d->m_speedHold)
+        return;
+    // already stopped: no stop callback will come to end the wait
+    if (vlc_player_GetState(d->m_player) == VLC_PLAYER_STATE_STOPPED)
+    {
+        d->clearSpeedHold();
+        return;
+    }
+
+    // The input can discard the queued rate restoration on shutdown.
+    // Keep the listeners alive through its final media-library save.
+    vlc_player_Stop(d->m_player);
+    while (d->m_speedHold)
+        vlc_player_CondWait(d->m_player, &d->m_speedHoldFinished);
 }
 
 void PlayerController::slower()
 {
     Q_D(PlayerController);
     msg_Dbg( d->p_intf, "slower");
-    dropSpeedHolds();   // another rate: the hold ends where it is
     vlc_player_locker lock{ d->m_player };
     if ( vlc_player_CanChangeRate( d->m_player ) )
+    {
+        d->dropSpeedHoldSources();
         vlc_player_DecrementRate( d->m_player );
+    }
 }
 
 void PlayerController::faster()
 {
     Q_D(PlayerController);
     msg_Dbg( d->p_intf, "faster");
-    dropSpeedHolds();   // another rate: the hold ends where it is
     vlc_player_locker lock{ d->m_player };
     if ( vlc_player_CanChangeRate( d->m_player ) )
+    {
+        d->dropSpeedHoldSources();
         vlc_player_IncrementRate( d->m_player );
+    }
 }
 
 void PlayerController::littlefaster()
@@ -1982,10 +2106,12 @@ void PlayerController::normalRate()
 {
     Q_D(PlayerController);
     msg_Dbg( d->p_intf, "normalRate");
-    dropSpeedHolds();   // another rate: the hold ends where it is
     vlc_player_locker lock{ d->m_player };
     if ( vlc_player_CanChangeRate( d->m_player ) )
+    {
+        d->commitSpeedHoldRate(1.f);
         vlc_player_ChangeRate( d->m_player, 1.0f );
+    }
 }
 
 

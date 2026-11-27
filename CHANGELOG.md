@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Holding for 2× speed** is temporary in the desktop player. Releasing the hold, switching videos, stopping, or quitting restores the previous speed. If you choose a different speed during the hold, VLC keeps your choice.
 - **Open with on macOS**: with "Add to the playlist instead of replacing it" off, files opened from Finder into a running VLC replace the queue, as on Windows.
 - **Subtitle providers that say "too many requests"**: after a provider answers 429, VLC stops asking it until its Retry-After time (a minute when it gives none), instead of sending the rest of the search's requests.
 - **Linux keeps queue entries for unmounted volumes**: files on a volume that is unmounted while VLC runs are no longer removed from the queue as deleted.

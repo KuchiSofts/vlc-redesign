@@ -345,7 +345,9 @@ public:
     bool canHoldSpeed() const;
     bool beginSpeedHold(SpeedHoldSource source);
     void endSpeedHold(SpeedHoldSource source);
-    bool holdSpeedActive() const { return m_speedHoldSources != 0; }
+    bool holdSpeedActive() const;
+    static bool isChangingSpeedHoldRate();
+    void finishSpeedHoldForShutdown();
 
     //getter/setters binded to a Q_PROPERTY
 public slots:
@@ -594,14 +596,7 @@ signals:
 
 private:
     Q_DECLARE_PRIVATE(PlayerController)
-    void cancelSpeedHolds();
-    // the hold without restoring the rate (another one was asked for)
-    void dropSpeedHolds();
-    void clearSpeedOsd();
-    void restoreSavedRate(const QString &mrl, float rate);
-    unsigned m_speedHoldSources = 0;
-    float m_rateBeforeHold = 1.f;
-    QString m_holdMrl;
+    void cancelSpeedHolds(unsigned source = 0);
     QScopedPointer<PlayerControllerPrivate> d_ptr;
 };
 

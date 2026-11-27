@@ -25,10 +25,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Live TV reasons in your language**: a refused sign-in, no channels or no guide yet.
 - **Subtitles in your language** when several subtitle files sit beside a video.
 - **Add Subtitles**: a file name with < and > in it shows as it is.
+- **Light theme lists**: the chosen item in Settings' lists, the equalizer and the video options is readable again
+  ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
 
 ### Technical
 
 - Version 0.8.10 started (VLC_REDESIGN_VERSION).
+- VideoLAN's master merged at a75e766d82 (14 commits: channel maps, ARIB subtitles in MKV, VideoToolbox, the
+  main source's origin before external subtitles); input.c keeps the slaves following the demux that reads.
 - The summary of 0.8.9 is the one of its release page, written for people.
 
 ## [0.8.9] · 2026-11-27

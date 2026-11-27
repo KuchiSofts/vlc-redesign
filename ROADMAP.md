@@ -39,6 +39,8 @@ each reviewed before it is taken.
 
 And as the issues bring them:
 
+- 📋 Windows: the media controls (#210) on Windows 10 1809, and the contrast themes (#261, #212) with a real
+  contrast theme turned on (both were checked on Windows 11 with the theme off)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid
   Schedules Direct account; on Android and the Samsung TV app a Tvheadend server that takes only Digest sign-in
   plays with its access code (their players send Basic)

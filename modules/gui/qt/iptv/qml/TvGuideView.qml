@@ -549,7 +549,7 @@ FocusScope {
                             focusPolicy: keyboardReachable ? Qt.TabFocus : Qt.NoFocus
                             onKeyboardReachableChanged: if (!keyboardReachable && focus) channelCell.focus = true
                             Accessible.role: Accessible.Button
-                            Accessible.name: (modelData.title || qsTr("Untitled programme")) + ", " + Iptv.timeText(modelData.start)
+                            Accessible.name: (modelData.title || qsTr("Untitled")) + ", " + Iptv.timeText(modelData.start)
                             Accessible.onPressAction: cell.clicked()
                             Keys.onReturnPressed: (event) => { if (!event.isAutoRepeat) cell.clicked() }
                             Keys.onEnterPressed: (event) => { if (!event.isAutoRepeat) cell.clicked() }

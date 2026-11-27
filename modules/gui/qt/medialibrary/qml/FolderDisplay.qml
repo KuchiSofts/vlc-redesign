@@ -334,6 +334,46 @@ Widgets.PageExt {
 
         T.ScrollBar.vertical: Widgets.ScrollBarExt { }
 
+        // Keyboard: Return/Enter do what a click does, Menu / Shift+F10 open
+        // the context menu of the current card, Up on the first row leaves
+        // the grid for the header (the arrows move the current card)
+        Keys.onReturnPressed: (event) => {
+            if (event.isAutoRepeat) {
+                event.accepted = true
+                return
+            }
+            currentItem?.activate(Qt.TabFocusReason)
+            event.accepted = currentItem !== null
+        }
+        Keys.onEnterPressed: (event) => {
+            if (event.isAutoRepeat) {
+                event.accepted = true
+                return
+            }
+            currentItem?.activate(Qt.TabFocusReason)
+            event.accepted = currentItem !== null
+        }
+        Keys.onMenuPressed: (event) => {
+            if (event.isAutoRepeat) {
+                event.accepted = true
+                return
+            }
+            currentItem?.showMenu()
+            event.accepted = currentItem !== null
+        }
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_F10 && (event.modifiers & Qt.ShiftModifier)) {
+                if (event.isAutoRepeat) {
+                    event.accepted = true
+                    return
+                }
+                currentItem?.showMenu()
+                event.accepted = currentItem !== null
+            } else if (event.key === Qt.Key_Up && currentIndex < columns) {
+                Navigation.defaultKeyAction(event)
+            }
+        }
+
         delegate: T.ItemDelegate {
             id: card
 
@@ -344,6 +384,10 @@ Widgets.PageExt {
                 && /\.(3gp|asf|avi|flv|m2ts|m4v|mkv|mov|mp4|mpe?g|mts|ogv|ts|vob|webm|wmv)$/i.test(String(model.url))
             readonly property real progress: model.progress ?? 0
             readonly property bool played: (model.playcount ?? 0) > 0 || progress > 0
+            // the card the keys are on (only with the focus in the grid)
+            readonly property bool _current: grid.activeFocus && card.GridView.isCurrentItem
+            // the look of the hover, given to the current card too
+            readonly property bool _lit: card.hovered || card._current
             // (the MRL of the library: the url as text decodes some characters)
             readonly property url previewSource: card.model.isFolder ? ""
                                                  : card.isVideo ? VLCThumbnail.uri(card.model.mrl, 0.1)
@@ -378,6 +422,8 @@ Widgets.PageExt {
                         height: width
                         radius: VLCStyle.dp(2, VLCStyle.scale)
                         color: card.model.isFolder ? "transparent" : VLCStyle.redesign.color("#171717", "#dedede")
+                        border.width: card._current ? VLCStyle.dp(1, VLCStyle.scale) : 0
+                        border.color: VLCStyle.redesign.focusColor
 
                         Widgets.ImageExt {
                             id: smallPreview
@@ -391,7 +437,7 @@ Widgets.PageExt {
                         }
                         Image {
                             anchors.centerIn: parent
-                            visible: smallPreview.status !== Image.Ready && !card.hovered
+                            visible: smallPreview.status !== Image.Ready && !card._lit
                             width: card.model.isFolder ? VLCStyle.dp(32, VLCStyle.scale) : VLCStyle.redesign.iconSize
                             height: width
                             source: card.model.isFolder ? "qrc:///redesign/folder.svg"
@@ -425,7 +471,7 @@ Widgets.PageExt {
                         Rectangle {
                             anchors.fill: parent
                             radius: parent.radius
-                            visible: card.hovered && !card.model.isFolder
+                            visible: card._lit && !card.model.isFolder
                             color: "#B3000000"
                             Impl.ColorImage {
                                 anchors.centerIn: parent
@@ -450,7 +496,7 @@ Widgets.PageExt {
                         text: card.model.name
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideMiddle
-                        color: card.hovered ? VLCStyle.redesign.accent
+                        color: card._lit ? VLCStyle.redesign.accent
                                             : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -481,6 +527,8 @@ Widgets.PageExt {
                         radius: VLCStyle.dp(12, VLCStyle.scale)
                         color: card.model.isFolder ? VLCStyle.redesign.color("#1E1E1E", "#dedede")
                                                    : VLCStyle.redesign.color("#171717", "#dedede")
+                        border.width: card._current ? VLCStyle.dp(1, VLCStyle.scale) : 0
+                        border.color: VLCStyle.redesign.focusColor
 
                         // A frame of videos, the artwork of the library for songs
                         Widgets.ImageExt {
@@ -547,7 +595,7 @@ Widgets.PageExt {
                         horizontalAlignment: Text.AlignLeft
                         elide: Text.ElideRight
                         // #6B6B6B once played
-                        color: card.hovered ? VLCStyle.redesign.accent
+                        color: card._lit ? VLCStyle.redesign.accent
                                             : VLCStyle.redesign.color(card.played ? "#6B6B6B" : VLCStyle.redesign.textSecondary)
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -564,22 +612,33 @@ Widgets.PageExt {
             }
             }
 
-            // Folders open, media play
-            onClicked: {
+            // Folders open, media play (a click, or Return on the current card)
+            function activate(reason) {
                 if (card.model.isFolder)
-                    History.push(["folder"], { folderUrl: card.model.url }, Qt.MouseFocusReason)
+                    History.push(["folder"], { folderUrl: card.model.url }, reason ?? Qt.MouseFocusReason)
                 else
                     MainPlaylistController.append([card.model.url], true)
             }
+
+            // The context menu of the card at a point of the screen, by
+            // default the middle of the card (from the keyboard)
+            function showMenu(globalPoint) {
+                const point = globalPoint ?? card.mapToGlobal(Qt.point(card.width / 2, card.height / 2))
+                if (card.model.isFolder)
+                    folderMenu.popup([card.index], point)
+                else
+                    fileMenu.popup([card.index], point)
+            }
+
+            onPressed: grid.currentIndex = card.index
+            onClicked: card.activate()
 
             // Figma "folder context menu"
             TapHandler {
                 acceptedButtons: Qt.RightButton
                 onTapped: (eventPoint) => {
-                    if (card.model.isFolder)
-                        folderMenu.popup([card.index], card.mapToGlobal(eventPoint.position))
-                    else
-                        fileMenu.popup([card.index], card.mapToGlobal(eventPoint.position))
+                    grid.currentIndex = card.index
+                    card.showMenu(card.mapToGlobal(eventPoint.position))
                 }
             }
         }

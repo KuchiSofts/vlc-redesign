@@ -655,6 +655,7 @@ bool SubtitleSearch::setCredentials(QSettings *settings, const QString &id,
     // (new ones: not refused, nor signed in with the old)
     settings->remove(QString::fromLatin1(keyRefused) + id);
     SubtitleProviders::forgetSession(id);
+    SubtitleProviders::endCooldown(id);
     return true;
 }
 

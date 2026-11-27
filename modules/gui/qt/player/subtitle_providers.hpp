@@ -121,6 +121,7 @@ const Provider *provider(const QString &id);
 bool hasRequired(const Provider &provider, const Credentials &credentials);
 // Whether this provider is waiting out a rate limit shared by subtitle searches.
 bool coolingDown(const QString &providerId);
+void endCooldown(const QString &providerId);
 
 // Searches one service; done is called on the thread of context with its
 // results and any error that ended the search early.

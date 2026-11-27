@@ -76,7 +76,9 @@ QHash<QString, qint64> &busyUntil()
 
 void noteRateLimit(const QString &id, const QByteArray &retryAfter)
 {
-    const qint64 deadline = retryAfterDeadline(retryAfter, QDateTime::currentDateTimeUtc());
+    const QDateTime now = QDateTime::currentDateTimeUtc();
+    // (an hour at most: a wrong Retry-After must not turn the service off until VLC is restarted)
+    const qint64 deadline = std::min(retryAfterDeadline(retryAfter, now), now.toMSecsSinceEpoch() + 60 * 60 * 1000);
     qint64 &until = busyUntil()[id];
     until = std::max(until, deadline);
 }
@@ -1781,6 +1783,12 @@ bool hasRequired(const Provider &provider, const Credentials &credentials)
         && (!(provider.required & UsernameField) || !credentials.username.trimmed().isEmpty())
         && (!(provider.required & PasswordField) || !credentials.password.isEmpty())
         && (!(provider.required & EmailField) || !credentials.email.trimmed().isEmpty());
+}
+
+// new credentials: their first try is not held back by the wait of the old ones
+void endCooldown(const QString &providerId)
+{
+    busyUntil().remove(providerId);
 }
 
 bool coolingDown(const QString &providerId)

@@ -294,6 +294,48 @@ static BOOL recover_journal(void)
     return ok;
 }
 
+/* The stage as VLC wrote it (manifest.txt: "size<tab>path" for each of its
+ * files): every one there with its size, and no other. False when it isn't
+ * (one taken away since, by an antivirus): nothing is put in place. */
+static BOOL stage_whole(int listed_count)
+{
+    wchar_t path[MAX_PATH];
+    join(path, work, L"manifest.txt");
+    FILE *f = _wfopen(path, L"rt, ccs=UTF-8");
+    if (!f)
+        return TRUE; /* (the stage of a VLC before this list: as before) */
+    wchar_t line[MAX_PATH + 32];
+    int count = 0;
+    BOOL ok = TRUE;
+    while (ok && fgetws(line, MAX_PATH + 32, f)) {
+        line[wcscspn(line, L"\r\n")] = 0;
+        if (!*line)
+            continue;
+        wchar_t *tab = wcschr(line, L'\t');
+        if (!tab) {
+            ok = FALSE;
+            break;
+        }
+        *tab = 0;
+        const unsigned long long size = _wcstoui64(line, NULL, 10);
+        wchar_t file[MAX_PATH];
+        WIN32_FILE_ATTRIBUTE_DATA data;
+        if (!safe_rel(tab + 1) || !join(file, staged, tab + 1)
+            || !GetFileAttributesExW(file, GetFileExInfoStandard, &data)
+            || ((((unsigned long long)data.nFileSizeHigh) << 32) | data.nFileSizeLow) != size) {
+            logf_(L"the staged update lacks %ls as it was written", tab + 1);
+            ok = FALSE;
+        }
+        ++count;
+    }
+    fclose(f);
+    if (ok && count != listed_count) {
+        logf_(L"the staged update has %d files, its list %d", listed_count, count);
+        ok = FALSE;
+    }
+    return ok;
+}
+
 static BOOL set_aside(const wchar_t *rel)
 {
     wchar_t target[MAX_PATH], kept[MAX_PATH];
@@ -621,6 +663,8 @@ int wmain(int argc, wchar_t **argv)
             DeleteFileW(list);
             join(list, work, L"ready.txt");
             DeleteFileW(list);
+            join(list, work, L"manifest.txt");
+            DeleteFileW(list);
             join(list, work, L"restore.txt");
             DeleteFileW(list);
             journal_end();
@@ -645,6 +689,8 @@ int wmain(int argc, wchar_t **argv)
             DeleteFileW(list);
             join(list, work, L"ready.txt");
             DeleteFileW(list);
+            join(list, work, L"manifest.txt");
+            DeleteFileW(list);
             DeleteFileW(mark);
             logf_(L"VLC Redesign is as it was before the last update, which is downloaded again");
         }
@@ -667,6 +713,21 @@ int wmain(int argc, wchar_t **argv)
             CloseHandle(vlc);
         return 1;
     }
+    if (!stage_whole(count)) {
+        /* (VLC downloads it again) */
+        logf_(L"the staged update is not whole: not applied");
+        remove_tree(staged);
+        join(list, work, L"removed.txt");
+        DeleteFileW(list);
+        join(list, work, L"manifest.txt");
+        DeleteFileW(list);
+        join(list, work, L"ready.txt");
+        DeleteFileW(list);
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
+        return 1;
+    }
     if (!count && !gone) {
         /* (applied already, by another VLC's updater): VLC opens again all
          * the same, and the next exit doesn't run this again */
@@ -674,6 +735,8 @@ int wmain(int argc, wchar_t **argv)
         join(list, work, L"removed.txt");
         DeleteFileW(list);
         join(list, work, L"ready.txt");
+        DeleteFileW(list);
+        join(list, work, L"manifest.txt");
         DeleteFileW(list);
         HANDLE vlc = again ? relaunch(resume, time) : NULL;
         if (vlc)
@@ -746,6 +809,8 @@ int wmain(int argc, wchar_t **argv)
     join(list, work, L"removed.txt");
     DeleteFileW(list);
     join(list, work, L"ready.txt");
+    DeleteFileW(list);
+    join(list, work, L"manifest.txt");
     DeleteFileW(list);
     HANDLE vlc = again ? relaunch(resume, time) : NULL;
 

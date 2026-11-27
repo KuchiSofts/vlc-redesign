@@ -17,6 +17,7 @@
 #include <QDateTime>
 #include <QDesktopServices>
 #include <QDir>
+#include <QDirIterator>
 #include <QElapsedTimer>
 #include <QFile>
 #include <QSaveFile>
@@ -1576,6 +1577,19 @@ QString RedesignUpdater::stageFinish(const QString &dir, const QString &version,
         removeTree(staged);
         return publisher;
     }
+    // The list of the stage, each file with its size ("size<tab>path"): the
+    // helper puts nothing in place unless every one of them is there as it
+    // was written, and no other (an antivirus that took one away later left
+    // the update half applied)
+    QStringList manifest;
+    QDirIterator it(staged, QDir::Files | QDir::Hidden | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        const QFileInfo file(it.next());
+        manifest << QStringLiteral("%1\t%2").arg(file.size())
+                        .arg(QDir::toNativeSeparators(QDir(staged).relativeFilePath(file.filePath())));
+    }
+    if (!writeDurably(work + QStringLiteral("/manifest.txt"), manifest.join('\n').toUtf8()))
+        return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     if (!prepareHelper(dir))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     // last: the update is complete. Every file above is on the disk by now

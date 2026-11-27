@@ -150,6 +150,7 @@ class MainCtx : public QObject
     Q_PROPERTY(int windowButtonsInsetRight READ windowButtonsInsetRight NOTIFY windowButtonsInsetChanged FINAL)
     Q_PROPERTY(bool hasToolbarMenu READ hasToolbarMenu WRITE setHasToolbarMenu NOTIFY hasToolbarMenuChanged FINAL)
     Q_PROPERTY(bool canShowVideoPIP READ canShowVideoPIP CONSTANT FINAL)
+    Q_PROPERTY(bool firstFrameSwapped READ firstFrameSwapped NOTIFY firstFrameSwappedChanged FINAL)
     Q_PROPERTY(bool pinVideoControls READ pinVideoControls WRITE setPinVideoControls NOTIFY pinVideoControlsChanged FINAL)
     // The layout right to left (Settings > Appearance), whatever the
     // language: left to right unless chosen. Shown at once; the setting
@@ -354,6 +355,14 @@ public:
     inline bool hasToolbarMenu() const { return m_hasToolbarMenu; }
     inline bool canShowVideoPIP() const { return m_canShowVideoPIP; }
     inline void setCanShowVideoPIP(bool canShowVideoPIP) { m_canShowVideoPIP = canShowVideoPIP; }
+    bool firstFrameSwapped() const { return m_firstFrameSwapped; }
+    void markFirstFrameSwapped()
+    {
+        if (m_firstFrameSwapped)
+            return;
+        m_firstFrameSwapped = true;
+        emit firstFrameSwappedChanged();
+    }
 
     inline bool pinVideoControls() const { return m_pinVideoControls; }
     inline bool rightToLeft() const { return m_rightToLeft; }
@@ -689,6 +698,7 @@ protected:
     // NOTE: Ideally this should be a QVLCBool.
     bool                 m_hasToolbarMenu = false;
     bool                 m_canShowVideoPIP = false;
+    bool                 m_firstFrameSwapped = false;
 
     /* Pinned */
     bool                 m_pinVideoControls = false;
@@ -872,6 +882,7 @@ signals:
     void useClientSideDecorationChanged();
     void windowButtonsInsetChanged();
     void hasToolbarMenuChanged();
+    void firstFrameSwappedChanged();
 
     /// forward window maximise query to the actual window or widget
     void requestInterfaceMaximized();

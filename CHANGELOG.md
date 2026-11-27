@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Faster start**: the player menu, sleep timer, audio visualization and HDR output popups are made when first opened.
 - **Folders with the keyboard**: the arrows show the current card, Enter opens or plays it, and the Menu key or Shift+F10 opens its menu.
 - **TV Guide: open programme details with the keyboard** by pressing Tab to select a programme and Enter to open it.
 

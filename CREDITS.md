@@ -73,6 +73,8 @@ Thank you to everyone who tested, reported and translated:
     ([#211](https://github.com/KuchiSofts/vlc-redesign/issues/211)).
   - [@Dipen425](https://github.com/Dipen425): the mini player's queue that had no scroll bar to drag on a laptop
     ([#259](https://github.com/KuchiSofts/vlc-redesign/issues/259)).
+  - [@yamtartunga](https://github.com/yamtartunga): the chosen item of a list that was unreadable in the light theme
+    ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
 - **Code:**
   - [@SHR1F](https://github.com/SHR1F): the restored full screen held from the start
     ([#49](https://github.com/KuchiSofts/vlc-redesign/pull/49)), video without waiting for the graphics driver's warm-up

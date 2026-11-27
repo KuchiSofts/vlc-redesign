@@ -1431,6 +1431,12 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
     QString release = result.release;
     release.replace(QRegularExpression(QStringLiteral(R"([\\/:*?"<>|\s\p{Cc}]+)")), QStringLiteral("."));
     release = release.left(80);
+    // (a name Windows keeps for a device, "Aux.Some.Film.2022..." read as AUX
+    // before Windows 11, could not be saved)
+    static const QRegularExpression deviceName(QStringLiteral(R"(^(con|prn|aux|nul|com\d|lpt\d)(\.|$))"),
+                                               QRegularExpression::CaseInsensitiveOption);
+    if (deviceName.match(release).hasMatch())
+        release.prepend(QLatin1Char('_'));
     // (the id comes from the service's answer: nothing of a path in it)
     QString fileId = id;
     fileId.replace(QLatin1Char(':'), QLatin1Char('-'));

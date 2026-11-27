@@ -132,10 +132,14 @@ static void testRules()
     }
     for (int status : { 307, 308 })
     {
+        // on the same server, the body goes with it
         HttpRequest request = post();
-        CHECK(httpFollowRedirect(request, status, QUrl(QStringLiteral("https://cdn.example/b")), &error));
+        CHECK(httpFollowRedirect(request, status, QUrl(QStringLiteral("https://api.example/b")), &error));
         CHECK(request.method == "POST" && request.body == "{\"a\":1}"
               && headerOf(request, "Content-Type") == "application/json");
+        // to another server, never (a sign-in's body carries the password)
+        HttpRequest away = post();
+        CHECK(!httpFollowRedirect(away, status, QUrl(QStringLiteral("https://cdn.example/b")), &error));
     }
     HttpRequest head;
     head.method = "HEAD";

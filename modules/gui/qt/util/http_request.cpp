@@ -103,6 +103,13 @@ bool httpFollowRedirect(HttpRequest& request, int status, const QUrl& target, QS
     }
     if (!sameOrigin(request.url, target))
     {
+        // A body kept by a 307 or 308 goes to no other server: a sign-in's
+        // carries the password
+        if (!request.body.isEmpty())
+        {
+            *error = QStringLiteral("Redirect of a request with a body to another server refused");
+            return false;
+        }
         // Another server: only what is no secret goes with the request
         static const char* const kept[] = { "User-Agent", "Accept", "Accept-Language", "Referer" };
         QList<QPair<QByteArray, QByteArray>> headers;

@@ -318,10 +318,19 @@ qint64 retryAfterDeadline(const QByteArray &header, const QDateTime &now)
 
 QString cleanRelease(const QString &release)
 {
-    static const QRegularExpression decorations(QStringLiteral(R"(^[\s*\-:.|]+|[\s*\-:.|]+$)"));
-    QString cleaned = release;
-    cleaned.remove(decorations);
-    return cleaned.trimmed();
+    // the uploaders' decorations at both ends ("* <a note> * The Matrix…"),
+    // taken off in one pass (a pattern anchored at the end tried every start
+    // over again: a name of half a million dashes held a thread for minutes);
+    // and a name no longer than a name can be
+    const auto decoration = [](QChar c) {
+        return c.isSpace() || c == u'*' || c == u'-' || c == u':' || c == u'.' || c == u'|';
+    };
+    QStringView view = QStringView(release).left(1000);
+    while (!view.isEmpty() && decoration(view.front()))
+        view = view.sliced(1);
+    while (!view.isEmpty() && decoration(view.back()))
+        view.chop(1);
+    return view.toString();
 }
 
 bool releaseOfEpisode(const QString &release, int season, int episode)

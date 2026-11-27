@@ -91,11 +91,9 @@ const char keySkipped[] = "redesign/update-skip";
 // each step of a download (a stalled read ends it), and the whole of it
 constexpr int downloadStepMs = 30 * 1000;
 constexpr int downloadDeadlineMs = 30 * 60 * 1000;
-// The first release whose SHA256SUMS.txt is signed with the project's key
-// (SHA256SUMS.txt.sig, redesign_update_key.h): from it on, a release whose
-// checksums don't carry a good signature is never installed. The releases
-// before it have no signature.
-const char FIRST_SIGNED_VERSION[] = "0.4.0";
+// Every release's SHA256SUMS.txt is signed with the project's key
+// (SHA256SUMS.txt.sig, redesign_update_key.h) since 0.4.0: a release whose
+// checksums don't carry a good signature is never installed.
 const char sumsName[] = "SHA256SUMS.txt";
 const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
 // The files of this build's architecture (docs/MASTER-PLAN.md, 13.5): an
@@ -252,8 +250,9 @@ bool hasOwnPackage(const QJsonObject &release)
 #endif
 }
 
-#ifndef NDEBUG
-// for testing updates against a local server, not GitHub (debug builds only)
+#if !defined(NDEBUG) && defined(VLC_REDESIGN_UPDATE_TEST_SERVER)
+// for testing updates against a local server, not GitHub: only in a build
+// made for it (VLC_REDESIGN_UPDATE_TEST_SERVER defined), never a release
 QString testApi()
 {
     return QString::fromUtf8(qgetenv("VLC_REDESIGN_UPDATE_API"));
@@ -272,7 +271,7 @@ bool trustedUrl(const QString &address)
         && url.path().startsWith(QLatin1String("/" VLC_REDESIGN_REPO "/releases/download/"), Qt::CaseInsensitive)
         && !url.path().contains(QLatin1String("/../")))
         return true;
-#ifndef NDEBUG
+#if !defined(NDEBUG) && defined(VLC_REDESIGN_UPDATE_TEST_SERVER)
     // the test server's own files
     const QUrl api(testApi());
     return !api.host().isEmpty() && url.scheme() == api.scheme() && url.host() == api.host()
@@ -341,12 +340,13 @@ QString trustedSigner(const QString &path)
 }
 #endif
 
-// Whether a release must come with signed checksums: from the first signed
-// one on. (Every build of this version or later only updates to such a
-// release; the older targets keep the checks they had.)
-bool signatureRequired(const QString &version)
+// Whether a release must come with signed checksums: always. Every release
+// from 0.4.0 on has them, and a copy only updates to a newer one. (By the
+// release's version, an old tag offered as an update, with a version taken
+// from the test switches, was installed without its signature.)
+bool signatureRequired(const QString &)
 {
-    return !RedesignUpdater::versionLess(version, QLatin1String(FIRST_SIGNED_VERSION));
+    return true;
 }
 
 // SHA256SUMS.txt checked against its signature by the key the app carries:
@@ -500,10 +500,20 @@ QString sha256Hex(const QByteArray &data)
 // the user's data
 bool safeRelativePath(const QString &path)
 {
-    return !path.isEmpty() && !path.contains(QLatin1String("..")) && !path.contains(':')
-           && !path.startsWith('/') && !path.startsWith('\\')
-           && !path.startsWith(QLatin1String("portable"), Qt::CaseInsensitive)
-           && !path.startsWith(QLatin1String(".update"), Qt::CaseInsensitive);
+    if (path.isEmpty() || path.contains(QLatin1String("..")) || path.contains(':')
+        || path.startsWith('/') || path.startsWith('\\'))
+        return false;
+    // each part of it: none empty or ".", no short 8.3 name ("PORTAB~1"), none
+    // ending in a dot or a space (Windows reads those as another name), so the
+    // first part really is not the user's data nor the update's own files
+    // ("./portable/vlcrc" passed a check of the start alone)
+    const QStringList parts = QString(path).replace('\\', '/').split('/');
+    for (const QString &part : parts)
+        if (part.isEmpty() || part == QLatin1String(".") || part.contains('~')
+            || part.endsWith('.') || part.endsWith(' '))
+            return false;
+    return !parts.first().startsWith(QLatin1String("portable"), Qt::CaseInsensitive)
+           && !parts.first().startsWith(QLatin1String(".update"), Qt::CaseInsensitive);
 }
 
 // A file whole on the disk before it has its name: QSaveFile writes a
@@ -968,7 +978,7 @@ void RedesignUpdater::check(bool manual)
     msg_Dbg(m_intf, "update check (%s): asking GitHub for its releases",
             manual ? "asked" : "daily");
     QString url = QString::fromLatin1(releasesApi);
-#ifndef NDEBUG
+#if !defined(NDEBUG) && defined(VLC_REDESIGN_UPDATE_TEST_SERVER)
     if (!testApi().isEmpty())
         url = testApi();
 #endif

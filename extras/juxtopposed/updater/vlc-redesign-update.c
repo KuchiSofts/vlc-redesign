@@ -122,6 +122,13 @@ static BOOL exists(const wchar_t *path)
 static void remove_tree(const wchar_t *dir)
 {
     wchar_t pattern[MAX_PATH], path[MAX_PATH];
+    /* a junction or a link is removed itself, never what it points to (a
+     * junction in place of the backup folder had its target's files deleted) */
+    const DWORD attributes = GetFileAttributesW(dir);
+    if (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_REPARSE_POINT)) {
+        RemoveDirectoryW(dir);
+        return;
+    }
     if (!join(pattern, dir, L"*"))
         return;
     WIN32_FIND_DATAW fd;
@@ -132,7 +139,12 @@ static void remove_tree(const wchar_t *dir)
                 continue;
             if (!join(path, dir, fd.cFileName))
                 continue;
-            if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            if (fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
+                if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+                    RemoveDirectoryW(path);
+                else
+                    DeleteFileW(path);
+            } else if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
                 remove_tree(path);
             else {
                 SetFileAttributesW(path, FILE_ATTRIBUTE_NORMAL);
@@ -168,6 +180,10 @@ static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, in
                 continue;
         } else
             wcsncpy(sub, fd.cFileName, MAX_PATH);
+        /* (a junction or a link in a staged update is not followed: only
+         * real files of the stage are listed) */
+        if (fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT)
+            continue;
         if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
             count = list_files(base, sub, out, count);
         else if (count < MAX_FILES)
@@ -374,8 +390,25 @@ static int read_removed(wchar_t **out)
             if (*p == L'/')
                 *p = L'\\';
         /* never outside the app, never the user's data, never the update's
-         * own files (as safeRelativePath of the interface) */
-        if (*line && !wcsstr(line, L"..") && line[0] != L'\\' && !wcschr(line, L':')
+         * own files (as safeRelativePath of the interface): each part of it,
+         * none empty or ".", no short 8.3 name, none ending in a dot or a
+         * space; and a file, never a whole folder */
+        BOOL parts_ok = *line && line[wcslen(line) - 1] != L'\\';
+        for (const wchar_t *part = line; parts_ok && *part; ) {
+            const wchar_t *end = wcschr(part, L'\\');
+            const size_t n = end ? (size_t)(end - part) : wcslen(part);
+            if (n == 0 || (n == 1 && part[0] == L'.') || wmemchr(part, L'~', n)
+                || part[n - 1] == L'.' || part[n - 1] == L' ')
+                parts_ok = FALSE;
+            part = end ? end + 1 : part + n;
+        }
+        wchar_t target[MAX_PATH];
+        if (parts_ok && join(target, app, line)) {
+            const DWORD attributes = GetFileAttributesW(target);
+            if (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_DIRECTORY))
+                parts_ok = FALSE;
+        }
+        if (parts_ok && !wcsstr(line, L"..") && line[0] != L'\\' && !wcschr(line, L':')
             && _wcsnicmp(line, L"portable", 8) && _wcsnicmp(line, L".update", 7))
             out[count++] = _wcsdup(line);
     }

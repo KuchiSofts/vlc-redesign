@@ -294,6 +294,7 @@ qt_plugin_sources = files(
     '../../player/player_controller.cpp',
     '../../player/player_controller.hpp',
     '../../player/player_controller_p.hpp',
+    '../../player/time_display.hpp',
     '../../player/player_controlbar_model.cpp',
     '../../player/player_controlbar_model.hpp',
     '../../player/control_list_model.cpp',
@@ -470,6 +471,8 @@ if host_system == 'windows'
     qt_plugin_sources += files(
         '../../maininterface/mainctx_win32.cpp',
         '../../maininterface/mainctx_win32.hpp',
+        '../../maininterface/win_media_controls.cpp',
+        '../../maininterface/win_media_controls.hpp',
         '../../maininterface/compositor_win7.cpp',
         '../../maininterface/compositor_win7.hpp',
         '../../style/windowsthemeprovider.cpp',

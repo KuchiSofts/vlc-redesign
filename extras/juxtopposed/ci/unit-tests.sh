@@ -41,6 +41,9 @@ echo "== audio output selection (same names, reordered and removed devices, defa
 g++ -std=c++17 -O1 -Wall -Wextra $san -I. extras/juxtopposed/audio-output-device.cpp \
     -o "$out/audio-output-device"
 "$out/audio-output-device"
+echo "== player time display (seconds, milliseconds and invalid time)"
+g++ -std=c++17 -O1 -Wall -Wextra $san -Drestrict=__restrict__ -I. -Iinclude extras/juxtopposed/time-display.cpp -o "$out/time-display"
+"$out/time-display"
 
 echo "== windows that fit their screen (the first size and scale, a saved geometry, negative coordinates)"
 g++ -std=c++17 -O1 -Wall -Wextra $san -fPIC -I. $(pkg-config --cflags Qt6Core) \
@@ -185,6 +188,8 @@ python3 extras/juxtopposed/subtitle-charset-test.py --cc "gcc $san"
 
 echo "== folder breadcrumbs (network shares, drive roots, encoded paths)"
 node extras/juxtopposed/folder-breadcrumbs-test.js
+echo "== grid cards prefetched on a frame budget"
+node extras/juxtopposed/expand-grid-prefetch-test.js
 
 echo "== outside text is never drawn as HTML (QML textFormat)"
 python3 extras/juxtopposed/qml-plaintext-check.py
@@ -196,4 +201,6 @@ echo "== file deletion keeps its target through library refreshes"
 node extras/juxtopposed/delete-file-confirmation.cjs
 echo "== TV guide refresh keeps the corrected programme"
 node extras/juxtopposed/tv-guide-refresh.js
+echo "== Home sections that can fit in the first frame"
+node extras/juxtopposed/home-startup-test.mjs
 echo "all passed"

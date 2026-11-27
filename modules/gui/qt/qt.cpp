@@ -969,6 +969,8 @@ static void Close( vlc_object_t *p_this )
         /* (the steps of a close are logged: a close that never ends, seen on
          * a CI runner, shows where it stopped) */
         msg_Dbg( p_intf, "closing: the interface thread is asked to unload" );
+        if (p_intf->p_mainPlayerController)
+            p_intf->p_mainPlayerController->finishSpeedHoldForShutdown();
         QMetaObject::invokeMethod( p_intf->p_mi, [p_intf] () {
             ThreadCleanup(p_intf, CLEANUP_INTF_CLOSED);
         }, Qt::BlockingQueuedConnection);
@@ -1225,13 +1227,15 @@ static void *Thread( void *obj )
             return false;
         msg_Dbg( p_intf, "files opened by the system: %lld, the first %s", (long long)files.size(),
                  qtu( files.first().toUrl().toString() ) );
-        /* "Add to the playlist instead of replacing it" of the settings, as
-         * on Windows: then added after what plays; played when nothing does
-         * (a launch from Finder plays its files) */
-        const bool enqueue = var_InheritBool( p_intf, "playlist-enqueue" )
-                             && p_intf->p_mainPlayerController
-                             && p_intf->p_mainPlayerController->isStarted();
-        p_intf->p_mainPlaylistController->append(files, !enqueue);
+        if (var_InheritBool(p_intf, "playlist-enqueue"))
+        {
+            // Finder opens still start playback when VLC is idle.
+            const bool playing = p_intf->p_mainPlayerController
+                                 && p_intf->p_mainPlayerController->isStarted();
+            p_intf->p_mainPlaylistController->append(files, !playing);
+        }
+        else
+            p_intf->p_mainPlaylistController->replaceAndPlay(files);
         return true;
     });
     MacOpenDocuments::setSink([fileOpenSpy](const QUrl &url) {
@@ -1697,11 +1701,19 @@ static void *Thread( void *obj )
 
         new TouchObserver(p_intf->p_mi);
 
-        static const auto gracefulExitHandler = [&app, mainCtx = QPointer(p_intf->p_mi), settings = QPointer(p_intf->mainSettings)](QQuickWindow *window) {
+        const auto aboutToShowQuickWindow = [&app, mainCtx = QPointer(p_intf->p_mi), settings = QPointer(p_intf->mainSettings)](QQuickWindow *window) {
+            assert(window);
+            // A swap can be emitted by the render thread. Run the bindings
+            // for optional startup items on the interface thread afterward.
+            QObject::connect(window, &QQuickWindow::frameSwapped, window, [mainCtx]() {
+                if (mainCtx)
+                    mainCtx->markFirstFrameSwapped();
+            },
+                             static_cast<Qt::ConnectionType>(Qt::QueuedConnection | Qt::SingleShotConnection));
+
             // Graceful exit on error, as if this signal is not connected
             // Qt uses `qFatal()`. With `MainCtx::askToQuit()`, the event loop
             // would be cleared first:
-            assert(window);
             QObject::connect(window,
                              &QQuickWindow::sceneGraphError,
                              &app,
@@ -1729,7 +1741,7 @@ static void *Thread( void *obj )
             p_intf->p_compositor.reset(compositorFactory.createCompositor());
             if (! p_intf->p_compositor)
                 break;
-            ret = p_intf->p_compositor->makeMainInterface(p_intf->p_mi, gracefulExitHandler);
+            ret = p_intf->p_compositor->makeMainInterface(p_intf->p_mi, aboutToShowQuickWindow);
             if (!ret)
             {
                 p_intf->p_compositor->destroyMainInterface();

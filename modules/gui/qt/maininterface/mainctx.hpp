@@ -39,6 +39,11 @@
 #include <atomic>
 #include <memory>
 
+#ifdef _WIN32
+# include <QRegularExpression>
+# include <mutex>
+#endif
+
 #include "player/shortcut_feedback.hpp"
 
 Q_MOC_INCLUDE( "dialogs/toolbar/controlbar_profile_model.hpp" )
@@ -49,6 +54,7 @@ Q_MOC_INCLUDE( "maininterface/videosurface.hpp" )
 Q_MOC_INCLUDE( "medialibrary/medialib.hpp" )
 Q_MOC_INCLUDE( "player/player_controller.hpp" )
 Q_MOC_INCLUDE( "util/color_scheme_model.hpp" )
+Q_MOC_INCLUDE( "style/systempalette.hpp" )
 #ifdef UPDATE_CHECK
 Q_MOC_INCLUDE( "dialogs/help/help.hpp" )
 #endif
@@ -78,6 +84,7 @@ class VLCSystray;
 class LiveSettings;
 class MediaLib;
 class ColorSchemeModel;
+class SystemPalette;
 class RedesignAccent;
 class VLCVarChoiceModel;
 class SidePanelCtx;
@@ -131,6 +138,7 @@ class MainCtx : public QObject
     Q_PROPERTY(bool hasGridListMode MEMBER m_hasGridListMode NOTIFY hasGridListModeChanged FINAL)
     Q_PROPERTY(Grouping grouping READ grouping WRITE setGrouping NOTIFY groupingChanged FINAL)
     Q_PROPERTY(ColorSchemeModel* colorScheme READ getColorScheme CONSTANT FINAL)
+    Q_PROPERTY(SystemPalette* stylePalette READ stylePalette CONSTANT FINAL)
     // The accent of the system, made readable (RedesignAccent): the one of
     // "Follow the Windows accent color" of Settings > Appearance, followed live
     Q_PROPERTY(QColor systemAccent READ systemAccent NOTIFY systemAccentChanged FINAL)
@@ -145,6 +153,7 @@ class MainCtx : public QObject
     Q_PROPERTY(int windowButtonsInsetRight READ windowButtonsInsetRight NOTIFY windowButtonsInsetChanged FINAL)
     Q_PROPERTY(bool hasToolbarMenu READ hasToolbarMenu WRITE setHasToolbarMenu NOTIFY hasToolbarMenuChanged FINAL)
     Q_PROPERTY(bool canShowVideoPIP READ canShowVideoPIP CONSTANT FINAL)
+    Q_PROPERTY(bool firstFrameSwapped READ firstFrameSwapped NOTIFY firstFrameSwappedChanged FINAL)
     Q_PROPERTY(bool pinVideoControls READ pinVideoControls WRITE setPinVideoControls NOTIFY pinVideoControlsChanged FINAL)
     // The layout right to left (Settings > Appearance), whatever the
     // language: left to right unless chosen. Shown at once; the setting
@@ -341,6 +350,7 @@ public:
     inline bool albumSections() const { return m_albumSections; }
     inline bool lyricsMode() const { return m_lyricsMode; }
     inline ColorSchemeModel* getColorScheme() const { return m_colorScheme; }
+    SystemPalette* stylePalette() const { return m_stylePalette; }
     QColor systemAccent() const;
     RedesignAccent* redesignAccent() const { return m_redesignAccent; }
     bool hasVLM() const;
@@ -349,6 +359,14 @@ public:
     inline bool hasToolbarMenu() const { return m_hasToolbarMenu; }
     inline bool canShowVideoPIP() const { return m_canShowVideoPIP; }
     inline void setCanShowVideoPIP(bool canShowVideoPIP) { m_canShowVideoPIP = canShowVideoPIP; }
+    bool firstFrameSwapped() const { return m_firstFrameSwapped; }
+    void markFirstFrameSwapped()
+    {
+        if (m_firstFrameSwapped)
+            return;
+        m_firstFrameSwapped = true;
+        emit firstFrameSwappedChanged();
+    }
 
     inline bool pinVideoControls() const { return m_pinVideoControls; }
     inline bool rightToLeft() const { return m_rightToLeft; }
@@ -398,7 +416,7 @@ public:
     bool clickPauses() const { return m_clickPauses; }
     bool showErrorDialogs() const { return m_showErrorDialogs; }
     bool alwaysShowPlayerBar() const { return m_alwaysShowPlayerBar; }
-    bool increaseContrast() const { return m_increaseContrast; }
+    bool increaseContrast() const;
     // "Show the file name in the title bar", "Window opacity" of the settings
     bool nameInTitle() const { return m_nameInTitle; }
     float windowOpacity() const { return m_windowOpacity; }
@@ -678,12 +696,14 @@ protected:
     bool                 m_hasGridListMode = false;
     Grouping             m_grouping = GROUPING_NONE;
     ColorSchemeModel*    m_colorScheme = nullptr;
+    SystemPalette*       m_stylePalette = nullptr;
     RedesignAccent*      m_redesignAccent = nullptr;
     bool                 m_windowTitlebar = true;
     QMargins             m_windowButtonsInset;
     // NOTE: Ideally this should be a QVLCBool.
     bool                 m_hasToolbarMenu = false;
     bool                 m_canShowVideoPIP = false;
+    bool                 m_firstFrameSwapped = false;
 
     /* Pinned */
     bool                 m_pinVideoControls = false;
@@ -867,6 +887,7 @@ signals:
     void useClientSideDecorationChanged();
     void windowButtonsInsetChanged();
     void hasToolbarMenuChanged();
+    void firstFrameSwappedChanged();
 
     /// forward window maximise query to the actual window or widget
     void requestInterfaceMaximized();
@@ -928,6 +949,7 @@ signals:
     void showErrorDialogsChanged();
     void alwaysShowPlayerBarChanged();
     void increaseContrastChanged();
+    void contrastPaletteChanged();
     void nameInTitleChanged();
     void windowOpacityChanged();
 
@@ -950,7 +972,19 @@ signals:
     void systemAccentChanged();
 
 private:
+#ifdef _WIN32
+    struct WinMsgHistoryFilter
+    {
+        std::mutex mutex;
+        QRegularExpression expression;
+    } m_winMsgHistoryFilter;
+
+    static int WinMsgHistoryFilterCB(vlc_object_t *, const char *, vlc_value_t,
+                                     vlc_value_t value, void *data);
+#endif
+
     void loadPrefs(bool callSignals);
+    void loadHistoryFilter();
     void loadFromSettingsImpl(bool callSignals);
     void applySetupChoices();
 };

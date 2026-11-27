@@ -3847,10 +3847,9 @@ msgstr "Võti lükati tagasi"
 msgid "Wrong user name or password"
 msgstr "Vale kasutajanimi või salasõna"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Hõivatud: proovi minuti pärast uuesti"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Hõivatud: proovi hiljem uuesti"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8243,14 +8242,14 @@ msgstr "Vali kestus vahemikus üks sekund kuni 24 tundi."
 msgid "The subtitle couldn't be saved."
 msgstr "Subtiitrit ei õnnestunud salvestada."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 palub hetke oodata (liiga palju otsinguid)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 ei vastanud."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 palub hetke oodata (liiga palju otsinguid)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8842,6 +8841,10 @@ msgstr "Siin pole veel midagi."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Mängija juhtelemendid"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Seda aega meedias pole"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

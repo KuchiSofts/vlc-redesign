@@ -218,7 +218,8 @@ T.ToolBar {
             y: parent.height - 1
             width: parent.width - root.leftPadding - root.rightPadding
             height: 1
-            color: root.darkTheme ? "#181818" : VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", false)
+            color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.separator
+                   : root.darkTheme ? "#181818" : VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", false)
         }
         // over the first row of the content
         Rectangle {
@@ -227,7 +228,7 @@ T.ToolBar {
             z: 1
             width: parent.width - root.leftPadding - root.rightPadding
             height: 1
-            visible: root.darkTheme
+            visible: root.darkTheme && !VLCStyle.redesign.highContrast
             color: "#171717"
         }
     }

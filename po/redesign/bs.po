@@ -3859,10 +3859,9 @@ msgstr "Ključ odbijen"
 msgid "Wrong user name or password"
 msgstr "Pogrešno korisničko ime ili šifra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Servis je zauzet: pokušajte za minutu"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Servis je zauzet: pokušajte kasnije"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8291,14 +8290,14 @@ msgstr "Izaberite trajanje između jedne sekunde i 24 sata."
 msgid "The subtitle couldn't be saved."
 msgstr "Podtitl nije bilo moguće sačuvati."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 traži da sačekate trenutak (previše pretraga)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 nije odgovorio."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 traži da sačekate trenutak (previše pretraga)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8894,6 +8893,10 @@ msgstr "Ovdje još nema ničega."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Kontrole izvođača"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Ovo vrijeme nije u mediju"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

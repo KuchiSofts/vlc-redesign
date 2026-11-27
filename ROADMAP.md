@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-089-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-0810-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,28 +18,24 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-26, 0.8.8 published, 0.8.9 started).
+Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.8.10 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.8 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.8 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.8 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.8 | ██████████ 100 % | tests on a Mac by hand |
+| **Windows x64** | ✅ released 0.8.9 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.8.9 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.8.9 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.9 | ██████████ 100 % | tests on a Mac by hand |
 | **Android** (phones) | ✅ released 0.8.8 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
 | **Android** (tablets) | ✅ released 0.8.8 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
 | **Android TV** | ✅ released 0.8.8 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
 | **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.8.9 and after
+## Next: 0.8.10 and after
 
-**0.8.9** is an update release of fixes, made as the issues bring them (each fix is first published through a pull
-request, then released).
-
-- 🟡 Pull requests of a contributor that are still drafts, each reviewed: taken when their author marks them
-  ready (#237 for Linux only, #245, #251's macOS part and the others), and #187 (sliders and choice lists),
-  where the author was asked for the steps that show the fault
+**0.8.10** is an update release of fixes, made as the issues bring them, and of the next contributions,
+each reviewed before it is taken.
 
 And as the issues bring them:
 
@@ -113,6 +109,16 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.8.9 (2026-11-27)
+
+**An update release** of the desktop apps (Android stays 0.8.8, the Samsung TV app 0.8.6):
+
+- ✅ Twenty-two changes from a contributor, each reviewed against the code of the day and some fixed on top:
+  Windows media controls (#210) and contrast themes (#261, #212), a 2× hold that ends (#166), the Folders page
+  and the TV Guide with the keyboard (#173, #164), the Play Queue with a filter (#188), Add Subtitle File
+  (#217), the history filter for Explorer (#219), subtitle services that say "too many requests" (#245),
+  Linux volumes (#237), Open with on macOS (#251), and faster start and grids (#160, #167, #168, #175)
 
 ### 0.8.8 (2026-11-26)
 

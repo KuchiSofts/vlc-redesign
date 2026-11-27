@@ -1,8 +1,8 @@
 # Platforms
 
-VLC Redesign **0.8.8** is released for **Windows 10 (version 1809 or later) and Windows 11,
+VLC Redesign **0.8.9** is released for **Windows 10 (version 1809 or later) and Windows 11,
 64-bit** (x64), **Windows 11 on ARM64**, **Linux** (x86_64 and ARM64) and **macOS** (Apple Silicon
-and Intel), with **Android** (phones, tablets and Android TV: a separate app, 0.8.8 too); Samsung TVs
+and Intel); **Android** (phones, tablets and Android TV: a separate app) stays at 0.8.8, and Samsung TVs
 get **Juxto Media Player** (0.8.6), a player of its own in the design. This page gives, for each platform, its status, its version, what it needs, its files, what is tested and what is
 missing.
 
@@ -17,12 +17,12 @@ The study behind the order, with the evidence from VideoLAN's build system:
 
 | Platform | Status | Latest version | Next | Needs |
 |---|---|---|---|---|
-| **[Windows](#windows)** | **Released** | **0.8.8** (2026-11-26) | 0.8.9 | Windows 10 (1809) or 11, 64-bit |
-| **[Linux](#linux)** | **Released** | **0.8.8** (2026-11-26) | 0.8.9 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
-| **[macOS](#macos)** | **Released** | **0.8.8** (2026-11-26) | 0.8.9 | macOS 12 Monterey, Apple Silicon or Intel |
-| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.8.8** (2026-11-26) | 0.8.9 | Windows 11 on ARM64 |
-| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.8.8** (2026-11-26) | 0.8.9 | Android 5.0 or later |
-| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.8.6** (2026-11-26) | 0.8.9 | Tizen 3.0 (2017 models) or later |
+| **[Windows](#windows)** | **Released** | **0.8.9** (2026-11-26) | 0.8.10 | Windows 10 (1809) or 11, 64-bit |
+| **[Linux](#linux)** | **Released** | **0.8.9** (2026-11-26) | 0.8.10 | glibc 2.38 (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
+| **[macOS](#macos)** | **Released** | **0.8.9** (2026-11-26) | 0.8.10 | macOS 12 Monterey, Apple Silicon or Intel |
+| **[Windows on ARM64](#windows-on-arm64)** | **Released** | **0.8.9** (2026-11-26) | 0.8.10 | Windows 11 on ARM64 |
+| **[Android (phones, tablets, TV)](#android)** | **Released** | **0.8.8** (2026-11-26) | 0.8.10 | Android 5.0 or later |
+| **[Samsung Smart TV: Juxto Media Player](#samsung-smart-tv-tizen)** | **Released** | **0.8.6** (2026-11-26) | 0.8.10 | Tizen 3.0 (2017 models) or later |
 | [iPhone, iPad, Apple TV](#iphone-ipad-apple-tv) | Later | none yet | | iOS, iPadOS, tvOS |
 | Windows 32-bit, Windows 7, 8, XP | Not planned | | | See [below](#what-is-not-planned) |
 
@@ -35,14 +35,16 @@ version from its first published build.
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.8.8, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8)). Next: 0.8.9 |
+| **Version** | 0.8.9, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.9)). Next: 0.8.10 |
 | **Needs** | Windows 10 (version 1809, build 17763, or later) or Windows 11, 64-bit. No graphics card needed |
-| **Files** | `vlc-redesign-0.8.8-win64-setup.exe` (installer) and `vlc-redesign-0.8.8-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
+| **Files** | `vlc-redesign-0.8.9-win64-setup.exe` (installer) and `vlc-redesign-0.8.9-win64.zip` (portable), with small updates in the app: [Install and update](Install-and-Update) |
 
 - **64-bit only**, Windows 10 from version 1809: the interface is built on Qt 6.8, which needs it. The installer
   refuses an older Windows, and `vlc.exe` on one says *This version of VLC media player needs Windows 10 version
   1809 or later.*
 - **No graphics card needed**: it also runs in Windows Sandbox, decoding on the processor.
+- **System media controls** let you use media keys while VLC is in the background. The Windows media
+  flyout can show VLC's current title, artist, album and playback controls.
 - **Updates are signed by the project** from 0.4.0 on: the app installs an update only when the signature of the
   release's checksums by the project's release key is good.
 - **Tested:** a regression suite on every build (playback, pause and seek, Chromecast and DLNA test devices);
@@ -62,7 +64,7 @@ The tour of every Windows feature in clips: [Feature tour: Windows](Feature-Tour
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.8.8, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8)); 0.4.0 was the first for Linux. Next: 0.8.9 |
+| **Version** | 0.8.9, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.9)); 0.4.0 was the first for Linux. Next: 0.8.10 |
 | **Needs** | glibc 2.38 or later (Ubuntu 24.04, Debian 13, Fedora 39 or later), x86_64 or ARM64 |
 | **Files** | x86_64: `vlc-redesign-0.8.3-x86_64.AppImage` (with its `.zsync`) and `vlc-redesign-0.8.3-linux-x86_64.tar.xz`; ARM64: `vlc-redesign-0.8.3-aarch64.AppImage` and `vlc-redesign-0.8.3-linux-aarch64.tar.xz`. The .deb, .rpm (with the Live TV add-on) and Flatpak packages are those of [0.8.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.0), the last full release. Which one and how: [Install and update: Linux](Install-and-Update#linux) |
 
@@ -103,9 +105,9 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.8.8, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8)); 0.4.0 was the first for macOS. Next: 0.8.9 |
+| **Version** | 0.8.9, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.9)); 0.4.0 was the first for macOS. Next: 0.8.10 |
 | **Needs** | macOS 12 Monterey or later, Apple Silicon or Intel |
-| **Files** | `vlc-redesign-0.8.8-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.8.8-macos-x86_64.dmg` (Intel). The app updates itself from the release's `.app.zip` of the app (from 0.8.1 on). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
+| **Files** | `vlc-redesign-0.8.9-macos-arm64.dmg` (Apple Silicon) and `vlc-redesign-0.8.9-macos-x86_64.dmg` (Intel). The app updates itself from the release's `.app.zip` of the app (from 0.8.1 on). How to open it the first time: [Install and update: macOS](Install-and-Update#macos) |
 
 <a href="https://github.com/KuchiSofts/vlc-redesign/blob/main/docs/media/demo/macos.png"><img src="https://raw.githubusercontent.com/KuchiSofts/vlc-redesign/main/docs/media/demo/macos.png" alt="The macOS app on an Intel Mac, Home" width="960"></a>
 
@@ -118,10 +120,10 @@ Home in the light theme. Click for the MP4.</sub>
   Mac apps; full screen in its own Space, tiling and resizing from every edge work. *Show window decorations* in
   Settings brings the separate title bar back. A minimal menu bar sits at the top of the screen, and ⌘ reaches VLC's
   shortcuts.
-- **The same features as Windows** (from 0.6.4): the
+- **Media controls and desktop integration** (from 0.6.4): the
   media keys, the Touch Bar, headphones and Control Center's *Now Playing* play, pause, go to the previous or next
-  item, jump and seek, and Now Playing shows the title, artist, album, artwork and time (what Windows does with its
-  media keys); the Dock menu has Play / Pause, Stop, Previous, Next and Mute (Windows: the buttons of the taskbar
+  item, jump and seek, and Now Playing shows the title, artist, album, artwork and time; the Dock menu has
+  Play / Pause, Stop, Previous, Next and Mute (Windows: the buttons of the taskbar
   thumbnail); the global hotkeys work from any app; *Show in folder* opens Finder with the file selected; *Process priority*, VLC's own *HTTP proxy* and
   *Add to the playlist instead of replacing it* are in Settings; the bug report names the graphics processors and
   the HDR screens.
@@ -143,9 +145,9 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | Released |
-| **Version** | 0.8.8, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8)); 0.4.1 was the first for Windows on ARM64. Next: 0.8.9 |
+| **Version** | 0.8.9, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.9)); 0.4.1 was the first for Windows on ARM64. Next: 0.8.10 |
 | **Needs** | Windows 11 on ARM64 (Snapdragon PCs) |
-| **Files** | `vlc-redesign-0.8.8-winarm64-setup.exe` (installer) and `vlc-redesign-0.8.8-winarm64.zip` (portable): [Install and update: Windows on ARM64](Install-and-Update#windows-on-arm64) |
+| **Files** | `vlc-redesign-0.8.9-winarm64-setup.exe` (installer) and `vlc-redesign-0.8.9-winarm64.zip` (portable): [Install and update: Windows on ARM64](Install-and-Update#windows-on-arm64) |
 
 - **Native:** the redesign builds for ARM64 with VideoLAN's ARM64 toolchain and libraries, unchanged; it is not the
   x64 build under emulation. Video goes through Direct3D 11 (VideoLAN's ARM64 libraries have no OpenGL).
@@ -165,7 +167,7 @@ Home in the light theme. Click for the MP4.</sub>
 | | |
 |---|---|
 | **Status** | **Released** in 0.5.0: an APK on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/latest), not on Google Play; how to install: [Install and update](Install-and-Update#android) |
-| **Version** | 0.8.8, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8)); 0.5.0 was the first for Android. Next: 0.8.9 |
+| **Version** | 0.8.8, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8)); 0.5.0 was the first for Android. Next: 0.8.10 |
 | **Needs** | Android 5.0 or later |
 | **What it is** | A separate app: a fork of VLC for Android with its screens redrawn in the design, in its own repository |
 | **Files** | `vlc-redesign-0.8.8-android.apk` (ARM64, ARMv7, x86 and x86_64): [Install and update: Android](Install-and-Update#android) |
@@ -199,7 +201,7 @@ The clips below were recorded on the Android emulator, before the first release.
 | | |
 |---|---|
 | **Status** | **Released** in 0.5.3: *Juxto Media Player* (named so from 0.5.6), the app's source with its install guide on the [release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.6) |
-| **Version** | 0.8.6, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.6)). Next: 0.8.9 |
+| **Version** | 0.8.6, 2026-11-26 ([release page](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.6)). Next: 0.8.10 |
 | **Needs** | Tizen 3.0 (2017 models) or later, installed from a computer with the TV in developer mode |
 | **Files** | `Juxto-Media-Player-TV-0.8.6-source.zip`: [Install and update: Samsung TV](Install-and-Update#samsung-tv) |
 | **What it is** | A player of its own for Samsung TVs, inspired by VLC, in the design: the library (USB drives and the TV's storage), the player with subtitles from the internet, Live TV with the guide, 17 languages, right to left. The TV's own player plays the video. |

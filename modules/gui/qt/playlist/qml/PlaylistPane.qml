@@ -108,7 +108,7 @@ T.Pane {
         }
 
         onRequestInputItems: (indexes, data, resolve, reject) => {
-            resolve(root.model.getItemsForIndexes((indexes?.length > 0) ? indexes : root.selectionModel.selectedIndexesFlat))
+            resolve(root.model.getItemsForIndexes((indexes?.length > 0) ? indexes : listView.mappedSelectedIndexes()))
         }
     }
 
@@ -121,7 +121,11 @@ T.Pane {
         controler: MainPlaylistController
         ctx: MainCtx
 
-        onJumpToCurrentPlaying: listView.positionViewAtIndex( MainPlaylistController.currentIndex, ItemView.Center)
+        onJumpToCurrentPlaying: {
+            const viewIndex = listView.mappedIndexFromSource(MainPlaylistController.currentIndex)
+            if (viewIndex >= 0)
+                listView.positionViewAtIndex(viewIndex, ItemView.Center)
+        }
     }
 
     background: Rectangle {
@@ -391,13 +395,16 @@ T.Pane {
                 if (!listView.selectionModel)
                     return [] // unlikely
 
-                const selectedIndexes = listView.selectionModel.selectedIndexesFlat
+                const selectedIndexes = listView.selectionModel.sortedSelectedIndexesFlat
                 if (listView.proxyModel && listView.model === listView.proxyModel) {
                     mappedSelectedIndexes = []
                     for (let i = 0; i < selectedIndexes.length; ++i) {
                         const mappedIndex = listView.model.mapToSource(listView.model.index(selectedIndexes[i], 0))
-                        mappedSelectedIndexes.push(mappedIndex.row)
+                        if (mappedIndex.row >= 0)
+                            mappedSelectedIndexes.push(mappedIndex.row)
                     }
+                    // (the order of the queue: a move keeps the items in it)
+                    mappedSelectedIndexes.sort((a, b) => a - b)
                 } else {
                     mappedSelectedIndexes = selectedIndexes
                 }
@@ -405,7 +412,19 @@ T.Pane {
                 return mappedSelectedIndexes
             }
 
+            function mappedIndexFromSource(sourceRow : int) : int {
+                if (sourceRow < 0 || !root.model)
+                    return -1
+
+                if (listView.proxyModel && listView.model === listView.proxyModel)
+                    return listView.proxyModel.mapFromSource(root.model.index(sourceRow, 0)).row
+
+                return sourceRow
+            }
+
             isDropAcceptableFunc: function(drop, index) {
+                if (index < 0)
+                    return false
                 if (drop.source === dragItem)
                     return Helpers.itemsMovable(listView.mappedSelectedIndexes(), index)
                 else if (Helpers.isValidInstanceOf(drop.source, Widgets.DragItem))
@@ -417,6 +436,9 @@ T.Pane {
             }
 
             acceptDropFunc: function(index, drop) {
+                if (index < 0)
+                    return Promise.resolve()
+
                 const item = drop.source;
 
                 // NOTE: Move implementation.
@@ -471,12 +493,16 @@ T.Pane {
                 target: MainPlaylistController
                 // Track the current item; disconnect when this queue view is destroyed.
                 function onCurrentItemChanged() {
+                    const viewIndex = listView.mappedIndexFromSource(MainPlaylistController.currentIndex)
+                    if (viewIndex < 0)
+                        return
+
                     // FIXME: Qt does not provide the `contentY` with `positionViewAtIndex()` for us
                     //        to animate. For that reason, we capture the new `contentY`, adjust
                     //        `contentY` to it is old value then enable the animation and set `contentY`
                     //        to its new value.
                     const oldContentY = listView.contentY
-                    listView.positionViewAtIndex(MainPlaylistController.currentIndex, ListView.Contain)
+                    listView.positionViewAtIndex(viewIndex, ListView.Contain)
                     const newContentY = listView.contentY
                     if (Math.abs(oldContentY - newContentY) >= Number.EPSILON) {
                         contentYBehavior.enabled = false
@@ -587,19 +613,7 @@ T.Pane {
             }
 
             Keys.onDeletePressed: {
-                let items
-
-                const selectedIndexes = selectionModel.selectedIndexesFlat
-                if (listView.proxyModel && listView.model === listView.proxyModel) {
-                    items = []
-                    for (let i = 0; i < selectedIndexes.length; ++i) {
-                        const mappedIndex = listView.proxyModel.mapToSource(listView.proxyModel.index(selectedIndexes[i], 0))
-                        items.push(mappedIndex.row)
-                    }
-                } else {
-                    items = selectedIndexes
-                }
-
+                const items = listView.mappedSelectedIndexes()
                 if (items.length > 0)
                     root.model.removeItems(items)
             }

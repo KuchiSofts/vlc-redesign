@@ -3912,10 +3912,9 @@ msgstr "Diúltaíodh don eochair"
 msgid "Wrong user name or password"
 msgstr "Ainm úsáideora nó focal faire mícheart"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Gnóthach: bain triail eile as i gceann nóiméid"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Gnóthach: bain triail eile as ar ball"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8426,14 +8425,14 @@ msgstr "Roghnaigh aga idir soicind amháin agus 24 uair an chloig."
 msgid "The subtitle couldn't be saved."
 msgstr "Níorbh fhéidir na fotheidil a shábháil."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "Iarrann %1 ort fanacht nóiméad (an iomarca cuardach)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "Níor fhreagair %1."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "Iarrann %1 ort fanacht nóiméad (an iomarca cuardach)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -9032,6 +9031,10 @@ msgstr "Níl faic anseo fós."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Rialtáin an tseinnteora"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Níl an t-am seo sna meáin"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

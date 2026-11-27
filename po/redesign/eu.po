@@ -3895,10 +3895,9 @@ msgstr "Gakoa baztertu da"
 msgid "Wrong user name or password"
 msgstr "Erabiltzaile-izen edo pasahitz okerra"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Lanpetuta: saiatu berriro minutu bat barru"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Lanpetuta: saiatu berriro geroago"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8334,14 +8333,14 @@ msgstr "Aukeratu segundo bat eta 24 ordu arteko iraupena."
 msgid "The subtitle couldn't be saved."
 msgstr "Ezin izan da azpititulua gorde."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 zerbitzuak une bat itxaroteko eskatzen du (bilaketa gehiegi)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 zerbitzuak ez du erantzun."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 zerbitzuak une bat itxaroteko eskatzen du (bilaketa gehiegi)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8939,6 +8938,10 @@ msgstr "Oraindik ez dago ezer hemen."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Erreproduzigailuaren kontrolak"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Denbora hau ez dago multimedian"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

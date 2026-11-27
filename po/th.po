@@ -39552,3 +39552,11 @@ msgstr "หน้าเริ่มต้น"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "หน้าที่คลังสื่อเปิดขึ้นเมื่อเริ่ม VLC"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "ไม่ว่าง: ลองอีกครั้งในภายหลัง"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "เวลานี้ไม่มีอยู่ในสื่อ"

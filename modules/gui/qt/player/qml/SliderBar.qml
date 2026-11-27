@@ -133,7 +133,8 @@ T.ProgressBar {
     }
 
     // The frame preview shows the time itself
-    Widgets.PointingToolTipAttached.visible: (hoverHandler.hovered || control.visualFocus || dragHandler.active)
+    Widgets.PointingToolTipAttached.visible: control.visible
+                                             && (hoverHandler.hovered || control.visualFocus || dragHandler.active)
                                              && !framePreview.visible
 
     Widgets.PointingToolTipAttached.text: {
@@ -302,12 +303,25 @@ T.ProgressBar {
     }
 
     Connections {
+        target: control.visible ? Player : null
+        function onPositionChanged() { fsm.playerUpdatePosition(Player.position) }
+    }
+
+    Connections {
         target: Player
-        function onPositionChanged() {  fsm.playerUpdatePosition(Player.position) }
         function onInputChanged() {  fsm.inputChanged() }
     }
 
-    Component.onCompleted: value = Player.position
+    onVisibleChanged: {
+        // The FSM keeps a held slider under the pointer when it is shown again.
+        if (visible && fsm.started)
+            fsm.playerUpdatePosition(Player.samplePosition())
+    }
+
+    Component.onCompleted: {
+        if (visible)
+            value = Player.samplePosition()
+    }
 
     implicitHeight: control.barHeight
     height: implicitHeight
@@ -440,6 +454,8 @@ T.ProgressBar {
             color: control.backgroundColor
             anchors.fill: parent
             radius: control.redesign ? VLCStyle.redesign.controlRadius : implicitHeight
+            border.width: control.redesign && VLCStyle.redesign.highContrast ? 1 : 0
+            border.color: VLCStyle.redesign.border
         }
 
         Repeater {
@@ -570,7 +586,8 @@ T.ProgressBar {
                 active: control.redesign && MainCtx.seekSubtitleCues && control.visible
                         && Player.seekable && Player.length.valid()
                 // Dark/FG/A3 of the design (#5A5A59 in the light theme)
-                color: (theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) ? "#6B6B6B" : "#5A5A59"
+                color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.textPrimary
+                       : (theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) ? "#6B6B6B" : "#5A5A59"
                 minimumWidth: VLCStyle.dp(1, VLCStyle.scale)
                 // closer lines are one mark
                 mergeDistance: VLCStyle.dp(2, VLCStyle.scale)
@@ -741,7 +758,11 @@ T.ProgressBar {
         implicitWidth: sliderHandle._size
         implicitHeight: control.redesign ? control.barHeight - VLCStyle.redesign.seekInset * 2 : sliderHandle._size
         radius: control.redesign ? VLCStyle.redesign.controlRadius : VLCStyle.margin_small
-        color: control.redesign ? VLCStyle.redesign.color(VLCStyle.redesign.accent, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark) : theme.fg.primary
+        color: control.redesign && VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+               : control.redesign ? VLCStyle.redesign.color(VLCStyle.redesign.accent, theme.fg.primary, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
+                                  : theme.fg.primary
+        border.width: control.redesign && VLCStyle.redesign.highContrast ? 1 : 0
+        border.color: VLCStyle.redesign.accent
 
         // We use dynamic mutability group because time interpolation
         // may induce rapid change:

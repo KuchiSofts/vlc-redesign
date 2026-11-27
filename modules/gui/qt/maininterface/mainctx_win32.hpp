@@ -36,6 +36,9 @@
 #include <objbase.h>
 #include <shobjidl.h>
 
+class MainCtxWin32;
+class WinMediaControls;
+
 class WinTaskbarWidget : public QObject, public QAbstractNativeEventFilter
 {
     Q_OBJECT
@@ -55,30 +58,9 @@ private slots:
 private:
     qt_intf_t* p_intf = nullptr;
     HIMAGELIST himl = nullptr;
-    Microsoft::WRL::ComPtr<ITaskbarList3> p_taskbl;
     UINT taskbar_wmsg = 0;
     QWindow* m_window = nullptr;
-
-    class ComHolder
-    {
-    public:
-        ComHolder()
-        {
-            if (Q_UNLIKELY(FAILED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE))))
-                throw std::runtime_error("CoInitializeEx failed");
-        }
-
-        ~ComHolder()
-        {
-            CoUninitialize();
-        }
-
-        // one CoUninitialize per CoInitializeEx: built in place, never copied
-        ComHolder(const ComHolder &) = delete;
-        ComHolder &operator=(const ComHolder &) = delete;
-    };
-
-    std::optional<ComHolder> m_comHolder;
+    QPointer<MainCtxWin32> m_mainCtx;
 };
 
 
@@ -89,7 +71,7 @@ class MainCtxWin32 : public MainCtx
     Q_PROPERTY(bool disableVolumeKeys READ getDisableVolumeKeys NOTIFY disableVolumeKeysChanged FINAL)
 public:
     explicit MainCtxWin32(qt_intf_t *);
-    virtual ~MainCtxWin32() = default;
+    ~MainCtxWin32() override;
 
 public:
     bool getDisableVolumeKeys() const;
@@ -117,6 +99,35 @@ signals:
     void disableVolumeKeysChanged(bool);
 
 private:
+    friend class InterfaceWindowHandlerWin32;
+    friend class WinTaskbarWidget;
+    void setMediaControlsWindow(HWND hwnd);
+    bool hasActiveMediaControls() const;
+    void releaseTaskbarCom();
+
+    class ComHolder
+    {
+    public:
+        ComHolder()
+        {
+            if (Q_UNLIKELY(FAILED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE))))
+                throw std::runtime_error("CoInitializeEx failed");
+        }
+
+        ~ComHolder()
+        {
+            CoUninitialize();
+        }
+
+        // one CoUninitialize per CoInitializeEx: built in place, never copied
+        ComHolder(const ComHolder &) = delete;
+        ComHolder &operator=(const ComHolder &) = delete;
+    };
+
+    std::optional<ComHolder> m_comHolder;
+    // Both COM clients are destroyed before the taskbar COM holder.
+    Microsoft::WRL::ComPtr<ITaskbarList3> p_taskbl;
+    std::unique_ptr<WinMediaControls> m_mediaControls;
     bool m_disableVolumeKeys = false;
 };
 
@@ -139,6 +150,8 @@ private:
     QPointer<QObject> m_CSDWindowEventHandler;
 
     UINT m_setupQuitMessage = 0;
+    // guarded: MainCtx can be deleted before this handler (quit)
+    QPointer<MainCtxWin32> m_mainCtxWin32;
     bool m_disableVolumeKeys = false;
 };
 

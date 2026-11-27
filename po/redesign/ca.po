@@ -3913,10 +3913,9 @@ msgstr "Clau rebutjada"
 msgid "Wrong user name or password"
 msgstr "Nom d'usuari o contrasenya incorrectes"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Ocupat: torneu-ho a provar d'aquí a un minut"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Ocupat: torneu-ho a provar més tard"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8367,14 +8366,14 @@ msgstr "Trieu una durada entre un segon i 24 hores."
 msgid "The subtitle couldn't be saved."
 msgstr "No s'ha pogut desar el subtítol."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 demana que espereu un moment (massa cerques)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 no ha respost."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 demana que espereu un moment (massa cerques)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8969,6 +8968,10 @@ msgstr "Encara no hi ha res."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Controls del reproductor"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Aquest temps no és dins del mitjà"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

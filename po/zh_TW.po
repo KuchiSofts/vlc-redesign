@@ -39556,3 +39556,11 @@ msgstr "起始頁面"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC 啟動時媒體庫開啟的頁面。"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "忙碌中：請稍後再試"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "媒體中沒有這個時間"

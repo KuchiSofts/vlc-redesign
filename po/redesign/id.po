@@ -3866,10 +3866,9 @@ msgstr "Kunci ditolak"
 msgid "Wrong user name or password"
 msgstr "Nama pengguna atau kata sandi salah"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Sibuk: coba lagi dalam semenit"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Sibuk: coba lagi nanti"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8259,14 +8258,14 @@ msgstr "Pilih durasi antara satu detik dan 24 jam."
 msgid "The subtitle couldn't be saved."
 msgstr "Subtitle tidak dapat disimpan."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 meminta Anda menunggu sebentar (terlalu banyak pencarian)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 tidak merespons."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 meminta Anda menunggu sebentar (terlalu banyak pencarian)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8859,6 +8858,10 @@ msgstr "Belum ada apa pun di sini."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Kontrol pemutar"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Waktu ini tidak ada di media"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

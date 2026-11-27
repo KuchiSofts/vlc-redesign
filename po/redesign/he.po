@@ -3783,10 +3783,9 @@ msgstr "המפתח נדחה"
 msgid "Wrong user name or password"
 msgstr "שם משתמש או סיסמה שגויים"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "עמוס: נסה שוב בעוד דקה"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "עמוס: נסה שוב מאוחר יותר"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8212,14 +8211,14 @@ msgstr "בחר משך בין שנייה אחת ל־24 שעות."
 msgid "The subtitle couldn't be saved."
 msgstr "לא ניתן היה לשמור את הכתוביות."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 מבקש להמתין רגע (יותר מדי חיפושים)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 לא הגיב."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 מבקש להמתין רגע (יותר מדי חיפושים)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8807,6 +8806,10 @@ msgstr "אין כאן עדיין כלום."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "פקדי הנגן"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "הזמן הזה אינו במדיה"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

@@ -41209,3 +41209,11 @@ msgstr "Startpagina"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "De pagina waarop de bibliotheek opent wanneer VLC start."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Bezet: probeer het later opnieuw"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Deze tijd zit niet in het medium"

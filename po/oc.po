@@ -41324,3 +41324,11 @@ msgstr "Pagina de començament"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "La pagina ont la bibliotèca s'obrís a l'aviada de VLC."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Ocupat : tornatz ensajar mai tard"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Aqueste temps es pas dins lo mèdia"

@@ -407,6 +407,45 @@ private slots:
         m.resetCache();
     }
 
+    void testSelectedRoles()
+    {
+        class RoleModel : public Model
+        {
+        public:
+            mutable QList<int> reads;
+
+            QHash<int, QByteArray> roleNames() const override
+            {
+                return {{Qt::DisplayRole, "title"}, {Qt::EditRole, "title"},
+                        {Qt::ToolTipRole, "tooltip"}};
+            }
+
+            int rowCount(const QModelIndex &parent) const override
+            {
+                return parent.isValid() ? 0 : 1;
+            }
+
+            QVariant data(const QModelIndex &index, int role) const override
+            {
+                if (!index.isValid())
+                    return {};
+                reads.append(role);
+                return role;
+            }
+        } m;
+
+        const auto all = m.getDataAt(0);
+        QCOMPARE(m.reads.size(), 3);
+        m.reads.removeAll(Qt::ToolTipRole);
+        const auto expectedReads = m.reads;
+
+        m.reads.clear();
+        const auto selected = m.getDataAt(0, {QStringLiteral("title"), QStringLiteral("unknown")});
+        QCOMPARE(selected.size(), 1);
+        QCOMPARE(selected.value(QStringLiteral("title")), all.value(QStringLiteral("title")));
+        QCOMPARE(m.reads, expectedReads);
+    }
+
     void testInvalidateOnInvalidate()
     {
         Model m;

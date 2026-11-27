@@ -3878,10 +3878,9 @@ msgstr "Բանալին մերժվեց"
 msgid "Wrong user name or password"
 msgstr "Սխալ օգտվողի անուն կամ գաղտնաբառ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Զբաղված է, կրկին փորձեք մեկ րոպեից"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Զբաղված է, կրկին փորձեք ավելի ուշ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8289,14 +8288,14 @@ msgstr "Ընտրեք տևողություն մեկ վայրկյանից մինչ
 msgid "The subtitle couldn't be saved."
 msgstr "Ենթագրերը հնարավոր չեղավ պահել։"
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1-ը խնդրում է մի պահ սպասել (չափազանց շատ որոնումներ)։"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1-ը չպատասխանեց։"
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1-ը խնդրում է մի պահ սպասել (չափազանց շատ որոնումներ)։"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8890,6 +8889,10 @@ msgstr "Այստեղ դեռ ոչինչ չկա։"
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Նվագարկչի կառավարման տարրեր"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Այս ժամանակը մեդիայում չկա"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

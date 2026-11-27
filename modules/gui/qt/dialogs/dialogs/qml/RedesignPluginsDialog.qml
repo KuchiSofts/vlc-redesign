@@ -228,7 +228,7 @@ Widgets.RedesignDialog {
                     text: card.url !== "" ? "<a href=\"%1\">%2</a> · %3".arg(escaped(card.url)).arg(escaped(card.url)).arg(escaped(card.fileName))
                                           : card.fileName
                     textFormat: card.url !== "" ? Text.StyledText : Text.PlainText
-                    linkColor: VLCStyle.redesign.accent
+                    linkColor: VLCStyle.redesign.linkColor
                     elide: Text.ElideRight
                     horizontalAlignment: Text.AlignLeft
                     color: VLCStyle.redesign.color("#6B6B6B", "#6b6b6b")

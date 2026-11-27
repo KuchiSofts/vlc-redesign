@@ -3938,10 +3938,9 @@ msgstr "Chaidh an iuchair a dhiùltadh"
 msgid "Wrong user name or password"
 msgstr "Ainm-cleachdaiche no facal-faire ceàrr"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Trang: feuch ris a-rithist an ceann mionaid"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Trang: feuch ris a-rithist an ceann greis"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8492,14 +8491,14 @@ msgstr "Tagh faid eadar diog is 24 uair a thìde."
 msgid "The subtitle couldn't be saved."
 msgstr "Cha b' urrainn dhuinn na fo-thiotalan a shàbhaladh."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "Tha %1 ag iarraidh ort feitheamh greiseag (cus lorgan)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "Cha do fhreagair %1."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "Tha %1 ag iarraidh ort feitheamh greiseag (cus lorgan)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -9099,6 +9098,10 @@ msgstr "Chan eil dad an-seo fhathast."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Uidheaman-smachd a' chluicheadair"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Chan eil an t-àm seo sa mheadhan"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

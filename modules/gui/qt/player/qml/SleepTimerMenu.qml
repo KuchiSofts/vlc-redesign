@@ -125,7 +125,10 @@ Controls.Popup {
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(15, VLCStyle.scale)
                     color: VLCStyle.redesign.color("#eaeaea", "#2e2e2e")
-                    selectionColor: VLCStyle.redesign.accent
+                    selectionColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                                    : VLCStyle.redesign.accent
+                    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : "white"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     readOnly: !durationInput.editable

@@ -3761,10 +3761,9 @@ msgstr "កូនសោត្រូវបានបដិសេធ"
 msgid "Wrong user name or password"
 msgstr "ឈ្មោះអ្នកប្រើ ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "រវល់៖ សូមព្យាយាមម្ដងទៀតក្នុងរយៈពេលមួយនាទី"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "រវល់៖ សូមព្យាយាមម្ដងទៀតនៅពេលក្រោយ"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8122,14 +8121,14 @@ msgstr "ជ្រើសរយៈពេលចន្លោះពីមួយវិ
 msgid "The subtitle couldn't be saved."
 msgstr "មិនអាចរក្សាទុកចំណងជើងរងបានទេ។"
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 សុំឲ្យរង់ចាំបន្តិច (ការស្វែងរកច្រើនពេក)។"
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 មិនបានឆ្លើយតបទេ។"
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 សុំឲ្យរង់ចាំបន្តិច (ការស្វែងរកច្រើនពេក)។"
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8716,6 +8715,10 @@ msgstr "មិនទាន់មានអ្វីនៅទីនេះនៅឡ
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "ឧបករណ៍បញ្ជាកម្មវិធីចាក់"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ពេលវេលានេះមិនមាននៅក្នុងមេឌៀទេ"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

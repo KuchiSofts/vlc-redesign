@@ -124,7 +124,7 @@ T.Pane {
         visible: root.inlineTimeline && !MainCtx.hasEmbededVideo && Player.isStarted
         width: parent ? parent.width : 0
         height: VLCStyle.dp(1, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#222222", "#9c9c9b", VLCStyle.palette.isDark)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", VLCStyle.palette.isDark)
     }
 
     // (the background shown with the inline timeline: by the binding of
@@ -146,6 +146,16 @@ T.Pane {
     signal forceUnlock()
 
     enabled: visible
+
+    onVisibleChanged: {
+        if (visible)
+            Player.refreshTimeDisplay()
+    }
+
+    onShowRemainingTimeChanged: {
+        if (visible && showRemainingTime && MainCtx.showRemainingTime)
+            Player.refreshTimeDisplay()
+    }
 
     Keys.priority: Keys.AfterItem
     Keys.onPressed: (event) => root.Navigation.defaultKeyAction(event)
@@ -234,15 +244,19 @@ T.Pane {
 
                 Layout.preferredWidth: (effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider) ? VLCStyle.redesign.timeWidth : -1
 
-                text: {
-                    // nothing plays (the bar of the library kept shown): the
-                    // empty time of formatHMS(), not the 0 of the last stop
-                    if (!Player.isStarted)
-                        return "--:--"
-                    const length = Player.length
-                    // The design always shows the hours: 00:02:10
-                    return Player.time.formatHMS(VLCTick.ForceHours
-                                                 | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
+                Binding {
+                    when: mediaTime.visible
+                    restoreMode: Binding.RestoreNone
+                    mediaTime.text: {
+                        // nothing plays (the bar of the library kept shown): the
+                        // empty time of formatHMS(), not the 0 of the last stop
+                        if (!Player.isStarted)
+                            return "--:--"
+                        const length = Player.length
+                        // The design always shows the hours: 00:02:10
+                        return Player.displayTime.formatHMS(VLCTick.ForceHours
+                                                            | (length.isSubSecond() ? VLCTick.SubSecondFormattedAsMS : 0))
+                    }
                 }
                 color: editing ? "transparent"
                                : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
@@ -253,14 +267,54 @@ T.Pane {
                 // a click types a time to go to: Enter goes there, Escape or
                 // a click elsewhere leaves it
                 readonly property bool editable: effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider
-                                                 && Player.isStarted && Player.seekable && Player.length.toSeconds() > 0
+                                                 && Player.isStarted && Player.seekable && Player.length.toMilliseconds() > 0
                 property bool editing: false
+                // the time typed is out of the media or not a time: the box stays open
+                property bool invalid: false
+                // started from the keyboard or a screen reader: the focus comes back here
+                property bool _startedByKey: false
+
+                function startEditing(byKey) {
+                    if (!editable || editing)
+                        return
+                    _startedByKey = byKey
+                    editing = true
+                }
+
+                function stopEditing() {
+                    const back = editing && _startedByKey
+                    editing = false
+                    if (back)
+                        forceActiveFocus(Qt.TabFocusReason)
+                }
+
+                // reachable with the keyboard like the progress slider next to it
+                activeFocusOnTab: editable
+                Navigation.parentItem: root
+                Navigation.rightItem: trackPositionSlider
+                Navigation.downItem: playerControlLayout
+                Keys.onPressed: (event) => {
+                    if (editing)
+                        return
+                    if (editable && (event.key === Qt.Key_Return || event.key === Qt.Key_Enter || event.key === Qt.Key_Space)) {
+                        startEditing(true)
+                        event.accepted = true
+                    } else {
+                        Navigation.defaultKeyAction(event)
+                    }
+                }
+
+                Accessible.role: editable ? Accessible.Button : Accessible.StaticText
+                Accessible.description: editable ? qsTr("Go to time") : ""
+                Accessible.onPressAction: startEditing(true)
+
                 onEditingChanged: {
                     // (the digits typed are not the shortcuts of VLC)
                     if (editing) {
+                        invalid = false
+                        timeInput.text = Player.length.isSubSecond() ? String(Player.time.toMilliseconds() / 1000) : text
+                        timeInput.forceActiveFocus(_startedByKey ? Qt.TabFocusReason : Qt.MouseFocusReason)
                         MainCtx.useGlobalShortcuts = false
-                        timeInput.text = text
-                        timeInput.forceActiveFocus(Qt.MouseFocusReason)
                         // the time shown is selected: what is typed replaces it
                         timeInput.selectAll()
                     } else {
@@ -273,12 +327,14 @@ T.Pane {
                     }
                 }
                 background: Rectangle {
-                    visible: mediaTime.editing || (timeHover.hovered && mediaTime.editable)
+                    visible: mediaTime.editing || (timeHover.hovered && mediaTime.editable) || mediaTime.activeFocus
                     y: Math.round((parent.height - height) / 2)
                     width: parent.width
                     height: VLCStyle.redesign.seekHeight
                     radius: VLCStyle.dp(4, VLCStyle.scale)
                     color: VLCStyle.redesign.color("#090909", "#dedede")
+                    border.width: (mediaTime.activeFocus && !mediaTime.editing) ? VLCStyle.dp(1, VLCStyle.scale) : 0
+                    border.color: theme.visualFocus
                 }
                 HoverHandler {
                     id: timeHover
@@ -286,7 +342,7 @@ T.Pane {
                 }
                 TapHandler {
                     enabled: mediaTime.editable && !mediaTime.editing
-                    onTapped: mediaTime.editing = true
+                    onTapped: mediaTime.startEditing(false)
                 }
                 TextInput {
                     id: timeInput
@@ -296,9 +352,14 @@ T.Pane {
                     topPadding: mediaTime.topPadding
                     verticalAlignment: mediaTime.verticalAlignment === Text.AlignTop ? TextInput.AlignTop : TextInput.AlignVCenter
                     font: mediaTime.font
-                    color: VLCStyle.redesign.color("#CECECE", "#1e1e1e")
-                    selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-                    selectedTextColor: VLCStyle.redesign.accent
+                    // the red of the other fields of the redesign that refuse a value
+                    color: mediaTime.invalid ? VLCStyle.redesign.color("#e15033", "#b03a22")
+                                             : VLCStyle.redesign.color("#CECECE", "#1e1e1e")
+                    selectionColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                                    : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+                    selectedTextColor: mediaTime.invalid ? color
+                                       : VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : VLCStyle.redesign.accent
                     selectByMouse: true
                     clip: true
                     validator: RegularExpressionValidator { regularExpression: /[0-9:.]{0,12}/ }
@@ -308,17 +369,32 @@ T.Pane {
                         visible: timeInput.cursorVisible
                     }
                     Accessible.name: qsTr("Go to time")
+                    Accessible.description: mediaTime.invalid ? qsTr("This time is not in the media") : ""
+                    onTextEdited: mediaTime.invalid = false
                     // "1:02:10", "62:10", "130": hours, minutes, seconds
-                    onAccepted: {
-                        const parts = text.split(":").filter(part => part.length > 0).map(Number)
-                        const length = Player.length.toSeconds()
-                        if (parts.length > 0 && parts.length <= 3 && parts.every(n => !isNaN(n)) && length > 0) {
-                            const seconds = parts.reduce((total, n) => total * 60 + n, 0)
-                            Player.position = Math.max(0, Math.min(1, seconds / length))
+                    function submitTime() {
+                        const length = Player.length.toMilliseconds() / 1000
+                        if (text.length === 0 || !(length > 0)) {
+                            mediaTime.stopEditing()
+                            return
                         }
-                        mediaTime.editing = false
+                        const parts = text.split(":")
+                        const valid = acceptableInput && parts.length <= 3
+                                      && parts.every(part => part.length > 0 && !isNaN(Number(part)))
+                        const seconds = valid ? parts.reduce((total, part) => total * 60 + Number(part), 0) : NaN
+                        // not a time, or past the end: nothing is skipped, the box stays to be corrected
+                        if (isNaN(seconds) || seconds >= length) {
+                            mediaTime.invalid = true
+                            selectAll()
+                            return
+                        }
+                        Player.position = Math.max(0, Math.min(1, seconds / length))
+                        mediaTime.stopEditing()
                     }
-                    Keys.onEscapePressed: mediaTime.editing = false
+                    Keys.priority: Keys.AfterItem
+                    Keys.onReturnPressed: submitTime()
+                    Keys.onEnterPressed: submitTime()
+                    Keys.onEscapePressed: mediaTime.stopEditing()
                     // the field that takes the focus has its whole time selected
                     onActiveFocusChanged: {
                         if (activeFocus)
@@ -367,12 +443,17 @@ T.Pane {
 
                 Layout.preferredWidth: (effectiveTextPosition === ControlBar.TimeTextPosition.LeftRightSlider) ? VLCStyle.redesign.timeWidth : -1
 
-                readonly property bool showRemainingTime: (MainCtx.showRemainingTime && Player.remainingTime.valid())
+                readonly property bool showRemainingTime: visible && MainCtx.showRemainingTime
+                                                          && Player.displayRemainingTime.valid()
 
-                text: !Player.isStarted ? "--:--"
-                      : showRemainingTime
-                      ? "-" + Player.remainingTime.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
-                      : Player.length.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
+                Binding {
+                    when: mediaRemainingTime.visible
+                    restoreMode: Binding.RestoreNone
+                    mediaRemainingTime.text: !Player.isStarted ? "--:--"
+                                             : mediaRemainingTime.showRemainingTime
+                                             ? "-" + Player.displayRemainingTime.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
+                                             : Player.length.formatHMS(VLCTick.ForceHours | VLCTick.SubSecondFormattedAsMS)
+                }
                 color: mediaTime.color
                 font: timeTextMetrics.font
 
@@ -424,7 +505,8 @@ T.Pane {
                 }
 
                 Widgets.ToolTipExt {
-                    visible: mediaRemainingTimeHover.hovered && MainCtx.showRemainingTime && Player.rate !== 1
+                    visible: mediaRemainingTime.visible && mediaRemainingTimeHover.hovered
+                             && MainCtx.showRemainingTime && Player.rate !== 1
                     delay: VLCStyle.delayToolTipAppear
                     text: {
                         if (!visible)
@@ -458,7 +540,8 @@ T.Pane {
 
                 Navigation.parentItem: root
                 Navigation.downItem: playerControlLayout
-                Navigation.leftItem: inlineTimeline ? playerControlLayout.inlineLeftItem : null
+                Navigation.leftItem: inlineTimeline ? playerControlLayout.inlineLeftItem
+                                                    : (mediaTime.editable ? mediaTime : null)
                 Navigation.rightItem: inlineTimeline ? playerControlLayout.inlineRightItem : null
 
                 activeFocusOnTab: true

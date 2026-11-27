@@ -39844,3 +39844,11 @@ msgstr "Upphafssíða"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Síðan sem safnið opnast á þegar VLC ræsist."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Upptekið: reyndu aftur síðar"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Þessi tími er ekki í miðlinum"

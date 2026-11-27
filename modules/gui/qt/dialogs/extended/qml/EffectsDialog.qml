@@ -43,7 +43,8 @@ T.Popup {
 
     function beginCurrentTab() {
         if (currentTab === 0) audioBridge.begin()
-        else videoEffects.begin()
+        else if (videoEffects.activeVideo) videoEffects.begin()
+        else if (!videoEffects.transactionActive) videoEffects.cancel()
     }
 
     function saveEffects() {
@@ -276,7 +277,7 @@ T.Popup {
 
                 VideoEffectsPanel {
                     Layout.fillWidth: true
-                    visible: root.currentTab === 1 && videoEffects.transactionActive
+                    visible: root.currentTab === 1 && videoEffects.activeVideo && videoEffects.transactionActive
                     effects: videoEffects
                 }
 

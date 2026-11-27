@@ -25,6 +25,7 @@
 #include "maininterface/mainctx.hpp"
 #include "maininterface/compositor.hpp"
 #include "menus/redesign_menu_style.hpp"
+#include "style/systempalette.hpp"
 #include "util/redesign_icon_provider.hpp"
 #include "util/redesign_version.hpp"
 
@@ -123,6 +124,20 @@ BoxColors boxColors(bool dark, const QColor &accent)
     return c;
 }
 
+BoxColors contrastColors(const QPalette &system)
+{
+    BoxColors c;
+    c.card = c.titleBar = c.closeHover = system.window().color();
+    c.title = c.heading = c.text = c.fieldText = system.windowText().color();
+    c.button = c.buttonHover = system.button().color();
+    c.buttonText = c.fieldBorder = system.buttonText().color();
+    c.accentBackground = c.accentHover = c.selection = system.highlight().color();
+    c.accent = c.selectedText = system.highlightedText().color();
+    c.field = system.base().color();
+    c.placeholder = system.color(QPalette::Disabled, QPalette::Text);
+    return c;
+}
+
 QString rgb(const QColor &color)
 {
     return color.name(QColor::HexRgb);
@@ -143,8 +158,6 @@ RedesignMessageBox::RedesignMessageBox(qt_intf_t *intf, const RedesignMessage &m
     , m_message(message)
 {
     MainCtx *ctx = p_intf ? p_intf->p_mi : nullptr;
-    const bool dark = RedesignMenuStyle::darkScheme(ctx);
-    const BoxColors c = boxColors(dark, RedesignMenuStyle::accentColor(ctx));
     const double scale = ctx ? ctx->getIntfScaleFactor() : 1.0;
     const auto dp = [scale](double px) { return static_cast<int>(std::lround(px * scale)); };
 
@@ -162,12 +175,6 @@ RedesignMessageBox::RedesignMessageBox(qt_intf_t *intf, const RedesignMessage &m
     font.setStyleStrategy(QFont::StyleStrategy(QFont::PreferAntialias | QFont::NoSubpixelAntialias));
     font.setHintingPreference(QFont::PreferNoHinting);
     setFont(font);
-
-    QPalette pal = palette();
-    pal.setColor(QPalette::PlaceholderText, c.placeholder);
-    pal.setColor(QPalette::Highlight, c.selection);
-    pal.setColor(QPalette::HighlightedText, c.selectedText);
-    setPalette(pal);
 
     // shadow 0 8, blur 15, #000000 46 %: room for it around the card
     auto *outer = new QVBoxLayout(this);
@@ -208,7 +215,6 @@ RedesignMessageBox::RedesignMessageBox(qt_intf_t *intf, const RedesignMessage &m
     auto *close = new QToolButton(m_titleBar);
     close->setObjectName(QStringLiteral("redesignMessageClose"));
     close->setFixedSize(dp(32), dp(32));
-    close->setIcon(RedesignIcons::icon(QStringLiteral(":/redesign/icons/close/default.png")));
     close->setIconSize(QSize(dp(24), dp(24)));
     close->setFocusPolicy(Qt::TabFocus);
     close->setAccessibleName(qtr("Close"));
@@ -303,40 +309,64 @@ RedesignMessageBox::RedesignMessageBox(qt_intf_t *intf, const RedesignMessage &m
                                   true, RedesignMessage::Accepted));
     column->addWidget(footer);
 
-    const QString sheet = QStringLiteral(
-        "QWidget { font-family: \"%1\"; font-size: %2px; }"
-        "#redesignMessageCard { background: %3; border-radius: %4px; }"
-        "#redesignMessageTitleBar { background: %5; border-top-left-radius: %4px;"
-        " border-top-right-radius: %4px; }"
-        "QLabel { background: transparent; }"
-        "#redesignMessageTitle { color: %6; }"
-        "#redesignMessageHeading { color: %7; font-size: %8px; }"
-        "#redesignMessageText { color: %9; }")
-            .arg(font.family(), QString::number(dp(14)), rgb(c.card), QString::number(dp(14)),
-                 rgb(c.titleBar), rgb(c.title), rgb(c.heading), QString::number(dp(16)), rgb(c.text))
-        + QStringLiteral(
-        "QToolButton#redesignMessageClose { border: none; border-radius: %1px; background: transparent;"
-        " padding: %2px; }"
-        "QToolButton#redesignMessageClose:hover, QToolButton#redesignMessageClose:pressed"
-        " { background: %3; }"
-        "QToolButton#redesignMessageClose:focus { border: 1px solid %4; }")
-            .arg(QString::number(dp(4)), QString::number(dp(4)), rgb(c.closeHover), rgb(c.accent))
-        + QStringLiteral(
-        "QPushButton { border: none; border-radius: %1px; padding: 0px %2px; font-weight: 600;"
-        " background: %3; color: %4; }"
-        "QPushButton:hover, QPushButton:pressed { background: %5; }"
-        "QPushButton#redesignMessageAccent { background: %6; color: %7; }"
-        "QPushButton#redesignMessageAccent:hover, QPushButton#redesignMessageAccent:pressed"
-        " { background: %8; }"
-        "QPushButton:focus { border: 1px solid %7; }")
-            .arg(QString::number(dp(6)), QString::number(dp(16)), rgb(c.button), rgb(c.buttonText),
-                 rgb(c.buttonHover), rgb(c.accentBackground), rgb(c.accent), rgb(c.accentHover))
-        + QStringLiteral(
-        "QLineEdit#redesignMessageField, QPlainTextEdit#redesignMessageField { background: %1;"
-        " border: %2px solid %3; border-radius: %4px; color: %5; padding: %6px %7px %6px %8px; }")
-            .arg(rgb(c.field), QString::number(dp(2)), rgb(c.fieldBorder), QString::number(dp(6)),
-                 rgb(c.fieldText), QString::number(dp(8)), QString::number(dp(18)), QString::number(dp(12)));
-    setStyleSheet(sheet);
+    const auto applyColors = [this, ctx, close, dp, font]() {
+        const auto *contrast = RedesignMenuStyle::contrastSource(ctx);
+        const BoxColors c = contrast ? contrastColors(contrast->contrastPalette())
+                                     : boxColors(RedesignMenuStyle::darkScheme(ctx), RedesignMenuStyle::accentColor(ctx));
+        QPalette pal = palette();
+        pal.setColor(QPalette::PlaceholderText, c.placeholder);
+        pal.setColor(QPalette::Highlight, c.selection);
+        pal.setColor(QPalette::HighlightedText, c.selectedText);
+        setPalette(pal);
+        close->setIcon(RedesignIcons::icon(QStringLiteral(":/redesign/icons/close/default.png"),
+                                          contrast ? c.title : QColor()));
+
+        QString sheet = QStringLiteral(
+            "QWidget { font-family: \"%1\"; font-size: %2px; }"
+            "#redesignMessageCard { background: %3; border-radius: %4px; }"
+            "#redesignMessageTitleBar { background: %5; border-top-left-radius: %4px;"
+            " border-top-right-radius: %4px; }"
+            "QLabel { background: transparent; }"
+            "#redesignMessageTitle { color: %6; }"
+            "#redesignMessageHeading { color: %7; font-size: %8px; }"
+            "#redesignMessageText { color: %9; }")
+                .arg(font.family(), QString::number(dp(14)), rgb(c.card), QString::number(dp(14)),
+                     rgb(c.titleBar), rgb(c.title), rgb(c.heading), QString::number(dp(16)), rgb(c.text))
+            + QStringLiteral(
+            "QToolButton#redesignMessageClose { border: none; border-radius: %1px; background: transparent;"
+            " padding: %2px; }"
+            "QToolButton#redesignMessageClose:hover, QToolButton#redesignMessageClose:pressed"
+            " { background: %3; }"
+            "QToolButton#redesignMessageClose:focus { border: 1px solid %4; }")
+                .arg(QString::number(dp(4)), QString::number(dp(4)), rgb(c.closeHover), rgb(c.accent))
+            + QStringLiteral(
+            "QPushButton { border: none; border-radius: %1px; padding: 0px %2px; font-weight: 600;"
+            " background: %3; color: %4; }"
+            "QPushButton:hover, QPushButton:pressed { background: %5; }"
+            "QPushButton#redesignMessageAccent { background: %6; color: %7; }"
+            "QPushButton#redesignMessageAccent:hover, QPushButton#redesignMessageAccent:pressed"
+            " { background: %8; }"
+            "QPushButton:focus { border: 1px solid %7; }")
+                .arg(QString::number(dp(6)), QString::number(dp(16)), rgb(c.button), rgb(c.buttonText),
+                     rgb(c.buttonHover), rgb(c.accentBackground), rgb(c.accent), rgb(c.accentHover))
+            + QStringLiteral(
+            "QLineEdit#redesignMessageField, QPlainTextEdit#redesignMessageField { background: %1;"
+            " border: %2px solid %3; border-radius: %4px; color: %5; padding: %6px %7px %6px %8px; }")
+                .arg(rgb(c.field), QString::number(dp(2)), rgb(c.fieldBorder), QString::number(dp(6)),
+                     rgb(c.fieldText), QString::number(dp(8)), QString::number(dp(18)), QString::number(dp(12)));
+        if (contrast)
+        {
+            sheet += QStringLiteral("QPushButton { border: 1px solid %1; }"
+                                    "QPushButton#redesignMessageAccent { border-color: %2; }"
+                                    "QPushButton:focus, QPushButton#redesignMessageAccent:focus,"
+                                    "QToolButton#redesignMessageClose:focus { border: 1px solid %3; }")
+                         .arg(rgb(c.buttonText), rgb(c.accentBackground), rgb(c.title));
+        }
+        setStyleSheet(sheet);
+    };
+    applyColors();
+    if (ctx)
+        connect(ctx, &MainCtx::contrastPaletteChanged, this, applyColors);
 
     setMinimumWidth(dp(560) + dp(32));
     setMaximumWidth(dp(713) + dp(32));

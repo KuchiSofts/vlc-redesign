@@ -23,6 +23,9 @@ T.Control {
     property real dragXMax: 0
     property real dragYMin: 0
     property real dragYMax: 0
+    // Maximum height of the card (negative: uncapped); when smaller than the
+    // expanded card, the queue drawer shrinks to fit instead of overflowing
+    property real maximumHeight: -1
     property bool queueExpanded: false
     readonly property bool lightTheme: !VLCStyle.palette.isDark
     // Parent folder of a local media (a stream has none: not its host)
@@ -38,17 +41,17 @@ T.Control {
     // (4, the title 19, 14, the row 32, 4)
     padding: VLCStyle.dp(8, VLCStyle.scale)
     implicitWidth: VLCStyle.dp(391, VLCStyle.scale)
-    implicitHeight: topPadding + bottomPadding +
-                    (queueExpanded ? queueArea.height : 0) +
-                    _frameHeight + VLCStyle.dp(20 + 4 + 19 + 14 + 32 + 4, VLCStyle.scale)
+    readonly property real _baseHeight: topPadding + bottomPadding +
+                                        _frameHeight + VLCStyle.dp(20 + 4 + 19 + 14 + 32 + 4, VLCStyle.scale)
+    implicitHeight: _baseHeight + (queueExpanded ? queueArea.height : 0)
     // "Frame 112": the video and the seek bar, 230 for the video of 211;
     // narrower, the video is lower (16:9) and the frame with it
     readonly property real _frameHeight: video.height + VLCStyle.dp(19, VLCStyle.scale)
     background: Rectangle {
-        color: root.lightTheme ? "#ababaa" : VLCStyle.redesign.playerControlBackground
+        color: VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa")
         radius: VLCStyle.dp(14, VLCStyle.scale)
-        border.width: root.lightTheme ? 1 : 0
-        border.color: "#858585"
+        border.width: root.lightTheme || VLCStyle.redesign.highContrast ? 1 : 0
+        border.color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.border : "#858585"
 
         // Figma: drop shadow 0 0, blur 11.8, #000000 38 %
         Widgets.RoundedRectangleShadow {
@@ -65,8 +68,10 @@ T.Control {
             x: -root.leftPadding
             y: -root.topPadding
             width: parent.width + root.leftPadding + root.rightPadding
-            height: implicitHeight
-            visible: root.queueExpanded
+            height: root.maximumHeight >= 0
+                    ? Math.min(implicitHeight, Math.max(0, root.maximumHeight - root._baseHeight))
+                    : implicitHeight
+            visible: root.queueExpanded && height > 0
             // the card's border and radius (background)
             edge: root.lightTheme ? 1 : 0
             radius: VLCStyle.dp(14, VLCStyle.scale)
@@ -98,7 +103,7 @@ T.Control {
             radius: VLCStyle.dp(6, VLCStyle.scale) + cover
             color: "transparent"
             border.width: cover
-            border.color: root.lightTheme ? "#ababaa" : VLCStyle.redesign.playerControlBackground
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.playerControlBackground, "#ababaa")
         }
         // Figma: a border of 2 #090909 inside
         Rectangle {
@@ -109,7 +114,7 @@ T.Control {
             radius: VLCStyle.dp(6, VLCStyle.scale)
             color: "transparent"
             border.width: VLCStyle.dp(2, VLCStyle.scale)
-            border.color: root.lightTheme ? "#dedede" : VLCStyle.redesign.seekBackground
+            border.color: VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede")
         }
 
         Controls.Slider {
@@ -130,9 +135,22 @@ T.Control {
             // (the range, under the names Qt reads it from for assistive tools: it was told as 0 to 0)
             readonly property real minimumValue: from
             readonly property real maximumValue: to
-            value: Player.position
             enabled: Player.seekable
             Accessible.name: qsTr("Playback position")
+
+            Connections {
+                target: seek.visible ? Player : null
+                function onPositionChanged() { seek.value = Player.position }
+            }
+
+            function _refreshPosition() {
+                if (visible)
+                    value = Player.samplePosition()
+            }
+
+            onVisibleChanged: _refreshPosition()
+            Component.onCompleted: _refreshPosition()
+
             // Dragged: key frame seeks, at most one every 150 ms (a precise
             // seek decodes up to seconds of frames), the release precisely,
             // as SliderBar does
@@ -174,7 +192,9 @@ T.Control {
             // Figma: the track radius 6 #090909, the fill 2 inside, radius 4,
             // #371F06
             background: Rectangle {
-                color: root.lightTheme ? "#dedede" : VLCStyle.redesign.seekBackground
+                color: VLCStyle.redesign.color(VLCStyle.redesign.seekBackground, "#dedede")
+                border.width: VLCStyle.redesign.highContrast ? 1 : 0
+                border.color: VLCStyle.redesign.border
                 radius: VLCStyle.dp(6, VLCStyle.scale)
                 Rectangle {
                     readonly property real inset: VLCStyle.dp(2, VLCStyle.scale)
@@ -184,7 +204,8 @@ T.Control {
                     width: Math.max(0, (parent.width - 2 * inset) * seek.visualPosition)
                     height: parent.height - 2 * inset
                     radius: VLCStyle.dp(4, VLCStyle.scale)
-                    color: root.lightTheme
+                    color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.seekFill
+                           : root.lightTheme
                            ? Qt.rgba(VLCStyle.redesign.accent.r, VLCStyle.redesign.accent.g,
                                      VLCStyle.redesign.accent.b, 0.35)
                            : VLCStyle.redesign.accentBackground
@@ -196,7 +217,9 @@ T.Control {
                 radius: width / 2
                 x: Math.max(0, Math.min(seek.width - width, seek.visualPosition * seek.width - width / 2))
                 y: (seek.height - height) / 2
-                color: VLCStyle.redesign.accent
+                color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText : VLCStyle.redesign.accent
+                border.width: VLCStyle.redesign.highContrast ? 1 : 0
+                border.color: VLCStyle.redesign.accent
                 visible: seek.hovered || seek.pressed || seek.visualFocus
             }
         }
@@ -210,7 +233,7 @@ T.Control {
             height: VLCStyle.dp(19, VLCStyle.scale)
             textFormat: Text.PlainText
             text: Player.name
-            color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
+            color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.textSecondary : "#4d4d4d"
             elide: Text.ElideRight
             // (from the right in a right to left layout)
             horizontalAlignment: Text.AlignLeft
@@ -227,12 +250,26 @@ T.Control {
         // the folder and the artist (icon 24, 8, the name), 20 apart
         Row {
             id: details
-            // (from the right in a right to left layout)
-            x: LayoutMirroring.enabled ? parent.width - width - VLCStyle.dp(8, VLCStyle.scale)
+            // (from the right in a right to left layout; stop dp(4) before queueButton, which keeps two
+            // 120 dp names at the 391 dp design width)
+            x: LayoutMirroring.enabled ? queueButton.x + queueButton.width + VLCStyle.dp(4, VLCStyle.scale)
                                        : VLCStyle.dp(8, VLCStyle.scale)
             y: titleLabel.y + titleLabel.height + VLCStyle.dp(14, VLCStyle.scale)
+            width: Math.max(0, LayoutMirroring.enabled
+                               ? parent.width - VLCStyle.dp(8, VLCStyle.scale) - x
+                               : queueButton.x - x - VLCStyle.dp(4, VLCStyle.scale))
             height: VLCStyle.dp(32, VLCStyle.scale)
             spacing: VLCStyle.dp(20, VLCStyle.scale)
+            clip: true
+
+            readonly property int _visibleCount: (root.folderName ? 1 : 0) + (Player.artist ? 1 : 0)
+            readonly property real _textMaxWidth: {
+                const n = Math.max(1, _visibleCount)
+                const overhead = n * (VLCStyle.redesign.iconSize + VLCStyle.dp(8, VLCStyle.scale))
+                                 + (n - 1) * spacing
+                return Math.min(VLCStyle.dp(120, VLCStyle.scale),
+                                Math.max(0, Math.floor((width - overhead) / n)))
+            }
 
             Repeater {
                 model: [
@@ -245,11 +282,12 @@ T.Control {
                     visible: detail.modelData.label.length > 0
                     height: details.height
                     spacing: VLCStyle.dp(8, VLCStyle.scale)
-                    Image {
+                    Impl.ColorImage {
                         anchors.verticalCenter: parent.verticalCenter
                         width: VLCStyle.redesign.iconSize
                         height: width
                         source: "qrc:///redesign/icons/" + detail.modelData.iconName + "/default.svg"
+                        color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.textPrimary : "transparent"
                         sourceSize: Qt.size(width, height)
                         fillMode: Image.Pad
                         smooth: false
@@ -257,11 +295,11 @@ T.Control {
                     Text {
                         id: detailText
                         anchors.verticalCenter: parent.verticalCenter
-                        width: Math.min(implicitWidth, VLCStyle.dp(120, VLCStyle.scale))
+                        width: Math.min(implicitWidth, details._textMaxWidth)
                         height: VLCStyle.dp(19, VLCStyle.scale)
                         textFormat: Text.PlainText
                         text: detail.modelData.label
-                        color: root.lightTheme ? "#4d4d4d" : VLCStyle.redesign.textSecondary
+                        color: VLCStyle.redesign.highContrast || !root.lightTheme ? VLCStyle.redesign.textSecondary : "#4d4d4d"
                         elide: Text.ElideRight
                         font.family: VLCStyle.redesign.fontFamily
                         font.pixelSize: VLCStyle.dp(16, VLCStyle.scale)
@@ -306,7 +344,8 @@ T.Control {
                     fillMode: Image.Pad
                     smooth: false
                     // (drawn in the default accent: another one tints it)
-                    color: root.queueExpanded ? VLCStyle.redesign.accentTint : "transparent"
+                    color: root.queueExpanded ? VLCStyle.redesign.accentTint
+                           : VLCStyle.redesign.highContrast ? VLCStyle.redesign.textPrimary : "transparent"
                 }
             }
         }

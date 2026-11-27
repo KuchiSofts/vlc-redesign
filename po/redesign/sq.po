@@ -3873,10 +3873,9 @@ msgstr "Çelësi u refuzua"
 msgid "Wrong user name or password"
 msgstr "Emër përdoruesi ose fjalëkalim i gabuar"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Shërbimi është i zënë: provo pas një minute"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Shërbimi është i zënë: provo më vonë"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8298,14 +8297,14 @@ msgstr "Zgjidhni një kohëzgjatje mes një sekonde dhe 24 orësh."
 msgid "The subtitle couldn't be saved."
 msgstr "Titrat nuk mund të ruheshin."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 kërkon të prisni pak (shumë kërkime)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 nuk u përgjigj."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 kërkon të prisni pak (shumë kërkime)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8899,6 +8898,10 @@ msgstr "Ende nuk ka asgjë këtu."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Kontrollet e luajtësit"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Kjo kohë nuk është në media"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

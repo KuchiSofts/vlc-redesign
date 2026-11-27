@@ -38,7 +38,7 @@ Widgets.PageExt {
 
     property int initialIndex: -1
     property string initialUri: ""
-    property bool _initialItemRestored: false
+    property bool _initialItemRestoreHandled: false
 
     readonly property var currentIndex: loader.currentItem?.currentIndex ?? -1
 
@@ -48,7 +48,7 @@ Widgets.PageExt {
     isSearchable: loader.isSearchable
 
     function _restoreInitialItem() {
-        if (_initialItemRestored || initialIndex < 0 || !loader.currentItem
+        if (_initialItemRestoreHandled || initialIndex < 0 || !loader.currentItem
                 || loader.isLoading || loader.count === 0)
             return
 
@@ -79,13 +79,13 @@ Widgets.PageExt {
         if (!initialUri && index >= loader.count)
             return
 
-        _initialItemRestored = true
+        _initialItemRestoreHandled = true
         loader.resetFocus(index)
     }
 
     Connections {
         target: root.model
-        enabled: root.initialIndex >= 0 && !root._initialItemRestored
+        enabled: root.initialIndex >= 0 && !root._initialItemRestoreHandled
 
         function onLoadingChanged() { Qt.callLater(root._restoreInitialItem) }
         function onDataChanged() { Qt.callLater(root._restoreInitialItem) }
@@ -251,6 +251,7 @@ Widgets.PageExt {
                 }
 
                 onActionAtIndex: (index) => { _actionAtIndex(index) }
+                onSelectionByUser: root._initialItemRestoreHandled = true
 
                 Navigation.parentItem: root
                 Navigation.upItem: browseTreeHeader.networkAddressbar
@@ -352,6 +353,7 @@ Widgets.PageExt {
                 rowContextMenu: root.contextMenu
 
                 onActionForSelection: (selection) => _actionAtIndex(selection[0].row)
+                onSelectionByUser: root._initialItemRestoreHandled = true
                 onItemDoubleClicked: (index, model) => _actionAtIndex(index)
 
                 onRightClick: (_,_,globalMousePos) => {

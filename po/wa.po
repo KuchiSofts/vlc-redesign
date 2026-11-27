@@ -40289,3 +40289,11 @@ msgstr "Pådje d' enondaedje"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "Li pådje wice ki l' bibliotecke si drouve cwand VLC enonde."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Ocupé: rissayîz pus tård"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Ci tins ci n' est nén dins l' media"

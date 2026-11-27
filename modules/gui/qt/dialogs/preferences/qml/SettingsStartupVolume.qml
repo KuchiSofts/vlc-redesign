@@ -126,8 +126,9 @@ Rectangle {
                     anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
                     text: Math.round(root.volume * 100) + "%"
                     color: startsAt.selected ? root.c("#8F8F8F") : root.c("#404040")
-                    selectionColor: VLCStyle.redesign.accentBackground
-                    selectedTextColor: VLCStyle.redesign.accent
+                    selectionColor: VLCStyle.redesign.selectionBackground
+                    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : VLCStyle.redesign.accent
                     selectByMouse: true
                     activeFocusOnTab: true
                     clip: true

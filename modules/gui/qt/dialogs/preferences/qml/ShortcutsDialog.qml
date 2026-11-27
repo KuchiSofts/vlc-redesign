@@ -277,7 +277,7 @@ Widgets.RedesignDialog {
         Row {
             id: chipRow
 
-            readonly property real room: keyField.width - 2 * VLCStyle.dp(20, VLCStyle.scale)
+            readonly property real room: Math.max(0, keyField.width - 2 * VLCStyle.dp(20, VLCStyle.scale))
             readonly property real crossRoom: VLCStyle.dp(16 + 4, VLCStyle.scale)
             // the width of each chip, in the order of the keys
             readonly property var chipWidths: {
@@ -291,7 +291,7 @@ Widgets.RedesignDialog {
                 let left = room - spacing * Math.max(0, count - 1)
                 const widths = new Array(count)
                 order.forEach((i, n) => {
-                    widths[i] = Math.min(natural[i], Math.floor(left / (count - n)))
+                    widths[i] = Math.max(0, Math.min(natural[i], Math.floor(left / (count - n))))
                     left -= widths[i]
                 })
                 return widths
@@ -429,7 +429,9 @@ Widgets.RedesignDialog {
                     topPadding: VLCStyle.redesign.textBaseline(Math.round((height - Math.round(1.2109375 * font.pixelSize)) / 2),
                                                                font.pixelSize) - searchMetrics.ascent
                     color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-                    selectionColor: VLCStyle.redesign.accentBackground
+                    selectionColor: VLCStyle.redesign.selectionBackground
+                    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : "white"
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     FontMetrics {
@@ -589,11 +591,18 @@ Widgets.RedesignDialog {
         Layout.preferredHeight: VLCStyle.dp(632, VLCStyle.scale)
 
         readonly property real side: VLCStyle.dp(20, VLCStyle.scale)
-        readonly property real innerWidth: width - 2 * side
-        readonly property real labelWidth: VLCStyle.dp(290, VLCStyle.scale)
-        readonly property real fieldWidth: VLCStyle.dp(270, VLCStyle.scale)
+        readonly property real innerWidth: Math.max(0, width - 2 * side)
+        readonly property real maxLabelWidth: VLCStyle.dp(290, VLCStyle.scale)
+        readonly property real maxFieldWidth: VLCStyle.dp(270, VLCStyle.scale)
+        readonly property real minGap: VLCStyle.dp(12, VLCStyle.scale)
+        readonly property real maxColumnsWidth: maxLabelWidth + 2 * maxFieldWidth
+        readonly property real availableColumnsWidth: Math.max(0, innerWidth - 2 * minGap)
+        readonly property real columnScale: maxColumnsWidth > 0
+                                            ? Math.min(1, availableColumnsWidth / maxColumnsWidth) : 1
+        readonly property real labelWidth: Math.floor(maxLabelWidth * columnScale)
+        readonly property real fieldWidth: Math.floor(maxFieldWidth * columnScale)
         // "space-between": the hotkey in the middle of the room left
-        readonly property real hotkeyX: labelWidth + (innerWidth - labelWidth - 2 * fieldWidth) / 2
+        readonly property real hotkeyX: labelWidth + Math.round((innerWidth - labelWidth - 2 * fieldWidth) / 2)
         readonly property real globalX: innerWidth - fieldWidth
 
         // "Frame 503": the names of the columns
@@ -716,6 +725,7 @@ Widgets.RedesignDialog {
                     KeyField {
                         objectName: "hotkey_" + shortcutRow.key
                         x: LayoutMirroring.enabled ? parent.width - width - content.hotkeyX : content.hotkeyX
+                        width: content.fieldWidth
                         // Tab down the list scrolls it: the row stays in
                         // sight and the next rows get made
                         onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
@@ -729,6 +739,7 @@ Widgets.RedesignDialog {
                         // (the keys of live TV are the window's only)
                         visible: shortcutRow.hasGlobal
                         x: LayoutMirroring.enabled ? parent.width - width - content.globalX : content.globalX
+                        width: content.fieldWidth
                         onActiveFocusChanged: if (activeFocus) shortcutList.positionViewAtIndex(shortcutRow.index, ListView.Contain)
                         keyList: shortcutRow.globalHotkeys
                         accessibleName: qsTr("Global hotkey of %1").arg(shortcutRow.label)

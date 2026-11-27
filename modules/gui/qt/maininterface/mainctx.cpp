@@ -53,6 +53,7 @@
 #include "util/qt_dirs.hpp"                     // toNativeSeparators
 
 #include "util/color_scheme_model.hpp"
+#include "style/systempalette.hpp"
 #include "util/redesign_accent.hpp"
 #include "util/model_recovery_agent.hpp"
 
@@ -144,6 +145,8 @@ const QEvent::Type MainCtx::ToolbarsNeedRebuild =
 namespace
 {
 
+constexpr auto historyFilterKey = "redesign/recentplay-filter";
+
 template <typename T>
 T loadVLCOption(vlc_object_t *obj, const char *name);
 
@@ -166,6 +169,21 @@ bool loadVLCOption<bool>(vlc_object_t *obj, const char *name)
 }
 
 }
+
+#ifdef _WIN32
+int MainCtx::WinMsgHistoryFilterCB(vlc_object_t *, const char *, vlc_value_t,
+                                  vlc_value_t value, void *data)
+{
+    auto *item = static_cast<input_item_t *>(value.p_address);
+    if (!item)
+        return VLC_SUCCESS;
+
+    auto &filter = *static_cast<WinMsgHistoryFilter *>(data);
+    const std::lock_guard lock(filter.mutex);
+    vlc::playlist::Media::applyHistoryFilter(item, filter.expression);
+    return VLC_SUCCESS;
+}
+#endif
 
 MainCtx::MainCtx(qt_intf_t *_p_intf)
     : p_intf(_p_intf)
@@ -288,6 +306,26 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     /* Controlbar Profile Model Creation */
     m_controlbarProfileModel = new ControlbarProfileModel(p_intf->mainSettings, this);
 
+    m_stylePalette = new SystemPalette(this);
+    m_stylePalette->setObjectName(QStringLiteral("themePalette"));
+    m_stylePalette->setSource(m_colorScheme->currentScheme());
+    m_stylePalette->setCtx(this);
+    m_stylePalette->componentComplete();
+    connect(m_colorScheme, &ColorSchemeModel::currentChanged, m_stylePalette, [this]() {
+        m_stylePalette->setSource(m_colorScheme->currentScheme());
+    });
+    connect(m_stylePalette, &SystemPalette::paletteChanged, this,
+            [this, wasHighContrast = m_stylePalette->highContrast()]() mutable {
+        const bool highContrast = m_stylePalette->highContrast();
+        const bool changed = highContrast || wasHighContrast;
+        const bool increaseContrastChangedBySystem = highContrast != wasHighContrast && !m_increaseContrast;
+        wasHighContrast = highContrast;
+        if (increaseContrastChangedBySystem)
+            emit increaseContrastChanged();
+        if (changed)
+            emit contrastPaletteChanged();
+    });
+
     const QUrl homeUrl = QUrl::fromLocalFile(QVLCUserDir( VLC_HOME_DIR ));
     m_dialogFilepath = getSettings()->value( "filedialog-path", homeUrl ).toUrl();
 
@@ -329,6 +367,25 @@ MainCtx::MainCtx(qt_intf_t *_p_intf)
     var_AddCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
     var_AddCallback( libvlc, "intf-boss", IntfBossCB, this );
     var_AddCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
+#ifdef _WIN32
+    connect(this, &MainCtx::settingValueChanged, this, [this](const QString &key) {
+        if (key == QLatin1String(historyFilterKey))
+            loadHistoryFilter();
+    });
+    var_AddCallback( libvlc, "win-msg-history-filter", WinMsgHistoryFilterCB, &m_winMsgHistoryFilter );
+    /* Files opened from Explorer while VLC was starting (and the files on
+     * its command line) reached the playlist before this callback: filter
+     * them now, before they are played */
+    {
+        vlc_playlist_t *playlist = p_intf->p_playlist;
+        vlc_playlist_Lock( playlist );
+        const size_t count = vlc_playlist_Count( playlist );
+        for( size_t i = 0; i < count; ++i )
+            vlc::playlist::Media::applyHistoryFilter(
+                vlc_playlist_item_GetMedia( vlc_playlist_Get( playlist, i ) ) );
+        vlc_playlist_Unlock( playlist );
+    }
+#endif
 
     /* Register callback for the intf-popupmenu variable */
     var_AddCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
@@ -471,6 +528,9 @@ MainCtx::~MainCtx()
     libvlc_int_t* libvlc = vlc_object_instance(p_intf);
     var_DelCallback( libvlc, "intf-boss", IntfBossCB, this );
     var_DelCallback( libvlc, "intf-show", IntfRaiseMainCB, this );
+#ifdef _WIN32
+    var_DelCallback( libvlc, "win-msg-history-filter", WinMsgHistoryFilterCB, &m_winMsgHistoryFilter );
+#endif
     var_DelCallback( libvlc, "intf-toggle-fscontrol", IntfShowCB, this );
     var_DelCallback( libvlc, "intf-popupmenu", PopupMenuCB, p_intf );
 
@@ -481,6 +541,11 @@ MainCtx::~MainCtx()
         vlc_preparser_Delete(m_network_preparser);
 
     p_intf->p_mi = NULL;
+}
+
+bool MainCtx::increaseContrast() const
+{
+    return m_increaseContrast || (m_stylePalette && m_stylePalette->highContrast());
 }
 
 bool MainCtx::hasVLM() const {
@@ -734,9 +799,7 @@ void MainCtx::loadPrefs(const bool callSignals)
     }
 
     /* "Never remember items matching" of the settings */
-    vlc::playlist::Media::setHistoryFilter( QRegularExpression(
-        getSettings()->value( "redesign/recentplay-filter" ).toString(),
-        QRegularExpression::CaseInsensitiveOption ) );
+    loadHistoryFilter();
 
     /* "Interface size" of the settings: Automatic (0, the size found for
      * the screen), or a percentage of the design's size. The one setting of
@@ -763,6 +826,24 @@ void MainCtx::loadPrefs(const bool callSignals)
     updateIntfScaleFactor();
     if (sizeChanged && callSignals)
         emit interfaceSizeChanged();
+}
+
+void MainCtx::loadHistoryFilter()
+{
+    const QRegularExpression filter(getSettings()->value(QLatin1String(historyFilterKey)).toString(),
+                                    QRegularExpression::CaseInsensitiveOption);
+#ifdef _WIN32
+    {
+        const std::lock_guard lock(m_winMsgHistoryFilter.mutex);
+        if (m_winMsgHistoryFilter.expression == filter)
+            return;
+
+        // Compile on the interface thread before win_msg can use it.
+        filter.optimize();
+        m_winMsgHistoryFilter.expression = filter;
+    }
+#endif
+    vlc::playlist::Media::setHistoryFilter(filter);
 }
 
 void MainCtx::loadFromSettingsImpl(const bool callSignals)
@@ -1579,6 +1660,9 @@ static int IntfShowCB( vlc_object_t *, const char *,
 static int KeyFeedbackTextCB( vlc_object_t *, const char *,
                               vlc_value_t, vlc_value_t new_val, void *param )
 {
+    if (PlayerController::isChangingSpeedHoldRate())
+        return VLC_SUCCESS;
+
     MainCtx *ctx = static_cast<MainCtx *>( param );
     const QString text = qfu( new_val.psz_string ? new_val.psz_string : "" ).trimmed();
     if( !text.isEmpty() )

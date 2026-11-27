@@ -3817,10 +3817,9 @@ msgstr "കീ നിരസിച്ചു"
 msgid "Wrong user name or password"
 msgstr "തെറ്റായ ഉപയോക്തൃനാമം അല്ലെങ്കിൽ രഹസ്യവാക്ക്"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "തിരക്കിലാണ്: ഒരു മിനിറ്റിനുള്ളിൽ വീണ്ടും ശ്രമിക്കുക"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "തിരക്കിലാണ്: പിന്നീട് വീണ്ടും ശ്രമിക്കുക"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8221,14 +8220,14 @@ msgstr "ഒരു സെക്കൻഡിനും 24 മണിക്കൂറ�
 msgid "The subtitle couldn't be saved."
 msgstr "ഉപശീർഷകം സംരക്ഷിക്കാനായില്ല."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 അൽപ്പസമയം കാത്തിരിക്കാൻ ആവശ്യപ്പെടുന്നു (വളരെയധികം തിരയലുകൾ)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 പ്രതികരിച്ചില്ല."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 അൽപ്പസമയം കാത്തിരിക്കാൻ ആവശ്യപ്പെടുന്നു (വളരെയധികം തിരയലുകൾ)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8821,6 +8820,10 @@ msgstr "ഇവിടെ ഇതുവരെ ഒന്നുമില്ല."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "പ്ലേയർ നിയന്ത്രണങ്ങൾ"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ഈ സമയം മീഡിയയിൽ ഇല്ല"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

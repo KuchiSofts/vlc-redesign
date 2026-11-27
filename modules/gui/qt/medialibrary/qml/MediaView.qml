@@ -176,6 +176,7 @@ MainViewLoader {
             interactive: root.interactive
 
             reuseItems: root.reuseItems
+            delegateRoles: ["id", "title", "duration", "small_cover", "main_artist", "isVideo", "isLocal", "mrl"]
 
             Navigation.parentItem: root
 

@@ -246,4 +246,18 @@ QMap<QString, QVariant> BaseModel::getDataAt(int idx) const
     return getDataAt(index(idx));
 }
 
+QVariantMap BaseModel::getDataAt(int idx, const QStringList &names) const
+{
+    const auto modelIndex = index(idx);
+    const auto roles = roleNames();
+    QVariantMap dataDict;
+    for (auto role = roles.cbegin(); role != roles.cend(); ++role)
+    {
+        const auto name = QString::fromUtf8(role.value());
+        if (names.contains(name))
+            dataDict.insert(name, data(modelIndex, role.key()));
+    }
+    return dataDict;
+}
+
 

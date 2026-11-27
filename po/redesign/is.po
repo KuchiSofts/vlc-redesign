@@ -3844,10 +3844,9 @@ msgstr "Lykli hafnað"
 msgid "Wrong user name or password"
 msgstr "Rangt notandanafn eða lykilorð"
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:123
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:329
-msgid "Busy: try again in a minute"
-msgstr "Upptekið: reyndu aftur eftir mínútu"
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Upptekið: reyndu aftur síðar"
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:124
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
@@ -8259,14 +8258,14 @@ msgstr "Veldu tímalengd á milli einnar sekúndu og 24 klukkustunda."
 msgid "The subtitle couldn't be saved."
 msgstr "Ekki tókst að vista skjátextann."
 
+#: modules/gui/qt/player/subtitle_providers.cpp:106
+msgid "%1 asks to wait a moment (too many searches)."
+msgstr "%1 biður þig að bíða augnablik (of margar leitir)."
+
 #: modules/gui/qt/player/subtitle_providers.cpp:104
 #: modules/gui/qt/player/subtitle_search.cpp:885
 msgid "%1 didn't answer."
 msgstr "%1 svaraði ekki."
-
-#: modules/gui/qt/player/subtitle_providers.cpp:106
-msgid "%1 asks to wait a moment (too many searches)."
-msgstr "%1 biður þig að bíða augnablik (of margar leitir)."
 
 #: modules/gui/qt/player/subtitle_providers.cpp:107
 msgid "%1 didn't answer (%2)."
@@ -8860,6 +8859,10 @@ msgstr "Ekkert hér ennþá."
 #: modules/gui/qt/player/qml/ControlBar.qml:154
 msgid "Player controls"
 msgstr "Stýringar spilara"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Þessi tími er ekki í miðlinum"
 
 #: modules/gui/qt/player/qml/ControlBar.qml:437
 msgid "%1 (%2x)"

@@ -367,7 +367,7 @@ T.Popup {
         width: Math.max(VLCStyle.dp(100, VLCStyle.scale),
                         buttonText.implicitWidth + 2 * VLCStyle.dp(16, VLCStyle.scale))
         height: VLCStyle.dp(32, VLCStyle.scale)
-        opacity: enabled ? 1 : 0.5
+        opacity: enabled || VLCStyle.redesign.highContrast ? 1 : 0.5
 
         Accessible.name: text
 
@@ -382,7 +382,11 @@ T.Popup {
                 textFormat: Text.PlainText
                 text: button.text
                 verticalAlignment: Text.AlignTop
-                color: (button.accent && button.enabled) ? VLCStyle.redesign.accent
+                color: VLCStyle.redesign.highContrast
+                       ? !button.enabled ? VLCStyle.redesign.textDisabled
+                         : (button.accent || button.down || button.hovered) ? VLCStyle.redesign.highlightedText
+                         : VLCStyle.redesign.buttonText
+                       : (button.accent && button.enabled) ? VLCStyle.redesign.accent
                                                          : VLCStyle.redesign.color(VLCStyle.redesign.textMuted, "#2e2e2e", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
@@ -406,7 +410,10 @@ T.Popup {
 
         background: Rectangle {
             radius: VLCStyle.dp(6, VLCStyle.scale)
-            color: (button.accent && button.enabled)
+            color: VLCStyle.redesign.highContrast
+                   ? (button.enabled && (button.accent || button.down || button.hovered))
+                     ? VLCStyle.redesign.selectionBackground : VLCStyle.redesign.buttonBackground
+                   : (button.accent && button.enabled)
                    ? (button.down || button.hovered ? Qt.lighter(VLCStyle.redesign.accentBackground, 1.15)
                                                     : VLCStyle.redesign.accentBackground)
                    : !button.enabled ? VLCStyle.redesign.color(VLCStyle.redesign.controlHoverBackground, "#9c9c9b", root.darkTheme)
@@ -415,7 +422,7 @@ T.Popup {
             // The neutral fill is the card's (#1B1B1B on #191919, the same grey
             // in the light theme): the frame of the window around it, so the
             // button never melts into the dialog (docs/MASTER-PLAN.md §6)
-            border.width: button.visualFocus || !button.accent ? 1 : 0
+            border.width: button.visualFocus || !button.accent || VLCStyle.redesign.highContrast ? 1 : 0
             border.color: button.visualFocus ? VLCStyle.redesign.focusColor
                                              : VLCStyle.redesign.color(VLCStyle.redesign.windowBorder, undefined, root.darkTheme)
         }

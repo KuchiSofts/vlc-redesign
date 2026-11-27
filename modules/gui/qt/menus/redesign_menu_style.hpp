@@ -25,6 +25,7 @@
 #include <QString>
 
 class MainCtx;
+class SystemPalette;
 class QWindow;
 
 /**
@@ -52,6 +53,7 @@ public:
     // Shared with the classic windows (RedesignWidgetTheme):
     // the scheme chosen (System follows the system)
     static bool darkScheme(MainCtx *ctx);
+    static const SystemPalette *contrastSource(MainCtx *ctx);
     // the accent chosen in the settings
     static QColor accentColor(MainCtx *ctx);
     // Accent Dim of the design: #AB6314 for the default accent, 0.81 of

@@ -445,7 +445,9 @@ Widgets.RedesignDialog {
         selectByMouse: true
         enabled: !associations.busy
         color: VLCStyle.redesign.color("#969696", "#4d4d4d")
-        selectionColor: VLCStyle.redesign.accentBackground
+        selectionColor: VLCStyle.redesign.selectionBackground
+        selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                           : "white"
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
         FontMetrics {
@@ -905,8 +907,10 @@ Widgets.RedesignDialog {
 
                     color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e")
                     placeholderTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textDisabled, "#929291")
-                    selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-                    selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
+                    selectionColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                                    : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+                    selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e")
                     font.family: VLCStyle.redesign.fontFamily
                     font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)
                     selectByMouse: true
@@ -953,7 +957,7 @@ Widgets.RedesignDialog {
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                 lineHeight: 1.25
                 color: VLCStyle.redesign.color("#8A8A8A", "#6b6b6b")
-                linkColor: VLCStyle.redesign.accent
+                linkColor: VLCStyle.redesign.linkColor
                 text: qsTr("No key yet? It's free: sign up on opensubtitles.com, open API consumers, choose New consumer, name it (VLC Redesign) and copy its API key here, with your account's username and password.")
                       + " <a href=\"https://www.opensubtitles.com/en/consumers\">" + qsTr("Open API consumers") + "</a>"
                 onLinkActivated: (link) => Qt.openUrlExternally(link)

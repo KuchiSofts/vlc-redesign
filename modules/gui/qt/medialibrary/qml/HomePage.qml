@@ -83,6 +83,24 @@ Widgets.PageExt {
         return _cardsTop + cardHeight + Math.round(grown * ratio) + _sectionEnd
     }
 
+    function _sectionMayBeVisible(header: Item): bool {
+        if (!header || !mediaRows.contentItem || flickable.height <= 0)
+            return false
+
+        // The Column can still have a pending layout when a model's count
+        // changes. Use its visible children's heights to find the header.
+        let top = mediaRows.y + mediaRows.contentItem.y
+        const children = mediaRows.contentChildren
+        for (let i = 0; i < children.length; ++i) {
+            const child = children[i]
+            if (child === header)
+                return top < flickable.contentY + flickable.height
+            if (child.visible && child.height > 0)
+                top += child.height + mediaRows.spacing
+        }
+        return true
+    }
+
     function positionContentAtBeginning() {
         contentYBehavior.enabled = true
         flickable.contentY = -flickable.originY
@@ -150,7 +168,9 @@ Widgets.PageExt {
             restoreMode: Binding.RestoreNone
         }
 
-        T.ScrollBar.vertical: Widgets.ScrollBarExt {}
+        T.ScrollBar.vertical: Widgets.ScrollBarExt {
+            id: scrollBar
+        }
 
         // This behavior allows to have similar "smooth" animation
         // that Qt views have with `highlightFollowsCurrentItem`.
@@ -568,6 +588,8 @@ Widgets.PageExt {
             }
 
             Widgets.ViewHeader {
+                id: favoritesHeader
+
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
                 // (the list's column header: room under the title, as the grid's
                 // cards have; it stood against it, #111)
@@ -584,6 +606,21 @@ Widgets.PageExt {
 
             MediaView {
                 id: favoritesRow
+
+                // Keep the model and the navigation item in the column, so a
+                // lower row can become visible or take focus before the swap.
+                // Latch once wanted so upper rows gaining height before the
+                // swap cannot tear down and rebuild the view.
+                // (latched a moment later, not by a Binding: loading the row changes its count, which the
+                // condition reads, and a Binding that set it at once was a binding loop)
+                property bool _wanted: false
+                readonly property bool _wantNow: !_wanted
+                    && (MainCtx.firstFrameSwapped || favoritesRow.focus || flickable.moving || scrollBar.interacting
+                        || (favoritesRow.count > 0 && root._sectionMayBeVisible(favoritesHeader)))
+                on_WantNowChanged: if (_wantNow) Qt.callLater(favoritesRow._want)
+                function _want() { favoritesRow._wanted = true }
+                Component.onCompleted: if (_wantNow) _wanted = true
+                active: _wanted
 
                 compactMargins: true
                 // (the design's own page: its card sizes win)
@@ -656,6 +693,8 @@ Widgets.PageExt {
             }
 
             Widgets.ViewHeader {
+                id: newVideoHeader
+
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
                 // (the list's column header: room under the title, as the grid's
                 // cards have; it stood against it, #111)
@@ -672,6 +711,17 @@ Widgets.PageExt {
 
             VideoAll {
                 id: newVideoRow
+
+                // (latched a moment later, not by a Binding: loading the row changes its count, which the
+                // condition reads, and a Binding that set it at once was a binding loop)
+                property bool _wanted: false
+                readonly property bool _wantNow: !_wanted
+                    && (MainCtx.firstFrameSwapped || newVideoRow.focus || flickable.moving || scrollBar.interacting
+                        || (newVideoRow.count > 0 && root._sectionMayBeVisible(newVideoHeader)))
+                on_WantNowChanged: if (_wantNow) Qt.callLater(newVideoRow._want)
+                function _want() { newVideoRow._wanted = true }
+                Component.onCompleted: if (_wantNow) _wanted = true
+                active: _wanted
 
                 AccessibleCompat.id: "newVideo"
 
@@ -742,6 +792,8 @@ Widgets.PageExt {
             }
 
             Widgets.ViewHeader {
+                id: newMusicHeader
+
                 topPadding: VLCStyle.dp(20, VLCStyle.scale)
                 // (the list's column header: room under the title, as the grid's
                 // cards have; it stood against it, #111)
@@ -758,6 +810,17 @@ Widgets.PageExt {
 
             MediaView {
                 id: newMusicRow
+
+                // (latched a moment later, not by a Binding: loading the row changes its count, which the
+                // condition reads, and a Binding that set it at once was a binding loop)
+                property bool _wanted: false
+                readonly property bool _wantNow: !_wanted
+                    && (MainCtx.firstFrameSwapped || newMusicRow.focus || flickable.moving || scrollBar.interacting
+                        || (newMusicRow.count > 0 && root._sectionMayBeVisible(newMusicHeader)))
+                on_WantNowChanged: if (_wantNow) Qt.callLater(newMusicRow._want)
+                function _want() { newMusicRow._wanted = true }
+                Component.onCompleted: if (_wantNow) _wanted = true
+                active: _wanted
 
                 compactMargins: true
                 // (the design's own page: its card sizes win)

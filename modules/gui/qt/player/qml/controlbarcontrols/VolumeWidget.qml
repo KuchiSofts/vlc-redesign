@@ -237,16 +237,17 @@ T.Pane {
                 width: volControl.availableWidth
                 height: volControl.availableHeight
 
-                Image {
+                Impl.ColorImage {
                     // drawn at the size shown (an SVG: sharp at any scale and zoom)
                     sourceSize: Qt.size(width, height)
                     anchors.centerIn: parent
                     // Drawn for the dark theme (#090909); Figma "Player -
                     // Light": #888888
-                    source: VLCStyle.palette.isDark
+                    source: VLCStyle.redesign.highContrast || VLCStyle.palette.isDark
                             ? "qrc:/redesign/volume-background.svg"
                             : SVGColorImage.colorize("qrc:/redesign/volume-background.svg")
                                            .any({ "#090909": "#888888" }).uri()
+                    color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.border : "transparent"
                     width: VLCStyle.dp(89, VLCStyle.scale)
                     height: VLCStyle.dp(27.3633, VLCStyle.scale)
                 }
@@ -258,15 +259,16 @@ T.Pane {
                     height: VLCStyle.dp(24.56, VLCStyle.scale)
                     clip: true
 
-                    Image {
+                    Impl.ColorImage {
                         // drawn at the size shown (an SVG: sharp at any scale and zoom)
                         sourceSize: Qt.size(width, height)
                         // the gradient under black at 20 %; Figma "Player -
                         // Light": under white at 20 %
-                        source: VLCStyle.palette.isDark
+                        source: VLCStyle.redesign.highContrast || VLCStyle.palette.isDark
                                 ? "qrc:/redesign/volume-fill.svg"
                                 : SVGColorImage.colorize("qrc:/redesign/volume-fill.svg")
                                                .any({ "black": "#ffffff" }).uri()
+                        color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.accent : "transparent"
                         width: VLCStyle.dp(86, VLCStyle.scale)
                         height: VLCStyle.dp(24.56, VLCStyle.scale)
                     }

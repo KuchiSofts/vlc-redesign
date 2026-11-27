@@ -17,6 +17,7 @@
  *****************************************************************************/
 
 import QtQuick
+import QtQuick.Controls.impl as Impl
 import QtQuick.Templates as T
 
 
@@ -207,7 +208,7 @@ T.Control {
 
         // Figma "play": the triangle in the 22 px between the paddings of
         // 17 and 15 px, the pause bars in the middle
-        Image {
+        Impl.ColorImage {
             // drawn at the size shown (an SVG: sharp at any scale and zoom)
             sourceSize: Qt.size(width, height)
             // (filtered while the press scales the button)
@@ -215,14 +216,16 @@ T.Control {
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: visible ? VLCStyle.dp(1, VLCStyle.scale) : 0
             source: "qrc:/redesign/play.svg"
+            color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText : "transparent"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             visible: !root._redesignPlaying
         }
 
-        Image {
+        Impl.ColorImage {
             anchors.centerIn: parent
             source: "qrc:///redesign/player/pause.svg"
+            color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText : "transparent"
             width: VLCStyle.redesign.iconSize
             height: VLCStyle.redesign.iconSize
             sourceSize: Qt.size(width, height)
@@ -261,10 +264,13 @@ T.Control {
             anchors.rightMargin: anchors.leftMargin
             radius: VLCStyle.redesign.controlRadius
             // Figma "play" type=pause: a grey pill while playing
-            color: root._redesignPlaying
+            color: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                   : root._redesignPlaying
                    ? VLCStyle.redesign.color("#6B6B6B", "#6b6b6b", theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
                    : VLCStyle.redesign.color(VLCStyle.redesign.accent, theme.accent, theme.palette?.isDark ?? VLCStyle.darkPalette.isDark)
-            opacity: state === "diminished" ? 0.75 : 1
+            opacity: state === "diminished" && !VLCStyle.redesign.highContrast ? 0.75 : 1
+            border.width: VLCStyle.redesign.highContrast && root.visualFocus ? 1 : 0
+            border.color: VLCStyle.redesign.highlightedText
         }
     }
 }

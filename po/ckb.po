@@ -40388,3 +40388,11 @@ msgstr "پەڕەی دەستپێک"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "ئەو پەڕەیەی کتێبخانەکەی لەسەر دەکرێتەوە کاتێک VLC دەست پێدەکات."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "سەرقاڵە: دواتر دووبارە هەوڵبدەرەوە"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ئەم کاتە لە میدیاکەدا نییە"

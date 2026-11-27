@@ -23,6 +23,7 @@
 
 #include "maininterface/mainctx.hpp"
 #include "menus/redesign_menu_style.hpp"
+#include "style/systempalette.hpp"
 #include "dialogs/toolbar/controlbar_profile_model.hpp"
 #include "util/color_scheme_model.hpp"
 #include "util/redesign_window_frame.hpp"
@@ -666,6 +667,19 @@ Colors colors(bool dark, const QColor &accent)
     return c;
 }
 
+Colors contrastColors(const QPalette &system)
+{
+    Colors c;
+    c.window = c.raised = c.hover = c.titleBar = system.window().color();
+    c.field = system.base().color();
+    c.text = c.bright = c.muted = system.windowText().color();
+    c.disabled = system.color(QPalette::Disabled, QPalette::Text);
+    c.separator = c.outline = c.handle = c.windowBorder = system.buttonText().color();
+    c.accent = c.accentDim = c.accentBackground = c.accentHover = c.handleHover = system.highlight().color();
+    c.onAccent = system.highlightedText().color();
+    return c;
+}
+
 // For the window itself and what reads its palette (its children follow
 // the style sheet: a style sheet stops the palette propagation)
 QPalette windowPalette(const Colors &c, bool dark)
@@ -779,6 +793,7 @@ private:
     bool m_dark = true;
     double m_scale = 1.0;
     QColor m_border;
+    unsigned m_contrastRevision = 0;
 };
 
 QPointer<ThemeController> s_controller;
@@ -791,6 +806,10 @@ ThemeController::ThemeController(MainCtx *ctx)
     connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, changed);
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, changed);
     connect(ctx, &MainCtx::intfScaleFactorChanged, this, changed);
+    connect(ctx, &MainCtx::contrastPaletteChanged, this, [this]() {
+        ++m_contrastRevision;
+        updateAll();
+    });
     // "Follow the Windows accent color" follows the system (refresh() sees whether
     // the accent the windows have changed)
     connect(ctx, &MainCtx::systemAccentChanged, this, changed);
@@ -834,16 +853,29 @@ void ThemeController::refresh()
 {
     const bool dark = RedesignMenuStyle::darkScheme(m_ctx);
     const QColor accent = RedesignMenuStyle::accentColor(m_ctx);
+    const auto *contrast = RedesignMenuStyle::contrastSource(m_ctx);
     const double scale = m_ctx->getIntfScaleFactor();
-    const QString key = QStringLiteral("%1 %2 %3")
+    QString key = QStringLiteral("%1 %2 %3")
                             .arg(dark ? QStringLiteral("dark") : QStringLiteral("light"), accent.name(),
                                  QString::number(scale, 'f', 3));
+    if (contrast)
+        key += QStringLiteral(" %1").arg(m_contrastRevision);
     if (key == m_key)
         return;
     m_key = key;
 
-    const Colors c = colors(dark, accent);
+    const QPalette system = contrast ? contrast->contrastPalette() : QPalette();
+    const Colors c = contrast ? contrastColors(system) : colors(dark, accent);
     m_palette = windowPalette(c, dark);
+    if (contrast)
+    {
+        m_palette.setColor(QPalette::Button, system.button().color());
+        m_palette.setColor(QPalette::ButtonText, system.buttonText().color());
+        m_palette.setColor(QPalette::Disabled, QPalette::ButtonText, c.disabled);
+        m_palette.setColor(QPalette::HighlightedText, c.onAccent);
+        m_palette.setColor(QPalette::Link, system.link().color());
+        m_palette.setColor(QPalette::LinkVisited, system.link().color());
+    }
     m_dark = dark;
     m_scale = scale;
     // the frame of the main window

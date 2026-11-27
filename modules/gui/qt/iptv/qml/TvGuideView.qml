@@ -279,6 +279,7 @@ FocusScope {
         T.ScrollBar.vertical: Widgets.ScrollBarExt { }
 
         Keys.onReturnPressed: if (currentIndex >= 0) Iptv.play(Iptv.channelModel.keyAt(currentIndex))
+        Keys.onEnterPressed: if (currentIndex >= 0) Iptv.play(Iptv.channelModel.keyAt(currentIndex))
 
         // a wheel across (or Shift and the wheel) moves the time
         WheelHandler {
@@ -305,6 +306,7 @@ FocusScope {
             readonly property string key: model.key
             width: ListView.view.width
             height: root.rowHeight
+            readonly property bool inView: y + height > rows.contentY && y < rows.contentY + rows.height
 
             // the programmes of the blocks asked, by start (both set as the
             // row is made, and again for another channel: no initial binding,
@@ -444,15 +446,17 @@ FocusScope {
                 width: root.channelWidth - root.px(28)
                 height: parent.height
                 padding: 0
-                focusPolicy: Qt.NoFocus
+                focus: true
+                focusPolicy: rows.currentIndex === row.index && row.inView ? Qt.TabFocus : Qt.NoFocus
+                readonly property bool keyboardSelected: rows.currentIndex === row.index && rows.activeFocus && focus
                 Accessible.name: row.model.name
                 onClicked: Iptv.play(row.model.key)
                 background: Rectangle {
                     radius: root.px(6)
                     color: row.model.current ? VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
-                           : (channelCell.hovered || (rows.currentIndex === row.index && rows.activeFocus))
+                           : (channelCell.hovered || channelCell.keyboardSelected)
                              ? root.c("#151515", "#b5b5b4") : "transparent"
-                    border.width: rows.currentIndex === row.index && rows.activeFocus ? 1 : 0
+                    border.width: channelCell.keyboardSelected ? 1 : 0
                     border.color: VLCStyle.redesign.focusColor
                 }
                 contentItem: Item {
@@ -517,6 +521,11 @@ FocusScope {
 
                     Repeater {
                         model: shown
+                        // A guide refresh can remove the focused programme.
+                        onItemRemoved: (index, item) => {
+                            if (item && item.focus)
+                                channelCell.focus = true
+                        }
                         delegate: T.AbstractButton {
                             id: cell
                             required property var model
@@ -533,8 +542,17 @@ FocusScope {
                             x: (modelData.start - root.origin) * root.pxPerSec + 1
                             width: Math.max(root.px(4), (modelData.stop - modelData.start) * root.pxPerSec - 2)
                             height: row.height
-                            focusPolicy: Qt.NoFocus
-                            Accessible.name: modelData.title + ", " + Iptv.timeText(modelData.start)
+                            // The prefetched programmes and channels outside the current row
+                            // would put invisible buttons in the tab order.
+                            readonly property bool keyboardReachable: rows.currentIndex === row.index && row.inView
+                                                                      && x + width > root.timeX && x < root.timeX + root.gridWidth
+                            focusPolicy: keyboardReachable ? Qt.TabFocus : Qt.NoFocus
+                            onKeyboardReachableChanged: if (!keyboardReachable && focus) channelCell.focus = true
+                            Accessible.role: Accessible.Button
+                            Accessible.name: (modelData.title || qsTr("Untitled")) + ", " + Iptv.timeText(modelData.start)
+                            Accessible.onPressAction: cell.clicked()
+                            Keys.onReturnPressed: (event) => { if (!event.isAutoRepeat) cell.clicked() }
+                            Keys.onEnterPressed: (event) => { if (!event.isAutoRepeat) cell.clicked() }
                             onClicked: root.programmeClicked(Iptv.channelModel.get(row.index), cell.programme())
                             onDoubleClicked: {
                                 if (onNow)
@@ -548,6 +566,9 @@ FocusScope {
                                 color: cell.hovered ? root.c("#222222", "#9c9c9b")
                                        : cell.onNow ? root.c("#1F1F1F", "#a3a3a2")
                                        : root.c(cell.past ? "#121212" : "#191919", cell.past ? "#bdbdbc" : "#ababaa")
+                                // Tab-only focus keeps the ring through dialog focus restoration.
+                                border.width: cell.activeFocus ? 1 : 0
+                                border.color: VLCStyle.redesign.focusColor
                             }
                             // the progress of the one on now (its start to now)
                             Rectangle {

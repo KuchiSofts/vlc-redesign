@@ -397,13 +397,14 @@ T.Control {
 
                     let items
 
-                    const selectedIndexes = view.selectionModel.selectedIndexesFlat
+                    const selectedIndexes = view.selectionModel.sortedSelectedIndexesFlat
                     if (view.model instanceof AbstractProxyModel) {
                         items = []
                         for (let i = 0; i < selectedIndexes.length; ++i) {
                             const mappedIndex = view.model.mapToSource(view.model.index(selectedIndexes[i], 0))
                             items.push(mappedIndex.row)
                         }
+                        items.sort((a, b) => a - b)
                     } else {
                         items = selectedIndexes
                     }

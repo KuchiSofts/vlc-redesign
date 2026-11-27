@@ -22,6 +22,8 @@
 #include <QAbstractListModel>
 #include <QQmlParserStatus>
 #include <QString>
+#include <QStringList>
+#include <QVariantMap>
 
 
 class BaseModelPrivate;
@@ -86,6 +88,7 @@ public:
     virtual bool loading() const;
 
     Q_INVOKABLE QMap<QString, QVariant> getDataAt(int idx) const;
+    Q_INVOKABLE QVariantMap getDataAt(int idx, const QStringList &names) const;
     Q_INVOKABLE QMap<QString, QVariant> getDataAt(const QModelIndex & index) const;
 
 signals:

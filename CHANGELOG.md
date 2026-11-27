@@ -7,13 +7,56 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `562a3049df` (2026-11-03).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.8](#088--2026-11-26) · [0.8.7](#087--2026-11-26) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.8.9](#089--2026-11-27) · [0.8.8](#088--2026-11-26) · [0.8.7](#087--2026-11-26) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
 ---
 
 ## [Unreleased]
+
+## [0.8.9] · 2026-11-27
+
+An update release of the desktop apps (Android stays 0.8.8, the Samsung TV app 0.8.6): twenty-two changes
+from a contributor, each reviewed and some fixed on top: Windows media controls and contrast themes, a 2×
+hold that ends, the Folders page and the TV Guide with the keyboard, and fixes to the Play Queue, Add
+Subtitle File, the history filter and small windows.
+
+### Added
+
+- **Windows media controls**: VLC is in the media flyout and on the lock screen, and the media keys reach it in
+  the background.
+- **Windows contrast themes**: the main interface and the dialogs follow the contrast palette live.
+- **Folders and the TV Guide with the keyboard**: the arrows, Enter and the Menu key work on their cards and
+  programmes.
+- **The control bar's time with the keyboard**: Tab reaches it, and a time past the end stays in the box to fix.
+
+### Changed
+
+- **Holding for 2× speed is temporary**: release, another video, Stop or Quit bring back the speed from before.
+- **Open with on macOS** replaces the queue when "Add to the playlist" is off, as on Windows.
+- **Subtitle services that say "too many requests"** are left alone until they are ready again (an hour at most).
+- **Faster start and smoother grids**: popups and the Home rows out of sight are made later, grid cards before
+  they scroll in, and hidden controls no longer follow every tick.
+
+### Fixed
+
+- **Play Queue with a filter or a multiple selection**: Remove, the menu and drag and drop act on the right items.
+- **Add Subtitle File** no longer attaches the file to the next video.
+- **"Never remember items matching"** also applies to files opened from Explorer.
+- **Linux: queue entries on an unmounted volume** are no longer removed as deleted.
+- **Effects opened before a video** preview once one starts.
+- **Settings at 150–175 %**: the shortcut fields and the equalizer's outer bands fit.
+- **Mini player in small windows** stays below the top bar.
+- **Controls with a panel open** stay up after going fullscreen.
+- **Browse Back** keeps the row picked while a slow folder loads.
+
+### Technical
+
+- Version 0.8.9 started (VLC_REDESIGN_VERSION).
+- The macOS update test checks that the installed copy was replaced (its program file a new one), not only its
+  version: on main after a release the build is the latest version from the start, and the test passed before the
+  update had happened.
 
 ## [0.8.8] · 2026-11-26
 

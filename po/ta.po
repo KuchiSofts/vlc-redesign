@@ -39718,3 +39718,11 @@ msgstr "தொடக்கப் பக்கம்"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC தொடங்கும்போது நூலகம் திறக்கும் பக்கம்."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "பிஸியாக உள்ளது: பின்னர் மீண்டும் முயலவும்"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "இந்த நேரம் ஊடகத்தில் இல்லை"

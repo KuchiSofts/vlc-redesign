@@ -29,6 +29,26 @@ QtObject {
     // Dark reference: Player 187:328 and library shell 970:2703.
     // Light chrome values measured from the full exported Player - Light frame.
     readonly property QtObject redesign: QtObject {
+        // (?.: at quit the main context, which owns the palette, goes first)
+        readonly property bool highContrast: vlc_style.palette?.highContrast ?? false
+        readonly property ColorContext _contrastView: ColorContext {
+            palette: vlc_style.palette
+            colorSet: ColorContext.View
+        }
+        readonly property ColorContext _contrastButton: ColorContext {
+            palette: vlc_style.palette
+            colorSet: ColorContext.ButtonStandard
+        }
+        readonly property ColorContext _contrastDisabled: ColorContext {
+            palette: vlc_style.palette
+            colorSet: ColorContext.View
+            enabled: false
+        }
+        readonly property color buttonBackground: _contrastButton.bg.primary
+        readonly property color buttonText: _contrastButton.fg.primary
+        readonly property color highlightedText: _contrastView.fg.highlight
+        readonly property color linkColor: highContrast ? _contrastView.fg.link : accent
+
         // Inter 3.19 (variable, SIL OFL): the build Figma lays the design out
         // with (its text boxes are the advances of 3.19 rounded up), loaded
         // once in C++ (RedesignMenuStyle::fontFamily)
@@ -93,7 +113,8 @@ QtObject {
         property string accentChoice: MainCtx.settingValue("redesign/accent", "#D37918")
         readonly property bool followsSystemAccent: accentChoice === systemAccentChoice
         readonly property color systemAccent: MainCtx.systemAccent
-        readonly property color accent: followsSystemAccent ? systemAccent : accentChoice
+        readonly property color accent: highContrast ? _contrastView.accent
+                                                     : followsSystemAccent ? systemAccent : accentChoice
         // The color a choice stands for
         function accentOf(choice) {
             return choice === systemAccentChoice ? systemAccent : choice
@@ -113,9 +134,11 @@ QtObject {
         }
         // Accent Dim and Accent Bright of the design (#AB6314 and #371F06 for
         // the default accent: 0.81 and 0.26 of it)
-        readonly property color accentDim: Qt.colorEqual(accent, "#D37918") ? "#AB6314"
+        readonly property color accentDim: highContrast ? accent
+                                           : Qt.colorEqual(accent, "#D37918") ? "#AB6314"
                                            : Qt.rgba(accent.r * 0.81, accent.g * 0.81, accent.b * 0.81, 1)
-        readonly property color accentBackground: Qt.colorEqual(accent, "#D37918") ? "#371F06"
+        readonly property color accentBackground: highContrast ? buttonBackground
+                                                  : Qt.colorEqual(accent, "#D37918") ? "#371F06"
                                                   : Qt.rgba(accent.r * 0.26, accent.g * 0.26, accent.b * 0.26, 1)
         // The accent as a text on the tint of it (the ON word of a toggle):
         // darkened in the light theme, where it reads 1.8:1 on the pale tint,
@@ -123,26 +146,26 @@ QtObject {
         readonly property color onAccent: vlc_style.palette.isDark ? accent : Qt.darker(accent, 2.2)
         // The images drawn in the default accent are shown as they are with
         // it, a ColorImage tints them with the others (transparent: no tint)
-        readonly property bool defaultAccent: Qt.colorEqual(accent, "#D37918")
+        readonly property bool defaultAccent: !highContrast && Qt.colorEqual(accent, "#D37918")
         readonly property color accentTint: defaultAccent ? "transparent" : accent
-        readonly property color windowBackground: "#0E0E0E"
-        readonly property color sidebarBackground: "#191919"
-        readonly property color controlBackground: "#191919"
-        readonly property color playerControlBackground: "#1B1B1B"
-        readonly property color playerTopbarBackground: "#1B1B1B"
-        readonly property color controlHoverBackground: "#222222"
-        readonly property color selectionBackground: accentBackground
-        readonly property color textPrimary: "#EAEAEA"
-        readonly property color textSecondary: "#969696"
-        readonly property color textMuted: "#8F8F8F"
-        readonly property color textDisabled: "#404040"
-        readonly property color separator: "#222222"
-        readonly property color border: "#373737"
+        readonly property color windowBackground: highContrast ? _contrastView.bg.primary : "#0E0E0E"
+        readonly property color sidebarBackground: highContrast ? windowBackground : "#191919"
+        readonly property color controlBackground: highContrast ? buttonBackground : "#191919"
+        readonly property color playerControlBackground: highContrast ? windowBackground : "#1B1B1B"
+        readonly property color playerTopbarBackground: highContrast ? windowBackground : "#1B1B1B"
+        readonly property color controlHoverBackground: highContrast ? buttonBackground : "#222222"
+        readonly property color selectionBackground: highContrast ? _contrastView.bg.highlight : accentBackground
+        readonly property color textPrimary: highContrast ? _contrastView.fg.primary : "#EAEAEA"
+        readonly property color textSecondary: highContrast ? _contrastView.fg.secondary : "#969696"
+        readonly property color textMuted: highContrast ? textSecondary : "#8F8F8F"
+        readonly property color textDisabled: highContrast ? _contrastDisabled.fg.primary : "#404040"
+        readonly property color separator: highContrast ? _contrastView.separator : "#222222"
+        readonly property color border: highContrast ? _contrastView.border : "#373737"
         // The 1 px frame of a window (the main window's, which the system
         // draws: RedesignMenuStyle::windowBorder), around every dialog, menu
         // and card opened over the interface (Widgets.RedesignWindowBorder)
-        readonly property color windowBorder: "#4C4A48"
-        readonly property color focusColor: accent
+        readonly property color windowBorder: highContrast ? border : "#4C4A48"
+        readonly property color focusColor: highContrast ? _contrastView.visualFocus : accent
         readonly property int topbarHeight: MainCtx.dp(40, vlc_style.scale)
         readonly property int sidebarWidth: MainCtx.dp(217, vlc_style.scale)
         readonly property int navigationRowHeight: MainCtx.dp(46, vlc_style.scale)
@@ -161,8 +184,8 @@ QtObject {
         readonly property int seekHeight: MainCtx.dp(28, vlc_style.scale)
         readonly property int seekHandleWidth: MainCtx.dp(8, vlc_style.scale)
         readonly property int seekInset: MainCtx.dp(2, vlc_style.scale)
-        readonly property color seekBackground: "#090909"
-        readonly property color seekFill: accentBackground
+        readonly property color seekBackground: highContrast ? _contrastView.bg.secondary : "#090909"
+        readonly property color seekFill: highContrast ? accent : accentBackground
         readonly property int volumeWidth: MainCtx.dp(88, vlc_style.scale)
         readonly property int volumeHeight: MainCtx.dp(28, vlc_style.scale)
         readonly property int timeWidth: MainCtx.dp(76, vlc_style.scale)
@@ -192,6 +215,31 @@ QtObject {
             "#5a5a5a": "#333333", "#4d4d4d": "#333333", "#929291": "#575756", "#8f8f8f": "#333333"
         })
 
+        // Legacy literals passed to color() share a small set of design
+        // swatches. Resolve their usual roles without deriving new shades from
+        // the user's contrast palette. Use explicit tokens where roles overlap.
+        readonly property var _highContrastColors: ({
+            "#090909": seekBackground, "#0e0e0e": windowBackground, "#0f0f0f": windowBackground,
+            "#101010": seekBackground, "#121212": windowBackground, "#141414": windowBackground,
+            "#151515": windowBackground, "#161616": windowBackground, "#171717": windowBackground,
+            "#191919": sidebarBackground, "#1b1b1b": playerControlBackground, "#1c1c1c": buttonBackground,
+            "#1e1e1e": seekBackground, "#1f1f1f": controlHoverBackground, "#202020": buttonBackground,
+            "#212121": separator, "#222222": controlHoverBackground, "#232323": seekBackground,
+            "#252525": controlHoverBackground, "#262626": controlHoverBackground, "#292929": controlHoverBackground,
+            "#2a2a2a": controlHoverBackground, "#2c2c2c": controlHoverBackground, "#2d2d2d": controlHoverBackground,
+            "#2e2e2e": controlHoverBackground, "#303030": controlHoverBackground, "#343434": border,
+            "#353535": border, "#373737": border, "#383838": border, "#404040": textDisabled,
+            "#4c4a48": windowBorder, "#4c4c4c": border, "#555555": textSecondary, "#5a5a5a": textSecondary,
+            "#5f5f5f": textSecondary, "#636363": textSecondary, "#666666": textSecondary,
+            "#676767": textSecondary, "#6b6b6b": textSecondary, "#6f6f6f": textSecondary,
+            "#707070": border, "#7c7c7b": textSecondary, "#7d7d7d": textSecondary, "#8a8a8a": textSecondary,
+            "#8f8f8f": textSecondary, "#969696": textSecondary, "#aaaaaa": textPrimary,
+            "#b4b4b4": textPrimary, "#b8b8b8": textPrimary, "#bdbdbd": textPrimary,
+            "#c6c6c6": textPrimary, "#cecece": textPrimary, "#d0d0d0": textPrimary,
+            "#dddddd": textPrimary, "#eaeaea": textPrimary, "#e15032": textPrimary,
+            "#e15033": textPrimary, "#e4a580": textPrimary, "#e57373": textPrimary, "#ff8989": textPrimary
+        })
+
         // color(dark[, light[, isDark]]): the light value a component gives
         // is the one drawn in the light theme; without one, the map above
         // turns the dark value into its light one (a dark value the map does
@@ -219,6 +267,24 @@ QtObject {
         }
 
         function color(darkValue, lightValue, isDark = vlc_style.palette.isDark) {
+            if (highContrast) {
+                const shade = darkValue.toString().toLowerCase()
+                if (shade === "transparent" || (shade.length === 9 && shade.startsWith("#00")))
+                    return darkValue
+                // A color token may already contain a system color, even one
+                // whose RGB matches a legacy literal for a different role.
+                if (typeof darkValue !== "string"
+                    && [windowBackground, seekBackground, textPrimary, textSecondary, textDisabled,
+                        buttonBackground, buttonText, border, separator, focusColor, accent,
+                        highlightedText, linkColor].some(role => Qt.colorEqual(darkValue, role)))
+                    return darkValue
+                // The same panel swatches are also used with alpha for
+                // backdrops. Use the opaque palette role for readability.
+                const rgb = shade.length === 9 && shade[0] === "#" ? "#" + shade.slice(3) : shade
+                const role = _highContrastColors[rgb]
+                if (role !== undefined)
+                    return role
+            }
             const value = _themed(darkValue, lightValue, isDark)
             if (!increaseContrast)
                 return value
@@ -246,11 +312,7 @@ QtObject {
     readonly property FontMetrics fontMetrics_xxlarge  : FontMetrics { font.pixelSize: MainCtx.dp(20, scale); }
     readonly property FontMetrics fontMetrics_xxxlarge : FontMetrics { font.pixelSize: MainCtx.dp(24, scale); }
 
-    readonly property SystemPalette palette:  SystemPalette {
-        objectName: "themePalette"
-        source: MainCtx.colorScheme.scheme
-        ctx: MainCtx
-    }
+    readonly property SystemPalette palette: MainCtx.stylePalette
 
     readonly property SystemPalette darkPalette: SystemPalette {
         objectName: "darkPalette"
@@ -537,11 +599,11 @@ QtObject {
     readonly property url noArtArtist: "qrc:///placeholder/noart_artist.svg";
     readonly property url noArtArtistSmall: "qrc:///placeholder/noart_artist_small.svg";
     // (dark in the dark theme: a light square stood out of the design)
-    readonly property url noArtAlbumCover: palette.isDark ? "qrc:///placeholder/noart_albumCover_dark.svg"
+    readonly property url noArtAlbumCover: (palette?.isDark ?? true) ? "qrc:///placeholder/noart_albumCover_dark.svg"
                                                           : "qrc:///placeholder/noart_albumCover.svg";
-    readonly property url noArtArtistCover: palette.isDark ? "qrc:///placeholder/noart_artistCover_dark.svg"
+    readonly property url noArtArtistCover: (palette?.isDark ?? true) ? "qrc:///placeholder/noart_artistCover_dark.svg"
                                                            : "qrc:///placeholder/noart_artistCover.svg";
-    readonly property url noArtVideoCover: palette.isDark ? "qrc:///placeholder/noart_videoCover_dark.svg"
+    readonly property url noArtVideoCover: (palette?.isDark ?? true) ? "qrc:///placeholder/noart_videoCover_dark.svg"
                                                           : "qrc:///placeholder/noart_videoCover.svg";
 
     // New indicator

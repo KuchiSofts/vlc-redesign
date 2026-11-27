@@ -453,6 +453,28 @@ void PlaylistController::append(const QVariant &source, bool startPlaying)
     append(QVariantList{source}, startPlaying);
 }
 
+void PlaylistController::replaceAndPlay(const QVariantList &sources)
+{
+    Q_D(PlaylistController);
+
+    const auto media = toMediaList(sources);
+    if (media.isEmpty())
+        return;
+    const auto rawMedia = toRaw<input_item_t *>(media);
+
+    vlc_playlist_locker locker(d->m_playlist);
+    // An append that fails keeps the old queue (no throw: this runs on the
+    // interface's thread, with the playlist locked).
+    const size_t oldCount = vlc_playlist_Count(d->m_playlist);
+    if (vlc_playlist_Append(d->m_playlist, rawMedia.constData(),
+                            rawMedia.size()) != VLC_SUCCESS)
+        return;
+
+    if (oldCount > 0)
+        vlc_playlist_Remove(d->m_playlist, 0, oldCount);
+    vlc_playlist_PlayAt(d->m_playlist, 0);
+}
+
 void PlaylistController::insert(unsigned index, const QVariantList& sourceList, bool startPlaying)
 {
     insert(index, toMediaList(sourceList), startPlaying);

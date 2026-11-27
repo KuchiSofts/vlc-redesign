@@ -40669,3 +40669,11 @@ msgstr "प्रारंभ पृष्ठ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC सुरू झाल्यावर लायब्ररी ज्या पृष्ठावर उघडते ते पृष्ठ."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "व्यस्त: नंतर पुन्हा प्रयत्न करा"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "ही वेळ मीडियामध्ये नाही"

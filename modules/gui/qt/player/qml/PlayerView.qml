@@ -54,7 +54,8 @@ FocusScope {
     }
 
     // Only applicable in video mode:
-    property bool displayFadeRectangles: !_controlsUnderVideo && (height > (implicitFadeRectangleHeight * 3))
+    property bool displayFadeRectangles: !VLCStyle.redesign.highContrast
+                                         && !_controlsUnderVideo && (height > (implicitFadeRectangleHeight * 3))
     property real implicitFadeRectangleHeight: VLCStyle.dp(206, VLCStyle.scale)
 
     // Private
@@ -91,7 +92,6 @@ FocusScope {
     onLibraryVisibleChanged: {
         if (libraryVisible)
             _libraryCreated = true
-        lockUnlockAutoHide(libraryVisible)
     }
 
     property bool _controlsUnderVideo: (MainCtx.pinVideoControls
@@ -177,10 +177,6 @@ FocusScope {
         rootPlayer.Navigation.defaultKeyReleaseAction(event)
     }
 
-    on_ControlsUnderVideoChanged: {
-        lockUnlockAutoHide(_controlsUnderVideo)
-    }
-
     // Functions
 
     function lockUnlockAutoHide(lock) {
@@ -216,6 +212,13 @@ FocusScope {
     PlayerToolbarVisibilityFSM {
         id: playerToolbarVisibilityFSM
 
+        // (not for controls pinned under the video: they stay through the control bar's state, and the
+        // pointer still hides over the video in a window)
+        locked: rootPlayer.libraryVisible
+                || playlistVisibility.isPlaylistVisible
+                || resumeDialog.visible
+                || controlBar.hovered
+
         onForceUnlock:{
             controlBar.forceUnlock()
 
@@ -225,8 +228,6 @@ FocusScope {
 
     PlayerPlaylistVisibilityFSM {
         id: playlistVisibility
-
-        onIsPlaylistVisibleChanged: lockUnlockAutoHide(isPlaylistVisible)
     }
 
     Connections {
@@ -643,6 +644,8 @@ FocusScope {
             anchors.fill: parent
 
             opacity: {
+                if (VLCStyle.redesign.highContrast)
+                    return 1.0
                 if (MainCtx.hasEmbededVideo && !MainCtx.pinVideoControls && !rootPlayer.displayFadeRectangles) {
                     return 0.6
                 } else if (MainCtx.intfMainWindow.visibility === Window.FullScreen && MainCtx.hasEmbededVideo) {
@@ -1070,8 +1073,6 @@ FocusScope {
                                                && Player.videoTracks.count > 0))
                     ? PlayerControlbarModel.Videoplayer : PlayerControlbarModel.Audioplayer
 
-        onHoveredChanged: rootPlayer.lockUnlockAutoHide(hovered)
-
         background: Rectangle {
             id: controlBarBackground
 
@@ -1080,6 +1081,8 @@ FocusScope {
                      || !MainCtx.hasEmbededVideo || MainCtx.pinVideoControls || !rootPlayer.displayFadeRectangles
 
             opacity: {
+                if (VLCStyle.redesign.highContrast)
+                    return 1.0
                 if (MainCtx.hasEmbededVideo && !MainCtx.pinVideoControls && !rootPlayer.displayFadeRectangles) {
                     return 0.6
                 } else if ((Window.visibility === Window.FullScreen) && MainCtx.hasEmbededVideo) {
@@ -1123,9 +1126,6 @@ FocusScope {
             if (activeFocus)
                 controlBar.forceActiveFocus()
         }
-
-        // The controls stay shown while it is
-        onVisibleChanged: rootPlayer.lockUnlockAutoHide(visible)
     }
 
     // and the subtitles keep above them: it covered the start of a long line

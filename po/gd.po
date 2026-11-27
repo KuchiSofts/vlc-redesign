@@ -40265,3 +40265,11 @@ msgstr "Duilleag tòiseachaidh"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "An duilleag air am fosgail an leabharlann nuair a thòisicheas VLC."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "Trang: feuch ris a-rithist an ceann greis"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "Chan eil an t-àm seo sa mheadhan"

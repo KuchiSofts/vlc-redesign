@@ -40876,3 +40876,11 @@ msgstr "起動時のページ"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC の起動時にライブラリが開くページです。"
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "混雑中: しばらくしてからもう一度お試しください"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "この時間はメディア内にありません"

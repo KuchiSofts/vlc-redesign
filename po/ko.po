@@ -40555,3 +40555,11 @@ msgstr "시작 페이지"
 #: modules/gui/qt/dialogs/preferences/config_model.cpp
 msgid "The page the library opens on when VLC starts."
 msgstr "VLC를 시작할 때 라이브러리가 열리는 페이지입니다."
+
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml
+msgid "Busy: try again later"
+msgstr "혼잡: 나중에 다시 시도하세요"
+
+#: modules/gui/qt/player/qml/ControlBar.qml
+msgid "This time is not in the media"
+msgstr "이 시간은 미디어에 없습니다"

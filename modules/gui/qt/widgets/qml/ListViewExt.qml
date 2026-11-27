@@ -68,6 +68,7 @@ ListView {
 
     // Signals
     signal actionAtIndex(int index)
+    signal selectionByUser()
 
     signal showContextMenu(point globalPos)
 
@@ -228,12 +229,13 @@ ListView {
             Layout.fillHeight: true
 
             onEntered: (drag) => {
-                if (!acceptDrop) {
+                const targetIndex = verticalDropAreaLayout.mappedIndex()
+                if (!acceptDrop || targetIndex < 0) {
                     drag.accepted = false
                     return
                 }
 
-                if (isDropAcceptable && !isDropAcceptable(drag, verticalDropAreaLayout.mappedIndex())) {
+                if (isDropAcceptable && !isDropAcceptable(drag, targetIndex)) {
                     drag.accepted = false
                     return
                 }
@@ -241,7 +243,10 @@ ListView {
 
             onDropped: (drop) => {
                 console.assert(acceptDrop)
-                commonDrop(verticalDropAreaLayout.mappedIndex(), drop)
+                const targetIndex = verticalDropAreaLayout.mappedIndex()
+                if (targetIndex < 0)
+                    return
+                commonDrop(targetIndex, drop)
             }
         }
 
@@ -252,12 +257,13 @@ ListView {
             Layout.fillHeight: true
 
             onEntered: (drag) =>  {
-                if (!acceptDrop) {
+                const mapped = verticalDropAreaLayout.mappedIndex()
+                if (!acceptDrop || mapped < 0) {
                     drag.accepted = false
                     return
                 }
 
-                if (isDropAcceptable && !isDropAcceptable(drag, verticalDropAreaLayout.mappedIndex() + 1)) {
+                if (isDropAcceptable && !isDropAcceptable(drag, mapped + 1)) {
                     drag.accepted = false
                     return
                 }
@@ -265,7 +271,10 @@ ListView {
 
             onDropped: (drop) => {
                 console.assert(acceptDrop)
-                commonDrop(verticalDropAreaLayout.mappedIndex() + 1, drop)
+                const mapped = verticalDropAreaLayout.mappedIndex()
+                if (mapped < 0)
+                    return
+                commonDrop(mapped + 1, drop)
             }
         }
     }
@@ -338,8 +347,20 @@ ListView {
                         MainCtx.unsetCursor(root)
                 }
 
+                function targetIndex() {
+                    if (root.model instanceof AbstractProxyModel) {
+                        if (root.count > 0) {
+                            const mappedIndex = root.model.mapToSource(root.model.index(root.count - 1, 0))
+                            if (mappedIndex.row >= 0)
+                                return mappedIndex.row + 1
+                        }
+                        return root.model.sourceModel ? root.model.sourceModel.rowCount() : 0
+                    }
+                    return root.count
+                }
+
                 onEntered: function(drag) {
-                    if (!root.isDropAcceptableFunc || !root.isDropAcceptableFunc(drag, root.model.rowCount())
+                    if (!root.isDropAcceptableFunc || !root.isDropAcceptableFunc(drag, targetIndex())
                             || !root.acceptDropFunc) {
                         drag.accepted = false
                         return
@@ -351,12 +372,7 @@ ListView {
                 onDropped: function(drop) {
                     console.assert(!!root.acceptDropFunc)
                     dropOperationOngoing = true
-                    let targetIndex
-                    if (root.model instanceof AbstractProxyModel)
-                        targetIndex = (root.model.mapToSource(root.model.index(root.count - 1, 0))?.row ?? 0) + 1
-                    else
-                        targetIndex = root.count
-                    root.acceptDropFunc(targetIndex, drop)
+                    root.acceptDropFunc(targetIndex(), drop)
                         .then(() => { dropOperationOngoing = false })
                 }
             }
@@ -644,8 +660,10 @@ ListView {
 
         if (event.matches(StandardKey.SelectAll)) {
             event.accepted = true
-            if (selectionModel)
+            if (selectionModel) {
+                root.selectionByUser()
                 selectionModel.selectAll()
+            }
         } else if (KeyHelper.matchOk(event)) {
             // Keep activation handling on release to avoid double interpretation.
             event.accepted = true
@@ -655,6 +673,7 @@ ListView {
         const oldIndex = currentIndex
         if (newIndex >= 0 && newIndex < count && newIndex !== oldIndex) {
             event.accepted = true;
+            root.selectionByUser()
 
             currentIndex = newIndex;
 

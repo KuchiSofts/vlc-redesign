@@ -634,6 +634,9 @@ FocusScope{
         // the bar (RedesignIconButton)
         backgroundColor: {
             const hover = hovered || down
+            if (VLCStyle.redesign.highContrast)
+                return lit ? VLCStyle.redesign.buttonBackground
+                           : hover ? VLCStyle.redesign.selectionBackground : "transparent"
             if (lit) {
                 const tint = VLCStyle.palette.isDark ? VLCStyle.redesign.accentBackground
                                                      : Qt.alpha(VLCStyle.redesign.accent, 0.14)
@@ -653,7 +656,11 @@ FocusScope{
                 smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
                 source: "qrc:///redesign/icons/" + topBarButton.iconName + "/" + topBarButton.iconState + ".svg"
                 // the image's own colours, the accent while open (transparent: no tint)
-                color: !topBarButton.lit ? "transparent"
+                color: VLCStyle.redesign.highContrast
+                       ? topBarButton.lit ? VLCStyle.redesign.accent
+                         : (topBarButton.hovered || topBarButton.down) ? VLCStyle.redesign.highlightedText
+                         : VLCStyle.redesign.textPrimary
+                       : !topBarButton.lit ? "transparent"
                        : VLCStyle.palette.isDark ? VLCStyle.redesign.accent : VLCStyle.redesign.accentDim
             }
         }

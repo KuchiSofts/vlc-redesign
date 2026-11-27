@@ -55,8 +55,9 @@ Rectangle {
         anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize, parent.height)
         clip: true
         color: root.c("#8F8F8F")
-        selectionColor: VLCStyle.redesign.accentBackground
-        selectedTextColor: VLCStyle.redesign.accent
+        selectionColor: VLCStyle.redesign.selectionBackground
+        selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                           : VLCStyle.redesign.accent
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(14)
         validator: IntValidator { bottom: 0; top: 2147483647 }

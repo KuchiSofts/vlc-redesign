@@ -116,6 +116,9 @@ FocusScope {
         property bool selected: false
     }
 
+    // Card roles for views that know their delegate's data needs.
+    property var delegateRoles: null
+
     // extra margin taken in account for positionViewAtIndex
     //
     // this is required since delegates selection rect may occupy area outside of
@@ -126,6 +129,12 @@ FocusScope {
     property var _unusedItemList: []
     property var _currentRange: [0,0]
     property var _delayedChildrenMap: ({})
+
+    property var _prefetchedItems: ({})
+    property var _pendingPrefetch: null
+    property int _prefetchGeneration: 0
+    property bool _prefetchRequested: false
+    property bool _prefetchForward: true
 
     property int _anchoredIdx: -1
     property real _anchoredIdxFraction: 1
@@ -193,6 +202,11 @@ FocusScope {
             flickable.layout(true)
     }
 
+    Component.onDestruction: {
+        if (_pendingPrefetch?.incubator)
+            _pendingPrefetch.incubator.onStatusChanged = undefined
+    }
+
     // view needs to be relayout, since items may move
     onWidthChanged: Qt.callLater(_anchoredLayout, true)
     onHeightChanged: Qt.callLater(_anchoredLayout, true)
@@ -210,6 +224,13 @@ FocusScope {
     onDisplayMarginEndChanged: _anchoredLayout(false)
 
     onModelChanged: _onModelCountChanged()
+    onDelegateChanged: _invalidatePrefetch()
+    onExpandIndexChanged: _invalidatePrefetch()
+    onDelegateRolesChanged: {
+        _invalidatePrefetch()
+        if (_isInitialised && model)
+            Qt.callLater(_refreshData)
+    }
 
     onCurrentIndexChanged: {
         if (expandIndex !== -1)
@@ -317,6 +338,7 @@ FocusScope {
             const iMax = bottomRight.row + 1 // [] => [)
             const f_l = _currentRange
 
+            _markPrefetchedDataChanged(iMin, iMax)
             _refreshDelayedChildData(iMin, iMax)
 
             if (iMin < f_l[1] && f_l[0] < iMax) {
@@ -325,6 +347,7 @@ FocusScope {
         }
         function onRowsInserted() { _onModelCountChanged() }
         function onRowsRemoved() { _onModelCountChanged() }
+        function onRowsMoved() { _invalidatePrefetch() }
         function onModelReset() { _onModelCountChanged() }
 
         // NOTE: This is useful for SortFilterProxyModel(s).
@@ -371,6 +394,11 @@ FocusScope {
     }
 
     // Animations
+    FrameAnimation {
+        // Start at most one card per frame and let Qt Quick slice its incubation.
+        running: root.visible && root._prefetchRequested && !root._pendingPrefetch && !root.isAnimating
+        onTriggered: root._prefetchOne()
+    }
 
     PropertyAnimation {
         id: animateContentY;
@@ -676,7 +704,7 @@ FocusScope {
         console.assert(item !== undefined, "incorrect _recycleItem call, id" + id + " ununsedItemList size" + _unusedItemList.length)
 
         item.index = id
-        item.model = model.getDataAt(id)
+        item.model = _delegateData(id)
         item.selected = selectionModel.isSelected(id)
         item.x = x
         item.y = y
@@ -690,21 +718,142 @@ FocusScope {
         return item
     }
 
-    function _createItem(id, x, y) {
-        const item = delegate.createObject( flickable.contentItem, {
-                        view: root,
-                        selected: selectionModel.isSelected(id),
-                        index: id,
-                        model: model.getDataAt(id),
-                        x: x,
-                        y: y,
-                        z: _indexToZ(id),
-                        visible: true
-                    })
+    function _delegateData(id) {
+        return delegateRoles === null ? model.getDataAt(id) : model.getDataAt(id, delegateRoles)
+    }
 
+    function _itemProperties(id, x, y, visible) {
+        return {
+            view: root,
+            selected: selectionModel.isSelected(id),
+            index: id,
+            model: _delegateData(id),
+            x: x,
+            y: y,
+            z: _indexToZ(id),
+            visible: visible
+        }
+    }
+
+    function _createItem(id, x, y) {
+        const item = delegate.createObject(flickable.contentItem, _itemProperties(id, x, y, true))
         console.assert(item !== undefined, "unable to instantiate " + id)
         _setItem(id, item)
 
+        return item
+    }
+
+    function _prunePrefetch() {
+        const first = _currentRange[0]
+        const last = _currentRange[1]
+        for (const key in _prefetchedItems) {
+            const id = Number(key)
+            if (first === last || id >= _count || id < first - nbItemPerRow || id >= last + nbItemPerRow
+                    || (id >= first && id < last)) {
+                _prefetchedItems[id].incubator?.object?.destroy()
+                delete _prefetchedItems[id]
+            }
+        }
+    }
+
+    function _invalidatePrefetch() {
+        ++_prefetchGeneration
+        for (const id in _prefetchedItems)
+            _prefetchedItems[id].incubator?.object?.destroy()
+        _prefetchedItems = ({})
+        _prefetchRequested = true
+    }
+
+    function _markPrefetchedDataChanged(first, last) {
+        for (const id in _prefetchedItems) {
+            if (id >= first && id < last) {
+                _prefetchedItems[id].dirty = true
+                _prefetchRequested = true
+            }
+        }
+    }
+
+    function _prefetchOne() {
+        const first = _currentRange[0]
+        const last = _currentRange[1]
+        if (first < last && nbItemPerRow > 0) {
+            const before = [Math.max(0, first - nbItemPerRow), first]
+            const after = [last, Math.min(_count, last + nbItemPerRow)]
+            const rows = _prefetchForward ? [after, before] : [before, after]
+            // A full row in the pool already avoids allocating the next row.
+            const canAllocate = _unusedItemList.length < nbItemPerRow
+            for (const row of rows) {
+                for (let id = row[0]; id < row[1]; ++id) {
+                    const request = _prefetchedItems[id]
+                    if (request) {
+                        const item = request.incubator?.object
+                        if (request.dirty && item) {
+                            request.dirty = false
+                            item.model = _delegateData(id)
+                            return
+                        }
+                    } else if (canAllocate && !(id in _delayedChildrenMap)) {
+                        _incubatePrefetch(id)
+                        return
+                    }
+                }
+            }
+        }
+        _prefetchRequested = false
+    }
+
+    function _incubatePrefetch(id) {
+        const pos = getItemPos(id)
+        if (id >= flickable.getExpandItemGridId())
+            pos[1] += _expandItemVerticalSpace
+        const request = { generation: _prefetchGeneration, dirty: false, claimed: false }
+        _prefetchedItems[id] = request
+        _pendingPrefetch = request
+        const properties = _itemProperties(id, pos[0], pos[1], false)
+        properties.focus = false
+        const incubator = delegate.incubateObject(flickable.contentItem, properties)
+        request.incubator = incubator
+
+        const finished = () => {
+            if (incubator)
+                incubator.onStatusChanged = undefined
+            _pendingPrefetch = null
+            // The model may have reordered its indexes or the viewport may have jumped.
+            if (!request.claimed && (request.generation !== _prefetchGeneration || _prefetchedItems[id] !== request))
+                incubator?.object?.destroy()
+        }
+        if (incubator?.status === Component.Loading)
+            incubator.onStatusChanged = finished
+        else
+            finished()
+    }
+
+    function _takePrefetchedItem(id, x, y) {
+        const request = _prefetchedItems[id]
+        if (!request)
+            return null
+        delete _prefetchedItems[id]
+        if (request.incubator?.status === Component.Loading && _unusedItemList.length > 0)
+            return null
+
+        // A jump or keyboard move can reach the row before Qt finishes it.
+        request.claimed = true
+        if (request.incubator?.status === Component.Loading)
+            request.incubator.forceCompletion()
+        const item = request.incubator?.object
+        if (!item)
+            return null
+        if (request.generation !== _prefetchGeneration) {
+            item.destroy()
+            return null
+        }
+
+        if (request.dirty)
+            item.model = _delegateData(id)
+        item.selected = selectionModel.isSelected(id)
+        _updatePosition(id, item, x, y)
+        _setItem(id, item)
+        item.visible = true
         return item
     }
 
@@ -737,7 +886,7 @@ FocusScope {
                 continue
 
             const item =  _delayedChildrenMap[i]
-            item.model = model.getDataAt(i)
+            item.model = _delegateData(i)
         }
     }
 
@@ -761,10 +910,15 @@ FocusScope {
             item = _repositionItem(id, pos[0], pos[1])
         else if (id in _delayedChildrenMap)
             item = _repositionDelayedItem(id, pos[0], pos[1])
-        else if (_unusedItemList.length > 0) // if reuseItems is false, _unusedItemList is always empty
-            item = _recycleItem(id, pos[0], pos[1])
-        else
-            item = _createItem(id, pos[0], pos[1])
+        else {
+            item = _takePrefetchedItem(id, pos[0], pos[1])
+            if (!item) {
+                if (_unusedItemList.length > 0) // if reuseItems is false, _unusedItemList is always empty
+                    item = _recycleItem(id, pos[0], pos[1])
+                else
+                    item = _createItem(id, pos[0], pos[1])
+            }
+        }
 
         // NOTE: This makes sure we have the proper focus reason on the GridItem.
         if (activeFocus && currentIndex === item.index && expandIndex === -1)
@@ -782,7 +936,7 @@ FocusScope {
 
         for (let id  = iMin; id < iMax; id++) {
             const item = _getItem(id)
-            item.model = model.getDataAt(id)
+            item.model = _delegateData(id)
         }
 
         if (expandIndex >= iMin && expandIndex < iMax) {
@@ -792,6 +946,7 @@ FocusScope {
     }
 
     function _onModelCountChanged() {
+        _invalidatePrefetch()
         _count = model?.rowCount() ?? 0
         if (!_isInitialised)
             return
@@ -1097,6 +1252,10 @@ FocusScope {
             if (!forceRelayout && root._currentRange[0] === firstId && root._currentRange[1] === lastId)
                 return;
 
+            const oldFirst = root._currentRange[0]
+            const oldLast = root._currentRange[1]
+            if (oldFirst !== firstId || oldLast !== lastId)
+                root._prefetchForward = firstId !== oldFirst ? firstId > oldFirst : lastId > oldLast
             _updateChildrenMap(firstId, lastId)
 
             // Place the delegates before the expandItem
@@ -1131,6 +1290,9 @@ FocusScope {
 
             if (!root.reuseItems) // check invariant: correct cleanup if reuseItems is not set
                 console.assert(_unusedItemList.length == 0)
+
+            root._prunePrefetch()
+            root._prefetchRequested = true
         }
 
         Connections {

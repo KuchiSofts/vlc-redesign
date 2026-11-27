@@ -188,6 +188,8 @@ python3 extras/juxtopposed/subtitle-charset-test.py --cc "gcc $san"
 
 echo "== folder breadcrumbs (network shares, drive roots, encoded paths)"
 node extras/juxtopposed/folder-breadcrumbs-test.js
+echo "== grid cards prefetched on a frame budget"
+node extras/juxtopposed/expand-grid-prefetch-test.js
 
 echo "== outside text is never drawn as HTML (QML textFormat)"
 python3 extras/juxtopposed/qml-plaintext-check.py

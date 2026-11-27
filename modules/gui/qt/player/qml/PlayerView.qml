@@ -91,7 +91,6 @@ FocusScope {
     onLibraryVisibleChanged: {
         if (libraryVisible)
             _libraryCreated = true
-        lockUnlockAutoHide(libraryVisible)
     }
 
     property bool _controlsUnderVideo: (MainCtx.pinVideoControls
@@ -177,10 +176,6 @@ FocusScope {
         rootPlayer.Navigation.defaultKeyReleaseAction(event)
     }
 
-    on_ControlsUnderVideoChanged: {
-        lockUnlockAutoHide(_controlsUnderVideo)
-    }
-
     // Functions
 
     function lockUnlockAutoHide(lock) {
@@ -216,6 +211,12 @@ FocusScope {
     PlayerToolbarVisibilityFSM {
         id: playerToolbarVisibilityFSM
 
+        locked: rootPlayer._controlsUnderVideo
+                || rootPlayer.libraryVisible
+                || playlistVisibility.isPlaylistVisible
+                || resumeDialog.visible
+                || controlBar.hovered
+
         onForceUnlock:{
             controlBar.forceUnlock()
 
@@ -225,8 +226,6 @@ FocusScope {
 
     PlayerPlaylistVisibilityFSM {
         id: playlistVisibility
-
-        onIsPlaylistVisibleChanged: lockUnlockAutoHide(isPlaylistVisible)
     }
 
     Connections {
@@ -1070,8 +1069,6 @@ FocusScope {
                                                && Player.videoTracks.count > 0))
                     ? PlayerControlbarModel.Videoplayer : PlayerControlbarModel.Audioplayer
 
-        onHoveredChanged: rootPlayer.lockUnlockAutoHide(hovered)
-
         background: Rectangle {
             id: controlBarBackground
 
@@ -1123,9 +1120,6 @@ FocusScope {
             if (activeFocus)
                 controlBar.forceActiveFocus()
         }
-
-        // The controls stay shown while it is
-        onVisibleChanged: rootPlayer.lockUnlockAutoHide(visible)
     }
 
     // and the subtitles keep above them: it covered the start of a long line

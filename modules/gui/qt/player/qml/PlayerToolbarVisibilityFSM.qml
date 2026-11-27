@@ -55,9 +55,15 @@ FSM {
     signal forceUnlock()
     signal timeout()
     signal updateVideoEmbed()
+    signal updateLocked()
  
     //exposed internal states
     property alias isVisible: fsmVisible.active
+
+    // Reactive lock for persistent player states (pinned controls, open panels,
+    // etc.), combined with imperative lock()/unlock() calls from child controls
+    property bool locked: false
+    onLockedChanged: fsm.updateLocked()
 
     property int lockCount: 0 // Track the number of locks
     // twice as long after a key than after the mouse (a factor, not the
@@ -65,7 +71,7 @@ FSM {
     property int _timeoutFactor: 1
     property int timeoutDuration: MainCtx.mouseHideTimeout * _timeoutFactor
 
-    initialState: ((Player.isInteractive && MainCtx.hasEmbededVideo))
+    initialState: (Player.isInteractive && MainCtx.hasEmbededVideo && !fsm.locked)
                   ? fsmHidden : fsmVisible
  
     signalMap: ({
@@ -76,12 +82,13 @@ FSM {
         timeout: fsm.timeout,
         unlock: fsm.unlock,
         updateVideoEmbed: fsm.updateVideoEmbed,
+        updateLocked: fsm.updateLocked,
     })
  
     FSMState {
         id: fsmVisible
 
-        initialState: fsmNormalVisible
+        initialState: (fsm.locked || fsm.lockCount > 0) ? fsmLocked : fsmNormalVisible
  
         FSMState {
             id: fsmNormalVisible
@@ -91,6 +98,10 @@ FSM {
             transitions: ({
                 lock: {
                     action: () => { fsm.lockCount++; },
+                    target: fsmLocked
+                },
+                updateLocked: {
+                    guard: () => fsm.locked,
                     target: fsmLocked
                 }
             })
@@ -157,14 +168,17 @@ FSM {
                     action: () => { fsm.lockCount++; }
                 },
                 unlock: [{
+                    guard: () => fsm.lockCount === 1 && !fsm.locked,
                     action: () => { fsm.lockCount--; },
-                    guard: () => fsm.lockCount === 1,
                     target: fsmNormalVisible,
                 }, {
-                    guard: () => fsm.lockCount > 1,
+                    guard: () => fsm.lockCount > 0,
                     action: () => { fsm.lockCount--; }
                 }],
-
+                updateLocked: {
+                    guard: () => !fsm.locked && fsm.lockCount === 0,
+                    target: fsmNormalVisible,
+                },
             })
         }
     }
@@ -198,6 +212,10 @@ FSM {
             updateVideoEmbed: {
                 guard: () => !MainCtx.hasEmbededVideo,
                 target: fsmVisible
+            },
+            updateLocked: {
+                guard: () => fsm.locked,
+                target: fsmLocked
             },
         })
     }

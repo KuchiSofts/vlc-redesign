@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Fullscreen with the queue open**: the controls no longer hide over an open Queue or Compact Library after entering fullscreen.
 - **Mini player in small windows**: with its queue open it stays below the top bar, and the folder and artist no longer run under the queue button.
 - **Settings at 150–175%**: the Hotkey and Global Hotkey fields no longer overlap, and the equalizer's Preamp and 16 kHz bands are no longer cut off.
 - **Effects with no video**: opened before a video, the Video tab now waits for one and then previews, instead of staying stuck without preview.

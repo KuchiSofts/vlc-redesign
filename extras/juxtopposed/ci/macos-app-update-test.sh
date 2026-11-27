@@ -36,9 +36,15 @@ note "macOS $(sw_vers -productVersion) ($(sw_vers -buildVersion)), $(uname -m)"
 # anonymous API requests; the app takes it as VLC_REDESIGN_UPDATE_TEST_TOKEN, for its requests to GitHub's API only)
 auth=()
 [ -n "${GH_TOKEN:-}" ] && auth=(-H "Authorization: Bearer $GH_TOKEN")
-latest=$(curl -fsSL ${auth[@]+"${auth[@]}"} https://api.github.com/repos/KuchiSofts/vlc-redesign/releases/latest \
-         | python3 -c 'import json, sys; print(json.load(sys.stdin)["tag_name"].lstrip("v"))') \
-    || { fail "the latest release could not be read"; exit "$failures"; }
+# (three tries: a runner's network can drop for a moment, its names not found)
+latest=
+for try in 1 2 3; do
+    latest=$(curl -fsSL --retry 2 ${auth[@]+"${auth[@]}"} https://api.github.com/repos/KuchiSofts/vlc-redesign/releases/latest \
+             | python3 -c 'import json, sys; print(json.load(sys.stdin)["tag_name"].lstrip("v"))' 2> /dev/null) && [ -n "$latest" ] && break
+    latest=
+    sleep $((try * 15))
+done
+[ -n "$latest" ] || { fail "the latest release could not be read"; exit "$failures"; }
 note "the latest release: $latest; this build takes itself for $as"
 
 # installed as from its disk image: a copy in a folder the user can write

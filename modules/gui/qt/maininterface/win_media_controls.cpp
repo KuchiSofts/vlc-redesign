@@ -8,6 +8,14 @@
 # include "config.h"
 #endif
 
+// llvm-mingw's windows.foundation.h (the ARM64 build's toolchain) gives
+// IReference both a BYTE and a boolean specialization, the same unsigned char
+// for C++: "redefinition of IReference<unsigned char>". Nothing here uses
+// IReference<BYTE>, so its block is left out (gcc's headers build either way).
+#ifndef ____FIReference_1_BYTE_INTERFACE_DEFINED__
+# define ____FIReference_1_BYTE_INTERFACE_DEFINED__
+#endif
+
 #include "win_media_controls.hpp"
 
 #if __has_include(<systemmediatransportcontrolsinterop.h>) && __has_include(<windows.media.h>)

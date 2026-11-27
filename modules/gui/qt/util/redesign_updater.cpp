@@ -1621,6 +1621,26 @@ void RedesignUpdater::findStagedUpdate()
         });
     };
     QFile ready(appDir() + QStringLiteral("/.update/ready.txt"));
+#ifdef _WIN32
+    // The helper's journal of a run cut off in the middle (a power cut,
+    // Windows shutting down while it ran): VLC may be half old, half new,
+    // and reads as the new version. Nothing of the update is removed: the
+    // helper runs at quit and puts VLC back as it was (the update is then
+    // downloaded again). As it was, the update was taken for done and its
+    // backup deleted.
+    if (QFileInfo::exists(appDir() + QStringLiteral("/.update/applying.txt"))
+        && QFileInfo::exists(appDir() + QStringLiteral("/.update/vlc-redesign-update.exe"))) {
+        QString version;
+        if (ready.open(QIODevice::ReadOnly)) {
+            version = QString::fromUtf8(ready.readAll()).trimmed();
+            ready.close();
+        }
+        msg_Warn(m_intf, "an update was cut off in the middle: it is undone when VLC quits");
+        m_latestVersion = version.isEmpty() ? currentVersion() : version;
+        m_state = Ready;
+        return;
+    }
+#endif
     if (!ready.open(QIODevice::ReadOnly)) {
         // the helper of the last update, done
         QFile::remove(appDir() + QStringLiteral("/.update/vlc-redesign-update.exe"));

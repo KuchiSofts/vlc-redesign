@@ -15,6 +15,7 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+- **Linux keeps queue entries for unmounted volumes**: files on a volume that is unmounted while VLC runs are no longer removed from the queue as deleted.
 - **History filter for Explorer opens**: files opened from Explorer into a running VLC now go through "Never remember items matching", like files opened from inside VLC.
 - **Add subtitle to the right video**: a subtitle, audio or video file chosen in the picker is only added if the media item the picker was opened for is still current.
 - **Browse Back** keeps the row you select while a slow folder is still loading.

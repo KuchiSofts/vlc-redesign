@@ -15,26 +15,34 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
-- **Windows media controls**: VLC Redesign has an entry in the Windows media flyout and on the lock screen, with title, artist and album, and the keyboard media keys control it while it is in the background.
-- **Typing a time on the control bar**: a time past the end or not a time stays in the box to correct, instead of jumping to the next item; Tab and Enter reach it from the keyboard.
-- **Faster first window**: the hidden mini-player, a closed play queue and the Home sections below the fold are prepared after the first frame.
-- **Smoother scrolling in grid views** as cards are prepared before they come into view.
-- **Holding for 2× speed** is temporary in the desktop player. Releasing the hold, switching videos, stopping, or quitting restores the previous speed. If you choose a different speed during the hold, VLC keeps your choice.
-- **Open with on macOS**: with "Add to the playlist instead of replacing it" off, files opened from Finder into a running VLC replace the queue, as on Windows.
-- **Subtitle providers that say "too many requests"**: after a provider answers 429, VLC stops asking it until its Retry-After time (a minute when it gives none), instead of sending the rest of the search's requests.
-- **Linux keeps queue entries for unmounted volumes**: files on a volume that is unmounted while VLC runs are no longer removed from the queue as deleted.
-- **History filter for Explorer opens**: files opened from Explorer into a running VLC now go through "Never remember items matching", like files opened from inside VLC.
-- **Add subtitle to the right video**: a subtitle, audio or video file chosen in the picker is only added if the media item the picker was opened for is still current.
-- **Browse Back** keeps the row you select while a slow folder is still loading.
-- **Fullscreen with the queue open**: the controls no longer hide over an open Queue or Compact Library after entering fullscreen.
-- **Mini player in small windows**: with its queue open it stays below the top bar, and the folder and artist no longer run under the queue button.
-- **Settings at 150–175%**: the Hotkey and Global Hotkey fields no longer overlap, and the equalizer's Preamp and 16 kHz bands are no longer cut off.
-- **Effects with no video**: opened before a video, the Video tab now waits for one and then previews, instead of staying stuck without preview.
-- **Play Queue**: with a search filter or several items selected, Remove, the menu's actions, drag and drop and Jump to current act on the right items, in their order.
-- **Faster start**: the player menu, sleep timer, audio visualization and HDR output popups are made when first opened.
-- **Folders with the keyboard**: the arrows show the current card, Enter opens or plays it, and the Menu key or Shift+F10 opens its menu.
-- **TV Guide: open programme details with the keyboard** by pressing Tab to select a programme and Enter to open it.
-- **Windows contrast themes**: the main interface follows the Windows contrast palette live and returns to its usual colours when the theme is turned off.
+### Added
+
+- **Windows media controls**: VLC is in the media flyout and on the lock screen, and the media keys reach it in
+  the background.
+- **Windows contrast themes**: the main interface follows the contrast palette live.
+- **Folders and the TV Guide with the keyboard**: the arrows, Enter and the Menu key work on their cards and
+  programmes.
+- **The control bar's time with the keyboard**: Tab reaches it, and a time past the end stays in the box to fix.
+
+### Changed
+
+- **Holding for 2× speed is temporary**: release, another video, Stop or Quit bring back the speed from before.
+- **Open with on macOS** replaces the queue when "Add to the playlist" is off, as on Windows.
+- **Subtitle services that say "too many requests"** are left alone until they are ready again (an hour at most).
+- **Faster start and smoother grids**: popups and the Home rows out of sight are made later, grid cards before
+  they scroll in, and hidden controls no longer follow every tick.
+
+### Fixed
+
+- **Play Queue with a filter or a multiple selection**: Remove, the menu and drag and drop act on the right items.
+- **Add Subtitle File** no longer attaches the file to the next video.
+- **"Never remember items matching"** also applies to files opened from Explorer.
+- **Linux: queue entries on an unmounted volume** are no longer removed as deleted.
+- **Effects opened before a video** preview once one starts.
+- **Settings at 150–175 %**: the shortcut fields and the equalizer's outer bands fit.
+- **Mini player in small windows** stays below the top bar.
+- **Controls with a panel open** stay up after going fullscreen.
+- **Browse Back** keeps the row picked while a slow folder loads.
 
 ### Technical
 

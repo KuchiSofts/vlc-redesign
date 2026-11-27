@@ -613,8 +613,8 @@ Widgets.PageExt {
                 // swap cannot tear down and rebuild the view.
                 property bool _wanted
                 Binding on _wanted {
-                    when: MainCtx.firstFrameSwapped || favoritesRow.focus || flickable.moving || scrollBar.interacting
-                          || (favoritesRow.count > 0 && root._sectionMayBeVisible(favoritesHeader))
+                    when: !favoritesRow._wanted && (MainCtx.firstFrameSwapped || favoritesRow.focus || flickable.moving || scrollBar.interacting
+                          || (favoritesRow.count > 0 && root._sectionMayBeVisible(favoritesHeader)))
                     value: true
                     restoreMode: Binding.RestoreNone
                 }
@@ -712,8 +712,8 @@ Widgets.PageExt {
 
                 property bool _wanted
                 Binding on _wanted {
-                    when: MainCtx.firstFrameSwapped || newVideoRow.focus || flickable.moving || scrollBar.interacting
-                          || (newVideoRow.count > 0 && root._sectionMayBeVisible(newVideoHeader))
+                    when: !newVideoRow._wanted && (MainCtx.firstFrameSwapped || newVideoRow.focus || flickable.moving || scrollBar.interacting
+                          || (newVideoRow.count > 0 && root._sectionMayBeVisible(newVideoHeader)))
                     value: true
                     restoreMode: Binding.RestoreNone
                 }
@@ -809,8 +809,8 @@ Widgets.PageExt {
 
                 property bool _wanted
                 Binding on _wanted {
-                    when: MainCtx.firstFrameSwapped || newMusicRow.focus || flickable.moving || scrollBar.interacting
-                          || (newMusicRow.count > 0 && root._sectionMayBeVisible(newMusicHeader))
+                    when: !newMusicRow._wanted && (MainCtx.firstFrameSwapped || newMusicRow.focus || flickable.moving || scrollBar.interacting
+                          || (newMusicRow.count > 0 && root._sectionMayBeVisible(newMusicHeader)))
                     value: true
                     restoreMode: Binding.RestoreNone
                 }

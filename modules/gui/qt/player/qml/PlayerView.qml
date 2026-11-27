@@ -212,8 +212,9 @@ FocusScope {
     PlayerToolbarVisibilityFSM {
         id: playerToolbarVisibilityFSM
 
-        locked: rootPlayer._controlsUnderVideo
-                || rootPlayer.libraryVisible
+        // (not for controls pinned under the video: they stay through the control bar's state, and the
+        // pointer still hides over the video in a window)
+        locked: rootPlayer.libraryVisible
                 || playlistVisibility.isPlaylistVisible
                 || resumeDialog.visible
                 || controlBar.hovered

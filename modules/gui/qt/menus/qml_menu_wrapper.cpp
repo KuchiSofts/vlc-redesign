@@ -71,6 +71,37 @@ namespace
 
         return QIcon(arrow);
     }
+
+    QVector<int> mapSelectedIndexes(const ListSelectionModel *selectionModel,
+                                    const QAbstractProxyModel *proxyModel,
+                                    const vlc::playlist::PlaylistListModel *model)
+    {
+        if (!selectionModel || !model)
+            return {};
+
+        const int rowCount = model->rowCount();
+        const QVector<int> selectedIndexes = selectionModel->selectedIndexesFlat();
+        QVector<int> mappedIndexes;
+        mappedIndexes.reserve(selectedIndexes.size());
+
+        const bool useProxy = proxyModel && (selectionModel->model() == proxyModel);
+        for (const int idx : selectedIndexes)
+        {
+            int sourceRow = idx;
+            if (useProxy)
+            {
+                const QModelIndex sourceIndex = proxyModel->mapToSource(proxyModel->index(idx, 0));
+                if (!sourceIndex.isValid())
+                    continue;
+                sourceRow = sourceIndex.row();
+            }
+
+            if (sourceRow >= 0 && sourceRow < rowCount)
+                mappedIndexes.push_back(sourceRow);
+        }
+
+        return mappedIndexes;
+    }
 }
 
 void StringListMenu::popup(const QPoint &point, const QVariantList &stringList)
@@ -1115,7 +1146,7 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
 
     QList<PlaylistItem> selectedItems;
     QList<QUrl> selectedUrlList;
-    for (const int modelIndex : m_selectionModel->selectedIndexesFlat())
+    for (const int modelIndex : mapSelectedIndexes(m_selectionModel, m_proxyModel, m_model))
     {
         const PlaylistItem item = m_model->itemAt(modelIndex);
         selectedItems.push_back(item);
@@ -1123,7 +1154,7 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
     }
 
     PlaylistItem selectedItem;
-    if (selectedIndex >= 0)
+    if (selectedIndex >= 0 && selectedIndex < m_model->rowCount())
         selectedItem = m_model->itemAt(selectedIndex);
 
     if (selectedItem)
@@ -1136,7 +1167,8 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
         m_menu->addSeparator();
     }
 
-    if (m_controler->currentIndex() != -1)
+    const int currentIndex = m_controler->currentIndex();
+    if (currentIndex != -1 && (!m_proxyModel || m_proxyModel->mapFromSource(m_model->index(currentIndex, 0)).isValid()))
     {
         action = m_menu->addAction( qtr("Jump to current playing"));
         connect(action, &QAction::triggered, this, &PlaylistContextMenu::jumpToCurrentPlaying);
@@ -1235,7 +1267,9 @@ void PlaylistContextMenu::popup(int selectedIndex, QPoint pos )
         action = m_menu->addAction( qtr("Remove Selected") );
         action->setIcon(RedesignMenuStyle::menuIcon(":/menu/remove.svg"));
         connect(action, &QAction::triggered, [this]( ) {
-            m_model->removeItems(m_selectionModel->selectedIndexesFlat());
+            if (!m_model || !m_selectionModel)
+                return;
+            m_model->removeItems(mapSelectedIndexes(m_selectionModel, m_proxyModel, m_model));
         });
     }
 

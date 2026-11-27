@@ -399,7 +399,9 @@ private:
 class IptvLogoProvider : public QQuickAsyncImageProvider
 {
 public:
-    explicit IptvLogoProvider(std::shared_ptr<IptvBridge> bridge) : m_bridge(std::move(bridge)) {}
+    // (two at a time: the module reads the logos one at a time anyway, and a
+    // thread for each core all waiting on it was a pool of blocked threads)
+    explicit IptvLogoProvider(std::shared_ptr<IptvBridge> bridge) : m_bridge(std::move(bridge)) { m_pool.setMaxThreadCount(2); }
     ~IptvLogoProvider() override { m_pool.waitForDone(); }
     QQuickImageResponse* requestImageResponse(const QString& id, const QSize& requestedSize) override;
 

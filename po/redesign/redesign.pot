@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-27 19:51+0000\n"
+"POT-Creation-Date: 2026-11-27 23:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Mastering White point"
 msgstr ""
 
-#: src/input/input.c:3133
+#: src/input/input.c:3136
 msgid "Your media can't be opened"
 msgstr ""
 
@@ -1501,7 +1501,7 @@ msgstr ""
 msgid "Limiter"
 msgstr ""
 
-#: modules/audio_output/file.c:114
+#: modules/audio_output/file.c:101
 msgid "File to which the audio samples will be written to (\"-\" for stdout)."
 msgstr ""
 
@@ -3638,29 +3638,29 @@ msgstr ""
 msgid "Languages to search"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:299
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:300
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:243
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:94
 msgid "Move up"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:313
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:314
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:255
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:101
 msgid "Move down"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:358
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:359
 msgid "Add a language"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:365
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:366
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:619
 msgid "Every other language too"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:381
+#: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:382
 msgid "Fewer languages: a faster search"
 msgstr ""
 
@@ -3709,13 +3709,13 @@ msgid "Show"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:335
-#: modules/gui/qt/player/subtitle_providers.cpp:136
+#: modules/gui/qt/player/subtitle_providers.cpp:137
 msgid "Key refused: check it"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:336
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:403
-#: modules/gui/qt/player/subtitle_providers.cpp:138
+#: modules/gui/qt/player/subtitle_providers.cpp:139
 msgid "Sign-in refused: check it"
 msgstr ""
 
@@ -4017,16 +4017,16 @@ msgstr ""
 msgid "Open Equalizer"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:191
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:193
 msgid " Hz"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:197
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:199
 msgid " dB"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:211
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:210
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:213
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:223
 msgid "Two-pass"
 msgstr ""
@@ -4228,7 +4228,7 @@ msgid "Lower"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:115
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:567
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:570
 msgid "Usual"
 msgstr ""
 
@@ -6743,22 +6743,22 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:237
-#: modules/gui/qt/player/subtitle_providers.cpp:2029
+#: modules/gui/qt/player/subtitle_providers.cpp:2032
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:247
-#: modules/gui/qt/player/subtitle_providers.cpp:2040
+#: modules/gui/qt/player/subtitle_providers.cpp:2043
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
-#: modules/gui/qt/player/subtitle_search.cpp:836
+#: modules/gui/qt/player/subtitle_search.cpp:842
 msgid "This build can't search the internet."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
-#: modules/gui/qt/player/subtitle_search.cpp:858
+#: modules/gui/qt/player/subtitle_search.cpp:864
 msgid "The subtitle services took too long to answer."
 msgstr ""
 
@@ -6931,9 +6931,9 @@ msgid "HTTP status %1"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:99
-#: modules/gui/qt/player/subtitle_search.cpp:1418
-#: modules/gui/qt/player/subtitle_search.cpp:1460
-#: modules/gui/qt/player/subtitle_search.cpp:1482
+#: modules/gui/qt/player/subtitle_search.cpp:1424
+#: modules/gui/qt/player/subtitle_search.cpp:1472
+#: modules/gui/qt/player/subtitle_search.cpp:1494
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr ""
 
@@ -7594,12 +7594,12 @@ msgid "Waiting…"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1044
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:411
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:414
 msgid "Searching…"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1046
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:490
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:493
 msgid "For this file"
 msgstr ""
 
@@ -7616,7 +7616,7 @@ msgid "No answer"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1050
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
 msgid "Downloading…"
 msgstr ""
 
@@ -8047,118 +8047,118 @@ msgid "Choose a duration between one second and 24 hours."
 msgstr ""
 
 #: modules/gui/qt/player/subtitle_finder.cpp:1125
-#: modules/gui/qt/player/subtitle_search.cpp:1424
-#: modules/gui/qt/player/subtitle_search.cpp:1513
+#: modules/gui/qt/player/subtitle_search.cpp:1430
+#: modules/gui/qt/player/subtitle_search.cpp:1525
 msgid "The subtitle couldn't be saved."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:140
+#: modules/gui/qt/player/subtitle_providers.cpp:141
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:142
-#: modules/gui/qt/player/subtitle_search.cpp:873
+#: modules/gui/qt/player/subtitle_providers.cpp:143
+#: modules/gui/qt/player/subtitle_search.cpp:879
 msgid "%1 didn't answer."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:143
+#: modules/gui/qt/player/subtitle_providers.cpp:144
 msgid "%1 didn't answer (%2)."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1727
+#: modules/gui/qt/player/subtitle_providers.cpp:1730
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1729
+#: modules/gui/qt/player/subtitle_providers.cpp:1732
 msgid "With your own free key · all languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1733
+#: modules/gui/qt/player/subtitle_providers.cpp:1736
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1736
+#: modules/gui/qt/player/subtitle_providers.cpp:1739
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1739
+#: modules/gui/qt/player/subtitle_providers.cpp:1742
 msgid "Hebrew · movies and series"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1741
+#: modules/gui/qt/player/subtitle_providers.cpp:1744
 msgid "Series · many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1743
+#: modules/gui/qt/player/subtitle_providers.cpp:1746
 msgid "Movies · many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1747
+#: modules/gui/qt/player/subtitle_providers.cpp:1750
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1751
+#: modules/gui/qt/player/subtitle_providers.cpp:1754
 msgid "With your free token · Chinese"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1754
+#: modules/gui/qt/player/subtitle_providers.cpp:1757
 msgid "With your free key · anime, Japanese"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1757
+#: modules/gui/qt/player/subtitle_providers.cpp:1760
 msgid "With your free key · series, French"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1760
+#: modules/gui/qt/player/subtitle_providers.cpp:1763
 msgid "With your free key · Romanian"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1763
+#: modules/gui/qt/player/subtitle_providers.cpp:1766
 msgid "With your free account · Polish · finds those made for your file"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1766
+#: modules/gui/qt/player/subtitle_providers.cpp:1769
 msgid "With your free account · Portuguese (Brazil)"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2165
+#: modules/gui/qt/player/subtitle_providers.cpp:2168
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2174
-#: modules/gui/qt/player/subtitle_providers.cpp:2207
-#: modules/gui/qt/player/subtitle_search.cpp:1521
+#: modules/gui/qt/player/subtitle_providers.cpp:2177
+#: modules/gui/qt/player/subtitle_providers.cpp:2215
+#: modules/gui/qt/player/subtitle_search.cpp:1533
 msgid "The subtitle couldn't be unpacked."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2208
+#: modules/gui/qt/player/subtitle_providers.cpp:2216
 msgid "The archive has no subtitle in it."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2220
+#: modules/gui/qt/player/subtitle_providers.cpp:2228
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2226
+#: modules/gui/qt/player/subtitle_providers.cpp:2234
 msgid "The subtitle is empty."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1370
-#: modules/gui/qt/player/subtitle_search.cpp:1481
+#: modules/gui/qt/player/subtitle_search.cpp:1376
+#: modules/gui/qt/player/subtitle_search.cpp:1493
 msgid "No connection to the internet."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1373
+#: modules/gui/qt/player/subtitle_search.cpp:1379
 msgid "The video couldn't be identified from its name."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1374
+#: modules/gui/qt/player/subtitle_search.cpp:1380
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1376
+#: modules/gui/qt/player/subtitle_search.cpp:1382
 msgid "No subtitles were found for %1."
 msgstr ""
 
@@ -8874,115 +8874,115 @@ msgstr ""
 msgid "Foreign parts only"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:257
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:259
 msgid "Identifying the video…"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:260
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:262
 msgid "Searching %1…"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:260
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:262
 msgid "Searching subtitles online…"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:266
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:268
 msgid "%1 · %2 found"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:267
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:269
 msgid "%1 found for this file"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:271
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:273
 msgid "Subtitles of this video"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:290
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:292
 msgid "The video is another one: search by its title"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:301
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:303
 msgid "Search subtitles online"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:302
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:304
 msgid "Search subtitles online again"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:313
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:315
 msgid "Add subtitles to the library"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:314
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:316
 msgid "Library association needs a local media file and media library."
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:325
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:327
 msgid "Load a subtitle file for playback"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:375
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:378
 msgid "Title of the movie or series"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:454
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:457
 msgid "Second"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:455
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:458
 msgctxt "subtitle language"
 msgid "Often used"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:512
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:515
 msgid "Looking for subtitles…"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:513
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:516
 msgid "No subtitles yet"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:557
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:560
 msgid "Position and size"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:565
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:568
 msgctxt "subtitles"
 msgid "Position"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:568
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:582
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:571
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:585
 msgid "%1%"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:569
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:572
 msgid "Move the subtitles down"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:570
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:573
 msgid "Move the subtitles up"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:581
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:584
 msgctxt "subtitles"
 msgid "Size"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:583
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:586
 msgid "Smaller subtitles"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:584
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:587
 msgid "Larger subtitles"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:824
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:828
 msgid "HI"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:829
+#: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:833
 msgid "For the hearing impaired"
 msgstr ""
 
@@ -9465,155 +9465,157 @@ msgstr ""
 msgid "Don't restore"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:383
+#: modules/gui/qt/util/redesign_updater.cpp:384
 msgid ""
 "The update isn't signed by the publisher of this copy (%1), so it wasn't "
 "used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:759
+#: modules/gui/qt/util/redesign_updater.cpp:770
 msgid "%1 (later)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:761
+#: modules/gui/qt/util/redesign_updater.cpp:772
 msgid "%1 (soon)"
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:964
+#: modules/gui/qt/util/redesign_updater.cpp:975
 msgid "This build cannot check for updates."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:981
+#: modules/gui/qt/util/redesign_updater.cpp:992
 msgid "Couldn't reach GitHub. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:994
+#: modules/gui/qt/util/redesign_updater.cpp:1005
 msgid "GitHub was asked too often from this network. Try again after %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:998
+#: modules/gui/qt/util/redesign_updater.cpp:1009
 msgid "GitHub was asked too often from this network. Try again later."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1048
+#: modules/gui/qt/util/redesign_updater.cpp:1059
 msgid "GitHub sent an unexpected answer (%1)."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1299
+#: modules/gui/qt/util/redesign_updater.cpp:1310
 msgid ""
 "This update isn't signed by VLC Redesign, so it wasn't used. Download it "
 "from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1321
-#: modules/gui/qt/util/redesign_updater.cpp:1362
+#: modules/gui/qt/util/redesign_updater.cpp:1332
+#: modules/gui/qt/util/redesign_updater.cpp:1373
 msgid ""
 "The update's checksum is missing; download it from the release page instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1336
-#: modules/gui/qt/util/redesign_updater.cpp:1414
+#: modules/gui/qt/util/redesign_updater.cpp:1347
+#: modules/gui/qt/util/redesign_updater.cpp:1425
 msgid "The download failed. Check your connection and try again."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1437
+#: modules/gui/qt/util/redesign_updater.cpp:1448
 msgid "The update doesn't match its checksum, so it wasn't used."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1475
-#: modules/gui/qt/util/redesign_updater.cpp:1497
-#: modules/gui/qt/util/redesign_updater.cpp:1537
-#: modules/gui/qt/util/redesign_updater.cpp:1560
-#: modules/gui/qt/util/redesign_updater.cpp:1570
-#: modules/gui/qt/util/redesign_updater.cpp:1575
-#: modules/gui/qt/util/redesign_updater.cpp:1841
+#: modules/gui/qt/util/redesign_updater.cpp:1486
+#: modules/gui/qt/util/redesign_updater.cpp:1508
+#: modules/gui/qt/util/redesign_updater.cpp:1548
+#: modules/gui/qt/util/redesign_updater.cpp:1571
+#: modules/gui/qt/util/redesign_updater.cpp:1592
+#: modules/gui/qt/util/redesign_updater.cpp:1594
+#: modules/gui/qt/util/redesign_updater.cpp:1599
+#: modules/gui/qt/util/redesign_updater.cpp:1910
 msgid "The update can't be written in %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1483
+#: modules/gui/qt/util/redesign_updater.cpp:1494
 msgid "The update isn't in a format this version knows."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1486
-#: modules/gui/qt/util/redesign_updater.cpp:1507
-#: modules/gui/qt/util/redesign_updater.cpp:1522
-#: modules/gui/qt/util/redesign_updater.cpp:1528
-#: modules/gui/qt/util/redesign_updater.cpp:1846
+#: modules/gui/qt/util/redesign_updater.cpp:1497
+#: modules/gui/qt/util/redesign_updater.cpp:1518
+#: modules/gui/qt/util/redesign_updater.cpp:1533
+#: modules/gui/qt/util/redesign_updater.cpp:1539
+#: modules/gui/qt/util/redesign_updater.cpp:1915
 msgid "The update is damaged."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1491
-#: modules/gui/qt/util/redesign_updater.cpp:1849
+#: modules/gui/qt/util/redesign_updater.cpp:1502
+#: modules/gui/qt/util/redesign_updater.cpp:1918
 msgid "The update isn't for this version."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1499
+#: modules/gui/qt/util/redesign_updater.cpp:1510
 msgid ""
 "A file of VLC Redesign was changed since it was installed, so the small "
 "update can't be used: update with the installer instead."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1533
+#: modules/gui/qt/util/redesign_updater.cpp:1544
 msgid "The update is damaged: a file doesn't match its checksum."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1737
-#: modules/gui/qt/util/redesign_updater.cpp:1926
+#: modules/gui/qt/util/redesign_updater.cpp:1781
+#: modules/gui/qt/util/redesign_updater.cpp:2001
 msgid "The update couldn't be started. It will be tried again next time."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1764
+#: modules/gui/qt/util/redesign_updater.cpp:1808
 msgid "The download failed. Try again, or download it from the release page."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1780
+#: modules/gui/qt/util/redesign_updater.cpp:1825
+#: modules/gui/qt/util/redesign_updater.cpp:1872
 msgid "The downloaded installer doesn't match its checksum, so it wasn't run."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1792
-#: modules/gui/qt/util/redesign_updater.cpp:1806
+#: modules/gui/qt/util/redesign_updater.cpp:1837
+#: modules/gui/qt/util/redesign_updater.cpp:1851
 msgid "The installer couldn't be saved to %1."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1856
+#: modules/gui/qt/util/redesign_updater.cpp:1925
 msgid ""
 "The update couldn't be prepared on this Mac. Download it from the release "
 "page."
 msgstr ""
 
-#: modules/gui/qt/util/redesign_updater.cpp:1906
-#: modules/gui/qt/util/redesign_updater.cpp:1944
+#: modules/gui/qt/util/redesign_updater.cpp:1981
+#: modules/gui/qt/util/redesign_updater.cpp:2019
 msgid "The installer couldn't be started."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:901
+#: modules/gui/qt/util/renderer_manager.cpp:914
 msgid ""
 "%1 doesn't answer. Check that it's on, and on the same network as this "
 "computer."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:904
+#: modules/gui/qt/util/renderer_manager.cpp:917
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the video."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:905
+#: modules/gui/qt/util/renderer_manager.cpp:918
 msgid "%1 couldn't read the video from this computer."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:907
+#: modules/gui/qt/util/renderer_manager.cpp:920
 msgid "%1 refused to play this video."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:909
+#: modules/gui/qt/util/renderer_manager.cpp:922
 msgid "%1 stopped playing."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:911
+#: modules/gui/qt/util/renderer_manager.cpp:924
 msgid "%1 is playing something else now."
 msgstr ""
 
-#: modules/gui/qt/util/renderer_manager.cpp:912
+#: modules/gui/qt/util/renderer_manager.cpp:925
 msgid "%1 couldn't play the video."
 msgstr ""
 
@@ -9903,18 +9905,18 @@ msgid "Universal Plug'n'Play Server"
 msgstr ""
 
 #: modules/stream_out/chromecast/cast.cpp:1212
-#: modules/stream_out/dlna/dlna.cpp:722
+#: modules/stream_out/dlna/dlna.cpp:723
 msgid "OK, don't warn me again"
 msgstr ""
 
 #: modules/stream_out/chromecast/cast.cpp:1213
-#: modules/stream_out/dlna/dlna.cpp:723
+#: modules/stream_out/dlna/dlna.cpp:724
 #: modules/stream_out/renderer_common.hpp:35
 msgid "Performance warning"
 msgstr ""
 
 #: modules/stream_out/chromecast/cast.cpp:1214
-#: modules/stream_out/dlna/dlna.cpp:724
+#: modules/stream_out/dlna/dlna.cpp:725
 msgid ""
 "Casting this video requires conversion. This conversion can use all the "
 "available power and could quickly drain your battery."

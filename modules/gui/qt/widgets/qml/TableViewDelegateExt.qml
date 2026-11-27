@@ -136,6 +136,7 @@ T.Control {
             if (dragItem) {
                 if (active) {
                     if (!selected) {
+                        delegate.ListView.view.selectionByUser()
                         delegate.selectionModel.select(index, ItemSelectionModel.ClearAndSelect)
                     }
 
@@ -157,6 +158,7 @@ T.Control {
 
             if (!(delegate.selected && button === Qt.RightButton)) {
                 const view = delegate.ListView.view
+                view.selectionByUser()
                 delegate.selectionModel.updateSelection(point.modifiers, view.currentIndex, index)
                 view.currentIndex = index
             }
@@ -301,8 +303,10 @@ T.Control {
                 hoverEnabled: true
 
                 onClicked: {
-                    if (!delegate.selected)
+                    if (!delegate.selected) {
+                        delegate.ListView.view.selectionByUser()
                         delegate.selectAndFocus(Qt.NoModifier, Qt.MouseFocusReason)
+                    }
 
                     const pos = contextButton.mapToGlobal(VLCStyle.margin_xsmall, contextButton.height / 2 + VLCStyle.fontHeight_normal)
                     const selectionIndexes = delegate.ListView.view.selectionModel.selectedIndexes

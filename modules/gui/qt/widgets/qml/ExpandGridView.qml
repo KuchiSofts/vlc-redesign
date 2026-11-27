@@ -159,6 +159,8 @@ FocusScope {
     signal selectAll()
     signal actionAtIndex(int index)
 
+    signal selectionByUser()
+
     signal showContextMenu(point globalPos)
 
     // Settings
@@ -261,6 +263,8 @@ FocusScope {
             newIndex = Math.max(0, currentIndex - nbItemPerRow * 5)
         } else if (event.matches(StandardKey.SelectAll)) {
             event.accepted = true
+            if (_count > 0)
+                root.selectionByUser()
             selectionModel.selectAll()
         }
 
@@ -274,6 +278,8 @@ FocusScope {
 
         if (newIndex !== -1 && newIndex !== currentIndex) {
             event.accepted = true;
+            if (newIndex < _count)
+                root.selectionByUser()
 
             const oldIndex = currentIndex;
             currentIndex = newIndex;
@@ -544,6 +550,7 @@ FocusScope {
     }
 
     function leftClickOnItem(modifier, index, select) {
+        root.selectionByUser()
         if (select)
             selectionModel.updateSelection(modifier, currentIndex, index)
 

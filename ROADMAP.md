@@ -43,6 +43,9 @@ each reviewed before it is taken.
 
 And as the issues bring them:
 
+- 📋 Hardening still to do, from the reviews of 11-27: the Windows update helper resumes or rolls back after a
+  power cut in the middle of an update; subtitle service passwords in the system's keystore on macOS and Linux;
+  a long pause of a cast to a Samsung TV (over an hour) keeps the cast
 - 📋 Windows: the media controls (#210) on Windows 10 1809, and the contrast themes (#261, #212) with a real
   contrast theme turned on (both were checked on Windows 11 with the theme off)
 - 📋 Live TV: the servers tried on real ones (Tvheadend, NextPVR, Channels DVR, an HDHomeRun tuner) and a paid

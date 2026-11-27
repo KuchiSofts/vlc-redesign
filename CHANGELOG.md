@@ -27,6 +27,14 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 - **Add Subtitles**: a file name with < and > in it shows as it is.
 - **Light theme lists**: the chosen item in Settings' lists, the equalizer and the video options is readable again
   ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
+- **Casting is safer**: a TV's name can no longer change what VLC does with the stream, and the firewall rule it asks
+  for opens only the casting ports, to your own network.
+- **Updates are always checked against their signature**, and the Windows update helper never follows a folder link.
+- **Online subtitles are safer**: a crafted release name can't hang a search, a service's text can't load images,
+  and a sign-in is never sent on to another server.
+- **A subtitle named like a Windows device** ("Aux.Some.Film…") is saved, and a readme in an archive no longer wins over the
+  real subtitle.
+- **Settings' equalizer** follows the light theme and your accent colour.
 
 ### Technical
 

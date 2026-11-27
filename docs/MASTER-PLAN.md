@@ -159,6 +159,14 @@ What is being worked on, updated as it changes (2026-11-10):
   network paths, markup in guide texts, logos holding up zapping, the banner's "now", a reminder saved every
   30 s, Android 5/6 crash (contentLengthLong), Samsung waveform memory (900 MB for 44 min), hidden start,
   shared queue, subtitle links saved as a list. Desktop pages, player and Linux AppImage swept: no QML warning.
+  Second round (casting, updater, online subtitles): device names quoted in the output chain (VLC 4 pasted them in),
+  the firewall rule narrowed to the cast ports and the local subnet, signatures always required, the test server only
+  in builds made for it, delta paths checked part by part, the helper never follows junctions, the release-name
+  regex (minutes of CPU) replaced, Wikidata/service texts plain, no body on a cross-host 307, Windows device names.
+  Left for later (needs design): a journal for the helper (power cut mid-apply), a manifest of staged files, the
+  installer kept open while it is run, the signing certificate pinned by its hash once signing starts, the helper
+  waiting for every VLC of the folder; keystore for subtitle passwords on macOS/Linux; the cast padding cap
+  (64 MiB, ~74 min of pause) and long-idle sockets; GetPosition bounds. Soak 20 min: +9.6 MB, GDI/USER flat.
 - ✅ **0.8.9** (2026-11-27, published 08:18 local, PR #264 merged as 1b1e5f111b, tag v0.8.9 = 3c13874906; the
   in-app update 0.8.8 -> 0.8.9 checked on the Windows test copy: 5.6 MB, signed, restart, What's new 0.8.9): the twenty-two open pull requests of a contributor, merged together after three
   read-only reviews against the code of the day, every finding checked by hand; fixes on top for #245 (an hour

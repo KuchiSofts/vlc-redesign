@@ -153,8 +153,14 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.9** (started 2026-11-27): the macOS update test on main checks the swap itself (the version alone
-  read as the latest on a build of the released version).
+- ✅ **0.8.9** (2026-11-27): the twenty-two open pull requests of a contributor, merged together after three
+  read-only reviews against the code of the day, every finding checked by hand; fixes on top for #245 (an hour
+  at most, credentials end the wait), #219 (the filter under the playlist's lock), #190 (the design's scroll
+  bar, right to left), #168 (a binding loop at start), #192 (the pointer still hides with pinned controls) and
+  #261 (the palette at quit, the design tokens). Run on the merged build: the Windows media session (title,
+  artist, album, Playing), quit during a 2× hold (2.1 s, no hang), Folders opened by mouse (no card lit), Home
+  rows with no QML warning. The macOS update test on main checks the swap itself and reads the release three
+  times.
 - ✅ **0.8.8** (2026-11-26): the Android player on a phone held sideways blends its controls into the video (#213,
   the reporter's follow-up: two slimmer rows, a thin seek bar, a dark fade, shown before and after on the phone
   emulator). The macOS build updates an installed copy through the app itself (#117: the

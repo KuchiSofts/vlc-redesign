@@ -165,12 +165,14 @@ ColumnLayout {
                                 width: VLCStyle.dp(14, VLCStyle.scale)
                                 height: bandSlider.height
                                 radius: width / 2
-                                color: "#0e0e0e"
+                                // (as the equalizer of the Settings page: the light theme's
+                                // colours, and the fill in the accent chosen, not a fixed brown)
+                                color: VLCStyle.redesign.color("#0e0e0e")
                                 Rectangle {
                                     anchors.bottom: parent.bottom
                                     width: parent.width
                                     height: bandSlider.visualPosition * parent.height
-                                    color: "#54300c"
+                                    color: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground)
                                     radius: parent.radius
                                 }
                             }

@@ -122,6 +122,7 @@ typedef struct
     bool                b_started;
     vlc_tick_t          i_last_write;
     size_t              i_stuffed;
+    vlc_tick_t          i_last_stuff;
 } sout_access_out_sys_t;
 
 /* A paused TV goes on reading the stream, until it has enough of it
@@ -130,12 +131,15 @@ typedef struct
  * error (measured on a 2017 UE55MU8000; it reads null packets at once,
  * and stopped 10 s after they did). While the stream waits (a pause), it
  * gets a trickle of null MPEG-TS packets (PID 0x1fff, which every reader
- * drops). At most STUFF_MAX each time: the stream's buffer (5 MB) keeps
- * them for a TV that no longer reads (at this rate, for minutes). */
+ * drops). Up to STUFF_MAX at that rate (about 74 minutes), then one packet
+ * every STUFF_SLOW: a longer pause still keeps the cast (the TV gave up 10 s
+ * after the trickle stopped), and a TV that no longer reads gets next to
+ * nothing kept for it. */
 #define STUFF_IDLE      VLC_TICK_FROM_MS(500)
 #define STUFF_PERIOD    VLC_TICK_FROM_MS(100)
 #define STUFF_PACKETS   8                   /* 1.5 KB each 100 ms */
 #define STUFF_MAX       (64 * 1024 * 1024)
+#define STUFF_SLOW      VLC_TICK_FROM_SEC(2)
 
 static void *Stuff( void *data )
 {
@@ -147,13 +151,15 @@ static void *Stuff( void *data )
     while( !p_sys->b_stop )
     {
         const vlc_tick_t now = vlc_tick_now();
+        const bool slow = p_sys->i_stuffed >= STUFF_MAX;
         if( p_sys->b_started && now - p_sys->i_last_write >= STUFF_IDLE
-         && p_sys->i_stuffed < STUFF_MAX )
+         && ( !slow || now - p_sys->i_last_stuff >= STUFF_SLOW ) )
         {
-            block_t *p_block = block_Alloc( STUFF_PACKETS * 188 );
+            const int packets = slow ? 1 : STUFF_PACKETS;
+            block_t *p_block = block_Alloc( packets * 188 );
             if( p_block != NULL )
             {
-                for( int i = 0; i < STUFF_PACKETS; i++ )
+                for( int i = 0; i < packets; i++ )
                 {
                     uint8_t *p = &p_block->p_buffer[188 * i];
                     p[0] = 0x47;
@@ -163,7 +169,9 @@ static void *Stuff( void *data )
                     memset( &p[4], 0xff, 184 );
                 }
                 httpd_StreamSend( p_sys->p_httpd_stream, p_block );
-                p_sys->i_stuffed += p_block->i_buffer;
+                if( !slow )
+                    p_sys->i_stuffed += p_block->i_buffer;
+                p_sys->i_last_stuff = now;
                 block_Release( p_block );
             }
         }
@@ -391,6 +399,7 @@ static int Open( vlc_object_t *p_this )
         p_sys->b_started = false;
         p_sys->i_last_write = VLC_TICK_INVALID;
         p_sys->i_stuffed = 0;
+        p_sys->i_last_stuff = VLC_TICK_0;
         p_sys->b_stuffing = vlc_clone( &p_sys->stuff_thread, Stuff, p_access ) == 0;
     }
 

@@ -65,6 +65,12 @@ static void add_to_playlist(intf_thread_t *intf, const char *uri,
         return;
     input_item_AddOptions(media, options_count, options, VLC_INPUT_OPTION_TRUSTED);
 
+    /* The Qt callback applies the policy synchronously, before playback can
+     * read the options. Clear the borrowed pointer before releasing media. */
+    libvlc_int_t *instance = vlc_object_instance(intf);
+    if (var_SetAddress(instance, "win-msg-history-filter", media) == VLC_SUCCESS)
+        var_SetAddress(instance, "win-msg-history-filter", NULL);
+
     vlc_playlist_Lock(playlist);
     /* Play the new one: Start() only went on with the current item, so a
      * file opened from Explorer waited for the end of the playlist */

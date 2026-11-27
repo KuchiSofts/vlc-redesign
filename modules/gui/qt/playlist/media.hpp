@@ -43,7 +43,7 @@ public:
             if (!ptr)
                 throw std::bad_alloc();
             setMediaOptions(options);
-            applyHistoryFilter();
+            applyHistoryFilter(ptr.get());
         }
     }
 
@@ -63,19 +63,23 @@ public:
         return historyFilterValue();
     }
 
-    void applyHistoryFilter()
+    static void applyHistoryFilter(input_item_t *item)
     {
-        const QRegularExpression filter = historyFilter();
-        if (!ptr || filter.pattern().isEmpty() || !filter.isValid())
+        applyHistoryFilter(item, historyFilter());
+    }
+
+    static void applyHistoryFilter(input_item_t *item, const QRegularExpression &filter)
+    {
+        if (!item || filter.pattern().isEmpty() || !filter.isValid())
             return;
-        char *uri = input_item_GetURI(ptr.get());
-        char *name = input_item_GetName(ptr.get());
+        char *uri = input_item_GetURI(item);
+        char *name = input_item_GetName(item);
         const bool matches = (uri && filter.match(QString::fromUtf8(uri)).hasMatch())
                           || (name && filter.match(QString::fromUtf8(name)).hasMatch());
         free(uri);
         free(name);
         if (matches)
-            input_item_AddOption(ptr.get(), "no-save-recentplay", VLC_INPUT_OPTION_TRUSTED);
+            input_item_AddOption(item, "no-save-recentplay", VLC_INPUT_OPTION_TRUSTED);
     }
 
     Media(const QString &uri, const QString &name, const QStringList &options = {})
@@ -88,7 +92,7 @@ public:
         if (!ptr)
             throw std::bad_alloc();
         setMediaOptions(options);
-        applyHistoryFilter();
+        applyHistoryFilter(ptr.get());
     }
 
     void setMediaOptions(const QStringList &options = {})

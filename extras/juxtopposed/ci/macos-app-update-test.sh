@@ -66,20 +66,26 @@ VLC_REDESIGN_UPDATE_TEST_AS=$as VLC_REDESIGN_UPDATE_TEST_AUTO=1 VLC_REDESIGN_UPD
     > "$work/update.out" 2>&1 &
 pid=$!
 
-# up to 15 minutes for the installed copy to become the latest release
+# up to 15 minutes for the installed copy to be replaced by the latest release. Its program file is a new one
+# then (another inode): the version alone is not enough, since a build of the released version (on main after a
+# release) reads as the latest from the start
+inode_of() { stat -f %i "$1" 2> /dev/null; }
+original=$(inode_of "$exe")
 updated=
 while [ $(( $(date +%s) - start )) -lt 900 ]; do
     sleep 10
-    if [ "$(version_of "$installed")" = "$latest" ]; then
+    if [ "$(inode_of "$exe")" != "$original" ] && [ "$(version_of "$installed")" = "$latest" ]; then
         updated=$(( $(date +%s) - start ))
         break
     fi
 done
 if [ -n "$updated" ]; then
-    note "ok: the installed copy is $latest after ${updated} s (the app's own updater, its helper and the restart)"
+    note "ok: the installed copy was replaced by $latest after ${updated} s (the app's own updater, its helper and the restart)"
 else
-    fail "the installed copy is still $(version_of "$installed") after 15 min"
+    fail "the installed copy was not replaced after 15 min (version $(version_of "$installed"))"
 fi
+# (the app quits for the swap; a few seconds for it to be gone)
+for _ in 1 2 3 4 5 6; do kill -0 "$pid" 2> /dev/null || break; sleep 5; done
 kill -0 "$pid" 2> /dev/null && fail "the app that updated itself is still running (it should have quit for the update)"
 grep -E 'update (test|check|to )|helper' "$work/update.log" 2> /dev/null | sed -n '1,40p' | tee -a "$work/result.txt"
 

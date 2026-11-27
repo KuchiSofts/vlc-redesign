@@ -15,6 +15,13 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Technical
+
+- Version 0.8.9 started (VLC_REDESIGN_VERSION).
+- The macOS update test checks that the installed copy was replaced (its program file a new one), not only its
+  version: on main after a release the build is the latest version from the start, and the test passed before the
+  update had happened.
+
 ## [0.8.8] · 2026-11-26
 
 An update release of the desktop apps and the Android app (the Samsung TV app stays 0.8.6): the Android player

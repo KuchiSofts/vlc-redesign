@@ -153,6 +153,8 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
+- 🟡 **0.8.9** (started 2026-11-27): the macOS update test on main checks the swap itself (the version alone
+  read as the latest on a build of the released version).
 - ✅ **0.8.8** (2026-11-26): the Android player on a phone held sideways blends its controls into the video (#213,
   the reporter's follow-up: two slimmer rows, a thin seek bar, a dark fade, shown before and after on the phone
   emulator). The macOS build updates an installed copy through the app itself (#117: the

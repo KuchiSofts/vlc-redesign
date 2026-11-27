@@ -43,8 +43,10 @@ T.MenuItem {
     ]
     readonly property bool _hasDuo: _icon !== "" && _duoIcons.indexOf(_icon) >= 0
     // Figma menus: labels 14 #8F8F8F (hovered too), shortcuts 14 #6B6B6B
-    readonly property color _textColor: VLCStyle.redesign.color(
-        enabled ? VLCStyle.redesign.textMuted : VLCStyle.redesign.textDisabled)
+    readonly property color _textColor: VLCStyle.redesign.highContrast && enabled && highlighted
+                                        ? VLCStyle.redesign.buttonText
+                                        : VLCStyle.redesign.color(enabled ? VLCStyle.redesign.textMuted
+                                                                         : VLCStyle.redesign.textDisabled)
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
@@ -69,7 +71,8 @@ T.MenuItem {
             opacity: root.enabled ? 1 : 0.4
             source: !root._hasDuo ? ""
                     : SVGColorImage.colorize("qrc:///redesign/duo/" + root._icon + ".svg")
-                                   .color1(VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"))
+                                   .color1(VLCStyle.redesign.highContrast ? root._textColor
+                                                                         : VLCStyle.redesign.color("#8F8F8F", "#2e2e2e"))
                                    // Figma: Accent Dim, the full accent where
                                    // the icon has it (#00FFFF: video)
                                    .color2(VLCStyle.redesign.accent)
@@ -126,7 +129,8 @@ T.MenuItem {
             Layout.fillHeight: true
             visible: root.shortcutText !== "" && !root.subMenu
             text: root.shortcutText
-            color: VLCStyle.redesign.color(enabled ? "#6B6B6B" : VLCStyle.redesign.textDisabled)
+            color: VLCStyle.redesign.highContrast ? root._textColor
+                   : VLCStyle.redesign.color(enabled ? "#6B6B6B" : VLCStyle.redesign.textDisabled)
             font: label.font
             // the item is the text width rounded up: the text ends at the
             // row's padding as in the design (not up to 1 px before it)
@@ -135,13 +139,14 @@ T.MenuItem {
             topPadding: label.topPadding
         }
 
-        Image {
+        Impl.ColorImage {
             Layout.preferredWidth: VLCStyle.redesign.iconSize
             Layout.preferredHeight: VLCStyle.redesign.iconSize
             visible: !!root.subMenu
             sourceSize: Qt.size(width, height)
             smooth: !VLCStyle.redesign.svgExact(width, height, Screen.devicePixelRatio)
             source: "qrc:///redesign/icons/chevron-right/default.svg"
+            color: VLCStyle.redesign.highContrast ? root._textColor : "transparent"
             // to the submenu: it opens on the left in a right to left menu
             mirror: root.mirrored
         }
@@ -153,5 +158,7 @@ T.MenuItem {
         color: root.highlighted
                ? VLCStyle.redesign.color("#1F1F1F", "#9c9c9b")
                : "transparent"
+        border.width: root.highlighted && VLCStyle.redesign.highContrast ? 1 : 0
+        border.color: VLCStyle.redesign.accent
     }
 }

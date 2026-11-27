@@ -147,6 +147,8 @@ public:
     inline MainCtx* getCtx() const { return m_ctx; }
     bool hasCSDImage() const;
     bool highContrast() const { return m_highContrast; }
+    bool isDark() const { return m_isDark; }
+    QPalette contrastPalette() const;
 
     void setColor(ColorContext::ColorSet colorSet,  ColorContext::ColorSection section,
                   ColorContext::ColorName name, ColorContext::ColorState state, QColor color);

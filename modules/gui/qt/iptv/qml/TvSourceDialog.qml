@@ -269,8 +269,9 @@ Widgets.RedesignDialog {
         horizontalAlignment: TextInput.AlignLeft
         echoMode: TextInput.Password
         color: root.c("#C6C6C6", "#2e2e2e")
-        selectionColor: VLCStyle.redesign.accentBackground
-        selectedTextColor: root.c(VLCStyle.redesign.textPrimary, "#191919")
+        selectionColor: VLCStyle.redesign.selectionBackground
+        selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                           : root.c(VLCStyle.redesign.textPrimary, "#191919")
         placeholderTextColor: root.c(VLCStyle.redesign.textDisabled, "#7c7c7b")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: VLCStyle.dp(14, VLCStyle.scale)

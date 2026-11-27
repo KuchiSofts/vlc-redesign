@@ -168,8 +168,9 @@ ColumnLayout {
                 clip: true
                 text: root.hex(root.currentValue)
                 color: root.c("#6B6B6B")
-                selectionColor: VLCStyle.redesign.accentBackground
-                selectedTextColor: VLCStyle.redesign.accent
+                selectionColor: VLCStyle.redesign.selectionBackground
+                selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                   : VLCStyle.redesign.accent
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: root.px(14)
                 selectByMouse: true

@@ -94,8 +94,10 @@ Widgets.RedesignDialog {
                 horizontalAlignment: TextEdit.AlignLeft
                 text: root.report
                 color: VLCStyle.redesign.color("#C6C6C6", "#2e2e2e", root.darkTheme)
-                selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede", root.darkTheme)
-                selectedTextColor: VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", root.darkTheme)
+                selectionColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                                : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede", root.darkTheme)
+                selectedTextColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                   : VLCStyle.redesign.color(VLCStyle.redesign.textPrimary, "#2e2e2e", root.darkTheme)
                 font.family: VLCStyle.redesign.fontFamily
                 font.pixelSize: VLCStyle.dp(13, VLCStyle.scale)
                 Accessible.role: Accessible.EditableText

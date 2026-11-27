@@ -159,7 +159,14 @@ RedesignMenuStyle::RedesignMenuStyle(MainCtx *ctx)
     if (ctx)
     {
         connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, reframe);
-        connect(ctx, &MainCtx::contrastPaletteChanged, this, reframe);
+        connect(ctx, &MainCtx::contrastPaletteChanged, this, [reframe]() {
+            reframe();
+            for (QWidget *widget : QApplication::topLevelWidgets())
+            {
+                if (widget->isVisible() && isMenu(widget))
+                    widget->update();
+            }
+        });
     }
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, reframe);
 }
@@ -177,6 +184,9 @@ static bool systemDrawsMenuFrame()
 
 QColor RedesignMenuStyle::windowBorder(bool dark)
 {
+    if (const auto *source = contrastSource(nullptr))
+        return source->getColor(ColorContext::View, ColorContext::Decoration,
+                                ColorContext::Border, ColorContext::Normal);
     // What Windows 11 draws around the main window (its accent #4C4A48,
     // "Show accent color on title bars and window borders"), set on every
     // window so that the frame is the same on every system, in both themes
@@ -188,12 +198,7 @@ void RedesignMenuStyle::setWindowBorder(QWindow *window, bool dark)
 #ifdef _WIN32
     if (!window || !window->handle())
         return;
-    const auto *ctx = s_ctx.data();
-    const auto *source = ctx && window == ctx->intfMainWindow() ? ctx->stylePalette() : nullptr;
-    const QColor border = source && source->highContrast()
-        ? source->getColor(ColorContext::View, ColorContext::Decoration,
-                           ColorContext::Border, ColorContext::Normal)
-        : windowBorder(dark);
+    const QColor border = windowBorder(dark);
     const COLORREF colour = RGB(border.red(), border.green(), border.blue());
     // older systems ignore it
     DwmSetWindowAttribute(reinterpret_cast<HWND>(window->winId()), 34 /* DWMWA_BORDER_COLOR */,
@@ -278,13 +283,16 @@ QIcon RedesignMenuStyle::accentIcon(MainCtx *ctx, const QString &name)
 {
     if (!ctx)
         ctx = s_ctx;
-    const QColor accent = accentColor(ctx);
+    const auto *source = contrastSource(ctx);
+    const QPalette system = source ? source->contrastPalette() : QPalette();
+    const QColor accent = source ? system.highlight().color() : accentColor(ctx);
     // Two-tone icon of the design (grey outline, details in Accent Dim, the
     // full accent where the icon has it: #00FFFF, video)
     const QString duo = QStringLiteral(":/redesign/duo/%1.svg").arg(name);
     if (QFile::exists(duo))
-        return ColorizedSvgIcon(duo, darkScheme(ctx) ? QColor(0x8F, 0x8F, 0x8F) : QColor(0x2E, 0x2E, 0x2E),
-                                accent, accentDim(accent));
+        return ColorizedSvgIcon(duo, source ? system.windowText().color()
+                                          : darkScheme(ctx) ? QColor(0x8F, 0x8F, 0x8F) : QColor(0x2E, 0x2E, 0x2E),
+                                accent, source ? accent : accentDim(accent));
     // drawn from its SVG at each size asked (sharp at any scale)
     QString file = QStringLiteral(":/redesign/icons/%1/default.png").arg(name);
     // Some icons of the design only have their active state
@@ -300,6 +308,8 @@ bool RedesignMenuStyle::isDark() const
 
 bool RedesignMenuStyle::darkScheme(MainCtx *ctx)
 {
+    if (const auto *source = contrastSource(ctx))
+        return source->isDark();
     // (a window that knows no interface: the one of the menus)
     if (!ctx)
         ctx = s_ctx;
@@ -334,8 +344,24 @@ bool RedesignMenuStyle::darkScheme(MainCtx *ctx)
     }
 }
 
+const SystemPalette *RedesignMenuStyle::contrastSource(MainCtx *ctx)
+{
+    if (!ctx)
+        ctx = s_ctx;
+    const auto *source = ctx ? ctx->stylePalette() : nullptr;
+    return source && source->highContrast() ? source : nullptr;
+}
+
 RedesignMenuStyle::Palette RedesignMenuStyle::palette() const
 {
+    if (const auto *source = contrastSource(m_ctx))
+    {
+        const QPalette system = source->contrastPalette();
+        const QColor text = system.windowText().color();
+        return { system.window().color(), text, system.buttonText().color(), text,
+                 system.button().color(), system.color(QPalette::Disabled, QPalette::Text),
+                 system.buttonText().color(), system.highlight().color() };
+    }
     const QColor accent = accentColor(m_ctx);
 
     // Dark values of the design, light ones from VLCStyle.redesign.color()
@@ -472,13 +498,17 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
 
     const bool enabled = item->state & State_Enabled;
     const bool selected = enabled && (item->state & State_Selected);
+    const bool contrast = contrastSource(m_ctx) != nullptr;
     const bool checked = item->checkType != QStyleOptionMenuItem::NotCheckable && item->checked;
     painter->setRenderHint(QPainter::Antialiasing);
     painter->setRenderHint(QPainter::SmoothPixmapTransform);
 
     if (selected)
     {
-        painter->setPen(Qt::NoPen);
+        if (contrast)
+            painter->setPen(colors.accent);
+        else
+            painter->setPen(Qt::NoPen);
         painter->setBrush(colors.hover);
         painter->drawRoundedRect(rect.adjusted(panelPadding, 0, -panelPadding, 0), hoverRadius, hoverRadius);
     }
@@ -496,8 +526,16 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
     {
         if (checked)
         {
-            painter->setPen(Qt::NoPen);
-            painter->setBrush(QColor(colors.accent.red(), colors.accent.green(), colors.accent.blue(), 0x40));
+            if (contrast)
+            {
+                painter->setPen(colors.accent);
+                painter->setBrush(Qt::NoBrush);
+            }
+            else
+            {
+                painter->setPen(Qt::NoPen);
+                painter->setBrush(QColor(colors.accent.red(), colors.accent.green(), colors.accent.blue(), 0x40));
+            }
             painter->drawRoundedRect(iconRect.adjusted(-3, -3, 3, 3), hoverRadius, hoverRadius);
         }
         item->icon.paint(painter, iconRect, Qt::AlignCenter, enabled ? QIcon::Normal : QIcon::Disabled);
@@ -506,7 +544,8 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
     {
         // icons/check is empty: the check of the track lists
         painter->drawPixmap(iconRect, tinted(QStringLiteral(":/redesign/track-check-active.png"),
-                                             enabled ? colors.accent : colors.disabled, iconRect.size(), painter));
+                                             enabled ? colors.accent : colors.disabled,
+                                             iconRect.size(), painter));
     }
 
     // Label on the left, shortcut on the right, then the submenu arrow
@@ -524,7 +563,7 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
     if (!shortcut.isEmpty())
     {
         drawFigmaText(painter, visualRect(dir, rect, textRect), visualAlignment(dir, Qt::AlignRight), shortcut,
-                      item->font, enabled ? colors.textMuted : colors.disabled);
+                      item->font, !enabled ? colors.disabled : selected && contrast ? colors.textHover : colors.textMuted);
         textRect.setRight(textRect.right() - metrics.horizontalAdvance(shortcut) - shortcutGap / 2);
     }
     drawFigmaText(painter, visualRect(dir, rect, textRect), visualAlignment(dir, Qt::AlignLeft),
@@ -538,7 +577,8 @@ void RedesignMenuStyle::drawControl(ControlElement element, const QStyleOption *
                   rect.top() + (rect.height() - arrowWidth) / 2, arrowWidth, arrowWidth));
         // the colour of the labels (#8F8F8F), not of the shortcuts
         QPixmap arrow = tinted(QStringLiteral(":/redesign/icons/chevron-right/default.png"),
-                               enabled ? colors.text : colors.disabled, arrowRect.size(), painter);
+                               !enabled ? colors.disabled : selected && contrast ? colors.textHover : colors.text,
+                               arrowRect.size(), painter);
         if (dir == Qt::RightToLeft)
         {
             const qreal ratio = arrow.devicePixelRatio();

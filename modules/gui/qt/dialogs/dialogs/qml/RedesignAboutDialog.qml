@@ -121,7 +121,7 @@ T.Popup {
         }
         textFormat: Text.StyledText
         text: escaped(prefix) + " <a href=\"" + url + "\">" + escaped(linkText) + "</a>"
-        linkColor: VLCStyle.redesign.accent
+        linkColor: VLCStyle.redesign.linkColor
         Accessible.role: Accessible.Link
         Accessible.name: prefix + " " + linkText
         Accessible.onPressAction: Qt.openUrlExternally(credit.url)

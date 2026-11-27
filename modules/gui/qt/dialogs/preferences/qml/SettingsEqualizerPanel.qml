@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  ****************************************************************************/
 import QtQuick
+import QtQuick.Controls.Basic
 import VLC.Style
 
 // Equalizer of the design (Figma "EQ"): closed, the 36 px "Open Equalizer"
@@ -120,139 +121,205 @@ Item {
             Accessible.name: text
         }
 
-        Row {
+        // 11 columns of 60 px, 8 px apart (740 px) at full width; shrunk
+        // proportionally to fit narrower panels, and horizontally scrollable
+        // below the minimum column width so Preamp and 16 kHz are never clipped
+        Flickable {
+            id: bandsFlick
             y: root.px(6 + 24 + 24)
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: root.px(8)
+            width: parent.width
+            height: parent.height - y
+            readonly property real sidePadding: root.px(8)
+            readonly property int bandCount: root.names.length
+            readonly property real maxColumnWidth: root.px(60)
+            readonly property real minColumnWidth: root.px(44)
+            readonly property real maxSpacing: root.px(8)
+            readonly property real minSpacing: root.px(4)
+            readonly property real designRowWidth: bandCount * maxColumnWidth + (bandCount - 1) * maxSpacing
+            readonly property real availableWidth: Math.max(0, width - 2 * sidePadding)
+            readonly property real fitScale: designRowWidth > 0 ? Math.min(1, availableWidth / designRowWidth) : 1
+            readonly property real bandSpacing: Math.max(minSpacing, Math.floor(maxSpacing * fitScale))
+            readonly property real columnWidth: Math.max(minColumnWidth,
+                Math.min(maxColumnWidth, Math.floor((availableWidth - (bandCount - 1) * bandSpacing) / bandCount)))
+            readonly property real rowWidth: bandCount * columnWidth + (bandCount - 1) * bandSpacing
 
-            Repeater {
-                model: root.names.length
-                Item {
-                    id: column
-                    required property int index
-                    readonly property real value: root.valueAt(index)
-                    width: root.px(60)
-                    height: root.px(415)
+            contentWidth: Math.max(width, rowWidth + 2 * sidePadding)
+            contentHeight: height
+            flickableDirection: Flickable.HorizontalFlick
+            interactive: contentWidth > width
+            clip: true
+            boundsBehavior: Flickable.StopAtBounds
 
-                    // -20 dB at the bottom, +20 dB at the top
-                    Rectangle {
-                        id: track
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: root.px(16)
-                        height: root.px(320)
-                        radius: root.px(6)
-                        color: root.c("#090909")
-                        // Tab reaches each band: Up and Down move it by
-                        // 0.5 dB (the wheel's step), Page Up and Page Down
-                        // by 5, Home and End to the top and the bottom
-                        activeFocusOnTab: true
-                        border.width: activeFocus ? 1 : 0
-                        border.color: VLCStyle.redesign.accent
-                        Keys.onPressed: (event) => {
-                            const steps = { [Qt.Key_Up]: 0.5, [Qt.Key_Right]: 0.5,
-                                            [Qt.Key_Down]: -0.5, [Qt.Key_Left]: -0.5,
-                                            [Qt.Key_PageUp]: 5, [Qt.Key_PageDown]: -5,
-                                            [Qt.Key_Home]: 40, [Qt.Key_End]: -40 }
-                            const step = steps[event.key]
-                            if (step === undefined)
-                                return
-                            setDb(Math.round(Math.max(-20, Math.min(20, column.value + step)) * 10) / 10)
-                            event.accepted = true
-                        }
-                        readonly property real usable: height - root.px(4)
-                        readonly property real fraction: (Math.max(-20, Math.min(20, column.value)) + 20) / 40
+            function clampScroll() {
+                const maxX = Math.max(0, contentWidth - width)
+                if (contentX > maxX)
+                    contentX = maxX
+            }
+            onWidthChanged: clampScroll()
+            onContentWidthChanged: clampScroll()
 
+            ScrollBar.horizontal: ScrollBar {
+                policy: bandsFlick.contentWidth > bandsFlick.width ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
+                // Basic's handle is light grey: darker in the light theme
+                palette.mid: VLCStyle.palette.isDark ? undefined : "#6b6b6b"
+                palette.dark: VLCStyle.palette.isDark ? undefined : "#2e2e2e"
+            }
+
+            Row {
+                id: bandsRow
+                x: bandsFlick.contentWidth > bandsFlick.width
+                   ? bandsFlick.sidePadding
+                   : Math.round((bandsFlick.width - bandsFlick.rowWidth) / 2)
+                spacing: bandsFlick.bandSpacing
+
+                Repeater {
+                    model: root.names.length
+                    Item {
+                        id: column
+                        required property int index
+                        readonly property real value: root.valueAt(index)
+                        width: bandsFlick.columnWidth
+                        height: root.px(415)
+
+                        // -20 dB at the bottom, +20 dB at the top
                         Rectangle {
-                            x: root.px(2)
-                            width: root.px(12)
-                            height: track.fraction * track.usable
-                            y: track.height - root.px(2) - height
-                            radius: root.px(4)
-                            color: root.c(VLCStyle.redesign.accentBackground)
-                        }
-                        Rectangle {
+                            id: track
                             anchors.horizontalCenter: parent.horizontalCenter
-                            width: root.px(24)
-                            height: root.px(8)
-                            radius: root.px(4)
-                            y: Math.max(0, Math.min(track.height - height,
-                                                    track.height - root.px(2) - track.fraction * track.usable - height / 2))
-                            color: VLCStyle.redesign.accentDim
-                        }
-
-                        function set(y) {
-                            const fraction = 1 - Math.max(0, Math.min(1, (y - root.px(2)) / usable))
-                            setDb(Math.round((fraction * 40 - 20) * 10) / 10)
-                        }
-                        function setDb(dB) {
-                            if (column.index === 0) {
-                                root.preampEdited(dB)
-                            } else {
-                                const bands = []
-                                for (let i = 0; i < 10; ++i)
-                                    bands.push(i === column.index - 1 ? dB : Number(root.bands[i] || 0))
-                                root.bandsEdited(bands)
-                            }
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            anchors.leftMargin: -root.px(22)
-                            anchors.rightMargin: -root.px(22)
-                            hoverEnabled: true
-                            onPressed: (mouse) => {
-                                root.wheelBand = column.index
-                                track.set(mouse.y)
-                            }
-                            onPositionChanged: (mouse) => { if (pressed) track.set(mouse.y) }
-                            onExited: if (root.wheelBand === column.index) root.wheelBand = -1
-                            // the wheel scrolls the page over the bands: it
-                            // moves the band clicked, or any band with Ctrl
-                            onWheel: (wheel) => {
-                                if (root.wheelBand !== column.index && !(wheel.modifiers & Qt.ControlModifier)) {
-                                    wheel.accepted = false
+                            width: root.px(16)
+                            height: root.px(320)
+                            radius: root.px(6)
+                            color: root.c("#090909")
+                            // Tab reaches each band: Up and Down move it by
+                            // 0.5 dB (the wheel's step), Page Up and Page Down
+                            // by 5, Home and End to the top and the bottom
+                            activeFocusOnTab: true
+                            border.width: activeFocus ? 1 : 0
+                            border.color: VLCStyle.redesign.accent
+                            onActiveFocusChanged: {
+                                if (!activeFocus || !bandsFlick.interactive)
                                     return
-                                }
-                                track.set(track.height - root.px(2) - track.fraction * track.usable
-                                          - (wheel.angleDelta.y > 0 ? 1 : -1) * track.usable / 80)
+                                const left = column.x + bandsRow.x - bandsFlick.sidePadding
+                                const right = column.x + bandsRow.x + column.width + bandsFlick.sidePadding
+                                if (left < bandsFlick.contentX)
+                                    bandsFlick.contentX = Math.max(0, left)
+                                else if (right > bandsFlick.contentX + bandsFlick.width)
+                                    bandsFlick.contentX = Math.min(bandsFlick.contentWidth - bandsFlick.width,
+                                                                   right - bandsFlick.width)
                             }
+                            Keys.onPressed: (event) => {
+                                const steps = { [Qt.Key_Up]: 0.5, [Qt.Key_Right]: 0.5,
+                                                [Qt.Key_Down]: -0.5, [Qt.Key_Left]: -0.5,
+                                                [Qt.Key_PageUp]: 5, [Qt.Key_PageDown]: -5,
+                                                [Qt.Key_Home]: 40, [Qt.Key_End]: -40 }
+                                const step = steps[event.key]
+                                if (step === undefined)
+                                    return
+                                setDb(Math.round(Math.max(-20, Math.min(20, column.value + step)) * 10) / 10)
+                                event.accepted = true
+                            }
+                            readonly property real usable: height - root.px(4)
+                            readonly property real fraction: (Math.max(-20, Math.min(20, column.value)) + 20) / 40
+
+                            Rectangle {
+                                x: root.px(2)
+                                width: root.px(12)
+                                height: track.fraction * track.usable
+                                y: track.height - root.px(2) - height
+                                radius: root.px(4)
+                                color: root.c(VLCStyle.redesign.accentBackground)
+                            }
+                            Rectangle {
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                width: root.px(24)
+                                height: root.px(8)
+                                radius: root.px(4)
+                                y: Math.max(0, Math.min(track.height - height,
+                                                        track.height - root.px(2) - track.fraction * track.usable - height / 2))
+                                color: VLCStyle.redesign.accentDim
+                            }
+
+                            function set(y) {
+                                const fraction = 1 - Math.max(0, Math.min(1, (y - root.px(2)) / usable))
+                                setDb(Math.round((fraction * 40 - 20) * 10) / 10)
+                            }
+                            function setDb(dB) {
+                                if (column.index === 0) {
+                                    root.preampEdited(dB)
+                                } else {
+                                    const bands = []
+                                    for (let i = 0; i < 10; ++i)
+                                        bands.push(i === column.index - 1 ? dB : Number(root.bands[i] || 0))
+                                    root.bandsEdited(bands)
+                                }
+                            }
+                            MouseArea {
+                                readonly property real sideHitMargin: Math.max(0, (column.width - track.width) / 2)
+                                anchors.fill: parent
+                                anchors.leftMargin: -sideHitMargin
+                                anchors.rightMargin: -sideHitMargin
+                                preventStealing: true
+                                hoverEnabled: true
+                                onPressed: (mouse) => {
+                                    root.wheelBand = column.index
+                                    track.set(mouse.y)
+                                }
+                                onPositionChanged: (mouse) => { if (pressed) track.set(mouse.y) }
+                                onExited: if (root.wheelBand === column.index) root.wheelBand = -1
+                                // the wheel scrolls the page over the bands: it
+                                // moves the band clicked, or any band with Ctrl
+                                onWheel: (wheel) => {
+                                    if (root.wheelBand !== column.index && !(wheel.modifiers & Qt.ControlModifier)) {
+                                        wheel.accepted = false
+                                        return
+                                    }
+                                    track.set(track.height - root.px(2) - track.fraction * track.usable
+                                              - (wheel.angleDelta.y > 0 ? 1 : -1) * track.usable / 80)
+                                }
+                            }
+                            Accessible.role: Accessible.Slider
+                            Accessible.name: root.names[column.index]
                         }
-                        Accessible.role: Accessible.Slider
-                        Accessible.name: root.names[column.index]
-                    }
 
-                    Text {
-                        id: nameText
-                        width: parent.width
-                        y: root.px(320 + 33)
-                        horizontalAlignment: Text.AlignHCenter
-                        textFormat: Text.PlainText
-                        text: root.names[column.index]
-                        color: root.c("#6B6B6B")
-                        font.family: VLCStyle.redesign.fontFamily
-                        font.pixelSize: root.px(14)
-                        // a longer name (a translation of Preamp) is made
-                        // smaller to fit its 60 px, then cut short
-                        fontSizeMode: Text.HorizontalFit
-                        minimumPixelSize: root.px(10)
-                        elide: Text.ElideRight
-                        topPadding: VLCStyle.redesign.textBaseline(0, font.pixelSize) - nameMetrics.ascent
-                        FontMetrics { id: nameMetrics; font: nameText.font }
-                    }
-
-                    Rectangle {
-                        y: root.px(320 + 33 + 17 + 13)
-                        width: parent.width
-                        height: root.px(32)
-                        radius: root.px(6)
-                        color: root.c("#090909")
                         Text {
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.baseline: parent.verticalCenter
-                            anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
-                            text: column.value.toFixed(1) + " dB"
-                            color: root.c("#8F8F8F")
+                            id: nameText
+                            width: parent.width
+                            y: root.px(320 + 33)
+                            horizontalAlignment: Text.AlignHCenter
+                            textFormat: Text.PlainText
+                            text: root.names[column.index]
+                            color: root.c("#6B6B6B")
                             font.family: VLCStyle.redesign.fontFamily
-                            font.pixelSize: root.px(12)
+                            font.pixelSize: root.px(14)
+                            // a longer name (a translation of Preamp) is made
+                            // smaller to fit its 60 px, then cut short
+                            fontSizeMode: Text.HorizontalFit
+                            minimumPixelSize: root.px(10)
+                            elide: Text.ElideRight
+                            topPadding: VLCStyle.redesign.textBaseline(0, font.pixelSize) - nameMetrics.ascent
+                            FontMetrics { id: nameMetrics; font: nameText.font }
+                        }
+
+                        Rectangle {
+                            y: root.px(320 + 33 + 17 + 13)
+                            width: parent.width
+                            height: root.px(32)
+                            radius: root.px(6)
+                            color: root.c("#090909")
+                            Text {
+                                width: Math.max(0, parent.width - root.px(4))
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.baseline: parent.verticalCenter
+                                anchors.baselineOffset: VLCStyle.redesign.centeredBaseline(font.pixelSize)
+                                horizontalAlignment: Text.AlignHCenter
+                                textFormat: Text.PlainText
+                                text: column.value.toFixed(1) + " dB"
+                                color: root.c("#8F8F8F")
+                                font.family: VLCStyle.redesign.fontFamily
+                                font.pixelSize: root.px(12)
+                                fontSizeMode: Text.HorizontalFit
+                                minimumPixelSize: root.px(9)
+                                elide: Text.ElideRight
+                            }
                         }
                     }
                 }

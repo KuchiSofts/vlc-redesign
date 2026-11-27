@@ -29,7 +29,8 @@ QtObject {
     // Dark reference: Player 187:328 and library shell 970:2703.
     // Light chrome values measured from the full exported Player - Light frame.
     readonly property QtObject redesign: QtObject {
-        readonly property bool highContrast: vlc_style.palette.highContrast
+        // (?.: at quit the main context, which owns the palette, goes first)
+        readonly property bool highContrast: vlc_style.palette?.highContrast ?? false
         readonly property ColorContext _contrastView: ColorContext {
             palette: vlc_style.palette
             colorSet: ColorContext.View
@@ -598,11 +599,11 @@ QtObject {
     readonly property url noArtArtist: "qrc:///placeholder/noart_artist.svg";
     readonly property url noArtArtistSmall: "qrc:///placeholder/noart_artist_small.svg";
     // (dark in the dark theme: a light square stood out of the design)
-    readonly property url noArtAlbumCover: palette.isDark ? "qrc:///placeholder/noart_albumCover_dark.svg"
+    readonly property url noArtAlbumCover: (palette?.isDark ?? true) ? "qrc:///placeholder/noart_albumCover_dark.svg"
                                                           : "qrc:///placeholder/noart_albumCover.svg";
-    readonly property url noArtArtistCover: palette.isDark ? "qrc:///placeholder/noart_artistCover_dark.svg"
+    readonly property url noArtArtistCover: (palette?.isDark ?? true) ? "qrc:///placeholder/noart_artistCover_dark.svg"
                                                            : "qrc:///placeholder/noart_artistCover.svg";
-    readonly property url noArtVideoCover: palette.isDark ? "qrc:///placeholder/noart_videoCover_dark.svg"
+    readonly property url noArtVideoCover: (palette?.isDark ?? true) ? "qrc:///placeholder/noart_videoCover_dark.svg"
                                                           : "qrc:///placeholder/noart_videoCover.svg";
 
     // New indicator

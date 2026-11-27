@@ -611,13 +611,15 @@ Widgets.PageExt {
                 // lower row can become visible or take focus before the swap.
                 // Latch once wanted so upper rows gaining height before the
                 // swap cannot tear down and rebuild the view.
-                property bool _wanted
-                Binding on _wanted {
-                    when: MainCtx.firstFrameSwapped || favoritesRow.focus || flickable.moving || scrollBar.interacting
-                          || (favoritesRow.count > 0 && root._sectionMayBeVisible(favoritesHeader))
-                    value: true
-                    restoreMode: Binding.RestoreNone
-                }
+                // (latched a moment later, not by a Binding: loading the row changes its count, which the
+                // condition reads, and a Binding that set it at once was a binding loop)
+                property bool _wanted: false
+                readonly property bool _wantNow: !_wanted
+                    && (MainCtx.firstFrameSwapped || favoritesRow.focus || flickable.moving || scrollBar.interacting
+                        || (favoritesRow.count > 0 && root._sectionMayBeVisible(favoritesHeader)))
+                on_WantNowChanged: if (_wantNow) Qt.callLater(favoritesRow._want)
+                function _want() { favoritesRow._wanted = true }
+                Component.onCompleted: if (_wantNow) _wanted = true
                 active: _wanted
 
                 compactMargins: true
@@ -710,13 +712,15 @@ Widgets.PageExt {
             VideoAll {
                 id: newVideoRow
 
-                property bool _wanted
-                Binding on _wanted {
-                    when: MainCtx.firstFrameSwapped || newVideoRow.focus || flickable.moving || scrollBar.interacting
-                          || (newVideoRow.count > 0 && root._sectionMayBeVisible(newVideoHeader))
-                    value: true
-                    restoreMode: Binding.RestoreNone
-                }
+                // (latched a moment later, not by a Binding: loading the row changes its count, which the
+                // condition reads, and a Binding that set it at once was a binding loop)
+                property bool _wanted: false
+                readonly property bool _wantNow: !_wanted
+                    && (MainCtx.firstFrameSwapped || newVideoRow.focus || flickable.moving || scrollBar.interacting
+                        || (newVideoRow.count > 0 && root._sectionMayBeVisible(newVideoHeader)))
+                on_WantNowChanged: if (_wantNow) Qt.callLater(newVideoRow._want)
+                function _want() { newVideoRow._wanted = true }
+                Component.onCompleted: if (_wantNow) _wanted = true
                 active: _wanted
 
                 AccessibleCompat.id: "newVideo"
@@ -807,13 +811,15 @@ Widgets.PageExt {
             MediaView {
                 id: newMusicRow
 
-                property bool _wanted
-                Binding on _wanted {
-                    when: MainCtx.firstFrameSwapped || newMusicRow.focus || flickable.moving || scrollBar.interacting
-                          || (newMusicRow.count > 0 && root._sectionMayBeVisible(newMusicHeader))
-                    value: true
-                    restoreMode: Binding.RestoreNone
-                }
+                // (latched a moment later, not by a Binding: loading the row changes its count, which the
+                // condition reads, and a Binding that set it at once was a binding loop)
+                property bool _wanted: false
+                readonly property bool _wantNow: !_wanted
+                    && (MainCtx.firstFrameSwapped || newMusicRow.focus || flickable.moving || scrollBar.interacting
+                        || (newMusicRow.count > 0 && root._sectionMayBeVisible(newMusicHeader)))
+                on_WantNowChanged: if (_wantNow) Qt.callLater(newMusicRow._want)
+                function _want() { newMusicRow._wanted = true }
+                Component.onCompleted: if (_wantNow) _wanted = true
                 active: _wanted
 
                 compactMargins: true

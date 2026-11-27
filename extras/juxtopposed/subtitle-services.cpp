@@ -16,6 +16,7 @@
  */
 #include "modules/gui/qt/player/subtitle_services.hpp"
 
+#include <QDateTime>
 #include <QElapsedTimer>
 #include <QFile>
 #include <QHash>
@@ -177,6 +178,18 @@ static void testCommon()
     CHECK(checkOf(429) == Check::Busy);
     CHECK(checkOf(0) == Check::NoAnswer);
     CHECK(checkOf(502) == Check::NoAnswer);
+
+    const QDateTime now = QDateTime::fromString(QStringLiteral("2026-11-06T08:49:35Z"), Qt::ISODate);
+    const qint64 nowMs = now.toMSecsSinceEpoch();
+    CHECK(retryAfterDeadline(" 20 ", now) == nowMs + 20000);
+    CHECK(retryAfterDeadline("0", now) == nowMs);
+    CHECK(retryAfterDeadline({}, now) == nowMs + 60000);
+    CHECK(retryAfterDeadline("-1", now) == nowMs + 60000);
+    CHECK(retryAfterDeadline("invalid", now) == nowMs + 60000);
+    CHECK(retryAfterDeadline("Fri, 06 Nov 2026 08:49:37 GMT", now) == nowMs + 2000);
+    CHECK(retryAfterDeadline("Friday, 06-Nov-26 08:49:37 GMT", now) == nowMs + 2000);
+    CHECK(retryAfterDeadline("Fri Nov  6 08:49:37 2026", now) == nowMs + 2000);
+    CHECK(retryAfterDeadline("Fri, 06 Nov 2026 08:49:34 GMT", now) == nowMs - 1000);
 
     CHECK(cleanRelease(QStringLiteral(" * The.Voyage.1999 - ")) == QLatin1String("The.Voyage.1999"));
     // the episode named, a range, the season as a whole, another one

@@ -119,10 +119,11 @@ const QList<Provider> &providers();
 const Provider *provider(const QString &id);
 // Whether the credentials have what the service needs
 bool hasRequired(const Provider &provider, const Credentials &credentials);
+// Whether this provider is waiting out a rate limit shared by subtitle searches.
+bool coolingDown(const QString &providerId);
 
 // Searches one service; done is called on the thread of context with its
-// results, or an error and what went wrong (and no results) when it could
-// not be asked
+// results and any error that ended the search early.
 void search(QObject *context, const QString &providerId, const Query &query,
             std::function<void(const QList<Result> &results, const QString &error, Problem problem)> done);
 

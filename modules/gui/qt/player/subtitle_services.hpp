@@ -19,6 +19,7 @@
 
 #include "player/subtitle_providers.hpp"
 
+class QDateTime;
 class QJsonDocument;
 
 // The services asked with the user's own free key or account: the addresses
@@ -40,6 +41,8 @@ using LanguageOf = std::function<QString(const QString &name)>;
 Problem problemOf(int status);
 // The same for a check (Test): 200 works
 Check checkOf(int status);
+// The Retry-After deadline in epoch milliseconds, with a one-minute fallback.
+qint64 retryAfterDeadline(const QByteArray &header, const QDateTime &now);
 
 // The release cleaned of the uploaders' decorations ("* x *", "- x -")
 QString cleanRelease(const QString &release);

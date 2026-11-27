@@ -15,6 +15,17 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+### Fixed
+
+- **Live TV playlists can no longer write files on your computer**: a provider's stream options are only the safe
+  ones, and the guides it names come only from web addresses.
+- **Live TV texts from a provider are plain text**: a guide's description can no longer load an image from the web.
+- **Live TV channel switching no longer waits** behind logos from a server that doesn't answer.
+- **The TV banner's programme browsing** follows the programme on air, and works once the guide arrives.
+- **Live TV reasons in your language**: a refused sign-in, no channels or no guide yet.
+- **Subtitles in your language** when several subtitle files sit beside a video.
+- **Add Subtitles**: a file name with < and > in it shows as it is.
+
 ### Technical
 
 - Version 0.8.10 started (VLC_REDESIGN_VERSION).

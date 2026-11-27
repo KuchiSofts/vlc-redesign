@@ -179,6 +179,9 @@ struct FirewallState
     // a rule keeps them out (made when its question of Windows was
     // declined): it wins over any allowing one, it goes with the request
     bool blockRule = false;
+    // the names of those rules: only they go, never the user's other rules
+    // for VLC
+    std::vector<std::wstring> blockNames;
 };
 
 /* Whether Windows Firewall lets the devices of the network connect to this
@@ -252,8 +255,14 @@ static FirewallState firewallState(long port)
                                                                 reinterpret_cast<void **>(&rule))))
                     {
                         allows = allows || ruleMatches(rule, path, port, profiles, NET_FW_ACTION_ALLOW);
-                        state.blockRule = state.blockRule
-                                       || ruleMatches(rule, path, port, profiles, NET_FW_ACTION_BLOCK);
+                        if (ruleMatches(rule, path, port, profiles, NET_FW_ACTION_BLOCK))
+                        {
+                            state.blockRule = true;
+                            BSTR blockName = nullptr;
+                            if (SUCCEEDED(rule->get_Name(&blockName)) && blockName != nullptr)
+                                state.blockNames.emplace_back(blockName);
+                            SysFreeString(blockName);
+                        }
                         state.ruleExists = state.ruleExists || isOwnRule(rule);
                         rule->Release();
                     }
@@ -691,6 +700,7 @@ public:
                 else if (generation == m_firewallGeneration)
                 {
                     m_firewallBlockRule = result->blockRule;
+                    m_firewallBlockNames = result->blockNames;
                     setFirewall(!result->allows, result->publicNetwork, result->ruleExists);
                 }
             });
@@ -818,6 +828,9 @@ public:
     bool m_firewallRuleExists = false;
     // a rule of the firewall keeps this program out: removed with the request
     bool m_firewallBlockRule = false;
+#ifdef _WIN32
+    std::vector<std::wstring> m_firewallBlockNames;
+#endif
     // allowFirewall() was called by itself once (not again if declined)
     bool m_firewallAutoAsked = false;
     // the last check asked (the answers of the others are dropped)
@@ -1162,25 +1175,49 @@ void RendererManager::allowFirewall()
     const std::wstring netsh = systemDir + L"\\netsh.exe";
 
     const std::wstring name = L"name=\"" + std::wstring(firewallRuleName) + L"\" dir=in ";
-    const std::wstring rule = L"action=allow program=\"" + std::wstring(path) + L"\" enable=yes profile="
+    // Only what casting needs: the TCP ports of the servers the TVs read
+    // from (DLNA's and Chromecast's), and only from this network. A rule for
+    // the whole program let every port of VLC in (its web interface, its
+    // remote controls), from anywhere, also on public networks.
+    std::wstring ports;
+    for (const char *option : { "sout-dlna-http-port", "sout-chromecast-http-port" })
+        if (config_FindConfig(option))
+        {
+            const int64_t port = config_GetInt(option);
+            if (port > 0 && port < 65536)
+                ports += (ports.empty() ? L"" : L",") + std::to_wstring(port);
+        }
+    const std::wstring rule = L"action=allow program=\"" + std::wstring(path) + L"\""
+                            + (ports.empty() ? L"" : L" protocol=tcp localport=" + ports)
+                            + L" remoteip=localsubnet enable=yes profile="
                             + (d->m_firewallPublic ? L"private,domain,public" : L"private,domain");
     // the commands, each with Windows' approval, one after the other
     std::vector<std::pair<std::wstring, std::wstring>> commands;
     if (d->m_firewallBlockRule)
     {
         // A rule keeping it out (Windows' own question declined once) wins
-        // over any allowing one: this program's inbound rules go, then ours
-        // comes, in one approval (cmd /S strips the outer quotes). cmd would
-        // expand a %name% of the path: then two approvals, without cmd.
-        const std::wstring remove = L"advfirewall firewall delete rule name=all dir=in program=\""
-                                  + std::wstring(path) + L"\"";
+        // over any allowing one: those rules go (by their names, never the
+        // user's other rules for VLC), then ours comes, in one approval (cmd
+        // /S strips the outer quotes). cmd would expand a %name% of the path:
+        // then one approval each, without cmd.
+        std::vector<std::wstring> removes;
+        for (const std::wstring &blockName : d->m_firewallBlockNames)
+            if (blockName.find(L'"') == std::wstring::npos && blockName.find(L'%') == std::wstring::npos)
+                removes.push_back(L"advfirewall firewall delete rule name=\"" + blockName + L"\" dir=in program=\""
+                                  + std::wstring(path) + L"\"");
         const std::wstring add = L"advfirewall firewall add rule " + name + rule;
         if (std::wstring(path).find(L'%') == std::wstring::npos)
-            commands.emplace_back(systemDir + L"\\cmd.exe",
-                                  L"/S /C \"\"" + netsh + L"\" " + remove + L" & \"" + netsh + L"\" " + add + L"\"");
+        {
+            std::wstring line = L"/S /C \"";
+            for (const std::wstring &remove : removes)
+                line += L"\"" + netsh + L"\" " + remove + L" & ";
+            line += L"\"" + netsh + L"\" " + add + L"\"";
+            commands.emplace_back(systemDir + L"\\cmd.exe", line);
+        }
         else
         {
-            commands.emplace_back(netsh, remove);
+            for (const std::wstring &remove : removes)
+                commands.emplace_back(netsh, remove);
             commands.emplace_back(netsh, add);
         }
     }

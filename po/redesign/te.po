@@ -5790,6 +5790,10 @@ msgstr "ఛానళ్ల జాబితాను చదవలేకపోయ�
 msgid "this link is a single stream, not a list of channels"
 msgstr "ఈ లింక్ ఒకే స్ట్రీమ్, ఛానళ్ల జాబితా కాదు"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "మార్గదర్శకం లేదు"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "సర్వర్ ప్రాప్యతను తిరస్కరించింది (%1)"
@@ -5879,10 +5883,6 @@ msgstr "ఇప్పుడు ప్రసారంలో"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "మార్గదర్శక ఐడి…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "మార్గదర్శకం లేదు"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

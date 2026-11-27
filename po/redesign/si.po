@@ -5798,6 +5798,10 @@ msgstr "නාලිකා ලැයිස්තුව කියවිය නො
 msgid "this link is a single stream, not a list of channels"
 msgstr "මෙම සබැඳිය තනි ප්‍රවාහයකි, නාලිකා ලැයිස්තුවක් නොවේ"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "මාර්ගෝපදේශයක් නැත"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "සේවාදායකය ප්‍රවේශය ප්‍රතික්ෂේප කළා (%1)"
@@ -5887,10 +5891,6 @@ msgstr "දැන් විකාශය වන දේ"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "මාර්ගෝපදේශ ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "මාර්ගෝපදේශයක් නැත"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

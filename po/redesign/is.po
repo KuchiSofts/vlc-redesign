@@ -5873,6 +5873,10 @@ msgstr "ekki tókst að lesa rásalistann"
 msgid "this link is a single stream, not a list of channels"
 msgstr "þessi tengill er eitt streymi, ekki listi yfir rásir"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Engin dagskrá"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "þjónninn hafnaði aðgangi (%1)"
@@ -5963,10 +5967,6 @@ msgstr "Hvað er í gangi"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Dagskrárauðkenni…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Engin dagskrá"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

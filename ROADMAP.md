@@ -37,6 +37,10 @@ Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.8.10 started).
 **0.8.10** is an update release of fixes, made as the issues bring them, and of the next contributions,
 each reviewed before it is taken.
 
+- 🟡 Fixes from a review of Live TV, Android and the Samsung TV app: a provider's playlist can no longer write
+  files or load images from the web, channel switching no longer waits for slow logos, a crash on Android 5
+  and 6, the Samsung app's memory with long songs and its queue
+
 And as the issues bring them:
 
 - 📋 Windows: the media controls (#210) on Windows 10 1809, and the contrast themes (#261, #212) with a real

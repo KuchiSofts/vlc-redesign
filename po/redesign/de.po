@@ -5957,6 +5957,10 @@ msgstr "die Senderliste konnte nicht gelesen werden"
 msgid "this link is a single stream, not a list of channels"
 msgstr "dieser Link ist ein einzelner Stream, keine Senderliste"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Kein Fernsehprogramm"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "der Server hat den Zugriff verweigert (%1)"
@@ -6048,10 +6052,6 @@ msgstr "Was läuft"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Programm-ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Kein Fernsehprogramm"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

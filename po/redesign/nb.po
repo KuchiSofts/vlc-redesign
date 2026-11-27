@@ -5893,6 +5893,10 @@ msgstr "kanallisten kunne ikke leses"
 msgid "this link is a single stream, not a list of channels"
 msgstr "denne lenken er én strøm, ikke en liste over kanaler"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Ingen programoversikt"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "serveren nektet tilgang (%1)"
@@ -5983,10 +5987,6 @@ msgstr "Hva som går"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID i programoversikten…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Ingen programoversikt"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

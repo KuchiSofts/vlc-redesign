@@ -5954,6 +5954,10 @@ msgstr "no s'ha pogut llegir la llista de canals"
 msgid "this link is a single stream, not a list of channels"
 msgstr "aquest enllaç és un sol flux, no una llista de canals"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Sense guia"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "el servidor ha denegat l'accés (%1)"
@@ -6043,10 +6047,6 @@ msgstr "Què s'emet"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Identificador de guia…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Sense guia"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

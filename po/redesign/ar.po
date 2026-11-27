@@ -5844,6 +5844,10 @@ msgstr "تعذّرت قراءة قائمة القنوات"
 msgid "this link is a single stream, not a list of channels"
 msgstr "هذا الرابط بث واحد، وليس قائمة قنوات"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "لا يوجد دليل"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "رفض الخادم الوصول (%1)"
@@ -5941,10 +5945,6 @@ msgstr "ما يُعرض الآن"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "معرّف الدليل…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "لا يوجد دليل"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

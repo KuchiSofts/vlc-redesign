@@ -5912,6 +5912,10 @@ msgstr "de zenderlijst kon niet worden gelezen"
 msgid "this link is a single stream, not a list of channels"
 msgstr "deze link is één stream, geen zenderlijst"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Geen gids"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "de server weigerde de toegang (%1)"
@@ -6003,10 +6007,6 @@ msgstr "Wat is er op"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Gids-id…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Geen gids"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

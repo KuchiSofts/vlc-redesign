@@ -5905,6 +5905,10 @@ msgstr "kanālu sarakstu neizdevās nolasīt"
 msgid "this link is a single stream, not a list of channels"
 msgstr "šī saite ir viena straume, nevis kanālu saraksts"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Nav gida"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "serveris liedza piekļuvi (%1)"
@@ -5996,10 +6000,6 @@ msgstr "Kas tagad ēterā"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Gida ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Nav gida"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

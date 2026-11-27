@@ -5898,6 +5898,10 @@ msgstr "kanal listesi okunamadı"
 msgid "this link is a single stream, not a list of channels"
 msgstr "bu bağlantı tek bir yayın, kanal listesi değil"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Kılavuz yok"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "sunucu erişimi reddetti (%1)"
@@ -5987,10 +5991,6 @@ msgstr "Yayında Ne Var"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Kılavuz Kimliği…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Kılavuz yok"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

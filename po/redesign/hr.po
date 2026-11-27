@@ -5887,6 +5887,10 @@ msgstr "popis kanala nije se mogao pročitati"
 msgid "this link is a single stream, not a list of channels"
 msgstr "ova poveznica je jedan stream, a ne popis kanala"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Nema vodiča"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "poslužitelj je odbio pristup (%1)"
@@ -5978,10 +5982,6 @@ msgstr "Što se emitira"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID u vodiču…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Nema vodiča"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

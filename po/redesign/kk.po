@@ -5886,6 +5886,10 @@ msgstr "арналар тізімін оқу мүмкін болмады"
 msgid "this link is a single stream, not a list of channels"
 msgstr "бұл сілтеме арналар тізімі емес, бір ағын"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Телебағдарлама жоқ"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "сервер қатынаудан бас тартты (%1)"
@@ -5973,10 +5977,6 @@ msgstr "Қазір эфирде"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Телебағдарлама id…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Телебағдарлама жоқ"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

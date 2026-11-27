@@ -5928,6 +5928,10 @@ msgstr "списъкът с канали не можа да бъде проче�
 msgid "this link is a single stream, not a list of channels"
 msgstr "тази връзка е единичен поток, а не списък с канали"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Няма указател"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "сървърът отказа достъп (%1)"
@@ -6017,10 +6021,6 @@ msgstr "Какво върви"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Идентификатор в указателя…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Няма указател"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

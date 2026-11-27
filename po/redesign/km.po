@@ -5779,6 +5779,10 @@ msgstr "មិន​អាច​អាន​បញ្ជី​ឆានែល​
 msgid "this link is a single stream, not a list of channels"
 msgstr "តំណ​នេះ​ជា​ស្ទ្រីម​តែ​មួយ មិន​មែន​ជា​បញ្ជី​ឆានែល​ទេ"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "គ្មានមគ្គុទ្ទេសក៍"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "ម៉ាស៊ីនមេ​បាន​បដិសេធ​ការ​ចូល​ប្រើ (%1)"
@@ -5866,10 +5870,6 @@ msgstr "កំពុងចាក់អ្វី"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID មគ្គុទ្ទេសក៍…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "គ្មានមគ្គុទ្ទេសក៍"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

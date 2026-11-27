@@ -5889,6 +5889,10 @@ msgstr "senarai saluran tidak dapat dibaca"
 msgid "this link is a single stream, not a list of channels"
 msgstr "pautan ini satu strim, bukan senarai saluran"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Tiada panduan"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "pelayan menolak akses (%1)"
@@ -5976,10 +5980,6 @@ msgstr "Sedang Disiarkan"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID Panduan…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Tiada panduan"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

@@ -5910,6 +5910,10 @@ msgstr "не удалось прочитать список каналов"
 msgid "this link is a single stream, not a list of channels"
 msgstr "эта ссылка — один поток, а не список каналов"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Нет телепрограммы"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "сервер отказал в доступе (%1)"
@@ -6003,10 +6007,6 @@ msgstr "Что сейчас в эфире"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Идентификатор в телепрограмме…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Нет телепрограммы"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

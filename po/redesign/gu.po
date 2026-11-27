@@ -5799,6 +5799,10 @@ msgstr "ચેનલોની યાદી વાંચી શકાઈ નહ�
 msgid "this link is a single stream, not a list of channels"
 msgstr "આ લિંક એક જ સ્ટ્રીમ છે, ચેનલોની યાદી નહીં"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "માર્ગદર્શિકા નથી"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "સર્વરે ઍક્સેસ નકારી (%1)"
@@ -5888,10 +5892,6 @@ msgstr "હાલ શું ચાલે છે"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "માર્ગદર્શિકા ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "માર્ગદર્શિકા નથી"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

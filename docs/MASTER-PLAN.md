@@ -153,7 +153,12 @@ What is being worked on, updated as it changes (2026-11-10):
   it needs real input, i.e. Windows Sandbox, which was busy. Checked later the same day in Windows Sandbox (real
   mouse and keys inside it only: qa\sandbox\d124.wsb): a Home card dragged into the empty queue is added, Space
   plays the queue, S stops, Ctrl+1 plays the media played last.
-- 🟡 **0.8.10** (started 2026-11-27): fixes as the issues bring them, and the next contributions.
+- 🟡 **0.8.10** (started 2026-11-27): fixes as the issues bring them, and the next contributions. A bug hunt of
+  11-27 (three read-only reviews: desktop Live TV, Android, Samsung; every finding checked by hand): a provider's
+  #EXTVLCOPT:sout wrote a 22 MB file on 0.8.3 (proven; now "unsafe option ignored", no file), guide links from
+  network paths, markup in guide texts, logos holding up zapping, the banner's "now", a reminder saved every
+  30 s, Android 5/6 crash (contentLengthLong), Samsung waveform memory (900 MB for 44 min), hidden start,
+  shared queue, subtitle links saved as a list. Desktop pages, player and Linux AppImage swept: no QML warning.
 - ✅ **0.8.9** (2026-11-27, published 08:18 local, PR #264 merged as 1b1e5f111b, tag v0.8.9 = 3c13874906; the
   in-app update 0.8.8 -> 0.8.9 checked on the Windows test copy: 5.6 MB, signed, restart, What's new 0.8.9): the twenty-two open pull requests of a contributor, merged together after three
   read-only reviews against the code of the day, every finding checked by hand; fixes on top for #245 (an hour

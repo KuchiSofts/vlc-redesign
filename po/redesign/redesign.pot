@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc 4.0.0-dev\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2026-11-27 01:16+0000\n"
+"POT-Creation-Date: 2026-11-27 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1468,7 +1468,7 @@ msgstr ""
 #: modules/gui/qt/playlist/qml/PlaylistDetachedWindow.qml:172
 #: modules/gui/qt/util/csdmenu.cpp:123
 #: modules/gui/qt/util/redesign_window_frame.cpp:96
-#: modules/gui/qt/widgets/native/redesign_message_box.cpp:214
+#: modules/gui/qt/widgets/native/redesign_message_box.cpp:220
 #: modules/gui/qt/widgets/qml/RedesignDialog.qml:224
 msgid "Close"
 msgstr ""
@@ -1625,7 +1625,7 @@ msgstr ""
 #: modules/gui/macosx/library/VLCLibrarySegment.m:186
 #: modules/gui/macosx/library/audio-library/VLCLibraryMusicViewController.m:97
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:30
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:940
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:963
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:144
 #: modules/gui/qt/medialibrary/qml/HomePage.qml:598
 #: modules/gui/qt/player/qml/CompactLibrary.qml:429
@@ -1743,12 +1743,12 @@ msgid "Library"
 msgstr ""
 
 #: modules/gui/macosx/library/history-library/VLCLibraryHistorySection.m:81
-#: modules/gui/qt/iptv/iptv_addon.cpp:1358
+#: modules/gui/qt/iptv/iptv_addon.cpp:1371
 msgid "Today"
 msgstr ""
 
 #: modules/gui/macosx/library/history-library/VLCLibraryHistorySection.m:85
-#: modules/gui/qt/iptv/iptv_addon.cpp:1362
+#: modules/gui/qt/iptv/iptv_addon.cpp:1375
 msgid "Yesterday"
 msgstr ""
 
@@ -1816,12 +1816,12 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:388
+#: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:390
 msgid "Log in"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:463
-#: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:470
+#: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:465
+#: modules/gui/qt/dialogs/dialogs/qml/Dialogs.qml:472
 msgid "Save password"
 msgstr ""
 
@@ -1850,11 +1850,11 @@ msgid "e.g., https://www.example.com/stream.avi"
 msgstr ""
 
 #: modules/gui/qt/dialogs/dialogs/qml/NetworkStreamDialog.qml:130
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:484
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:602
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:700
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:727
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:749
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:486
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:604
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:704
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:731
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:753
 msgid "(optional)"
 msgstr ""
 
@@ -2112,11 +2112,11 @@ msgid ""
 "GitHub opens with this filled in. Nothing is sent until you submit it there."
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:102
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:104
 msgid "Report"
 msgstr ""
 
-#: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:112
+#: modules/gui/qt/dialogs/dialogs/qml/RedesignReportDialog.qml:114
 msgid ""
 "No file names, user names or logs. To add a log: Settings → General → "
 "Diagnostics → Save a log."
@@ -2392,7 +2392,7 @@ msgstr ""
 msgid "Video effect settings could not be saved (error %1)."
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/qml/CropInput.qml:65
+#: modules/gui/qt/dialogs/extended/qml/CropInput.qml:66
 msgid "%1 crop in pixels"
 msgstr ""
 
@@ -2652,15 +2652,15 @@ msgstr ""
 msgid "Motion Blur"
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:202
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:203
 msgid "Colors of %1"
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:347
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:348
 msgid "Browse for %1"
 msgstr ""
 
-#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:350
+#: modules/gui/qt/dialogs/extended/qml/VideoOption.qml:351
 msgid "Image Files (*.png *.jpg);;All Files (*)"
 msgstr ""
 
@@ -3535,7 +3535,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:221
 #: modules/gui/qt/dialogs/preferences/shortcuts_model.cpp:250
 #: modules/gui/qt/dialogs/preferences/qml/SettingsDialog.qml:64
-#: modules/misc/iptv/iptv.cpp:954
+#: modules/misc/iptv/iptv.cpp:963
 msgid "Live TV"
 msgstr ""
 
@@ -3639,7 +3639,7 @@ msgid "Languages to search"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleLanguages.qml:299
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:424
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:426
 #: modules/gui/qt/maininterface/qml/SidebarEditDialog.qml:243
 #: modules/gui/qt/medialibrary/qml/PlaylistMediaDisplay.qml:94
 msgid "Move up"
@@ -3674,17 +3674,19 @@ msgid "Key works"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:125
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:785
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:790
 msgid "Signed in as %1"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:126
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:788
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:793
 msgid "Key refused"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:127
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:788
+#: modules/gui/qt/iptv/iptv_addon.cpp:935
+#: modules/gui/qt/iptv/iptv_addon.cpp:936
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:793
 msgid "Wrong user name or password"
 msgstr ""
 
@@ -3694,7 +3696,7 @@ msgid "Busy: try again later"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:129
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:789
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:794
 msgid "No answer, try again"
 msgstr ""
 
@@ -3707,13 +3709,13 @@ msgid "Show"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:335
-#: modules/gui/qt/player/subtitle_providers.cpp:134
+#: modules/gui/qt/player/subtitle_providers.cpp:136
 msgid "Key refused: check it"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:336
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:401
-#: modules/gui/qt/player/subtitle_providers.cpp:136
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:403
+#: modules/gui/qt/player/subtitle_providers.cpp:138
 msgid "Sign-in refused: check it"
 msgstr ""
 
@@ -3726,23 +3728,23 @@ msgid "Your free key"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:367
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:527
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:535
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:529
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:537
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
 msgid "User name (optional)"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:367
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:564
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:571
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:721
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:733
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:566
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:573
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:737
 msgid "User name"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:368
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:529
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:541
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:531
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:543
 msgid "Password (optional)"
 msgstr ""
 
@@ -3751,7 +3753,7 @@ msgid "Email"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsSubtitleServices.qml:393
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:768
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:772
 msgid "Sign in"
 msgstr ""
 
@@ -4006,12 +4008,12 @@ msgid "Discard changes"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:127
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:119
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:120
 msgid "Close Equalizer"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizer.qml:127
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:100
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:101
 msgid "Open Equalizer"
 msgstr ""
 
@@ -4029,27 +4031,27 @@ msgstr ""
 msgid "Two-pass"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:30
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:31
 msgid "1 kHz"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:30
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:31
 msgid "3 kHz"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:30
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:31
 msgid "6 kHz"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:31
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:32
 msgid "12 kHz"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:31
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:32
 msgid "14 kHz"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:31
+#: modules/gui/qt/dialogs/preferences/qml/SettingsEqualizerPanel.qml:32
 msgid "16 kHz"
 msgstr ""
 
@@ -4250,7 +4252,7 @@ msgstr ""
 msgid "10 s"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:630
+#: modules/gui/qt/dialogs/preferences/qml/SettingsOptionRow.qml:631
 msgid "Choose a color"
 msgstr ""
 
@@ -4481,7 +4483,7 @@ msgid "Fullscreen controls sensitivity"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:108
-#: modules/misc/iptv/iptv.cpp:949
+#: modules/misc/iptv/iptv.cpp:958
 msgid "Live TV (IPTV) add-on"
 msgstr ""
 
@@ -4490,9 +4492,9 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:112
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:114
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:82
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:967
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1147
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1234
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:990
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1155
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1242
 #: modules/gui/qt/player/qml/CompactLibrary.qml:838
 msgid "Guide"
 msgstr ""
@@ -4741,7 +4743,7 @@ msgstr ""
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:206
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:207
 #: modules/gui/qt/dialogs/preferences/qml/SettingsPresentation.qml:208
-#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:147
+#: modules/gui/qt/dialogs/preferences/qml/SettingsStartupVolume.qml:148
 msgid "Startup volume"
 msgstr ""
 
@@ -5328,13 +5330,13 @@ msgid "Sources"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:47
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:720
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:724
 msgid "Updating…"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:49
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:376
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1232
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:378
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1240
 #: modules/gui/qt/player/qml/CompactLibrary.qml:963
 msgid "%1 channel"
 msgid_plural "%1 channels"
@@ -5374,7 +5376,7 @@ msgid "Free channel lists"
 msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/SettingsTv.qml:69
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:210
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:212
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1652
 msgid "Browse the Catalog"
 msgstr ""
@@ -5385,7 +5387,7 @@ msgstr ""
 
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsCapturePopup.qml:124
 #: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:76
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:635
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:637
 msgid "Global Hotkey"
 msgstr ""
 
@@ -5457,15 +5459,15 @@ msgstr ""
 msgid "Remove %1"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:447
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:449
 msgid "Search Keyboard Shortcuts..."
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:731
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:733
 msgid "Hotkey of %1"
 msgstr ""
 
-#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:743
+#: modules/gui/qt/dialogs/preferences/qml/ShortcutsDialog.qml:745
 msgid "Global hotkey of %1"
 msgstr ""
 
@@ -5694,6 +5696,7 @@ msgstr ""
 #: modules/gui/qt/iptv/iptv_addon.cpp:926
 #: modules/gui/qt/iptv/iptv_addon.cpp:927
 #: modules/gui/qt/iptv/iptv_addon.cpp:928
+#: modules/gui/qt/iptv/iptv_addon.cpp:937
 msgid "it has no channels"
 msgstr ""
 
@@ -5710,64 +5713,70 @@ msgstr ""
 msgid "this link is a single stream, not a list of channels"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:940
+#: modules/gui/qt/iptv/iptv_addon.cpp:938
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:136
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:715
+msgid "No guide"
+msgstr ""
+
+#: modules/gui/qt/iptv/iptv_addon.cpp:945
 msgid "the server refused access (%1)"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:941
+#: modules/gui/qt/iptv/iptv_addon.cpp:946
 msgid "nothing was found at this address (%1)"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:942
+#: modules/gui/qt/iptv/iptv_addon.cpp:947
 msgid "the server answered with an error (%1)"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1023
+#: modules/gui/qt/iptv/iptv_addon.cpp:1032
 msgid "This channel cannot be played"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1065
+#: modules/gui/qt/iptv/iptv_addon.cpp:1074
 msgid "This programme is older than the channel's archive"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1066
+#: modules/gui/qt/iptv/iptv_addon.cpp:1075
 msgid "This programme has not started yet"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1067
+#: modules/gui/qt/iptv/iptv_addon.cpp:1076
 msgid "This channel has no archive: past programmes cannot be played"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1091
+#: modules/gui/qt/iptv/iptv_addon.cpp:1100
 msgid "The guide does not say what is on"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1143
+#: modules/gui/qt/iptv/iptv_addon.cpp:1152
 msgid "No channel %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1347
+#: modules/gui/qt/iptv/iptv_addon.cpp:1360
 msgid "%1 min"
 msgid_plural "%1 min"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1350
+#: modules/gui/qt/iptv/iptv_addon.cpp:1363
 msgid "%1 h"
 msgid_plural "%1 h"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1350 modules/gui/qt/util/vlctick.cpp:88
+#: modules/gui/qt/iptv/iptv_addon.cpp:1363 modules/gui/qt/util/vlctick.cpp:88
 msgid "%1 h %2 min"
 msgstr ""
 
-#: modules/gui/qt/iptv/iptv_addon.cpp:1360
+#: modules/gui/qt/iptv/iptv_addon.cpp:1373
 msgid "Tomorrow"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:35
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:741
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:762
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:48
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:49
 #: modules/gui/qt/iptv/qml/TvToast.qml:92
@@ -5779,7 +5788,7 @@ msgid "Watch from the start"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:45
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:458
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:474
 #: modules/gui/qt/medialibrary/qml/MLContextMenu.qml:91
 #: modules/gui/qt/medialibrary/qml/FolderDisplay.qml:201
 #: modules/gui/qt/medialibrary/qml/MLPlaylistContextMenu.qml:38
@@ -5800,112 +5809,107 @@ msgstr ""
 msgid "Guide Id…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:136
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:711
-msgid "No guide"
-msgstr ""
-
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:191
 msgid "Next at %1"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:225
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:385
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:722
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1238
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:388
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:743
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1246
 msgid "%1 d"
 msgid_plural "%1 d"
 msgstr[0] ""
 msgstr[1] ""
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:226
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:723
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:744
 msgid "Catch-up: the past %1 day"
 msgid_plural "Catch-up: the past %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:81
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:771
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:792
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:840
 #: modules/gui/qt/player/qml/controlbarcontrols/TvButton.qml:35
 msgctxt "TV"
 msgid "Channels"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:83
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1148
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1241
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:392
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1156
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1249
 msgid "Films"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvDisplay.qml:84
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:391
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1242
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:393
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1250
 msgid "Series"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:185
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:186
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1621
 msgid "Watch TV in VLC"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:195
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:197
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1631
 msgid ""
 "Add the playlist link of your TV provider (M3U) or its Xtream Codes login, "
 "or a free channel list of the catalog. Its programme guide comes with it."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:205
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:207
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:246
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:451
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:453
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1646
 msgid "Add a Link"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:257
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:260
 msgid "Updating the guide of %1… %2 MB"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:258
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:261
 msgid "Updating the channels of %1…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:261
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:264
 msgid "%1 could not be loaded: %2"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:460
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:728
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:463
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:733
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1589
 msgid "No channel matches the search"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:461
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:464
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1590
 msgid "No favorite channel yet: right-click a channel to add it"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:462
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:465
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1591
 msgid "No channel watched yet"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:463
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:466
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1592
 msgid "Loading the channels…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvDisplay.qml:464
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:1003
+#: modules/gui/qt/iptv/qml/TvDisplay.qml:467
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:1027
 #: modules/gui/qt/player/qml/CompactLibrary.qml:1593
 msgid "No channels"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvGroupChips.qml:31
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:941
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:964
 msgid "Recently Watched"
 msgstr ""
 
@@ -5914,113 +5918,113 @@ msgid "Now"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:179
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:506
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
 msgid "Earlier"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvGuideView.qml:184
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:506
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:522
 #: modules/gui/qt/maininterface/qml/RedesignUpdateBanner.qml:191
 msgid "Later"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvGuideView.qml:512
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:537
+#: modules/gui/qt/iptv/qml/TvGuideView.qml:515
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:553
 msgid "No guide for this channel"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:197
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:198
 msgid "No account with films or series"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:198
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:199
 msgid "Loading…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:198
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:199
 msgid "Nothing here"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvLibraryView.qml:255
+#: modules/gui/qt/iptv/qml/TvLibraryView.qml:256
 msgid "S%1 E%2"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:505
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:521
 msgid "Archive"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:532
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:548
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:45
 msgid "Programme"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:537
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:553
 msgid "Loading the guide…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:593
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:611
 msgid "From the archive, %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:594
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:612
 msgid "%1 left"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:595
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:613
 msgid "in %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:596
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:614
 msgid "ended %1 ago"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:597
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:615
 msgid "on now"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:730
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:751
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:53
 msgid "Watch from the Start"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:743
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:764
 msgid "Reminder Set"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:743
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:764
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:50
 msgid "Remind Me"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:753
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:774
 msgid "Back to Live"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:798
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:819
 msgid "Programme before"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:804
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:825
 msgid "Programme after"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:809 modules/gui/qt/qt.cpp:399
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:830 modules/gui/qt/qt.cpp:399
 msgid "Next channel"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:814 modules/gui/qt/qt.cpp:400
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:835 modules/gui/qt/qt.cpp:400
 msgid "Previous channel"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:929
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:952
 msgid "Previous group"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:939
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:962
 msgid "All Channels"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:954
+#: modules/gui/qt/iptv/qml/TvPlayerOverlay.qml:977
 msgid "Next group"
 msgstr ""
 
@@ -6037,7 +6041,7 @@ msgid "Channel"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvProgrammeDialog.qml:111
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1148
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1156
 msgid "Catch-up"
 msgstr ""
 
@@ -6079,8 +6083,8 @@ msgid "TV Sources"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:170
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1018
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1268
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1026
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1276
 msgid "Add Guide"
 msgstr ""
 
@@ -6101,350 +6105,350 @@ msgid "Accounts"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:248
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1149
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1157
 msgid "Guides"
 msgstr ""
 
 #: modules/gui/qt/iptv/qml/TvSourceDialog.qml:249
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1024
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1032
 msgid "Catalog"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:308
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:310
 msgid "Your TV sources"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:310
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:312
 msgid ""
 "The guides of the first sources come first when several name the same "
 "channel."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:311
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:313
 msgid "No source yet: add the link of your provider, or one of the catalog."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:374
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:974
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:376
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:981
 msgid "%1 programme"
 msgid_plural "%1 programmes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:381
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:383
 msgid "Guide %1"
 msgid_plural "Guide %1"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:382
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:384
 msgid "%1 channel has a programme guide"
 msgid_plural "%1 channels have a programme guide"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:388
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:390
 msgid "Catch-up %1 d"
 msgid_plural "Catch-up %1 d"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:398
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:946
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:400
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:953
 msgid "Updating the guide… %1 MB"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:400
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:402
 msgid "Updating the channels…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:403
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:405
 msgid "Updated %1 at %2"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:428
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:993
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1000
 msgid "Turn Off"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:428
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:993
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:430
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1000
 msgid "Turn On"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:456
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:458
 msgid "Update All"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:474
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:476
 msgid "Playlist (M3U)"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:475
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:477
 msgid "Xtream Codes"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:476
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:478
 msgid "Guide (XMLTV)"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:489
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:491
 msgid "e.g., My TV"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:496
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:506
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:498
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:508
 msgid "Playlist link or file"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:497
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:499
 msgid ""
 "The M3U link your provider gave you; its guide is found in it when it names "
 "one."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:505
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:507
 msgid "e.g., https://example.com/playlist.m3u"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:512
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:514
 msgid "Choose a playlist"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:513
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:515
 msgid "Playlists (*.m3u *.m3u8)"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:530
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:567
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:726
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:532
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:569
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:730
 msgid "(empty: unchanged)"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:554
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:561
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:556
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:563
 msgid "Server"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:555
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:557
 msgid "The address of the provider's panel, with its port (http://host:8080)."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:560
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:562
 msgid "e.g., http://example.com:8080"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:586
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:588
 msgid "For the source"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:587
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:589
 msgid "Its channels are matched by their guide id, then by their name."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:588
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:590
 msgid "Add a source first."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:601
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:611
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:603
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:613
 msgid "Guide links"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:603
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:605
 msgid ""
 "XMLTV guides (.xml or .xml.gz), one per line; several are merged, the first "
 "first."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:610
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:612
 msgid "e.g., https://example.com/guide.xml.gz"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:617
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:620
 msgid ""
 "Links and passwords are kept in the keystore of VLC, never written to its "
 "log."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:637
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:640
 msgid "Found on your network"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:638
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:641
 msgid "Looking on your network…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:640
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:643
 msgid "Nothing found on your network: type the server's address."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:652
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1268
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:655
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1276
 msgid "Added"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:664
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:667
 msgid "Look again"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:696
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:707
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:700
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:711
 msgid "Server address"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:706
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:850
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:710
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:856
 msgid "e.g., %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:725
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:741
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:729
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:745
 msgid "PIN"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:748
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:757
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:752
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:761
 msgid "API key"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:750
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:754
 msgid "Instead of a user: a key made in the server's dashboard."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:786
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:791
 msgid "Server found"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:801
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:806
 msgid "Sign Out"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:813
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:819
 msgid ""
 "Passwords and keys are kept in the keystore of VLC, never written to its log."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:831
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:837
 msgid "The guide of %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:832
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:838
 msgid ""
 "The id the guides give this channel. Yours comes first; leave it empty to "
 "use the one of its list or the one found for it."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:837
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:843
 msgid "Its list: %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:838
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:844
 msgid "Found for it: %1"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:851
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:857
 msgid "Guide id"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:867
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:873
 msgid "The guides of your sources"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:868
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:874
 msgid ""
 "Each source's own guides and those you added; the channels are matched by "
 "their guide id, then by their name."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:908
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:914
 msgid "A guide for the channels of every source"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:909
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:915
 #: modules/gui/qt/iptv/qml/TvToast.qml:56
 msgid "Guide for %1 of %2 channels"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:926
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:932
 msgid "Find a Guide"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:947
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:954
 msgid "Found for you: %1 channel matched by its name or id"
 msgid_plural "Found for you: %1 channels matched by their name or id"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:976
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:983
 msgid "Added by you"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:977
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:984
 msgid "Found for you"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:978
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:985
 msgid "From the playlist"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1007
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1015
 msgid "No guide yet: add one, or one of the catalog's."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1113
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1114
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1121
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1122
 msgid "Search the catalog"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1145
 msgid "A-Z"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1137
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1145
 msgid "Most channels"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1138
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1146
 msgid "For you"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1146
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1154
 msgid "Recommended"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1149
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1249
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1157
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Free"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1246
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1254
 msgid "Not answering"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1249
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1257
 msgid "Paid"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1295
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1304
 msgid "Loading the catalog…"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1296
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1305
 msgid "The catalog is empty in this version."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1297
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1306
 msgid "Nothing in the catalog matches"
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1311
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1321
 msgid ""
 "Only free, legal sources are listed. Suggestions are reviewed before they "
 "reach the catalog."
 msgstr ""
 
-#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1319
+#: modules/gui/qt/iptv/qml/TvSourceDialog.qml:1329
 msgid "Suggest a Service"
 msgstr ""
 
@@ -6739,22 +6743,22 @@ msgid "OpenSubtitles returned an invalid login session."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:237
-#: modules/gui/qt/player/subtitle_providers.cpp:2021
+#: modules/gui/qt/player/subtitle_providers.cpp:2029
 msgid "OpenSubtitles download failed. Check your quota."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlopensubtitles.cpp:247
-#: modules/gui/qt/player/subtitle_providers.cpp:2032
+#: modules/gui/qt/player/subtitle_providers.cpp:2040
 msgid "OpenSubtitles did not return a valid subtitle download link."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:191
-#: modules/gui/qt/player/subtitle_search.cpp:835
+#: modules/gui/qt/player/subtitle_search.cpp:836
 msgid "This build can't search the internet."
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitlebatch.cpp:210
-#: modules/gui/qt/player/subtitle_search.cpp:857
+#: modules/gui/qt/player/subtitle_search.cpp:858
 msgid "The subtitle services took too long to answer."
 msgstr ""
 
@@ -6837,12 +6841,12 @@ msgid ""
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:420
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:606
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:610
 msgid "Choose the folder of the audio tracks"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations.cpp:421
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:607
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:611
 msgid "Choose the folder of the subtitles"
 msgstr ""
 
@@ -6927,9 +6931,9 @@ msgid "HTTP status %1"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/mlsubtitleassociations_link.cpp:99
-#: modules/gui/qt/player/subtitle_search.cpp:1417
-#: modules/gui/qt/player/subtitle_search.cpp:1459
-#: modules/gui/qt/player/subtitle_search.cpp:1481
+#: modules/gui/qt/player/subtitle_search.cpp:1418
+#: modules/gui/qt/player/subtitle_search.cpp:1460
+#: modules/gui/qt/player/subtitle_search.cpp:1482
 msgid "The subtitle couldn't be downloaded (%1)."
 msgstr ""
 
@@ -6992,7 +6996,7 @@ msgid "Continue Watching"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:176
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:700
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:702
 #: modules/gui/qt/player/qml/CompactLibrary.qml:430
 msgid "New Videos"
 msgstr ""
@@ -7004,7 +7008,7 @@ msgid "Listen Again"
 msgstr ""
 
 #: modules/gui/qt/medialibrary/qml/HomeDisplay.qml:299
-#: modules/gui/qt/medialibrary/qml/HomePage.qml:797
+#: modules/gui/qt/medialibrary/qml/HomePage.qml:801
 #: modules/gui/qt/player/qml/CompactLibrary.qml:431
 msgid "New Music"
 msgstr ""
@@ -7534,142 +7538,142 @@ msgstr ""
 msgid "Nothing was linked: %1 failed."
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:583
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:585
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:586
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:587
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:590
 msgid "From Computer"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:585
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:586
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:590
 msgid "From Link"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:585
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:589
 msgid "From OpenSubtitles"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:586
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:590
 msgid "From the Internet"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:655
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:659
 msgid "Direct HTTPS link to a subtitle file"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:670
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:674
 msgid "Title or episode"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:701
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:705
 msgid "%1, else %2"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:708
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:712
 msgid "Every subtitle service is off (Subtitles panel of the player)"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:872
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:876
 msgid "OpenSubtitles API key"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:957
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:960
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:963
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:966
 msgid ""
 "No key yet? It's free: sign up on opensubtitles.com, open API consumers, "
 "choose New consumer, name it (VLC Redesign) and copy its API key here, with "
 "your account's username and password."
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:958
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:964
 msgid "Open API consumers"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1037
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1043
 msgid "Waiting…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1038
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1044
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:411
 msgid "Searching…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1040
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1046
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:490
 msgid "For this file"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1041
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1047
 msgid "Best guess"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1042
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1048
 msgid "Not found"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1043
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1049
 msgid "No answer"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1044
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1050
 #: modules/gui/qt/player/qml/SubtitleTracksPanel.qml:264
 msgid "Downloading…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1045
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1051
 msgid "Linked"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1144
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1150
 msgid "Don't download"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1148
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1154
 msgid "Subtitle for %1"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1167
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
 msgid "Downloading and linking the subtitles chosen…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1169
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1175
 msgid "Searching the internet: %1 of %2 videos done…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1170
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1176
 msgid "For the file: %1 · By title: %2 · Not found: %3"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1173
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1179
 msgid "No answer: %1"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1196
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1206
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1202
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1212
 msgid "Working on subtitles…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1201
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1207
 msgid "Searching OpenSubtitles…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1203
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1209
 msgid "Search OpenSubtitles to see the subtitle files."
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1206
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1212
 msgid "Working on audio tracks…"
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1209
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1215
 msgid "Enter a direct link to a subtitle file above."
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1210
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1216
 msgid "No audio file in this folder: choose another one above."
 msgstr ""
 
-#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1211
+#: modules/gui/qt/medialibrary/qml/SubtitleAssociationsDialog.qml:1217
 msgid "No subtitle file in this folder: choose another one above."
 msgstr ""
 
@@ -8042,119 +8046,119 @@ msgstr ""
 msgid "Choose a duration between one second and 24 hours."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_finder.cpp:1033
-#: modules/gui/qt/player/subtitle_search.cpp:1423
-#: modules/gui/qt/player/subtitle_search.cpp:1512
+#: modules/gui/qt/player/subtitle_finder.cpp:1125
+#: modules/gui/qt/player/subtitle_search.cpp:1424
+#: modules/gui/qt/player/subtitle_search.cpp:1513
 msgid "The subtitle couldn't be saved."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:138
+#: modules/gui/qt/player/subtitle_providers.cpp:140
 msgid "%1 asks to wait a moment (too many searches)."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:140
-#: modules/gui/qt/player/subtitle_search.cpp:872
+#: modules/gui/qt/player/subtitle_providers.cpp:142
+#: modules/gui/qt/player/subtitle_search.cpp:873
 msgid "%1 didn't answer."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:141
+#: modules/gui/qt/player/subtitle_providers.cpp:143
 msgid "%1 didn't answer (%2)."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1725
+#: modules/gui/qt/player/subtitle_providers.cpp:1727
 msgid "All languages · movies and series · finds those made for your file"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1727
+#: modules/gui/qt/player/subtitle_providers.cpp:1729
 msgid "With your own free key · all languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1731
+#: modules/gui/qt/player/subtitle_providers.cpp:1733
 msgid "With your own free key · strong in Arabic, many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1734
+#: modules/gui/qt/player/subtitle_providers.cpp:1736
 msgid "With your own free key · the Subscene archive, many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1737
+#: modules/gui/qt/player/subtitle_providers.cpp:1739
 msgid "Hebrew · movies and series"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1739
+#: modules/gui/qt/player/subtitle_providers.cpp:1741
 msgid "Series · many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1741
+#: modules/gui/qt/player/subtitle_providers.cpp:1743
 msgid "Movies · many languages"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1745
+#: modules/gui/qt/player/subtitle_providers.cpp:1747
 msgid ""
 "With your free account · Croatian, Serbian, Bosnian, Slovenian, Macedonian"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1749
+#: modules/gui/qt/player/subtitle_providers.cpp:1751
 msgid "With your free token · Chinese"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1752
+#: modules/gui/qt/player/subtitle_providers.cpp:1754
 msgid "With your free key · anime, Japanese"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1755
+#: modules/gui/qt/player/subtitle_providers.cpp:1757
 msgid "With your free key · series, French"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1758
+#: modules/gui/qt/player/subtitle_providers.cpp:1760
 msgid "With your free key · Romanian"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1761
+#: modules/gui/qt/player/subtitle_providers.cpp:1763
 msgid "With your free account · Polish · finds those made for your file"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:1764
+#: modules/gui/qt/player/subtitle_providers.cpp:1766
 msgid "With your free account · Portuguese (Brazil)"
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2157
+#: modules/gui/qt/player/subtitle_providers.cpp:2165
 msgid "This subtitle comes as a RAR archive, which can't be opened here."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2166
-#: modules/gui/qt/player/subtitle_providers.cpp:2199
-#: modules/gui/qt/player/subtitle_search.cpp:1520
+#: modules/gui/qt/player/subtitle_providers.cpp:2174
+#: modules/gui/qt/player/subtitle_providers.cpp:2207
+#: modules/gui/qt/player/subtitle_search.cpp:1521
 msgid "The subtitle couldn't be unpacked."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2200
+#: modules/gui/qt/player/subtitle_providers.cpp:2208
 msgid "The archive has no subtitle in it."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2212
+#: modules/gui/qt/player/subtitle_providers.cpp:2220
 msgid ""
 "OpenSubtitles keeps this subtitle for its paying members. Choose another one."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_providers.cpp:2218
+#: modules/gui/qt/player/subtitle_providers.cpp:2226
 msgid "The subtitle is empty."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1369
-#: modules/gui/qt/player/subtitle_search.cpp:1480
+#: modules/gui/qt/player/subtitle_search.cpp:1370
+#: modules/gui/qt/player/subtitle_search.cpp:1481
 msgid "No connection to the internet."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1372
+#: modules/gui/qt/player/subtitle_search.cpp:1373
 msgid "The video couldn't be identified from its name."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1373
+#: modules/gui/qt/player/subtitle_search.cpp:1374
 msgid "\"%1\" wasn't found. Search for its title."
 msgstr ""
 
-#: modules/gui/qt/player/subtitle_search.cpp:1375
+#: modules/gui/qt/player/subtitle_search.cpp:1376
 msgid "No subtitles were found for %1."
 msgstr ""
 
@@ -8322,7 +8326,7 @@ msgid "Close navigation"
 msgstr ""
 
 #: modules/gui/qt/player/qml/MinimalView.qml:186
-#: modules/gui/qt/player/qml/PlayerView.qml:967
+#: modules/gui/qt/player/qml/PlayerView.qml:968
 msgid "2× speed"
 msgstr ""
 
@@ -8338,72 +8342,72 @@ msgstr ""
 msgid "Player"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:976
+#: modules/gui/qt/player/qml/PlayerView.qml:977
 #, no-c-format
 msgid "Subtitle size %1%"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1159
+#: modules/gui/qt/player/qml/PlayerView.qml:1160
 msgid "Subtitles on the TV: %1"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1159
+#: modules/gui/qt/player/qml/PlayerView.qml:1160
 msgid "Subtitles off on the TV"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1271
+#: modules/gui/qt/player/qml/PlayerView.qml:1272
 msgid "Not playing on %1"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1273
-#: modules/gui/qt/player/qml/PlayerView.qml:1401
+#: modules/gui/qt/player/qml/PlayerView.qml:1274
+#: modules/gui/qt/player/qml/PlayerView.qml:1402
 msgid "Connecting to %1…"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1275
+#: modules/gui/qt/player/qml/PlayerView.qml:1276
 msgid "Playing on %1"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1276
+#: modules/gui/qt/player/qml/PlayerView.qml:1277
 msgid "The sound plays on %1"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1302
+#: modules/gui/qt/player/qml/PlayerView.qml:1303
 msgid "Pause, seek and change the subtitles here: the TV follows."
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1319
+#: modules/gui/qt/player/qml/PlayerView.qml:1320
 msgid ""
 "Windows Firewall doesn't let %1 connect to this computer to read the media."
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1331
+#: modules/gui/qt/player/qml/PlayerView.qml:1332
 msgid "Waiting for Windows…"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1332
+#: modules/gui/qt/player/qml/PlayerView.qml:1333
 msgid "Allow on public networks too"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1333
+#: modules/gui/qt/player/qml/PlayerView.qml:1334
 msgid "Allow on private networks"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1345
+#: modules/gui/qt/player/qml/PlayerView.qml:1346
 msgid "Try again"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1350
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
+#: modules/gui/qt/player/qml/PlayerView.qml:1351
+#: modules/gui/qt/player/qml/PlayerView.qml:1361
 msgid "Play here"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1360
-#: modules/gui/qt/player/qml/PlayerView.qml:1411
+#: modules/gui/qt/player/qml/PlayerView.qml:1361
+#: modules/gui/qt/player/qml/PlayerView.qml:1412
 msgid "Stop casting"
 msgstr ""
 
-#: modules/gui/qt/player/qml/PlayerView.qml:1402
+#: modules/gui/qt/player/qml/PlayerView.qml:1403
 msgid "Also on %1"
 msgstr ""
 
@@ -8762,19 +8766,19 @@ msgstr ""
 msgid "Minutes until sleep timer"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SleepTimerMenu.qml:138
+#: modules/gui/qt/player/qml/SleepTimerMenu.qml:141
 msgid "minutes"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SleepTimerMenu.qml:151
+#: modules/gui/qt/player/qml/SleepTimerMenu.qml:154
 msgid "Pause playback"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SleepTimerMenu.qml:200
+#: modules/gui/qt/player/qml/SleepTimerMenu.qml:203
 msgid "Cancel timer"
 msgstr ""
 
-#: modules/gui/qt/player/qml/SleepTimerMenu.qml:200
+#: modules/gui/qt/player/qml/SleepTimerMenu.qml:203
 msgid "Start timer"
 msgstr ""
 
@@ -9781,13 +9785,13 @@ msgstr ""
 msgid "Secure 256-bit (exclude 128-bit ciphers)"
 msgstr ""
 
-#: modules/misc/iptv/iptv.cpp:950
+#: modules/misc/iptv/iptv.cpp:959
 msgid ""
 "Shows TV in the library: the channels of your IPTV playlists and accounts, "
 "with their programme guide. Off, nothing of it is loaded."
 msgstr ""
 
-#: modules/misc/iptv/iptv.cpp:955
+#: modules/misc/iptv/iptv.cpp:964
 msgid "Live TV (IPTV) channels and programme guide"
 msgstr ""
 

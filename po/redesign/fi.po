@@ -5903,6 +5903,10 @@ msgstr "kanavaluetteloa ei voitu lukea"
 msgid "this link is a single stream, not a list of channels"
 msgstr "tämä linkki on yksittäinen virta, ei kanavaluettelo"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Ei ohjelmaopasta"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "palvelin esti pääsyn (%1)"
@@ -5992,10 +5996,6 @@ msgstr "Nyt menossa"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Ohjelmaoppaan tunniste…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Ei ohjelmaopasta"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

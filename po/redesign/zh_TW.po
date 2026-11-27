@@ -5763,6 +5763,10 @@ msgstr "無法讀取頻道清單"
 msgid "this link is a single stream, not a list of channels"
 msgstr "此連結是單一串流，而不是頻道清單"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "無節目表"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "伺服器拒絕存取 (%1)"
@@ -5850,10 +5854,6 @@ msgstr "正在播出"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "節目表 ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "無節目表"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

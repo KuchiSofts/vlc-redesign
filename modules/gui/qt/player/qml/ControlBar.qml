@@ -124,7 +124,7 @@ T.Pane {
         visible: root.inlineTimeline && !MainCtx.hasEmbededVideo && Player.isStarted
         width: parent ? parent.width : 0
         height: VLCStyle.dp(1, VLCStyle.scale)
-        color: VLCStyle.redesign.color("#222222", "#9c9c9b", VLCStyle.palette.isDark)
+        color: VLCStyle.redesign.color(VLCStyle.redesign.separator, "#9c9c9b", VLCStyle.palette.isDark)
     }
 
     // (the background shown with the inline timeline: by the binding of
@@ -355,8 +355,11 @@ T.Pane {
                     // the red of the other fields of the redesign that refuse a value
                     color: mediaTime.invalid ? VLCStyle.redesign.color("#e15033", "#b03a22")
                                              : VLCStyle.redesign.color("#CECECE", "#1e1e1e")
-                    selectionColor: VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
-                    selectedTextColor: mediaTime.invalid ? color : VLCStyle.redesign.accent
+                    selectionColor: VLCStyle.redesign.highContrast ? VLCStyle.redesign.selectionBackground
+                                    : VLCStyle.redesign.color(VLCStyle.redesign.accentBackground, "#dedede")
+                    selectedTextColor: mediaTime.invalid ? color
+                                       : VLCStyle.redesign.highContrast ? VLCStyle.redesign.highlightedText
+                                       : VLCStyle.redesign.accent
                     selectByMouse: true
                     clip: true
                     validator: RegularExpressionValidator { regularExpression: /[0-9:.]{0,12}/ }

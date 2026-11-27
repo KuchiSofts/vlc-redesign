@@ -172,12 +172,11 @@ ExternalPaletteImpl::~ExternalPaletteImpl()
     }
 }
 
-bool ExternalPaletteImpl::init()
+bool ExternalPaletteImpl::init(const char* provider)
 {
-    QString preferedProvider;
 #ifndef _WIN32
-    if (isGTKBasedEnvironment())
-        preferedProvider = "qt-themeprovider-gtk";
+    if (!provider && isGTKBasedEnvironment())
+        provider = "qt-themeprovider-gtk";
 #endif
 
     m_provider = vlc_object_create<vlc_qt_theme_provider_t>(m_ctx->getIntf());
@@ -194,10 +193,9 @@ bool ExternalPaletteImpl::init()
     m_provider->setColorF = setColorRBGAFloat;
     m_provider->setColorInt = setColorRBGAInt;
     m_provider->setColorData = &m_palette;
+    m_provider->isHighContrast = nullptr;
 
-    m_module = module_need(m_provider, "qt theme provider",
-                           preferedProvider.isNull() ? nullptr : qtu(preferedProvider),
-                           true);
+    m_module = module_need(m_provider, "qt theme provider", provider, true);
     if (!m_module)
         return false;
     return true;
@@ -208,6 +206,11 @@ bool ExternalPaletteImpl::isThemeDark() const
     if (!m_provider->isThemeDark)
         return false;
     return m_provider->isThemeDark(m_provider);
+}
+
+bool ExternalPaletteImpl::isHighContrast() const
+{
+    return m_provider->isHighContrast && m_provider->isHighContrast(m_provider);
 }
 
 bool ExternalPaletteImpl::hasCSDImages() const
@@ -404,30 +407,36 @@ void SystemPalette::setCtx(MainCtx* ctx)
 void SystemPalette::updatePalette()
 {
     m_palettePriv.reset();
-    switch(m_source)
-    {
-    case ColorSchemeModel::System:
+    m_fallbackPalettePriv.reset();
+    m_highContrast = false;
+    // Windows contrast themes override even an explicit Light or Dark choice.
+    if (m_source == ColorSchemeModel::System
+#ifdef _WIN32
+        || m_ctx
+#endif
+    )
         makeSystemPalette();
-        break;
-    case ColorSchemeModel::Day:
-        makeLightPalette();
-        break;
-    case ColorSchemeModel::Night:
+    else if (m_source == ColorSchemeModel::Night)
         makeDarkPalette();
-        break;
-    default:
-        break;
-    }
+    else
+        makeLightPalette();
 
     if (m_palettePriv)
     {
         connect(
             m_palettePriv.get(), &ExternalPaletteImpl::paletteChanged,
-            this, &SystemPalette::updatePalette);
+            this, &SystemPalette::updatePalette
+#ifdef _WIN32
+            , Qt::QueuedConnection
+#endif
+        );
         connect(
             m_palettePriv.get(), &ExternalPaletteImpl::CSDMetricsChanged,
             this, &SystemPalette::CSDMetricsChanged);
     }
+    if (m_fallbackPalettePriv)
+        connect(m_fallbackPalettePriv.get(), &ExternalPaletteImpl::paletteChanged,
+                this, &SystemPalette::updatePalette, Qt::QueuedConnection);
     emit paletteChanged();
 
     bool hasCSDImage = m_palettePriv && m_palettePriv->hasCSDImages();
@@ -928,22 +937,45 @@ void SystemPalette::makeSystemPalette()
     if (!palette->init())
     {
         //can't initialise system palette, fallback to default
-        makeLightPalette();
+        if (m_source == ColorSchemeModel::Night)
+            makeDarkPalette();
+        else
+            makeLightPalette();
+        return;
+    }
+
+    m_highContrast = palette->isHighContrast();
+    if (!m_highContrast && m_source != ColorSchemeModel::System)
+    {
+        if (m_source == ColorSchemeModel::Night)
+            makeDarkPalette();
+        else
+            makeLightPalette();
+        m_palettePriv = std::move(palette);
         return;
     }
 
     m_colorMap.clear();
     int ret = palette->update();
+    if (ret == VLC_ENOTSUP)
+    {
+        auto fallback = std::make_unique<ExternalPaletteImpl>(m_ctx, *this);
+        if (fallback->init("qt-themeprovider-systempalette"))
+        {
+            ret = fallback->update();
+            m_isDark = fallback->isThemeDark();
+            m_fallbackPalettePriv = std::move(fallback);
+        }
+    }
+    else if (ret == VLC_SUCCESS)
+        m_isDark = palette->isThemeDark();
+
     if (ret != VLC_SUCCESS)
     {
-        if (palette->isThemeDark())
+        if (ret != VLC_ENOTSUP && palette->isThemeDark())
             makeDarkPalette();
         else
             makeLightPalette();
-    }
-    else
-    {
-        m_isDark = palette->isThemeDark();
     }
 
     m_palettePriv = std::move(palette);

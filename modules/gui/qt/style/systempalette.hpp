@@ -66,9 +66,10 @@ public:
 
     ~ExternalPaletteImpl();
 
-    bool init();
+    bool init(const char* provider = nullptr);
 
     bool isThemeDark() const;
+    bool isHighContrast() const;
 
     QImage getCSDImage(vlc_qt_theme_csd_button_type type, vlc_qt_theme_csd_button_state state, bool maximized, bool active, int bannerHeight);
     CSDMetrics* getCSDMetrics() const;
@@ -107,6 +108,7 @@ public:
     Q_PROPERTY(MainCtx* ctx READ getCtx WRITE setCtx NOTIFY ctxChanged FINAL)
     Q_PROPERTY(ColorSchemeModel::ColorScheme  source READ source WRITE setSource NOTIFY sourceChanged FINAL)
     Q_PROPERTY(bool isDark MEMBER m_isDark NOTIFY paletteChanged FINAL)
+    Q_PROPERTY(bool highContrast READ highContrast NOTIFY paletteChanged FINAL)
     Q_PROPERTY(bool hasCSDImage READ hasCSDImage NOTIFY hasCSDImageChanged FINAL)
     Q_PROPERTY(CSDMetrics* csdMetrics READ getCSDMetrics NOTIFY CSDMetricsChanged FINAL)
 
@@ -144,6 +146,7 @@ public:
 
     inline MainCtx* getCtx() const { return m_ctx; }
     bool hasCSDImage() const;
+    bool highContrast() const { return m_highContrast; }
 
     void setColor(ColorContext::ColorSet colorSet,  ColorContext::ColorSection section,
                   ColorContext::ColorName name, ColorContext::ColorState state, QColor color);
@@ -179,9 +182,11 @@ private:
 
     ColorSchemeModel::ColorScheme m_source = ColorSchemeModel::ColorScheme::Day;
     bool m_isDark = false;
+    bool m_highContrast = false;
     bool m_hasCSDImage = false;
 
     std::unique_ptr<ExternalPaletteImpl> m_palettePriv;
+    std::unique_ptr<ExternalPaletteImpl> m_fallbackPalettePriv;
 
     QMap<quint64, QColor> m_colorMap;
 

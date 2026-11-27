@@ -27,6 +27,14 @@ namespace
 {
     const char *WIN_THEME_SETTING_PATH = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
     const char *WIN_THEME_SETTING_LIGHT_THEME_KEY = "AppsUseLightTheme";
+
+    bool highContrastEnabled()
+    {
+        HIGHCONTRASTA contrastInfo = {};
+        contrastInfo.cbSize = sizeof(contrastInfo);
+        return SystemParametersInfoA(SPI_GETHIGHCONTRAST, contrastInfo.cbSize, &contrastInfo, 0)
+            && (contrastInfo.dwFlags & HCF_HIGHCONTRASTON);
+    }
 }
 
 class WinColorSchemeObserver : public QAbstractNativeEventFilter
@@ -35,6 +43,7 @@ public:
     WinColorSchemeObserver(vlc_qt_theme_provider_t* obj)
         : m_obj(obj)
         , m_settings(QLatin1String {WIN_THEME_SETTING_PATH}, QSettings::NativeFormat)
+        , m_highContrast(highContrastEnabled())
     {
         vlc_assert(obj);
         qApp->installNativeEventFilter(this);
@@ -47,23 +56,33 @@ public:
 
     bool isThemeDark() const
     {
+        if (m_highContrast)
+        {
+            const auto luminance = [](DWORD color) {
+                return 299 * GetRValue(color) + 587 * GetGValue(color) + 114 * GetBValue(color);
+            };
+            return luminance(GetSysColor(COLOR_WINDOW)) < luminance(GetSysColor(COLOR_WINDOWTEXT));
+        }
         return !m_settings.value(WIN_THEME_SETTING_LIGHT_THEME_KEY).toBool();
     }
 
-    bool nativeEventFilter(const QByteArray &, void *message, qintptr *)
+    bool isHighContrast() const { return m_highContrast; }
+    bool hasAppThemeSetting() const { return m_settings.contains(WIN_THEME_SETTING_LIGHT_THEME_KEY); }
+
+    bool nativeEventFilter(const QByteArray &, void *message, qintptr *) override
     {
         MSG* msg = static_cast<MSG*>( message );
-        if ( msg->message == WM_SETTINGCHANGE
-             && !lstrcmp( LPCTSTR( msg->lParam ), L"ImmersiveColorSet" ) )
-        {
-            if (m_obj->paletteUpdated)
-                m_obj->paletteUpdated(m_obj, m_obj->paletteUpdatedData);
-        }
-        else if (msg->message == WM_SYSCOLORCHANGE)
-        {
-            if (m_obj->paletteUpdated)
-                m_obj->paletteUpdated(m_obj, m_obj->paletteUpdatedData);
-        }
+        if (msg->message != WM_SETTINGCHANGE && msg->message != WM_SYSCOLORCHANGE
+            && msg->message != WM_THEMECHANGED)
+            return false;
+
+        const bool highContrast = highContrastEnabled();
+        const bool refresh = msg->message == WM_SYSCOLORCHANGE || highContrast || m_highContrast
+            || (msg->message == WM_SETTINGCHANGE && msg->lParam
+                && !lstrcmpW(reinterpret_cast<LPCWSTR>(msg->lParam), L"ImmersiveColorSet"));
+        m_highContrast = highContrast;
+        if (refresh && m_obj->paletteUpdated)
+            m_obj->paletteUpdated(m_obj, m_obj->paletteUpdatedData);
         return false;
     }
 
@@ -71,6 +90,7 @@ private:
     vlc_qt_theme_provider_t* m_obj = nullptr;
 
     QSettings m_settings;
+    bool m_highContrast;
 };
 
 static void setQtColor(vlc_qt_theme_provider_t* obj,
@@ -101,6 +121,7 @@ static void setQtColorButton(vlc_qt_theme_provider_t* obj,
 {
     setQtColorBg(obj, CS, VQTC_NAME_PRIMARY, VQTC_STATE_NORMAL, COLOR_3DFACE);
     setQtColorFg(obj, CS, VQTC_NAME_PRIMARY, VQTC_STATE_NORMAL, COLOR_BTNTEXT);
+    setQtColorFg(obj, CS, VQTC_NAME_PRIMARY, VQTC_STATE_DISABLED, COLOR_GRAYTEXT);
     setQtColor(obj, CS, VQTC_SECTION_DECORATION, VQTC_NAME_BORDER, VQTC_STATE_NORMAL, COLOR_BTNTEXT);
 
     setQtColorBg(obj, CS, VQTC_NAME_PRIMARY, VQTC_STATE_HOVERED, COLOR_HIGHLIGHT);
@@ -120,14 +141,14 @@ static bool isThemeDark(vlc_qt_theme_provider_t* obj)
     return sys->isThemeDark();
 }
 
+static bool isHighContrast(vlc_qt_theme_provider_t* obj)
+{
+    return static_cast<WinColorSchemeObserver*>(obj->p_sys)->isHighContrast();
+}
+
 static int updatePalette(vlc_qt_theme_provider_t* obj)
 {
-    HIGHCONTRAST constrastInfo;
-    constrastInfo.cbSize = sizeof(HIGHCONTRAST);
-
-    bool ret = SystemParametersInfoA(SPI_GETHIGHCONTRAST, constrastInfo.cbSize, &constrastInfo, 0);
-
-    if (ret && ((constrastInfo.dwFlags & HCF_HIGHCONTRASTON) == HCF_HIGHCONTRASTON))
+    if (isHighContrast(obj))
     {
         //we must comply with the high contrast palette, only few color can be used
         //see https://learn.microsoft.com/en-us/windows/apps/design/accessibility/high-contrast-themes#contrast-colors
@@ -185,8 +206,9 @@ static int updatePalette(vlc_qt_theme_provider_t* obj)
         return VLC_SUCCESS;
     }
 
-    //use VLC palette, choose the one maching the dark/light settings
-    return VLC_EGENERIC;
+    // Use VLC's light or dark palette when the Windows app theme is known.
+    return static_cast<WinColorSchemeObserver*>(obj->p_sys)->hasAppThemeSetting()
+        ? VLC_EGENERIC : VLC_ENOTSUP;
 }
 
 static void Close(vlc_qt_theme_provider_t* obj)
@@ -201,12 +223,6 @@ int WindowsThemeProviderOpen(vlc_object_t* p_this)
 {
     vlc_qt_theme_provider_t* obj = (vlc_qt_theme_provider_t*)p_this;
 
-    QSettings settings(QLatin1String {WIN_THEME_SETTING_PATH}, QSettings::NativeFormat);
-    if (! settings.contains(WIN_THEME_SETTING_LIGHT_THEME_KEY))
-    {
-        //can't detect theme change, module is useless
-        return VLC_EGENERIC;
-    }
     auto observer = new (std::nothrow) WinColorSchemeObserver(obj);
     if (!observer)
         return VLC_EGENERIC;
@@ -215,5 +231,6 @@ int WindowsThemeProviderOpen(vlc_object_t* p_this)
     obj->close = Close;
     obj->isThemeDark = isThemeDark;
     obj->updatePalette = updatePalette;
+    obj->isHighContrast = isHighContrast;
     return VLC_SUCCESS;
 }

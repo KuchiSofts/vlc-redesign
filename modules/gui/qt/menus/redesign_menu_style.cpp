@@ -22,6 +22,7 @@
 #include "redesign_menu_style.hpp"
 
 #include "maininterface/mainctx.hpp"
+#include "style/systempalette.hpp"
 #include "util/color_scheme_model.hpp"
 #include "util/colorizedsvgicon.hpp"
 #include "util/redesign_icon_provider.hpp"
@@ -156,7 +157,10 @@ RedesignMenuStyle::RedesignMenuStyle(MainCtx *ctx)
         }
     };
     if (ctx)
+    {
         connect(ctx->getColorScheme(), &ColorSchemeModel::currentChanged, this, reframe);
+        connect(ctx, &MainCtx::contrastPaletteChanged, this, reframe);
+    }
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, reframe);
 }
 
@@ -184,7 +188,12 @@ void RedesignMenuStyle::setWindowBorder(QWindow *window, bool dark)
 #ifdef _WIN32
     if (!window || !window->handle())
         return;
-    const QColor border = windowBorder(dark);
+    const auto *ctx = s_ctx.data();
+    const auto *source = ctx && window == ctx->intfMainWindow() ? ctx->stylePalette() : nullptr;
+    const QColor border = source && source->highContrast()
+        ? source->getColor(ColorContext::View, ColorContext::Decoration,
+                           ColorContext::Border, ColorContext::Normal)
+        : windowBorder(dark);
     const COLORREF colour = RGB(border.red(), border.green(), border.blue());
     // older systems ignore it
     DwmSetWindowAttribute(reinterpret_cast<HWND>(window->winId()), 34 /* DWMWA_BORDER_COLOR */,

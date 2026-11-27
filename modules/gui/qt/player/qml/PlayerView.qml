@@ -54,7 +54,8 @@ FocusScope {
     }
 
     // Only applicable in video mode:
-    property bool displayFadeRectangles: !_controlsUnderVideo && (height > (implicitFadeRectangleHeight * 3))
+    property bool displayFadeRectangles: !VLCStyle.redesign.highContrast
+                                         && !_controlsUnderVideo && (height > (implicitFadeRectangleHeight * 3))
     property real implicitFadeRectangleHeight: VLCStyle.dp(206, VLCStyle.scale)
 
     // Private
@@ -642,6 +643,8 @@ FocusScope {
             anchors.fill: parent
 
             opacity: {
+                if (VLCStyle.redesign.highContrast)
+                    return 1.0
                 if (MainCtx.hasEmbededVideo && !MainCtx.pinVideoControls && !rootPlayer.displayFadeRectangles) {
                     return 0.6
                 } else if (MainCtx.intfMainWindow.visibility === Window.FullScreen && MainCtx.hasEmbededVideo) {
@@ -1077,6 +1080,8 @@ FocusScope {
                      || !MainCtx.hasEmbededVideo || MainCtx.pinVideoControls || !rootPlayer.displayFadeRectangles
 
             opacity: {
+                if (VLCStyle.redesign.highContrast)
+                    return 1.0
                 if (MainCtx.hasEmbededVideo && !MainCtx.pinVideoControls && !rootPlayer.displayFadeRectangles) {
                     return 0.6
                 } else if ((Window.visibility === Window.FullScreen) && MainCtx.hasEmbededVideo) {

@@ -77,10 +77,6 @@ extern "C" char **environ;
 #include <QOperatingSystemVersion>
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#include <d3d9.h>
-#include <memory>
-#include <mutex>
-#include <thread>
 #endif
 
 #include "qt.hpp"
@@ -1020,95 +1016,9 @@ static inline void registerMetaTypes()
     qRegisterMetaType<VLCDialog::QuestionType>();
 }
 
-#ifdef _WIN32
-/* Qt reads the description of the graphics card through Direct3D 9 when the
- * first window of the process is placed (QTBUG-50371: GpuDescription::detect()
- * from calcPosition()), on the interface thread, before the window shows. The
- * first Direct3D 9 of the process loads the card's driver and checks its
- * signature: 0.13 to 0.17 s of that thread with an NVIDIA driver (measured
- * with ETW), more on a busy PC. Made on a thread of its own from the start of
- * the interface thread (Qt's application, the settings, the fonts and the main
- * context come first), Qt's own Direct3D 9 then finds the driver loaded. Kept
- * until the main window is made. */
-class GpuDescriptionWarmUp
-{
-public:
-    GpuDescriptionWarmUp()
-    {
-        m_thread = std::thread([state = m_state]() {
-            vlc_thread_set_name( "vlc-qt-gpu" );
-            HMODULE library = ::LoadLibraryEx( TEXT("d3d9.dll"), nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32 );
-            IDirect3D9 *d3d9 = nullptr;
-            if( library )
-            {
-                typedef IDirect3D9 *(WINAPI *Direct3DCreate9FuncPtr)( UINT );
-                const auto create = reinterpret_cast<Direct3DCreate9FuncPtr>(
-                    GetProcAddress( library, "Direct3DCreate9" ) );
-                if( create )
-                    d3d9 = create( D3D_SDK_VERSION );
-                if( d3d9 )
-                {
-                    /* (what Qt asks of it) */
-                    D3DADAPTER_IDENTIFIER9 identifier;
-                    d3d9->GetAdapterIdentifier( 0, 0, &identifier );
-                }
-            }
-            std::lock_guard<std::mutex> guard( state->lock );
-            state->d3d9 = d3d9;
-            state->library = library;
-            if( state->released )
-                state->clear();
-        });
-    }
-
-    /* Qt's own has been made: the driver goes with the last of them */
-    void release()
-    {
-        std::lock_guard<std::mutex> guard( m_state->lock );
-        m_state->released = true;
-        m_state->clear();
-    }
-
-    ~GpuDescriptionWarmUp()
-    {
-        if( m_thread.joinable() )
-            m_thread.join();
-        release();
-    }
-
-private:
-    struct State
-    {
-        std::mutex lock;
-        IDirect3D9 *d3d9 = nullptr;
-        HMODULE library = nullptr;
-        bool released = false;
-
-        void clear()
-        {
-            if( d3d9 )
-            {
-                d3d9->Release();
-                d3d9 = nullptr;
-            }
-            if( library )
-            {
-                ::FreeLibrary( library );
-                library = nullptr;
-            }
-        }
-    };
-    const std::shared_ptr<State> m_state = std::make_shared<State>();
-    std::thread m_thread;
-};
-#endif
-
 static void *Thread( void *obj )
 {
     qt_intf_t *p_intf = (qt_intf_t *)obj;
-#ifdef _WIN32
-    GpuDescriptionWarmUp gpuWarmUp;
-#endif
     // (the start-up's steps in the log, from here: where a slow start goes)
     const vlc_tick_t threadStart = vlc_tick_now();
     const auto startupStep = [p_intf, threadStart]( const char *step ) {
@@ -1860,9 +1770,6 @@ static void *Thread( void *obj )
         }
 
         startupStep( "the main window made" );
-#ifdef _WIN32
-        gpuWarmUp.release();
-#endif
         if( auto *quickWindow = qobject_cast<QQuickWindow *>( p_intf->p_compositor->interfaceMainWindow() ) )
         {
             // (from the render thread: the log only)

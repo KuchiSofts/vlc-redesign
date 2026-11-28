@@ -77,6 +77,10 @@ extern "C" char **environ;
 #include <QOperatingSystemVersion>
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <d3d9.h>
+#include <memory>
+#include <mutex>
+#include <thread>
 #endif
 
 #include "qt.hpp"
@@ -1016,9 +1020,95 @@ static inline void registerMetaTypes()
     qRegisterMetaType<VLCDialog::QuestionType>();
 }
 
+#ifdef _WIN32
+/* Qt reads the description of the graphics card through Direct3D 9 when the
+ * first window of the process is placed (QTBUG-50371: GpuDescription::detect()
+ * from calcPosition()), on the interface thread, before the window shows. The
+ * first Direct3D 9 of the process loads the card's driver and checks its
+ * signature: 0.13 to 0.17 s of that thread with an NVIDIA driver (measured
+ * with ETW), more on a busy PC. Made on a thread of its own from the start of
+ * the interface thread (Qt's application, the settings, the fonts and the main
+ * context come first), Qt's own Direct3D 9 then finds the driver loaded. Kept
+ * until the main window is made. */
+class GpuDescriptionWarmUp
+{
+public:
+    GpuDescriptionWarmUp()
+    {
+        m_thread = std::thread([state = m_state]() {
+            vlc_thread_set_name( "vlc-qt-gpu" );
+            HMODULE library = ::LoadLibraryEx( TEXT("d3d9.dll"), nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32 );
+            IDirect3D9 *d3d9 = nullptr;
+            if( library )
+            {
+                typedef IDirect3D9 *(WINAPI *Direct3DCreate9FuncPtr)( UINT );
+                const auto create = reinterpret_cast<Direct3DCreate9FuncPtr>(
+                    GetProcAddress( library, "Direct3DCreate9" ) );
+                if( create )
+                    d3d9 = create( D3D_SDK_VERSION );
+                if( d3d9 )
+                {
+                    /* (what Qt asks of it) */
+                    D3DADAPTER_IDENTIFIER9 identifier;
+                    d3d9->GetAdapterIdentifier( 0, 0, &identifier );
+                }
+            }
+            std::lock_guard<std::mutex> guard( state->lock );
+            state->d3d9 = d3d9;
+            state->library = library;
+            if( state->released )
+                state->clear();
+        });
+    }
+
+    /* Qt's own has been made: the driver goes with the last of them */
+    void release()
+    {
+        std::lock_guard<std::mutex> guard( m_state->lock );
+        m_state->released = true;
+        m_state->clear();
+    }
+
+    ~GpuDescriptionWarmUp()
+    {
+        if( m_thread.joinable() )
+            m_thread.join();
+        release();
+    }
+
+private:
+    struct State
+    {
+        std::mutex lock;
+        IDirect3D9 *d3d9 = nullptr;
+        HMODULE library = nullptr;
+        bool released = false;
+
+        void clear()
+        {
+            if( d3d9 )
+            {
+                d3d9->Release();
+                d3d9 = nullptr;
+            }
+            if( library )
+            {
+                ::FreeLibrary( library );
+                library = nullptr;
+            }
+        }
+    };
+    const std::shared_ptr<State> m_state = std::make_shared<State>();
+    std::thread m_thread;
+};
+#endif
+
 static void *Thread( void *obj )
 {
     qt_intf_t *p_intf = (qt_intf_t *)obj;
+#ifdef _WIN32
+    GpuDescriptionWarmUp gpuWarmUp;
+#endif
     // (the start-up's steps in the log, from here: where a slow start goes)
     const vlc_tick_t threadStart = vlc_tick_now();
     const auto startupStep = [p_intf, threadStart]( const char *step ) {
@@ -1528,27 +1618,49 @@ static void *Thread( void *obj )
         if (graphicsApiValue.isValid() && Q_LIKELY(graphicsApiValue.canConvert<int>())
             && graphicsApiValue.toInt() != QSGRendererInterface::Software)
         {
+            // A cached valid graphics api is found, use it, now: before the
+            // main window is made. (It was set in the queued call below, which
+            // runs once the main loop has started: after the main window had
+            // been made with Qt's default api. And that call read this block's
+            // values by reference when they were gone: the check that keeps
+            // Direct3D 11 from being probed again read whatever was left there,
+            // and the probe made its second device at each start.)
+            const auto cachedApi = static_cast<QSGRendererInterface::GraphicsApi>(graphicsApiValue.toInt());
+            QQuickWindow::setGraphicsApi(cachedApi);
+            const bool rhiSoftware = p_intf->mainSettings->value(graphicsApiRhiSoftwareKey).value<bool>();
+            if (rhiSoftware)
+                enableRhiSoftwareRenderer();
+
+            if (cachedApi == QSGRendererInterface::OpenGL)
+            {
+                // The default format is needed before the main interface
+                // window's (`::create()`) is called. Since previous probe
+                // result succeeded with OpenGL and required version, we can
+                // assume that the there will be again a compatible OpenGL
+                // format, rather than storing and re-using the version
+                // (considering that it takes negligible time to re-create the
+                // compatible format):
+                if (const auto format = createCompatibleOpenGLFormat()) /* [[likely]] */
+                    QSurfaceFormat::setDefaultFormat(*format);
+            }
+
+#ifdef _WIN32
+            // Direct3D 11 on the hardware is the first choice of the probe:
+            // the window's own device checks it, and if that fails the scene
+            // graph error removes it for the next start (gracefulExitHandler).
+            // Probing again would make one more device, whose memory the
+            // driver keeps (about 14 MB).
+            const bool probeAgain = cachedApi != QSGRendererInterface::Direct3D11 || rhiSoftware;
+#else
+            const bool probeAgain = true;
+#endif
 
             //some part of the probing needs to be executed on the GUI thread and some part will be ran in a background thread,
             //so we defer the execution of this once the app is started. We can't start the task directly as qApp isn't set yet
             //and there are scenarios where the main loop will never be run.
-            QMetaObject::invokeMethod(&app, [&](){
-                // A cached (by then) valid graphics api is found, use it:
-                QQuickWindow::setGraphicsApi(static_cast<QSGRendererInterface::GraphicsApi>(graphicsApiValue.value<int>()));
-                const bool rhiSoftware = p_intf->mainSettings->value(graphicsApiRhiSoftwareKey).value<bool>();
-                if (rhiSoftware)
-                    enableRhiSoftwareRenderer();
-
-#ifdef _WIN32
-                // Direct3D 11 on the hardware is the first choice of the probe:
-                // the window's own device checks it, and if that fails the scene
-                // graph error removes it for the next start (gracefulExitHandler).
-                // Probing again would make one more device, whose memory the
-                // driver keeps (about 14 MB).
-                if (graphicsApiValue.toInt() == QSGRendererInterface::Direct3D11 && !rhiSoftware)
-                    return;
-#endif
-
+            // (what it needs is taken by value: it runs after this block)
+            if (probeAgain) {
+            QMetaObject::invokeMethod(&app, [settings = QPointer(p_intf->mainSettings)](){
                 // Asynchronous re-probe to see if the cached graphics api is still applicable.
                 // If not, QQuickWindow is going to emit scene graph error, and the application is
                 // likely going to terminate. However, when the user starts the application again
@@ -1575,7 +1687,7 @@ static void *Thread( void *obj )
                 };
 
                 const auto rhiProbeTask = QPointer(new RhiProbeTask);
-                QObject::connect(rhiProbeTask, &BaseAsyncTask::result, qApp, [rhiProbeTask, settings = QPointer(p_intf->mainSettings)]() {
+                QObject::connect(rhiProbeTask, &BaseAsyncTask::result, qApp, [rhiProbeTask, settings]() {
                     // We can not use `QQuickWindow::setGraphicsApi()` here, as QQuickWindow
                     // may have already tried to initialize the scene graph hence rhi. If the
                     // cached graphics api is not optimal or not available anymore, the next
@@ -1597,21 +1709,9 @@ static void *Thread( void *obj )
                 const auto globalThreadPool = QThreadPool::globalInstance();
                 assert(globalThreadPool);
 
-                if (graphicsApiValue.toInt() == QSGRendererInterface::OpenGL)
-                {
-                    // Due to asynchronous probing, we need to set the default
-                    // format before the main interface window's (`::create()`)
-                    // is called. Since previous probe result succeeded with
-                    // OpenGL and required version, we can assume that the there
-                    // will be again a compatible OpenGL format, rather than
-                    // storing and re-using the version (considering that it
-                    // takes negligible time to re-create the compatible format):
-                    if (const auto format = createCompatibleOpenGLFormat()) /* [[likely]] */
-                        QSurfaceFormat::setDefaultFormat(*format);
-                }
-
                 rhiProbeTask->start(*globalThreadPool, -1);
             }, Qt::QueuedConnection);
+            }
         }
         else
         {
@@ -1760,6 +1860,9 @@ static void *Thread( void *obj )
         }
 
         startupStep( "the main window made" );
+#ifdef _WIN32
+        gpuWarmUp.release();
+#endif
         if( auto *quickWindow = qobject_cast<QQuickWindow *>( p_intf->p_compositor->interfaceMainWindow() ) )
         {
             // (from the render thread: the log only)

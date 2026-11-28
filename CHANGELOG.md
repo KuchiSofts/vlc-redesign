@@ -43,6 +43,8 @@ power cut. The light theme's lists are readable again and the start-up busy curs
 - **Settings' equalizer** follows the light theme and your accent colour.
 - **No more busy cursor at start (Windows)**, nor for five seconds at each song with waveforms on
   ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
+- **Faster start on Windows**: one graphics device instead of two at each start, the graphics choice made last time
+  is used for the window again, and the graphics card's driver loads while the interface is made.
 - **Windows updates survive a power cut** in the middle, and an update missing a file is never half applied.
 - **A cast paused for over an hour** keeps going on Samsung TVs.
 - **Android: adding a subtitle from a link** no longer closes the app on Android 5 and 6.

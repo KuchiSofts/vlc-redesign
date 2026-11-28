@@ -239,7 +239,8 @@ SettingsSectionTitle {
         text: qsTr("Languages to search")
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignLeft
-        color: root.c("#B8B8B8")
+        // (light: the dark text of the other headings, #266: it stayed light grey)
+        color: root.c("#B8B8B8", "#2E2E2E")
         font.family: VLCStyle.redesign.fontFamily
         font.pixelSize: root.px(15)
         font.weight: Font.Medium

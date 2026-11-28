@@ -5931,6 +5931,10 @@ msgstr "ezin izan da kateen zerrenda irakurri"
 msgid "this link is a single stream, not a list of channels"
 msgstr "esteka hau jario bakarra da, ez kateen zerrenda"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Gidarik ez"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "zerbitzariak sarbidea ukatu du (%1)"
@@ -6021,10 +6025,6 @@ msgstr "Orain emititzen"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Gidaren IDa…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Gidarik ez"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

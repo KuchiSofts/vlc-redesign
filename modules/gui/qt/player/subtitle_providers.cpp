@@ -12,6 +12,7 @@
 
 #include "subtitle_providers.hpp"
 #include "subtitle_services.hpp"
+#include "subtitle_cues_parser.hpp"
 
 #include <QDateTime>
 #include <QFileInfo>
@@ -316,8 +317,10 @@ QString parseOpenSubtitles(const QByteArray &body, QList<Result> &results, QSet<
         if (language.isEmpty())
             language = SubtitlePreferences::normalize(text("ISO639"));
         const QUrl url(text("SubDownloadLink"));
+        // (its own host or one of its: "evilopensubtitles.org" ended the same)
+        const QString host = url.host().toLower();
         if (language.isEmpty() || url.scheme() != QLatin1String("https")
-            || !url.host().endsWith(QLatin1String("opensubtitles.org")))
+            || (host != QLatin1String("opensubtitles.org") && !host.endsWith(QLatin1String(".opensubtitles.org"))))
             continue;
         seen.insert(id);
         Result r;
@@ -327,7 +330,7 @@ QString parseOpenSubtitles(const QByteArray &body, QList<Result> &results, QSet<
         r.fileName = text("SubFileName");
         r.release = text("MovieReleaseName");
         // the uploaders' decorations ("* <a note> * The Matrix…")
-        r.release.remove(QRegularExpression(QStringLiteral(R"(^[\s*\-:.|]+|[\s*\-:.|]+$)")));
+        r.release = cleanRelease(r.release);
         if (r.release.isEmpty())
             r.release = QFileInfo(r.fileName).completeBaseName();
         r.url = url;
@@ -2186,6 +2189,11 @@ QByteArray subtitleOf(const QByteArray &download, const Result &result, const QS
         for (const auto &file : files)
         {
             if (!isSubtitleName(file.first) || file.second.isEmpty())
+                continue;
+            // a ".txt" only when it holds subtitles (the archive's readme or an
+            // advert in plain UTF-8 won over a .srt in another encoding)
+            if (file.first.endsWith(QLatin1String(".txt"), Qt::CaseInsensitive)
+                && subtitlecues::parse(std::string(file.second.constData(), size_t(file.second.size()))).empty())
                 continue;
             const QString entry = simplified(QFileInfo(file.first).completeBaseName());
             double score = validUtf8(file.second) ? 5. : 0.;

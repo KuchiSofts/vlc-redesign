@@ -5823,6 +5823,10 @@ msgstr "채널 목록을 읽을 수 없습니다"
 msgid "this link is a single stream, not a list of channels"
 msgstr "이 링크는 채널 목록이 아니라 단일 스트림입니다"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "편성표 없음"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "서버가 접근을 거부했습니다 (%1)"
@@ -5910,10 +5914,6 @@ msgstr "현재 방송 정보"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "편성표 ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "편성표 없음"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

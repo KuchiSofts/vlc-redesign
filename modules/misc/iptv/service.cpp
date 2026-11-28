@@ -1221,7 +1221,20 @@ bool Service::loadPlaylist(const SourceConfig& cfg, bool download, SourceState& 
         return false;
     }
     state.channels = std::move(list.channels);
-    state.headerGuides = list.guideUrls;
+    // the guides the playlist names (url-tvg) are fetched by themselves: web
+    // addresses only, and a file of this computer only for a playlist of this
+    // computer, never on another one (a network path or file://server link
+    // would have Windows sign in to that server by itself)
+    const bool localList = QUrl(asUrl(cfg.url)).isLocalFile();
+    state.headerGuides.clear();
+    for (const QString& g : list.guideUrls)
+    {
+        const QUrl u(asUrl(g));
+        const QString scheme = u.scheme().toLower();
+        if (scheme == QLatin1String("http") || scheme == QLatin1String("https")
+            || (localList && u.isLocalFile() && u.host().isEmpty()))
+            state.headerGuides << g;
+    }
     state.playlistUpdated = QFileInfo(path).lastModified().toSecsSinceEpoch();
     return true;
 }
@@ -1476,6 +1489,20 @@ void Service::loadGuides(bool download, const QStringList& onlySources, bool for
             QFile::remove(dir.filePath(name));
         }
     }
+
+    // The logos no row asked for in two months (a list whose logo links carry
+    // a token that changes, channels gone): kept for ever, the folder grew
+    // without end. One asked again is downloaded again.
+    const QDir logos(m_cacheDir + QStringLiteral("/logos"));
+    int removed = 0;
+    for (const QString& name : logos.entryList(QDir::Files))
+    {
+        const qint64 age = ageOf(logos.filePath(name));
+        if (age > 60 * 24 * 3600)
+            removed += QFile::remove(logos.filePath(name)) ? 1 : 0;
+    }
+    if (removed > 0)
+        m_host.debug(QStringLiteral("%1 logos not used in two months removed").arg(removed));
 }
 
 void Service::rebuild()

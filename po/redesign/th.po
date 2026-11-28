@@ -5767,6 +5767,10 @@ msgstr "ไม่สามารถอ่านรายชื่อช่อง
 msgid "this link is a single stream, not a list of channels"
 msgstr "ลิงก์นี้เป็นสตรีมเดียว ไม่ใช่รายชื่อช่อง"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "ไม่มีแนะนำรายการ"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "เซิร์ฟเวอร์ปฏิเสธการเข้าถึง (%1)"
@@ -5854,10 +5858,6 @@ msgstr "กำลังออกอากาศ"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID แนะนำรายการ…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "ไม่มีแนะนำรายการ"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

@@ -5889,6 +5889,10 @@ msgstr "die lys kanale kon nie gelees word nie"
 msgid "this link is a single stream, not a list of channels"
 msgstr "hierdie skakel is 'n enkele stroom, nie 'n lys kanale nie"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Geen gids"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "die bediener het toegang geweier (%1)"
@@ -5979,10 +5983,6 @@ msgstr "Wat speel nou"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Gids-ID…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Geen gids"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

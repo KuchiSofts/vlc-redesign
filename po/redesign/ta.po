@@ -5876,6 +5876,10 @@ msgstr "அலைவரிசைகளின் பட்டியலைப் �
 msgid "this link is a single stream, not a list of channels"
 msgstr "இந்த இணைப்பு ஒரே ஓடை, அலைவரிசைகளின் பட்டியல் அல்ல"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "வழிகாட்டி இல்லை"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "சேவையகம் அணுகலை மறுத்தது (%1)"
@@ -5965,10 +5969,6 @@ msgstr "இப்போது ஒளிபரப்பில்"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "வழிகாட்டி அடையாளம்…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "வழிகாட்டி இல்லை"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

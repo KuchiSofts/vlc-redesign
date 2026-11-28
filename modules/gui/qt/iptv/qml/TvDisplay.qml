@@ -180,6 +180,7 @@ Widgets.PageExt {
                                      .color2(VLCStyle.redesign.accent).uri()
             }
             Text {
+                textFormat: Text.PlainText
                 width: parent.width
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Watch TV in VLC")
@@ -189,6 +190,7 @@ Widgets.PageExt {
                 font.weight: Font.Medium
             }
             Text {
+                textFormat: Text.PlainText
                 width: parent.width
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
@@ -238,6 +240,7 @@ Widgets.PageExt {
 
         // what the add-on is doing (a guide of 30 MB takes a while)
         Text {
+            textFormat: Text.PlainText
             id: statusText
             readonly property var _busySource: Iptv.sources.find(s => s.busy) ?? null
             readonly property var _failed: Iptv.sources.find(s => s.error && s.error.length > 0 && s.channels === 0) ?? null

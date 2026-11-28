@@ -29,6 +29,7 @@
 
 #include <algorithm>
 #include <atomic>
+#include <cmath>
 #include <deque>
 #include <new>
 #include <vector>
@@ -1994,6 +1995,10 @@ vlc_tick_t MediaRenderer::GetPosition(vlc_tick_t *resolution)
     unsigned hours, minutes;
     double seconds;
     if (sscanf(rel_time.c_str(), "%u:%u:%lf", &hours, &minutes, &seconds) != 3)
+        return VLC_TICK_INVALID;
+    /* (a time a clock can show: a huge, infinite or "nan" one of a faulty TV
+     * gave a tick out of range, and froze the picture shown here too) */
+    if (!std::isfinite(seconds) || seconds < 0 || seconds >= 60 || minutes >= 60 || hours > 99)
         return VLC_TICK_INVALID;
     *resolution = VLC_TICK_FROM_SEC(1);
     const size_t dot = rel_time.find('.');

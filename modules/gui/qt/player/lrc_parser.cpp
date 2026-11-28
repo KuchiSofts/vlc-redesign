@@ -110,8 +110,9 @@ QList<Line> parse(const QString &text)
             const qsizetype end = line.indexOf(u']');
             bool ok = false;
             const qint64 value = line.mid(8, end - 8).trimmed().toLongLong(&ok);
+            // (a day at most: a huge one overflowed the times it is taken from)
             if (end > 8 && ok)
-                offset = value;
+                offset = std::clamp<qint64>(value, -86400000, 86400000);
             continue;
         }
 
@@ -130,9 +131,15 @@ QList<Line> parse(const QString &text)
             continue; // [ar:], [ti:]...
 
         const QString words = withoutWordTimes(line.mid(pos)).trimmed();
+        // (the limit within a line too: one line of 150,000 time tags made as
+        // many lines, each a text item of the lyrics view)
         for (const qint64 ms : times)
+        {
+            if (lines.size() >= 20000)
+                break;
             lines.append({ ms, words });
-        if (lines.size() > 20000)
+        }
+        if (lines.size() >= 20000)
             break;
     }
     for (Line &l : lines)

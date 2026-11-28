@@ -5809,6 +5809,10 @@ msgstr "לא ניתן היה לקרוא את רשימת הערוצים"
 msgid "this link is a single stream, not a list of channels"
 msgstr "הקישור הזה הוא שידור יחיד, לא רשימת ערוצים"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "אין מדריך"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp
 msgid "the server refused access (%1)"
 msgstr "השרת סירב לתת גישה (%1)"
@@ -5902,10 +5906,6 @@ msgstr "מה משודר"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "מזהה מדריך…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "אין מדריך"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

@@ -5844,6 +5844,10 @@ msgstr "ചാനലുകളുടെ പട്ടിക വായിക്ക�
 msgid "this link is a single stream, not a list of channels"
 msgstr "ഈ ലിങ്ക് ഒരൊറ്റ സ്ട്രീം ആണ്, ചാനലുകളുടെ പട്ടികയല്ല"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "ഗൈഡ് ഇല്ല"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "സെർവർ പ്രവേശനം നിരസിച്ചു (%1)"
@@ -5933,10 +5937,6 @@ msgstr "ഇപ്പോൾ എന്താണ്"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ഗൈഡ് ഐഡി…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "ഗൈഡ് ഇല്ല"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

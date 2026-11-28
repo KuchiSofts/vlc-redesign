@@ -250,6 +250,8 @@ ColumnLayout {
         }
         Text {
             Layout.fillWidth: true
+            // (a title from Wikidata, a service's own message: never markup)
+            textFormat: Text.PlainText
             text: {
                 if (root._downloadError !== "")
                     return root._downloadError
@@ -355,7 +357,8 @@ ColumnLayout {
             acceptedButtons: Qt.NoButton
         }
         T.ToolTip.visible: servicesHover.containsMouse && servicesLine.asked.some(s => s.error !== "")
-        T.ToolTip.text: servicesLine.asked.filter(s => s.error !== "").map(s => s.error).join("\n")
+        // (a service's own message: no "<" or ">" the tooltip could take for markup)
+        T.ToolTip.text: servicesLine.asked.filter(s => s.error !== "").map(s => s.error.replace(/[<>]/g, "")).join("\n")
     }
 
     // The title of the video, when the search took it for another one
@@ -809,6 +812,7 @@ ColumnLayout {
                 }
                 Text {
                     Layout.fillWidth: true
+                    textFormat: Text.PlainText
                     visible: row.detail !== "" || row.marker !== ""
                     text: row.marker !== "" ? (row.detail !== "" ? row.detail + " · " + row.marker : row.marker)
                                             : row.detail

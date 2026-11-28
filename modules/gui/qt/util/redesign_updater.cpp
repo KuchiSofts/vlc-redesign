@@ -17,6 +17,7 @@
 #include <QDateTime>
 #include <QDesktopServices>
 #include <QDir>
+#include <QDirIterator>
 #include <QElapsedTimer>
 #include <QFile>
 #include <QSaveFile>
@@ -91,11 +92,9 @@ const char keySkipped[] = "redesign/update-skip";
 // each step of a download (a stalled read ends it), and the whole of it
 constexpr int downloadStepMs = 30 * 1000;
 constexpr int downloadDeadlineMs = 30 * 60 * 1000;
-// The first release whose SHA256SUMS.txt is signed with the project's key
-// (SHA256SUMS.txt.sig, redesign_update_key.h): from it on, a release whose
-// checksums don't carry a good signature is never installed. The releases
-// before it have no signature.
-const char FIRST_SIGNED_VERSION[] = "0.4.0";
+// Every release's SHA256SUMS.txt is signed with the project's key
+// (SHA256SUMS.txt.sig, redesign_update_key.h) since 0.4.0: a release whose
+// checksums don't carry a good signature is never installed.
 const char sumsName[] = "SHA256SUMS.txt";
 const char sumsSignatureName[] = "SHA256SUMS.txt.sig";
 // The files of this build's architecture (docs/MASTER-PLAN.md, 13.5): an
@@ -252,8 +251,9 @@ bool hasOwnPackage(const QJsonObject &release)
 #endif
 }
 
-#ifndef NDEBUG
-// for testing updates against a local server, not GitHub (debug builds only)
+#if !defined(NDEBUG) && defined(VLC_REDESIGN_UPDATE_TEST_SERVER)
+// for testing updates against a local server, not GitHub: only in a build
+// made for it (VLC_REDESIGN_UPDATE_TEST_SERVER defined), never a release
 QString testApi()
 {
     return QString::fromUtf8(qgetenv("VLC_REDESIGN_UPDATE_API"));
@@ -272,7 +272,7 @@ bool trustedUrl(const QString &address)
         && url.path().startsWith(QLatin1String("/" VLC_REDESIGN_REPO "/releases/download/"), Qt::CaseInsensitive)
         && !url.path().contains(QLatin1String("/../")))
         return true;
-#ifndef NDEBUG
+#if !defined(NDEBUG) && defined(VLC_REDESIGN_UPDATE_TEST_SERVER)
     // the test server's own files
     const QUrl api(testApi());
     return !api.host().isEmpty() && url.scheme() == api.scheme() && url.host() == api.host()
@@ -341,12 +341,13 @@ QString trustedSigner(const QString &path)
 }
 #endif
 
-// Whether a release must come with signed checksums: from the first signed
-// one on. (Every build of this version or later only updates to such a
-// release; the older targets keep the checks they had.)
-bool signatureRequired(const QString &version)
+// Whether a release must come with signed checksums: always. Every release
+// from 0.4.0 on has them, and a copy only updates to a newer one. (By the
+// release's version, an old tag offered as an update, with a version taken
+// from the test switches, was installed without its signature.)
+bool signatureRequired(const QString &)
 {
-    return !RedesignUpdater::versionLess(version, QLatin1String(FIRST_SIGNED_VERSION));
+    return true;
 }
 
 // SHA256SUMS.txt checked against its signature by the key the app carries:
@@ -500,10 +501,20 @@ QString sha256Hex(const QByteArray &data)
 // the user's data
 bool safeRelativePath(const QString &path)
 {
-    return !path.isEmpty() && !path.contains(QLatin1String("..")) && !path.contains(':')
-           && !path.startsWith('/') && !path.startsWith('\\')
-           && !path.startsWith(QLatin1String("portable"), Qt::CaseInsensitive)
-           && !path.startsWith(QLatin1String(".update"), Qt::CaseInsensitive);
+    if (path.isEmpty() || path.contains(QLatin1String("..")) || path.contains(':')
+        || path.startsWith('/') || path.startsWith('\\'))
+        return false;
+    // each part of it: none empty or ".", no short 8.3 name ("PORTAB~1"), none
+    // ending in a dot or a space (Windows reads those as another name), so the
+    // first part really is not the user's data nor the update's own files
+    // ("./portable/vlcrc" passed a check of the start alone)
+    const QStringList parts = QString(path).replace('\\', '/').split('/');
+    for (const QString &part : parts)
+        if (part.isEmpty() || part == QLatin1String(".") || part.contains('~')
+            || part.endsWith('.') || part.endsWith(' '))
+            return false;
+    return !parts.first().startsWith(QLatin1String("portable"), Qt::CaseInsensitive)
+           && !parts.first().startsWith(QLatin1String(".update"), Qt::CaseInsensitive);
 }
 
 // A file whole on the disk before it has its name: QSaveFile writes a
@@ -526,6 +537,16 @@ bool writeDurably(const QString &path, const QByteArray &data,
 // of it, so the update can replace it too. Run once now, on the worker
 // thread (it returns at once without arguments): Windows may check a new
 // program for seconds when it first runs, better now than on Restart.
+#ifdef _WIN32
+// A helper without a window: no "busy" pointer while it runs (#266)
+void noStartFeedback(QProcess &process)
+{
+    process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments *arguments) {
+        arguments->startupInfo->dwFlags |= STARTF_FORCEOFFFEEDBACK;
+    });
+}
+#endif
+
 bool prepareHelper(const QString &dir)
 {
     const QString helper = dir + QStringLiteral("/.update/vlc-redesign-update.exe");
@@ -535,6 +556,9 @@ bool prepareHelper(const QString &dir)
     if (!source.open(QIODevice::ReadOnly) || !writeDurably(helper, source.readAll()))
         return false;
     QProcess probe;
+#ifdef _WIN32
+    noStartFeedback(probe);
+#endif
     probe.start(helper, {});
     probe.waitForFinished(30000);
     return true;
@@ -968,7 +992,7 @@ void RedesignUpdater::check(bool manual)
     msg_Dbg(m_intf, "update check (%s): asking GitHub for its releases",
             manual ? "asked" : "daily");
     QString url = QString::fromLatin1(releasesApi);
-#ifndef NDEBUG
+#if !defined(NDEBUG) && defined(VLC_REDESIGN_UPDATE_TEST_SERVER)
     if (!testApi().isEmpty())
         url = testApi();
 #endif
@@ -1566,6 +1590,19 @@ QString RedesignUpdater::stageFinish(const QString &dir, const QString &version,
         removeTree(staged);
         return publisher;
     }
+    // The list of the stage, each file with its size ("size<tab>path"): the
+    // helper puts nothing in place unless every one of them is there as it
+    // was written, and no other (an antivirus that took one away later left
+    // the update half applied)
+    QStringList manifest;
+    QDirIterator it(staged, QDir::Files | QDir::Hidden | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        const QFileInfo file(it.next());
+        manifest << QStringLiteral("%1\t%2").arg(file.size())
+                        .arg(QDir::toNativeSeparators(QDir(staged).relativeFilePath(file.filePath())));
+    }
+    if (!writeDurably(work + QStringLiteral("/manifest.txt"), manifest.join('\n').toUtf8()))
+        return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     if (!prepareHelper(dir))
         return qtr("The update can't be written in %1.").arg(QDir::toNativeSeparators(dir));
     // last: the update is complete. Every file above is on the disk by now
@@ -1611,6 +1648,26 @@ void RedesignUpdater::findStagedUpdate()
         });
     };
     QFile ready(appDir() + QStringLiteral("/.update/ready.txt"));
+#ifdef _WIN32
+    // The helper's journal of a run cut off in the middle (a power cut,
+    // Windows shutting down while it ran): VLC may be half old, half new,
+    // and reads as the new version. Nothing of the update is removed: the
+    // helper runs at quit and puts VLC back as it was (the update is then
+    // downloaded again). As it was, the update was taken for done and its
+    // backup deleted.
+    if (QFileInfo::exists(appDir() + QStringLiteral("/.update/applying.txt"))
+        && QFileInfo::exists(appDir() + QStringLiteral("/.update/vlc-redesign-update.exe"))) {
+        QString version;
+        if (ready.open(QIODevice::ReadOnly)) {
+            version = QString::fromUtf8(ready.readAll()).trimmed();
+            ready.close();
+        }
+        msg_Warn(m_intf, "an update was cut off in the middle: it is undone when VLC quits");
+        m_latestVersion = version.isEmpty() ? currentVersion() : version;
+        m_state = Ready;
+        return;
+    }
+#endif
     if (!ready.open(QIODevice::ReadOnly)) {
         // the helper of the last update, done
         QFile::remove(appDir() + QStringLiteral("/.update/vlc-redesign-update.exe"));
@@ -1721,7 +1778,16 @@ bool RedesignUpdater::launchHelper(bool relaunch)
                 args << QStringLiteral("--time") << QString::number(seconds);
         }
     }
+#ifdef _WIN32
+    QProcess launcher;
+    launcher.setProgram(helper);
+    launcher.setArguments(args);
+    launcher.setWorkingDirectory(dir);
+    noStartFeedback(launcher);
+    m_helperStarted = launcher.startDetached();
+#else
     m_helperStarted = QProcess::startDetached(helper, args, dir);
+#endif
     if (m_helperStarted)
         msg_Dbg(m_intf, "update to %s: put in place once VLC has quit", qtu(m_latestVersion));
     else
@@ -1770,7 +1836,8 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
         // (runInBackground). Its answer is dropped if the updater is gone.
         // (log: what the macOS helper said, for the debug log; inPlace: it
         // could not prepare the update on this Mac, the download is offered)
-        struct Saved { QString error, path, log; bool inPlaceFailed = false; };
+        // (lock: the installer's file held open until it has started, Windows)
+        struct Saved { QString error, path, log; bool inPlaceFailed = false; void *lock = nullptr; };
         auto saved = std::make_shared<Saved>();
         const QByteArray body = response.body;
         const QString name = m_installerName;
@@ -1805,6 +1872,30 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 if (dir.isEmpty() || !writeDurably(saved->path, body)) {
                     saved->error = qtr("The installer couldn't be saved to %1.").arg(QDir::toNativeSeparators(dir));
                 } else {
+#ifdef _WIN32
+                    // Kept open, others only reading it, until it has started,
+                    // and its checksum read again through that handle: the file
+                    // checked is the one run (it is saved in a folder of the
+                    // user's, where another program could have swapped it)
+                    const std::wstring native = QDir::toNativeSeparators(saved->path).toStdWString();
+                    HANDLE lock = CreateFileW(native.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr,
+                                              OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+                    QByteArray again;
+                    if (lock != INVALID_HANDLE_VALUE) {
+                        char chunk[64 * 1024];
+                        DWORD read = 0;
+                        while (ReadFile(lock, chunk, sizeof(chunk), &read, nullptr) && read > 0)
+                            again.append(chunk, int(read));
+                    }
+                    if (lock == INVALID_HANDLE_VALUE || sha256Hex(again) != expectedSha256) {
+                        if (lock != INVALID_HANDLE_VALUE)
+                            CloseHandle(lock);
+                        QFile::remove(saved->path);
+                        saved->error = qtr("The downloaded installer doesn't match its checksum, so it wasn't run.");
+                        return;
+                    }
+                    saved->lock = lock;
+#endif
                     saved->error = publisherMismatch(saved->path);
                     if (!saved->error.isEmpty())
                         QFile::remove(saved->path);
@@ -1880,6 +1971,12 @@ void RedesignUpdater::downloadInstaller(const QString &expectedSha256)
                 setState(Failed, saved->error);
             else
                 launchInstaller(saved->path);
+#ifdef _WIN32
+            // (it has started, or won't: no longer held)
+            if (saved->lock)
+                CloseHandle(static_cast<HANDLE>(saved->lock));
+            saved->lock = nullptr;
+#endif
         });
     });
 }

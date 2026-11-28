@@ -1528,27 +1528,49 @@ static void *Thread( void *obj )
         if (graphicsApiValue.isValid() && Q_LIKELY(graphicsApiValue.canConvert<int>())
             && graphicsApiValue.toInt() != QSGRendererInterface::Software)
         {
+            // A cached valid graphics api is found, use it, now: before the
+            // main window is made. (It was set in the queued call below, which
+            // runs once the main loop has started: after the main window had
+            // been made with Qt's default api. And that call read this block's
+            // values by reference when they were gone: the check that keeps
+            // Direct3D 11 from being probed again read whatever was left there,
+            // and the probe made its second device at each start.)
+            const auto cachedApi = static_cast<QSGRendererInterface::GraphicsApi>(graphicsApiValue.toInt());
+            QQuickWindow::setGraphicsApi(cachedApi);
+            const bool rhiSoftware = p_intf->mainSettings->value(graphicsApiRhiSoftwareKey).value<bool>();
+            if (rhiSoftware)
+                enableRhiSoftwareRenderer();
+
+            if (cachedApi == QSGRendererInterface::OpenGL)
+            {
+                // The default format is needed before the main interface
+                // window's (`::create()`) is called. Since previous probe
+                // result succeeded with OpenGL and required version, we can
+                // assume that the there will be again a compatible OpenGL
+                // format, rather than storing and re-using the version
+                // (considering that it takes negligible time to re-create the
+                // compatible format):
+                if (const auto format = createCompatibleOpenGLFormat()) /* [[likely]] */
+                    QSurfaceFormat::setDefaultFormat(*format);
+            }
+
+#ifdef _WIN32
+            // Direct3D 11 on the hardware is the first choice of the probe:
+            // the window's own device checks it, and if that fails the scene
+            // graph error removes it for the next start (gracefulExitHandler).
+            // Probing again would make one more device, whose memory the
+            // driver keeps (about 14 MB).
+            const bool probeAgain = cachedApi != QSGRendererInterface::Direct3D11 || rhiSoftware;
+#else
+            const bool probeAgain = true;
+#endif
 
             //some part of the probing needs to be executed on the GUI thread and some part will be ran in a background thread,
             //so we defer the execution of this once the app is started. We can't start the task directly as qApp isn't set yet
             //and there are scenarios where the main loop will never be run.
-            QMetaObject::invokeMethod(&app, [&](){
-                // A cached (by then) valid graphics api is found, use it:
-                QQuickWindow::setGraphicsApi(static_cast<QSGRendererInterface::GraphicsApi>(graphicsApiValue.value<int>()));
-                const bool rhiSoftware = p_intf->mainSettings->value(graphicsApiRhiSoftwareKey).value<bool>();
-                if (rhiSoftware)
-                    enableRhiSoftwareRenderer();
-
-#ifdef _WIN32
-                // Direct3D 11 on the hardware is the first choice of the probe:
-                // the window's own device checks it, and if that fails the scene
-                // graph error removes it for the next start (gracefulExitHandler).
-                // Probing again would make one more device, whose memory the
-                // driver keeps (about 14 MB).
-                if (graphicsApiValue.toInt() == QSGRendererInterface::Direct3D11 && !rhiSoftware)
-                    return;
-#endif
-
+            // (what it needs is taken by value: it runs after this block)
+            if (probeAgain) {
+            QMetaObject::invokeMethod(&app, [settings = QPointer(p_intf->mainSettings)](){
                 // Asynchronous re-probe to see if the cached graphics api is still applicable.
                 // If not, QQuickWindow is going to emit scene graph error, and the application is
                 // likely going to terminate. However, when the user starts the application again
@@ -1575,7 +1597,7 @@ static void *Thread( void *obj )
                 };
 
                 const auto rhiProbeTask = QPointer(new RhiProbeTask);
-                QObject::connect(rhiProbeTask, &BaseAsyncTask::result, qApp, [rhiProbeTask, settings = QPointer(p_intf->mainSettings)]() {
+                QObject::connect(rhiProbeTask, &BaseAsyncTask::result, qApp, [rhiProbeTask, settings]() {
                     // We can not use `QQuickWindow::setGraphicsApi()` here, as QQuickWindow
                     // may have already tried to initialize the scene graph hence rhi. If the
                     // cached graphics api is not optimal or not available anymore, the next
@@ -1597,21 +1619,9 @@ static void *Thread( void *obj )
                 const auto globalThreadPool = QThreadPool::globalInstance();
                 assert(globalThreadPool);
 
-                if (graphicsApiValue.toInt() == QSGRendererInterface::OpenGL)
-                {
-                    // Due to asynchronous probing, we need to set the default
-                    // format before the main interface window's (`::create()`)
-                    // is called. Since previous probe result succeeded with
-                    // OpenGL and required version, we can assume that the there
-                    // will be again a compatible OpenGL format, rather than
-                    // storing and re-using the version (considering that it
-                    // takes negligible time to re-create the compatible format):
-                    if (const auto format = createCompatibleOpenGLFormat()) /* [[likely]] */
-                        QSurfaceFormat::setDefaultFormat(*format);
-                }
-
                 rhiProbeTask->start(*globalThreadPool, -1);
             }, Qt::QueuedConnection);
+            }
         }
         else
         {

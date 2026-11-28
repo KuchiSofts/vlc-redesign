@@ -6003,6 +6003,10 @@ msgstr "cha b' urrainn dhuinn liosta nan seanailean a leughadh"
 msgid "this link is a single stream, not a list of channels"
 msgstr "'s e sruth singilte a tha sa cheangal seo, chan e liosta sheanailean"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Gun treòir"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "dhiùlt am frithealaiche inntrigeadh (%1)"
@@ -6098,10 +6102,6 @@ msgstr "Na tha a' dol"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID na treòrach…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Gun treòir"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

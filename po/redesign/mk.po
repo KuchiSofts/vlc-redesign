@@ -5923,6 +5923,10 @@ msgstr "листата на канали не може да се прочита"
 msgid "this link is a single stream, not a list of channels"
 msgstr "оваа врска е еден пренос, а не листа на канали"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Нема водич"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "серверот го одби пристапот (%1)"
@@ -6012,10 +6016,6 @@ msgstr "Што се емитува"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID на водичот…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Нема водич"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

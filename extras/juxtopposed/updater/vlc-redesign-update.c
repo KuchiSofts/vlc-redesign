@@ -35,6 +35,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <shellapi.h>
+#include <tlhelp32.h>
+#include <io.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -122,6 +124,13 @@ static BOOL exists(const wchar_t *path)
 static void remove_tree(const wchar_t *dir)
 {
     wchar_t pattern[MAX_PATH], path[MAX_PATH];
+    /* a junction or a link is removed itself, never what it points to (a
+     * junction in place of the backup folder had its target's files deleted) */
+    const DWORD attributes = GetFileAttributesW(dir);
+    if (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_REPARSE_POINT)) {
+        RemoveDirectoryW(dir);
+        return;
+    }
     if (!join(pattern, dir, L"*"))
         return;
     WIN32_FIND_DATAW fd;
@@ -132,7 +141,12 @@ static void remove_tree(const wchar_t *dir)
                 continue;
             if (!join(path, dir, fd.cFileName))
                 continue;
-            if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            if (fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
+                if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+                    RemoveDirectoryW(path);
+                else
+                    DeleteFileW(path);
+            } else if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
                 remove_tree(path);
             else {
                 SetFileAttributesW(path, FILE_ATTRIBUTE_NORMAL);
@@ -168,6 +182,10 @@ static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, in
                 continue;
         } else
             wcsncpy(sub, fd.cFileName, MAX_PATH);
+        /* (a junction or a link in a staged update is not followed: only
+         * real files of the stage are listed) */
+        if (fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT)
+            continue;
         if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
             count = list_files(base, sub, out, count);
         else if (count < MAX_FILES)
@@ -180,6 +198,144 @@ static int list_files(const wchar_t *base, const wchar_t *rel, wchar_t **out, in
 }
 
 /* the old file of rel goes to the backup (if there is one) */
+/* The journal of a run (applying.txt): a line for each file before it is
+ * moved, "1<tab>path" when an old one goes aside to the backup, "0<tab>path"
+ * when the update adds it. Written to the disk at once, so a run cut off in
+ * the middle (a power cut, Windows shutting down) can be undone by the next
+ * one: VLC never stays half old, half new (recover_journal) */
+static FILE *journal;
+static const wchar_t runonce_key[] = L"Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce";
+static const wchar_t runonce_name[] = L"VLC Redesign update recovery";
+
+static void journal_path(wchar_t *path)
+{
+    join(path, work, L"applying.txt");
+}
+
+static void journal_line(const wchar_t *rel, BOOL had_old)
+{
+    if (!journal)
+        return;
+    fwprintf(journal, L"%d\t%ls\n", had_old ? 1 : 0, rel);
+    fflush(journal);
+    _commit(_fileno(journal));
+}
+
+/* the journal and its RunOnce entry gone: the run ended as it should */
+static void journal_end(void)
+{
+    if (journal) {
+        fclose(journal);
+        journal = NULL;
+    }
+    wchar_t path[MAX_PATH];
+    journal_path(path);
+    DeleteFileW(path);
+    HKEY key;
+    if (RegOpenKeyExW(HKEY_CURRENT_USER, runonce_key, 0, KEY_SET_VALUE, &key) == ERROR_SUCCESS) {
+        RegDeleteValueW(key, runonce_name);
+        RegCloseKey(key);
+    }
+}
+
+/* A path of the journal: one of VLC's folder, as read_removed takes them */
+static BOOL safe_rel(const wchar_t *rel)
+{
+    if (!*rel || rel[0] == L'\\' || rel[0] == L'/' || wcsstr(rel, L"..") || wcschr(rel, L':')
+        || !_wcsnicmp(rel, L"portable", 8) || !_wcsnicmp(rel, L".update", 7))
+        return FALSE;
+    for (const wchar_t *p = rel; *p; ++p)
+        if (*p == L'~')
+            return FALSE;
+    return TRUE;
+}
+
+/* The journal of a run cut off in the middle: every old file back from the
+ * backup, every file the update added gone. VLC is then as it was before
+ * the update (which VLC downloads again). False when one couldn't be. */
+static BOOL recover_journal(void)
+{
+    wchar_t path[MAX_PATH];
+    journal_path(path);
+    FILE *f = _wfopen(path, L"rt, ccs=UTF-8");
+    if (!f)
+        return TRUE;
+    wchar_t line[MAX_PATH + 8];
+    BOOL ok = TRUE;
+    int count = 0;
+    while (fgetws(line, MAX_PATH + 8, f)) {
+        line[wcscspn(line, L"\r\n")] = 0;
+        if ((line[0] != L'0' && line[0] != L'1') || line[1] != L'\t' || !safe_rel(line + 2))
+            continue;
+        const wchar_t *rel = line + 2;
+        wchar_t target[MAX_PATH], kept[MAX_PATH];
+        if (!join(target, app, rel) || !join(kept, backup, rel)) {
+            ok = FALSE;
+            continue;
+        }
+        if (line[0] == L'1') {
+            /* (not yet aside when the run stopped: the old one is in place) */
+            if (exists(kept) && !move_retry(kept, target)) {
+                logf_(L"cannot put %ls back (error %lu)", target, GetLastError());
+                ok = FALSE;
+            }
+        } else if (exists(target)) {
+            SetFileAttributesW(target, FILE_ATTRIBUTE_NORMAL);
+            if (!DeleteFileW(target)) {
+                logf_(L"cannot remove %ls (error %lu)", target, GetLastError());
+                ok = FALSE;
+            }
+        }
+        ++count;
+    }
+    fclose(f);
+    logf_(ok ? L"an update cut off in the middle: %d files put back as they were"
+             : L"an update cut off in the middle: %d files, not all of them put back", count);
+    return ok;
+}
+
+/* The stage as VLC wrote it (manifest.txt: "size<tab>path" for each of its
+ * files): every one there with its size, and no other. False when it isn't
+ * (one taken away since, by an antivirus): nothing is put in place. */
+static BOOL stage_whole(int listed_count)
+{
+    wchar_t path[MAX_PATH];
+    join(path, work, L"manifest.txt");
+    FILE *f = _wfopen(path, L"rt, ccs=UTF-8");
+    if (!f)
+        return TRUE; /* (the stage of a VLC before this list: as before) */
+    wchar_t line[MAX_PATH + 32];
+    int count = 0;
+    BOOL ok = TRUE;
+    while (ok && fgetws(line, MAX_PATH + 32, f)) {
+        line[wcscspn(line, L"\r\n")] = 0;
+        if (!*line)
+            continue;
+        wchar_t *tab = wcschr(line, L'\t');
+        if (!tab) {
+            ok = FALSE;
+            break;
+        }
+        *tab = 0;
+        const unsigned long long size = _wcstoui64(line, NULL, 10);
+        wchar_t file[MAX_PATH];
+        WIN32_FILE_ATTRIBUTE_DATA data;
+        if (!safe_rel(tab + 1) || !join(file, staged, tab + 1)
+            || !GetFileAttributesExW(file, GetFileExInfoStandard, &data)
+            || ((((unsigned long long)data.nFileSizeHigh) << 32) | data.nFileSizeLow) != size) {
+            logf_(L"the staged update lacks %ls as it was written", tab + 1);
+            ok = FALSE;
+        }
+        ++count;
+    }
+    fclose(f);
+    if (ok && count != listed_count) {
+        logf_(L"the staged update has %d files, its list %d", listed_count, count);
+        ok = FALSE;
+    }
+    return ok;
+}
+
 static BOOL set_aside(const wchar_t *rel)
 {
     wchar_t target[MAX_PATH], kept[MAX_PATH];
@@ -189,6 +345,7 @@ static BOOL set_aside(const wchar_t *rel)
         return FALSE;
     done_rel[done_count] = _wcsdup(rel);
     done_had_old[done_count] = exists(target);
+    journal_line(rel, done_had_old[done_count]);
     if (done_had_old[done_count] && !move_retry(target, kept)) {
         logf_(L"cannot move %ls aside (error %lu)", target, GetLastError());
         free(done_rel[done_count]);
@@ -267,6 +424,42 @@ static BOOL wait_process(DWORD pid)
     DWORD r = WaitForSingleObject(p, 60000);
     CloseHandle(p);
     return r == WAIT_OBJECT_0;
+}
+
+/* Another VLC of this folder still runs (a second window, a copy Explorer
+ * opened): the files it uses can't be replaced under it */
+static BOOL folder_in_use(void)
+{
+    HANDLE snap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (snap == INVALID_HANDLE_VALUE)
+        return FALSE;
+    PROCESSENTRY32W pe;
+    pe.dwSize = sizeof(pe);
+    BOOL found = FALSE;
+    const size_t n = wcslen(app);
+    for (BOOL more = Process32FirstW(snap, &pe); more && !found; more = Process32NextW(snap, &pe)) {
+        if (pe.th32ProcessID == GetCurrentProcessId() || _wcsicmp(pe.szExeFile, L"vlc.exe"))
+            continue;
+        HANDLE p = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pe.th32ProcessID);
+        if (!p)
+            continue;
+        wchar_t image[MAX_PATH];
+        DWORD length = MAX_PATH;
+        if (QueryFullProcessImageNameW(p, 0, image, &length) && length > n
+            && !_wcsnicmp(image, app, n) && image[n] == L'\\')
+            found = TRUE;
+        CloseHandle(p);
+    }
+    CloseHandle(snap);
+    return found;
+}
+
+/* every VLC of this folder gone, waited for a minute at most */
+static BOOL wait_folder(void)
+{
+    for (int i = 0; i < 600 && folder_in_use(); ++i)
+        Sleep(100);
+    return !folder_in_use();
 }
 
 static void run_wait(const wchar_t *cmdline, DWORD ms, DWORD flags)
@@ -374,8 +567,25 @@ static int read_removed(wchar_t **out)
             if (*p == L'/')
                 *p = L'\\';
         /* never outside the app, never the user's data, never the update's
-         * own files (as safeRelativePath of the interface) */
-        if (*line && !wcsstr(line, L"..") && line[0] != L'\\' && !wcschr(line, L':')
+         * own files (as safeRelativePath of the interface): each part of it,
+         * none empty or ".", no short 8.3 name, none ending in a dot or a
+         * space; and a file, never a whole folder */
+        BOOL parts_ok = *line && line[wcslen(line) - 1] != L'\\';
+        for (const wchar_t *part = line; parts_ok && *part; ) {
+            const wchar_t *end = wcschr(part, L'\\');
+            const size_t n = end ? (size_t)(end - part) : wcslen(part);
+            if (n == 0 || (n == 1 && part[0] == L'.') || wmemchr(part, L'~', n)
+                || part[n - 1] == L'.' || part[n - 1] == L' ')
+                parts_ok = FALSE;
+            part = end ? end + 1 : part + n;
+        }
+        wchar_t target[MAX_PATH];
+        if (parts_ok && join(target, app, line)) {
+            const DWORD attributes = GetFileAttributesW(target);
+            if (attributes != INVALID_FILE_ATTRIBUTES && (attributes & FILE_ATTRIBUTE_DIRECTORY))
+                parts_ok = FALSE;
+        }
+        if (parts_ok && !wcsstr(line, L"..") && line[0] != L'\\' && !wcschr(line, L':')
             && _wcsnicmp(line, L"portable", 8) && _wcsnicmp(line, L".update", 7))
             out[count++] = _wcsdup(line);
     }
@@ -387,10 +597,12 @@ int wmain(int argc, wchar_t **argv)
 {
     DWORD pid = 0;
     const wchar_t *version = L"", *resume = NULL, *time = NULL;
-    BOOL again = FALSE;
+    BOOL again = FALSE, recover_only = FALSE;
     for (int i = 1; i < argc; ++i) {
         if (!wcscmp(argv[i], L"--pid") && i + 1 < argc)
             pid = wcstoul(argv[++i], NULL, 10);
+        else if (!wcscmp(argv[i], L"--recover"))
+            recover_only = TRUE; /* (from RunOnce, at the next sign-in) */
         else if (!wcscmp(argv[i], L"--app") && i + 1 < argc)
             wcsncpy(app, argv[++i], MAX_PATH - 1);
         else if (!wcscmp(argv[i], L"--version") && i + 1 < argc)
@@ -428,12 +640,42 @@ int wmain(int argc, wchar_t **argv)
     logfile = _wfopen(logpath, L"a, ccs=UTF-8");
     logf_(L"update to %ls of %ls", version, app);
 
-    if (!wait_process(pid)) {
+    if (!wait_process(pid) || !wait_folder()) {
         logf_(L"VLC Redesign is still running: the update waits for the next time");
+        /* (asked to open VLC again: it does when none of this folder runs
+         * any more; after "Restart now", nothing came back) */
+        HANDLE vlc = again && !folder_in_use() ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
         return 3;
     }
 
     wchar_t list[MAX_PATH];
+    /* a run cut off in the middle: VLC as it was before it, the update's
+     * stage gone (VLC downloads it again) */
+    wchar_t journal_file[MAX_PATH];
+    journal_path(journal_file);
+    if (exists(journal_file)) {
+        if (recover_journal()) {
+            remove_tree(backup);
+            remove_tree(staged);
+            join(list, work, L"removed.txt");
+            DeleteFileW(list);
+            join(list, work, L"ready.txt");
+            DeleteFileW(list);
+            join(list, work, L"manifest.txt");
+            DeleteFileW(list);
+            join(list, work, L"restore.txt");
+            DeleteFileW(list);
+            journal_end();
+        }
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
+        return 1;
+    }
+    if (recover_only)
+        return 0;
     /* the last roll back left old files in the backup: they go back first.
      * The staged update may then lack a new file it couldn't take back, so
      * it goes too (VLC downloads it again). */
@@ -446,6 +688,8 @@ int wmain(int argc, wchar_t **argv)
             join(list, work, L"removed.txt");
             DeleteFileW(list);
             join(list, work, L"ready.txt");
+            DeleteFileW(list);
+            join(list, work, L"manifest.txt");
             DeleteFileW(list);
             DeleteFileW(mark);
             logf_(L"VLC Redesign is as it was before the last update, which is downloaded again");
@@ -469,6 +713,21 @@ int wmain(int argc, wchar_t **argv)
             CloseHandle(vlc);
         return 1;
     }
+    if (!stage_whole(count)) {
+        /* (VLC downloads it again) */
+        logf_(L"the staged update is not whole: not applied");
+        remove_tree(staged);
+        join(list, work, L"removed.txt");
+        DeleteFileW(list);
+        join(list, work, L"manifest.txt");
+        DeleteFileW(list);
+        join(list, work, L"ready.txt");
+        DeleteFileW(list);
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
+        return 1;
+    }
     if (!count && !gone) {
         /* (applied already, by another VLC's updater): VLC opens again all
          * the same, and the next exit doesn't run this again */
@@ -477,6 +736,8 @@ int wmain(int argc, wchar_t **argv)
         DeleteFileW(list);
         join(list, work, L"ready.txt");
         DeleteFileW(list);
+        join(list, work, L"manifest.txt");
+        DeleteFileW(list);
         HANDLE vlc = again ? relaunch(resume, time) : NULL;
         if (vlc)
             CloseHandle(vlc);
@@ -484,6 +745,26 @@ int wmain(int argc, wchar_t **argv)
     }
     remove_tree(backup);
     CreateDirectoryW(backup, NULL);
+
+    /* the journal of this run, and a RunOnce entry that undoes a run cut off
+     * in the middle at the next sign-in, even when VLC could not start then
+     * (its core moved aside before the new one was in place) */
+    journal = _wfopen(journal_file, L"w, ccs=UTF-8");
+    if (!journal) {
+        logf_(L"cannot write %ls: the update waits for the next time", journal_file);
+        HANDLE vlc = again ? relaunch(resume, time) : NULL;
+        if (vlc)
+            CloseHandle(vlc);
+        return 1;
+    }
+    wchar_t self[MAX_PATH], recover_cmd[3 * MAX_PATH];
+    const DWORD self_length = GetModuleFileNameW(NULL, self, MAX_PATH);
+    if (self_length > 0 && self_length < MAX_PATH
+        && _snwprintf(recover_cmd, 3 * MAX_PATH, L"\"%ls\" --recover --app \"%ls\"", self, app) > 0) {
+        recover_cmd[3 * MAX_PATH - 1] = 0;
+        RegSetKeyValueW(HKEY_CURRENT_USER, runonce_key, runonce_name, REG_SZ, recover_cmd,
+                        (DWORD)((wcslen(recover_cmd) + 1) * sizeof(wchar_t)));
+    }
 
     BOOL ok = TRUE;
     for (int i = 0; ok && i < count; ++i) {
@@ -507,15 +788,19 @@ int wmain(int argc, wchar_t **argv)
             ok = FALSE;
     }
     if (!ok) {
-        if (roll_back())
+        if (roll_back()) {
+            journal_end();
             logf_(L"the update failed: VLC Redesign is as it was");
-        else
+        } else
             logf_(L"the update failed, and VLC Redesign could not be put back as it was: the next run tries again");
         HANDLE vlc = again ? relaunch(resume, time) : NULL;
         if (vlc)
             CloseHandle(vlc);
         return 1;
     }
+    /* (the journal ends before the backup goes: a run cut off after this is
+     * a whole update, never undone) */
+    journal_end();
     logf_(L"%d files updated, %d removed", count, gone);
 
     record_version(version);
@@ -524,6 +809,8 @@ int wmain(int argc, wchar_t **argv)
     join(list, work, L"removed.txt");
     DeleteFileW(list);
     join(list, work, L"ready.txt");
+    DeleteFileW(list);
+    join(list, work, L"manifest.txt");
     DeleteFileW(list);
     HANDLE vlc = again ? relaunch(resume, time) : NULL;
 

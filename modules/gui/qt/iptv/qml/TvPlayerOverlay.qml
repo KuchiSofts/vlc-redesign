@@ -63,6 +63,22 @@ FocusScope {
     }
     onChannelChanged: if ((channel.key ?? "") !== _loadedKey) { _loadedKey = channel.key ?? ""; _loadProgrammes() }
     property string _loadedKey: ""
+    // the programme on air changed (one ended while the channel played): "now"
+    // is that one, not the one the list was read at
+    onLiveNowChanged: if (browse === 0 && _programmes.length > 0)
+                          _nowIndex = _programmes.findIndex(p => p.start <= Iptv.now && Iptv.now < p.stop)
+    // the guide read or refreshed after the channel started (a channel played
+    // before its guide was there had no browsing at all): the list again, once
+    // the channel's data says it has a guide
+    Connections {
+        target: Iptv
+        function onGuideChanged() {
+            if (root.browse !== 0)
+                return
+            root._loadedKey = ""
+            root._loadProgrammes()
+        }
+    }
     readonly property bool canBrowse: _nowIndex >= 0 && !_archive
     function browseBy(step) {
         if (!canBrowse)
@@ -552,6 +568,7 @@ FocusScope {
                 spacing: root.px(14)
                 visible: Iptv.bannerMode !== 2 && (root._hasNow || root._archive)
                 Text {
+                    textFormat: Text.PlainText
                     id: nowTimes
                     anchors.verticalCenter: bannerLeft.verticalCenter
                     // the start first in every language: left to right
@@ -587,6 +604,7 @@ FocusScope {
                     }
                 }
                 Text {
+                    textFormat: Text.PlainText
                     id: bannerLeft
                     height: root.px(20)
                     verticalAlignment: Text.AlignVCenter
@@ -604,6 +622,7 @@ FocusScope {
             // Settings > TV: the episode, its category and its description
             // (up to two lines; the whole text in the programme's details)
             Text {
+                textFormat: Text.PlainText
                 readonly property string meta: [root.now.subtitle, root.now.episode, root.now.category]
                                                 .filter(t => !!t).join("  ·  ")
                 width: parent.width
@@ -652,6 +671,7 @@ FocusScope {
                     border.width: 1
                     border.color: banner.c("#404040")
                     Text {
+                        textFormat: Text.PlainText
                         id: bannerNextLabel
                         anchors.centerIn: parent
                         text: qsTr("Next")
@@ -694,6 +714,7 @@ FocusScope {
                             + root.px(8) + Math.max(bannerKeys.implicitHeight, bannerButtons.implicitHeight) + root.px(12)
 
             Text {
+                textFormat: Text.PlainText
                 id: bannerClock
                 anchors.right: parent.right
                 anchors.top: parent.top
@@ -865,6 +886,7 @@ FocusScope {
                                        .color2(VLCStyle.redesign.accent).uri()
             }
             Text {
+                textFormat: Text.PlainText
                 anchors.centerIn: parent
                 visible: barButton.glyph !== ""
                 text: barButton.glyph
@@ -889,6 +911,7 @@ FocusScope {
         radius: root.px(14)
         color: Qt.rgba(25 / 255, 25 / 255, 25 / 255, 0.95)
         Text {
+            textFormat: Text.PlainText
             id: numberEntry
             anchors.centerIn: parent
             text: ""
@@ -998,6 +1021,7 @@ FocusScope {
                 }
             }
             Text {
+                textFormat: Text.PlainText
                 anchors.centerIn: parent
                 visible: listView.count === 0
                 text: qsTr("No channels")

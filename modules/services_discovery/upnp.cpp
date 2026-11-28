@@ -1450,8 +1450,22 @@ MediaRendererList::~MediaRendererList()
     vlc_delete_all(m_list);
 }
 
+/* An address a device gave (its description's place, its URLBase) goes into
+ * the output chain as a value: none that could end it or start another
+ * option (a device of the network could have asked for a file output) */
+static bool fitsSoutValue(const std::string &value)
+{
+    for (const char c : value)
+        if (c == '{' || c == '}' || c == ',' || c == '"' || c == '\'' || c == '\\'
+            || c == ' ' || c == '\t' || c == '\r' || c == '\n')
+            return false;
+    return true;
+}
+
 bool MediaRendererList::addRenderer(MediaRendererDesc *desc)
 {
+    if (!fitsSoutValue(desc->base_url) || !fitsSoutValue(desc->location))
+        return false;
     const char* psz_url = getUrl(desc->location.c_str());
 
     char *extra_sout;

@@ -83,12 +83,22 @@ vlc_renderer_item_new(const char *psz_type, const char *psz_name,
     if (p_item->psz_name == NULL)
         goto error;
 
-    if (asprintf(&p_item->psz_sout, "%s{ip=%s,port=%u,%s%s%s%s}",
+    /* The name is the device's own (a Chromecast's, a TV's): quoted and
+     * escaped, it stays one value of the output chain. As it was, a device
+     * of the network named "x}:std{access=file,dst=..." made a cast to it
+     * write the stream to a file. */
+    char *name_esc = psz_name != NULL ? config_StringEscape(psz_name) : NULL;
+    if (psz_name != NULL && name_esc == NULL)
+        goto error;
+    int sout_len = asprintf(&p_item->psz_sout, "%s{ip=%s,port=%u,%s%s%s%s%s}",
                  url.psz_protocol, url.psz_host, url.i_port,
-                 psz_name != NULL ? "device-name=" : "",
-                 psz_name != NULL ? psz_name : "",
+                 name_esc != NULL ? "device-name=\"" : "",
+                 name_esc != NULL ? name_esc : "",
+                 name_esc != NULL ? "\"" : "",
                  psz_extra_sout != NULL ? "," : "",
-                 psz_extra_sout != NULL ? psz_extra_sout : "") == -1)
+                 psz_extra_sout != NULL ? psz_extra_sout : "");
+    free(name_esc);
+    if (sout_len == -1)
     {
         p_item->psz_sout = NULL;
         goto error;

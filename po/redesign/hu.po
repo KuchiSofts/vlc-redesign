@@ -5922,6 +5922,10 @@ msgstr "a csatornák listája nem olvasható"
 msgid "this link is a single stream, not a list of channels"
 msgstr "ez a hivatkozás egyetlen adatfolyam, nem csatornák listája"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Nincs műsorújság"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "a kiszolgáló megtagadta a hozzáférést (%1)"
@@ -6012,10 +6016,6 @@ msgstr "Mi megy most"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Műsorújság-azonosító…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Nincs műsorújság"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

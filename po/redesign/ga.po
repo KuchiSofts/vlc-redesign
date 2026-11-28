@@ -5959,6 +5959,10 @@ msgstr "níorbh fhéidir liosta na mbealaí a léamh"
 msgid "this link is a single stream, not a list of channels"
 msgstr "is sruth aonair an nasc seo, ní liosta bealaí"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Gan eolaire"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "dhiúltaigh an freastalaí rochtain (%1)"
@@ -6055,10 +6059,6 @@ msgstr "Cad atá ar siúl"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Aitheantas eolaire…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Gan eolaire"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

@@ -5977,6 +5977,10 @@ msgstr "δεν ήταν δυνατή η ανάγνωση της λίστας κ�
 msgid "this link is a single stream, not a list of channels"
 msgstr "αυτός ο σύνδεσμος είναι μία ροή, όχι λίστα καναλιών"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Χωρίς οδηγό"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "ο διακομιστής αρνήθηκε την πρόσβαση (%1)"
@@ -6068,10 +6072,6 @@ msgstr "Τι προβάλλεται"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Αναγνωριστικό οδηγού…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Χωρίς οδηγό"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

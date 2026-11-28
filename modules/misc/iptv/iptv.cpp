@@ -786,6 +786,10 @@ struct Sys
     std::mutex serviceLock;
     std::shared_ptr<iptv::Service> service;
     std::unique_ptr<Executor> executor;
+    // the logos on a thread of their own: a list scrolled whose logos are on
+    // a server that never answers (15 s each) held up the channel switches
+    // and the what's-on behind them
+    std::unique_ptr<Executor> logos;
 };
 
 std::shared_ptr<iptv::Service> serviceOf(Sys* sys)
@@ -805,8 +809,10 @@ char* Request(vlc_iptv_t* obj, const char* json)
     // (owned by the job: VLC quitting, the wait for it may give up first)
     auto request = std::make_shared<const std::string>(json);
     auto answer = std::make_shared<std::string>();
+    Executor* lane = request->find("\"op\":\"logo\"") != std::string::npos && sys->logos
+                   ? sys->logos.get() : sys->executor.get();
     // (on a thread of the plugin, see Executor)
-    if (!sys->executor->runAndWait([sys, request, answer]() {
+    if (!lane->runAndWait([sys, request, answer]() {
             try
             {
                 const QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(*request));
@@ -859,6 +865,7 @@ int Open(vlc_object_t* p_this)
         sys->host = std::make_unique<VlcHost>(obj, folder + "/keystore");
         // the requests, the logos and the films of an account at the same time
         sys->executor = std::make_unique<Executor>(3);
+        sys->logos = std::make_unique<Executor>(1);
         Sys* s = sys.get();
         s->executor->runAndWait([&]() {
             // (failed, its thread not made, out of memory: no service, the
@@ -921,6 +928,7 @@ void Close(vlc_object_t* p_this)
             service->stop();
     }
     sys->executor->interrupt();
+    sys->logos->interrupt();
     auto stopped = std::make_shared<std::atomic<bool>>(false);
     const bool ran = sys->executor->runAndWait([sys, stopped]() {
         std::shared_ptr<iptv::Service> service;
@@ -933,7 +941,7 @@ void Close(vlc_object_t* p_this)
         else
             new std::shared_ptr<iptv::Service>(service);   // (let go)
     }, std::chrono::seconds(8));
-    if (!ran || !*stopped || !sys->executor->shutdown(3000))
+    if (!ran || !*stopped || !sys->executor->shutdown(3000) || !sys->logos->shutdown(3000))
     {
         msg_Warn(obj, "a download could not be stopped: Live TV let go of it");
         sys->host->detach();
@@ -941,6 +949,7 @@ void Close(vlc_object_t* p_this)
         return;   // (sys, its host and threads let go too)
     }
     sys->executor.reset();
+    sys->logos.reset();
     delete sys;
 }
 

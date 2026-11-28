@@ -117,6 +117,7 @@ Widgets.RedesignDialog {
     }
 
     Text {
+        textFormat: Text.PlainText
         Layout.fillWidth: true
         visible: root._description !== ""
         LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft

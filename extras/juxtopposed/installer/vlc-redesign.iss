@@ -2657,6 +2657,12 @@ Type: files; Name: "{app}\*.exe"
 Type: files; Name: "{app}\*.txt"
 Type: files; Name: "{app}\*.ico"
 
+[UninstallRun]
+; The firewall rule casting asked Windows for goes with the program (an
+; install for everyone: its uninstaller runs as an administrator; a per-user
+; one can't remove a firewall rule)
+Filename: "{sys}\netsh.exe"; Parameters: "advfirewall firewall delete rule name=""VLC Redesign"" dir=in program=""{app}\vlc.exe"""; Flags: runhidden; Check: IsAdminInstallMode; RunOnceId: "RemoveFirewallRule"
+
 [Icons]
 Name: "{autoprograms}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:ShortcutComment}"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\vlc.exe"; Comment: "{cm:ShortcutComment}"; Check: WantDesktopIcon

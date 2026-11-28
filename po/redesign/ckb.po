@@ -5871,6 +5871,10 @@ msgstr "لیستی کەناڵەکان نەخوێندرایەوە"
 msgid "this link is a single stream, not a list of channels"
 msgstr "ئەم بەستەرە تەنها یەک پەخشە، نەک لیستی کەناڵەکان"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "ڕێبەر نییە"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "ڕاژەکار ڕێگەی چوونەژوورەوەی نەدا (%1)"
@@ -5960,10 +5964,6 @@ msgstr "چی پەخش دەکرێت"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ناسنامەی ڕێبەر…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "ڕێبەر نییە"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

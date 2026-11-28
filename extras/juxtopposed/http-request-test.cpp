@@ -132,10 +132,14 @@ static void testRules()
     }
     for (int status : { 307, 308 })
     {
+        // on the same server, the body goes with it
         HttpRequest request = post();
-        CHECK(httpFollowRedirect(request, status, QUrl(QStringLiteral("https://cdn.example/b")), &error));
+        CHECK(httpFollowRedirect(request, status, QUrl(QStringLiteral("https://api.example/b")), &error));
         CHECK(request.method == "POST" && request.body == "{\"a\":1}"
               && headerOf(request, "Content-Type") == "application/json");
+        // to another server, never (a sign-in's body carries the password)
+        HttpRequest away = post();
+        CHECK(!httpFollowRedirect(away, status, QUrl(QStringLiteral("https://cdn.example/b")), &error));
     }
     HttpRequest head;
     head.method = "HEAD";
@@ -236,11 +240,16 @@ static void testRedirects(const Servers &s)
     post.method = "POST";
     post.body = "{\"a\":1}";
     post.headers = { { "Content-Type", "application/json" }, { "X-API-Key", "KEY1" } };
-    post.url = QUrl(redirectTo(s, s.first, "307", s.url(s.second, "/echo", "127.0.0.2")));
+    // (a 307 on the same server keeps the body and its key; to another
+    // server it is refused: a sign-in's body carries the password)
+    post.url = QUrl(redirectTo(s, s.first, "307", s.url(s.first, "/echo")));
     echo = echoOf(httpRequestSync(post));
     CHECK(echo.value(QLatin1String("method")).toString() == QLatin1String("POST")
           && echo.value(QLatin1String("body")).toString() == QLatin1String("{\"a\":1}")
-          && received(echo, "Content-Type") && !received(echo, "X-API-Key"));
+          && received(echo, "Content-Type") && received(echo, "X-API-Key"));
+    post.url = QUrl(redirectTo(s, s.first, "307", s.url(s.second, "/echo", "127.0.0.2")));
+    r = httpRequestSync(post);
+    CHECK(!r.error.isEmpty() && r.body.isEmpty());
     post.url = QUrl(redirectTo(s, s.first, "303", s.url(s.first, "/echo")));
     echo = echoOf(httpRequestSync(post));
     CHECK(echo.value(QLatin1String("method")).toString() == QLatin1String("GET")

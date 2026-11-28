@@ -931,6 +931,11 @@ QString IptvAddon::errorText(const QString& reason, bool sentence) const
         { QStringLiteral("the list of channels could not be read"), N_("the list of channels could not be read") },
         { QStringLiteral("this link is a single stream, not a list of channels"),
           N_("this link is a single stream, not a list of channels") },
+        // (said with texts translated already: they showed in English)
+        { QStringLiteral("sign-in refused"), N_("Wrong user name or password") },
+        { QStringLiteral("wrong user name or password"), N_("Wrong user name or password") },
+        { QStringLiteral("no channels yet"), N_("it has no channels") },
+        { QStringLiteral("no guide yet"), N_("No guide") },
     };
     QString text = reason;
     const QRegularExpressionMatch m = answered.match(reason);
@@ -990,9 +995,13 @@ void IptvAddon::startMedia(const QString& url, const QString& name, const QStrin
         return;
     // the channel alone in the queue, as a TV switches channels; not kept
     // in the history nor in the library (no entry for every channel zapped)
-    QStringList all = options;
-    all << QStringLiteral(":no-save-recentplay");
-    vlc::playlist::Media media(url, name, all);
+    vlc::playlist::Media media(url, name, { QStringLiteral(":no-save-recentplay") });
+    // the playlist's own options (#EXTVLCOPT, its user agent and referrer) come
+    // from the provider: added untrusted, so VLC takes only its safe ones (an
+    // option like :sout could have written the stream to any file)
+    if (media)
+        for (const QString& option : options)
+            input_item_AddOption(media.raw(), qtu(option), 0);
     m_currentUrl = url;
     // the item itself tells the channel playing from another media
     m_currentMedia.reset(media.raw());
@@ -1314,6 +1323,7 @@ void IptvAddon::checkReminders()
 {
     // a minute before the start; the ones missed (VLC was closed) go quietly
     QVariantList due;
+    bool removed = false;
     for (int i = int(m_reminders.size()) - 1; i >= 0; --i)
     {
         const QVariantMap r = m_reminders[i].toMap();
@@ -1323,9 +1333,12 @@ void IptvAddon::checkReminders()
             if (m_now - start < 600)
                 due.prepend(r);
             m_reminders.removeAt(i);
+            removed = true;
         }
     }
-    if (due.isEmpty() && m_reminders.size() == m_intf->mainSettings->value(kReminders).toByteArray().count('{'))
+    // (nothing past: nothing saved; counting the saved text's "{" counted the
+    // ones of a title too, and saved the list every 30 seconds)
+    if (!removed)
         return;
     m_intf->mainSettings->setValue(kReminders, QJsonDocument(QJsonArray::fromVariantList(m_reminders)).toJson(QJsonDocument::Compact));
     emit remindersChanged();

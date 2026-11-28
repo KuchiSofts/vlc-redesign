@@ -652,6 +652,12 @@ bool SubtitleSearch::setCredentials(QSettings *settings, const QString &id,
     store("username", credentials.username.trimmed());
     store("password", credentials.password);
     store("email", credentials.email.trimmed());
+#ifndef _WIN32
+    // (kept as they are outside Windows: the settings file then readable by
+    // this user only, not by the computer's other users)
+    settings->sync();
+    QFile::setPermissions(settings->fileName(), QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+#endif
     // (new ones: not refused, nor signed in with the old)
     settings->remove(QString::fromLatin1(keyRefused) + id);
     SubtitleProviders::forgetSession(id);
@@ -1431,6 +1437,12 @@ void SubtitleSearch::download(const QString &id, const QString &folder, bool pru
     QString release = result.release;
     release.replace(QRegularExpression(QStringLiteral(R"([\\/:*?"<>|\s\p{Cc}]+)")), QStringLiteral("."));
     release = release.left(80);
+    // (a name Windows keeps for a device, "Aux.Some.Film.2022..." read as AUX
+    // before Windows 11, could not be saved)
+    static const QRegularExpression deviceName(QStringLiteral(R"(^(con|prn|aux|nul|com\d|lpt\d)(\.|$))"),
+                                               QRegularExpression::CaseInsensitiveOption);
+    if (deviceName.match(release).hasMatch())
+        release.prepend(QLatin1Char('_'));
     // (the id comes from the service's answer: nothing of a path in it)
     QString fileId = id;
     fileId.replace(QLatin1Char(':'), QLatin1Char('-'));

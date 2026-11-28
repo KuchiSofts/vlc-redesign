@@ -186,6 +186,7 @@ FocusScope {
             onClicked: root.scrollTo(root.leftTime + Iptv.guideHours * 3600, true)
         }
         Text {
+            textFormat: Text.PlainText
             anchors.verticalCenter: parent.verticalCenter
             leftPadding: root.px(8)
             // the day of the hours shown: of now while now is in them (Now
@@ -237,6 +238,7 @@ FocusScope {
                     color: root.c("#373737", "#8e8e8d")
                 }
                 Text {
+                    textFormat: Text.PlainText
                     x: root.px(6)
                     anchors.verticalCenter: parent.verticalCenter
                     text: Iptv.timeText(parent.time)
@@ -506,6 +508,7 @@ FocusScope {
                 clip: true
 
                 Text {
+                    textFormat: Text.PlainText
                     anchors.verticalCenter: parent.verticalCenter
                     x: root.px(12)
                     visible: !row.model.hasGuide
@@ -706,6 +709,7 @@ FocusScope {
         y: rows.y + Math.round(Math.max(0, Math.min(rows.height, rows.contentHeight) - height) / 2)
         spacing: root.px(14)
         Text {
+            textFormat: Text.PlainText
             anchors.horizontalCenter: parent.horizontalCenter
             // (a text the catalogs already have, in every language)
             text: qsTr("No guide")
@@ -723,6 +727,7 @@ FocusScope {
     }
 
     Text {
+        textFormat: Text.PlainText
         anchors.centerIn: rows
         visible: Iptv.channelModel.count === 0
         text: qsTr("No channel matches the search")

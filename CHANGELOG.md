@@ -7,7 +7,7 @@ For changes to VLC itself, see [NEWS](NEWS).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Each section groups changes by
 what you see first, with the technical details after. Based on VLC `4.0.0-dev`, merged up to `562a3049df` (2026-11-03).
 
-**Contents:** [Unreleased](#unreleased) · [0.8.9](#089--2026-11-27) · [0.8.8](#088--2026-11-26) · [0.8.7](#087--2026-11-26) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
+**Contents:** [Unreleased](#unreleased) · [0.9.0](#090--2026-11-28) · [0.8.9](#089--2026-11-27) · [0.8.8](#088--2026-11-26) · [0.8.7](#087--2026-11-26) · [0.8.6](#086--2026-11-26) · [0.8.5](#085--2026-11-26) · [0.8.4](#084--2026-11-26) · [0.8.3](#083--2026-11-25) · [0.8.2](#082--2026-11-23) · [0.8.1](#081--2026-11-23) · [0.8.0](#080--2026-11-23) · [0.7.8](#078--2026-11-22) · [0.7.7](#077--2026-11-22) · [0.7.6](#076--2026-11-22) · [0.7.5](#075--2026-11-18) · [0.7.4](#074--2026-11-17) · [0.7.3](#073--2026-11-17) · [0.7.2](#072--2026-11-16) · [0.7.1](#071--2026-11-16) · [0.7.0](#070--2026-11-16) · [0.6.9](#069--2026-11-15) · [0.6.8](#068--2026-11-15) · [0.6.7](#067--2026-11-15) · [0.6.6](#066--2026-11-14) · [0.6.5](#065--2026-11-14) · [0.6.4](#064--2026-11-14) · [0.6.3](#063--2026-11-13) · [0.6.2](#062--2026-11-12) · [0.6.1](#061--2026-11-12) · [0.6.0](#060--2026-11-11) · [0.5.8](#058--2026-11-08) · [0.5.7](#057--2026-11-08) · [0.5.6](#056--2026-11-07) · [0.5.5](#055--2026-11-07) · [0.5.4](#054--2026-11-06) · [0.5.3](#053--2026-11-06) · [0.5.2](#052--2026-11-02) · [0.5.1](#051--2026-11-01) · [0.5.0](#050--2026-10-31) · [0.4.1](#041--2026-10-30) · [0.4.0](#040--2026-10-30) · [0.3.1](#031--2026-10-25) · [0.3.0](#030--2026-10-25) · [0.2.6](#026--2026-10-22) · [0.2.5](#025--2026-10-22) · [0.2.4](#024--2026-10-22) · [0.2.3](#023--2026-10-20) · [0.2.2](#022--2026-10-20) · [0.2.1](#021--2026-10-20) · [0.2.0](#020--2026-10-20) · [0.1.0](#010--2026-10-20) · [M3](#m3--dialogs-settings-and-playback-tools--2026-10-13) ·
 [M2](#m2--library-playlists-and-subtitles--2026-10-13) · [M1](#m1--first-native-shell-and-player--2026-10-12) ·
 [M0](#m0--baseline-and-build--2026-10-12) · [Differences from upstream VLC](#differences-from-upstream-vlc)
 
@@ -15,9 +15,52 @@ what you see first, with the technical details after. Based on VLC `4.0.0-dev`, 
 
 ## [Unreleased]
 
+## [0.9.0] · 2026-11-28
+
+A release of every app (desktop, Android, Samsung TV) after a long bug hunt: Live TV, casting, online subtitles and
+updates were gone through for anything a playlist, a TV or a server could abuse, and Windows updates now survive a
+power cut. The light theme's lists are readable again and the start-up busy cursor is gone (thanks @yamtartunga).
+
+### Fixed
+
+- **Live TV playlists can no longer write files on your computer**: a provider's stream options are only the safe
+  ones, and the guides it names come only from web addresses.
+- **Live TV texts from a provider are plain text**: a guide's description can no longer load an image from the web.
+- **Live TV channel switching no longer waits** behind logos from a server that doesn't answer.
+- **The TV banner's programme browsing** follows the programme on air, and works once the guide arrives.
+- **Live TV reasons in your language**: a refused sign-in, no channels or no guide yet.
+- **Subtitles in your language** when several subtitle files sit beside a video.
+- **Add Subtitles**: a file name with < and > in it shows as it is.
+- **Light theme lists**: the chosen item in Settings' lists, the equalizer and the video options is readable again
+  ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
+- **Casting is safer**: a TV's name can no longer change what VLC does with the stream, and the firewall rule it asks
+  for opens only the casting ports, to your own network.
+- **Updates are always checked against their signature**, and the Windows update helper never follows a folder link.
+- **Online subtitles are safer**: a crafted release name can't hang a search, a service's text can't load images,
+  and a sign-in is never sent on to another server.
+- **A subtitle named like a Windows device** ("Aux.Some.Film…") is saved, and a readme in an archive no longer wins over the
+  real subtitle.
+- **Settings' equalizer** follows the light theme and your accent colour.
+- **No more busy cursor at start (Windows)**, nor for five seconds at each song with waveforms on
+  ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
+- **Lighter start on Windows**: one graphics device instead of two at each start, and the graphics choice found
+  last time is used for the window again.
+- **Windows updates survive a power cut** in the middle, and an update missing a file is never half applied.
+- **A cast paused for over an hour** keeps going on Samsung TVs.
+- **Android: adding a subtitle from a link** no longer closes the app on Android 5 and 6.
+- **Android: Live TV** takes only the stream options a playlist really needs.
+- **Android: Check for updates** only ever opens this project's release page.
+- **Android: older phones** show the TV welcome screen and the library's headings as designed.
+- **Samsung TV: long songs** no longer use up the TV's memory for their waveform.
+- **Samsung TV: a video opening when you press Home** no longer plays behind the TV's menu.
+- **Samsung TV: the queue** keeps the page you played from when you sort it or remove a song.
+- **Samsung TV: a subtitle linked in Add subtitles** is used again when the video opens.
+
 ### Technical
 
-- Version 0.8.10 started (VLC_REDESIGN_VERSION).
+- Version 0.9.0 started (VLC_REDESIGN_VERSION).
+- VideoLAN's master merged at a75e766d82 (14 commits: channel maps, ARIB subtitles in MKV, VideoToolbox, the
+  main source's origin before external subtitles); input.c keeps the slaves following the demux that reads.
 - The summary of 0.8.9 is the one of its release page, written for people.
 
 ## [0.8.9] · 2026-11-27

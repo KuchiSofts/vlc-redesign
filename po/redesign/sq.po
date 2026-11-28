@@ -5901,6 +5901,10 @@ msgstr "lista e kanaleve s'u lexua dot"
 msgid "this link is a single stream, not a list of channels"
 msgstr "kjo lidhje është një rrjedhë e vetme, jo listë kanalesh"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Pa udhëzues"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "shërbyesi e refuzoi hyrjen (%1)"
@@ -5990,10 +5994,6 @@ msgstr "Çfarë po jepet"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID-ja në udhëzues…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Pa udhëzues"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

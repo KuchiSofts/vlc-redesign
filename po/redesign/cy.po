@@ -5908,6 +5908,10 @@ msgstr "nid oedd modd darllen y rhestr sianeli"
 msgid "this link is a single stream, not a list of channels"
 msgstr "mae'r ddolen hon yn un ffrwd, nid rhestr sianeli"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Dim amserlen"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "gwrthododd y gweinydd fynediad (%1)"
@@ -6002,10 +6006,6 @@ msgstr "Beth Sydd Ymlaen"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "ID yr Amserlen…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Dim amserlen"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

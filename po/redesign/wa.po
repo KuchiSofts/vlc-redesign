@@ -5931,6 +5931,10 @@ msgstr "on n' a savou lére li djivêye des canås"
 msgid "this link is a single stream, not a list of channels"
 msgstr "ci loyén ci, c' est on seu floû, nén ene djivêye di canås"
 
+#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
+msgid "No guide"
+msgstr "Nou guide"
+
 #: modules/gui/qt/iptv/iptv_addon.cpp:909
 msgid "the server refused access (%1)"
 msgstr "li sierveu a rfuzé l' accès (%1)"
@@ -6021,10 +6025,6 @@ msgstr "Çou ki passe"
 #: modules/gui/qt/iptv/qml/TvChannelMenu.qml:57
 msgid "Guide Id…"
 msgstr "Id do guide…"
-
-#: modules/gui/qt/iptv/qml/TvChannelRow.qml:133
-msgid "No guide"
-msgstr "Nou guide"
 
 #: modules/gui/qt/iptv/qml/TvChannelRow.qml:186
 msgid "Next at %1"

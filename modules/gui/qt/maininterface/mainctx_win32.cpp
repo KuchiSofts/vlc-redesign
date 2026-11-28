@@ -42,8 +42,6 @@
 
 #include <QWindow>
 
-#include <memory>
-
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <dwmapi.h>
@@ -985,34 +983,6 @@ InterfaceWindowHandlerWin32::InterfaceWindowHandlerWin32(qt_intf_t *_p_intf, Mai
     m_mainCtxWin32 = mainCtxWin32;
     mainCtxWin32->setMediaControlsWindow(WinId(window));
     QApplication::instance()->installNativeEventFilter(this);
-
-    // #266: Windows shows its "starting" cursor (the arrow with a circle)
-    // from Explorer's launch until the program's first GetMessage(), for up
-    // to 12 seconds. VLC's main thread takes no messages and Qt's event loop
-    // only peeks at them (PeekMessage, MsgWaitForMultipleObjectsEx): the
-    // cursor stayed busy long after the window was up. Once the window shows,
-    // one GetMessage() of a message of our own ends it at once (filtered on
-    // that message: nothing of Qt's is taken from the queue).
-    const auto endStartingCursor = []() {
-        const UINT message = RegisterWindowMessageW(L"VLC Redesign End Starting Cursor");
-        if (message && PostThreadMessageW(GetCurrentThreadId(), message, 0, 0))
-        {
-            MSG msg;
-            GetMessageW(&msg, nullptr, message, message);
-        }
-    };
-    if (window->isVisible())
-        QMetaObject::invokeMethod(this, endStartingCursor, Qt::QueuedConnection);
-    else
-    {
-        auto once = std::make_shared<QMetaObject::Connection>();
-        *once = connect(window, &QWindow::visibleChanged, this, [once, endStartingCursor](bool visible) {
-            if (!visible)
-                return;
-            QObject::disconnect(*once);
-            endStartingCursor();
-        });
-    }
 }
 
 InterfaceWindowHandlerWin32::~InterfaceWindowHandlerWin32()

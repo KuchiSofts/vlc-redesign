@@ -537,6 +537,16 @@ bool writeDurably(const QString &path, const QByteArray &data,
 // of it, so the update can replace it too. Run once now, on the worker
 // thread (it returns at once without arguments): Windows may check a new
 // program for seconds when it first runs, better now than on Restart.
+#ifdef _WIN32
+// A helper without a window: no "busy" pointer while it runs (#266)
+void noStartFeedback(QProcess &process)
+{
+    process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments *arguments) {
+        arguments->startupInfo->dwFlags |= STARTF_FORCEOFFFEEDBACK;
+    });
+}
+#endif
+
 bool prepareHelper(const QString &dir)
 {
     const QString helper = dir + QStringLiteral("/.update/vlc-redesign-update.exe");
@@ -546,6 +556,9 @@ bool prepareHelper(const QString &dir)
     if (!source.open(QIODevice::ReadOnly) || !writeDurably(helper, source.readAll()))
         return false;
     QProcess probe;
+#ifdef _WIN32
+    noStartFeedback(probe);
+#endif
     probe.start(helper, {});
     probe.waitForFinished(30000);
     return true;
@@ -1765,7 +1778,16 @@ bool RedesignUpdater::launchHelper(bool relaunch)
                 args << QStringLiteral("--time") << QString::number(seconds);
         }
     }
+#ifdef _WIN32
+    QProcess launcher;
+    launcher.setProgram(helper);
+    launcher.setArguments(args);
+    launcher.setWorkingDirectory(dir);
+    noStartFeedback(launcher);
+    m_helperStarted = launcher.startDetached();
+#else
     m_helperStarted = QProcess::startDetached(helper, args, dir);
+#endif
     if (m_helperStarted)
         msg_Dbg(m_intf, "update to %s: put in place once VLC has quit", qtu(m_latestVersion));
     else

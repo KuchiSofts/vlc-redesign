@@ -41,7 +41,7 @@ power cut. The light theme's lists are readable again and the start-up busy curs
 - **A subtitle named like a Windows device** ("Aux.Some.Film…") is saved, and a readme in an archive no longer wins over the
   real subtitle.
 - **Settings' equalizer** follows the light theme and your accent colour.
-- **The busy cursor at start (Windows)** ends as soon as the window is up
+- **No more busy cursor at start (Windows)**, nor for five seconds at each song with waveforms on
   ([#266](https://github.com/KuchiSofts/vlc-redesign/issues/266)).
 - **Windows updates survive a power cut** in the middle, and an update missing a file is never half applied.
 - **A cast paused for over an hour** keeps going on Samsung TVs.

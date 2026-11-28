@@ -378,8 +378,11 @@ void Waveform::startNextAnalysis()
         QProcess process;
 #ifdef Q_OS_WIN
         // Give playback priority over the decoder, including its own threads.
+        // (and no "busy" pointer for five seconds at each song: it has no
+        // window, #266)
         process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) {
             arguments->flags |= CREATE_NO_WINDOW | BELOW_NORMAL_PRIORITY_CLASS;
+            arguments->startupInfo->dwFlags |= STARTF_FORCEOFFFEEDBACK;
         });
 #else
         // The same on the other systems: the decoder runs "nice".

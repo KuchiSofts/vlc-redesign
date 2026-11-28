@@ -110,7 +110,11 @@ static int vlc_spawn_inner(pid_t *restrict pid, const char *path,
             .hStdInput  = INVALID_HANDLE_VALUE,
             .hStdOutput = INVALID_HANDLE_VALUE,
             .hStdError  = INVALID_HANDLE_VALUE,
-            .dwFlags    = STARTF_USESTDHANDLES
+            /* No window of its own (CREATE_NO_WINDOW): without
+             * STARTF_FORCEOFFFEEDBACK, Windows shows its "busy" pointer for
+             * about five seconds each time one starts (vlc-preparser at every
+             * start of VLC) */
+            .dwFlags    = STARTF_USESTDHANDLES | STARTF_FORCEOFFFEEDBACK
         }
     };
 

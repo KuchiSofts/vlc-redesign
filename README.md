@@ -34,27 +34,27 @@ built screen by screen from Juxtopposed's design. Unofficial, free and open sour
 </tr>
 <tr>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-win64-setup.exe"><img src="https://img.shields.io/badge/Installer-x64-0078D4?style=for-the-badge" alt="Windows installer, x64"></a><br>
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-winarm64-setup.exe"><img src="https://img.shields.io/badge/Installer-ARM64-0078D4?style=for-the-badge" alt="Windows installer, ARM64"></a><br>
-<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-win64.zip">portable zip</a></sub>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-win64-setup.exe"><img src="https://img.shields.io/badge/Installer-x64-0078D4?style=for-the-badge" alt="Windows installer, x64"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-winarm64-setup.exe"><img src="https://img.shields.io/badge/Installer-ARM64-0078D4?style=for-the-badge" alt="Windows installer, ARM64"></a><br>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-win64.zip">portable zip</a></sub>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-x86_64.AppImage"><img src="https://img.shields.io/badge/AppImage-x86__64-E95420?style=for-the-badge&logo=linux&logoColor=white" alt="Linux AppImage, x86_64"></a><br>
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_amd64.deb"><img src="https://img.shields.io/badge/.deb-Ubuntu%20%C2%B7%20Debian-E95420?style=for-the-badge" alt="Linux .deb"></a><br>
-<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-x86_64.AppImage"><img src="https://img.shields.io/badge/AppImage-x86__64-E95420?style=for-the-badge&logo=linux&logoColor=white" alt="Linux AppImage, x86_64"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign_0.9.0_amd64.deb"><img src="https://img.shields.io/badge/.deb-Ubuntu%20%C2%B7%20Debian-E95420?style=for-the-badge" alt="Linux .deb"></a><br>
+<sub><a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-1.x86_64.rpm">.rpm</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.7.0/vlc-redesign-0.7.0-x86_64.flatpak">Flatpak</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">ARM64</a></sub>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-macos-arm64.dmg"><img src="https://img.shields.io/badge/Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Apple Silicon"></a><br>
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-macos-x86_64.dmg"><img src="https://img.shields.io/badge/Intel-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Intel"></a>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-macos-arm64.dmg"><img src="https://img.shields.io/badge/Apple%20Silicon-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Apple Silicon"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-macos-x86_64.dmg"><img src="https://img.shields.io/badge/Intel-333333?style=for-the-badge&logo=apple&logoColor=white" alt="macOS, Intel"></a>
 </td>
 <td align="center" valign="top">
-<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.8/vlc-redesign-0.8.8-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
+<a href="https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-android.apk"><img src="https://img.shields.io/badge/APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android APK"></a><br>
 <sub>phones, tablets and Android TV<br>not on Google Play</sub>
 </td>
 </tr>
 </table>
 
-<sub><b>0.8.9</b> · 2026-11-27 &nbsp;·&nbsp; next: 0.9.0 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
+<sub><b>0.9.0</b> · 2026-11-28 &nbsp;·&nbsp; next: 0.9.1 &nbsp;·&nbsp; <a href="https://github.com/KuchiSofts/vlc-redesign/releases/latest">all downloads</a> · <a href="CHANGELOG.md">what's new</a> · <a href="https://github.com/KuchiSofts/vlc-redesign/wiki">wiki</a> · <a href="https://kuchisofts.github.io/vlc-redesign/">website</a></sub>
 
 <br><br>
 
@@ -308,7 +308,7 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 <!-- Written by extras/juxtopposed/platforms/render.py from platforms.yml: edit that file. -->
 <p align="center"><sub>
 
-**[Windows 0.8.9](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.8.9](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.8.9](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.8.9](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.8.8](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.8.6](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
+**[Windows 0.9.0](https://github.com/KuchiSofts/vlc-redesign/releases/latest)** · **[Linux 0.9.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[macOS 0.9.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Windows ARM64 0.9.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Android 0.9.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update)** · **[Samsung TV 0.9.0](https://github.com/KuchiSofts/vlc-redesign/wiki/Install-and-Update#samsung-tv)** · iPhone/iPad later
 
 </sub></p>
 
@@ -317,12 +317,12 @@ file, checked against the signed `SHA256SUMS.txt`; the other Linux packages upda
 
 | Platform | Status | Latest | Get it |
 |---|---|---|---|
-| Windows | 🟢 released | 0.8.9 · 2026-11-27 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-win64.zip) |
-| Linux | 🟢 released | 0.8.9 · 2026-11-27 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign_0.8.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.0/vlc-redesign-0.8.0-1.aarch64.rpm) |
-| macOS | 🟢 released | 0.8.9 · 2026-11-27 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-macos-x86_64.dmg) |
-| Windows ARM64 | 🟢 released | 0.8.9 · 2026-11-27 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.9/vlc-redesign-0.8.9-winarm64.zip) |
-| Android | 🟢 released | 0.8.8 · 2026-11-26 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.8/vlc-redesign-0.8.8-android.apk) |
-| Samsung TV | 🟢 released | 0.8.6 · 2026-11-26 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.8.6/Juxto-Media-Player-TV-0.8.6-source.zip) |
+| Windows | 🟢 released | 0.9.0 · 2026-11-28 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-win64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-win64.zip) |
+| Linux | 🟢 released | 0.9.0 · 2026-11-28 | [appimage](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-x86_64.AppImage) · [deb](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign_0.9.0_amd64.deb) · [rpm](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-1.x86_64.rpm) · [tar.xz](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-linux-x86_64.tar.xz) · [appimage arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-aarch64.AppImage) · [deb arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign_0.9.0_arm64.deb) · [rpm arm64](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-1.aarch64.rpm) |
+| macOS | 🟢 released | 0.9.0 · 2026-11-28 | [apple silicon](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-macos-arm64.dmg) · [intel](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-macos-x86_64.dmg) |
+| Windows ARM64 | 🟢 released | 0.9.0 · 2026-11-28 | [installer](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-winarm64-setup.exe) · [portable](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-winarm64.zip) |
+| Android | 🟢 released | 0.9.0 · 2026-11-28 | [apk](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/vlc-redesign-0.9.0-android.apk) |
+| Samsung TV | 🟢 released | 0.9.0 · 2026-11-28 | [source and guide](https://github.com/KuchiSofts/vlc-redesign/releases/download/v0.9.0/Juxto-Media-Player-TV-0.9.0-source.zip) |
 | iPhone/iPad | ⚪ later | — | coming soon |
 
 <sub>From [`platforms.yml`](platforms.yml) · [every platform on the website](https://kuchisofts.github.io/vlc-redesign/).</sub>
@@ -380,11 +380,11 @@ The interface code lives in [`modules/gui/qt`](modules/gui/qt).
 
 ## Roadmap
 
-- **Now: [0.8.9](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.9)** (2026-11-27), an update release of the
-  desktop apps: twenty-two reviewed changes from a contributor, with Windows media controls and contrast
-  themes. Before it, [0.8.8](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.8) (2026-11-26): on a phone held sideways the Android
-  player's controls blend into the video.
-- **Next: 0.9.0**, fixes as the issues bring them.
+- **Now: [0.9.0](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.9.0)** (2026-11-28), a full release of every app: a bug hunt
+  through Live TV, casting, online subtitles and updates, Windows updates that survive a power cut, and
+  the light theme's lists. Before it, [0.8.9](https://github.com/KuchiSofts/vlc-redesign/releases/tag/v0.8.9) (2026-11-27): twenty-two
+  reviewed changes from a contributor.
+- **Next: 0.9.1**, fixes as the issues bring them.
 
 What is planned for each platform: [ROADMAP.md](ROADMAP.md) (mirrored on the
 [wiki](https://github.com/KuchiSofts/vlc-redesign/wiki/Roadmap)). Past releases: [CHANGELOG.md](CHANGELOG.md).

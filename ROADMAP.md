@@ -10,7 +10,7 @@ Issues with a 👍 from many people move up this list.
 
 Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
-**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-090-and-after) ·
+**Contents:** [Where each program stands](#where-each-program-stands) · [Next](#next-091-and-after) ·
 [Each platform](#each-platform) · [Released versions](#released-versions) · [Staying close to VLC](#staying-close-to-vlc)
 
 The full plan, with every Figma frame, its status and the design tokens, is the
@@ -18,28 +18,26 @@ The full plan, with every Figma frame, its status and the design tokens, is the
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.9.0 started).
+Updated as the work moves (last: 2026-11-28, 0.9.0 published, 0.9.1 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.9 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.9 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.9 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.9 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.8 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.8 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.8 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.9.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.9.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.9.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.9.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.9.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.9.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.9.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.9.0 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.9.0 and after
+## Next: 0.9.1 and after
 
-**0.9.0** is an update release of fixes, made as the issues bring them, and of the next contributions,
+**0.9.1** is an update release of fixes, made as the issues bring them, and of the next contributions,
 each reviewed before it is taken.
 
-- 🟡 Fixes from a review of Live TV, Android and the Samsung TV app: a provider's playlist can no longer write
-  files or load images from the web, channel switching no longer waits for slow logos, a crash on Android 5
-  and 6, the Samsung app's memory with long songs and its queue
+- 🟡 VideoLAN's new Android playlist code and build scripts, merged with ours
 
 And as the issues bring them:
 
@@ -118,6 +116,17 @@ Android and Swift files made from them and a check on every pull request that th
 ## Released versions
 
 Newest first. Every change is in the [changelog](CHANGELOG.md).
+
+### 0.9.0 (2026-11-28)
+
+**A full release** of every app (desktop, Android, Samsung TV):
+
+- ✅ A bug hunt through Live TV, casting, online subtitles and updates: a provider's playlist can no longer
+  write files or load images from the web, a TV's name can't change what VLC does with the stream, the
+  casting firewall rule opens only the casting ports, and a sign-in is never sent on to another server
+- ✅ Windows updates survive a power cut in the middle, and an update missing a file is never put in place
+- ✅ The light theme's lists and the start-up busy cursor on Windows (#266)
+- ✅ Android: a crash on Android 5 and 6, fonts on older phones; Samsung TV: memory with long songs, the queue
 
 ### 0.8.9 (2026-11-27)
 

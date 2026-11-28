@@ -10,28 +10,26 @@ Status: ✅ done · 🔨 in progress · 📋 to do · 💡 idea
 
 ## Where each program stands
 
-Updated as the work moves (last: 2026-11-27, 0.8.9 published, 0.9.0 started).
+Updated as the work moves (last: 2026-11-28, 0.9.0 published, 0.9.1 started).
 
 | Program | Status | Progress | What is left |
 |---|---|---|---|
-| **Windows x64** | ✅ released 0.8.9 | ██████████ 100 % | — fixes as the issues bring them |
-| **Windows on ARM64** | ✅ released 0.8.9 | ██████████ 100 % | a run by hand on a real ARM64 PC |
-| **Linux** (x86_64, ARM64) | ✅ released 0.8.9 | ██████████ 100 % | the Flatpak on Flathub |
-| **macOS** (Apple Silicon, Intel) | ✅ released 0.8.9 | ██████████ 100 % | tests on a Mac by hand |
-| **Android** (phones) | ✅ released 0.8.8 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
-| **Android** (tablets) | ✅ released 0.8.8 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
-| **Android TV** | ✅ released 0.8.8 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
-| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.8.6 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
+| **Windows x64** | ✅ released 0.9.0 | ██████████ 100 % | — fixes as the issues bring them |
+| **Windows on ARM64** | ✅ released 0.9.0 | ██████████ 100 % | a run by hand on a real ARM64 PC |
+| **Linux** (x86_64, ARM64) | ✅ released 0.9.0 | ██████████ 100 % | the Flatpak on Flathub |
+| **macOS** (Apple Silicon, Intel) | ✅ released 0.9.0 | ██████████ 100 % | tests on a Mac by hand |
+| **Android** (phones) | ✅ released 0.9.0 | ██████████ 100 % | — tested on a real phone (Galaxy class) and emulators |
+| **Android** (tablets) | ✅ released 0.9.0 | ██████████ 100 % | — tested on a real tablet (Galaxy Tab class) and emulators |
+| **Android TV** | ✅ released 0.9.0 | ██████████ 100 % | — 1:1 with the Figma frames, lighter (no work in the background); tests on more TV boxes |
+| **Samsung TV** (*Juxto Media Player*) | ✅ released 0.9.0 | ██████████ 100 % | — tested on a 2017 Samsung TV; the Samsung store (later) |
 | **iPhone, iPad** | 💡 later | ░░░░░░░░░░ 0 % | after Android |
 
-## Next: 0.9.0 and after
+## Next: 0.9.1 and after
 
-**0.9.0** is an update release of fixes, made as the issues bring them, and of the next contributions,
+**0.9.1** is an update release of fixes, made as the issues bring them, and of the next contributions,
 each reviewed before it is taken.
 
-- 🟡 Fixes from a review of Live TV, Android and the Samsung TV app: a provider's playlist can no longer write
-  files or load images from the web, channel switching no longer waits for slow logos, a crash on Android 5
-  and 6, the Samsung app's memory with long songs and its queue
+- 🟡 VideoLAN's new Android playlist code and build scripts, merged with ours
 
 And as the issues bring them:
 
